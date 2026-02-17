@@ -21,3 +21,8 @@ setup :
 .PHONY : install-elan
 install-elan :
 	curl https://elan.lean-lang.org/elan-init.sh -sSf | sh
+
+.PHONY : set-path
+set-path :
+	# TODO - do this in bashrc or somewhere actually functional
+	export PATH="$$PATH:$$HOME/.elan/bin:$$HOME/.cargo/bin"
