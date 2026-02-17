@@ -16,3 +16,8 @@ setup :
 	mkdir -p reviews
 	mkdir -p sessions
 	mkdir -p build-logs
+
+
+.PHONY : install-elan
+install-elan :
+	curl https://elan.lean-lang.org/elan-init.sh -sSf | sh
