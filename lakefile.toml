@@ -1,0 +1,13 @@
+name = "erdos"
+version = "0.1.0"
+defaultTargets = ["Erdos"]
+
+[[lean_lib]]
+name = "Erdos"
+srcDir = "."
+roots = ["trivial", "conjectures.«1»"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.28.0" # Match the Lean version reported earlier
