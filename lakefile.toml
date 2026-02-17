@@ -6,7 +6,6 @@ defaultTargets = ["Erdos"]
 name = "Erdos"
 srcDir = "."
 globs = ["conjectures.*"]
-leanOptions = { "linter.unusedVariables" = false }
 
 [[require]]
 name = "mathlib"
