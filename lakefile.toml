@@ -5,7 +5,8 @@ defaultTargets = ["Erdos"]
 [[lean_lib]]
 name = "Erdos"
 srcDir = "."
-roots = ["trivial", "conjectures.«1»"]
+globs = ["conjectures.*"]
+leanOptions = { "linter.unusedVariables" = false }
 
 [[require]]
 name = "mathlib"
