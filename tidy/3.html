@@ -1,0 +1,237 @@
+
+<div class="problem-box">
+  <div class="problem-text" id="open">
+    <div id="prize"><span class="tooltip">
+  OPEN
+  <span class="tooltiptext">
+    This is open, and cannot be resolved with a finite computation.
+  </span></span>
+
+ - $5000
+    </div>
+    <div id="content">
+      If $A\subseteq \mathbb{N}$ has $\sum_{n\in A}\frac{1}{n}=\infty$ then must $A$ contain arbitrarily long arithmetic progressions?
+    </div>
+    <div id="problem_id">
+      <a href="/3">
+        #3</a>: <a href="#cite-Er74b-3" onclick="event.preventDefault();addNewBox('Er74b','3'); return false;">[Er74b]</a><a href="#cite-Er75b-3" onclick="event.preventDefault();addNewBox('Er75b','3'); return false;">[Er75b]</a><a href="#cite-Er77c-3" onclick="event.preventDefault();addNewBox('Er77c','3'); return false;">[Er77c]</a><a href="#cite-ErGr79-3" onclick="event.preventDefault();addNewBox('ErGr79','3'); return false;">[ErGr79]</a><a href="#cite-Er80-3" onclick="event.preventDefault();addNewBox('Er80','3'); return false;">[Er80]</a><a href="#cite-Er80c-3" onclick="event.preventDefault();addNewBox('Er80c','3'); return false;">[Er80c]</a><a href="#cite-ErGr80-3" onclick="event.preventDefault();addNewBox('ErGr80','3'); return false;">[ErGr80,p.11]</a><a href="#cite-Er81-3" onclick="event.preventDefault();addNewBox('Er81','3'); return false;">[Er81]</a><a href="#cite-Er82e-3" onclick="event.preventDefault();addNewBox('Er82e','3'); return false;">[Er82e]</a><a href="#cite-Er83-3" onclick="event.preventDefault();addNewBox('Er83','3'); return false;">[Er83]</a><a href="#cite-Er83c-3" onclick="event.preventDefault();addNewBox('Er83c','3'); return false;">[Er83c]</a><a href="#cite-Er85c-3" onclick="event.preventDefault();addNewBox('Er85c','3'); return false;">[Er85c]</a><a href="#cite-Er90-3" onclick="event.preventDefault();addNewBox('Er90','3'); return false;">[Er90]</a><a href="#cite-Er97c-3" onclick="event.preventDefault();addNewBox('Er97c','3'); return false;">[Er97c]</a><a href="#cite-Va99-3" onclick="event.preventDefault();addNewBox('Va99','3'); return false;">[Va99,1.28]</a>
+    </div>
+    <div id="tags">
+      <a href="/tags/number theory">
+        number theory</a> | 
+
+  <a href="/tags/additive combinatorics">additive combinatorics</a> | 
+
+  <a href="/tags/arithmetic progressions">arithmetic progressions</a>
+    </div>
+  </div>
+  <div class="problem-text" id="disclaimer">
+    <strong>
+      Disclaimer</strong>: The open status of this problem reflects the current belief of the owner of this website. There may be literature on this problem that I am unaware of, which may partially or completely solve the stated problem. Please do your own literature search before expending significant effort on solving this problem. If you find any relevant literature not mentioned here, please add this in a comment.
+                    
+  </div>
+  <div class="problem-additional-text">
+     
+                    
+                           This is essentially asking for good bounds on $r_k(N)$, the size of the largest subset of $\{1,\ldots,N\}$ without a non-trivial $k$-term arithmetic progression. For example, a bound like\[r_k(N) \ll_k \frac{N}{(\log N)(\log\log N)^2}\]would be sufficient. 
+    <br>
+    
+    <br>
+    
+    Even the case $k=3$ is non-trivial, but was proved by Bloom and Sisask <a href="#cite-BlSi20-3" onclick="event.preventDefault();addNewBox('BlSi20','3'); return false;">[BlSi20]</a>. Much better bounds for $r_3(N)$ were subsequently proved by Kelley and Meka <a href="#cite-KeMe23-3" onclick="event.preventDefault();addNewBox('KeMe23','3'); return false;">[KeMe23]</a>. Green and Tao <a href="#cite-GrTa17-3" onclick="event.preventDefault();addNewBox('GrTa17','3'); return false;">[GrTa17]</a> proved $r_4(N)\ll N/(\log N)^{c}$ for some small constant $c&gt;0$. Gowers <a href="#cite-Go01-3" onclick="event.preventDefault();addNewBox('Go01','3'); return false;">[Go01]</a> proved\[r_k(N) \ll \frac{N}{(\log\log N)^{c_k}},\]where $c_k&gt;0$ is a small constant depending on $k$. The current best bounds for general $k$ are due to Leng, Sah, and Sawhney <a href="#cite-LSS24-3" onclick="event.preventDefault();addNewBox('LSS24','3'); return false;">[LSS24]</a>, who show that\[r_k(N) \ll \frac{N}{\exp((\log\log N)^{c_k})}\]for some constant $c_k&gt;0$ depending on $k$.
+    <br>
+    
+    <br>
+    
+    Curiously, Erdős <a href="#cite-Er83c-3" onclick="event.preventDefault();addNewBox('Er83c','3'); return false;">[Er83c]</a> thought this conjecture was the 'only way to approach' the conjecture that there are arbitrarily long arithmetic progressions of prime numbers, now a theorem due to Green and Tao <a href="#cite-GrTa08-3" onclick="event.preventDefault();addNewBox('GrTa08','3'); return false;">[GrTa08]</a> (see <a href="/219" rel="nofollow noopener noreferrer ugc" target="_blank">[219]</a>).
+    <br>
+    
+    <br>
+    
+    In <a href="#cite-Er81-3" onclick="event.preventDefault();addNewBox('Er81','3'); return false;">[Er81]</a> Erdős makes the stronger conjecture that\[r_k(N) \ll_C\frac{N}{(\log N)^C}\]for every $C&gt;0$ (now known for $k=3$ due to Kelley and Meka <a href="#cite-KeMe23-3" onclick="event.preventDefault();addNewBox('KeMe23','3'); return false;">[KeMe23]</a>) - see <a href="/140" rel="nofollow noopener noreferrer ugc" target="_blank">[140]</a>.
+    <br>
+    
+    <br>
+    
+    See also <a href="/139" rel="nofollow noopener noreferrer ugc" target="_blank">[139]</a> and <a href="/142" rel="nofollow noopener noreferrer ugc" target="_blank">[142]</a>.
+    <br>
+    
+    <br>
+    
+    This is discussed in problem A5 of Guy's collection <a href="#cite-Gu04-3" onclick="event.preventDefault();addNewBox('Gu04','3'); return false;">[Gu04]</a>.
+                           
+                    
+                    
+
+    <p style="text-align: center; font-family: 'Courier New', monospace; font-size: 90%;"><a href="/latex/3">View the LaTeX source</a>
+    </p>
+    <p style="text-align: center; font-family: 'Courier New', monospace; font-size: 90%;">
+      
+  This page was last edited 23 January 2026.
+
+    </p>
+    <div class="image-container" id="image-container3">
+    </div>
+  </div>
+  <div class="problem-additional-text" style="text-align:center;">
+  </div>
+  <div id="bib-container3">
+  </div>
+  <div class="external">
+    External data from <a href="https://github.com/teorth/erdosproblems">the database</a> - you can help update this                
+
+
+  
+    <br>
+    
+    
+  Formalised statement? 
+    
+      <a href="https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/3.lean">Yes</a>
+    <br>
+    
+    
+    Related OEIS sequences:   
+    
+      
+        
+          <a href="https://oeis.org/A003002" rel="noopener noreferrer" target="_blank">A003002</a><a href="https://oeis.org/A003003" rel="noopener noreferrer" target="_blank">A003003</a><a href="https://oeis.org/A003004" rel="noopener noreferrer" target="_blank">A003004</a><a href="https://oeis.org/A003005" rel="noopener noreferrer" target="_blank">A003005</a>
+    <br>
+    
+  </div>
+  <div class="problem-reactions">
+    <div class="comment-count">
+      <a href="/forum/discuss/3" style="color: inherit;">
+        
+    2 comments on this problem
+  </a>
+    </div>
+    <table class="problem-reactions-table">
+      <tbody>
+        <tr class="problem-reaction-row" data-reaction-type="like">
+          <td class="problem-reaction-label-cell" style="padding-right: 2rem;">
+            <strong>
+              Likes this problem</strong>
+          </td>
+          <td class="problem-reaction-main-cell">
+            <span class="problem-reaction-users">
+              <a href="/forum/user/TFBloom" style="color:inherit; text-decoration: none;">
+                TFBloom</a>, 
+    
+      <a href="/forum/user/dbmcdonough" style="color:inherit; text-decoration: none;">dbmcdonough</a>, 
+    
+      <a href="/forum/user/Fedir" style="color:inherit; text-decoration: none;">Fedir</a></span>
+          </td>
+        </tr>
+        <tr class="problem-reaction-row" data-reaction-type="collab">
+          <td class="problem-reaction-label-cell" style="padding-right: 2rem;">
+            <strong>
+              Interested in collaborating</strong>
+          </td>
+          <td class="problem-reaction-main-cell">
+            <span class="problem-reaction-users">
+              
+  
+    None
+  
+</span>
+          </td>
+        </tr>
+        <tr class="problem-reaction-row" data-reaction-type="working_on">
+          <td class="problem-reaction-label-cell" style="padding-right: 2rem;">
+            <strong>
+              Currently working on this problem</strong>
+          </td>
+          <td class="problem-reaction-main-cell">
+            <span class="problem-reaction-users">
+              <a href="/forum/user/dbmcdonough" style="color:inherit; text-decoration: none;">
+                dbmcdonough</a></span>
+          </td>
+        </tr>
+        <tr class="problem-reaction-row" data-reaction-type="hard">
+          <td class="problem-reaction-label-cell" style="padding-right: 2rem;">
+            <strong>
+              This problem looks difficult</strong>
+          </td>
+          <td class="problem-reaction-main-cell">
+            <span class="problem-reaction-users">
+              <a href="/forum/user/TFBloom" style="color:inherit; text-decoration: none;">
+                TFBloom</a>, 
+    
+      <a href="/forum/user/Vjeko_Kovac" style="color:inherit; text-decoration: none;">Vjeko_Kovac</a>, 
+    
+      <a href="/forum/user/dbmcdonough" style="color:inherit; text-decoration: none;">dbmcdonough</a></span>
+          </td>
+        </tr>
+        <tr class="problem-reaction-row" data-reaction-type="easy">
+          <td class="problem-reaction-label-cell" style="padding-right: 2rem;">
+            <strong>
+              This problem looks tractable</strong>
+          </td>
+          <td class="problem-reaction-main-cell">
+            <span class="problem-reaction-users">
+              
+  
+    None
+  
+</span>
+          </td>
+        </tr>
+        <tr class="problem-reaction-row" data-reaction-type="formalisable">
+          <td class="problem-reaction-label-cell" style="padding-right: 2rem;">
+            <strong>
+              The results on this problem could be formalisable</strong>
+          </td>
+          <td class="problem-reaction-main-cell">
+            <span class="problem-reaction-users">
+              
+  
+    None
+  
+</span>
+          </td>
+        </tr>
+        <tr class="problem-reaction-row" data-reaction-type="working_form">
+          <td class="problem-reaction-label-cell" style="padding-right: 2rem;">
+            <strong>
+              I am working on formalising the results on this problem</strong>
+          </td>
+          <td class="problem-reaction-main-cell">
+            <span class="problem-reaction-users">
+              
+  
+    None
+  
+</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  
+  <div class="citationbox">
+    <div id="content">
+      
+                                    
+When referring to this problem, please use the original sources of Erdős. If you wish to acknowledge this website, the recommended citation format is:
+
+      <br>
+      
+      <br>
+      
+      
+T. F. Bloom, Erdős Problem #3, https://www.erdosproblems.com/3, accessed 2026-02-18
+    </div>
+  </div>
+  <div class="problem-additional-text">
+    <div id="previous_id">
+      <a href="/2">
+        Previous</a>
+    </div>
+    <div id="next_id">
+      <a href="/4">
+        Next</a>
+    </div>
+  </div>
+</div>

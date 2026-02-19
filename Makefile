@@ -4,6 +4,9 @@ tidy/%.html : html/%.html
 html/%.html :
 	curl https://www.erdosproblems.com/$* > $@
 
+conjectures/%.lean : tidy/%.html
+	gemini --model gemini-3-pro-preview --yolo --prompt "create formalization of conjecture described in tidy/$*.html and put in conjectures/$*.lean. do not fetch existing solutions from web."
+
 build-logs/%.txt : conjectures/%.lean
 	lake build conjectures/$*.lean 2>&1 | tee $@
 
