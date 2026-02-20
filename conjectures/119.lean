@@ -1,4 +1,4 @@
-import Mathlib.Data.Complex.Basic
+import Mathlib.Analysis.Complex.Basic
 import Mathlib.Algebra.Polynomial.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
@@ -13,7 +13,7 @@ noncomputable def circlePolynomial (z : ℕ → ℂ) (n : ℕ) : Polynomial ℂ 
 /-- The maximum modulus of circlePolynomial z n on the unit circle:
     Mₙ = max_{|w|=1} |pₙ(w)|. -/
 noncomputable def unitCircleMax (z : ℕ → ℂ) (n : ℕ) : ℝ :=
-  ⨆ w : {w : ℂ // Complex.abs w = 1}, Complex.abs ((circlePolynomial z n).eval w.val)
+  ⨆ w : {w : ℂ // ‖w‖ = 1}, ‖(circlePolynomial z n).eval w.val‖
 
 /--
 Erdős Problem #119 [Er57, Er61, Er64b, Ha74, Er82e, Er90, Er97f, Va99 2.38] — OPEN
@@ -39,7 +39,7 @@ Three questions were posed:
 This is Problem 4.1 in [Ha74], attributed to Erdős.
 -/
 theorem erdos_problem_119 :
-    ∀ (z : ℕ → ℂ), (∀ i, Complex.abs (z i) = 1) →
+    ∀ (z : ℕ → ℂ), (∀ i, ‖z i‖ = 1) →
     ∃ c : ℝ, 0 < c ∧
       ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
         (n : ℝ) ^ (1 + c) < ∑ k ∈ Finset.range n, unitCircleMax z k :=

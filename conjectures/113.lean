@@ -4,6 +4,7 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Data.Fintype.Card
 import Mathlib.Data.Finset.Card
 import Mathlib.Data.Set.Card
+import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
 open SimpleGraph
 
@@ -15,7 +16,8 @@ def containsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Pro
 /-- The Turán number ex(n; H): the maximum number of edges in a simple graph on n
     vertices that contains no copy of H as a subgraph. -/
 noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
-  sSup {m : ℕ | ∃ (V : Type) [Fintype V] (F : SimpleGraph V) [DecidableRel F.Adj],
+  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+    haveI := fv; haveI := dr;
     Fintype.card V = n ∧ ¬containsSubgraph F H ∧ F.edgeFinset.card = m}
 
 /-- A graph G is 2-degenerate if every non-empty finite set of vertices contains

@@ -1,8 +1,9 @@
 import Mathlib.Data.Finset.Basic
 import Mathlib.Data.Nat.Basic
 import Mathlib.Data.Real.Basic
-import Mathlib.Algebra.BigOperators.Group.Finset
-import Mathlib.Algebra.GCDMonoid.BigOperators
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Algebra.GCDMonoid.Finset
+import Mathlib.Algebra.GCDMonoid.Nat
 
 open scoped BigOperators
 

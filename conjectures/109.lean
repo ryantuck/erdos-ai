@@ -1,8 +1,11 @@
 import Mathlib.Data.Set.Basic
 import Mathlib.Data.Finset.Basic
+import Mathlib.Data.Real.Archimedean
 import Mathlib.Data.Real.Basic
 import Mathlib.Order.LiminfLimsup
-import Mathlib.Order.Filter.AtTopBot
+import Mathlib.Order.Filter.AtTopBot.Basic
+
+open Classical
 
 /--
 The upper density of A ⊆ ℕ is defined as:

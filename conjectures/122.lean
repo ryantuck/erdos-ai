@@ -1,17 +1,19 @@
 import Mathlib.Data.Finset.Basic
+import Mathlib.Data.Nat.Factors
+import Mathlib.Data.Real.Archimedean
 import Mathlib.Data.Real.Basic
-import Mathlib.Order.Filter.AtTopBot
-import Mathlib.Algebra.Order.Floor
+import Mathlib.Order.Filter.AtTopBot.Basic
+import Mathlib.Topology.MetricSpace.Basic
 import Mathlib.NumberTheory.Divisors
 
-open Filter Finset
+open Classical Filter Finset
 
 /-- The count of natural numbers n such that n + f(n) falls in the open real
     interval (x, x + F(x)). Since n ≤ n + f(n) < x + F(x) requires n < x + F(x),
     it suffices to search n in the range [0, x + ⌈F x⌉₊]. -/
 noncomputable def shiftCount (f : ℕ → ℕ) (F : ℕ → ℝ) (x : ℕ) : ℕ :=
   ((Finset.range (x + ⌈F x⌉₊ + 1)).filter
-    (fun n => (x : ℝ) < (n : ℝ) + (f n : ℝ) ∧
+    (fun (n : ℕ) => (x : ℝ) < (n : ℝ) + (f n : ℝ) ∧
               (n : ℝ) + (f n : ℝ) < (x : ℝ) + F x)).card
 
 /-- The natural density of a set A ⊆ ℕ is zero: the proportion of elements
@@ -55,5 +57,5 @@ The theorem below records the two proved instances.
 -/
 theorem erdos_problem_122 :
     HasErdos122Property (fun n => (Nat.divisors n).card) ∧
-    HasErdos122Property (fun n => (Nat.factors n).toFinset.card) :=
+    HasErdos122Property (fun n => (Nat.primeFactorsList n).toFinset.card) :=
   sorry

@@ -1,6 +1,6 @@
 import Mathlib.Data.Nat.GCD.Basic
 import Mathlib.Data.Finset.Basic
-import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 
 open scoped BigOperators
 

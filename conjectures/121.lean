@@ -1,6 +1,10 @@
-import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Algebra.Group.Even
 import Mathlib.Data.Finset.Basic
-import Mathlib.Order.Filter.AtTopBot
+import Mathlib.Data.Nat.Lattice
+import Mathlib.Data.Real.Basic
+import Mathlib.Order.Filter.AtTopBot.Basic
+import Mathlib.Order.Interval.Finset.Nat
 
 open scoped BigOperators
 open Filter

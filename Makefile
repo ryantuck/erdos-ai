@@ -11,6 +11,18 @@ conjectures/%.lean : tidy/%.html
 build-logs/%.txt : conjectures/%.lean
 	lake build conjectures/$*.lean 2>&1 | tee $@
 
+# ---------------------------------
+
+todo-conjectures.txt : all-conjectures.txt existing-conjectures.txt
+	comm -23 --nocheck-order all-conjectures.txt existing-conjectures.txt > $@
+
+all-conjectures.txt :
+	seq 1 1179 > $@
+
+existing-conjectures.txt :
+	ls ../formal-conjectures/FormalConjectures/ErdosProblems | cut -d '.' -f 1 | sort -n > $@
+
+# ---------------------------------
 
 .PHONY : setup
 setup :

@@ -14,8 +14,8 @@ has size at most ε * n.
 theorem erdos_problem_22_conjecture :
   ∀ (ε : ℝ), ε > 0 → ∃ (N : ℕ), ∀ (n : ℕ), N ≤ n →
   ∃ (G : SimpleGraph (Fin n)) (h : DecidableRel G.Adj),
-    let edge_count := @SimpleGraph.edgeFinset _ G h (Fintype.ofFinite (Fin n))
-    (edge_count.card : ℝ) ≥ (n : ℝ) ^ 2 / 8 ∧
+    haveI := h
+    (G.edgeFinset.card : ℝ) ≥ (n : ℝ) ^ 2 / 8 ∧
     G.CliqueFree 4 ∧
     (∀ (s : Finset (Fin n)), Gᶜ.IsClique s → (s.card : ℝ) ≤ ε * n) :=
 sorry

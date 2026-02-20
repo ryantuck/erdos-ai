@@ -1,13 +1,15 @@
-import Mathlib.Data.Complex.Basic
+import Mathlib.Analysis.Complex.Basic
 import Mathlib.Algebra.Polynomial.Basic
-import Mathlib.RingTheory.Polynomial.Monic
+import Mathlib.Algebra.Polynomial.Monic
+import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
 import Mathlib.MeasureTheory.Measure.Hausdorff
 
+open scoped ENNReal
 open Polynomial MeasureTheory
 
 /-- The unit level curve of a complex polynomial p: the set of z ∈ ℂ with |p(z)| = 1. -/
 def levelCurveUnit (p : Polynomial ℂ) : Set ℂ :=
-  {z : ℂ | Complex.abs (p.eval z) = 1}
+  {z : ℂ | ‖p.eval z‖ = 1}
 
 /-- The arc length of a subset of ℂ, given by the 1-dimensional Hausdorff measure. -/
 noncomputable def arcLength (S : Set ℂ) : ℝ≥0∞ :=

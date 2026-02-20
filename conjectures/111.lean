@@ -2,6 +2,8 @@ import Mathlib.Combinatorics.SimpleGraph.Basic
 import Mathlib.Combinatorics.SimpleGraph.Coloring
 import Mathlib.Combinatorics.SimpleGraph.Subgraph
 import Mathlib.SetTheory.Cardinal.Basic
+import Mathlib.SetTheory.Cardinal.Aleph
+import Mathlib.Analysis.SpecialFunctions.Pow.Real
 import Mathlib.Data.Set.Card
 import Mathlib.Data.Real.Basic
 

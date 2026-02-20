@@ -1,8 +1,11 @@
 import Mathlib.Data.Set.Basic
-import Mathlib.Data.Nat.Digits
+import Mathlib.Data.Nat.Digits.Defs
+import Mathlib.Data.Real.Archimedean
 import Mathlib.Data.Real.Basic
 import Mathlib.Order.LiminfLimsup
-import Mathlib.Order.Filter.AtTopBot
+import Mathlib.Order.Filter.AtTopBot.Basic
+
+open Classical
 
 /--
 The set A of non-negative integers whose base-3 representation uses only digits 0 and 1.

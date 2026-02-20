@@ -1,9 +1,10 @@
+import Mathlib.Data.Nat.Factors
 import Mathlib.NumberTheory.Divisors
 import Mathlib.Data.Finset.Basic
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Order.Filter.AtTopBot
-import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Order.Filter.AtTopBot.Basic
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 
 open scoped BigOperators
 open Filter
@@ -19,10 +20,10 @@ noncomputable def pairSumProduct (A : Finset ℕ) : ℕ :=
 
 /--
 The number of distinct prime factors of n (written ω(n) in analytic number theory):
-  ω(n) = |{p : p prime, p ∣ n}| = (Nat.factors n).toFinset.card.
+  ω(n) = |{p : p prime, p ∣ n}| = (Nat.primeFactorsList n).toFinset.card.
 -/
 noncomputable def distinctPrimeFactors (n : ℕ) : ℕ :=
-  (Nat.factors n).toFinset.card
+  (Nat.primeFactorsList n).toFinset.card
 
 /--
 f(n) is the maximal value such that for every n-element set A ⊆ ℕ,

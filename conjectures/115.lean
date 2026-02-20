@@ -1,4 +1,4 @@
-import Mathlib.Data.Complex.Basic
+import Mathlib.Analysis.Complex.Basic
 import Mathlib.Algebra.Polynomial.Basic
 import Mathlib.Algebra.Polynomial.Derivative
 import Mathlib.Topology.Connected.Basic
@@ -7,7 +7,7 @@ open Polynomial
 
 /-- The lemniscate of a complex polynomial p: the sublevel set {z ∈ ℂ : |p(z)| ≤ 1}. -/
 def lemniscate (p : Polynomial ℂ) : Set ℂ :=
-  {z : ℂ | Complex.abs (p.eval z) ≤ 1}
+  {z : ℂ | ‖p.eval z‖ ≤ 1}
 
 /--
 Erdős Conjecture (Problem #115) [Er61, Er90], proved by Eremenko–Lempert [ErLe94]:
@@ -30,5 +30,5 @@ theorem erdos_problem_115 :
     ∀ p : Polynomial ℂ, p.natDegree = n →
       IsConnected (lemniscate p) →
       ∀ z : ℂ, z ∈ lemniscate p →
-        Complex.abs ((derivative p).eval z) ≤ (1 / 2 + ε) * (n : ℝ) ^ 2 :=
+        ‖(derivative p).eval z‖ ≤ (1 / 2 + ε) * (n : ℝ) ^ 2 :=
   sorry
