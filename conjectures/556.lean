@@ -1,22 +1,18 @@
 import Mathlib.Combinatorics.SimpleGraph.Basic
 import Mathlib.Data.Nat.Lattice
-import Mathlib.Data.Real.Basic
 
 open SimpleGraph
 
 noncomputable section
 
 /-!
-# Erdős Problem #554
+# Erdős Problem #556
 
-Let R_k(G) denote the minimal m such that if the edges of K_m are k-coloured
-then there is a monochromatic copy of G. Show that
+Let R_3(G) denote the minimal m such that if the edges of K_m are 3-coloured
+then there must be a monochromatic copy of G. Show that
+  R_3(C_n) ≤ 4n - 3.
 
-  lim_{k → ∞} R_k(C_{2n+1}) / R_k(K_3) = 0
-
-for any n ≥ 2.
-
-A problem of Erdős and Graham [Er81c]. The problem is open even for n = 2.
+A problem of Bondy and Erdős. This inequality is best possible for odd n.
 -/
 
 /-- The cycle graph C_m on m vertices (m ≥ 3). Vertex i is adjacent to vertex
@@ -40,18 +36,13 @@ noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
       ∀ u v, G.Adj u v → c (f u) (f v) = a}
 
 /--
-Erdős Problem #554 [Er81c]:
+Erdős Problem #556 [Er81][Er81c]:
 
-For any n ≥ 2, lim_{k → ∞} R_k(C_{2n+1}) / R_k(K_3) = 0.
-
-Formulated as: for every ε > 0, there exists K₀ such that for all k ≥ K₀,
-  R_k(C_{2n+1}) ≤ ε · R_k(K_3).
+For all n ≥ 3, the 3-colour Ramsey number of the cycle C_n satisfies
+  R_3(C_n) ≤ 4n - 3.
 -/
-theorem erdos_problem_554 (n : ℕ) (hn : n ≥ 2) :
-    ∀ ε : ℝ, ε > 0 →
-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
-      (multicolorRamseyNumber (cycleGraph (2 * n + 1) (by omega)) k : ℝ) ≤
-        ε * (multicolorRamseyNumber (⊤ : SimpleGraph (Fin 3)) k : ℝ) :=
+theorem erdos_problem_556 (n : ℕ) (hn : n ≥ 3) :
+    multicolorRamseyNumber (cycleGraph n hn) 3 ≤ 4 * n - 3 :=
   sorry
 
 end
