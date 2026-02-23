@@ -1,0 +1,658 @@
+conjectures/836.lean:11:Let r ≥ 2 and G be an r-uniform hypergraph with chromatic number 3
+conjectures/836.lean:13:is monochromatic). Suppose any two edges of G have a non-empty intersection.
+conjectures/836.lean:21:r-uniform 3-chromatic hypergraph with ~4^r/√r vertices.
+conjectures/836.lean:39:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+conjectures/836.lean:40:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+conjectures/836.lean:44:/-- A hypergraph has chromatic number 3: it is 3-colorable but not 2-colorable. -/
+conjectures/836.lean:46:  (∃ f : V → Fin 3, H.IsProperColoring f) ∧
+conjectures/836.lean:47:  (∀ f : V → Fin 2, ¬H.IsProperColoring f)
+conjectures/836.lean:56:For every r-uniform intersecting hypergraph with chromatic number 3,
+conjectures/810.lean:23:def AdmitsRainbowC4Coloring (n : ℕ) (G : SimpleGraph (Fin n)) : Prop :=
+conjectures/810.lean:46:        AdmitsRainbowC4Coloring n G :=
+conjectures/603.lean:13:be coloured with at most $C$ colours so that no $A_i$ is monochromatic.
+conjectures/603.lean:26:no $A_i$ is monochromatic.
+conjectures/910.lean:2:import Mathlib.Topology.Connected.Basic
+conjectures/910.lean:35:    IsConnected S →
+conjectures/910.lean:37:      T ⊆ S ∧ IsConnected T ∧ T.Nontrivial ∧
+conjectures/910.lean:48:    IsConnected S →
+conjectures/910.lean:49:    Cardinal.continuum < #{T : Set (EuclideanSpace ℝ (Fin n)) // T ⊆ S ∧ IsConnected T} :=
+conjectures/612.lean:4:import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+conjectures/612.lean:50:      G.Connected →
+conjectures/612.lean:66:      G.Connected →
+conjectures/612.lean:80:      G.Connected →
+conjectures/609.lean:14:with n colours then there must be a monochromatic odd cycle of length at most m.
+conjectures/609.lean:18:n-coloured to avoid monochromatic odd cycles entirely (partition vertices by
+conjectures/609.lean:26:/-- There exists a monochromatic cycle of length `k` in an edge coloring of K_N.
+conjectures/609.lean:40:contains a monochromatic odd cycle. (This establishes that f(n) is finite.)
+conjectures/609.lean:53:symmetric n-coloring of K_{2^n+1} with no monochromatic odd cycle of length
+conjectures/609.lean:68:n-coloring of K_{2^n+1} contains a monochromatic odd cycle of length at most
+conjectures/483.lean:3:/-- A coloring `f : ℕ → Fin k` has a *monochromatic Schur triple* in `{1,…,N}` if
+conjectures/483.lean:5:def HasMonochromaticSchurTriple (k N : ℕ) (f : ℕ → Fin k) : Prop :=
+conjectures/483.lean:12:monochromatic solution to a + b = c. The values f(k) are known as Schur numbers.
+conjectures/483.lean:21:every k-coloring of {1,…,N} with N ≥ c^k has a monochromatic Schur triple.
+conjectures/483.lean:29:            HasMonochromaticSchurTriple k N f :=
+conjectures/751.lean:3:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/751.lean:13:Let $G$ be a graph with chromatic number $χ(G) = 4$. If $m_1 < m_2 < \cdots$ are the
+conjectures/751.lean:19:true for every graph with chromatic number $4$.
+conjectures/751.lean:24:  {n | ∃ (v : V) (p : G.Walk v v), p.IsCycle ∧ p.length = n}
+conjectures/751.lean:28:Erdős Problem #751 in the negative: for every graph with chromatic number 4, the gaps
+conjectures/761.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/761.lean:12:The cochromatic number of G, denoted by ζ(G), is the minimum number of colours
+conjectures/761.lean:14:a complete graph or empty graph. The dichromatic number of G, denoted by δ(G),
+conjectures/761.lean:17:are no monochromatic oriented cycles.
+conjectures/761.lean:19:Must a graph with large chromatic number have large dichromatic number?
+conjectures/761.lean:20:Must a graph with large cochromatic number contain a graph with large
+conjectures/761.lean:21:dichromatic number?
+conjectures/761.lean:27:Tags: graph theory, chromatic number
+conjectures/761.lean:38:    there is no monochromatic directed cycle: no vertex can reach itself
+conjectures/761.lean:45:/-- The dichromatic number of G: the minimum k such that for every orientation
+conjectures/761.lean:47:noncomputable def dichromaticNumber761 {V : Type*} [Fintype V]
+conjectures/761.lean:52:/-- A cochromatic colouring: each colour class induces either a complete
+conjectures/761.lean:54:def IsCochromaticColouring761 {V : Type*} (G : SimpleGraph V) (k : ℕ)
+conjectures/761.lean:60:/-- The cochromatic number ζ(G): minimum number of colours in a cochromatic
+conjectures/761.lean:62:noncomputable def cochromaticNumber761 {V : Type*} [Fintype V]
+conjectures/761.lean:64:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring761 G k c}
+conjectures/761.lean:69:Must a graph with large chromatic number have large dichromatic number?
+conjectures/761.lean:74:      G.chromaticNumber.toNat ≥ m →
+conjectures/761.lean:75:        dichromaticNumber761 G ≥ n :=
+conjectures/761.lean:81:Must a graph with large cochromatic number contain a subgraph with large
+conjectures/761.lean:82:dichromatic number? For every n there exists m such that ζ(G) ≥ m implies
+conjectures/761.lean:87:      cochromaticNumber761 G ≥ m →
+conjectures/761.lean:89:          dichromaticNumber761 (G.induce (↑S : Set (Fin s))) ≥ n :=
+conjectures/638.lean:13:then there is a monochromatic triangle.
+conjectures/638.lean:17:with $\aleph$ many colours then there is a monochromatic triangle.
+conjectures/638.lean:20:/-- A symmetric colouring of a simple graph has a **monochromatic triangle**
+conjectures/638.lean:42:property: for every n ≥ 1, some member of S forces a monochromatic triangle
+conjectures/638.lean:47:every κ-colouring of the edges of G contains a monochromatic triangle.
+conjectures/560.lean:16:edges of H there is a monochromatic copy of G.
+conjectures/560.lean:36:    contains a monochromatic copy of G, i.e., an injective map f from the
+conjectures/174.lean:9:d = d(A,k) such that in any k-colouring of ℝᵈ there exists a monochromatic
+conjectures/174.lean:23:    exists d such that any k-coloring of ℝᵈ contains a monochromatic
+conjectures/760.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/760.lean:14:The cochromatic number of G, denoted by ζ(G), is the minimum number of colours
+conjectures/760.lean:18:If G is a graph with chromatic number χ(G) = m then must G contain a subgraph H
+conjectures/760.lean:27:Tags: graph theory, chromatic number
+conjectures/760.lean:30:/-- A colouring c : V → Fin k is a cochromatic colouring of G if every colour
+conjectures/760.lean:32:def IsCochromaticColouring760 {V : Type*} (G : SimpleGraph V) (k : ℕ)
+conjectures/760.lean:38:/-- The cochromatic number ζ(G) of a finite graph G: the minimum number of
+conjectures/760.lean:39:    colours in a cochromatic colouring. -/
+conjectures/760.lean:40:noncomputable def cochromaticNumber760 {V : Type*} [Fintype V]
+conjectures/760.lean:42:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring760 G k c}
+conjectures/760.lean:48:large chromatic number m = χ(G), there exists an induced subgraph H of G with
+conjectures/760.lean:49:cochromatic number ζ(H) ≥ C · m / log m.
+conjectures/760.lean:53:      G.chromaticNumber.toNat ≥ N₀ →
+conjectures/760.lean:55:          (cochromaticNumber760 (G.induce (↑S : Set (Fin n))) : ℝ) ≥
+conjectures/760.lean:56:            C * (G.chromaticNumber.toNat : ℝ) / Real.log (G.chromaticNumber.toNat : ℝ) :=
+conjectures/191.lean:14:X ⊆ {2, ..., n} such that all pairs from X are monochromatic and
+conjectures/191.lean:18:non-edges = colour 2). A monochromatic set is a clique in either G or its
+conjectures/191.lean:29:2-colouring of the pairs from {2, ..., n}, there exists a monochromatic
+conjectures/641.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/641.lean:2:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/641.lean:3:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/641.lean:14:chromatic number ≥ f(k) then G has k edge-disjoint cycles on the same set
+conjectures/641.lean:22:chromatic number ≥ c(log log n)/(log log log n) which contains no 4-regular
+conjectures/641.lean:30:chromatic number at least f(k) contains k edge-disjoint cycles on the
+conjectures/641.lean:37:          (f : ℕ∞) ≤ G.chromaticNumber →
+conjectures/641.lean:38:          ∃ (cycles : Fin k → Σ (v : Fin n), G.Walk v v),
+conjectures/641.lean:49:finite graph with chromatic number at least f but without k edge-disjoint
+conjectures/641.lean:56:          (f : ℕ∞) ≤ G.chromaticNumber ∧
+conjectures/641.lean:57:          ¬∃ (cycles : Fin k → Σ (v : Fin n), G.Walk v v),
+conjectures/911.lean:14:edges of H there is a monochromatic copy of G.
+conjectures/911.lean:30:    contains a monochromatic copy of G, i.e., an injective map f from the
+conjectures/190.lean:14:(into any number of colours) there is always either a monochromatic k-term
+conjectures/190.lean:24:/-- A colouring χ : ℕ → ℕ has a monochromatic k-term arithmetic progression
+conjectures/190.lean:39:    either a monochromatic k-term AP or a rainbow 3-term AP. -/
+conjectures/190.lean:47:any finite colouring of {1,…,N} always contains either a monochromatic
+conjectures/568.lean:35:def SimpleGraph.IsConnectedGraph {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/568.lean:40:  G.IsConnectedGraph ∧ G.edgeSet.ncard + 1 = Fintype.card V
+conjectures/799.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/799.lean:14:The list chromatic number χ_L(G) is defined to be the minimal k such that for any
+conjectures/799.lean:28:Tags: graph theory, chromatic number
+conjectures/799.lean:34:def Erdos799.IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+conjectures/799.lean:43:    ∃ f : V → ℕ, Erdos799.IsProperListColoring G L f
+conjectures/1044.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/622.lean:2:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/622.lean:33:  ∃ v ∈ S, ∃ p : G.Walk v v, p.IsCycle ∧ p.support.toFinset = S
+conjectures/146.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/146.lean:45:      Nonempty (H.Coloring (Fin 2)) →
+conjectures/750.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/750.lean:14:graph G of infinite chromatic number such that every subgraph on m vertices
+conjectures/750.lean:24:Tags: graph theory, chromatic number
+conjectures/750.lean:40:graph G with infinite chromatic number such that every finite set of m
+conjectures/630.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/630.lean:11:The list chromatic number χ_L(G) is the minimal k such that for any assignment
+conjectures/630.lean:25:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+conjectures/630.lean:34:    ∃ f : V → ℕ, IsProperListColoring G L f
+conjectures/630.lean:36:/-- The list chromatic number (choice number) of a graph G: the minimum k
+conjectures/556.lean:12:then there must be a monochromatic copy of G. Show that
+conjectures/556.lean:26:    k-colouring of the edges of K_N, there is a monochromatic copy of G.
+conjectures/556.lean:29:    A monochromatic copy of G in colour a is an injective map f : V → Fin N
+conjectures/753.lean:14:The list chromatic number χ_L(G) is defined to be the minimal k such that for
+conjectures/753.lean:31:Tags: graph theory, chromatic number
+conjectures/753.lean:41:/-- The list chromatic number (choice number) of a graph: the minimum k such
+conjectures/1013.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/1013.lean:14:vertices with chromatic number k. Find an asymptotic for h₃(k), and also prove
+conjectures/1013.lean:23:Tags: graph theory, chromatic number
+conjectures/1013.lean:27:    triangle-free graph on `n` vertices with chromatic number exactly `k`. -/
+conjectures/1013.lean:29:  sInf {n : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = (k : ℕ∞)}
+conjectures/1013.lean:37:chromatic number k.
+conjectures/581.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/581.lean:22:    Nonempty (H.Coloring (Fin 2)) ∧
+conjectures/584.lean:1:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/584.lean:2:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/584.lean:26:  ∃ (u : V) (c : G.Walk u u), c.IsCycle ∧ c.length ≤ k ∧
+conjectures/159.lean:48:of the edges of K_N contains a monochromatic C₄ in one colour or a
+conjectures/159.lean:49:monochromatic Kₙ in the other colour.
+conjectures/740.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/740.lean:3:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/740.lean:15:Let 𝔪 be an infinite cardinal and G be a graph with chromatic number 𝔪.
+conjectures/740.lean:16:Let r ≥ 1. Must G contain a subgraph of chromatic number 𝔪 which does not
+conjectures/740.lean:24:integer r, there exists f_r(𝔪) such that every graph with chromatic number
+conjectures/740.lean:25:≥ f_r(𝔪) contains a subgraph with chromatic number 𝔪 with no odd cycle
+conjectures/740.lean:31:/-- The cardinal chromatic number of a graph: the infimum of cardinals κ
+conjectures/740.lean:35:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+conjectures/740.lean:40:If G is a graph with infinite chromatic number 𝔪, then for every r ≥ 1,
+conjectures/740.lean:41:G contains a subgraph with chromatic number 𝔪 that has no odd cycle of
+conjectures/740.lean:52:      (∀ (w : W) (p : H.Walk w w), p.IsCycle → Odd p.length → r < p.length) :=
+conjectures/625.lean:15:The cochromatic number of G, denoted by ζ(G), is the minimum number of colours
+conjectures/625.lean:17:complete graph or an empty graph. Let χ(G) denote the chromatic number.
+conjectures/625.lean:35:/-- The chromatic number of a simple graph on Fin n: the minimum number of colors k
+conjectures/625.lean:41:/-- The cochromatic number of a simple graph on Fin n: the minimum number of parts k
+conjectures/625.lean:44:noncomputable def cochromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/625.lean:64:        finChromaticNumber (toGraph625 ec) - cochromaticNumber (toGraph625 ec) ≥ M)).card : ℝ) ≥
+conjectures/613.lean:3:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/601.lean:32:def SimpleGraph.HasInfinitePath {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/601.lean:48:    G.HasInfinitePath ∨ G.HasIndepSetOfOrderType
+conjectures/1047.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/984.lean:10:monochromatic arithmetic progression then k ≪_ε a^ε for all ε > 0?
+conjectures/984.lean:20:/-- An arithmetic progression {a, a+d, …, a+(k-1)d} is monochromatic under
+conjectures/984.lean:22:def IsMonochromaticAP (c : ℕ → Fin 2) (a d k : ℕ) : Prop :=
+conjectures/984.lean:29:constant C > 0 such that every k-term monochromatic arithmetic progression
+conjectures/984.lean:35:        IsMonochromaticAP c a d k →
+conjectures/797.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/797.lean:12:Let f(d) be the maximal acyclic chromatic number of any graph with maximum
+conjectures/797.lean:27:def IsAcyclicColoring {V : Type*} (G : SimpleGraph V) {α : Type*}
+conjectures/797.lean:28:    (c : G.Coloring α) : Prop :=
+conjectures/797.lean:37:        ∃ (k : ℕ) (c : G.Coloring (Fin k)),
+conjectures/797.lean:38:          IsAcyclicColoring G c ∧ (k : ℝ) ≤ C * (d : ℝ) ^ ((4 : ℝ) / 3)) ∧
+conjectures/797.lean:44:          ∀ (k : ℕ), (∃ c : G.Coloring (Fin k), IsAcyclicColoring G c) →
+conjectures/842.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/842.lean:13:Does $G$ have chromatic number at most $3$?
+conjectures/842.lean:41:and adding a Hamiltonian cycle (with all new edges). Then G has chromatic
+conjectures/842.lean:51:    (triangleGraph842 n ⊔ cycleGraphOfPerm842 σ).chromaticNumber ≤ 3 :=
+conjectures/1046.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/1046.lean:33:    (hconn : IsConnected {z : ℂ | ‖Polynomial.eval z f‖ < 1}) :
+conjectures/1032.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/1032.lean:13:We say that a graph is 4-chromatic critical if it has chromatic number 4, and
+conjectures/1032.lean:14:removing any edge decreases the chromatic number to 3.
+conjectures/1032.lean:16:Is there, for arbitrarily large n, a 4-chromatic critical graph on n vertices
+conjectures/1032.lean:20:- Simonovits [Si72] and Toft [To72] independently constructed 4-chromatic
+conjectures/1032.lean:22:- Dirac gave an example of a 6-chromatic critical graph with minimum degree > n/2.
+conjectures/1032.lean:23:- This problem is also open for 5-chromatic critical graphs.
+conjectures/1032.lean:27:Tags: graph theory, chromatic number
+conjectures/1032.lean:31:A simple graph G is k-critical if its chromatic number equals k and for every
+conjectures/1032.lean:32:edge e, the graph obtained by deleting e has chromatic number strictly less
+conjectures/1032.lean:36:  G.chromaticNumber = (k : ℕ∞) ∧
+conjectures/1032.lean:37:  ∀ e ∈ G.edgeSet, (G.deleteEdges {e}).chromaticNumber < (k : ℕ∞)
+conjectures/1032.lean:43:a 4-chromatic critical graph on n vertices with minimum degree at least c · n.
+conjectures/553.lean:14:of K_m then there is either a monochromatic triangle in one of the first two
+conjectures/553.lean:15:colours or a monochromatic K_n in the third colour. Define R(3,n) similarly
+conjectures/553.lean:28:    the edges of K_N yields either a monochromatic triangle in colour 1 or
+conjectures/553.lean:29:    a monochromatic K_n in colour 2. Equivalently, every simple graph on N
+conjectures/553.lean:35:    the edges of K_N yields either a monochromatic triangle in one of the
+conjectures/553.lean:36:    first two colours or a monochromatic K_n in the third colour.
+conjectures/532.lean:12:finite subsets of $A$) are monochromatic?
+conjectures/532.lean:25:of `A` are monochromatic. -/
+conjectures/322.lean:17:Connected to Waring's problem. The famous Hypothesis K of Hardy and Littlewood
+conjectures/894.lean:17:Is it true that there must exist a finite colouring of ℕ with no monochromatic
+conjectures/894.lean:21:chromatic number?
+conjectures/704.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/704.lean:16:Estimate the chromatic number χ(G_n). Does it grow exponentially in n? Does
+conjectures/704.lean:36:/-- The chromatic number of the unit distance graph in ℝⁿ: the minimum number
+conjectures/704.lean:39:noncomputable def chromaticNumber_unitDist (n : ℕ) : ℕ :=
+conjectures/704.lean:45:The chromatic number of the unit distance graph in ℝⁿ grows at least
+conjectures/704.lean:53:      (chromaticNumber_unitDist n : ℝ) ≥ C * ((6 : ℝ) / 5) ^ n :=
+conjectures/704.lean:66:      (chromaticNumber_unitDist n : ℝ) ≤ C * (3 : ℝ) ^ n :=
+conjectures/704.lean:78:      (fun n : ℕ => (chromaticNumber_unitDist n : ℝ) ^ ((1 : ℝ) / (n : ℝ)))
+conjectures/948.lean:16:Erdős initially asked whether this is possible with the set being monochromatic,
+conjectures/597.lean:38:    and monochromaticity means f (e i) (e j) = 0 for all i < j. A "copy of G"
+conjectures/594.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/594.lean:12:Does every graph $G$ with chromatic number $\geq \aleph_1$ contain all
+conjectures/594.lean:15:A problem of Erdős and Hajnal (who proved this for chromatic number ≥ ℵ₂).
+conjectures/594.lean:21:/-- A graph has uncountable chromatic number: it cannot be properly colored
+conjectures/594.lean:24:  ∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)
+conjectures/594.lean:41:Every graph with uncountable chromatic number (i.e., chromatic number ≥ ℵ₁)
+conjectures/594.lean:45:A problem of Erdős and Hajnal (who proved this for chromatic number ≥ ℵ₂).
+conjectures/758.lean:11:The cochromatic number of G, denoted ζ(G), is the minimum number of colours
+conjectures/758.lean:23:/-- A cochromatic coloring of a simple graph G with k colors is a function
+conjectures/758.lean:26:def IsCochromaticColoring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+conjectures/758.lean:32:/-- The cochromatic number ζ(G): the minimum number of colors needed for a
+conjectures/758.lean:33:    cochromatic coloring of G. -/
+conjectures/758.lean:34:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+conjectures/758.lean:36:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColoring G k c}
+conjectures/758.lean:38:/-- z(n): the maximum cochromatic number over all simple graphs on n
+conjectures/758.lean:40:noncomputable def maxCochromaticNumber (n : ℕ) : ℕ :=
+conjectures/758.lean:41:  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n), cochromaticNumber G = k}
+conjectures/758.lean:46:Is it true that z(12) = 4, where z(n) is the maximum cochromatic number
+conjectures/758.lean:51:theorem erdos_problem_758 : maxCochromaticNumber 12 = 4 := sorry
+conjectures/19.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/19.lean:30:    G.chromaticNumber = n :=
+conjectures/811.lean:40:def IsBalancedColoring (n m : ℕ) (c : Sym2 (Fin n) → Fin m) : Prop :=
+conjectures/811.lean:67:        IsBalancedColoring n 6 c →
+conjectures/752.lean:4:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/752.lean:33:  {n | ∃ (v : V) (p : G.Walk v v), p.IsCycle ∧ p.length = n}
+conjectures/752.lean:48:      (∀ (v : V) (p : G.Walk v v), p.IsCycle → 2 * s < p.length) →
+conjectures/900.lean:21:def graphHasLongPath {V : Type*} (G : SimpleGraph V) (k : ℕ) : Prop :=
+conjectures/900.lean:49:          (fun G => graphHasLongPath G (⌊f c * (n : ℝ)⌋₊)) ≥ 1 - ε) :=
+conjectures/169.lean:14:a monochromatic k-term arithmetic progression. -/
+conjectures/169.lean:24:of {0, ..., N-1} contains a monochromatic k-term AP. -/
+conjectures/549.lean:3:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/549.lean:49:    (hBip : ∃ c : T.Coloring (Fin 2),
+conjectures/1011.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/1011.lean:15:edges and chromatic number $\geq r$ contains a triangle. Determine $f_r(n)$.
+conjectures/1011.lean:21:the largest $m$ such that any triangle-free graph with chromatic number $\geq r$
+conjectures/1011.lean:33:    graph on `n` vertices with at least `m` edges and chromatic number `≥ r`
+conjectures/1011.lean:37:    G.edgeSet.ncard ≥ m → (r : ℕ∞) ≤ G.chromaticNumber → ¬G.CliqueFree 3}
+conjectures/115.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/115.lean:31:      IsConnected (lemniscate p) →
+conjectures/518.lean:8:$\sqrt{n}$ monochromatic paths, all of the same colour, which cover all
+conjectures/518.lean:19:/-- A path is monochromatic of color `b` under edge coloring `c` if every
+conjectures/518.lean:21:    of length ≤ 1 is trivially monochromatic. -/
+conjectures/518.lean:22:def IsMonochromaticPath {α : Type*} (c : α → α → Bool) (b : Bool) (p : List α) : Prop :=
+conjectures/518.lean:29:monochromatic paths, all of the same colour, which together cover all
+conjectures/518.lean:40:      (∀ p ∈ paths, p.Nodup ∧ IsMonochromaticPath c b p) ∧
+conjectures/147.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/147.lean:40:      Nonempty (H.Coloring (Fin 2)) →
+conjectures/639.lean:7:structure EdgeTwoColoring (n : ℕ) where
+conjectures/639.lean:11:/-- An edge {u, v} lies in a monochromatic triangle under coloring `c` if there
+conjectures/639.lean:14:def EdgeTwoColoring.inMonoTriangle {n : ℕ} (c : EdgeTwoColoring n)
+conjectures/639.lean:20:    do not lie in any monochromatic triangle under coloring `c`. -/
+conjectures/639.lean:21:noncomputable def edgesNotInMonoTriangleCount {n : ℕ} (c : EdgeTwoColoring n) : ℕ :=
+conjectures/639.lean:27:which do not occur in a monochromatic triangle.
+conjectures/639.lean:32:theorem erdos_problem_639 (n : ℕ) (hn : 7 ≤ n) (c : EdgeTwoColoring n) :
+conjectures/923.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/923.lean:10:Is it true that, for every k, there is some f(k) such that if G has chromatic number
+conjectures/923.lean:11:≥ f(k) then G contains a triangle-free subgraph with chromatic number ≥ k?
+conjectures/923.lean:20:          (f : ℕ∞) ≤ G.chromaticNumber →
+conjectures/923.lean:22:            (k : ℕ∞) ≤ H.coe.chromaticNumber ∧
+conjectures/582.lean:7:of the edges produces a monochromatic K₃?
+conjectures/1042.lean:3:import Mathlib.Topology.Connected.Basic
+conjectures/1042.lean:67:        Nat.card (ConnectedComponents ↥(sublevelSet1042 z)) = n} :=
+conjectures/1042.lean:80:      (Nat.card (ConnectedComponents ↥(sublevelSet1042 z)) : ℝ) ≤ (1 - c) * n :=
+conjectures/919.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/919.lean:14:Is there a graph $G$ with vertex set $\omega_2^2$ and chromatic number $\aleph_2$
+conjectures/919.lean:15:such that every subgraph whose vertices have a lesser type has chromatic number
+conjectures/919.lean:18:What if instead we ask for $G$ to have chromatic number $\aleph_1$?
+conjectures/919.lean:21:well-ordered set with chromatic number $\geq \aleph_0$ there is a subgraph on
+conjectures/919.lean:22:vertices with order-type $\omega$ with chromatic number $\aleph_0$.
+conjectures/919.lean:25:constructed a graph on $\omega_1^2$ with chromatic number $\aleph_1$ such that
+conjectures/919.lean:26:every strictly smaller subgraph has chromatic number $\leq \aleph_0$.
+conjectures/919.lean:28:A similar construction produces a graph on $\omega_2^2$ with chromatic number
+conjectures/919.lean:29:$\aleph_2$ such that every smaller subgraph has chromatic number $\leq \aleph_1$.
+conjectures/919.lean:32:Tags: graph theory, chromatic number
+conjectures/919.lean:38:Is there a graph on a well-ordered set of order type ω₂ · ω₂ with chromatic
+conjectures/919.lean:40:order type has chromatic number ≤ ℵ₀?
+conjectures/919.lean:42:The chromatic number condition is expressed as: any proper coloring of G
+conjectures/919.lean:52:      -- G has chromatic number ≥ ℵ₂ (any proper coloring needs ≥ ℵ₂ colors)
+conjectures/919.lean:53:      (∀ (α : Type), Nonempty (G.Coloring α) → aleph 2 ≤ #α) ∧
+conjectures/919.lean:59:        Nonempty ((G.induce S).Coloring ℕ)) :=
+conjectures/919.lean:65:What if instead we ask for G to have chromatic number ℵ₁?
+conjectures/919.lean:67:Is there a graph on a well-ordered set of order type ω₂ · ω₂ with chromatic
+conjectures/919.lean:69:smaller order type has chromatic number ≤ ℵ₀?
+conjectures/919.lean:77:      -- G has chromatic number exactly ℵ₁:
+conjectures/919.lean:79:      (∀ (α : Type), Nonempty (G.Coloring α) → aleph 1 ≤ #α) ∧
+conjectures/919.lean:81:      (∃ (α : Type), #α ≤ aleph 1 ∧ Nonempty (G.Coloring α)) ∧
+conjectures/919.lean:87:        Nonempty ((G.induce S).Coloring ℕ)) :=
+conjectures/529.lean:16:def selfAvoidingWalks529 (n k : ℕ) : Set (Fin (n + 1) → (Fin k → ℤ)) :=
+conjectures/529.lean:29:  if h : (selfAvoidingWalks529 n k).Finite then
+conjectures/966.lean:8:must exist a monochromatic non-trivial arithmetic progression of length k?
+conjectures/966.lean:19:a monochromatic k-term arithmetic progression.
+conjectures/626.lean:3:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/626.lean:19:with chromatic number k and girth > m (i.e. contains no cycle of length ≤ m). Does
+conjectures/626.lean:23:Conversely, if h^{(m)}(n) is the maximal chromatic number of a graph on n vertices
+conjectures/626.lean:38:Tags: graph theory, chromatic number, cycles
+conjectures/626.lean:41:/-- The chromatic number of a simple graph on `Fin n`: the minimum number of colors `k`
+conjectures/626.lean:49:  ∀ v : Fin n, ∀ p : G.Walk v v, p.IsCycle → m < p.length
+conjectures/626.lean:52:    with chromatic number `k` and girth `> m`. Returns 0 if no such graph exists. -/
+conjectures/626.lean:56:/-- `h626 m n` is the maximal chromatic number of a graph on `n` vertices
+conjectures/843.lean:9:monochromatic sum of distinct squares?
+conjectures/843.lean:18:    distinct monochromatic elements of A. -/
+conjectures/843.lean:31:can be written as a monochromatic sum of distinct squares.
+conjectures/484.lean:12:integers in {1, …, N} representable as a monochromatic sum, i.e., as a + b
+conjectures/742.lean:4:import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+conjectures/742.lean:34:    (hconn : G.Connected)
+conjectures/742.lean:37:      ¬(G.deleteEdges {Sym2.mk (v, w)}).Connected ∨
+conjectures/149.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/149.lean:17:This is equivalent to asking whether the chromatic number of the square of the
+conjectures/149.lean:20:the edges of G is called the strong chromatic index of G.
+conjectures/149.lean:33:/-- The strong chromatic index χ'_s(G): the minimum number of strongly
+conjectures/149.lean:35:    this is the chromatic number of L(G)², the square of the line graph. -/
+conjectures/149.lean:41:/-- Erdős–Nešetřil Strong Edge Coloring Conjecture (Erdős Problem #149) [Er88]:
+conjectures/593.lean:13:3-uniform hypergraph of chromatic number > ℵ₀.
+conjectures/593.lean:17:chromatic number ≥ ℵ₁ must contain all finite bipartite graphs but need not
+conjectures/593.lean:21:in every 3-uniform hypergraph of uncountable chromatic number. By analogy
+conjectures/593.lean:34:/-- A proper coloring of a 3-uniform hypergraph: no edge is monochromatic
+conjectures/593.lean:36:def Hypergraph3.IsProperColoring {V : Type*} (H : Hypergraph3 V)
+conjectures/593.lean:40:/-- A 3-uniform hypergraph has uncountable chromatic number: it admits no
+conjectures/593.lean:44:  ∀ (C : Type*) [Countable C], ¬∃ c : V → C, H.IsProperColoring c
+conjectures/593.lean:53:    two colors such that no edge is monochromatic. -/
+conjectures/593.lean:55:  ∃ c : V → Bool, H.IsProperColoring c
+conjectures/593.lean:61:uncountable chromatic number if and only if it is 2-colorable.
+conjectures/593.lean:64:chromatic number ≥ ℵ₁ must contain all finite bipartite graphs but need not
+conjectures/110.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/110.lean:11:A graph G (on vertex type V) has chromatic number ℵ₁ if:
+conjectures/110.lean:13:    (i.e., the chromatic number exceeds ℵ₀), and
+conjectures/110.lean:17:  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+conjectures/110.lean:18:  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+conjectures/110.lean:22:Is there some function F : ℕ → ℕ such that every graph G with chromatic number ℵ₁
+conjectures/110.lean:23:has, for all sufficiently large n, a subgraph with chromatic number n on at most
+conjectures/110.lean:27:The analogous statement fails for graphs of chromatic number ℵ₀.
+conjectures/110.lean:39:            H.coe.chromaticNumber = ↑n :=
+conjectures/759.lean:14:The cochromatic number of G, denoted by ζ(G), is the minimum number of colours
+conjectures/759.lean:28:/-- A colouring c : V → Fin k is a cochromatic colouring of G if every colour
+conjectures/759.lean:30:def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+conjectures/759.lean:36:/-- The cochromatic number ζ(G) of a finite graph G: the minimum number of
+conjectures/759.lean:37:    colours in a cochromatic colouring. -/
+conjectures/759.lean:38:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+conjectures/759.lean:40:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+conjectures/759.lean:47:/-- z(S_n): the maximum cochromatic number over all finite graphs embeddable
+conjectures/759.lean:49:noncomputable def maxCochromaticOnSurface (n : ℕ) : ℕ :=
+conjectures/759.lean:51:    IsEmbeddableOnSurface G n ∧ cochromaticNumber G = k}
+conjectures/759.lean:61:      (maxCochromaticOnSurface n : ℝ) ≥
+conjectures/759.lean:73:      (maxCochromaticOnSurface n : ℝ) ≤
+conjectures/717.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/717.lean:2:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/717.lean:3:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/717.lean:15:Let G be a graph on n vertices with chromatic number χ(G) and let σ(G) be
+conjectures/717.lean:35:    (paths : ∀ (i j : Fin k), i < j → G.Walk (f i) (f j)),
+conjectures/717.lean:37:    (∀ i j (h : i < j), (paths i j h).IsPath) ∧
+conjectures/717.lean:65:          (G.chromaticNumber.toNat : ℝ) ≤
+conjectures/1048.lean:5:import Mathlib.Topology.Connected.Basic
+conjectures/113.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/113.lean:49:      Nonempty (G.Coloring (Fin 2)) →
+conjectures/619.lean:4:import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+conjectures/619.lean:36:    H.Connected ∧
+conjectures/619.lean:53:      G.Connected →
+conjectures/618.lean:4:import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+conjectures/618.lean:37:    H.Connected ∧
+conjectures/555.lean:14:then there is a monochromatic copy of G. Determine the value of
+conjectures/555.lean:33:    k-colouring of the edges of K_N, there is a monochromatic copy of G.
+conjectures/555.lean:36:    A monochromatic copy of G in colour a is an injective map f : V → Fin N
+conjectures/739.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/739.lean:14:Let 𝔪 be an infinite cardinal and G be a graph with chromatic number 𝔪.
+conjectures/739.lean:16:of G with chromatic number 𝔫?
+conjectures/739.lean:26:/-- The cardinal chromatic number of a graph: the infimum of cardinals κ
+conjectures/739.lean:30:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+conjectures/739.lean:35:If G is a graph with infinite chromatic number 𝔪, then for every infinite
+conjectures/739.lean:36:cardinal 𝔫 < 𝔪, there is a subgraph of G with chromatic number 𝔫.
+conjectures/565.lean:13:an induced monochromatic copy of G.
+conjectures/565.lean:23:    an induced monochromatic copy of G.
+conjectures/565.lean:25:    An induced monochromatic copy of G means: there is an injective
+conjectures/802.lean:23:neighbourhood has chromatic number ≤ r - 2.
+conjectures/925.lean:16:edges of G with no monochromatic triangle) then G contains an independent set
+conjectures/925.lean:29:    2-colouring of its edges with no monochromatic triangle. Equivalently,
+conjectures/781.lean:10:a monochromatic $k$-term descending wave: a sequence $x_1 < \cdots < x_k$ such that,
+conjectures/781.lean:30:/-- A 2-colouring of {0, …, n-1} contains a monochromatic k-term descending wave. -/
+conjectures/781.lean:31:def HasMonochromaticDescendingWave (k n : ℕ) (c : Fin n → Bool) : Prop :=
+conjectures/781.lean:36:    a monochromatic k-term descending wave. -/
+conjectures/781.lean:38:  sInf {n : ℕ | ∀ c : Fin n → Bool, HasMonochromaticDescendingWave k n c}
+conjectures/118.lean:18:    and monochromaticity means `f (e i) (e j) = c` for all `i < j`. -/
+conjectures/118.lean:32:a monochromatic copy of `α` in color 0 (red) or a monochromatic triangle K₃ in
+conjectures/365.lean:24:Walker [Wa76] proved that 7³x² = 3³y² + 1 has infinitely many solutions,
+conjectures/599.lean:1:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/599.lean:32:      (p : (i : ι) → G.Walk (src i) (dst i))
+conjectures/599.lean:36:      (∀ i, (p i).IsPath) ∧
+conjectures/599.lean:40:        ∀ (w : G.Walk x y), ∃ s ∈ S, s ∈ w.support) :=
+conjectures/559.lean:14:of the edges of H contains a monochromatic copy of G).
+conjectures/559.lean:29:    contains a monochromatic copy of G, i.e., an injective map f from the
+conjectures/8.lean:18:Erdős-Graham conjecture on monochromatic covering systems (Problem #8):
+conjectures/8.lean:20:all of whose moduli are monochromatic.
+conjectures/130.lean:3:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/130.lean:48:How large can the chromatic number and clique number of G be? In particular,
+conjectures/130.lean:49:can the chromatic number be infinite?
+conjectures/130.lean:52:integer-distance graph has infinite chromatic number.
+conjectures/130.lean:57:no infinite complete subgraph. Hence arbitrarily large finite chromatic number
+conjectures/130.lean:58:(or infinite chromatic number) would be an example of a graph with finite
+conjectures/130.lean:59:clique number and infinite chromatic number.
+conjectures/130.lean:64:      (intDistGraph A).chromaticNumber = ⊤ :=
+conjectures/631.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/631.lean:11:The list chromatic number χ_L(G) is defined to be the minimal k such that for any
+conjectures/631.lean:26:def Erdos631.IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+conjectures/631.lean:35:    ∃ f : V → ℕ, Erdos631.IsProperListColoring G L f
+conjectures/922.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/922.lean:13:chromatic number at most k + 2?
+conjectures/183.lean:15:k colours then there must exist a monochromatic triangle. Determine
+conjectures/183.lean:25:    k-colouring of the edges of K_n contains a monochromatic triangle.
+conjectures/183.lean:27:    and a monochromatic triangle is three pairwise distinct vertices
+conjectures/183.lean:39:k colours then there must exist a monochromatic triangle. The limit
+conjectures/924.lean:7:every k-colouring of the edges of G contains a monochromatic copy of K_l?
+conjectures/924.lean:19:k-colouring of the edges of G contains a monochromatic K_l.
+conjectures/1022.lean:16:$A \subseteq X$, then $\mathcal{F}$ has chromatic number $2$ (property B)?
+conjectures/1022.lean:20:2-degenerate $r$-uniform hypergraph with chromatic number 3.
+conjectures/1022.lean:24:    a 2-coloring of the ground set such that no edge is monochromatic:
+conjectures/718.lean:3:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/718.lean:4:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/718.lean:34:    (paths : ∀ (i j : Fin k), i < j → G.Walk (f i) (f j)),
+conjectures/718.lean:35:    (∀ i j (h : i < j), (paths i j h).IsPath) ∧
+conjectures/721.lean:16:A 2-coloring `f : ℕ → Bool` of `{0, ..., n-1}` has a monochromatic
+conjectures/721.lean:24:either a monochromatic `j`-AP in one color or a monochromatic `k`-AP in
+conjectures/745.lean:2:import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+conjectures/557.lean:13:then there is a monochromatic copy of G. Is it true that
+conjectures/557.lean:22:    k-colouring of the edges of K_N, there is a monochromatic copy of G.
+conjectures/557.lean:25:    A monochromatic copy of G in colour a is an injective map f : V → Fin N
+conjectures/627.lean:18:Let ω(G) denote the clique number of G and χ(G) the chromatic number. If f(n) is the
+conjectures/627.lean:26:Tags: graph theory, chromatic number
+conjectures/627.lean:29:/-- The chromatic number of a simple graph on `Fin n`: the minimum number of colors
+conjectures/627.lean:31:noncomputable def chromaticNumber627 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/627.lean:42:    r = (chromaticNumber627 G : ℝ) / (cliqueNumber627 G : ℝ)}
+conjectures/833.lean:16:/-- A proper coloring of a hypergraph: no edge with ≥ 2 vertices is monochromatic. -/
+conjectures/833.lean:17:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+conjectures/833.lean:21:/-- A hypergraph has chromatic number exactly k if it can be properly colored
+conjectures/833.lean:25:  (∃ f : V → Fin k, H.IsProperColoring f) ∧
+conjectures/833.lean:26:  ∀ f : V → Fin (k - 1), ¬H.IsProperColoring f
+conjectures/833.lean:35:in any r-uniform hypergraph with chromatic number 3 there is a vertex
+conjectures/439.lean:14:is a perfect square has infinite chromatic number.
+conjectures/780.lean:13:In other words, this problem asks to determine the chromatic number of the Kneser
+conjectures/780.lean:21:Tags: combinatorics, hypergraphs, chromatic number
+conjectures/809.lean:24:def AdmitsRainbowOddCycleColoring (k n r : ℕ) : Prop :=
+conjectures/809.lean:46:        AdmitsRainbowOddCycleColoring k n r) ∧
+conjectures/809.lean:48:        ¬AdmitsRainbowOddCycleColoring k n r) :=
+conjectures/585.lean:1:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/585.lean:2:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/585.lean:29:  ¬∃ (u v : Fin n) (c₁ : G.Walk u u) (c₂ : G.Walk v v),
+conjectures/917.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/917.lean:12:which has chromatic number k and is critical (i.e. deleting any edge reduces
+conjectures/917.lean:13:the chromatic number).
+conjectures/917.lean:25:A simple graph G is k-critical if its chromatic number equals k and for every
+conjectures/917.lean:26:edge e, the graph obtained by deleting e has chromatic number strictly less
+conjectures/917.lean:30:  G.chromaticNumber = (k : ℕ∞) ∧
+conjectures/917.lean:31:  ∀ e ∈ G.edgeSet, (G.deleteEdges {e}).chromaticNumber < (k : ℕ∞)
+conjectures/713.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/706.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/706.lean:34:on the chromatic number of multi-distance graphs in ℝ² as a function of the
+conjectures/921.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/921.lean:2:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/921.lean:15:vertices with chromatic number k in which every odd cycle has length > m.
+conjectures/921.lean:25:    vertices with chromatic number `k` in which every odd cycle has length
+conjectures/921.lean:29:    G.chromaticNumber = (k : ℕ∞) ∧
+conjectures/921.lean:30:    ∀ (v : Fin n) (p : G.Walk v v), p.IsCycle → Odd p.length → m < p.length}
+conjectures/744.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/744.lean:15:deleting m edges. (A graph is k-critical if it has chromatic number k and
+conjectures/744.lean:16:every proper subgraph has chromatic number < k.)
+conjectures/744.lean:25:/-- A graph G is k-critical if it has chromatic number exactly k (i.e., is
+conjectures/642.lean:2:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/642.lean:3:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/642.lean:20:namespace SimpleGraph.Walk
+conjectures/642.lean:28:def numChords {u v : V} (p : G.Walk u v) : ℕ :=
+conjectures/642.lean:32:end SimpleGraph.Walk
+conjectures/642.lean:45:      (∀ (v : Fin n) (p : G.Walk v v), p.IsCycle →
+conjectures/583.lean:3:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/583.lean:4:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/583.lean:5:import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+conjectures/583.lean:28:    (dG : DecidableRel G.Adj) (hconn : G.Connected) :
+conjectures/583.lean:30:    ∃ (k : ℕ) (paths : Fin k → Σ (v w : Fin n), G.Walk v w),
+conjectures/583.lean:32:      (∀ i, (paths i).2.2.IsPath) ∧
+conjectures/150.lean:2:import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected
+conjectures/150.lean:31:  ¬(G.induce ((S : Set (Fin n))ᶜ)).Connected
+conjectures/150.lean:46:  sSup { k : ℕ | ∃ G : SimpleGraph (Fin n), G.Connected ∧
+conjectures/531.lean:14:(for $\emptyset\neq S\subseteq A$) are monochromatic. Estimate $F(k)$.
+conjectures/531.lean:24:/-- A 2-coloring `χ : ℕ → Bool` admits a **monochromatic subset-sum k-set**
+conjectures/531.lean:36:    are monochromatic. -/
+conjectures/531.lean:42:    monochromatic subset-sum `k`-set. -/
+conjectures/571.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/108.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/108.lean:9:Erdős Problem #108 (Erdős-Hajnal conjecture on chromatic number and girth):
+conjectures/108.lean:11:with chromatic number at least f(k, r) contains a subgraph H of girth at least r
+conjectures/108.lean:12:and chromatic number at least k.
+conjectures/108.lean:22:          (f : ℕ∞) ≤ G.chromaticNumber →
+conjectures/108.lean:24:            (k : ℕ∞) ≤ H.coe.chromaticNumber ∧
+conjectures/737.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/737.lean:12:Let $G$ be a graph with chromatic number $\aleph_1$. Must there exist an
+conjectures/737.lean:24:/-- A graph has uncountable chromatic number: it cannot be properly colored
+conjectures/737.lean:27:  ∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)
+conjectures/737.lean:49:If G is a graph with chromatic number ≥ ℵ₁ (uncountable), then there
+conjectures/554.lean:13:then there is a monochromatic copy of G. Show that
+conjectures/554.lean:30:    k-colouring of the edges of K_N, there is a monochromatic copy of G.
+conjectures/554.lean:33:    A monochromatic copy of G in colour a is an injective map f : V → Fin N
+conjectures/629.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/629.lean:11:The list chromatic number χ_L(G) is the minimal k such that for any assignment
+conjectures/629.lean:27:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+conjectures/629.lean:36:    ∃ f : V → ℕ, IsProperListColoring G L f
+conjectures/629.lean:38:/-- The list chromatic number (choice number) of a graph G: the minimum k
+conjectures/629.lean:44:    chromatic number greater than k. -/
+conjectures/738.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/738.lean:14:If $G$ has infinite chromatic number and is triangle-free (contains no $K_3$)
+conjectures/738.lean:22:/-- A graph has infinite chromatic number: it cannot be properly colored
+conjectures/738.lean:25:  ∀ n : ℕ, IsEmpty (G.Coloring (Fin n))
+conjectures/738.lean:30:If G is a graph with infinite chromatic number and G is triangle-free
+conjectures/628.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/628.lean:11:Let G be a graph with chromatic number k containing no K_k. If a, b ≥ 2 and
+conjectures/628.lean:12:a + b = k + 1 then must there exist two disjoint subgraphs of G with chromatic
+conjectures/628.lean:22:Let G be a graph with chromatic number k containing no complete graph K_k.
+conjectures/628.lean:24:subgraphs of G with chromatic numbers ≥ a and ≥ b respectively.
+conjectures/628.lean:27:    (k : ℕ) (hk : G.chromaticNumber = k)
+conjectures/628.lean:31:      (G.induce S).chromaticNumber ≥ a ∧
+conjectures/628.lean:32:      (G.induce T).chromaticNumber ≥ b :=
+conjectures/815.lean:2:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/815.lean:41:      ∀ (v : Fin n) (p : G.Walk v v), p.IsCycle → p.length ≠ 23 :=
+conjectures/187.lean:23:/-- A 2-colouring χ : ℤ → Bool has a monochromatic arithmetic progression of
+conjectures/187.lean:34:has a monochromatic arithmetic progression with common difference d and
+conjectures/187.lean:38:2-colouring such that the longest monochromatic AP with common difference
+conjectures/111.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/111.lean:13:A graph G (on vertex type V) has chromatic number ℵ₁ if it cannot be properly
+conjectures/111.lean:17:  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+conjectures/111.lean:18:  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+conjectures/111.lean:28:    Nonempty (H'.Coloring (Fin 2)) ∧
+conjectures/111.lean:46:There exists a graph G with chromatic number ℵ₁ such that hFun G n ≪ n^{1+ε}
+conjectures/111.lean:50:- For every G with chromatic number ℵ₁, hFun G n ≫ n, since G must contain ℵ₁
+conjectures/111.lean:52:- Erdős–Hajnal–Szemerédi [EHS82] proved there exists G with chromatic number ℵ₁
+conjectures/111.lean:55:  with chromatic number ℵ₁ such that hFun G n ≪ n^{1+ε} for every ε > 0.
+conjectures/720.lean:15:edges of H there is a monochromatic copy of G.
+conjectures/720.lean:49:    contains a monochromatic copy of G, i.e., an injective map f from the
+conjectures/1015.lean:14:the vertices can be covered by vertex-disjoint monochromatic copies of Kₜ
+conjectures/1015.lean:29:/-- A set `S` of vertices in `Fin n` is a monochromatic clique of colour `b`
+conjectures/1015.lean:38:    pairwise disjoint monochromatic Kₜ's covering all but at most r
+conjectures/1015.lean:49:    symmetric 2-colouring of the edges of Kₙ contains a monochromatic
+conjectures/1015.lean:61:vertex-disjoint monochromatic Kₜ's is exactly
+conjectures/511.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/136.lean:25:def EdgeColoring (n k : ℕ) : Type := Fin n → Fin n → Fin k
+conjectures/136.lean:30:noncomputable def edgeColors {n k : ℕ} (χ : EdgeColoring n k)
+conjectures/136.lean:36:def IsK4FiveColored {n k : ℕ} (χ : EdgeColoring n k) : Prop :=
+conjectures/136.lean:42:  sInf {k : ℕ | ∃ χ : EdgeColoring n k, IsK4FiveColored χ}
+conjectures/901.lean:16:of the vertex set such that no edge is monochromatic, i.e., every edge
+conjectures/816.lean:2:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/816.lean:37:          ∃ p : G.Walk v w, p.IsPath ∧ p.length = 3 :=
+conjectures/163.lean:17:every 2-colouring of the edges of K_N contains a monochromatic copy of H.
+conjectures/1041.lean:3:import Mathlib.Topology.Path
+conjectures/1041.lean:34:    ∃ (z₁ z₂ : ℂ) (_ : ({z₁, z₂} : Multiset ℂ) ≤ f.roots) (γ : Path z₁ z₂),
+conjectures/129.lean:23:def EdgeColoring (N r : ℕ) : Type := Fin N → Fin N → Fin r
+conjectures/129.lean:25:/-- A vertex set S is monochromatic-K_k-free in color c under coloring χ if
+conjectures/129.lean:28:def IsMonoKkFree {N r : ℕ} (χ : EdgeColoring N r) (c : Fin r)
+conjectures/129.lean:37:  sInf {N : ℕ | ∀ (χ : EdgeColoring N r),
+conjectures/834.lean:21:2. **Chromatic criticality**: the chromatic number is 3, but deleting any
+conjectures/834.lean:22:   edge or vertex reduces the chromatic number to at most 2.
+conjectures/834.lean:27:- In the chromatic formulation, there exists a 3-critical 3-uniform
+conjectures/834.lean:58:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+conjectures/834.lean:59:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+conjectures/834.lean:76:/-- A hypergraph is 3-chromatic-critical if its chromatic number is 3 and
+conjectures/834.lean:80:  (∃ f : V → Fin 3, H.IsProperColoring f) ∧
+conjectures/834.lean:81:  (∀ f : V → Fin 2, ¬H.IsProperColoring f) ∧
+conjectures/834.lean:82:  (∀ e ∈ H.edges, ∃ f : V → Fin 2, (H.eraseEdge e).IsProperColoring f) ∧
+conjectures/834.lean:83:  (∀ v : V, v ∈ H.vertices → ∃ f : V → Fin 2, (H.eraseVertex v).IsProperColoring f)
+conjectures/834.lean:97:Erdős Problem #834, chromatic formulation (resolved by Li [Li25]):
+conjectures/834.lean:99:There exists a 3-chromatic-critical 3-uniform hypergraph on 9 vertices
+conjectures/834.lean:102:theorem erdos_problem_834_chromatic :
+conjectures/184.lean:3:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/184.lean:4:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/184.lean:40:          (∃ (u : Fin n) (w : G.Walk u u), w.IsCycle ∧ w.edges.toFinset = parts i)) :=
+conjectures/736.lean:2:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/736.lean:14:Let G be a graph with chromatic number ℵ₁. Is there, for every cardinal
+conjectures/736.lean:15:number m, some graph G_m of chromatic number m such that every finite
+conjectures/736.lean:32:/-- The cardinal chromatic number of a graph: the infimum of cardinals κ
+conjectures/736.lean:36:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+conjectures/736.lean:41:If G is a graph with chromatic number ℵ₁, then for every cardinal m,
+conjectures/736.lean:42:there exists a graph G_m with chromatic number m such that every finite
+conjectures/596.lean:11:  edges of H contains a monochromatic copy of G₂, and yet
+conjectures/596.lean:13:  a monochromatic G₂.
+conjectures/596.lean:24:/-- A graph H contains a monochromatic copy of G under edge coloring c: there exists
+conjectures/596.lean:26:def SimpleGraph.HasMonochromaticCopy {W : Type*} {V : Type*}
+conjectures/596.lean:35:    of H's edges contains a monochromatic copy of G₂.
+conjectures/596.lean:37:    with no monochromatic copy of G₂.
+conjectures/596.lean:46:      -- whose edges cannot be n-colored without a monochromatic G₂
+conjectures/596.lean:50:          ∀ c : V → V → Fin n, H.HasMonochromaticCopy G₂ c) ∧
+conjectures/596.lean:52:      -- without a monochromatic G₂
+conjectures/596.lean:55:        ∃ c : V → V → ℕ, ¬H.HasMonochromaticCopy G₂ c) :=
+conjectures/1029.lean:14:of the edges of K_n contains a monochromatic copy of K_k, then
+conjectures/1029.lean:24:    symmetric 2-colouring of the edges of K_N, there is a monochromatic
+conjectures/360.lean:24:def SumFreeColoring (n k : ℕ) (c : ℕ → Fin k) : Prop :=
+conjectures/360.lean:33:  sInf {k : ℕ | ∃ c : ℕ → Fin k, SumFreeColoring n k c}
+conjectures/602.lean:13:2-colouring of $\bigcup A_i$ such that no $A_i$ is monochromatic?
+conjectures/602.lean:22:    such that no set in the family is monochromatic (both colours appear). -/
+conjectures/602.lean:32:monochromatic.
+conjectures/832.lean:13:r-uniform hypergraph with chromatic number k has at least C((r-1)(k-1)+1, r)
+conjectures/832.lean:16:When r = 2 it is a classical fact that chromatic number k implies at least
+conjectures/832.lean:22:Tags: graph theory, hypergraphs, chromatic number
+conjectures/832.lean:32:    is monochromatic (for every edge, not all vertices receive the same color). -/
+conjectures/832.lean:33:def UniformHypergraph.IsProperColoring {V : Type*} [DecidableEq V] {r : ℕ}
+conjectures/832.lean:37:/-- The chromatic number of a uniform hypergraph: the minimum number of colors
+conjectures/832.lean:38:    needed for a proper coloring (no monochromatic edge). -/
+conjectures/832.lean:39:noncomputable def UniformHypergraph.chromaticNumber {V : Type*} [DecidableEq V]
+conjectures/832.lean:41:  sInf {k : ℕ | k ≥ 1 ∧ ∃ f : V → Fin k, H.IsProperColoring k f}
+conjectures/832.lean:47:with chromatic number k has at least C((r-1)(k-1)+1, r) edges.
+conjectures/832.lean:55:      H.chromaticNumber = k →
+conjectures/528.lean:15:noncomputable def selfAvoidingWalkCount (n k : ℕ) : ℕ :=
+conjectures/528.lean:22:Erdős Problem #528 (Connective Constant for Self-Avoiding Walks):
+conjectures/528.lean:39:        (fun n : ℕ => ((selfAvoidingWalkCount n k : ℝ)) ^ ((1 : ℝ) / (n : ℝ)))
+conjectures/640.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/640.lean:2:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/640.lean:11:Let k ≥ 3. Does there exist some f(k) such that if a graph G has chromatic number
+conjectures/640.lean:12:≥ f(k) then G must contain some odd cycle whose vertices span a graph of chromatic
+conjectures/640.lean:18:and all odd cycles have chromatic number 3.
+conjectures/640.lean:24:For every k ≥ 3, there exists f(k) such that every graph with chromatic number
+conjectures/640.lean:26:with chromatic number at least k.
+conjectures/640.lean:32:          (f : ℕ∞) ≤ G.chromaticNumber →
+conjectures/640.lean:33:          ∃ (v : V) (p : G.Walk v v),
+conjectures/640.lean:35:            (k : ℕ∞) ≤ (G.induce {w : V | w ∈ p.support}).chromaticNumber :=
+conjectures/558.lean:13:then there is a monochromatic copy of G. Determine
+conjectures/558.lean:28:    k-colouring of the edges of K_N, there is a monochromatic copy of G.
+conjectures/558.lean:31:    A monochromatic copy of G in colour a is an injective map f : V → Fin N
+conjectures/762.lean:1:import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/762.lean:13:The cochromatic number of G, denoted by ζ(G), is the minimum number of colours
+conjectures/762.lean:26:Tags: graph theory, chromatic number
+conjectures/762.lean:29:/-- A cochromatic colouring: each colour class induces either a complete
+conjectures/762.lean:31:def IsCochromaticColouring762 {V : Type*} (G : SimpleGraph V) (k : ℕ)
+conjectures/762.lean:37:/-- The cochromatic number ζ(G): minimum number of colours in a cochromatic
+conjectures/762.lean:39:noncomputable def cochromaticNumber762 {V : Type*} [Fintype V]
+conjectures/762.lean:41:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring762 G k c}
+conjectures/762.lean:54:        cochromaticNumber762 G ≥ 4 →
+conjectures/762.lean:55:          G.chromaticNumber ≤ cochromaticNumber762 G + 2 :=
+conjectures/173.lean:10:there is a monochromatic congruent copy of T.
+conjectures/173.lean:34:there is a monochromatic congruent copy of T.
+conjectures/173.lean:36:Equivalently: if two non-degenerate triangles both fail to have any monochromatic
+conjectures/915.lean:3:import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/915.lean:4:import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/915.lean:34:def HasInternallyDisjointPaths {V : Type*} (G : SimpleGraph V)
+conjectures/915.lean:36:  ∃ (paths : Fin m → G.Walk u v),
+conjectures/915.lean:37:    (∀ i, (paths i).IsPath) ∧
+conjectures/915.lean:54:      HasInternallyDisjointPaths G u v m :=
+conjectures/181.lean:17:2-colouring of the edges of K_N contains a monochromatic copy of Q_n.

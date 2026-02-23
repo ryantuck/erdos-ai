@@ -1,0 +1,358 @@
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-581-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-582-/-! ### The first infinite cardinal `aleph0` -/
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-583-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean:584:theorem aleph0_pos : 0 < ℵ₀ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-585-  pos_iff_ne_zero.2 aleph0_ne_zero
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-586-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-587-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean:588:theorem aleph0_le_lift {c : Cardinal.{u}} : ℵ₀ ≤ lift.{v} c ↔ ℵ₀ ≤ c := by
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-589-  simpa using lift_le (a := ℵ₀)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-590-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-591-@[simp]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-593-  simpa using lift_le (b := ℵ₀)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-594-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-595-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean:596:theorem aleph0_lt_lift {c : Cardinal.{u}} : ℵ₀ < lift.{v} c ↔ ℵ₀ < c := by
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-597-  simpa using lift_lt (a := ℵ₀)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-598-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-599-@[simp]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-601-  simpa using lift_lt (b := ℵ₀)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-602-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-603-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean:604:theorem aleph0_eq_lift {c : Cardinal.{u}} : ℵ₀ = lift.{v} c ↔ ℵ₀ = c := by
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-605-  simpa using lift_inj (a := ℵ₀)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-606-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Order.lean-607-@[simp]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/ToNat.lean-109-theorem mk_toNat_of_infinite [h : Infinite α] : toNat #α = 0 := by simp
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/ToNat.lean-110-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/ToNat.lean-111-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/ToNat.lean:112:theorem aleph0_toNat : toNat ℵ₀ = 0 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/ToNat.lean-113-  toNat_apply_of_aleph0_le le_rfl
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/ToNat.lean-114-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/ToNat.lean-115-theorem mk_toNat_eq_card [Fintype α] : toNat #α = Fintype.card α := by simp
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-325-  rw [← preAleph_zero, preAleph_lt_preAleph]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-326-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-327-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:328:theorem aleph0_le_preAleph {o : Ordinal} : ℵ₀ ≤ preAleph o ↔ ω ≤ o := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-329-  rw [← preAleph_omega0, preAleph_le_preAleph]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-330-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-331-theorem _root_.Ordinal.card_le_preAleph (o : Ordinal) : o.card ≤ preAleph o :=
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-367-`aleph 1 = succ ℵ₀` is the first uncountable cardinal, and so on.
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-368-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-369-For a version including finite cardinals, see `Cardinal.preAleph`. -/
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:370:def aleph : Ordinal ↪o Cardinal :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-371-  (OrderEmbedding.addLeft ω).trans preAleph.toOrderEmbedding
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-372-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-373-@[inherit_doc] scoped notation "ℵ_ " => aleph
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-377-scoped notation "ℵ₁" => ℵ_ 1
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-378-recommended_spelling "aleph_one" for "ℵ₁" in [«termℵ₁»]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-379-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:380:theorem aleph_eq_preAleph (o : Ordinal) : ℵ_ o = preAleph (ω + o) :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-381-  rfl
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-382-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-383-@[simp]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-388-theorem ord_aleph (o : Ordinal) : (ℵ_ o).ord = ω_ o :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-389-  ord_preAleph _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-390-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:391:theorem aleph_lt_aleph {o₁ o₂ : Ordinal} : ℵ_ o₁ < ℵ_ o₂ ↔ o₁ < o₂ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-392-  aleph.lt_iff_lt
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-393-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:394:theorem aleph_le_aleph {o₁ o₂ : Ordinal} : ℵ_ o₁ ≤ ℵ_ o₂ ↔ o₁ ≤ o₂ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-395-  aleph.le_iff_le
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-396-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:397:theorem aleph_max (o₁ o₂ : Ordinal) : ℵ_ (max o₁ o₂) = max (ℵ_ o₁) (ℵ_ o₂) :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-398-  aleph.monotone.map_max
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-399-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-400-theorem preAleph_le_aleph (o : Ordinal) : preAleph o ≤ ℵ_ o :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-401-  preAleph_le_preAleph.2 le_add_self
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-402-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-403-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:404:theorem aleph_succ (o : Ordinal) : ℵ_ (succ o) = succ (ℵ_ o) := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-405-  rw [aleph_eq_preAleph, add_succ, preAleph_succ, aleph_eq_preAleph]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-406-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-407-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:408:theorem aleph_zero : ℵ_ 0 = ℵ₀ := by rw [aleph_eq_preAleph, add_zero, preAleph_omega0]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-409-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-410-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-411-theorem lift_aleph (o : Ordinal.{u}) : lift.{v} (aleph o) = aleph (Ordinal.lift.{v} o) := by
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-420-theorem isNormal_aleph : Order.IsNormal aleph :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-421-  isNormal_preAleph.comp (isNormal_add_right _)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-422-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:423:theorem aleph_limit {o : Ordinal} (ho : IsSuccLimit o) : ℵ_ o = ⨆ a : Iio o, ℵ_ a :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-424-  isNormal_aleph.apply_of_isSuccLimit ho
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-425-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:426:theorem aleph0_le_aleph (o : Ordinal) : ℵ₀ ≤ ℵ_ o := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-427-  rw [aleph_eq_preAleph, aleph0_le_preAleph]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-428-  exact le_self_add
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-429-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:430:theorem aleph_pos (o : Ordinal) : 0 < ℵ_ o :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-431-  aleph0_pos.trans_le (aleph0_le_aleph o)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-432-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-433-theorem _root_.Ordinal.card_le_aleph (o : Ordinal) : o.card ≤ ℵ_ o :=
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-437-  simpa using c.ord.card_le_aleph
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-438-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-439-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:440:theorem aleph_toNat (o : Ordinal) : toNat (ℵ_ o) = 0 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-441-  toNat_apply_of_aleph0_le <| aleph0_le_aleph o
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-442-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-443-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:444:theorem aleph_toENat (o : Ordinal) : toENat (ℵ_ o) = ⊤ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-445-  (toENat_eq_top.2 (aleph0_le_aleph o))
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-446-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-447-theorem isSuccLimit_omega (o : Ordinal) : IsSuccLimit (ω_ o) := by
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-462-theorem succ_aleph0 : succ ℵ₀ = ℵ₁ := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-463-  rw [← aleph_zero, ← aleph_succ, Ordinal.succ_zero]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-464-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:465:theorem aleph0_lt_aleph_one : ℵ₀ < ℵ₁ := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-466-  rw [← succ_aleph0]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-467-  apply lt_succ
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-468-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-470-  rw [← succ_aleph0, lt_succ_iff, le_aleph0_iff_set_countable]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-471-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-472-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:473:theorem aleph_one_le_lift {c : Cardinal.{u}} : ℵ₁ ≤ lift.{v} c ↔ ℵ₁ ≤ c := by
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-474-  simpa using lift_le (a := ℵ₁)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-475-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-476-@[deprecated (since := "2025-12-22")]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-484-alias lift_le_aleph1 := lift_le_aleph_one
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-485-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-486-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:487:theorem aleph_one_lt_lift {c : Cardinal.{u}} : ℵ₁ < lift.{v} c ↔ ℵ₁ < c := by
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-488-  simpa using lift_lt (a := ℵ₁)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-489-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-490-@[deprecated (since := "2025-12-22")]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-498-alias lift_lt_aleph1 := lift_lt_aleph_one
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-499-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-500-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:501:theorem aleph_one_eq_lift {c : Cardinal.{u}} : ℵ₁ = lift.{v} c ↔ ℵ₁ = c := by
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-502-  simpa using lift_inj (a := ℵ₁)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-503-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-504-@[deprecated (since := "2025-12-22")]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-685-theorem beth_limit {o : Ordinal} (ho : IsSuccLimit o) : ℶ_ o = ⨆ a : Iio o, ℶ_ a :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-686-  isNormal_beth.apply_of_isSuccLimit ho
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-687-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:688:theorem aleph_le_beth (o : Ordinal) : ℵ_ o ≤ ℶ_ o :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-689-  preAleph_le_preBeth _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-690-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean:691:theorem aleph0_le_beth (o : Ordinal) : ℵ₀ ≤ ℶ_ o :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-692-  (aleph0_le_aleph o).trans <| aleph_le_beth o
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-693-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Aleph.lean-694-theorem beth_pos (o : Ordinal) : 0 < ℶ_ o :=
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-101-  mul_eq_max (aleph0_le_mk α) (aleph0_le_mk β)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-102-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-103-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean:104:theorem aleph_mul_aleph (o₁ o₂ : Ordinal) : ℵ_ o₁ * ℵ_ o₂ = ℵ_ (max o₁ o₂) := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-105-  rw [Cardinal.mul_eq_max (aleph0_le_aleph o₁) (aleph0_le_aleph o₂), aleph_max]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-106-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-107-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean:108:theorem aleph0_mul_eq {a : Cardinal} (ha : ℵ₀ ≤ a) : ℵ₀ * a = a :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-109-  (mul_eq_max le_rfl ha).trans (max_eq_right ha)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-110-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-111-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-112-theorem mul_aleph0_eq {a : Cardinal} (ha : ℵ₀ ≤ a) : a * ℵ₀ = a :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-113-  (mul_eq_max ha le_rfl).trans (max_eq_left ha)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-114-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean:115:theorem aleph0_mul_mk_eq {α : Type*} [Infinite α] : ℵ₀ * #α = #α :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-116-  aleph0_mul_eq (aleph0_le_mk α)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-117-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-118-theorem mk_mul_aleph0_eq {α : Type*} [Infinite α] : #α * ℵ₀ = #α :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-119-  mul_aleph0_eq (aleph0_le_mk α)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-120-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-121-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean:122:theorem aleph0_mul_aleph (o : Ordinal) : ℵ₀ * ℵ_ o = ℵ_ o :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-123-  aleph0_mul_eq (aleph0_le_aleph o)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-124-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-125-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean:126:theorem aleph_mul_aleph0 (o : Ordinal) : ℵ_ o * ℵ₀ = ℵ_ o :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-127-  mul_aleph0_eq (aleph0_le_aleph o)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-128-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-129-theorem mul_lt_of_lt {a b c : Cardinal} (hc : ℵ₀ ≤ c) (h1 : a < c) (h2 : b < c) : a * b < c :=
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-441-section aleph
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-442-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-443-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean:444:theorem aleph_add_aleph (o₁ o₂ : Ordinal) : ℵ_ o₁ + ℵ_ o₂ = ℵ_ (max o₁ o₂) := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-445-  rw [Cardinal.add_eq_max (aleph0_le_aleph o₁), aleph_max]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-446-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Arithmetic.lean-447-theorem add_right_inj_of_lt_aleph0 {α β γ : Cardinal} (γ₀ : γ < aleph0) : α + γ = β + γ ↔ α = β :=
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-62--/
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-63-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-64-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean:65:theorem aleph0_lt_continuum : ℵ₀ < 𝔠 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-66-  cantor ℵ₀
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-67-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean:68:theorem aleph0_le_continuum : ℵ₀ ≤ 𝔠 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-69-  aleph0_lt_continuum.le
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-70-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-71-@[simp]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-82-theorem continuum_ne_zero : 𝔠 ≠ 0 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-83-  continuum_pos.ne'
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-84-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean:85:theorem aleph_one_le_continuum : ℵ₁ ≤ 𝔠 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-86-  rw [← succ_aleph0]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-87-  exact Order.succ_le_of_lt aleph0_lt_continuum
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-88-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-100-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-101-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-102-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean:103:theorem aleph0_add_continuum : ℵ₀ + 𝔠 = 𝔠 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-104-  add_eq_right aleph0_le_continuum aleph0_le_continuum
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-105-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-106-@[simp]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-141-  mul_eq_left aleph0_le_continuum aleph0_le_continuum aleph0_ne_zero
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-142-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-143-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean:144:theorem aleph0_mul_continuum : ℵ₀ * 𝔠 = 𝔠 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-145-  (mul_comm _ _).trans continuum_mul_aleph0
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-146-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-147-@[simp]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-166-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-167-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-168-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean:169:theorem aleph0_power_aleph0 : ℵ₀ ^ ℵ₀ = 𝔠 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-170-  power_self_eq le_rfl
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-171-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Continuum.lean-172-@[simp]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-473-/-! ### The first infinite cardinal `aleph0` -/
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-474-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-475-/-- `ℵ₀` is the smallest infinite cardinal. -/
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean:476:def aleph0 : Cardinal.{u} :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-477-  lift #ℕ
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-478-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-479-@[inherit_doc] scoped notation "ℵ₀" => Cardinal.aleph0
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-482-theorem mk_nat : #ℕ = ℵ₀ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-483-  (lift_id _).symm
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-484-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean:485:theorem aleph0_ne_zero : ℵ₀ ≠ 0 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-486-  mk_ne_zero _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-487-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Defs.lean-488-@[simp]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-361-  obtain ⟨n, hn⟩ := Cardinal.lt_aleph0.mp h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-362-  rw [hn, succ_natCast]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-363-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:364:theorem aleph0_le {c : Cardinal} : ℵ₀ ≤ c ↔ ∀ n : ℕ, ↑n ≤ c where
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-365-  mp h _ := natCast_le_aleph0.trans h
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-366-  mpr h := le_of_not_gt fun hn => by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-367-    rcases lt_aleph0.1 hn with ⟨n, rfl⟩
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-385-  obtain ⟨n, rfl⟩ := lt_aleph0.1 h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-386-  exact not_isSuccLimit_natCast n
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-387-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:388:theorem aleph0_le_of_isSuccLimit {c : Cardinal} (h : IsSuccLimit c) : ℵ₀ ≤ c := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-389-  contrapose! h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-390-  exact not_isSuccLimit_of_lt_aleph0 h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-391-
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-442-    #{ x / p x } ≤ ℵ₀ ↔ { x | p x }.Countable :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-443-  le_aleph0_iff_set_countable
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-444-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:445:theorem aleph0_lt_mk_iff : ℵ₀ < #α ↔ Uncountable α := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-446-  rw [← not_le, ← not_countable_iff, not_iff_not, mk_le_aleph0_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-447-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-448-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:449:theorem aleph0_lt_mk [Uncountable α] : ℵ₀ < #α :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-450-  aleph0_lt_mk_iff.mpr ‹_›
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-451-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-452-instance canLiftCardinalNat : CanLift Cardinal ℕ (↑) fun x => x < ℵ₀ :=
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-462-  ⟨fun h => ⟨(self_le_add_right _ _).trans_lt h, (self_le_add_left _ _).trans_lt h⟩,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-463-   fun ⟨h1, h2⟩ => add_lt_aleph0 h1 h2⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-464-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:465:theorem aleph0_le_add_iff {a b : Cardinal} : ℵ₀ ≤ a + b ↔ ℵ₀ ≤ a ∨ ℵ₀ ≤ b := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-466-  simp only [← not_lt, add_lt_aleph0_iff, not_and_or]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-467-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-468-/-- See also `Cardinal.nsmul_lt_aleph0_iff_of_ne_zero` if you already have `n ≠ 0`. -/
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-496-  rintro (rfl | rfl | ⟨ha, hb⟩) <;> simp only [*, mul_lt_aleph0, aleph0_pos, zero_mul, mul_zero]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-497-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-498-/-- See also `Cardinal.aleph0_le_mul_iff`. -/
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:499:theorem aleph0_le_mul_iff {a b : Cardinal} : ℵ₀ ≤ a * b ↔ a ≠ 0 ∧ b ≠ 0 ∧ (ℵ₀ ≤ a ∨ ℵ₀ ≤ b) := by
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-500-  let h := (@mul_lt_aleph0_iff a b).not
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-501-  rwa [not_lt, not_or, not_or, not_and_or, not_lt, not_lt] at h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-502-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-503-/-- See also `Cardinal.aleph0_le_mul_iff'`. -/
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:504:theorem aleph0_le_mul_iff' {a b : Cardinal.{u}} : ℵ₀ ≤ a * b ↔ a ≠ 0 ∧ ℵ₀ ≤ b ∨ ℵ₀ ≤ a ∧ b ≠ 0 := by
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-505-  have : ∀ {a : Cardinal.{u}}, ℵ₀ ≤ a → a ≠ 0 := fun a => ne_bot_of_le_ne_bot aleph0_ne_zero a
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-506-  simp only [aleph0_le_mul_iff, and_or_left, and_iff_right_of_imp this, @and_left_comm (a ≠ 0)]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-507-  simp only [and_comm, or_comm]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-528-@[simp] lemma mk_lt_aleph0 [Finite α] : #α < ℵ₀ := mk_lt_aleph0_iff.2 ‹_›
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-529-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-530-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:531:theorem aleph0_le_mk (α : Type u) [Infinite α] : ℵ₀ ≤ #α :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-532-  infinite_iff.1 ‹_›
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-533-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-534-@[simp]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-548-  rw [nonempty_denumerable_iff, ← Set.infinite_coe_iff, countable_coe_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-549-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-550-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:551:theorem aleph0_add_aleph0 : ℵ₀ + ℵ₀ = ℵ₀ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-552-  mk_denumerable _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-553-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:554:theorem aleph0_mul_aleph0 : ℵ₀ * ℵ₀ = ℵ₀ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-555-  mk_denumerable _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-556-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-557-@[simp]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-561-      rwa [← Nat.cast_one, Nat.cast_le, Nat.one_le_iff_ne_zero]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-562-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-563-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:564:theorem aleph0_mul_nat {n : ℕ} (hn : n ≠ 0) : ℵ₀ * n = ℵ₀ := by rw [mul_comm, nat_mul_aleph0 hn]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-565-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-566-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-567-theorem ofNat_mul_aleph0 {n : ℕ} [Nat.AtLeastTwo n] : ofNat(n) * ℵ₀ = ℵ₀ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-568-  nat_mul_aleph0 (NeZero.ne n)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-569-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-570-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:571:theorem aleph0_mul_ofNat {n : ℕ} [Nat.AtLeastTwo n] : ℵ₀ * ofNat(n) = ℵ₀ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-572-  aleph0_mul_nat (NeZero.ne n)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-573-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-574-@[simp]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-577-    aleph0_add_aleph0 ▸ add_le_add h.1 h.2⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-578-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-579-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:580:theorem aleph0_add_nat (n : ℕ) : ℵ₀ + n = ℵ₀ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-581-  (add_le_aleph0.2 ⟨le_rfl, natCast_le_aleph0⟩).antisymm le_self_add
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-582-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-583-@[simp]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-588-  nat_add_aleph0 n
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-589-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-590-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean:591:theorem aleph0_add_ofNat {n : ℕ} [Nat.AtLeastTwo n] : ℵ₀ + ofNat(n) = ℵ₀ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-592-  aleph0_add_nat n
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-593-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Basic.lean-594-theorem exists_nat_eq_of_le_nat {c : Cardinal} {n : ℕ} (h : c ≤ n) : ∃ m, m ≤ n ∧ c = m := by
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Cofinality.lean-587-  · rw [add_succ, cof_succ, cof_succ]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Cofinality.lean-588-  · exact cof_eq_of_isNormal (isNormal_add_right a) hb
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Cofinality.lean-589-
+.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Cofinality.lean:590:theorem aleph0_le_cof {o} : ℵ₀ ≤ cof o ↔ IsSuccLimit o := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Cofinality.lean-591-  rcases zero_or_succ_or_isSuccLimit o with (rfl | ⟨o, rfl⟩ | l)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Cofinality.lean-592-  · simp [Cardinal.aleph0_ne_zero]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/SetTheory/Cardinal/Cofinality.lean-593-  · simp [Cardinal.one_lt_aleph0]

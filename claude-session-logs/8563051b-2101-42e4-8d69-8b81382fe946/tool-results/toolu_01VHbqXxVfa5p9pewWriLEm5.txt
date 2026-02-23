@@ -1,0 +1,1000 @@
+conjectures/1050.lean:2:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/543.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/543.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/543.lean:9:open Finset BigOperators Filter Classical
+conjectures/182.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/119.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/119.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/456.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/456.lean:6:import Mathlib.Topology.Order.Basic
+conjectures/456.lean:7:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/456.lean:11:open Finset Filter Classical
+conjectures/958.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/957.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/765.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/500.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/500.lean:7:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/500.lean:9:open Finset Filter
+conjectures/696.lean:4:import Mathlib.Order.Filter.Basic
+conjectures/696.lean:5:import Mathlib.Topology.Basic
+conjectures/696.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/696.lean:9:open Classical Filter Finset
+conjectures/696.lean:57:    Filter.Tendsto
+conjectures/4.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1099.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/675.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/675.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/294.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/910.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/910.lean:2:import Mathlib.Topology.Connected.Basic
+conjectures/910.lean:3:import Mathlib.Topology.Homeomorph.Defs
+conjectures/910.lean:7:open Set Cardinal Topology
+conjectures/862.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/862.lean:5:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/862.lean:7:open Finset Classical Filter
+conjectures/635.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/177.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/609.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/609.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/710.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/710.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/100.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1090.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/907.lean:1:import Mathlib.Topology.MetricSpace.Basic
+conjectures/284.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/284.lean:6:open Filter Finset
+conjectures/174.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1074.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1074.lean:7:import Mathlib.Topology.Order.Basic
+conjectures/1074.lean:8:import Mathlib.Topology.MetricSpace.Basic
+conjectures/1074.lean:10:open Finset Filter Classical
+conjectures/459.lean:2:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/459.lean:3:import Mathlib.Topology.Order.Basic
+conjectures/459.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/459.lean:8:open Finset Filter Classical
+conjectures/191.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/126.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/126.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/126.lean:10:open Filter
+conjectures/126.lean:52:    Filter.Tendsto (fun n : ℕ => (f n : ℝ) / Real.log n) Filter.atTop Filter.atTop :=
+conjectures/589.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/589.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1025.lean:3:import Mathlib.Analysis.SpecialFunctions.Sqrt
+conjectures/693.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/491.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/655.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/3.lean:2:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/3.lean:3:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/3.lean:6:open Set Filter Topology Classical
+conjectures/821.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/879.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/668.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/563.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/563.lean:6:open Finset Filter
+conjectures/656.lean:4:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/656.lean:6:open Classical Filter
+conjectures/656.lean:26:  Filter.limsup (fun N : ℕ =>
+conjectures/600.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/600.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/600.lean:65:    Filter.Tendsto
+conjectures/600.lean:67:      Filter.atTop (nhds 1) :=
+conjectures/161.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/161.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1044.lean:3:import Mathlib.Analysis.Complex.Basic
+conjectures/1044.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/1044.lean:6:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+conjectures/1044.lean:8:open Complex Polynomial MeasureTheory
+conjectures/156.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/156.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/156.lean:6:open Filter Real Finset Topology
+conjectures/856.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/856.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/954.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/954.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/954.lean:7:open Finset BigOperators Filter
+conjectures/369.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1064.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1064.lean:5:import Mathlib.Analysis.Asymptotics.Defs
+conjectures/1064.lean:7:open Set Filter Finset
+conjectures/1064.lean:27:    Filter.Tendsto
+conjectures/1064.lean:31:      Filter.atTop (nhds 1) :=
+conjectures/1064.lean:50:    (hf : Asymptotics.IsLittleO Filter.atTop
+conjectures/1064.lean:52:    Filter.Tendsto
+conjectures/1064.lean:56:      Filter.atTop (nhds 1) :=
+conjectures/753.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/861.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/861.lean:5:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/861.lean:7:open Finset Classical Filter
+conjectures/1037.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/801.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/801.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/610.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/610.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/610.lean:9:open SimpleGraph Filter
+conjectures/159.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/362.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1028.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/804.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/202.lean:1:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/202.lean:2:import Mathlib.Analysis.SpecialFunctions.Sqrt
+conjectures/202.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/202.lean:7:open Filter
+conjectures/820.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/820.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/933.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1000.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1000.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/1000.lean:7:open Finset Filter
+conjectures/1000.lean:45:    Filter.Tendsto
+conjectures/1000.lean:47:      Filter.atTop (nhds 0) :=
+conjectures/1047.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1047.lean:3:import Mathlib.Analysis.Convex.Basic
+conjectures/1047.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/1047.lean:7:open Complex Polynomial Set
+conjectures/797.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/797.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/755.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/784.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/784.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1046.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1046.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/1046.lean:6:open Complex Polynomial Metric Set
+conjectures/186.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/186.lean:5:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/186.lean:7:open Filter
+conjectures/773.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/731.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/731.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/731.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/731.lean:5:import Mathlib.Topology.Order.Basic
+conjectures/731.lean:9:open Finset Filter Real
+conjectures/995.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/995.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/995.lean:8:open MeasureTheory Filter Finset Set
+conjectures/224.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/322.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/280.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/226.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/226.lean:2:import Mathlib.Analysis.Calculus.Deriv.Basic
+conjectures/785.lean:4:import Mathlib.Order.Filter.Basic
+conjectures/785.lean:5:import Mathlib.Topology.Basic
+conjectures/785.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/785.lean:9:open Classical Filter Finset
+conjectures/831.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/333.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/333.lean:8:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/333.lean:17:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/333.lean:18:    Filter.atTop
+conjectures/466.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/900.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/900.lean:4:import Mathlib.Topology.MetricSpace.Basic
+conjectures/900.lean:43:    (Filter.Tendsto (fun h => f (1/2 + h))
+conjectures/900.lean:45:    (Filter.Tendsto f Filter.atTop (nhds 1)) ∧
+conjectures/992.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/992.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/992.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/992.lean:9:open Classical Filter MeasureTheory Finset
+conjectures/690.lean:5:import Mathlib.Order.Filter.Basic
+conjectures/690.lean:6:import Mathlib.Topology.Basic
+conjectures/690.lean:7:import Mathlib.Topology.MetricSpace.Basic
+conjectures/690.lean:9:open Classical Filter Finset
+conjectures/690.lean:65:        Filter.Tendsto (fun N : ℕ =>
+conjectures/732.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/305.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/305.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/415.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/415.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/415.lean:6:import Mathlib.Topology.Order.Basic
+conjectures/415.lean:9:open Finset Filter Real Classical
+conjectures/688.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/688.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/205.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/620.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/164.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/164.lean:4:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/607.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/539.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/540.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/950.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/52.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/162.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/870.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/962.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/962.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/334.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/692.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/692.lean:4:import Mathlib.Topology.MetricSpace.Basic
+conjectures/692.lean:7:open Finset Filter
+conjectures/692.lean:22:  Filter.Tendsto (fun N => delta1Approx n m N) Filter.atTop (nhds d)
+conjectures/967.lean:1:import Mathlib.Analysis.SpecialFunctions.Pow.Complex
+conjectures/967.lean:2:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/967.lean:5:open Complex
+conjectures/878.lean:7:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/98.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/838.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/838.lean:3:import Mathlib.Analysis.Convex.Hull
+conjectures/838.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/838.lean:8:open Classical Filter Real Finset
+conjectures/669.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/515.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/515.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/515.lean:4:import Mathlib.Analysis.BoundedVariation
+conjectures/515.lean:7:open MeasureTheory Filter Set
+conjectures/525.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/525.lean:3:import Mathlib.Topology.Order.Basic
+conjectures/525.lean:6:open Finset BigOperators Filter Classical
+conjectures/309.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/309.lean:6:open Classical Finset BigOperators Filter Real
+conjectures/221.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/687.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/47.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/875.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/875.lean:6:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/875.lean:8:open Filter Finset BigOperators
+conjectures/166.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/462.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/462.lean:8:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/462.lean:9:import Mathlib.Topology.Order.Basic
+conjectures/462.lean:11:open Finset BigOperators Filter Real
+conjectures/636.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Base
+conjectures/636.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/95.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/95.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/122.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/122.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/122.lean:9:open Classical Filter Finset
+conjectures/122.lean:22:  Filter.Tendsto
+conjectures/122.lean:24:    Filter.atTop (nhds 0)
+conjectures/994.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/994.lean:7:open Classical Filter MeasureTheory Finset Set
+conjectures/760.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1045.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1045.lean:2:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/1045.lean:3:import Mathlib.Analysis.Complex.Exponential
+conjectures/1045.lean:6:open Complex Finset BigOperators
+conjectures/381.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/381.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/323.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/652.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/974.lean:1:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/974.lean:2:import Mathlib.Analysis.Complex.Basic
+conjectures/974.lean:6:open Finset BigOperators Complex
+conjectures/1023.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1023.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/1023.lean:8:open Finset Filter
+conjectures/1023.lean:44:    Filter.Tendsto
+conjectures/1023.lean:46:      Filter.atTop (nhds 1) :=
+conjectures/59.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1008.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/777.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/190.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/190.lean:4:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/190.lean:6:open Filter Real
+conjectures/651.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/651.lean:2:import Mathlib.Analysis.Convex.Hull
+conjectures/146.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/538.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1039.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1039.lean:3:import Mathlib.Topology.MetricSpace.Basic
+conjectures/573.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/573.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/573.lean:43:    Filter.Tendsto
+conjectures/573.lean:45:      Filter.atTop (nhds 1) :=
+conjectures/1087.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1087.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/546.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/588.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/114.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/114.lean:4:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+conjectures/984.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/9.lean:5:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/9.lean:6:import Mathlib.Order.Filter.Basic
+conjectures/9.lean:9:open Set Filter
+conjectures/756.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1083.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1083.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/633.lean:4:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
+conjectures/91.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/990.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/990.lean:4:import Mathlib.Analysis.SpecialFunctions.Complex.Arg
+conjectures/990.lean:8:open Polynomial Complex Real Finset BigOperators
+conjectures/990.lean:29:noncomputable def Complex.arg2pi (z : ℂ) : ℝ :=
+conjectures/990.lean:30:  if Complex.arg z < 0 then Complex.arg z + 2 * Real.pi else Complex.arg z
+conjectures/990.lean:35:  (f.roots.map Complex.arg2pi).countP (fun θ => decide (α ≤ θ ∧ θ ≤ β))
+conjectures/1086.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/977.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/977.lean:6:open Filter
+conjectures/969.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/969.lean:4:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/121.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/121.lean:10:open Filter
+conjectures/93.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/93.lean:2:import Mathlib.Analysis.Convex.Hull
+conjectures/793.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/793.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/793.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/793.lean:6:import Mathlib.Topology.Order.Basic
+conjectures/793.lean:49:    Filter.Tendsto
+conjectures/793.lean:53:      Filter.atTop
+conjectures/524.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/524.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/524.lean:6:import Mathlib.Order.Filter.Basic
+conjectures/524.lean:8:open MeasureTheory ProbabilityTheory Filter Finset BigOperators Set
+conjectures/169.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1073.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1043.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/726.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/726.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/726.lean:5:import Mathlib.Topology.Order.Basic
+conjectures/726.lean:9:open Nat Real Filter
+conjectures/1084.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1084.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1011.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1011.lean:7:open SimpleGraph Filter
+conjectures/115.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/115.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/685.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/147.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/874.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/874.lean:7:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/874.lean:9:open Filter Finset BigOperators
+conjectures/1007.lean:3:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/526.lean:4:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/526.lean:5:import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+conjectures/526.lean:9:open MeasureTheory ProbabilityTheory Filter Finset BigOperators Set
+conjectures/222.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/222.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/222.lean:5:import Mathlib.Order.Filter.Basic
+conjectures/222.lean:7:open Real Filter
+conjectures/581.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/492.lean:3:import Mathlib.Order.Filter.Basic
+conjectures/492.lean:4:import Mathlib.Topology.Order.Basic
+conjectures/492.lean:7:open Filter MeasureTheory Finset
+conjectures/747.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/300.lean:4:import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+conjectures/1081.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1081.lean:5:import Mathlib.Topology.Order.Basic
+conjectures/1081.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1081.lean:7:import Mathlib.Analysis.SpecialFunctions.Sqrt
+conjectures/1081.lean:9:open Finset Filter Classical
+conjectures/626.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/626.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/626.lean:7:import Mathlib.Topology.Order.Basic
+conjectures/626.lean:9:open SimpleGraph Filter Topology
+conjectures/670.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/670.lean:2:import Mathlib.Topology.MetricSpace.Bounded
+conjectures/908.lean:2:import Mathlib.Topology.MetricSpace.Basic
+conjectures/271.lean:1:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/271.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1053.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/400.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/400.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/400.lean:7:import Mathlib.Topology.Order.Basic
+conjectures/400.lean:9:open Finset BigOperators Filter Real Classical
+conjectures/468.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/468.lean:4:import Mathlib.Topology.Order.Basic
+conjectures/468.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/468.lean:9:open Finset Filter
+conjectures/704.lean:2:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/704.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/704.lean:6:import Mathlib.Topology.Order.Basic
+conjectures/704.lean:77:    ∃ L : ℝ, Filter.Tendsto
+conjectures/704.lean:79:      Filter.atTop (nhds L) :=
+conjectures/440.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/440.lean:8:open Finset Filter
+conjectures/75.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/210.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/679.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/230.lean:1:import Mathlib.Analysis.Complex.Norm
+conjectures/230.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/404.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/404.lean:6:import Mathlib.Topology.Order.Basic
+conjectures/404.lean:8:open Finset BigOperators Filter
+conjectures/746.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/465.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1057.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1057.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1057.lean:5:import Mathlib.Topology.Order.Basic
+conjectures/1057.lean:9:open Finset Filter Real Classical
+conjectures/823.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/823.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/823.lean:7:open Finset Filter BigOperators
+conjectures/296.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/790.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/790.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/712.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/712.lean:7:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/712.lean:9:open Finset Filter
+conjectures/1088.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1088.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1049.lean:2:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/446.lean:1:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/446.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/446.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/446.lean:6:import Mathlib.Topology.Order.Basic
+conjectures/446.lean:11:open Real Finset Filter Topology Classical
+conjectures/446.lean:62:          Filter.Tendsto (fun N : ℕ => (countWithDivisor n N : ℝ) / (N : ℝ))
+conjectures/446.lean:86:            Filter.Tendsto (fun N : ℕ => (countWithDivisor n N : ℝ) / (N : ℝ))
+conjectures/446.lean:88:            Filter.Tendsto (fun N : ℕ => (countWithExactDivisors r n N : ℝ) / (N : ℝ))
+conjectures/611.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/611.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/574.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/574.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/574.lean:43:    Filter.Tendsto
+conjectures/574.lean:45:      Filter.atTop (nhds 1) :=
+conjectures/420.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/420.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/420.lean:6:import Mathlib.Topology.Basic
+conjectures/420.lean:7:import Mathlib.Order.Filter.Basic
+conjectures/420.lean:10:open Filter Topology Real
+conjectures/1042.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1042.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1042.lean:3:import Mathlib.Topology.Connected.Basic
+conjectures/1042.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/1042.lean:10:open Classical Filter Finset
+conjectures/529.lean:1:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/529.lean:6:open Finset BigOperators Filter
+conjectures/374.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/374.lean:10:open Filter Classical
+conjectures/605.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/605.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/605.lean:6:open Filter
+conjectures/84.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/437.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/807.lean:4:import Mathlib.Order.Filter.Basic
+conjectures/807.lean:5:import Mathlib.Topology.Order.Basic
+conjectures/807.lean:6:import Mathlib.Topology.MetricSpace.Pseudo.Defs
+conjectures/807.lean:11:open SimpleGraph Filter Topology Classical
+conjectures/1077.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/209.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/523.lean:3:import Mathlib.Analysis.Complex.Basic
+conjectures/523.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/523.lean:5:import Mathlib.Analysis.SpecialFunctions.Sqrt
+conjectures/523.lean:8:open MeasureTheory ProbabilityTheory Filter Finset BigOperators
+conjectures/1060.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1060.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/759.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/733.lean:7:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/506.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1048.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1048.lean:5:import Mathlib.Topology.Connected.Basic
+conjectures/1048.lean:6:import Mathlib.Topology.MetricSpace.Bounded
+conjectures/1048.lean:8:open Complex Polynomial Metric Set
+conjectures/262.lean:3:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/262.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Base
+conjectures/262.lean:5:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/262.lean:7:open Filter
+conjectures/262.lean:34:    Filter.Frequently (fun (n : ℕ) => c * (↑n : ℝ) < Real.logb 2 (Real.logb 2 (↑(a n) : ℝ))) atTop :=
+conjectures/960.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/618.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/535.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/535.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/802.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/653.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/858.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/858.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1061.lean:2:import Mathlib.Topology.MetricSpace.Basic
+conjectures/1061.lean:8:open Filter
+conjectures/824.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/504.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/504.lean:2:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
+conjectures/270.lean:1:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/270.lean:3:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/270.lean:5:open Filter Finset BigOperators
+conjectures/714.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/660.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/660.lean:2:import Mathlib.Analysis.Convex.Hull
+conjectures/929.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/148.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/148.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/148.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/148.lean:8:open BigOperators Real Filter
+conjectures/935.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/808.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/729.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/183.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/183.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/183.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/183.lean:7:open Filter Topology
+conjectures/179.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/792.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/882.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1080.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/829.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/829.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1051.lean:2:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/1051.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1051.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1051.lean:6:open Filter
+conjectures/225.lean:1:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/225.lean:3:import Mathlib.Analysis.Complex.Exponential
+conjectures/225.lean:23:  ∑ k ∈ range (n + 1), c k * Complex.exp (↑k * ↑θ * Complex.I)
+conjectures/604.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/604.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/721.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/176.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/627.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/627.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Base
+conjectures/627.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/627.lean:7:import Mathlib.Topology.Order.Basic
+conjectures/627.lean:9:open SimpleGraph Filter Topology
+conjectures/505.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/505.lean:2:import Mathlib.Topology.MetricSpace.Bounded
+conjectures/127.lean:5:import Mathlib.Analysis.SpecialFunctions.Sqrt
+conjectures/127.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/127.lean:8:open Real Filter
+conjectures/127.lean:62:      Filter.Tendsto (fun i => f (seq i)) Filter.atTop Filter.atTop :=
+conjectures/585.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/585.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1005.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1005.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/1005.lean:9:open Filter Finset
+conjectures/713.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/713.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/713.lean:9:open SimpleGraph Filter
+conjectures/706.lean:2:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/512.lean:1:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/512.lean:3:import Mathlib.Analysis.Complex.Exponential
+conjectures/512.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/512.lean:24:  ∑ n ∈ A, Complex.exp (2 * ↑Real.pi * ↑n * ↑θ * Complex.I)
+conjectures/339.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/339.lean:10:open Set Filter BigOperators Classical
+conjectures/339.lean:28:  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/339.lean:29:    Filter.atTop
+conjectures/293.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/293.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/293.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/293.lean:9:open BigOperators Real Filter Finset Classical
+conjectures/717.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/113.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/109.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/109.lean:15:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/109.lean:16:    Filter.atTop
+conjectures/734.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/237.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/555.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/673.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/673.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/673.lean:8:open Classical Filter Finset
+conjectures/215.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/215.lean:2:import Mathlib.Topology.MetricSpace.Isometry
+conjectures/544.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/544.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/544.lean:8:open SimpleGraph Filter
+conjectures/925.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/691.lean:3:import Mathlib.Order.Filter.Basic
+conjectures/691.lean:4:import Mathlib.Topology.Basic
+conjectures/691.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/691.lean:9:open Classical Filter Finset BigOperators
+conjectures/691.lean:38:  Filter.Tendsto (fun N : ℕ => (countMultiples A (N + 1) : ℝ) / ((N + 1 : ℕ) : ℝ))
+conjectures/519.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/88.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/125.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/125.lean:29:  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/125.lean:30:    Filter.atTop
+conjectures/803.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/365.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/365.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/572.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1002.lean:1:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1002.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1002.lean:7:open Finset Filter MeasureTheory
+conjectures/1002.lean:45:    Filter.Tendsto g Filter.atBot (nhds 0) ∧
+conjectures/1002.lean:46:    Filter.Tendsto g Filter.atTop (nhds 1) ∧
+conjectures/1002.lean:47:    ∀ c : ℝ, Filter.Tendsto
+conjectures/1002.lean:50:      Filter.atTop (nhds (g c)) :=
+conjectures/130.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/433.lean:7:import Mathlib.Analysis.Asymptotics.AsymptoticEquivalent
+conjectures/433.lean:10:open Finset BigOperators Filter Asymptotics
+conjectures/725.lean:1:import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+conjectures/725.lean:6:open Filter
+conjectures/342.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/342.lean:9:open Classical Filter
+conjectures/342.lean:30:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/342.lean:31:    Filter.atTop
+conjectures/443.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/443.lean:7:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/514.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/514.lean:2:import Mathlib.Analysis.Calculus.Deriv.Basic
+conjectures/514.lean:4:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/514.lean:5:import Mathlib.Topology.Order.Basic
+conjectures/514.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/514.lean:8:open Complex Filter Topology
+conjectures/117.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/382.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/783.lean:5:import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+conjectures/134.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/134.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/134.lean:8:open Classical SimpleGraph Filter Real
+conjectures/391.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/391.lean:6:import Mathlib.Topology.Order.Basic
+conjectures/391.lean:7:import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+conjectures/391.lean:8:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/391.lean:10:open BigOperators Filter
+conjectures/451.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/451.lean:5:import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+conjectures/498.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/150.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/150.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/150.lean:9:open SimpleGraph Real Filter
+conjectures/408.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/408.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/408.lean:6:open Filter Finset
+conjectures/408.lean:34:      ∃ d : ℝ, Filter.Tendsto
+conjectures/408.lean:38:        Filter.atTop (nhds d) :=
+conjectures/408.lean:54:        Filter.Tendsto
+conjectures/408.lean:58:          Filter.atTop (nhds 0) :=
+conjectures/1022.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1022.lean:6:open Finset Filter
+conjectures/1091.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1091.lean:7:open SimpleGraph Classical Filter
+conjectures/818.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/818.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/419.lean:4:import Mathlib.Topology.Basic
+conjectures/419.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/419.lean:6:import Mathlib.Order.Filter.Basic
+conjectures/419.lean:8:open Filter Topology
+conjectures/531.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/261.lean:6:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/261.lean:7:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/571.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/77.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/77.lean:5:import Mathlib.Topology.Basic
+conjectures/77.lean:6:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/77.lean:8:open Filter Topology
+conjectures/735.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/315.lean:1:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/315.lean:2:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/315.lean:5:open Filter Topology
+conjectures/315.lean:38:      Filter.liminf (fun n => ((a n : ℝ)) ^ ((2 : ℝ) ^ (n : ℕ))⁻¹) atTop <
+conjectures/315.lean:39:        Filter.liminf (fun n => ((sylvesterSeq n : ℝ)) ^ ((2 : ℝ) ^ (n : ℕ))⁻¹) atTop :=
+conjectures/1021.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/748.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/401.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/401.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/401.lean:8:import Mathlib.Topology.Order.Basic
+conjectures/401.lean:10:open Finset BigOperators Filter Real
+conjectures/223.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/745.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1024.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1062.lean:2:import Mathlib.Topology.MetricSpace.Basic
+conjectures/1062.lean:6:open Nat Finset Filter
+conjectures/187.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/987.lean:1:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/987.lean:2:import Mathlib.Analysis.Normed.Field.Basic
+conjectures/987.lean:27:  ∑ j ∈ Finset.range n, Complex.exp (2 * ↑Real.pi * Complex.I * ↑((k : ℝ) * x j))
+conjectures/311.lean:4:import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+conjectures/216.lean:1:import Mathlib.Analysis.Convex.Hull
+conjectures/216.lean:2:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/216.lean:6:import Mathlib.Topology.Basic
+conjectures/989.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/989.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/989.lean:6:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/805.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/805.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/107.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/107.lean:3:import Mathlib.Analysis.Convex.Hull
+conjectures/452.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/452.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/135.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/101.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/336.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/336.lean:4:import Mathlib.Topology.Order.Basic
+conjectures/336.lean:7:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/336.lean:9:open Set Filter Topology BigOperators
+conjectures/336.lean:45:      Filter.Tendsto (fun r : ℕ => (h_basis336 r : ℝ) / ((r : ℝ) ^ 2))
+conjectures/336.lean:46:        Filter.atTop (nhds c) :=
+conjectures/1070.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/684.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1116.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1116.lean:2:import Mathlib.Analysis.Calculus.FDeriv.Defs
+conjectures/1116.lean:7:open Complex Set
+conjectures/521.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/521.lean:5:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/521.lean:8:open MeasureTheory ProbabilityTheory Polynomial Filter Finset BigOperators
+conjectures/615.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/999.lean:3:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/1115.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1115.lean:2:import Mathlib.Analysis.Calculus.FDeriv.Defs
+conjectures/1115.lean:3:import Mathlib.Topology.EMetricSpace.BoundedVariation
+conjectures/1115.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1115.lean:8:open Complex Filter Topology Set MeasureTheory
+conjectures/393.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/393.lean:6:open Finset BigOperators Filter
+conjectures/1031.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1055.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1055.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1055.lean:8:open Set Filter
+conjectures/1055.lean:61:    Filter.Tendsto (fun r : ℕ => (leastPrimeInClass r : ℝ) ^ ((1 : ℝ) / (r : ℝ)))
+conjectures/1055.lean:62:      Filter.atTop Filter.atTop :=
+conjectures/661.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/661.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/165.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/211.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/973.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/866.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/490.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/18.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/18.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/921.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/637.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Base
+conjectures/637.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/103.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/103.lean:5:import Mathlib.Topology.MetricSpace.Isometry
+conjectures/94.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/94.lean:2:import Mathlib.Analysis.Convex.Hull
+conjectures/297.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/297.lean:7:import Mathlib.Order.Filter.Basic
+conjectures/297.lean:8:import Mathlib.Topology.Order.Basic
+conjectures/297.lean:10:open Finset BigOperators Filter Real
+conjectures/335.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/335.lean:10:open Classical Filter MeasureTheory
+conjectures/335.lean:15:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/335.lean:16:    Filter.atTop
+conjectures/335.lean:21:  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/335.lean:22:    Filter.atTop
+conjectures/286.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/286.lean:6:open Filter Finset
+conjectures/976.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/976.lean:7:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/976.lean:9:open Polynomial Finset BigOperators Filter
+conjectures/144.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/144.lean:4:import Mathlib.Topology.MetricSpace.Basic
+conjectures/144.lean:6:open Classical Filter Topology
+conjectures/154.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/154.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/154.lean:8:open Filter Real Finset Topology
+conjectures/132.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/214.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/104.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/871.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/871.lean:5:import Mathlib.Topology.Order.Basic
+conjectures/871.lean:7:open Set Filter Topology Classical
+conjectures/527.lean:3:import Mathlib.Analysis.Complex.Basic
+conjectures/527.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/527.lean:6:import Mathlib.Order.Filter.Basic
+conjectures/527.lean:7:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/527.lean:9:open MeasureTheory ProbabilityTheory Filter Finset BigOperators
+conjectures/60.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/772.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/754.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/460.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/460.lean:4:import Mathlib.Topology.Order.Basic
+conjectures/460.lean:8:open Finset Filter Classical
+conjectures/260.lean:3:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/260.lean:4:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/260.lean:6:open Filter
+conjectures/235.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/235.lean:8:import Mathlib.Topology.Order.Basic
+conjectures/235.lean:9:import Mathlib.Topology.Algebra.Ring.Real
+conjectures/235.lean:11:open Finset Filter Nat BigOperators Classical
+conjectures/953.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/256.lean:1:import Mathlib.Analysis.Complex.Norm
+conjectures/256.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/256.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/256.lean:6:open Complex BigOperators Finset
+conjectures/129.lean:5:import Mathlib.Analysis.SpecialFunctions.Sqrt
+conjectures/129.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/928.lean:5:import Mathlib.Order.Filter.Basic
+conjectures/928.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/928.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/928.lean:9:open Set Filter
+conjectures/928.lean:44:  Filter.Tendsto (fun N : ℕ => ((S ∩ {i | 1 ≤ i ∧ i ≤ N}).ncard : ℝ) / N)
+conjectures/426.lean:8:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/426.lean:9:import Mathlib.Topology.Algebra.Ring.Real
+conjectures/426.lean:66:    Filter.Tendsto
+conjectures/426.lean:70:      Filter.atTop
+conjectures/432.lean:8:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/432.lean:32:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/432.lean:33:    Filter.atTop
+conjectures/1082.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/140.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/140.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/140.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/140.lean:8:open Real Filter
+conjectures/576.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/771.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/116.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/116.lean:3:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+conjectures/116.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/896.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/232.lean:2:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/528.lean:1:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/528.lean:5:open Finset BigOperators Filter
+conjectures/528.lean:38:      Filter.Tendsto
+conjectures/368.lean:2:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/368.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/606.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/788.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/662.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/105.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/852.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/852.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/445.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/813.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1100.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1100.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/478.lean:6:import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+conjectures/478.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/478.lean:9:import Mathlib.Topology.Order.Basic
+conjectures/478.lean:11:open Filter Real Finset
+conjectures/478.lean:47:      (atTop ⊓ Filter.principal {p | Nat.Prime p})
+conjectures/50.lean:2:import Mathlib.Analysis.Calculus.Deriv.Basic
+conjectures/50.lean:5:open Nat Finset Filter Set Classical
+conjectures/657.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/254.lean:3:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/254.lean:7:import Mathlib.Order.Filter.Basic
+conjectures/254.lean:8:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/254.lean:10:open Set Filter BigOperators Classical
+conjectures/877.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/671.lean:1:import Mathlib.Topology.MetricSpace.Basic
+conjectures/671.lean:2:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/671.lean:6:open Filter Set Finset
+conjectures/980.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/96.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/96.lean:2:import Mathlib.Analysis.Convex.Hull
+conjectures/1072.lean:6:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/1072.lean:7:import Mathlib.Order.Filter.Basic
+conjectures/1072.lean:10:open Set Filter
+conjectures/667.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/667.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/667.lean:11:open SimpleGraph Finset Filter Classical
+conjectures/667.lean:45:  Filter.liminf (fun n : ℕ => Real.log (erdosH n p q : ℝ) / Real.log (n : ℝ))
+conjectures/667.lean:46:    Filter.atTop
+conjectures/1036.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/1036.lean:7:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/227.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/227.lean:2:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/227.lean:3:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/227.lean:4:import Mathlib.Topology.Order.Basic
+conjectures/227.lean:6:open Complex Filter Topology
+conjectures/54.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/378.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/378.lean:9:open Classical Filter
+conjectures/378.lean:29:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/378.lean:30:    Filter.atTop
+conjectures/378.lean:34:  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/378.lean:35:    Filter.atTop
+conjectures/133.lean:4:import Mathlib.Analysis.SpecialFunctions.Sqrt
+conjectures/133.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/133.lean:8:open SimpleGraph Filter
+conjectures/131.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/131.lean:5:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/131.lean:7:open Filter
+conjectures/683.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/31.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/31.lean:6:open Classical Filter
+conjectures/709.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/709.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/314.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/314.lean:6:open Finset BigOperators Filter Classical
+conjectures/111.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1085.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1085.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/796.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/530.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/530.lean:5:import Mathlib.Analysis.SpecialFunctions.Sqrt
+conjectures/530.lean:7:open Finset Filter
+conjectures/860.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/860.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/860.lean:6:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/860.lean:10:open Filter
+conjectures/1040.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1040.lean:5:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+conjectures/1040.lean:9:open MeasureTheory Classical Filter Finset
+conjectures/663.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/827.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/787.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/787.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/787.lean:6:import Mathlib.Analysis.SpecialFunctions.Sqrt
+conjectures/425.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/425.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/425.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/425.lean:6:import Mathlib.Topology.Order.Basic
+conjectures/425.lean:48:    Filter.Tendsto
+conjectures/425.lean:52:      Filter.atTop
+conjectures/444.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/444.lean:9:open Finset Filter BigOperators Classical
+conjectures/956.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/956.lean:2:import Mathlib.Analysis.Convex.Basic
+conjectures/956.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/909.lean:1:import Mathlib.Topology.Basic
+conjectures/909.lean:2:import Mathlib.Topology.Constructions
+conjectures/320.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/320.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/320.lean:8:import Mathlib.Topology.Order.Basic
+conjectures/320.lean:56:      Filter.Tendsto
+conjectures/320.lean:59:        Filter.atTop (nhds L) :=
+conjectures/106.lean:1:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/841.lean:7:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/841.lean:8:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/981.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/981.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/981.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/981.lean:8:open Finset Filter Real
+conjectures/981.lean:43:      Filter.Tendsto
+conjectures/981.lean:47:        Filter.atTop (nhds c) :=
+conjectures/15.lean:3:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/15.lean:5:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/511.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/511.lean:4:import Mathlib.Topology.Connected.Basic
+conjectures/511.lean:5:import Mathlib.Topology.MetricSpace.Bounded
+conjectures/698.lean:2:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/698.lean:4:open Filter
+conjectures/157.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/157.lean:6:open Filter Set
+conjectures/926.lean:6:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/55.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/986.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/482.lean:1:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/16.lean:5:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/16.lean:6:import Mathlib.Order.Filter.Basic
+conjectures/16.lean:9:open Set Filter
+conjectures/1066.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1018.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/497.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/497.lean:7:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/497.lean:9:open Finset Filter
+conjectures/857.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/700.lean:7:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/840.lean:7:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
+conjectures/768.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/768.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/768.lean:6:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/768.lean:7:import Mathlib.Topology.Order.Basic
+conjectures/768.lean:10:open Nat Real Filter Classical
+conjectures/136.lean:5:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/136.lean:7:open Classical Filter
+conjectures/217.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/959.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/959.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/360.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/360.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/102.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/337.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/337.lean:5:import Mathlib.Topology.Order.Basic
+conjectures/337.lean:7:import Mathlib.Analysis.SpecificLimits.Basic
+conjectures/337.lean:9:open Set Filter Topology BigOperators Classical
+conjectures/1109.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/441.lean:7:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/441.lean:10:open Finset Filter
+conjectures/839.lean:1:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/839.lean:5:open Filter Real Finset
+conjectures/991.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/711.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/795.lean:6:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/789.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/789.lean:5:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1029.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/648.lean:5:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/265.lean:1:import Mathlib.Topology.Algebra.InfiniteSum.Basic
+conjectures/265.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/265.lean:4:open Filter
+conjectures/1001.lean:3:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1001.lean:4:import Mathlib.Topology.MetricSpace.Basic
+conjectures/1001.lean:6:open MeasureTheory Set Filter
+conjectures/80.lean:4:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/988.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/502.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/863.lean:5:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/863.lean:6:import Mathlib.Topology.Basic
+conjectures/863.lean:8:open Finset Classical Filter
+conjectures/14.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1041.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/1041.lean:3:import Mathlib.Topology.Path
+conjectures/1041.lean:5:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+conjectures/367.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1103.lean:3:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/5.lean:3:import Mathlib.Analysis.SpecialFunctions.Log.Basic
+conjectures/5.lean:5:import Mathlib.Topology.Basic
+conjectures/5.lean:6:import Mathlib.Order.Filter.Basic
+conjectures/5.lean:8:open Filter Topology Nat Real
+conjectures/1089.lean:1:import Mathlib.Analysis.InnerProductSpace.PiL2
+conjectures/1089.lean:4:import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1089.lean:5:import Mathlib.Topology.Order.Basic
+conjectures/1089.lean:8:open Classical Finset Filter
+conjectures/395.lean:1:import Mathlib.Analysis.Complex.Basic
+conjectures/395.lean:2:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/241.lean:4:import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/241.lean:5:import Mathlib.Order.Filter.AtTopBot.Defs
+conjectures/241.lean:7:open Filter

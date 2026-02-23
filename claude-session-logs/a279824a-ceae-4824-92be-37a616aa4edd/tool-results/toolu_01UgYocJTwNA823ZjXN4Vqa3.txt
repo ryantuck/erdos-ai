@@ -1,0 +1,902 @@
+conjectures/675.lean-45-/-- The minimal translation witness for a set A at level n:
+/home/ryan/erdos/conjectures/675.lean-46-    the smallest t ≥ 1 such that for all 1 ≤ a ≤ n, a ∈ A ↔ a + t ∈ A. -/
+conjectures/675.lean-47-noncomputable def minimalTranslation675 (A : Set ℕ) (n : ℕ) : ℕ :=
+conjectures/675.lean:48:  sInf {t : ℕ | t ≥ 1 ∧ ∀ a : ℕ, 1 ≤ a → a ≤ n → (a ∈ A ↔ a + t ∈ A)}
+/home/ryan/erdos/conjectures/675.lean-49-
+/home/ryan/erdos/conjectures/675.lean-50-/-- Given a set of primes P, the set of natural numbers ≥ 1 all of whose
+/home/ryan/erdos/conjectures/675.lean-51-    prime factors lie in P. -/
+--
+/home/ryan/erdos/conjectures/569.lean-25-    on Fin N, either G embeds in F or H embeds in the complement of F. -/
+conjectures/569.lean-26-noncomputable def ramseyNum {V W : Type*}
+conjectures/569.lean-27-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+conjectures/569.lean:28:  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/569.lean-29-    G.Embeds F ∨ H.Embeds Fᶜ}
+/home/ryan/erdos/conjectures/569.lean-30-
+/home/ryan/erdos/conjectures/569.lean-31-/-- The cycle graph C_m on m vertices (m ≥ 3). Vertex i is adjacent to vertex
+--
+/home/ryan/erdos/conjectures/710.lean-28-    (n, n+f) there exist n distinct integers a₁, ..., aₙ with k ∣ aₖ for all
+/home/ryan/erdos/conjectures/710.lean-29-    1 ≤ k ≤ n. -/
+conjectures/710.lean-30-noncomputable def erdos710_f (n : ℕ) : ℕ :=
+conjectures/710.lean:31:  sInf {f : ℕ | ∃ g : Fin n → ℕ,
+/home/ryan/erdos/conjectures/710.lean-32-    Function.Injective g ∧
+conjectures/710.lean-33-    (∀ i : Fin n, n < g i) ∧
+conjectures/710.lean-34-    (∀ i : Fin n, g i < n + f) ∧
+--
+/home/ryan/erdos/conjectures/761.lean-46-    of G, there exists an acyclic k-colouring. -/
+conjectures/761.lean-47-noncomputable def dichromaticNumber761 {V : Type*} [Fintype V]
+conjectures/761.lean-48-    (G : SimpleGraph V) : ℕ :=
+conjectures/761.lean:49:  sInf {k : ℕ | ∀ D : V → V → Prop, IsOrientation761 G D →
+conjectures/761.lean-50-    ∃ c : V → Fin k, IsAcyclicColouring761 D k c}
+/home/ryan/erdos/conjectures/761.lean-51-
+conjectures/761.lean-52-/-- A cochromatic colouring: each colour class induces either a complete
+--
+/home/ryan/erdos/conjectures/761.lean-61-    colouring. -/
+conjectures/761.lean-62-noncomputable def cochromaticNumber761 {V : Type*} [Fintype V]
+conjectures/761.lean-63-    (G : SimpleGraph V) : ℕ :=
+conjectures/761.lean:64:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring761 G k c}
+/home/ryan/erdos/conjectures/761.lean-65-
+/home/ryan/erdos/conjectures/761.lean-66-/--
+conjectures/761.lean-67-**Erdős Problem #761, Question 1** (Erdős–Neumann-Lara):
+--
+/home/ryan/erdos/conjectures/343.lean-20-
+/home/ryan/erdos/conjectures/343.lean-21-/-- A set of natural numbers contains an infinite arithmetic progression
+conjectures/343.lean-22-    {a + n * d : n ∈ ℕ} for some a ≥ 0 and d > 0. -/
+conjectures/343.lean:23:def containsInfiniteAP343 (S : Set ℕ) : Prop :=
+conjectures/343.lean-24-  ∃ (a d : ℕ), 0 < d ∧ ∀ n : ℕ, a + n * d ∈ S
+/home/ryan/erdos/conjectures/343.lean-25-
+/home/ryan/erdos/conjectures/343.lean-26-/--
+--
+conjectures/343.lean-36-    ∀ (mult : ℕ → ℕ),
+/home/ryan/erdos/conjectures/343.lean-37-      mult 0 = 0 →
+conjectures/343.lean-38-      (∃ c : ℝ, 0 < c ∧ ∀ N : ℕ, 0 < N → c * (N : ℝ) ≤ (countUpTo343 mult N : ℝ)) →
+conjectures/343.lean:39:      containsInfiniteAP343 (subsetSums343 mult) :=
+/home/ryan/erdos/conjectures/343.lean-40-  sorry
+--
+/home/ryan/erdos/conjectures/560.lean-38-    edges to the same color. -/
+conjectures/560.lean-39-noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+conjectures/560.lean-40-    (G : SimpleGraph V) : ℕ :=
+conjectures/560.lean:41:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/560.lean-42-    Nat.card H.edgeSet = m ∧
+conjectures/560.lean-43-    ∀ (c : Fin N → Fin N → Bool),
+/home/ryan/erdos/conjectures/560.lean-44-      (∀ i j, c i j = c j i) →
+--
+/home/ryan/erdos/conjectures/459.lean-29-/-- `erdos459_f u` is the smallest `v > u` such that every prime factor
+/home/ryan/erdos/conjectures/459.lean-30-    of `v` divides `u`. -/
+conjectures/459.lean-31-noncomputable def erdos459_f (u : ℕ) : ℕ :=
+conjectures/459.lean:32:  sInf {v : ℕ | u < v ∧ ∀ p : ℕ, Nat.Prime p → p ∣ v → p ∣ u}
+/home/ryan/erdos/conjectures/459.lean-33-
+/home/ryan/erdos/conjectures/459.lean-34-/--
+conjectures/459.lean-35-Erdős Problem #459 (Lower bound) [ErGr80, p.91]:
+--
+/home/ryan/erdos/conjectures/126.lean-33-of ω(∏_{a ≠ b ∈ A} (a + b)).
+/home/ryan/erdos/conjectures/126.lean-34--/
+conjectures/126.lean-35-noncomputable def f (n : ℕ) : ℕ :=
+conjectures/126.lean:36:  sInf {k : ℕ | ∃ A : Finset ℕ, A.card = n ∧ distinctPrimeFactors (pairSumProduct A) = k}
+/home/ryan/erdos/conjectures/126.lean-37-
+/home/ryan/erdos/conjectures/126.lean-38-/--
+/home/ryan/erdos/conjectures/126.lean-39-Erdős Problem #126 (Erdős–Turán [ErTu34]; see also [Er95c, Er97, Er97e]) — OPEN
+--
+/home/ryan/erdos/conjectures/563.lean-30-    of K_n such that every subset of vertices of size ≥ m contains more than
+/home/ryan/erdos/conjectures/563.lean-31-    α · C(|X|, 2) edges of each colour. -/
+conjectures/563.lean-32-noncomputable def F_erdos563 (n : ℕ) (α : ℝ) : ℕ :=
+conjectures/563.lean:33:  sInf {m : ℕ | ∃ (c : Fin n → Fin n → Bool),
+/home/ryan/erdos/conjectures/563.lean-34-    (∀ i j, c i j = c j i) ∧
+conjectures/563.lean-35-    ∀ X : Finset (Fin n), (X.card : ℝ) ≥ (m : ℝ) →
+conjectures/563.lean-36-      ∀ color : Bool,
+--
+/home/ryan/erdos/conjectures/568.lean-27-    on Fin N, either G embeds in F or H embeds in the complement of F. -/
+conjectures/568.lean-28-noncomputable def ramseyNum {V W : Type*}
+conjectures/568.lean-29-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+conjectures/568.lean:30:  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/568.lean-31-    G.Embeds F ∨ H.Embeds Fᶜ}
+/home/ryan/erdos/conjectures/568.lean-32-
+/home/ryan/erdos/conjectures/568.lean-33-/-- A graph is connected if any two vertices are related by the reflexive
+--
+conjectures/600.lean-40-/-- e(n, r): the minimal number of edges such that every triangle-covered graph
+/home/ryan/erdos/conjectures/600.lean-41-    on n vertices with at least that many edges has an edge in at least r triangles. -/
+conjectures/600.lean-42-noncomputable def erdosE (n r : ℕ) : ℕ :=
+conjectures/600.lean:43:  sInf {m : ℕ | ∀ G : SimpleGraph (Fin n),
+/home/ryan/erdos/conjectures/600.lean-44-    IsTriangleCovered G → G.edgeFinset.card ≥ m →
+conjectures/600.lean-45-    ∃ u v : Fin n, G.Adj u v ∧ trianglesThrough G u v ≥ r}
+/home/ryan/erdos/conjectures/600.lean-46-
+--
+/home/ryan/erdos/conjectures/161.lean-41-/-- F^{(t)}(n, α) is the smallest m such that there exists a 2-colouring of the
+/home/ryan/erdos/conjectures/161.lean-42-    t-element subsets of [n] that is α-balanced at threshold m. -/
+conjectures/161.lean-43-noncomputable def F_balanced (t n : ℕ) (α : ℝ) : ℕ :=
+conjectures/161.lean:44:  sInf { m : ℕ | ∃ c : Finset (Fin n) → Bool, IsBalancedColouring n t m α c }
+/home/ryan/erdos/conjectures/161.lean-45-
+/home/ryan/erdos/conjectures/161.lean-46-/--
+conjectures/161.lean-47-Erdős Conjecture (Problem #161) [Er90b, p.21]:
+--
+conjectures/630.lean-36-/-- The list chromatic number (choice number) of a graph G: the minimum k
+/home/ryan/erdos/conjectures/630.lean-37-    such that G is k-choosable. -/
+conjectures/630.lean-38-noncomputable def listChromaticNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
+conjectures/630.lean:39:  sInf {k : ℕ | IsChoosable G k}
+/home/ryan/erdos/conjectures/630.lean-40-
+/home/ryan/erdos/conjectures/630.lean-41-/-- A graph is planar if it can be embedded in the plane without edge crossings.
+/home/ryan/erdos/conjectures/630.lean-42-    Mathlib does not yet have a formalization of graph planarity; we define it
+--
+conjectures/753.lean-41-/-- The list chromatic number (choice number) of a graph: the minimum k such
+/home/ryan/erdos/conjectures/753.lean-42-    that G is k-choosable. -/
+conjectures/753.lean-43-noncomputable def listChromaticNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
+conjectures/753.lean:44:  sInf {k : ℕ | IsChoosable G k}
+/home/ryan/erdos/conjectures/753.lean-45-
+/home/ryan/erdos/conjectures/753.lean-46-/--
+conjectures/753.lean-47-**Alon's Theorem (Disproof of Erdős Problem #753)** [Al92]:
+--
+conjectures/610.lean-42-/-- The clique transversal number τ(G): the minimum cardinality of a clique
+/home/ryan/erdos/conjectures/610.lean-43-    transversal of G. -/
+conjectures/610.lean-44-noncomputable def cliqueTransversalNum610 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/610.lean:45:  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal610 G T ∧ T.card = k }
+/home/ryan/erdos/conjectures/610.lean-46-
+/home/ryan/erdos/conjectures/610.lean-47-/--
+conjectures/610.lean-48-**Erdős Problem #610** (Weak form) [EGT92]:
+--
+/home/ryan/erdos/conjectures/159.lean-35-    complement Gᶜ contains a copy of Kₙ (i.e., G has an independent set of
+/home/ryan/erdos/conjectures/159.lean-36-    size n). -/
+conjectures/159.lean-37-noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
+conjectures/159.lean:38:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+conjectures/159.lean-39-    containsSubgraph G C4 ∨ containsSubgraph Gᶜ (⊤ : SimpleGraph (Fin n))}
+/home/ryan/erdos/conjectures/159.lean-40-
+/home/ryan/erdos/conjectures/159.lean-41-/--
+--
+/home/ryan/erdos/conjectures/601.lean-29-
+conjectures/601.lean-30-/-- A graph has an infinite path: an injective sequence of vertices
+/home/ryan/erdos/conjectures/601.lean-31-    such that consecutive vertices are adjacent. -/
+conjectures/601.lean:32:def SimpleGraph.HasInfinitePath {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/601.lean-33-  ∃ f : ℕ → V, Function.Injective f ∧ ∀ n : ℕ, G.Adj (f n) (f (n + 1))
+/home/ryan/erdos/conjectures/601.lean-34-
+conjectures/601.lean-35-/-- A graph on OrdinalSet α has an independent set of order type α:
+--
+/home/ryan/erdos/conjectures/601.lean-45-    an independent set of order type α. -/
+conjectures/601.lean-46-def EHMProperty (α : Ordinal) : Prop :=
+conjectures/601.lean-47-  ∀ G : SimpleGraph (OrdinalSet α),
+conjectures/601.lean:48:    G.HasInfinitePath ∨ G.HasIndepSetOfOrderType
+/home/ryan/erdos/conjectures/601.lean-49-
+/home/ryan/erdos/conjectures/601.lean-50-/--
+conjectures/601.lean-51-Erdős Problem #601 [EHM70] [Er81] [Er82e] [Er87]:
+--
+/home/ryan/erdos/conjectures/758.lean-33-    cochromatic coloring of G. -/
+conjectures/758.lean-34-noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+conjectures/758.lean-35-    (G : SimpleGraph V) : ℕ :=
+conjectures/758.lean:36:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColoring G k c}
+/home/ryan/erdos/conjectures/758.lean-37-
+conjectures/758.lean-38-/-- z(n): the maximum cochromatic number over all simple graphs on n
+/home/ryan/erdos/conjectures/758.lean-39-    vertices. -/
+--
+/home/ryan/erdos/conjectures/549.lean-29-    every graph H on N vertices contains a copy of G or its complement contains
+/home/ryan/erdos/conjectures/549.lean-30-    a copy of G. -/
+conjectures/549.lean-31-noncomputable def ramseyNumber {m : ℕ} (G : SimpleGraph (Fin m)) : ℕ :=
+conjectures/549.lean:32:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/549.lean-33-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/erdos/conjectures/549.lean-34-
+/home/ryan/erdos/conjectures/549.lean-35-/--
+--
+/home/ryan/erdos/conjectures/561.lean-37-    contains a copy of G₁ or color 2 contains a copy of G₂. -/
+conjectures/561.lean-38-noncomputable def twoColorSizeRamseyNumber {V₁ V₂ : Type*} [Fintype V₁] [Fintype V₂]
+conjectures/561.lean-39-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+conjectures/561.lean:40:  sInf {m : ℕ | ∃ (n : ℕ) (H : SimpleGraph (Fin n)),
+/home/ryan/erdos/conjectures/561.lean-41-    H.edgeSet.ncard = m ∧
+conjectures/561.lean-42-    ∀ c : Fin n → Fin n → Bool,
+/home/ryan/erdos/conjectures/561.lean-43-      (∀ i j, c i j = c j i) →
+--
+/home/ryan/erdos/conjectures/345.lean-14-    all n ≥ m are in P(A), the set of finite subset sums of A.
+/home/ryan/erdos/conjectures/345.lean-15-    (Only meaningful for complete sequences.) -/
+conjectures/345.lean-16-noncomputable def thresholdOfCompleteness (A : Set ℕ) : ℕ :=
+conjectures/345.lean:17:  sInf {m : ℕ | ∀ n : ℕ, n ≥ m → n ∈ subsetSums A}
+/home/ryan/erdos/conjectures/345.lean-18-
+conjectures/345.lean-19-/-- The set of k-th powers of positive integers: {1^k, 2^k, 3^k, ...}. -/
+conjectures/345.lean-20-def kthPowers (k : ℕ) : Set ℕ :=
+--
+/home/ryan/erdos/conjectures/162.lean-38-    largest k such that some 2-colouring makes every subset of size ≥ k
+/home/ryan/erdos/conjectures/162.lean-39-    balanced. -/
+conjectures/162.lean-40-noncomputable def F_erdos162 (n : ℕ) (α : ℝ) : ℕ :=
+conjectures/162.lean:41:  sInf { m : ℕ | ∃ c : Finset (Fin n) → Bool, IsEdgeBalanced n m α c }
+/home/ryan/erdos/conjectures/162.lean-42-
+/home/ryan/erdos/conjectures/162.lean-43-/--
+conjectures/162.lean-44-Erdős Conjecture (Problem #162) [Er90b, p.21]:
+--
+/home/ryan/erdos/conjectures/166.lean-28-    on N vertices contains either a 4-clique or an independent set of
+/home/ryan/erdos/conjectures/166.lean-29-    size k (a k-clique in the complement). -/
+conjectures/166.lean-30-noncomputable def ramseyR4 (k : ℕ) : ℕ :=
+conjectures/166.lean:31:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/erdos/conjectures/166.lean-32-
+/home/ryan/erdos/conjectures/166.lean-33-/--
+conjectures/166.lean-34-Erdős Conjecture (Problem #166) [Er90b, Er91, Er93, Er97c]:
+--
+/home/ryan/erdos/conjectures/282.lean-19-    returns the minimal n ∈ A such that n ≥ 1/x. Returns 0 if x ≤ 0. -/
+conjectures/282.lean-20-noncomputable def greedyDenominator (A : Set ℕ) (x : ℚ) : ℕ :=
+/home/ryan/erdos/conjectures/282.lean-21-  if x ≤ 0 then 0
+conjectures/282.lean:22:  else sInf {n : ℕ | n ∈ A ∧ x⁻¹ ≤ (n : ℚ)}
+/home/ryan/erdos/conjectures/282.lean-23-
+conjectures/282.lean-24-/-- The greedy remainder sequence: starting from x, repeatedly subtract 1/n
+/home/ryan/erdos/conjectures/282.lean-25-    where n is chosen greedily as the minimal element of A with n ≥ 1/x. -/
+--
+/home/ryan/erdos/conjectures/555.lean-37-    such that every edge of G maps to an edge of colour a. -/
+conjectures/555.lean-38-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/555.lean-39-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+conjectures/555.lean:40:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/erdos/conjectures/555.lean-41-    (∀ i j, c i j = c j i) →
+conjectures/555.lean-42-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/erdos/conjectures/555.lean-43-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+/home/ryan/erdos/conjectures/544.lean-22-    on N vertices contains either a triangle (3-clique) or an independent
+/home/ryan/erdos/conjectures/544.lean-23-    set of size k (a k-clique in the complement). -/
+conjectures/544.lean-24-noncomputable def ramseyR3_544 (k : ℕ) : ℕ :=
+conjectures/544.lean:25:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/erdos/conjectures/544.lean-26-
+/home/ryan/erdos/conjectures/544.lean-27-/--
+conjectures/544.lean-28-Erdős Problem #544 (Part 1) [Er81c][Er93,p.339]:
+--
+conjectures/781.lean-35-/-- f(k): the minimal n such that every 2-colouring of {0, …, n-1} contains
+/home/ryan/erdos/conjectures/781.lean-36-    a monochromatic k-term descending wave. -/
+conjectures/781.lean-37-noncomputable def descendingWaveNumber (k : ℕ) : ℕ :=
+conjectures/781.lean:38:  sInf {n : ℕ | ∀ c : Fin n → Bool, HasMonochromaticDescendingWave k n c}
+/home/ryan/erdos/conjectures/781.lean-39-
+/home/ryan/erdos/conjectures/781.lean-40-/--
+conjectures/781.lean-41-Erdős Problem #781, lower bound [BEF90]:
+--
+/home/ryan/erdos/conjectures/570.lean-26-    on Fin N, either G embeds in F or H embeds in the complement of F. -/
+conjectures/570.lean-27-noncomputable def ramseyNum {V W : Type*}
+conjectures/570.lean-28-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+conjectures/570.lean:29:  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/570.lean-30-    G.Embeds F ∨ H.Embeds Fᶜ}
+/home/ryan/erdos/conjectures/570.lean-31-
+/home/ryan/erdos/conjectures/570.lean-32-/-- The cycle graph C_m on m vertices (m ≥ 3). Vertex i is adjacent to vertex
+--
+/home/ryan/erdos/conjectures/344.lean-11-
+conjectures/344.lean-12-/-- A set of natural numbers contains an infinite arithmetic progression:
+/home/ryan/erdos/conjectures/344.lean-13-    there exist a ≥ 0 and d > 0 such that a + n·d ∈ S for all n ∈ ℕ. -/
+conjectures/344.lean:14:def ContainsInfiniteAP344 (S : Set ℕ) : Prop :=
+conjectures/344.lean-15-  ∃ (a d : ℕ), 0 < d ∧ ∀ n : ℕ, a + n * d ∈ S
+/home/ryan/erdos/conjectures/344.lean-16-
+/home/ryan/erdos/conjectures/344.lean-17-/--
+--
+conjectures/344.lean-32-    (c : ℝ) (hc : 0 < c)
+conjectures/344.lean-33-    (hgrowth : ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+conjectures/344.lean-34-      c * Real.sqrt (N : ℝ) ≤ (((Finset.Icc 1 N).filter (· ∈ A)).card : ℝ)) :
+conjectures/344.lean:35:    ContainsInfiniteAP344 (subsetSums344 A) :=
+/home/ryan/erdos/conjectures/344.lean-36-  sorry
+--
+/home/ryan/erdos/conjectures/745.lean-56-    components both exceed size k must be in the same component. -/
+conjectures/745.lean-57-noncomputable def secondLargestComponent745 {n : ℕ}
+conjectures/745.lean-58-    (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/745.lean:59:  sInf {k : ℕ | ∀ u v : Fin n,
+/home/ryan/erdos/conjectures/745.lean-60-    componentSize745 G u > k → componentSize745 G v > k → G.Reachable u v}
+/home/ryan/erdos/conjectures/745.lean-61-
+/home/ryan/erdos/conjectures/745.lean-62-/--
+--
+/home/ryan/erdos/conjectures/557.lean-26-    such that every edge of G maps to an edge of colour a. -/
+conjectures/557.lean-27-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/557.lean-28-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+conjectures/557.lean:29:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/erdos/conjectures/557.lean-30-    (∀ i j, c i j = c j i) →
+conjectures/557.lean-31-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/erdos/conjectures/557.lean-32-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+/home/ryan/erdos/conjectures/556.lean-30-    such that every edge of G maps to an edge of colour a. -/
+conjectures/556.lean-31-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/556.lean-32-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+conjectures/556.lean:33:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/erdos/conjectures/556.lean-34-    (∀ i j, c i j = c j i) →
+conjectures/556.lean-35-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/erdos/conjectures/556.lean-36-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+/home/ryan/erdos/conjectures/311.lean-19-/-- The minimal non-zero value of |1 - Σ_{n ∈ A} 1/n| as A ranges over all
+/home/ryan/erdos/conjectures/311.lean-20-    subsets of {1, ..., N}. -/
+conjectures/311.lean-21-noncomputable def unitFractionDeviation (N : ℕ) : ℝ :=
+conjectures/311.lean:22:  sInf { x : ℝ | x > 0 ∧ ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧
+conjectures/311.lean-23-    x = |1 - ∑ n ∈ A, (1 : ℝ) / n| }
+/home/ryan/erdos/conjectures/311.lean-24-
+/home/ryan/erdos/conjectures/311.lean-25-/--
+--
+/home/ryan/erdos/conjectures/199.lean-18-
+/home/ryan/erdos/conjectures/199.lean-19-/-- A set S ⊆ ℝ contains an infinite arithmetic progression if there exist
+conjectures/199.lean-20-    a, d ∈ ℝ with d ≠ 0 such that a + n · d ∈ S for all n : ℕ. -/
+conjectures/199.lean:21:def HasInfiniteAP (S : Set ℝ) : Prop :=
+conjectures/199.lean-22-  ∃ a d : ℝ, d ≠ 0 ∧ ∀ n : ℕ, (a + ↑n * d) ∈ S
+/home/ryan/erdos/conjectures/199.lean-23-
+/home/ryan/erdos/conjectures/199.lean-24-/--
+--
+/home/ryan/erdos/conjectures/199.lean-32-to construct a counterexample via a Hamel basis for ℝ over ℚ.
+/home/ryan/erdos/conjectures/199.lean-33--/
+conjectures/199.lean-34-theorem erdos_problem_199 :
+conjectures/199.lean:35:    ∃ A : Set ℝ, ¬HasThreeTermAP A ∧ ¬HasInfiniteAP Aᶜ := by
+/home/ryan/erdos/conjectures/199.lean-36-  sorry
+--
+/home/ryan/erdos/conjectures/393.lean-32-    of distinct positive integers spanning a range of exactly `m`. Returns `0` if no
+/home/ryan/erdos/conjectures/393.lean-33-    such factorization exists (e.g. for `n ≤ 1`). -/
+conjectures/393.lean-34-noncomputable def erdos393_f (n : ℕ) : ℕ :=
+conjectures/393.lean:35:  sInf {m : ℕ | 1 ≤ m ∧ HasFactorizationWithSpread n m}
+/home/ryan/erdos/conjectures/393.lean-36-
+/home/ryan/erdos/conjectures/393.lean-37-/--
+conjectures/393.lean-38-Erdős Problem #393 [ErGr80, p.76]:
+--
+/home/ryan/erdos/conjectures/456.lean-29-
+/home/ryan/erdos/conjectures/456.lean-30-/-- The smallest prime congruent to 1 modulo n. -/
+conjectures/456.lean-31-noncomputable def smallestPrimeCong1 (n : ℕ) : ℕ :=
+conjectures/456.lean:32:  sInf {p : ℕ | Nat.Prime p ∧ p ≡ 1 [MOD n]}
+/home/ryan/erdos/conjectures/456.lean-33-
+/home/ryan/erdos/conjectures/456.lean-34-/-- The smallest positive integer m such that n ∣ φ(m). -/
+conjectures/456.lean-35-noncomputable def smallestTotientDiv (n : ℕ) : ℕ :=
+conjectures/456.lean:36:  sInf {m : ℕ | 0 < m ∧ n ∣ Nat.totient m}
+/home/ryan/erdos/conjectures/456.lean-37-
+/home/ryan/erdos/conjectures/456.lean-38-/--
+conjectures/456.lean-39-Erdős Problem #456, Part 1 [Er79e, p.80]:
+--
+/home/ryan/erdos/conjectures/545.lean-27-    every graph H on N vertices contains a copy of G or its complement contains
+/home/ryan/erdos/conjectures/545.lean-28-    a copy of G. -/
+conjectures/545.lean-29-noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+conjectures/545.lean:30:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/545.lean-31-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/erdos/conjectures/545.lean-32-
+/home/ryan/erdos/conjectures/545.lean-33-/-- The "as complete as possible" graph with n.choose 2 + t edges on n + 1 vertices.
+--
+/home/ryan/erdos/conjectures/744.lean-34-    whose removal yields a 2-colorable graph. -/
+conjectures/744.lean-35-def SimpleGraph.minEdgesToBipartite {V : Type*} [DecidableEq V]
+conjectures/744.lean-36-    (G : SimpleGraph V) : ℕ :=
+conjectures/744.lean:37:  sInf {m : ℕ | ∃ S : Finset (Sym2 V), S.card = m ∧
+conjectures/744.lean-38-    (G.deleteEdges (↑S : Set (Sym2 V))).Colorable 2}
+/home/ryan/erdos/conjectures/744.lean-39-
+conjectures/744.lean-40-/-- f_k(n): the minimum, over all k-critical graphs G on n vertices, of the
+/home/ryan/erdos/conjectures/744.lean-41-    minimum number of edges to delete from G to make it bipartite. -/
+conjectures/744.lean-42-def erdos744_fk (k n : ℕ) : ℕ :=
+conjectures/744.lean:43:  sInf {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/erdos/conjectures/744.lean-44-    G.IsKCritical k ∧ G.minEdgesToBipartite = m}
+/home/ryan/erdos/conjectures/744.lean-45-
+/home/ryan/erdos/conjectures/744.lean-46-/--
+--
+/home/ryan/erdos/conjectures/760.lean-39-    colours in a cochromatic colouring. -/
+conjectures/760.lean-40-noncomputable def cochromaticNumber760 {V : Type*} [Fintype V]
+conjectures/760.lean-41-    (G : SimpleGraph V) : ℕ :=
+conjectures/760.lean:42:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring760 G k c}
+/home/ryan/erdos/conjectures/760.lean-43-
+/home/ryan/erdos/conjectures/760.lean-44-/--
+conjectures/760.lean-45-**Erdős Problem #760** (PROVED, Alon–Krivelevich–Sudakov [AKS97]):
+--
+/home/ryan/erdos/conjectures/616.lean-29-
+conjectures/616.lean-30-/-- The covering number τ(G): the minimum size of a transversal. -/
+conjectures/616.lean-31-noncomputable def coveringNumber {n r : ℕ} (G : UniformHypergraph n r) : ℕ :=
+conjectures/616.lean:32:  sInf {k : ℕ | ∃ S : Finset (Fin n), S.card = k ∧ IsTransversal G S}
+/home/ryan/erdos/conjectures/616.lean-33-
+conjectures/616.lean-34-/-- The subhypergraph of G induced on vertex set W: edges of G contained in W. -/
+conjectures/616.lean-35-def inducedSub {n r : ℕ} (G : UniformHypergraph n r) (W : Finset (Fin n)) :
+--
+/home/ryan/erdos/conjectures/256.lean-35-    is at least f(n). Equivalently, the infimum of unitCircleMaxProd over
+/home/ryan/erdos/conjectures/256.lean-36-    all non-decreasing sequences of positive integers of length n. -/
+conjectures/256.lean-37-noncomputable def erdos256_f (n : ℕ) : ℝ :=
+conjectures/256.lean:38:  sInf {y : ℝ | ∃ (a : Fin n → ℕ),
+/home/ryan/erdos/conjectures/256.lean-39-    (∀ i, 0 < a i) ∧ Monotone a ∧
+/home/ryan/erdos/conjectures/256.lean-40-    y = unitCircleMaxProd n a}
+/home/ryan/erdos/conjectures/256.lean-41-
+--
+/home/ryan/erdos/conjectures/554.lean-34-    such that every edge of G maps to an edge of colour a. -/
+conjectures/554.lean-35-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/554.lean-36-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+conjectures/554.lean:37:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/erdos/conjectures/554.lean-38-    (∀ i j, c i j = c j i) →
+conjectures/554.lean-39-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/erdos/conjectures/554.lean-40-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+conjectures/629.lean-38-/-- The list chromatic number (choice number) of a graph G: the minimum k
+/home/ryan/erdos/conjectures/629.lean-39-    such that G is k-choosable. -/
+conjectures/629.lean-40-noncomputable def listChromaticNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
+conjectures/629.lean:41:  sInf {k : ℕ | IsChoosable G k}
+/home/ryan/erdos/conjectures/629.lean-42-
+conjectures/629.lean-43-/-- n(k): the minimum number of vertices of a bipartite graph with list
+/home/ryan/erdos/conjectures/629.lean-44-    chromatic number greater than k. -/
+conjectures/629.lean-45-noncomputable def erdos629_n (k : ℕ) : ℕ :=
+conjectures/629.lean:46:  sInf {n : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/erdos/conjectures/629.lean-47-    G.Colorable 2 ∧ listChromaticNumber G > k}
+/home/ryan/erdos/conjectures/629.lean-48-
+/home/ryan/erdos/conjectures/629.lean-49-/--
+--
+/home/ryan/erdos/conjectures/133.lean-43-    graphs.  When no such graph exists (e.g.\ for $n = 1$) the infimum of the
+/home/ryan/erdos/conjectures/133.lean-44-    empty set is $0$. -/
+conjectures/133.lean-45-noncomputable def erdos133_f (n : ℕ) : ℕ :=
+conjectures/133.lean:46:  sInf { k : ℕ | ∀ (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
+/home/ryan/erdos/conjectures/133.lean-47-    ¬HasTriangle G → HasDiameterAtMostTwo G →
+conjectures/133.lean-48-    ∃ v : Fin n, k ≤ G.degree v }
+/home/ryan/erdos/conjectures/133.lean-49-
+--
+/home/ryan/erdos/conjectures/111.lean-23--/
+conjectures/111.lean-24-noncomputable def minEdgeDeletionsForBipartite {W : Type*} [Fintype W]
+conjectures/111.lean-25-    (H : SimpleGraph W) : ℕ :=
+conjectures/111.lean:26:  sInf {k : ℕ | ∃ H' : SimpleGraph W,
+/home/ryan/erdos/conjectures/111.lean-27-    H' ≤ H ∧
+/home/ryan/erdos/conjectures/111.lean-28-    Nonempty (H'.Coloring (Fin 2)) ∧
+/home/ryan/erdos/conjectures/111.lean-29-    (H.edgeSet \ H'.edgeSet).ncard = k}
+--
+/home/ryan/erdos/conjectures/720.lean-51-    edges to the same color. -/
+conjectures/720.lean-52-noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+conjectures/720.lean-53-    (G : SimpleGraph V) : ℕ :=
+conjectures/720.lean:54:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/720.lean-55-    Nat.card H.edgeSet = m ∧
+conjectures/720.lean-56-    ∀ (c : Fin N → Fin N → Bool),
+/home/ryan/erdos/conjectures/720.lean-57-      (∀ i j, c i j = c j i) →
+--
+/home/ryan/erdos/conjectures/663.lean-26-    Returns 0 if no such prime exists (which cannot happen since a finite
+/home/ryan/erdos/conjectures/663.lean-27-    product has only finitely many prime factors). -/
+conjectures/663.lean-28-noncomputable def leastNondividingPrime (n k : ℕ) : ℕ :=
+conjectures/663.lean:29:  sInf {p : ℕ | Nat.Prime p ∧ ¬(p ∣ ∏ i ∈ Finset.range k, (n + i + 1))}
+/home/ryan/erdos/conjectures/663.lean-30-
+/home/ryan/erdos/conjectures/663.lean-31-/--
+conjectures/663.lean-32-Erdős Problem #663 [BEGL96][Er97e]:
+--
+/home/ryan/erdos/conjectures/553.lean-29-    a monochromatic K_n in colour 2. Equivalently, every simple graph on N
+/home/ryan/erdos/conjectures/553.lean-30-    vertices contains a 3-clique or its complement contains an n-clique. -/
+conjectures/553.lean-31-noncomputable def ramseyR3 (n : ℕ) : ℕ :=
+conjectures/553.lean:32:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/erdos/conjectures/553.lean-33-
+conjectures/553.lean-34-/-- The Ramsey number R(3,3,n): the minimum N such that every 3-colouring of
+/home/ryan/erdos/conjectures/553.lean-35-    the edges of K_N yields either a monochromatic triangle in one of the
+--
+/home/ryan/erdos/conjectures/553.lean-38-    A 3-colouring is modelled by two edge-disjoint graphs G₁, G₂ (the first
+/home/ryan/erdos/conjectures/553.lean-39-    two colour classes); the third colour class is the complement (G₁ ⊔ G₂)ᶜ. -/
+conjectures/553.lean-40-noncomputable def ramseyR33 (n : ℕ) : ℕ :=
+conjectures/553.lean:41:  sInf {N : ℕ | ∀ (G₁ G₂ : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/553.lean-42-    Disjoint G₁ G₂ →
+/home/ryan/erdos/conjectures/553.lean-43-    ¬G₁.CliqueFree 3 ∨ ¬G₂.CliqueFree 3 ∨ ¬(G₁ ⊔ G₂)ᶜ.CliqueFree n}
+/home/ryan/erdos/conjectures/553.lean-44-
+--
+/home/ryan/erdos/conjectures/650.lean-36-    and every m-element subset A of {1,...,N}, every interval [t, t+2N) with
+/home/ryan/erdos/conjectures/650.lean-37-    t ≥ 1 contains at least f(m) matchable integers. -/
+conjectures/650.lean-38-def erdos650_f (m : ℕ) : ℕ :=
+conjectures/650.lean:39:  sInf {c : ℕ | ∃ (N : ℕ) (A : Finset ℕ) (t : ℕ),
+/home/ryan/erdos/conjectures/650.lean-40-    A.card = m ∧ (∀ a ∈ A, 1 ≤ a ∧ a ≤ N) ∧ t ≥ 1 ∧
+/home/ryan/erdos/conjectures/650.lean-41-    divMatchCount A t N = c}
+/home/ryan/erdos/conjectures/650.lean-42-
+--
+/home/ryan/erdos/conjectures/614.lean-29-    every subset of `k + 2` vertices induces a subgraph with maximum degree at least `k`.
+/home/ryan/erdos/conjectures/614.lean-30-    This is the function `f(n, k)` from Erdős Problem #614. -/
+conjectures/614.lean-31-noncomputable def erdos614_f (n k : ℕ) : ℕ :=
+conjectures/614.lean:32:  sInf {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/erdos/conjectures/614.lean-33-    G.edgeFinset.card = m ∧ HasInducedDegreeProp G k}
+/home/ryan/erdos/conjectures/614.lean-34-
+/home/ryan/erdos/conjectures/614.lean-35-/--
+--
+/home/ryan/erdos/conjectures/791.lean-31-    such that every element of {0, …, n} can be written as a sum of two elements
+/home/ryan/erdos/conjectures/791.lean-32-    of A (a finite additive 2-basis). This is the function g(n) in Erdős Problem #791. -/
+conjectures/791.lean-33-noncomputable def additiveBasesMinSize (n : ℕ) : ℕ :=
+conjectures/791.lean:34:  sInf {k : ℕ | ∃ A : Finset ℕ, A.card = k ∧
+/home/ryan/erdos/conjectures/791.lean-35-    A ⊆ Finset.range (n + 1) ∧ Finset.range (n + 1) ⊆ A + A}
+/home/ryan/erdos/conjectures/791.lean-36-
+/home/ryan/erdos/conjectures/791.lean-37-/--
+--
+/home/ryan/erdos/conjectures/190.lean-38-/-- H(k) is the smallest N such that any colouring of {1,…,N} contains
+/home/ryan/erdos/conjectures/190.lean-39-    either a monochromatic k-term AP or a rainbow 3-term AP. -/
+conjectures/190.lean-40-noncomputable def H (k : ℕ) : ℕ :=
+conjectures/190.lean:41:  sInf {N : ℕ | ∀ χ : ℕ → ℕ, hasMonoAP χ N k ∨ hasRainbowAP χ N}
+/home/ryan/erdos/conjectures/190.lean-42-
+/home/ryan/erdos/conjectures/190.lean-43-/--
+conjectures/190.lean-44-Erdős Problem #190 [ErGr79, ErGr80]:
+--
+/home/ryan/erdos/conjectures/651.lean-41-    in ℝ^k contain n points in convex position (forming the vertices of a
+/home/ryan/erdos/conjectures/651.lean-42-    convex polytope). -/
+conjectures/651.lean-43-noncomputable def fk (k n : ℕ) : ℕ :=
+conjectures/651.lean:44:  sInf {m : ℕ | ∀ P : Finset (EuclideanSpace ℝ (Fin k)),
+/home/ryan/erdos/conjectures/651.lean-45-    P.card = m →
+/home/ryan/erdos/conjectures/651.lean-46-    InGeneralPositionRk k P →
+conjectures/651.lean-47-    ∃ Q : Finset (EuclideanSpace ℝ (Fin k)),
+--
+/home/ryan/erdos/conjectures/112.lean-40-    on k vertices contains either an independent set of size n or a transitive
+/home/ryan/erdos/conjectures/112.lean-41-    tournament of size m. -/
+conjectures/112.lean-42-noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+conjectures/112.lean:43:  sInf {k : ℕ | ∀ (V : Type) [Fintype V], Fintype.card V = k →
+conjectures/112.lean-44-    ∀ G : Digraph V,
+conjectures/112.lean-45-      (∃ S : Finset V, S.card = n ∧ G.IsIndepSet S) ∨
+conjectures/112.lean-46-      (∃ S : Finset V, S.card = m ∧ G.IsTransTournament S)}
+--
+/home/ryan/erdos/conjectures/581.lean-30-suffices since every finite graph is isomorphic to one on `Fin n`.
+/home/ryan/erdos/conjectures/581.lean-31--/
+conjectures/581.lean-32-def erdos581_f (m : ℕ) : ℕ :=
+conjectures/581.lean:33:  sInf {k : ℕ | ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
+/home/ryan/erdos/conjectures/581.lean-34-    G.CliqueFree 3 ∧
+/home/ryan/erdos/conjectures/581.lean-35-    G.edgeSet.ncard = m ∧
+/home/ryan/erdos/conjectures/581.lean-36-    maxBipartiteEdges G = k}
+--
+/home/ryan/erdos/conjectures/740.lean-32-    for which G admits a proper κ-coloring. -/
+conjectures/740.lean-33-noncomputable def SimpleGraph.cardChromaticNumber {V : Type u}
+conjectures/740.lean-34-    (G : SimpleGraph V) : Cardinal.{u} :=
+conjectures/740.lean:35:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+/home/ryan/erdos/conjectures/740.lean-36-
+/home/ryan/erdos/conjectures/740.lean-37-/--
+conjectures/740.lean-38-Erdős Problem #740 [Er69b][Er71][Er81][Er95d]:
+--
+conjectures/625.lean-36-    such that there exists a proper coloring f : Fin n → Fin k (no two adjacent
+/home/ryan/erdos/conjectures/625.lean-37-    vertices receive the same color). -/
+conjectures/625.lean-38-noncomputable def finChromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/625.lean:39:  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/erdos/conjectures/625.lean-40-
+conjectures/625.lean-41-/-- The cochromatic number of a simple graph on Fin n: the minimum number of parts k
+conjectures/625.lean-42-    in a coloring f : Fin n → Fin k such that each color class induces either a
+/home/ryan/erdos/conjectures/625.lean-43-    complete subgraph or an independent set. -/
+conjectures/625.lean-44-noncomputable def cochromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/625.lean:45:  sInf {k : ℕ | ∃ f : Fin n → Fin k,
+conjectures/625.lean-46-    ∀ c : Fin k,
+/home/ryan/erdos/conjectures/625.lean-47-      (∀ u v, f u = c → f v = c → u ≠ v → G.Adj u v) ∨
+/home/ryan/erdos/conjectures/625.lean-48-      (∀ u v, f u = c → f v = c → u ≠ v → ¬G.Adj u v)}
+--
+/home/ryan/erdos/conjectures/546.lean-26-    every graph H on N vertices contains a copy of G or its complement contains
+/home/ryan/erdos/conjectures/546.lean-27-    a copy of G. -/
+conjectures/546.lean-28-noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+conjectures/546.lean:29:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/546.lean-30-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/erdos/conjectures/546.lean-31-
+/home/ryan/erdos/conjectures/546.lean-32-/--
+--
+conjectures/611.lean-47-/-- The clique transversal number τ(G): the minimum cardinality of a clique
+/home/ryan/erdos/conjectures/611.lean-48-    transversal of G. -/
+conjectures/611.lean-49-noncomputable def cliqueTransversalNum611 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/611.lean:50:  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal611 G T ∧ T.card = k }
+/home/ryan/erdos/conjectures/611.lean-51-
+/home/ryan/erdos/conjectures/611.lean-52-/-- Every maximal clique of G with at least 2 vertices has at least m vertices. -/
+conjectures/611.lean-53-def allMaxCliquesAtLeast611 {n : ℕ} (G : SimpleGraph (Fin n)) (m : ℕ) : Prop :=
+--
+conjectures/626.lean-41-/-- The chromatic number of a simple graph on `Fin n`: the minimum number of colors `k`
+conjectures/626.lean-42-    such that there exists a proper coloring `f : Fin n → Fin k`. -/
+conjectures/626.lean-43-noncomputable def finChromaticNumber626 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/626.lean:44:  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/erdos/conjectures/626.lean-45-
+/home/ryan/erdos/conjectures/626.lean-46-/-- A graph on `Fin n` has girth greater than `m` if every cycle has length
+/home/ryan/erdos/conjectures/626.lean-47-    strictly greater than `m`. -/
+--
+/home/ryan/erdos/conjectures/149.lean-34-    independent edge sets needed to partition the edges of G. Equivalently,
+/home/ryan/erdos/conjectures/149.lean-35-    this is the chromatic number of L(G)², the square of the line graph. -/
+conjectures/149.lean-36-noncomputable def strongChromaticIndex {V : Type*} (G : SimpleGraph V) : ℕ :=
+conjectures/149.lean:37:  sInf {k : ℕ | ∃ (c : G.edgeSet → Fin k),
+conjectures/149.lean-38-    ∀ (e₁ e₂ : G.edgeSet), c e₁ = c e₂ → e₁ ≠ e₂ →
+conjectures/149.lean-39-      ∀ u ∈ (e₁ : Sym2 V), ∀ v ∈ (e₂ : Sym2 V), u ≠ v ∧ ¬G.Adj u v}
+/home/ryan/erdos/conjectures/149.lean-40-
+--
+/home/ryan/erdos/conjectures/468.lean-32-
+conjectures/468.lean-33-/-- f(N): the minimal n such that N ∈ D_n. -/
+conjectures/468.lean-34-noncomputable def erdos468_f (N : ℕ) : ℕ :=
+conjectures/468.lean:35:  sInf {n : ℕ | N ∈ erdos468_D n}
+/home/ryan/erdos/conjectures/468.lean-36-
+/home/ryan/erdos/conjectures/468.lean-37-/--
+conjectures/468.lean-38-Erdős Problem #468, strong form [ErGr80]:
+--
+/home/ryan/erdos/conjectures/704.lean-37-    of colors needed to properly color all points so that no two points at
+/home/ryan/erdos/conjectures/704.lean-38-    distance 1 share the same color. Returns 0 if no finite coloring exists. -/
+conjectures/704.lean-39-noncomputable def chromaticNumber_unitDist (n : ℕ) : ℕ :=
+conjectures/704.lean:40:  sInf {k : ℕ | (unitDistanceGraph n).Colorable k}
+/home/ryan/erdos/conjectures/704.lean-41-
+/home/ryan/erdos/conjectures/704.lean-42-/--
+conjectures/704.lean-43-Erdős Problem #704, Frankl-Wilson lower bound [FrWi81]:
+--
+/home/ryan/erdos/conjectures/721.lean-33-Van der Waerden's theorem guarantees this set is nonempty for `j, k ≥ 1`.
+/home/ryan/erdos/conjectures/721.lean-34--/
+conjectures/721.lean-35-noncomputable def vanDerWaerden (j k : ℕ) : ℕ :=
+conjectures/721.lean:36:  sInf {n : ℕ | VDWProperty j k n}
+/home/ryan/erdos/conjectures/721.lean-37-
+/home/ryan/erdos/conjectures/721.lean-38-/--
+conjectures/721.lean-39-Erdős Problem #721 (Upper Bound):
+--
+/home/ryan/erdos/conjectures/176.lean-26-    progression a, a+d, ..., a+(k-1)d with d ≥ 1 and all terms in {1,...,N}
+/home/ryan/erdos/conjectures/176.lean-27-    such that |∑ᵢ f(a + id)| ≥ ℓ. -/
+conjectures/176.lean-28-noncomputable def discrepancyAPNumber (k : ℕ) (ℓ : ℝ) : ℕ :=
+conjectures/176.lean:29:  sInf { N : ℕ | ∀ f : ℕ → ℤ,
+/home/ryan/erdos/conjectures/176.lean-30-    (∀ n, 1 ≤ n → n ≤ N → (f n = 1 ∨ f n = -1)) →
+conjectures/176.lean-31-    ∃ a d : ℕ, 0 < d ∧ 1 ≤ a ∧ a + (k - 1) * d ≤ N ∧
+conjectures/176.lean-32-      ℓ ≤ |(↑(∑ i ∈ range k, f (a + i * d)) : ℝ)| }
+--
+conjectures/627.lean-29-/-- The chromatic number of a simple graph on `Fin n`: the minimum number of colors
+/home/ryan/erdos/conjectures/627.lean-30-    such that there exists a proper coloring. -/
+conjectures/627.lean-31-noncomputable def chromaticNumber627 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/627.lean:32:  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/erdos/conjectures/627.lean-33-
+conjectures/627.lean-34-/-- The clique number of a simple graph on `Fin n`: the maximum size of a clique. -/
+conjectures/627.lean-35-noncomputable def cliqueNumber627 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+--
+/home/ryan/erdos/conjectures/759.lean-37-    colours in a cochromatic colouring. -/
+conjectures/759.lean-38-noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+conjectures/759.lean-39-    (G : SimpleGraph V) : ℕ :=
+conjectures/759.lean:40:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/erdos/conjectures/759.lean-41-
+/home/ryan/erdos/conjectures/759.lean-42-/-- Embeddability of a finite simple graph on the orientable surface of genus n.
+/home/ryan/erdos/conjectures/759.lean-43-    This is axiomatized since surface topology is not available in Mathlib. -/
+--
+/home/ryan/erdos/conjectures/619.lean-29-/-- `triangleFreeDiamCompletion r G` is the minimum number of edges that must be added
+/home/ryan/erdos/conjectures/619.lean-30-    to a triangle-free graph `G` on `Fin n` so that the resulting supergraph has
+/home/ryan/erdos/conjectures/619.lean-31-    diameter at most `r` and remains triangle-free. Returns 0 if no such completion
+conjectures/619.lean:32:    exists (the set is empty and sInf defaults to 0). -/
+conjectures/619.lean-33-noncomputable def triangleFreeDiamCompletion {n : ℕ} (r : ℕ) (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/619.lean:34:  sInf {k : ℕ | ∃ H : SimpleGraph (Fin n), G ≤ H ∧
+/home/ryan/erdos/conjectures/619.lean-35-    H.CliqueFree 3 ∧
+/home/ryan/erdos/conjectures/619.lean-36-    H.Connected ∧
+/home/ryan/erdos/conjectures/619.lean-37-    H.diam ≤ r ∧
+--
+/home/ryan/erdos/conjectures/618.lean-32-    to a triangle-free graph `G` on `Fin n` so that the resulting supergraph has
+/home/ryan/erdos/conjectures/618.lean-33-    diameter at most 2 and remains triangle-free. -/
+conjectures/618.lean-34-noncomputable def triangleFreeDiam2Completion {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/618.lean:35:  sInf {k : ℕ | ∃ H : SimpleGraph (Fin n), G ≤ H ∧
+/home/ryan/erdos/conjectures/618.lean-36-    H.CliqueFree 3 ∧
+/home/ryan/erdos/conjectures/618.lean-37-    H.Connected ∧
+/home/ryan/erdos/conjectures/618.lean-38-    H.diam ≤ 2 ∧
+--
+/home/ryan/erdos/conjectures/739.lean-27-    for which G admits a proper κ-coloring. -/
+conjectures/739.lean-28-noncomputable def SimpleGraph.cardChromaticNumber {V : Type u}
+conjectures/739.lean-29-    (G : SimpleGraph V) : Cardinal.{u} :=
+conjectures/739.lean:30:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+/home/ryan/erdos/conjectures/739.lean-31-
+/home/ryan/erdos/conjectures/739.lean-32-/--
+conjectures/739.lean-33-Erdős Problem #739 [Er81]:
+--
+/home/ryan/erdos/conjectures/565.lean-27-    G.Adj u v ↔ (H.Adj (f u) (f v) ∧ c (f u) (f v) = b). -/
+conjectures/565.lean-28-noncomputable def inducedRamseyNumber {V : Type*} [Fintype V]
+conjectures/565.lean-29-    (G : SimpleGraph V) : ℕ :=
+conjectures/565.lean:30:  sInf {m : ℕ | ∃ (H : SimpleGraph (Fin m)),
+conjectures/565.lean-31-    ∀ (c : Fin m → Fin m → Bool),
+/home/ryan/erdos/conjectures/565.lean-32-    (∀ i j, c i j = c j i) →
+conjectures/565.lean-33-    ∃ (b : Bool) (f : V → Fin m), Function.Injective f ∧
+--
+/home/ryan/erdos/conjectures/559.lean-31-    edges to the same color. -/
+conjectures/559.lean-32-noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+conjectures/559.lean-33-    (G : SimpleGraph V) : ℕ :=
+conjectures/559.lean:34:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/559.lean-35-    Nat.card H.edgeSet = m ∧
+conjectures/559.lean-36-    ∀ (c : Fin N → Fin N → Bool),
+/home/ryan/erdos/conjectures/559.lean-37-      (∀ i j, c i j = c j i) →
+--
+/home/ryan/erdos/conjectures/293.lean-33-/-- v(k) is the smallest positive integer that does not appear in any representation
+/home/ryan/erdos/conjectures/293.lean-34-    of 1 as a sum of exactly k distinct unit fractions. -/
+conjectures/293.lean-35-noncomputable def erdos293_v (k : ℕ) : ℕ :=
+conjectures/293.lean:36:  sInf {n : ℕ | 0 < n ∧ ¬AppearsInKTermEgyptian k n}
+/home/ryan/erdos/conjectures/293.lean-37-
+conjectures/293.lean-38-/-- Bleicher–Erdős lower bound [BlEr75]:
+/home/ryan/erdos/conjectures/293.lean-39-    There exists a constant c > 0 such that v(k) ≥ c · k! for all k ≥ 1. -/
+--
+/home/ryan/erdos/conjectures/157.lean-18-/-- An infinite set A ⊆ ℕ is a Sidon set (B₂ set) if all pairwise sums
+conjectures/157.lean-19-    are distinct: whenever a + b = c + d with a, b, c, d ∈ A, we have
+/home/ryan/erdos/conjectures/157.lean-20-    {a, b} = {c, d} as multisets (i.e. either a = c and b = d, or a = d and b = c). -/
+conjectures/157.lean:21:def IsInfiniteSidonSet (A : Set ℕ) : Prop :=
+/home/ryan/erdos/conjectures/157.lean-22-  Set.Infinite A ∧
+/home/ryan/erdos/conjectures/157.lean-23-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/erdos/conjectures/157.lean-24-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+--
+/home/ryan/erdos/conjectures/157.lean-44-an asymptotic basis of order 3.
+/home/ryan/erdos/conjectures/157.lean-45--/
+conjectures/157.lean-46-theorem erdos_problem_157 :
+conjectures/157.lean:47:    ∃ A : Set ℕ, IsInfiniteSidonSet A ∧ IsAsymptoticBasisOrder3 A :=
+/home/ryan/erdos/conjectures/157.lean-48-  sorry
+/home/ryan/erdos/conjectures/157.lean-49-
+/home/ryan/erdos/conjectures/157.lean-50-end
+--
+/home/ryan/erdos/conjectures/117.lean-20-    satisfying the n-commuting property can be covered by at most k Abelian
+/home/ryan/erdos/conjectures/117.lean-21-    subgroups. -/
+conjectures/117.lean-22-noncomputable def erdosH (n : ℕ) : ℕ :=
+conjectures/117.lean:23:  sInf {k : ℕ | ∀ (G : Type) [Group G],
+/home/ryan/erdos/conjectures/117.lean-24-    HasNCommutingProperty n G → CoveredByAbelianSubgroups k G}
+/home/ryan/erdos/conjectures/117.lean-25-
+/home/ryan/erdos/conjectures/117.lean-26-/--
+--
+conjectures/136.lean-39-/-- f(n): the minimum number of colors k for which there exists a
+/home/ryan/erdos/conjectures/136.lean-40-    K₄-five-colored edge coloring of K_n. -/
+conjectures/136.lean-41-noncomputable def f (n : ℕ) : ℕ :=
+conjectures/136.lean:42:  sInf {k : ℕ | ∃ χ : EdgeColoring n k, IsK4FiveColored χ}
+/home/ryan/erdos/conjectures/136.lean-43-
+/home/ryan/erdos/conjectures/136.lean-44-/--
+conjectures/136.lean-45-Erdős Problem #136 – Erdős–Gyárfás bounds [Er97b]:
+--
+/home/ryan/erdos/conjectures/551.lean-29-    copy of G₂. -/
+conjectures/551.lean-30-noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+conjectures/551.lean-31-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+conjectures/551.lean:32:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/551.lean-33-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/erdos/conjectures/551.lean-34-
+conjectures/551.lean-35-/-- The cycle graph on k vertices (k ≥ 3): vertex i is adjacent to vertex j iff
+--
+/home/ryan/erdos/conjectures/531.lean-35-    of `{1, …, N}` admits a `k`-element subset whose non-empty subset sums
+/home/ryan/erdos/conjectures/531.lean-36-    are monochromatic. -/
+conjectures/531.lean-37-noncomputable def folkmanNumber (k : ℕ) : ℕ :=
+conjectures/531.lean:38:  sInf {N : ℕ | ∀ χ : ℕ → Bool, HasMonoSubsetSumSet χ k N}
+/home/ryan/erdos/conjectures/531.lean-39-
+conjectures/531.lean-40-/-- Folkman's theorem: for every `k`, the Folkman number `F(k)` is finite.
+/home/ryan/erdos/conjectures/531.lean-41-    That is, there exists `N` such that every 2-coloring of `{1, …, N}` has a
+--
+/home/ryan/erdos/conjectures/711.lean-33-    (m, m+f) there exist n distinct integers a₁, ..., aₙ with k ∣ aₖ for all
+/home/ryan/erdos/conjectures/711.lean-34-    1 ≤ k ≤ n. When m = n this coincides with the function in Problem #710. -/
+conjectures/711.lean-35-noncomputable def erdos711_f (n m : ℕ) : ℕ :=
+conjectures/711.lean:36:  sInf {f : ℕ | ∃ g : Fin n → ℕ,
+/home/ryan/erdos/conjectures/711.lean-37-    Function.Injective g ∧
+conjectures/711.lean-38-    (∀ i : Fin n, m < g i) ∧
+conjectures/711.lean-39-    (∀ i : Fin n, g i < m + f) ∧
+--
+conjectures/163.lean-37-/-- The diagonal Ramsey number R(H): the minimum N such that for every simple
+/home/ryan/erdos/conjectures/163.lean-38-    graph G on Fin N, either G or Gᶜ contains a copy of H. -/
+conjectures/163.lean-39-noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+conjectures/163.lean:40:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/163.lean-41-    containsCopy G H ∨ containsCopy Gᶜ H}
+/home/ryan/erdos/conjectures/163.lean-42-
+/home/ryan/erdos/conjectures/163.lean-43-/--
+--
+/home/ryan/erdos/conjectures/183.lean-27-    and a monochromatic triangle is three pairwise distinct vertices
+/home/ryan/erdos/conjectures/183.lean-28-    whose three edges all receive the same colour. -/
+conjectures/183.lean-29-noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+conjectures/183.lean:30:  sInf {n : ℕ | ∀ (c : Fin n → Fin n → Fin k),
+/home/ryan/erdos/conjectures/183.lean-31-    (∀ i j, c i j = c j i) →
+conjectures/183.lean-32-    ∃ (a b d : Fin n), a ≠ b ∧ a ≠ d ∧ b ≠ d ∧
+/home/ryan/erdos/conjectures/183.lean-33-      c a b = c a d ∧ c a b = c b d}
+--
+/home/ryan/erdos/conjectures/550.lean-29-    copy of G₂. -/
+conjectures/550.lean-30-noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+conjectures/550.lean-31-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+conjectures/550.lean:32:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/550.lean-33-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/erdos/conjectures/550.lean-34-
+/home/ryan/erdos/conjectures/550.lean-35-/-- The complete multipartite graph with vertex class sizes given by `sizes`.
+--
+/home/ryan/erdos/conjectures/552.lean-32-    copy of G₂. -/
+conjectures/552.lean-33-noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+conjectures/552.lean-34-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+conjectures/552.lean:35:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/552.lean-36-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/erdos/conjectures/552.lean-37-
+conjectures/552.lean-38-/-- The cycle graph on k vertices (k ≥ 3): vertex i is adjacent to vertex j iff
+--
+/home/ryan/erdos/conjectures/129.lean-34-    every r-coloring of the edges of K_N, there exists a set of n vertices and
+/home/ryan/erdos/conjectures/129.lean-35-    a color c such that the set is K_k-free in color c. -/
+conjectures/129.lean-36-noncomputable def multicolorRamseyNum (n k r : ℕ) : ℕ :=
+conjectures/129.lean:37:  sInf {N : ℕ | ∀ (χ : EdgeColoring N r),
+conjectures/129.lean-38-    ∃ (S : Finset (Fin N)) (c : Fin r),
+/home/ryan/erdos/conjectures/129.lean-39-      S.card = n ∧ IsMonoKkFree χ c k S}
+/home/ryan/erdos/conjectures/129.lean-40-
+--
+/home/ryan/erdos/conjectures/530.lean-38-    subset of size at least k. Equivalently, the minimum of maxSidonSubsetSize A
+/home/ryan/erdos/conjectures/530.lean-39-    over all N-element sets A ⊂ ℝ. -/
+conjectures/530.lean-40-noncomputable def sidonSubsetNumber (N : ℕ) : ℕ :=
+conjectures/530.lean:41:  sInf {m : ℕ | ∃ A : Finset ℝ, A.card = N ∧ maxSidonSubsetSize A = m}
+/home/ryan/erdos/conjectures/530.lean-42-
+/home/ryan/erdos/conjectures/530.lean-43-/--
+conjectures/530.lean-44-Erdős Conjecture (Problem #530) [Er73,p.120][Er75f,p.104][Er80e]:
+--
+/home/ryan/erdos/conjectures/547.lean-24-    every graph H on N vertices contains a copy of G or its complement contains
+/home/ryan/erdos/conjectures/547.lean-25-    a copy of G. -/
+conjectures/547.lean-26-noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+conjectures/547.lean:27:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/547.lean-28-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/erdos/conjectures/547.lean-29-
+/home/ryan/erdos/conjectures/547.lean-30-/--
+--
+/home/ryan/erdos/conjectures/762.lean-38-    colouring. -/
+conjectures/762.lean-39-noncomputable def cochromaticNumber762 {V : Type*} [Fintype V]
+conjectures/762.lean-40-    (G : SimpleGraph V) : ℕ :=
+conjectures/762.lean:41:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring762 G k c}
+/home/ryan/erdos/conjectures/762.lean-42-
+/home/ryan/erdos/conjectures/762.lean-43-/--
+conjectures/762.lean-44-**Erdős Problem #762** (DISPROVED, Steiner [St24b]):
+--
+/home/ryan/erdos/conjectures/738.lean-21-
+conjectures/738.lean-22-/-- A graph has infinite chromatic number: it cannot be properly colored
+/home/ryan/erdos/conjectures/738.lean-23-    with finitely many colors. -/
+conjectures/738.lean:24:def HasInfiniteChromaticNumber {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/738.lean-25-  ∀ n : ℕ, IsEmpty (G.Coloring (Fin n))
+/home/ryan/erdos/conjectures/738.lean-26-
+/home/ryan/erdos/conjectures/738.lean-27-/--
+--
+/home/ryan/erdos/conjectures/738.lean-31-(contains no K₃), then G contains every finite tree as an induced subgraph.
+/home/ryan/erdos/conjectures/738.lean-32--/
+conjectures/738.lean-33-theorem erdos_problem_738 {V : Type*} (G : SimpleGraph V)
+conjectures/738.lean:34:    (hchrom : HasInfiniteChromaticNumber G)
+conjectures/738.lean-35-    (htri : G.CliqueFree 3) :
+conjectures/738.lean-36-    ∀ (m : ℕ) (T : SimpleGraph (Fin m)), T.IsTree →
+conjectures/738.lean-37-      Nonempty (T ↪g G) :=
+--
+/home/ryan/erdos/conjectures/107.lean-27-vertices of a convex n-gon).
+/home/ryan/erdos/conjectures/107.lean-28--/
+conjectures/107.lean-29-noncomputable def f (n : ℕ) : ℕ :=
+conjectures/107.lean:30:  sInf {m : ℕ | ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/erdos/conjectures/107.lean-31-    P.card = m →
+/home/ryan/erdos/conjectures/107.lean-32-    InGeneralPosition P →
+conjectures/107.lean-33-    ∃ Q : Finset (EuclideanSpace ℝ (Fin 2)),
+--
+/home/ryan/erdos/conjectures/16.lean-29-Definition of an infinite arithmetic progression of natural numbers.
+/home/ryan/erdos/conjectures/16.lean-30-P = { a + k*d | k ∈ ℕ } for some a, d with d > 0.
+/home/ryan/erdos/conjectures/16.lean-31--/
+conjectures/16.lean:32:def IsInfiniteAP (P : Set ℕ) : Prop :=
+/home/ryan/erdos/conjectures/16.lean-33-  ∃ a d, d > 0 ∧ P = { n | ∃ k, n = a + k * d }
+/home/ryan/erdos/conjectures/16.lean-34-
+/home/ryan/erdos/conjectures/16.lean-35-/--
+--
+/home/ryan/erdos/conjectures/16.lean-44-arithmetic progression and a set of density 0.
+/home/ryan/erdos/conjectures/16.lean-45--/
+conjectures/16.lean-46-theorem erdos_problem_16_conjecture :
+conjectures/16.lean:47:  ∃ P Z : Set ℕ, IsInfiniteAP P ∧ upperDensity Z = 0 ∧ S = P ∪ Z :=
+/home/ryan/erdos/conjectures/16.lean-48-sorry
+--
+/home/ryan/erdos/conjectures/736.lean-33-    for which G admits a proper κ-coloring. -/
+conjectures/736.lean-34-noncomputable def SimpleGraph.cardChromaticNumber {V : Type u}
+conjectures/736.lean-35-    (G : SimpleGraph V) : Cardinal.{u} :=
+conjectures/736.lean:36:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+/home/ryan/erdos/conjectures/736.lean-37-
+/home/ryan/erdos/conjectures/736.lean-38-/--
+conjectures/736.lean-39-Erdős Problem #736 [Er81] [Er93,p.343]:
+--
+conjectures/798.lean-32-/-- t(n): the minimum number of points in {1,...,n}² whose pairwise lines
+/home/ryan/erdos/conjectures/798.lean-33-    cover all n² grid points. -/
+conjectures/798.lean-34-noncomputable def gridCoveringNumber (n : ℕ) : ℕ :=
+conjectures/798.lean:35:  sInf {k : ℕ | ∃ S : Finset (ℤ × ℤ), S.card = k ∧ CoversIntGrid n S}
+/home/ryan/erdos/conjectures/798.lean-36-
+/home/ryan/erdos/conjectures/798.lean-37-/--
+conjectures/798.lean-38-Erdős Problem #798 (proved by Alon [Al91]):
+--
+conjectures/151.lean-36-/-- The clique transversal number τ(G): the minimum cardinality of a clique
+/home/ryan/erdos/conjectures/151.lean-37-    transversal of G. -/
+conjectures/151.lean-38-noncomputable def cliqueTransversalNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+conjectures/151.lean:39:  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal G T ∧ T.card = k }
+/home/ryan/erdos/conjectures/151.lean-40-
+conjectures/151.lean-41-/-- S is an independent set in G: no two distinct vertices of S are adjacent. -/
+conjectures/151.lean-42-def IsIndependentSet {n : ℕ} (G : SimpleGraph (Fin n)) (S : Finset (Fin n)) : Prop :=
+--
+/home/ryan/erdos/conjectures/151.lean-50-    an independent set of size H(n); equivalently, H(n) is the minimum
+/home/ryan/erdos/conjectures/151.lean-51-    independence number over all triangle-free graphs on n vertices. -/
+conjectures/151.lean-52-noncomputable def H (n : ℕ) : ℕ :=
+conjectures/151.lean:53:  sInf { k : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ independenceNumber G = k }
+/home/ryan/erdos/conjectures/151.lean-54-
+/home/ryan/erdos/conjectures/151.lean-55-/--
+conjectures/151.lean-56-Erdős Problem #151 [Er88, p.82] [EGT92, p.280] (problem of Erdős and Gallai):
+--
+/home/ryan/erdos/conjectures/360.lean-30-/-- The minimum number of color classes needed so that {1, ..., n-1} can be colored
+/home/ryan/erdos/conjectures/360.lean-31-    into classes where n is not a sum of distinct elements from any single class. -/
+conjectures/360.lean-32-noncomputable def minSumFreeClasses (n : ℕ) : ℕ :=
+conjectures/360.lean:33:  sInf {k : ℕ | ∃ c : ℕ → Fin k, SumFreeColoring n k c}
+/home/ryan/erdos/conjectures/360.lean-34-
+conjectures/360.lean-35-theorem erdos_problem_360 :
+conjectures/360.lean-36-    ∃ C₁ C₂ : ℝ, 0 < C₁ ∧ 0 < C₂ ∧
+--
+/home/ryan/erdos/conjectures/558.lean-32-    such that every edge of G maps to an edge of colour a. -/
+conjectures/558.lean-33-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/558.lean-34-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+conjectures/558.lean:35:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/erdos/conjectures/558.lean-36-    (∀ i j, c i j = c j i) →
+conjectures/558.lean-37-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/erdos/conjectures/558.lean-38-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+conjectures/181.lean-41-/-- The diagonal Ramsey number R(H): the minimum N such that for every simple
+/home/ryan/erdos/conjectures/181.lean-42-    graph G on Fin N, either G or Gᶜ contains a copy of H. -/
+conjectures/181.lean-43-noncomputable def ramseyDiag181 {U : Type*} (H : SimpleGraph U) : ℕ :=
+conjectures/181.lean:44:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/erdos/conjectures/181.lean-45-    containsCopy181 G H ∨ containsCopy181 Gᶜ H}
+/home/ryan/erdos/conjectures/181.lean-46-
+/home/ryan/erdos/conjectures/181.lean-47-/--
+--
+/home/ryan/erdos/conjectures/709.lean-33-    Formally, the infimum of all f such that for every such A there exists an
+conjectures/709.lean-34-    injective assignment g : A → interval with a ∣ g(a) for all a ∈ A. -/
+conjectures/709.lean-35-noncomputable def erdos709_f (n : ℕ) : ℕ :=
+conjectures/709.lean:36:  sInf {f : ℕ | ∀ (A : Finset ℕ) (hA : A.Nonempty),
+/home/ryan/erdos/conjectures/709.lean-37-    A.card = n → (∀ a ∈ A, 2 ≤ a) →
+conjectures/709.lean-38-    ∀ k : ℕ,
+conjectures/709.lean-39-    ∃ g : ℕ → ℕ,
+--
+conjectures/766.lean-33-/-- The minimum extremal number f(n;k,l): the minimum of ex(n;G) over all
+/home/ryan/erdos/conjectures/766.lean-34-    graphs G on k vertices with exactly l edges. -/
+conjectures/766.lean-35-noncomputable def minExtremalNumber (n k l : ℕ) : ℕ :=
+conjectures/766.lean:36:  sInf {m : ℕ | ∃ G : SimpleGraph (Fin k),
+/home/ryan/erdos/conjectures/766.lean-37-    G.edgeSet.ncard = l ∧ extremalNumber G n = m}
+/home/ryan/erdos/conjectures/766.lean-38-
+/home/ryan/erdos/conjectures/766.lean-39-/--
+--
+/home/ryan/erdos/conjectures/460.lean-27-    coprime to `n - erdos460_seq n i` for all `i ≤ k`. -/
+conjectures/460.lean-28-noncomputable def erdos460_seq (n : ℕ) : ℕ → ℕ
+/home/ryan/erdos/conjectures/460.lean-29-  | 0 => 0
+conjectures/460.lean:30:  | k + 1 => sInf {m : ℕ | erdos460_seq n k < m ∧
+conjectures/460.lean-31-      ∀ i : ℕ, i ≤ k → Nat.Coprime (n - m) (n - erdos460_seq n i)}
+/home/ryan/erdos/conjectures/460.lean-32-
+/home/ryan/erdos/conjectures/460.lean-33-/-- The sum $\sum_{0 < a_i < n} 1/a_i$ for the greedy coprime-complement
+--
+/home/ryan/erdos/conjectures/165.lean-30-    on N vertices contains either a triangle (3-clique) or an independent
+/home/ryan/erdos/conjectures/165.lean-31-    set of size k (a k-clique in the complement). -/
+conjectures/165.lean-32-noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+conjectures/165.lean:33:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/erdos/conjectures/165.lean-34-
+/home/ryan/erdos/conjectures/165.lean-35-/--
+conjectures/165.lean-36-Erdős Conjecture (Problem #165) [Er61, Er71, Er90b, Er93, Er97c]:
+--
+/home/ryan/erdos/conjectures/127.lean-43-Edwards [Ed73] proved f(m) ≥ 0 for all m. Note that f(C(n,2)) = 0, achieved by Kₙ.
+/home/ryan/erdos/conjectures/127.lean-44--/
+conjectures/127.lean-45-noncomputable def f (m : ℕ) : ℝ :=
+conjectures/127.lean:46:  sInf {r : ℝ | ∃ (V : Type) (_ : Fintype V) (_ : DecidableEq V)
+conjectures/127.lean-47-    (G : SimpleGraph V) (_ : DecidableRel G.Adj),
+conjectures/127.lean-48-    G.edgeFinset.card = m ∧ r = (maxBipartiteSubgraphSize G : ℝ) - edwardsLB m}
+/home/ryan/erdos/conjectures/127.lean-49-

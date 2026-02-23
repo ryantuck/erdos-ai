@@ -1,0 +1,337 @@
+/home/ryan/erdos/conjectures/543.lean-38-
+/home/ryan/erdos/conjectures/543.lean-39-Define f(N) as the minimal k such that for every abelian group G of size N,
+/home/ryan/erdos/conjectures/543.lean-40-a uniformly random subset A ⊆ G of size k is subset-sum complete with
+conjectures/543.lean:41:probability ≥ 1/2. Erdős and Rényi proved f(N) ≤ log₂ N + O(log log N).
+/home/ryan/erdos/conjectures/543.lean-42-
+/home/ryan/erdos/conjectures/543.lean-43-The conjecture asked whether f(N) ≤ log₂ N + o(log log N). Erdős believed
+/home/ryan/erdos/conjectures/543.lean-44-this improvement is impossible [Er73,p.127], [ErHa78b].
+--
+/home/ryan/erdos/conjectures/900.lean-11-
+conjectures/900.lean-12-There is a function f:(1/2,∞) → ℝ such that f(c) → 0 as c → 1/2⁺ and
+/home/ryan/erdos/conjectures/900.lean-13-f(c) → 1 as c → ∞ and every random graph with n vertices and cn edges
+conjectures/900.lean:14:has (with high probability) a path of length at least f(c)·n.
+/home/ryan/erdos/conjectures/900.lean-15-
+/home/ryan/erdos/conjectures/900.lean-16-This was proved by Ajtai, Komlós, and Szemerédi [AKS81].
+/home/ryan/erdos/conjectures/900.lean-17--/
+--
+conjectures/900.lean-25-      ∀ i : ℕ, ∀ h : i < m,
+/home/ryan/erdos/conjectures/900.lean-26-        G.Adj (path ⟨i, by omega⟩) (path ⟨i + 1, by omega⟩)
+/home/ryan/erdos/conjectures/900.lean-27-
+conjectures/900.lean:28:/-- The probability that a uniformly random simple graph on Fin n with exactly
+/home/ryan/erdos/conjectures/900.lean-29-    m edges satisfies a given property, in the Erdős–Rényi G(n,m) model.
+/home/ryan/erdos/conjectures/900.lean-30-    This is the fraction |{G ∈ G(n,m) | P G}| / |G(n,m)|. -/
+conjectures/900.lean:31:noncomputable def erdosRenyiProbability (n m : ℕ)
+conjectures/900.lean-32-    (P : SimpleGraph (Fin n) → Prop) : ℝ := sorry
+/home/ryan/erdos/conjectures/900.lean-33-
+/home/ryan/erdos/conjectures/900.lean-34-/--
+conjectures/900.lean-35-Erdős Problem #900 (proved by Ajtai, Komlós, and Szemerédi [AKS81]):
+/home/ryan/erdos/conjectures/900.lean-36-
+conjectures/900.lean-37-There exists f : ℝ → ℝ with f(c) → 0 as c → (1/2)⁺ and f(c) → 1 as c → ∞,
+conjectures/900.lean:38:such that for every c > 1/2, a random graph G(n, ⌊cn⌋) with high probability
+/home/ryan/erdos/conjectures/900.lean-39-contains a path of length at least f(c)·n.
+/home/ryan/erdos/conjectures/900.lean-40--/
+conjectures/900.lean-41-theorem erdos_problem_900 :
+--
+/home/ryan/erdos/conjectures/900.lean-45-    (Filter.Tendsto f Filter.atTop (nhds 1)) ∧
+conjectures/900.lean-46-    (∀ c : ℝ, c > 1/2 → ∀ ε : ℝ, ε > 0 →
+conjectures/900.lean-47-      ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/900.lean:48:        erdosRenyiProbability n (⌊c * (n : ℝ)⌋₊)
+conjectures/900.lean-49-          (fun G => graphHasLongPath G (⌊f c * (n : ℝ)⌋₊)) ≥ 1 - ε) :=
+/home/ryan/erdos/conjectures/900.lean-50-  sorry
+/home/ryan/erdos/conjectures/900.lean-51-
+--
+/home/ryan/erdos/conjectures/799.lean-19-Is it true that χ_L(G) = o(n) for almost all graphs on n vertices?
+/home/ryan/erdos/conjectures/799.lean-20-
+conjectures/799.lean-21-A problem of Erdős, Rubin and Taylor [ERT80]. The answer is yes: Alon [Al92] proved
+conjectures/799.lean:22:that the random graph on n vertices with edge probability 1/2 has
+/home/ryan/erdos/conjectures/799.lean-23-χ_L(G) ≪ (log log n / log n) · n almost surely. Alon, Krivelevich, and Sudakov [AKS99]
+/home/ryan/erdos/conjectures/799.lean-24-improved this to χ_L(G) ≍ n / log n almost surely.
+/home/ryan/erdos/conjectures/799.lean-25-
+--
+/home/ryan/erdos/conjectures/1149.lean-28-Let α > 0 be a real number, not an integer. The natural density of integers
+/home/ryan/erdos/conjectures/1149.lean-29-n ≥ 1 for which gcd(n, ⌊n^α⌋) = 1 equals 6/π².
+/home/ryan/erdos/conjectures/1149.lean-30-
+conjectures/1149.lean:31:The constant 6/π² = 1/ζ(2) is the "probability" that two random integers
+/home/ryan/erdos/conjectures/1149.lean-32-are coprime, so this says n and ⌊n^α⌋ behave like independent random integers
+/home/ryan/erdos/conjectures/1149.lean-33-with respect to coprimality when α is not an integer.
+/home/ryan/erdos/conjectures/1149.lean-34--/
+--
+conjectures/1144.lean:1:import Mathlib.Probability.Independence.Basic
+/home/ryan/erdos/conjectures/1144.lean-2-import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/1144.lean-3-import Mathlib.Data.Nat.Prime.Basic
+/home/ryan/erdos/conjectures/1144.lean-4-import Mathlib.Data.Nat.Factorization.Basic
+--
+/home/ryan/erdos/conjectures/1144.lean-7-import Mathlib.Order.Interval.Finset.Nat
+/home/ryan/erdos/conjectures/1144.lean-8-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+/home/ryan/erdos/conjectures/1144.lean-9-
+conjectures/1144.lean:10:open MeasureTheory ProbabilityTheory Filter Finset BigOperators
+/home/ryan/erdos/conjectures/1144.lean-11-
+/home/ryan/erdos/conjectures/1144.lean-12-noncomputable section
+/home/ryan/erdos/conjectures/1144.lean-13-
+/home/ryan/erdos/conjectures/1144.lean-14-namespace Erdos1144
+/home/ryan/erdos/conjectures/1144.lean-15-
+conjectures/1144.lean:16:/-- A random variable is Rademacher distributed: takes values ±1 with equal probability. -/
+conjectures/1144.lean-17-def IsRademacher {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) (X : Ω → ℝ) : Prop :=
+/home/ryan/erdos/conjectures/1144.lean-18-  (∀ ω, X ω = 1 ∨ X ω = -1) ∧
+/home/ryan/erdos/conjectures/1144.lean-19-  μ {ω | X ω = 1} = μ {ω | X ω = -1}
+--
+/home/ryan/erdos/conjectures/1144.lean-35-Let f be a random completely multiplicative function, where for each prime p
+/home/ryan/erdos/conjectures/1144.lean-36-we independently choose f(p) ∈ {-1, 1} uniformly at random. Is it true that
+/home/ryan/erdos/conjectures/1144.lean-37-  limsup_{N → ∞} (∑_{m ≤ N} f(m)) / √N = ∞
+conjectures/1144.lean:38:with probability 1?
+/home/ryan/erdos/conjectures/1144.lean-39-
+/home/ryan/erdos/conjectures/1144.lean-40-This model is sometimes called a Rademacher random multiplicative function.
+/home/ryan/erdos/conjectures/1144.lean-41-Atherfold [At25] proved that, almost surely,
+/home/ryan/erdos/conjectures/1144.lean-42-  ∑_{m ≤ N} f(m) ≪ N^{1/2} (log N)^{1+o(1)}.
+/home/ryan/erdos/conjectures/1144.lean-43-
+conjectures/1144.lean:44:Tags: number theory, probability
+/home/ryan/erdos/conjectures/1144.lean-45--/
+/home/ryan/erdos/conjectures/1144.lean-46-theorem erdos_problem_1144
+conjectures/1144.lean:47:    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+conjectures/1144.lean-48-    {ε : ℕ → Ω → ℝ}
+conjectures/1144.lean-49-    (hRad : ∀ k, IsRademacher μ (ε k))
+conjectures/1144.lean-50-    (hIndep : iIndepFun ε μ) :
+--
+conjectures/526.lean:1:import Mathlib.Probability.Independence.Basic
+/home/ryan/erdos/conjectures/526.lean-2-import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/526.lean-3-import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/526.lean-4-import Mathlib.Topology.Algebra.InfiniteSum.Basic
+--
+/home/ryan/erdos/conjectures/526.lean-6-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/526.lean-7-import Mathlib.Algebra.Order.Floor.Ring
+/home/ryan/erdos/conjectures/526.lean-8-
+conjectures/526.lean:9:open MeasureTheory ProbabilityTheory Filter Finset BigOperators Set
+/home/ryan/erdos/conjectures/526.lean-10-
+/home/ryan/erdos/conjectures/526.lean-11-noncomputable section
+/home/ryan/erdos/conjectures/526.lean-12-
+--
+/home/ryan/erdos/conjectures/526.lean-24-
+/home/ryan/erdos/conjectures/526.lean-25-Dvoretzky's covering problem. Let aₙ ≥ 0 with aₙ → 0 and ∑ aₙ = ∞. If we
+/home/ryan/erdos/conjectures/526.lean-26-independently and uniformly place random arcs of length aₙ on the unit circle,
+conjectures/526.lean:27:Shepp showed the circle is covered with probability 1 if and only if
+/home/ryan/erdos/conjectures/526.lean-28-  ∑ₙ exp(a₁ + ⋯ + aₙ) / n² = ∞.
+/home/ryan/erdos/conjectures/526.lean-29-
+conjectures/526.lean:30:The probability space (Ω, μ) carries independent Uniform[0,1) random variables
+/home/ryan/erdos/conjectures/526.lean-31-X(n) giving the starting point of the n-th arc.
+/home/ryan/erdos/conjectures/526.lean-32--/
+/home/ryan/erdos/conjectures/526.lean-33-theorem erdos_problem_526
+conjectures/526.lean:34:    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+conjectures/526.lean-35-    (a : ℕ → ℝ)
+conjectures/526.lean-36-    (ha_nonneg : ∀ n, 0 ≤ a n)
+conjectures/526.lean-37-    (ha_tendsto : Tendsto a atTop (nhds 0))
+--
+/home/ryan/erdos/conjectures/625.lean-17-complete graph or an empty graph. Let χ(G) denote the chromatic number.
+/home/ryan/erdos/conjectures/625.lean-18-
+/home/ryan/erdos/conjectures/625.lean-19-If G is a random graph with n vertices and each edge included independently with
+conjectures/625.lean:20:probability 1/2, is it true that almost surely
+/home/ryan/erdos/conjectures/625.lean-21-  χ(G) − ζ(G) → ∞
+/home/ryan/erdos/conjectures/625.lean-22-as n → ∞?
+/home/ryan/erdos/conjectures/625.lean-23-
+--
+/home/ryan/erdos/conjectures/625.lean-26-
+/home/ryan/erdos/conjectures/625.lean-27-/-- The simple graph on Fin n determined by a Boolean edge matrix. Under G(n, 1/2),
+/home/ryan/erdos/conjectures/625.lean-28-    each Boolean matrix is equally likely, so the fraction of matrices whose graph
+conjectures/625.lean:29:    has a property equals the G(n, 1/2)-probability of that property. -/
+conjectures/625.lean-30-def toGraph625 {n : ℕ} (ec : Fin n → Fin n → Bool) : SimpleGraph (Fin n) where
+conjectures/625.lean-31-  Adj u v := u ≠ v ∧ ec (min u v) (max u v) = true
+conjectures/625.lean-32-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, by rwa [min_comm, max_comm]⟩
+--
+/home/ryan/erdos/conjectures/745.lean-15-# Erdős Problem #745
+/home/ryan/erdos/conjectures/745.lean-16-
+/home/ryan/erdos/conjectures/745.lean-17-Describe the size of the second largest component of the random graph on n
+conjectures/745.lean:18:vertices, where each edge is included independently with probability 1/n.
+/home/ryan/erdos/conjectures/745.lean-19-
+/home/ryan/erdos/conjectures/745.lean-20-Erdős believed that almost surely the second largest component has size ≪ log n.
+/home/ryan/erdos/conjectures/745.lean-21-This is true, as proved by Komlós, Sulyok, and Szemerédi [KSS80].
+--
+conjectures/745.lean-32-def edgeCount745 {n : ℕ} (ec : Fin n → Fin n → Bool) : ℕ :=
+conjectures/745.lean-33-  (Finset.univ.filter (fun p : Fin n × Fin n => p.1 < p.2 ∧ ec p.1 p.2 = true)).card
+/home/ryan/erdos/conjectures/745.lean-34-
+conjectures/745.lean:35:/-- The probability weight of a specific edge configuration under the
+conjectures/745.lean-36-    Erdős–Rényi model G(n, 1/n): each edge is included independently
+conjectures/745.lean:37:    with probability 1/n. -/
+conjectures/745.lean-38-noncomputable def gnpWeight745 (n : ℕ) (ec : Fin n → Fin n → Bool) : ℝ :=
+conjectures/745.lean-39-  (1 / (n : ℝ)) ^ edgeCount745 ec *
+conjectures/745.lean-40-  (1 - 1 / (n : ℝ)) ^ (n.choose 2 - edgeCount745 ec)
+/home/ryan/erdos/conjectures/745.lean-41-
+conjectures/745.lean:42:/-- The G(n, 1/n)-probability of a graph property P: the sum of weights
+/home/ryan/erdos/conjectures/745.lean-43-    over all edge configurations whose graph satisfies P. -/
+conjectures/745.lean-44-noncomputable def gnpProb745 (n : ℕ) (P : SimpleGraph (Fin n) → Prop) : ℝ :=
+conjectures/745.lean-45-  (Finset.univ.filter (fun ec : Fin n → Fin n → Bool =>
+--
+/home/ryan/erdos/conjectures/745.lean-66-component almost surely has size O(log n).
+/home/ryan/erdos/conjectures/745.lean-67-
+conjectures/745.lean-68-Formally: there exists a constant C > 0 such that for every ε > 0 there
+conjectures/745.lean:69:exists n₀ such that for all n ≥ n₀, the G(n, 1/n)-probability that the
+/home/ryan/erdos/conjectures/745.lean-70-second largest component has size at most C · log n is at least 1 − ε.
+/home/ryan/erdos/conjectures/745.lean-71-
+/home/ryan/erdos/conjectures/745.lean-72-Proved by Komlós, Sulyok, and Szemerédi [KSS80].
+--
+conjectures/746.lean-19-A conjecture of Erdős and Rényi [ErRe66]. This was proved: Pósa [Po76]
+/home/ryan/erdos/conjectures/746.lean-20-showed this with Cn log n edges for some large C, Korshunov [Ko77] improved
+/home/ryan/erdos/conjectures/746.lean-21-the threshold, and Komlós and Szemerédi [KoSz83] proved the sharp result
+conjectures/746.lean:22:that with (1/2)n log n + (1/2)n log log n + cn edges the probability of
+/home/ryan/erdos/conjectures/746.lean-23-being Hamiltonian tends to e^{-e^{-2c}}.
+/home/ryan/erdos/conjectures/746.lean-24-
+conjectures/746.lean-25-https://www.erdosproblems.com/746
+--
+/home/ryan/erdos/conjectures/746.lean-43-  Finset.univ.filter (fun ec => edgeCount746 ec = m)
+/home/ryan/erdos/conjectures/746.lean-44-
+/home/ryan/erdos/conjectures/746.lean-45-/-- The fraction of graphs on Fin n with exactly m edges that satisfy
+conjectures/746.lean:46:    property P (the G(n,m) probability of P). Returns 0 if there are
+/home/ryan/erdos/conjectures/746.lean-47-    no graphs with exactly m edges. -/
+conjectures/746.lean-48-noncomputable def gnmFraction746 (n m : ℕ) (P : SimpleGraph (Fin n) → Prop) : ℝ :=
+/home/ryan/erdos/conjectures/746.lean-49-  ((graphsWithEdges746 n m).filter (fun ec => P (toGraph746 ec))).card /
+--
+/home/ryan/erdos/conjectures/746.lean-57-
+conjectures/746.lean-58-Formally: for every ε > 0 and δ > 0, there exists n₀ such that for all
+/home/ryan/erdos/conjectures/746.lean-59-n ≥ n₀ and all m with (1/2 + ε) · n · log n ≤ m ≤ C(n,2), the
+conjectures/746.lean:60:G(n,m)-probability that the graph is Hamiltonian is at least 1 − δ.
+/home/ryan/erdos/conjectures/746.lean-61-
+/home/ryan/erdos/conjectures/746.lean-62-Proved by Komlós and Szemerédi [KoSz83].
+/home/ryan/erdos/conjectures/746.lean-63--/
+--
+conjectures/524.lean:1:import Mathlib.Probability.Independence.Basic
+/home/ryan/erdos/conjectures/524.lean-2-import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/524.lean-3-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/524.lean-4-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+/home/ryan/erdos/conjectures/524.lean-5-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/524.lean-6-import Mathlib.Order.Filter.Basic
+/home/ryan/erdos/conjectures/524.lean-7-
+conjectures/524.lean:8:open MeasureTheory ProbabilityTheory Filter Finset BigOperators Set
+/home/ryan/erdos/conjectures/524.lean-9-
+conjectures/524.lean-10-/-- A random variable is Rademacher distributed: it takes values in {-1, 1}
+conjectures/524.lean:11:with equal probability. -/
+conjectures/524.lean-12-def IsRademacher {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) (X : Ω → ℝ) : Prop :=
+/home/ryan/erdos/conjectures/524.lean-13-  (∀ ω, X ω = 1 ∨ X ω = -1) ∧
+/home/ryan/erdos/conjectures/524.lean-14-  μ {ω | X ω = 1} = μ {ω | X ω = -1}
+--
+/home/ryan/erdos/conjectures/524.lean-39-M_n(ω)/n^{1/2-δ} → ∞. The exact order of magnitude remains open.
+/home/ryan/erdos/conjectures/524.lean-40--/
+/home/ryan/erdos/conjectures/524.lean-41-theorem erdos_problem_524
+conjectures/524.lean:42:    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+conjectures/524.lean-43-    {ε : ℕ → Ω → ℝ}
+conjectures/524.lean-44-    (hRad : ∀ k, IsRademacher μ (ε k))
+conjectures/524.lean-45-    (hIndep : iIndepFun ε μ) :
+--
+/home/ryan/erdos/conjectures/578.lean-11-/-!
+/home/ryan/erdos/conjectures/578.lean-12-# Erdős Problem #578
+/home/ryan/erdos/conjectures/578.lean-13-
+conjectures/578.lean:14:If G is a random graph on 2^d vertices, including each edge with probability 1/2,
+/home/ryan/erdos/conjectures/578.lean-15-then G almost surely contains a copy of Q_d (the d-dimensional hypercube with 2^d
+/home/ryan/erdos/conjectures/578.lean-16-vertices and d·2^{d-1} many edges).
+/home/ryan/erdos/conjectures/578.lean-17-
+/home/ryan/erdos/conjectures/578.lean-18-A conjecture of Erdős and Bollobás [Er90c]. Solved by Riordan [Ri00], who in fact
+conjectures/578.lean:19:proved this with any edge-probability > 1/4.
+/home/ryan/erdos/conjectures/578.lean-20--/
+/home/ryan/erdos/conjectures/578.lean-21-
+/home/ryan/erdos/conjectures/578.lean-22-/-- The d-dimensional hypercube graph Q_d. Vertices are functions Fin d → Bool
+--
+/home/ryan/erdos/conjectures/578.lean-38-/-- The simple graph on Fin n determined by a Boolean matrix. Only values at
+/home/ryan/erdos/conjectures/578.lean-39-    (min u v, max u v) matter; this ensures symmetry. Under G(n, 1/2), each
+/home/ryan/erdos/conjectures/578.lean-40-    Boolean matrix is equally likely, and the fraction of matrices whose graph
+conjectures/578.lean:41:    has a property equals the probability that G(n, 1/2) has that property. -/
+conjectures/578.lean-42-def toGraph578 {n : ℕ} (ec : Fin n → Fin n → Bool) : SimpleGraph (Fin n) where
+conjectures/578.lean-43-  Adj u v := u ≠ v ∧ ec (min u v) (max u v) = true
+conjectures/578.lean-44-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, by rwa [min_comm, max_comm]⟩
+--
+conjectures/578.lean-48-Erdős Problem #578 [Er90c]:
+/home/ryan/erdos/conjectures/578.lean-49-
+/home/ryan/erdos/conjectures/578.lean-50-In the Erdős–Rényi random graph G(2^d, 1/2) — the uniform distribution over all
+conjectures/578.lean:51:labelled simple graphs on 2^d vertices — the probability that G contains a copy
+/home/ryan/erdos/conjectures/578.lean-52-of Q_d (the d-dimensional hypercube) tends to 1 as d → ∞.
+/home/ryan/erdos/conjectures/578.lean-53-
+/home/ryan/erdos/conjectures/578.lean-54-A copy of Q_d in G means an injective map f from the vertices of Q_d to the
+--
+/home/ryan/erdos/conjectures/807.lean-43-/--
+conjectures/807.lean-44-Erdős Problem #807 (disproved by Alon [Al15]):
+/home/ryan/erdos/conjectures/807.lean-45-
+conjectures/807.lean:46:Is it true that for a random graph G on n vertices with edge probability 1/2,
+/home/ryan/erdos/conjectures/807.lean-47-τ(G) = n − α(G) almost surely?
+/home/ryan/erdos/conjectures/807.lean-48-
+/home/ryan/erdos/conjectures/807.lean-49-The bipartition number τ(G) is the smallest number of pairwise edge-disjoint
+--
+conjectures/523.lean:1:import Mathlib.Probability.Independence.Basic
+/home/ryan/erdos/conjectures/523.lean-2-import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/523.lean-3-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/523.lean-4-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/523.lean-5-import Mathlib.Analysis.SpecialFunctions.Sqrt
+/home/ryan/erdos/conjectures/523.lean-6-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/523.lean-7-
+conjectures/523.lean:8:open MeasureTheory ProbabilityTheory Filter Finset BigOperators
+/home/ryan/erdos/conjectures/523.lean-9-
+conjectures/523.lean-10-/-- A random variable is Rademacher distributed: it takes values in {-1, 1}
+conjectures/523.lean:11:with equal probability. -/
+conjectures/523.lean-12-def IsRademacher {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) (X : Ω → ℝ) : Prop :=
+/home/ryan/erdos/conjectures/523.lean-13-  (∀ ω, X ω = 1 ∨ X ω = -1) ∧
+/home/ryan/erdos/conjectures/523.lean-14-  μ {ω | X ω = 1} = μ {ω | X ω = -1}
+--
+/home/ryan/erdos/conjectures/523.lean-30-This was settled by Halász, who proved this is true with C = 1.
+/home/ryan/erdos/conjectures/523.lean-31--/
+/home/ryan/erdos/conjectures/523.lean-32-theorem erdos_problem_523
+conjectures/523.lean:33:    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+conjectures/523.lean-34-    {ε : ℕ → Ω → ℝ}
+conjectures/523.lean-35-    (hRad : ∀ k, IsRademacher μ (ε k))
+conjectures/523.lean-36-    (hIndep : iIndepFun ε μ) :
+--
+/home/ryan/erdos/conjectures/395.lean-12-/--
+conjectures/395.lean-13-Erdős Problem #395 (Proved by He, Juškevičius, Narayanan, and Spiro [HJNS24]):
+/home/ryan/erdos/conjectures/395.lean-14-
+conjectures/395.lean:15:If z₁, ..., zₙ ∈ ℂ with |zᵢ| = 1, then the probability that
+/home/ryan/erdos/conjectures/395.lean-16-|ε₁z₁ + ⋯ + εₙzₙ| ≤ √2, where εᵢ ∈ {-1, 1} uniformly at random,
+/home/ryan/erdos/conjectures/395.lean-17-is ≫ 1/n.
+/home/ryan/erdos/conjectures/395.lean-18-
+--
+conjectures/521.lean:1:import Mathlib.Probability.Independence.Basic
+/home/ryan/erdos/conjectures/521.lean-2-import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/521.lean-3-import Mathlib.Algebra.Polynomial.RingDivision
+/home/ryan/erdos/conjectures/521.lean-4-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/521.lean-5-import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+/home/ryan/erdos/conjectures/521.lean-6-import Mathlib.Data.Set.Card
+/home/ryan/erdos/conjectures/521.lean-7-
+conjectures/521.lean:8:open MeasureTheory ProbabilityTheory Polynomial Filter Finset BigOperators
+/home/ryan/erdos/conjectures/521.lean-9-
+conjectures/521.lean-10-/-- The polynomial with prescribed ±1 coefficients:
+/home/ryan/erdos/conjectures/521.lean-11-f_n(z) = Σ_{k=0}^{n} ε(k) · z^k. -/
+--
+conjectures/521.lean-17-  Set.ncard {x : ℝ | p.IsRoot x}
+/home/ryan/erdos/conjectures/521.lean-18-
+conjectures/521.lean-19-/-- A random variable is Rademacher distributed: it takes values in {-1, 1}
+conjectures/521.lean:20:with equal probability (each with probability 1/2 on a probability space). -/
+conjectures/521.lean-21-def IsRademacher {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) (X : Ω → ℝ) : Prop :=
+/home/ryan/erdos/conjectures/521.lean-22-  (∀ ω, X ω = 1 ∨ X ω = -1) ∧
+/home/ryan/erdos/conjectures/521.lean-23-  μ {ω | X ω = 1} = μ {ω | X ω = -1}
+--
+/home/ryan/erdos/conjectures/521.lean-33-This conjecture asks whether the convergence holds almost surely.
+/home/ryan/erdos/conjectures/521.lean-34--/
+/home/ryan/erdos/conjectures/521.lean-35-theorem erdos_problem_521
+conjectures/521.lean:36:    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+conjectures/521.lean-37-    {ε : ℕ → Ω → ℝ}
+conjectures/521.lean-38-    (hRad : ∀ k, IsRademacher μ (ε k))
+conjectures/521.lean-39-    (hIndep : iIndepFun ε μ) :
+--
+conjectures/527.lean:1:import Mathlib.Probability.Independence.Basic
+/home/ryan/erdos/conjectures/527.lean-2-import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/527.lean-3-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/527.lean-4-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+--
+/home/ryan/erdos/conjectures/527.lean-6-import Mathlib.Order.Filter.Basic
+/home/ryan/erdos/conjectures/527.lean-7-import Mathlib.Topology.Algebra.InfiniteSum.Basic
+/home/ryan/erdos/conjectures/527.lean-8-
+conjectures/527.lean:9:open MeasureTheory ProbabilityTheory Filter Finset BigOperators
+/home/ryan/erdos/conjectures/527.lean-10-
+/home/ryan/erdos/conjectures/527.lean-11-noncomputable section
+/home/ryan/erdos/conjectures/527.lean-12-
+conjectures/527.lean-13-/-- A random variable is Rademacher distributed: it takes values in {-1, 1}
+conjectures/527.lean:14:with equal probability. -/
+conjectures/527.lean-15-def IsRademacher527 {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) (X : Ω → ℝ) : Prop :=
+/home/ryan/erdos/conjectures/527.lean-16-  (∀ ω, X ω = 1 ∨ X ω = -1) ∧
+/home/ryan/erdos/conjectures/527.lean-17-  μ {ω | X ω = 1} = μ {ω | X ω = -1}
+--
+/home/ryan/erdos/conjectures/527.lean-31-has Hausdorff dimension 1.
+/home/ryan/erdos/conjectures/527.lean-32--/
+/home/ryan/erdos/conjectures/527.lean-33-theorem erdos_problem_527
+conjectures/527.lean:34:    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+conjectures/527.lean-35-    {ε : ℕ → Ω → ℝ}
+conjectures/527.lean-36-    (hRad : ∀ k, IsRademacher527 μ (ε k))
+conjectures/527.lean-37-    (hIndep : iIndepFun ε μ)

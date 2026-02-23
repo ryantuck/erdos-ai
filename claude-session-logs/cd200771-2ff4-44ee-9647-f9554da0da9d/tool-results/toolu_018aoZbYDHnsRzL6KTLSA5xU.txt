@@ -1,0 +1,937 @@
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-143-instance LocallyLinear.instDecidable : Decidable G.LocallyLinear :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-144-  inferInstanceAs (Decidable (_ ∧ _))
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-145-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:146:lemma EdgeDisjointTriangles.card_edgeFinset_le (hG : G.EdgeDisjointTriangles) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:147:    3 * #(G.cliqueFinset 3) ≤ #G.edgeFinset := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:148:  rw [mul_comm, ← mul_one #G.edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-149-  refine card_mul_le_card_mul (fun s e ↦ e ∈ s.sym2) ?_ (fun e he ↦ ?_)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-150-  · simp only [is3Clique_iff, mem_cliqueFinset_iff, mem_sym2_iff, forall_exists_index, and_imp]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-151-    rintro _ a b c hab hac hbc rfl
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-156-    simp [insert_subset, *]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-157-  · simpa only [card_le_one, mem_bipartiteBelow, and_imp, Set.Subsingleton, Set.mem_setOf_eq,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-158-      mem_cliqueFinset_iff, mem_cliqueSet_iff]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:159:      using hG.mem_sym2_subsingleton (G.not_isDiag_of_mem_edgeSet <| mem_edgeFinset.1 he)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-160-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:161:lemma LocallyLinear.card_edgeFinset (hG : G.LocallyLinear) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:162:    #G.edgeFinset = 3 * #(G.cliqueFinset 3) := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:163:  refine hG.edgeDisjointTriangles.card_edgeFinset_le.antisymm' ?_
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-164-  rw [← mul_comm, ← mul_one #_]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-165-  refine card_mul_le_card_mul (fun e s ↦ e ∈ s.sym2) ?_ ?_
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-166-  · simpa [Sym2.forall, Nat.one_le_iff_ne_zero, -Finset.card_eq_zero, Finset.card_ne_zero,
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-173-    _ ≤ 3 := (card_insert_le _ _).trans (succ_le_succ <| (card_insert_le _ _).trans_eq <| by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-174-      rw [card_singleton])
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-175-  simp only [subset_iff, Sym2.forall, mem_sym2_iff, mem_bipartiteBelow, mem_insert,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:176:    mem_edgeFinset, mem_singleton, and_imp, mem_edgeSet, Sym2.mem_iff, forall_eq_or_imp,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-177-    forall_eq]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-178-  rintro d e hde (rfl | rfl | rfl) (rfl | rfl | rfl) <;> simp [*] at *
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-179-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-191-omit [IsStrictOrderedRing 𝕜] in
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-192-theorem farFromTriangleFree_iff :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-193-    G.FarFromTriangleFree ε ↔ ∀ ⦃H : SimpleGraph α⦄, [DecidableRel H.Adj] → H ≤ G → H.CliqueFree 3 →
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:194:      ε * (card α ^ 2 : ℕ) ≤ #G.edgeFinset - #H.edgeFinset := deleteFar_iff
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-195-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-196-alias ⟨farFromTriangleFree.le_card_sub_card, _⟩ := farFromTriangleFree_iff
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-197-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-204-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-205-omit [IsStrictOrderedRing 𝕜] in
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-206-theorem FarFromTriangleFree.cliqueFinset_nonempty' (hH : H ≤ G) (hG : G.FarFromTriangleFree ε)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:207:    (hcard : #G.edgeFinset - #H.edgeFinset < ε * (card α ^ 2 : ℕ)) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-208-    (H.cliqueFinset 3).Nonempty :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-209-  nonempty_of_ne_empty <|
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-210-    cliqueFinset_eq_empty_iff.not.2 fun hH' => (hG.le_card_sub_card hH hH').not_gt hcard
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-212-private lemma farFromTriangleFree_of_disjoint_triangles_aux {tris : Finset (Finset α)}
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-213-    (htris : tris ⊆ G.cliqueFinset 3)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-214-    (pd : (tris : Set (Finset α)).Pairwise fun x y ↦ (x ∩ y : Set α).Subsingleton) (hHG : H ≤ G)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:215:    (hH : H.CliqueFree 3) : #tris ≤ #G.edgeFinset - #H.edgeFinset := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:216:  rw [← card_sdiff_of_subset (edgeFinset_mono hHG), ← card_attach]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-217-  by_contra! hG
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-218-  have ⦃t⦄ (ht : t ∈ tris) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:219:    ∃ x y, x ∈ t ∧ y ∈ t ∧ x ≠ y ∧ s(x, y) ∈ G.edgeFinset \ H.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-220-    by_contra! h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-221-    refine hH t ?_
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:222:    simp only [not_and, mem_sdiff, not_not, mem_edgeFinset, mem_edgeSet] at h
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-223-    obtain ⟨x, y, z, xy, xz, yz, rfl⟩ := is3Clique_iff.1 (mem_cliqueFinset_iff.1 <| htris ht)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-224-    rw [is3Clique_triple_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-225-    refine ⟨h _ _ ?_ ?_ xy.ne xy, h _ _ ?_ ?_ xz.ne xz, h _ _ ?_ ?_ yz.ne yz⟩ <;> simp
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-226-  choose fx fy hfx hfy hfne fmem using this
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-227-  let f (t : {x // x ∈ tris}) : Sym2 α := s(fx t.2, fy t.2)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:228:  have hf (x) (_ : x ∈ tris.attach) : f x ∈ G.edgeFinset \ H.edgeFinset := fmem _
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-229-  obtain ⟨⟨t₁, ht₁⟩, -, ⟨t₂, ht₂⟩, -, tne, t : s(_, _) = s(_, _)⟩ :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-230-    exists_ne_map_eq_of_card_lt_of_maps_to hG hf
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-231-  dsimp at t
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-244-    G.FarFromTriangleFree ε := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-245-  rw [farFromTriangleFree_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-246-  intro H _ hG hH
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:247:  rw [← Nat.cast_sub (card_le_card <| edgeFinset_mono hG)]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-248-  exact tris_big.trans
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-249-    (Nat.cast_le.2 <| farFromTriangleFree_of_disjoint_triangles_aux htris pd hG hH)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-250-
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-261-  refine lt_of_mul_lt_mul_right (α := 𝕜) (a := Fintype.card α ^ 2) ?_ (by positivity)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-262-  calc
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-263-        ε * Fintype.card α ^ 2
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:264:    _ ≤ #G.edgeFinset := by simpa using hε.le_card_edgeFinset (by simp)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean:265:    _ ≤ (Fintype.card α).choose 2 := by gcongr; exact card_edgeFinset_le_card_choose_two
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-266-    _ < 2⁻¹ * Fintype.card α ^ 2 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-267-      simpa [← div_eq_inv_mul] using Nat.choose_lt_pow_div (by positivity) le_rfl
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean-268-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-107-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-108-lemma regularityReduced_edges_card_aux [Nonempty α] (hε : 0 < ε) (hP : P.IsEquipartition)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-109-    (hPε : P.IsUniform G (ε / 8)) (hP' : 4 / ε ≤ #P.parts) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean:110:    2 * (#G.edgeFinset - #(G.regularityReduced P (ε / 8) (ε / 4)).edgeFinset : ℝ)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-111-      < 2 * ε * (card α ^ 2 : ℕ) := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-112-  let A := (P.nonUniforms G (ε / 8)).biUnion fun (U, V) ↦ U ×ˢ V
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-113-  let B := P.parts.biUnion offDiag
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-117-          G.Adj x y ∧ ¬(G.regularityReduced P (ε / 8) (ε / 4)).Adj x y) : ℝ) := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-118-      rw [univ_product_univ, mul_sub, filter_and_not, cast_card_sdiff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-119-      · norm_cast
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean:120:        rw [two_mul_card_edgeFinset, two_mul_card_edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-121-      · gcongr with xy _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-122-        exact fun hxy ↦ regularityReduced_le hxy
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-123-    _ ≤ #(A ∪ B ∪ C) := by gcongr; exact unreduced_edges_subset
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-160-then they can all be removed by removing a few edges (on the order of `(card α)^2`). -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-161-lemma triangle_removal (hG : #(G.cliqueFinset 3) < triangleRemovalBound ε * card α ^ 3) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-162-    ∃ G' ≤ G, ∃ _ : DecidableRel G'.Adj,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean:163:      (#G.edgeFinset - #G'.edgeFinset : ℝ) < ε * (card α ^ 2 : ℕ) ∧ G'.CliqueFree 3 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-164-  by_contra! h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-165-  refine hG.not_ge (farFromTriangleFree_iff.2 ?_).le_card_cliqueFinset
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean-166-  intro G' _ hG hG'
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-22-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-23-## Main definitions
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-24-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:25:* `SimpleGraph.edgeFinset` is the `Finset` of edges in a graph, if `edgeSet` is finite
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-26-* `SimpleGraph.neighborFinset` is the `Finset` of vertices adjacent to a given vertex,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-27-  if `neighborSet` is finite
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-28-* `SimpleGraph.incidenceFinset` is the `Finset` of edges containing a given vertex,
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-54-variable {G₁ G₂ : SimpleGraph V} [Fintype G.edgeSet] [Fintype G₁.edgeSet] [Fintype G₂.edgeSet]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-55-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-56-/-- The `edgeSet` of the graph as a `Finset`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:57:def edgeFinset : Finset (Sym2 V) :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-58-  Set.toFinset G.edgeSet
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-59-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-60-@[simp, norm_cast]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:61:theorem coe_edgeFinset : (G.edgeFinset : Set (Sym2 V)) = G.edgeSet :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-62-  Set.coe_toFinset _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-63-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-64-variable {G}
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-65-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-66-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:67:theorem mem_edgeFinset : e ∈ G.edgeFinset ↔ e ∈ G.edgeSet :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-68-  Set.mem_toFinset
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-69-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:70:theorem not_isDiag_of_mem_edgeFinset : e ∈ G.edgeFinset → ¬e.IsDiag :=
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:71:  not_isDiag_of_mem_edgeSet _ ∘ mem_edgeFinset.1
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-72-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-73-/-- Mapping an edge to a finite set produces a finset of size `2`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:74:theorem card_toFinset_mem_edgeFinset [DecidableEq V] (e : G.edgeFinset) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-75-    (e : Sym2 V).toFinset.card = 2 :=
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:76:  Sym2.card_toFinset_of_not_isDiag e.val (G.not_isDiag_of_mem_edgeFinset e.prop)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-77-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-78-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:79:theorem edgeFinset_inj : G₁.edgeFinset = G₂.edgeFinset ↔ G₁ = G₂ := by simp [edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-80-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-81-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:82:theorem edgeFinset_subset_edgeFinset : G₁.edgeFinset ⊆ G₂.edgeFinset ↔ G₁ ≤ G₂ := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:83:  simp [edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-84-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-85-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:86:theorem edgeFinset_ssubset_edgeFinset : G₁.edgeFinset ⊂ G₂.edgeFinset ↔ G₁ < G₂ := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:87:  simp [edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-88-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:89:@[mono, gcongr] alias ⟨_, edgeFinset_mono⟩ := edgeFinset_subset_edgeFinset
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-90-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-91-@[mono, gcongr]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:92:alias ⟨_, edgeFinset_strict_mono⟩ := edgeFinset_ssubset_edgeFinset
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-93-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-94-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:95:theorem edgeFinset_bot : (⊥ : SimpleGraph V).edgeFinset = ∅ := by simp [edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-96-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-97-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:98:theorem edgeFinset_sup [Fintype (edgeSet (G₁ ⊔ G₂))] [DecidableEq V] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:99:    (G₁ ⊔ G₂).edgeFinset = G₁.edgeFinset ∪ G₂.edgeFinset := by simp [edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-100-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-101-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:102:theorem edgeFinset_inf [DecidableEq V] : (G₁ ⊓ G₂).edgeFinset = G₁.edgeFinset ∩ G₂.edgeFinset := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:103:  simp [edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-104-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-105-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:106:theorem edgeFinset_sdiff [DecidableEq V] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:107:    (G₁ \ G₂).edgeFinset = G₁.edgeFinset \ G₂.edgeFinset := by simp [edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-108-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-109-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:110:lemma disjoint_edgeFinset : Disjoint G₁.edgeFinset G₂.edgeFinset ↔ Disjoint G₁ G₂ := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:111:  simp_rw [← Finset.disjoint_coe, coe_edgeFinset, disjoint_edgeSet]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-112-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-113-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:114:lemma edgeFinset_eq_empty : G.edgeFinset = ∅ ↔ G = ⊥ := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:115:  rw [← edgeFinset_bot, edgeFinset_inj]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-116-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-117-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:118:lemma edgeFinset_nonempty : G.edgeFinset.Nonempty ↔ G ≠ ⊥ := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:119:  rw [Finset.nonempty_iff_ne_empty, edgeFinset_eq_empty.ne]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-120-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:121:theorem edgeFinset_card : #G.edgeFinset = Fintype.card G.edgeSet :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-122-  Set.toFinset_card _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-123-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-124-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:125:theorem card_edgeSet : Fintype.card G.edgeSet = #G.edgeFinset :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-126-  .symm <| Set.toFinset_card _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-127-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:128:theorem edgeSet_univ_card : #(univ : Finset G.edgeSet) = #G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-129-  simp
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-130-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-131-variable [Fintype V]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-132-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-133-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:134:theorem edgeFinset_top [DecidableEq V] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:135:    (⊤ : SimpleGraph V).edgeFinset = Sym2.diagSetᶜ.toFinset := by simp [← coe_inj]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-136-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-137-/-- The complete graph on `n` vertices has `n.choose 2` edges. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:138:theorem card_edgeFinset_top_eq_card_choose_two [DecidableEq V] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:139:    #(⊤ : SimpleGraph V).edgeFinset = (Fintype.card V).choose 2 := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:140:  simp_rw [edgeFinset, Set.toFinset_card, edgeSet_top, ← Sym2.card_diagSet_compl]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-141-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-142-/-- Any graph on `n` vertices has at most `n.choose 2` edges. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:143:theorem card_edgeFinset_le_card_choose_two : #G.edgeFinset ≤ (Fintype.card V).choose 2 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-144-  classical
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:145:  rw [← card_edgeFinset_top_eq_card_choose_two]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:146:  exact card_le_card (edgeFinset_mono le_top)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-147-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-148-end EdgeFinset
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-149-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-268-  Set.mem_toFinset
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-269-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-270-theorem incidenceFinset_eq_filter [DecidableEq V] [Fintype G.edgeSet] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:271:    G.incidenceFinset v = {e ∈ G.edgeFinset | v ∈ e} := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-272-  ext e
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-273-  induction e
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-274-  simp [mk'_mem_incidenceSet_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-275-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-276-theorem incidenceFinset_subset [DecidableEq V] [Fintype G.edgeSet] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:277:    G.incidenceFinset v ⊆ G.edgeFinset :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-278-  Set.toFinset_subset_toFinset.mpr (G.incidenceSet_subset v)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-279-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-280-/-- The degree of a vertex is at most the number of edges. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:281:theorem degree_le_card_edgeFinset [Fintype G.edgeSet] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:282:    G.degree v ≤ #G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-283-  classical
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-284-  rw [← card_incidenceFinset_eq_degree]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-285-  exact card_le_card (G.incidenceFinset_subset v)
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-516-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-517-variable {G} {W : Type*} {G' : SimpleGraph W}
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-518-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:519:theorem card_edgeFinset_eq (f : G ≃g G') [Fintype G.edgeSet] [Fintype G'.edgeSet] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:520:    #G.edgeFinset = #G'.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-521-  apply Finset.card_eq_of_equiv
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:522:  simp only [mem_edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-523-  exact f.mapEdgeSet
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-524-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-525-@[simp] theorem degree_eq (f : G ≃g G') (x : V)
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-556-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-557-variable {s : Set V} [DecidablePred (· ∈ s)] [Fintype V] {G : SimpleGraph V} [DecidableRel G.Adj]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-558-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:559:lemma edgeFinset_subset_sym2_of_support_subset (h : G.support ⊆ s) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:560:    G.edgeFinset ⊆ s.toFinset.sym2 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-561-  simp_rw [subset_iff, Sym2.forall,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:562:    mem_edgeFinset, mem_edgeSet, mk_mem_sym2_iff, Set.mem_toFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-563-  intro _ _ hadj
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-564-  exact ⟨h ⟨_, hadj⟩, h ⟨_, hadj.symm⟩⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-565-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-566-instance : DecidablePred (· ∈ G.support) :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-567-  inferInstanceAs <| DecidablePred (· ∈ { v | ∃ w, G.Adj v w })
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-568-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:569:theorem map_edgeFinset_induce [DecidableEq V] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:570:    (G.induce s).edgeFinset.map (Embedding.subtype (· ∈ s)).sym2Map
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:571:      = G.edgeFinset ∩ s.toFinset.sym2 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-572-  aesop (add simp [Finset.ext_iff, Sym2.exists, Sym2.forall, adj_comm])
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-573-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:574:theorem map_edgeFinset_induce_of_support_subset (h : G.support ⊆ s) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:575:    (G.induce s).edgeFinset.map (Embedding.subtype (· ∈ s)).sym2Map = G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-576-  classical
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:577:  simpa [map_edgeFinset_induce] using edgeFinset_subset_sym2_of_support_subset h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-578-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-579-/-- If the support of the simple graph `G` is a subset of the set `s`, then the induced subgraph of
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-580-`s` has the same number of edges as `G`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:581:theorem card_edgeFinset_induce_of_support_subset (h : G.support ⊆ s) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:582:    #(G.induce s).edgeFinset = #G.edgeFinset := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:583:  rw [← map_edgeFinset_induce_of_support_subset h, card_map]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-584-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:585:theorem card_edgeFinset_induce_support :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:586:    #(G.induce G.support).edgeFinset = #G.edgeFinset :=
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:587:  card_edgeFinset_induce_of_support_subset subset_rfl
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-588-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-589-theorem map_neighborFinset_induce [DecidableEq V] (v : s) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-590-    ((G.induce s).neighborFinset v).map (.subtype (· ∈ s)) = G.neighborFinset v ∩ s.toFinset := by
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-621-variable [Fintype V] {W : Type*} [Fintype W] [DecidableEq W]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-622-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-623-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:624:theorem edgeFinset_map (f : V ↪ W) (G : SimpleGraph V) [DecidableRel G.Adj] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:625:    (G.map f).edgeFinset = G.edgeFinset.map f.sym2Map := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-626-  rw [← Finset.coe_inj]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-627-  push_cast
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-628-  exact G.edgeSet_map f
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-629-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:630:theorem card_edgeFinset_map (f : V ↪ W) (G : SimpleGraph V) [DecidableRel G.Adj] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:631:    #(G.map f).edgeFinset = #G.edgeFinset := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:632:  rw [edgeFinset_map]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean:633:  exact G.edgeFinset.card_map f.sym2Map
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-634-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-635-end Map
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Finite.lean-636-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean-61-  -- counting `e`
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean-62-  · intro e he
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean-63-    simp_rw [← Sym2.mem_toFinset, bipartiteBelow, filter_not, filter_mem_eq_inter, univ_inter,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean:64:      ← compl_eq_univ_sdiff, card_compl, Fintype.card_fin, card_toFinset_mem_edgeFinset ⟨e, he⟩,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean-65-      Nat.cast_id, Nat.reduceSubDiff, le_refl]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean-66-  -- counting `v`
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean-67-  · intro v hv
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean:68:    simpa [edgeFinset_deleteIncidenceSet_eq_filter]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean:69:      using card_edgeFinset_deleteIncidenceSet_le_extremalNumber h v
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean-70-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean-71-/-- The **Turán density** of a simple graph `H` is the limit of `extremalNumber n H / n.choose 2`
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/TuranDensity.lean-72-as `n` approaches `∞`.
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-122-    exact this (by rwa [adj_comm] at hn) hd.ne' cf hd
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-123-  classical
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-124-  use G.replaceVertex s t, inferInstance, cf.replaceVertex s t
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:125:  have := G.card_edgeFinset_replaceVertex_of_not_adj hn
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-126-  lia
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-127-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-128-/-- In a Turán-maximal graph, non-adjacency is transitive. -/
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-138-  have nst : s ≠ t := fun a ↦ hsu (a ▸ h)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-139-  have ntu : t ≠ u := G.ne_of_adj h
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-140-  have := (G.adj_replaceVertex_iff_of_ne s nst ntu.symm).not.mpr hsu
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:141:  rw [card_edgeFinset_replaceVertex_of_not_adj _ this,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:142:    card_edgeFinset_replaceVertex_of_not_adj _ hst, dst, Nat.add_sub_cancel]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-143-  have l1 : (G.replaceVertex s t).degree s = G.degree s := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-144-    unfold degree; congr 1; ext v
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-145-    simp_rw [mem_neighborFinset]
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-209-  have ha : G.Adj v w := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-210-    by_contra hn; rw [h.not_adj_iff_part_eq, small_eq, large_eq] at hn
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-211-    rw [hn] at ineq; lia
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:212:  rw [G.card_edgeFinset_replaceVertex_of_adj ha,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-213-    degree_eq_card_sub_part_card h, small_eq, degree_eq_card_sub_part_card h, large_eq]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-214-  have : #large ≤ card V := by simpa using card_le_card large.subset_univ
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-215-  lia
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-243-    exact exists_ne_map_eq_of_card_lt_of_maps_to (zc.symm ▸ l.2) fun a _ ↦
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-244-      fp.part_mem.2 (mem_univ a)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-245-  use G ⊔ edge x y, inferInstance, cf.sup_edge x y
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:246:  convert Nat.lt_add_one #G.edgeFinset
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:247:  convert G.card_edgeFinset_sup_edge _ hn
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-248-  rwa [h.not_adj_iff_part_eq]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-249-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-250-/-- **Turán's theorem**, forward direction.
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-276-  obtain ⟨g⟩ := j.nonempty_iso_turanGraph
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-277-  rw [f.card_eq, Fintype.card_fin] at g
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-278-  use (turanGraph_cliqueFree (n := n) hr).comap f,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:279:    fun H _ cf ↦ (f.symm.comp g).card_edgeFinset_eq ▸ j.2 cf
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-280-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-281-/-- Turán-maximality with `0 < r` transfers across graph isomorphisms. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-282-theorem IsTuranMaximal.iso {W : Type*} [Fintype W] {H : SimpleGraph W}
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-307-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-308-/-- The extremal numbers of `⊤` are equal to the number of edges in `turanGraph`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-309-theorem extremalNumber_top :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:310:    extremalNumber n (⊤ : SimpleGraph α) = #(turanGraph n (card α - 1)).edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-311-  conv =>
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-312-    enter [1, 1]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-313-    rw [← Fintype.card_fin n]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:314:  exact (card_edgeFinset_of_isExtremal_free isExtremal_top_free_turanGraph).symm
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-315-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-316-/-- The `turanGraph` is, up to isomorphism, the unique extremal graph forbidding `⊤`.
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-317-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-318-This is **Turán's theorem** restated in terms of the extremal numbers of `⊤`.
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-319-See `SimpleGraph.isTuranMaximal_iff_nonempty_iso_turanGraph`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:320:theorem card_edgeFinset_eq_extremalNumber_top_iff_nonempty_iso_turanGraph :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:321:    (⊤ : SimpleGraph α).Free G ∧ #G.edgeFinset = extremalNumber (card V) (⊤ : SimpleGraph α)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-322-      ↔ Nonempty (G ≃g turanGraph (card V) (card α - 1)) := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-323-  rw [← isTuranMaximal_iff_nonempty_iso_turanGraph (Nat.sub_pos_iff_lt.mpr one_lt_card),
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-324-    ← isExtremal_top_free_iff_isTuranMaximal, isExtremal_free_iff]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-344-    rw [Nat.add_mod_mod, ← add_assoc, ← one_add_mul, show 1 + (r - 1) = r by lia,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-345-      Nat.mul_add_mod_self_left]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-346-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:347:lemma card_edgeFinset_turanGraph_add :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:348:    #(turanGraph (n + r) r).edgeFinset =
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:349:    #(turanGraph n r).edgeFinset + n * (r - 1) + r.choose 2 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-350-  rw [← mul_right_inj' two_ne_zero]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-351-  simp_rw [mul_add, ← sum_degrees_eq_twice_card_edges,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-352-    degree, neighborFinset_eq_filter, turanGraph, card_filter]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-367-    congr!; exact sum_ne_add_mod_eq_sub_one
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-368-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-369-/-- The exact formula for the number of edges in `turanGraph n r`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:370:theorem card_edgeFinset_turanGraph {n r : ℕ} :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:371:    #(turanGraph n r).edgeFinset =
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-372-    (n ^ 2 - (n % r) ^ 2) * (r - 1) / (2 * r) + (n % r).choose 2 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-373-  rcases r.eq_zero_or_pos with rfl | hr
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-374-  · rw [Nat.mod_zero, tsub_self, zero_mul, Nat.zero_div, zero_add]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:375:    have := card_edgeFinset_top_eq_card_choose_two (V := Fin n)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-376-    rw [Fintype.card_fin] at this; convert this; exact turanGraph_zero
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-377-  · have ring₁ (n) : (n ^ 2 - (n % r) ^ 2) * (r - 1) / (2 * r) =
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-378-        n % r * (n / r) * (r - 1) + r * (r - 1) * (n / r) ^ 2 / 2 := by
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-382-      rw [Nat.mul_div_mul_right _ _ hr, Nat.mul_add_div zero_lt_two]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-383-    rcases lt_or_ge n r with h | h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-384-    · rw [Nat.mod_eq_of_lt h, tsub_self, zero_mul, Nat.zero_div, zero_add]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:385:      have := card_edgeFinset_top_eq_card_choose_two (V := Fin n)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-386-      rw [Fintype.card_fin] at this; convert this
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-387-      rw [turanGraph_eq_top]; exact .inr h.le
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-388-    · let n' := n - r
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-389-      have n'r : n = n' + r := by lia
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:390:      rw [n'r, card_edgeFinset_turanGraph_add, card_edgeFinset_turanGraph, ring₁, ring₁,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-391-        add_rotate, ← add_assoc, Nat.add_mod_right, Nat.add_div_right _ hr]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-392-      congr 1
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-393-      have rd : 2 ∣ r * (r - 1) := (Nat.even_mul_pred_self _).two_dvd
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-401-        ← add_rotate, add_comm _ (_ * _)]; congr 1
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-402-      rw [← mul_rotate, ← add_mul, add_comm, mul_comm _ r, Nat.div_add_mod n' r]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-403-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:404:/-- A looser (but simpler than `card_edgeFinset_turanGraph`) bound on the number of edges in
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-405-`turanGraph n r`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:406:theorem mul_card_edgeFinset_turanGraph_le :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:407:    2 * r * #(turanGraph n r).edgeFinset ≤ (r - 1) * n ^ 2 := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:408:  grw [card_edgeFinset_turanGraph, mul_add, Nat.mul_div_le]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-409-  rw [tsub_mul, ← Nat.sub_add_comm]; swap
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-410-  · grw [Nat.mod_le]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-411-    exact Nat.zero_le _
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-417-  rw [Nat.sub_one_mul, Nat.sub_one_mul, mul_comm]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-418-  exact Nat.sub_le_sub_left (Nat.mod_lt _ hr).le _
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-419-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:420:theorem CliqueFree.card_edgeFinset_le (cf : G.CliqueFree (r + 1)) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-421-    let n := Fintype.card V;
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:422:    #G.edgeFinset ≤ (n ^ 2 - (n % r) ^ 2) * (r - 1) / (2 * r) + (n % r).choose 2 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-423-  rcases r.eq_zero_or_pos with rfl | hr
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-424-  · rw [cliqueFree_one, ← Fintype.card_eq_zero_iff] at cf
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-425-    simp_rw [zero_tsub, mul_zero, Nat.mod_zero, Nat.div_zero, zero_add]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:426:    exact card_edgeFinset_le_card_choose_two
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-427-  · obtain ⟨H, _, maxH⟩ := exists_isTuranMaximal (V := V) hr
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-428-    convert maxH.2 cf
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:429:    rw [((isTuranMaximal_iff_nonempty_iso_turanGraph hr).mp maxH).some.card_edgeFinset_eq,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean:430:      card_edgeFinset_turanGraph]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-431-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Turan.lean-432-end SimpleGraph
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-39-/-- `G` is an extremal graph satisfying `p` if `G` has the maximum number of edges of any simple
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-40-graph, with fixed vertices, satisfying `p`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-41-def IsExtremal (G : SimpleGraph V) [DecidableRel G.Adj] (p : SimpleGraph V → Prop) :=
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:42:  p G ∧ ∀ ⦃G' : SimpleGraph V⦄ [DecidableRel G'.Adj], p G' → #G'.edgeFinset ≤ #G.edgeFinset
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-43-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-44-lemma IsExtremal.prop {p : SimpleGraph V → Prop} (h : G.IsExtremal p) : p G := h.1
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-45-
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-49-    (∃ G : SimpleGraph V, ∃ _ : DecidableRel G.Adj, G.IsExtremal p) ↔ ∃ G, p G := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-50-  refine ⟨fun ⟨_, _, h⟩ ↦ ⟨_, h.1⟩, fun ⟨G, hp⟩ ↦ ?_⟩
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-51-  obtain ⟨G', hp', h⟩ := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:52:    apply exists_max_image { G | p G } (#·.edgeFinset)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-53-    use G, by simpa using hp
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-54-  use G', inferInstanceAs (DecidableRel G'.Adj)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-55-  exact ⟨by simpa using hp', fun _ _ hp ↦ by convert h _ (by simpa using hp)⟩
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-63-theorem IsExtremal.le_iff_eq
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-64-    {p : SimpleGraph V → Prop} (hG : G.IsExtremal p) {H : SimpleGraph V} (hH : p H) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-65-    G ≤ H ↔ G = H :=
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:66:  ⟨fun hGH ↦ edgeFinset_inj.1 <|
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:67:    eq_of_subset_of_card_le (edgeFinset_subset_edgeFinset.2 hGH) (hG.2 hH), le_of_eq⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-68-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-69-end IsExtremal
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-70-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-76-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-77-If `H` is contained in all simple graphs on `n` vertices, then this is `0`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-78-noncomputable def extremalNumber (n : ℕ) {W : Type*} (H : SimpleGraph W) : ℕ :=
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:79:  sup { G : SimpleGraph (Fin n) | H.Free G } (#·.edgeFinset)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-80-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-81-variable {n : ℕ} {V W : Type*} {G : SimpleGraph V} {H : SimpleGraph W}
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-82-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-83-open Classical in
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-84-theorem extremalNumber_of_fintypeCard_eq [Fintype V] (hc : card V = n) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:85:    extremalNumber n H = sup { G : SimpleGraph V | H.Free G } (#·.edgeFinset) := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-86-  let e := Fintype.equivFinOfCardEq hc
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-87-  rw [extremalNumber, le_antisymm_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-88-  and_intros
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-95-  replace h' : G' ∈ univ.filter (H.Free ·) := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-96-    rw [mem_filter, ← free_congr .refl (.map e G)]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-97-    simpa using h
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:98:  rw [Iso.card_edgeFinset_eq (.map e G)]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:99:  convert @le_sup _ _ _ _ { G | H.Free G } (#·.edgeFinset) G' h'
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-100-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-101-variable [Fintype V] [DecidableRel G.Adj]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-102-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-103-/-- If `G` is `H`-free, then `G` has at most `extremalNumber (card V) H` edges. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:104:theorem card_edgeFinset_le_extremalNumber (h : H.Free G) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:105:    #G.edgeFinset ≤ extremalNumber (card V) H := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-106-  rw [extremalNumber_of_fintypeCard_eq rfl]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:107:  convert @le_sup _ _ _ _ { G | H.Free G } (#·.edgeFinset) G (by simpa using h)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-108-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-109-/-- If `G` has more than `extremalNumber (card V) H` edges, then `G` contains a copy of `H`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:110:theorem IsContained.of_extremalNumber_lt_card_edgeFinset
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:111:    (h : extremalNumber (card V) H < #G.edgeFinset) : H ⊑ G := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-112-  contrapose h; push_neg
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:113:  exact card_edgeFinset_le_extremalNumber h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-114-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-115-/-- `extremalNumber (card V) H` is at most `x` if and only if every `H`-free simple graph `G` has
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-116-at most `x` edges. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-117-theorem extremalNumber_le_iff (H : SimpleGraph W) (m : ℕ) :
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-118-    extremalNumber (card V) H ≤ m ↔
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:119:      ∀ ⦃G : SimpleGraph V⦄ [DecidableRel G.Adj], H.Free G → #G.edgeFinset ≤ m := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-120-  simp_rw [extremalNumber_of_fintypeCard_eq rfl, Finset.sup_le_iff, mem_filter_univ]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-121-  exact ⟨fun h _ _ h' ↦ by convert h _ h', fun h _ h' ↦ by convert h h'⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-122-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-124-graph `G` with more than `x` edges. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-125-theorem lt_extremalNumber_iff (H : SimpleGraph W) (m : ℕ) :
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-126-    m < extremalNumber (card V) H ↔
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:127:      ∃ G : SimpleGraph V, ∃ _ : DecidableRel G.Adj, H.Free G ∧ m < #G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-128-  simp_rw [extremalNumber_of_fintypeCard_eq rfl, Finset.lt_sup_iff, mem_filter_univ]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-129-  exact ⟨fun ⟨_, h, h'⟩ ↦ ⟨_, _, h, h'⟩, fun ⟨_, _, h, h'⟩ ↦ ⟨_, h, by convert h'⟩⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-130-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-133-@[inherit_doc extremalNumber_le_iff]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-134-theorem extremalNumber_le_iff_of_nonneg (H : SimpleGraph W) {m : R} (h : 0 ≤ m) :
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-135-    extremalNumber (card V) H ≤ m ↔
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:136:      ∀ ⦃G : SimpleGraph V⦄ [DecidableRel G.Adj], H.Free G → #G.edgeFinset ≤ m := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-137-  simp_rw [← Nat.le_floor_iff h]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-138-  exact extremalNumber_le_iff H ⌊m⌋₊
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-139-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-140-@[inherit_doc lt_extremalNumber_iff]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-141-theorem lt_extremalNumber_iff_of_nonneg (H : SimpleGraph W) {m : R} (h : 0 ≤ m) :
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-142-    m < extremalNumber (card V) H ↔
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:143:      ∃ G : SimpleGraph V, ∃ _ : DecidableRel G.Adj, H.Free G ∧ m < #G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-144-  simp_rw [← Nat.floor_lt h]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-145-  exact lt_extremalNumber_iff H ⌊m⌋₊
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-146-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-150-  rw [← Fintype.card_fin n, extremalNumber_le_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-151-  intro _ _ h'
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-152-  contrapose! h'
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:153:  exact h.trans (IsContained.of_extremalNumber_lt_card_edgeFinset h')
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-154-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-155-/-- If `H₁ ≃g H₂`, then `extremalNumber n H₁` equals `extremalNumber n H₂`. -/
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-156-@[congr]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-164-  all_goals
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-165-    rw [← Fintype.card_fin n₂, extremalNumber_le_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-166-    intro G _ h
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:167:    apply card_edgeFinset_le_extremalNumber
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-168-    contrapose! h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-169-    exact h.trans' ⟨e.toCopy⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-170-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-175-/-- `H`-free extremal graphs are `H`-free simple graphs having `extremalNumber (card V) H` many
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-176-edges. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-177-theorem isExtremal_free_iff :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:178:    G.IsExtremal H.Free ↔ H.Free G ∧ #G.edgeFinset = extremalNumber (card V) H := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-179-  rw [IsExtremal, and_congr_right_iff, ← extremalNumber_le_iff]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:180:  exact fun h ↦ ⟨eq_of_le_of_ge (card_edgeFinset_le_extremalNumber h), ge_of_eq⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-181-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:182:lemma card_edgeFinset_of_isExtremal_free (h : G.IsExtremal H.Free) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:183:    #G.edgeFinset = extremalNumber (card V) H := (isExtremal_free_iff.mp h).2
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-184-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-185-/-- If `G` is `H.Free`, then `G.deleteIncidenceSet v` is also `H.Free` and has at most
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-186-`extremalNumber (card V-1) H` many edges. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:187:theorem card_edgeFinset_deleteIncidenceSet_le_extremalNumber
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-188-    [DecidableEq V] (h : H.Free G) (v : V) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:189:    #(G.deleteIncidenceSet v).edgeFinset ≤ extremalNumber (card V - 1) H := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:190:  rw [← card_edgeFinset_induce_compl_singleton, ← @card_unique ({v} : Set V), ← card_compl_set]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:191:  apply card_edgeFinset_le_extremalNumber
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-192-  contrapose! h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-193-  exact h.trans ⟨Copy.induce G {v}ᶜ⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean-194-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-84-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-85-instance : DecidableRel (G.replaceVertex s t).Adj := by unfold replaceVertex; infer_instance
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-86-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:87:theorem edgeFinset_replaceVertex_of_not_adj (hn : ¬G.Adj s t) : (G.replaceVertex s t).edgeFinset =
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:88:    G.edgeFinset \ G.incidenceFinset t ∪ (G.neighborFinset s).image (s(·, t)) := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-89-  apply Finset.coe_injective
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-90-  push_cast
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-91-  exact G.edgeSet_replaceVertex_of_not_adj hn
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-92-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:93:theorem edgeFinset_replaceVertex_of_adj (ha : G.Adj s t) : (G.replaceVertex s t).edgeFinset =
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:94:    (G.edgeFinset \ G.incidenceFinset t ∪ (G.neighborFinset s).image (s(·, t))) \ {s(t, t)} := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-95-  apply Finset.coe_injective
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-96-  push_cast
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-97-  exact G.edgeSet_replaceVertex_of_adj ha
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-98-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-99-lemma disjoint_sdiff_neighborFinset_image :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:100:    Disjoint (G.edgeFinset \ G.incidenceFinset t) ((G.neighborFinset s).image (s(·, t))) := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-101-  rw [disjoint_iff_ne]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-102-  intro e he
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-103-  have : t ∉ e := by
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-107-    simp_all [incidenceSet]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-108-  aesop
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-109-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:110:theorem card_edgeFinset_replaceVertex_of_not_adj (hn : ¬G.Adj s t) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:111:    #(G.replaceVertex s t).edgeFinset = #G.edgeFinset + G.degree s - G.degree t := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:112:  have inc : G.incidenceFinset t ⊆ G.edgeFinset := by simp [incidenceFinset, incidenceSet_subset]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:113:  rw [G.edgeFinset_replaceVertex_of_not_adj hn,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-114-    card_union_of_disjoint G.disjoint_sdiff_neighborFinset_image, card_sdiff_of_subset inc,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-115-    ← Nat.sub_add_comm <| card_le_card inc, card_incidenceFinset_eq_degree]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-116-  congr 2
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-118-  unfold Function.Injective
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-119-  aesop
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-120-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:121:theorem card_edgeFinset_replaceVertex_of_adj (ha : G.Adj s t) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:122:    #(G.replaceVertex s t).edgeFinset = #G.edgeFinset + G.degree s - G.degree t - 1 := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:123:  have inc : G.incidenceFinset t ⊆ G.edgeFinset := by simp [incidenceFinset, incidenceSet_subset]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:124:  rw [G.edgeFinset_replaceVertex_of_adj ha, card_sdiff_of_subset (by simp [ha]),
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-125-    card_union_of_disjoint G.disjoint_sdiff_neighborFinset_image, card_sdiff_of_subset inc,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-126-    ← Nat.sub_add_comm <| card_le_card inc, card_incidenceFinset_eq_degree]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-127-  congr 2
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-197-variable [DecidableEq V] in
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-198-instance : Fintype (edge s t).edgeSet := by rw [edge]; infer_instance
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-199-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:200:theorem edgeFinset_sup_edge [Fintype (edgeSet (G ⊔ edge s t))] (hn : ¬G.Adj s t) (h : s ≠ t) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:201:    (G ⊔ edge s t).edgeFinset = G.edgeFinset.cons s(s, t) (by simp_all) := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-202-  letI := Classical.decEq V
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:203:  rw [edgeFinset_sup, cons_eq_insert, insert_eq, union_comm]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:204:  simp_rw [edgeFinset, edge_edgeSet_of_ne h]; rfl
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-205-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:206:theorem card_edgeFinset_sup_edge [Fintype (edgeSet (G ⊔ edge s t))] (hn : ¬G.Adj s t) (h : s ≠ t) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:207:    #(G ⊔ edge s t).edgeFinset = #G.edgeFinset + 1 := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean:208:  rw [G.edgeFinset_sup_edge hn h, card_cons]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-209-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-210-end AddEdge
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Operations.lean-211-
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-291-    p.IsPath ↔ p.IsTrail :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-292-  ⟨IsPath.isTrail, fun h ↦ hG.isPath_iff_isChain p |>.mpr <| p.isTrail_def.mp h |>.isChain⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-293-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:294:lemma IsTree.card_edgeFinset [Fintype V] [Fintype G.edgeSet] (hG : G.IsTree) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:295:    Finset.card G.edgeFinset + 1 = Fintype.card V := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-296-  have := hG.isConnected.nonempty
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-297-  inhabit V
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-298-  classical
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-321-      · simp only [isPath_copy]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-322-        exact (hf _).tail
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-323-  case surj =>
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:324:    simp only [mem_edgeFinset, Finset.mem_compl, Finset.mem_singleton, Sym2.forall, mem_edgeSet]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-325-    intro x y h
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-326-    wlog h' : (f x).length ≤ (f y).length generalizing x y
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-327-    · rw [Sym2.eq_swap]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-492-  · simp
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-493-  have := Fintype.ofFinite
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-494-  obtain ⟨T, hle, hT⟩ := h.exists_isTree_le
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:495:  rw [Nat.card_eq_fintype_card, ← hT.card_edgeFinset, add_le_add_iff_right,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:496:    Nat.card_eq_fintype_card, ← edgeFinset_card]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-497-  exact Finset.card_mono <| by simpa
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-498-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-499-lemma isTree_iff_connected_and_card [Finite V] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-500-    G.IsTree ↔ G.Connected ∧ Nat.card G.edgeSet + 1 = Nat.card V := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-501-  have := Fintype.ofFinite V
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-502-  classical
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:503:  refine ⟨fun h ↦ ⟨h.isConnected, by simpa [edgeFinset] using h.card_edgeFinset⟩,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-504-    fun ⟨h₁, h₂⟩ ↦ ⟨h₁, ?_⟩⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-505-  simp_rw [isAcyclic_iff_forall_adj_isBridge]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-506-  refine fun x y h ↦ by_contra fun hbr ↦
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-507-    (h₁.connected_delete_edge_of_not_isBridge hbr).card_vert_le_card_edgeSet_add_one.not_gt ?_
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:508:  rw [Nat.card_eq_fintype_card, ← edgeFinset_card, ← h₂, Nat.card_eq_fintype_card,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:509:    ← edgeFinset_card, add_lt_add_iff_right]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:510:  exact Finset.card_lt_card <| by simpa [deleteEdges, edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-511-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-512-/-- The minimum degree of all vertices in a nontrivial tree is one. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-513-lemma IsTree.minDegree_eq_one_of_nontrivial (h : G.IsTree) [Fintype V] [Nontrivial V]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-514-    [DecidableRel G.Adj] : G.minDegree = 1 := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-515-  by_cases q : 2 ≤ G.minDegree
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean:516:  · have := h.card_edgeFinset
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-517-    have := G.sum_degrees_eq_twice_card_edges
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-518-    have hle : ∑ v : V, 2 ≤ ∑ v, G.degree v := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean-519-      gcongr
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Subgraph.lean-238-  invFun w := ⟨⟨w, G'.edge_vert (G'.adj_symm w.2)⟩, w.2⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Subgraph.lean-239-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Subgraph.lean-240-/-- The edge set of `G'` consists of a subset of edges of `G`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Subgraph.lean:241:def edgeSet (G' : Subgraph G) : Set (Sym2 V) := Sym2.fromRel G'.symm
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Subgraph.lean-242-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Subgraph.lean-243-theorem edgeSet_subset (G' : Subgraph G) : G'.edgeSet ⊆ G.edgeSet :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Subgraph.lean-244-  Sym2.ind (fun _ _ ↦ G'.adj_sub)
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-174-    {e : Sym2 V} (he : e ∈ p.edges) : p.edges.count e = 1 :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-175-  List.count_eq_one_of_mem h.edges_nodup he
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-176-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean:177:theorem IsTrail.length_le_card_edgeFinset [Fintype G.edgeSet] {u v : V}
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean:178:    {w : G.Walk u v} (h : w.IsTrail) : w.length ≤ G.edgeFinset.card := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-179-  classical
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-180-  let edges := w.edges.toFinset
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-181-  have : edges.card = w.length := length_edges _ ▸ List.toFinset_card_of_nodup h.edges_nodup
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-182-  rw [← this]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean:183:  have : edges ⊆ G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-184-    intro e h
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean:185:    refine mem_edgeFinset.mpr ?_
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-186-    apply w.edges_subset_edgeSet
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-187-    simpa [edges] using h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-188-  exact Finset.card_le_card this
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-339-      ∀ (u' v' : V) (p' : G.Walk u' v') (_ : p'.IsTrail), p'.length ≤ p.length := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-340-  have := Fintype.ofFinite G.edgeSet
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-341-  let s := {n | ∃ (u v : V) (p : G.Walk u v), p.IsTrail ∧ p.length = n}
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean:342:  have : s.Finite := Set.Finite.subset (Set.finite_le_nat G.edgeFinset.card)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean:343:    fun n ⟨_, _, _, hp, hn⟩ ↦ hn ▸ hp.length_le_card_edgeFinset
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-344-  obtain ⟨x⟩ := N
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-345-  obtain ⟨_, ⟨⟨u, v, p, hp, _⟩, hn⟩⟩ := this.exists_maximal ⟨0, ⟨x, x, Walk.nil, by simp⟩⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-346-  refine ⟨u, v, p, hp, fun u' v' p' hp' ↦ ?_⟩
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-354-      ∀ (u' v' : V) (p' : G.Walk u' v') (_ : p'.IsPath), p'.length ≤ p.length := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-355-  have := Fintype.ofFinite G.edgeSet
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-356-  let s := {n | ∃ (u v : V) (p : G.Walk u v), p.IsPath ∧ p.length = n}
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean:357:  have : s.Finite := Set.Finite.subset (Set.finite_le_nat G.edgeFinset.card)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean:358:    fun n ⟨_, _, _, hp, hn⟩ ↦ hn ▸ hp.isTrail.length_le_card_edgeFinset
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-359-  obtain ⟨x⟩ := N
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-360-  obtain ⟨_, ⟨⟨u, v, p, hp, _⟩, hn⟩⟩ := this.exists_maximal ⟨0, ⟨x, x, Walk.nil, by simp⟩⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Paths.lean-361-  refine ⟨u, v, p, hp, fun u' v' p' hp' ↦ ?_⟩
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-501-/-- `G.killCopies H` is a subgraph of `G` where an *arbitrary* edge was removed from each copy of
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-502-`H` in `G`. By construction, it doesn't contain `H` (unless `H` had no edges) and has at most the
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-503-number of copies of `H` edges less than `G`. See `free_killCopies` and
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:504:`le_card_edgeFinset_killCopies` for these two properties. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-505-noncomputable irreducible_def killCopies (G : SimpleGraph V) (H : SimpleGraph W) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-506-    SimpleGraph V := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-507-  classical exact
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-566-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-567-/-- Removing an edge from `H` for each subgraph isomorphic to `G` means that the number of edges
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-568-we've removed is at most the number of copies of `G` in `H`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:569:lemma le_card_edgeFinset_killCopies [Fintype V] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:570:    #G.edgeFinset - G.copyCount H ≤ #(G.killCopies H).edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-571-  classical
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-572-  obtain rfl | hH := eq_or_ne H ⊥
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-573-  · simp [← card_edgeSet]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-574-  let f (G' : {G' : G.Subgraph // Nonempty (H ≃g G'.coe)}) := (aux hH G'.2).some
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-575-  calc
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:576:    _ = #G.edgeFinset - card {G' : G.Subgraph // Nonempty (H ≃g G'.coe)} := ?_
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:577:    _ ≤ #G.edgeFinset - #(univ.image f) := Nat.sub_le_sub_left card_image_le _
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:578:    _ = #G.edgeFinset - #(Set.range f).toFinset := by rw [Set.toFinset_range]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:579:    _ ≤ #(G.edgeFinset \ (Set.range f).toFinset) := le_card_sdiff ..
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:580:    _ = #(G.killCopies H).edgeFinset := ?_
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:581:  · simp only [edgeFinset, Set.toFinset_card]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:582:    rw [← Set.toFinset_card, ← edgeFinset, copyCount, ← card_subtype, subtype_univ, card_univ]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:583:  simp only [edgeFinset, killCopies_of_ne_bot, hH, Ne, not_false_iff,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-584-    Set.toFinset_card, edgeSet_deleteEdges]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-585-  simp only [Finset.sdiff_eq_inter_compl, Set.diff_eq, ← Set.iUnion_singleton_eq_range,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-586-    Set.coe_toFinset, coe_filter, Set.iUnion_subtype, ← Fintype.card_coe,
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-589-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-590-/-- Removing an edge from `H` for each subgraph isomorphic to `G` means that the number of edges
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-591-we've removed is at most the number of copies of `G` in `H`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:592:lemma le_card_edgeFinset_killCopies_add_copyCount [Fintype V] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:593:    #G.edgeFinset ≤ #(G.killCopies H).edgeFinset + G.copyCount H :=
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean:594:  tsub_le_iff_right.1 le_card_edgeFinset_killCopies
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-595-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-596-/-!
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Copy.lean-597-#### Killing induced copies
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-87-  rw [mem_singleton]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-88-  exact d.symm_ne.symm
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-89-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean:90:theorem dart_card_eq_twice_card_edges : Fintype.card G.Dart = 2 * #G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-91-  classical
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-92-  rw [← card_univ]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean:93:  rw [@card_eq_sum_card_fiberwise _ _ _ Dart.edge _ G.edgeFinset fun d _h =>
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean:94:      by rw [mem_coe, mem_edgeFinset]; apply Dart.edge_mem]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-95-  rw [← mul_comm, sum_const_nat]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-96-  intro e h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-97-  apply G.dart_edge_fiber_card e
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean:98:  rwa [← mem_edgeFinset]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-99-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-100-/-- The degree-sum formula.  This is also known as the handshaking lemma, which might
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-101-more specifically refer to `SimpleGraph.even_card_odd_degree_vertices`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean:102:theorem sum_degrees_eq_twice_card_edges : ∑ v, G.degree v = 2 * #G.edgeFinset :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-103-  G.dart_card_eq_sum_degrees.symm.trans G.dart_card_eq_twice_card_edges
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-104-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean:105:lemma two_mul_card_edgeFinset : 2 * #G.edgeFinset = #(univ.filter fun (x, y) ↦ G.Adj x y) := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-106-  rw [← dart_card_eq_twice_card_edges, ← card_univ]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-107-  refine card_bij' (fun d _ ↦ (d.fst, d.snd)) (fun xy h ↦ ⟨xy, (mem_filter.1 h).2⟩) ?_ ?_ ?_ ?_
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-108-    <;> simp
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-111-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-112-See `SimpleGraph.sum_degrees_eq_twice_card_edges` for the general version. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-113-theorem sum_degrees_support_eq_twice_card_edges :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean:114:    ∑ v ∈ G.support, G.degree v = 2 * #G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-115-  classical
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-116-  simp_rw [← sum_degrees_eq_twice_card_edges,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DegreeSum.lean-117-    ← sum_add_sum_compl G.support.toFinset, left_eq_add]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/CompleteMultipartite.lean-290-  rw [← card_neighborFinset_eq_degree, neighborFinset_completeEquipartiteGraph v,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/CompleteMultipartite.lean-291-    card_product, card_compl, card_singleton, Fintype.card_fin, card_univ, Fintype.card_fin]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/CompleteMultipartite.lean-292-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/CompleteMultipartite.lean:293:theorem card_edgeFinset_completeEquipartiteGraph :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/CompleteMultipartite.lean:294:    #(completeEquipartiteGraph r t).edgeFinset = r.choose 2 * t ^ 2 := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/CompleteMultipartite.lean-295-  rw [← mul_right_inj' two_ne_zero, ← sum_degrees_eq_twice_card_edges]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/CompleteMultipartite.lean-296-  conv_lhs =>
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/CompleteMultipartite.lean-297-    rhs; intro v
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Basic.lean-460-(That is, `s(v, w) ∈ G.edgeSet` is definitionally equal to `G.Adj v w`.)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Basic.lean-461--/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Basic.lean-462--- Porting note: We need a separate definition so that dot notation works.
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Basic.lean:463:def edgeSetEmbedding (V : Type*) : SimpleGraph V ↪o Set (Sym2 V) :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Basic.lean-464-  OrderEmbedding.ofMapLEIff (fun G => Sym2.fromRel G.symm) fun _ _ =>
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Basic.lean-465-    ⟨fun h a b => @h s(a, b), fun h e => Sym2.ind @h e⟩
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Basic.lean-466-
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-91-theorem edgeSet_deleteEdges (s : Set (Sym2 V)) : (G.deleteEdges s).edgeSet = G.edgeSet \ s := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-92-  simp [deleteEdges]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-93-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:94:@[simp] theorem edgeFinset_deleteEdges [DecidableEq V] [Fintype G.edgeSet] (s : Finset (Sym2 V))
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-95-    [Fintype (G.deleteEdges s).edgeSet] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:96:    (G.deleteEdges s).edgeFinset = G.edgeFinset \ s := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-97-  ext e
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-98-  simp [edgeSet_deleteEdges]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-99-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-152-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-153-/-- Deleting the incidence set of the vertex `x` retains the same number of edges as in the induced
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-154-subgraph of the vertices `{x}ᶜ`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:155:theorem card_edgeFinset_induce_compl_singleton (G : SimpleGraph V) [DecidableRel G.Adj] (x : V) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:156:    #(G.induce {x}ᶜ).edgeFinset = #(G.deleteIncidenceSet x).edgeFinset := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-157-  have h_notMem : x ∉ ({x}ᶜ : Set V) := Set.notMem_compl_iff.mpr (Set.mem_singleton x)
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:158:  simp_rw [edgeFinset, Set.toFinset_card,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-159-    ← G.induce_deleteIncidenceSet_of_notMem h_notMem, ← Set.toFinset_card]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:160:  apply card_edgeFinset_induce_of_support_subset
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-161-  trans G.support \ {x}
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-162-  · exact support_deleteIncidenceSet_subset G x
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-163-  · rw [Set.compl_eq_univ_diff]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-165-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-166-/-- The finite edge set of `G.deleteIncidenceSet x` is the finite edge set of the simple graph `G`
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-167-set difference the finite incidence set of the vertex `x`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:168:theorem edgeFinset_deleteIncidenceSet_eq_sdiff (G : SimpleGraph V) [DecidableRel G.Adj] (x : V) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:169:    (G.deleteIncidenceSet x).edgeFinset = G.edgeFinset \ G.incidenceFinset x := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-170-  apply Finset.coe_injective
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-171-  push_cast
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-172-  exact G.edgeSet_deleteIncidenceSet x
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-173-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-174-/-- Deleting the incident set of the vertex `x` deletes exactly `G.degree x` edges from the edge
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-175-set of the simple graph `G`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:176:theorem card_edgeFinset_deleteIncidenceSet (G : SimpleGraph V) [DecidableRel G.Adj] (x : V) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:177:    #(G.deleteIncidenceSet x).edgeFinset = #G.edgeFinset - G.degree x := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-178-  simp_rw [← card_incidenceFinset_eq_degree, ← card_sdiff_of_subset (G.incidenceFinset_subset x),
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:179:    edgeFinset_deleteIncidenceSet_eq_sdiff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-180-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-181-/-- Deleting the incident set of the vertex `x` is equivalent to filtering the edges of the simple
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-182-graph `G` that do not contain `x`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:183:theorem edgeFinset_deleteIncidenceSet_eq_filter (G : SimpleGraph V) [DecidableRel G.Adj] (x : V) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:184:    (G.deleteIncidenceSet x).edgeFinset = G.edgeFinset.filter (x ∉ ·) := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:185:  rw [edgeFinset_deleteIncidenceSet_eq_sdiff, sdiff_eq_filter]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-186-  apply filter_congr
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-187-  intro _ h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-188-  rw [incidenceFinset, Set.mem_toFinset, incidenceSet,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-189-    Set.mem_setOf_eq, not_and, Classical.imp_iff_right_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-190-  left
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:191:  rwa [mem_edgeFinset] at h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-192-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-193-/-- The support of `G.deleteIncidenceSet x` is at most `1` less than the support of the simple
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-194-graph `G`. -/
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-212-/-- A graph is `r`-*delete-far* from a property `p` if we must delete at least `r` edges from it to
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-213-get a graph with the property `p`. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-214-def DeleteFar (p : SimpleGraph V → Prop) (r : 𝕜) : Prop :=
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:215:  ∀ ⦃s⦄, s ⊆ G.edgeFinset → p (G.deleteEdges s) → r ≤ #s
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-216-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-217-variable {G}
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-218-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-219-theorem deleteFar_iff [Fintype (Sym2 V)] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-220-    G.DeleteFar p r ↔ ∀ ⦃H : SimpleGraph _⦄ [DecidableRel H.Adj],
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:221:      H ≤ G → p H → r ≤ #G.edgeFinset - #H.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-222-  classical
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-223-  refine ⟨fun h H _ hHG hH ↦ ?_, fun h s hs hG ↦ ?_⟩
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:224:  · have := h (sdiff_subset (t := H.edgeFinset))
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:225:    simp only [deleteEdges_sdiff_eq_of_le hHG, edgeFinset_mono hHG, card_sdiff_of_subset,
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:226:      card_le_card, coe_sdiff, coe_edgeFinset, Nat.cast_sub] at this
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-227-    exact this hH
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-228-  · classical
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:229:    simpa [card_sdiff_of_subset hs, edgeFinset_deleteEdges, -Set.toFinset_card, Nat.cast_sub,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-230-      card_le_card hs] using h (G.deleteEdges_le s) hG
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-231-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-232-alias ⟨DeleteFar.le_card_sub_card, _⟩ := deleteFar_iff
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-234-theorem DeleteFar.mono (h : G.DeleteFar p r₂) (hr : r₁ ≤ r₂) : G.DeleteFar p r₁ := fun _ hs hG =>
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-235-  hr.trans <| h hs hG
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-236-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean:237:lemma DeleteFar.le_card_edgeFinset (h : G.DeleteFar p r) (hp : p ⊥) : r ≤ #G.edgeFinset :=
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-238-  h subset_rfl (by simpa)
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-239-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/DeleteEdges.lean-240-end DeleteFar
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Trails.lean-119-  rwa [← h.isTrail.isEulerian_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Trails.lean-120-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Trails.lean-121-theorem IsEulerian.edgesFinset_eq [Fintype G.edgeSet] {u v : V} {p : G.Walk u v}
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Trails.lean:122:    (h : p.IsEulerian) : h.isTrail.edgesFinset = G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Trails.lean-123-  ext e
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Trails.lean-124-  simp [h.mem_edges_iff]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Trails.lean-125-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-249-variable [Fintype V] [DecidableRel G.Adj]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-250-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-251-lemma isBipartiteWith_sum_degrees_eq_twice_card_edges [DecidableEq V] (h : G.IsBipartiteWith s t) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean:252:    ∑ v ∈ s ∪ t, G.degree v = 2 * #G.edgeFinset := by
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-253-  have hsub : G.support ⊆ ↑s ∪ ↑t := isBipartiteWith_support_subset h
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-254-  rw [← coe_union, ← Set.toFinset_subset] at hsub
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-255-  rw [← Finset.sum_subset hsub, ← sum_degrees_support_eq_twice_card_edges]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-261-See `SimpleGraph.sum_degrees_eq_twice_card_edges` for the general version, and
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-262-`SimpleGraph.isBipartiteWith_sum_degrees_eq_card_edges'` for the version from the "right". -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-263-theorem isBipartiteWith_sum_degrees_eq_card_edges (h : G.IsBipartiteWith s t) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean:264:    ∑ v ∈ s, G.degree v = #G.edgeFinset := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-265-  classical
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-266-  rw [← Nat.mul_left_cancel_iff zero_lt_two, ← isBipartiteWith_sum_degrees_eq_twice_card_edges h,
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-267-    sum_union (disjoint_coe.mp h.disjoint), two_mul, add_right_inj]
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-272-See `SimpleGraph.sum_degrees_eq_twice_card_edges` for the general version, and
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-273-`SimpleGraph.isBipartiteWith_sum_degrees_eq_card_edges` for the version from the "left". -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-274-theorem isBipartiteWith_sum_degrees_eq_card_edges' (h : G.IsBipartiteWith s t) :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean:275:    ∑ v ∈ t, G.degree v = #G.edgeFinset := isBipartiteWith_sum_degrees_eq_card_edges h.symm
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-276-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-277-end IsBipartiteWith
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean-278-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Walks/Basic.lean-327-  edges_injective.of_comp
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Walks/Basic.lean-328-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Walks/Basic.lean-329-/-- The `Set` of edges of a walk. -/
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Walks/Basic.lean:330:def edgeSet {u v : V} (p : G.Walk u v) : Set (Sym2 V) := {e | e ∈ p.edges}
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Walks/Basic.lean-331-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Walks/Basic.lean-332-@[simp]
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Walks/Basic.lean-333-lemma mem_edgeSet {u v : V} {p : G.Walk u v} {e : Sym2 V} : e ∈ p.edgeSet ↔ e ∈ p.edges := Iff.rfl
+--
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Matching.lean-221-theorem IsMatching.even_card [Fintype M.verts] (h : M.IsMatching) : Even M.verts.toFinset.card := by
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Matching.lean-222-  classical
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Matching.lean-223-  rw [isMatching_iff_forall_degree] at h
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Matching.lean:224:  use M.coe.edgeFinset.card
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Matching.lean-225-  rw [← two_mul, ← M.coe.sum_degrees_eq_twice_card_edges]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Matching.lean-226-  simp [h, Finset.card_univ]
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Matching.lean-227-
+--
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/EdgeLabeling.lean-66-
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/EdgeLabeling.lean-67-theorem card_topEdgeLabeling [DecidableEq V] [Fintype V] [Fintype K] :
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/EdgeLabeling.lean-68-    card (TopEdgeLabeling V K) = card K ^ (card V).choose 2 :=
+.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/EdgeLabeling.lean:69:  Fintype.card_fun.trans (by rw [← edgeFinset_card, card_edgeFinset_top_eq_card_choose_two])
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/EdgeLabeling.lean-70-
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/EdgeLabeling.lean-71-namespace EdgeLabeling
+/home/ryan/erdos/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/EdgeLabeling.lean-72-

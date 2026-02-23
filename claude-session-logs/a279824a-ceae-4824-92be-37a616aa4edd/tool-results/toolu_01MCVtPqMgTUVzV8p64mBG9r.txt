@@ -1,0 +1,908 @@
+/home/ryan/erdos/conjectures/543.lean-49--/
+conjectures/543.lean-50-theorem erdos_problem_543 :
+conjectures/543.lean-51-    ¬ ∃ g : ℕ → ℝ,
+conjectures/543.lean:52:      Tendsto (fun N => g N / Real.log (Real.log (N : ℝ))) atTop (nhds 0) ∧
+conjectures/543.lean-53-      ∀ᶠ (N : ℕ) in atTop,
+conjectures/543.lean:54:        let k := Nat.ceil (Real.log (↑N : ℝ) / Real.log 2 + g N)
+conjectures/543.lean-55-        2 * sscCountMod N k ≥ totalSubsetsMod N k :=
+/home/ryan/erdos/conjectures/543.lean-56-  sorry
+/home/ryan/erdos/conjectures/543.lean-57-
+--
+conjectures/182.lean-47-    ∀ (n : ℕ), n₀ ≤ n →
+conjectures/182.lean-48-    ∀ (G : SimpleGraph (Fin n)) (dG : DecidableRel G.Adj),
+conjectures/182.lean-49-      haveI := dG;
+conjectures/182.lean:50:      (G.edgeFinset.card : ℝ) ≥ C * (n : ℝ) * Real.log (Real.log (n : ℝ)) →
+conjectures/182.lean-51-      containsKRegularSubgraph182 G k :=
+/home/ryan/erdos/conjectures/182.lean-52-  sorry
+/home/ryan/erdos/conjectures/182.lean-53-
+--
+conjectures/462.lean-38-      Tendsto (fun x : ℕ =>
+/home/ryan/erdos/conjectures/462.lean-39-        (∑ n ∈ (Finset.Icc 2 x).filter (fun n => ¬ Nat.Prime n),
+conjectures/462.lean-40-          (Nat.minFac n : ℝ) / (n : ℝ)) /
+conjectures/462.lean:41:        (Real.sqrt (x : ℝ) / (Real.log (x : ℝ)) ^ 2))
+conjectures/462.lean-42-        atTop (nhds c) :=
+/home/ryan/erdos/conjectures/462.lean-43-  sorry
+/home/ryan/erdos/conjectures/462.lean-44-
+--
+conjectures/462.lean-52-theorem erdos_problem_462 :
+conjectures/462.lean-53-    ∃ C : ℝ, C > 0 ∧ ∃ δ : ℝ, δ > 0 ∧ ∃ x₀ : ℕ, ∀ x : ℕ, x₀ ≤ x →
+/home/ryan/erdos/conjectures/462.lean-54-      δ ≤ ∑ n ∈ (Finset.Icc x
+conjectures/462.lean:55:        (x + ⌊C * Real.sqrt (x : ℝ) * (Real.log (x : ℝ)) ^ 2⌋₊)).filter
+/home/ryan/erdos/conjectures/462.lean-56-        (fun n => ¬ Nat.Prime n),
+conjectures/462.lean-57-        (Nat.minFac n : ℝ) / (n : ℝ) :=
+/home/ryan/erdos/conjectures/462.lean-58-  sorry
+--
+conjectures/636.lean-47-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/636.lean-48-    ∀ G : SimpleGraph (Fin n),
+conjectures/636.lean-49-    (∀ S : Finset (Fin n), G.IsClique (↑S : Set (Fin n)) →
+conjectures/636.lean:50:      (S.card : ℝ) ≤ C * Real.logb 2 (↑n : ℝ)) →
+conjectures/636.lean-51-    (∀ S : Finset (Fin n), Gᶜ.IsClique (↑S : Set (Fin n)) →
+conjectures/636.lean:52:      (S.card : ℝ) ≤ C * Real.logb 2 (↑n : ℝ)) →
+conjectures/636.lean-53-    ((inducedSubgraphSignatures G).card : ℝ) ≥ c * (↑n : ℝ) ^ ((5 : ℝ) / 2) :=
+/home/ryan/erdos/conjectures/636.lean-54-  sorry
+/home/ryan/erdos/conjectures/636.lean-55-
+--
+/home/ryan/erdos/conjectures/760.lean-53-      G.chromaticNumber.toNat ≥ N₀ →
+conjectures/760.lean-54-        ∃ (S : Finset (Fin n)),
+conjectures/760.lean-55-          (cochromaticNumber760 (G.induce (↑S : Set (Fin n))) : ℝ) ≥
+conjectures/760.lean:56:            C * (G.chromaticNumber.toNat : ℝ) / Real.log (G.chromaticNumber.toNat : ℝ) :=
+/home/ryan/erdos/conjectures/760.lean-57-  sorry
+/home/ryan/erdos/conjectures/760.lean-58-
+/home/ryan/erdos/conjectures/760.lean-59-end
+--
+conjectures/381.lean-36-theorem erdos_problem_381 :
+conjectures/381.lean-37-    ∃ (C K : ℝ), 0 < C ∧ 0 < K ∧
+conjectures/381.lean-38-      ∃ N₀ : ℕ, ∀ x : ℕ, N₀ ≤ x →
+conjectures/381.lean:39:        (highlyCompositeCount x : ℝ) ≤ C * (Real.log (x : ℝ)) ^ K :=
+/home/ryan/erdos/conjectures/381.lean-40-  sorry
+/home/ryan/erdos/conjectures/381.lean-41-
+/home/ryan/erdos/conjectures/381.lean-42-end
+--
+/home/ryan/erdos/conjectures/793.lean-49-    Filter.Tendsto
+conjectures/793.lean-50-      (fun n : ℕ =>
+conjectures/793.lean-51-        ((primitiveLikeMaxSize n : ℝ) - (Nat.primeCounting n : ℝ)) /
+conjectures/793.lean:52:        ((n : ℝ) ^ ((2 : ℝ) / 3) / (Real.log (n : ℝ)) ^ (2 : ℝ)))
+/home/ryan/erdos/conjectures/793.lean-53-      Filter.atTop
+conjectures/793.lean-54-      (nhds c) := by
+/home/ryan/erdos/conjectures/793.lean-55-  sorry
+--
+conjectures/538.lean-46-      ∀ A : Finset ℕ, A ⊆ Icc 1 N →
+conjectures/538.lean-47-        (∀ m : ℕ, numPrimeProductReps A m ≤ r) →
+conjectures/538.lean-48-        A.sum (fun n => (1 : ℝ) / (n : ℝ)) ≤
+conjectures/538.lean:49:          C * (r : ℝ) * (Real.log (N : ℝ) / Real.log (Real.log (N : ℝ))) :=
+/home/ryan/erdos/conjectures/538.lean-50-  sorry
+/home/ryan/erdos/conjectures/538.lean-51-
+/home/ryan/erdos/conjectures/538.lean-52-/--
+--
+conjectures/538.lean-63-      ∀ r : ℕ, 2 ≤ r →
+conjectures/538.lean-64-      ∃ A : Finset ℕ, A ⊆ Icc 1 N ∧
+conjectures/538.lean-65-        (∀ m : ℕ, numPrimeProductReps A m ≤ r) ∧
+conjectures/538.lean:66:        c * (r : ℝ) * (Real.log (N : ℝ) / Real.log (Real.log (N : ℝ))) ≤
+conjectures/538.lean-67-          A.sum (fun n => (1 : ℝ) / (n : ℝ)) :=
+/home/ryan/erdos/conjectures/538.lean-68-  sorry
+/home/ryan/erdos/conjectures/538.lean-69-
+--
+conjectures/679.lean-48-    Set.Infinite {n : ℕ |
+conjectures/679.lean-49-      ∀ k : ℕ, k₀ ≤ k → k < n →
+conjectures/679.lean-50-        (erdos679_omega (n - k) : ℝ) <
+conjectures/679.lean:51:          (1 + ε) * Real.log (k : ℝ) / Real.log (Real.log (k : ℝ))} :=
+/home/ryan/erdos/conjectures/679.lean-52-  sorry
+/home/ryan/erdos/conjectures/679.lean-53-
+/home/ryan/erdos/conjectures/679.lean-54-/--
+--
+conjectures/679.lean-64-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/679.lean-65-      ∃ k : ℕ, k < n ∧
+conjectures/679.lean-66-        (erdos679_omega (n - k) : ℝ) ≥
+conjectures/679.lean:67:          Real.log (k : ℝ) / Real.log (Real.log (k : ℝ)) +
+conjectures/679.lean:68:          c * Real.log (k : ℝ) / (Real.log (Real.log (k : ℝ))) ^ 2 :=
+/home/ryan/erdos/conjectures/679.lean-69-  sorry
+/home/ryan/erdos/conjectures/679.lean-70-
+/home/ryan/erdos/conjectures/679.lean-71-end
+--
+conjectures/746.lean-65-    ∀ ε : ℝ, ε > 0 →
+conjectures/746.lean-66-    ∀ δ : ℝ, δ > 0 →
+conjectures/746.lean-67-    ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
+conjectures/746.lean:68:      ∀ m : ℕ, (m : ℝ) ≥ (1/2 + ε) * (n : ℝ) * Real.log (n : ℝ) →
+/home/ryan/erdos/conjectures/746.lean-69-        m ≤ n.choose 2 →
+conjectures/746.lean-70-        gnmFraction746 n m (fun G => G.IsHamiltonian) ≥ 1 - δ :=
+/home/ryan/erdos/conjectures/746.lean-71-  sorry
+--
+conjectures/169.lean-39-theorem erdos_problem_169_conjecture :
+conjectures/169.lean-40-    ∀ C : ℝ, 0 < C → ∃ k₀ : ℕ, ∀ k : ℕ, k₀ ≤ k →
+conjectures/169.lean-41-      ∃ A : Finset ℕ, (∀ n ∈ A, 0 < n) ∧ IsAPFree k A ∧
+conjectures/169.lean:42:        C * Real.log (↑(vanDerWaerdenNumber k) : ℝ) <
+conjectures/169.lean-43-          ∑ n ∈ A, (1 : ℝ) / (↑n : ℝ) :=
+/home/ryan/erdos/conjectures/169.lean-44-  sorry
+--
+conjectures/726.lean-42-Stated as: the ratio of the sum to (log log n)/2 tends to 1.
+/home/ryan/erdos/conjectures/726.lean-43--/
+conjectures/726.lean-44-theorem erdos_problem_726 :
+conjectures/726.lean:45:    Tendsto (fun n : ℕ => erdos726_sum n / (Real.log (Real.log (n : ℝ)) / 2))
+conjectures/726.lean-46-      atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/726.lean-47-  sorry
+/home/ryan/erdos/conjectures/726.lean-48-
+--
+conjectures/222.lean-60-theorem erdos_222_lower_bound :
+conjectures/222.lean-61-    ∀ δ : ℝ, δ > 0 → ∃ᶠ k in atTop,
+conjectures/222.lean-62-      ((sumTwoSqSeq (k + 1) : ℝ) - (sumTwoSqSeq k : ℝ)) ≥
+conjectures/222.lean:63:        (1 / 4 - δ) * Real.log (sumTwoSqSeq k : ℝ) :=
+/home/ryan/erdos/conjectures/222.lean-64-  sorry
+--
+conjectures/747.lean-64-    ∀ ε : ℝ, ε > 0 →
+conjectures/747.lean-65-    ∀ δ : ℝ, δ > 0 →
+conjectures/747.lean-66-    ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
+conjectures/747.lean:67:      ∀ m : ℕ, (m : ℝ) ≥ (1 + ε) * (n : ℝ) * Real.log (n : ℝ) →
+/home/ryan/erdos/conjectures/747.lean-68-        m ≤ (3 * n).choose 3 →
+conjectures/747.lean-69-        hypergraphMatchingFraction (3 * n) m n ≥ 1 - δ :=
+/home/ryan/erdos/conjectures/747.lean-70-  sorry
+--
+conjectures/790.lean-66-theorem erdos_problem_790_CKS_lower :
+conjectures/790.lean-67-    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/790.lean-68-      (erdos790_l n : ℝ) ≥
+conjectures/790.lean:69:        C * ((n : ℝ) * Real.log (n : ℝ) / Real.log (Real.log (n : ℝ))) ^ ((1 : ℝ) / 2) :=
+/home/ryan/erdos/conjectures/790.lean-70-  sorry
+/home/ryan/erdos/conjectures/790.lean-71-
+/home/ryan/erdos/conjectures/790.lean-72-/--
+--
+/home/ryan/erdos/conjectures/790.lean-76--/
+conjectures/790.lean-77-theorem erdos_problem_790_CKS_upper :
+conjectures/790.lean-78-    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/790.lean:79:      (erdos790_l n : ℝ) ≤ C * ((n : ℝ) / Real.log (n : ℝ)) :=
+/home/ryan/erdos/conjectures/790.lean-80-  sorry
+/home/ryan/erdos/conjectures/790.lean-81-
+/home/ryan/erdos/conjectures/790.lean-82-/--
+--
+/home/ryan/erdos/conjectures/446.lean-30-The constant α = 1 - (1 + log(log 2)) / log 2 ≈ 0.08607,
+/home/ryan/erdos/conjectures/446.lean-31-appearing in the growth rate of δ(n).
+/home/ryan/erdos/conjectures/446.lean-32--/
+conjectures/446.lean:33:def erdos446Alpha : ℝ := 1 - (1 + Real.log (Real.log 2)) / Real.log 2
+/home/ryan/erdos/conjectures/446.lean-34-
+/home/ryan/erdos/conjectures/446.lean-35-/--
+conjectures/446.lean-36-Erdős Problem #446, Part 1 (Ford's Theorem on growth rate of δ(n)):
+--
+conjectures/446.lean-61-        ∃ δ : ℝ,
+conjectures/446.lean-62-          Filter.Tendsto (fun N : ℕ => (countWithDivisor n N : ℝ) / (N : ℝ))
+/home/ryan/erdos/conjectures/446.lean-63-            atTop (nhds δ) ∧
+conjectures/446.lean:64:          C₁ / ((Real.log (n : ℝ)) ^ erdos446Alpha *
+conjectures/446.lean:65:            (Real.log (Real.log (n : ℝ))) ^ ((3 : ℝ) / 2)) ≤ δ ∧
+conjectures/446.lean:66:          δ ≤ C₂ / ((Real.log (n : ℝ)) ^ erdos446Alpha *
+conjectures/446.lean:67:            (Real.log (Real.log (n : ℝ))) ^ ((3 : ℝ) / 2)) :=
+/home/ryan/erdos/conjectures/446.lean-68-  sorry
+/home/ryan/erdos/conjectures/446.lean-69-
+/home/ryan/erdos/conjectures/446.lean-70-/--
+--
+conjectures/675.lean-74-theorem erdos_problem_675_part2 :
+conjectures/675.lean-75-    ∀ (P : Set ℕ),
+conjectures/675.lean-76-    (∃ c₁ : ℝ, c₁ > 0 ∧ ∃ N₁ : ℕ, ∀ x : ℕ, x ≥ N₁ →
+conjectures/675.lean:77:      c₁ * (x : ℝ) / Real.log (x : ℝ) ≤
+conjectures/675.lean-78-        (((Finset.range (x + 1)).filter (fun q => Nat.Prime q ∧ q ∈ P)).card : ℝ)) →
+conjectures/675.lean-79-    (∃ c₂ : ℝ, c₂ > 0 ∧ ∃ N₂ : ℕ, ∀ x : ℕ, x ≥ N₂ →
+conjectures/675.lean:80:      c₂ * (x : ℝ) / Real.log (x : ℝ) ≤
+conjectures/675.lean-81-        (((Finset.range (x + 1)).filter (fun q => Nat.Prime q ∧ q ∉ P)).card : ℝ)) →
+conjectures/675.lean-82-    ¬ HasTranslationProperty (smoothNumbers675 P) :=
+/home/ryan/erdos/conjectures/675.lean-83-  sorry
+--
+/home/ryan/erdos/conjectures/294.lean-45--/
+conjectures/294.lean-46-theorem erdos_problem_294_upper :
+conjectures/294.lean-47-    ∃ C : ℝ, 0 < C ∧ ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+conjectures/294.lean:48:      (leastNoRep N : ℝ) ≤ C * (N : ℝ) / Real.log (N : ℝ) :=
+/home/ryan/erdos/conjectures/294.lean-49-  sorry
+/home/ryan/erdos/conjectures/294.lean-50-
+/home/ryan/erdos/conjectures/294.lean-51-/--
+--
+/home/ryan/erdos/conjectures/294.lean-56--/
+conjectures/294.lean-57-theorem erdos_problem_294_lower :
+conjectures/294.lean-58-    ∃ c : ℝ, 0 < c ∧ ∃ K : ℕ, ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+conjectures/294.lean:59:      c * (N : ℝ) / (Real.log (N : ℝ) * Real.log (Real.log (N : ℝ)) ^ 3 *
+conjectures/294.lean:60:        Real.log (Real.log (Real.log (N : ℝ))) ^ K) ≤ (leastNoRep N : ℝ) :=
+/home/ryan/erdos/conjectures/294.lean-61-  sorry
+--
+/home/ryan/erdos/conjectures/635.lean-51--/
+conjectures/635.lean-52-theorem erdos_problem_635_t2_lower :
+conjectures/635.lean-53-    ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+conjectures/635.lean:54:      (maxDivAvoidance635 N 2 : ℝ) ≥ (N : ℝ) / 2 + c * Real.log (N : ℝ) :=
+/home/ryan/erdos/conjectures/635.lean-55-  sorry
+/home/ryan/erdos/conjectures/635.lean-56-
+/home/ryan/erdos/conjectures/635.lean-57-/--
+--
+conjectures/609.lean-58-      ∃ χ : Fin (2^n + 1) → Fin (2^n + 1) → Fin n,
+/home/ryan/erdos/conjectures/609.lean-59-        (∀ u v, χ u v = χ v u) ∧
+/home/ryan/erdos/conjectures/609.lean-60-        ∀ k, Odd k → HasMonoCycle609 χ k →
+conjectures/609.lean:61:          (k : ℝ) ≥ (2 : ℝ) ^ (c * Real.sqrt (Real.log (n : ℝ))) :=
+/home/ryan/erdos/conjectures/609.lean-62-  sorry
+/home/ryan/erdos/conjectures/609.lean-63-
+/home/ryan/erdos/conjectures/609.lean-64-/--
+--
+conjectures/710.lean-45-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/710.lean-46-      (erdos710_f n : ℝ) ≥
+conjectures/710.lean-47-        (2 / (Real.exp 1) ^ ((1 : ℝ) / 2) - ε) * (n : ℝ) *
+conjectures/710.lean:48:        (Real.log (n : ℝ) / Real.log (Real.log (n : ℝ))) ^ ((1 : ℝ) / 2) :=
+/home/ryan/erdos/conjectures/710.lean-49-  sorry
+/home/ryan/erdos/conjectures/710.lean-50-
+/home/ryan/erdos/conjectures/710.lean-51-/--
+--
+conjectures/710.lean-61-    ∀ ε : ℝ, 0 < ε →
+conjectures/710.lean-62-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/710.lean-63-      (erdos710_f n : ℝ) ≤
+conjectures/710.lean:64:        (1.7399 + ε) * (n : ℝ) * (Real.log (n : ℝ)) ^ ((1 : ℝ) / 2) :=
+/home/ryan/erdos/conjectures/710.lean-65-  sorry
+/home/ryan/erdos/conjectures/710.lean-66-
+/home/ryan/erdos/conjectures/710.lean-67-end
+--
+/home/ryan/erdos/conjectures/626.lean-64-For k ≥ 4, the limit lim_{n → ∞} g_k(n) / log n exists.
+/home/ryan/erdos/conjectures/626.lean-65--/
+conjectures/626.lean-66-theorem erdos_problem_626a (k : ℕ) (hk : k ≥ 4) :
+conjectures/626.lean:67:    ∃ L : ℝ, Tendsto (fun n : ℕ => (g626 k n : ℝ) / Real.log (n : ℝ))
+conjectures/626.lean-68-      atTop (nhds L) :=
+/home/ryan/erdos/conjectures/626.lean-69-  sorry
+/home/ryan/erdos/conjectures/626.lean-70-
+--
+/home/ryan/erdos/conjectures/626.lean-74-For m ≥ 1, the limit lim_{n → ∞} log h^{(m)}(n) / log n exists.
+/home/ryan/erdos/conjectures/626.lean-75--/
+conjectures/626.lean-76-theorem erdos_problem_626b (m : ℕ) (hm : m ≥ 1) :
+conjectures/626.lean:77:    ∃ L : ℝ, Tendsto (fun n : ℕ => Real.log (h626 m n : ℝ) / Real.log (n : ℝ))
+conjectures/626.lean-78-      atTop (nhds L) :=
+/home/ryan/erdos/conjectures/626.lean-79-  sorry
+/home/ryan/erdos/conjectures/626.lean-80-
+--
+conjectures/271.lean-35-    (a : ℕ → ℕ) (ha : IsStanleySeq n a) :
+conjectures/271.lean-36-    (∃ C₁ C₂ : ℝ, 0 < C₁ ∧ 0 < C₂ ∧
+conjectures/271.lean-37-      ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
+conjectures/271.lean:38:        C₁ * (k : ℝ) ^ (Real.log 3 / Real.log 2) ≤ (a k : ℝ) ∧
+conjectures/271.lean:39:        (a k : ℝ) ≤ C₂ * (k : ℝ) ^ (Real.log 3 / Real.log 2))
+/home/ryan/erdos/conjectures/271.lean-40-    ∨
+conjectures/271.lean-41-    (∃ C₁ C₂ : ℝ, 0 < C₁ ∧ 0 < C₂ ∧
+conjectures/271.lean-42-      ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
+conjectures/271.lean:43:        C₁ * (k : ℝ) ^ 2 / Real.log (k : ℝ) ≤ (a k : ℝ) ∧
+conjectures/271.lean:44:        (a k : ℝ) ≤ C₂ * (k : ℝ) ^ 2 / Real.log (k : ℝ)) :=
+/home/ryan/erdos/conjectures/271.lean-45-  sorry
+--
+conjectures/400.lean-42-theorem erdos_problem_400_part1 (k : ℕ) (hk : 2 ≤ k) :
+conjectures/400.lean-43-    ∃ c : ℝ, 0 < c ∧
+conjectures/400.lean-44-      Tendsto (fun x : ℕ =>
+conjectures/400.lean:45:        (∑ n ∈ Finset.Icc 1 x, (erdos400_g k n : ℝ)) / ((x : ℝ) * Real.log (x : ℝ)))
+conjectures/400.lean-46-        atTop (nhds c) :=
+/home/ryan/erdos/conjectures/400.lean-47-  sorry
+/home/ryan/erdos/conjectures/400.lean-48-
+--
+conjectures/400.lean-59-    ∃ c : ℝ, ∀ ε : ℝ, 0 < ε →
+conjectures/400.lean-60-      Tendsto (fun x : ℕ =>
+/home/ryan/erdos/conjectures/400.lean-61-        (((Finset.Icc 1 x).filter (fun n =>
+conjectures/400.lean:62:          |(erdos400_g k n : ℝ) - c * Real.log (x : ℝ)| >
+conjectures/400.lean:63:            ε * Real.log (x : ℝ))).card : ℝ) / (x : ℝ))
+conjectures/400.lean-64-        atTop (nhds 0) :=
+/home/ryan/erdos/conjectures/400.lean-65-  sorry
+/home/ryan/erdos/conjectures/400.lean-66-
+--
+conjectures/191.lean-35-        ∀ G : SimpleGraph ℕ,
+conjectures/191.lean-36-          ∃ X : Finset ℕ, X ⊆ Finset.Icc 2 n ∧
+conjectures/191.lean-37-            (G.IsClique (X : Set ℕ) ∨ Gᶜ.IsClique (X : Set ℕ)) ∧
+conjectures/191.lean:38:            C ≤ ∑ x ∈ X, (1 : ℝ) / Real.log (x : ℝ) := by
+/home/ryan/erdos/conjectures/191.lean-39-  sorry
+--
+/home/ryan/erdos/conjectures/126.lean-49-It has never been proved that f(n) = o(n / log n).
+/home/ryan/erdos/conjectures/126.lean-50--/
+conjectures/126.lean-51-theorem erdos_problem_126 :
+conjectures/126.lean:52:    Filter.Tendsto (fun n : ℕ => (f n : ℝ) / Real.log n) Filter.atTop Filter.atTop :=
+/home/ryan/erdos/conjectures/126.lean-53-  sorry
+--
+/home/ryan/erdos/conjectures/589.lean-44--/
+conjectures/589.lean-45-theorem erdos_problem_589_lower :
+conjectures/589.lean-46-    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/589.lean:47:      (erdos589_g n : ℝ) ≥ C * Real.sqrt (↑n) * Real.log (↑n) :=
+/home/ryan/erdos/conjectures/589.lean-48-  sorry
+/home/ryan/erdos/conjectures/589.lean-49-
+/home/ryan/erdos/conjectures/589.lean-50-/--
+--
+conjectures/693.lean-34-    ∀ a b : ℕ, n ≤ a → a < b → b ≤ n ^ k →
+/home/ryan/erdos/conjectures/693.lean-35-    hasDivisorIn a n → hasDivisorIn b n →
+conjectures/693.lean-36-    (∀ m : ℕ, a < m → m < b → ¬hasDivisorIn m n) →
+conjectures/693.lean:37:    (b : ℝ) - (a : ℝ) ≤ (Real.log (n : ℝ)) ^ C :=
+/home/ryan/erdos/conjectures/693.lean-38-  sorry
+/home/ryan/erdos/conjectures/693.lean-39-
+/home/ryan/erdos/conjectures/693.lean-40-end
+--
+conjectures/491.lean-20-    (hf : IsAdditiveArithmeticFunction f)
+conjectures/491.lean-21-    (hbdd : ∃ c : ℝ, ∀ n : ℕ, |f (n + 1) - f n| < c) :
+conjectures/491.lean-22-    ∃ c' : ℝ, ∃ M : ℝ, ∀ n : ℕ, 1 ≤ n →
+conjectures/491.lean:23:      |f n - c' * Real.log (n : ℝ)| ≤ M := by
+/home/ryan/erdos/conjectures/491.lean-24-  sorry
+--
+conjectures/604.lean-49-      ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/erdos/conjectures/604.lean-50-        A.card = n →
+conjectures/604.lean-51-        ∃ x ∈ A, ((pinnedDistances x A).card : ℝ) ≥
+conjectures/604.lean:52:          C * (n : ℝ) / Real.sqrt (Real.log (n : ℝ)) :=
+/home/ryan/erdos/conjectures/604.lean-53-  sorry
+/home/ryan/erdos/conjectures/604.lean-54-
+/home/ryan/erdos/conjectures/604.lean-55-end
+--
+/home/ryan/erdos/conjectures/627.lean-49--/
+conjectures/627.lean-50-theorem erdos_problem_627 :
+conjectures/627.lean-51-    ∃ L : ℝ, Tendsto
+conjectures/627.lean:52:      (fun n : ℕ => f627 n / ((n : ℝ) / (Real.logb 2 (n : ℝ)) ^ 2))
+conjectures/627.lean-53-      atTop (nhds L) :=
+/home/ryan/erdos/conjectures/627.lean-54-  sorry
+/home/ryan/erdos/conjectures/627.lean-55-
+--
+/home/ryan/erdos/conjectures/563.lean-46--/
+conjectures/563.lean-47-theorem erdos_problem_563 (α : ℝ) (hα0 : 0 ≤ α) (hα1 : α < 1 / 2) :
+conjectures/563.lean-48-    ∃ c : ℝ, c > 0 ∧
+conjectures/563.lean:49:      Tendsto (fun n : ℕ => (F_erdos563 n α : ℝ) / Real.log (n : ℝ))
+conjectures/563.lean-50-        atTop (nhds c) :=
+/home/ryan/erdos/conjectures/563.lean-51-  sorry
+/home/ryan/erdos/conjectures/563.lean-52-
+--
+conjectures/523.lean-37-    ∃ C : ℝ, 0 < C ∧
+/home/ryan/erdos/conjectures/523.lean-38-    ∀ᵐ ω ∂μ, Tendsto
+/home/ryan/erdos/conjectures/523.lean-39-      (fun n => supNormCircle (fun k => ε k ω) n /
+conjectures/523.lean:40:        Real.sqrt ((n : ℝ) * Real.log (n : ℝ)))
+conjectures/523.lean-41-      atTop (nhds C) :=
+/home/ryan/erdos/conjectures/523.lean-42-  sorry
+--
+conjectures/759.lean-59-theorem erdos_759_lower :
+conjectures/759.lean-60-    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/759.lean-61-      (maxCochromaticOnSurface n : ℝ) ≥
+conjectures/759.lean:62:        C * Real.sqrt (n : ℝ) / Real.log (n : ℝ) :=
+/home/ryan/erdos/conjectures/759.lean-63-  sorry
+/home/ryan/erdos/conjectures/759.lean-64-
+/home/ryan/erdos/conjectures/759.lean-65-/--
+--
+conjectures/759.lean-71-theorem erdos_759_upper :
+conjectures/759.lean-72-    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/759.lean-73-      (maxCochromaticOnSurface n : ℝ) ≤
+conjectures/759.lean:74:        C * Real.sqrt (n : ℝ) / Real.log (n : ℝ) :=
+/home/ryan/erdos/conjectures/759.lean-75-  sorry
+/home/ryan/erdos/conjectures/759.lean-76-
+/home/ryan/erdos/conjectures/759.lean-77-end
+--
+/home/ryan/erdos/conjectures/262.lean-31-theorem erdos_problem_262
+conjectures/262.lean-32-    (a : ℕ → ℕ) (ha : IsIrrationalitySequence a)
+conjectures/262.lean-33-    (c : ℝ) (hc : c < 1) :
+conjectures/262.lean:34:    Filter.Frequently (fun (n : ℕ) => c * (↑n : ℝ) < Real.logb 2 (Real.logb 2 (↑(a n) : ℝ))) atTop :=
+/home/ryan/erdos/conjectures/262.lean-35-  sorry
+/home/ryan/erdos/conjectures/262.lean-36-
+/home/ryan/erdos/conjectures/262.lean-37-end
+--
+conjectures/161.lean-61-    ∃ C : ℝ, 0 < C ∧
+conjectures/161.lean-62-    ∃ D : ℝ, 0 < D ∧
+conjectures/161.lean-63-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+conjectures/161.lean:64:      (F_balanced t n α : ℝ) ≤ C * (Real.log (n : ℝ)) ^ D :=
+/home/ryan/erdos/conjectures/161.lean-65-  sorry
+/home/ryan/erdos/conjectures/161.lean-66-
+/home/ryan/erdos/conjectures/161.lean-67-end
+--
+conjectures/535.lean-43-    ∃ c : ℝ, 0 < c ∧
+conjectures/535.lean-44-    ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+conjectures/535.lean-45-      ∀ A : Finset ℕ, A ⊆ Icc 1 N → IsGCDUniformFree A r →
+conjectures/535.lean:46:        (A.card : ℝ) ≤ (N : ℝ) ^ (c / Real.log (Real.log (N : ℝ))) :=
+/home/ryan/erdos/conjectures/535.lean-47-  sorry
+/home/ryan/erdos/conjectures/535.lean-48-
+/home/ryan/erdos/conjectures/535.lean-49-/--
+--
+conjectures/535.lean-57-    ∃ c : ℝ, 0 < c ∧
+conjectures/535.lean-58-    ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+conjectures/535.lean-59-      ∃ A : Finset ℕ, A ⊆ Icc 1 N ∧ IsGCDUniformFree A 3 ∧
+conjectures/535.lean:60:        (N : ℝ) ^ (c / Real.log (Real.log (N : ℝ))) ≤ (A.card : ℝ) :=
+/home/ryan/erdos/conjectures/535.lean-61-  sorry
+/home/ryan/erdos/conjectures/535.lean-62-
+/home/ryan/erdos/conjectures/535.lean-63-end
+--
+/home/ryan/erdos/conjectures/802.lean-42-    avgDegree G ≥ 2 →
+conjectures/802.lean-43-    ∃ S : Finset (Fin n),
+/home/ryan/erdos/conjectures/802.lean-44-      (∀ u ∈ S, ∀ v ∈ S, u ≠ v → ¬G.Adj u v) ∧
+conjectures/802.lean:45:      (S.card : ℝ) ≥ c * (Real.log (avgDegree G) / avgDegree G) * (n : ℝ) :=
+/home/ryan/erdos/conjectures/802.lean-46-  sorry
+/home/ryan/erdos/conjectures/802.lean-47-
+/home/ryan/erdos/conjectures/802.lean-48-end
+--
+conjectures/753.lean-55-    ∀ n : ℕ, n ≥ 2 →
+conjectures/753.lean-56-      ∃ (G : SimpleGraph (Fin n)),
+conjectures/753.lean-57-        (listChromaticNumber G + listChromaticNumber Gᶜ : ℝ) ≤
+conjectures/753.lean:58:          C * Real.sqrt (n * Real.log n) :=
+/home/ryan/erdos/conjectures/753.lean-59-  sorry
+/home/ryan/erdos/conjectures/753.lean-60-
+/home/ryan/erdos/conjectures/753.lean-61-end
+--
+conjectures/801.lean-49-    (∀ S : Finset (Fin n), Gᶜ.IsClique (S : Set (Fin n)) → S.card ≤ Nat.sqrt n) →
+conjectures/801.lean-50-    ∃ S : Finset (Fin n),
+/home/ryan/erdos/conjectures/801.lean-51-      S.card ≤ Nat.sqrt n ∧
+conjectures/801.lean:52:      C * (n : ℝ) ^ ((1 : ℝ) / 2) * Real.log (n : ℝ) ≤
+conjectures/801.lean-53-        (Erdos801.inducedEdgeCount G S : ℝ) :=
+/home/ryan/erdos/conjectures/801.lean-54-  sorry
+/home/ryan/erdos/conjectures/801.lean-55-
+--
+conjectures/610.lean-68-      ∀ n : ℕ, n ≥ 2 →
+conjectures/610.lean-69-        ∀ G : SimpleGraph (Fin n),
+conjectures/610.lean-70-          (cliqueTransversalNum610 G : ℝ) ≤
+conjectures/610.lean:71:            (n : ℝ) - c * Real.sqrt ((n : ℝ) * Real.log (n : ℝ)) :=
+/home/ryan/erdos/conjectures/610.lean-72-  sorry
+/home/ryan/erdos/conjectures/610.lean-73-
+/home/ryan/erdos/conjectures/610.lean-74-/--
+--
+conjectures/202.lean-50-    ∀ S : Finset (ℕ × ℤ),
+/home/ryan/erdos/conjectures/202.lean-51-    IsPairwiseDisjointSystem S N →
+conjectures/202.lean-52-    (S.card : ℝ) ≤ (N : ℝ) /
+conjectures/202.lean:53:      Real.exp ((1 - ε) * Real.sqrt (Real.log (N : ℝ) * Real.log (Real.log (N : ℝ)))) := by
+/home/ryan/erdos/conjectures/202.lean-54-  sorry
+--
+conjectures/296.lean-35-theorem erdos_problem_296 (ε : ℝ) (hε : 0 < ε) :
+conjectures/296.lean-36-    ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+conjectures/296.lean-37-      ∃ (k : ℕ) (family : Fin k → Finset ℕ),
+conjectures/296.lean:38:        (k : ℝ) ≥ (1 - ε) * Real.log (N : ℝ) ∧
+/home/ryan/erdos/conjectures/296.lean-39-        (∀ i, family i ⊆ Finset.Icc 1 N) ∧
+/home/ryan/erdos/conjectures/296.lean-40-        (∀ i j, i ≠ j → Disjoint (family i) (family j)) ∧
+conjectures/296.lean-41-        (∀ i, reciprocalSum (family i) = 1) :=
+--
+conjectures/797.lean-42-        ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
+/home/ryan/erdos/conjectures/797.lean-43-          (∀ v, G.degree v ≤ d) ∧
+conjectures/797.lean-44-          ∀ (k : ℕ), (∃ c : G.Coloring (Fin k), IsAcyclicColoring G c) →
+conjectures/797.lean:45:            C * (d : ℝ) ^ ((4 : ℝ) / 3) / (Real.log (d : ℝ)) ^ ((1 : ℝ) / 3) ≤ (k : ℝ)) :=
+/home/ryan/erdos/conjectures/797.lean-46-  sorry
+--
+/home/ryan/erdos/conjectures/784.lean-50-        (∀ a ∈ A, 2 ≤ a ∧ a ≤ x) →
+conjectures/784.lean-51-        (∑ a ∈ A, (1 : ℝ) / (a : ℝ)) ≤ C →
+conjectures/784.lean-52-        (((Finset.Icc 1 x).filter (fun m => ∀ a ∈ A, ¬(a ∣ m))).card : ℝ) ≥
+conjectures/784.lean:53:          K * (x : ℝ) / (Real.log (x : ℝ)) ^ c :=
+/home/ryan/erdos/conjectures/784.lean-54-  sorry
+/home/ryan/erdos/conjectures/784.lean-55-
+/home/ryan/erdos/conjectures/784.lean-56-end
+--
+conjectures/512.lean-29-theorem erdos_problem_512 :
+conjectures/512.lean-30-    ∃ C : ℝ, 0 < C ∧
+conjectures/512.lean-31-      ∀ A : Finset ℤ, 2 ≤ A.card →
+conjectures/512.lean:32:        C * Real.log (A.card : ℝ) ≤
+conjectures/512.lean-33-          ∫ θ in (0 : ℝ)..1, ‖expSum512 A θ‖ :=
+/home/ryan/erdos/conjectures/512.lean-34-  sorry
+/home/ryan/erdos/conjectures/512.lean-35-
+--
+conjectures/280.lean-41-    ∃ (n : ℕ → ℕ) (a : ℕ → ℕ) (ε : ℝ),
+/home/ryan/erdos/conjectures/280.lean-42-      0 < ε ∧
+/home/ryan/erdos/conjectures/280.lean-43-      StrictMono n ∧
+conjectures/280.lean:44:      (∀ k, 1 ≤ k → (n k : ℝ) > (1 + ε) * ↑k * Real.log ↑k) ∧
+conjectures/280.lean-45-      ∀ c : ℝ, 0 < c →
+conjectures/280.lean-46-        ∃ K : ℕ, ∀ k, K ≤ k →
+conjectures/280.lean-47-          (sieveCount n a k : ℝ) < c * ↑k :=
+--
+/home/ryan/erdos/conjectures/148.lean-32-    2^{c^{k/log k}} ≤ F(k) for all sufficiently large k. -/
+conjectures/148.lean-33-theorem egyptianFractionCount_konyagin_lower_bound :
+conjectures/148.lean-34-    ∃ c : ℝ, 0 < c ∧ ∀ᶠ k : ℕ in atTop,
+conjectures/148.lean:35:      (2 : ℝ) ^ (c ^ ((k : ℝ) / Real.log k)) ≤
+conjectures/148.lean-36-        (egyptianFractionCount k : ℝ) :=
+/home/ryan/erdos/conjectures/148.lean-37-  sorry
+/home/ryan/erdos/conjectures/148.lean-38-
+--
+/home/ryan/erdos/conjectures/729.lean-37--/
+conjectures/729.lean-38-theorem erdos_problem_729 (C : ℝ) (hC : C > 0) (P : ℕ) :
+conjectures/729.lean-39-    Set.Finite {t : ℕ × ℕ × ℕ |
+conjectures/729.lean:40:      (t.1 : ℝ) + (t.2.1 : ℝ) > (t.2.2 : ℝ) + C * Real.log (t.2.2 : ℝ) ∧
+conjectures/729.lean-41-      denomPSmooth729 t.1 t.2.1 t.2.2 P} :=
+/home/ryan/erdos/conjectures/729.lean-42-  sorry
+--
+conjectures/732.lean-46-theorem erdos_problem_732 : ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/732.lean-47-    ∃ S : Finset (Multiset ℕ),
+/home/ryan/erdos/conjectures/732.lean-48-      (∀ M ∈ S, IsBlockCompatible n M) ∧
+conjectures/732.lean:49:      (S.card : ℝ) ≥ Real.exp (c * Real.sqrt (n : ℝ) * Real.log (n : ℝ)) :=
+/home/ryan/erdos/conjectures/732.lean-50-  sorry
+/home/ryan/erdos/conjectures/732.lean-51-
+/home/ryan/erdos/conjectures/732.lean-52-end
+--
+conjectures/305.lean-42-      ∃ b₀ : ℕ, ∀ b : ℕ, b₀ ≤ b →
+conjectures/305.lean-43-        ∀ a : ℕ, 1 ≤ a → a < b →
+conjectures/305.lean-44-          ∃ S : Finset ℕ, IsEgyptianRepr a b S ∧
+conjectures/305.lean:45:            ∀ n ∈ S, (n : ℝ) ≤ C * (b : ℝ) * (Real.log (b : ℝ)) ^ ((1 : ℝ) + ε) :=
+/home/ryan/erdos/conjectures/305.lean-46-  sorry
+--
+conjectures/415.lean-65-theorem erdos_problem_415_part1 :
+conjectures/415.lean-66-    ∃ c : ℝ, 0 < c ∧
+conjectures/415.lean-67-      Tendsto (fun n : ℕ =>
+conjectures/415.lean:68:        (erdos415_F n : ℝ) / Real.log (Real.log (Real.log (n : ℝ))))
+conjectures/415.lean-69-        atTop (nhds c) :=
+/home/ryan/erdos/conjectures/415.lean-70-  sorry
+/home/ryan/erdos/conjectures/415.lean-71-
+--
+conjectures/688.lean-42-    ∃ C : ℝ, C > 0 ∧
+conjectures/688.lean-43-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/688.lean-44-      ∃ a : ℕ → ℕ, PrimeCoveringInRange n
+conjectures/688.lean:45:        (C * Real.log (Real.log (Real.log (n : ℝ))) / Real.log (Real.log (n : ℝ))) a :=
+/home/ryan/erdos/conjectures/688.lean-46-  sorry
+/home/ryan/erdos/conjectures/688.lean-47-
+/home/ryan/erdos/conjectures/688.lean-48-end
+--
+conjectures/205.lean-19-theorem erdos_problem_205 :
+conjectures/205.lean-20-    ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧
+conjectures/205.lean-21-      ∀ k : ℕ, 2 ^ k ≤ n →
+conjectures/205.lean:22:        Real.log (Real.log ((n - 2 ^ k : ℕ) : ℝ)) ≤
+conjectures/205.lean-23-          ((n - 2 ^ k).primeFactorsList.length : ℝ) :=
+/home/ryan/erdos/conjectures/205.lean-24-  sorry
+--
+/home/ryan/erdos/conjectures/164.lean-36--/
+conjectures/164.lean-37-theorem erdos_problem_164 :
+conjectures/164.lean-38-    ∀ A : Set ℕ, IsPrimitive A → A ⊆ {n : ℕ | 2 ≤ n} →
+conjectures/164.lean:39:    ∑' n : A, (1 : ℝ) / (((n : ℕ) : ℝ) * Real.log ((n : ℕ) : ℝ)) ≤
+conjectures/164.lean:40:    ∑' p : {p : ℕ | Nat.Prime p}, (1 : ℝ) / (((p : ℕ) : ℝ) * Real.log ((p : ℕ) : ℝ)) :=
+/home/ryan/erdos/conjectures/164.lean-41-  sorry
+/home/ryan/erdos/conjectures/164.lean-42-
+/home/ryan/erdos/conjectures/164.lean-43-end
+--
+conjectures/162.lean-55-    ∃ c : ℝ, 0 < c ∧
+conjectures/162.lean-56-      ∀ ε : ℝ, 0 < ε →
+conjectures/162.lean-57-        ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+conjectures/162.lean:58:          (c - ε) * Real.log (n : ℝ) ≤ (F_erdos162 n α : ℝ) ∧
+conjectures/162.lean:59:          (F_erdos162 n α : ℝ) ≤ (c + ε) * Real.log (n : ℝ) :=
+/home/ryan/erdos/conjectures/162.lean-60-  sorry
+/home/ryan/erdos/conjectures/162.lean-61-
+/home/ryan/erdos/conjectures/162.lean-62-end
+--
+/home/ryan/erdos/conjectures/309.lean-36--/
+conjectures/309.lean-37-theorem erdos_problem_309 :
+conjectures/309.lean-38-    ∃ c : ℝ, c > 0 ∧ ∀ᶠ (N : ℕ) in atTop,
+conjectures/309.lean:39:      c * Real.log (N : ℝ) ≤ (countRepresentableIntegers N : ℝ) :=
+/home/ryan/erdos/conjectures/309.lean-40-  sorry
+--
+conjectures/221.lean-17-theorem erdos_problem_221 :
+conjectures/221.lean-18-    ∃ (A : Set ℕ),
+conjectures/221.lean-19-      (∃ (C : ℝ), C > 0 ∧ ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+conjectures/221.lean:20:        (((Finset.Icc 1 N).filter (fun n => n ∈ A)).card : ℝ) ≤ C * ↑N / Real.log ↑N) ∧
+conjectures/221.lean-21-      (∃ M : ℕ, ∀ n : ℕ, M ≤ n → ∃ k : ℕ, ∃ a ∈ A, n = 2 ^ k + a) :=
+/home/ryan/erdos/conjectures/221.lean-22-  sorry
+--
+conjectures/166.lean-45-    ∃ C : ℝ, 0 < C ∧
+conjectures/166.lean-46-    ∃ α : ℕ,
+conjectures/166.lean-47-    ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
+conjectures/166.lean:48:      C * ((k : ℝ) ^ 3 / (Real.log (k : ℝ)) ^ α) ≤ (ramseyR4 k : ℝ) :=
+/home/ryan/erdos/conjectures/166.lean-49-  sorry
+/home/ryan/erdos/conjectures/166.lean-50-
+/home/ryan/erdos/conjectures/166.lean-51-end
+--
+conjectures/717.lean-63-      ∀ (n : ℕ), 2 ≤ n →
+conjectures/717.lean-64-        ∀ (G : SimpleGraph (Fin n)),
+conjectures/717.lean-65-          (G.chromaticNumber.toNat : ℝ) ≤
+conjectures/717.lean:66:            C * Real.sqrt (n : ℝ) / Real.log (n : ℝ) *
+conjectures/717.lean-67-              (G.subdivisionNumber : ℝ) := by
+/home/ryan/erdos/conjectures/717.lean-68-  sorry
+--
+conjectures/237.lean-38-theorem erdos_problem_237 :
+conjectures/237.lean-39-    ∀ A : Set ℕ,
+conjectures/237.lean-40-    (∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+conjectures/237.lean:41:      (countingFunction A N : ℝ) ≥ c * Real.log (N : ℝ)) →
+conjectures/237.lean-42-    ∀ M : ℕ, ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧ countRepresentations A n ≥ M :=
+/home/ryan/erdos/conjectures/237.lean-43-  sorry
+/home/ryan/erdos/conjectures/237.lean-44-
+--
+conjectures/803.lean-44-    ∀ m : ℕ, m ≥ 1 →
+conjectures/803.lean-45-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/803.lean-46-    ∀ (G : SimpleGraph (Fin n)),
+conjectures/803.lean:47:      (G.edgeFinset.card : ℝ) ≥ (n : ℝ) * Real.log (n : ℝ) →
+conjectures/803.lean-48-      ∃ (H : SimpleGraph (Fin m)) (f : Fin m → Fin n),
+/home/ryan/erdos/conjectures/803.lean-49-        Function.Injective f ∧
+/home/ryan/erdos/conjectures/803.lean-50-        (∀ u v, H.Adj u v → G.Adj (f u) (f v)) ∧
+/home/ryan/erdos/conjectures/803.lean-51-        isDBalanced H D ∧
+conjectures/803.lean:52:        (H.edgeFinset.card : ℝ) ≥ C * (m : ℝ) * Real.log (m : ℝ) :=
+/home/ryan/erdos/conjectures/803.lean-53-  sorry
+/home/ryan/erdos/conjectures/803.lean-54-
+/home/ryan/erdos/conjectures/803.lean-55-end
+--
+conjectures/365.lean-33-      ∃ x₀ : ℕ, ∀ x : ℕ, x₀ ≤ x →
+conjectures/365.lean-34-        ∀ S : Finset ℕ, S ⊆ Finset.Icc 1 x →
+/home/ryan/erdos/conjectures/365.lean-35-          (∀ n ∈ S, IsPowerful n ∧ IsPowerful (n + 1)) →
+conjectures/365.lean:36:          (S.card : ℝ) ≤ (Real.log (x : ℝ)) ^ C :=
+/home/ryan/erdos/conjectures/365.lean-37-  sorry
+--
+conjectures/443.lean-49-theorem erdos_problem_443_upper_bound :
+conjectures/443.lean-50-    ∃ C : ℝ, 0 < C ∧ ∃ m₀ : ℕ, ∀ m : ℕ, m₀ ≤ m →
+conjectures/443.lean-51-    ∀ n : ℕ, 1 ≤ n → n < m →
+conjectures/443.lean:52:    (commonProducts m n : ℝ) ≤ (m : ℝ) ^ (C / Real.log (Real.log (m : ℝ))) :=
+/home/ryan/erdos/conjectures/443.lean-53-  sorry
+--
+/home/ryan/erdos/conjectures/391.lean-40--/
+conjectures/391.lean-41-theorem erdos_problem_391_part2 :
+conjectures/391.lean-42-    ∃ c : ℝ, c > 0 ∧ ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧
+conjectures/391.lean:43:      (erdos391_t n : ℝ) / (n : ℝ) ≤ 1 / Real.exp 1 - c / Real.log (n : ℝ) :=
+/home/ryan/erdos/conjectures/391.lean-44-  sorry
+--
+conjectures/408.lean-34-      ∃ d : ℝ, Filter.Tendsto
+conjectures/408.lean-35-        (fun N : ℕ =>
+/home/ryan/erdos/conjectures/408.lean-36-          (((Finset.range N).filter (fun n =>
+conjectures/408.lean:37:            (totientIterationLength n : ℝ) / Real.log n ≤ c)).card : ℝ) / (N : ℝ))
+conjectures/408.lean-38-        Filter.atTop (nhds d) :=
+/home/ryan/erdos/conjectures/408.lean-39-  sorry
+/home/ryan/erdos/conjectures/408.lean-40-
+--
+/home/ryan/erdos/conjectures/408.lean-54-        Filter.Tendsto
+conjectures/408.lean-55-          (fun N : ℕ =>
+/home/ryan/erdos/conjectures/408.lean-56-            (((Finset.range N).filter (fun n =>
+conjectures/408.lean:57:              ε ≤ |((totientIterationLength n : ℝ) / Real.log n) - α|)).card : ℝ) / (N : ℝ))
+conjectures/408.lean-58-          Filter.atTop (nhds 0) :=
+/home/ryan/erdos/conjectures/408.lean-59-  sorry
+--
+conjectures/401.lean-36-      ∀ r : ℕ, {n : ℕ | ∃ a₁ a₂ : ℕ,
+/home/ryan/erdos/conjectures/401.lean-37-        (a₁.factorial * a₂.factorial) ∣
+/home/ryan/erdos/conjectures/401.lean-38-          (n.factorial * ∏ i ∈ Finset.range r, (Nat.nth Nat.Prime i) ^ n) ∧
+conjectures/401.lean:39:        ((a₁ + a₂ : ℕ) : ℝ) > (n : ℝ) + f r * Real.log (n : ℝ)}.Infinite :=
+/home/ryan/erdos/conjectures/401.lean-40-  sorry
+/home/ryan/erdos/conjectures/401.lean-41-
+/home/ryan/erdos/conjectures/401.lean-42-end
+--
+conjectures/745.lean-76-    ∀ ε : ℝ, ε > 0 →
+conjectures/745.lean-77-    ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
+/home/ryan/erdos/conjectures/745.lean-78-      gnpProb745 n (fun G =>
+conjectures/745.lean:79:        (secondLargestComponent745 G : ℝ) ≤ C * Real.log (n : ℝ)) ≥ 1 - ε :=
+/home/ryan/erdos/conjectures/745.lean-80-  sorry
+/home/ryan/erdos/conjectures/745.lean-81-
+/home/ryan/erdos/conjectures/745.lean-82-end
+--
+conjectures/615.lean-60-      ∀ G : SimpleGraph (Fin n),
+conjectures/615.lean-61-        (G.edgeFinset.card : ℝ) ≥ (1 / 8 - c) * (n : ℝ) ^ 2 →
+/home/ryan/erdos/conjectures/615.lean-62-        (¬G.CliqueFree 4) ∨
+conjectures/615.lean:63:        ∃ S : Finset (Fin n), (S.card : ℝ) ≥ (n : ℝ) / Real.log (n : ℝ) ∧
+conjectures/615.lean-64-          IsIndependentSet G S :=
+/home/ryan/erdos/conjectures/615.lean-65-  sorry
+/home/ryan/erdos/conjectures/615.lean-66-
+--
+conjectures/661.lean-41-        ∃ X Y : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/erdos/conjectures/661.lean-42-          X.card = n ∧ Y.card = n ∧
+conjectures/661.lean-43-          (bipartiteDistinctDistances X Y : ℝ) ≤
+conjectures/661.lean:44:            ε * (n : ℝ) / Real.sqrt (Real.log (n : ℝ)) :=
+/home/ryan/erdos/conjectures/661.lean-45-  sorry
+/home/ryan/erdos/conjectures/661.lean-46-
+/home/ryan/erdos/conjectures/661.lean-47-end
+--
+conjectures/637.lean-54-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/637.lean-55-    ∀ G : SimpleGraph (Fin n),
+conjectures/637.lean-56-    (∀ S : Finset (Fin n), G.IsClique (↑S : Set (Fin n)) →
+conjectures/637.lean:57:      (S.card : ℝ) ≤ C * Real.logb 2 (↑n : ℝ)) →
+conjectures/637.lean-58-    (∀ S : Finset (Fin n), Gᶜ.IsClique (↑S : Set (Fin n)) →
+conjectures/637.lean:59:      (S.card : ℝ) ≤ C * Real.logb 2 (↑n : ℝ)) →
+conjectures/637.lean-60-    ∃ S : Finset (Fin n), (S.card : ℝ) ≥ c₁ * (↑n : ℝ) ∧
+conjectures/637.lean-61-      (inducedDistinctDegrees G S : ℝ) ≥ c₂ * (↑n : ℝ) ^ ((1 : ℝ) / 2) :=
+/home/ryan/erdos/conjectures/637.lean-62-  sorry
+--
+conjectures/297.lean-40-theorem erdos_problem_297 :
+conjectures/297.lean-41-    ∃ c : ℝ, 0 < c ∧ c < 1 ∧
+conjectures/297.lean-42-      Tendsto (fun N : ℕ =>
+conjectures/297.lean:43:        Real.log (unitFractionSubsetCount N : ℝ) / (Real.log 2 * (N : ℝ)))
+conjectures/297.lean-44-        atTop (nhds c) :=
+/home/ryan/erdos/conjectures/297.lean-45-  sorry
+--
+/home/ryan/erdos/conjectures/792.lean-44--/
+conjectures/792.lean-45-theorem erdos_problem_792_lower :
+conjectures/792.lean-46-    ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/792.lean:47:      (maxSumFreeSize n : ℝ) ≥ n / 3 + c * Real.log (Real.log n) := sorry
+/home/ryan/erdos/conjectures/792.lean-48-
+/home/ryan/erdos/conjectures/792.lean-49-/--
+conjectures/792.lean-50-Erdős Problem #792, best known upper bound (Eberhard–Green–Manners [EGM14]):
+--
+conjectures/140.lean-37-    ∀ C : ℝ, 0 < C →
+conjectures/140.lean-38-    ∃ K : ℝ, 0 < K ∧
+conjectures/140.lean-39-    ∀ᶠ N : ℕ in atTop,
+conjectures/140.lean:40:      (r3 N : ℝ) ≤ K * (N : ℝ) / (Real.log (N : ℝ)) ^ C :=
+/home/ryan/erdos/conjectures/140.lean-41-  sorry
+/home/ryan/erdos/conjectures/140.lean-42-
+/home/ryan/erdos/conjectures/140.lean-43-end
+--
+conjectures/771.lean-47-theorem erdos_problem_771 :
+conjectures/771.lean-48-    ∀ ε : ℝ, ε > 0 →
+conjectures/771.lean-49-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/771.lean:50:      (1 / 2 - ε) * (↑n / Real.log ↑n) ≤ ↑(erdos771_f n) ∧
+conjectures/771.lean:51:      ↑(erdos771_f n) ≤ (1 / 2 + ε) * (↑n / Real.log ↑n) :=
+/home/ryan/erdos/conjectures/771.lean-52-  sorry
+/home/ryan/erdos/conjectures/771.lean-53-
+/home/ryan/erdos/conjectures/771.lean-54-end
+--
+conjectures/187.lean-43-    ∃ c : ℝ, 0 < c ∧
+conjectures/187.lean-44-    ∀ χ : ℤ → Bool,
+conjectures/187.lean-45-    ∀ N : ℕ, ∃ d : ℕ, N < d ∧
+conjectures/187.lean:46:      ∃ k : ℕ, c * Real.log ↑d ≤ ↑k ∧ hasMonoAP χ d k :=
+/home/ryan/erdos/conjectures/187.lean-47-  sorry
+/home/ryan/erdos/conjectures/187.lean-48-
+/home/ryan/erdos/conjectures/187.lean-49-end
+--
+conjectures/452.lean-37-    ∀ k : ℝ, 0 < k →
+conjectures/452.lean-38-    ∃ x₀ : ℕ, ∀ x : ℕ, x₀ ≤ x →
+conjectures/452.lean-39-      ∃ a L : ℕ, x ≤ a ∧ a + L ≤ 2 * x ∧
+conjectures/452.lean:40:        (Real.log (x : ℝ)) ^ k ≤ (L : ℝ) ∧
+/home/ryan/erdos/conjectures/452.lean-41-        ∀ n ∈ Finset.Icc a (a + L),
+conjectures/452.lean:42:          (erdos452_omega n : ℝ) > Real.log (Real.log (n : ℝ)) :=
+/home/ryan/erdos/conjectures/452.lean-43-  sorry
+/home/ryan/erdos/conjectures/452.lean-44-
+/home/ryan/erdos/conjectures/452.lean-45-end
+--
+conjectures/521.lean-38-    (hRad : ∀ k, IsRademacher μ (ε k))
+conjectures/521.lean-39-    (hIndep : iIndepFun ε μ) :
+/home/ryan/erdos/conjectures/521.lean-40-    ∀ᵐ ω ∂μ, Tendsto
+conjectures/521.lean:41:      (fun n => (numRealRoots (signPoly (fun k => ε k ω) n) : ℝ) / Real.log (n : ℝ))
+conjectures/521.lean-42-      atTop (nhds (2 / Real.pi)) :=
+/home/ryan/erdos/conjectures/521.lean-43-  sorry
+--
+conjectures/256.lean-53-    ∃ c : ℝ, 0 < c ∧
+conjectures/256.lean-54-    ∃ C : ℝ, 0 < C ∧
+conjectures/256.lean-55-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+conjectures/256.lean:56:      Real.log (erdos256_f n) ≥ C * (n : ℝ) ^ c :=
+/home/ryan/erdos/conjectures/256.lean-57-  sorry
+/home/ryan/erdos/conjectures/256.lean-58-
+/home/ryan/erdos/conjectures/256.lean-59-end
+--
+conjectures/165.lean-44-theorem erdos_problem_165 :
+conjectures/165.lean-45-    ∃ c : ℝ, 0 < c ∧ ∀ ε : ℝ, 0 < ε →
+conjectures/165.lean-46-    ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
+conjectures/165.lean:47:      (c - ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) ≤ (ramseyR3 k : ℝ) ∧
+conjectures/165.lean:48:      (ramseyR3 k : ℝ) ≤ (c + ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) :=
+/home/ryan/erdos/conjectures/165.lean-49-  sorry
+/home/ryan/erdos/conjectures/165.lean-50-
+/home/ryan/erdos/conjectures/165.lean-51-end
+--
+conjectures/368.lean-41-theorem erdos_problem_368_lower :
+conjectures/368.lean-42-    ∃ c : ℝ, 0 < c ∧
+conjectures/368.lean-43-    ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n →
+conjectures/368.lean:44:      (F368 n : ℝ) ≥ c * (Real.log n) ^ 2 :=
+/home/ryan/erdos/conjectures/368.lean-45-  sorry
+/home/ryan/erdos/conjectures/368.lean-46-
+/home/ryan/erdos/conjectures/368.lean-47-/--
+--
+/home/ryan/erdos/conjectures/368.lean-51--/
+conjectures/368.lean-52-theorem erdos_problem_368_upper :
+conjectures/368.lean-53-    ∀ ε : ℝ, 0 < ε →
+conjectures/368.lean:54:    Set.Infinite {n : ℕ | (F368 n : ℝ) < (Real.log n) ^ ((2 : ℝ) + ε)} :=
+/home/ryan/erdos/conjectures/368.lean-55-  sorry
+/home/ryan/erdos/conjectures/368.lean-56-
+/home/ryan/erdos/conjectures/368.lean-57-end
+--
+conjectures/585.lean-47-theorem erdos_problem_585_lower_bound :
+conjectures/585.lean-48-    ∃ c : ℝ, 0 < c ∧
+conjectures/585.lean-49-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+conjectures/585.lean:50:      c * (n : ℝ) * Real.log (Real.log (n : ℝ)) ≤
+conjectures/585.lean-51-        (maxEdgesNoEdgeDisjointCycles n : ℝ) :=
+/home/ryan/erdos/conjectures/585.lean-52-  sorry
+/home/ryan/erdos/conjectures/585.lean-53-
+--
+conjectures/585.lean-62-    ∃ C : ℝ, 0 < C ∧
+conjectures/585.lean-63-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+conjectures/585.lean-64-      (maxEdgesNoEdgeDisjointCycles n : ℝ) ≤
+conjectures/585.lean:65:        (n : ℝ) * (Real.log (n : ℝ)) ^ C :=
+/home/ryan/erdos/conjectures/585.lean-66-  sorry
+/home/ryan/erdos/conjectures/585.lean-67-
+/home/ryan/erdos/conjectures/585.lean-68-end
+--
+conjectures/360.lean-36-    ∃ C₁ C₂ : ℝ, 0 < C₁ ∧ 0 < C₂ ∧
+conjectures/360.lean-37-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+conjectures/360.lean-38-      let g := (n : ℝ) ^ ((1 : ℝ) / 3) * ((n : ℝ) / (Nat.totient n : ℝ)) /
+conjectures/360.lean:39:        (Real.log (n : ℝ) ^ ((1 : ℝ) / 3) *
+conjectures/360.lean:40:         Real.log (Real.log (n : ℝ)) ^ ((2 : ℝ) / 3))
+conjectures/360.lean-41-      C₁ * g ≤ (minSumFreeClasses n : ℝ) ∧
+conjectures/360.lean-42-      (minSumFreeClasses n : ℝ) ≤ C₂ * g :=
+/home/ryan/erdos/conjectures/360.lean-43-  sorry
+--
+/home/ryan/erdos/conjectures/667.lean-42-
+/home/ryan/erdos/conjectures/667.lean-43-/-- c(p, q) = liminf_{n → ∞} log(H(n; p, q)) / log(n). -/
+conjectures/667.lean-44-noncomputable def erdosC667 (p q : ℕ) : ℝ :=
+conjectures/667.lean:45:  Filter.liminf (fun n : ℕ => Real.log (erdosH n p q : ℝ) / Real.log (n : ℝ))
+/home/ryan/erdos/conjectures/667.lean-46-    Filter.atTop
+/home/ryan/erdos/conjectures/667.lean-47-
+/home/ryan/erdos/conjectures/667.lean-48-/--
+--
+/home/ryan/erdos/conjectures/709.lean-49--/
+conjectures/709.lean-50-theorem erdos_problem_709_lower :
+conjectures/709.lean-51-    ∃ c : ℝ, c > 0 ∧ ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/709.lean:52:      (erdos709_f n : ℝ) ≥ C * (Real.log n) ^ c :=
+/home/ryan/erdos/conjectures/709.lean-53-  sorry
+/home/ryan/erdos/conjectures/709.lean-54-
+/home/ryan/erdos/conjectures/709.lean-55-/--
+--
+conjectures/796.lean-44-    ∃ c : ℝ, ∀ ε : ℝ, ε > 0 →
+conjectures/796.lean-45-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/796.lean-46-      |(multiplicativeBkMax 3 n : ℝ) -
+conjectures/796.lean:47:        (n : ℝ) * Real.log (Real.log (n : ℝ)) / Real.log (n : ℝ) -
+conjectures/796.lean:48:        c * (n : ℝ) / Real.log (n : ℝ)| ≤
+conjectures/796.lean:49:      ε * (n : ℝ) / Real.log (n : ℝ) :=
+/home/ryan/erdos/conjectures/796.lean-50-  sorry
+/home/ryan/erdos/conjectures/796.lean-51-
+/home/ryan/erdos/conjectures/796.lean-52-end
+--
+/home/ryan/erdos/conjectures/490.lean-24-      (∀ a ∈ A, 1 ≤ a ∧ a ≤ N) →
+/home/ryan/erdos/conjectures/490.lean-25-      (∀ b ∈ B, 1 ≤ b ∧ b ≤ N) →
+/home/ryan/erdos/conjectures/490.lean-26-      HasDistinctProducts A B →
+conjectures/490.lean:27:      (A.card : ℝ) * (B.card : ℝ) ≤ C * ((N : ℝ) ^ 2 / Real.log (N : ℝ)) := by
+/home/ryan/erdos/conjectures/490.lean-28-  sorry
+--
+conjectures/663.lean-40-theorem erdos_problem_663 (k : ℕ) (hk : k ≥ 2) :
+conjectures/663.lean-41-    ∀ ε : ℝ, ε > 0 →
+conjectures/663.lean-42-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/663.lean:43:      (leastNondividingPrime n k : ℝ) < (1 + ε) * Real.log (n : ℝ) :=
+/home/ryan/erdos/conjectures/663.lean-44-  sorry
+/home/ryan/erdos/conjectures/663.lean-45-
+/home/ryan/erdos/conjectures/663.lean-46-end
+--
+conjectures/18.lean-31-Formalized as: There exist constants C and k such that for all n ≥ 2, h(n!) ≤ C * (log n)^k.
+/home/ryan/erdos/conjectures/18.lean-32--/
+conjectures/18.lean-33-theorem erdos_problem_18_conjecture :
+conjectures/18.lean:34:  ∃ (C k : ℝ), ∀ n, 2 ≤ n → (h (n !) : ℝ) ≤ C * (Real.log (n : ℝ)) ^ k :=
+/home/ryan/erdos/conjectures/18.lean-35-sorry
+/home/ryan/erdos/conjectures/18.lean-36-
+/home/ryan/erdos/conjectures/18.lean-37-/--
+--
+/home/ryan/erdos/conjectures/18.lean-39-Are there infinitely many practical m such that h(m) < (log log m)^O(1)?
+/home/ryan/erdos/conjectures/18.lean-40--/
+conjectures/18.lean-41-theorem erdos_problem_18_conjecture_practical_infinite :
+conjectures/18.lean:42:  ∃ (C k : ℝ), Set.Infinite {m : ℕ | IsPractical m ∧ (h m : ℝ) ≤ C * (Real.log (Real.log (m : ℝ))) ^ k} :=
+/home/ryan/erdos/conjectures/18.lean-43-sorry
+--
+/home/ryan/erdos/conjectures/787.lean-46--/
+conjectures/787.lean-47-theorem erdos_problem_787_lower :
+conjectures/787.lean-48-    ∃ c : ℝ, c > 0 ∧ ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/787.lean:49:      (erdos787_g n : ℝ) ≥ C * (Real.log (n : ℝ)) ^ (1 + c) :=
+/home/ryan/erdos/conjectures/787.lean-50-  sorry
+/home/ryan/erdos/conjectures/787.lean-51-
+/home/ryan/erdos/conjectures/787.lean-52-/--
+--
+/home/ryan/erdos/conjectures/787.lean-56--/
+conjectures/787.lean-57-theorem erdos_problem_787_upper :
+conjectures/787.lean-58-    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/787.lean:59:      (erdos787_g n : ℝ) ≤ C * Real.exp (Real.sqrt (Real.log (n : ℝ))) :=
+/home/ryan/erdos/conjectures/787.lean-60-  sorry
+/home/ryan/erdos/conjectures/787.lean-61-
+/home/ryan/erdos/conjectures/787.lean-62-end
+--
+/home/ryan/erdos/conjectures/425.lean-48-    Filter.Tendsto
+conjectures/425.lean-49-      (fun n : ℕ =>
+conjectures/425.lean-50-        ((multB2MaxSize n : ℝ) - (Nat.primeCounting n : ℝ)) /
+conjectures/425.lean:51:        ((n : ℝ) ^ ((3 : ℝ) / 4) / (Real.log (n : ℝ)) ^ ((3 : ℝ) / 2)))
+/home/ryan/erdos/conjectures/425.lean-52-      Filter.atTop
+conjectures/425.lean-53-      (nhds c) := by
+/home/ryan/erdos/conjectures/425.lean-54-  sorry
+--
+/home/ryan/erdos/conjectures/789.lean-53--/
+conjectures/789.lean-54-theorem erdos_problem_789_lower :
+conjectures/789.lean-55-    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/789.lean:56:      (erdos789_h n : ℝ) ≥ C * ((n : ℝ) * Real.log (n : ℝ)) ^ ((1 : ℝ) / 3) :=
+/home/ryan/erdos/conjectures/789.lean-57-  sorry
+/home/ryan/erdos/conjectures/789.lean-58-
+/home/ryan/erdos/conjectures/789.lean-59-end
+--
+conjectures/320.lean-54-theorem erdos_problem_320 :
+conjectures/320.lean-55-    ∃ L : ℝ, 0 < L ∧
+/home/ryan/erdos/conjectures/320.lean-56-      Filter.Tendsto
+conjectures/320.lean:57:        (fun N : ℕ => Real.log (erdos320_S N : ℝ) /
+conjectures/320.lean:58:          ((N : ℝ) / Real.log (N : ℝ) * Real.log (Real.log (N : ℝ))))
+conjectures/320.lean-59-        Filter.atTop (nhds L) :=
+/home/ryan/erdos/conjectures/320.lean-60-  sorry
+--
+/home/ryan/erdos/conjectures/497.lean-32--/
+conjectures/497.lean-33-theorem erdos_problem_497 :
+/home/ryan/erdos/conjectures/497.lean-34-    Tendsto
+conjectures/497.lean:35:      (fun n : ℕ => Real.log (dedekindNumber n : ℝ) / (Real.log 2 * (n.choose (n / 2) : ℝ)))
+conjectures/497.lean-36-      atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/497.lean-37-  sorry
+--
+conjectures/795.lean-51-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/795.lean-52-      (maxDistinctProductSetSize n : ℝ) ≤
+conjectures/795.lean-53-        (primeCounting n : ℝ) + (primeCounting (Nat.sqrt n) : ℝ) +
+conjectures/795.lean:54:        ε * (Nat.sqrt n : ℝ) / Real.log (n : ℝ) :=
+/home/ryan/erdos/conjectures/795.lean-55-  sorry
+/home/ryan/erdos/conjectures/795.lean-56-
+/home/ryan/erdos/conjectures/795.lean-57-end
+--
+conjectures/700.lean-72-    ∀ A : ℕ, 0 < A →
+conjectures/700.lean-73-    ∃ C : ℝ, C > 0 ∧
+conjectures/700.lean-74-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n → ¬ Nat.Prime n → 2 ≤ n →
+conjectures/700.lean:75:      (erdos700_f n : ℝ) ≤ C * (n : ℝ) / (Real.log (n : ℝ)) ^ A :=
+/home/ryan/erdos/conjectures/700.lean-76-  sorry
+/home/ryan/erdos/conjectures/700.lean-77-
+/home/ryan/erdos/conjectures/700.lean-78-end
+--
+conjectures/648.lean-45-theorem erdos_problem_648 :
+conjectures/648.lean-46-    ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧
+conjectures/648.lean-47-    ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+conjectures/648.lean:48:      c₁ * Real.sqrt ((n : ℝ) / Real.log (n : ℝ)) ≤ (erdos648_g n : ℝ) ∧
+conjectures/648.lean:49:      (erdos648_g n : ℝ) ≤ c₂ * Real.sqrt ((n : ℝ) / Real.log (n : ℝ)) :=
+/home/ryan/erdos/conjectures/648.lean-50-  sorry
+/home/ryan/erdos/conjectures/648.lean-51-
+/home/ryan/erdos/conjectures/648.lean-52-end
+--
+conjectures/768.lean-57-    ∃ c : ℝ, c > 0 ∧
+/home/ryan/erdos/conjectures/768.lean-58-    Tendsto
+conjectures/768.lean-59-      (fun N : ℕ =>
+conjectures/768.lean:60:        -Real.log ((erdos768_count N : ℝ) / (N : ℝ)) /
+conjectures/768.lean:61:          (Real.sqrt (Real.log (N : ℝ)) * Real.log (Real.log (N : ℝ))))
+conjectures/768.lean-62-      atTop (nhds c) :=
+/home/ryan/erdos/conjectures/768.lean-63-  sorry
+/home/ryan/erdos/conjectures/768.lean-64-

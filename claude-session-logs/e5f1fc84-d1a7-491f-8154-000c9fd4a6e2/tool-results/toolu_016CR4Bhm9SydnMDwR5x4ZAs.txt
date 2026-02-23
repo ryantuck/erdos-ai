@@ -1,0 +1,1223 @@
+/home/ryan/erdos/conjectures/119.lean-24-
+conjectures/119.lean-25-Three questions were posed:
+/home/ryan/erdos/conjectures/119.lean-26-
+conjectures/119.lean:27:(1) Is limsup_{n→∞} Mₙ = ∞?
+conjectures/119.lean-28-    PROVED: Wagner [Wa80] showed there exists c > 0 such that Mₙ > (log n)^c
+/home/ryan/erdos/conjectures/119.lean-29-    for infinitely many n.
+/home/ryan/erdos/conjectures/119.lean-30-
+--
+/home/ryan/erdos/conjectures/1054.lean-14-divisors of m for some k ≥ 1.
+/home/ryan/erdos/conjectures/1054.lean-15-
+/home/ryan/erdos/conjectures/1054.lean-16-Is it true that f(n) = o(n)? Or is this true only for almost all n, and
+conjectures/1054.lean:17:limsup f(n)/n = ∞?
+/home/ryan/erdos/conjectures/1054.lean-18-
+/home/ryan/erdos/conjectures/1054.lean-19-A question of Erdős reported in problem B2 of Guy's collection [Gu04].
+/home/ryan/erdos/conjectures/1054.lean-20-The function f(n) is undefined for n = 2 and n = 5, but is likely well-defined
+--
+/home/ryan/erdos/conjectures/1054.lean-22-
+/home/ryan/erdos/conjectures/1054.lean-23-The strong claim that f(n) = o(n) was disproved by Tao, who proved that
+conjectures/1054.lean-24-the upper density of {n : f(n) ≤ δn} is O(δ²). The remaining open question
+conjectures/1054.lean:25:is whether limsup f(n)/n = ∞.
+/home/ryan/erdos/conjectures/1054.lean-26--/
+/home/ryan/erdos/conjectures/1054.lean-27-
+/home/ryan/erdos/conjectures/1054.lean-28-/-- The sorted list of divisors of m in increasing order. -/
+--
+/home/ryan/erdos/conjectures/1054.lean-41-/--
+conjectures/1054.lean-42-Erdős Problem #1054 [Gu04]:
+/home/ryan/erdos/conjectures/1054.lean-43-
+conjectures/1054.lean:44:limsup_{n → ∞} f(n)/n = ∞, where f(n) is the minimal m such that n equals
+/home/ryan/erdos/conjectures/1054.lean-45-the sum of the k smallest divisors of m for some k ≥ 1.
+/home/ryan/erdos/conjectures/1054.lean-46-
+conjectures/1054.lean-47-Equivalently: for every C > 0 and every N, there exists n ≥ N such that
+--
+conjectures/353.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+conjectures/353.lean:2:import Mathlib.MeasureTheory.Measure.Prod
+/home/ryan/erdos/conjectures/353.lean-3-
+conjectures/353.lean:4:open MeasureTheory
+/home/ryan/erdos/conjectures/353.lean-5-
+/home/ryan/erdos/conjectures/353.lean-6-noncomputable section
+/home/ryan/erdos/conjectures/353.lean-7-
+--
+/home/ryan/erdos/conjectures/353.lean-66-theorem erdos_problem_353_isosceles_trapezoid
+conjectures/353.lean-67-    (A : Set (ℝ × ℝ))
+conjectures/353.lean-68-    (hA_meas : MeasurableSet A)
+conjectures/353.lean:69:    (hA_inf : volume A = ⊤) :
+conjectures/353.lean-70-    ∃ p₁ p₂ p₃ p₄ : ℝ × ℝ,
+/home/ryan/erdos/conjectures/353.lean-71-      p₁ ∈ A ∧ p₂ ∈ A ∧ p₃ ∈ A ∧ p₄ ∈ A ∧
+/home/ryan/erdos/conjectures/353.lean-72-      IsIsoscelesTrapezoid353 p₁ p₂ p₃ p₄ ∧
+--
+/home/ryan/erdos/conjectures/353.lean-84-theorem erdos_problem_353_isosceles_triangle
+conjectures/353.lean-85-    (A : Set (ℝ × ℝ))
+conjectures/353.lean-86-    (hA_meas : MeasurableSet A)
+conjectures/353.lean:87:    (hA_inf : volume A = ⊤) :
+conjectures/353.lean-88-    ∃ p₁ p₂ p₃ : ℝ × ℝ,
+/home/ryan/erdos/conjectures/353.lean-89-      p₁ ∈ A ∧ p₂ ∈ A ∧ p₃ ∈ A ∧
+/home/ryan/erdos/conjectures/353.lean-90-      IsIsoscelesTriangle353 p₁ p₂ p₃ ∧
+--
+/home/ryan/erdos/conjectures/353.lean-102-theorem erdos_problem_353_right_triangle
+conjectures/353.lean-103-    (A : Set (ℝ × ℝ))
+conjectures/353.lean-104-    (hA_meas : MeasurableSet A)
+conjectures/353.lean:105:    (hA_inf : volume A = ⊤) :
+conjectures/353.lean-106-    ∃ p₁ p₂ p₃ : ℝ × ℝ,
+/home/ryan/erdos/conjectures/353.lean-107-      p₁ ∈ A ∧ p₂ ∈ A ∧ p₃ ∈ A ∧
+/home/ryan/erdos/conjectures/353.lean-108-      IsRightTriangle353 p₁ p₂ p₃ ∧
+--
+/home/ryan/erdos/conjectures/353.lean-120-theorem erdos_problem_353_cyclic_quadrilateral
+conjectures/353.lean-121-    (A : Set (ℝ × ℝ))
+conjectures/353.lean-122-    (hA_meas : MeasurableSet A)
+conjectures/353.lean:123:    (hA_inf : volume A = ⊤) :
+conjectures/353.lean-124-    ∃ p₁ p₂ p₃ p₄ : ℝ × ℝ,
+/home/ryan/erdos/conjectures/353.lean-125-      p₁ ∈ A ∧ p₂ ∈ A ∧ p₃ ∈ A ∧ p₄ ∈ A ∧
+/home/ryan/erdos/conjectures/353.lean-126-      IsCyclicQuadrilateral353 p₁ p₂ p₃ p₄ ∧
+--
+/home/ryan/erdos/conjectures/1118.lean-1-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/1118.lean-2-import Mathlib.Analysis.Calculus.FDeriv.Defs
+conjectures/1118.lean:3:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+conjectures/1118.lean:4:import Mathlib.MeasureTheory.Integral.IntegrableOn
+/home/ryan/erdos/conjectures/1118.lean-5-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/1118.lean-6-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/1118.lean-7-
+/home/ryan/erdos/conjectures/1118.lean-8-noncomputable section
+conjectures/1118.lean:9:open Complex Set MeasureTheory
+/home/ryan/erdos/conjectures/1118.lean-10-
+/home/ryan/erdos/conjectures/1118.lean-11-namespace Erdos1118
+/home/ryan/erdos/conjectures/1118.lean-12-
+--
+conjectures/1118.lean-31-theorem erdos_problem_1118_growth_rate (f : ℂ → ℂ) (hf : Differentiable ℂ f)
+conjectures/1118.lean-32-    (hnc : ∃ z : ℂ, f z ≠ f 0)
+conjectures/1118.lean-33-    (c : ℝ) (hc : 0 < c)
+conjectures/1118.lean:34:    (hfin : volume (exceedanceSet f c) < ⊤) :
+/home/ryan/erdos/conjectures/1118.lean-35-    IntegrableOn (fun r => r / Real.log (Real.log (maxModulus f r)))
+conjectures/1118.lean:36:      (Ioi 0) volume :=
+/home/ryan/erdos/conjectures/1118.lean-37-  sorry
+/home/ryan/erdos/conjectures/1118.lean-38-
+/home/ryan/erdos/conjectures/1118.lean-39-/--
+--
+conjectures/1118.lean-49-theorem erdos_problem_1118_negative_answer :
+conjectures/1118.lean-50-    ∃ f : ℂ → ℂ, Differentiable ℂ f ∧ (∃ z : ℂ, f z ≠ f 0) ∧
+conjectures/1118.lean-51-      ∃ c : ℝ, 0 < c ∧
+conjectures/1118.lean:52:        volume (exceedanceSet f c) < ⊤ ∧
+conjectures/1118.lean:53:        ∀ c' : ℝ, 0 < c' → c' < c → volume (exceedanceSet f c') = ⊤ :=
+/home/ryan/erdos/conjectures/1118.lean-54-  sorry
+/home/ryan/erdos/conjectures/1118.lean-55-
+/home/ryan/erdos/conjectures/1118.lean-56-end Erdos1118
+--
+conjectures/177.lean-19-Known bounds:
+conjectures/177.lean-20-- Lower: h(d) ≫ d^{1/2} (Roth [Ro64])
+conjectures/177.lean-21-- Upper: h(d) ≤ d^{8+ε} is achievable for every ε > 0 (Beck [Be17])
+conjectures/177.lean:22:- Van der Waerden's theorem implies h(d) → ∞.
+/home/ryan/erdos/conjectures/177.lean-23-- Cantor, Erdős, Schreiber, and Straus proved h(d) ≪ d!.
+/home/ryan/erdos/conjectures/177.lean-24--/
+/home/ryan/erdos/conjectures/177.lean-25-
+--
+/home/ryan/erdos/conjectures/122.lean-30-
+conjectures/122.lean-31-/-- The Erdős–122 property of f: for any positive F with f(n)/F(n) → 0
+conjectures/122.lean-32-    in natural density, the ratio #{n ∈ ℕ : n+f(n) ∈ (x, x+F(x))} / F(x)
+conjectures/122.lean:33:    is unbounded as x → ∞ (equivalently, its limsup equals +∞). -/
+conjectures/122.lean-34-def HasErdos122Property (f : ℕ → ℕ) : Prop :=
+conjectures/122.lean-35-  ∀ F : ℕ → ℝ, (∀ n, 0 < F n) → AlmostAllRatioVanishes f F →
+conjectures/122.lean-36-    ∀ C : ℝ, ∃ᶠ x : ℕ in atTop, C < (shiftCount f F x : ℝ) / F x
+--
+conjectures/994.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/994.lean-2-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/994.lean-3-import Mathlib.Order.Filter.AtTopBot.Basic
+/home/ryan/erdos/conjectures/994.lean-4-import Mathlib.Data.Finset.Card
+/home/ryan/erdos/conjectures/994.lean-5-import Mathlib.Algebra.Order.Floor.Ring
+/home/ryan/erdos/conjectures/994.lean-6-
+conjectures/994.lean:7:open Classical Filter MeasureTheory Finset Set
+/home/ryan/erdos/conjectures/994.lean-8-
+/home/ryan/erdos/conjectures/994.lean-9-noncomputable section
+/home/ryan/erdos/conjectures/994.lean-10-
+--
+/home/ryan/erdos/conjectures/994.lean-25-This is false, and was disproved by Marstrand [Ma70].
+/home/ryan/erdos/conjectures/994.lean-26--/
+conjectures/994.lean-27-theorem erdos_problem_994_conjecture :
+conjectures/994.lean:28:    ∀ᵐ α ∂(volume : Measure ℝ),
+conjectures/994.lean-29-      ∀ (E : Set ℝ), MeasurableSet E → E ⊆ Ioo 0 1 →
+/home/ryan/erdos/conjectures/994.lean-30-        Tendsto (cesaroFrequency994 α E) atTop
+conjectures/994.lean:31:          (nhds (volume E).toReal) :=
+/home/ryan/erdos/conjectures/994.lean-32-  sorry
+/home/ryan/erdos/conjectures/994.lean-33-
+/home/ryan/erdos/conjectures/994.lean-34-end
+--
+/home/ryan/erdos/conjectures/302.lean-25-
+conjectures/302.lean-26-Note: The upper bound part (1) of the original conjecture f(N) = (1/2 + o(1))N
+/home/ryan/erdos/conjectures/302.lean-27-has been disproved by Cambie's lower bound. The true asymptotic of f(N) remains
+conjectures/302.lean:28:open, with 5/8 ≤ liminf f(N)/N ≤ limsup f(N)/N ≤ 9/10.
+/home/ryan/erdos/conjectures/302.lean-29-
+conjectures/302.lean-30-We formalize the original conjecture as stated: for every ε > 0, for all
+/home/ryan/erdos/conjectures/302.lean-31-sufficiently large N,
+--
+/home/ryan/erdos/conjectures/255.lean-18-Let z₁, z₂, … ∈ [0,1] be an infinite sequence. Define the discrepancy
+conjectures/255.lean-19-  D_N(I) = #{n ≤ N : zₙ ∈ I} - N·|I|.
+/home/ryan/erdos/conjectures/255.lean-20-Then there must exist some interval I ⊆ [0,1] such that
+conjectures/255.lean:21:  limsup_{N → ∞} |D_N(I)| = ∞.
+/home/ryan/erdos/conjectures/255.lean-22-
+conjectures/255.lean-23-Equivalently: for any sequence in [0,1], there exists a sub-interval
+/home/ryan/erdos/conjectures/255.lean-24-[a,b] ⊆ [0,1] such that |D_N([a,b])| is unbounded as N → ∞.
+--
+/home/ryan/erdos/conjectures/821.lean-14-for every $\epsilon > 0$, there exist infinitely many $n$ such that
+/home/ryan/erdos/conjectures/821.lean-15-$g(n) > n^{1 - \epsilon}$?
+/home/ryan/erdos/conjectures/821.lean-16-
+conjectures/821.lean:17:Pillai proved that $\limsup g(n) = \infty$ and Erdős [Er35b] proved that there
+/home/ryan/erdos/conjectures/821.lean-18-exists some constant $c > 0$ such that $g(n) > n^c$ for infinitely many $n$.
+/home/ryan/erdos/conjectures/821.lean-19-The best known bound is $g(n) > n^{0.71568...}$ for infinitely many $n$,
+/home/ryan/erdos/conjectures/821.lean-20-obtained by Lichtman [Li22].
+--
+/home/ryan/erdos/conjectures/656.lean-21--/
+/home/ryan/erdos/conjectures/656.lean-22-
+/home/ryan/erdos/conjectures/656.lean-23-/-- The upper density of a set A ⊆ ℕ, defined as
+conjectures/656.lean:24:    limsup_{N → ∞} |A ∩ {0, ..., N-1}| / N. -/
+conjectures/656.lean-25-noncomputable def Nat.upperDensity (A : Set ℕ) : ℝ :=
+conjectures/656.lean:26:  Filter.limsup (fun N : ℕ =>
+conjectures/656.lean-27-    ((Finset.filter (· ∈ A) (Finset.range N)).card : ℝ) / N) atTop
+/home/ryan/erdos/conjectures/656.lean-28-
+/home/ryan/erdos/conjectures/656.lean-29-/--
+--
+/home/ryan/erdos/conjectures/114.lean-1-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/114.lean-2-import Mathlib.Algebra.Polynomial.Basic
+/home/ryan/erdos/conjectures/114.lean-3-import Mathlib.Algebra.Polynomial.Monic
+conjectures/114.lean:4:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+conjectures/114.lean:5:import Mathlib.MeasureTheory.Measure.Hausdorff
+/home/ryan/erdos/conjectures/114.lean-6-
+/home/ryan/erdos/conjectures/114.lean-7-open scoped ENNReal
+conjectures/114.lean:8:open Polynomial MeasureTheory
+/home/ryan/erdos/conjectures/114.lean-9-
+conjectures/114.lean-10-/-- The unit level curve of a complex polynomial p: the set of z ∈ ℂ with |p(z)| = 1. -/
+conjectures/114.lean-11-def levelCurveUnit (p : Polynomial ℂ) : Set ℂ :=
+--
+/home/ryan/erdos/conjectures/1044.lean-2-import Mathlib.Algebra.Polynomial.Monic
+/home/ryan/erdos/conjectures/1044.lean-3-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/1044.lean-4-import Mathlib.Topology.Connected.Basic
+conjectures/1044.lean:5:import Mathlib.MeasureTheory.Measure.Hausdorff
+conjectures/1044.lean:6:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+/home/ryan/erdos/conjectures/1044.lean-7-
+conjectures/1044.lean:8:open Complex Polynomial MeasureTheory
+/home/ryan/erdos/conjectures/1044.lean-9-
+/home/ryan/erdos/conjectures/1044.lean-10-noncomputable section
+/home/ryan/erdos/conjectures/1044.lean-11-
+--
+/home/ryan/erdos/conjectures/984.lean-11-
+/home/ryan/erdos/conjectures/984.lean-12-A question of Spencer, who proved that this is possible with 3 colours,
+/home/ryan/erdos/conjectures/984.lean-13-with a^ε replaced by a very slowly growing function h(a) (the inverse of
+conjectures/984.lean:14:the van der Waerden function). Erdős reports that he can construct such a
+/home/ryan/erdos/conjectures/984.lean-15-colouring with the bound k ≪ a^{1-c} for some absolute constant c > 0.
+/home/ryan/erdos/conjectures/984.lean-16-
+/home/ryan/erdos/conjectures/984.lean-17-Zach Hunter proved that the answer is yes.
+--
+/home/ryan/erdos/conjectures/9.lean-24-The upper density of a set of natural numbers.
+/home/ryan/erdos/conjectures/9.lean-25--/
+conjectures/9.lean-26-noncomputable def upperDensity (s : Set ℕ) : ℝ :=
+conjectures/9.lean:27:  limsup (fun n => ((s ∩ {i | i < n}).ncard : ℝ) / n) atTop
+/home/ryan/erdos/conjectures/9.lean-28-
+/home/ryan/erdos/conjectures/9.lean-29-/--
+conjectures/9.lean-30-Erdős's conjecture (Problem #9):
+--
+conjectures/206.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/206.lean-2-import Mathlib.Data.Finset.Basic
+/home/ryan/erdos/conjectures/206.lean-3-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/206.lean-4-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/206.lean-5-
+conjectures/206.lean:6:open Finset BigOperators MeasureTheory
+/home/ryan/erdos/conjectures/206.lean-7-
+/home/ryan/erdos/conjectures/206.lean-8-noncomputable section
+/home/ryan/erdos/conjectures/206.lean-9-
+--
+/home/ryan/erdos/conjectures/206.lean-56-We formalize Kovač's result (the negation of the original conjecture).
+/home/ryan/erdos/conjectures/206.lean-57--/
+conjectures/206.lean-58-theorem erdos_problem_206 :
+conjectures/206.lean:59:    volume {x : ℝ | 0 < x ∧ IsEventuallyGreedy x} = 0 :=
+/home/ryan/erdos/conjectures/206.lean-60-  sorry
+--
+conjectures/169.lean-10-def IsAPFree (k : ℕ) (A : Finset ℕ) : Prop :=
+conjectures/169.lean-11-  ¬∃ a d : ℕ, 0 < d ∧ ∀ i : ℕ, i < k → a + i * d ∈ A
+/home/ryan/erdos/conjectures/169.lean-12-
+conjectures/169.lean:13:/-- The van der Waerden property: every 2-coloring of {0, ..., N-1} contains
+/home/ryan/erdos/conjectures/169.lean-14-a monochromatic k-term arithmetic progression. -/
+conjectures/169.lean-15-def VDWProperty (k N : ℕ) : Prop :=
+conjectures/169.lean-16-  ∀ f : ℕ → Bool, ∃ a d : ℕ, 0 < d ∧ a + (k - 1) * d < N ∧
+conjectures/169.lean-17-    ∀ i : ℕ, i < k → f (a + i * d) = f a
+/home/ryan/erdos/conjectures/169.lean-18-
+conjectures/169.lean:19:/-- Van der Waerden's theorem guarantees the existence of W(k) for all k. -/
+conjectures/169.lean-20-lemma vdw_exists (k : ℕ) : ∃ N, VDWProperty k N := by sorry
+/home/ryan/erdos/conjectures/169.lean-21-
+/home/ryan/erdos/conjectures/169.lean-22-open Classical in
+conjectures/169.lean:23:/-- The van der Waerden number W(k): the smallest N such that any 2-coloring
+/home/ryan/erdos/conjectures/169.lean-24-of {0, ..., N-1} contains a monochromatic k-term AP. -/
+conjectures/169.lean:25:noncomputable def vanDerWaerdenNumber (k : ℕ) : ℕ :=
+/home/ryan/erdos/conjectures/169.lean-26-  Nat.find (vdw_exists k)
+/home/ryan/erdos/conjectures/169.lean-27-
+/home/ryan/erdos/conjectures/169.lean-28-/--
+--
+/home/ryan/erdos/conjectures/169.lean-30-Let k ≥ 3 and f(k) be the supremum of ∑_{n ∈ A} 1/n over all sets A of
+/home/ryan/erdos/conjectures/169.lean-31-positive integers containing no k-term arithmetic progression.
+/home/ryan/erdos/conjectures/169.lean-32-
+conjectures/169.lean:33:Is lim_{k → ∞} f(k) / log W(k) = ∞, where W(k) is the van der Waerden number?
+/home/ryan/erdos/conjectures/169.lean-34-
+conjectures/169.lean-35-This is formalized as: for every constant C > 0, for all sufficiently large k,
+/home/ryan/erdos/conjectures/169.lean-36-there exists a finite AP-free set A of positive integers whose reciprocal sum
+--
+conjectures/169.lean-39-theorem erdos_problem_169_conjecture :
+conjectures/169.lean-40-    ∀ C : ℝ, 0 < C → ∃ k₀ : ℕ, ∀ k : ℕ, k₀ ≤ k →
+conjectures/169.lean-41-      ∃ A : Finset ℕ, (∀ n ∈ A, 0 < n) ∧ IsAPFree k A ∧
+conjectures/169.lean:42:        C * Real.log (↑(vanDerWaerdenNumber k) : ℝ) <
+conjectures/169.lean-43-          ∑ n ∈ A, (1 : ℝ) / (↑n : ℝ) :=
+/home/ryan/erdos/conjectures/169.lean-44-  sorry
+--
+conjectures/933.lean-17-Erdős Problem #933 [Er76d]:
+/home/ryan/erdos/conjectures/933.lean-18-
+/home/ryan/erdos/conjectures/933.lean-19-If n(n+1) = 2^k · 3^l · m where gcd(m, 6) = 1, is it true that
+conjectures/933.lean:20:  limsup_{n → ∞} (2^k · 3^l) / (n · log n) = ∞ ?
+/home/ryan/erdos/conjectures/933.lean-21-
+conjectures/933.lean-22-Equivalently: for every C > 0, there exist arbitrarily large n such that
+/home/ryan/erdos/conjectures/933.lean-23-the {2,3}-smooth part of n(n+1) exceeds C · n · log n.
+--
+/home/ryan/erdos/conjectures/1043.lean-1-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/1043.lean-2-import Mathlib.Algebra.Polynomial.Eval.Defs
+/home/ryan/erdos/conjectures/1043.lean-3-import Mathlib.Algebra.Polynomial.Monic
+conjectures/1043.lean:4:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/1043.lean-5-
+conjectures/1043.lean:6:open Polynomial MeasureTheory
+/home/ryan/erdos/conjectures/1043.lean-7-
+/home/ryan/erdos/conjectures/1043.lean-8-noncomputable section
+/home/ryan/erdos/conjectures/1043.lean-9-
+--
+conjectures/1043.lean-43-theorem erdos_problem_1043 :
+conjectures/1043.lean-44-    ¬ ∀ (f : Polynomial ℂ), f.Monic → f.natDegree ≥ 1 →
+conjectures/1043.lean-45-      ∃ (u : ℂ), ‖u‖ = 1 ∧
+conjectures/1043.lean:46:        volume (lineProj u '' lemniscate f) ≤ 2 :=
+/home/ryan/erdos/conjectures/1043.lean-47-  sorry
+/home/ryan/erdos/conjectures/1043.lean-48-
+/home/ryan/erdos/conjectures/1043.lean-49-/--
+--
+conjectures/1043.lean-56-theorem erdos_problem_1043_weak :
+conjectures/1043.lean-57-    ∀ (f : Polynomial ℂ), f.Monic → f.natDegree ≥ 1 →
+conjectures/1043.lean-58-      ∃ (u : ℂ), ‖u‖ = 1 ∧
+conjectures/1043.lean:59:        volume (lineProj u '' lemniscate f) ≤ ENNReal.ofReal 3.3 :=
+/home/ryan/erdos/conjectures/1043.lean-60-  sorry
+/home/ryan/erdos/conjectures/1043.lean-61-
+/home/ryan/erdos/conjectures/1043.lean-62-end
+--
+/home/ryan/erdos/conjectures/874.lean-19-that k(N) ~ 2N^{1/2}?
+/home/ryan/erdos/conjectures/874.lean-20-
+/home/ryan/erdos/conjectures/874.lean-21-Straus [St66] calls such sets admissible and showed
+conjectures/874.lean:22:  liminf k(N)/N^{1/2} ≥ 2   and   limsup k(N)/N^{1/2} ≤ 4/√3.
+/home/ryan/erdos/conjectures/874.lean-23-Erdős–Nicolas–Sárközy [ENS91] improved the upper bound to (143/27)^{1/2}.
+/home/ryan/erdos/conjectures/874.lean-24-The conjecture was proved for all large N by Deshouillers and Freiman [DeFr99].
+/home/ryan/erdos/conjectures/874.lean-25-
+--
+/home/ryan/erdos/conjectures/526.lean-1-import Mathlib.Probability.Independence.Basic
+conjectures/526.lean:2:import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+conjectures/526.lean:3:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/526.lean-4-import Mathlib.Topology.Algebra.InfiniteSum.Basic
+/home/ryan/erdos/conjectures/526.lean-5-import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+/home/ryan/erdos/conjectures/526.lean-6-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/526.lean-7-import Mathlib.Algebra.Order.Floor.Ring
+/home/ryan/erdos/conjectures/526.lean-8-
+conjectures/526.lean:9:open MeasureTheory ProbabilityTheory Filter Finset BigOperators Set
+/home/ryan/erdos/conjectures/526.lean-10-
+/home/ryan/erdos/conjectures/526.lean-11-noncomputable section
+/home/ryan/erdos/conjectures/526.lean-12-
+--
+conjectures/526.lean-38-    (ha_diverges : ¬Summable a)
+conjectures/526.lean-39-    {X : ℕ → Ω → ℝ}
+conjectures/526.lean-40-    (hX_meas : ∀ n, Measurable (X n))
+conjectures/526.lean:41:    (hX_unif : ∀ n, Measure.map (X n) μ = volume.restrict (Ico (0 : ℝ) 1))
+conjectures/526.lean-42-    (hX_indep : iIndepFun X μ) :
+/home/ryan/erdos/conjectures/526.lean-43-    (∀ᵐ ω ∂μ, circleFullyCovered (fun n => X n ω) a) ↔
+conjectures/526.lean-44-      ¬Summable (fun n => Real.exp (∑ i ∈ range (n + 1), a i) / ((n : ℝ) + 1) ^ 2) :=
+--
+conjectures/995.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+conjectures/995.lean:2:import Mathlib.MeasureTheory.Integral.Bochner.Basic
+/home/ryan/erdos/conjectures/995.lean-3-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/995.lean-4-import Mathlib.Algebra.Order.Floor.Ring
+/home/ryan/erdos/conjectures/995.lean-5-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/995.lean-6-import Mathlib.Order.Filter.AtTopBot.Basic
+/home/ryan/erdos/conjectures/995.lean-7-
+conjectures/995.lean:8:open MeasureTheory Filter Finset Set
+/home/ryan/erdos/conjectures/995.lean-9-
+/home/ryan/erdos/conjectures/995.lean-10-noncomputable section
+/home/ryan/erdos/conjectures/995.lean-11-
+--
+/home/ryan/erdos/conjectures/995.lean-20-
+/home/ryan/erdos/conjectures/995.lean-21-Erdős [Er49d] constructed a lacunary sequence and f ∈ L²([0,1]) such that, for
+/home/ryan/erdos/conjectures/995.lean-22-every ε > 0, for almost all α,
+conjectures/995.lean:23:  limsup_{N → ∞} (1 / (N(log log N)^{1/2 - ε})) ∑_{k≤N} f({α nₖ}) = ∞.
+/home/ryan/erdos/conjectures/995.lean-24-
+/home/ryan/erdos/conjectures/995.lean-25-Erdős [Er64b] thought that his lower bound was closer to the truth.
+/home/ryan/erdos/conjectures/995.lean-26--/
+--
+/home/ryan/erdos/conjectures/995.lean-43-theorem erdos_problem_995
+conjectures/995.lean-44-    (n : ℕ → ℕ) (hn : IsLacunary995 n)
+conjectures/995.lean-45-    (f : ℝ → ℝ) (hf : Measurable f)
+conjectures/995.lean:46:    (hf_sq : Integrable (fun x => f x ^ 2) (volume.restrict (Icc (0 : ℝ) 1))) :
+conjectures/995.lean-47-    ∀ ε : ℝ, ε > 0 →
+conjectures/995.lean:48:    ∀ᵐ α ∂(volume.restrict (Icc (0 : ℝ) 1)),
+conjectures/995.lean-49-      ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+conjectures/995.lean-50-        |∑ k ∈ Finset.range N, f (Int.fract (α * (n k : ℝ)))| ≤
+conjectures/995.lean-51-          ε * (N : ℝ) * Real.sqrt (Real.log (Real.log (N : ℝ))) :=
+--
+/home/ryan/erdos/conjectures/222.lean-18-- Erdős (1951) proved that for infinitely many $k$,
+/home/ryan/erdos/conjectures/222.lean-19-  $n_{k+1} - n_k \gg \log n_k / \sqrt{\log \log n_k}$.
+/home/ryan/erdos/conjectures/222.lean-20-- Richards (1982) improved this to
+conjectures/222.lean:21:  $\limsup_{k \to \infty} (n_{k+1} - n_k) / \log n_k \geq 1/4$.
+/home/ryan/erdos/conjectures/222.lean-22-  The constant $1/4$ was improved to $0.868\ldots$ by Dietmann, Elsholtz,
+/home/ryan/erdos/conjectures/222.lean-23-  Kalmynin, Konyagin, and Maynard (2022).
+/home/ryan/erdos/conjectures/222.lean-24-- Bambah and Chowla (1947) proved the upper bound
+--
+/home/ryan/erdos/conjectures/222.lean-55-for every $\delta > 0$, there are infinitely many $k$ such that
+/home/ryan/erdos/conjectures/222.lean-56-$n_{k+1} - n_k \geq (1/4 - \delta) \cdot \log n_k$.
+/home/ryan/erdos/conjectures/222.lean-57-
+conjectures/222.lean:58:This is equivalent to $\limsup_{k \to \infty} (n_{k+1} - n_k) / \log n_k \geq 1/4$.
+/home/ryan/erdos/conjectures/222.lean-59--/
+conjectures/222.lean-60-theorem erdos_222_lower_bound :
+conjectures/222.lean-61-    ∀ δ : ℝ, δ > 0 → ∃ᶠ k in atTop,
+--
+/home/ryan/erdos/conjectures/643.lean-27-and conjectured the lower bound is sharp for $t \geq 4$.
+/home/ryan/erdos/conjectures/643.lean-28-
+/home/ryan/erdos/conjectures/643.lean-29-Pikhurko and Verstraëte proved
+conjectures/643.lean:30:$1 \leq \limsup_{n\to\infty} f(n;t)/\binom{n}{t-1} \leq \min(7/4, 1+2/\sqrt{t})$
+/home/ryan/erdos/conjectures/643.lean-31-for all $t \geq 3$.
+/home/ryan/erdos/conjectures/643.lean-32--/
+/home/ryan/erdos/conjectures/643.lean-33-
+--
+conjectures/492.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/492.lean-2-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/492.lean-3-import Mathlib.Order.Filter.Basic
+/home/ryan/erdos/conjectures/492.lean-4-import Mathlib.Topology.Order.Basic
+/home/ryan/erdos/conjectures/492.lean-5-import Mathlib.Data.Finset.Card
+/home/ryan/erdos/conjectures/492.lean-6-
+conjectures/492.lean:7:open Filter MeasureTheory Finset
+/home/ryan/erdos/conjectures/492.lean-8-
+/home/ryan/erdos/conjectures/492.lean-9-noncomputable section
+/home/ryan/erdos/conjectures/492.lean-10-
+--
+conjectures/492.lean-49-theorem erdos_problem_492 :
+conjectures/492.lean-50-    ∃ (a : ℕ → ℕ), StrictMono a ∧ (∀ i, 0 < a i) ∧
+conjectures/492.lean-51-      Tendsto (fun i => (a (i + 1) : ℝ) / (a i : ℝ)) atTop (nhds 1) ∧
+conjectures/492.lean:52:      ¬(∀ᵐ α ∂(volume : Measure ℝ),
+conjectures/492.lean-53-        IsEquidistributed492 (fun n => erdos492_f a (α * (n : ℝ)))) := by
+/home/ryan/erdos/conjectures/492.lean-54-  sorry
+/home/ryan/erdos/conjectures/492.lean-55-
+--
+/home/ryan/erdos/conjectures/333.lean-11-
+/home/ryan/erdos/conjectures/333.lean-12-/--
+conjectures/333.lean-13-The upper density of A ⊆ ℕ:
+conjectures/333.lean:14:  d*(A) = limsup_{N→∞} |A ∩ {0, 1, ..., N-1}| / N
+/home/ryan/erdos/conjectures/333.lean-15--/
+conjectures/333.lean-16-noncomputable def upperDensity333 (A : Set ℕ) : ℝ :=
+conjectures/333.lean:17:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/erdos/conjectures/333.lean-18-    Filter.atTop
+/home/ryan/erdos/conjectures/333.lean-19-
+/home/ryan/erdos/conjectures/333.lean-20-/--
+--
+conjectures/992.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/992.lean-2-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/992.lean-3-import Mathlib.Order.Filter.AtTopBot.Basic
+/home/ryan/erdos/conjectures/992.lean-4-import Mathlib.Data.Finset.Card
+--
+/home/ryan/erdos/conjectures/992.lean-6-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/992.lean-7-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+/home/ryan/erdos/conjectures/992.lean-8-
+conjectures/992.lean:9:open Classical Filter MeasureTheory Finset
+/home/ryan/erdos/conjectures/992.lean-10-
+/home/ryan/erdos/conjectures/992.lean-11-noncomputable section
+/home/ryan/erdos/conjectures/992.lean-12-
+--
+/home/ryan/erdos/conjectures/992.lean-24-
+/home/ryan/erdos/conjectures/992.lean-25-This was disproved by Berkes and Philipp [BePh94], who constructed a sequence
+/home/ryan/erdos/conjectures/992.lean-26-of integers x₁ < x₂ < ⋯ such that, for almost all α ∈ [0,1],
+conjectures/992.lean:27:  limsup_{N → ∞} D(N) / (N log N)^{1/2} > 0.
+/home/ryan/erdos/conjectures/992.lean-28--/
+/home/ryan/erdos/conjectures/992.lean-29-
+/home/ryan/erdos/conjectures/992.lean-30-/-- The discrepancy of the sequence {α · x(n)} (mod 1) with respect to
+--
+/home/ryan/erdos/conjectures/992.lean-41-
+/home/ryan/erdos/conjectures/992.lean-42-There exists a strictly increasing sequence of positive integers x₁ < x₂ < ⋯
+/home/ryan/erdos/conjectures/992.lean-43-such that for almost all α ∈ [0,1],
+conjectures/992.lean:44:  limsup_{N → ∞} D(N) / (N log N)^{1/2} > 0.
+/home/ryan/erdos/conjectures/992.lean-45-
+conjectures/992.lean-46-Formulated as: for a.e. α, there exists c > 0 and infinitely many N with
+/home/ryan/erdos/conjectures/992.lean-47-  D(N) ≥ c · √(N · log N).
+/home/ryan/erdos/conjectures/992.lean-48--/
+conjectures/992.lean-49-theorem erdos_problem_992 :
+conjectures/992.lean-50-    ∃ (x : ℕ → ℤ), StrictMono x ∧ (∀ n, 0 < x n) ∧
+conjectures/992.lean:51:    ∀ᵐ α ∂(volume.restrict (Set.Icc (0 : ℝ) 1)),
+conjectures/992.lean-52-      ∃ c : ℝ, c > 0 ∧
+/home/ryan/erdos/conjectures/992.lean-53-        ∃ᶠ N in atTop,
+conjectures/992.lean-54-          discrepancy992 x α N ≥ c * Real.sqrt ((N : ℝ) * Real.log (N : ℝ)) :=
+--
+/home/ryan/erdos/conjectures/1057.lean-13-/-!
+/home/ryan/erdos/conjectures/1057.lean-14-# Erdős Problem #1057
+/home/ryan/erdos/conjectures/1057.lean-15-
+conjectures/1057.lean:16:Let C(x) count the number of Carmichael numbers in [1, x]. Is it true that
+/home/ryan/erdos/conjectures/1057.lean-17-C(x) = x^{1-o(1)}?
+/home/ryan/erdos/conjectures/1057.lean-18-
+conjectures/1057.lean:19:A Carmichael number is a composite n > 1 such that a^n ≡ a (mod n) for all a.
+/home/ryan/erdos/conjectures/1057.lean-20-By Korselt's criterion, this is equivalent to n being squarefree, composite,
+/home/ryan/erdos/conjectures/1057.lean-21-and p - 1 ∣ n - 1 for all primes p ∣ n.
+/home/ryan/erdos/conjectures/1057.lean-22-
+--
+conjectures/1057.lean-26-Tags: number theory
+/home/ryan/erdos/conjectures/1057.lean-27--/
+/home/ryan/erdos/conjectures/1057.lean-28-
+conjectures/1057.lean:29:/-- A natural number n is a Carmichael number if n > 1, n is not prime,
+/home/ryan/erdos/conjectures/1057.lean-30-    n is squarefree, and p - 1 ∣ n - 1 for every prime p dividing n.
+/home/ryan/erdos/conjectures/1057.lean-31-    (This is Korselt's criterion.) -/
+conjectures/1057.lean:32:def IsCarmichael (n : ℕ) : Prop :=
+conjectures/1057.lean-33-  1 < n ∧ ¬ n.Prime ∧ Squarefree n ∧ ∀ p : ℕ, p.Prime → p ∣ n → (p - 1) ∣ (n - 1)
+/home/ryan/erdos/conjectures/1057.lean-34-
+conjectures/1057.lean:35:/-- C(x) counts the number of Carmichael numbers in {1, ..., x}. -/
+conjectures/1057.lean:36:noncomputable def carmichaelCount (x : ℕ) : ℕ :=
+conjectures/1057.lean:37:  ((Finset.Icc 1 x).filter (fun n => IsCarmichael n)).card
+/home/ryan/erdos/conjectures/1057.lean-38-
+/home/ryan/erdos/conjectures/1057.lean-39-/--
+conjectures/1057.lean-40-Erdős Problem #1057 [Er56c]:
+--
+/home/ryan/erdos/conjectures/1057.lean-42-Is it true that C(x) = x^{1-o(1)}? That is, does log C(x) / log x → 1
+/home/ryan/erdos/conjectures/1057.lean-43-as x → ∞?
+/home/ryan/erdos/conjectures/1057.lean-44-
+conjectures/1057.lean:45:This asks whether the Carmichael counting function grows almost as fast
+/home/ryan/erdos/conjectures/1057.lean-46-as x itself, in the sense that the exponent approaches 1.
+/home/ryan/erdos/conjectures/1057.lean-47--/
+conjectures/1057.lean-48-theorem erdos_problem_1057 :
+/home/ryan/erdos/conjectures/1057.lean-49-    Tendsto
+conjectures/1057.lean:50:      (fun x : ℕ => Real.log (carmichaelCount x : ℝ) / Real.log (x : ℝ))
+conjectures/1057.lean-51-      atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/1057.lean-52-  sorry
+/home/ryan/erdos/conjectures/1057.lean-53-
+--
+/home/ryan/erdos/conjectures/524.lean-1-import Mathlib.Probability.Independence.Basic
+conjectures/524.lean:2:import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/524.lean-3-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/524.lean-4-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+/home/ryan/erdos/conjectures/524.lean-5-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/524.lean-6-import Mathlib.Order.Filter.Basic
+/home/ryan/erdos/conjectures/524.lean-7-
+conjectures/524.lean:8:open MeasureTheory ProbabilityTheory Filter Finset BigOperators Set
+/home/ryan/erdos/conjectures/524.lean-9-
+conjectures/524.lean-10-/-- A random variable is Rademacher distributed: it takes values in {-1, 1}
+/home/ryan/erdos/conjectures/524.lean-11-with equal probability. -/
+--
+/home/ryan/erdos/conjectures/950.lean-47-
+conjectures/950.lean-48-Equivalently: for every M, there exist arbitrarily large n with f(n) > M.
+/home/ryan/erdos/conjectures/950.lean-49--/
+conjectures/950.lean:50:theorem erdos_problem_950_limsup :
+conjectures/950.lean-51-    ∀ M : ℝ, ∀ N₀ : ℕ, ∃ n : ℕ, n ≥ N₀ ∧ erdos950_f n > M :=
+/home/ryan/erdos/conjectures/950.lean-52-  sorry
+/home/ryan/erdos/conjectures/950.lean-53-
+--
+conjectures/501.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/501.lean-2-import Mathlib.Data.Set.Card
+/home/ryan/erdos/conjectures/501.lean-3-
+conjectures/501.lean:4:open MeasureTheory Set
+/home/ryan/erdos/conjectures/501.lean-5-
+/home/ryan/erdos/conjectures/501.lean-6-/-
+conjectures/501.lean-7-Erdős Problem #501 [Er61] [ErHa71]:
+--
+/home/ryan/erdos/conjectures/501.lean-29-an infinite independent set? -/
+conjectures/501.lean-30-theorem erdos_problem_501_part1 :
+conjectures/501.lean-31-    ∀ A : ℝ → Set ℝ,
+conjectures/501.lean:32:      (∀ x : ℝ, Bornology.IsBounded (A x) ∧ volume (A x) < 1) →
+conjectures/501.lean-33-      ∃ X : Set ℝ, X.Infinite ∧ IndependentFamily A X :=
+/home/ryan/erdos/conjectures/501.lean-34-  sorry
+/home/ryan/erdos/conjectures/501.lean-35-
+--
+/home/ryan/erdos/conjectures/501.lean-37-independent set of size 3? -/
+conjectures/501.lean-38-theorem erdos_problem_501_part2 :
+conjectures/501.lean-39-    ∀ A : ℝ → Set ℝ,
+conjectures/501.lean:40:      (∀ x : ℝ, IsClosed (A x) ∧ volume (A x) < 1) →
+conjectures/501.lean-41-      ∃ x y z : ℝ, x ≠ y ∧ y ≠ z ∧ x ≠ z ∧
+conjectures/501.lean-42-        IndependentFamily A {x, y, z} :=
+/home/ryan/erdos/conjectures/501.lean-43-  sorry
+--
+/home/ryan/erdos/conjectures/515.lean-1-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/515.lean-2-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/515.lean:3:import Mathlib.MeasureTheory.Integral.IntegrableOn
+/home/ryan/erdos/conjectures/515.lean-4-import Mathlib.Analysis.BoundedVariation
+/home/ryan/erdos/conjectures/515.lean-5-import Mathlib.Algebra.Polynomial.Eval.Defs
+/home/ryan/erdos/conjectures/515.lean-6-
+conjectures/515.lean:7:open MeasureTheory Filter Set
+/home/ryan/erdos/conjectures/515.lean-8-
+/home/ryan/erdos/conjectures/515.lean-9-/-!
+/home/ryan/erdos/conjectures/515.lean-10-# Erdős Problem #515
+--
+/home/ryan/erdos/conjectures/515.lean-40-          IntegrableOn
+/home/ryan/erdos/conjectures/515.lean-41-            (fun t => ‖f (γ t)‖ ^ (-l) * ‖deriv γ t‖)
+/home/ryan/erdos/conjectures/515.lean-42-            (Ici 0)
+conjectures/515.lean:43:            volume :=
+/home/ryan/erdos/conjectures/515.lean-44-  sorry
+--
+conjectures/908.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/908.lean-2-import Mathlib.Topology.MetricSpace.Basic
+/home/ryan/erdos/conjectures/908.lean-3-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/908.lean-4-
+conjectures/908.lean:5:open MeasureTheory
+/home/ryan/erdos/conjectures/908.lean-6-
+/home/ryan/erdos/conjectures/908.lean-7-/--
+conjectures/908.lean-8-Erdős Problem #908 (proved by Laczkovich [La80]):
+--
+conjectures/908.lean-18-theorem erdos_problem_908 (f : ℝ → ℝ)
+conjectures/908.lean-19-    (hf : ∀ h : ℝ, h > 0 → Measurable (fun x => f (x + h) - f x)) :
+conjectures/908.lean-20-    ∃ g φ r : ℝ → ℝ, Continuous g ∧ (∀ x y : ℝ, φ (x + y) = φ x + φ y) ∧
+conjectures/908.lean:21:      (∀ h : ℝ, h > 0 → ∀ᵐ x ∂volume, r (x + h) - r x = 0) ∧
+conjectures/908.lean-22-      ∀ x : ℝ, f x = g x + φ x + r x :=
+/home/ryan/erdos/conjectures/908.lean-23-  sorry
+--
+/home/ryan/erdos/conjectures/523.lean-1-import Mathlib.Probability.Independence.Basic
+conjectures/523.lean:2:import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/523.lean-3-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/523.lean-4-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/523.lean-5-import Mathlib.Analysis.SpecialFunctions.Sqrt
+/home/ryan/erdos/conjectures/523.lean-6-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/523.lean-7-
+conjectures/523.lean:8:open MeasureTheory ProbabilityTheory Filter Finset BigOperators
+/home/ryan/erdos/conjectures/523.lean-9-
+conjectures/523.lean-10-/-- A random variable is Rademacher distributed: it takes values in {-1, 1}
+/home/ryan/erdos/conjectures/523.lean-11-with equal probability. -/
+--
+/home/ryan/erdos/conjectures/166.lean-20-Ajtai, Komlós, and Szemerédi [AKS80] proved the upper bound
+/home/ryan/erdos/conjectures/166.lean-21-  R(4,k) ≪ k³/(log k)².
+/home/ryan/erdos/conjectures/166.lean-22-Spencer [Sp77] proved R(4,k) ≫ (k log k)^{5/2}.
+conjectures/166.lean:23:Mattheus and Verstraete [MaVe23] proved R(4,k) ≫ k³/(log k)⁴,
+/home/ryan/erdos/conjectures/166.lean-24-resolving this conjecture.
+/home/ryan/erdos/conjectures/166.lean-25--/
+/home/ryan/erdos/conjectures/166.lean-26-
+--
+/home/ryan/erdos/conjectures/166.lean-38-
+conjectures/166.lean-39-In asymptotic notation: R(4,k) ≫ k³/(log k)^{O(1)}.
+/home/ryan/erdos/conjectures/166.lean-40-
+conjectures/166.lean:41:This was proved by Mattheus and Verstraete [MaVe23], who showed
+/home/ryan/erdos/conjectures/166.lean-42-  R(4,k) ≫ k³/(log k)⁴.
+/home/ryan/erdos/conjectures/166.lean-43--/
+conjectures/166.lean-44-theorem erdos_problem_166 :
+--
+/home/ryan/erdos/conjectures/109.lean-9-
+/home/ryan/erdos/conjectures/109.lean-10-/--
+conjectures/109.lean-11-The upper density of A ⊆ ℕ is defined as:
+conjectures/109.lean:12:  d*(A) = limsup_{N→∞} |A ∩ {0, 1, ..., N-1}| / N
+/home/ryan/erdos/conjectures/109.lean-13--/
+conjectures/109.lean-14-noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+conjectures/109.lean:15:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/erdos/conjectures/109.lean-16-    Filter.atTop
+/home/ryan/erdos/conjectures/109.lean-17-
+/home/ryan/erdos/conjectures/109.lean-18-/--
+--
+/home/ryan/erdos/conjectures/237.lean-12-
+/home/ryan/erdos/conjectures/237.lean-13-Let A ⊆ ℕ be a set such that |A ∩ {1,…,N}| ≫ log N for all large N.
+/home/ryan/erdos/conjectures/237.lean-14-Let f(n) count the number of solutions to n = p + a for p prime and a ∈ A.
+conjectures/237.lean:15:Is it true that limsup f(n) = ∞?
+/home/ryan/erdos/conjectures/237.lean-16-
+/home/ryan/erdos/conjectures/237.lean-17-The answer is yes, as proved by Chen and Ding [ChDi22]. In fact, the
+/home/ryan/erdos/conjectures/237.lean-18-assumption |A ∩ {1,…,N}| ≫ log N can be replaced with just the assumption
+--
+/home/ryan/erdos/conjectures/237.lean-32-
+/home/ryan/erdos/conjectures/237.lean-33-Let A ⊆ ℕ with |A ∩ {1,…,N}| ≥ c · log N for some c > 0 and all
+conjectures/237.lean-34-sufficiently large N. Let f(n) = #{p prime : n − p ∈ A} count the
+conjectures/237.lean:35:representations of n as prime + element of A. Then limsup f(n) = ∞,
+/home/ryan/erdos/conjectures/237.lean-36-i.e., for every M there exist arbitrarily large n with f(n) ≥ M.
+/home/ryan/erdos/conjectures/237.lean-37--/
+conjectures/237.lean-38-theorem erdos_problem_237 :
+--
+/home/ryan/erdos/conjectures/262.lean-25-a non-example is aₙ = n!.
+/home/ryan/erdos/conjectures/262.lean-26-
+/home/ryan/erdos/conjectures/262.lean-27-Hančl [Ha91] proved that any irrationality sequence must satisfy
+conjectures/262.lean:28:  limsup_{n→∞} (log₂ log₂ aₙ) / n ≥ 1,
+/home/ryan/erdos/conjectures/262.lean-29-i.e., for all c < 1, log₂(log₂(aₙ)) > cn for infinitely many n.
+/home/ryan/erdos/conjectures/262.lean-30--/
+/home/ryan/erdos/conjectures/262.lean-31-theorem erdos_problem_262
+conjectures/262.lean-32-    (a : ℕ → ℕ) (ha : IsIrrationalitySequence a)
+conjectures/262.lean-33-    (c : ℝ) (hc : c < 1) :
+conjectures/262.lean:34:    Filter.Frequently (fun (n : ℕ) => c * (↑n : ℝ) < Real.logb 2 (Real.logb 2 (↑(a n) : ℝ))) atTop :=
+/home/ryan/erdos/conjectures/262.lean-35-  sorry
+/home/ryan/erdos/conjectures/262.lean-36-
+/home/ryan/erdos/conjectures/262.lean-37-end
+--
+/home/ryan/erdos/conjectures/824.lean-13-
+/home/ryan/erdos/conjectures/824.lean-14-Is it true that h(x) > x^{2-o(1)}?
+/home/ryan/erdos/conjectures/824.lean-15-
+conjectures/824.lean:16:Erdős [Er74b] proved that limsup h(x)/x = ∞, and claimed a similar proof for
+/home/ryan/erdos/conjectures/824.lean-17-this problem. A complete proof that h(x)/x → ∞ was provided by Pollack and
+/home/ryan/erdos/conjectures/824.lean-18-Pomerance [PoPo16].
+/home/ryan/erdos/conjectures/824.lean-19--/
+--
+/home/ryan/erdos/conjectures/1002.lean-1-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/1002.lean-2-import Mathlib.Algebra.Order.Floor.Ring
+conjectures/1002.lean:3:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/1002.lean-4-import Mathlib.Order.Filter.AtTopBot.Basic
+/home/ryan/erdos/conjectures/1002.lean-5-import Mathlib.Order.Interval.Finset.Nat
+/home/ryan/erdos/conjectures/1002.lean-6-
+conjectures/1002.lean:7:open Finset Filter MeasureTheory
+/home/ryan/erdos/conjectures/1002.lean-8-
+/home/ryan/erdos/conjectures/1002.lean-9-noncomputable section
+/home/ryan/erdos/conjectures/1002.lean-10-
+--
+/home/ryan/erdos/conjectures/1002.lean-46-    Filter.Tendsto g Filter.atTop (nhds 1) ∧
+conjectures/1002.lean-47-    ∀ c : ℝ, Filter.Tendsto
+conjectures/1002.lean-48-      (fun n : ℕ =>
+conjectures/1002.lean:49:        (volume (Set.Ioo (0 : ℝ) 1 ∩ {α : ℝ | erdosF α n ≤ c})).toReal)
+conjectures/1002.lean-50-      Filter.atTop (nhds (g c)) :=
+/home/ryan/erdos/conjectures/1002.lean-51-  sorry
+/home/ryan/erdos/conjectures/1002.lean-52-
+--
+/home/ryan/erdos/conjectures/935.lean-16-1. Is it true that, for every ε > 0 and ℓ ≥ 1, if n is sufficiently large then
+/home/ryan/erdos/conjectures/935.lean-17-   Q₂(n(n+1)⋯(n+ℓ)) < n^{2+ε}?
+/home/ryan/erdos/conjectures/935.lean-18-
+conjectures/935.lean:19:2. If ℓ ≥ 2 then is limsup_{n → ∞} Q₂(n(n+1)⋯(n+ℓ))/n² infinite?
+/home/ryan/erdos/conjectures/935.lean-20-
+/home/ryan/erdos/conjectures/935.lean-21-3. If ℓ ≥ 2 then is lim_{n → ∞} Q₂(n(n+1)⋯(n+ℓ))/n^{ℓ+1} = 0?
+/home/ryan/erdos/conjectures/935.lean-22-
+conjectures/935.lean-23-The second part is resolved affirmatively: a construction via solutions to the
+conjectures/935.lean:24:Pell equation x² - 8y² = 1 shows limsup Q₂(n(n+1)(n+2))/n² = ∞.
+/home/ryan/erdos/conjectures/935.lean-25--/
+/home/ryan/erdos/conjectures/935.lean-26-
+conjectures/935.lean-27-/-- The powerful (2-full) part of a natural number n: the product of all prime
+--
+/home/ryan/erdos/conjectures/935.lean-47-/--
+conjectures/935.lean-48-Erdős Problem #935, Part 2 (resolved):
+/home/ryan/erdos/conjectures/935.lean-49-
+conjectures/935.lean:50:For every ℓ ≥ 2, limsup_{n → ∞} Q₂(n(n+1)⋯(n+ℓ))/n² = ∞.
+/home/ryan/erdos/conjectures/935.lean-51-This was proved via solutions to the Pell equation x² - 8y² = 1.
+conjectures/935.lean-52-Formulated as: for every M and N, there exists n ≥ N such that
+/home/ryan/erdos/conjectures/935.lean-53-  Q₂(n(n+1)⋯(n+ℓ)) > M · n².
+--
+/home/ryan/erdos/conjectures/1080.lean-12-$\lfloor n^{2/3}\rfloor$ vertices. Is there a constant $c > 0$ such that
+/home/ryan/erdos/conjectures/1080.lean-13-if $G$ has at least $cn$ edges then $G$ must contain a $C_6$?
+/home/ryan/erdos/conjectures/1080.lean-14-
+conjectures/1080.lean:15:The answer is no, as shown by De Caen and Székely [DeSz92]. They prove that
+/home/ryan/erdos/conjectures/1080.lean-16-$f(n,\lfloor n^{2/3}\rfloor) \gg n^{58/57+o(1)}$ where $f(n,m)$ is the
+/home/ryan/erdos/conjectures/1080.lean-17-maximum number of edges in a bipartite graph with parts of sizes $n$ and $m$
+/home/ryan/erdos/conjectures/1080.lean-18-containing no $C_4$ or $C_6$. This lower bound was improved to
+--
+/home/ryan/erdos/conjectures/1080.lean-35-
+/home/ryan/erdos/conjectures/1080.lean-36-There is no constant $c > 0$ such that every bipartite graph on $n$ vertices
+/home/ryan/erdos/conjectures/1080.lean-37-with one part of size $\lfloor n^{2/3}\rfloor$ and at least $cn$ edges must
+conjectures/1080.lean:38:contain a $C_6$. Disproved by De Caen and Székely [DeSz92].
+/home/ryan/erdos/conjectures/1080.lean-39--/
+conjectures/1080.lean-40-theorem erdos_problem_1080 (c : ℝ) (hc : c > 0) :
+conjectures/1080.lean-41-    ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
+--
+/home/ryan/erdos/conjectures/77.lean-16-of the edges of K_n contains a monochromatic copy of K_k, then find the value of
+/home/ryan/erdos/conjectures/77.lean-17-  lim_{k → ∞} R(k)^{1/k}.
+/home/ryan/erdos/conjectures/77.lean-18-
+conjectures/77.lean:19:Erdős proved √2 ≤ liminf R(k)^{1/k} ≤ limsup R(k)^{1/k} ≤ 4.
+/home/ryan/erdos/conjectures/77.lean-20-The upper bound has been improved to 3.7992... by Gupta, Ndiaye, Norin, and
+/home/ryan/erdos/conjectures/77.lean-21-Wei [GNNW24], building on the breakthrough of Campos, Griffiths, Morris,
+/home/ryan/erdos/conjectures/77.lean-22-and Sahasrabudhe [CGMS23] who first improved the upper bound below 4.
+--
+/home/ryan/erdos/conjectures/225.lean-1-import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/225.lean:2:import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+/home/ryan/erdos/conjectures/225.lean-3-import Mathlib.Analysis.Complex.Exponential
+/home/ryan/erdos/conjectures/225.lean-4-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/225.lean-5-
+conjectures/225.lean:6:open Finset BigOperators MeasureTheory
+/home/ryan/erdos/conjectures/225.lean-7-
+/home/ryan/erdos/conjectures/225.lean-8-noncomputable section
+/home/ryan/erdos/conjectures/225.lean-9-
+--
+conjectures/721.lean-28-  ∀ f : ℕ → Bool, HasMonoAP f n j true ∨ HasMonoAP f n k false
+/home/ryan/erdos/conjectures/721.lean-29-
+/home/ryan/erdos/conjectures/721.lean-30-/--
+conjectures/721.lean:31:The van der Waerden number `W(j, k)` is the smallest `n` such that
+/home/ryan/erdos/conjectures/721.lean-32-`VDWProperty j k n` holds. Defined as the infimum of all such `n`.
+conjectures/721.lean:33:Van der Waerden's theorem guarantees this set is nonempty for `j, k ≥ 1`.
+/home/ryan/erdos/conjectures/721.lean-34--/
+conjectures/721.lean:35:noncomputable def vanDerWaerden (j k : ℕ) : ℕ :=
+conjectures/721.lean-36-  sInf {n : ℕ | VDWProperty j k n}
+/home/ryan/erdos/conjectures/721.lean-37-
+/home/ryan/erdos/conjectures/721.lean-38-/--
+--
+conjectures/721.lean-47-theorem erdos_problem_721_upper_bound :
+conjectures/721.lean-48-    ∃ c : ℝ, 0 < c ∧ c < 1 ∧
+conjectures/721.lean-49-    ∃ N₀ : ℕ, ∀ k : ℕ, k ≥ N₀ →
+conjectures/721.lean:50:    (vanDerWaerden 3 k : ℝ) < Real.exp ((k : ℝ) ^ c) :=
+/home/ryan/erdos/conjectures/721.lean-51-  sorry
+/home/ryan/erdos/conjectures/721.lean-52-
+/home/ryan/erdos/conjectures/721.lean-53-/--
+--
+/home/ryan/erdos/conjectures/721.lean-60--/
+conjectures/721.lean-61-theorem erdos_problem_721_lower_bound :
+conjectures/721.lean-62-    ∀ d : ℕ, ∃ N₀ : ℕ, ∀ k : ℕ, k ≥ N₀ →
+conjectures/721.lean:63:    (vanDerWaerden 3 k : ℝ) > (k : ℝ) ^ (d : ℝ) :=
+/home/ryan/erdos/conjectures/721.lean-64-  sorry
+--
+/home/ryan/erdos/conjectures/176.lean-18-Is it true that for any c > 0 there exists some C > 1 such that
+/home/ryan/erdos/conjectures/176.lean-19-N(k, ck) ≤ Cᵏ? What about N(k, 2) ≤ Cᵏ or N(k, √k) ≤ Cᵏ?
+/home/ryan/erdos/conjectures/176.lean-20-
+conjectures/176.lean:21:When ℓ = k, N(k, k) is the van der Waerden number W(k).
+/home/ryan/erdos/conjectures/176.lean-22--/
+/home/ryan/erdos/conjectures/176.lean-23-
+conjectures/176.lean-24-/-- The arithmetic progression discrepancy number N(k, ℓ): the minimal N such
+--
+/home/ryan/erdos/conjectures/512.lean-1-import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/512.lean:2:import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+/home/ryan/erdos/conjectures/512.lean-3-import Mathlib.Analysis.Complex.Exponential
+/home/ryan/erdos/conjectures/512.lean-4-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/512.lean-5-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/512.lean-6-
+conjectures/512.lean:7:open Finset BigOperators MeasureTheory
+/home/ryan/erdos/conjectures/512.lean-8-
+/home/ryan/erdos/conjectures/512.lean-9-noncomputable section
+/home/ryan/erdos/conjectures/512.lean-10-
+--
+/home/ryan/erdos/conjectures/1116.lean-18-
+/home/ryan/erdos/conjectures/1116.lean-19-For a meromorphic function f, let n(r,a) count the number of roots of f(z) = a
+/home/ryan/erdos/conjectures/1116.lean-20-in the disc |z| < r. Does there exist a meromorphic (or entire) f such that
+conjectures/1116.lean:21:for every a ≠ b, limsup_{r→∞} n(r,a)/n(r,b) = ∞?
+/home/ryan/erdos/conjectures/1116.lean-22-
+/home/ryan/erdos/conjectures/1116.lean-23-Gol'dberg and Toppila independently constructed entire functions with this property.
+/home/ryan/erdos/conjectures/1116.lean-24-
+conjectures/1116.lean:25:The limsup = ∞ condition is expressed multiplicatively: for every M and R,
+/home/ryan/erdos/conjectures/1116.lean-26-there exists r > R with n(r,a) > M · n(r,b).
+/home/ryan/erdos/conjectures/1116.lean-27--/
+conjectures/1116.lean-28-theorem erdos_problem_1116 :
+--
+/home/ryan/erdos/conjectures/342.lean-25-    ∀ m, a (n - 1) < m → m < a n → ulamRepCount342 a n m ≠ 1
+/home/ryan/erdos/conjectures/342.lean-26-
+conjectures/342.lean-27-/-- The upper density of A ⊆ ℕ:
+conjectures/342.lean:28:    d*(A) = limsup_{N→∞} |A ∩ {0, 1, ..., N-1}| / N -/
+conjectures/342.lean-29-noncomputable def upperDensity342 (A : Set ℕ) : ℝ :=
+conjectures/342.lean:30:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/erdos/conjectures/342.lean-31-    Filter.atTop
+/home/ryan/erdos/conjectures/342.lean-32-
+/home/ryan/erdos/conjectures/342.lean-33-/--
+--
+/home/ryan/erdos/conjectures/1115.lean-2-import Mathlib.Analysis.Calculus.FDeriv.Defs
+/home/ryan/erdos/conjectures/1115.lean-3-import Mathlib.Topology.EMetricSpace.BoundedVariation
+/home/ryan/erdos/conjectures/1115.lean-4-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+conjectures/1115.lean:5:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/1115.lean-6-
+/home/ryan/erdos/conjectures/1115.lean-7-noncomputable section
+conjectures/1115.lean:8:open Complex Filter Topology Set MeasureTheory
+/home/ryan/erdos/conjectures/1115.lean-9-
+/home/ryan/erdos/conjectures/1115.lean-10-namespace Erdos1115
+/home/ryan/erdos/conjectures/1115.lean-11-
+--
+/home/ryan/erdos/conjectures/1115.lean-36-    of radius r. For arc-length parameterization, this equals the Lebesgue measure
+conjectures/1115.lean-37-    of {t ≥ 0 : |γ(t)| ≤ r}. -/
+conjectures/1115.lean-38-noncomputable def pathLengthInDisk (γ : ArcLengthPath) (r : ℝ) : ℝ :=
+conjectures/1115.lean:39:  (volume (({t : ℝ | 0 ≤ t ∧ ‖γ.toFun t‖ ≤ r}) : Set ℝ)).toReal
+/home/ryan/erdos/conjectures/1115.lean-40-
+/home/ryan/erdos/conjectures/1115.lean-41-/--
+conjectures/1115.lean-42-Erdős Problem #1115 (Disproved by Gol'dberg and Eremenko [GoEr79]):
+--
+/home/ryan/erdos/conjectures/335.lean-5-import Mathlib.Order.LiminfLimsup
+/home/ryan/erdos/conjectures/335.lean-6-import Mathlib.Order.Filter.AtTopBot.Basic
+/home/ryan/erdos/conjectures/335.lean-7-import Mathlib.Algebra.Order.Floor.Defs
+conjectures/335.lean:8:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/335.lean-9-
+conjectures/335.lean:10:open Classical Filter MeasureTheory
+/home/ryan/erdos/conjectures/335.lean-11-
+conjectures/335.lean-12-/-- The upper density of A ⊆ ℕ:
+conjectures/335.lean:13:  d*(A) = limsup_{N→∞} |A ∩ {0, 1, ..., N-1}| / N -/
+conjectures/335.lean-14-noncomputable def upperDensity335 (A : Set ℕ) : ℝ :=
+conjectures/335.lean:15:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/erdos/conjectures/335.lean-16-    Filter.atTop
+/home/ryan/erdos/conjectures/335.lean-17-
+conjectures/335.lean-18-/-- The lower density of A ⊆ ℕ:
+--
+/home/ryan/erdos/conjectures/335.lean-51-        0 < θ ∧
+/home/ryan/erdos/conjectures/335.lean-52-        MeasurableSet X_A ∧ MeasurableSet X_B ∧
+/home/ryan/erdos/conjectures/335.lean-53-        X_A ⊆ Set.Ico 0 1 ∧ X_B ⊆ Set.Ico 0 1 ∧
+conjectures/335.lean:54:        volume X_A = ENNReal.ofReal dA ∧
+conjectures/335.lean:55:        volume X_B = ENNReal.ofReal dB ∧
+conjectures/335.lean:56:        volume (Set.image2 (fun a b => Int.fract (a + b)) X_A X_B) =
+conjectures/335.lean:57:          volume X_A + volume X_B ∧
+conjectures/335.lean-58-        (∀ n : ℕ, 0 < n → (n ∈ A ↔ Int.fract ((n : ℝ) * θ) ∈ X_A)) ∧
+conjectures/335.lean-59-        (∀ n : ℕ, 0 < n → (n ∈ B ↔ Int.fract ((n : ℝ) * θ) ∈ X_B)) :=
+/home/ryan/erdos/conjectures/335.lean-60-  sorry
+--
+/home/ryan/erdos/conjectures/187.lean-16-{√2 · n} < 1/2 or not implies f(d) ≪ d (using the fact that ‖√2 · q‖ ≫ 1/q
+/home/ryan/erdos/conjectures/187.lean-17-for all q, where ‖x‖ is the distance to the nearest integer). Beck [Be80]
+/home/ryan/erdos/conjectures/187.lean-18-improved this using the probabilistic method, constructing a colouring that
+conjectures/187.lean:19:shows f(d) ≤ (1+o(1))log₂ d. Van der Waerden's theorem implies f(d) → ∞
+/home/ryan/erdos/conjectures/187.lean-20-is necessary.
+/home/ryan/erdos/conjectures/187.lean-21--/
+/home/ryan/erdos/conjectures/187.lean-22-
+--
+/home/ryan/erdos/conjectures/987.lean-7-# Erdős Problem #987
+/home/ryan/erdos/conjectures/987.lean-8-
+/home/ryan/erdos/conjectures/987.lean-9-Let x₁, x₂, … ∈ (0,1) be an infinite sequence and define
+conjectures/987.lean:10:  A_k = limsup_{n → ∞} |∑_{j ≤ n} e(k·x_j)|
+/home/ryan/erdos/conjectures/987.lean-11-where e(x) = e^{2πix}.
+/home/ryan/erdos/conjectures/987.lean-12-
+conjectures/987.lean:13:Part 1: Is it true that limsup_{k → ∞} A_k = ∞?
+conjectures/987.lean-14-Part 2: Is it possible for A_k = o(k)?
+/home/ryan/erdos/conjectures/987.lean-15-
+/home/ryan/erdos/conjectures/987.lean-16-This is Problem 7.21 in Halberstam and Roth [Ha74], attributed to
+/home/ryan/erdos/conjectures/987.lean-17-Erdős [Er64b][Er65b].
+/home/ryan/erdos/conjectures/987.lean-18-
+/home/ryan/erdos/conjectures/987.lean-19-Erdős remarks the analogous statement with sup_n in place of
+conjectures/987.lean:20:limsup_n is 'easy to see'. Clunie [Cl67] proved A_k ≫ k^{1/2}
+/home/ryan/erdos/conjectures/987.lean-21-infinitely often, and showed there exist sequences with A_k ≤ k
+/home/ryan/erdos/conjectures/987.lean-22-for all k.
+/home/ryan/erdos/conjectures/987.lean-23--/
+--
+/home/ryan/erdos/conjectures/987.lean-28-
+/home/ryan/erdos/conjectures/987.lean-29-/--
+conjectures/987.lean-30-Erdős Problem #987, Part 1 [Er64b][Er65b]:
+conjectures/987.lean:31:For any sequence x₁, x₂, … ∈ (0,1), limsup_{k → ∞} A_k = ∞ where
+conjectures/987.lean:32:A_k = limsup_{n → ∞} ‖∑_{j < n} e^{2πi·k·x_j}‖.
+/home/ryan/erdos/conjectures/987.lean-33-
+conjectures/987.lean-34-Equivalently: for every M, there exists k such that
+/home/ryan/erdos/conjectures/987.lean-35-‖∑_{j < n} e^{2πi·k·x_j}‖ ≥ M for infinitely many n.
+--
+conjectures/1131.lean:1:import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+/home/ryan/erdos/conjectures/1131.lean-2-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/1131.lean-3-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/1131.lean-4-import Mathlib.Topology.Order.Basic
+/home/ryan/erdos/conjectures/1131.lean-5-import Mathlib.Order.Filter.AtTopBot.Basic
+/home/ryan/erdos/conjectures/1131.lean-6-
+conjectures/1131.lean:7:open MeasureTheory Finset Filter BigOperators
+/home/ryan/erdos/conjectures/1131.lean-8-
+/home/ryan/erdos/conjectures/1131.lean-9-noncomputable section
+/home/ryan/erdos/conjectures/1131.lean-10-
+--
+/home/ryan/erdos/conjectures/432.lean-26-
+/home/ryan/erdos/conjectures/432.lean-27-/--
+conjectures/432.lean-28-The upper density of A ⊆ ℕ:
+conjectures/432.lean:29:  d*(A) = limsup_{N→∞} |A ∩ {0, 1, ..., N-1}| / N
+/home/ryan/erdos/conjectures/432.lean-30--/
+conjectures/432.lean-31-noncomputable def upperDensity432 (A : Set ℕ) : ℝ :=
+conjectures/432.lean:32:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/erdos/conjectures/432.lean-33-    Filter.atTop
+/home/ryan/erdos/conjectures/432.lean-34-
+/home/ryan/erdos/conjectures/432.lean-35-/--
+--
+/home/ryan/erdos/conjectures/116.lean-1-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/116.lean-2-import Mathlib.Algebra.Polynomial.Basic
+conjectures/116.lean:3:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+conjectures/116.lean:4:import Mathlib.MeasureTheory.Measure.Hausdorff
+/home/ryan/erdos/conjectures/116.lean-5-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+/home/ryan/erdos/conjectures/116.lean-6-
+/home/ryan/erdos/conjectures/116.lean-7-open scoped ENNReal
+conjectures/116.lean:8:open Polynomial MeasureTheory
+/home/ryan/erdos/conjectures/116.lean-9-
+conjectures/116.lean-10-/-- The lemniscate interior of a complex polynomial p:
+conjectures/116.lean-11-    the open sublevel set {z ∈ ℂ : |p(z)| < 1}. -/
+--
+/home/ryan/erdos/conjectures/521.lean-1-import Mathlib.Probability.Independence.Basic
+conjectures/521.lean:2:import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/521.lean-3-import Mathlib.Algebra.Polynomial.RingDivision
+/home/ryan/erdos/conjectures/521.lean-4-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+/home/ryan/erdos/conjectures/521.lean-5-import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+/home/ryan/erdos/conjectures/521.lean-6-import Mathlib.Data.Set.Card
+/home/ryan/erdos/conjectures/521.lean-7-
+conjectures/521.lean:8:open MeasureTheory ProbabilityTheory Polynomial Filter Finset BigOperators
+/home/ryan/erdos/conjectures/521.lean-9-
+conjectures/521.lean-10-/-- The polynomial with prescribed ±1 coefficients:
+/home/ryan/erdos/conjectures/521.lean-11-f_n(z) = Σ_{k=0}^{n} ε(k) · z^k. -/
+--
+conjectures/999.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/999.lean-2-import Mathlib.Data.Nat.Totient
+/home/ryan/erdos/conjectures/999.lean-3-import Mathlib.Topology.Algebra.InfiniteSum.Basic
+/home/ryan/erdos/conjectures/999.lean-4-
+conjectures/999.lean:5:open MeasureTheory Set
+/home/ryan/erdos/conjectures/999.lean-6-
+/home/ryan/erdos/conjectures/999.lean-7-/--
+/home/ryan/erdos/conjectures/999.lean-8-The set of coprime pairs (p, q) with q > 0 that approximate α within f(q)/q.
+--
+conjectures/999.lean-12-    |α - (pq.1 : ℝ) / (pq.2 : ℝ)| < (f pq.2 : ℝ) / (pq.2 : ℝ)}
+/home/ryan/erdos/conjectures/999.lean-13-
+/home/ryan/erdos/conjectures/999.lean-14-/--
+conjectures/999.lean:15:Erdős Problem #999 (the Duffin-Schaeffer conjecture, now theorem):
+conjectures/999.lean-16-For any function f : ℕ → ℕ, the property that for almost all α ∈ ℝ,
+/home/ryan/erdos/conjectures/999.lean-17-|α - p/q| < f(q)/q has infinitely many solutions with gcd(p,q) = 1,
+/home/ryan/erdos/conjectures/999.lean-18-is equivalent to the divergence of ∑ φ(q) · f(q) / q.
+--
+/home/ryan/erdos/conjectures/1038.lean-1-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/1038.lean-2-import Mathlib.Data.Real.Sqrt
+/home/ryan/erdos/conjectures/1038.lean-3-import Mathlib.Algebra.Polynomial.Roots
+conjectures/1038.lean:4:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/1038.lean-5-
+/home/ryan/erdos/conjectures/1038.lean-6-open scoped Real ENNReal
+conjectures/1038.lean:7:open MeasureTheory Polynomial Classical
+/home/ryan/erdos/conjectures/1038.lean-8-
+/home/ryan/erdos/conjectures/1038.lean-9-noncomputable section
+/home/ryan/erdos/conjectures/1038.lean-10-
+--
+conjectures/1038.lean-35-    ENNReal.ofReal (2 ^ (4 / 3 : ℝ) - 1) ≤
+conjectures/1038.lean-36-    ⨅ f : {f : Polynomial ℝ // f.Monic ∧ f ≠ 1 ∧
+conjectures/1038.lean-37-      (f.roots.filter fun x => x ∈ Set.Icc (-1 : ℝ) 1).card = f.natDegree},
+conjectures/1038.lean:38:    volume {x : ℝ | |f.1.eval x| < 1} :=
+/home/ryan/erdos/conjectures/1038.lean-39-  sorry
+/home/ryan/erdos/conjectures/1038.lean-40-
+/home/ryan/erdos/conjectures/1038.lean-41-/--
+--
+conjectures/1038.lean-47-theorem erdos_problem_1038_inf_upper :
+conjectures/1038.lean-48-    ⨅ f : {f : Polynomial ℝ // f.Monic ∧ f ≠ 1 ∧
+conjectures/1038.lean-49-      (f.roots.filter fun x => x ∈ Set.Icc (-1 : ℝ) 1).card = f.natDegree},
+conjectures/1038.lean:50:    volume {x : ℝ | |f.1.eval x| < 1} <
+conjectures/1038.lean-51-    ENNReal.ofReal 1.835 :=
+/home/ryan/erdos/conjectures/1038.lean-52-  sorry
+/home/ryan/erdos/conjectures/1038.lean-53-
+--
+conjectures/1038.lean-62-theorem erdos_problem_1038_sup :
+conjectures/1038.lean-63-    ⨆ f : {f : Polynomial ℝ // f.Monic ∧
+conjectures/1038.lean-64-      (f.roots.filter fun x => x ∈ Set.Icc (-1 : ℝ) 1).card = f.natDegree},
+conjectures/1038.lean:65:    volume {x : ℝ | |f.1.eval x| < 1} =
+conjectures/1038.lean-66-    ENNReal.ofReal (2 * Real.sqrt 2) :=
+/home/ryan/erdos/conjectures/1038.lean-67-  sorry
+/home/ryan/erdos/conjectures/1038.lean-68-
+--
+/home/ryan/erdos/conjectures/671.lean-15-
+conjectures/671.lean-16-Part 1: Is there a triangular array of nodes in $[-1,1]$ such that for every
+conjectures/671.lean-17-continuous $f: [-1,1] \to \mathbb{R}$ there exists $x \in [-1,1]$ where the
+conjectures/671.lean:18:Lebesgue function $\sum_i |p_i^n(x)|$ has infinite limsup yet
+/home/ryan/erdos/conjectures/671.lean-19-$\mathcal{L}^n f(x) \to f(x)$?
+/home/ryan/erdos/conjectures/671.lean-20-
+conjectures/671.lean:21:Part 2: Is there such an array where the Lebesgue function has infinite limsup
+/home/ryan/erdos/conjectures/671.lean-22-for every $x \in [-1,1]$ and yet for every continuous $f$ there exists $x$ with
+/home/ryan/erdos/conjectures/671.lean-23-$\mathcal{L}^n f(x) \to f(x)$?
+/home/ryan/erdos/conjectures/671.lean-24--/
+--
+/home/ryan/erdos/conjectures/671.lean-40-/--
+conjectures/671.lean-41-Erdős Problem #671 (Part 1): There exists a triangular array of distinct nodes
+conjectures/671.lean-42-in [-1,1] such that for every continuous f : [-1,1] → ℝ, there exists x ∈ [-1,1]
+conjectures/671.lean:43:where the Lebesgue function has infinite limsup yet the Lagrange interpolation
+/home/ryan/erdos/conjectures/671.lean-44-converges to f(x).
+/home/ryan/erdos/conjectures/671.lean-45--/
+conjectures/671.lean-46-theorem erdos_problem_671_part1 :
+--
+/home/ryan/erdos/conjectures/671.lean-55-
+/home/ryan/erdos/conjectures/671.lean-56-/--
+conjectures/671.lean-57-Erdős Problem #671 (Part 2): There exists a triangular array of distinct nodes
+conjectures/671.lean:58:in [-1,1] such that the Lebesgue function has infinite limsup at every x ∈ [-1,1],
+conjectures/671.lean-59-and yet for every continuous f : [-1,1] → ℝ there exists x ∈ [-1,1] where the
+/home/ryan/erdos/conjectures/671.lean-60-Lagrange interpolation converges to f(x).
+/home/ryan/erdos/conjectures/671.lean-61--/
+--
+/home/ryan/erdos/conjectures/1117.lean-32-
+/home/ryan/erdos/conjectures/1117.lean-33-Is it possible for liminf_{r→∞} ν(r) = ∞?
+/home/ryan/erdos/conjectures/1117.lean-34-
+conjectures/1117.lean:35:The analogous question for limsup was answered affirmatively by Herzog and
+/home/ryan/erdos/conjectures/1117.lean-36-Piranian [HePi68]. The liminf question remains open. An 'approximate'
+/home/ryan/erdos/conjectures/1117.lean-37-affirmative answer is given by Glücksam and Pardo-Simón [GlPa24].
+/home/ryan/erdos/conjectures/1117.lean-38-
+--
+conjectures/1126.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+conjectures/1126.lean:2:import Mathlib.MeasureTheory.Measure.Prod
+/home/ryan/erdos/conjectures/1126.lean-3-
+conjectures/1126.lean:4:open MeasureTheory
+/home/ryan/erdos/conjectures/1126.lean-5-
+/home/ryan/erdos/conjectures/1126.lean-6-/--
+conjectures/1126.lean-7-Erdős Problem #1126 (proved independently by de Bruijn [dB66] and Jurkat [Ju65]):
+--
+/home/ryan/erdos/conjectures/1126.lean-10-such that g(x+y) = g(x) + g(y) for all x, y ∈ ℝ and f(x) = g(x) for almost all x.
+/home/ryan/erdos/conjectures/1126.lean-11--/
+conjectures/1126.lean-12-theorem erdos_problem_1126 (f : ℝ → ℝ)
+conjectures/1126.lean:13:    (hf : ∀ᵐ p : ℝ × ℝ ∂(volume.prod volume), f (p.1 + p.2) = f p.1 + f p.2) :
+conjectures/1126.lean-14-    ∃ g : ℝ → ℝ,
+conjectures/1126.lean-15-      (∀ x y : ℝ, g (x + y) = g x + g y) ∧
+conjectures/1126.lean:16:      (∀ᵐ x ∂volume, f x = g x) :=
+/home/ryan/erdos/conjectures/1126.lean-17-  sorry
+--
+/home/ryan/erdos/conjectures/527.lean-1-import Mathlib.Probability.Independence.Basic
+conjectures/527.lean:2:import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
+/home/ryan/erdos/conjectures/527.lean-3-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/527.lean-4-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+/home/ryan/erdos/conjectures/527.lean-5-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/527.lean-6-import Mathlib.Order.Filter.Basic
+/home/ryan/erdos/conjectures/527.lean-7-import Mathlib.Topology.Algebra.InfiniteSum.Basic
+/home/ryan/erdos/conjectures/527.lean-8-
+conjectures/527.lean:9:open MeasureTheory ProbabilityTheory Filter Finset BigOperators
+/home/ryan/erdos/conjectures/527.lean-10-
+/home/ryan/erdos/conjectures/527.lean-11-noncomputable section
+/home/ryan/erdos/conjectures/527.lean-12-
+--
+conjectures/953.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+conjectures/953.lean:2:import Mathlib.MeasureTheory.Measure.Prod
+/home/ryan/erdos/conjectures/953.lean-3-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+/home/ryan/erdos/conjectures/953.lean-4-
+/home/ryan/erdos/conjectures/953.lean-5-/-!
+--
+/home/ryan/erdos/conjectures/953.lean-17-similar problem (concerning lower bounds).
+/home/ryan/erdos/conjectures/953.lean-18--/
+/home/ryan/erdos/conjectures/953.lean-19-
+conjectures/953.lean:20:open MeasureTheory
+/home/ryan/erdos/conjectures/953.lean-21-
+/home/ryan/erdos/conjectures/953.lean-22-noncomputable section
+/home/ryan/erdos/conjectures/953.lean-23-
+--
+/home/ryan/erdos/conjectures/953.lean-44-      MeasurableSet A →
+conjectures/953.lean-45-      A ⊆ {p : ℝ × ℝ | euclidDist953 p (0, 0) < r} →
+/home/ryan/erdos/conjectures/953.lean-46-      NoIntegerDistances953 A →
+conjectures/953.lean:47:      (volume A).toReal ≤ C * r :=
+/home/ryan/erdos/conjectures/953.lean-48-  sorry
+/home/ryan/erdos/conjectures/953.lean-49-
+/home/ryan/erdos/conjectures/953.lean-50-/--
+--
+/home/ryan/erdos/conjectures/953.lean-62-      MeasurableSet A ∧
+conjectures/953.lean-63-      A ⊆ {p : ℝ × ℝ | euclidDist953 p (0, 0) < r} ∧
+/home/ryan/erdos/conjectures/953.lean-64-      NoIntegerDistances953 A ∧
+conjectures/953.lean:65:      (volume A).toReal ≥ c * r ^ ((1 : ℝ) / 2 - ε) :=
+/home/ryan/erdos/conjectures/953.lean-66-  sorry
+/home/ryan/erdos/conjectures/953.lean-67-
+/home/ryan/erdos/conjectures/953.lean-68-end
+--
+/home/ryan/erdos/conjectures/106.lean-77-  1/(2k); the total side-length is (k² − 1)/k + 2·(1/(2k)) = k.
+conjectures/106.lean-78-- The conjecture asserts that this lower bound is tight: no configuration of
+/home/ryan/erdos/conjectures/106.lean-79-  k² + 1 squares can exceed the total side-length k achievable with k² squares.
+conjectures/106.lean:80:- Baek, Koizumi, and Ueoro (2024) proved the axis-aligned variant: if all
+/home/ryan/erdos/conjectures/106.lean-81-  squares are required to have sides parallel to the coordinate axes, then the
+/home/ryan/erdos/conjectures/106.lean-82-  supremum equals k.
+/home/ryan/erdos/conjectures/106.lean-83--/
+--
+/home/ryan/erdos/conjectures/839.lean-12-Let 1 ≤ a₁ < a₂ < ⋯ be a sequence of integers such that no aᵢ is the sum
+/home/ryan/erdos/conjectures/839.lean-13-of consecutive aⱼ for j < i. Is it true that
+/home/ryan/erdos/conjectures/839.lean-14-
+conjectures/839.lean:15:  limsup aₙ/n = ∞?
+/home/ryan/erdos/conjectures/839.lean-16-
+/home/ryan/erdos/conjectures/839.lean-17-Or even
+/home/ryan/erdos/conjectures/839.lean-18-
+--
+/home/ryan/erdos/conjectures/839.lean-33-
+/home/ryan/erdos/conjectures/839.lean-34-Let 1 ≤ a₁ < a₂ < ⋯ be a strictly increasing sequence of positive integers
+/home/ryan/erdos/conjectures/839.lean-35-such that no aᵢ is the sum of consecutive aⱼ for j < i.
+conjectures/839.lean:36:Then limsup aₙ/n = ∞.
+/home/ryan/erdos/conjectures/839.lean-37-
+conjectures/839.lean-38-Formulated as: for every M, there are infinitely many n with aₙ/n > M.
+/home/ryan/erdos/conjectures/839.lean-39--/
+--
+/home/ryan/erdos/conjectures/1072.lean-38-
+/home/ryan/erdos/conjectures/1072.lean-39-/-- The upper density of a set of natural numbers. -/
+conjectures/1072.lean-40-noncomputable def upperDensity1072 (s : Set ℕ) : ℝ :=
+conjectures/1072.lean:41:  limsup (fun n => ((s ∩ {i | i < n}).ncard : ℝ) / n) atTop
+/home/ryan/erdos/conjectures/1072.lean-42-
+/home/ryan/erdos/conjectures/1072.lean-43-/--
+conjectures/1072.lean-44-Erdős Problem #1072, Part 2:
+--
+conjectures/1001.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/1001.lean-2-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/1001.lean-3-import Mathlib.Order.Filter.AtTopBot.Basic
+/home/ryan/erdos/conjectures/1001.lean-4-import Mathlib.Topology.MetricSpace.Basic
+/home/ryan/erdos/conjectures/1001.lean-5-
+conjectures/1001.lean:6:open MeasureTheory Set Filter
+/home/ryan/erdos/conjectures/1001.lean-7-
+/home/ryan/erdos/conjectures/1001.lean-8-noncomputable section
+/home/ryan/erdos/conjectures/1001.lean-9-
+--
+/home/ryan/erdos/conjectures/1001.lean-35-
+/home/ryan/erdos/conjectures/1001.lean-36-/-- S(N, A, c) is the Lebesgue measure of the approximation set. -/
+conjectures/1001.lean-37-def S_measure (N : ℕ) (A c : ℝ) : ℝ :=
+conjectures/1001.lean:38:  (volume (approxSet N A c)).toReal
+/home/ryan/erdos/conjectures/1001.lean-39-
+/home/ryan/erdos/conjectures/1001.lean-40-/--
+conjectures/1001.lean-41-Erdős Problem #1001 [Er64b]:
+--
+/home/ryan/erdos/conjectures/378.lean-26-
+/home/ryan/erdos/conjectures/378.lean-27-/-- The upper density of A ⊆ ℕ. -/
+conjectures/378.lean-28-noncomputable def upperDensity378 (A : Set ℕ) : ℝ :=
+conjectures/378.lean:29:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/erdos/conjectures/378.lean-30-    Filter.atTop
+/home/ryan/erdos/conjectures/378.lean-31-
+/home/ryan/erdos/conjectures/378.lean-32-/-- The lower density of A ⊆ ℕ. -/
+--
+/home/ryan/erdos/conjectures/1041.lean-1-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/1041.lean-2-import Mathlib.Algebra.Polynomial.Roots
+/home/ryan/erdos/conjectures/1041.lean-3-import Mathlib.Topology.Path
+conjectures/1041.lean:4:import Mathlib.MeasureTheory.Measure.Hausdorff
+conjectures/1041.lean:5:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+/home/ryan/erdos/conjectures/1041.lean-6-
+/home/ryan/erdos/conjectures/1041.lean-7-open scoped ENNReal
+conjectures/1041.lean:8:open MeasureTheory Polynomial
+/home/ryan/erdos/conjectures/1041.lean-9-
+/home/ryan/erdos/conjectures/1041.lean-10-noncomputable section
+/home/ryan/erdos/conjectures/1041.lean-11-
+--
+conjectures/120.lean:1:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+/home/ryan/erdos/conjectures/120.lean-2-import Mathlib.Data.Set.Basic
+/home/ryan/erdos/conjectures/120.lean-3-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/120.lean-4-
+conjectures/120.lean:5:open MeasureTheory Set
+/home/ryan/erdos/conjectures/120.lean-6-
+/home/ryan/erdos/conjectures/120.lean-7-/--
+/home/ryan/erdos/conjectures/120.lean-8-Erdős Similarity Problem (Problem #120) [Er74b, Er81b, Er83d, Er90, Er97f, Va99 2.46] — OPEN
+--
+/home/ryan/erdos/conjectures/120.lean-22--/
+conjectures/120.lean-23-theorem erdos_problem_120 :
+conjectures/120.lean-24-    ∀ A : Set ℝ, A.Infinite →
+conjectures/120.lean:25:    ∃ E : Set ℝ, MeasurableSet E ∧ 0 < volume E ∧
+conjectures/120.lean-26-      ∀ (a b : ℝ), a ≠ 0 → ¬((fun x => a * x + b) '' A ⊆ E) :=
+/home/ryan/erdos/conjectures/120.lean-27-  sorry
+--
+/home/ryan/erdos/conjectures/986.lean-17-on N vertices contains either a k-clique or an independent set of size n
+/home/ryan/erdos/conjectures/986.lean-18-(equivalently, an n-clique in the complement).
+/home/ryan/erdos/conjectures/986.lean-19-
+conjectures/986.lean:20:Spencer [Sp77] proved this for k = 3 and Mattheus and Verstraete [MaVe23]
+/home/ryan/erdos/conjectures/986.lean-21-proved this for k = 4.
+/home/ryan/erdos/conjectures/986.lean-22-
+conjectures/986.lean-23-The best general bounds available are:
+--
+/home/ryan/erdos/conjectures/16.lean-36-The upper density of a set of natural numbers.
+/home/ryan/erdos/conjectures/16.lean-37--/
+conjectures/16.lean-38-noncomputable def upperDensity (s : Set ℕ) : ℝ :=
+conjectures/16.lean:39:  limsup (fun n => ((s ∩ {i | i < n}).ncard : ℝ) / n) atTop
+/home/ryan/erdos/conjectures/16.lean-40-
+/home/ryan/erdos/conjectures/16.lean-41-/--
+conjectures/16.lean-42-Erdős's conjecture (Problem #16):
+--
+conjectures/232.lean:1:import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
+/home/ryan/erdos/conjectures/232.lean-2-import Mathlib.Analysis.InnerProductSpace.PiL2
+/home/ryan/erdos/conjectures/232.lean-3-
+conjectures/232.lean:4:open MeasureTheory Metric
+/home/ryan/erdos/conjectures/232.lean-5-
+/home/ryan/erdos/conjectures/232.lean-6-noncomputable section
+/home/ryan/erdos/conjectures/232.lean-7-
+--
+/home/ryan/erdos/conjectures/232.lean-9-# Erdős Problem #232
+/home/ryan/erdos/conjectures/232.lean-10-
+/home/ryan/erdos/conjectures/232.lean-11-For A ⊂ ℝ² we define the upper density as
+conjectures/232.lean:12:  δ̄(A) = limsup_{R→∞} λ(A ∩ B_R) / λ(B_R),
+/home/ryan/erdos/conjectures/232.lean-13-where λ is the Lebesgue measure and B_R is the ball of radius R.
+/home/ryan/erdos/conjectures/232.lean-14-
+/home/ryan/erdos/conjectures/232.lean-15-Estimate m₁ = sup δ̄(A), where A ranges over all measurable subsets of ℝ²
+--
+conjectures/232.lean-33-Erdős Problem #232 [Er85, p.4] (PROVED):
+/home/ryan/erdos/conjectures/232.lean-34-
+/home/ryan/erdos/conjectures/232.lean-35-For every measurable unit-distance-free set A ⊆ ℝ², the upper density
+conjectures/232.lean:36:  limsup_{R→∞} λ(A ∩ B_R) / λ(B_R) ≤ 1/4.
+/home/ryan/erdos/conjectures/232.lean-37-
+conjectures/232.lean-38-Formalized as: for every ε > 0, for all sufficiently large R, the density
+conjectures/232.lean:39:ratio λ(A ∩ B_R) / λ(B_R) ≤ 1/4 + ε. This is equivalent to the limsup
+/home/ryan/erdos/conjectures/232.lean-40-being at most 1/4.
+/home/ryan/erdos/conjectures/232.lean-41-
+/home/ryan/erdos/conjectures/232.lean-42-Proved by Ambrus–Csiszárik–Matolcsi–Varga–Zsámboki [ACMVZ23] who showed
+--
+conjectures/232.lean-47-    (hfree : IsUnitDistanceFree A)
+conjectures/232.lean-48-    (ε : ℝ) (hε : 0 < ε) :
+conjectures/232.lean-49-    ∃ R₀ : ℝ, 0 < R₀ ∧ ∀ R : ℝ, R₀ ≤ R →
+conjectures/232.lean:50:      (volume (A ∩ Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal /
+conjectures/232.lean:51:      (volume (Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal ≤ 1 / 4 + ε := by
+/home/ryan/erdos/conjectures/232.lean-52-  sorry
+/home/ryan/erdos/conjectures/232.lean-53-
+/home/ryan/erdos/conjectures/232.lean-54-end
+--
+/home/ryan/erdos/conjectures/1040.lean-1-import Mathlib.Analysis.Complex.Basic
+conjectures/1040.lean:2:import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+conjectures/1040.lean:3:import Mathlib.MeasureTheory.Measure.Haar.OfBasis
+conjectures/1040.lean:4:import Mathlib.MeasureTheory.Group.Measure
+conjectures/1040.lean:5:import Mathlib.MeasureTheory.Constructions.BorelSpace.Complex
+/home/ryan/erdos/conjectures/1040.lean-6-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+/home/ryan/erdos/conjectures/1040.lean-7-
+/home/ryan/erdos/conjectures/1040.lean-8-open scoped ENNReal
+conjectures/1040.lean:9:open MeasureTheory Classical Filter Finset
+/home/ryan/erdos/conjectures/1040.lean-10-
+/home/ryan/erdos/conjectures/1040.lean-11-noncomputable section
+/home/ryan/erdos/conjectures/1040.lean-12-
+--
+/home/ryan/erdos/conjectures/444.lean-15-
+/home/ryan/erdos/conjectures/444.lean-16-Let $A\subseteq\mathbb{N}$ be infinite and $d_A(n)$ count the number of $a\in A$
+/home/ryan/erdos/conjectures/444.lean-17-which divide $n$. Is it true that, for every $k$,
+conjectures/444.lean:18:$$\limsup_{x\to \infty}  \frac{\max_{n<x}d_A(n)}{\left(\sum_{a\in A\cap[1,x)}\frac{1}{a}\right)^k}=\infty?$$
+/home/ryan/erdos/conjectures/444.lean-19-
+/home/ryan/erdos/conjectures/444.lean-20-The answer is yes, proved by Erdős and Sárkőzy [ErSa80].
+/home/ryan/erdos/conjectures/444.lean-21--/
+--
+conjectures/444.lean-32-/-- Erdős Problem #444 [ErGr80,p.88] (PROVED):
+/home/ryan/erdos/conjectures/444.lean-33-
+/home/ryan/erdos/conjectures/444.lean-34-Let A ⊆ ℕ be infinite and d_A(n) count the number of a ∈ A dividing n.
+conjectures/444.lean:35:For every k, limsup_{x→∞} max_{n<x} d_A(n) / (∑_{a∈A∩[1,x)} 1/a)^k = ∞.
+/home/ryan/erdos/conjectures/444.lean-36-
+/home/ryan/erdos/conjectures/444.lean-37-Equivalently, for every M > 0, there are arbitrarily large x and some n < x
+/home/ryan/erdos/conjectures/444.lean-38-with d_A(n) > M · (∑_{a∈A∩[1,x)} 1/a)^k.

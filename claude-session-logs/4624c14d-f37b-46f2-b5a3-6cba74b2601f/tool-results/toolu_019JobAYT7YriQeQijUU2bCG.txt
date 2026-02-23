@@ -1,0 +1,918 @@
+/home/ryan/erdos/conjectures/1054.lean-13-Let f(n) be the minimal integer m such that n is the sum of the k smallest
+/home/ryan/erdos/conjectures/1054.lean-14-divisors of m for some k ≥ 1.
+/home/ryan/erdos/conjectures/1054.lean-15-
+conjectures/1054.lean:16:Is it true that f(n) = o(n)? Or is this true only for almost all n, and
+/home/ryan/erdos/conjectures/1054.lean-17-limsup f(n)/n = ∞?
+/home/ryan/erdos/conjectures/1054.lean-18-
+/home/ryan/erdos/conjectures/1054.lean-19-A question of Erdős reported in problem B2 of Guy's collection [Gu04].
+--
+conjectures/83.lean-18-    ∀ F : Finset (Finset (Fin (4 * n))),
+/home/ryan/erdos/conjectures/83.lean-19-      (∀ A ∈ F, A.card = 2 * n) →
+/home/ryan/erdos/conjectures/83.lean-20-      (∀ A ∈ F, ∀ B ∈ F, (A ∩ B).card ≥ 2) →
+conjectures/83.lean:21:      F.card ≤ (Nat.choose (4 * n) (2 * n) - Nat.choose (2 * n) n ^ 2) / 2 :=
+/home/ryan/erdos/conjectures/83.lean-22-  sorry
+--
+/home/ryan/erdos/conjectures/1020.lean-51--/
+conjectures/1020.lean-52-theorem erdos_problem_1020 (n r k : ℕ) (hr : r ≥ 3) (hk : k ≥ 1) :
+/home/ryan/erdos/conjectures/1020.lean-53-    maxEdgesNoMatching n r k =
+conjectures/1020.lean:54:      max (Nat.choose (r * k - 1) r) (Nat.choose n r - Nat.choose (n - k + 1) r) :=
+/home/ryan/erdos/conjectures/1020.lean-55-  sorry
+/home/ryan/erdos/conjectures/1020.lean-56-
+/home/ryan/erdos/conjectures/1020.lean-57-end Erdos1020
+--
+conjectures/459.lean-21-Cambie showed:
+/home/ryan/erdos/conjectures/459.lean-22-- $f(p) = p^2$ for every prime $p$
+/home/ryan/erdos/conjectures/459.lean-23-- $f(u) = u + 2$ whenever $u = 2^k - 2$ for $k \geq 2$
+conjectures/459.lean:24:- $f(n) = (1 + o(1))n$ for almost all $n$
+/home/ryan/erdos/conjectures/459.lean-25-
+/home/ryan/erdos/conjectures/459.lean-26-This problem is marked as solved.
+/home/ryan/erdos/conjectures/459.lean-27--/
+--
+/home/ryan/erdos/conjectures/459.lean-61-/--
+conjectures/459.lean-62-Erdős Problem #459 (Almost all, Cambie):
+/home/ryan/erdos/conjectures/459.lean-63-
+conjectures/459.lean:64:f(n) = (1 + o(1))n for almost all n, i.e., for every ε > 0, the density
+conjectures/459.lean-65-of {n : f(n) > (1 + ε)n} tends to 0.
+/home/ryan/erdos/conjectures/459.lean-66--/
+conjectures/459.lean-67-theorem erdos_problem_459_almost_all (ε : ℝ) (hε : 0 < ε) :
+--
+/home/ryan/erdos/conjectures/175.lean-4-/-!
+/home/ryan/erdos/conjectures/175.lean-5-# Erdős Problem #175
+/home/ryan/erdos/conjectures/175.lean-6-
+conjectures/175.lean:7:Show that, for any n ≥ 5, the binomial coefficient C(2n, n) is not squarefree.
+/home/ryan/erdos/conjectures/175.lean-8-
+/home/ryan/erdos/conjectures/175.lean-9-It is easy to see that 4 ∣ C(2n, n) except when n = 2^k, and hence it suffices
+/home/ryan/erdos/conjectures/175.lean-10-to prove this when n is a power of 2.
+--
+/home/ryan/erdos/conjectures/175.lean-15-
+/home/ryan/erdos/conjectures/175.lean-16-/--
+conjectures/175.lean-17-Erdős Problem #175 [Er79, ErGr80]:
+conjectures/175.lean:18:For any n ≥ 5, the central binomial coefficient C(2n, n) is not squarefree.
+/home/ryan/erdos/conjectures/175.lean-19-That is, there exists some prime p such that p² divides C(2n, n).
+/home/ryan/erdos/conjectures/175.lean-20--/
+conjectures/175.lean-21-theorem erdos_problem_175 :
+conjectures/175.lean:22:    ∀ n : ℕ, 5 ≤ n → ¬Squarefree (Nat.choose (2 * n) n) :=
+/home/ryan/erdos/conjectures/175.lean-23-  sorry
+--
+/home/ryan/erdos/conjectures/126.lean-49-It has never been proved that f(n) = o(n / log n).
+/home/ryan/erdos/conjectures/126.lean-50--/
+conjectures/126.lean-51-theorem erdos_problem_126 :
+conjectures/126.lean:52:    Filter.Tendsto (fun n : ℕ => (f n : ℝ) / Real.log n) Filter.atTop Filter.atTop :=
+/home/ryan/erdos/conjectures/126.lean-53-  sorry
+--
+conjectures/600.lean-64-theorem erdos_problem_600_ratio (r : ℕ) (hr : r ≥ 2) :
+/home/ryan/erdos/conjectures/600.lean-65-    Filter.Tendsto
+conjectures/600.lean-66-      (fun n : ℕ => (erdosE n (r + 1) : ℝ) / (erdosE n r : ℝ))
+conjectures/600.lean:67:      Filter.atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/600.lean-68-  sorry
+/home/ryan/erdos/conjectures/600.lean-69-
+/home/ryan/erdos/conjectures/600.lean-70-end
+--
+conjectures/161.lean-35-def IsBalancedColouring (n t m : ℕ) (α : ℝ) (c : Finset (Fin n) → Bool) : Prop :=
+conjectures/161.lean-36-  ∀ X : Finset (Fin n), m ≤ X.card →
+conjectures/161.lean-37-    ∀ b : Bool,
+conjectures/161.lean:38:      α * (Nat.choose X.card t : ℝ) ≤
+conjectures/161.lean-39-        (((X.powersetCard t).filter (fun S => c S = b)).card : ℝ)
+/home/ryan/erdos/conjectures/161.lean-40-
+/home/ryan/erdos/conjectures/161.lean-41-/-- F^{(t)}(n, α) is the smallest m such that there exists a 2-colouring of the
+--
+/home/ryan/erdos/conjectures/456.lean-18-Let $p_n$ be the smallest prime $\equiv 1 \pmod{n}$ and let $m_n$ be the
+/home/ryan/erdos/conjectures/456.lean-19-smallest positive integer such that $n \mid \phi(m_n)$.
+/home/ryan/erdos/conjectures/456.lean-20-
+conjectures/456.lean:21:1. Is it true that $m_n < p_n$ for almost all $n$?
+conjectures/456.lean:22:2. Does $p_n / m_n \to \infty$ for almost all $n$?
+/home/ryan/erdos/conjectures/456.lean-23-3. Are there infinitely many primes $p$ such that $p - 1$ is the only $n$
+/home/ryan/erdos/conjectures/456.lean-24-   for which $m_n = p$?
+/home/ryan/erdos/conjectures/456.lean-25-
+--
+/home/ryan/erdos/conjectures/456.lean-38-/--
+conjectures/456.lean-39-Erdős Problem #456, Part 1 [Er79e, p.80]:
+/home/ryan/erdos/conjectures/456.lean-40-
+conjectures/456.lean:41:Is it true that $m_n < p_n$ for almost all $n$?
+/home/ryan/erdos/conjectures/456.lean-42-
+conjectures/456.lean-43-Formalized as: the density of $\{n : m_n \geq p_n\}$ is 0, i.e., the
+/home/ryan/erdos/conjectures/456.lean-44-proportion of $n \leq x$ for which $p_n \leq m_n$ tends to 0 as $x \to \infty$.
+--
+/home/ryan/erdos/conjectures/456.lean-53-/--
+conjectures/456.lean-54-Erdős Problem #456, Part 2 [Er79e, p.80]:
+/home/ryan/erdos/conjectures/456.lean-55-
+conjectures/456.lean:56:Does $p_n / m_n \to \infty$ for almost all $n$?
+/home/ryan/erdos/conjectures/456.lean-57-
+conjectures/456.lean-58-Formalized as: for every $C > 0$, the density of $\{n : p_n \leq C \cdot m_n\}$
+/home/ryan/erdos/conjectures/456.lean-59-is 0.
+--
+/home/ryan/erdos/conjectures/500.lean-56--/
+conjectures/500.lean-57-theorem erdos_problem_500 :
+/home/ryan/erdos/conjectures/500.lean-58-    Tendsto
+conjectures/500.lean:59:      (fun n : ℕ => (ex3K43 n : ℝ) / (Nat.choose n 3 : ℝ))
+conjectures/500.lean-60-      atTop (nhds (5 / 9 : ℝ)) :=
+/home/ryan/erdos/conjectures/500.lean-61-  sorry
+/home/ryan/erdos/conjectures/500.lean-62-
+--
+/home/ryan/erdos/conjectures/696.lean-19-Let H(n) be the largest u such that there is a sequence of integers
+/home/ryan/erdos/conjectures/696.lean-20-d₁ < ⋯ < d_u all dividing n with d_{i+1} ≡ 1 (mod d_i).
+/home/ryan/erdos/conjectures/696.lean-21-
+conjectures/696.lean:22:Is it true that H(n)/h(n) → ∞ for almost all n?
+/home/ryan/erdos/conjectures/696.lean-23-
+conjectures/696.lean-24-Reference: [Er79e, p.81]
+conjectures/696.lean-25-https://www.erdosproblems.com/696
+--
+/home/ryan/erdos/conjectures/696.lean-47-/--
+conjectures/696.lean-48-Erdős Problem #696 [Er79e, p.81]:
+/home/ryan/erdos/conjectures/696.lean-49-
+conjectures/696.lean:50:H(n)/h(n) → ∞ for almost all n.
+/home/ryan/erdos/conjectures/696.lean-51-
+conjectures/696.lean-52-Formulated as: for every M > 0, the natural density of
+conjectures/696.lean-53-{n : H(n) ≥ M · h(n)} is 1.
+--
+conjectures/122.lean-21-def HasNaturalDensityZero (A : Set ℕ) : Prop :=
+/home/ryan/erdos/conjectures/122.lean-22-  Filter.Tendsto
+conjectures/122.lean-23-    (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/122.lean:24:    Filter.atTop (nhds 0)
+/home/ryan/erdos/conjectures/122.lean-25-
+conjectures/122.lean:26:/-- f(n)/F(n) → 0 for almost all n in the natural-density sense:
+conjectures/122.lean-27-    for every ε > 0, the set {n : f(n)/F(n) ≥ ε} has natural density zero. -/
+conjectures/122.lean-28-def AlmostAllRatioVanishes (f : ℕ → ℕ) (F : ℕ → ℝ) : Prop :=
+conjectures/122.lean-29-  ∀ ε : ℝ, 0 < ε → HasNaturalDensityZero {n : ℕ | ε ≤ (f n : ℝ) / F n}
+--
+/home/ryan/erdos/conjectures/122.lean-39-Erdős Problem #122 [Er97, Er97e, EPS97] — OPEN
+/home/ryan/erdos/conjectures/122.lean-40-
+conjectures/122.lean-41-For which number-theoretic functions f : ℕ → ℕ is it true that for any
+conjectures/122.lean:42:positive function F : ℕ → ℝ satisfying f(n)/F(n) → 0 for almost all n
+/home/ryan/erdos/conjectures/122.lean-43-(in the natural density sense), there are infinitely many x for which
+/home/ryan/erdos/conjectures/122.lean-44-
+conjectures/122.lean-45-  #{n ∈ ℕ : n + f(n) ∈ (x, x + F(x))} / F(x) → ∞?
+--
+conjectures/994.lean-18-Erdős Problem #994 (Khintchine's conjecture, disproved by Marstrand [Ma70]):
+/home/ryan/erdos/conjectures/994.lean-19-
+/home/ryan/erdos/conjectures/994.lean-20-Let E ⊆ (0,1) be a measurable subset with Lebesgue measure λ(E). Is it true
+conjectures/994.lean:21:that, for almost all α,
+/home/ryan/erdos/conjectures/994.lean-22-  lim_{n → ∞} (1/n) ∑_{1 ≤ k ≤ n} 1_{fract(kα) ∈ E} = λ(E)
+/home/ryan/erdos/conjectures/994.lean-23-for all E?
+/home/ryan/erdos/conjectures/994.lean-24-
+--
+conjectures/793.lean-50-      (fun n : ℕ =>
+conjectures/793.lean-51-        ((primitiveLikeMaxSize n : ℝ) - (Nat.primeCounting n : ℝ)) /
+conjectures/793.lean-52-        ((n : ℝ) ^ ((2 : ℝ) / 3) / (Real.log (n : ℝ)) ^ (2 : ℝ)))
+conjectures/793.lean:53:      Filter.atTop
+conjectures/793.lean-54-      (nhds c) := by
+/home/ryan/erdos/conjectures/793.lean-55-  sorry
+--
+conjectures/1023.lean-43-    ∃ c : ℝ, c > 0 ∧
+/home/ryan/erdos/conjectures/1023.lean-44-    Filter.Tendsto
+conjectures/1023.lean-45-      (fun n : ℕ => (unionFreeMax n : ℝ) * Real.sqrt (↑n) / (c * (2 : ℝ) ^ n))
+conjectures/1023.lean:46:      Filter.atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/1023.lean-47-  sorry
+/home/ryan/erdos/conjectures/1023.lean-48-
+/home/ryan/erdos/conjectures/1023.lean-49-end
+--
+/home/ryan/erdos/conjectures/799.lean-16-different vertices) a colouring of each vertex by a colour on its list can be chosen
+/home/ryan/erdos/conjectures/799.lean-17-such that adjacent vertices receive distinct colours.
+/home/ryan/erdos/conjectures/799.lean-18-
+conjectures/799.lean:19:Is it true that χ_L(G) = o(n) for almost all graphs on n vertices?
+/home/ryan/erdos/conjectures/799.lean-20-
+conjectures/799.lean-21-A problem of Erdős, Rubin and Taylor [ERT80]. The answer is yes: Alon [Al92] proved
+/home/ryan/erdos/conjectures/799.lean-22-that the random graph on n vertices with edge probability 1/2 has
+--
+/home/ryan/erdos/conjectures/799.lean-60-/--
+conjectures/799.lean-61-Erdős Problem #799 [ERT80]:
+/home/ryan/erdos/conjectures/799.lean-62-
+conjectures/799.lean:63:For almost all graphs on n vertices, χ_L(G) = o(n).
+/home/ryan/erdos/conjectures/799.lean-64-
+conjectures/799.lean-65-Formally: for every ε > 0 and δ > 0, there exists n₀ such that for all n ≥ n₀
+/home/ryan/erdos/conjectures/799.lean-66-and all k ≥ εn, the fraction of labeled graphs on n vertices that are k-choosable
+/home/ryan/erdos/conjectures/799.lean-67-is at least 1 - δ. (This is equivalent to asking that ⌈εn⌉-choosability holds for
+conjectures/799.lean:68:almost all graphs, since choosability is monotone in k.)
+/home/ryan/erdos/conjectures/799.lean-69-
+/home/ryan/erdos/conjectures/799.lean-70-Proved by Alon [Al92] and strengthened by Alon, Krivelevich, and Sudakov [AKS99].
+/home/ryan/erdos/conjectures/799.lean-71--/
+--
+/home/ryan/erdos/conjectures/1064.lean-2-import Mathlib.Data.Set.Finite.Basic
+/home/ryan/erdos/conjectures/1064.lean-3-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/1064.lean-4-import Mathlib.Order.Filter.AtTopBot.Basic
+conjectures/1064.lean:5:import Mathlib.Analysis.Asymptotics.Defs
+/home/ryan/erdos/conjectures/1064.lean-6-
+/home/ryan/erdos/conjectures/1064.lean-7-open Set Filter Finset
+/home/ryan/erdos/conjectures/1064.lean-8-
+/home/ryan/erdos/conjectures/1064.lean-9-/-!
+/home/ryan/erdos/conjectures/1064.lean-10-# Erdős Problem #1064
+/home/ryan/erdos/conjectures/1064.lean-11-
+conjectures/1064.lean:12:Prove that φ(n) > φ(n - φ(n)) for almost all n, but that φ(n) < φ(n - φ(n))
+/home/ryan/erdos/conjectures/1064.lean-13-for infinitely many n, where φ is Euler's totient function.
+/home/ryan/erdos/conjectures/1064.lean-14-
+/home/ryan/erdos/conjectures/1064.lean-15-Luca and Pomerance [LuPo02] proved that the set of n with φ(n) > φ(n - φ(n))
+/home/ryan/erdos/conjectures/1064.lean-16-has natural density 1. They also proved that for any function f(n) = o(n),
+conjectures/1064.lean:17:φ(n) > φ(n - φ(n)) + f(n) for almost all n, and that for any constant c > 0,
+/home/ryan/erdos/conjectures/1064.lean-18-the inequality φ(n) < c · φ(n - φ(n)) holds for infinitely many n.
+/home/ryan/erdos/conjectures/1064.lean-19--/
+/home/ryan/erdos/conjectures/1064.lean-20-
+--
+conjectures/1064.lean-28-      (fun N : ℕ =>
+/home/ryan/erdos/conjectures/1064.lean-29-        (((Finset.range N).filter (fun n =>
+conjectures/1064.lean-30-          Nat.totient (n - Nat.totient n) < Nat.totient n)).card : ℝ) / (N : ℝ))
+conjectures/1064.lean:31:      Filter.atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/1064.lean-32-  sorry
+/home/ryan/erdos/conjectures/1064.lean-33-
+/home/ryan/erdos/conjectures/1064.lean-34-/--
+--
+conjectures/1064.lean-44-Luca-Pomerance strengthening [LuPo02]:
+/home/ryan/erdos/conjectures/1064.lean-45-
+conjectures/1064.lean-46-For any function f : ℕ → ℕ with f(n) = o(n), we have
+conjectures/1064.lean:47:φ(n) > φ(n - φ(n)) + f(n) for almost all n.
+/home/ryan/erdos/conjectures/1064.lean-48--/
+conjectures/1064.lean-49-theorem erdos_problem_1064_strengthened (f : ℕ → ℕ)
+conjectures/1064.lean:50:    (hf : Asymptotics.IsLittleO Filter.atTop
+conjectures/1064.lean-51-      (fun n => (f n : ℝ)) (fun n => (n : ℝ))) :
+/home/ryan/erdos/conjectures/1064.lean-52-    Filter.Tendsto
+conjectures/1064.lean-53-      (fun N : ℕ =>
+/home/ryan/erdos/conjectures/1064.lean-54-        (((Finset.range N).filter (fun n =>
+conjectures/1064.lean-55-          Nat.totient (n - Nat.totient n) + f n < Nat.totient n)).card : ℝ) / (N : ℝ))
+conjectures/1064.lean:56:      Filter.atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/1064.lean-57-  sorry
+--
+conjectures/573.lean-42-theorem erdos_problem_573 :
+/home/ryan/erdos/conjectures/573.lean-43-    Filter.Tendsto
+conjectures/573.lean-44-      (fun n : ℕ => (exC3C4 n : ℝ) / ((n : ℝ) / 2) ^ ((3 : ℝ) / 2))
+conjectures/573.lean:45:      Filter.atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/573.lean-46-  sorry
+--
+/home/ryan/erdos/conjectures/435.lean-20--/
+/home/ryan/erdos/conjectures/435.lean-21-
+/home/ryan/erdos/conjectures/435.lean-22-/-- The set of natural numbers representable as a non-negative integer linear
+conjectures/435.lean:23:combination of the binomial coefficients C(n, i) for 1 ≤ i ≤ n-1. -/
+conjectures/435.lean-24-def BinomialRepresentable (n : ℕ) : Set ℕ :=
+conjectures/435.lean-25-  {m : ℕ | ∃ c : ℕ → ℕ, m = ∑ i ∈ range (n - 1), c i * n.choose (i + 1)}
+/home/ryan/erdos/conjectures/435.lean-26-
+--
+/home/ryan/erdos/conjectures/682.lean-9-/-!
+/home/ryan/erdos/conjectures/682.lean-10-# Erdős Problem #682
+/home/ryan/erdos/conjectures/682.lean-11-
+conjectures/682.lean:12:Is it true that for almost all $n$ there exists some $m \in (p_n, p_{n+1})$
+/home/ryan/erdos/conjectures/682.lean-13-such that $p(m) \geq p_{n+1} - p_n$, where $p(m)$ denotes the least prime
+/home/ryan/erdos/conjectures/682.lean-14-factor of $m$?
+/home/ryan/erdos/conjectures/682.lean-15-
+--
+/home/ryan/erdos/conjectures/682.lean-18--/
+/home/ryan/erdos/conjectures/682.lean-19-
+/home/ryan/erdos/conjectures/682.lean-20-/--
+conjectures/682.lean:21:Erdős Problem #682: For almost all n, there exists an integer m strictly
+/home/ryan/erdos/conjectures/682.lean-22-between consecutive primes p_n and p_{n+1} whose least prime factor is at
+/home/ryan/erdos/conjectures/682.lean-23-least as large as the prime gap p_{n+1} - p_n.
+/home/ryan/erdos/conjectures/682.lean-24-
+--
+/home/ryan/erdos/conjectures/613.lean-35--/
+conjectures/613.lean-36-theorem erdos_problem_613 (n : ℕ) (hn : n ≥ 3)
+conjectures/613.lean-37-    (m : ℕ) (G : SimpleGraph (Fin m)) :
+conjectures/613.lean:38:    G.edgeFinset.card = Nat.choose (2 * n + 1) 2 - Nat.choose n 2 - 1 →
+conjectures/613.lean-39-    ∃ (G₁ G₂ : SimpleGraph (Fin m)),
+conjectures/613.lean-40-      G₁ ⊔ G₂ = G ∧ G₁.Colorable 2 ∧ G₂.maxDegree < n :=
+/home/ryan/erdos/conjectures/613.lean-41-  sorry
+--
+conjectures/613.lean-50-theorem erdos_problem_613_disproof :
+conjectures/613.lean-51-    ∃ (n : ℕ), n ≥ 3 ∧
+conjectures/613.lean-52-    ∃ (m : ℕ) (G : SimpleGraph (Fin m)),
+conjectures/613.lean:53:      G.edgeFinset.card = Nat.choose (2 * n + 1) 2 - Nat.choose n 2 - 1 ∧
+conjectures/613.lean-54-      ¬∃ (G₁ G₂ : SimpleGraph (Fin m)),
+conjectures/613.lean-55-        G₁ ⊔ G₂ = G ∧ G₁.Colorable 2 ∧ G₂.maxDegree < n :=
+/home/ryan/erdos/conjectures/613.lean-56-  sorry
+--
+conjectures/1000.lean-44-    ∃ a : ℕ → ℕ, StrictMono a ∧ (∀ i, 0 < a i) ∧
+/home/ryan/erdos/conjectures/1000.lean-45-    Filter.Tendsto
+conjectures/1000.lean-46-      (fun N : ℕ => (∑ k ∈ Finset.range N, (phiA a k : ℝ) / (a k : ℝ)) / (N : ℝ))
+conjectures/1000.lean:47:      Filter.atTop (nhds 0) :=
+/home/ryan/erdos/conjectures/1000.lean-48-  sorry
+/home/ryan/erdos/conjectures/1000.lean-49-
+/home/ryan/erdos/conjectures/1000.lean-50-end
+--
+/home/ryan/erdos/conjectures/206.lean-46-
+/home/ryan/erdos/conjectures/206.lean-47-Let x > 0 be a real number. For any n ≥ 1 let R_n(x) be the maximal sum of n
+/home/ryan/erdos/conjectures/206.lean-48-distinct unit fractions which is < x. Erdős and Graham asked whether, for
+conjectures/206.lean:49:almost all x, the best underapproximations are eventually constructed in a
+conjectures/206.lean-50-greedy fashion: R_{n+1}(x) = R_n(x) + 1/m where m is the smallest new
+/home/ryan/erdos/conjectures/206.lean-51-denominator keeping the sum below x.
+/home/ryan/erdos/conjectures/206.lean-52-
+--
+/home/ryan/erdos/conjectures/995.lean-13-# Erdős Problem #995
+/home/ryan/erdos/conjectures/995.lean-14-
+/home/ryan/erdos/conjectures/995.lean-15-Let n₁ < n₂ < ⋯ be a lacunary sequence of integers and f ∈ L²([0,1]). Estimate
+conjectures/995.lean:16:the growth of, for almost all α,
+/home/ryan/erdos/conjectures/995.lean-17-  ∑_{1 ≤ k ≤ N} f({α nₖ}).
+conjectures/995.lean:18:For example, is it true that, for almost all α,
+/home/ryan/erdos/conjectures/995.lean-19-  ∑_{1 ≤ k ≤ N} f({α nₖ}) = o(N √(log log N))?
+/home/ryan/erdos/conjectures/995.lean-20-
+/home/ryan/erdos/conjectures/995.lean-21-Erdős [Er49d] constructed a lacunary sequence and f ∈ L²([0,1]) such that, for
+conjectures/995.lean:22:every ε > 0, for almost all α,
+/home/ryan/erdos/conjectures/995.lean-23-  limsup_{N → ∞} (1 / (N(log log N)^{1/2 - ε})) ∑_{k≤N} f({α nₖ}) = ∞.
+/home/ryan/erdos/conjectures/995.lean-24-
+/home/ryan/erdos/conjectures/995.lean-25-Erdős [Er64b] thought that his lower bound was closer to the truth.
+--
+conjectures/995.lean-34-Erdős Problem #995 [Er64b]:
+/home/ryan/erdos/conjectures/995.lean-35-
+/home/ryan/erdos/conjectures/995.lean-36-For every lacunary sequence (nₖ) of positive integers and every f ∈ L²([0,1]),
+conjectures/995.lean:37:for almost all α ∈ [0,1],
+/home/ryan/erdos/conjectures/995.lean-38-  ∑_{k < N} f({α · nₖ}) = o(N · √(log log N)).
+/home/ryan/erdos/conjectures/995.lean-39-
+conjectures/995.lean:40:Formulated as: for every ε > 0, for almost all α, eventually (for large N),
+/home/ryan/erdos/conjectures/995.lean-41-  |∑_{k < N} f({α · nₖ})| ≤ ε · N · √(log log N).
+/home/ryan/erdos/conjectures/995.lean-42--/
+/home/ryan/erdos/conjectures/995.lean-43-theorem erdos_problem_995
+--
+conjectures/447.lean-27-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+conjectures/447.lean-28-    ∀ F : Finset (Finset (Fin n)),
+/home/ryan/erdos/conjectures/447.lean-29-    UnionFreeFamily F →
+conjectures/447.lean:30:    (F.card : ℝ) ≤ (1 + ε) * (Nat.choose n (n / 2) : ℝ) :=
+/home/ryan/erdos/conjectures/447.lean-31-  sorry
+--
+conjectures/643.lean-62-    ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+conjectures/643.lean-63-      (∀ H : Finset (Finset (Fin n)),
+/home/ryan/erdos/conjectures/643.lean-64-        IsUniformHypergraph n t H →
+conjectures/643.lean:65:        (H.card : ℝ) > (1 + ε) * (Nat.choose n (t - 1) : ℝ) →
+/home/ryan/erdos/conjectures/643.lean-66-        HasComplementaryPairs H) ∧
+conjectures/643.lean-67-      (∃ H : Finset (Finset (Fin n)),
+/home/ryan/erdos/conjectures/643.lean-68-        IsUniformHypergraph n t H ∧
+conjectures/643.lean:69:        (H.card : ℝ) ≥ (1 - ε) * (Nat.choose n (t - 1) : ℝ) ∧
+conjectures/643.lean-70-        ¬HasComplementaryPairs H) :=
+/home/ryan/erdos/conjectures/643.lean-71-  sorry
+/home/ryan/erdos/conjectures/643.lean-72-
+--
+/home/ryan/erdos/conjectures/1012.lean-42--/
+conjectures/1012.lean-43-theorem erdos_problem_1012 (k n : ℕ) (hn : n ≥ 2 * k + 3)
+conjectures/1012.lean-44-    (G : SimpleGraph (Fin n)) [DecidableRel G.Adj]
+conjectures/1012.lean:45:    (hedge : G.edgeFinset.card ≥ Nat.choose (n - k - 1) 2 + Nat.choose (k + 2) 2 + 1)
+conjectures/1012.lean-46-    (l : ℕ) (hl₁ : 3 ≤ l) (hl₂ : l ≤ n - k) :
+conjectures/1012.lean-47-    ContainsCycleOfLength1012 G l hl₁ :=
+/home/ryan/erdos/conjectures/1012.lean-48-  sorry
+--
+/home/ryan/erdos/conjectures/333.lean-15--/
+conjectures/333.lean-16-noncomputable def upperDensity333 (A : Set ℕ) : ℝ :=
+conjectures/333.lean-17-  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/333.lean:18:    Filter.atTop
+/home/ryan/erdos/conjectures/333.lean-19-
+/home/ryan/erdos/conjectures/333.lean-20-/--
+conjectures/333.lean-21-Erdős Problem #333 [ErGr80] (DISPROVED):
+--
+/home/ryan/erdos/conjectures/492.lean-41-where aᵢ ≤ x < a_{i+1}. For example if A = ℕ then f(x) = {x} is
+/home/ryan/erdos/conjectures/492.lean-42-the usual fractional part operator.
+/home/ryan/erdos/conjectures/492.lean-43-
+conjectures/492.lean:44:The conjecture asked whether for almost all α, the sequence
+conjectures/492.lean-45-f(αn) is uniformly distributed in [0,1). Schmidt showed this is false:
+/home/ryan/erdos/conjectures/492.lean-46-there exists such a sequence for which equidistribution fails on a
+/home/ryan/erdos/conjectures/492.lean-47-set of positive measure.
+--
+conjectures/900.lean-42-    ∃ f : ℝ → ℝ,
+/home/ryan/erdos/conjectures/900.lean-43-    (Filter.Tendsto (fun h => f (1/2 + h))
+/home/ryan/erdos/conjectures/900.lean-44-      (nhdsWithin 0 (Set.Ioi 0)) (nhds 0)) ∧
+conjectures/900.lean:45:    (Filter.Tendsto f Filter.atTop (nhds 1)) ∧
+conjectures/900.lean-46-    (∀ c : ℝ, c > 1/2 → ∀ ε : ℝ, ε > 0 →
+conjectures/900.lean-47-      ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/900.lean-48-        erdosRenyiProbability n (⌊c * (n : ℝ)⌋₊)
+--
+/home/ryan/erdos/conjectures/992.lean-14-# Erdős Problem #992
+/home/ryan/erdos/conjectures/992.lean-15-
+/home/ryan/erdos/conjectures/992.lean-16-Let x₁ < x₂ < ⋯ be an infinite sequence of integers. Is it true that, for
+conjectures/992.lean:17:almost all α ∈ [0,1], the discrepancy
+conjectures/992.lean-18-  D(N) = max_{I ⊆ [0,1]} |#{n ≤ N : {α xₙ} ∈ I} - |I| · N|
+/home/ryan/erdos/conjectures/992.lean-19-satisfies D(N) ≪ N^{1/2} (log N)^{o(1)}? Or even D(N) ≪ N^{1/2} (log log N)^{O(1)}?
+/home/ryan/erdos/conjectures/992.lean-20-
+/home/ryan/erdos/conjectures/992.lean-21-Erdős and Koksma [ErKo49] and Cassels [Ca50] independently proved that, for any
+conjectures/992.lean:22:sequence xᵢ and almost all α, D(N) ≪ N^{1/2} (log N)^{5/2 + o(1)}. Baker [Ba81]
+/home/ryan/erdos/conjectures/992.lean-23-improved this to D(N) ≪ N^{1/2} (log N)^{3/2 + o(1)}.
+/home/ryan/erdos/conjectures/992.lean-24-
+/home/ryan/erdos/conjectures/992.lean-25-This was disproved by Berkes and Philipp [BePh94], who constructed a sequence
+conjectures/992.lean:26:of integers x₁ < x₂ < ⋯ such that, for almost all α ∈ [0,1],
+/home/ryan/erdos/conjectures/992.lean-27-  limsup_{N → ∞} D(N) / (N log N)^{1/2} > 0.
+/home/ryan/erdos/conjectures/992.lean-28--/
+/home/ryan/erdos/conjectures/992.lean-29-
+--
+conjectures/992.lean-40-Erdős Problem #992 (disproved by Berkes and Philipp [BePh94]):
+/home/ryan/erdos/conjectures/992.lean-41-
+/home/ryan/erdos/conjectures/992.lean-42-There exists a strictly increasing sequence of positive integers x₁ < x₂ < ⋯
+conjectures/992.lean:43:such that for almost all α ∈ [0,1],
+/home/ryan/erdos/conjectures/992.lean-44-  limsup_{N → ∞} D(N) / (N log N)^{1/2} > 0.
+/home/ryan/erdos/conjectures/992.lean-45-
+conjectures/992.lean-46-Formulated as: for a.e. α, there exists c > 0 and infinitely many N with
+--
+conjectures/908.lean-10-Let f : ℝ → ℝ be such that for every h > 0, the function x ↦ f(x + h) - f(x)
+/home/ryan/erdos/conjectures/908.lean-11-is measurable. Is it true that f = g + φ + r where g is continuous,
+/home/ryan/erdos/conjectures/908.lean-12-φ is additive (i.e., φ(x + y) = φ(x) + φ(y)), and r(x + h) - r(x) = 0
+conjectures/908.lean:13:for every h and almost all (depending on h) x?
+/home/ryan/erdos/conjectures/908.lean-14-
+/home/ryan/erdos/conjectures/908.lean-15-A conjecture of de Bruijn and Erdős. Answered in the affirmative by Laczkovich.
+/home/ryan/erdos/conjectures/908.lean-16-See also [907].
+--
+/home/ryan/erdos/conjectures/400.lean-18-
+/home/ryan/erdos/conjectures/400.lean-19-Can one show that ∑_{n ≤ x} g_k(n) ~ c_k · x · log x for some constant c_k?
+/home/ryan/erdos/conjectures/400.lean-20-
+conjectures/400.lean:21:Is it true that there is a constant c_k such that for almost all n < x we have
+/home/ryan/erdos/conjectures/400.lean-22-g_k(n) = c_k · log x + o(log x)?
+/home/ryan/erdos/conjectures/400.lean-23-
+/home/ryan/erdos/conjectures/400.lean-24-Erdős and Graham note that g_k(n) ≪_k log n always, but the best possible
+--
+/home/ryan/erdos/conjectures/400.lean-49-/--
+conjectures/400.lean-50-Erdős Problem #400, Part 2 [ErGr80, p.77]:
+/home/ryan/erdos/conjectures/400.lean-51-
+conjectures/400.lean:52:For any k ≥ 2, there exists a constant c_k such that for almost all n ≤ x,
+/home/ryan/erdos/conjectures/400.lean-53-g_k(n) = c_k · log x + o(log x).
+/home/ryan/erdos/conjectures/400.lean-54-
+conjectures/400.lean-55-Formalized as: for every ε > 0, the proportion of n ≤ x for which
+--
+/home/ryan/erdos/conjectures/468.lean-17-where $1 < d_1 < d_2 < \cdots$ are the divisors of $n$.
+/home/ryan/erdos/conjectures/468.lean-18-
+/home/ryan/erdos/conjectures/468.lean-19-If $f(N)$ is the minimal $n$ such that $N \in D_n$, is it true that $f(N) = o(N)$?
+conjectures/468.lean:20:Perhaps just for almost all $N$?
+/home/ryan/erdos/conjectures/468.lean-21--/
+/home/ryan/erdos/conjectures/468.lean-22-
+/home/ryan/erdos/conjectures/468.lean-23-/-- Prefix sums of a list with accumulator. Returns [acc+a₁, acc+a₁+a₂, ...]. -/
+--
+/home/ryan/erdos/conjectures/468.lean-48-/--
+conjectures/468.lean-49-Erdős Problem #468, weak form [ErGr80]:
+/home/ryan/erdos/conjectures/468.lean-50-
+conjectures/468.lean:51:f(N) = o(N) for almost all N. Formalized as: for any ε > 0, the density of
+conjectures/468.lean-52-{N ≤ x : f(N) ≥ ε·N} tends to 0 as x → ∞.
+/home/ryan/erdos/conjectures/468.lean-53--/
+conjectures/468.lean-54-theorem erdos_problem_468_weak :
+--
+conjectures/704.lean-76-theorem erdos_problem_704_limit_exists :
+conjectures/704.lean-77-    ∃ L : ℝ, Filter.Tendsto
+conjectures/704.lean-78-      (fun n : ℕ => (chromaticNumber_unitDist n : ℝ) ^ ((1 : ℝ) / (n : ℝ)))
+conjectures/704.lean:79:      Filter.atTop (nhds L) :=
+/home/ryan/erdos/conjectures/704.lean-80-  sorry
+/home/ryan/erdos/conjectures/704.lean-81-
+/home/ryan/erdos/conjectures/704.lean-82-end
+--
+conjectures/162.lean-30-def IsEdgeBalanced (n m : ℕ) (α : ℝ) (c : Finset (Fin n) → Bool) : Prop :=
+conjectures/162.lean-31-  ∀ X : Finset (Fin n), m ≤ X.card →
+conjectures/162.lean-32-    ∀ b : Bool,
+conjectures/162.lean:33:      α * (Nat.choose X.card 2 : ℝ) <
+conjectures/162.lean-34-        (((X.powersetCard 2).filter (fun S => c S = b)).card : ℝ)
+/home/ryan/erdos/conjectures/162.lean-35-
+/home/ryan/erdos/conjectures/162.lean-36-/-- F(n, α) is the smallest threshold m such that there exists a 2-colouring
+--
+conjectures/692.lean-19-/-- The natural density δ₁(n, m) exists and equals d:
+conjectures/692.lean-20-    the limit of |{k ≤ N : k has exactly one divisor in (n, m)}| / N equals d. -/
+conjectures/692.lean-21-def HasDelta1Density (n m : ℕ) (d : ℝ) : Prop :=
+conjectures/692.lean:22:  Filter.Tendsto (fun N => delta1Approx n m N) Filter.atTop (nhds d)
+/home/ryan/erdos/conjectures/692.lean-23-
+/home/ryan/erdos/conjectures/692.lean-24-/--
+/home/ryan/erdos/conjectures/692.lean-25-Erdős Problem #692 [Er79e, Ob1] — DISPROVED
+--
+/home/ryan/erdos/conjectures/878.lean-24-distinct prime factors of $n$).
+/home/ryan/erdos/conjectures/878.lean-25-
+conjectures/878.lean-26-Conjectures:
+conjectures/878.lean:27:1. For almost all $n$, $f(n) = o(n \log \log n)$.
+conjectures/878.lean:28:2. For almost all $n$, $F(n) \gg n \log \log n$.
+/home/ryan/erdos/conjectures/878.lean-29-3. $\max_{n \le x} f(n) \sim \frac{x \log x}{\log \log x}$.
+/home/ryan/erdos/conjectures/878.lean-30-4. For all sufficiently large $x$, $\max_{n \le x} f(n) = \max_{n \le x} F(n)$.
+/home/ryan/erdos/conjectures/878.lean-31-5. $H(x) = \sum_{n < x} \frac{f(n)}{n} \ll x \log \log \log \log x$.
+--
+conjectures/878.lean-56-  ∑ n ∈ (Finset.range x).filter (· ≥ 1), (erdos878_f n : ℝ) / (n : ℝ)
+/home/ryan/erdos/conjectures/878.lean-57-
+/home/ryan/erdos/conjectures/878.lean-58-/--
+conjectures/878.lean:59:**Erdős Problem #878, Conjecture (1):** For almost all n, f(n) = o(n log log n).
+/home/ryan/erdos/conjectures/878.lean-60-
+/home/ryan/erdos/conjectures/878.lean-61-For every ε > 0 and δ > 0, for all sufficiently large x, the proportion of
+/home/ryan/erdos/conjectures/878.lean-62-n ≤ x with f(n) > ε · n · log(log n) is less than δ.
+--
+/home/ryan/erdos/conjectures/878.lean-70-  sorry
+/home/ryan/erdos/conjectures/878.lean-71-
+/home/ryan/erdos/conjectures/878.lean-72-/--
+conjectures/878.lean:73:**Erdős Problem #878, Conjecture (2):** For almost all n, F(n) ≫ n log log n.
+/home/ryan/erdos/conjectures/878.lean-74-
+/home/ryan/erdos/conjectures/878.lean-75-There exists C > 0 such that for every δ > 0, for all sufficiently large x, the
+/home/ryan/erdos/conjectures/878.lean-76-proportion of n ≤ x with F(n) < C · n · log(log n) is less than δ.
+--
+/home/ryan/erdos/conjectures/525.lean-35-is o(2^n) as n → ∞.
+/home/ryan/erdos/conjectures/525.lean-36-
+/home/ryan/erdos/conjectures/525.lean-37-Proved by Kashin (1987). Konyagin (1994) showed
+conjectures/525.lean:38:min_{|z|=1} |f(z)| ≤ n^{-1/2+o(1)} for almost all such polynomials.
+/home/ryan/erdos/conjectures/525.lean-39-Cook and Nguyen (2021) identified the limiting distribution.
+/home/ryan/erdos/conjectures/525.lean-40--/
+conjectures/525.lean-41-theorem erdos_problem_525 :
+--
+/home/ryan/erdos/conjectures/109.lean-13--/
+conjectures/109.lean-14-noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+conjectures/109.lean-15-  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/109.lean:16:    Filter.atTop
+/home/ryan/erdos/conjectures/109.lean-17-
+/home/ryan/erdos/conjectures/109.lean-18-/--
+conjectures/109.lean-19-Erdős Sumset Conjecture (Problem #109) [ErGr80, p.85]:
+--
+/home/ryan/erdos/conjectures/673.lean-15-Let 1 = d₁ < ⋯ < d_{τ(n)} = n be the divisors of n and
+/home/ryan/erdos/conjectures/673.lean-16-  G(n) = Σ_{1 ≤ i < τ(n)} d_i / d_{i+1}.
+/home/ryan/erdos/conjectures/673.lean-17-
+conjectures/673.lean:18:Is it true that G(n) → ∞ for almost all n? Can one prove an asymptotic
+/home/ryan/erdos/conjectures/673.lean-19-formula for Σ_{n ≤ X} G(n)?
+/home/ryan/erdos/conjectures/673.lean-20-
+/home/ryan/erdos/conjectures/673.lean-21-Erdős writes it is 'easy' to prove (1/X) Σ_{n ≤ X} G(n) → ∞.
+--
+/home/ryan/erdos/conjectures/673.lean-23-Terence Tao observed that for any divisor m ∣ n,
+/home/ryan/erdos/conjectures/673.lean-24-  τ(n/m) / m ≤ G(n) ≤ τ(n),
+/home/ryan/erdos/conjectures/673.lean-25-and hence for example τ(n)/4 ≤ G(n) ≤ τ(n) for even n. It follows easily
+conjectures/673.lean:26:that G(n) grows on average and tends to infinity for almost all n.
+/home/ryan/erdos/conjectures/673.lean-27-
+/home/ryan/erdos/conjectures/673.lean-28-Erdős and Tenenbaum proved that G(n)/τ(n) has a continuous distribution
+/home/ryan/erdos/conjectures/673.lean-29-function.
+--
+/home/ryan/erdos/conjectures/673.lean-49-/--
+conjectures/673.lean-50-Erdős Problem #673, Part 1 [Er79e, Er82e]:
+/home/ryan/erdos/conjectures/673.lean-51-
+conjectures/673.lean:52:G(n) → ∞ for almost all n, i.e., for every M, the set of n with G(n) ≤ M
+/home/ryan/erdos/conjectures/673.lean-53-has natural density zero.
+/home/ryan/erdos/conjectures/673.lean-54--/
+conjectures/673.lean-55-theorem erdos_problem_673_almost_all :
+--
+/home/ryan/erdos/conjectures/125.lean-27--/
+conjectures/125.lean-28-noncomputable def lowerDensity (A : Set ℕ) : ℝ :=
+conjectures/125.lean-29-  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/125.lean:30:    Filter.atTop
+/home/ryan/erdos/conjectures/125.lean-31-
+/home/ryan/erdos/conjectures/125.lean-32-/--
+conjectures/125.lean-33-Erdős Problem #125 (Burr, Erdős, Graham, Li [BEGL96]):
+--
+conjectures/722.lean-33-/-- The necessary divisibility conditions for a Steiner system S(r, k, n):
+/home/ryan/erdos/conjectures/722.lean-34-    for every 0 ≤ i < r, C(k-i, r-i) | C(n-i, r-i). -/
+conjectures/722.lean-35-def SteinerDivisibilityConditions (r k n : ℕ) : Prop :=
+conjectures/722.lean:36:  ∀ i < r, (Nat.choose (k - i) (r - i)) ∣ (Nat.choose (n - i) (r - i))
+/home/ryan/erdos/conjectures/722.lean-37-
+/home/ryan/erdos/conjectures/722.lean-38-/--
+conjectures/722.lean-39-Erdős Problem #722 (Keevash's theorem [Ke14]):
+--
+/home/ryan/erdos/conjectures/448.lean-12-
+/home/ryan/erdos/conjectures/448.lean-13-Let $\tau(n)$ count the divisors of $n$ and $\tau^+(n)$ count the number of $k$
+/home/ryan/erdos/conjectures/448.lean-14-such that $n$ has a divisor in $[2^k, 2^{k+1})$. Is it true that, for all
+conjectures/448.lean:15:$\epsilon > 0$, $\tau^+(n) < \epsilon \tau(n)$ for almost all $n$?
+/home/ryan/erdos/conjectures/448.lean-16-
+/home/ryan/erdos/conjectures/448.lean-17-This was disproved by Erdős and Tenenbaum [ErTe81], who showed that for every
+conjectures/448.lean-18-$\epsilon > 0$, the upper density of $\{n : \tau^+(n) \geq \epsilon \tau(n)\}$
+--
+conjectures/448.lean-31-/-- Erdős Problem #448 (DISPROVED by Erdős-Tenenbaum [ErTe81]):
+/home/ryan/erdos/conjectures/448.lean-32-
+conjectures/448.lean-33-For every ε > 0, the upper density of {n : τ⁺(n) ≥ ε · τ(n)} is positive.
+conjectures/448.lean:34:This disproves the original conjecture that τ⁺(n) < ε · τ(n) for almost all n. -/
+conjectures/448.lean-35-theorem erdos_problem_448 :
+conjectures/448.lean-36-    ∀ ε : ℝ, ε > 0 →
+conjectures/448.lean-37-    ∃ c : ℝ, c > 0 ∧
+--
+/home/ryan/erdos/conjectures/712.lean-53--/
+conjectures/712.lean-54-theorem erdos_problem_712 (k r : ℕ) (hr : 2 < r) (hk : r < k) :
+conjectures/712.lean-55-    ∃ L : ℝ, Tendsto
+conjectures/712.lean:56:      (fun n : ℕ => (exrKkr r k n : ℝ) / (Nat.choose n r : ℝ))
+conjectures/712.lean-57-      atTop (nhds L) :=
+/home/ryan/erdos/conjectures/712.lean-58-  sorry
+/home/ryan/erdos/conjectures/712.lean-59-
+--
+conjectures/574.lean-42-theorem erdos_problem_574 (k : ℕ) (hk : k ≥ 2) :
+/home/ryan/erdos/conjectures/574.lean-43-    Filter.Tendsto
+conjectures/574.lean-44-      (fun n : ℕ => (exConsecutiveCycles k hk n : ℝ) / ((n : ℝ) / 2) ^ (1 + 1 / (k : ℝ)))
+conjectures/574.lean:45:      Filter.atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/574.lean-46-  sorry
+/home/ryan/erdos/conjectures/574.lean-47-
+/home/ryan/erdos/conjectures/574.lean-48-end
+--
+conjectures/420.lean-27-Erdős–Graham–Ivić–Pomerance [EGIP96] proved:
+/home/ryan/erdos/conjectures/420.lean-28-  • liminf F(c log n, n) = 1 for any c > 0
+/home/ryan/erdos/conjectures/420.lean-29-  • lim F(n^{4/9}, n) = ∞
+conjectures/420.lean:30:  • if f(n) = o((log n)²), then F(f,n) ~ 1 for almost all n.
+/home/ryan/erdos/conjectures/420.lean-31--/
+/home/ryan/erdos/conjectures/420.lean-32-
+/home/ryan/erdos/conjectures/420.lean-33-/-- The ratio F(f, n) = τ((n + ⌊f(n)⌋)!) / τ(n!) where τ counts divisors.
+--
+conjectures/1002.lean-43-theorem erdos_problem_1002 :
+conjectures/1002.lean-44-    ∃ g : ℝ → ℝ, Monotone g ∧
+/home/ryan/erdos/conjectures/1002.lean-45-    Filter.Tendsto g Filter.atBot (nhds 0) ∧
+conjectures/1002.lean:46:    Filter.Tendsto g Filter.atTop (nhds 1) ∧
+conjectures/1002.lean-47-    ∀ c : ℝ, Filter.Tendsto
+conjectures/1002.lean-48-      (fun n : ℕ =>
+conjectures/1002.lean-49-        (volume (Set.Ioo (0 : ℝ) 1 ∩ {α : ℝ | erdosF α n ≤ c})).toReal)
+conjectures/1002.lean:50:      Filter.atTop (nhds (g c)) :=
+/home/ryan/erdos/conjectures/1002.lean-51-  sorry
+/home/ryan/erdos/conjectures/1002.lean-52-
+/home/ryan/erdos/conjectures/1002.lean-53-end
+--
+/home/ryan/erdos/conjectures/433.lean-4-import Mathlib.Algebra.GCDMonoid.Nat
+/home/ryan/erdos/conjectures/433.lean-5-import Mathlib.Order.Interval.Finset.Nat
+/home/ryan/erdos/conjectures/433.lean-6-import Mathlib.Data.Real.Basic
+conjectures/433.lean:7:import Mathlib.Analysis.Asymptotics.AsymptoticEquivalent
+/home/ryan/erdos/conjectures/433.lean-8-import Mathlib.Data.Nat.Lattice
+/home/ryan/erdos/conjectures/433.lean-9-
+conjectures/433.lean:10:open Finset BigOperators Filter Asymptotics
+/home/ryan/erdos/conjectures/433.lean-11-
+/home/ryan/erdos/conjectures/433.lean-12-/-!
+/home/ryan/erdos/conjectures/433.lean-13-# Erdős Problem #433
+--
+conjectures/725.lean-45-    Tendsto (fun n => (k n : ℝ) / Real.sqrt ↑n) atTop (nhds 0) →
+/home/ryan/erdos/conjectures/725.lean-46-    Tendsto
+conjectures/725.lean-47-      (fun n => (latinRectangleCount (k n) n : ℝ) /
+conjectures/725.lean:48:        (Real.exp (-(↑(Nat.choose (k n) 2) : ℝ)) * ((Nat.factorial n : ℝ) ^ (k n))))
+conjectures/725.lean-49-      atTop (nhds 1) :=
+/home/ryan/erdos/conjectures/725.lean-50-  sorry
+/home/ryan/erdos/conjectures/725.lean-51-
+--
+conjectures/408.lean-35-        (fun N : ℕ =>
+/home/ryan/erdos/conjectures/408.lean-36-          (((Finset.range N).filter (fun n =>
+conjectures/408.lean-37-            (totientIterationLength n : ℝ) / Real.log n ≤ c)).card : ℝ) / (N : ℝ))
+conjectures/408.lean:38:        Filter.atTop (nhds d) :=
+/home/ryan/erdos/conjectures/408.lean-39-  sorry
+/home/ryan/erdos/conjectures/408.lean-40-
+/home/ryan/erdos/conjectures/408.lean-41-/--
+--
+conjectures/408.lean-55-          (fun N : ℕ =>
+/home/ryan/erdos/conjectures/408.lean-56-            (((Finset.range N).filter (fun n =>
+conjectures/408.lean-57-              ε ≤ |((totientIterationLength n : ℝ) / Real.log n) - α|)).card : ℝ) / (N : ℝ))
+conjectures/408.lean:58:          Filter.atTop (nhds 0) :=
+/home/ryan/erdos/conjectures/408.lean-59-  sorry
+--
+conjectures/506.lean-38-    (hn : 393 < S.card)
+conjectures/506.lean-39-    (hnotcirc : ¬AllOnCircle S)
+conjectures/506.lean-40-    (hnotcol : ¬AllCollinear S) :
+conjectures/506.lean:41:    Nat.choose (S.card - 1) 2 + 1 - (S.card - 1) / 2 ≤ numDeterminedCircles S :=
+/home/ryan/erdos/conjectures/506.lean-42-  sorry
+--
+/home/ryan/erdos/conjectures/676.lean-6-Is every sufficiently large integer of the form ap² + b for some prime p
+/home/ryan/erdos/conjectures/676.lean-7-and integer a ≥ 1 and 0 ≤ b < p?
+/home/ryan/erdos/conjectures/676.lean-8-
+conjectures/676.lean:9:The sieve of Eratosthenes implies that almost all integers are of this form,
+/home/ryan/erdos/conjectures/676.lean-10-and the Brun-Selberg sieve implies the number of exceptions in [1,x] is
+/home/ryan/erdos/conjectures/676.lean-11-≪ x/(log x)^c for some constant c > 0. Erdős believed it is 'rather unlikely'
+/home/ryan/erdos/conjectures/676.lean-12-that all large integers are of this form.
+--
+conjectures/1063.lean-27-    Formally: there exists j < k such that for all i < k with i ≠ j,
+/home/ryan/erdos/conjectures/1063.lean-28-    (n - i) ∣ C(n, k). -/
+conjectures/1063.lean-29-def AllButOneDivBinom (n k : ℕ) : Prop :=
+conjectures/1063.lean:30:  ∃ j < k, ∀ i < k, i ≠ j → (n - i) ∣ Nat.choose n k
+/home/ryan/erdos/conjectures/1063.lean-31-
+conjectures/1063.lean-32-/-- n_k from Erdős Problem #1063: the least n ≥ 2k such that all but one of
+/home/ryan/erdos/conjectures/1063.lean-33-    n, n-1, ..., n-k+1 divide C(n, k). Returns 0 if no such n exists. -/
+--
+/home/ryan/erdos/conjectures/1063.lean-39-n - i for 0 ≤ i < k does not divide C(n, k).
+/home/ryan/erdos/conjectures/1063.lean-40--/
+conjectures/1063.lean-41-theorem erdos_selfridge_1063 (n k : ℕ) (hk : 2 ≤ k) (hn : 2 * k ≤ n) :
+conjectures/1063.lean:42:    ∃ i < k, ¬ (n - i) ∣ Nat.choose n k :=
+/home/ryan/erdos/conjectures/1063.lean-43-  sorry
+/home/ryan/erdos/conjectures/1063.lean-44-
+/home/ryan/erdos/conjectures/1063.lean-45-/--
+--
+conjectures/336.lean-43-theorem erdos_problem_336 :
+conjectures/336.lean-44-    ∃ c : ℝ, 1/3 ≤ c ∧ c ≤ 1/2 ∧
+conjectures/336.lean-45-      Filter.Tendsto (fun r : ℕ => (h_basis336 r : ℝ) / ((r : ℝ) ^ 2))
+conjectures/336.lean:46:        Filter.atTop (nhds c) :=
+/home/ryan/erdos/conjectures/336.lean-47-  sorry
+--
+/home/ryan/erdos/conjectures/43.lean-37-      (∀ s ∈ S, 1 ≤ s ∧ s ≤ N) →
+conjectures/43.lean-38-      (∀ T : Finset ℕ, IsSidonSet T → (∀ t ∈ T, 1 ≤ t ∧ t ≤ N) → T.card ≤ S.card) →
+/home/ryan/erdos/conjectures/43.lean-39-      DisjointDifferences A B →
+conjectures/43.lean:40:      Nat.choose A.card 2 + Nat.choose B.card 2 ≤ Nat.choose S.card 2 + C :=
+/home/ryan/erdos/conjectures/43.lean-41-  sorry
+--
+/home/ryan/erdos/conjectures/1055.lean-59--/
+conjectures/1055.lean-60-theorem erdos_problem_1055_erdos_conjecture :
+conjectures/1055.lean-61-    Filter.Tendsto (fun r : ℕ => (leastPrimeInClass r : ℝ) ^ ((1 : ℝ) / (r : ℝ)))
+conjectures/1055.lean:62:      Filter.atTop Filter.atTop :=
+/home/ryan/erdos/conjectures/1055.lean-63-  sorry
+/home/ryan/erdos/conjectures/1055.lean-64-
+/home/ryan/erdos/conjectures/1055.lean-65-/--
+--
+/home/ryan/erdos/conjectures/744.lean-54--/
+conjectures/744.lean-55-theorem erdos_problem_744 (k : ℕ) (hk : k ≥ 3) :
+conjectures/744.lean-56-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/744.lean:57:      erdos744_fk k n = Nat.choose (k - 1) 2 :=
+/home/ryan/erdos/conjectures/744.lean-58-  sorry
+/home/ryan/erdos/conjectures/744.lean-59-
+/home/ryan/erdos/conjectures/744.lean-60-end
+--
+/home/ryan/erdos/conjectures/127.lean-59--/
+conjectures/127.lean-60-theorem erdos_problem_127 :
+conjectures/127.lean-61-    ∃ (seq : ℕ → ℕ), StrictMono seq ∧
+conjectures/127.lean:62:      Filter.Tendsto (fun i => f (seq i)) Filter.atTop Filter.atTop :=
+/home/ryan/erdos/conjectures/127.lean-63-  sorry
+--
+/home/ryan/erdos/conjectures/335.lean-13-  d*(A) = limsup_{N→∞} |A ∩ {0, 1, ..., N-1}| / N -/
+conjectures/335.lean-14-noncomputable def upperDensity335 (A : Set ℕ) : ℝ :=
+conjectures/335.lean-15-  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/335.lean:16:    Filter.atTop
+/home/ryan/erdos/conjectures/335.lean-17-
+conjectures/335.lean-18-/-- The lower density of A ⊆ ℕ:
+/home/ryan/erdos/conjectures/335.lean-19-  d_*(A) = liminf_{N→∞} |A ∩ {0, 1, ..., N-1}| / N -/
+conjectures/335.lean-20-noncomputable def lowerDensity335 (A : Set ℕ) : ℝ :=
+conjectures/335.lean-21-  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/335.lean:22:    Filter.atTop
+/home/ryan/erdos/conjectures/335.lean-23-
+/home/ryan/erdos/conjectures/335.lean-24-/-- A set has natural density d if its upper and lower densities both equal d -/
+conjectures/335.lean-25-def hasNaturalDensity335 (A : Set ℕ) (d : ℝ) : Prop :=
+--
+/home/ryan/erdos/conjectures/339.lean-26-    d_*(A) = liminf_{N→∞} |A ∩ {0, 1, ..., N-1}| / N -/
+conjectures/339.lean-27-noncomputable def lowerDensity339 (A : Set ℕ) : ℝ :=
+conjectures/339.lean-28-  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/339.lean:29:    Filter.atTop
+/home/ryan/erdos/conjectures/339.lean-30-
+/home/ryan/erdos/conjectures/339.lean-31-/--
+conjectures/339.lean-32-Erdős Problem #339 [ErGr80, p.52]:
+--
+/home/ryan/erdos/conjectures/342.lean-28-    d*(A) = limsup_{N→∞} |A ∩ {0, 1, ..., N-1}| / N -/
+conjectures/342.lean-29-noncomputable def upperDensity342 (A : Set ℕ) : ℝ :=
+conjectures/342.lean-30-  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/342.lean:31:    Filter.atTop
+/home/ryan/erdos/conjectures/342.lean-32-
+/home/ryan/erdos/conjectures/342.lean-33-/--
+conjectures/342.lean-34-Erdős Problem #342, Part 1 [ErGr80, p.53]:
+--
+/home/ryan/erdos/conjectures/432.lean-30--/
+conjectures/432.lean-31-noncomputable def upperDensity432 (A : Set ℕ) : ℝ :=
+conjectures/432.lean-32-  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/432.lean:33:    Filter.atTop
+/home/ryan/erdos/conjectures/432.lean-34-
+/home/ryan/erdos/conjectures/432.lean-35-/--
+conjectures/432.lean-36-Erdős Problem #432 [ErGr80, p.85]:
+--
+conjectures/426.lean-67-      (fun n : ℕ =>
+conjectures/426.lean-68-        (maxUniqueSubgraphs n : ℝ) /
+conjectures/426.lean-69-        ((2 : ℝ) ^ (n.choose 2) / (Nat.factorial n : ℝ)))
+conjectures/426.lean:70:      Filter.atTop
+conjectures/426.lean-71-      (nhds 0) := by
+/home/ryan/erdos/conjectures/426.lean-72-  sorry
+--
+/home/ryan/erdos/conjectures/667.lean-43-/-- c(p, q) = liminf_{n → ∞} log(H(n; p, q)) / log(n). -/
+conjectures/667.lean-44-noncomputable def erdosC667 (p q : ℕ) : ℝ :=
+conjectures/667.lean-45-  Filter.liminf (fun n : ℕ => Real.log (erdosH n p q : ℝ) / Real.log (n : ℝ))
+conjectures/667.lean:46:    Filter.atTop
+/home/ryan/erdos/conjectures/667.lean-47-
+/home/ryan/erdos/conjectures/667.lean-48-/--
+conjectures/667.lean-49-Erdős Problem #667 [Er97f]:
+--
+/home/ryan/erdos/conjectures/683.lean-37--/
+conjectures/683.lean-38-theorem erdos_problem_683 :
+conjectures/683.lean-39-    ∃ c : ℝ, c > 0 ∧ ∀ n k : ℕ, 1 ≤ k → k ≤ n →
+conjectures/683.lean:40:      (largestPrimeFactor (Nat.choose n k) : ℝ) ≥
+conjectures/683.lean-41-        min (↑(n - k + 1)) ((k : ℝ) ^ (1 + c)) :=
+/home/ryan/erdos/conjectures/683.lean-42-  sorry
+/home/ryan/erdos/conjectures/683.lean-43-
+--
+conjectures/702.lean-17-theorem erdos_problem_702 (n k : ℕ) (hk : 4 ≤ k) (hkn : k ≤ n)
+conjectures/702.lean-18-    (F : Finset (Finset (Fin n)))
+conjectures/702.lean-19-    (hF_unif : ∀ A ∈ F, A.card = k)
+conjectures/702.lean:20:    (hF_large : F.card > Nat.choose (n - 2) (k - 2)) :
+conjectures/702.lean-21-    ∃ A ∈ F, ∃ B ∈ F, A ≠ B ∧ (A ∩ B).card = 1 :=
+/home/ryan/erdos/conjectures/702.lean-22-  sorry
+--
+/home/ryan/erdos/conjectures/999.lean-13-
+/home/ryan/erdos/conjectures/999.lean-14-/--
+conjectures/999.lean-15-Erdős Problem #999 (the Duffin-Schaeffer conjecture, now theorem):
+conjectures/999.lean:16:For any function f : ℕ → ℕ, the property that for almost all α ∈ ℝ,
+/home/ryan/erdos/conjectures/999.lean-17-|α - p/q| < f(q)/q has infinitely many solutions with gcd(p,q) = 1,
+/home/ryan/erdos/conjectures/999.lean-18-is equivalent to the divergence of ∑ φ(q) · f(q) / q.
+/home/ryan/erdos/conjectures/999.lean-19-
+--
+/home/ryan/erdos/conjectures/378.lean-27-/-- The upper density of A ⊆ ℕ. -/
+conjectures/378.lean-28-noncomputable def upperDensity378 (A : Set ℕ) : ℝ :=
+conjectures/378.lean-29-  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/378.lean:30:    Filter.atTop
+/home/ryan/erdos/conjectures/378.lean-31-
+/home/ryan/erdos/conjectures/378.lean-32-/-- The lower density of A ⊆ ℕ. -/
+conjectures/378.lean-33-noncomputable def lowerDensity378 (A : Set ℕ) : ℝ :=
+conjectures/378.lean-34-  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+conjectures/378.lean:35:    Filter.atTop
+/home/ryan/erdos/conjectures/378.lean-36-
+/home/ryan/erdos/conjectures/378.lean-37-/-- A set of natural numbers has natural density d. -/
+conjectures/378.lean-38-def hasNaturalDensity378 (A : Set ℕ) (d : ℝ) : Prop :=
+--
+/home/ryan/erdos/conjectures/378.lean-40-
+/home/ryan/erdos/conjectures/378.lean-41-/-- The number of values k with 1 ≤ k < n such that C(n,k) is squarefree. -/
+conjectures/378.lean-42-noncomputable def squarefreeBinomCount378 (n : ℕ) : ℕ :=
+conjectures/378.lean:43:  ((Finset.range n).filter (fun k => 0 < k ∧ Squarefree (Nat.choose n k))).card
+/home/ryan/erdos/conjectures/378.lean-44-
+/home/ryan/erdos/conjectures/378.lean-45-/-- The set of n for which C(n,k) is squarefree for at least r values of 1 ≤ k < n. -/
+conjectures/378.lean-46-def squarefreeBinomAtLeast378 (r : ℕ) : Set ℕ :=
+--
+/home/ryan/erdos/conjectures/449.lean-12-
+/home/ryan/erdos/conjectures/449.lean-13-Let $r(n)$ count the number of pairs $(d_1, d_2)$ such that $d_1 \mid n$ and
+/home/ryan/erdos/conjectures/449.lean-14-$d_2 \mid n$ and $d_1 < d_2 < 2d_1$. Is it true that, for every $\epsilon > 0$,
+conjectures/449.lean:15:$r(n) < \epsilon \tau(n)$ for almost all $n$, where $\tau(n)$ is the number of
+/home/ryan/erdos/conjectures/449.lean-16-divisors of $n$?
+/home/ryan/erdos/conjectures/449.lean-17-
+/home/ryan/erdos/conjectures/449.lean-18-This is false. For any constant $K > 0$, we have $r(n) > K\tau(n)$ for a
+--
+conjectures/449.lean-27-/-- Erdős Problem #449 (DISPROVED by Ford, via the negative solution to [448]):
+/home/ryan/erdos/conjectures/449.lean-28-
+conjectures/449.lean-29-For every K > 0, the upper density of {n : r(n) ≥ K · τ(n)} is positive.
+conjectures/449.lean:30:This disproves the original conjecture that r(n) < ε · τ(n) for almost all n. -/
+conjectures/449.lean-31-theorem erdos_problem_449 :
+conjectures/449.lean-32-    ∀ K : ℝ, K > 0 →
+conjectures/449.lean-33-    ∃ c : ℝ, c > 0 ∧
+--
+conjectures/837.lean-39-/-- The edge density of a k-uniform hypergraph: |edges| / C(n, k). -/
+conjectures/837.lean-40-noncomputable def UniformHypergraph.density {n k : ℕ}
+conjectures/837.lean-41-    (G : UniformHypergraph n k) : ℝ :=
+conjectures/837.lean:42:  if Nat.choose n k = 0 then 0
+conjectures/837.lean:43:  else (G.edges.card : ℝ) / (Nat.choose n k : ℝ)
+/home/ryan/erdos/conjectures/837.lean-44-
+/home/ryan/erdos/conjectures/837.lean-45-/-- H is a sub-hypergraph of G via an injective vertex map f,
+/home/ryan/erdos/conjectures/837.lean-46-    meaning every edge of H maps to an edge of G under f. -/
+--
+conjectures/981.lean-44-        (fun x : ℕ =>
+conjectures/981.lean-45-          (((Finset.range x).filter Nat.Prime).sum (fun p => fEpsilon ε p) : ℝ) /
+conjectures/981.lean-46-            ((x : ℝ) / Real.log (x : ℝ)))
+conjectures/981.lean:47:        Filter.atTop (nhds c) :=
+/home/ryan/erdos/conjectures/981.lean-48-  sorry
+/home/ryan/erdos/conjectures/981.lean-49-
+/home/ryan/erdos/conjectures/981.lean-50-end
+--
+/home/ryan/erdos/conjectures/840.lean-31-/-- A finite set of natural numbers is δ-quasi-Sidon if |A + A| ≥ (1 - δ) · C(|A|, 2).
+/home/ryan/erdos/conjectures/840.lean-32-    A sequence of sets is quasi-Sidon iff for every δ > 0 it is eventually δ-quasi-Sidon. -/
+conjectures/840.lean-33-def IsQuasiSidon (δ : ℝ) (A : Finset ℕ) : Prop :=
+conjectures/840.lean:34:  ((A + A).card : ℝ) ≥ (1 - δ) * (Nat.choose A.card 2 : ℝ)
+/home/ryan/erdos/conjectures/840.lean-35-
+/home/ryan/erdos/conjectures/840.lean-36-/-- The maximum size of a δ-quasi-Sidon subset of {1, ..., N}. -/
+conjectures/840.lean-37-noncomputable def erdos840_f (δ : ℝ) (N : ℕ) : ℕ :=
+--
+conjectures/527.lean-24-Erdős Problem #527 [Er61, p.254]:
+/home/ryan/erdos/conjectures/527.lean-25-
+/home/ryan/erdos/conjectures/527.lean-26-Let a_n ∈ ℝ be such that ∑ |a_n|² = ∞ and |a_n| = o(1/√n). Is it true that,
+conjectures/527.lean:27:for almost all ε_n = ±1, there exists some z with |z| = 1 (depending on the
+/home/ryan/erdos/conjectures/527.lean-28-choice of signs) such that ∑ ε_n a_n z^n converges?
+/home/ryan/erdos/conjectures/527.lean-29-
+/home/ryan/erdos/conjectures/527.lean-30-Proved by Michelen and Sawhney [MiSa25], who showed that the set of such z
+--
+/home/ryan/erdos/conjectures/700.lean-31-/-- f(n) = min_{1 < k ≤ n/2} gcd(n, C(n,k)) for n ≥ 4; defined as 0 for n < 4. -/
+conjectures/700.lean-32-def erdos700_f (n : ℕ) : ℕ :=
+conjectures/700.lean-33-  if h : 4 ≤ n then
+conjectures/700.lean:34:    ((Finset.Icc 2 (n / 2)).image (fun k => Nat.gcd n (Nat.choose n k))).min' (by
+conjectures/700.lean:35:      exact ⟨Nat.gcd n (Nat.choose n 2), Finset.mem_image.mpr
+/home/ryan/erdos/conjectures/700.lean-36-        ⟨2, Finset.mem_Icc.mpr ⟨le_refl _, by omega⟩, rfl⟩⟩)
+/home/ryan/erdos/conjectures/700.lean-37-  else 0
+/home/ryan/erdos/conjectures/700.lean-38-
+--
+/home/ryan/erdos/conjectures/384.lean-4-/-!
+/home/ryan/erdos/conjectures/384.lean-5-# Erdős Problem #384
+/home/ryan/erdos/conjectures/384.lean-6-
+conjectures/384.lean:7:If 1 < k < n - 1, then the binomial coefficient C(n, k) is divisible by a prime
+/home/ryan/erdos/conjectures/384.lean-8-p < n/2, with the sole exception of C(7, 3) = C(7, 4) = 35 = 5 × 7.
+/home/ryan/erdos/conjectures/384.lean-9-
+/home/ryan/erdos/conjectures/384.lean-10-A conjecture of Erdős and Selfridge, proved by Ecklund [Ec69].
+/home/ryan/erdos/conjectures/384.lean-11-
+conjectures/384.lean:12:Ecklund made the stronger conjecture that whenever n > k² the binomial coefficient
+/home/ryan/erdos/conjectures/384.lean-13-C(n, k) is divisible by a prime p < n/k.
+/home/ryan/erdos/conjectures/384.lean-14--/
+/home/ryan/erdos/conjectures/384.lean-15-
+/home/ryan/erdos/conjectures/384.lean-16-/--
+conjectures/384.lean-17-Erdős Problem #384 [ErGr80, p.73]:
+/home/ryan/erdos/conjectures/384.lean-18-
+conjectures/384.lean:19:If 1 < k < n - 1, then Nat.choose n k is divisible by some prime p with
+/home/ryan/erdos/conjectures/384.lean-20-2 * p < n (equivalently p < n/2), except when (n, k) = (7, 3) or (7, 4).
+/home/ryan/erdos/conjectures/384.lean-21--/
+conjectures/384.lean-22-theorem erdos_problem_384 :
+conjectures/384.lean-23-    ∀ n k : ℕ, 1 < k → k + 1 < n →
+/home/ryan/erdos/conjectures/384.lean-24-    ¬(n = 7 ∧ (k = 3 ∨ k = 4)) →
+conjectures/384.lean:25:    ∃ p : ℕ, Nat.Prime p ∧ 2 * p < n ∧ p ∣ Nat.choose n k :=
+/home/ryan/erdos/conjectures/384.lean-26-  sorry
+--
+/home/ryan/erdos/conjectures/502.lean-28-theorem erdos_problem_502
+conjectures/502.lean-29-    (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n)))
+conjectures/502.lean-30-    (hA : IsTwoDistanceSet A) :
+conjectures/502.lean:31:    A.card ≤ Nat.choose (n + 2) 2 :=
+/home/ryan/erdos/conjectures/502.lean-32-  sorry
+/home/ryan/erdos/conjectures/502.lean-33-
+/home/ryan/erdos/conjectures/502.lean-34-end
+--
+conjectures/832.lean-53-    ∃ k₀ : ℕ, ∀ k : ℕ, k ≥ k₀ →
+conjectures/832.lean-54-    ∀ (V : Type) [DecidableEq V] [Fintype V] (H : UniformHypergraph V r),
+/home/ryan/erdos/conjectures/832.lean-55-      H.chromaticNumber = k →
+conjectures/832.lean:56:      H.edges.card ≥ Nat.choose ((r - 1) * (k - 1) + 1) r :=
+/home/ryan/erdos/conjectures/832.lean-57-  sorry
+/home/ryan/erdos/conjectures/832.lean-58-
+/home/ryan/erdos/conjectures/832.lean-59-end
+--
+/home/ryan/erdos/conjectures/1072.lean-17-For any prime p, let f(p) be the least integer such that f(p)! + 1 ≡ 0 (mod p).
+/home/ryan/erdos/conjectures/1072.lean-18-
+/home/ryan/erdos/conjectures/1072.lean-19-Is it true that there are infinitely many p for which f(p) = p - 1?
+conjectures/1072.lean:20:Is it true that f(p)/p → 0 for almost all p?
+/home/ryan/erdos/conjectures/1072.lean-21-
+/home/ryan/erdos/conjectures/1072.lean-22-By Wilson's theorem, (p-1)! ≡ -1 (mod p) for every prime p, so f(p) is
+/home/ryan/erdos/conjectures/1072.lean-23-well-defined and f(p) ≤ p - 1.
+--
+/home/ryan/erdos/conjectures/1072.lean-42-
+/home/ryan/erdos/conjectures/1072.lean-43-/--
+conjectures/1072.lean-44-Erdős Problem #1072, Part 2:
+conjectures/1072.lean:45:f(p)/p → 0 for almost all primes p. Formalized as: for every ε > 0,
+/home/ryan/erdos/conjectures/1072.lean-46-the set of primes p with f(p) ≥ ε · p has upper density 0.
+/home/ryan/erdos/conjectures/1072.lean-47--/
+conjectures/1072.lean-48-theorem erdos_problem_1072b :
+--
+conjectures/698.lean-30-theorem erdos_problem_698 :
+conjectures/698.lean-31-    ∃ h : ℕ → ℕ, Tendsto h atTop atTop ∧
+conjectures/698.lean-32-    ∀ n i j : ℕ, 2 ≤ i → i < j → j ≤ n / 2 →
+conjectures/698.lean:33:      h n ≤ Nat.gcd (Nat.choose n i) (Nat.choose n j) :=
+/home/ryan/erdos/conjectures/698.lean-34-  sorry
+--
+conjectures/425.lean-49-      (fun n : ℕ =>
+conjectures/425.lean-50-        ((multB2MaxSize n : ℝ) - (Nat.primeCounting n : ℝ)) /
+conjectures/425.lean-51-        ((n : ℝ) ^ ((3 : ℝ) / 4) / (Real.log (n : ℝ)) ^ ((3 : ℝ) / 2)))
+conjectures/425.lean:52:      Filter.atTop
+conjectures/425.lean-53-      (nhds c) := by
+/home/ryan/erdos/conjectures/425.lean-54-  sorry
+/home/ryan/erdos/conjectures/425.lean-55-
+--
+/home/ryan/erdos/conjectures/320.lean-56-      Filter.Tendsto
+conjectures/320.lean-57-        (fun N : ℕ => Real.log (erdos320_S N : ℝ) /
+conjectures/320.lean-58-          ((N : ℝ) / Real.log (N : ℝ) * Real.log (Real.log (N : ℝ))))
+conjectures/320.lean:59:        Filter.atTop (nhds L) :=
+/home/ryan/erdos/conjectures/320.lean-60-  sorry

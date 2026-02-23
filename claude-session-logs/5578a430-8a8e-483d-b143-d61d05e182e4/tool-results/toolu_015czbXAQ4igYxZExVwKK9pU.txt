@@ -1,0 +1,250 @@
+conjectures/1054.lean:24:the upper density of {n : f(n) ≤ δn} is O(δ²). The remaining open question
+conjectures/1074.lean:29:Hardy and Subbarao conjectured the density of S is 1. For P, they noted the
+conjectures/1074.lean:30:relative density appears to be between 0.5 and 0.6, but speculated it should
+conjectures/1074.lean:59:The natural density of EHS numbers exists and equals 1.
+conjectures/1074.lean:70:The relative density of Pillai primes among all primes exists and equals 1.
+conjectures/459.lean:64:f(n) = (1 + o(1))n for almost all n, i.e., for every ε > 0, the density
+conjectures/126.lean:52:    Filter.Tendsto (fun n : ℕ => (f n : ℝ) / Real.log n) Filter.atTop Filter.atTop :=
+conjectures/372.lean:19:conjecture that the density of such n is 1/6.
+conjectures/456.lean:43:Formalized as: the density of $\{n : m_n \geq p_n\}$ is 0, i.e., the
+conjectures/456.lean:58:Formalized as: for every $C > 0$, the density of $\{n : p_n \leq C \cdot m_n\}$
+conjectures/500.lean:48:The 3-uniform Turán density for K₄³ is exactly 5/9. Equivalently,
+conjectures/656.lean:13:Let A ⊆ ℕ be a set with positive upper density. Must there exist an infinite
+conjectures/656.lean:16:A problem of Erdős [Er75b], posed as a candidate for a density version of
+conjectures/656.lean:23:/-- The upper density of a set A ⊆ ℕ, defined as
+conjectures/656.lean:32:Let A ⊆ ℕ have positive upper density. Then there exist an infinite set B ⊆ ℕ
+conjectures/696.lean:52:Formulated as: for every M > 0, the natural density of
+conjectures/122.lean:19:/-- The natural density of a set A ⊆ ℕ is zero: the proportion of elements
+conjectures/122.lean:26:/-- f(n)/F(n) → 0 for almost all n in the natural-density sense:
+conjectures/122.lean:27:    for every ε > 0, the set {n : f(n)/F(n) ≥ ε} has natural density zero. -/
+conjectures/122.lean:32:    in natural density, the ratio #{n ∈ ℕ : n+f(n) ∈ (x, x+F(x))} / F(x)
+conjectures/122.lean:43:(in the natural density sense), there are infinitely many x for which
+conjectures/994.lean:30:        Tendsto (cesaroFrequency994 α E) atTop
+conjectures/1064.lean:16:has natural density 1. They also proved that for any function f(n) = o(n),
+conjectures/1064.lean:24:The set of n with φ(n) > φ(n - φ(n)) has natural density 1.
+conjectures/1064.lean:26:theorem erdos_problem_1064_density :
+conjectures/610.lean:54:    ∃ ω : ℕ → ℝ, Tendsto ω atTop atTop ∧
+conjectures/190.lean:51:    Tendsto (fun k : ℕ => (H k : ℝ) ^ ((1 : ℝ) / (k : ℝ)) / (k : ℝ)) atTop atTop :=
+conjectures/773.lean:14:by Landau) the density of the sums of two squares decays like (log N)^{-1/2}.
+conjectures/37.lean:8:The Schnirelmann density of a set A ⊆ ℕ, defined as
+conjectures/37.lean:22:B ⊆ ℕ with 0 < d_s(B) < 1, where d_s is the Schnirelmann density.
+conjectures/1123.lean:17:/-- The natural (asymptotic) density of a set A ⊆ ℕ is zero if
+conjectures/1123.lean:24:/-- The logarithmic density of a set A ⊆ ℕ is zero if
+conjectures/1123.lean:32:/-- Two sets of naturals are equivalent mod natural-density-0 sets
+conjectures/1123.lean:33:    iff their symmetric difference has natural density zero. -/
+conjectures/1123.lean:37:/-- Two sets of naturals are equivalent mod log-density-0 sets
+conjectures/1123.lean:38:    iff their symmetric difference has logarithmic density zero. -/
+conjectures/1123.lean:42:/-- The equivalence relation on Set ℕ given by natural density zero. -/
+conjectures/1123.lean:47:/-- The equivalence relation on Set ℕ given by logarithmic density zero. -/
+conjectures/1123.lean:52:/-- B₁: the Boolean algebra of sets of integers modulo sets of natural density 0. -/
+conjectures/1123.lean:55:/-- B₂: the Boolean algebra of sets of integers modulo sets of logarithmic density 0. -/
+conjectures/1123.lean:63:Let B₁ be the Boolean algebra of sets of integers modulo sets of density 0
+conjectures/1123.lean:64:and let B₂ be the Boolean algebra of sets modulo sets of logarithmic density 0.
+conjectures/731.lean:35:i.e., for every ε > 0, the natural density of integers n where the
+conjectures/333.lean:13:The upper density of A ⊆ ℕ:
+conjectures/333.lean:23:Let A ⊆ ℕ be a set of density zero. Does there exist a set B ⊆ ℕ such that
+conjectures/900.lean:45:    (Filter.Tendsto f Filter.atTop (nhds 1)) ∧
+conjectures/690.lean:16:Let $d_k(p)$ be the density of those integers whose $k$-th smallest prime factor
+conjectures/690.lean:54:For each fixed k ≥ 1, the density d_k(p) of positive integers whose k-th
+conjectures/537.lean:22:positive density. If A is its intersection with (N/2, N) then |A| ≫ N for all
+conjectures/692.lean:19:/-- The natural density δ₁(n, m) exists and equals d:
+conjectures/692.lean:22:  Filter.Tendsto (fun N => delta1Approx n m N) Filter.atTop (nhds d)
+conjectures/692.lean:27:Let δ₁(n, m) be the natural density of the set of positive integers with exactly
+conjectures/515.lean:38:        Tendsto (fun t => ‖γ t‖) atTop atTop ∧
+conjectures/525.lean:42:    Tendsto (fun n => (countNoSmallValue n : ℝ) / (2 : ℝ) ^ n) atTop (nhds 0) :=
+conjectures/543.lean:52:      Tendsto (fun N => g N / Real.log (Real.log (N : ℝ))) atTop (nhds 0) ∧
+conjectures/171.lean:8:The density Hales-Jewett theorem: for every ε > 0 and integer t ≥ 1, if N is
+conjectures/682.lean:25:"Almost all" is formalized as: the exceptional set has natural density zero.
+conjectures/121.lean:34:  - Erdős [Er38] proved F_4(N) = o(N) (in particular, density 0 for k = 4).
+conjectures/121.lean:37:exists a constant c_k > 0 such that F_k(N) ≤ (1 - c_k + o(1)) N. Thus the density of
+conjectures/109.lean:11:The upper density of A ⊆ ℕ is defined as:
+conjectures/109.lean:20:Any A ⊆ ℕ of positive upper density contains a sumset B + C
+conjectures/673.lean:43:/-- The natural density of a set A ⊆ ℕ is zero. -/
+conjectures/673.lean:53:has natural density zero.
+conjectures/691.lean:18:to have density $1$.
+conjectures/691.lean:20:A sequence $A$ for which $M_A$ has density $1$ is called a Behrend sequence.
+conjectures/691.lean:36:    natural density 1, i.e., |M_A ∩ {1,...,N}| / N → 1 as N → ∞. -/
+conjectures/125.lean:25:The lower asymptotic density of A ⊆ ℕ:
+conjectures/125.lean:38:lower density.
+conjectures/125.lean:42:lower density of C is at most 1015/1458 ≈ 0.696.
+conjectures/185.lean:18:the density Hales-Jewett theorem, proved by Furstenberg and Katznelson [FuKa91].
+conjectures/526.lean:37:    (ha_tendsto : Tendsto a atTop (nhds 0))
+conjectures/1002.lean:46:    Filter.Tendsto g Filter.atTop (nhds 1) ∧
+conjectures/492.lean:51:      Tendsto (fun i => (a (i + 1) : ℝ) / (a i : ℝ)) atTop (nhds 1) ∧
+conjectures/725.lean:45:    Tendsto (fun n => (k n : ℝ) / Real.sqrt ↑n) atTop (nhds 0) →
+conjectures/514.lean:37:        Tendsto (fun t => ‖γ t‖) atTop atTop ∧
+conjectures/514.lean:38:        ∀ n : ℕ, Tendsto (fun t => ‖f (γ t)‖ / ‖γ t‖ ^ n) atTop atTop :=
+conjectures/514.lean:49:          Tendsto (fun t => ‖γ t‖) atTop atTop ∧
+conjectures/408.lean:27:the natural density of {n ≤ N : f(n)/log(n) ≤ c} exists.
+conjectures/408.lean:45:there exists α > 0 such that for all ε > 0, the natural density of
+conjectures/9.lean:24:The upper density of a set of natural numbers.
+conjectures/9.lean:31:The upper density of the set of odd integers not of the form p + 2^k + 2^l is positive.
+conjectures/1022.lean:41:    ¬ ∃ (c : ℕ → ℝ), Tendsto c atTop atTop ∧
+conjectures/128.lean:30:the Petersen graph (both triangle-free graphs with local edge density ≈ n²/50).
+conjectures/468.lean:51:f(N) = o(N) for almost all N. Formalized as: for any ε > 0, the density of
+conjectures/401.lean:35:    ∃ f : ℕ → ℝ, Tendsto f atTop atTop ∧
+conjectures/1146.lean:10:The Schnirelmann density of a set A ⊆ ℕ, defined as
+conjectures/1146.lean:24:B ⊆ ℕ with 0 < d_s(B) < 1, where d_s is the Schnirelmann density.
+conjectures/1146.lean:41:B ⊆ ℕ with 0 < d_s(B) < 1, where d_s is the Schnirelmann density.
+conjectures/1136.lean:11:Does there exist A ⊆ ℕ with lower density > 1/3 such that a + b ≠ 2^k for
+conjectures/1136.lean:15:density 1/3 is trivial, taking A to be all multiples of 3.
+conjectures/1136.lean:19:which has density 1/2. Müller also proved this is best possible, in that
+conjectures/1136.lean:20:such A has lower density at most 1/2.
+conjectures/1136.lean:34:There exists A ⊆ ℕ with lower density strictly greater than 1/3 such that
+conjectures/1136.lean:37:The lower density condition is formalized as: there exists δ > 1/3 and N₀
+conjectures/823.lean:26:    Tendsto (fun k => (n k : ℝ) / (m k : ℝ)) atTop (nhds α) :=
+conjectures/1115.lean:27:  tendsToInfinity : Tendsto (fun t => ‖toFun t‖) atTop atTop
+conjectures/1115.lean:33:  Tendsto (fun t => ‖f (γ.toFun t)‖) atTop atTop
+conjectures/281.lean:13:any of the congruences aᵢ (mod nᵢ) has density 0.
+conjectures/281.lean:16:congruence classes aᵢ, the density of integers not satisfying any of the congruences
+conjectures/281.lean:38:any of the congruences has density 0. Then for every ε > 0 there exists some k such
+conjectures/281.lean:39:that, for every choice of congruence classes aᵢ, the density of integers not satisfying
+conjectures/393.lean:44:    Tendsto (fun n : ℕ => erdos393_f n) atTop atTop :=
+conjectures/446.lean:38:Let δ(n) denote the natural density of integers which are divisible by some
+conjectures/446.lean:73:Erdős conjectured that δ₁(n) = o(δ(n)), where δ₁(n) is the density of integers
+conjectures/446.lean:75:generally that for each r ≥ 1, δ_r(n) ≫_r δ(n), where δ_r(n) is the density
+conjectures/446.lean:79:sufficiently large n, the natural density δ_r(n) satisfies δ_r(n) ≥ c · δ(n).
+conjectures/335.lean:12:/-- The upper density of A ⊆ ℕ:
+conjectures/335.lean:18:/-- The lower density of A ⊆ ℕ:
+conjectures/335.lean:24:/-- A set has natural density d if its upper and lower densities both equal d -/
+conjectures/335.lean:31:Let d(A) denote the natural density of A ⊆ ℕ. Characterise those A, B ⊆ ℕ
+conjectures/335.lean:32:with positive density such that d(A + B) = d(A) + d(B).
+conjectures/420.lean:73:      Tendsto f atTop atTop →
+conjectures/144.lean:16:The density of integers which have two divisors d₁, d₂ such that d₁ < d₂ < 2*d₁
+conjectures/871.lean:48:      Tendsto (fun n => (repCount871 A n : ℝ)) atTop atTop ∧
+conjectures/605.lean:38:    ∃ f : ℕ → ℝ, Tendsto f atTop atTop ∧
+conjectures/955.lean:13:If A ⊂ ℕ has density 0, then s⁻¹(A) must also have density 0.
+conjectures/955.lean:16:for s(A) to have positive density even if A has zero density (for example taking
+conjectures/955.lean:18:of positive density such that s⁻¹(A) is empty.
+conjectures/955.lean:29:/-- A set A ⊆ ℕ has natural density zero if for every ε > 0, there exists N such
+conjectures/955.lean:38:If A ⊆ ℕ has natural density zero, then so does s⁻¹(A) = {n ∈ ℕ : s(n) ∈ A},
+conjectures/260.lean:16:    Tendsto (fun n => (a n : ℝ) / (n : ℝ)) atTop atTop →
+conjectures/928.lean:17:Does the density of integers n such that P(n) < n^α and P(n+1) < (n+1)^β exist?
+conjectures/928.lean:20:in the sense that the density of n satisfying both conditions equals
+conjectures/928.lean:23:Dickman [Di30] showed the density of smooth n, with largest prime factor < n^α,
+conjectures/928.lean:26:Teräväinen [Te18] proved the logarithmic density exists and equals ρ(1/α)ρ(1/β).
+conjectures/928.lean:27:Wang [Wa21] proved the natural density equals ρ(1/α)ρ(1/β) assuming the
+conjectures/928.lean:42:/-- The natural density of a set S ⊆ ℕ exists and equals d. -/
+conjectures/928.lean:56:For α, β ∈ (0,1), the natural density of integers n with P(n) < n^α and
+conjectures/432.lean:21:of the sumset A + B are pairwise coprime, then A + B has zero upper density.
+conjectures/432.lean:24:the density of the primes (~n/log n).
+conjectures/432.lean:28:The upper density of A ⊆ ℕ:
+conjectures/432.lean:40:zero upper density.
+conjectures/1110.lean:19:If {p,q} ≠ {2,3} then what can be said about the density of non-representable numbers?
+conjectures/1110.lean:25:Yu and Chen [YuCh22] proved that the set of representable numbers has density zero for
+conjectures/778.lean:23:for which Bob wins has density at least 3/4.
+conjectures/292.lean:13:∑ 1/mᵢ = 1. Does A have density 1?
+conjectures/292.lean:18:Proved by Martin [Ma00]: Yes, A has density 1. If B = ℕ \ A then
+conjectures/292.lean:38:with ∑ 1/mᵢ = 1 has natural density 1. Equivalently, for all ε > 0, the
+conjectures/658.lean:22:follows from the density Hales-Jewett theorem proved by Furstenberg and Katznelson.
+conjectures/671.lean:53:          Tendsto (fun n => lagrangeInterpolation (nodes n) f x) atTop (nhds (f x)) :=
+conjectures/671.lean:70:          Tendsto (fun n => lagrangeInterpolation (nodes n) f x) atTop (nhds (f x))) :=
+conjectures/270.lean:21:      Tendsto f atTop atTop ∧
+conjectures/667.lean:32:/-- A graph on n vertices has the (p, q)-density property if every p-element
+conjectures/667.lean:38:    (p, q)-density property must contain a clique of size m. -/
+conjectures/227.lean:37:    ∀ L : ℝ, Tendsto (fun r => maxTerm a r / maxModulus f r) atTop (𝓝 L) →
+conjectures/448.lean:18:$\epsilon > 0$, the upper density of $\{n : \tau^+(n) \geq \epsilon \tau(n)\}$
+conjectures/448.lean:21:Hall and Tenenbaum [HaTe88] showed the upper density is
+conjectures/448.lean:33:For every ε > 0, the upper density of {n : τ⁺(n) ≥ ε · τ(n)} is positive.
+conjectures/133.lean:106:    Tendsto (fun n : ℕ => (erdos133_f n : ℝ) / Real.sqrt n) atTop (nhds 1) :=
+conjectures/31.lean:11:/-- A set `B ⊆ ℕ` has natural density zero if
+conjectures/31.lean:21:of natural density $0$ such that $A + B$ contains all except finitely many natural numbers.
+conjectures/712.lean:47:For any k > r > 2, the Turán density
+conjectures/860.lean:58:    Tendsto (fun n => (erdosPomeranceH n : ℝ) / (n : ℝ)) atTop atTop :=
+conjectures/1122.lean:16:If |A ∩ [1,X]| = o(X) (the set A has natural density zero), then
+conjectures/449.lean:19:positive density set of $n$. Kevin Ford observed this follows from the negative
+conjectures/449.lean:29:For every K > 0, the upper density of {n : r(n) ≥ K · τ(n)} is positive.
+conjectures/278.lean:15:congruence classes m ≡ aᵢ (mod nᵢ). The covering density is the natural density
+conjectures/278.lean:18:Open question (Erdős–Graham [ErGr80,p.28]): What is the maximum covering density
+conjectures/278.lean:21:Settled (Simpson [Si86]): The minimum covering density is achieved when all aᵢ
+conjectures/278.lean:26:/-- The covering density of congruences m ≡ offsets(n) (mod n) for n ∈ moduli.
+conjectures/278.lean:27:    Since the covered set is periodic with period L = lcm(moduli), the density equals
+conjectures/278.lean:35:/-- The inclusion-exclusion density for a set of moduli: the alternating sum
+conjectures/278.lean:37:    This equals the covering density when all offsets are equal. -/
+conjectures/278.lean:45:For a finite set of positive integer moduli, the minimum covering density over all
+conjectures/278.lean:46:choices of offsets equals the inclusion-exclusion density. Specifically:
+conjectures/278.lean:47:(1) For any choice of offsets, the covering density is at least the
+conjectures/278.lean:48:    inclusion-exclusion density.
+conjectures/278.lean:51:The maximum covering density (the original open question of Erdős–Graham [ErGr80,p.28])
+conjectures/337.lean:48:      Tendsto (fun N => (countInRange337 A N : ℝ) / (N : ℝ)) atTop (nhds 0) ∧
+conjectures/1091.lean:49:    ∃ f : ℕ → ℕ, Tendsto f atTop atTop ∧
+conjectures/1001.lean:48:    ∃ L : ℝ, Tendsto (fun N : ℕ => S_measure N A c) atTop (nhds L) :=
+conjectures/863.lean:69:    (hc : Tendsto (fun N => (maxB2rSize863 r N : ℝ) / Real.sqrt (N : ℝ)) atTop (nhds c))
+conjectures/863.lean:84:    (hc : Tendsto (fun N => (maxB2rSize863 r N : ℝ) / Real.sqrt (N : ℝ)) atTop (nhds c))
+conjectures/929.lean:13:density set of n where n+1, n+2, ..., n+k are all divisible only by primes ≤ x
+conjectures/929.lean:33:/-- A set S ⊆ ℕ has positive upper density: there exists δ > 0 such that
+conjectures/929.lean:43:all x-smooth has positive upper density. The conjecture is that
+conjectures/929.lean:46:positive upper density.
+conjectures/35.lean:13:/-- Schnirelmann density of a set A ⊆ ℕ:
+conjectures/35.lean:29:Schnirelmann density?
+conjectures/1134.lean:15:lower density?
+conjectures/1134.lean:20:density 0.
+conjectures/1134.lean:41:x ↦ 3x+1, and x ↦ 6x+1. Then A does not have positive lower density;
+conjectures/1134.lean:42:in fact the natural density of A is 0.
+conjectures/452.lean:18:Erdős [Er37] proved that the density of integers n with ω(n) > log log n is 1/2.
+conjectures/265.lean:26:    Tendsto (fun n => ((a n : ℝ) ^ ((1 : ℝ) / (2 : ℝ) ^ (n : ℕ)))) atTop (nhds 1) :=
+conjectures/127.lean:62:      Filter.Tendsto (fun i => f (seq i)) Filter.atTop Filter.atTop :=
+conjectures/1005.lean:59:    Tendsto (fun n : ℕ => (fareySimOrderFn n : ℝ) / (n : ℝ)) atTop (nhds c) :=
+conjectures/339.lean:25:/-- The lower density of A ⊆ ℕ:
+conjectures/339.lean:35:sum of exactly r distinct elements from A have positive lower density?
+conjectures/698.lean:31:    ∃ h : ℕ → ℕ, Tendsto h atTop atTop ∧
+conjectures/342.lean:27:/-- The upper density of A ⊆ ℕ:
+conjectures/342.lean:63:Is the (upper) density of the Ulam sequence equal to 0?
+conjectures/342.lean:65:theorem erdos_problem_342_density :
+conjectures/16.lean:36:The upper density of a set of natural numbers.
+conjectures/16.lean:44:arithmetic progression and a set of density 0.
+conjectures/232.lean:11:For A ⊂ ℝ² we define the upper density as
+conjectures/232.lean:35:For every measurable unit-distance-free set A ⊆ ℝ², the upper density
+conjectures/232.lean:38:Formalized as: for every ε > 0, for all sufficiently large R, the density
+conjectures/1100.lean:45:the natural density of {n : τ⊥(n) ≤ M · ω(n)} is zero.
+conjectures/50.lean:13:Schoenberg proved that for every c ∈ [0,1] the natural density of
+conjectures/50.lean:14:{n ∈ ℕ : φ(n) < cn} exists. Let this density be denoted by f(c).
+conjectures/50.lean:22:        Tendsto (fun N : ℕ => (totientDensityCount c N : ℝ) / ↑N) atTop (nhds (f c))) →
+conjectures/1072.lean:39:/-- The upper density of a set of natural numbers. -/
+conjectures/1072.lean:46:the set of primes p with f(p) ≥ ε · p has upper density 0.
+conjectures/378.lean:14:Let r ≥ 0. Does the density of integers n for which C(n,k) is squarefree for at
+conjectures/378.lean:15:least r values of 1 ≤ k < n exist? Is this density > 0?
+conjectures/378.lean:18:the density of n such that C(n,k) is squarefree is o_k(1). They can also prove
+conjectures/378.lean:20:and expect that the density of such n is positive.
+conjectures/378.lean:23:show that for each m, the density of the set of n such that C(n,k) is squarefree
+conjectures/378.lean:27:/-- The upper density of A ⊆ ℕ. -/
+conjectures/378.lean:32:/-- The lower density of A ⊆ ℕ. -/
+conjectures/378.lean:37:/-- A set of natural numbers has natural density d. -/
+conjectures/378.lean:51:For every r ≥ 0, the natural density of the set of integers n for which C(n,k)
+conjectures/487.lean:12:A set A ⊆ ℕ has positive upper density if there exists δ > 0 such that for
+conjectures/487.lean:22:Let A ⊆ ℕ have positive upper density. Must there exist distinct a, b, c ∈ A
+conjectures/837.lean:39:/-- The edge density of a k-uniform hypergraph: |edges| / C(n, k). -/
+conjectures/837.lean:40:noncomputable def UniformHypergraph.density {n k : ℕ}
+conjectures/837.lean:51:/-- The density jump set A_k for k-uniform hypergraphs.
+conjectures/837.lean:53:    (a) any sequence of k-uniform hypergraphs with liminf density > α
+conjectures/837.lean:54:        contains growing subgraphs with liminf density > β;
+conjectures/837.lean:55:    (b) this does NOT hold when the hypothesis is weakened to liminf density ≥ α. -/
+conjectures/837.lean:56:def densityJumpSet (k : ℕ) : Set ℝ :=
+conjectures/837.lean:59:      -- (a) Density jump: liminf density > α implies dense growing subgraphs
+conjectures/837.lean:61:        -- Hypothesis: liminf density(Gᵢ) > α
+conjectures/837.lean:63:          (G i).density ≥ α + δ) →
+conjectures/837.lean:64:        -- Conclusion: ∃ subgraphs Hᵢ with |Hᵢ| → ∞ and liminf density > β
+conjectures/837.lean:70:            (H i).density ≥ β + δ')) ∧
+conjectures/837.lean:71:      -- (b) Fails with ≥ α: ∃ counterexample sequence with liminf density ≥ α
+conjectures/837.lean:72:      --     but no dense growing subgraphs with density > β
+conjectures/837.lean:74:        -- Hypothesis: liminf density(Gᵢ) ≥ α
+conjectures/837.lean:76:          (G i).density ≥ α - ε) →
+conjectures/837.lean:82:            (H i).density ≥ β + δ'))}
+conjectures/837.lean:84:/-- Known: A₂ = {1 - 1/m : m ≥ 1} (Erdős-Stone-Simonovits density jump). -/
+conjectures/837.lean:85:theorem erdos_densityJumpSet_graphs :
+conjectures/837.lean:86:    densityJumpSet 2 = {α : ℝ | ∃ m : ℕ, m ≥ 1 ∧ α = 1 - 1 / (m : ℝ)} :=
+conjectures/837.lean:92:Determine the density jump set A₃ for 3-uniform hypergraphs.
+conjectures/837.lean:98:    densityJumpSet 3 = (sorry : Set ℝ) :=
+conjectures/327.lean:30:Note: Wouter van Doorn has shown that the density cannot exceed 25/28.
+conjectures/27.lean:14:moduli n₁ < ⋯ < nₖ such that the natural density of integers satisfying none
+conjectures/27.lean:32:/-- The density of uncovered integers for a congruence system,
+conjectures/154.lean:51:      Tendsto (fun n => ((A n).card : ℝ) / Real.sqrt n) atTop (𝓝 1) →
+conjectures/154.lean:54:          Tendsto (fun n => modFraction m r (sumset (A n))) atTop (𝓝 (1 / (m : ℝ))) :=
+conjectures/72.lean:10:A set A ⊆ ℕ has natural density zero: for every ε > 0, for all sufficiently large n,
+conjectures/72.lean:19:Is there a set A ⊂ ℕ of density 0 and a constant c > 0 such that every graph on
+conjectures/527.lean:40:    (ha_little_o : Tendsto (fun n => |a n| * Real.sqrt (↑n : ℝ)) atTop (nhds 0)) :
+conjectures/527.lean:42:      ∃ S : ℂ, Tendsto (randomPowerPartialSum527 (fun k => ε k ω) a z) atTop (nhds S) :=
+conjectures/1131.lean:53:    Tendsto (fun n : ℕ => (n : ℝ) * (2 - minLagrangeL2 n)) atTop (nhds 1) :=
+conjectures/235.lean:66:        Tendsto (fun k => gapFraction k c) atTop (nhds (f c)) :=
+conjectures/533.lean:15:Ramsey-Turán density. This was disproved by Balogh and Lenz [BaLe13], who
+conjectures/460.lean:50:    Tendsto erdos460_sum atTop atTop :=

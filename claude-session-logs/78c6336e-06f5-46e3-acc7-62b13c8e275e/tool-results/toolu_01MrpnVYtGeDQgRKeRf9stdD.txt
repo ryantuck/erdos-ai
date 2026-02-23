@@ -1,0 +1,328 @@
+conjectures/675.lean:20:2. If we partition all primes into P ⊔ Q, such that each set contains ≫ x/log x
+conjectures/675.lean:67:If we partition all primes into P ⊔ Q, such that each set contains ≫ x/log x
+conjectures/675.lean:71:Formalized as: for any such partition, the P-smooth numbers do NOT have
+conjectures/603.lean:1:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/603.lean:4:open Cardinal Set
+conjectures/910.lean:4:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/910.lean:5:import Mathlib.SetTheory.Cardinal.Continuum
+conjectures/910.lean:7:open Set Cardinal Topology
+conjectures/910.lean:49:    Cardinal.continuum < #{T : Set (EuclideanSpace ℝ (Fin n)) // T ⊆ S ∧ IsConnected T} :=
+conjectures/569.lean:24:/-- The Ramsey number R(G, H): the minimum N such that for any graph F
+conjectures/579.lean:10:vertices partitioned into 3 pairs with all cross-pair edges present. -/
+conjectures/609.lean:18:n-coloured to avoid monochromatic odd cycles entirely (partition vertices by
+conjectures/500.lean:52:Turán conjectured that the lower bound construction (partition into 3 equal parts,
+conjectures/638.lean:2:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/638.lean:4:open SimpleGraph Cardinal
+conjectures/638.lean:41:Let S be a family of finite graphs (indexed by vertex count) with the Ramsey
+conjectures/638.lean:55:    (κ : Cardinal) (hκ : ℵ₀ ≤ κ) :
+conjectures/560.lean:4:import Mathlib.SetTheory.Cardinal.Finite
+conjectures/560.lean:14:Let R̂(G) denote the size Ramsey number, the minimal number of edges m such
+conjectures/560.lean:31:/-- The size Ramsey number R̂(G): the minimum number of edges in a graph H
+conjectures/560.lean:32:    that is Ramsey for G.
+conjectures/560.lean:34:    A graph H on N vertices is Ramsey for G if every 2-coloring of the edges
+conjectures/560.lean:39:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+conjectures/560.lean:57:      (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) >
+conjectures/560.lean:68:      (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) <
+conjectures/560.lean:83:        (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) ∧
+conjectures/560.lean:84:      (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) ≤
+conjectures/174.lean:8:A finite set A ⊂ ℝⁿ is called Ramsey if, for any k ≥ 1, there exists some
+conjectures/174.lean:10:copy of A. Characterise the Ramsey sets in ℝⁿ.
+conjectures/174.lean:13:that every Ramsey set is 'spherical': it lies on the surface of some sphere.
+conjectures/174.lean:14:Graham has conjectured that every spherical set is Ramsey, which would give a
+conjectures/174.lean:17:Known Ramsey sets include vertices of k-dimensional rectangles [EGMRSS73],
+conjectures/174.lean:22:/-- A finite subset A of ℝⁿ is Euclidean Ramsey if for every k ≥ 1, there
+conjectures/174.lean:25:def IsEuclideanRamsey (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+conjectures/174.lean:40:A finite set A ⊂ ℝⁿ is Ramsey if and only if it is spherical.
+conjectures/174.lean:42:The forward direction (Ramsey → spherical) was proved by Erdős, Graham,
+conjectures/174.lean:45:The reverse direction (spherical → Ramsey) is Graham's open conjecture.
+conjectures/174.lean:49:      IsEuclideanRamsey n A ↔ IsSpherical n A :=
+conjectures/190.lean:19:This type of problem belongs to 'canonical' Ramsey theory. The existence
+conjectures/65.lean:28:count equals a * b for some partition a + b = n, the sum of reciprocals of distinct cycle
+conjectures/911.lean:3:import Mathlib.SetTheory.Cardinal.Finite
+conjectures/911.lean:12:Let R̂(G) denote the size Ramsey number, the minimal number of edges m such
+conjectures/911.lean:25:/-- The size Ramsey number R̂(G): the minimum number of edges in a graph H
+conjectures/911.lean:26:    that is Ramsey for G.
+conjectures/911.lean:28:    A graph H on N vertices is Ramsey for G if every 2-coloring of the edges
+conjectures/911.lean:33:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+conjectures/911.lean:59:          sizeRamseyNumber G > f C * Nat.card G.edgeSet :=
+conjectures/568.lean:16:In other words, is G Ramsey size linear?
+conjectures/568.lean:26:/-- The Ramsey number R(G, H): the minimum N such that for any graph F
+conjectures/568.lean:52:In other words, is G Ramsey size linear?
+conjectures/556.lean:25:/-- The k-colour Ramsey number R_k(G): the minimum N such that for every
+conjectures/556.lean:31:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/556.lean:41:For all n ≥ 3, the 3-colour Ramsey number of the cycle C_n satisfies
+conjectures/556.lean:45:    multicolorRamseyNumber (cycleGraph n hn) 3 ≤ 4 * n - 3 :=
+conjectures/740.lean:4:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/740.lean:6:open SimpleGraph Cardinal
+conjectures/740.lean:34:    (G : SimpleGraph V) : Cardinal.{u} :=
+conjectures/740.lean:35:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+conjectures/740.lean:47:    (𝔪 : Cardinal.{u}) (h𝔪_inf : ℵ₀ ≤ 𝔪)
+conjectures/546.lean:25:/-- The diagonal Ramsey number R(G) for a graph G on Fin k: the minimum N such that
+conjectures/159.lean:13:Here R(C₄, Kₙ) is the graph Ramsey number: the minimum N such that every
+conjectures/159.lean:33:/-- The graph Ramsey number R(C₄, Kₙ): the minimum N such that every simple
+conjectures/159.lean:47:The Ramsey number R(C₄, Kₙ) is the minimum N such that every 2-colouring
+conjectures/553.lean:27:/-- The Ramsey number R(3,n): the minimum N such that every 2-colouring of
+conjectures/553.lean:34:/-- The Ramsey number R(3,3,n): the minimum N such that every 3-colouring of
+conjectures/613.lean:21:where r̂ is the size Ramsey number.
+conjectures/601.lean:1:import Mathlib.SetTheory.Ordinal.Basic
+conjectures/601.lean:2:import Mathlib.SetTheory.Ordinal.Arithmetic
+conjectures/601.lean:3:import Mathlib.SetTheory.Ordinal.Exponential
+conjectures/601.lean:4:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/601.lean:8:open Cardinal SimpleGraph Ordinal
+conjectures/601.lean:28:abbrev OrdinalSet (α : Ordinal) := {a : Ordinal // a < α}
+conjectures/601.lean:35:/-- A graph on OrdinalSet α has an independent set of order type α:
+conjectures/601.lean:36:    there is an order embedding from OrdinalSet α into itself whose
+conjectures/601.lean:38:def SimpleGraph.HasIndepSetOfOrderType {α : Ordinal}
+conjectures/601.lean:39:    (G : SimpleGraph (OrdinalSet α)) : Prop :=
+conjectures/601.lean:40:  ∃ e : OrdinalSet α ↪o OrdinalSet α,
+conjectures/601.lean:41:    ∀ i j : OrdinalSet α, i ≠ j → ¬G.Adj (e i) (e j)
+conjectures/601.lean:46:def EHMProperty (α : Ordinal) : Prop :=
+conjectures/601.lean:47:  ∀ G : SimpleGraph (OrdinalSet α),
+conjectures/601.lean:61:theorem erdos_problem_601 (α : Ordinal) (hα : Order.IsSuccLimit α) :
+conjectures/112.lean:6:# Erdős Problem #112: Directed Ramsey Numbers k(n,m)
+conjectures/112.lean:39:/-- The directed Ramsey number k(n,m): the minimal k such that every directed graph
+conjectures/112.lean:42:noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+conjectures/112.lean:50:The directed Ramsey number k(n,m) (defined as `dirRamseyNum n m`) satisfies the
+conjectures/112.lean:58:      dirRamseyNum n m ≤ (2 ^ (m - 1) * (n - 1) ^ m + n - 2) / (2 * n - 3) :=
+conjectures/1030.lean:13:If R(k,l) is the Ramsey number then prove the existence of some c > 0 such that
+conjectures/1030.lean:22:/-- The Ramsey number R(k, l): the minimum N such that every simple graph on N
+conjectures/1014.lean:13:Let R(k,l) be the Ramsey number, so the minimal n such that every graph on at
+conjectures/1014.lean:24:/-- The Ramsey number R(k, l): the minimum N such that every simple graph on N
+conjectures/1014.lean:35:where R(k, l) is the Ramsey number.
+conjectures/594.lean:3:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/594.lean:5:open SimpleGraph Cardinal
+conjectures/549.lean:28:/-- The diagonal Ramsey number R(G) for a graph G on Fin m: the minimum N such that
+conjectures/549.lean:41:The bipartition condition is expressed via a proper 2-coloring where one color
+conjectures/1042.lean:7:import Mathlib.SetTheory.Cardinal.Finite
+conjectures/919.lean:3:import Mathlib.SetTheory.Cardinal.Ordinal
+conjectures/919.lean:4:import Mathlib.SetTheory.Ordinal.Arithmetic
+conjectures/919.lean:7:open SimpleGraph Cardinal Ordinal
+conjectures/919.lean:50:      Ordinal.type ((· < ·) : V → V → Prop) =
+conjectures/919.lean:51:        Cardinal.ord (aleph 2) * Cardinal.ord (aleph 2) ∧
+conjectures/919.lean:57:        Ordinal.type (Subrel (· < ·) S) <
+conjectures/919.lean:58:          Cardinal.ord (aleph 2) * Cardinal.ord (aleph 2) →
+conjectures/919.lean:75:      Ordinal.type ((· < ·) : V → V → Prop) =
+conjectures/919.lean:76:        Cardinal.ord (aleph 2) * Cardinal.ord (aleph 2) ∧
+conjectures/919.lean:85:        Ordinal.type (Subrel (· < ·) S) <
+conjectures/919.lean:86:          Cardinal.ord (aleph 2) * Cardinal.ord (aleph 2) →
+conjectures/561.lean:14:Let R̂(F₁, F₂) denote the two-color size Ramsey number: the minimal number of
+conjectures/561.lean:35:/-- The two-color size Ramsey number R̂(G₁, G₂): the minimum number of edges in
+conjectures/561.lean:38:noncomputable def twoColorSizeRamseyNumber {V₁ V₂ : Type*} [Fintype V₁] [Fintype V₂]
+conjectures/561.lean:58:Let R̂(F₁, F₂) denote the two-color size Ramsey number. Let F₁ and F₂ be
+conjectures/561.lean:73:    twoColorSizeRamseyNumber
+conjectures/149.lean:34:    independent edge sets needed to partition the edges of G. Equivalently,
+conjectures/149.lean:44:    i.e. the edge set of G can be partitioned into at most (5/4)Δ² strongly
+conjectures/597.lean:1:import Mathlib.SetTheory.Ordinal.Basic
+conjectures/597.lean:2:import Mathlib.SetTheory.Ordinal.Arithmetic
+conjectures/597.lean:3:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/597.lean:8:open Cardinal SimpleGraph
+conjectures/597.lean:23:abbrev OrdinalSet (α : Ordinal) := {a : Ordinal // a < α}
+conjectures/597.lean:28:def SimpleGraph.ContainsBiclique {V : Type*} (G : SimpleGraph V) (κ : Cardinal) : Prop :=
+conjectures/597.lean:32:/-- The ordinal-graph partition relation α → (β, G)²:
+conjectures/597.lean:33:    Every 2-coloring of ordered pairs from OrdinalSet α yields either:
+conjectures/597.lean:37:    Here a "copy of β" is given by an order embedding e : OrdinalSet β ↪o OrdinalSet α,
+conjectures/597.lean:39:    is an injective map g : V → OrdinalSet α such that every edge of G maps to
+conjectures/597.lean:41:def OrdGraphPartition (α β : Ordinal) {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/597.lean:42:  ∀ (f : OrdinalSet α → OrdinalSet α → Fin 2),
+conjectures/597.lean:43:    (∃ e : OrdinalSet β ↪o OrdinalSet α,
+conjectures/597.lean:44:      ∀ i j : OrdinalSet β, i < j → f (e i) (e j) = 0) ∨
+conjectures/597.lean:45:    (∃ g : V → OrdinalSet α, Function.Injective g ∧
+conjectures/843.lean:7:Are the squares Ramsey 2-complete? That is, is it true that, in any 2-colouring
+conjectures/843.lean:12:who showed that the set of k-th powers contains a sparse Ramsey r-complete
+conjectures/843.lean:16:/-- A set A ⊆ ℕ is Ramsey r-complete if for every r-colouring of A,
+conjectures/843.lean:19:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+conjectures/843.lean:29:The set of perfect squares is Ramsey 2-complete. That is, for any
+conjectures/843.lean:36:    IsRamseyComplete {n : ℕ | ∃ m : ℕ, m ≥ 1 ∧ n = m ^ 2} 2 :=
+conjectures/118.lean:1:import Mathlib.SetTheory.Ordinal.Basic
+conjectures/118.lean:2:import Mathlib.SetTheory.Ordinal.Arithmetic
+conjectures/118.lean:5:open Ordinal
+conjectures/118.lean:9:abbrev OrdinalSet (α : Ordinal) := {a : Ordinal // a < α}
+conjectures/118.lean:11:/-- The ordinal partition relation `α → (β, γ)²`:
+conjectures/118.lean:17:    Here a "copy of β" is given by an order embedding `e : OrdinalSet β ↪o OrdinalSet α`,
+conjectures/118.lean:19:def OrdPartition (α β γ : Ordinal) : Prop :=
+conjectures/118.lean:20:  ∀ (f : OrdinalSet α → OrdinalSet α → Fin 2),
+conjectures/118.lean:21:    (∃ e : OrdinalSet β ↪o OrdinalSet α,
+conjectures/118.lean:22:      ∀ i j : OrdinalSet β, i < j → f (e i) (e j) = 0) ∨
+conjectures/118.lean:23:    (∃ e : OrdinalSet γ ↪o OrdinalSet α,
+conjectures/118.lean:24:      ∀ i j : OrdinalSet γ, i < j → f (e i) (e j) = 1)
+conjectures/118.lean:27:Erdős–Hajnal Conjecture on Partition Ordinals (Problem #118)
+conjectures/118.lean:30:An ordinal `α` is called a *partition ordinal* if `α → (α, 3)²`, i.e., every
+conjectures/118.lean:35:Erdős and Hajnal conjectured that for every partition ordinal `α` and every `n ≥ 3`,
+conjectures/118.lean:40:partition ordinal — i.e., `ω^(ω^2) → (ω^(ω^2), 3)²` holds — but
+conjectures/118.lean:46:    ¬ ∀ (α : Ordinal), OrdPartition α α 3 →
+conjectures/22.lean:9:Erdős-Bollobás conjecture on Ramsey-Turán numbers (Problem #22).
+conjectures/593.lean:1:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/593.lean:5:open Cardinal
+conjectures/110.lean:4:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/110.lean:5:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/110.lean:8:open SimpleGraph Cardinal
+conjectures/559.lean:3:import Mathlib.SetTheory.Cardinal.Finite
+conjectures/559.lean:12:Let R̂(G) denote the size Ramsey number, the minimal number of edges m such
+conjectures/559.lean:13:that there is a graph H with m edges that is Ramsey for G (every 2-coloring
+conjectures/559.lean:24:/-- The size Ramsey number R̂(G): the minimum number of edges in a graph H
+conjectures/559.lean:25:    that is Ramsey for G.
+conjectures/559.lean:27:    A graph H on N vertices is Ramsey for G if every 2-coloring of the edges
+conjectures/559.lean:32:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+conjectures/559.lean:48:with maximum degree at most d, the size Ramsey number satisfies R̂(G) ≤ C · n.
+conjectures/559.lean:57:            sizeRamseyNumber G ≤ C * n) :=
+conjectures/166.lean:16:R(4,k) is the Ramsey number: the minimum N such that every simple graph
+conjectures/166.lean:27:/-- The Ramsey number R(4,k): the minimum N such that every simple graph
+conjectures/555.lean:32:/-- The k-colour Ramsey number R_k(G): the minimum N such that for every
+conjectures/555.lean:38:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/555.lean:53:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≥
+conjectures/555.lean:65:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≤
+conjectures/555.lean:73:    multicolorRamseyNumber (cycleGraph 4 (by omega)) k ≤ k ^ 2 + k + 1 :=
+conjectures/666.lean:21:an edge-partition of $Q_n$ into four subgraphs, each containing no $C_6$.
+conjectures/666.lean:52:an edge-partition of Q_n into four subgraphs, each containing no C_6.
+conjectures/544.lean:21:/-- The Ramsey number R(3,k): the minimum N such that every simple graph
+conjectures/544.lean:32:That is, the consecutive differences of the Ramsey numbers R(3,k)
+conjectures/925.lean:15:vertices which is not Ramsey for K₃ (i.e. there exists a 2-colouring of the
+conjectures/925.lean:28:/-- A graph G on n vertices is "not Ramsey for K₃" if there exists a
+conjectures/925.lean:31:def IsNotRamseyForTriangle {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :=
+conjectures/925.lean:38:graph G on n vertices which is not Ramsey for K₃ contains an independent set
+conjectures/925.lean:43:      ∀ G : SimpleGraph (Fin n), IsNotRamseyForTriangle G →
+conjectures/807.lean:7:import Mathlib.SetTheory.Cardinal.Finite
+conjectures/807.lean:29:The bipartition number τ(G) is the minimum number of pairwise edge-disjoint
+conjectures/807.lean:32:def bipartitionNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
+conjectures/807.lean:49:The bipartition number τ(G) is the smallest number of pairwise edge-disjoint
+conjectures/807.lean:64:        bipartitionNumber G = n - independenceNumber G} : ℝ) /
+conjectures/570.lean:25:/-- The Ramsey number R(G, H): the minimum N such that for any graph F
+conjectures/570.lean:46:Ramsey number.
+conjectures/443.lean:25:/-- The set {k(m-k) : 1 ≤ k ≤ m/2} of products arising from partitioning m
+conjectures/1017.lean:14:partitioned into at most f(n,k) edge-disjoint complete graphs. Estimate
+conjectures/1017.lean:17:The function f(n,k) is sometimes called the clique partition number.
+conjectures/739.lean:3:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/739.lean:5:open SimpleGraph Cardinal
+conjectures/739.lean:29:    (G : SimpleGraph V) : Cardinal.{u} :=
+conjectures/739.lean:30:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+conjectures/739.lean:42:    (𝔪 : Cardinal.{u}) (h𝔪_inf : ℵ₀ ≤ 𝔪)
+conjectures/739.lean:44:    ∀ (𝔫 : Cardinal.{u}), ℵ₀ ≤ 𝔫 → 𝔫 < 𝔪 →
+conjectures/565.lean:11:Let R*(G) be the induced Ramsey number: the minimal m such that there is a
+conjectures/565.lean:21:/-- The induced Ramsey number R*(G): the minimum m such that there exists a
+conjectures/565.lean:28:noncomputable def inducedRamseyNumber {V : Type*} [Fintype V]
+conjectures/565.lean:40:the induced Ramsey number R*(G) ≤ 2^(Cn).
+conjectures/565.lean:47:      inducedRamseyNumber G ≤ 2 ^ (C * n) :=
+conjectures/557.lean:21:/-- The k-colour Ramsey number R_k(G): the minimum N such that for every
+conjectures/557.lean:27:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/557.lean:44:        multicolorRamseyNumber T k ≤ k * n + C :=
+conjectures/551.lean:13:Here R(C_k, K_n) is the off-diagonal Ramsey number, C_k is the cycle graph on
+conjectures/551.lean:27:/-- The off-diagonal Ramsey number R(G₁, G₂): the minimum N such that every
+conjectures/551.lean:30:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+conjectures/551.lean:57:    offDiagRamseyNumber (cycleGraph k (by omega)) (⊤ : SimpleGraph (Fin n)) =
+conjectures/615.lean:17:Equivalently, if rt(n; k, ℓ) denotes the Ramsey-Turán number (maximum number of
+conjectures/615.lean:41:/-- The Ramsey-Turán number rt(n; k, ℓ): the maximum number of edges in a graph
+conjectures/545.lean:13:Let G be a graph with m edges and no isolated vertices. Is the Ramsey number R(G)
+conjectures/545.lean:26:/-- The diagonal Ramsey number R(G) for a graph G on Fin k: the minimum N such that
+conjectures/545.lean:51:Let G be a graph with m edges and no isolated vertices. Is the Ramsey number
+conjectures/183.lean:24:/-- The multicolor Ramsey number R(3;k): the minimum n such that every
+conjectures/183.lean:29:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+conjectures/183.lean:49:      Tendsto (fun k : ℕ => (multicolorRamseyTriangle k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+conjectures/583.lean:15:Every connected graph on n vertices can be partitioned into at most ⌈n/2⌉
+conjectures/583.lean:24:Every connected graph on n vertices can be partitioned into at most ⌈n/2⌉
+conjectures/328.lean:15:Can A be partitioned into t many subsets A₁,...,Aₜ (where t = t(C) depends
+conjectures/328.lean:23:partition of A, some part has representation function ≥ C at some n.
+conjectures/193.lean:11:Originally conjectured by Gerver and Ramsey [GeRa79], who showed that the
+conjectures/871.lean:30:of A tends to infinity). Can A be partitioned into two disjoint additive
+conjectures/871.lean:36:partitioned into two disjoint additive bases.
+conjectures/871.lean:42:whose representation function tends to infinity, yet A cannot be partitioned
+conjectures/62.lean:3:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/62.lean:4:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/62.lean:6:open SimpleGraph Cardinal
+conjectures/165.lean:16:R(3,k) is the Ramsey number: the minimum N such that every simple graph
+conjectures/165.lean:29:/-- The Ramsey number R(3,k): the minimum N such that every simple graph
+conjectures/127.lean:22:The maximum bipartite subgraph size of G: the maximum over all vertex bipartitions
+conjectures/737.lean:3:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/737.lean:5:open SimpleGraph Cardinal
+conjectures/554.lean:29:/-- The k-colour Ramsey number R_k(G): the minimum N such that for every
+conjectures/554.lean:35:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/554.lean:53:      (multicolorRamseyNumber (cycleGraph (2 * n + 1) (by omega)) k : ℝ) ≤
+conjectures/554.lean:54:        ε * (multicolorRamseyNumber (⊤ : SimpleGraph (Fin 3)) k : ℝ) :=
+conjectures/54.lean:13:A set A of natural numbers is Ramsey 2-complete if for every 2-coloring of ℕ,
+conjectures/54.lean:17:def IsRamsey2Complete (A : Set ℕ) : Prop :=
+conjectures/54.lean:26:There exists a Ramsey 2-complete set A of positive integers and a constant c > 0
+conjectures/54.lean:34:      IsRamsey2Complete A ∧
+conjectures/533.lean:15:Ramsey-Turán density. This was disproved by Balogh and Lenz [BaLe13], who
+conjectures/129.lean:33:/-- The generalized Ramsey number R(n; k, r): the smallest N such that for
+conjectures/129.lean:36:noncomputable def multicolorRamseyNum (n k r : ℕ) : ℕ :=
+conjectures/129.lean:48:Ramsey numbers. Erdős conjectured more generally that for all r, k ≥ 2 there
+conjectures/129.lean:59:        ∀ n : ℕ, (multicolorRamseyNum n 3 r : ℝ) < C ^ Real.sqrt (n : ℝ) :=
+conjectures/111.lean:4:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/111.lean:5:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/111.lean:10:open SimpleGraph Cardinal
+conjectures/720.lean:4:import Mathlib.SetTheory.Cardinal.Finite
+conjectures/720.lean:13:Let R̂(G) denote the size Ramsey number, the minimal number of edges m such
+conjectures/720.lean:23:R̂(Pₙ) ≪ n and R̂(Cₙ) ≪ n (i.e., the size Ramsey numbers are linear).
+conjectures/720.lean:44:/-- The size Ramsey number R̂(G): the minimum number of edges in a graph H
+conjectures/720.lean:45:    that is Ramsey for G.
+conjectures/720.lean:47:    A graph H on N vertices is Ramsey for G if every 2-coloring of the edges
+conjectures/720.lean:52:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+conjectures/720.lean:66:The size Ramsey number of the path Pₙ is at most linear in n.
+conjectures/720.lean:73:      sizeRamseyNumber (pathGraph n) ≤ C * (n + 1) :=
+conjectures/720.lean:79:The size Ramsey number of the cycle Cₙ is at most linear in n.
+conjectures/720.lean:86:      sizeRamseyNumber (cycleGraph n hn) ≤ C * n :=
+conjectures/1015.lean:21:Erdős notes that f(t) ≪ 4^t, by comparing to the Ramsey number R(t).
+conjectures/1015.lean:48:/-- The 2-colour Ramsey number R(s, t): the minimum N such that every
+conjectures/1015.lean:60:of leftover vertices when partitioning any 2-colouring of Kₙ into
+conjectures/547.lean:23:/-- The diagonal Ramsey number R(G) for a graph G on Fin k: the minimum N such that
+conjectures/55.lean:13:A set A of natural numbers is Ramsey r-complete if for every r-coloring of ℕ,
+conjectures/55.lean:17:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+conjectures/55.lean:26:For every r ≥ 2, there exists an r-Ramsey complete set A such that
+conjectures/55.lean:30:cannot be r-Ramsey complete.
+conjectures/55.lean:32:Upper bound: for every r ≥ 2, there exists an r-Ramsey complete set
+conjectures/55.lean:37:        IsRamseyComplete A r ∧
+conjectures/55.lean:46:    cannot be r-Ramsey complete. -/
+conjectures/55.lean:54:          ¬ IsRamseyComplete A r :=
+conjectures/1068.lean:3:import Mathlib.SetTheory.Cardinal.Ordinal
+conjectures/1068.lean:5:open SimpleGraph Cardinal
+conjectures/181.lean:16:Here R(Q_n) is the diagonal Ramsey number: the minimum N such that every
+conjectures/181.lean:41:/-- The diagonal Ramsey number R(H): the minimum N such that for every simple
+conjectures/163.lean:16:Here R(H) denotes the diagonal Ramsey number R(H, H): the minimum N such that
+conjectures/163.lean:37:/-- The diagonal Ramsey number R(H): the minimum N such that for every simple
+conjectures/474.lean:1:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/474.lean:2:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/474.lean:3:import Mathlib.SetTheory.Cardinal.Continuum
+conjectures/474.lean:5:open Cardinal
+conjectures/474.lean:7:/-- The negative square-bracket partition relation κ ↛ [μ]ₖ² for cardinals.
+conjectures/474.lean:12:    In standard Erdős-Rado partition calculus notation, this is κ ↛ [μ]ₖ². -/
+conjectures/474.lean:13:def NegSqBracketPartition (κ μ : Cardinal) (k : ℕ) : Prop :=
+conjectures/474.lean:22:Does the negative square-bracket partition relation 2^ℵ₀ ↛ [ℵ₁]₃² hold?
+conjectures/550.lean:27:/-- The off-diagonal Ramsey number R(G₁, G₂): the minimum N such that every
+conjectures/550.lean:30:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+conjectures/550.lean:67:      offDiagRamseyNumber T (completeMultipartiteGraph sizes) ≤
+conjectures/550.lean:68:        (k - 1) * (offDiagRamseyNumber T
+conjectures/552.lean:12:Determine the Ramsey number R(C₄, Sₙ), where Sₙ = K_{1,n} is the star on
+conjectures/552.lean:30:/-- The off-diagonal Ramsey number R(G₁, G₂): the minimum N such that every
+conjectures/552.lean:33:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+conjectures/552.lean:72:      (offDiagRamseyNumber (cycleGraph 4 (by omega)) (starGraph n) : ℝ) ≤
+conjectures/596.lean:39:The known example is G₁ = C₄, G₂ = C₆ (Nešetřil-Rödl for the finite Ramsey
+conjectures/596.lean:45:      -- (a) Finite Ramsey property: for every n ≥ 1, there exists a G₁-free graph
+conjectures/1029.lean:13:If R(k) is the Ramsey number for K_k, the minimal n such that every 2-colouring
+conjectures/1029.lean:23:/-- The diagonal Ramsey number R(k): the minimum N such that for every
+conjectures/1029.lean:26:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+conjectures/1029.lean:42:      (diagonalRamseyNumber k : ℝ) ≥ C * (k : ℝ) * (2 : ℝ) ^ ((k : ℝ) / 2) :=
+conjectures/184.lean:27:n vertices, the edge set of G can be partitioned into at most C · n parts, where
+conjectures/736.lean:3:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/736.lean:5:open SimpleGraph Cardinal
+conjectures/736.lean:35:    (G : SimpleGraph V) : Cardinal.{u} :=
+conjectures/736.lean:36:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+conjectures/736.lean:50:    ∀ (m : Cardinal.{u}),
+conjectures/360.lean:11:Erdős Problem #360: Sum-free partitions
+conjectures/360.lean:13:Let f(n) be minimal such that {1, ..., n-1} can be partitioned into f(n) classes
+conjectures/602.lean:1:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/602.lean:4:open Cardinal Set
+conjectures/812.lean:16:Here R(n) denotes the diagonal Ramsey number R(n,n): the minimum N such that
+conjectures/812.lean:25:/-- The diagonal Ramsey number R(n) = R(n,n): the minimum N such that every
+conjectures/812.lean:28:noncomputable def diagonalRamsey (n : ℕ) : ℕ :=
+conjectures/812.lean:35:sufficiently large n. That is, the diagonal Ramsey numbers grow at least
+conjectures/812.lean:41:      (diagonalRamsey (n + 1) : ℝ) / (diagonalRamsey n : ℝ) ≥ 1 + c :=
+conjectures/812.lean:53:      (diagonalRamsey (n + 1) : ℝ) - (diagonalRamsey n : ℝ) ≥ c * (n : ℝ) ^ 2 :=
+conjectures/558.lean:27:/-- The k-colour Ramsey number R_k(G): the minimum N such that for every
+conjectures/558.lean:33:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+conjectures/558.lean:51:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ∧
+conjectures/558.lean:52:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ≤
+conjectures/558.lean:67:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ∧
+conjectures/558.lean:68:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ≤
+conjectures/558.lean:84:        (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ∧
+conjectures/558.lean:85:      (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ≤
+conjectures/986.lean:16:R(k,n) is the Ramsey number: the minimum N such that every simple graph
+conjectures/986.lean:30:/-- The Ramsey number R(k,n): the minimum N such that every simple graph

@@ -1,0 +1,742 @@
+conjectures/603.lean:1:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/603.lean-2-import Mathlib.Data.Set.Card
+/home/ryan/erdos/conjectures/603.lean-3-
+conjectures/603.lean:4:open Cardinal Set
+/home/ryan/erdos/conjectures/603.lean-5-
+/home/ryan/erdos/conjectures/603.lean-6-noncomputable section
+--
+/home/ryan/erdos/conjectures/603.lean-14-
+/home/ryan/erdos/conjectures/603.lean-15-A problem of Komjáth [Er87]. If instead we have $|A_i \cap A_j| \neq 1$ then
+conjectures/603.lean:16:Komjáth showed that this is possible with at most $\aleph_0$ colours.
+/home/ryan/erdos/conjectures/603.lean-17-
+conjectures/603.lean-18-Tags: combinatorics, set theory
+--
+/home/ryan/erdos/conjectures/603.lean-23-
+/home/ryan/erdos/conjectures/603.lean-24-Let $(A_i)$ be a family of countably infinite sets such that $|A_i \cap A_j| \neq 2$
+conjectures/603.lean:25:for all $i \neq j$. Then there is a colouring with at most $\aleph_0$ colours so that
+/home/ryan/erdos/conjectures/603.lean-26-no $A_i$ is monochromatic.
+/home/ryan/erdos/conjectures/603.lean-27-
+/home/ryan/erdos/conjectures/603.lean-28-This is conjectured by analogy with the Komjáth result for the $|A_i \cap A_j| \neq 1$
+conjectures/603.lean:29:case, where $\aleph_0$ colours suffice.
+/home/ryan/erdos/conjectures/603.lean-30--/
+conjectures/603.lean-31-theorem erdos_problem_603 {α : Type*} {ι : Type*} (A : ι → Set α)
+--
+conjectures/765.lean-56-    ∀ ε : ℝ, ε > 0 →
+conjectures/765.lean-57-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+conjectures/765.lean:58:      |(↑(extremalNumber (cycleGraph 4 (by omega)) n) / (n : ℝ) ^ ((3 : ℝ) / 2) - 1 / 2)| < ε :=
+/home/ryan/erdos/conjectures/765.lean-59-  sorry
+/home/ryan/erdos/conjectures/765.lean-60-
+--
+conjectures/765.lean-70-    ∃ C : ℝ, 0 < C ∧
+conjectures/765.lean-71-    ∀ n : ℕ, 1 ≤ n →
+conjectures/765.lean:72:      |(↑(extremalNumber (cycleGraph 4 (by omega)) n) - (n : ℝ) ^ ((3 : ℝ) / 2) / 2)| ≤
+conjectures/765.lean-73-        C * (n : ℝ) :=
+/home/ryan/erdos/conjectures/765.lean-74-  sorry
+--
+/home/ryan/erdos/conjectures/638.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+conjectures/638.lean:2:import Mathlib.SetTheory.Cardinal.Basic
+/home/ryan/erdos/conjectures/638.lean-3-
+conjectures/638.lean:4:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/638.lean-5-
+/home/ryan/erdos/conjectures/638.lean-6-noncomputable section
+--
+/home/ryan/erdos/conjectures/638.lean-13-then there is a monochromatic triangle.
+/home/ryan/erdos/conjectures/638.lean-14-
+conjectures/638.lean:15:Is it true that for every infinite cardinal $\aleph$ there is a graph $G$ of
+/home/ryan/erdos/conjectures/638.lean-16-which every finite subgraph is in $S$ and if the edges of $G$ are coloured
+conjectures/638.lean:17:with $\aleph$ many colours then there is a monochromatic triangle.
+/home/ryan/erdos/conjectures/638.lean-18--/
+/home/ryan/erdos/conjectures/638.lean-19-
+--
+conjectures/638.lean-53-        ∀ (c : Fin m → Fin m → Fin n), (∀ u v, c u v = c v u) →
+/home/ryan/erdos/conjectures/638.lean-54-          HasMonoTriangle G c)
+conjectures/638.lean:55:    (κ : Cardinal) (hκ : ℵ₀ ≤ κ) :
+conjectures/638.lean-56-    ∃ (V : Type) (G : SimpleGraph V),
+conjectures/638.lean-57-      (∀ (m : ℕ) (f : Fin m ↪ V),
+--
+conjectures/974.lean-29-theorem erdos_problem_974 {n : ℕ} (hn : 2 ≤ n)
+conjectures/974.lean-30-    (z : Fin n → ℂ)
+conjectures/974.lean:31:    (hz1 : z ⟨0, by omega⟩ = 1)
+conjectures/974.lean-32-    (hzeros : ∀ N : ℕ, ∃ k ≥ N, ∀ j : ℕ, j < n - 1 →
+conjectures/974.lean-33-      (∑ i : Fin n, (z i) ^ (k + j)) = 0) :
+--
+/home/ryan/erdos/conjectures/910.lean-2-import Mathlib.Topology.Connected.Basic
+/home/ryan/erdos/conjectures/910.lean-3-import Mathlib.Topology.Homeomorph.Defs
+conjectures/910.lean:4:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/910.lean:5:import Mathlib.SetTheory.Cardinal.Continuum
+/home/ryan/erdos/conjectures/910.lean-6-
+conjectures/910.lean:7:open Set Cardinal Topology
+/home/ryan/erdos/conjectures/910.lean-8-
+/home/ryan/erdos/conjectures/910.lean-9-noncomputable section
+--
+conjectures/910.lean-47-    ∀ (S : Set (EuclideanSpace ℝ (Fin n))),
+/home/ryan/erdos/conjectures/910.lean-48-    IsConnected S →
+conjectures/910.lean:49:    Cardinal.continuum < #{T : Set (EuclideanSpace ℝ (Fin n)) // T ⊆ S ∧ IsConnected T} :=
+/home/ryan/erdos/conjectures/910.lean-50-  sorry
+/home/ryan/erdos/conjectures/910.lean-51-
+--
+/home/ryan/erdos/conjectures/65.lean-14-    · exact Or.inr ⟨hv, hu⟩
+/home/ryan/erdos/conjectures/65.lean-15-    · exact Or.inl ⟨hv, hu⟩
+conjectures/65.lean:16:  loopless := ⟨fun v h => by rcases h with ⟨h1, h2⟩ | ⟨h1, h2⟩ <;> omega⟩
+/home/ryan/erdos/conjectures/65.lean-17-
+/home/ryan/erdos/conjectures/65.lean-18-/--
+--
+conjectures/1016.lean-27-def ContainsCycle {n : ℕ} (G : SimpleGraph (Fin n)) (k : ℕ) (hk : k ≥ 3) : Prop :=
+conjectures/1016.lean-28-  ∃ f : Fin k → Fin n, Function.Injective f ∧
+conjectures/1016.lean:29:    ∀ i : Fin k, G.Adj (f i) (f ⟨(i.val + 1) % k, Nat.mod_lt _ (by omega)⟩)
+/home/ryan/erdos/conjectures/1016.lean-30-
+/home/ryan/erdos/conjectures/1016.lean-31-/-- A graph on `Fin n` is pancyclic if it contains cycles of every length
+--
+conjectures/569.lean-47-    ∃ c : ℕ, ∀ (n : ℕ) (H : SimpleGraph (Fin n)),
+conjectures/569.lean-48-      (∀ v : Fin n, ∃ w, H.Adj v w) →
+conjectures/569.lean:49:      ramseyNum (cycleGraph (2 * k + 1) (by omega)) H ≤ c * H.edgeSet.ncard :=
+/home/ryan/erdos/conjectures/569.lean-50-  sorry
+/home/ryan/erdos/conjectures/569.lean-51-
+--
+/home/ryan/erdos/conjectures/609.lean-32-    Function.Injective v ∧
+conjectures/609.lean-33-    ∃ col : Fin c, ∀ i : Fin k,
+conjectures/609.lean:34:      χ (v i) (v ⟨(i.val + 1) % k, Nat.mod_lt _ (by have := i.isLt; omega)⟩) = col
+/home/ryan/erdos/conjectures/609.lean-35-
+/home/ryan/erdos/conjectures/609.lean-36-/--
+--
+/home/ryan/erdos/conjectures/560.lean-2-import Mathlib.Data.Nat.Lattice
+/home/ryan/erdos/conjectures/560.lean-3-import Mathlib.Data.Real.Basic
+conjectures/560.lean:4:import Mathlib.SetTheory.Cardinal.Finite
+/home/ryan/erdos/conjectures/560.lean-5-import Mathlib.Data.Fintype.Sum
+/home/ryan/erdos/conjectures/560.lean-6-
+--
+/home/ryan/erdos/conjectures/685.lean-20-
+/home/ryan/erdos/conjectures/685.lean-21-/-- The number of distinct prime divisors of n (the arithmetic function ω(n)). -/
+conjectures/685.lean:22:def omega (n : ℕ) : ℕ := n.primeFactors.card
+/home/ryan/erdos/conjectures/685.lean-23-
+conjectures/685.lean-24-/-- The sum of reciprocals of primes p with k < p < n: ∑_{k < p < n} 1/p. -/
+--
+conjectures/685.lean-38-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/685.lean-39-    ∀ k : ℕ, (n : ℝ) ^ ε < (k : ℝ) → (k : ℝ) ≤ (n : ℝ) ^ (1 - ε) →
+conjectures/685.lean:40:    |(↑(omega (n.choose k)) : ℝ) - ↑k * primeReciprocalSum k n| ≤
+conjectures/685.lean-41-      δ * ↑k * primeReciprocalSum k n :=
+/home/ryan/erdos/conjectures/685.lean-42-  sorry
+--
+/home/ryan/erdos/conjectures/911.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/911.lean-2-import Mathlib.Data.Nat.Lattice
+conjectures/911.lean:3:import Mathlib.SetTheory.Cardinal.Finite
+/home/ryan/erdos/conjectures/911.lean-4-
+/home/ryan/erdos/conjectures/911.lean-5-open SimpleGraph
+--
+/home/ryan/erdos/conjectures/740.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+/home/ryan/erdos/conjectures/740.lean-3-import Mathlib.Combinatorics.SimpleGraph.Walks.Basic
+conjectures/740.lean:4:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/740.lean-5-
+conjectures/740.lean:6:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/740.lean-7-
+/home/ryan/erdos/conjectures/740.lean-8-universe u
+--
+/home/ryan/erdos/conjectures/740.lean-32-    for which G admits a proper κ-coloring. -/
+conjectures/740.lean-33-noncomputable def SimpleGraph.cardChromaticNumber {V : Type u}
+conjectures/740.lean:34:    (G : SimpleGraph V) : Cardinal.{u} :=
+conjectures/740.lean:35:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+/home/ryan/erdos/conjectures/740.lean-36-
+/home/ryan/erdos/conjectures/740.lean-37-/--
+--
+/home/ryan/erdos/conjectures/740.lean-45--/
+conjectures/740.lean-46-theorem erdos_problem_740 {V : Type u} (G : SimpleGraph V)
+conjectures/740.lean:47:    (𝔪 : Cardinal.{u}) (h𝔪_inf : ℵ₀ ≤ 𝔪)
+conjectures/740.lean-48-    (hχ : G.cardChromaticNumber = 𝔪) (r : ℕ) (hr : 1 ≤ r) :
+conjectures/740.lean-49-    ∃ (W : Type u) (H : SimpleGraph W),
+--
+/home/ryan/erdos/conjectures/597.lean-1-import Mathlib.SetTheory.Ordinal.Basic
+/home/ryan/erdos/conjectures/597.lean-2-import Mathlib.SetTheory.Ordinal.Arithmetic
+conjectures/597.lean:3:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/597.lean-4-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/597.lean-5-import Mathlib.Combinatorics.SimpleGraph.Clique
+/home/ryan/erdos/conjectures/597.lean-6-import Mathlib.Order.Hom.Basic
+/home/ryan/erdos/conjectures/597.lean-7-
+conjectures/597.lean:8:open Cardinal SimpleGraph
+/home/ryan/erdos/conjectures/597.lean-9-
+/home/ryan/erdos/conjectures/597.lean-10-noncomputable section
+--
+/home/ryan/erdos/conjectures/597.lean-26-    disjoint vertex sets A and B, each of cardinality at least κ,
+/home/ryan/erdos/conjectures/597.lean-27-    such that every vertex in A is adjacent to every vertex in B. -/
+conjectures/597.lean:28:def SimpleGraph.ContainsBiclique {V : Type*} (G : SimpleGraph V) (κ : Cardinal) : Prop :=
+conjectures/597.lean-29-  ∃ (A B : Set V), Disjoint A B ∧ #A ≥ κ ∧ #B ≥ κ ∧
+/home/ryan/erdos/conjectures/597.lean-30-    ∀ a ∈ A, ∀ b ∈ B, G.Adj a b
+--
+/home/ryan/erdos/conjectures/597.lean-57--/
+conjectures/597.lean-58-theorem erdos_problem_597 {V : Type*} (G : SimpleGraph V)
+conjectures/597.lean:59:    (hcard : #V ≤ aleph 1)
+conjectures/597.lean-60-    (hK4 : G.CliqueFree 4)
+conjectures/597.lean:61:    (hbip : ¬G.ContainsBiclique (aleph 0)) :
+/home/ryan/erdos/conjectures/597.lean-62-    OrdGraphPartition
+conjectures/597.lean:63:      ((aleph 1).ord ^ 2)
+conjectures/597.lean:64:      ((aleph 1).ord * (aleph 0).ord)
+conjectures/597.lean-65-      G :=
+/home/ryan/erdos/conjectures/597.lean-66-  sorry
+--
+/home/ryan/erdos/conjectures/75.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/75.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/75.lean:3:import Mathlib.SetTheory.Cardinal.Ordinal
+/home/ryan/erdos/conjectures/75.lean-4-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+/home/ryan/erdos/conjectures/75.lean-5-
+conjectures/75.lean:6:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/75.lean-7-
+/home/ryan/erdos/conjectures/75.lean-8-noncomputable section
+--
+conjectures/75.lean-29-theorem erdos_problem_75a :
+conjectures/75.lean-30-    ∃ (V : Type) (_ : DecidableEq V) (G : SimpleGraph V),
+conjectures/75.lean:31:      #V = aleph 1 ∧
+/home/ryan/erdos/conjectures/75.lean-32-      ¬Nonempty (G.Coloring ℕ) ∧
+conjectures/75.lean-33-      ∀ ε : ℝ, ε > 0 →
+--
+conjectures/75.lean-48-theorem erdos_problem_75b :
+conjectures/75.lean-49-    ∃ (V : Type) (_ : DecidableEq V) (G : SimpleGraph V),
+conjectures/75.lean:50:      #V = aleph 1 ∧
+/home/ryan/erdos/conjectures/75.lean-51-      ¬Nonempty (G.Coloring ℕ) ∧
+conjectures/75.lean-52-      ∃ c : ℝ, c > 0 ∧
+--
+/home/ryan/erdos/conjectures/679.lean-31-
+/home/ryan/erdos/conjectures/679.lean-32-/-- The number of distinct prime factors of n (ω(n) in analytic number theory). -/
+conjectures/679.lean:33:noncomputable def erdos679_omega (n : ℕ) : ℕ :=
+/home/ryan/erdos/conjectures/679.lean-34-  (Nat.primeFactorsList n).toFinset.card
+/home/ryan/erdos/conjectures/679.lean-35-
+--
+conjectures/679.lean-48-    Set.Infinite {n : ℕ |
+conjectures/679.lean-49-      ∀ k : ℕ, k₀ ≤ k → k < n →
+conjectures/679.lean:50:        (erdos679_omega (n - k) : ℝ) <
+conjectures/679.lean-51-          (1 + ε) * Real.log (k : ℝ) / Real.log (Real.log (k : ℝ))} :=
+/home/ryan/erdos/conjectures/679.lean-52-  sorry
+--
+conjectures/679.lean-64-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+conjectures/679.lean-65-      ∃ k : ℕ, k < n ∧
+conjectures/679.lean:66:        (erdos679_omega (n - k) : ℝ) ≥
+conjectures/679.lean-67-          Real.log (k : ℝ) / Real.log (Real.log (k : ℝ)) +
+conjectures/679.lean-68-          c * Real.log (k : ℝ) / (Real.log (Real.log (k : ℝ))) ^ 2 :=
+--
+conjectures/811.lean-66-      ∀ c : Sym2 (Fin n) → Fin 6,
+/home/ryan/erdos/conjectures/811.lean-67-        IsBalancedColoring n 6 c →
+conjectures/811.lean:68:        HasRainbowCopy (cycleGraph811 6 (by omega)) c :=
+/home/ryan/erdos/conjectures/811.lean-69-  sorry
+/home/ryan/erdos/conjectures/811.lean-70-
+--
+/home/ryan/erdos/conjectures/601.lean-2-import Mathlib.SetTheory.Ordinal.Arithmetic
+/home/ryan/erdos/conjectures/601.lean-3-import Mathlib.SetTheory.Ordinal.Exponential
+conjectures/601.lean:4:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/601.lean-5-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/601.lean-6-import Mathlib.Order.Hom.Basic
+/home/ryan/erdos/conjectures/601.lean-7-
+conjectures/601.lean:8:open Cardinal SimpleGraph Ordinal
+/home/ryan/erdos/conjectures/601.lean-9-
+/home/ryan/erdos/conjectures/601.lean-10-noncomputable section
+--
+/home/ryan/erdos/conjectures/559.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/559.lean-2-import Mathlib.Data.Nat.Lattice
+conjectures/559.lean:3:import Mathlib.SetTheory.Cardinal.Finite
+/home/ryan/erdos/conjectures/559.lean-4-
+/home/ryan/erdos/conjectures/559.lean-5-open SimpleGraph
+--
+conjectures/666.lean-62-      (↑(H.edgeFinset.card) : ℝ) ≥ ε * ↑n * (2 : ℝ) ^ (n - 1 : ℕ) ∧
+conjectures/666.lean-63-      ¬∃ f : Fin 6 → (Fin n → Bool), Function.Injective f ∧
+conjectures/666.lean:64:        ∀ i j, (cycleGraph666 6 (by omega)).Adj i j → H.Adj (f i) (f j) :=
+/home/ryan/erdos/conjectures/666.lean-65-  sorry
+/home/ryan/erdos/conjectures/666.lean-66-
+--
+conjectures/574.lean-19-noncomputable def exConsecutiveCycles (k : ℕ) (hk : k ≥ 2) (n : ℕ) : ℕ :=
+conjectures/574.lean-20-  sSup {e : ℕ | ∃ G : SimpleGraph (Fin n),
+conjectures/574.lean:21:    ¬ContainsCycleOfLength G (2 * k - 1) (by omega) ∧
+conjectures/574.lean:22:    ¬ContainsCycleOfLength G (2 * k) (by omega) ∧
+/home/ryan/erdos/conjectures/574.lean-23-    G.edgeSet.ncard = e}
+/home/ryan/erdos/conjectures/574.lean-24-
+--
+/home/ryan/erdos/conjectures/594.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/594.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/594.lean:3:import Mathlib.SetTheory.Cardinal.Basic
+/home/ryan/erdos/conjectures/594.lean-4-
+conjectures/594.lean:5:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/594.lean-6-
+/home/ryan/erdos/conjectures/594.lean-7-noncomputable section
+--
+/home/ryan/erdos/conjectures/594.lean-10-# Erdős Problem #594
+/home/ryan/erdos/conjectures/594.lean-11-
+conjectures/594.lean:12:Does every graph $G$ with chromatic number $\geq \aleph_1$ contain all
+/home/ryan/erdos/conjectures/594.lean-13-sufficiently large odd cycles?
+/home/ryan/erdos/conjectures/594.lean-14-
+--
+/home/ryan/erdos/conjectures/1042.lean-5-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/1042.lean-6-import Mathlib.Topology.MetricSpace.Basic
+conjectures/1042.lean:7:import Mathlib.SetTheory.Cardinal.Finite
+/home/ryan/erdos/conjectures/1042.lean-8-import Mathlib.Data.Set.Card
+/home/ryan/erdos/conjectures/1042.lean-9-
+--
+/home/ryan/erdos/conjectures/916.lean-32-      Function.Injective cycle ∧
+conjectures/916.lean-33-      (∀ i : Fin (k + 3), G.Adj (cycle i)
+conjectures/916.lean:34:        (cycle ⟨(i.val + 1) % (k + 3), Nat.mod_lt _ (by omega)⟩)) ∧
+conjectures/916.lean-35-      ∃ v : Fin n, v ∉ Set.range cycle ∧
+conjectures/916.lean-36-        ∃ (i j l : Fin (k + 3)), i ≠ j ∧ j ≠ l ∧ i ≠ l ∧
+--
+/home/ryan/erdos/conjectures/919.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/919.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/919.lean:3:import Mathlib.SetTheory.Cardinal.Ordinal
+/home/ryan/erdos/conjectures/919.lean-4-import Mathlib.SetTheory.Ordinal.Arithmetic
+/home/ryan/erdos/conjectures/919.lean-5-import Mathlib.Order.RelClasses
+/home/ryan/erdos/conjectures/919.lean-6-
+conjectures/919.lean:7:open SimpleGraph Cardinal Ordinal
+/home/ryan/erdos/conjectures/919.lean-8-
+/home/ryan/erdos/conjectures/919.lean-9-noncomputable section
+--
+/home/ryan/erdos/conjectures/919.lean-12-# Erdős Problem #919
+/home/ryan/erdos/conjectures/919.lean-13-
+conjectures/919.lean:14:Is there a graph $G$ with vertex set $\omega_2^2$ and chromatic number $\aleph_2$
+/home/ryan/erdos/conjectures/919.lean-15-such that every subgraph whose vertices have a lesser type has chromatic number
+conjectures/919.lean:16:$\leq \aleph_0$?
+/home/ryan/erdos/conjectures/919.lean-17-
+conjectures/919.lean:18:What if instead we ask for $G$ to have chromatic number $\aleph_1$?
+/home/ryan/erdos/conjectures/919.lean-19-
+/home/ryan/erdos/conjectures/919.lean-20-This question was inspired by a theorem of Babai, that if $G$ is a graph on a
+conjectures/919.lean:21:well-ordered set with chromatic number $\geq \aleph_0$ there is a subgraph on
+conjectures/919.lean:22:vertices with order-type $\omega$ with chromatic number $\aleph_0$.
+/home/ryan/erdos/conjectures/919.lean-23-
+/home/ryan/erdos/conjectures/919.lean-24-Erdős and Hajnal showed this does not generalise to higher cardinals — they
+conjectures/919.lean:25:constructed a graph on $\omega_1^2$ with chromatic number $\aleph_1$ such that
+conjectures/919.lean:26:every strictly smaller subgraph has chromatic number $\leq \aleph_0$.
+/home/ryan/erdos/conjectures/919.lean-27-
+conjectures/919.lean:28:A similar construction produces a graph on $\omega_2^2$ with chromatic number
+conjectures/919.lean:29:$\aleph_2$ such that every smaller subgraph has chromatic number $\leq \aleph_1$.
+/home/ryan/erdos/conjectures/919.lean-30-
+conjectures/919.lean-31-https://www.erdosproblems.com/919
+--
+/home/ryan/erdos/conjectures/919.lean-49-      -- The order type of V is ω₂ · ω₂
+conjectures/919.lean-50-      Ordinal.type ((· < ·) : V → V → Prop) =
+conjectures/919.lean:51:        Cardinal.ord (aleph 2) * Cardinal.ord (aleph 2) ∧
+/home/ryan/erdos/conjectures/919.lean-52-      -- G has chromatic number ≥ ℵ₂ (any proper coloring needs ≥ ℵ₂ colors)
+conjectures/919.lean:53:      (∀ (α : Type), Nonempty (G.Coloring α) → aleph 2 ≤ #α) ∧
+/home/ryan/erdos/conjectures/919.lean-54-      -- Every induced subgraph on a subset of smaller order type is
+/home/ryan/erdos/conjectures/919.lean-55-      -- countably colorable
+conjectures/919.lean-56-      (∀ (S : Set V),
+/home/ryan/erdos/conjectures/919.lean-57-        Ordinal.type (Subrel (· < ·) S) <
+conjectures/919.lean:58:          Cardinal.ord (aleph 2) * Cardinal.ord (aleph 2) →
+conjectures/919.lean-59-        Nonempty ((G.induce S).Coloring ℕ)) :=
+/home/ryan/erdos/conjectures/919.lean-60-  sorry
+--
+/home/ryan/erdos/conjectures/919.lean-74-      -- The order type of V is ω₂ · ω₂
+conjectures/919.lean-75-      Ordinal.type ((· < ·) : V → V → Prop) =
+conjectures/919.lean:76:        Cardinal.ord (aleph 2) * Cardinal.ord (aleph 2) ∧
+conjectures/919.lean-77-      -- G has chromatic number exactly ℵ₁:
+/home/ryan/erdos/conjectures/919.lean-78-      -- any proper coloring needs ≥ ℵ₁ colors
+conjectures/919.lean:79:      (∀ (α : Type), Nonempty (G.Coloring α) → aleph 1 ≤ #α) ∧
+/home/ryan/erdos/conjectures/919.lean-80-      -- and G is ℵ₁-colorable
+conjectures/919.lean:81:      (∃ (α : Type), #α ≤ aleph 1 ∧ Nonempty (G.Coloring α)) ∧
+/home/ryan/erdos/conjectures/919.lean-82-      -- Every induced subgraph on a subset of smaller order type is
+/home/ryan/erdos/conjectures/919.lean-83-      -- countably colorable
+conjectures/919.lean-84-      (∀ (S : Set V),
+/home/ryan/erdos/conjectures/919.lean-85-        Ordinal.type (Subrel (· < ·) S) <
+conjectures/919.lean:86:          Cardinal.ord (aleph 2) * Cardinal.ord (aleph 2) →
+conjectures/919.lean-87-        Nonempty ((G.induce S).Coloring ℕ)) :=
+/home/ryan/erdos/conjectures/919.lean-88-  sorry
+--
+/home/ryan/erdos/conjectures/70.lean-1-import Mathlib.SetTheory.Ordinal.Arithmetic
+conjectures/70.lean:2:import Mathlib.SetTheory.Cardinal.Continuum
+conjectures/70.lean:3:import Mathlib.SetTheory.Cardinal.Ordinal
+/home/ryan/erdos/conjectures/70.lean-4-
+conjectures/70.lean:5:open Ordinal Cardinal
+/home/ryan/erdos/conjectures/70.lean-6-
+/home/ryan/erdos/conjectures/70.lean-7-noncomputable section
+--
+conjectures/70.lean-49-theorem erdos_problem_70 (β : Ordinal) (hβ : β.card ≤ ℵ₀)
+conjectures/70.lean-50-    (n : ℕ) (hn : 2 ≤ n) :
+conjectures/70.lean:51:    OrdinalPartition3_2 (Cardinal.continuum.ord) β (↑n) :=
+/home/ryan/erdos/conjectures/70.lean-52-  sorry
+/home/ryan/erdos/conjectures/70.lean-53-
+--
+/home/ryan/erdos/conjectures/900.lean-24-      Function.Injective path ∧
+conjectures/900.lean-25-      ∀ i : ℕ, ∀ h : i < m,
+conjectures/900.lean:26:        G.Adj (path ⟨i, by omega⟩) (path ⟨i + 1, by omega⟩)
+/home/ryan/erdos/conjectures/900.lean-27-
+/home/ryan/erdos/conjectures/900.lean-28-/-- The probability that a uniformly random simple graph on Fin n with exactly
+--
+conjectures/529.lean-16-def selfAvoidingWalks529 (n k : ℕ) : Set (Fin (n + 1) → (Fin k → ℤ)) :=
+/home/ryan/erdos/conjectures/529.lean-17-  {w | w 0 = 0 ∧
+conjectures/529.lean:18:    (∀ i : Fin n, LatticeAdj529 (w ⟨i.val, by omega⟩) (w ⟨i.val + 1, by omega⟩)) ∧
+/home/ryan/erdos/conjectures/529.lean-19-    Function.Injective w}
+/home/ryan/erdos/conjectures/529.lean-20-
+--
+conjectures/529.lean-28-noncomputable def expectedSAWDist (n k : ℕ) : ℝ :=
+conjectures/529.lean-29-  if h : (selfAvoidingWalks529 n k).Finite then
+conjectures/529.lean:30:    (h.toFinset.sum (fun w => euclidDistFromOrigin529 (w ⟨n, by omega⟩))) /
+conjectures/529.lean-31-    (h.toFinset.card : ℝ)
+/home/ryan/erdos/conjectures/529.lean-32-  else 0
+--
+/home/ryan/erdos/conjectures/739.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/739.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/739.lean:3:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/739.lean-4-
+conjectures/739.lean:5:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/739.lean-6-
+/home/ryan/erdos/conjectures/739.lean-7-universe u
+--
+/home/ryan/erdos/conjectures/739.lean-27-    for which G admits a proper κ-coloring. -/
+conjectures/739.lean-28-noncomputable def SimpleGraph.cardChromaticNumber {V : Type u}
+conjectures/739.lean:29:    (G : SimpleGraph V) : Cardinal.{u} :=
+conjectures/739.lean:30:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+/home/ryan/erdos/conjectures/739.lean-31-
+/home/ryan/erdos/conjectures/739.lean-32-/--
+--
+/home/ryan/erdos/conjectures/739.lean-40--/
+conjectures/739.lean-41-theorem erdos_problem_739 {V : Type u} (G : SimpleGraph V)
+conjectures/739.lean:42:    (𝔪 : Cardinal.{u}) (h𝔪_inf : ℵ₀ ≤ 𝔪)
+conjectures/739.lean-43-    (hχ : G.cardChromaticNumber = 𝔪) :
+conjectures/739.lean:44:    ∀ (𝔫 : Cardinal.{u}), ℵ₀ ≤ 𝔫 → 𝔫 < 𝔪 →
+conjectures/739.lean-45-    ∃ (W : Type u) (H : SimpleGraph W),
+/home/ryan/erdos/conjectures/739.lean-46-      H.cardChromaticNumber = 𝔫 ∧
+--
+/home/ryan/erdos/conjectures/1119.lean-1-import Mathlib.Analysis.Complex.Basic
+/home/ryan/erdos/conjectures/1119.lean-2-import Mathlib.Analysis.Calculus.FDeriv.Defs
+conjectures/1119.lean:3:import Mathlib.SetTheory.Cardinal.Continuum
+/home/ryan/erdos/conjectures/1119.lean-4-
+/home/ryan/erdos/conjectures/1119.lean-5-noncomputable section
+conjectures/1119.lean:6:open Cardinal Classical Set
+/home/ryan/erdos/conjectures/1119.lean-7-
+/home/ryan/erdos/conjectures/1119.lean-8-namespace Erdos1119
+--
+/home/ryan/erdos/conjectures/1119.lean-20-while Schilhan–Weinert [ScWe24] showed it can be no.
+/home/ryan/erdos/conjectures/1119.lean-21--/
+conjectures/1119.lean:22:theorem erdos_problem_1119 (𝔪 : Cardinal) (h1 : ℵ₀ < 𝔪) (h2 : 𝔪 < Cardinal.continuum)
+conjectures/1119.lean-23-    (ι : Type) (f : ι → ℂ → ℂ)
+conjectures/1119.lean-24-    (hf : ∀ i, Differentiable ℂ (f i))
+conjectures/1119.lean:25:    (hval : ∀ z : ℂ, Cardinal.mk ↥(range (fun i => f i z)) ≤ 𝔪) :
+conjectures/1119.lean:26:    Cardinal.mk ↥(range f) ≤ 𝔪 :=
+/home/ryan/erdos/conjectures/1119.lean-27-  sorry
+/home/ryan/erdos/conjectures/1119.lean-28-
+--
+/home/ryan/erdos/conjectures/878.lean-21-$$F(n) = \max \sum_{i=1}^{t} a_i$$
+/home/ryan/erdos/conjectures/878.lean-22-where the max is over all pairwise coprime $a_1, \ldots, a_t \le n$ whose prime
+conjectures/878.lean:23:factors are all prime factors of $n$ (where $t = \omega(n)$ is the number of
+/home/ryan/erdos/conjectures/878.lean-24-distinct prime factors of $n$).
+/home/ryan/erdos/conjectures/878.lean-25-
+--
+conjectures/593.lean:1:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/593.lean-2-import Mathlib.Data.Finset.Card
+/home/ryan/erdos/conjectures/593.lean-3-import Mathlib.Data.Fintype.Basic
+/home/ryan/erdos/conjectures/593.lean-4-
+conjectures/593.lean:5:open Cardinal
+/home/ryan/erdos/conjectures/593.lean-6-
+/home/ryan/erdos/conjectures/593.lean-7-noncomputable section
+--
+/home/ryan/erdos/conjectures/110.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+/home/ryan/erdos/conjectures/110.lean-3-import Mathlib.Combinatorics.SimpleGraph.Subgraph
+conjectures/110.lean:4:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/110.lean:5:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/110.lean-6-import Mathlib.Data.Set.Card
+/home/ryan/erdos/conjectures/110.lean-7-
+conjectures/110.lean:8:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/110.lean-9-
+/home/ryan/erdos/conjectures/110.lean-10-/--
+--
+conjectures/110.lean-16-def HasChromaticNumberAleph1 {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/110.lean-17-  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+conjectures/110.lean:18:  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+/home/ryan/erdos/conjectures/110.lean-19-
+/home/ryan/erdos/conjectures/110.lean-20-/--
+--
+conjectures/1080.lean-24-def SimpleGraph.ContainsCycleOfLength {V : Type*} (G : SimpleGraph V) (k : ℕ) : Prop :=
+conjectures/1080.lean-25-  ∃ (f : Fin k → V), Function.Injective f ∧
+conjectures/1080.lean:26:    ∀ i : Fin k, G.Adj (f i) (f ⟨(i.val + 1) % k, Nat.mod_lt _ (by have := i.isLt; omega)⟩)
+/home/ryan/erdos/conjectures/1080.lean-27-
+conjectures/1080.lean-28-/-- A bipartite graph on `Fin n` with the first `a` vertices forming one part:
+--
+conjectures/555.lean-51-theorem erdos_problem_555_lower (n : ℕ) (hn : n ≥ 2) :
+conjectures/555.lean-52-    ∃ C : ℝ, C > 0 ∧ ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+conjectures/555.lean:53:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≥
+conjectures/555.lean-54-        C * (k : ℝ) ^ ((1 : ℝ) + 1 / (2 * (n : ℝ))) :=
+/home/ryan/erdos/conjectures/555.lean-55-  sorry
+--
+conjectures/555.lean-63-theorem erdos_problem_555_upper (n : ℕ) (hn : n ≥ 2) :
+conjectures/555.lean-64-    ∃ C : ℝ, C > 0 ∧ ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+conjectures/555.lean:65:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≤
+conjectures/555.lean-66-        C * (k : ℝ) ^ ((1 : ℝ) + 1 / ((n : ℝ) - 1)) :=
+/home/ryan/erdos/conjectures/555.lean-67-  sorry
+--
+/home/ryan/erdos/conjectures/555.lean-71--/
+conjectures/555.lean-72-theorem erdos_problem_555_chung_graham_upper (k : ℕ) (hk : k ≥ 2) :
+conjectures/555.lean:73:    multicolorRamseyNumber (cycleGraph 4 (by omega)) k ≤ k ^ 2 + k + 1 :=
+/home/ryan/erdos/conjectures/555.lean-74-  sorry
+/home/ryan/erdos/conjectures/555.lean-75-
+--
+/home/ryan/erdos/conjectures/807.lean-5-import Mathlib.Topology.Order.Basic
+/home/ryan/erdos/conjectures/807.lean-6-import Mathlib.Topology.MetricSpace.Pseudo.Defs
+conjectures/807.lean:7:import Mathlib.SetTheory.Cardinal.Finite
+/home/ryan/erdos/conjectures/807.lean-8-
+/home/ryan/erdos/conjectures/807.lean-9-noncomputable section
+--
+/home/ryan/erdos/conjectures/781.lean-26-  StrictMono x ∧
+conjectures/781.lean-27-  ∀ (j : Fin k) (_ : 0 < j.val) (hj : j.val + 1 < k),
+conjectures/781.lean:28:    2 * (x j).val ≥ (x ⟨j.val + 1, hj⟩).val + (x ⟨j.val - 1, by omega⟩).val
+/home/ryan/erdos/conjectures/781.lean-29-
+/home/ryan/erdos/conjectures/781.lean-30-/-- A 2-colouring of {0, …, n-1} contains a monochromatic k-term descending wave. -/
+--
+conjectures/86.lean-64-      (↑(H.edgeFinset.card) : ℝ) ≥ (1 / 2 + ε) * ↑n * (2 : ℝ) ^ (n - 1 : ℕ) →
+conjectures/86.lean-65-      ∃ f : Fin 4 → (Fin n → Bool), Function.Injective f ∧
+conjectures/86.lean:66:        ∀ i j, (cycleGraph86 4 (by omega)).Adj i j → H.Adj (f i) (f j) :=
+/home/ryan/erdos/conjectures/86.lean-67-  sorry
+/home/ryan/erdos/conjectures/86.lean-68-
+--
+conjectures/572.lean-54-    ∃ c : ℝ, 0 < c ∧
+conjectures/572.lean-55-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+conjectures/572.lean:56:      c * (n : ℝ) ^ (1 + 1 / (k : ℝ)) ≤ (extremalNumber (cycleGraph (2 * k) (by omega)) n : ℝ) :=
+/home/ryan/erdos/conjectures/572.lean-57-  sorry
+/home/ryan/erdos/conjectures/572.lean-58-
+--
+conjectures/767.lean-29-  ∃ (m : ℕ) (hm : m ≥ 3) (f : Fin m → V),
+/home/ryan/erdos/conjectures/767.lean-30-    Function.Injective f ∧
+conjectures/767.lean:31:    (∀ i : Fin m, G.Adj (f i) (f ⟨(i.val + 1) % m, Nat.mod_lt _ (by omega)⟩)) ∧
+conjectures/767.lean-32-    ∃ i₀ : Fin m,
+conjectures/767.lean-33-      k ≤ Set.ncard {j : Fin m |
+--
+/home/ryan/erdos/conjectures/1091.lean-18-    Function.Injective f ∧
+conjectures/1091.lean-19-    (∀ i : Fin (2 * m + 3),
+conjectures/1091.lean:20:      G.Adj (f i) (f ⟨(i.val + 1) % (2 * m + 3), Nat.mod_lt _ (by omega)⟩)) ∧
+conjectures/1091.lean-21-    d ≤ (Finset.univ.filter (fun p : Fin (2 * m + 3) × Fin (2 * m + 3) =>
+/home/ryan/erdos/conjectures/1091.lean-22-      p.1.val < p.2.val ∧
+--
+conjectures/551.lean-42-      have := v.isLt
+conjectures/551.lean-43-      by_cases heq : v.val + 1 = k
+conjectures/551.lean:44:      · rw [heq, Nat.mod_self] at h; omega
+conjectures/551.lean:45:      · rw [Nat.mod_eq_of_lt (by omega)] at h; omega
+/home/ryan/erdos/conjectures/551.lean-46-    }⟩
+/home/ryan/erdos/conjectures/551.lean-47-
+--
+/home/ryan/erdos/conjectures/551.lean-55--/
+conjectures/551.lean-56-theorem erdos_problem_551 (k n : ℕ) (hk : k ≥ n) (hn : n ≥ 3) (hne : ¬(k = 3 ∧ n = 3)) :
+conjectures/551.lean:57:    offDiagRamseyNumber (cycleGraph k (by omega)) (⊤ : SimpleGraph (Fin n)) =
+conjectures/551.lean-58-      (k - 1) * (n - 1) + 1 :=
+/home/ryan/erdos/conjectures/551.lean-59-  sorry
+--
+/home/ryan/erdos/conjectures/261.lean-3-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/261.lean-4-import Mathlib.Data.Set.Finite.Basic
+conjectures/261.lean:5:import Mathlib.Data.Set.Countable
+/home/ryan/erdos/conjectures/261.lean-6-import Mathlib.Topology.Algebra.InfiniteSum.Basic
+/home/ryan/erdos/conjectures/261.lean-7-import Mathlib.Analysis.SpecificLimits.Basic
+--
+conjectures/261.lean-45-theorem erdos_problem_261_part3 :
+conjectures/261.lean-46-    ∃ x : ℝ, (∃ q : ℚ, x = (q : ℝ)) ∧
+conjectures/261.lean:47:      ¬ Set.Countable {a : ℕ → ℕ | StrictMono a ∧ (∀ n, 0 < a n) ∧
+conjectures/261.lean-48-        HasSum (fun n => (a n : ℝ) / (2 : ℝ) ^ (a n)) x} :=
+/home/ryan/erdos/conjectures/261.lean-49-  sorry
+--
+/home/ryan/erdos/conjectures/1068.lean-1-import Mathlib.Combinatorics.SimpleGraph.Coloring
+/home/ryan/erdos/conjectures/1068.lean-2-import Mathlib.Combinatorics.SimpleGraph.Paths
+conjectures/1068.lean:3:import Mathlib.SetTheory.Cardinal.Ordinal
+/home/ryan/erdos/conjectures/1068.lean-4-
+conjectures/1068.lean:5:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/1068.lean-6-
+/home/ryan/erdos/conjectures/1068.lean-7-noncomputable section
+--
+conjectures/1068.lean-46-    -- G has chromatic number exactly ℵ₁:
+/home/ryan/erdos/conjectures/1068.lean-47-    -- any proper coloring needs ≥ ℵ₁ colors
+conjectures/1068.lean:48:    (hχ_lower : ∀ (α : Type*), Nonempty (G.Coloring α) → aleph 1 ≤ #α)
+/home/ryan/erdos/conjectures/1068.lean-49-    -- and G is ℵ₁-colorable
+conjectures/1068.lean:50:    (hχ_upper : ∃ (α : Type*), #α ≤ aleph 1 ∧ Nonempty (G.Coloring α)) :
+conjectures/1068.lean-51-    ∃ s : Set V, s.Countable ∧ IsInfinitelyVertexConnected (G.induce s) :=
+/home/ryan/erdos/conjectures/1068.lean-52-  sorry
+--
+/home/ryan/erdos/conjectures/452.lean-24-
+/home/ryan/erdos/conjectures/452.lean-25-/-- The number of distinct prime factors of n (ω(n) in analytic number theory). -/
+conjectures/452.lean:26:noncomputable def erdos452_omega (n : ℕ) : ℕ :=
+/home/ryan/erdos/conjectures/452.lean-27-  (Nat.primeFactorsList n).toFinset.card
+/home/ryan/erdos/conjectures/452.lean-28-
+--
+conjectures/452.lean-40-        (Real.log (x : ℝ)) ^ k ≤ (L : ℝ) ∧
+/home/ryan/erdos/conjectures/452.lean-41-        ∀ n ∈ Finset.Icc a (a + L),
+conjectures/452.lean:42:          (erdos452_omega n : ℝ) > Real.log (Real.log (n : ℝ)) :=
+/home/ryan/erdos/conjectures/452.lean-43-  sorry
+/home/ryan/erdos/conjectures/452.lean-44-
+--
+conjectures/809.lean-30-        (∀ i : Fin (2 * k + 1),
+/home/ryan/erdos/conjectures/809.lean-31-          G.Adj (f i) (f ⟨(i.val + 1) % (2 * k + 1),
+conjectures/809.lean:32:            Nat.mod_lt _ (by omega)⟩)) →
+conjectures/809.lean-33-        Function.Injective (fun i : Fin (2 * k + 1) =>
+/home/ryan/erdos/conjectures/809.lean-34-          c (Sym2.mk (f i, f ⟨(i.val + 1) % (2 * k + 1),
+conjectures/809.lean:35:            Nat.mod_lt _ (by omega)⟩)))
+/home/ryan/erdos/conjectures/809.lean-36-
+/home/ryan/erdos/conjectures/809.lean-37-/--
+--
+/home/ryan/erdos/conjectures/62.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/62.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/62.lean:3:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/62.lean:4:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/62.lean-5-
+conjectures/62.lean:6:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/62.lean-7-
+/home/ryan/erdos/conjectures/62.lean-8-/-- A graph G has chromatic number ℵ₁ if it cannot be properly colored by any
+--
+conjectures/62.lean-10-def HasChromaticNumberAleph1 {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/62.lean-11-  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+conjectures/62.lean:12:  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+/home/ryan/erdos/conjectures/62.lean-13-
+/home/ryan/erdos/conjectures/62.lean-14-/-- G contains H as a subgraph via an injective adjacency-preserving map. -/
+--
+conjectures/60.lean-59-    ∀ n : ℕ, N₀ ≤ n →
+conjectures/60.lean-60-    ∀ G : SimpleGraph (Fin n),
+conjectures/60.lean:61:      G.edgeSet.ncard > extremalNumber60 (cycleGraph60 4 (by omega)) n →
+conjectures/60.lean-62-      (labeledC4Count n G : ℝ) ≥ c * (n : ℝ) ^ ((1 : ℝ) / 2) :=
+/home/ryan/erdos/conjectures/60.lean-63-  sorry
+--
+/home/ryan/erdos/conjectures/737.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/737.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/737.lean:3:import Mathlib.SetTheory.Cardinal.Basic
+/home/ryan/erdos/conjectures/737.lean-4-
+conjectures/737.lean:5:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/737.lean-6-
+/home/ryan/erdos/conjectures/737.lean-7-noncomputable section
+--
+/home/ryan/erdos/conjectures/737.lean-10-# Erdős Problem #737
+/home/ryan/erdos/conjectures/737.lean-11-
+conjectures/737.lean:12:Let $G$ be a graph with chromatic number $\aleph_1$. Must there exist an
+/home/ryan/erdos/conjectures/737.lean-13-edge $e$ such that, for all large $n$, $G$ contains a cycle of length $n$
+/home/ryan/erdos/conjectures/737.lean-14-containing $e$?
+--
+conjectures/528.lean-16-  Set.ncard {w : Fin (n + 1) → (Fin k → ℤ) |
+/home/ryan/erdos/conjectures/528.lean-17-    w 0 = 0 ∧
+conjectures/528.lean:18:    (∀ i : Fin n, LatticeAdj (w ⟨i.val, by omega⟩) (w ⟨i.val + 1, by omega⟩)) ∧
+/home/ryan/erdos/conjectures/528.lean-19-    Function.Injective w}
+/home/ryan/erdos/conjectures/528.lean-20-
+--
+conjectures/554.lean-51-    ∀ ε : ℝ, ε > 0 →
+conjectures/554.lean-52-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+conjectures/554.lean:53:      (multicolorRamseyNumber (cycleGraph (2 * n + 1) (by omega)) k : ℝ) ≤
+conjectures/554.lean-54-        ε * (multicolorRamseyNumber (⊤ : SimpleGraph (Fin 3)) k : ℝ) :=
+/home/ryan/erdos/conjectures/554.lean-55-  sorry
+--
+/home/ryan/erdos/conjectures/111.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+/home/ryan/erdos/conjectures/111.lean-3-import Mathlib.Combinatorics.SimpleGraph.Subgraph
+conjectures/111.lean:4:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/111.lean:5:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/111.lean-6-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+/home/ryan/erdos/conjectures/111.lean-7-import Mathlib.Data.Set.Card
+/home/ryan/erdos/conjectures/111.lean-8-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/111.lean-9-
+conjectures/111.lean:10:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/111.lean-11-
+/home/ryan/erdos/conjectures/111.lean-12-/--
+--
+conjectures/111.lean-16-def HasChromaticNumberAleph1 {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/111.lean-17-  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+conjectures/111.lean:18:  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+/home/ryan/erdos/conjectures/111.lean-19-
+/home/ryan/erdos/conjectures/111.lean-20-/--
+--
+/home/ryan/erdos/conjectures/720.lean-2-import Mathlib.Data.Nat.Lattice
+/home/ryan/erdos/conjectures/720.lean-3-import Mathlib.Data.Real.Basic
+conjectures/720.lean:4:import Mathlib.SetTheory.Cardinal.Finite
+/home/ryan/erdos/conjectures/720.lean-5-
+/home/ryan/erdos/conjectures/720.lean-6-open SimpleGraph
+--
+conjectures/720.lean-33-  Adj i j := (i.val + 1 = j.val) ∨ (j.val + 1 = i.val)
+conjectures/720.lean-34-  symm := fun _ _ h => h.elim Or.inr Or.inl
+conjectures/720.lean:35:  loopless := ⟨fun x h => by rcases h with h | h <;> omega⟩
+/home/ryan/erdos/conjectures/720.lean-36-
+/home/ryan/erdos/conjectures/720.lean-37-/-- The cycle graph C_n on n vertices (n ≥ 3). Vertex i is adjacent to
+--
+/home/ryan/erdos/conjectures/1071.lean-1-import Mathlib.Data.Real.Basic
+/home/ryan/erdos/conjectures/1071.lean-2-import Mathlib.Data.Set.Finite.Basic
+conjectures/1071.lean:3:import Mathlib.Data.Set.Countable
+/home/ryan/erdos/conjectures/1071.lean-4-
+/home/ryan/erdos/conjectures/1071.lean-5-open Set
+--
+conjectures/782.lean-34-    (∀ i j : Fin k, i < j → x i < x j) ∧
+conjectures/782.lean-35-    (∀ (i : ℕ) (hi : i + 1 < k),
+conjectures/782.lean:36:      x ⟨i, by omega⟩ + d ≤ x ⟨i + 1, hi⟩ ∧
+conjectures/782.lean:37:      x ⟨i + 1, hi⟩ ≤ x ⟨i, by omega⟩ + d + C) :=
+/home/ryan/erdos/conjectures/782.lean-38-  sorry
+/home/ryan/erdos/conjectures/782.lean-39-
+--
+conjectures/474.lean:1:import Mathlib.SetTheory.Cardinal.Basic
+conjectures/474.lean:2:import Mathlib.SetTheory.Cardinal.Aleph
+conjectures/474.lean:3:import Mathlib.SetTheory.Cardinal.Continuum
+/home/ryan/erdos/conjectures/474.lean-4-
+conjectures/474.lean:5:open Cardinal
+/home/ryan/erdos/conjectures/474.lean-6-
+/home/ryan/erdos/conjectures/474.lean-7-/-- The negative square-bracket partition relation κ ↛ [μ]ₖ² for cardinals.
+--
+/home/ryan/erdos/conjectures/474.lean-11-
+/home/ryan/erdos/conjectures/474.lean-12-    In standard Erdős-Rado partition calculus notation, this is κ ↛ [μ]ₖ². -/
+conjectures/474.lean:13:def NegSqBracketPartition (κ μ : Cardinal) (k : ℕ) : Prop :=
+conjectures/474.lean-14-  ∃ (α : Type*) (_ : #α = κ) (f : α → α → Fin k),
+/home/ryan/erdos/conjectures/474.lean-15-    (∀ x y, f x y = f y x) ∧
+--
+/home/ryan/erdos/conjectures/474.lean-35--/
+conjectures/474.lean-36-theorem erdos_problem_474 :
+conjectures/474.lean:37:    continuum = aleph 2 →
+conjectures/474.lean:38:    NegSqBracketPartition continuum (aleph 1) 3 :=
+/home/ryan/erdos/conjectures/474.lean-39-  sorry
+--
+conjectures/550.lean-61-    (hsizes_pos : ∀ i, 0 < sizes i)
+conjectures/550.lean-62-    (hsizes_mono : Monotone sizes) :
+conjectures/550.lean:63:    let m₁ := sizes ⟨0, by omega⟩
+conjectures/550.lean:64:    let m₂ := sizes ⟨1, by omega⟩
+conjectures/550.lean-65-    ∃ N₀ : ℕ, ∀ (n : ℕ), n ≥ N₀ →
+conjectures/550.lean-66-    ∀ (T : SimpleGraph (Fin n)), T.IsTree →
+--
+conjectures/552.lean-45-      have := v.isLt
+conjectures/552.lean-46-      by_cases heq : v.val + 1 = k
+conjectures/552.lean:47:      · rw [heq, Nat.mod_self] at h; omega
+conjectures/552.lean:48:      · rw [Nat.mod_eq_of_lt (by omega)] at h; omega
+/home/ryan/erdos/conjectures/552.lean-49-    }⟩
+/home/ryan/erdos/conjectures/552.lean-50-
+--
+conjectures/552.lean-70-    ∀ c : ℝ, c > 0 →
+conjectures/552.lean-71-    ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧
+conjectures/552.lean:72:      (offDiagRamseyNumber (cycleGraph 4 (by omega)) (starGraph n) : ℝ) ≤
+conjectures/552.lean-73-        ↑n + Real.sqrt ↑n - c :=
+/home/ryan/erdos/conjectures/552.lean-74-  sorry
+--
+conjectures/973.lean-25-    ∀ (n : ℕ) (hn : n ≥ 2),
+conjectures/973.lean-26-    ∃ z : Fin n → ℂ,
+conjectures/973.lean:27:      z ⟨0, by omega⟩ = 1 ∧
+/home/ryan/erdos/conjectures/973.lean-28-      (∀ i, 1 ≤ ‖z i‖) ∧
+conjectures/973.lean-29-      ∀ k : ℕ, 2 ≤ k → k ≤ n + 1 →
+--
+/home/ryan/erdos/conjectures/736.lean-1-import Mathlib.Combinatorics.SimpleGraph.Basic
+/home/ryan/erdos/conjectures/736.lean-2-import Mathlib.Combinatorics.SimpleGraph.Coloring
+conjectures/736.lean:3:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/736.lean-4-
+conjectures/736.lean:5:open SimpleGraph Cardinal
+/home/ryan/erdos/conjectures/736.lean-6-
+/home/ryan/erdos/conjectures/736.lean-7-universe u
+--
+/home/ryan/erdos/conjectures/736.lean-33-    for which G admits a proper κ-coloring. -/
+conjectures/736.lean-34-noncomputable def SimpleGraph.cardChromaticNumber {V : Type u}
+conjectures/736.lean:35:    (G : SimpleGraph V) : Cardinal.{u} :=
+conjectures/736.lean:36:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+/home/ryan/erdos/conjectures/736.lean-37-
+/home/ryan/erdos/conjectures/736.lean-38-/--
+--
+/home/ryan/erdos/conjectures/736.lean-47--/
+conjectures/736.lean-48-theorem erdos_problem_736 {V : Type u} (G : SimpleGraph V)
+conjectures/736.lean:49:    (hχ : G.cardChromaticNumber = aleph 1) :
+conjectures/736.lean:50:    ∀ (m : Cardinal.{u}),
+conjectures/736.lean-51-    ∃ (W : Type u) (Gm : SimpleGraph W),
+/home/ryan/erdos/conjectures/736.lean-52-      Gm.cardChromaticNumber = m ∧
+--
+/home/ryan/erdos/conjectures/700.lean-34-    ((Finset.Icc 2 (n / 2)).image (fun k => Nat.gcd n (Nat.choose n k))).min' (by
+/home/ryan/erdos/conjectures/700.lean-35-      exact ⟨Nat.gcd n (Nat.choose n 2), Finset.mem_image.mpr
+conjectures/700.lean:36:        ⟨2, Finset.mem_Icc.mpr ⟨le_refl _, by omega⟩, rfl⟩⟩)
+/home/ryan/erdos/conjectures/700.lean-37-  else 0
+/home/ryan/erdos/conjectures/700.lean-38-
+--
+conjectures/602.lean:1:import Mathlib.SetTheory.Cardinal.Aleph
+/home/ryan/erdos/conjectures/602.lean-2-import Mathlib.Data.Set.Card
+/home/ryan/erdos/conjectures/602.lean-3-
+conjectures/602.lean:4:open Cardinal Set
+/home/ryan/erdos/conjectures/602.lean-5-
+/home/ryan/erdos/conjectures/602.lean-6-noncomputable section
+--
+/home/ryan/erdos/conjectures/602.lean-9-# Erdős Problem #602
+/home/ryan/erdos/conjectures/602.lean-10-
+conjectures/602.lean:11:Let $(A_i)$ be a family of sets with $|A_i| = \aleph_0$ for all $i$, such that
+/home/ryan/erdos/conjectures/602.lean-12-for any $i \neq j$ we have $|A_i \cap A_j|$ finite and $\neq 1$. Is there a
+/home/ryan/erdos/conjectures/602.lean-13-2-colouring of $\bigcup A_i$ such that no $A_i$ is monochromatic?
+--
+conjectures/602.lean-27-Erdős Problem #602 [Er87]:
+/home/ryan/erdos/conjectures/602.lean-28-
+conjectures/602.lean:29:Let $(A_i)$ be a family of sets with $|A_i| = \aleph_0$ for all $i$, such that
+/home/ryan/erdos/conjectures/602.lean-30-for any $i \neq j$, $|A_i \cap A_j|$ is finite and $\neq 1$. Then the family
+conjectures/602.lean-31-has Property B: there is a 2-colouring of $\bigcup A_i$ such that no $A_i$ is

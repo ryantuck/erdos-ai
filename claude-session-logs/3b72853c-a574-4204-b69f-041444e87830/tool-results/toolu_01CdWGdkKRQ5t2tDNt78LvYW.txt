@@ -1,0 +1,302 @@
+conjectures/609.lean:39:For every n ≥ 1, every symmetric n-coloring of the edges of K_{2^n+1}
+conjectures/609.lean:53:symmetric n-coloring of K_{2^n+1} with no monochromatic odd cycle of length
+conjectures/609.lean:67:There exists C > 0 such that for all sufficiently large n, every symmetric
+conjectures/100.lean:10:def HasSeparatedDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/100.lean:19:noncomputable def finiteDiameter (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℝ :=
+conjectures/100.lean:31:  ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+conjectures/560.lean:35:    of H (represented as a symmetric function c : Fin N → Fin N → Bool)
+conjectures/174.lean:24:    isometric copy of A (i.e., a copy obtained by a distance-preserving map). -/
+conjectures/174.lean:25:def IsEuclideanRamsey (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+conjectures/174.lean:27:    ∃ d : ℕ, ∀ f : EuclideanSpace ℝ (Fin d) → Fin k,
+conjectures/174.lean:28:      ∃ φ : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin d),
+conjectures/174.lean:34:def IsSpherical (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+conjectures/174.lean:35:  ∃ (center : EuclideanSpace ℝ (Fin n)) (r : ℝ),
+conjectures/174.lean:48:    ∀ n : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin n)),
+conjectures/563.lean:23:    is given by a symmetric function `c : Fin n → Fin n → Bool`. An edge {i, j}
+conjectures/600.lean:14:edges, each edge contained in at least one triangle, must have an edge contained
+conjectures/600.lean:15:in at least r triangles. Let r ≥ 2. Is it true that
+conjectures/600.lean:30:/-- The number of triangles containing the edge {u, v} in graph G:
+conjectures/600.lean:32:noncomputable def trianglesThrough {n : ℕ} (G : SimpleGraph (Fin n))
+conjectures/600.lean:36:/-- A graph is triangle-covered if every edge is contained in at least one triangle. -/
+conjectures/600.lean:37:def IsTriangleCovered {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :=
+conjectures/600.lean:38:  ∀ u v : Fin n, G.Adj u v → 0 < trianglesThrough G u v
+conjectures/600.lean:40:/-- e(n, r): the minimal number of edges such that every triangle-covered graph
+conjectures/600.lean:41:    on n vertices with at least that many edges has an edge in at least r triangles. -/
+conjectures/600.lean:44:    IsTriangleCovered G → G.edgeFinset.card ≥ m →
+conjectures/600.lean:45:    ∃ u v : Fin n, G.Adj u v ∧ trianglesThrough G u v ≥ r}
+conjectures/224.lean:24:theorem erdos_problem_224 (d : ℕ) (A : Finset (EuclideanSpace ℝ (Fin d)))
+conjectures/167.lean:15:of pairwise edge-disjoint triangles (the triangle packing number ν(G)) is at
+conjectures/167.lean:16:most k, then G can be made triangle-free by removing at most 2k edges (the
+conjectures/167.lean:17:triangle covering number τ(G) is at most 2k).
+conjectures/167.lean:30:triangles in G is at most k, then G can be made triangle-free by removing at
+conjectures/167.lean:33:Two triangles (3-cliques) are edge-disjoint iff their vertex sets share at most
+conjectures/167.lean:34:one vertex, since in a triangle every pair of vertices forms an edge.
+conjectures/167.lean:36:The hypothesis states that every family of pairwise edge-disjoint triangles
+conjectures/167.lean:38:that is triangle-free, obtained by removing at most 2k edges from G.
+conjectures/167.lean:44:    -- Hypothesis: every family of pairwise edge-disjoint triangles has size ≤ k
+conjectures/167.lean:49:    -- Conclusion: G can be made triangle-free by removing ≤ 2k edges
+conjectures/466.lean:35:    ∃ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+conjectures/620.lean:13:triangle-free induced subgraph must G contain?
+conjectures/620.lean:15:Let f(n) be the largest m such that every K₄-free graph on n vertices contains a triangle-free
+conjectures/620.lean:32:contains a triangle-free induced subgraph of size at least n^{1/2 - ε}.
+conjectures/620.lean:48:such that every triangle-free induced subgraph has at most n^{1/2 + ε} vertices.
+conjectures/582.lean:16:contains a triangle.
+conjectures/431.lean:29:up to finitely many exceptions (i.e., the symmetric difference is finite).
+conjectures/555.lean:35:    A k-colouring is a symmetric function c : Fin N → Fin N → Fin k.
+conjectures/556.lean:28:    A k-colouring is a symmetric function c : Fin N → Fin N → Fin k.
+conjectures/215.lean:2:import Mathlib.Topology.MetricSpace.Isometry
+conjectures/215.lean:7:def IntLattice : Set (EuclideanSpace ℝ (Fin 2)) :=
+conjectures/215.lean:12:Does there exist S ⊆ ℝ² such that every set congruent to S
+conjectures/215.lean:19:  ∃ (S : Set (EuclideanSpace ℝ (Fin 2))),
+conjectures/215.lean:20:    ∀ (f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2)),
+conjectures/573.lean:8:/-- A simple graph is triangle-free (C₃-free) if no three vertices are mutually adjacent. -/
+conjectures/573.lean:9:def TriangleFree {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/573.lean:20:    simple graph on n vertices containing neither a triangle nor a 4-cycle. -/
+conjectures/573.lean:23:    TriangleFree G ∧ C4Free G ∧ G.edgeSet.ncard = k}
+conjectures/573.lean:30:on n vertices that contains no triangle (C₃) and no 4-cycle (C₄).
+conjectures/573.lean:38:the same holds when only C₃ (triangles) are forbidden alongside C₄.
+conjectures/544.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/544.lean:22:    on N vertices contains either a triangle (3-clique) or an independent
+conjectures/130.lean:12:def Concyclic (a b c d : EuclideanSpace ℝ (Fin 2)) : Prop :=
+conjectures/130.lean:13:  ∃ (center : EuclideanSpace ℝ (Fin 2)) (radius : ℝ),
+conjectures/130.lean:22:def ErdosGeneralPosition (A : Set (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/130.lean:23:  (∀ p q r : EuclideanSpace ℝ (Fin 2),
+conjectures/130.lean:26:    ¬Collinear ℝ ({p, q, r} : Set (EuclideanSpace ℝ (Fin 2)))) ∧
+conjectures/130.lean:27:  (∀ p q r s : EuclideanSpace ℝ (Fin 2),
+conjectures/130.lean:35:noncomputable def intDistGraph (A : Set (EuclideanSpace ℝ (Fin 2))) :
+conjectures/130.lean:37:  Adj p q := (p : EuclideanSpace ℝ (Fin 2)) ≠ q ∧
+conjectures/130.lean:38:    ∃ n : ℕ, 0 < n ∧ dist (p : EuclideanSpace ℝ (Fin 2)) (q : EuclideanSpace ℝ (Fin 2)) = n
+conjectures/130.lean:62:    ∃ (A : Set (EuclideanSpace ℝ (Fin 2))),
+conjectures/612.lean:59:If G is a connected triangle-free graph on n vertices with minimum degree d ≥ 1,
+conjectures/612.lean:64:theorem erdos_problem_612_triangle_free :
+conjectures/456.lean:30:/-- The smallest prime congruent to 1 modulo n. -/
+conjectures/353.lean:12:/-- Area of a triangle with vertices p₁, p₂, p₃ via the cross product formula. -/
+conjectures/353.lean:13:def triangleArea353 (p₁ p₂ p₃ : ℝ × ℝ) : ℝ :=
+conjectures/353.lean:26:/-- Three points form an isosceles triangle: all distinct with at least two sides
+conjectures/353.lean:28:def IsIsoscelesTriangle353 (p₁ p₂ p₃ : ℝ × ℝ) : Prop :=
+conjectures/353.lean:34:/-- Three points form a right-angled triangle: all distinct with one angle equal
+conjectures/353.lean:36:def IsRightTriangle353 (p₁ p₂ p₃ : ℝ × ℝ) : Prop :=
+conjectures/353.lean:80:isosceles triangle of area 1?
+conjectures/353.lean:84:theorem erdos_problem_353_isosceles_triangle
+conjectures/353.lean:90:      IsIsoscelesTriangle353 p₁ p₂ p₃ ∧
+conjectures/353.lean:91:      triangleArea353 p₁ p₂ p₃ = 1 :=
+conjectures/353.lean:98:right-angled triangle of area 1?
+conjectures/353.lean:102:theorem erdos_problem_353_right_triangle
+conjectures/353.lean:108:      IsRightTriangle353 p₁ p₂ p₃ ∧
+conjectures/353.lean:109:      triangleArea353 p₁ p₂ p₃ = 1 :=
+conjectures/122.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/419.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/557.lean:24:    A k-colouring is a symmetric function c : Fin N → Fin N → Fin k.
+conjectures/216.lean:11:abbrev Point216 := EuclideanSpace ℝ (Fin 2)
+conjectures/135.lean:19:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+conjectures/135.lean:24:def FourPointFiveDist (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/135.lean:25:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/135.lean:43:      ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/211.lean:8:abbrev Point2_211 := EuclideanSpace ℝ (Fin 2)
+conjectures/144.lean:4:import Mathlib.Topology.MetricSpace.Basic
+conjectures/132.lean:33:noncomputable def pairCount (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+conjectures/132.lean:39:def IsLimitedOccurrence (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : Prop :=
+conjectures/132.lean:43:noncomputable def limitedOccurrences (A : Finset (EuclideanSpace ℝ (Fin 2))) : Set ℝ :=
+conjectures/132.lean:52:    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), 5 ≤ A.card →
+conjectures/132.lean:63:    ∀ k : ℕ, ∃ N : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), N ≤ A.card →
+conjectures/104.lean:11:noncomputable def threeRichUnitCircleCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+conjectures/104.lean:12:  Set.ncard {c : EuclideanSpace ℝ (Fin 2) |
+conjectures/104.lean:13:    3 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ dist p c = 1}}
+conjectures/104.lean:27:      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/606.lean:24:Tags: geometry
+conjectures/606.lean:30:    (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+conjectures/606.lean:32:    (fun p => affineSpan ℝ ({p.1, p.2} : Set (EuclideanSpace ℝ (Fin 2))))).card
+conjectures/606.lean:36:  {k | ∃ A : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/606.lean:46:    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/105.lean:22:    ∀ A B : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/105.lean:26:      ¬ Collinear ℝ (A : Set (EuclideanSpace ℝ (Fin 2))) →
+conjectures/105.lean:27:      ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
+conjectures/105.lean:29:        2 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (A : Set _) ∧ p ∈ L} ∧
+conjectures/105.lean:30:        ∀ p : EuclideanSpace ℝ (Fin 2), p ∈ (B : Set _) → p ∉ L :=
+conjectures/554.lean:32:    A k-colouring is a symmetric function c : Fin N → Fin N → Fin k.
+conjectures/133.lean:13:Let $f(n)$ be minimal such that every triangle-free graph $G$ with $n$ vertices
+conjectures/133.lean:25:  graph on $\mathbb{Z}/n\mathbb{Z}$ using a symmetric complete sum-free set.
+conjectures/133.lean:31:/-- A graph $G$ contains a triangle if there are three mutually adjacent vertices. -/
+conjectures/133.lean:32:def HasTriangle {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/133.lean:40:/-- $\mathrm{erdos133\_f}(n)$ is the minimum $k$ such that every triangle-free
+conjectures/133.lean:47:    ¬HasTriangle G → HasDiameterAtMostTwo G →
+conjectures/133.lean:55:$1 + d + d(d-1) = d^2+1$ vertices.  Hence if $G$ is triangle-free on $n$
+conjectures/133.lean:68:triangle-free graph on $n$ vertices with diameter $\leq 2$ and max degree
+conjectures/133.lean:70:$\mathbb{Z}/n\mathbb{Z}$ with a symmetric complete sum-free generating set of
+conjectures/106.lean:1:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/511.lean:5:import Mathlib.Topology.MetricSpace.Bounded
+conjectures/511.lean:33:            (∀ i, Metric.diam (C i) > c) →
+conjectures/502.lean:14:def IsTwoDistanceSet {n : ℕ} (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+conjectures/502.lean:29:    (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n)))
+conjectures/173.lean:9:In any 2-colouring of ℝ², for all but at most one triangle T (up to congruence),
+conjectures/173.lean:10:there is a monochromatic congruent copy of T.
+conjectures/173.lean:12:For some colourings a single equilateral triangle has to be excluded (considering
+conjectures/173.lean:14:single right-angled triangle.
+conjectures/173.lean:21:/-- The multiset of squared side lengths of a triangle. Two triangles are congruent
+conjectures/173.lean:23:def triangleSideSqs (p₁ p₂ p₃ : ℝ × ℝ) : Multiset ℝ :=
+conjectures/173.lean:26:/-- A triangle is non-degenerate if its vertices are not collinear. -/
+conjectures/173.lean:27:def triangleNonDegenerate (p₁ p₂ p₃ : ℝ × ℝ) : Prop :=
+conjectures/173.lean:33:In any 2-colouring of ℝ², for all but at most one triangle T (up to congruence),
+conjectures/173.lean:34:there is a monochromatic congruent copy of T.
+conjectures/173.lean:36:Equivalently: if two non-degenerate triangles both fail to have any monochromatic
+conjectures/173.lean:37:congruent copy under some 2-colouring, then they must be congruent.
+conjectures/173.lean:42:    triangleNonDegenerate p₁ p₂ p₃ →
+conjectures/173.lean:43:    triangleNonDegenerate q₁ q₂ q₃ →
+conjectures/173.lean:44:    (∀ a₁ a₂ a₃ : ℝ × ℝ, triangleSideSqs a₁ a₂ a₃ = triangleSideSqs p₁ p₂ p₃ →
+conjectures/173.lean:46:    (∀ b₁ b₂ b₃ : ℝ × ℝ, triangleSideSqs b₁ b₂ b₃ = triangleSideSqs q₁ q₂ q₃ →
+conjectures/173.lean:48:    triangleSideSqs p₁ p₂ p₃ = triangleSideSqs q₁ q₂ q₃ :=
+conjectures/151.lean:17:Let H(n) be maximal such that every triangle-free graph on n vertices
+conjectures/151.lean:49:/-- H(n) is maximal such that every triangle-free graph on n vertices contains
+conjectures/151.lean:51:    independence number over all triangle-free graphs on n vertices. -/
+conjectures/151.lean:59:such that every triangle-free graph on n vertices contains an independent set
+conjectures/217.lean:15:An example with n=4 is an isosceles triangle with the point in the centre.
+conjectures/217.lean:22:    vanishes, i.e. the signed area of the triangle is zero. -/
+conjectures/217.lean:23:def Collinear3 (p q r : EuclideanSpace ℝ (Fin 2)) : Prop :=
+conjectures/217.lean:27:def NoThreeCollinear (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/217.lean:31:def Concyclic4 (p₁ p₂ p₃ p₄ : EuclideanSpace ℝ (Fin 2)) : Prop :=
+conjectures/217.lean:32:  ∃ (c : EuclideanSpace ℝ (Fin 2)) (r : ℝ),
+conjectures/217.lean:36:def NoFourConcyclic (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/217.lean:46:def HasDistanceMultiplicityProperty (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/217.lean:64:    ∃ N₀ : ℕ, ∀ (S : Finset (EuclideanSpace ℝ (Fin 2))),
+conjectures/102.lean:12:noncomputable def fourPlusRichLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+conjectures/102.lean:13:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+conjectures/102.lean:15:    4 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+conjectures/102.lean:33:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/102.lean:36:          ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
+conjectures/102.lean:38:            M ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L} :=
+conjectures/232.lean:4:open MeasureTheory Metric
+conjectures/232.lean:27:/-- A set in a metric space is unit-distance-free if no two points in the set
+conjectures/232.lean:29:def IsUnitDistanceFree {X : Type*} [PseudoMetricSpace X] (A : Set X) : Prop :=
+conjectures/232.lean:45:theorem erdos_problem_232 (A : Set (EuclideanSpace ℝ (Fin 2)))
+conjectures/232.lean:50:      (volume (A ∩ Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal /
+conjectures/232.lean:51:      (volume (Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal ≤ 1 / 4 + ε := by
+conjectures/558.lean:30:    A k-colouring is a symmetric function c : Fin N → Fin N → Fin k.
+conjectures/621.lean:12:a set that contains at most one edge from every triangle, and τ₁(G) be the
+conjectures/621.lean:14:every triangle.
+conjectures/621.lean:33:/-- A set of edges S is triangle-independent in G if S ⊆ E(G) and every
+conjectures/621.lean:34:    triangle in G contains at most one edge from S. -/
+conjectures/621.lean:35:def IsTriangleIndependent621 {n : ℕ} (G : SimpleGraph (Fin n)) [DecidableRel G.Adj]
+conjectures/621.lean:43:/-- A set of edges T is a triangle transversal in G if T ⊆ E(G) and every
+conjectures/621.lean:44:    triangle in G contains at least one edge from T. -/
+conjectures/621.lean:45:def IsTriangleTransversal621 {n : ℕ} (G : SimpleGraph (Fin n)) [DecidableRel G.Adj]
+conjectures/621.lean:55:forming a set that contains at most one edge from every triangle, and τ₁(G) as
+conjectures/621.lean:57:every triangle.
+conjectures/621.lean:65:    (hS : IsTriangleIndependent621 G S)
+conjectures/621.lean:66:    (hS_max : ∀ S' : Finset (Sym2 (Fin n)), IsTriangleIndependent621 G S' → S'.card ≤ S.card)
+conjectures/621.lean:68:    (hT : IsTriangleTransversal621 G T)
+conjectures/621.lean:69:    (hT_min : ∀ T' : Finset (Sym2 (Fin n)), IsTriangleTransversal621 G T' → T.card ≤ T'.card) :
+conjectures/210.lean:8:abbrev Point2_210 := EuclideanSpace ℝ (Fin 2)
+conjectures/465.lean:35:    ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+conjectures/465.lean:51:    ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+conjectures/581.lean:26:f(m) is the largest k such that every triangle-free graph on m edges must
+conjectures/581.lean:28:the infimum of `maxBipartiteEdges G` over all finite triangle-free graphs G
+conjectures/581.lean:41:Let f(m) be the maximal k such that a triangle-free graph on m edges must
+conjectures/588.lean:12:def NoKPlusOneCollinear (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/588.lean:13:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/588.lean:14:    S ⊆ P → S.card = k + 1 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+conjectures/588.lean:20:noncomputable def kRichLineCount (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+conjectures/588.lean:21:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+conjectures/588.lean:23:    k ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+conjectures/588.lean:42:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/103.lean:5:import Mathlib.Topology.MetricSpace.Isometry
+conjectures/103.lean:11:def IsUnitSeparated (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/103.lean:17:noncomputable def finiteDiameter (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℝ :=
+conjectures/103.lean:25:def IsMinimalDiameter (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/103.lean:27:  ∀ B : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/103.lean:31:Two finite point sets in ℝ² are congruent if there is an isometric equivalence of ℝ²
+conjectures/103.lean:34:def AreCongruent (A B : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/103.lean:35:  ∃ f : EuclideanSpace ℝ (Fin 2) ≃ᵢ EuclideanSpace ℝ (Fin 2),
+conjectures/103.lean:36:    A.image (f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2)) = B
+conjectures/103.lean:40:n-point configurations in ℝ². That is, it counts the number of incongruent sets
+conjectures/103.lean:47:  let minimizers : Set (Finset (EuclideanSpace ℝ (Fin 2))) :=
+conjectures/103.lean:49:  Set.ncard {C : Set (Finset (EuclideanSpace ℝ (Fin 2))) |
+conjectures/103.lean:50:    ∃ A ∈ minimizers, C = minimizers ∩ {B | AreCongruent A B}}
+conjectures/103.lean:54:Let h(n) count the number of incongruent sets of n points in ℝ² which minimize
+conjectures/154.lean:6:import Mathlib.Topology.MetricSpace.Basic
+conjectures/154.lean:23:/-- The fraction of elements in a finite set of naturals that are congruent to r modulo m. -/
+conjectures/214.lean:10:def IsUnitSquare (a b c d : EuclideanSpace ℝ (Fin 2)) : Prop :=
+conjectures/214.lean:21:complement of S must contain a congruent copy of any set of four points.
+conjectures/214.lean:24:  ∀ (S : Set (EuclideanSpace ℝ (Fin 2))),
+conjectures/214.lean:26:    ∃ a b c d : EuclideanSpace ℝ (Fin 2),
+conjectures/533.lean:12:triangle.
+conjectures/128.lean:9:/-- A graph G contains a triangle if there exist three mutually adjacent vertices. -/
+conjectures/128.lean:10:def HasTriangle {V : Type*} (G : SimpleGraph V) : Prop :=
+conjectures/128.lean:17:Since G.Adj is symmetric, each undirected edge {u, v} contributes exactly two
+conjectures/128.lean:27:at least ⌊n/2⌋ vertices has more than n²/50 edges. Must G contain a triangle?
+conjectures/128.lean:30:the Petersen graph (both triangle-free graphs with local edge density ≈ n²/50).
+conjectures/128.lean:35:  of ≥ αn vertices spans more than α³n²/2 edges, then G contains a triangle.
+conjectures/128.lean:47:      HasTriangle G :=
+conjectures/223.lean:27:noncomputable def unitDistPairs {d : ℕ} (A : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+conjectures/223.lean:35:theorem erdos223_d2_upper (A : Finset (EuclideanSpace ℝ (Fin 2)))
+conjectures/223.lean:46:    ∃ A : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/223.lean:57:theorem erdos223_d3_upper (A : Finset (EuclideanSpace ℝ (Fin 3)))
+conjectures/223.lean:69:    ∃ A : Finset (EuclideanSpace ℝ (Fin 3)),
+conjectures/223.lean:82:    ∃ N₀ : ℕ, ∀ (A : Finset (EuclideanSpace ℝ (Fin d))),
+conjectures/223.lean:97:      ∃ A : Finset (EuclideanSpace ℝ (Fin d)),
+conjectures/553.lean:14:of K_m then there is either a monochromatic triangle in one of the first two
+conjectures/553.lean:28:    the edges of K_N yields either a monochromatic triangle in colour 1 or
+conjectures/553.lean:35:    the edges of K_N yields either a monochromatic triangle in one of the
+conjectures/107.lean:11:def InGeneralPosition (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/107.lean:12:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/107.lean:13:    S ⊆ P → S.card = 3 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+conjectures/107.lean:21:def InConvexPosition (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/107.lean:22:  ∀ p ∈ S, p ∉ convexHull ℝ (↑(S.erase p) : Set (EuclideanSpace ℝ (Fin 2)))
+conjectures/107.lean:30:  sInf {m : ℕ | ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/107.lean:33:    ∃ Q : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/101.lean:12:def NoFiveCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/101.lean:13:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/101.lean:14:    S ⊆ P → S.card = 5 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+conjectures/101.lean:23:noncomputable def fourRichLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+conjectures/101.lean:24:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+conjectures/101.lean:26:    4 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+conjectures/101.lean:40:      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+conjectures/118.lean:32:a monochromatic copy of `α` in color 0 (red) or a monochromatic triangle K₃ in
+conjectures/504.lean:2:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
+conjectures/504.lean:12:def angleAt (x y z : EuclideanSpace ℝ (Fin 2)) : ℝ :=
+conjectures/504.lean:24:    ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+conjectures/521.lean:5:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/165.lean:17:on N vertices contains either a triangle (3-clique) or an independent set
+conjectures/165.lean:30:    on N vertices contains either a triangle (3-clique) or an independent
+conjectures/559.lean:28:    of H (represented as a symmetric function c : Fin N → Fin N → Bool)
+conjectures/127.lean:13:(v, w) with v ∈ S, w ∉ S, and G.Adj v w; since G.Adj is symmetric and S and Sᶜ
+conjectures/512.lean:1:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/134.lean:16:triangle-free graph on n vertices with maximum degree < n^(1/2 - ε).
+conjectures/134.lean:18:Can G be made into a triangle-free graph with diameter 2 by adding at most δn² edges?
+conjectures/134.lean:24:Proved in the affirmative by Alon [Al94]: a triangle-free graph on n vertices with
+conjectures/134.lean:25:maximum degree < n^(1/2 - ε) can be made into a triangle-free graph with diameter 2
+conjectures/134.lean:37:For every ε, δ > 0 and all sufficiently large n, every triangle-free graph on
+conjectures/134.lean:38:n vertices with maximum degree < n^(1/2 - ε) can be extended to a triangle-free
+conjectures/134.lean:55:every triangle-free graph on n vertices with maximum degree < n^(1/2 - ε)
+conjectures/134.lean:56:can be extended to a triangle-free graph with diameter ≤ 2 by adding at
+conjectures/605.lean:22:Tags: geometry, distances
+conjectures/605.lean:27:    (A : Finset (EuclideanSpace ℝ (Fin 3))) (d : ℝ) : ℕ :=
+conjectures/605.lean:40:        ∃ (R : ℝ) (A : Finset (EuclideanSpace ℝ (Fin 3))),
+conjectures/468.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/595.lean:7:of countably many triangle-free graphs?
+conjectures/595.lean:11:$K_4$ and is not the union of $n$ triangle-free graphs.
+conjectures/595.lean:20:be covered by countably many triangle-free subgraphs.
+conjectures/183.lean:5:import Mathlib.Topology.MetricSpace.Basic
+conjectures/183.lean:15:k colours then there must exist a monochromatic triangle. Determine
+conjectures/183.lean:25:    k-colouring of the edges of K_n contains a monochromatic triangle.
+conjectures/183.lean:26:    A k-colouring is a symmetric function c : Fin n → Fin n → Fin k,
+conjectures/183.lean:27:    and a monochromatic triangle is three pairwise distinct vertices
+conjectures/183.lean:29:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+conjectures/183.lean:39:k colours then there must exist a monochromatic triangle. The limit
+conjectures/183.lean:49:      Tendsto (fun k : ℕ => (multicolorRamseyTriangle k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+conjectures/209.lean:9:abbrev Point2 := EuclideanSpace ℝ (Fin 2)
+conjectures/209.lean:27:/-- A Gallai (ordinary) triangle: three lines forming a triangle with
+conjectures/209.lean:29:def HasGallaiTriangle (A : Finset (AffineSubspace ℝ Point2)) : Prop :=
+conjectures/209.lean:43:there must exist a 'Gallai triangle' (ordinary triangle): three lines from A
+conjectures/209.lean:56:        ¬HasGallaiTriangle A :=
+conjectures/225.lean:1:import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+conjectures/225.lean:13:Let f(θ) = ∑_{k=0}^{n} c_k e^{ikθ} be a trigonometric polynomial all of whose
+conjectures/225.lean:21:/-- A trigonometric polynomial: f(θ) = ∑_{k=0}^{n} c_k e^{ikθ} -/
+conjectures/225.lean:28:If f(θ) = ∑_{k=0}^{n} c_k e^{ikθ} is a trigonometric polynomial whose
+conjectures/506.lean:11:def AllOnCircle (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/506.lean:12:  ∃ c : EuclideanSpace ℝ (Fin 2), ∃ r : ℝ, 0 < r ∧ ∀ p ∈ S, dist p c = r
+conjectures/506.lean:15:def AllCollinear (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+conjectures/506.lean:16:  ∃ a b : EuclideanSpace ℝ (Fin 2), a ≠ b ∧
+conjectures/506.lean:22:def numDeterminedCircles (S : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+conjectures/506.lean:23:  Set.ncard {p : EuclideanSpace ℝ (Fin 2) × ℝ |
+
+[Showing results with pagination = limit: 300, offset: 0]
