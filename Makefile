@@ -13,14 +13,20 @@ build-logs/%.txt : conjectures/%.lean
 
 # ---------------------------------
 
-todo-conjectures.txt : all-conjectures.txt existing-conjectures.txt
-	comm -23 --nocheck-order all-conjectures.txt existing-conjectures.txt > $@
+todo-conjectures.txt : all-conjectures.txt formalized-conjectures.txt
+	comm -23 --nocheck-order $^ > $@
 
 all-conjectures.txt :
 	seq 1 1179 > $@
 
-existing-conjectures.txt :
+formalized-conjectures.txt : deepmind-conjectures.txt completed-conjectures.txt
+	cat $^ | sort -n | uniq > $@
+
+deepmind-conjectures.txt :
 	ls ../formal-conjectures/FormalConjectures/ErdosProblems | cut -d '.' -f 1 | sort -n > $@
+
+completed-conjectures.txt :
+	ls conjectures | cut -d '.' -f 1 | sort -n > $@
 
 # ---------------------------------
 
