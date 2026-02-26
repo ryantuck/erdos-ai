@@ -12,6 +12,17 @@ build-logs/%.txt : conjectures/%.lean
 
 # ---------------------------------
 
+deepmind/%.lean : conjectures/%.lean
+	claude --dangerously-skip-permissions -p "read ADHERE_TO_DEEPMIND_STYLE_GUIDE.md. Apply to problem $*."
+
+to-stylize.txt : completed-conjectures.txt stylized-conjectures.txt
+	comm -23 --nocheck-order $^ > $@
+
+stylized-conjectures.txt :
+	ls deepmind | cut -d '.' -f 1 | sort -n > $@
+
+# ---------------------------------
+
 todo-conjectures.txt : all-conjectures.txt formalized-conjectures.txt
 	comm -23 --nocheck-order $^ > $@
 
