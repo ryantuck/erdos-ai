@@ -63,8 +63,8 @@ noncomputable def maxEdgesAvoidingCycleChords (k n : ℕ) : ℕ :=
 For all $k \geq 1$, $g_k(n) = (k+1)n - (k+1)^2$ for all sufficiently large $n$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_767 (k : ℕ) (hk : k ≥ 1) :
-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+theorem erdos_767 : answer(True) ↔
+    ∀ (k : ℕ), k ≥ 1 → ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
       maxEdgesAvoidingCycleChords k n = (k + 1) * n - (k + 1) ^ 2 := by
   sorry
 

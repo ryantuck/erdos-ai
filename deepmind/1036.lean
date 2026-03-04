@@ -46,6 +46,7 @@ $\log$ denotes the natural logarithm.
 -/
 @[category research solved, AMS 5]
 theorem erdos_1036 :
+    answer(True) ↔
     ∀ c : ℝ, c > 0 →
     ∃ δ : ℝ, δ > 0 ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →

@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/342](https://www.erdosproblems.com/342)
 
+Questions about properties of the Ulam sequence (1, 2, 3, 4, 6, 8, 11, 13, ...): whether
+infinitely many pairs $a$, $a + 2$ occur, whether the differences are eventually periodic, and
+whether the upper density of the sequence is zero.
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
 -/

@@ -52,6 +52,7 @@ Proved by Luca [Lu01] (2001): the only solutions are $n = 1, 2, 3, 4, 5$.
 -/
 @[category research solved, AMS 11]
 theorem erdos_1058 :
+    answer(True) ↔
     Set.Finite {n : ℕ | ∃ (q r : ℕ),
       -- q is the smallest prime strictly greater than n
       Nat.Prime q ∧ n < q ∧ (∀ p, Nat.Prime p → n < p → q ≤ p) ∧

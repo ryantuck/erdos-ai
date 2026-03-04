@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/527](https://www.erdosproblems.com/527)
 
+Let $a_n \in \mathbb{R}$ with $\sum |a_n|^2 = \infty$ and $|a_n| = o(1/\sqrt{n})$.
+Is it true that, for almost all choices of signs $\varepsilon_n = \pm 1$, there exists
+some $z$ with $|z| = 1$ such that $\sum \varepsilon_n a_n z^n$ converges?
+Solved affirmatively by Michelen and Sawhney.
+
 [Er61] Erdős, P., *Some unsolved problems*, Magyar Tud. Akad. Mat. Kutató Int. Közl. (1961),
 p.254.
 
@@ -52,14 +57,12 @@ Proved by Michelen and Sawhney [MiSa25], who showed that the set of such $z$
 has Hausdorff dimension 1.
 -/
 @[category research solved, AMS 40 60]
-theorem erdos_527
-    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
-    {ε : ℕ → Ω → ℝ}
-    (hRad : ∀ k, IsRademacher μ (ε k))
-    (hIndep : iIndepFun ε μ)
-    (a : ℕ → ℝ)
-    (ha_sq_div : ¬Summable (fun n => a n ^ 2))
-    (ha_little_o : Tendsto (fun n => |a n| * Real.sqrt (↑n : ℝ)) atTop (nhds 0)) :
+theorem erdos_527 : answer(True) ↔
+    ∀ {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+      {ε : ℕ → Ω → ℝ},
+    (∀ k, IsRademacher μ (ε k)) → iIndepFun ε μ →
+    ∀ (a : ℕ → ℝ), ¬Summable (fun n => a n ^ 2) →
+    Tendsto (fun n => |a n| * Real.sqrt (↑n : ℝ)) atTop (nhds 0) →
     ∀ᵐ ω ∂μ, ∃ z : ℂ, ‖z‖ = 1 ∧
       ∃ S : ℂ, Tendsto (randomPowerPartialSum (fun k => ε k ω) a z) atTop (nhds S) := by
   sorry

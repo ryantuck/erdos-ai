@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/378](https://www.erdosproblems.com/378)
 
+For every $r \ge 0$, the natural density of the set of integers $n$ for which $\binom{n}{k}$
+is squarefree for at least $r$ values of $1 \le k < n$ exists and is positive.
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
 
@@ -43,7 +46,7 @@ noncomputable def lowerDensity (A : Set ℕ) : ℝ :=
     Filter.atTop
 
 /-- A set of natural numbers has natural density $d$. -/
-def hasNaturalDensity (A : Set ℕ) (d : ℝ) : Prop :=
+def HasNaturalDensity (A : Set ℕ) (d : ℝ) : Prop :=
   upperDensity A = d ∧ lowerDensity A = d
 
 /-- The number of values $k$ with $1 \le k < n$ such that $\binom{n}{k}$ is squarefree. -/
@@ -66,7 +69,7 @@ $2m + 2$ values of $k$ exists.
 -/
 @[category research solved, AMS 11]
 theorem erdos_378 (r : ℕ) :
-    ∃ d : ℝ, d > 0 ∧ hasNaturalDensity (squarefreeBinomAtLeast r) d := by
+    ∃ d : ℝ, d > 0 ∧ HasNaturalDensity (squarefreeBinomAtLeast r) d := by
   sorry
 
 end Erdos378

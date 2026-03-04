@@ -50,13 +50,12 @@ in $X$ is $< c(t) \cdot |X|$, then $\mathcal{F}$ has property B.
 Disproved by Wood [Wo13b].
 -/
 @[category research solved, AMS 5]
-theorem erdos_1022 :
-    ¬ ∃ (c : ℕ → ℝ), Tendsto c atTop atTop ∧
+theorem erdos_1022 : answer(False) ↔
+    ∃ (c : ℕ → ℝ), Tendsto c atTop atTop ∧
       ∀ (t : ℕ) (n : ℕ) (F : Finset (Finset (Fin n))),
         (∀ e ∈ F, t ≤ e.card) →
         (∀ X : Finset (Fin n),
           ((F.filter (fun e => e ⊆ X)).card : ℝ) < c t * (X.card : ℝ)) →
-        HasPropertyB F := by
-  sorry
+        HasPropertyB F := by sorry
 
 end Erdos1022

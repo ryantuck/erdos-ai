@@ -105,7 +105,7 @@ The analogous characterization of $A_3$ is open.
 -/
 @[category research open, AMS 5]
 theorem erdos_837 :
-    densityJumpSet 3 = (sorry : Set ℝ) := by
+    densityJumpSet 3 = answer(sorry) := by
   sorry
 
 end Erdos837

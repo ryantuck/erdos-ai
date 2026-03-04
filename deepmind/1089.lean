@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1089](https://www.erdosproblems.com/1089)
 
+Let $g_d(n)$ be minimal such that every collection of $g_d(n)$ points in $\mathbb{R}^d$
+determines at least $n$ distinct distances. Does $\lim_{d \to \infty} g_d(n) / d^{n-1}$
+exist for all $n \geq 2$? The answer is yes, and the limit equals $1/(n-1)!$.
+
 [Fe26] Aletheia-Zomlefer, established the lower bound
 $\binom{d+1}{n-1} + 1 \leq g_d(n)$.
 
@@ -58,9 +62,11 @@ and the upper bound $g_d(n) \leq \binom{d+n-1}{n-1} + 1$ is due to Bannai, Banna
 and Stanton [BBS83].
 -/
 @[category research solved, AMS 5 52]
-theorem erdos_1089 (n : ℕ) (hn : 2 ≤ n) :
-    Tendsto (fun d : ℕ => (g d n : ℝ) / (d : ℝ) ^ (n - 1))
-      atTop (nhds (1 / (Nat.factorial (n - 1) : ℝ))) := by
+theorem erdos_1089 :
+    answer(True) ↔
+      ∀ (n : ℕ), 2 ≤ n →
+        Tendsto (fun d : ℕ => (g d n : ℝ) / (d : ℝ) ^ (n - 1))
+          atTop (nhds (1 / (Nat.factorial (n - 1) : ℝ))) := by
   sorry
 
 end Erdos1089

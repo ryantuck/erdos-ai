@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 461
 
+Erdős and Graham asked whether the number of distinct smooth components among consecutive
+integers grows linearly: specifically, whether $f(n,t) \gg t$ uniformly for all $n$ and $t$.
+
 *Reference:* [erdosproblems.com/461](https://www.erdosproblems.com/461)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
@@ -48,8 +51,9 @@ counts the number of distinct $t$-smooth components among $\{n+1, \ldots, n+t\}$
 -/
 @[category research open, AMS 11]
 theorem erdos_461 :
-    ∃ c : ℝ, c > 0 ∧ ∀ n t : ℕ, 0 < t →
-      (f n t : ℝ) ≥ c * (t : ℝ) := by
+    answer(sorry) ↔
+      ∃ c : ℝ, c > 0 ∧ ∀ n t : ℕ, 0 < t →
+        (f n t : ℝ) ≥ c * (t : ℝ) := by
   sorry
 
 end Erdos461

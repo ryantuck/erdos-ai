@@ -48,7 +48,7 @@ Proved by Conlon, Fox, and Pham [CFP21].
 -/
 @[category research solved, AMS 5]
 theorem erdos_843 :
-    IsRamseyComplete {n : ℕ | ∃ m : ℕ, m ≥ 1 ∧ n = m ^ 2} 2 := by
+    answer(True) ↔ IsRamseyComplete {n : ℕ | ∃ m : ℕ, m ≥ 1 ∧ n = m ^ 2} 2 := by
   sorry
 
 end Erdos843

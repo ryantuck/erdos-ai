@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1169
 
+Erdős and Hajnal asked whether for all finite $k < \omega$, the ordinal partition
+relation $\omega_1^2 \to (\omega_1^2, k)^2$ fails.
+
 *Reference:* [erdosproblems.com/1169](https://www.erdosproblems.com/1169)
 -/
 

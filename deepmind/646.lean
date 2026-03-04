@@ -41,9 +41,8 @@ $n!$ is divisible by an even power of each prime in the set. Equivalently,
 for each prime $p$ in the set, the $p$-adic valuation of $n!$ is even.
 -/
 @[category research solved, AMS 11]
-theorem erdos_646
-    (primes : Finset ℕ)
-    (hprimes : ∀ p ∈ primes, Nat.Prime p) :
+theorem erdos_646 : answer(True) ↔
+    ∀ (primes : Finset ℕ), (∀ p ∈ primes, Nat.Prime p) →
     Set.Infinite {n : ℕ | ∀ p ∈ primes, Even (padicValNat p n.factorial)} := by
   sorry
 

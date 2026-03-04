@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1125](https://www.erdosproblems.com/1125)
 
+If $f : \mathbb{R} \to \mathbb{R}$ satisfies $2f(x) \leq f(x+h) + f(x+2h)$ for every $x \in \mathbb{R}$
+and $h > 0$, must $f$ be monotonic?
+
 [Ke69] Kemperman, J.H.B., (1969) - proved the result for measurable $f$.
 
 [Er81b] Erdős, P., (1981).

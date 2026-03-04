@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/543](https://www.erdosproblems.com/543)
 
+Define $f(N)$ as the minimal $k$ such that a random $k$-element subset of an abelian group
+of order $N$ is subset-sum complete with probability $\geq 1/2$. Erdős and Rényi proved
+$f(N) \leq \log_2 N + O(\log \log N)$. This problem asks whether the bound can be improved
+to $f(N) \leq \log_2 N + o(\log \log N)$. Disproved by ChatGPT and Tang.
+
 [Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
 combinatorial theory (Proc. Internat. Sympos., Colorado State Univ., Fort Collins, Colo., 1971)
 (1973), 117-138.

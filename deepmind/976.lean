@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 976
 
+For an irreducible polynomial $f \in \mathbb{Z}[x]$ of degree $d \geq 2$, estimate the greatest
+prime factor of $\prod_{m=1}^{n} f(m)$. In particular, is this $\gg n^{1+c}$ for some $c > 0$,
+or even $\gg n^d$?
+
 *Reference:* [erdosproblems.com/976](https://www.erdosproblems.com/976)
 -/
 
@@ -43,11 +47,11 @@ Formalized as: there exist constants $c > 0$ and $C > 0$ such that for all suffi
 $n$, the greatest prime factor of $\prod_{m=1}^{n} |f(m)|$ is at least $C \cdot n^{1+c}$.
 -/
 @[category research open, AMS 11]
-theorem erdos_976
-    (f : Polynomial ℤ) (hf_irr : Irreducible f) (hf_deg : 2 ≤ f.natDegree) :
-    ∃ (c : ℝ) (C : ℝ), c > 0 ∧ C > 0 ∧
-      ∀ᶠ n in atTop,
-        (greatestPrimeFactor (polyProduct f n) : ℝ) ≥ C * (n : ℝ) ^ (1 + c) := by
+theorem erdos_976 : answer(sorry) ↔
+    ∀ (f : Polynomial ℤ), Irreducible f → 2 ≤ f.natDegree →
+      ∃ (c : ℝ) (C : ℝ), c > 0 ∧ C > 0 ∧
+        ∀ᶠ n in atTop,
+          (greatestPrimeFactor (polyProduct f n) : ℝ) ≥ C * (n : ℝ) ^ (1 + c) := by
   sorry
 
 /--
@@ -57,11 +61,11 @@ Formalized as: there exists $C > 0$ such that for all sufficiently large $n$,
 the greatest prime factor of $\prod_{m=1}^{n} |f(m)|$ is at least $C \cdot n^d$.
 -/
 @[category research open, AMS 11]
-theorem erdos_976.variants.strong
-    (f : Polynomial ℤ) (hf_irr : Irreducible f) (hf_deg : 2 ≤ f.natDegree) :
-    ∃ (C : ℝ), C > 0 ∧
-      ∀ᶠ n in atTop,
-        (greatestPrimeFactor (polyProduct f n) : ℝ) ≥ C * (n : ℝ) ^ (f.natDegree) := by
+theorem erdos_976.variants.strong : answer(sorry) ↔
+    ∀ (f : Polynomial ℤ), Irreducible f → 2 ≤ f.natDegree →
+      ∃ (C : ℝ), C > 0 ∧
+        ∀ᶠ n in atTop,
+          (greatestPrimeFactor (polyProduct f n) : ℝ) ≥ C * (n : ℝ) ^ (f.natDegree) := by
   sorry
 
 end Erdos976

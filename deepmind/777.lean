@@ -47,7 +47,7 @@ $\lfloor (2 - \varepsilon) \cdot 2^{n/2} \rfloor$ subsets of $\{0, \ldots, n-1\}
 comparability graph of $F$ has fewer than $2^n$ edges.
 -/
 @[category research solved, AMS 5]
-theorem erdos_777 :
+theorem erdos_777 : answer(True) ↔
     ∀ ε : ℝ, ε > 0 → ε < 2 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       ∀ F : Finset (Finset (Fin n)),
@@ -58,18 +58,16 @@ theorem erdos_777 :
 /--
 **Erdős Problem 777, Question 2** (solved, negative — Alon–Frankl):
 
-The answer to Question 2 is no. There exists $c > 0$ such that for all $C > 0$,
-for sufficiently large $n$, there is a family $F$ of subsets of $\{0, \ldots, n-1\}$ with
-$|F| > C \cdot 2^{n/2}$ and at least $c \cdot |F|^2$ comparable pairs.
+Is it true that if the comparability graph of $F$ has at least $c \cdot |F|^2$ edges,
+then $|F| \ll_c 2^{n/2}$? The answer is no.
 -/
 @[category research solved, AMS 5]
-theorem erdos_777.variants.q2_counterexample :
-    ∃ c : ℝ, c > 0 ∧
-    ∀ C : ℝ, C > 0 →
-      ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-        ∃ F : Finset (Finset (Fin n)),
-          (F.card : ℝ) > C * (2 : ℝ) ^ ((n : ℝ) / 2) ∧
-          (comparableEdges n F : ℝ) ≥ c * (F.card : ℝ) ^ 2 := by
+theorem erdos_777.variants.q2 : answer(False) ↔
+    ∀ c : ℝ, c > 0 →
+    ∃ C : ℝ, C > 0 ∧
+      ∀ (n : ℕ) (F : Finset (Finset (Fin n))),
+        (comparableEdges n F : ℝ) ≥ c * (F.card : ℝ) ^ 2 →
+        (F.card : ℝ) ≤ C * (2 : ℝ) ^ ((n : ℝ) / 2) := by
   sorry
 
 /--
@@ -80,7 +78,7 @@ subsets of $\{0, \ldots, n-1\}$, if the number of comparable pairs exceeds $|F|^
 then $|F| < (2 + \varepsilon)^{n/2}$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_777.variants.q3 :
+theorem erdos_777.variants.q3 : answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ δ : ℝ, δ > 0 ∧
       ∀ (n : ℕ) (F : Finset (Finset (Fin n))),

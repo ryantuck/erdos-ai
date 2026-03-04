@@ -42,12 +42,13 @@ size at least $(n - k) / 2$, then $G$ is $(k + 2)$-colorable.
 The condition `2 * T.card + k ≥ S.card` encodes $|T| \geq (|S| - k) / 2$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_922 {V : Type*} [Fintype V] [DecidableEq V]
-    (G : SimpleGraph V) (k : ℕ)
-    (h : ∀ S : Finset V, ∃ T : Finset V, T ⊆ S ∧
-      G.IsIndepSet (↑T : Set V) ∧
-      2 * T.card + k ≥ S.card) :
-    G.Colorable (k + 2) := by
+theorem erdos_922 : answer(True) ↔
+    ∀ (V : Type*) [Fintype V] [DecidableEq V]
+      (G : SimpleGraph V) (k : ℕ),
+      (∀ S : Finset V, ∃ T : Finset V, T ⊆ S ∧
+        (↑T : Set V).Pairwise (fun u v => ¬G.Adj u v) ∧
+        2 * T.card + k ≥ S.card) →
+      G.Colorable (k + 2) := by
   sorry
 
 end Erdos922

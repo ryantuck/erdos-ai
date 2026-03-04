@@ -21,6 +21,8 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/799](https://www.erdosproblems.com/799)
 
+Is it true that the list chromatic number $\chi_L(G) = o(n)$ for almost all graphs on $n$ vertices?
+
 [ERT80] Erdős, P., Rubin, A. L. and Taylor, H., *Choosability in graphs*, Proc. West Coast
 Conf. on Combinatorics, Graph Theory and Computing, Congressus Numerantium 26 (1980), 125–157.
 

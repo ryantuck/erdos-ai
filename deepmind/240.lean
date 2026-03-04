@@ -58,9 +58,10 @@ Proved by Tijdeman [Ti73].
 -/
 @[category research solved, AMS 11]
 theorem erdos_240 :
-    ∃ P : Set ℕ, Set.Infinite P ∧ (∀ p ∈ P, Nat.Prime p) ∧
-      ∀ B : ℕ, Set.Finite {n : ℕ | n ∈ smoothNumbers P ∧
-        ∃ m ∈ smoothNumbers P, n < m ∧ m ≤ n + B} := by
+    answer(True) ↔
+      ∃ P : Set ℕ, Set.Infinite P ∧ (∀ p ∈ P, Nat.Prime p) ∧
+        ∀ B : ℕ, Set.Finite {n : ℕ | n ∈ smoothNumbers P ∧
+          ∃ m ∈ smoothNumbers P, n < m ∧ m ≤ n + B} := by
   sorry
 
 end Erdos240

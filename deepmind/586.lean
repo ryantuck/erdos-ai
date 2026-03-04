@@ -38,15 +38,14 @@ def IsCoveringSystem (k : ℕ) (a : Fin k → ℤ) (n : Fin k → ℕ) : Prop :=
   (∀ i : Fin k, 2 ≤ n i) ∧
   (∀ z : ℤ, ∃ i : Fin k, (n i : ℤ) ∣ (z - a i))
 
-/-- **Erdős Problem 586** (Schinzel): Every covering system has two moduli where one
-    divides the other. Equivalently, there is no covering system with pairwise
-    non-divisible moduli. Proved by Balister, Bollobás, Morris, Sahasrabudhe,
-    and Tiba [BBMST22]. -/
+/-- **Erdős Problem 586** (Schinzel): Is there a covering system such that no two of the
+    moduli divide each other? The answer is no, as proved by Balister, Bollobás, Morris,
+    Sahasrabudhe, and Tiba [BBMST22]. -/
 @[category research solved, AMS 11]
-theorem erdos_586 :
-    ∀ (k : ℕ) (a : Fin k → ℤ) (n : Fin k → ℕ),
-      IsCoveringSystem k a n →
-      ∃ i j : Fin k, i ≠ j ∧ (n i ∣ n j ∨ n j ∣ n i) := by
+theorem erdos_586 : answer(False) ↔
+    (∃ (k : ℕ) (a : Fin k → ℤ) (n : Fin k → ℕ),
+      IsCoveringSystem k a n ∧
+      ∀ i j : Fin k, i ≠ j → ¬(n i ∣ n j)) := by
   sorry
 
 end Erdos586

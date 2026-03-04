@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 504
 
+Determine the maximum guaranteed angle α_N for N-point planar sets: the supremum of all
+angles α such that every set of N points in the plane contains three distinct points forming
+an angle of at least α.
+
 *Reference:* [erdosproblems.com/504](https://www.erdosproblems.com/504)
 -/
 
@@ -60,12 +64,13 @@ $$\alpha_N = \pi(1 - 1/n) \quad \text{when } N > 2^{n-1} + 2^{n-3}$$
 $$\alpha_N = \pi(1 - 1/(2n-1)) \quad \text{when } N \leq 2^{n-1} + 2^{n-3}$$
 -/
 @[category research solved, AMS 52]
-theorem erdos_504 (N : ℕ) (hN : 4 < N) (n : ℕ) (hn : 3 ≤ n)
-    (hn_lb : 2 ^ (n - 1) < N) (hn_ub : N ≤ 2 ^ n) :
-    maxGuaranteedAngle N =
-      if 2 ^ (n - 1) + 2 ^ (n - 3) < N
-      then Real.pi * (1 - 1 / (n : ℝ))
-      else Real.pi * (1 - 1 / (2 * (n : ℝ) - 1)) := by
+theorem erdos_504 :
+    ∀ (N : ℕ), 4 < N →
+    ∀ (n : ℕ), 3 ≤ n → 2 ^ (n - 1) < N → N ≤ 2 ^ n →
+      maxGuaranteedAngle N =
+        answer (if 2 ^ (n - 1) + 2 ^ (n - 3) < N
+          then Real.pi * (1 - 1 / (n : ℝ))
+          else Real.pi * (1 - 1 / (2 * (n : ℝ) - 1))) := by
   sorry
 
 end Erdos504

@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/374](https://www.erdosproblems.com/374)
 
+For a natural number $m$, let $F(m)$ be the minimal $k \ge 2$ such that there exist
+$a_1 < \cdots < a_k = m$ with $a_1! \cdots a_k!$ a perfect square, and let $D_k = \{m : F(m) = k\}$.
+The conjecture asserts that $D_6$ has positive lower density, i.e., $|D_6 \cap \{1,\ldots,n\}| \gg n$.
+
 [ErGr76] Erdős, P. and Graham, R., _On products of factorials_. Bull. Inst. Math. Acad. Sinica
 (1976).
 

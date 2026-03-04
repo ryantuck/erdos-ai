@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 693
 
+Let $k \geq 2$ and $n$ be sufficiently large. Consider the set of integers in $[n, n^k]$ which
+have a divisor in the open interval $(n, 2n)$. Is the maximum gap between consecutive elements of
+this set at most $(\log n)^{O(1)}$?
+
 *Reference:* [erdosproblems.com/693](https://www.erdosproblems.com/693)
 
 [Er79e] Erdős, P., _Some unconventional problems in number theory_. Acta Math. Acad. Sci.
@@ -30,7 +34,7 @@ open Real
 namespace Erdos693
 
 /-- An integer $m$ has a divisor in the open interval $(n, 2n)$. -/
-def hasDivisorIn (m n : ℕ) : Prop :=
+def HasDivisorIn (m n : ℕ) : Prop :=
   ∃ d, d ∣ m ∧ n < d ∧ d < 2 * n
 
 /--
@@ -47,8 +51,8 @@ theorem erdos_693 :
     ∃ C : ℕ,
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
     ∀ a b : ℕ, n ≤ a → a < b → b ≤ n ^ k →
-    hasDivisorIn a n → hasDivisorIn b n →
-    (∀ m : ℕ, a < m → m < b → ¬hasDivisorIn m n) →
+    HasDivisorIn a n → HasDivisorIn b n →
+    (∀ m : ℕ, a < m → m < b → ¬HasDivisorIn m n) →
     (b : ℝ) - (a : ℝ) ≤ (Real.log (n : ℝ)) ^ C := by
   sorry
 

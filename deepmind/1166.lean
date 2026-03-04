@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1166](https://www.erdosproblems.com/1166)
 
+For a simple random walk on $\mathbb{Z}^2$, a *favourite site* at time $k$ is a site with the
+maximum number of visits up to time $k$. The problem asks whether the cumulative number of
+distinct favourite sites $\left|\bigcup_{k \le n} F(k)\right|$ is bounded by a power of $\log n$
+almost surely, for all but finitely many $n$.
+
 [Va99] Varga, L., *Problems and results on random walks*, 1999.
 
 [ErTa60] Erdős, P. and Taylor, S. J., *Some problems concerning the structure of random walk
@@ -87,11 +92,11 @@ the result of Erdős and Taylor [ErTa60] that the maximum number of visits to an
 by time $n$ is $\ll (\log n)^2$.
 -/
 @[category research solved, AMS 60]
-theorem erdos_1166
-    {μ : Measure Ω} [IsProbabilityMeasure μ]
-    {X : ℕ → Ω → ℤ × ℤ}
-    (hStep : ∀ i, IsUniformStep μ (X i))
-    (hIndep : iIndepFun X μ) :
+theorem erdos_1166 : answer(True) ↔
+    ∀ (Ω : Type*) [MeasurableSpace Ω] (μ : Measure Ω) [IsProbabilityMeasure μ]
+      (X : ℕ → Ω → ℤ × ℤ),
+    (∀ i, IsUniformStep μ (X i)) →
+    iIndepFun X μ →
     ∃ C : ℕ, ∀ᵐ ω ∂μ, ∀ᶠ (n : ℕ) in atTop,
       ((cumulativeFavouriteSites X ω n).card : ℝ) ≤ Real.log (n : ℝ) ^ C := by
   sorry

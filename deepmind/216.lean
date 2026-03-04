@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/216](https://www.erdosproblems.com/216)
 
+Does $g(k)$ exist for all $k \geq 3$, where $g(k)$ is the smallest $N$ such that any set of $N$
+points in general position in $\mathbb{R}^2$ contains an empty convex $k$-gon?
+
 [Ha78] Harborth, H., _Konvexe Fünfecke in ebenen Punktmengen_. Elem. Math. 33 (1978), 116-118.
 
 [Ho83] Horton, J. D., _Sets with no empty convex 7-gons_. Canad. Math. Bull. 26 (1983), 482-484.

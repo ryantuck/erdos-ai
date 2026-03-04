@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/154](https://www.erdosproblems.com/154)
 
+Let $A \subset \{1, \ldots, N\}$ be a Sidon set with $|A| \sim N^{1/2}$.
+Must the sumset $A + A$ be well-distributed over all small moduli?
+
 [ESS94] Erdős, P., Sárközy, A., and Sós, V. T., 1994.
 
 [Li98] Lindström, B., 1998.
@@ -70,7 +73,7 @@ residue $0 \leq r < m$, the fraction of elements of $A_n + A_n$ in residue
 class $r \bmod m$ tends to $1/m$.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_154 :
+theorem erdos_154 : answer(True) ↔
     ∀ (A : ℕ → Finset ℕ),
       (∀ n, IsSidonSet (A n)) →
       (∀ n, (A n) ⊆ Finset.range (n + 1)) →

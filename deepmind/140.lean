@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/140](https://www.erdosproblems.com/140)
 
+Let $r_3(N)$ denote the size of the largest subset of $\{1, \ldots, N\}$ that contains no
+non-trivial $3$-term arithmetic progression. Is it true that $r_3(N) \ll N / (\log N)^C$ for
+every $C > 0$?
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
 

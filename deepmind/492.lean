@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/492](https://www.erdosproblems.com/492)
 
+Let $A = \{a_1 < a_2 < \cdots\} \subseteq \mathbb{N}$ be infinite with $a_{i+1}/a_i \to 1$.
+The problem asked whether, for almost all $\alpha$, the sequence of fractional positions
+$f(\alpha n)$ is uniformly distributed in $[0,1)$. Disproved by Schmidt.
+
 [Sc69] Schmidt, W.M., _Irregularities of distribution. IV_, Invent. Math. 7 (1969), 55-82.
 -/
 
@@ -67,11 +71,11 @@ there exists such a sequence for which equidistribution fails on a
 set of positive measure.
 -/
 @[category research solved, AMS 11 28]
-theorem erdos_492 :
-    ∃ (a : ℕ → ℕ), StrictMono a ∧ (∀ i, 0 < a i) ∧
-      Tendsto (fun i => (a (i + 1) : ℝ) / (a i : ℝ)) atTop (nhds 1) ∧
-      ¬(∀ᵐ α ∂(volume : Measure ℝ),
-        IsEquidistributed (fun n => fractionalPosition a (α * (n : ℝ)))) := by
+theorem erdos_492 : answer(False) ↔
+    ∀ (a : ℕ → ℕ), StrictMono a → (∀ i, 0 < a i) →
+      Tendsto (fun i => (a (i + 1) : ℝ) / (a i : ℝ)) atTop (nhds 1) →
+      ∀ᵐ α ∂(volume : Measure ℝ),
+        IsEquidistributed (fun n => fractionalPosition a (α * (n : ℝ))) := by
   sorry
 
 end Erdos492

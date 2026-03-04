@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 784
 
+For every $C > 0$, does every subset $A \subseteq \{2, \ldots, x\}$ with
+$\sum_{a \in A} 1/a \le C$ leave at least $K \cdot x / (\log x)^c$ integers in $[1, x]$
+undivided by any element of $A$? Resolved negatively for $C > 1$.
+
 *Reference:* [erdosproblems.com/784](https://www.erdosproblems.com/784)
 
 [Ru82] Ruzsa, I., *On the small sieve. I. Sieving by primes*, J. Number Theory, 1982.

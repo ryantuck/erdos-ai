@@ -67,6 +67,7 @@ $\min I = 2 - (1 + o(1))/n$, i.e., $n \cdot (2 - \min I) \to 1$ as $n \to \infty
 -/
 @[category research open, AMS 41]
 theorem erdos_1131 :
+    answer(sorry) ↔
     Tendsto (fun n : ℕ => (n : ℝ) * (2 - minLagrangeL2 n)) atTop (nhds 1) := by
   sorry
 

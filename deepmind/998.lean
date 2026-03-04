@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 998
 
+Is it true that if, for an irrational $\alpha$, the number of $m \leq n$ with
+$\{\alpha m\} \in [u,v)$ is $n(v-u) + O(1)$, then $u$ and $v$ must be fractional
+parts of integer multiples of $\alpha$? Proved by Kesten.
+
 *Reference:* [erdosproblems.com/998](https://www.erdosproblems.com/998)
 
 [Ke66] Kesten, H., _On a conjecture of Erdős and Szüsz related to uniform distribution mod 1_.

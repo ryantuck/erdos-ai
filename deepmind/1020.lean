@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1020
 
+Conjecture on the maximum number of edges in an $r$-uniform hypergraph on $n$ vertices
+containing no matching of size $k$ (the Erdős Matching Conjecture).
+
 *Reference:* [erdosproblems.com/1020](https://www.erdosproblems.com/1020)
 
 [Er65d] Erdős, P., *A problem on independent r-tuples*, Ann. Univ. Sci. Budapest. Eötvös Sect.

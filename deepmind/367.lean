@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 367
 
+Is it true that the product of the 2-full parts of $k$ consecutive integers starting at $n$ is
+$O(n^{2+\varepsilon})$ for every fixed $k \geq 1$ and $\varepsilon > 0$?
+
 *Reference:* [erdosproblems.com/367](https://www.erdosproblems.com/367)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number

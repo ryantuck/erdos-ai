@@ -42,10 +42,11 @@ Formalized as: for every graph $G$ with infinite chromatic number, for every bou
 there exists $n \geq N$ such that $G$ contains a cycle of length $2^n$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_63 {V : Type*} (G : SimpleGraph V)
-    (hχ : G.chromaticNumber = ⊤) :
-    ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧
-      ∃ v : V, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = 2 ^ n := by
+theorem erdos_63 : answer(True) ↔
+    ∀ (V : Type*) (G : SimpleGraph V),
+      G.chromaticNumber = ⊤ →
+        ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧
+          ∃ v : V, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = 2 ^ n := by
   sorry
 
 end Erdos63

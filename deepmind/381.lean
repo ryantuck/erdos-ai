@@ -21,9 +21,15 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/381](https://www.erdosproblems.com/381)
 
-[Er44] Erdős, P., _On highly composite numbers_, J. London Math. Soc. 19 (1944), 130–133.
+Is it true that $Q(x) \gg_k (\log x)^k$ for every $k \geq 1$, where $Q(x)$
+counts the number of highly composite numbers in $[1, x]$? Disproved by
+Nicolas [Ni71].
 
-[Ni71] Nicolas, J.-L., _Répartition des nombres hautement composés de Ramanujan_, Canad. J. Math. 23 (1971), 116–130.
+[Er44] Erdős, P., _On highly composite numbers_,
+J. London Math. Soc. 19 (1944), 130–133.
+
+[Ni71] Nicolas, J.-L., _Répartition des nombres hautement composés
+de Ramanujan_, Canad. J. Math. 23 (1971), 116–130.
 -/
 
 open Classical Finset Real
@@ -50,17 +56,15 @@ Erdős asked whether $Q(x) \gg_k (\log x)^k$ for every $k \geq 1$.
 
 Erdős [Er44] proved $Q(x) \gg (\log x)^{1+c}$ for some constant $c > 0$.
 
-The answer is no: Nicolas [Ni71] proved that $Q(x) \ll (\log x)^{O(1)}$,
-i.e., there exist constants $C$ and $K$ such that $Q(x) \leq C \cdot (\log x)^K$
-for all sufficiently large $x$.
-
-We formalize Nicolas's result, which is the true (negative) answer.
+The answer is no: Nicolas [Ni71] showed that $Q(x)$ does not grow faster
+than a fixed power of $\log x$.
 -/
 @[category research solved, AMS 11]
 theorem erdos_381 :
-    ∃ (C K : ℝ), 0 < C ∧ 0 < K ∧
-      ∃ N₀ : ℕ, ∀ x : ℕ, N₀ ≤ x →
-        (highlyCompositeCount x : ℝ) ≤ C * (Real.log (x : ℝ)) ^ K := by
+    answer(False) ↔
+      ∀ (k : ℕ), 1 ≤ k → ∃ c : ℝ, 0 < c ∧
+        ∃ N₀ : ℕ, ∀ x : ℕ, N₀ ≤ x →
+          c * (Real.log (x : ℝ)) ^ k ≤ (highlyCompositeCount x : ℝ) := by
   sorry
 
 end Erdos381

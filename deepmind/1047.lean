@@ -42,19 +42,19 @@ namespace Erdos1047
 /--
 Erdős Problem 1047 (Grunsky's question, [EHP58, p.145]):
 
-There exists a monic polynomial $f \in \mathbb{C}[x]$ and $c > 0$ such that the sublevel
-set $S = \{ z : \|f(z)\| \leq c \}$ has exactly as many connected components as $f$
-has distinct roots, yet some connected component of $S$ is not convex.
+For a monic polynomial $f \in \mathbb{C}[x]$ with $m$ distinct roots and $c > 0$ such that
+the sublevel set $S = \{ z : \|f(z)\| \leq c \}$ has exactly $m$ connected components,
+must all these components be convex?
 
-Disproved by Pommerenke [Po61].
+Answered in the negative by Pommerenke [Po61].
 -/
 @[category research solved, AMS 30 52]
-theorem erdos_1047 :
-    ∃ (f : Polynomial ℂ), f.Monic ∧
-    ∃ (c : ℝ), c > 0 ∧
+theorem erdos_1047 : answer(False) ↔
+    ∀ (f : Polynomial ℂ), f.Monic →
+    ∀ (c : ℝ), c > 0 →
       let S := {z : ℂ | ‖Polynomial.eval z f‖ ≤ c}
-      Set.ncard (connectedComponentIn S '' S) = f.roots.toFinset.card ∧
-      ∃ x : ℂ, x ∈ S ∧ ¬Convex ℝ (connectedComponentIn S x) := by
+      Set.ncard (connectedComponentIn S '' S) = f.roots.toFinset.card →
+      ∀ x ∈ S, Convex ℝ (connectedComponentIn S x) := by
   sorry
 
 end Erdos1047

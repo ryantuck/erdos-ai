@@ -63,6 +63,7 @@ Proved by Kwan and Sudakov [KwSu21].
 -/
 @[category research solved, AMS 5]
 theorem erdos_636 :
+    answer(True) ↔
     ∀ C : ℝ, C > 0 →
     ∃ c : ℝ, c > 0 ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →

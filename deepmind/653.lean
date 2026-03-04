@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 653
 
+For $n$ points in $\mathbb{R}^2$, let $R(x_i)$ count the number of distinct distances from
+$x_i$ to all other points. Let $g(n)$ be the maximum number of distinct values the $R(x_i)$
+can take. Is it true that $g(n) \geq (1 - o(1))n$?
+
 *Reference:* [erdosproblems.com/653](https://www.erdosproblems.com/653)
 
 [Er97e] Erdős, P., *Some of my favourite problems which recently have been solved*.

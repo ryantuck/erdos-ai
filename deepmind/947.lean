@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 947
 
+There is no exact covering system — that is, a finite collection of congruence classes
+$a_i \pmod{n_i}$ with distinct moduli $n_i \geq 2$ such that every integer belongs to
+exactly one of these congruence classes. This was proved independently by
+Mirsky–Newman and Davenport–Rado.
+
 *Reference:* [erdosproblems.com/947](https://www.erdosproblems.com/947)
 -/
 

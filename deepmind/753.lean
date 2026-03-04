@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/753](https://www.erdosproblems.com/753)
 
+Does there exist some constant $c > 0$ such that
+$\chi_L(G) + \chi_L(G^c) > n^{1/2+c}$ for every graph $G$ on $n$ vertices?
+Disproved by Alon [Al92], who showed that the sum can be bounded above by
+$C \sqrt{n \log n}$ for some absolute constant $C > 0$.
+
 [ERT80] Erdős, P., Rubin, A. L., and Taylor, H., _Choosability in graphs_. Proceedings of the
 West Coast Conference on Combinatorics, Graph Theory and Computing (1980), 125-157.
 
@@ -45,16 +50,31 @@ noncomputable def listChromaticNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
   sInf {k : ℕ | IsChoosable G k}
 
 /--
-**Alon's Theorem (Disproof of Erdős Problem 753)** [Al92]:
+**Erdős Problem 753** [ERT80]:
 
-There exists an absolute constant $C > 0$ such that for every $n \geq 2$, there exists
-a graph $G$ on $n$ vertices with
-$$
-  \chi_L(G) + \chi_L(G^c) \leq C \cdot \sqrt{n \cdot \log n}.
-$$
+Does there exist some constant $c > 0$ such that
+$\chi_L(G) + \chi_L(G^c) > n^{1/2+c}$ for every graph $G$ on $n$ vertices?
+Disproved by Alon [Al92].
 -/
 @[category research solved, AMS 5]
 theorem erdos_753 :
+    answer(False) ↔
+    ∃ c : ℝ, c > 0 ∧
+      ∀ n : ℕ, n ≥ 2 →
+        ∀ (G : SimpleGraph (Fin n)),
+          (listChromaticNumber G + listChromaticNumber Gᶜ : ℝ) >
+            (n : ℝ) ^ (1 / 2 + c) := by
+  sorry
+
+/--
+**Alon's upper bound** [Al92]:
+
+There exists an absolute constant $C > 0$ such that for every $n \geq 2$, there exists
+a graph $G$ on $n$ vertices with
+$\chi_L(G) + \chi_L(G^c) \leq C \cdot \sqrt{n \cdot \log n}$.
+-/
+@[category research solved, AMS 5]
+theorem erdos_753.variants.alon_upper_bound :
     ∃ C : ℝ, C > 0 ∧
     ∀ n : ℕ, n ≥ 2 →
       ∃ (G : SimpleGraph (Fin n)),

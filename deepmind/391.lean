@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 391
 
+Let $t(n)$ be the maximal value such that $n!$ can be written as a product
+of $n$ positive integers, each at least $t(n)$. Erdős conjectured that
+$t(n)/n \to 1/e$.
+
 *Reference:* [erdosproblems.com/391](https://www.erdosproblems.com/391)
 -/
 

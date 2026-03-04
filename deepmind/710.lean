@@ -44,12 +44,23 @@ namespace Erdos710
 /-- $f(n)$ for Erdős Problem 710: the minimal $f$ such that in the open interval
 $(n, n+f)$ there exist $n$ distinct integers $a_1, \ldots, a_n$ with $k \mid a_k$ for all
 $1 \le k \le n$. -/
-noncomputable def erdos710_f (n : ℕ) : ℕ :=
+noncomputable def erdos710F (n : ℕ) : ℕ :=
   sInf {f : ℕ | ∃ g : Fin n → ℕ,
     Function.Injective g ∧
     (∀ i : Fin n, n < g i) ∧
     (∀ i : Fin n, g i < n + f) ∧
     (∀ i : Fin n, (i.val + 1) ∣ g i)}
+
+/--
+Erdős Problem 710: Obtain an asymptotic formula for $f(n)$, defined as the minimal $f$ such
+that in $(n, n+f)$ there exist distinct integers $a_1, \ldots, a_n$ with $k \mid a_k$ for all
+$1 \le k \le n$. The answer is an unknown function $g$ such that $f(n) / g(n) \to 1$.
+-/
+@[category research open, AMS 11]
+theorem erdos_710 :
+    Filter.Tendsto (fun n : ℕ => (erdos710F n : ℝ) / answer(sorry) n)
+      Filter.atTop (nhds 1) := by
+  sorry
 
 /--
 Erdős Problem 710, known lower bound [ErPo80]:
@@ -60,10 +71,10 @@ f(n) \ge (2/\sqrt{e} - \varepsilon) \cdot n \cdot (\log n / \log \log n)^{1/2}.
 $$
 -/
 @[category research solved, AMS 11]
-theorem erdos_710_lower :
+theorem erdos_710.variants.lower :
     ∀ ε : ℝ, 0 < ε →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      (erdos710_f n : ℝ) ≥
+      (erdos710F n : ℝ) ≥
         (2 / (Real.exp 1) ^ ((1 : ℝ) / 2) - ε) * (n : ℝ) *
         (Real.log (n : ℝ) / Real.log (Real.log (n : ℝ))) ^ ((1 : ℝ) / 2) := by
   sorry
@@ -80,10 +91,10 @@ The constant $1.7398\ldots$ comes from the original paper; we use $1.7399$ as
 a rational upper bound on that constant.
 -/
 @[category research solved, AMS 11]
-theorem erdos_710_upper :
+theorem erdos_710.variants.upper :
     ∀ ε : ℝ, 0 < ε →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      (erdos710_f n : ℝ) ≤
+      (erdos710F n : ℝ) ≤
         (1.7399 + ε) * (n : ℝ) * (Real.log (n : ℝ)) ^ ((1 : ℝ) / 2) := by
   sorry
 

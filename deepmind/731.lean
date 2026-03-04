@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 731
 
+For almost all $n$, the least integer $m \geq 2$ not dividing $\binom{2n}{n}$ satisfies
+$m = \exp((\log n)^{1/2 + o(1)})$. The open problem asks to find a precise closed-form
+function $f(n)$ such that $m \sim f(n)$ for almost all $n$.
+
 *Reference:* [erdosproblems.com/731](https://www.erdosproblems.com/731)
 
 [EGRS75] Erdős, P., Graham, R., Ruzsa, I., and Straus, E.,

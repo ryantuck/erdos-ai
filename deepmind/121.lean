@@ -44,13 +44,13 @@ namespace Erdos121
 
 /-- A finset $A$ has the property that no $k$ distinct elements have a product that is
 a perfect square. -/
-def noKSquareProduct (k : ℕ) (A : Finset ℕ) : Prop :=
+def NoKSquareProduct (k : ℕ) (A : Finset ℕ) : Prop :=
   ∀ B : Finset ℕ, B ⊆ A → B.card = k → ¬IsSquare (∏ b ∈ B, b)
 
 /-- $F(k, N)$ is the size of the largest subset $A$ of $\{1, \ldots, N\}$ such that
 no $k$ distinct elements of $A$ have a product that is a perfect square. -/
 noncomputable def F (k N : ℕ) : ℕ :=
-  sSup {m : ℕ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ A.card = m ∧ noKSquareProduct k A}
+  sSup {m : ℕ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ A.card = m ∧ NoKSquareProduct k A}
 
 /--
 Erdős Problem #121 [Er94b, Er97, Er97e, Er98] — DISPROVED
@@ -58,23 +58,21 @@ Erdős Problem #121 [Er94b, Er97, Er97e, Er98] — DISPROVED
 Let $F_k(N)$ be the size of the largest $A \subseteq \{1,\ldots,N\}$ such that the product
 of no $k$ distinct elements of $A$ is a perfect square.
 
-Conjectured by Erdős, Sós, and Sárközy [ESS95]: Is $F_5(N) = (1 - o(1)) N$?
-More generally, is $F_{2k+1}(N) = (1 - o(1)) N$ for all $k \geq 2$?
-
-Background:
-- Erdős–Sós–Sárközy [ESS95] proved $F_2(N) = (6/\pi^2 + o(1)) N$ and
-  $F_3(N) = (1 - o(1)) N$, and $F_k(N) \asymp N / \log N$ for all even $k \geq 4$.
-- Erdős [Er38] proved $F_4(N) = o(N)$ (in particular, density $0$ for $k = 4$).
-
-This was answered in the negative by Tao [Ta24], who proved that for any $k \geq 4$ there
-exists a constant $c_k > 0$ such that $F_k(N) \leq (1 - c_k + o(1)) N$. Thus the density
-of the largest such set is bounded strictly away from $1$ for all $k \geq 4$, disproving
-the conjecture for all odd $k \geq 5$.
-
-The theorem below formalizes Tao's result.
+Conjectured by Erdős, Sós, and Sárközy [ESS95]: Is $F_{2k+1}(N) = (1 - o(1)) N$ for all
+$k \geq 2$? Answered in the negative by Tao [Ta24].
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_121 :
+theorem erdos_121 : answer(False) ↔
+    ∀ k : ℕ, 2 ≤ k →
+      Tendsto (fun N => (F (2 * k + 1) N : ℝ) / (N : ℝ)) atTop (nhds 1) := by
+  sorry
+
+/--
+Tao [Ta24] proved that for any $k \geq 4$ there exists a constant $c_k > 0$ such that
+$F_k(N) \leq (1 - c_k + o(1)) N$, disproving the conjecture for all odd $k \geq 5$.
+-/
+@[category research solved, AMS 5 11]
+theorem erdos_121.variants.tao_upper_bound :
     ∀ k : ℕ, 4 ≤ k →
     ∃ c : ℝ, 0 < c ∧
       ∀ ε : ℝ, 0 < ε →

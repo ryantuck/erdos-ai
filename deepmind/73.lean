@@ -51,7 +51,7 @@ made bipartite by removing at most $C$ vertices.
 Proved by Reed [Re99].
 -/
 @[category research solved, AMS 5]
-theorem erdos_73 :
+theorem erdos_73 : answer(True) ↔
     ∀ k : ℕ, ∃ C : ℕ,
       ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
         (∀ S : Finset (Fin n), ∃ I : Finset (Fin n), G.IndepSetIn I S ∧

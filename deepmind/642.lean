@@ -40,9 +40,9 @@ _Cycles with many chords_. (2024).
 combinatorics_. Discrete Math. (1997).
 -/
 
-namespace Erdos642
-
 open SimpleGraph
+
+namespace Erdos642
 
 variable {V : Type*} [Fintype V] [DecidableEq V]
          {G : SimpleGraph V} [DecidableRel G.Adj]
@@ -63,10 +63,11 @@ most $C \cdot n$ edges.
 -/
 @[category research open, AMS 5]
 theorem erdos_642 :
-    ∃ C : ℕ, ∀ (n : ℕ) (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
-      (∀ (v : Fin n) (p : G.Walk v v), p.IsCycle →
-        p.support.toFinset.card > numChords p) →
-      G.edgeFinset.card ≤ C * n := by
+    answer(sorry) ↔
+      ∃ C : ℕ, ∀ (n : ℕ) (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
+        (∀ (v : Fin n) (p : G.Walk v v), p.IsCycle →
+          p.support.toFinset.card > numChords p) →
+        G.edgeFinset.card ≤ C * n := by
   sorry
 
 end Erdos642

@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1006](https://www.erdosproblems.com/1006)
 
+Let $G$ be a graph with girth $> 4$. Can the edges of $G$ always be oriented so that the
+resulting directed graph is acyclic, and reversing any single edge also leaves it acyclic?
+Disproved by Nešetřil and Rödl.
+
 [Er71] Erdős, P., *Some unsolved problems in graph theory and combinatorial analysis*, 1971.
 
 [Er76b] Erdős, P., *Problems and results in graph theory*, 1976.

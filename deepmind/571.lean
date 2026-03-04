@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 571
 
+Is it true that for every rational α ∈ [1, 2), there exists a bipartite graph G such that
+the Turán extremal number satisfies ex(n; G) ≍ n^α?
+
 *Reference:* [erdosproblems.com/571](https://www.erdosproblems.com/571)
 -/
 

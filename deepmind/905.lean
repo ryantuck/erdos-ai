@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 905
 
+Every graph on $n$ vertices with more than $n^2/4$ edges contains an edge
+which is in at least $n/6$ triangles (Bollobás-Erdős conjecture).
+
 *Reference:* [erdosproblems.com/905](https://www.erdosproblems.com/905)
 -/
 

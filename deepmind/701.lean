@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 701
 
+Chvátal's Conjecture: if a family of finite sets is downward closed (closed under taking subsets),
+then the maximum size of an intersecting subfamily is at most the maximum degree (the largest
+number of sets containing any single element).
+
 *Reference:* [erdosproblems.com/701](https://www.erdosproblems.com/701)
 -/
 

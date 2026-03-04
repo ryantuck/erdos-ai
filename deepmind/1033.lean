@@ -48,7 +48,7 @@ $n$ vertices with more than $n^2/4$ edges contains a triangle whose vertices hav
 degrees summing to at least $(2(\sqrt{3} - 1) - \varepsilon) \cdot n$.
 -/
 @[category research open, AMS 5]
-theorem erdos_1033 :
+theorem erdos_1033 : answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
     ∀ G : SimpleGraph (Fin n),

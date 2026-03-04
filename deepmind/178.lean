@@ -58,10 +58,11 @@ Proved by Beck [Be81].
 -/
 @[category research solved, AMS 5]
 theorem erdos_178 :
-    ∀ a : ℕ → ℕ → ℕ, (∀ i, StrictMono (a i)) →
-      ∃ f : ℕ → ℤ, (∀ n, f n = 1 ∨ f n = -1) ∧
-        ∀ d : ℕ, ∃ C : ℤ, 0 < C ∧
-          ∀ m i, i < d → |∑ j ∈ Finset.range m, f (a i j)| ≤ C := by
+    answer(True) ↔
+      ∀ a : ℕ → ℕ → ℕ, (∀ i, StrictMono (a i)) →
+        ∃ f : ℕ → ℤ, (∀ n, f n = 1 ∨ f n = -1) ∧
+          ∀ d : ℕ, ∃ C : ℤ, 0 < C ∧
+            ∀ m i, i < d → |∑ j ∈ Finset.range m, f (a i j)| ≤ C := by
   sorry
 
 end Erdos178

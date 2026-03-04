@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 542
 
+If $A \subseteq \{1, \ldots, n\}$ is such that $\operatorname{lcm}(a, b) > n$ for all distinct
+$a, b \in A$, then $\sum_{a \in A} 1/a \leq 31/30$.
+
 *Reference:* [erdosproblems.com/542](https://www.erdosproblems.com/542)
 -/
 

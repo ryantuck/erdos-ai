@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1164](https://www.erdosproblems.com/1164)
 
+Let $S_n$ denote a simple random walk on $\mathbb{Z}^2$ starting at the origin, and let $R_n$
+be the largest integer such that the walk visits every lattice point within distance $R_n$ of the
+origin in its first $n$ steps. Is it true that $\log R_n \asymp \sqrt{\log n}$ almost surely?
+
 [Va99] Vershik, A., *Random walks on random and changing graphs*, 1999, Problem 6.76.
 
 [Re90] Révész, P., *Random Walk in Random and Non-Random Environments*, World Scientific, 1990.
@@ -71,15 +75,14 @@ $$\lim P((\log R_n)^2 / \log n \le x) = e^{-4x} \quad \text{for all } x > 0$$
 was proved by Dembo, Peres, Rosen, and Zeitouni [DPRZ04].
 -/
 @[category research solved, AMS 60]
-theorem erdos_1164
-    {μ : Measure Ω} [IsProbabilityMeasure μ]
-    {X : ℕ → Ω → ℤ × ℤ}
-    (hStep : ∀ i, IsUniformStep μ (X i))
-    (hIndep : iIndepFun X μ) :
-    ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧
-      ∀ᵐ ω ∂μ, ∀ᶠ (n : ℕ) in atTop,
-        c₁ * Real.sqrt (Real.log (n : ℝ)) ≤ Real.log (coveringRadius X ω n : ℝ) ∧
-        Real.log (coveringRadius X ω n : ℝ) ≤ c₂ * Real.sqrt (Real.log (n : ℝ)) := by
+theorem erdos_1164 : answer(True) ↔
+    ∀ (Ω : Type*) [MeasurableSpace Ω] (μ : Measure Ω) [IsProbabilityMeasure μ]
+      (X : ℕ → Ω → ℤ × ℤ),
+      (∀ i, IsUniformStep μ (X i)) → iIndepFun X μ →
+        ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧
+          ∀ᵐ ω ∂μ, ∀ᶠ (n : ℕ) in atTop,
+            c₁ * Real.sqrt (Real.log (n : ℝ)) ≤ Real.log (coveringRadius X ω n : ℝ) ∧
+            Real.log (coveringRadius X ω n : ℝ) ≤ c₂ * Real.sqrt (Real.log (n : ℝ)) := by
   sorry
 
 end Erdos1164

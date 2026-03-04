@@ -37,7 +37,7 @@ numbers_. Annals of Mathematics (1994).
 [Ha08] Harman, G., _Watt's mean value theorem and Carmichael numbers_. International Journal of
 Number Theory (2008).
 
-[Er56c] Erdős, P.
+[Er56c] Erdős, P., _On pseudoprimes and Carmichael numbers_. Publ. Math. Debrecen (1956).
 -/
 
 open Finset Filter Real Classical

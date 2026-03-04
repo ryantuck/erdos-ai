@@ -81,7 +81,7 @@ $h(G, n) \ll n^{1+\varepsilon}$ for every $\varepsilon > 0$.
   every $\varepsilon > 0$.
 -/
 @[category research open, AMS 5]
-theorem erdos_111 :
+theorem erdos_111 : answer(sorry) ↔
     ∃ (V : Type*) (G : SimpleGraph V),
       HasChromaticNumberAleph1 G ∧
       ∀ ε : ℝ, 0 < ε →

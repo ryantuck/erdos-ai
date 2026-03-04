@@ -42,7 +42,7 @@ there exists $\delta > 0$ such that for every $M$, for sufficiently large $X$,
 one can find at least $M$ points in a disk of radius $X$ in $\mathbb{R}^2$ whose
 pairwise distances all satisfy $\|d\| \geq \delta$.
 -/
-@[category research solved, AMS 52 11]
+@[category research solved, AMS 11 52]
 theorem erdos_466 :
     ∃ δ : ℝ, 0 < δ ∧
     ∀ M : ℕ, ∃ X₀ : ℝ, 0 < X₀ ∧

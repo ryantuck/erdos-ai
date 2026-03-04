@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 180
 
+Asks whether for every finite family of graphs, some member's Turán number is within a
+constant factor of the family's Turán number.
+
 *Reference:* [erdosproblems.com/180](https://www.erdosproblems.com/180)
 
 [ErSi82] Erdős, P. and Simonovits, M., 1982.

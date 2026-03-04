@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1119](https://www.erdosproblems.com/1119)
 
+Let $\mathfrak{m}$ be an infinite cardinal with
+$\aleph_0 < \mathfrak{m} < \mathfrak{c}$. If a family of entire functions takes at most
+$\mathfrak{m}$ distinct values at every point of $\mathbb{C}$, must the family contain at most
+$\mathfrak{m}$ distinct functions? This generalizes Wetzel's problem and is independent of ZFC.
+
 [Ha74] Hajnal, A., *Proof of a conjecture of S. Ruziewicz*, Fund. Math. 50 (1961/62), 123–128.
 
 [KuSh17] Kumar, A. and Shelah, S., *On a question about families of entire functions*,

@@ -65,7 +65,7 @@ Erdős Problem 861, first question (Cameron–Erdős [Er92c], proved):
 $A(N) / 2^{f(N)} \to \infty$ as $N \to \infty$.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_861 :
+theorem erdos_861 : answer(True) ↔
     Tendsto (fun N => (countSidonSubsets N : ℝ) / (2 : ℝ) ^ (maxSidonSize N))
       atTop atTop := by
   sorry

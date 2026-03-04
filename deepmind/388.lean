@@ -51,16 +51,33 @@ def consecutiveProduct (m k : ℕ) : ℕ :=
 /--
 Erdős Problem 388 [Er76d] [ErGr80] [Er92e]:
 
-There are only finitely many 4-tuples $(m_1, k_1, m_2, k_2)$ of natural numbers
+Are there only finitely many 4-tuples $(m_1, k_1, m_2, k_2)$ of natural numbers
 with $k_1, k_2 > 3$ and $m_1 + k_1 \le m_2$ such that
-$$(m_1+1)(m_1+2)\cdots(m_1+k_1) = (m_2+1)(m_2+2)\cdots(m_2+k_2).$$
+$$(m_1+1)(m_1+2)\cdots(m_1+k_1) = (m_2+1)(m_2+2)\cdots(m_2+k_2)?$$
 -/
 @[category research open, AMS 11]
 theorem erdos_388 :
+    answer(sorry) ↔
     Set.Finite {t : ℕ × ℕ × ℕ × ℕ |
       3 < t.2.1 ∧ 3 < t.2.2.2 ∧
       t.1 + t.2.1 ≤ t.2.2.1 ∧
       consecutiveProduct t.1 t.2.1 = consecutiveProduct t.2.2.1 t.2.2.2} := by
+  sorry
+
+/--
+Erdős Problem 388 (General conjecture) [Er76d] [ErGr80] [Er92e]:
+
+For $k_1 > 2$ and fixed $a, b$, the equation
+$$a \cdot \prod_{1 \le i \le k_1} (m_1 + i) = b \cdot \prod_{1 \le j \le k_2} (m_2 + j)$$
+should have only finitely many solutions.
+-/
+@[category research open, AMS 11]
+theorem erdos_388.variants.general (a b : ℕ) :
+    answer(sorry) ↔
+    ∀ k₁ : ℕ, 2 < k₁ →
+    ∀ k₂ : ℕ,
+    Set.Finite {t : ℕ × ℕ |
+      a * consecutiveProduct t.1 k₁ = b * consecutiveProduct t.2 k₂} := by
   sorry
 
 end Erdos388

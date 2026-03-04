@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/973](https://www.erdosproblems.com/973)
 
+Does there exist a constant $C > 1$ such that for every $n \geq 2$ there is a sequence of complex
+numbers $z_1, \ldots, z_n$ with $z_1 = 1$ and $|z_i| \geq 1$, whose power sums satisfy
+$\max_{2 \leq k \leq n+1} |\sum z_i^k| < C^{-n}$?
+
 [Er65b] Erdős, P., _Extremal problems in number theory_ (1965), p.213.
 -/
 

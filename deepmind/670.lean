@@ -53,7 +53,7 @@ every dimension $d$ and every set $A$ of $n$ points in $\mathbb{R}^d$ with all p
 distances differing by at least $1$, the diameter of $A$ is at least $(1 - \varepsilon) \cdot n^2$.
 -/
 @[category research open, AMS 52]
-theorem erdos_670 :
+theorem erdos_670 : answer(sorry) ↔
     ∀ ε : ℝ, 0 < ε →
       ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
         ∀ d : ℕ,

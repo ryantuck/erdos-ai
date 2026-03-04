@@ -50,20 +50,21 @@ pairwise vertex-disjoint $A$-$B$ paths and a set $S$ containing exactly one vert
 from each path, such that $S$ separates $A$ from $B$ (every $A$-$B$ walk meets $S$).
 -/
 @[category research solved, AMS 5]
-theorem erdos_599 {V : Type*} (G : SimpleGraph V)
-    (A B : Set V) (hAB : Disjoint A B)
-    (hA : ∀ u ∈ A, ∀ v ∈ A, ¬G.Adj u v)
-    (hB : ∀ u ∈ B, ∀ v ∈ B, ¬G.Adj u v) :
-    ∃ (ι : Type) (src : ι → V) (dst : ι → V)
-      (p : (i : ι) → G.Walk (src i) (dst i))
-      (S : Set V),
-      (∀ i, src i ∈ A) ∧
-      (∀ i, dst i ∈ B) ∧
-      (∀ i, (p i).IsPath) ∧
-      (∀ i j, i ≠ j → List.Disjoint (p i).support (p j).support) ∧
-      (∀ i, ∃! v, v ∈ S ∧ v ∈ (p i).support) ∧
-      (∀ (x : V) (y : V), x ∈ A → y ∈ B →
-        ∀ (w : G.Walk x y), ∃ s ∈ S, s ∈ w.support) := by
+theorem erdos_599 : answer(True) ↔
+    ∀ (V : Type*) (G : SimpleGraph V) (A B : Set V),
+      Disjoint A B →
+      (∀ u ∈ A, ∀ v ∈ A, ¬G.Adj u v) →
+      (∀ u ∈ B, ∀ v ∈ B, ¬G.Adj u v) →
+      ∃ (ι : Type) (src : ι → V) (dst : ι → V)
+        (p : (i : ι) → G.Walk (src i) (dst i))
+        (S : Set V),
+        (∀ i, src i ∈ A) ∧
+        (∀ i, dst i ∈ B) ∧
+        (∀ i, (p i).IsPath) ∧
+        (∀ i j, i ≠ j → List.Disjoint (p i).support (p j).support) ∧
+        (∀ i, ∃! v, v ∈ S ∧ v ∈ (p i).support) ∧
+        (∀ (x : V) (y : V), x ∈ A → y ∈ B →
+          ∀ (w : G.Walk x y), ∃ s ∈ S, s ∈ w.support) := by
   sorry
 
 end Erdos599

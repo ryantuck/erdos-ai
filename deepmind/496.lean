@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 496
 
+Erdős asked whether for every irrational α and every ε > 0 there exist positive integers x, y, z
+with |x² + y² − z²α| < ε. This was proved by Margulis (1989) as a consequence of the Oppenheim
+conjecture.
+
 *Reference:* [erdosproblems.com/496](https://www.erdosproblems.com/496)
 -/
 

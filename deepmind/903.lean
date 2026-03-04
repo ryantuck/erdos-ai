@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 903
 
+For a prime power $p$ and $n = p^2 + p + 1$, if a pairwise balanced design on $n$ points
+has more than $n$ blocks, then it must have at least $n + p$ blocks.
+
 *Reference:* [erdosproblems.com/903](https://www.erdosproblems.com/903)
 
 [Er82e] Erdős, P., _Problems and results in combinatorics and graph theory_, 1982.

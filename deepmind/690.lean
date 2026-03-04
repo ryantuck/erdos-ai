@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 690
 
+Let $d_k(p)$ be the density of those integers whose $k$-th smallest prime factor is $p$.
+For each fixed $k \geq 1$, is $d_k(p)$ unimodal in $p$?
+
 *Reference:* [erdosproblems.com/690](https://www.erdosproblems.com/690)
 
 [Er79e] Erdős, P., _Some unconventional problems in number theory_. Math. Mag. 52 (1979), 67-70.

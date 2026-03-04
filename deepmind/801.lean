@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/801](https://www.erdosproblems.com/801)
 
+If a graph on $n$ vertices has no independent set of size $> \sqrt{n}$, then there
+exists a set of $\leq \sqrt{n}$ vertices containing $\gg \sqrt{n} \log n$ edges.
+
 [Er79g] Erdős, P., original problem statement.
 
 [Al96b] Alon, N., proof of the conjecture.

@@ -58,7 +58,7 @@ distinct distances occurring more than $n$ times (as ordered pairs) being
 at least $c \cdot n$.
 -/
 @[category research solved, AMS 5 52]
-theorem erdos_756 :
+theorem erdos_756 : answer(True) ↔
     ∃ c : ℝ, c > 0 ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
       ∃ A : Finset (EuclideanSpace ℝ (Fin 2)), A.card = n ∧

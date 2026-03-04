@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 955
 
+If $A \subseteq \mathbb{N}$ has natural density zero, must the preimage $s^{-1}(A)$ also have
+natural density zero, where $s(n)$ denotes the sum of proper divisors of $n$?
+
 *Reference:* [erdosproblems.com/955](https://www.erdosproblems.com/955)
 
 [EGPS90] Erdős, P., Granville, A., Pomerance, C., and Spiro, C., _On the normal behavior of

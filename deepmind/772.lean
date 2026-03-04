@@ -53,13 +53,31 @@ def addRepCount (A : Finset ℕ) (m : ℕ) : ℕ :=
 /--
 Erdős Problem 772 (Proved, Alon–Erdős [AlEr85]):
 
-For every $k \geq 1$, $H_k(n) \gg_k n^{2/3}$. That is, for each $k$ there exist $C > 0$
-and $N_0$ such that for all $n \geq N_0$, every set $A \subseteq \mathbb{N}$ with $|A| = n$ and
-additive representation function bounded by $k$ (i.e., $\|1_A \ast 1_A\|_\infty \leq k$)
+Is it true that $H_k(n)/n^{1/2} \to \infty$? The answer is yes: for every $k \geq 1$ and
+every $C > 0$, eventually every $n$-element set with additive representation bounded by $k$
+contains a Sidon subset of size at least $C \cdot n^{1/2}$.
+-/
+@[category research solved, AMS 5 11]
+theorem erdos_772 : answer(True) ↔
+    ∀ k : ℕ, k ≥ 1 →
+    ∀ C : ℝ, C > 0 →
+    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+      ∀ A : Finset ℕ, A.card = n →
+        (∀ m : ℕ, addRepCount A m ≤ k) →
+        ∃ S : Finset ℕ, S ⊆ A ∧ IsSidonSet S ∧
+          (S.card : ℝ) ≥ C * (n : ℝ) ^ ((1 : ℝ) / 2) := by
+  sorry
+
+/--
+Erdős Problem 772 — stronger variant (Proved, Alon–Erdős [AlEr85]):
+
+In fact $H_k(n) \gg_k n^{2/3}$: for each $k \geq 1$ there exist $C > 0$ and $N_0$ such that
+for all $n \geq N_0$, every $n$-element set with additive representation bounded by $k$
 contains a Sidon subset of size at least $C \cdot n^{2/3}$.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_772 (k : ℕ) (hk : k ≥ 1) :
+theorem erdos_772.variants.alon_erdos_bound :
+    ∀ k : ℕ, k ≥ 1 →
     ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       ∀ A : Finset ℕ, A.card = n →
         (∀ m : ℕ, addRepCount A m ≤ k) →

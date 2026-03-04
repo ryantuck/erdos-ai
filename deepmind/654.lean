@@ -67,7 +67,7 @@ given any $n$ points in $\mathbb{R}^2$ with no four on a circle, there exists so
 point with at least $(1/3 + c) \cdot n$ distinct distances to the other points.
 -/
 @[category research open, AMS 5 52]
-theorem erdos_654 :
+theorem erdos_654 : answer(sorry) ↔
     ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       ∀ pts : Fin n → ℝ × ℝ, Function.Injective pts →
         NoFourConcyclic n pts →

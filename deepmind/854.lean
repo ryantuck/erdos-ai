@@ -67,9 +67,10 @@ is $\gg \max_i(a_{i+1} - a_i)$. That is, there exist $C > 0$ and $K_0$ such that
 $k \geq K_0$, the number of distinct gap values is at least $C$ times the maximum gap.
 -/
 @[category research open, AMS 11]
-theorem erdos_854 :
+theorem erdos_854 : answer(sorry) ↔
     ∃ C : ℝ, C > 0 ∧ ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
-      ((gapValues (primorial k)).card : ℝ) ≥ C * (maxGap (primorial k) : ℝ) := by
+      (((gapValues (primorial k)).filter (Even ·)).card : ℝ) ≥
+        C * (maxGap (primorial k) : ℝ) := by
   sorry
 
 end Erdos854

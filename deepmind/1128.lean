@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1128
 
+Erdős and Hajnal asked whether any 2-colouring of the product of three sets of cardinality ℵ₁
+must contain a monochromatic countably infinite sub-product. This was disproved by Prikry and
+Mills (1978).
+
 *Reference:* [erdosproblems.com/1128](https://www.erdosproblems.com/1128)
 
 [Er81b] Erdős, P., *Problems and results on finite and infinite combinatorial analysis*, p.33.

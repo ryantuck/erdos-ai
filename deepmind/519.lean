@@ -46,7 +46,7 @@ numbers $z_1, \ldots, z_n$ with $z_1 = 1$,
 $$\max_{1 \leq k \leq n} \left| \sum_i z_i^k \right| > c.$$
 -/
 @[category research solved, AMS 30]
-theorem erdos_519 :
+theorem erdos_519 : answer(True) ↔
     ∃ c : ℝ, 0 < c ∧
     ∀ (n : ℕ) (hn : 0 < n) (z : Fin n → ℂ),
       z ⟨0, hn⟩ = 1 →

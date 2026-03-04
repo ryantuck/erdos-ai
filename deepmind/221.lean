@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 221
 
+Is there a set $A \subseteq \mathbb{N}$ with $|A \cap \{1, \ldots, N\}| \ll N / \log N$
+such that every sufficiently large integer can be written as $2^k + a$ for some
+$k \geq 0$ and $a \in A$?
+
 *Reference:* [erdosproblems.com/221](https://www.erdosproblems.com/221)
 -/
 
@@ -35,10 +39,11 @@ The answer is yes, proved by Ruzsa (1972).
 -/
 @[category research solved, AMS 11]
 theorem erdos_221 :
-    ∃ (A : Set ℕ),
-      (∃ (C : ℝ), C > 0 ∧ ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
-        (((Finset.Icc 1 N).filter (fun n => n ∈ A)).card : ℝ) ≤ C * ↑N / Real.log ↑N) ∧
-      (∃ M : ℕ, ∀ n : ℕ, M ≤ n → ∃ k : ℕ, ∃ a ∈ A, n = 2 ^ k + a) := by
+    answer(True) ↔
+      ∃ (A : Set ℕ),
+        (∃ (C : ℝ), C > 0 ∧ ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+          (((Finset.Icc 1 N).filter (fun n => n ∈ A)).card : ℝ) ≤ C * ↑N / Real.log ↑N) ∧
+        (∃ M : ℕ, ∀ n : ℕ, M ≤ n → ∃ k : ℕ, ∃ a ∈ A, n = 2 ^ k + a) := by
   sorry
 
 end Erdos221

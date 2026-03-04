@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 426
 
+Let $f(n)$ be the maximum number of unique subgraphs in a graph on $n$ vertices.
+Bradač and Christoph proved that $f(n) = o(2^{\binom{n}{2}} / n!)$.
+
 *Reference:* [erdosproblems.com/426](https://www.erdosproblems.com/426)
 
 [EnEr72] Erdős, P. and Entringer, R. C. (1972).

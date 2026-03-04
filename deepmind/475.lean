@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 475
 
+Let $p$ be a prime. Is it true that every subset $A \subseteq \mathbb{F}_p \setminus \{0\}$ admits
+a sequencing $a_1, \ldots, a_t$ such that all partial sums $\sum_{k=1}^{m} a_k$ are distinct?
+
 *Reference:* [erdosproblems.com/475](https://www.erdosproblems.com/475)
 -/
 

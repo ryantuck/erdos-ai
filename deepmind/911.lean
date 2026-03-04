@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 911
 
+Is there a function $f$ with $f(x)/x \to \infty$ such that, for all sufficiently large $C$,
+every graph $G$ with $n$ vertices and at least $Cn$ edges satisfies
+$\hat{R}(G) > f(C) \cdot |E(G)|$?
+
 *Reference:* [erdosproblems.com/911](https://www.erdosproblems.com/911)
 
 [Er82e] Erdős, P., _Problems and results in graph theory_. (1982), p. 78.

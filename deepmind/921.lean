@@ -42,10 +42,25 @@ namespace Erdos921
 
 /-- The largest $m$ such that there exists a graph on $n$ vertices with chromatic
     number $k$ in which every odd cycle has length $> m$. -/
-noncomputable def erdos921_f (k n : ℕ) : ℕ :=
+noncomputable def erdos921F (k n : ℕ) : ℕ :=
   sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
     G.chromaticNumber = (k : ℕ∞) ∧
     ∀ (v : Fin n) (p : G.Walk v v), p.IsCycle → Odd p.length → m < p.length}
+
+/--
+Erdős Problem 921 [Er69b] [KST84]:
+
+Is it true that $f_k(n) \asymp n^{1/(k-2)}$ for all $k \geq 4$?
+This was proved by Kierstead, Szemerédi, and Trotter.
+-/
+@[category research solved, AMS 5]
+theorem erdos_921 : answer(True) ↔
+    ∀ k : ℕ, k ≥ 4 →
+      (∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+        (erdos921F k n : ℝ) ≥ C * (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 2))) ∧
+      (∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+        (erdos921F k n : ℝ) ≤ C * (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 2))) := by
+  sorry
 
 /--
 Erdős Problem 921, lower bound [Er69b] [KST84]:
@@ -54,9 +69,9 @@ For every $k \geq 4$, there exist $C > 0$ and $N_0$ such that for all $n \geq N_
 $f_k(n) \geq C \cdot n^{1/(k-2)}$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_921 (k : ℕ) (hk : k ≥ 4) :
+theorem erdos_921.variants.lower_bound (k : ℕ) (hk : k ≥ 4) :
     ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      (erdos921_f k n : ℝ) ≥ C * (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 2)) := by
+      (erdos921F k n : ℝ) ≥ C * (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 2)) := by
   sorry
 
 /--
@@ -68,7 +83,7 @@ $f_k(n) \leq C \cdot n^{1/(k-2)}$.
 @[category research solved, AMS 5]
 theorem erdos_921.variants.upper_bound (k : ℕ) (hk : k ≥ 4) :
     ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      (erdos921_f k n : ℝ) ≤ C * (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 2)) := by
+      (erdos921F k n : ℝ) ≤ C * (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 2)) := by
   sorry
 
 end Erdos921

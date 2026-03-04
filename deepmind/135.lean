@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/135](https://www.erdosproblems.com/135)
 
+Erdős and Gyárfás conjectured that any set of $n$ points in the plane where every
+$4$ points determine at least $5$ distinct distances must have $\gg n^2$ total distinct
+distances. This was disproved by Tao (2024).
+
 [Er97b] Erdős, P., _Some of my favourite problems which recently have been solved_,
 Proceedings of the International Conference on Discrete Mathematics (ICDM) (1997).
 

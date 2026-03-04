@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 658
 
+Is it true that if $A \subseteq \{1, \ldots, N\}^2$ has $|A| \geq \delta N^2$ then $A$ must
+contain the vertices of an axis-aligned square? This was proved via the density Hales–Jewett
+theorem by Furstenberg and Katznelson, with a quantitative proof given by Solymosi.
+
 *Reference:* [erdosproblems.com/658](https://www.erdosproblems.com/658)
 -/
 
@@ -44,13 +48,13 @@ follows from the density Hales-Jewett theorem proved by Furstenberg and Katznels
 A quantitative proof was given by Solymosi.
 -/
 @[category research solved, AMS 5]
-theorem erdos_658 :
-    ∀ δ : ℝ, δ > 0 →
+theorem erdos_658 : answer(True) ↔
+    (∀ δ : ℝ, δ > 0 →
       ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
         ∀ A : Finset (ℕ × ℕ),
           A ⊆ Finset.Icc 1 N ×ˢ Finset.Icc 1 N →
           (A.card : ℝ) ≥ δ * (N : ℝ) ^ 2 →
-          ContainsAxisAlignedSquare A := by
+          ContainsAxisAlignedSquare A) := by
   sorry
 
 end Erdos658

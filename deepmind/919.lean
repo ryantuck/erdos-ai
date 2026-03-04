@@ -46,7 +46,7 @@ Is there a graph on a well-ordered set of order type $\omega_2 \cdot \omega_2$ w
 number $\aleph_2$ such that every subgraph induced on a subset of strictly smaller
 order type has chromatic number $\leq \aleph_0$?
 -/
-@[category research open, AMS 5 3]
+@[category research open, AMS 3 5]
 theorem erdos_919 : answer(sorry) ↔
     ∃ (V : Type) (_ : LinearOrder V) (_ : IsWellOrder V (· < ·))
       (G : SimpleGraph V),
@@ -68,7 +68,7 @@ Is there a graph on a well-ordered set of order type $\omega_2 \cdot \omega_2$ w
 number exactly $\aleph_1$ such that every subgraph induced on a subset of strictly
 smaller order type has chromatic number $\leq \aleph_0$?
 -/
-@[category research open, AMS 5 3]
+@[category research open, AMS 3 5]
 theorem erdos_919.variants.aleph_1 : answer(sorry) ↔
     ∃ (V : Type) (_ : LinearOrder V) (_ : IsWellOrder V (· < ·))
       (G : SimpleGraph V),

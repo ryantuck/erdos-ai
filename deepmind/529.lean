@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 529
 
+Let $d_k(n)$ denote the expected Euclidean distance from the origin of the endpoint of a
+uniformly random $n$-step self-avoiding walk on $\mathbb{Z}^k$. The problem asks whether
+$d_2(n)/\sqrt{n} \to \infty$ (Part 1) and whether $d_k(n) \ll \sqrt{n}$ for $k \geq 3$ (Part 2).
+
 *Reference:* [erdosproblems.com/529](https://www.erdosproblems.com/529)
 
 [DuHa13] Duminil-Copin, H. and Hammond, A., *Self-avoiding walk is sub-ballistic*,
@@ -66,7 +70,7 @@ faster than $\sqrt{n}$?
 Duminil-Copin and Hammond [DuHa13] proved $d_2(n) = o(n)$. It is conjectured
 that $d_2(n) \sim D \cdot n^{3/4}$.
 -/
-@[category research open, AMS 60 05]
+@[category research open, AMS 5 60]
 theorem erdos_529 : answer(sorry) ↔
     Tendsto (fun n : ℕ => expectedSAWDist n 2 / (n : ℝ) ^ ((1 : ℝ) / 2))
       atTop atTop := by
@@ -82,7 +86,7 @@ that this is false for $k = 3$ and $k = 4$: the conjectured behavior is
 $d_3(n) \sim n^{\nu}$ where $\nu \approx 0.59$ and
 $d_4(n) \sim D \cdot (\log n)^{1/8} \cdot n^{1/2}$.
 -/
-@[category research open, AMS 60 05]
+@[category research open, AMS 5 60]
 theorem erdos_529.variants.part2 : answer(sorry) ↔
     ∀ k : ℕ, k ≥ 3 →
     ∃ C : ℝ, 0 < C ∧ ∀ᶠ n in atTop,

@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 255
 
+For any infinite sequence in [0,1], must there exist a sub-interval whose discrepancy is
+unbounded?
+
 *Reference:* [erdosproblems.com/255](https://www.erdosproblems.com/255)
 
 [Sc68] Schmidt, W.M., _Irregularities of distribution. VII_. Acta Arith. 21 (1972), 45-50.
@@ -48,7 +51,7 @@ Equivalently: for any sequence in $[0,1]$, there exists a sub-interval
 $[a,b] \subseteq [0,1]$ such that $|D_N([a,b])|$ is unbounded as $N \to \infty$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_255 :
+theorem erdos_255 : answer(True) ↔
     ∀ z : ℕ → ℝ,
     (∀ n, 0 ≤ z n ∧ z n ≤ 1) →
     ∃ a b : ℝ, 0 ≤ a ∧ a ≤ b ∧ b ≤ 1 ∧

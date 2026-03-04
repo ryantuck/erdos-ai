@@ -48,15 +48,13 @@ prime factors_, (2015).
 namespace Erdos431
 
 /--
-Erdős Problem 431 [ErGr80]:
-
-There do not exist two infinite sets $A$ and $B$ of natural numbers such that the
-sumset $A + B = \{a + b \mid a \in A, b \in B\}$ agrees with the set of prime numbers
-up to finitely many exceptions (i.e., the symmetric difference is finite).
+Erdős Problem 431 [ErGr80]: Are there two infinite sets $A$ and $B$ of natural
+numbers such that the sumset $A + B = \{a + b \mid a \in A, b \in B\}$ agrees with
+the set of prime numbers up to finitely many exceptions?
 -/
 @[category research open, AMS 11]
 theorem erdos_431 : answer(sorry) ↔
-    ¬ ∃ A B : Set ℕ, A.Infinite ∧ B.Infinite ∧
+    ∃ A B : Set ℕ, A.Infinite ∧ B.Infinite ∧
       (symmDiff (Set.image2 (· + ·) A B) {n | n.Prime}).Finite := by
   sorry
 

@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1013
 
+Is it true that the ratio $h_3(k+1)/h_3(k)$ tends to 1, where $h_3(k)$ is the minimum number of
+vertices of a triangle-free graph with chromatic number $k$?
+
 *Reference:* [erdosproblems.com/1013](https://www.erdosproblems.com/1013)
 
 [Er71] Erdős, P., *Some unsolved problems in graph theory and combinatorial analysis*.

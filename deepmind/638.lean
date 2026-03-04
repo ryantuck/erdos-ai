@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 638
 
+Is it true that for every infinite cardinal $\kappa$ there is a graph $G$ such that every
+finite induced subgraph of $G$ belongs to a given family $S$ with the Ramsey property, and
+every $\kappa$-colouring of the edges of $G$ contains a monochromatic triangle?
+
 *Reference:* [erdosproblems.com/638](https://www.erdosproblems.com/638)
 -/
 

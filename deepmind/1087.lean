@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1087
 
+Estimate the number of degenerate 4-element subsets of an $n$-point set in the plane,
+where a 4-element subset is degenerate if some two distinct pairs determine the same distance.
+
 *Reference:* [erdosproblems.com/1087](https://www.erdosproblems.com/1087)
 
 [ErPu71] Erdős, P. and Purdy, G., _Some extremal problems in geometry_.
@@ -52,8 +55,8 @@ Formally: for every $\varepsilon > 0$ there exists $N$ such that for all $n \geq
 of $n$ points in $\mathbb{R}^2$, the number of degenerate quadruples is at most $n^{3+\varepsilon}$.
 -/
 @[category research open, AMS 5 52]
-theorem erdos_1087 (ε : ℝ) (hε : 0 < ε) :
-    ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+theorem erdos_1087 : answer(sorry) ↔
+    ∀ (ε : ℝ), 0 < ε → ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
       ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
         P.card = n →
         (degenerateQuadrupleCount P : ℝ) ≤ (n : ℝ) ^ ((3 : ℝ) + ε) := by

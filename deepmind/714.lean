@@ -19,6 +19,8 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 714
 
+Is it true that $\operatorname{ex}(n; K_{r,r}) \gg n^{2-1/r}$ for all $r \geq 2$?
+
 *Reference:* [erdosproblems.com/714](https://www.erdosproblems.com/714)
 -/
 
@@ -54,7 +56,7 @@ the lower bound of the same order also holds.
 The conjectured lower bound is known for $r = 2$ and $r = 3$.
 -/
 @[category research open, AMS 5]
-theorem erdos_714 :
+theorem erdos_714 : answer(sorry) ↔
     ∀ r : ℕ, 2 ≤ r →
       ∃ C : ℝ, 0 < C ∧
         ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →

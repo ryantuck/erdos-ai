@@ -58,11 +58,11 @@ Formally: for every $\varepsilon > 0$, there exists $N_0$ such that for all $n \
 $$(\tfrac{1}{2} - \varepsilon) \cdot n / \log n \leq f(n) \leq (\tfrac{1}{2} + \varepsilon) \cdot n / \log n.$$
 -/
 @[category research solved, AMS 11]
-theorem erdos_771 :
-    ∀ ε : ℝ, ε > 0 →
+theorem erdos_771 : answer(True) ↔
+    (∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       (1 / 2 - ε) * (↑n / Real.log ↑n) ≤ ↑(f n) ∧
-      ↑(f n) ≤ (1 / 2 + ε) * (↑n / Real.log ↑n) := by
+      ↑(f n) ≤ (1 / 2 + ε) * (↑n / Real.log ↑n)) := by
   sorry
 
 end Erdos771

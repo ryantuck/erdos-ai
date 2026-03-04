@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1163](https://www.erdosproblems.com/1163)
 
+Describe (by statistical means) the arithmetic structure of the orders of
+subgroups of $S_n$. A concrete interpretation: the proportion of divisors of
+$n!$ that are orders of subgroups of $S_n$ tends to $0$ as $n \to \infty$.
+
 [Va99] Vardi, I., *Computational Recreations in Mathematica* (1999).
 -/
 
@@ -44,7 +48,7 @@ of subgroups of $S_n$ tends to $0$. By Lagrange's theorem, every subgroup order
 divides $n!$, but the set of subgroup orders becomes a vanishingly small
 fraction of all divisors.
 -/
-@[category research open, AMS 20 5]
+@[category research open, AMS 5 20]
 theorem erdos_1163 :
     ∀ ε : ℝ, ε > 0 →
       ∃ N : ℕ, ∀ n ≥ N,

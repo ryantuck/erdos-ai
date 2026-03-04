@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/750](https://www.erdosproblems.com/750)
 
+Does there exist, for every function $f$ with $f(m) \to \infty$, a graph with infinite chromatic
+number such that every finite set of $m$ vertices contains an independent set of size at least
+$m/2 - f(m)$?
+
 [Er69b] Erdős, P., _Problems and results in graph theory and combinatorial analysis_ (1969).
 
 [ErHa67b] Erdős, P. and Hajnal, A., _On chromatic number of graphs and set-systems_ (1967).

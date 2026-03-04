@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1144
 
+Let $f$ be a random completely multiplicative function, where for each prime $p$ we independently
+choose $f(p) \in \{-1, 1\}$ uniformly at random. Is it true that the limsup of
+$\sum_{m \leq N} f(m) / \sqrt{N}$ is infinite with probability 1?
+
 *Reference:* [erdosproblems.com/1144](https://www.erdosproblems.com/1144)
 
 [Va99] Vaughan, R.C., *Multiplicative Number Theory I: Classical Theory*. Cambridge Tracts in
@@ -60,15 +64,15 @@ Atherfold [At25] proved that, almost surely,
 $$\sum_{m \leq N} f(m) \ll N^{1/2} (\log N)^{1+o(1)}.$$
 -/
 @[category research open, AMS 11 60]
-theorem erdos_1144
-    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
-    {ε : ℕ → Ω → ℝ}
-    (hRad : ∀ k, IsRademacher μ (ε k))
-    (hIndep : iIndepFun ε μ) :
+theorem erdos_1144 :
     answer(sorry) ↔
-    (∀ᵐ ω ∂μ, ∀ C : ℝ,
-      ∃ᶠ N in atTop,
-        partialSum ε ω N > C * Real.sqrt (N : ℝ)) := by
+    ∀ (Ω : Type*) [MeasurableSpace Ω] (μ : Measure Ω) [IsProbabilityMeasure μ]
+      (ε : ℕ → Ω → ℝ),
+      (∀ k, IsRademacher μ (ε k)) →
+      iIndepFun ε μ →
+      (∀ᵐ ω ∂μ, ∀ C : ℝ,
+        ∃ᶠ N in atTop,
+          partialSum ε ω N > C * Real.sqrt (N : ℝ)) := by
   sorry
 
 end Erdos1144

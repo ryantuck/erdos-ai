@@ -42,7 +42,7 @@ $2 \leq i < j \leq n/2$,
 $$\gcd\left(\binom{n}{i}, \binom{n}{j}\right) \geq h(n).$$
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_698 :
+theorem erdos_698 : answer(True) ↔
     ∃ h : ℕ → ℕ, Tendsto h atTop atTop ∧
     ∀ n i j : ℕ, 2 ≤ i → i < j → j ≤ n / 2 →
       h n ≤ Nat.gcd (Nat.choose n i) (Nat.choose n j) := by

@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 382
 
+Let $u \le v$ be such that the largest prime dividing $\prod_{u \le m \le v} m$ appears with
+exponent at least $2$. The problem asks whether $v - u = v^{o(1)}$ and whether $v - u$ can be
+arbitrarily large.
+
 *Reference:* [erdosproblems.com/382](https://www.erdosproblems.com/382)
 
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number

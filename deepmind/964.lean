@@ -45,7 +45,7 @@ such that $|\tau(n+1)/\tau(n) - r| < \varepsilon$.
 Proved by Eberhard [Eb25].
 -/
 @[category research solved, AMS 11]
-theorem erdos_964 :
+theorem erdos_964 : answer(True) ↔
     ∀ r : ℝ, r > 0 → ∀ ε : ℝ, ε > 0 →
     ∃ n : ℕ, n ≥ 1 ∧
       |((Nat.divisors (n + 1)).card : ℝ) / ((Nat.divisors n).card : ℝ) - r| < ε := by

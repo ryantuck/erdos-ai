@@ -48,26 +48,26 @@ def lcmPairCount (a : ℕ → ℕ) (x : ℕ) : ℕ :=
   ((Finset.range (x + 1)).filter (fun i => Nat.lcm (a i) (a (i + 1)) ≤ x)).card
 
 /-- Erdős Problem 440, part 1 (PROVED):
-For any strictly increasing sequence $a : \mathbb{N} \to \mathbb{N}$, the counting function
-$A(x) = \#\{i : \mathrm{lcm}(a(i), a(i+1)) \leq x\}$ satisfies $A(x) = O(\sqrt{x})$.
+Is it true that for any strictly increasing sequence $a : \mathbb{N} \to \mathbb{N}$, the counting
+function $A(x) = \#\{i : \mathrm{lcm}(a(i), a(i+1)) \leq x\}$ satisfies $A(x) = O(\sqrt{x})$?
 
-Proved by Tao; the sharp constant was determined by Erdős–Szemerédi [ErSz80]. -/
+Yes — proved by Tao; the sharp constant was determined by Erdős–Szemerédi [ErSz80]. -/
 @[category research solved, AMS 11]
-theorem erdos_440 (a : ℕ → ℕ) (ha : StrictMono a) :
+theorem erdos_440 : answer(True) ↔
+    ∀ (a : ℕ → ℕ), StrictMono a →
     ∃ C : ℝ, 0 < C ∧ ∀ᶠ x in atTop,
     (lcmPairCount a x : ℝ) ≤ C * Real.sqrt (x : ℝ) := by
   sorry
 
 /-- Erdős Problem 440, liminf bound (PROVED):
-For any strictly increasing sequence $a : \mathbb{N} \to \mathbb{N}$, there are infinitely many $x$
-such that $A(x)/\sqrt{x}$ is close to at most $1$. That is, $\liminf A(x)/\sqrt{x} \leq 1$.
-This bound is sharp: $A = \mathbb{N}$ achieves equality.
-
-Proved by Erdős and Szemerédi [ErSz80]. -/
+How large can $\liminf_{x \to \infty} A(x)/\sqrt{x}$ be, over all strictly increasing sequences
+$a : \mathbb{N} \to \mathbb{N}$? The answer is $1$: the liminf is always $\leq 1$
+(Erdős–Szemerédi [ErSz80]) and $A = \mathbb{N}$ achieves equality. -/
 @[category research solved, AMS 11]
-theorem erdos_440.variants.liminf (a : ℕ → ℕ) (ha : StrictMono a) :
-    ∀ ε : ℝ, 0 < ε →
-    ∃ᶠ x in atTop, (lcmPairCount a x : ℝ) ≤ (1 + ε) * Real.sqrt (x : ℝ) := by
+theorem erdos_440.variants.liminf :
+    sSup {L : ℝ | ∃ (a : ℕ → ℕ), StrictMono a ∧
+      liminf (fun x => (lcmPairCount a x : ℝ) / Real.sqrt (x : ℝ)) atTop = L}
+    = answer((1 : ℝ)) := by
   sorry
 
 end Erdos440

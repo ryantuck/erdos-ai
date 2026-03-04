@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/286](https://www.erdosproblems.com/286)
 
+For sufficiently large $k$, do there exist $k$ distinct positive integers in an interval of
+width $(e - 1 + o(1))k$ whose reciprocals sum to $1$? Solved affirmatively by Croot.
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathématique (1980).
 
@@ -43,6 +46,7 @@ $(e - 1 + \varepsilon)k$ whose reciprocals sum to $1$.
 -/
 @[category research solved, AMS 11]
 theorem erdos_286 :
+    answer(True) ↔
     ∀ ε : ℝ, 0 < ε →
     ∃ K : ℕ, ∀ k : ℕ, K ≤ k →
     ∃ S : Finset ℕ,

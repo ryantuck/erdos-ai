@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1170](https://www.erdosproblems.com/1170)
 
+Erdős asked whether it is consistent that the ordinal partition relation
+$\omega_2 \to (\alpha)^2_2$ holds for every $\alpha < \omega_2$.
+
 Known partial results:
 - [La82] Laver proved the consistency of $\omega_2 \to (\omega_1 \cdot 2 + 1, \alpha)^2$
   for all $\alpha < \omega_2$.

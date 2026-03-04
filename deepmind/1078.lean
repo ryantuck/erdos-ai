@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1078](https://www.erdosproblems.com/1078)
 
+If $G$ is an $r$-partite graph with $n$ vertices in each part and minimum degree at least
+$(r - 3/2 - \varepsilon) \cdot n$, must $G$ contain a transversal copy of $K_r$?
+
 [BES75b] Bollobás, B., Erdős, P., and Szemerédi, E., proved that the threshold
 $r - 3/2$ is best possible.
 

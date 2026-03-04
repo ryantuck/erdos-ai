@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/990](https://www.erdosproblems.com/990)
 
+Can the Erdős–Turán bound on the distribution of polynomial root arguments be improved by
+replacing the degree with the number of non-zero coefficients?
+
 [ErTu50] Erdős, P. and Turán, P., *On the distribution of roots of polynomials*, Annals of
 Mathematics (1950).
 
@@ -64,7 +67,7 @@ $M = \frac{|a_0| + \cdots + |a_d|}{\sqrt{|a_0| \cdot |a_d|}}$?
 
 Erdős and Turán [ErTu50] proved such an upper bound with $n$ replaced by $d$ (the degree).
 -/
-@[category research open, AMS 30 12]
+@[category research open, AMS 12 30]
 theorem erdos_990 : answer(sorry) ↔
     ∃ C : ℝ, C > 0 ∧
     ∀ (f : Polynomial ℂ),

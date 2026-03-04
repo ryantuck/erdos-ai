@@ -62,11 +62,6 @@ exhibits pattern $\sigma$. -/
 noncomputable def patternCount (k n : ℕ) (σ : Equiv.Perm (Fin k)) : ℕ :=
   ((Finset.range n).filter (fun m => m + k ≤ n ∧ ExhibitsPattern k m σ)).card
 
-/-- The "natural" ordering pattern of length $k$: the sorting permutation of
-$(\varphi(1), \varphi(2), \ldots, \varphi(k))$ with ties broken by position. -/
-noncomputable def naturalPattern (k : ℕ) : Equiv.Perm (Fin k) := by
-  sorry
-
 /--
 Erdős Problem 415, Part 1 [ErGr80, p. 82]:
 
@@ -98,15 +93,15 @@ theorem erdos_415.variants.descending_pattern :
 /--
 Erdős Problem 415, Part 3 [ErGr80, p. 82]:
 
-The "natural" ordering pattern (mimicking $\varphi(1), \ldots, \varphi(k)$) is the most likely.
-For any pattern $\sigma$, the count of blocks exhibiting $\sigma$ is eventually at most the
-count exhibiting the natural pattern.
+There exists a most common ordering pattern (conjectured to be the "natural" pattern
+mimicking $\varphi(1), \ldots, \varphi(k)$). For any pattern $\sigma$, the count of blocks
+exhibiting $\sigma$ is eventually at most the count exhibiting this dominant pattern.
 -/
 @[category research open, AMS 11]
 theorem erdos_415.variants.natural_pattern (k : ℕ) (hk : 1 ≤ k) :
-    ∀ σ : Equiv.Perm (Fin k),
+    ∃ τ : Equiv.Perm (Fin k), ∀ σ : Equiv.Perm (Fin k),
       ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
-        patternCount k n σ ≤ patternCount k n (naturalPattern k) := by
+        patternCount k n σ ≤ patternCount k n τ := by
   sorry
 
 end Erdos415

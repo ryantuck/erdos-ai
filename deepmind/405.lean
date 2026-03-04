@@ -52,7 +52,7 @@ There are only finitely many triples $(p, a, k)$ of natural numbers with $p$ an
 odd prime such that $(p-1)! + a^{p-1} = p^k$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_405 :
+theorem erdos_405 : answer(True) ↔
     Set.Finite {t : ℕ × ℕ × ℕ |
       let p := t.1
       let a := t.2.1

@@ -21,6 +21,8 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1160](https://www.erdosproblems.com/1160)
 
+If $g(n)$ denotes the number of groups of order $n$, then $g(n) \le g(2^m)$ for all $n \le 2^m$.
+
 [Va99] Vaughan, R.C., _Problems in combinatorial number theory_, 1999.
 
 [BNV07] Blackburn, S.R., Neumann, P.M. and Venkataraman, G., _Enumeration of finite groups_,

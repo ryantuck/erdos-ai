@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/739](https://www.erdosproblems.com/739)
 
+If a graph has infinite chromatic number $\mathfrak{m}$, must every infinite cardinal
+$\mathfrak{n} < \mathfrak{m}$ be realized as the chromatic number of some subgraph?
+
 A question of Galvin [Ga73], who proved the case $\mathfrak{m} = \aleph_0$.
 Komjáth [Ko88b] proved it is consistent that the answer is no
 (with $\mathfrak{m} = \aleph_2$ and $\mathfrak{n} = \aleph_1$).
@@ -58,7 +61,7 @@ number $\mathfrak{n}$.
 A question of Galvin [Ga73], who proved the case $\mathfrak{m} = \aleph_0$. This is not provable
 in ZFC: Komjáth [Ko88b] showed it is consistent that the answer is no.
 -/
-@[category research open, AMS 5 3]
+@[category research open, AMS 3 5]
 theorem erdos_739 : answer(sorry) ↔
     ∀ {V : Type u} (G : SimpleGraph V)
     (𝔪 : Cardinal.{u}), ℵ₀ ≤ 𝔪 → cardChromaticNumber G = 𝔪 →

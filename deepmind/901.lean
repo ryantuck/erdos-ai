@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 901
 
+Let $m(n)$ denote the minimum number of edges in an $n$-uniform hypergraph that does not have
+Property B (i.e., is not $2$-colorable). Erdős and Lovász conjectured that $m(n)$ is of order
+$n \cdot 2^n$.
+
 *Reference:* [erdosproblems.com/901](https://www.erdosproblems.com/901)
 -/
 

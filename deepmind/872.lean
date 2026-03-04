@@ -86,6 +86,7 @@ at least $\varepsilon n$ moves for all sufficiently large $n$.
 -/
 @[category research open, AMS 5 91]
 theorem erdos_872 :
+    answer(sorry) ↔
     ∃ ε : ℝ, ε > 0 ∧
     ∃ N₀ : ℕ, ∀ n ≥ N₀,
       ∀ firstPlayer : Bool,
@@ -102,6 +103,7 @@ primitive-set saturation game on $\{2, 3, \ldots, n\}$.
 -/
 @[category research open, AMS 5 91]
 theorem erdos_872.variants.strong :
+    answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n ≥ N₀,
       ∀ firstPlayer : Bool,

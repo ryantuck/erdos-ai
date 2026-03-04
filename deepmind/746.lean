@@ -66,7 +66,7 @@ the $G(n,m)$-probability that the graph is Hamiltonian is at least $1 - \delta$.
 Proved by Komlós and Szemerédi [KoSz83].
 -/
 @[category research solved, AMS 5 60]
-theorem erdos_746 :
+theorem erdos_746 : answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
     ∀ δ : ℝ, δ > 0 →
     ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →

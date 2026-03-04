@@ -61,7 +61,8 @@ $$\left|\sum_{\substack{p < x \\ p \text{ prime}}} n_k(p) - c_k \cdot \frac{x}{\
 \leq \varepsilon \cdot \frac{x}{\log x}.$$
 -/
 @[category research solved, AMS 11]
-theorem erdos_980 (k : ℕ) (hk : k ≥ 2) :
+theorem erdos_980 : answer(True) ↔
+    ∀ k : ℕ, k ≥ 2 →
     ∃ c : ℝ, c > 0 ∧
     ∀ ε : ℝ, ε > 0 →
     ∃ X₀ : ℕ, ∀ x : ℕ, x ≥ X₀ →

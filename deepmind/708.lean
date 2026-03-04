@@ -48,7 +48,7 @@ consecutive natural numbers starting at $k$, there exists a subset $B$ of that i
 with $|B| \leq (2+\varepsilon)|A|$ whose product is divisible by the product of $A$.
 -/
 @[category research open, AMS 5 11]
-theorem erdos_708 :
+theorem erdos_708 : answer(sorry) ↔
     ∀ ε : ℝ, 0 < ε →
     ∃ N₀ : ℕ, ∀ (A : Finset ℕ) (hA : A.Nonempty),
     N₀ ≤ A.card → (∀ a ∈ A, 2 ≤ a) →
@@ -66,7 +66,7 @@ $\max(A)$ consecutive natural numbers starting at $k$, there exists a subset $B$
 interval with $|B| \leq 2|A|$ whose product is divisible by the product of $A$.
 -/
 @[category research open, AMS 5 11]
-theorem erdos_708.variants.strong :
+theorem erdos_708.variants.strong : answer(sorry) ↔
     ∀ (A : Finset ℕ) (hA : A.Nonempty), (∀ a ∈ A, 2 ≤ a) →
     ∀ (k : ℕ),
     ∃ B : Finset ℕ, B ⊆ Finset.Icc k (k + A.max' hA - 1) ∧

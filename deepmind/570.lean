@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/570](https://www.erdosproblems.com/570)
 
+For any integer $k \geq 3$, is it true that for all sufficiently large $m$, every graph $H$ with
+$m$ edges and no isolated vertices satisfies $R(C_k, H) \leq 2m + \lfloor(k-1)/2\rfloor$, where
+$R$ denotes the two-colour Ramsey number and $C_k$ the cycle on $k$ vertices?
+
 [EFRS93] Erdős, P., Faudree, R., Rousseau, C., and Schelp, R., _Multipartite graph—sparse
 graph Ramsey numbers_ (1993).
 -/

@@ -56,8 +56,9 @@ Equivalently, $f(k) \cdot (e-1) / k \to 1$ as $k \to \infty$.
 -/
 @[category research solved, AMS 11]
 theorem erdos_284 :
-    Tendsto (fun k => (erdos284_f k : ℝ) * (Real.exp 1 - 1) / (k : ℝ))
-      atTop (nhds 1) := by
+    answer(True) ↔
+      Tendsto (fun k => (erdos284_f k : ℝ) * (Real.exp 1 - 1) / (k : ℝ))
+        atTop (nhds 1) := by
   sorry
 
 end Erdos284

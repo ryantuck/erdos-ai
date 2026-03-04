@@ -19,6 +19,13 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1130
 
+For nodes $x_1, \ldots, x_n \in [-1,1]$, consider the Lebesgue function
+$\Lambda(x) = \sum_k |\ell_k(x)|$ of Lagrange interpolation, where $\ell_k$
+are the Lagrange basis polynomials. Partition $[-1,1]$ by $-1 = x_0 < x_1
+< \cdots < x_n < x_{n+1} = 1$ and let $\Upsilon(x_1, \ldots, x_n)$ be the
+minimum over subintervals of the maximum of $\Lambda$. The conjecture asks
+whether $\Upsilon(x_1, \ldots, x_n) \ll \log n$.
+
 *Reference:* [erdosproblems.com/1130](https://www.erdosproblems.com/1130)
 
 [dBPi78] de Boor, C. and Pinkus, A., *Proof of the conjectures of Bernstein
@@ -77,7 +84,7 @@ and the work of de Boor and Pinkus that
 $\Upsilon(x_1, \ldots, x_n) \le \frac{2}{\pi} \log n + O(1)$.
 -/
 @[category research solved, AMS 41]
-theorem erdos_1130 :
+theorem erdos_1130 : answer(True) ↔
     ∃ C : ℝ, C > 0 ∧ ∀ (n : ℕ), n ≥ 2 →
     ∀ (nodes : Fin n → ℝ), ValidNodes nodes →
     ∃ i : Fin (n + 1), localMax nodes i ≤ C * Real.log n := by

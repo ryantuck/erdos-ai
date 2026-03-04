@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 484
 
+There exists an absolute constant $c > 0$ such that, whenever $\{1, \ldots, N\}$ is
+$k$-coloured (and $N$ is large enough depending on $k$), there are at least $cN$
+integers representable as a monochromatic sum $a + b$ with $a \neq b$.
+
 *Reference:* [erdosproblems.com/484](https://www.erdosproblems.com/484)
 
 [ESS89] Erdős, P., Sárközy, A., and Sós, V. T., *On sum sets of Sidon sets*,

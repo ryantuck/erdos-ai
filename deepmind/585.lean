@@ -58,6 +58,17 @@ noncomputable def maxEdgesNoEdgeDisjointCycles (n : ℕ) : ℕ :=
     NoTwoEdgeDisjointCyclesSameVertexSet G ∧ G.edgeFinset.card = m}
 
 /--
+Erdős Problem 585:
+
+What is the maximum number of edges that a graph on $n$ vertices can have if it
+does not contain two edge-disjoint cycles with the same vertex set?
+-/
+@[category research open, AMS 5]
+theorem erdos_585 :
+    ∀ n, maxEdgesNoEdgeDisjointCycles n = answer(sorry) := by
+  sorry
+
+/--
 Erdős Problem 585, Lower Bound [PRS95]:
 
 There exists a constant $c > 0$ such that for all sufficiently large $n$,
@@ -65,7 +76,7 @@ the maximum number of edges in an $n$-vertex graph with no two edge-disjoint
 cycles on the same vertex set is at least $c \cdot n \cdot \log(\log(n))$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_585_lower_bound :
+theorem erdos_585.variants.lower_bound :
     ∃ c : ℝ, 0 < c ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
       c * (n : ℝ) * Real.log (Real.log (n : ℝ)) ≤
@@ -80,7 +91,7 @@ the maximum number of edges in an $n$-vertex graph with no two edge-disjoint
 cycles on the same vertex set is at most $n \cdot (\log n)^C$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_585_upper_bound :
+theorem erdos_585.variants.upper_bound :
     ∃ C : ℝ, 0 < C ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
       (maxEdgesNoEdgeDisjointCycles n : ℝ) ≤

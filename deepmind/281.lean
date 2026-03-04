@@ -21,6 +21,12 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/281](https://www.erdosproblems.com/281)
 
+Let $n_1 < n_2 < \cdots$ be a strictly increasing sequence of positive integers such that,
+for any choice of congruence classes $a_i \pmod{n_i}$, the integers not satisfying any of the
+congruences have density $0$. Is it true that for every $\varepsilon > 0$ there exists some $k$
+such that the density of integers avoiding the first $k$ congruences is already less than
+$\varepsilon$, regardless of the choice of $a_i$?
+
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
 number theory_. Monographies de L'Enseignement Mathematique (1980).
 -/
@@ -53,12 +59,10 @@ satisfying any of the congruences $a_i \pmod{n_i}$ for $i < k$ is less than $\va
 The proof combines the Davenport–Erdős theorem with Rogers' optimal sieve bound.
 -/
 @[category research solved, AMS 11]
-theorem erdos_281
-    (n : ℕ → ℕ)
-    (hn_pos : ∀ i, 0 < n i)
-    (hn_mono : StrictMono n)
-    (h_cover : ∀ a : ℕ → ℕ, ∀ ε : ℝ, 0 < ε →
-      ∃ N₀ : ℕ, ∀ N, N₀ ≤ N → (avoidCountAll n a N : ℝ) / (N : ℝ) < ε) :
+theorem erdos_281 : answer(True) ↔
+    ∀ (n : ℕ → ℕ), (∀ i, 0 < n i) → StrictMono n →
+    (∀ a : ℕ → ℕ, ∀ ε : ℝ, 0 < ε →
+      ∃ N₀ : ℕ, ∀ N, N₀ ≤ N → (avoidCountAll n a N : ℝ) / (N : ℝ) < ε) →
     ∀ ε : ℝ, 0 < ε → ∃ k : ℕ, ∀ a : ℕ → ℕ,
       ∃ N₀ : ℕ, ∀ N, N₀ ≤ N → (avoidCountFin n a k N : ℝ) / (N : ℝ) < ε := by
   sorry

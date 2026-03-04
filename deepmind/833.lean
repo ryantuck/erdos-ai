@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 833
 
+Does there exist an absolute constant $c > 0$ such that, for all $r \geq 2$,
+every $r$-uniform hypergraph with chromatic number $3$ has a vertex contained
+in at least $(1+c)^r$ edges?
+
 *Reference:* [erdosproblems.com/833](https://www.erdosproblems.com/833)
 
 [ErLo75] Erdős, P. and Lovász, L., *Problems and results on 3-chromatic hypergraphs and some
@@ -65,11 +69,12 @@ that there is a vertex contained in at least $2^{r-1}/(4r)$ many edges.
 -/
 @[category research solved, AMS 5]
 theorem erdos_833 :
-    ∃ c : ℝ, 0 < c ∧
-      ∀ (r : ℕ), 2 ≤ r →
-        ∀ (n : ℕ) (H : Hypergraph (Fin n)),
-          H.IsUniform r → H.HasChromaticNumber 3 →
-            ∃ v : Fin n, (H.degree v : ℝ) ≥ (1 + c) ^ r := by
+    answer(True) ↔
+      ∃ c : ℝ, 0 < c ∧
+        ∀ (r : ℕ), 2 ≤ r →
+          ∀ (n : ℕ) (H : Hypergraph (Fin n)),
+            H.IsUniform r → H.HasChromaticNumber 3 →
+              ∃ v : Fin n, (H.degree v : ℝ) ≥ (1 + c) ^ r := by
   sorry
 
 end Erdos833

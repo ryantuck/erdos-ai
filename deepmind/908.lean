@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 908
 
+A conjecture of de Bruijn and Erdős asking whether every function with measurable
+differences can be decomposed as the sum of a continuous function, an additive function,
+and a function that is almost periodic for every period. Answered affirmatively by
+Laczkovich.
+
 *Reference:* [erdosproblems.com/908](https://www.erdosproblems.com/908)
 
 [La80] Laczkovich, M., _Functions with measurable differences_, 1980.
@@ -40,8 +45,8 @@ A conjecture of de Bruijn and Erdős. Answered in the affirmative by Laczkovich.
 See also [907].
 -/
 @[category research solved, AMS 26 28]
-theorem erdos_908 (f : ℝ → ℝ)
-    (hf : ∀ h : ℝ, h > 0 → Measurable (fun x => f (x + h) - f x)) :
+theorem erdos_908 : answer(True) ↔
+    ∀ f : ℝ → ℝ, (∀ h : ℝ, h > 0 → Measurable (fun x => f (x + h) - f x)) →
     ∃ g φ r : ℝ → ℝ, Continuous g ∧ (∀ x y : ℝ, φ (x + y) = φ x + φ y) ∧
       (∀ h : ℝ, h > 0 → ∀ᵐ x ∂volume, r (x + h) - r x = 0) ∧
       ∀ x : ℝ, f x = g x + φ x + r x := by

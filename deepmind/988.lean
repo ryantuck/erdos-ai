@@ -53,6 +53,7 @@ Here $\frac{1-t}{2}$ is the normalised surface area measure of the cap $C(v,t)$ 
 -/
 @[category research solved, AMS 11 52]
 theorem erdos_988 :
+    answer(True) ↔
     ∀ M : ℝ, M > 0 →
     ∃ N₀ : ℕ, ∀ (P : Finset (EuclideanSpace ℝ (Fin 3))),
       (∀ p ∈ P, ‖p‖ = 1) →

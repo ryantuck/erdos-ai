@@ -48,10 +48,11 @@ with all odd non-squarefree numbers in $\{1, \ldots, N\}$.
 Proved by Weisenberg, and independently by Alexeev, Mixon, and Sawin [AMS25].
 -/
 @[category research solved, AMS 11]
-theorem erdos_844 (N : ℕ) (A : Finset ℕ)
-    (hA_sub : A ⊆ Finset.Icc 1 N)
-    (hA_prod : ∀ a ∈ A, ∀ b ∈ A, ¬Squarefree (a * b)) :
-    A.card ≤ (extremalSet N).card := by
+theorem erdos_844 :
+    answer(True) ↔ ∀ (N : ℕ) (A : Finset ℕ),
+      A ⊆ Finset.Icc 1 N →
+      (∀ a ∈ A, ∀ b ∈ A, ¬Squarefree (a * b)) →
+      A.card ≤ (extremalSet N).card := by
   sorry
 
 end Erdos844

@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1129
 
+Erdős and Bernstein conjectured that the nodes minimising the Lebesgue constant for
+Lagrange interpolation on $[-1,1]$ are unique and characterised by equioscillation of
+the Lebesgue function. This was proved by Kilgore and de Boor–Pinkus.
+
 *Reference:* [erdosproblems.com/1129](https://www.erdosproblems.com/1129)
 
 [Ki77] Kilgore, T., *A characterization of the Lagrange interpolation projection with

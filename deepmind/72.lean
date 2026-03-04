@@ -52,7 +52,7 @@ Solved affirmatively by Verstraëte [Ve05] (non-constructive proof).
 Liu and Montgomery [LiMo20] proved this holds even when $A$ is the set of powers of $2$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_72 :
+theorem erdos_72 : answer(True) ↔
     ∃ (A : Set ℕ), HasDensityZero A ∧
     ∃ (c : ℝ), c > 0 ∧
     ∃ (N₀ : ℕ), ∀ (n : ℕ), n ≥ N₀ →

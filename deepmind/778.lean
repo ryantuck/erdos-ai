@@ -49,11 +49,11 @@ def Strategy (n : ℕ) := GameState n → Sym2 (Fin n)
 
 /-- Play the standard edge-coloring game on $K_n$ (alternating, one edge each, Alice first)
     to completion. Returns the final game state with all edges colored. -/
-noncomputable def playStandardGame (n : ℕ) (alice bob : Strategy n) : GameState n := sorry
+opaque playStandardGame (n : ℕ) (alice bob : Strategy n) : GameState n
 
 /-- Play the modified (1-vs-2) game on $K_n$ (Alice colors one edge, then Bob colors two,
     repeating) to completion. Returns the final game state with all edges colored. -/
-noncomputable def playModifiedGame (n : ℕ) (alice bob : Strategy n) : GameState n := sorry
+opaque playModifiedGame (n : ℕ) (alice bob : Strategy n) : GameState n
 
 /-- The clique number of a simple graph on $\operatorname{Fin} n$: the size of the largest
     clique. -/

@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 254
 
+If $A \subseteq \mathbb{N}$ satisfies $|A \cap [1, 2x]| - |A \cap [1, x]| \to \infty$ and
+$\sum_{n \in A} \|n\theta\| = \infty$ for every irrational $\theta$, then every sufficiently large
+integer is the sum of distinct elements of $A$.
+
 *Reference:* [erdosproblems.com/254](https://www.erdosproblems.com/254)
 
 [Er61] Erdős, P., _Some unsolved problems_, Magyar Tud. Akad. Mat. Kutató Int. Közl. (1961),

@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 540
 
+Is it true that if $A \subseteq \mathbb{Z}/N\mathbb{Z}$ has size $\gg N^{1/2}$ then there exists
+some non-empty $S \subseteq A$ such that $\sum_{n \in S} n \equiv 0 \pmod{N}$?
+
 *Reference:* [erdosproblems.com/540](https://www.erdosproblems.com/540)
 
 [Ol68] Olson, J. E., *A combinatorial problem on finite Abelian groups, I*, J. Number Theory (1968).
@@ -46,7 +49,7 @@ Erdős speculated that the correct threshold is $(2N)^{1/2}$; this was proved fo
 by Balandraud [Ba12].
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_540 :
+theorem erdos_540 : answer(True) ↔
     ∃ C : ℝ, C > 0 ∧
     ∀ (N : ℕ), 0 < N →
     ∀ (A : Finset (ZMod N)),

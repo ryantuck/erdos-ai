@@ -65,9 +65,10 @@ Erdős Problem 433 [ErGr80]:
 For any fixed $k \geq 2$, $g(k,n) \sim n^2/(k-1)$ as $n \to \infty$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_433 (k : ℕ) (hk : 2 ≤ k) :
-    (fun n : ℕ => (g433 k n : ℝ)) ~[atTop]
-    (fun n : ℕ => (n : ℝ) ^ 2 / ((k : ℝ) - 1)) := by
+theorem erdos_433 : answer(True) ↔
+    ∀ k : ℕ, 2 ≤ k →
+      (fun n : ℕ => (g433 k n : ℝ)) ~[atTop]
+      (fun n : ℕ => (n : ℝ) ^ 2 / ((k : ℝ) - 1)) := by
   sorry
 
 end Erdos433

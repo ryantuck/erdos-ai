@@ -47,8 +47,8 @@ of the same colour such that $x + y$ is a perfect square.
 
 Proved by Khalfalah and Szemerédi [KhSz06]. -/
 @[category research solved, AMS 5 11]
-theorem erdos_439 (c : ℕ) (f : ℕ → Fin c) :
-    ∃ x y : ℕ, x ≠ y ∧ f x = f y ∧ IsSquare (x + y) := by
+theorem erdos_439 : answer(True) ↔
+    ∀ (c : ℕ) (f : ℕ → Fin c), ∃ x y : ℕ, x ≠ y ∧ f x = f y ∧ IsSquare (x + y) := by
   sorry
 
 /-- Erdős Problem 439, $k$-th power generalization:
@@ -58,9 +58,9 @@ some $z$).
 
 Also follows from the result of Khalfalah and Szemerédi [KhSz06]. -/
 @[category research solved, AMS 5 11]
-theorem erdos_439.variants.kth_powers (k : ℕ) (hk : 2 ≤ k)
-    (c : ℕ) (f : ℕ → Fin c) :
-    ∃ x y : ℕ, x ≠ y ∧ f x = f y ∧ ∃ z : ℕ, z ^ k = x + y := by
+theorem erdos_439.variants.kth_powers : answer(True) ↔
+    ∀ (k : ℕ), 2 ≤ k → ∀ (c : ℕ) (f : ℕ → Fin c),
+      ∃ x y : ℕ, x ≠ y ∧ f x = f y ∧ ∃ z : ℕ, z ^ k = x + y := by
   sorry
 
 end Erdos439

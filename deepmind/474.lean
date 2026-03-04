@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/474](https://www.erdosproblems.com/474)
 
+Does the negative square-bracket partition relation 2^ℵ₀ ↛ [ℵ₁]³₃ hold assuming the continuum
+equals ℵ₂?
+
 [Er95d] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and
 differences* (1995), p.64.
 

@@ -60,17 +60,19 @@ exhibiting a "valley" at $m = 7$ that contradicts unimodality.
 Furthermore, for fixed $n$, the sequence $\delta_1(n, m)$ has superpolynomially many
 local maxima in $m$.
 
-The theorem formalizes the disproof: there exist $n, m_1 < m_2 < m_3$ (all $> n + 1$)
-such that $\delta_1(n, m_2) < \delta_1(n, m_1)$ and $\delta_1(n, m_2) < \delta_1(n, m_3)$.
+The RHS formalizes unimodality: for every $n$ and $m_1 < m_2 < m_3$ (all $> n + 1$),
+the density at $m_2$ is not a strict local minimum (i.e., $d_1 \le d_2$ or $d_3 \le d_2$).
+The answer is `False` because Cambie exhibited a counterexample.
 -/
 @[category research solved, AMS 11]
-theorem erdos_692 :
-    ∃ n m₁ m₂ m₃ : ℕ, n + 1 < m₁ ∧ m₁ < m₂ ∧ m₂ < m₃ ∧
-      ∃ d₁ d₂ d₃ : ℝ,
-        HasDelta1Density n m₁ d₁ ∧
-        HasDelta1Density n m₂ d₂ ∧
-        HasDelta1Density n m₃ d₃ ∧
-        d₂ < d₁ ∧ d₂ < d₃ := by
+theorem erdos_692 : answer(False) ↔
+    ∀ n : ℕ, ∀ m₁ m₂ m₃ : ℕ,
+      n + 1 < m₁ → m₁ < m₂ → m₂ < m₃ →
+      ∀ d₁ d₂ d₃ : ℝ,
+        HasDelta1Density n m₁ d₁ →
+        HasDelta1Density n m₂ d₂ →
+        HasDelta1Density n m₃ d₃ →
+        d₁ ≤ d₂ ∨ d₃ ≤ d₂ := by
   sorry
 
 end Erdos692

@@ -19,6 +19,8 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 497
 
+How many antichains are there in the power set of an n-element set?
+
 *Reference:* [erdosproblems.com/497](https://www.erdosproblems.com/497)
 
 [Kl69] Kleitman, D., *On Dedekind's Problem: The Number of Monotone Boolean Functions*.

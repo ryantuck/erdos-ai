@@ -64,8 +64,8 @@ Formally: for every $\alpha > 1$, there exists $C$ such that for every $N$, ther
 exists $n \geq N$ with $h_\alpha(n) \leq C$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_1099 (α : ℝ) (hα : α > 1) :
-    ∃ C : ℝ, ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧ hAlpha α n ≤ C := by
+theorem erdos_1099 : answer(True) ↔
+    ∀ α : ℝ, α > 1 → ∃ C : ℝ, ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧ hAlpha α n ≤ C := by
   sorry
 
 end Erdos1099

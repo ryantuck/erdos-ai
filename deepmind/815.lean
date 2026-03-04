@@ -34,7 +34,7 @@ It remains open whether the answer is affirmative when restricted to even $k$.
 [NPS17] Narins, L., Pokrovskiy, A. and Szabó, T., _Graphs without long cycles_, 2017.
 -/
 
-open SimpleGraph
+open Filter SimpleGraph
 
 namespace Erdos815
 
@@ -48,14 +48,14 @@ noncomputable def IsDegree3Critical {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :
 /--
 **Erdős Problem 815** (disproved by Narins–Pokrovskiy–Szabó [NPS17]):
 
-There exist arbitrarily large degree 3 critical graphs containing no cycle
-of length $23$.
+Is it true that for every $k \geq 3$, every sufficiently large degree 3
+critical graph contains a cycle of length $k$? The answer is **no**.
 -/
 @[category research solved, AMS 5]
-theorem erdos_815 :
-    ∀ N : ℕ, ∃ (n : ℕ), n ≥ N ∧ ∃ (G : SimpleGraph (Fin n)),
-      IsDegree3Critical G ∧
-      ∀ (v : Fin n) (p : G.Walk v v), p.IsCycle → p.length ≠ 23 := by
+theorem erdos_815 : answer(False) ↔
+    ∀ k : ℕ, k ≥ 3 → ∀ᶠ n in atTop,
+      ∀ (G : SimpleGraph (Fin n)), IsDegree3Critical G →
+        ∃ (v : Fin n) (p : G.Walk v v), p.IsCycle ∧ p.length = k := by
   sorry
 
 end Erdos815

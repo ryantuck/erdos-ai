@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 597
 
+Erdős asked whether the ordinal partition relation ω₁² → (ω₁·ω, G)² holds for
+every graph G on at most ℵ₁ vertices that is K₄-free and contains no K_{ℵ₀,ℵ₀}.
+
 *Reference:* [erdosproblems.com/597](https://www.erdosproblems.com/597)
 
 [Er87] Erdős, P., _Some problems on finite and infinite graphs_, 1987.

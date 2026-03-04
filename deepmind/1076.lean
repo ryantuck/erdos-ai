@@ -77,7 +77,8 @@ $(1 - \varepsilon) \cdot n^2 / 6 \leq \mathrm{ex}_3(n, \mathcal{F}_k)
 \leq (1 + \varepsilon) \cdot n^2 / 6$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_1076 (k : ℕ) (hk : k ≥ 5) :
+theorem erdos_1076 : answer(True) ↔
+    ∀ k : ℕ, k ≥ 5 →
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       (1 - ε) * ((n : ℝ) ^ 2 / 6) ≤ (ex3 n k : ℝ) ∧

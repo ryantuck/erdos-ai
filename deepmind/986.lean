@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/986](https://www.erdosproblems.com/986)
 
+Erdős conjectured that for any fixed $k \geq 3$, the Ramsey number $R(k,n)$ satisfies
+$R(k,n) \gg n^{k-1}/(\log n)^c$ for some constant $c > 0$.
+
 Spencer [Sp77] proved the $k = 3$ case and Mattheus and Verstraëte [MaVe23]
 proved the $k = 4$ case.
 

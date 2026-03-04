@@ -62,7 +62,7 @@ For any $x \in [-1,1]$ and any closed $A \subseteq [-1,1]$, there exists a conti
 function $f$ such that $A$ is the set of limit points of the Lagrange interpolation
 polynomials $L^n f(x)$ at the Chebyshev nodes as $n \to \infty$.
 -/
-@[category research open, AMS 41 26]
+@[category research open, AMS 26 41]
 theorem erdos_1151 (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1)
     (A : Set ℝ) (hA : IsClosed A) (hAsub : A ⊆ Set.Icc (-1 : ℝ) 1) :
     ∃ f : ℝ → ℝ, Continuous f ∧

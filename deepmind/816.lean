@@ -44,7 +44,7 @@ For every $n$, every graph on $2n+1$ vertices with $n^2+n+1$ edges contains
 two vertices of the same degree joined by a path of length $3$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_816 :
+theorem erdos_816 : answer(True) ↔
     ∀ n : ℕ, ∀ G : SimpleGraph (Fin (2 * n + 1)),
       G.edgeSet.ncard = n ^ 2 + n + 1 →
         ∃ v w : Fin (2 * n + 1), v ≠ w ∧

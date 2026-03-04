@@ -45,6 +45,7 @@ $\delta \cdot 2^{|X|}$.
 -/
 @[category research solved, AMS 5]
 theorem erdos_1027 :
+    answer(True) ↔
     ∀ c : ℝ, c > 0 →
     ∃ δ : ℝ, δ > 0 ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
@@ -55,6 +56,6 @@ theorem erdos_1027 :
       ((X.powerset.filter (fun B =>
         (∀ A ∈ F, (A ∩ B).Nonempty) ∧
         (∀ A ∈ F, ¬(A ⊆ B)))).card : ℝ) ≥ δ * (2 : ℝ) ^ X.card := by
-  sorry
+    sorry
 
 end Erdos1027

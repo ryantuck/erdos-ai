@@ -78,8 +78,9 @@ must exist at least two distinct limited-occurrence distances.
 -/
 @[category research open, AMS 5 52]
 theorem erdos_132 :
-    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), 5 ≤ A.card →
-      2 ≤ Set.ncard (limitedOccurrences A) := by
+    answer(sorry) ↔
+      ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), 5 ≤ A.card →
+        2 ≤ Set.ncard (limitedOccurrences A) := by
   sorry
 
 /--
@@ -90,8 +91,9 @@ in $\mathbb{R}^2$ has at least $k$ limited-occurrence distances.
 -/
 @[category research open, AMS 5 52]
 theorem erdos_132.variants.tend_to_infinity :
-    ∀ k : ℕ, ∃ N : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), N ≤ A.card →
-      k ≤ Set.ncard (limitedOccurrences A) := by
+    answer(sorry) ↔
+      ∀ k : ℕ, ∃ N : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), N ≤ A.card →
+        k ≤ Set.ncard (limitedOccurrences A) := by
   sorry
 
 end Erdos132

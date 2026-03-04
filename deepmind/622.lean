@@ -61,6 +61,7 @@ Proved by Draganić, Keevash, and Müyesser [DKM25].
 -/
 @[category research solved, AMS 5]
 theorem erdos_622 :
+    answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
     ∀ G : SimpleGraph (Fin (2 * n)),

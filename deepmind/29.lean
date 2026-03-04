@@ -52,6 +52,7 @@ Jain, Pham, Sawhney, and Zakharov (2024).
 -/
 @[category research solved, AMS 5 11]
 theorem erdos_29 :
+    answer(True) ↔
     ∃ A : Set ℕ,
       (∀ n : ℕ, ∃ a ∈ A, ∃ b ∈ A, a + b = n) ∧
       ∀ ε : ℝ, 0 < ε →

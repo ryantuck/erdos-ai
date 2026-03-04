@@ -75,11 +75,11 @@ Proved by Conlon and Lee [CoLe21] with $c_k = 6^{-k}$. Improved to
 $c_k = 1/(4k-6)$ by Janzer [Ja19].
 -/
 @[category research solved, AMS 5]
-theorem erdos_1021 (k : ℕ) (hk : k ≥ 3) :
+theorem erdos_1021 : answer(True) ↔
+    ∀ (k : ℕ), k ≥ 3 →
     ∃ (c : ℝ), c > 0 ∧ ∃ (C : ℝ), C > 0 ∧
     ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
     ¬containsSubgraph G (subdivisionKComplete k) →
-    (G.edgeFinset.card : ℝ) ≤ C * (n : ℝ) ^ ((3 : ℝ) / 2 - c) := by
-  sorry
+    (G.edgeFinset.card : ℝ) ≤ C * (n : ℝ) ^ ((3 : ℝ) / 2 - c) := by sorry
 
 end Erdos1021

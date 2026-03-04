@@ -19,6 +19,8 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1113
 
+Are there Sierpiński numbers for which no finite covering set of primes exists?
+
 *Reference:* [erdosproblems.com/1113](https://www.erdosproblems.com/1113)
 
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number

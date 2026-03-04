@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/607](https://www.erdosproblems.com/607)
 
+Erdős asked for an upper bound on the number of distinct line spectra achievable by
+$n$-point configurations in $\mathbb{R}^2$. Szemerédi and Trotter proved it is at most
+$\exp(C\sqrt{n})$ for some constant $C > 0$.
+
 [Er85] Erdős, P., *Problems and results in combinatorial geometry*.
 
 [SzTr83] Szemerédi, E. and Trotter, W. T., *Extremal problems in discrete geometry* (1983).

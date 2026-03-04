@@ -76,7 +76,7 @@ Pólya [Po28] showed the area is always at most $\pi$, with equality only when a
 roots are equal.
 -/
 @[category research solved, AMS 28 30]
-theorem erdos_116 :
+theorem erdos_116 : answer(True) ↔
     ∃ (κ δ : ℝ), 0 < δ ∧ 0 < κ ∧
     ∀ (n : ℕ), 1 ≤ n →
     ∀ (roots : Fin n → ℂ), (∀ i, ‖roots i‖ ≤ 1) →

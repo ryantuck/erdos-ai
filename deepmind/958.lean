@@ -80,19 +80,17 @@ def IsEquidistantCircular (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
 /--
 **Erdős Problem 958** [Er84c]:
 
-Erdős conjectured that there exists a finite set $A \subset \mathbb{R}^2$ satisfying the
-distance multiplicity property (exactly $n-1$ distinct distances with multiplicities
-$\{1, \ldots, n-1\}$) that is neither a set of equidistant points on a line nor equidistant
-points on a circle.
+Is it true that if a finite set $A \subset \mathbb{R}^2$ satisfies the distance multiplicity
+property (exactly $n-1$ distinct distances with multiplicities $\{1, \ldots, n-1\}$), then $A$
+must be a set of equidistant points on a line or equidistant points on a circle?
 
-This was proved by Clemen, Dumitrescu, and Liu [CDL25].
+The answer is no. This was proved by Clemen, Dumitrescu, and Liu [CDL25].
 -/
 @[category research solved, AMS 5 52]
-theorem erdos_958 :
-    ∃ (A : Finset (EuclideanSpace ℝ (Fin 2))),
-      HasDistanceMultiplicityProperty A ∧
-      ¬IsEquidistantCollinear A ∧
-      ¬IsEquidistantCircular A := by
+theorem erdos_958 : answer(False) ↔
+    (∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+      HasDistanceMultiplicityProperty A →
+      (IsEquidistantCollinear A ∨ IsEquidistantCircular A)) := by
   sorry
 
 end Erdos958

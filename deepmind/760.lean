@@ -66,6 +66,7 @@ cochromatic number $\zeta(H) \geq C \cdot m / \log m$.
 -/
 @[category research solved, AMS 5]
 theorem erdos_760 :
+    answer(True) ↔
     ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
       G.chromaticNumber.toNat ≥ N₀ →
         ∃ (S : Finset (Fin n)),

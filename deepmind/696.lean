@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/696](https://www.erdosproblems.com/696)
 
+Erdős asked whether $H(n)/h(n) \to \infty$ for almost all $n$, where $h(n)$ is the length of
+the longest mod-chain of prime divisors of $n$ and $H(n)$ is the length of the longest mod-chain
+of divisors of $n$.
+
 [Er79e] Erdős, P., _Some unconventional problems in number theory_ (1979), p. 81.
 -/
 

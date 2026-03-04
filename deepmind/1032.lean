@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1032](https://www.erdosproblems.com/1032)
 
+Erdős asked whether there exists a constant $c > 0$ such that for arbitrarily large $n$,
+there is a $4$-chromatic critical graph on $n$ vertices with minimum degree at least $c \cdot n$.
+
 - [Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is Eighty,
   Vol. 2 (1993), 97-132.
 - [Si72] Simonovits, M., 1972.

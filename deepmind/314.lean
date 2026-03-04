@@ -45,20 +45,20 @@ namespace Erdos314
 /-- For any $n \geq 1$, there exists $m$ such that $\sum_{k=n}^{m} \frac{1}{k} \geq 1$.
 This follows from the divergence of the harmonic series. -/
 @[category undergraduate, AMS 40]
-lemma exists_harmonicPartialSum_ge_one (n : ℕ) (hn : 1 ≤ n) :
+lemma exists_harmonic_partial_sum_ge_one (n : ℕ) (hn : 1 ≤ n) :
     ∃ m : ℕ, 1 ≤ ∑ k ∈ Finset.Icc n m, (1 : ℝ) / (k : ℝ) := by sorry
 
 /-- $m(n)$ is the minimal $m$ such that $\sum_{k=n}^{m} \frac{1}{k} \geq 1$, for $n \geq 1$.
 Returns $0$ for $n = 0$. -/
-noncomputable def erdos314_m (n : ℕ) : ℕ :=
+noncomputable def erdos314M (n : ℕ) : ℕ :=
   if h : 1 ≤ n then
-    Nat.find (exists_harmonicPartialSum_ge_one n h)
+    Nat.find (exists_harmonic_partial_sum_ge_one n h)
   else 0
 
 /-- $\varepsilon(n) = \sum_{k=n}^{m(n)} \frac{1}{k} - 1$, where $m(n)$ is minimal with
 $\sum_{k=n}^{m(n)} \frac{1}{k} \geq 1$. -/
-noncomputable def erdos314_epsilon (n : ℕ) : ℝ :=
-  (∑ k ∈ Finset.Icc n (erdos314_m n), (1 : ℝ) / (k : ℝ)) - 1
+noncomputable def erdos314Epsilon (n : ℕ) : ℝ :=
+  (∑ k ∈ Finset.Icc n (erdos314M n), (1 : ℝ) / (k : ℝ)) - 1
 
 /--
 Erdős Problem 314 [ErGr80] (proved by Lim–Steinerberger [LiSt24]):
@@ -71,9 +71,9 @@ Equivalently: for every $\delta > 0$ and every $N_0$, there exists $n \geq N_0$ 
 $n \geq 1$ such that $n^2 \varepsilon(n) < \delta$.
 -/
 @[category research solved, AMS 11 40]
-theorem erdos_314 :
-    ∀ δ : ℝ, 0 < δ → ∀ N₀ : ℕ, ∃ n : ℕ, N₀ ≤ n ∧ 1 ≤ n ∧
-      (n : ℝ) ^ 2 * erdos314_epsilon n < δ := by
+theorem erdos_314 : answer(True) ↔
+    (∀ δ : ℝ, 0 < δ → ∀ N₀ : ℕ, ∃ n : ℕ, N₀ ≤ n ∧ 1 ≤ n ∧
+      (n : ℝ) ^ 2 * erdos314Epsilon n < δ) := by
   sorry
 
 end Erdos314

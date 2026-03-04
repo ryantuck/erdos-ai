@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/485](https://www.erdosproblems.com/485)
 
+Let $f(k)$ be the minimum number of nonzero terms in $P(x)^2$, where $P \in \mathbb{Q}[x]$
+ranges over all polynomials with exactly $k$ nonzero terms. Is it true that
+$f(k) \to \infty$ as $k \to \infty$?
+
 [Sc87] Schinzel, A., *On the number of terms of a power of a polynomial*, Acta Arith. 49
 (1987), 55–70.
 
@@ -43,7 +47,7 @@ Schinzel proved $f(k) > \log(\log k) / \log 2$. Schinzel and Zannier [ScZa09]
 improved this to $f(k) \gg \log k$.
 -/
 @[category research solved, AMS 12]
-theorem erdos_485 :
+theorem erdos_485 : answer(True) ↔
     ∀ M : ℕ, ∃ K : ℕ, ∀ k : ℕ, K ≤ k →
     ∀ P : ℚ[X], P.support.card = k →
     M ≤ (P ^ 2).support.card := by

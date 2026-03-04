@@ -21,6 +21,12 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/651](https://www.erdosproblems.com/651)
 
+Let $f_k(n)$ denote the smallest integer such that any $f_k(n)$ points in general
+position in $\mathbb{R}^k$ contain $n$ points forming the vertices of a convex polytope.
+Erdős conjectured that $f_k(n)$ grows at least exponentially in $n$ for each fixed
+$k \geq 2$. This was disproved for $k \geq 3$ by Pohoata and Zakharov, who showed
+$f_3(n) \leq 2^{o(n)}$.
+
 [Er97e] Erdős, P., *Some of my favourite problems which recently have been solved*, 1997.
 
 [PoZa22] Pohoata, C. and Zakharov, D., *Convex polytopes from fewer points*, 2022.

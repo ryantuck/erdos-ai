@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 909
 
+For every $n \geq 2$, is there a topological space of covering dimension $n$ whose square also
+has covering dimension $n$? Proved by Anderson and Keisler.
+
 *Reference:* [erdosproblems.com/909](https://www.erdosproblems.com/909)
 
 [AnKe67] Anderson, R. D. and Keisler, J. E., _An example in dimension theory_, 1967.
@@ -51,8 +54,8 @@ For every $n \geq 2$, there exists a topological space $S$ of covering dimension
 such that $S \times S$ also has covering dimension $n$.
 -/
 @[category research solved, AMS 54]
-theorem erdos_909 (n : ℕ) (hn : n ≥ 2) :
-    ∃ (S : Type) (_ : TopologicalSpace S),
+theorem erdos_909 : answer(True) ↔
+    ∀ n : ℕ, n ≥ 2 → ∃ (S : Type) (_ : TopologicalSpace S),
       hasCoveringDim S n ∧ hasCoveringDim (S × S) n := by
   sorry
 

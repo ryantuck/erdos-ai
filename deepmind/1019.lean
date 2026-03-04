@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1019
 
+Does every graph on $n$ vertices with at least $\lfloor n^2/4 \rfloor + \lfloor (n+1)/2 \rfloor$
+edges contain a saturated (maximal) planar subgraph on more than 3 vertices?
+
 *Reference:* [erdosproblems.com/1019](https://www.erdosproblems.com/1019)
 
 [Er64f] [Er69c] [Er71]
@@ -28,9 +31,10 @@ open SimpleGraph Finset
 
 namespace Erdos1019
 
-/-- A simple graph is planar if it admits a topological embedding into the
-    plane without edge crossings. Defined abstractly here. -/
-def IsPlanar {V : Type*} (_ : SimpleGraph V) : Prop := sorry
+/-- A graph is planar if it can be embedded in the plane without edge crossings.
+Mathlib does not yet have a formalization of graph planarity; we axiomatize it
+here as an opaque predicate. -/
+opaque IsPlanar {V : Type*} [Fintype V] (G : SimpleGraph V) : Prop
 
 /--
 Erdős Problem 1019 [Er64f, Er69c, Er71]:
@@ -43,6 +47,7 @@ Proved by Simonovits.
 -/
 @[category research solved, AMS 5]
 theorem erdos_1019 :
+    answer(True) ↔
     ∀ n : ℕ, n ≥ 4 →
       ∀ (G : SimpleGraph (Fin n)) (dG : DecidableRel G.Adj),
         haveI := dG;

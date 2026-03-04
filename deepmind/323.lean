@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 323
 
+If $f_{k,m}(x)$ counts the natural numbers at most $x$ that can be represented as a sum of $m$
+nonnegative $k$-th powers, Erdős and Graham conjectured lower bounds on $f_{k,m}(x)$: that
+$f_{k,k}(x) \gg_\varepsilon x^{1-\varepsilon}$ for every $\varepsilon > 0$, and that
+$f_{k,m}(x) \gg x^{m/k}$ when $m < k$.
+
 *Reference:* [erdosproblems.com/323](https://www.erdosproblems.com/323)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
@@ -38,7 +43,7 @@ def IsSumOfKthPowers (k m n : ℕ) : Prop :=
 
 /-- $f_{k,m}(x)$ counts the number of natural numbers $\leq x$ which can be
 represented as a sum of $m$ nonnegative $k$-th powers. -/
-noncomputable def f_km (k m x : ℕ) : ℕ :=
+noncomputable def fKm (k m x : ℕ) : ℕ :=
   ((Finset.range (x + 1)).filter (fun n => IsSumOfKthPowers k m n)).card
 
 /--
@@ -54,7 +59,7 @@ theorem erdos_323 :
     ∀ ε : ℝ, 0 < ε →
     ∃ C : ℝ, 0 < C ∧
     ∃ x₀ : ℕ, ∀ x : ℕ, x₀ ≤ x →
-      C * (x : ℝ) ^ (1 - ε) ≤ (f_km k k x : ℝ) := by
+      C * (x : ℝ) ^ (1 - ε) ≤ (fKm k k x : ℝ) := by
   sorry
 
 /--
@@ -70,7 +75,7 @@ theorem erdos_323.variants.m_lt_k :
     ∀ m : ℕ, 1 ≤ m → m < k →
     ∃ C : ℝ, 0 < C ∧
     ∃ x₀ : ℕ, ∀ x : ℕ, x₀ ≤ x →
-      C * (x : ℝ) ^ ((m : ℝ) / (k : ℝ)) ≤ (f_km k m x : ℝ) := by
+      C * (x : ℝ) ^ ((m : ℝ) / (k : ℝ)) ≤ (fKm k m x : ℝ) := by
   sorry
 
 end Erdos323

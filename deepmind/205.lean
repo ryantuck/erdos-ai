@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/205](https://www.erdosproblems.com/205)
 
+Erdős and Graham asked whether all sufficiently large $n$ can be written as $n = 2^k + m$ for some
+$k \geq 0$, where $m$ has fewer than $\log(\log(m))$ prime factors counted with multiplicity. This
+was disproved.
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
 -/
@@ -36,18 +40,14 @@ Erdős and Graham asked whether all sufficiently large $n$ can be written as
 $2^k + m$ for some $k \geq 0$, where $\Omega(m) < \log(\log(m))$. Here $\Omega(m)$ is the number
 of prime divisors of $m$ counted with multiplicity.
 
-This was disproved by Barreto and Leeham. The result was quantified by Tao
-and Alexeev: there are infinitely many $n$ such that for all $k$ with $2^k \leq n$,
-$n - 2^k$ has at least $\gg (\log n / \log \log n)^{1/2}$ prime factors.
-
-We formalize the negation of the original conjecture, which is the true statement.
+The answer is no (`answer(False)`): there are infinitely many counterexamples.
 -/
 @[category research solved, AMS 11]
-theorem erdos_205 :
-    ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧
-      ∀ k : ℕ, 2 ^ k ≤ n →
-        Real.log (Real.log ((n - 2 ^ k : ℕ) : ℝ)) ≤
-          ((n - 2 ^ k).primeFactorsList.length : ℝ) := by
+theorem erdos_205 : answer(False) ↔
+    (∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+      ∃ k : ℕ, 2 ^ k ≤ n ∧
+        ((n - 2 ^ k).primeFactorsList.length : ℝ) <
+          Real.log (Real.log ((n - 2 ^ k : ℕ) : ℝ))) := by
   sorry
 
 end Erdos205

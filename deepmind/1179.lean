@@ -55,7 +55,7 @@ def subsetSumCount {G : Type*} [AddCommGroup G] [DecidableEq G]
 $\varepsilon$-approximation-uniform if the subset-sum counts are uniformly close to their
 "expected" value $2^k/N$:
 $$|F_A(g) - 2^k/N| \leq \varepsilon \cdot 2^k/N \quad \text{for all } g \in G.$$ -/
-def isApproxUniform {G : Type*} [AddCommGroup G] [Fintype G] [DecidableEq G]
+def IsApproxUniform {G : Type*} [AddCommGroup G] [Fintype G] [DecidableEq G]
     (ε : ℝ) (A : Finset G) : Prop :=
   let N : ℕ := Fintype.card G
   let k : ℕ := A.card
@@ -67,14 +67,14 @@ $k$-subset satisfies the approximation. -/
 noncomputable def goodFraction {G : Type*} [AddCommGroup G] [Fintype G] [DecidableEq G]
     (ε : ℝ) (k : ℕ) : ℝ :=
   let all := (Finset.univ : Finset G).powersetCard k
-  let good := @Finset.filter (Finset G) (fun A => isApproxUniform ε A) (Classical.decPred _) all
+  let good := @Finset.filter (Finset G) (fun A => IsApproxUniform ε A) (Classical.decPred _) all
   good.card / all.card
 
 /-- $g_\varepsilon(N)$ is the minimal $k$ such that for every finite abelian group $G$ of order
 $N$, the fraction of $k$-subsets that are $\varepsilon$-approximation-uniform is at least
 $1 - 1/N$. This captures the condition "with probability $\to 1$ as $N \to \infty$" for
 each $N$. -/
-noncomputable def g_eps (ε : ℝ) (N : ℕ) : ℕ :=
+noncomputable def gEps (ε : ℝ) (N : ℕ) : ℕ :=
   sInf {k : ℕ | ∀ (G : Type) [hG : AddCommGroup G] [hF : Fintype G] [hD : DecidableEq G],
     Fintype.card G = N →
     @goodFraction G hG hF hD ε k ≥ 1 - 1 / (N : ℝ)}
@@ -96,8 +96,9 @@ Erdős and Hall proved
 $g_\varepsilon(N) \leq (1 + O_\varepsilon(\log \log \log N / \log \log N)) \log_2 N$.
 -/
 @[category research open, AMS 5 60]
-theorem erdos_1179 (ε : ℝ) (hε : 0 < ε) (hε1 : ε < 1) :
-    Tendsto (fun N : ℕ => (g_eps ε N : ℝ) / Real.logb 2 N)
+theorem erdos_1179 : answer(sorry) ↔
+    ∀ ε : ℝ, 0 < ε → ε < 1 →
+    Tendsto (fun N : ℕ => (gEps ε N : ℝ) / Real.logb 2 N)
       atTop (nhds 1) := by
   sorry
 

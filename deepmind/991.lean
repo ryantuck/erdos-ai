@@ -72,6 +72,7 @@ Here $\frac{1-t}{2}$ is the normalised surface area of the cap $C(v,t)$ on $S^2$
 -/
 @[category research solved, AMS 31 52]
 theorem erdos_991 :
+    answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ (P : Finset (EuclideanSpace ℝ (Fin 3))),
       IsMaxPairwiseDist P →

@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 169
 
+Let $f(k)$ denote the supremum of $\sum_{n \in A} 1/n$ over all sets $A$ of positive
+integers containing no $k$-term arithmetic progression. Is
+$\lim_{k \to \infty} f(k) / \log W(k) = \infty$, where $W(k)$ is the $k$-th van der
+Waerden number?
+
 *Reference:* [erdosproblems.com/169](https://www.erdosproblems.com/169)
 -/
 

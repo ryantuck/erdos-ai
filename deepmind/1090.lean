@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1090](https://www.erdosproblems.com/1090)
 
+Let $k \geq 3$. Does there exist a finite set $A \subset \mathbb{R}^2$ such that, in any
+2-colouring of $A$, there exists a line which contains at least $k$ points from $A$, and all the
+points of $A$ on the line have the same colour?
+
 [Er75f] Erdős, P., *Problems and results on combinatorial number theory III*.
 -/
 

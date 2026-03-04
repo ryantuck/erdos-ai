@@ -58,12 +58,13 @@ This was proved in the affirmative by Mathialagan [Ma21].
 -/
 @[category research solved, AMS 5 52]
 theorem erdos_652 :
-    ∀ C : ℝ, C > 0 →
-      ∃ K : ℕ, ∀ k : ℕ, k ≥ K →
-        ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧
-          ∀ S : Finset (EuclideanSpace ℝ (Fin 2)), S.card = n →
-            (S.filter (fun p =>
-              (numDistinctDistances p S : ℝ) < C * Real.sqrt (↑n))).card < k := by
+    answer(True) ↔
+      ∀ C : ℝ, C > 0 →
+        ∃ K : ℕ, ∀ k : ℕ, k ≥ K →
+          ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧
+            ∀ S : Finset (EuclideanSpace ℝ (Fin 2)), S.card = n →
+              (S.filter (fun p =>
+                (numDistinctDistances p S : ℝ) < C * Real.sqrt (↑n))).card < k := by
   sorry
 
 end Erdos652

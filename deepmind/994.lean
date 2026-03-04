@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 994
 
+Khintchine's conjecture on strong uniform distribution: is it true that for almost all real
+numbers α, the fractional parts {kα} are equidistributed with respect to every measurable subset
+of (0,1)? Disproved by Marstrand [Ma70].
+
 *Reference:* [erdosproblems.com/994](https://www.erdosproblems.com/994)
 
 [Ma70] Marstrand, J. M., _On Khintchine's conjecture about strong uniform distribution_.

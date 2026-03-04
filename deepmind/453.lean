@@ -40,14 +40,21 @@ noncomputable def nthPrime (k : ℕ) : ℕ := Nat.nth Nat.Prime k
 /--
 Erdős Problem 453 (Disproved by Pomerance [Po79]):
 
-There are infinitely many $n$ such that $p_n^2 > p_{n+i} \cdot p_{n-i}$ for all
-$0 < i < n$, where $p_k$ denotes the $k$th prime (0-indexed).
-
-This disproves the conjecture of Erdős and Straus that for all sufficiently
-large $n$ there exists $i < n$ with $p_n^2 < p_{n+i} \cdot p_{n-i}$.
+Is it true that, for all sufficiently large $n$, there exists some $i < n$ such that
+$p_n^2 < p_{n+i} \cdot p_{n-i}$? The answer is no.
 -/
 @[category research solved, AMS 11]
-theorem erdos_453 :
+theorem erdos_453 : answer(False) ↔
+    (∀ᶠ n in Filter.atTop, ∃ i : ℕ, 0 < i ∧ i < n ∧
+      nthPrime n ^ 2 < nthPrime (n + i) * nthPrime (n - i)) := by
+  sorry
+
+/--
+Pomerance [Po79] proved that there are infinitely many $n$ such that
+$p_n^2 > p_{n+i} \cdot p_{n-i}$ for all $0 < i < n$.
+-/
+@[category research solved, AMS 11]
+theorem erdos_453.variants.pomerance :
     ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧
       ∀ i : ℕ, 0 < i → i < n →
         nthPrime (n + i) * nthPrime (n - i) <

@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1121
 
+If circles in the plane with radii $r_1, \ldots, r_n$ cannot be separated into two non-empty
+groups by a line disjoint from all of them, then they can be covered by a single circle of radius
+$r = \sum r_i$.
+
 *Reference:* [erdosproblems.com/1121](https://www.erdosproblems.com/1121)
 
 [GoGo45] Goodman, A. W. and Goodman, R. E., *A circle covering theorem*,

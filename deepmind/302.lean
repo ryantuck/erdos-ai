@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/302](https://www.erdosproblems.com/302)
 
+Let $f(N)$ be the size of the largest subset of $\{1, \ldots, N\}$ with no solution to
+$\frac{1}{a} = \frac{1}{b} + \frac{1}{c}$ among distinct elements. Is $f(N) = (\frac{1}{2} + o(1))N$?
+
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
 theory_. Monographies de L'Enseignement Mathematique (1980).
 -/

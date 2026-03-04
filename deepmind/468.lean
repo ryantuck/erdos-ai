@@ -56,7 +56,7 @@ Erdős Problem 468, strong form [ErGr80]:
 If $f(N)$ is the minimal $n$ such that $N \in D_n$, then $f(N) = o(N)$.
 -/
 @[category research open, AMS 11]
-theorem erdos_468 :
+theorem erdos_468 : answer(sorry) ↔
     ∀ ε : ℝ, 0 < ε →
       ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
         (f N : ℝ) < ε * (N : ℝ) := by
@@ -69,7 +69,7 @@ $f(N) = o(N)$ for almost all $N$. Formalized as: for any $\varepsilon > 0$, the 
 $\{N \le x : f(N) \ge \varepsilon \cdot N\}$ tends to $0$ as $x \to \infty$.
 -/
 @[category research open, AMS 11]
-theorem erdos_468.variants.weak :
+theorem erdos_468.variants.weak : answer(sorry) ↔
     ∀ ε : ℝ, 0 < ε →
       Tendsto (fun x : ℕ =>
         (((Finset.Icc 1 x).filter (fun N =>

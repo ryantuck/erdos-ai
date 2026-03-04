@@ -49,6 +49,16 @@ noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
       ∀ u v, G.Adj u v → c (f u) (f v) = a}
 
 /--
+Erdős Problem 558: Determine $R_k(K_{s,t})$, the $k$-colour Ramsey number of the
+complete bipartite graph $K_{s,t}$. The general problem remains open.
+-/
+@[category research open, AMS 5]
+theorem erdos_558 :
+    ∀ s t : ℕ, s ≥ 1 → t ≥ 1 → ∀ k : ℕ,
+    multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k = answer(sorry) s t k := by
+  sorry
+
+/--
 Erdős Problem 558, Chung–Graham result [ChGr75]:
 
 $R_k(K_{2,2}) = (1+o(1))k^2$, i.e., for every $\varepsilon > 0$, there exists $K_0$
@@ -58,7 +68,7 @@ $$
 $$
 -/
 @[category research solved, AMS 5]
-theorem erdos_558 :
+theorem erdos_558.variants.K22 :
     ∀ ε : ℝ, ε > 0 →
     ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
       (1 - ε) * (k : ℝ) ^ 2 ≤

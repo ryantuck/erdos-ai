@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 999
 
+The Duffin–Schaeffer conjecture: for any function `f : ℕ → ℕ`, almost every real number has
+infinitely many coprime rational approximations `p/q` with `|α - p/q| < f(q)/q` if and only if
+`∑ φ(q) f(q) / q` diverges. Proved by Koukoulopoulos and Maynard.
+
 *Reference:* [erdosproblems.com/999](https://www.erdosproblems.com/999)
 
 [KoMa20] Koukoulopoulos, D. and Maynard, J., _On the Duffin-Schaeffer conjecture_. Annals of

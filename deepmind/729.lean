@@ -46,8 +46,8 @@ For any $C > 0$ and any prime bound $P$, the set of triples $(a, b, n)$ such tha
 $a + b > n + C \cdot \log n$ and the denominator of $n!/(a! b!)$ is $P$-smooth, is finite.
 -/
 @[category research solved, AMS 11]
-theorem erdos_729 (C : ℝ) (hC : C > 0) (P : ℕ) :
-    Set.Finite {t : ℕ × ℕ × ℕ |
+theorem erdos_729 : answer(True) ↔
+    ∀ (C : ℝ), C > 0 → ∀ (P : ℕ), Set.Finite {t : ℕ × ℕ × ℕ |
       (t.1 : ℝ) + (t.2.1 : ℝ) > (t.2.2 : ℝ) + C * Real.log (t.2.2 : ℝ) ∧
       DenomPSmooth t.1 t.2.1 t.2.2 P} := by
   sorry

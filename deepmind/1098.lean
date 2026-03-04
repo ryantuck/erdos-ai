@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1098
 
+If the non-commuting graph of a group $G$ (with an edge between $g$ and $h$ iff $gh \neq hg$)
+contains no infinite complete subgraph, then there is a finite bound on the size of its complete
+subgraphs. Proved by Neumann, who showed this holds iff the centre of $G$ has finite index.
+
 *Reference:* [erdosproblems.com/1098](https://www.erdosproblems.com/1098)
 
 [Ne76] Neumann, B.H., _A problem of Paul Erdős on groups_, J. Austral. Math. Soc. Ser. A
@@ -47,7 +51,7 @@ Neumann proved that $\Gamma$ contains no infinite complete subgraph if and only 
 the centre of $G$ has finite index, and if the centre has index $n$ then $\Gamma$
 contains no complete subgraph on more than $n$ vertices.
 -/
-@[category research solved, AMS 20 5]
+@[category research solved, AMS 5 20]
 theorem erdos_1098 (G : Type*) [Group G] :
     (¬ ∃ S : Set G, S.Infinite ∧ (nonCommutingGraph G).IsClique S) →
     (∃ n : ℕ, ∀ S : Finset G, (nonCommutingGraph G).IsClique (S : Set G) → S.card ≤ n) := by

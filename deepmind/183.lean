@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 183
 
+Erdős asked whether the limit of R(3;k)^{1/k} exists, where R(3;k) is the multicolor Ramsey
+number for triangles — the minimum n such that every k-colouring of the edges of Kₙ contains a
+monochromatic triangle.
+
 *Reference:* [erdosproblems.com/183](https://www.erdosproblems.com/183)
 -/
 

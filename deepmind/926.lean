@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/926](https://www.erdosproblems.com/926)
 
+Is it true that $\mathrm{ex}(n; H_k) \ll_k n^{3/2}$, where $H_k$ is the graph on vertices
+$x, y_1, \ldots, y_k, z_1, \ldots, z_{\binom{k}{2}}$ in which $x$ is adjacent to every $y_i$ and
+each pair $y_i, y_j$ is adjacent to a unique $z_{ij}$?
+
 [Er69b] Erdős, P., 1969.
 
 [Er71] Erdős, P., 1971.
@@ -64,8 +68,24 @@ def graphHk (k : ℕ) : SimpleGraph (HkVertex k) where
     | Sum.inr (Sum.inl i), Sum.inr (Sum.inr ⟨(a, b), _⟩) => i = a ∨ i = b
     | Sum.inr (Sum.inr ⟨(a, b), _⟩), Sum.inr (Sum.inl i) => i = a ∨ i = b
     | _, _ => False
-  symm := by sorry
-  loopless := by sorry
+  symm := by
+    intro v w
+    match v, w with
+    | Sum.inl (), Sum.inr (Sum.inl _) => intro _; trivial
+    | Sum.inr (Sum.inl _), Sum.inl () => intro _; trivial
+    | Sum.inr (Sum.inl i), Sum.inr (Sum.inr ⟨(a, b), h⟩) => intro h'; exact h'
+    | Sum.inr (Sum.inr ⟨(a, b), h⟩), Sum.inr (Sum.inl i) => intro h'; exact h'
+    | Sum.inl (), Sum.inl () => intro h; exact h
+    | Sum.inr (Sum.inl _), Sum.inr (Sum.inl _) => intro h; exact h
+    | Sum.inr (Sum.inr _), Sum.inr (Sum.inr _) => intro h; exact h
+    | Sum.inl (), Sum.inr (Sum.inr _) => intro h; exact h
+    | Sum.inr (Sum.inr _), Sum.inl () => intro h; exact h
+  loopless := by
+    intro v
+    match v with
+    | Sum.inl () => intro h; exact h
+    | Sum.inr (Sum.inl _) => intro h; exact h
+    | Sum.inr (Sum.inr ⟨(a, b), h⟩) => intro ⟨h1, _⟩ | ⟨_, h2⟩ <;> omega
 
 /--
 Erdős Problem 926 [Er69b, Er71, Er74c, Er93]:
@@ -78,7 +98,7 @@ The answer is yes, proved by Füredi [Fu91] who showed $\mathrm{ex}(n; H_k) \ll 
 improved to $\mathrm{ex}(n; H_k) \ll k \cdot n^{3/2}$ by Alon, Krivelevich, and Sudakov [AKS03].
 -/
 @[category research solved, AMS 5]
-theorem erdos_926 :
+theorem erdos_926 : answer(True) ↔
     ∀ (k : ℕ), 4 ≤ k →
     ∃ C : ℝ, 0 < C ∧ ∀ n : ℕ, 1 ≤ n →
       (turanNumber (graphHk k) n : ℝ) ≤ C * (n : ℝ) ^ ((3 : ℝ) / 2) := by

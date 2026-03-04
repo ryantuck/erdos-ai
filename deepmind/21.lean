@@ -70,9 +70,9 @@ Kahn [Ka92b] improved the upper bound to $f(n) \ll n \log n$.
 Kahn [Ka94] proved $f(n) \ll n$, settling the conjecture.
 -/
 @[category research solved, AMS 5]
-theorem erdos_21 :
-    ∃ C : ℝ, 0 < C ∧ ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
-      (erdosLovaszF n : ℝ) ≤ C * n := by
+theorem erdos_21 : answer(True) ↔
+    (∃ C : ℝ, 0 < C ∧ ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+      (erdosLovaszF n : ℝ) ≤ C * n) := by
   sorry
 
 end Erdos21

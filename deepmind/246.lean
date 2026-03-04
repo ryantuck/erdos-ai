@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/246](https://www.erdosproblems.com/246)
 
+Let $a, b \geq 2$ with $\gcd(a, b) = 1$. Then the set of all numbers of the form
+$a^k \cdot b^\ell$ (with $k, \ell \geq 0$) is complete: every sufficiently large positive
+integer can be written as a sum of distinct elements of this set.
+
 [Bi59] Birch, B. J., *Note on a problem of Erdős*.
 
 [Ca60] Cassels, J. W. S.

@@ -19,6 +19,8 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1140
 
+Are there infinitely many $n$ such that $n - 2x^2$ is prime for all $x$ with $2x^2 < n$?
+
 *Reference:* [erdosproblems.com/1140](https://www.erdosproblems.com/1140)
 
 [Va99] Vaughan, R. C., *The Hardy-Littlewood Method*, 2nd ed., 1997.
@@ -45,7 +47,7 @@ This implies that, with at most one exception, the list above is complete.
 -/
 @[category research solved, AMS 11]
 theorem erdos_1140 :
-    Set.Finite {n : ℕ | AllShiftsArePrime n} := by
+    answer(False) ↔ Set.Infinite {n : ℕ | AllShiftsArePrime n} := by
   sorry
 
 end Erdos1140

@@ -21,7 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/810](https://www.erdosproblems.com/810)
 
-A problem of Burr, Erdős, Graham, and Sós.
+A problem of Burr, Erdős, Graham, and Sós. Asks whether there exists ε > 0 such that, for all
+sufficiently large n, some n-vertex graph with at least εn² edges admits an n-coloring of its edges
+where every C₄ is rainbow.
 -/
 
 namespace Erdos810

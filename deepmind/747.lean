@@ -45,14 +45,14 @@ def hypergraphsWithEdges (N m : ℕ) : Finset (Finset (Finset (Fin N))) :=
 
 /-- A $3$-uniform hypergraph $H$ contains a matching of size $k$: there exist
     $k$ pairwise vertex-disjoint edges in $H$. -/
-def hasMatching {N : ℕ} (H : Finset (Finset (Fin N))) (k : ℕ) : Prop :=
+def HasMatching {N : ℕ} (H : Finset (Finset (Fin N))) (k : ℕ) : Prop :=
   ∃ M : Finset (Finset (Fin N)), M ⊆ H ∧ M.card = k ∧
     ∀ e₁ ∈ M, ∀ e₂ ∈ M, e₁ ≠ e₂ → Disjoint e₁ e₂
 
 /-- The fraction of $3$-uniform hypergraphs on $\operatorname{Fin} N$ with $m$ edges that
     contain a matching of size $k$. Returns $0$ if no such hypergraphs exist. -/
 noncomputable def hypergraphMatchingFraction (N m k : ℕ) : ℝ :=
-  ((hypergraphsWithEdges N m).filter (fun H => hasMatching H k)).card /
+  ((hypergraphsWithEdges N m).filter (fun H => HasMatching H k)).card /
   ((hypergraphsWithEdges N m).card : ℝ)
 
 /--

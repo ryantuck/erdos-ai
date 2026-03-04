@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 923
 
+Is it true that, for every $k$, there is some $f(k)$ such that if $G$ has chromatic number
+$\geq f(k)$ then $G$ contains a triangle-free subgraph with chromatic number $\geq k$?
+
 *Reference:* [erdosproblems.com/923](https://www.erdosproblems.com/923)
 
 [Ro77] Rödl, V., *On the chromatic number of subgraphs of a given graph*, Proc. Amer.
@@ -38,13 +41,14 @@ Triangle-free is formalized here as girth $\geq 4$ (no cycles of length 3).
 -/
 @[category research solved, AMS 5]
 theorem erdos_923 :
-    ∀ (k : ℕ), 2 ≤ k →
-      ∃ (f : ℕ),
-        ∀ (V : Type*) (G : SimpleGraph V),
-          (f : ℕ∞) ≤ G.chromaticNumber →
-          ∃ H : G.Subgraph,
-            (k : ℕ∞) ≤ H.coe.chromaticNumber ∧
-            (4 : ℕ∞) ≤ H.coe.egirth := by
+    answer(True) ↔
+      ∀ (k : ℕ), 2 ≤ k →
+        ∃ (f : ℕ),
+          ∀ (V : Type*) (G : SimpleGraph V),
+            (f : ℕ∞) ≤ G.chromaticNumber →
+            ∃ H : G.Subgraph,
+              (k : ℕ∞) ≤ H.coe.chromaticNumber ∧
+              (4 : ℕ∞) ≤ H.coe.egirth := by
   sorry
 
 end Erdos923

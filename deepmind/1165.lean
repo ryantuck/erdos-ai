@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1165](https://www.erdosproblems.com/1165)
 
+Given a random walk on $\mathbb{Z}^2$, the *favourite sites* $F(n)$ are those visited the
+maximum number of times up to step $n$. Tóth proved that $|F(n)| = r$ occurs only finitely
+often almost surely for every $r \ge 4$, and Hao–Li–Okada–Zheng proved that $|F(n)| = 3$
+occurs infinitely often almost surely.
+
 [Va99] Vize, R., *Open problems on random walks* (1999), §6.77.
 
 [To01] Tóth, B., proved that $\mathbb{P}(|F(n)| = r \text{ i.o.}) = 0$ for all $r \ge 4$.
@@ -71,11 +76,10 @@ Erdős Problem 1165 (Erdős–Révész) [Va99, 6.77]:
 
 Given a random walk $s_0, s_1, \ldots$ in $\mathbb{Z}^2$, starting at the origin, let $f_n(x)$
 count the number of $0 \le k \le n$ such that $s_k = x$. Let
-$F(n) = \{x : f_n(x) = \max_y f_n(y)\}$ be the set of 'favourite sites'. Find
-$\mathbb{P}(|F(n)| = r \text{ infinitely often})$ for $r \ge 3$.
+$F(n) = \{x : f_n(x) = \max_y f_n(y)\}$ be the set of 'favourite sites'.
 
-Tóth [To01] proved that $\mathbb{P}(|F(n)| = r \text{ i.o.}) = 0$ for all $r \ge 4$.
-Hao, Li, Okada, and Zheng [HLOZ24] proved that $\mathbb{P}(|F(n)| = 3 \text{ i.o.}) = 1$.
+Tóth [To01] proved that $|F(n)| = r$ occurs only finitely often almost surely for all $r \ge 4$.
+Hao, Li, Okada, and Zheng [HLOZ24] proved that $|F(n)| = 3$ occurs infinitely often almost surely.
 -/
 @[category research solved, AMS 60]
 theorem erdos_1165

@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/337](https://www.erdosproblems.com/337)
 
+Is it true that for an additive basis $A$ of density $o(N)$, the ratio
+$|(A+A) \cap \{1,\ldots,N\}| / |A \cap \{1,\ldots,N\}|$ tends to infinity?
+The answer is no, as shown by Turjányi.
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
 

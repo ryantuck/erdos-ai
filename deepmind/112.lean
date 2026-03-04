@@ -62,15 +62,32 @@ noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
       (∃ S : Finset V, S.card = m ∧ G.IsTransTournament S)}
 
 /--
-Erdős–Rado upper bound (Problem 112) [ErRa67]:
-The directed Ramsey number $k(n,m)$ satisfies
-$$k(n,m) \leq \frac{2^{m-1} (n-1)^m + n - 2}{2n - 3}.$$
-The exact value of $k(n,m)$ remains an open problem.
+Erdős Problem 112: Determine the directed Ramsey number $k(n,m)$.
+The exact value is still open.
 -/
-@[category research solved, AMS 5]
+@[category research open, AMS 5]
 theorem erdos_112 :
     ∀ n m : ℕ, 2 ≤ n → 2 ≤ m →
+      dirRamseyNum n m = answer(sorry) := by
+  sorry
+
+/--
+Erdős–Rado upper bound [ErRa67]:
+$$k(n,m) \leq \frac{2^{m-1} (n-1)^m + n - 2}{2n - 3}.$$
+-/
+@[category research solved, AMS 5]
+theorem erdos_112.variants.erdos_rado_upper_bound :
+    ∀ n m : ℕ, 2 ≤ n → 2 ≤ m →
       dirRamseyNum n m ≤ (2 ^ (m - 1) * (n - 1) ^ m + n - 2) / (2 * n - 3) := by
+  sorry
+
+/--
+Larson–Mitchell bound [LaMi97]: $k(n, 3) \leq n^2$.
+-/
+@[category research solved, AMS 5]
+theorem erdos_112.variants.larson_mitchell :
+    ∀ n : ℕ, 2 ≤ n →
+      dirRamseyNum n 3 ≤ n ^ 2 := by
   sorry
 
 end Erdos112

@@ -38,7 +38,7 @@ namespace Erdos783
 /-- The Dickman rho function, the unique continuous function $\rho : \mathbb{R} \to \mathbb{R}$
 satisfying $\rho(u) = 1$ for $0 \leq u \leq 1$ and $u \cdot \rho'(u) = -\rho(u-1)$ for
 $u > 1$. -/
-noncomputable def dickmanRho : ℝ → ℝ := sorry
+noncomputable opaque dickmanRho : ℝ → ℝ
 
 /-- Count of integers in $\{1, \ldots, N\}$ not divisible by any element of $A$. -/
 def unsievedCount (N : ℕ) (A : Finset ℕ) : ℕ :=

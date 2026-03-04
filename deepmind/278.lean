@@ -48,7 +48,8 @@ namespace Erdos278
 /-- The covering density of congruences $m \equiv \text{offsets}(n) \pmod{n}$ for
 $n \in \text{moduli}$. Since the covered set is periodic with period
 $L = \operatorname{lcm}(\text{moduli})$, the density equals
-$|\{m \in \{0,\ldots,L-1\} : \exists n \in \text{moduli},\, n \mid (m - \text{offsets}(n))\}| / L$. -/
+$|\{m \in \{0,\ldots,L-1\} :
+\exists n \in \text{moduli},\, n \mid (m - \text{offsets}(n))\}| / L$. -/
 noncomputable def coveringDensity (moduli : Finset ℕ) (offsets : ℕ → ℤ) : ℚ :=
   let L := moduli.lcm id
   let covered := (Finset.range L).filter fun (m : ℕ) =>
@@ -65,21 +66,30 @@ noncomputable def inclusionExclusionDensity (moduli : Finset ℕ) : ℚ :=
 /--
 Erdős Problem 278 (Simpson's theorem [Si86]):
 
-For a finite set of positive integer moduli, the minimum covering density over all
-choices of offsets equals the inclusion-exclusion density. Specifically:
-(1) For any choice of offsets, the covering density is at least the
-    inclusion-exclusion density.
-(2) This lower bound is achieved when all offsets are equal.
+Is the minimum covering density, over all choices of offsets for a finite set of
+positive integer moduli, achieved when all offsets are equal (giving the
+inclusion-exclusion density)?
 
-The maximum covering density (the original open question of Erdős–Graham [ErGr80, p.28])
-remains unknown.
+Answered affirmatively by Simpson [Si86].
 -/
 @[category research solved, AMS 11]
-theorem erdos_278 (moduli : Finset ℕ) (h : ∀ n ∈ moduli, 0 < n) :
-    (∀ offsets : ℕ → ℤ,
-      inclusionExclusionDensity moduli ≤ coveringDensity moduli offsets) ∧
-    (∀ a : ℤ,
-      coveringDensity moduli (fun _ => a) = inclusionExclusionDensity moduli) := by
+theorem erdos_278 : answer(True) ↔
+    ∀ (moduli : Finset ℕ), (∀ n ∈ moduli, 0 < n) →
+      (∀ offsets : ℕ → ℤ,
+        inclusionExclusionDensity moduli ≤
+          coveringDensity moduli offsets) ∧
+      (∀ a : ℤ,
+        coveringDensity moduli (fun _ => a) =
+          inclusionExclusionDensity moduli) := by
+  sorry
+
+/-- Open question (Erdős–Graham [ErGr80, p.28]): What is the maximum
+covering density achievable by a suitable choice of offsets? -/
+@[category research open, AMS 11]
+theorem erdos_278.variants.max_density
+    (moduli : Finset ℕ) (h : ∀ n ∈ moduli, 0 < n) :
+    IsGreatest {coveringDensity moduli offsets |
+      offsets : ℕ → ℤ} (answer(sorry)) := by
   sorry
 
 end Erdos278

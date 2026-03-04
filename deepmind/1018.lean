@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1018](https://www.erdosproblems.com/1018)
 
+For every ε > 0, there exists a constant C such that every simple graph on n vertices with at
+least ⌈n^{1+ε}⌉ edges contains an induced subgraph on at most C vertices which is non-planar.
+
 [Er71] Erdős, P., 1971.
 
 [KoPy88] Kostochka, A. and Pyber, L., 1988.

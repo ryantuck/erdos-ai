@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1158
 
+Erdős asks whether the extremal number for complete $t$-partite $t$-uniform hypergraphs satisfies
+$\mathrm{ex}_t(n, K_t(r)) \geq n^{t - r^{1-t} - o(1)}$.
+
 *Reference:* [erdosproblems.com/1158](https://www.erdosproblems.com/1158)
 
 [Er64f] Erdős, P., _On extremal problems of graphs and generalized graphs_. Israel J. Math. 2

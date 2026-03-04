@@ -41,7 +41,7 @@ def IsPrimitiveSeq (a : ℕ → ℕ) : Prop :=
 Erdős Problem 892 (particular case) [Er98]:
 
 If $b : \mathbb{N} \to \mathbb{N}$ is a strictly increasing sequence of positive integers such that
-$\gcd(b_i, b_j) \neq b_k$ for all distinct $i, j$ and all $k$ (no non-trivial GCD solutions),
+$\gcd(b_i, b_j) \neq b_k$ for all pairwise distinct $i, j, k$ (no non-trivial GCD solutions),
 then there exists a strictly increasing primitive sequence $a : \mathbb{N} \to \mathbb{N}$ with
 $a_n \ll b_n$ (i.e. there exists $C$ such that $a_n \leq C \cdot b_n$ for all $n$).
 -/
@@ -50,12 +50,26 @@ theorem erdos_892
     (b : ℕ → ℕ)
     (hb_pos : ∀ n, 0 < b n)
     (hb_mono : StrictMono b)
-    (hb_gcd : ∀ i j, i ≠ j → ∀ k, Nat.gcd (b i) (b j) ≠ b k) :
+    (hb_gcd : ∀ i j k, i ≠ j → i ≠ k → j ≠ k →
+      Nat.gcd (b i) (b j) ≠ b k) :
     ∃ (a : ℕ → ℕ) (C : ℕ),
       0 < C ∧
       StrictMono a ∧
       IsPrimitiveSeq a ∧
       ∀ n, a n ≤ C * b n := by
+  sorry
+
+/--
+Erdős Problem 892 (general form) [ESS68] [Er98]:
+
+Characterize which strictly increasing sequences of positive integers $b_1 < b_2 < \cdots$ have the
+property that there exists a primitive sequence $a_1 < a_2 < \cdots$ with $a_n \ll b_n$.
+-/
+@[category research open, AMS 11]
+theorem erdos_892.variants.general :
+    {b : ℕ → ℕ | (∀ n, 0 < b n) ∧ StrictMono b ∧
+      ∃ (a : ℕ → ℕ) (C : ℕ), 0 < C ∧ StrictMono a ∧ IsPrimitiveSeq a ∧
+        ∀ n, a n ≤ C * b n} = answer(sorry) := by
   sorry
 
 end Erdos892

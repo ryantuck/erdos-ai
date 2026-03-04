@@ -55,7 +55,7 @@ def EveryEdgeInTriangle {V : Type*} [Fintype V] [DecidableEq V]
     graph on $n$ vertices with at least $cn^2$ edges, where every edge lies in a
     triangle, contains an edge that is in at least $C \log n$ triangles. -/
 @[category research open, AMS 5]
-theorem erdos_80 :
+theorem erdos_80 : answer(sorry) ↔
     ∀ c : ℝ, c > 0 →
     ∃ C : ℝ, C > 0 ∧
     ∀ (n : ℕ) (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],

@@ -19,6 +19,12 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 879
 
+Let $G(n)$ denote the maximum sum of a pairwise coprime subset of $\{1, \ldots, n\}$,
+and let $H(n) = \sum_{p < n} p + n \cdot \pi(\sqrt{n})$. Erdős and Van Lint asked
+whether $G(n) > H(n) - n^{1+\varepsilon}$ for every $\varepsilon > 0$ and all
+sufficiently large $n$ (Part 1), and whether for every $k \geq 2$ the optimal
+admissible set must contain an element with at least $k$ distinct prime factors (Part 2).
+
 *Reference:* [erdosproblems.com/879](https://www.erdosproblems.com/879)
 -/
 
@@ -47,6 +53,7 @@ $G(n) > H(n) - n^{1+\varepsilon}$.
 -/
 @[category research open, AMS 5 11]
 theorem erdos_879 :
+    answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n ≥ N₀,
     ∀ S : Finset ℕ, IsMaxAdmissible S n →
@@ -60,6 +67,7 @@ $G(n)$ contains at least one integer with at least $k$ distinct prime factors.
 -/
 @[category research open, AMS 5 11]
 theorem erdos_879.variants.prime_factors :
+    answer(sorry) ↔
     ∀ k : ℕ, k ≥ 2 →
     ∃ N₀ : ℕ, ∀ n ≥ N₀,
     ∀ S : Finset ℕ, IsMaxAdmissible S n →

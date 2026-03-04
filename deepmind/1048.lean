@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1048
 
+Erdős, Herzog, and Piranian asked whether, for a monic polynomial over ℂ with all roots in a
+disk of radius r < 2, the sublevel set {z : |f(z)| < 1} must contain a connected component of
+diameter greater than 2 − r. Pommerenke disproved this for r > 1.
+
 *Reference:* [erdosproblems.com/1048](https://www.erdosproblems.com/1048)
 
 [EHP58] Erdős, P., Herzog, F. and Piranian, G., *Metric properties of polynomials*,

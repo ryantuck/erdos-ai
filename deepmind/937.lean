@@ -46,15 +46,16 @@ $a \geq N$ such that $a$, $a+d$, $a+2d$, $a+3d$ are all powerful and pairwise co
 -/
 @[category research solved, AMS 11]
 theorem erdos_937 :
-    ∀ N : ℕ, ∃ a d : ℕ, N ≤ a ∧ 0 < a ∧ 0 < d ∧
-      IsPowerful a ∧ IsPowerful (a + d) ∧
-      IsPowerful (a + 2 * d) ∧ IsPowerful (a + 3 * d) ∧
-      Nat.Coprime a (a + d) ∧
-      Nat.Coprime a (a + 2 * d) ∧
-      Nat.Coprime a (a + 3 * d) ∧
-      Nat.Coprime (a + d) (a + 2 * d) ∧
-      Nat.Coprime (a + d) (a + 3 * d) ∧
-      Nat.Coprime (a + 2 * d) (a + 3 * d) := by
+    answer(True) ↔
+      ∀ N : ℕ, ∃ a d : ℕ, N ≤ a ∧ 0 < a ∧ 0 < d ∧
+        IsPowerful a ∧ IsPowerful (a + d) ∧
+        IsPowerful (a + 2 * d) ∧ IsPowerful (a + 3 * d) ∧
+        Nat.Coprime a (a + d) ∧
+        Nat.Coprime a (a + 2 * d) ∧
+        Nat.Coprime a (a + 3 * d) ∧
+        Nat.Coprime (a + d) (a + 2 * d) ∧
+        Nat.Coprime (a + d) (a + 3 * d) ∧
+        Nat.Coprime (a + 2 * d) (a + 3 * d) := by
   sorry
 
 end Erdos937

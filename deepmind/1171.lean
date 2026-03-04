@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1171](https://www.erdosproblems.com/1171)
 
+Erdős asked whether for all finite $k$, the ordinal partition relation
+$\omega_1^2 \to (\omega_1 \cdot \omega, 3, \ldots, 3)^2_{k+1}$ holds — that is, every
+$(k+1)$-coloring of pairs below $\omega_1^2$ yields either a homogeneous set of order type
+$\omega_1 \cdot \omega$ for the first color or a monochromatic triple for some other color.
+
 - [Va99] Section 7.84.
 - [Ba89b] Baumgartner.
 -/

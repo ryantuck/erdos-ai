@@ -61,8 +61,7 @@ noncomputable def cochromaticNumber {V : Type*} [Fintype V]
 
 /-- Embeddability of a finite simple graph on the orientable surface of genus $n$.
 This is axiomatized since surface topology is not available in Mathlib. -/
-def IsEmbeddableOnSurface {m : ℕ} (_ : SimpleGraph (Fin m)) (_ : ℕ) : Prop :=
-  sorry
+opaque IsEmbeddableOnSurface {m : ℕ} (_ : SimpleGraph (Fin m)) (_ : ℕ) : Prop
 
 /-- $z(S_n)$: the maximum cochromatic number over all finite graphs embeddable
 on the orientable surface of genus $n$. -/

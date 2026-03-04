@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 639
 
+Erdős conjectured that in any 2-coloring of the edges of $K_n$, at most $\lfloor n^2/4 \rfloor$
+edges do not lie in a monochromatic triangle. This was proved by Keevash and Sudakov for $n \geq 7$.
+
 *Reference:* [erdosproblems.com/639](https://www.erdosproblems.com/639)
 
 [Er97d] Erdős, P., _Some of my favourite problems in various branches of combinatorics_,

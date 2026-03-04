@@ -71,7 +71,7 @@ has natural density zero.
 -/
 @[category research solved, AMS 11]
 theorem erdos_673 :
-    ∀ M : ℝ, HasNaturalDensityZero {n : ℕ | erdosG n ≤ M} := by
+    answer(True) ↔ ∀ M : ℝ, HasNaturalDensityZero {n : ℕ | erdosG n ≤ M} := by
   sorry
 
 /--

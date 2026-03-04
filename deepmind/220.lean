@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 220
 
+Is it true that the sum of squared gaps between consecutive totatives of $n$ is
+$O(n^2 / \varphi(n))$?
+
 *Reference:* [erdosproblems.com/220](https://www.erdosproblems.com/220)
 
 [MoVa86] Montgomery, H.L. and Vaughan, R.C., _On the distribution of reduced residues_, 1986.
@@ -52,6 +55,7 @@ $$\sum_{1 \le k < \varphi(n)} (a_{k+1} - a_k)^\gamma \ll n^\gamma / \varphi(n)^{
 -/
 @[category research solved, AMS 11]
 theorem erdos_220 :
+    answer(True) ↔
     ∃ C : ℝ, 0 < C ∧
     ∀ n : ℕ, 1 ≤ n →
       (sumSquaredGaps (sortedTotatives n) : ℝ) ≤ C * (n : ℝ) ^ 2 / (Nat.totient n : ℝ) := by

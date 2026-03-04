@@ -37,7 +37,7 @@ $(-1)^{\varepsilon_k(t)}$ are i.i.d. Rademacher random variables.
   $M_n(t) \ll (n / \log \log n)^{1/2}$.
 -/
 
-open MeasureTheory ProbabilityTheory Filter Finset BigOperators Set
+open MeasureTheory ProbabilityTheory Filter Finset BigOperators Set Asymptotics
 
 namespace Erdos524
 
@@ -52,12 +52,24 @@ noncomputable def supNormInterval (ε : ℕ → ℝ) (n : ℕ) : ℝ :=
   sSup {y : ℝ | ∃ x : ℝ, x ∈ Icc (-1 : ℝ) 1 ∧
     y = |∑ k ∈ Finset.range n, ε (k + 1) * x ^ (k + 1)|}
 
-/--
-Erdős showed that for almost all $\omega$ and every $\delta > 0$,
-$M_n(\omega) / n^{1/2 - \delta} \to \infty$. The exact order of magnitude remains open.
--/
-@[category research solved, AMS 42 60]
+/-- What is the correct order of magnitude of $M_n(t)$ for almost all $t$?
+The answer $f : \mathbb{N} \to \mathbb{R}$ should satisfy
+$M_n(\omega) =\Theta(f(n))$ as $n \to \infty$ for a.a. $\omega$. -/
+@[category research open, AMS 42 60]
 theorem erdos_524
+    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+    {ε : ℕ → Ω → ℝ}
+    (hRad : ∀ k, IsRademacher μ (ε k))
+    (hIndep : iIndepFun ε μ) :
+    ∀ᵐ ω ∂μ,
+      (fun n => supNormInterval (fun k => ε k ω) n) =Θ[atTop]
+        answer(sorry) := by
+  sorry
+
+/-- Erdős showed that for almost all $\omega$ and every $\delta > 0$,
+$M_n(\omega) / n^{1/2 - \delta} \to \infty$. -/
+@[category research solved, AMS 42 60]
+theorem erdos_524.variants.lower_bound
     {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
     {ε : ℕ → Ω → ℝ}
     (hRad : ∀ k, IsRademacher μ (ε k))

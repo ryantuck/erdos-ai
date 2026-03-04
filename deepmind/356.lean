@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 356
 
+Is there some $c > 0$ such that, for all sufficiently large $n$, there exist integers
+$a_1 < \cdots < a_k \leq n$ with at least $cn^2$ distinct contiguous subsequence sums?
+
 *Reference:* [erdosproblems.com/356](https://www.erdosproblems.com/356)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
@@ -49,6 +52,7 @@ Solved in the affirmative by Beker [Be23b].
 -/
 @[category research solved, AMS 5 11]
 theorem erdos_356 :
+    answer(True) ↔
     ∃ c : ℝ, c > 0 ∧
     ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
     ∃ (k : ℕ) (a : Fin k → ℤ),

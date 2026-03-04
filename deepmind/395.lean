@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 395
 
+For unit complex vectors, the probability that a random signed sum has norm
+at most √2 is at least proportional to 1/n.
+
 *Reference:* [erdosproblems.com/395](https://www.erdosproblems.com/395)
 
 [HJNS24] He, X., Juškevičius, T., Narayanan, B., and Spiro, S.,

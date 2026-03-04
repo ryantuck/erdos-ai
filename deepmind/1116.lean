@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1116](https://www.erdosproblems.com/1116)
 
+For a meromorphic function $f$, let $n(r,a)$ count the number of roots of $f(z) = a$
+in the disc $|z| < r$. Does there exist a meromorphic (or entire) $f$ such that
+for every $a \neq b$, $\limsup_{r\to\infty} n(r,a)/n(r,b) = \infty$?
+Solved affirmatively by Gol'dberg [Go78] and Toppila [To76].
+
 [Go78] Gol'dberg, A. A., *On the deficiencies of meromorphic functions* (1978).
 
 [To76] Toppila, S., *On Nevanlinna's second theorem and deficient values* (1976).
@@ -48,7 +53,7 @@ The $\limsup = \infty$ condition is expressed multiplicatively: for every $M$ an
 there exists $r > R$ with $n(r,a) > M \cdot n(r,b)$.
 -/
 @[category research solved, AMS 30]
-theorem erdos_1116 :
+theorem erdos_1116 : answer(True) ↔
     ∃ f : ℂ → ℂ, Differentiable ℂ f ∧
       ∀ a b : ℂ, a ≠ b →
         ∀ (M : ℝ) (R : ℝ), ∃ r : ℝ, r > R ∧

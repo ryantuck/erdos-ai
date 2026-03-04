@@ -45,14 +45,14 @@ noncomputable def edgesInSubset {n : ℕ} (G : SimpleGraph (Fin n))
 
 /-- A graph on $n$ vertices has the $(p, q)$-density property if every $p$-element
 subset spans at least $q$ edges. -/
-def hasDensityProperty {n : ℕ} (G : SimpleGraph (Fin n)) (p q : ℕ) : Prop :=
+def HasDensityProperty {n : ℕ} (G : SimpleGraph (Fin n)) (p q : ℕ) : Prop :=
   ∀ S : Finset (Fin n), S.card = p → edgesInSubset G S ≥ q
 
 /-- $H(n; p, q)$: the largest $m$ such that every graph on $n$ vertices with the
 $(p, q)$-density property must contain a clique of size $m$. -/
 noncomputable def erdosH (n p q : ℕ) : ℕ :=
   sSup {m : ℕ | ∀ G : SimpleGraph (Fin n),
-    hasDensityProperty G p q → ∃ S : Finset (Fin n), G.IsNClique m S}
+    HasDensityProperty G p q → ∃ S : Finset (Fin n), G.IsNClique m S}
 
 /-- $c(p, q) = \liminf_{n \to \infty} \frac{\log H(n; p, q)}{\log n}$. -/
 noncomputable def erdosC (p q : ℕ) : ℝ :=

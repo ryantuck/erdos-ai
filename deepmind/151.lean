@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 151
 
+Erdős and Gallai conjectured that the clique transversal number of any graph on $n$ vertices
+is at most $n - H(n)$, where $H(n)$ is the minimum independence number over all triangle-free
+graphs on $n$ vertices.
+
 *Reference:* [erdosproblems.com/151](https://www.erdosproblems.com/151)
 
 [Er88] Erdős, P., _Problems and results on chromatic numbers in finite and infinite graphs_,
@@ -70,7 +74,7 @@ such that every triangle-free graph on $n$ vertices contains an independent set
 of size $k$.
 -/
 @[category research open, AMS 5]
-theorem erdos_151 :
+theorem erdos_151 : answer(sorry) ↔
     ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
       cliqueTransversalNumber G ≤ n - H n := by
   sorry

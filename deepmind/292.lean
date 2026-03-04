@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/292](https://www.erdosproblems.com/292)
 
+Does the set of positive integers that can appear as the largest denominator in an
+Egyptian fraction representation of 1 have natural density 1?
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
 number theory*. Monographies de L'Enseignement Mathematique (1980).
 

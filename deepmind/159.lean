@@ -19,6 +19,8 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 159
 
+Is there some constant $c > 0$ such that $R(C_4, K_n) \ll n^{2-c}$?
+
 *Reference:* [erdosproblems.com/159](https://www.erdosproblems.com/159)
 
 [Er81] Erdős, P., *Problems and results in graph theory*.

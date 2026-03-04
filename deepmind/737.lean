@@ -67,11 +67,12 @@ $G$ contains a cycle of length $n$ passing through $\{u, v\}$.
 Proved by Thomassen [Th83].
 -/
 @[category research solved, AMS 5]
-theorem erdos_737 {V : Type*} (G : SimpleGraph V)
-    (hG : HasUncountableChromaticNumber G) :
-    ∃ u v : V, G.Adj u v ∧
-      ∃ N₀ : ℕ, ∀ (n : ℕ) (hn : n ≥ 3), n ≥ N₀ →
-        G.ContainsCycleThroughEdge u v n hn := by
+theorem erdos_737 : answer(True) ↔
+    ∀ {V : Type*} (G : SimpleGraph V),
+      HasUncountableChromaticNumber G →
+        ∃ u v : V, G.Adj u v ∧
+          ∃ N₀ : ℕ, ∀ (n : ℕ) (hn : n ≥ 3), n ≥ N₀ →
+            G.ContainsCycleThroughEdge u v n hn := by
   sorry
 
 end Erdos737

@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1075
 
+For every $r \geq 3$, there exists $c_r > r^{-r}$ such that for any $\varepsilon > 0$, if $n$ is
+sufficiently large, any $r$-uniform hypergraph on $n$ vertices with at least
+$(1+\varepsilon)(n/r)^r$ edges contains a subgraph on $m$ vertices with at least $c_r m^r$ edges,
+where $m \to \infty$ as $n \to \infty$.
+
 *Reference:* [erdosproblems.com/1075](https://www.erdosproblems.com/1075)
 -/
 

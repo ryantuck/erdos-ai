@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 149
 
+The Erdős–Nešetřil conjecture states that the strong chromatic index of any graph with
+maximum degree Δ is at most 5Δ²/4.
+
 *Reference:* [erdosproblems.com/149](https://www.erdosproblems.com/149)
 
 [ErNe85] Erdős, P. and Nešetřil, J., proposed at a seminar in Prague (1985).

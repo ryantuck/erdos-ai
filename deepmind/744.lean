@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/744](https://www.erdosproblems.com/744)
 
+For a $k$-critical graph $G$ on $n$ vertices, let $f_k(n)$ denote the minimum number of edges
+that must be deleted from $G$ to make it bipartite. Erdős asked whether $f_k(n) \to \infty$ as
+$n \to \infty$ for $k \ge 4$. Rödl and Tuza disproved this by showing that $f_k(n) = \binom{k-1}{2}$
+for all sufficiently large $n$.
+
 [Er81] Erdős, P.
 
 [EHS82] Erdős, P., Hajnal, A., and Szemerédi, E.
@@ -28,7 +33,7 @@ import FormalConjectures.Util.ProblemImports
 [RoTu85] Rödl, V. and Tuza, Zs.
 -/
 
-open SimpleGraph
+open SimpleGraph Filter
 
 namespace Erdos744
 
@@ -63,9 +68,8 @@ Rödl and Tuza [RoTu85] disproved this by showing that $f_k(n) = \binom{k-1}{2}$
 for all sufficiently large $n$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_744 (k : ℕ) (hk : k ≥ 3) :
-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      fk k n = Nat.choose (k - 1) 2 := by
+theorem erdos_744 : answer(False) ↔
+    ∀ k : ℕ, k ≥ 4 → Tendsto (fk k) atTop atTop := by
   sorry
 
 end Erdos744

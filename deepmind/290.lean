@@ -54,7 +54,7 @@ $\sum_{n=a}^{b+1} 1/n$ (in lowest terms) is strictly less than the denominator
 of $\sum_{n=a}^{b} 1/n$ (in lowest terms).
 -/
 @[category research solved, AMS 11]
-theorem erdos_290 :
+theorem erdos_290 : answer(True) ↔
     ∀ a : ℕ, 1 ≤ a →
     ∃ b : ℕ, a < b ∧
       (harmonicPartialSum a (b + 1)).den < (harmonicPartialSum a b).den := by

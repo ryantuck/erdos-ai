@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 933
 
+Erdős asked whether the limsup of the ratio of the {2,3}-smooth part of n(n+1)
+to n·log(n) is infinite.
+
 *Reference:* [erdosproblems.com/933](https://www.erdosproblems.com/933)
 
 [Er76d] Erdős, P., _Problems in number theory and combinatorics_ (1976).

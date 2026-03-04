@@ -61,19 +61,18 @@ count equals $a \cdot b$ for some partition $a + b = n$, the sum of reciprocals 
 lengths of $G$ is at least the corresponding sum for the complete bipartite graph $K_{a,b}$.
 -/
 @[category research open, AMS 5]
-theorem erdos_65 {n : ℕ}
-    (G : SimpleGraph (Fin n))
-    (a b : ℕ) (hab : a + b = n) [DecidableRel G.Adj]
-    (hedge : a * b = G.edgeFinset.card)
-    (T_G : Finset ℕ)
-    (hT_sub : ∀ m ∈ T_G, ∃ v : Fin n, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = m)
-    (hT_sup : ∀ m : ℕ, (∃ v : Fin n, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = m) → m ∈ T_G) :
-    ∃ (T_K : Finset ℕ),
-      (∀ m ∈ T_K, ∃ v : Fin (a + b),
-        ∃ p : (completeBipartiteGraph65 a b).Walk v v, p.IsCycle ∧ p.length = m) ∧
-      (∀ m : ℕ, (∃ v : Fin (a + b),
-        ∃ p : (completeBipartiteGraph65 a b).Walk v v, p.IsCycle ∧ p.length = m) → m ∈ T_K) ∧
-      ∑ m ∈ T_K, (1 / (m : ℝ)) ≤ ∑ m ∈ T_G, (1 / (m : ℝ)) := by
+theorem erdos_65 : answer(sorry) ↔
+    ∀ (n : ℕ) (G : SimpleGraph (Fin n)) (a b : ℕ), a + b = n →
+      ∀ [DecidableRel G.Adj], a * b = G.edgeFinset.card →
+      ∀ (T_G : Finset ℕ),
+        (∀ m ∈ T_G, ∃ v : Fin n, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = m) →
+        (∀ m : ℕ, (∃ v : Fin n, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = m) → m ∈ T_G) →
+        ∃ (T_K : Finset ℕ),
+          (∀ m ∈ T_K, ∃ v : Fin (a + b),
+            ∃ p : (completeBipartiteGraph65 a b).Walk v v, p.IsCycle ∧ p.length = m) ∧
+          (∀ m : ℕ, (∃ v : Fin (a + b),
+            ∃ p : (completeBipartiteGraph65 a b).Walk v v, p.IsCycle ∧ p.length = m) → m ∈ T_K) ∧
+          ∑ m ∈ T_K, (1 / (m : ℝ)) ≤ ∑ m ∈ T_G, (1 / (m : ℝ)) := by
   sorry
 
 end Erdos65

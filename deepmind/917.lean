@@ -64,10 +64,11 @@ least $c \cdot n^2$ edges.
 Proved by Toft [To70].
 -/
 @[category research solved, AMS 5]
-theorem erdos_917 (k : ℕ) (hk : k ≥ 4) :
-    ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      ∃ G : SimpleGraph (Fin n),
-        IsCritical G k ∧ (G.edgeSet.ncard : ℝ) ≥ c * (n : ℝ) ^ 2 := by
+theorem erdos_917 :
+    answer(True) ↔ ∀ k : ℕ, k ≥ 4 →
+      ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+        ∃ G : SimpleGraph (Fin n),
+          IsCritical G k ∧ (G.edgeSet.ncard : ℝ) ≥ c * (n : ℝ) ^ 2 := by
   sorry
 
 /--
@@ -77,11 +78,12 @@ edges in a $6$-critical graph on $n$ vertices is asymptotically $n^2/4$.
 -/
 @[category research open, AMS 5]
 theorem erdos_917.variants.f6_asymptotic :
-    ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      (∃ G : SimpleGraph (Fin n),
-        IsCritical G 6 ∧ (G.edgeSet.ncard : ℝ) ≥ (1 / 4 - ε) * (n : ℝ) ^ 2) ∧
-      (∀ G : SimpleGraph (Fin n),
-        IsCritical G 6 → (G.edgeSet.ncard : ℝ) ≤ (1 / 4 + ε) * (n : ℝ) ^ 2) := by
+    answer(sorry) ↔
+      ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+        (∃ G : SimpleGraph (Fin n),
+          IsCritical G 6 ∧ (G.edgeSet.ncard : ℝ) ≥ (1 / 4 - ε) * (n : ℝ) ^ 2) ∧
+        (∀ G : SimpleGraph (Fin n),
+          IsCritical G 6 → (G.edgeSet.ncard : ℝ) ≤ (1 / 4 + ε) * (n : ℝ) ^ 2) := by
   sorry
 
 /--
@@ -92,14 +94,15 @@ $$f_k(n) \sim \tfrac{1}{2}\left(1 - \tfrac{1}{\lfloor k/3 \rfloor}\right) n^2.$$
 Note: Disproved by Stiebitz [St87] for $k \not\equiv 0 \pmod{3}$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_917.variants.general_asymptotic (k : ℕ) (hk : k ≥ 6) :
-    let d : ℕ := k / 3
-    let α : ℝ := 1 / 2 * (1 - 1 / (d : ℝ))
-    ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      (∃ G : SimpleGraph (Fin n),
-        IsCritical G k ∧ (G.edgeSet.ncard : ℝ) ≥ (α - ε) * (n : ℝ) ^ 2) ∧
-      (∀ G : SimpleGraph (Fin n),
-        IsCritical G k → (G.edgeSet.ncard : ℝ) ≤ (α + ε) * (n : ℝ) ^ 2) := by
+theorem erdos_917.variants.general_asymptotic :
+    answer(False) ↔ ∀ k : ℕ, k ≥ 6 →
+      let d : ℕ := k / 3
+      let α : ℝ := 1 / 2 * (1 - 1 / (d : ℝ))
+      ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+        (∃ G : SimpleGraph (Fin n),
+          IsCritical G k ∧ (G.edgeSet.ncard : ℝ) ≥ (α - ε) * (n : ℝ) ^ 2) ∧
+        (∀ G : SimpleGraph (Fin n),
+          IsCritical G k → (G.edgeSet.ncard : ℝ) ≤ (α + ε) * (n : ℝ) ^ 2) := by
   sorry
 
 end Erdos917

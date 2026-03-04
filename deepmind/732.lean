@@ -61,7 +61,7 @@ of block-compatible sequences (multisets of block sizes from PBDs on $\{1, \ldot
 is at least $\exp(c \cdot \sqrt{n} \cdot \log n)$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_732 : ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+theorem erdos_732 : answer(True) ↔ ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
     ∃ S : Finset (Multiset ℕ),
       (∀ M ∈ S, IsBlockCompatible n M) ∧
       (S.card : ℝ) ≥ Real.exp (c * Real.sqrt (n : ℝ) * Real.log (n : ℝ)) := by

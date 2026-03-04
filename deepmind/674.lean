@@ -38,11 +38,19 @@ solutions.
 namespace Erdos674
 
 /--
-There exist natural numbers $x, y, z > 1$ such that $x^x \cdot y^y = z^z$. [Ko40]
+Are there any natural numbers $x, y, z > 1$ such that $x^x \cdot y^y = z^z$? Yes. [Ko40]
 -/
 @[category research solved, AMS 11]
-theorem erdos_674 :
+theorem erdos_674 : answer(True) ↔
     ∃ x y z : ℕ, x > 1 ∧ y > 1 ∧ z > 1 ∧ x ^ x * y ^ y = z ^ z := by
+  sorry
+
+/-- Are the infinite families found by Ko [Ko40] the only integer solutions
+to $x^x \cdot y^y = z^z$ with $x, y, z > 1$? [Er79] -/
+@[category research open, AMS 11]
+theorem erdos_674.variants.unique_families : answer(sorry) ↔
+    ∀ x y z : ℕ, x > 1 → y > 1 → z > 1 → x ^ x * y ^ y = z ^ z →
+      sorry := by
   sorry
 
 end Erdos674

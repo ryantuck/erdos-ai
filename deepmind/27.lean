@@ -67,7 +67,8 @@ Pomerance, and Yu [FFKPY07].
 -/
 @[category research solved, AMS 11]
 theorem erdos_27 :
-    ¬ ∃ C : ℝ, C > 1 ∧
+    answer(False) ↔
+    ∃ C : ℝ, C > 1 ∧
       ∀ ε : ℝ, ε > 0 →
       ∀ N : ℕ, N ≥ 1 →
       ∃ S : Finset (ℤ × ℕ),

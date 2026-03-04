@@ -20,6 +20,10 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 471
 
 *Reference:* [erdosproblems.com/471](https://www.erdosproblems.com/471)
+
+Given a finite set of primes $Q = Q_0$, define a sequence of sets $Q_i$ by letting
+$Q_{i+1}$ be $Q_i$ together with all primes formed by adding three distinct elements
+of $Q_i$. Is there some initial choice of $Q$ such that the $Q_i$ become arbitrarily large?
 -/
 
 namespace Erdos471

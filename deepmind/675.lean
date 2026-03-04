@@ -70,12 +70,12 @@ def smoothNumbers (P : Set ℕ) : Set ℕ :=
   {n | n ≥ 1 ∧ ∀ p : ℕ, Nat.Prime p → p ∣ n → p ∈ P}
 
 /--
-Erdős Problem 675, Part 1 [Er79]:
+Erdős Problem 675 [Er79]:
 
 Does the set of sums of two squares have the translation property?
 -/
 @[category research open, AMS 11]
-theorem erdos_675_part1 :
+theorem erdos_675 :
     answer(sorry) ↔ HasTranslationProperty sumOfTwoSquaresSet := by
   sorry
 
@@ -85,21 +85,18 @@ Erdős Problem 675, Part 2 [Er79]:
 If we partition all primes into $P \sqcup Q$, such that each set contains $\gg x/\log x$
 many primes $\leq x$ for all large $x$, then can the set of integers only divisible
 by primes from $P$ have the translation property?
-
-Formalized as: for any such partition, the $P$-smooth numbers do NOT have
-the translation property.
 -/
 @[category research open, AMS 11]
-theorem erdos_675_part2 :
+theorem erdos_675.variants.smoothNumbers :
     answer(sorry) ↔
-    ∀ (P : Set ℕ),
+    ∃ (P : Set ℕ),
     (∃ c₁ : ℝ, c₁ > 0 ∧ ∃ N₁ : ℕ, ∀ x : ℕ, x ≥ N₁ →
       c₁ * (x : ℝ) / Real.log (x : ℝ) ≤
-        (((Finset.range (x + 1)).filter (fun q => Nat.Prime q ∧ q ∈ P)).card : ℝ)) →
+        (((Finset.range (x + 1)).filter (fun q => Nat.Prime q ∧ q ∈ P)).card : ℝ)) ∧
     (∃ c₂ : ℝ, c₂ > 0 ∧ ∃ N₂ : ℕ, ∀ x : ℕ, x ≥ N₂ →
       c₂ * (x : ℝ) / Real.log (x : ℝ) ≤
-        (((Finset.range (x + 1)).filter (fun q => Nat.Prime q ∧ q ∉ P)).card : ℝ)) →
-    ¬ HasTranslationProperty (smoothNumbers P) := by
+        (((Finset.range (x + 1)).filter (fun q => Nat.Prime q ∧ q ∉ P)).card : ℝ)) ∧
+    HasTranslationProperty (smoothNumbers P) := by
   sorry
 
 /--
@@ -110,7 +107,7 @@ grows faster than $\exp(n^c)$ for some constant $c > 0$. That is, there exists
 $c > 0$ and $N_0$ such that for all $n \geq N_0$, $t_n > \exp(n^c)$.
 -/
 @[category research open, AMS 11]
-theorem erdos_675_part3 :
+theorem erdos_675.variants.squarefreeGrowth :
     answer(sorry) ↔
     ∃ c : ℝ, c > 0 ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →

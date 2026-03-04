@@ -45,11 +45,21 @@ noncomputable def tauPlus (n : ℕ) : ℕ :=
     (n.divisors.filter (fun d => 2 ^ k ≤ d ∧ d < 2 ^ (k + 1))).Nonempty)).card
 
 /-- Erdős Problem 448 (disproved by Erdős–Tenenbaum [ErTe81]):
-For every $\epsilon > 0$, the upper density of $\{n : \tau^+(n) \geq \epsilon \cdot \tau(n)\}$
-is positive. This disproves the original conjecture that $\tau^+(n) < \epsilon \cdot \tau(n)$
-for almost all $n$. -/
+Is it true that, for all $\epsilon > 0$, $\tau^+(n) < \epsilon \tau(n)$ for almost all $n$?
+The answer is no. -/
 @[category research solved, AMS 11]
-theorem erdos_448 :
+theorem erdos_448 : answer(False) ↔
+    ∀ ε : ℝ, ε > 0 →
+    ∀ δ : ℝ, δ > 0 →
+    ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+      ((Finset.Icc 1 N).filter (fun n =>
+        (tauPlus n : ℝ) ≥ ε * (n.divisors.card : ℝ))).card / (N : ℝ) < δ := by
+  sorry
+
+/-- Stronger result by Erdős–Tenenbaum [ErTe81]: for every $\epsilon > 0$, the upper density
+of $\{n : \tau^+(n) \geq \epsilon \cdot \tau(n)\}$ is positive. -/
+@[category research solved, AMS 11]
+theorem erdos_448.variants.upper_density :
     ∀ ε : ℝ, ε > 0 →
     ∃ c : ℝ, c > 0 ∧
       ∀ N₀ : ℕ, ∃ N : ℕ, N₀ ≤ N ∧

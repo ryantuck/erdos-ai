@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 838
 
+Let $f(n)$ be the minimum number of convex subsets determined by $n$ points in general position
+in $\mathbb{R}^2$. Does $\log f(n) / (\log n)^2$ converge to a constant?
+
 *Reference:* [erdosproblems.com/838](https://www.erdosproblems.com/838)
 
 [Er78c] Erdős, P. (1978).

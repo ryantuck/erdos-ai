@@ -55,7 +55,7 @@ there exist an infinite independent set?
 Hechler showed the answer is no assuming the continuum hypothesis. The full
 ZFC status remains open.
 -/
-@[category research open, AMS 28 3]
+@[category research open, AMS 3 28]
 theorem erdos_501 :
     answer(sorry) ↔
     ∀ A : ℝ → Set ℝ,
@@ -70,7 +70,7 @@ measure $< 1$, must there exist an independent set of size $3$?
 Newelski, Pawlikowski, and Seredyński proved that under these hypotheses there
 is in fact an infinite independent set.
 -/
-@[category research solved, AMS 28 3]
+@[category research solved, AMS 3 28]
 theorem erdos_501.variants.closed_measure :
     answer(True) ↔
     ∀ A : ℝ → Set ℝ,

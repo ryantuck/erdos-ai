@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 336
 
+For $r \geq 2$, let $h(r)$ be the maximal finite $k$ such that there exists an additive basis
+$A \subseteq \mathbb{N}$ of order $r$ that also has exact order $k$. Find the value of
+$\lim_{r\to\infty} h(r)/r^2$. It is known that $1/3 \leq \lim h(r)/r^2 \leq 1/2$.
+
 *Reference:* [erdosproblems.com/336](https://www.erdosproblems.com/336)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
@@ -64,9 +68,8 @@ due to Nash).
 -/
 @[category research open, AMS 11]
 theorem erdos_336 :
-    ∃ c : ℝ, 1/3 ≤ c ∧ c ≤ 1/2 ∧
-      Tendsto (fun r : ℕ => (hBasis r : ℝ) / ((r : ℝ) ^ 2))
-        atTop (nhds c) := by
+    Tendsto (fun r : ℕ => (hBasis r : ℝ) / ((r : ℝ) ^ 2))
+      atTop (nhds (answer(sorry))) := by
   sorry
 
 end Erdos336

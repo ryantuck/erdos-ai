@@ -21,8 +21,12 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/808](https://www.erdosproblems.com/808)
 
+Erdős conjectured that for any set $A \subset \mathbb{N}$ with $|A| = n$ and any graph $G$ on $A$
+with at least $n^{1+c}$ edges, the graph-restricted sumset or product set must satisfy
+$\max(|A +_G A|, |A \cdot_G A|) \geq n^{1+c-\varepsilon}$. Disproved by Alon, Ruzsa, and
+Solymosi [ARS20].
+
 [Er77c], [ErSz83], [Er91], [Er97] are references for the original problem.
-[ARS20] Alon, Ruzsa, and Solymosi disproved the conjecture.
 -/
 
 open SimpleGraph Finset
@@ -53,14 +57,14 @@ $$
 Disproved by Alon, Ruzsa, and Solymosi [ARS20].
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_808 : answer(False) ↔
-    ∀ (c ε : ℝ), 0 < c → 0 < ε →
+theorem erdos_808 : ¬
+    (∀ (c ε : ℝ), 0 < c → 0 < ε →
     ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
     ∀ (f : Fin n → ℕ), Function.Injective f →
     ∀ (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
     (n : ℝ) ^ (1 + c) ≤ (G.edgeFinset.card : ℝ) →
     (n : ℝ) ^ (1 + c - ε) ≤
-      max ((graphSumset f G).card : ℝ) ((graphProdset f G).card : ℝ) := by
+      max ((graphSumset f G).card : ℝ) ((graphProdset f G).card : ℝ)) := by
   sorry
 
 end Erdos808

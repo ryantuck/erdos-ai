@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 260
 
+Let $a_1 < a_2 < \cdots$ be a strictly increasing sequence of natural numbers with
+$a_n / n \to \infty$. Is $\sum a_n / 2^{a_n}$ necessarily irrational?
+
 *Reference:* [erdosproblems.com/260](https://www.erdosproblems.com/260)
 -/
 

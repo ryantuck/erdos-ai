@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 462
 
+Is it true that there exists a constant $C > 0$ such that the sum of $p(n)/n$
+over composite $n$ in $[x, x + C\sqrt{x}(\log x)^2]$ is $\gg 1$ for all
+large $x$? Here $p(n)$ denotes the least prime factor of $n$.
+
 *Reference:* [erdosproblems.com/462](https://www.erdosproblems.com/462)
 
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number

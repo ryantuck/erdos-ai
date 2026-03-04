@@ -27,9 +27,9 @@ Hypothesis or the Continuum Hypothesis. A problem of Erdős and Hajnal.
 [Va99] Hajnal, A. and Larson, J., *Partition relations*. Handbook of Set Theory (2010).
 -/
 
-namespace Erdos1172
-
 open Ordinal Cardinal
+
+namespace Erdos1172
 
 /-- $\omega$, the first infinite ordinal. -/
 noncomputable def omega0 : Ordinal := (aleph 0).ord

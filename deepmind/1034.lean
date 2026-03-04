@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1034
 
+Erdős asked whether every dense graph (with more than $n^2/4$ edges) contains a triangle
+whose vertices have many common neighbors — specifically, more than $(1/2 - \varepsilon)n$
+vertices each adjacent to at least two of the triangle's vertices.
+
 *Reference:* [erdosproblems.com/1034](https://www.erdosproblems.com/1034)
 
 [Er93] Erdős, P., *On some of my favourite theorems* (1993), p. 344.

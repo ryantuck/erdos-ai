@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 575
 
+Erdős and Simonovits asked whether, for every finite family of graphs containing a bipartite
+member, some bipartite member has Turán number within a constant factor of the family Turán number.
+
 *Reference:* [erdosproblems.com/575](https://www.erdosproblems.com/575)
 
 [ErSi82] Erdős, P. and Simonovits, M., _Compactness results in extremal graph theory_,

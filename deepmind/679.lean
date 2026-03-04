@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 679
 
+Erdős asked whether, for every ε > 0, there are infinitely many n such that
+ω(n − k) < (1 + ε) log k / log log k for all sufficiently large k < n. A stronger
+form with O(1) error was disproved.
+
 *Reference:* [erdosproblems.com/679](https://www.erdosproblems.com/679)
 
 [Er79d] Erdős, P., _Some unconventional problems in number theory_. Math. Mag. 52 (1979), 67-70.

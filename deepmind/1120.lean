@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1120
 
+For a monic polynomial of degree $n$ with all roots in the unit disk, consider the lemniscate set
+$E = \{z : |f(z)| \leq 1\}$. Erdős conjectured that the worst-case shortest path length in $E$
+from the origin to the unit circle tends to infinity with $n$.
+
 *Reference:* [erdosproblems.com/1120](https://www.erdosproblems.com/1120)
 
 [Ha74] Hayman, W. K., *Research Problems in Function Theory*, Athlone Press, 1974.

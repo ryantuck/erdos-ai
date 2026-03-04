@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 265
 
+How fast can a sequence of integers grow if both $\sum 1/a_n$ and $\sum 1/(a_n - 1)$
+are rational? Erdős conjectured that $a_n^{1/2^n} \to 1$ must hold.
+
 *Reference:* [erdosproblems.com/265](https://www.erdosproblems.com/265)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number

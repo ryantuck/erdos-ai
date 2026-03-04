@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 661
 
+Erdős and Pach asked whether there exist, for all large $n$, point sets
+$x_1, \ldots, x_n, y_1, \ldots, y_n \in \mathbb{R}^2$ such that the number of distinct
+bipartite distances $d(x_i, y_j)$ is $o(n / \sqrt{\log n})$.
+
 *Reference:* [erdosproblems.com/661](https://www.erdosproblems.com/661)
 
 [ErPa90] Erdős, P. and Pach, J. (1990)

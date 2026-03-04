@@ -47,14 +47,13 @@ noncomputable def repSum764 (A : Set ℕ) (N : ℕ) : ℕ :=
 /--
 Erdős Problem 764 (Vaughan's theorem) [Va72]:
 
-For any $A \subseteq \mathbb{N}$ and any $c > 0$, the partial sums
-$\sum_{n \leq N} 1_A \ast 1_A \ast 1_A(n)$ cannot satisfy
-$\sum_{n \leq N} 1_A \ast 1_A \ast 1_A(n) = cN + O(1)$. That is, the error
-term $\left|\sum_{n \leq N} 1_A \ast 1_A \ast 1_A(n) - cN\right|$ is unbounded.
+There do not exist $A \subseteq \mathbb{N}$ and $c > 0$ such that
+$\sum_{n \leq N} 1_A \ast 1_A \ast 1_A(n) = cN + O(1)$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_764 (A : Set ℕ) (c : ℝ) (hc : c > 0) :
-    ¬ ∃ C : ℝ, ∀ N : ℕ, |↑(repSum764 A N) - c * ↑N| ≤ C := by
+theorem erdos_764 : answer(False) ↔
+    ∃ (A : Set ℕ) (c : ℝ), c > 0 ∧
+      ∃ C : ℝ, ∀ N : ℕ, |↑(repSum764 A N) - c * ↑N| ≤ C := by
   sorry
 
 end Erdos764

@@ -57,16 +57,14 @@ noncomputable def count (N : ℕ) : ℕ :=
 Erdős Problem 1134 [La16]:
 
 Let $A \subseteq \mathbb{N}$ be the smallest set containing $1$ and closed under $x \mapsto 2x+1$,
-$x \mapsto 3x+1$, and $x \mapsto 6x+1$. Then $A$ does not have positive lower density;
-in fact the natural density of $A$ is $0$.
+$x \mapsto 3x+1$, and $x \mapsto 6x+1$. Does $A$ have positive lower density?
 
 Disproved (answered in the negative) by Crampin and Hilton, who showed
 $|A \cap [1,X]| \ll X^{\tau+o(1)}$ where $\tau \approx 0.900626 < 1$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_1134 :
-    Tendsto (fun N : ℕ => (count N : ℝ) / (N : ℝ))
-      atTop (nhds 0) := by
-  sorry
+theorem erdos_1134 : answer(False) ↔
+    (∃ c : ℝ, 0 < c ∧ ∀ᶠ (N : ℕ) in atTop,
+      c ≤ (count N : ℝ) / (N : ℝ)) := by sorry
 
 end Erdos1134

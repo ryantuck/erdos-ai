@@ -41,14 +41,15 @@ $k$-colouring of the edges of $G$ contains a monochromatic $K_l$.
 Proved by Nešetřil and Rödl [NeRo76].
 -/
 @[category research solved, AMS 5]
-theorem erdos_924 (k : ℕ) (l : ℕ) (hk : k ≥ 2) (hl : l ≥ 3) :
-    ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
-      G.CliqueFree (l + 1) ∧
-        ∀ (c : Fin n → Fin n → Fin k),
-          (∀ i j, c i j = c j i) →
-          ∃ (a : Fin k) (S : Finset (Fin n)),
-            G.IsNClique l S ∧
-            ∀ ⦃x⦄, x ∈ S → ∀ ⦃y⦄, y ∈ S → x ≠ y → c x y = a := by
+theorem erdos_924 : answer(True) ↔
+    ∀ (k : ℕ) (l : ℕ), k ≥ 2 → l ≥ 3 →
+      ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
+        G.CliqueFree (l + 1) ∧
+          ∀ (c : Fin n → Fin n → Fin k),
+            (∀ i j, c i j = c j i) →
+            ∃ (a : Fin k) (S : Finset (Fin n)),
+              G.IsNClique l S ∧
+              ∀ ⦃x⦄, x ∈ S → ∀ ⦃y⦄, y ∈ S → x ≠ y → c x y = a := by
   sorry
 
 end Erdos924

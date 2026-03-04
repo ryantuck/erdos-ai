@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1138](https://www.erdosproblems.com/1138)
 
+Is the expected asymptotic formula for the number of primes in short intervals of length
+proportional to the maximal prime gap valid? Specifically, for $x/2 < y < x$ and $C > 1$,
+is $\pi(y + Cd) - \pi(y) \sim Cd / \log y$, where $d$ is the maximal prime gap below $x$?
+
 [Va99] Vardi, I., 1.3.
 -/
 

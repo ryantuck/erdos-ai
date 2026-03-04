@@ -56,15 +56,27 @@ def graphCliqueSizes {n : ℕ} (G : SimpleGraph (Fin n)) : Set ℕ :=
 /--
 Erdős Problem 927 (DISPROVED by Spencer [Sp71]):
 
-For every $n$, there exists a graph on $n$ vertices with at least
-$n - \lfloor \log_2 n \rfloor - C$ distinct maximal clique sizes, for some
-absolute constant $C$.
+Is it true that $g(n) = n - \log_2 n - \log^*(n) + O(1)$?
 
-This disproves Erdős's conjecture that $g(n) = n - \log_2 n - \log^*(n) + O(1)$,
-since $\log^*(n) \to \infty$.
+The right-hand side formalizes a necessary consequence of the conjecture: since
+$\log^*(n) \to \infty$, the conjecture implies that for every constant $C$,
+$g(n) \leq n - \lfloor \log_2 n \rfloor - C$ for all sufficiently large $n$.
+Spencer showed $g(n) \geq n - \lfloor \log_2 n \rfloor - O(1)$, disproving this.
 -/
 @[category research solved, AMS 5]
-theorem erdos_927 :
+theorem erdos_927 : answer(False) ↔
+    (∀ C : ℕ, ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
+      ∀ G : SimpleGraph (Fin n),
+        (graphCliqueSizes G).ncard + Nat.log 2 n + C ≤ n) := by
+  sorry
+
+/--
+Spencer's lower bound [Sp71]: there exists a constant $C$ such that for every $n$,
+some graph on $n$ vertices has at least $n - \lfloor \log_2 n \rfloor - C$ distinct
+maximal clique sizes.
+-/
+@[category research solved, AMS 5]
+theorem erdos_927.variants.spencer_lower_bound :
     ∃ C : ℕ, ∀ n : ℕ, ∃ G : SimpleGraph (Fin n),
       (graphCliqueSizes G).ncard + C ≥ n - Nat.log 2 n := by
   sorry

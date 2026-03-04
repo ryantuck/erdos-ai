@@ -51,7 +51,7 @@ vertices such that:
 - every independent set in $G$ has size at most $\varepsilon \cdot n$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_22 :
+theorem erdos_22 : answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
       ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
         ∃ G : SimpleGraph (Fin n),

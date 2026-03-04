@@ -57,16 +57,16 @@ def ErdosHajnalProperty {n : ℕ} (G : SimpleGraph (Fin n)) (m k : ℕ) : Prop :
     (∃ T : Finset (Fin n), T ⊆ S ∧ T.card ≥ k ∧ IsIndepSet G T)
 
 /--
-Erdős–Hajnal conjecture [Er91]: there is no graph on $n$ vertices such that every
+Erdős–Hajnal conjecture [Er91]: is there a graph on $n$ vertices such that every
 induced subgraph on $\lfloor (\log n)^3 \rfloor$ vertices contains both a clique and an
-independent set of size $\geq \lceil \log n \rceil$.
+independent set of size $\geq \lceil \log n \rceil$?
 
-Erdős and Hajnal thought there is no such graph for $g(n) = (\log n)^3$.
+Erdős and Hajnal conjectured that the answer is no.
 -/
 @[category research open, AMS 5]
-theorem erdos_805 :
+theorem erdos_805 : answer(sorry) ↔
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      ¬∃ G : SimpleGraph (Fin n), ErdosHajnalProperty G
+      ∃ G : SimpleGraph (Fin n), ErdosHajnalProperty G
         (Nat.floor ((Real.log (n : ℝ)) ^ 3))
         (Nat.ceil (Real.log (n : ℝ))) := by
   sorry
@@ -74,7 +74,7 @@ theorem erdos_805 :
 /--
 Alon–Sudakov [AlSu07]: there is no such graph with
 $g(n) = c \cdot (\log n)^3 / \log(\log n)$ for some constant $c > 0$.
-This strengthens the Erdős–Hajnal conjecture.
+This is a partial result toward the Erdős–Hajnal conjecture.
 -/
 @[category research solved, AMS 5]
 theorem erdos_805.variants.alon_sudakov :

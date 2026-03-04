@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/353](https://www.erdosproblems.com/353)
 
+Erdős asked whether every measurable subset of $\mathbb{R}^2$ with infinite Lebesgue measure
+must contain the vertices of an isosceles trapezoid of area $1$, and similarly for isosceles
+triangles, right-angled triangles, and cyclic quadrilaterals of area $1$.
+
 [Er83d] Erdős, P., _Problems and results on combinatorial geometry_.
 
 [Ko25] Koizumi, S., _On geometric configurations in measurable sets of infinite measure_.
@@ -92,10 +96,8 @@ contain the vertices of an isosceles trapezoid of area $1$?
 Proved by Koizumi [Ko25].
 -/
 @[category research solved, AMS 28 52]
-theorem erdos_353
-    (A : Set (ℝ × ℝ))
-    (hA_meas : MeasurableSet A)
-    (hA_inf : volume A = ⊤) :
+theorem erdos_353 : answer(True) ↔
+    ∀ (A : Set (ℝ × ℝ)), MeasurableSet A → volume A = ⊤ →
     ∃ p₁ p₂ p₃ p₄ : ℝ × ℝ,
       p₁ ∈ A ∧ p₂ ∈ A ∧ p₃ ∈ A ∧ p₄ ∈ A ∧
       IsIsoscelesTrapezoid p₁ p₂ p₃ p₄ ∧
@@ -111,10 +113,8 @@ an isosceles triangle of area $1$?
 Proved by Koizumi [Ko25].
 -/
 @[category research solved, AMS 28 52]
-theorem erdos_353.variants.isosceles_triangle
-    (A : Set (ℝ × ℝ))
-    (hA_meas : MeasurableSet A)
-    (hA_inf : volume A = ⊤) :
+theorem erdos_353.variants.isosceles_triangle : answer(True) ↔
+    ∀ (A : Set (ℝ × ℝ)), MeasurableSet A → volume A = ⊤ →
     ∃ p₁ p₂ p₃ : ℝ × ℝ,
       p₁ ∈ A ∧ p₂ ∈ A ∧ p₃ ∈ A ∧
       IsIsoscelesTriangle p₁ p₂ p₃ ∧
@@ -130,10 +130,8 @@ a right-angled triangle of area $1$?
 Proved by Koizumi [Ko25].
 -/
 @[category research solved, AMS 28 52]
-theorem erdos_353.variants.right_triangle
-    (A : Set (ℝ × ℝ))
-    (hA_meas : MeasurableSet A)
-    (hA_inf : volume A = ⊤) :
+theorem erdos_353.variants.right_triangle : answer(True) ↔
+    ∀ (A : Set (ℝ × ℝ)), MeasurableSet A → volume A = ⊤ →
     ∃ p₁ p₂ p₃ : ℝ × ℝ,
       p₁ ∈ A ∧ p₂ ∈ A ∧ p₃ ∈ A ∧
       IsRightTriangle p₁ p₂ p₃ ∧
@@ -149,10 +147,8 @@ points on a common circle forming a quadrilateral of area $1$?
 Proved by Kovač and Predojević [KoPr24].
 -/
 @[category research solved, AMS 28 52]
-theorem erdos_353.variants.cyclic_quadrilateral
-    (A : Set (ℝ × ℝ))
-    (hA_meas : MeasurableSet A)
-    (hA_inf : volume A = ⊤) :
+theorem erdos_353.variants.cyclic_quadrilateral : answer(True) ↔
+    ∀ (A : Set (ℝ × ℝ)), MeasurableSet A → volume A = ⊤ →
     ∃ p₁ p₂ p₃ p₄ : ℝ × ℝ,
       p₁ ∈ A ∧ p₂ ∈ A ∧ p₃ ∈ A ∧ p₄ ∈ A ∧
       IsCyclicQuadrilateral p₁ p₂ p₃ p₄ ∧

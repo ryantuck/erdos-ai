@@ -40,14 +40,28 @@ namespace Erdos751
 def cycleLengths {V : Type*} (G : SimpleGraph V) : Set ℕ :=
   {n | ∃ (v : V) (p : G.Walk v v), p.IsCycle ∧ p.length = n}
 
-/-- **Bondy–Vince Theorem (Erdős Problem 751)**: Every graph with minimum degree at
-least $3$ contains two cycles whose lengths differ by at most $2$. This resolves
-Erdős Problem 751 in the negative: for every graph with chromatic number $4$, the gaps
-between consecutive cycle lengths cannot be made arbitrarily large.
+/-- **Erdős Problem 751**: If $G$ is a graph with $\chi(G) = 4$ and $m_1 < m_2 < \cdots$
+are the cycle lengths of $G$, the minimum gap $\min(m_{i+1} - m_i)$ cannot be made
+arbitrarily large. Bondy and Vince [BoVi98] proved that every graph with minimum degree
+at least $3$ has two cycles whose lengths differ by at most $2$, which implies the
+negative answer since $\chi(G) = 4$ forces a subgraph with minimum degree $\geq 3$.
 
 [BoVi98] -/
 @[category research solved, AMS 5]
-theorem erdos_751 {V : Type*} [Fintype V] [DecidableEq V]
+theorem erdos_751 : answer(False) ↔
+    (∀ C : ℕ, ∃ (V : Type) (_ : Fintype V) (G : SimpleGraph V),
+      G.chromaticNumber = 4 ∧
+        ∀ m₁ ∈ cycleLengths G, ∀ m₂ ∈ cycleLengths G,
+          m₁ < m₂ → C ≤ m₂ - m₁) := by
+  sorry
+
+/-- **Bondy–Vince Theorem**: Every graph with minimum degree at least $3$ contains two
+cycles whose lengths differ by at most $2$. This is the stronger result that resolves
+Erdős Problem 751.
+
+[BoVi98] -/
+@[category research solved, AMS 5]
+theorem erdos_751.variants.bondy_vince {V : Type*} [Fintype V] [DecidableEq V]
     (G : SimpleGraph V) [DecidableRel G.Adj]
     (hmin : ∀ v : V, 3 ≤ G.degree v) :
     ∃ m₁ ∈ cycleLengths G, ∃ m₂ ∈ cycleLengths G,

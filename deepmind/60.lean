@@ -71,7 +71,7 @@ $n$ vertices with more than $\mathrm{ex}(n; C_4)$ edges has at least $c \cdot n^
 copies of $C_4$.
 -/
 @[category research open, AMS 5]
-theorem erdos_60 :
+theorem erdos_60 : answer(sorry) ↔
     ∃ (c : ℝ) (_ : c > 0) (N₀ : ℕ),
     ∀ n : ℕ, N₀ ≤ n →
     ∀ G : SimpleGraph (Fin n),

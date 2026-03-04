@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/797](https://www.erdosproblems.com/797)
 
+Let `f(d)` be the maximal acyclic chromatic number of any graph with maximum degree `d`.
+Estimate `f(d)`. In particular, is it true that `f(d) = o(d²)`?
+
 [AlBe76] Albertson, M. O. and Berman, D. M., *Every planar graph has an acyclic
 7-coloring*, 1976.
 

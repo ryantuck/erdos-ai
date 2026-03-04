@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 960
 
+For a set of $n$ points in $\mathbb{R}^2$ with no $k$ collinear, let $f_{r,k}(n)$ be the
+minimum number of ordinary lines that guarantees the existence of $r$ points whose
+$\binom{r}{2}$ determined lines are all ordinary. Erdős asked whether $f_{r,k}(n) = o(n^2)$
+for fixed $r, k \geq 2$, and more strongly whether $f_{r,k}(n) = O(n)$.
+
 *Reference:* [erdosproblems.com/960](https://www.erdosproblems.com/960)
 
 [Er84] Erdős, P., _Some old and new problems on combinatorial geometry_, 1984.
@@ -75,7 +80,7 @@ More precisely, $f_{r,k}(n)$ is the smallest $m$ such that for every set $A$ of 
 points in $\mathbb{R}^2$ with no $k$ collinear and at least $m$ ordinary lines, there exists
 $A' \subseteq A$ with $|A'| = r$ such that every line determined by $A'$ is ordinary.
 -/
-noncomputable def f_rk (r k n : ℕ) : ℕ :=
+noncomputable def fRk (r k n : ℕ) : ℕ :=
   sInf {m : ℕ | ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
     A.card = n →
     NoKCollinear k A →
@@ -97,7 +102,7 @@ $f_{r,k}(n) \ll n$ (i.e., $f_{r,k}(n) = O(n)$).
 theorem erdos_960 (r k : ℕ) (hr : r ≥ 2) (hk : k ≥ 2) :
     ∀ ε : ℝ, ε > 0 →
     ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
-      (f_rk r k n : ℝ) ≤ ε * (n : ℝ) ^ 2 := by
+      (fRk r k n : ℝ) ≤ ε * (n : ℝ) ^ 2 := by
   sorry
 
 /--
@@ -109,7 +114,7 @@ $C > 0$ such that $f_{r,k}(n) \leq C \cdot n$ for all $n$.
 @[category research open, AMS 5 51]
 theorem erdos_960.variants.strong (r k : ℕ) (hr : r ≥ 2) (hk : k ≥ 2) :
     ∃ C : ℝ, C > 0 ∧
-    ∀ n : ℕ, (f_rk r k n : ℝ) ≤ C * (n : ℝ) := by
+    ∀ n : ℕ, (fRk r k n : ℝ) ≤ C * (n : ℝ) := by
   sorry
 
 end Erdos960

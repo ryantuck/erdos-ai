@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 904
 
+If $G$ is a graph with $n$ vertices and more than $n^2/4$ edges, then $G$ contains a
+triangle on vertices $x, y, z$ such that $d(x) + d(y) + d(z) \geq 3n/2$.
+
 *Reference:* [erdosproblems.com/904](https://www.erdosproblems.com/904)
 
 [Ed78] Edwards, C. S., _Recent results on the Bollobás-Erdős conjecture_. (1978)

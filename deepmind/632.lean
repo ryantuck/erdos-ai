@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 632
 
+Erdős, Rubin, and Taylor asked whether $(a,b)$-choosability of a graph implies
+$(am,bm)$-choosability for every positive integer $m$. Dvořák, Hu, and Sereni disproved this
+by constructing a 4-choosable graph that is not $(8,2)$-choosable.
+
 *Reference:* [erdosproblems.com/632](https://www.erdosproblems.com/632)
 
 [ERT80] Erdős, P., Rubin, A.L., and Taylor, H., *Choosability in graphs*, Proceedings of the

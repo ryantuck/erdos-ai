@@ -62,6 +62,7 @@ $t(n) \leq \varepsilon \cdot n$.
 -/
 @[category research solved, AMS 5 52]
 theorem erdos_798 :
+    answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       (gridCoveringNumber n : ℝ) ≤ ε * (n : ℝ) := by

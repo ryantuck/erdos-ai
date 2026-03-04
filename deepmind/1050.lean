@@ -51,7 +51,7 @@ The sum $\sum_{n=1}^{\infty} \frac{1}{2^n - 3}$ is irrational.
 Proved by Borwein [Bo91].
 -/
 @[category research solved, AMS 11 40]
-theorem erdos_1050 :
+theorem erdos_1050 : answer(True) ↔
     Irrational (∑' (n : ℕ), (1 : ℝ) / ((2 : ℝ) ^ (n + 1) - 3)) := by
   sorry
 

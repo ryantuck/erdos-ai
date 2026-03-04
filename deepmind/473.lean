@@ -21,7 +21,8 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/473](https://www.erdosproblems.com/473)
 
-Asked by Segal. The answer is yes, as shown by Odlyzko.
+Is there a permutation $a_1, a_2, \ldots$ of the positive integers such that $a_k + a_{k+1}$ is
+always prime? Asked by Segal. The answer is yes, as shown by Odlyzko.
 -/
 
 namespace Erdos473
@@ -37,6 +38,7 @@ encode that $a$ is a bijection from $\mathbb{N}$ onto the positive integers.
 -/
 @[category research solved, AMS 5 11]
 theorem erdos_473 :
+    answer(True) ↔
     ∃ a : ℕ → ℕ, Function.Injective a ∧
     (∀ n, 0 < a n) ∧
     (∀ m, 0 < m → ∃ n, a n = m) ∧

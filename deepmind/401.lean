@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/401](https://www.erdosproblems.com/401)
 
+Is there a function $f(r) \to \infty$ such that for infinitely many $n$ there exist $a_1, a_2$
+with $a_1! \cdot a_2! \mid n! \cdot p_1^n \cdots p_r^n$ and
+$a_1 + a_2 > n + f(r) \log n$, where $p_1, \ldots, p_r$ are the first $r$ primes?
+
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
 theory_. Monographies de L'Enseignement Mathematique (1980).
 -/
@@ -34,13 +38,14 @@ namespace Erdos401
 /--
 Erdős Problem 401 [ErGr80, p.78]:
 
-There exists a function $f : \mathbb{N} \to \mathbb{R}$ with $f(r) \to \infty$ as $r \to \infty$,
+Is there a function $f : \mathbb{N} \to \mathbb{R}$ with $f(r) \to \infty$ as $r \to \infty$,
 such that for every $r$, there are infinitely many $n$ for which there exist $a_1, a_2 \in \mathbb{N}$
 with $a_1! \cdot a_2! \mid n! \cdot p_1^n \cdot p_2^n \cdots p_r^n$ and
-$a_1 + a_2 > n + f(r) \cdot \log n$.
+$a_1 + a_2 > n + f(r) \cdot \log n$?
 -/
 @[category research solved, AMS 11]
 theorem erdos_401 :
+    answer(True) ↔
     ∃ f : ℕ → ℝ, Tendsto f atTop atTop ∧
       ∀ r : ℕ, {n : ℕ | ∃ a₁ a₂ : ℕ,
         (a₁.factorial * a₂.factorial) ∣

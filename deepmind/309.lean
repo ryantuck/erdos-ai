@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/309](https://www.erdosproblems.com/309)
 
+Let $F(N)$ count the number of positive integers representable as sums of distinct unit fractions
+with denominators from $\{1, \ldots, N\}$. Erdős conjectured that $F(N) = o(\log N)$. This was
+disproved by Yokota, who showed $F(N) = \Theta(\log N)$.
+
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
 number theory_. Monographies de L'Enseignement Mathematique (1980).
 

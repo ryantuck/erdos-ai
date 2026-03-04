@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 613
 
+Must every graph on $\binom{2n+1}{2} - \binom{n}{2} - 1$ edges (for $n \geq 3$) be expressible
+as the union of a bipartite graph and a graph with maximum degree less than $n$? Disproved by
+Pikhurko.
+
 *Reference:* [erdosproblems.com/613](https://www.erdosproblems.com/613)
 
 [Pi01] Pikhurko, O., _Size Ramsey numbers of stars versus 3-chromatic graphs_,

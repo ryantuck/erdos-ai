@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 831
 
+Estimate the function $h(n)$, where $h(n)$ is the minimum number of distinct circumradii
+determined by $n$ points in $\mathbb{R}^2$ in general position (no three collinear, no four
+concyclic).
+
 *Reference:* [erdosproblems.com/831](https://www.erdosproblems.com/831)
 -/
 

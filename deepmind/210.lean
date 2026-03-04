@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 210
 
+Let $f(n)$ denote the minimum number of ordinary lines determined by $n$
+non-collinear points in the plane. Erdős asked whether $f(n) \to \infty$ and
+how fast it grows.
+
 *Reference:* [erdosproblems.com/210](https://www.erdosproblems.com/210)
 -/
 

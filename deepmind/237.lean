@@ -61,11 +61,11 @@ representations of $n$ as prime + element of $A$. Then $\limsup f(n) = \infty$,
 i.e., for every $M$ there exist arbitrarily large $n$ with $f(n) \geq M$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_237 :
-    ∀ A : Set ℕ,
+theorem erdos_237 : answer(True) ↔
+    (∀ A : Set ℕ,
     (∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
       (countingFunction A N : ℝ) ≥ c * Real.log (N : ℝ)) →
-    ∀ M : ℕ, ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧ countRepresentations A n ≥ M := by
+    ∀ M : ℕ, ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧ countRepresentations A n ≥ M) := by
   sorry
 
 end Erdos237

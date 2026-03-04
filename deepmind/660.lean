@@ -55,6 +55,7 @@ distinct distances is at least $(1 - \varepsilon) \cdot n/2$.
 -/
 @[category research open, AMS 52]
 theorem erdos_660 :
+    answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 →
       ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
         ∀ P : Finset (EuclideanSpace ℝ (Fin 3)),

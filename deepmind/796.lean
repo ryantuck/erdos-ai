@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 796
 
+Let $g_k(n)$ denote the largest size of a subset $A \subseteq \{1, \ldots, n\}$ such that every
+integer has fewer than $k$ representations as a product $a_1 \cdot a_2$ with $a_1 < a_2$ and
+$a_1, a_2 \in A$. Is it true that
+$g_3(n) = \frac{n \log \log n}{\log n} + (c + o(1)) \frac{n}{\log n}$ for some constant $c$?
+
 *Reference:* [erdosproblems.com/796](https://www.erdosproblems.com/796)
 
 [Er69] Erdős, P., _On some applications of graph theory to number theoretic problems_. Publ.
@@ -54,6 +59,7 @@ $$\left| g_3(n) - \frac{n \log \log n}{\log n} - \frac{cn}{\log n} \right|
 -/
 @[category research open, AMS 5 11]
 theorem erdos_796 :
+    answer(sorry) ↔
     ∃ c : ℝ, ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       |(multiplicativeBkMax 3 n : ℝ) -

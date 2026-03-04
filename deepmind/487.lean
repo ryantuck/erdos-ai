@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/487](https://www.erdosproblems.com/487)
 
+If $A \subseteq \mathbb{N}$ has positive upper density, must there exist distinct
+$a, b, c \in A$ such that $\text{lcm}(a, b) = c$?
+
 [Er61] Erdős, P., _Graph theory and probability. II_. Canad. J. Math. 13 (1961), p. 236.
 
 [Er65b] Erdős, P., _Extremal problems in number theory_. Proc. Sympos. Pure Math. 8 (1965),
@@ -53,7 +56,8 @@ This is true, a consequence of the positive solution to Erdős Problem 447
 by Kleitman [Kl71].
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_487 (A : Set ℕ) (hA : HasPositiveUpperDensity487 A) :
+theorem erdos_487 : answer(True) ↔
+    ∀ (A : Set ℕ), HasPositiveUpperDensity487 A →
     ∃ a ∈ A, ∃ b ∈ A, ∃ c ∈ A, a ≠ b ∧ a ≠ c ∧ b ≠ c ∧ Nat.lcm a b = c := by
   sorry
 

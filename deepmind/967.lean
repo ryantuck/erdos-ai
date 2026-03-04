@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 967
 
+Let $1 < a_1 < a_2 < \cdots$ be a strictly increasing sequence of integers with
+$\sum 1/a_k < \infty$. Is it necessarily true that for every real $t$,
+$1 + \sum_k a_k^{-(1+it)} \neq 0$? Yip showed the answer is no.
+
 *Reference:* [erdosproblems.com/967](https://www.erdosproblems.com/967)
 
 [ErIn64] Erdős, P. and Ingham, A. E., *Arithmetical Tauberian theorems*, Acta Arithmetica (1964).
@@ -45,12 +49,10 @@ It remains open whether this holds for every finite sequence of integers.
 -/
 @[category research solved, AMS 11 30]
 theorem erdos_967 :
-    ∀ t : ℝ, t ≠ 0 →
-      ∃ a : ℕ → ℕ,
-        StrictMono a ∧
-        (∀ i, 2 ≤ a i) ∧
-        Summable (fun i => (1 : ℝ) / (a i : ℝ)) ∧
-        1 + (∑' k, (1 : ℂ) / ((a k : ℂ) ^ ((1 : ℂ) + ↑t * I))) = 0 := by
+    answer(False) ↔
+      (∀ (a : ℕ → ℕ), StrictMono a → (∀ i, 2 ≤ a i) →
+        Summable (fun i => (1 : ℝ) / (a i : ℝ)) →
+        ∀ t : ℝ, 1 + (∑' k, (1 : ℂ) / ((a k : ℂ) ^ ((1 : ℂ) + ↑t * I))) ≠ 0) := by
   sorry
 
 end Erdos967

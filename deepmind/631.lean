@@ -62,8 +62,7 @@ def IsChoosable {V : Type*} (G : SimpleGraph V) (k : ℕ) : Prop :=
 /-- A graph is planar if it can be embedded in the plane without edge crossings.
 Mathlib does not yet have a formalization of graph planarity; we define it
 here as an opaque predicate. -/
-def IsPlanar {V : Type*} [Fintype V] (G : SimpleGraph V) : Prop :=
-  sorry
+opaque IsPlanar {V : Type*} [Fintype V] (G : SimpleGraph V) : Prop
 
 /--
 Erdős Problem 631, Part 1 (Thomassen's theorem [Th94]):
@@ -71,9 +70,9 @@ Erdős Problem 631, Part 1 (Thomassen's theorem [Th94]):
 Every planar graph $G$ is 5-choosable, i.e., $\chi_L(G) \leq 5$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_631 {V : Type*} [Fintype V] [DecidableEq V]
-    (G : SimpleGraph V) (hplanar : IsPlanar G) :
-    IsChoosable G 5 := by
+theorem erdos_631 : answer(True) ↔
+    ∀ (V : Type*) [Fintype V] [DecidableEq V]
+      (G : SimpleGraph V), IsPlanar G → IsChoosable G 5 := by
   sorry
 
 /--
@@ -82,7 +81,7 @@ Erdős Problem 631, Part 2 (Voigt's construction [Vo93]):
 There exists a planar graph that is not 4-choosable, showing that 5 is best possible.
 -/
 @[category research solved, AMS 5]
-theorem erdos_631.variants.tight :
+theorem erdos_631.variants.tight : answer(True) ↔
     ∃ (V : Type) (_ : Fintype V) (G : SimpleGraph V),
       IsPlanar G ∧ ¬IsChoosable G 4 := by
   sorry

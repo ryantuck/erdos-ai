@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 581
 
+Determine the maximum number of edges in a bipartite subgraph that every
+triangle-free graph with $m$ edges must contain.
+
 *Reference:* [erdosproblems.com/581](https://www.erdosproblems.com/581)
 
 [CEG79] Chung, F. R. K., Erdős, P., and Graham, R. L., 1979.

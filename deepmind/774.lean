@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 774
 
+Is every proportionately dissociated set of natural numbers the union of finitely many
+dissociated sets?
+
 *Reference:* [erdosproblems.com/774](https://www.erdosproblems.com/774)
 
 [AlEr85] Alon, N. and Erdős, P., 1985.

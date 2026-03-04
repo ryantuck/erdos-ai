@@ -58,6 +58,7 @@ family requiring a transversal of size at least $(3/4 - \varepsilon)k$.
 -/
 @[category research open, AMS 5]
 theorem erdos_644 :
+    answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ K₀ : ℕ, ∀ k : ℕ, K₀ ≤ k →
       (∀ (ι : Type) (F : ι → Finset ℕ),
@@ -78,6 +79,7 @@ $f(k,r) = (1+o(1))c_r k$.
 -/
 @[category research open, AMS 5]
 theorem erdos_644.variants.general_constant :
+    answer(sorry) ↔
     ∀ r : ℕ, 3 ≤ r →
     ∃ c : ℝ, c > 0 ∧
     ∀ ε : ℝ, ε > 0 →

@@ -59,9 +59,9 @@ A value $c$ is a cluster point of this sequence if and only if
 $c = 1$ or $c = 1 + 1/k$ for some positive integer $k$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_419 (c : ℝ) :
-    MapClusterPt c atTop erdos419_ratio ↔
-      c = 1 ∨ ∃ k : ℕ, 0 < k ∧ c = 1 + 1 / (k : ℝ) := by
+theorem erdos_419 :
+    {c : ℝ | MapClusterPt c atTop erdos419_ratio} =
+      answer({1} ∪ {c | ∃ k : ℕ, 0 < k ∧ c = 1 + 1 / (k : ℝ)}) := by
   sorry
 
 end Erdos419

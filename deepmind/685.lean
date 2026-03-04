@@ -51,7 +51,7 @@ $$
 $$
 -/
 @[category research open, AMS 11]
-theorem erdos_685 :
+theorem erdos_685 : answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 → ε < 1 →
     ∀ δ : ℝ, δ > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →

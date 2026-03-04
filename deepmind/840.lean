@@ -54,13 +54,30 @@ noncomputable def maxQuasiSidonCard (δ : ℝ) (N : ℕ) : ℕ :=
   ((Finset.Icc 1 N).powerset.filter (fun A => IsQuasiSidon δ A)).sup Finset.card
 
 /--
+**Erdős Problem 840** — How does $f(N)$ grow?
+
+The problem asks for the asymptotic constant $c$ such that
+$f_\delta(N) \sim c \cdot \sqrt{N}$ as $N \to \infty$, where $f(N)$ is the size of
+the largest quasi-Sidon subset of $\{1, \ldots, N\}$.
+It is known that $2/\sqrt{3} \leq c \leq (1/4 + 1/(\pi+2)^2)^{-1/2} \approx 1.863$.
+-/
+@[category research open, AMS 5 11]
+theorem erdos_840 :
+    ∀ δ : ℝ, δ > 0 →
+    ∀ ε : ℝ, ε > 0 →
+    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+    |(maxQuasiSidonCard δ N : ℝ) - answer(sorry) * Real.sqrt (N : ℝ)| ≤
+      ε * Real.sqrt (N : ℝ) := by
+  sorry
+
+/--
 **Erdős Problem 840** — Lower bound (Erdős–Freud [ErFr91]):
 
 For every $\varepsilon > 0$ and $\delta > 0$, for sufficiently large $N$,
 $f_\delta(N) \geq (2/\sqrt{3} - \varepsilon) \cdot \sqrt{N}$.
 -/
-@[category research solved, AMS 5]
-theorem erdos_840 :
+@[category research solved, AMS 5 11]
+theorem erdos_840.variants.lower_bound :
     ∀ ε : ℝ, ε > 0 →
     ∀ δ : ℝ, δ > 0 →
     ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
@@ -75,7 +92,7 @@ $f_\delta(N) \leq ((1/4 + 1/(\pi+2)^2)^{-1/2} + \varepsilon) \cdot \sqrt{N}$.
 
 The constant $(1/4 + 1/(\pi+2)^2)^{-1/2} \approx 1.863$.
 -/
-@[category research solved, AMS 5]
+@[category research solved, AMS 5 11]
 theorem erdos_840.variants.upper_bound :
     ∀ ε : ℝ, ε > 0 →
     ∀ δ : ℝ, δ > 0 →

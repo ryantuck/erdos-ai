@@ -44,7 +44,7 @@ for any $i \neq j$, $|A_i \cap A_j|$ is finite and $\neq 1$. Then the family
 has Property B: there is a $2$-colouring of $\bigcup A_i$ such that no $A_i$ is
 monochromatic.
 -/
-@[category research open, AMS 5 3]
+@[category research open, AMS 3 5]
 theorem erdos_602 {α : Type*} {ι : Type*} (A : ι → Set α)
     (hcount : ∀ i, #(↥(A i)) = ℵ₀)
     (hfin : ∀ i j, i ≠ j → (A i ∩ A j).Finite)

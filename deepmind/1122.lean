@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1122
 
+If $f : \mathbb{N} \to \mathbb{R}$ is an additive function such that the set
+$\{n : f(n+1) < f(n)\}$ has natural density zero, then $f(n) = c \cdot \log(n)$
+for some constant $c$.
+
 *Reference:* [erdosproblems.com/1122](https://www.erdosproblems.com/1122)
 
 [Er46] Erdős, P., _On the distribution function of additive functions_, Ann. of Math. (2) 47

@@ -67,11 +67,12 @@ number at most $3$.
 Proved by Fleischner and Stiebitz [FlSt92].
 -/
 @[category research solved, AMS 5]
-theorem erdos_842 (n : ℕ) (hn : n ≥ 1)
-    (σ : Equiv.Perm (Fin (3 * n)))
-    (hcycle : IsSingleCycle σ)
-    (hnew : ∀ u v : Fin (3 * n),
-      (cycleGraphOfPerm σ).Adj u v → ¬(triangleGraph n).Adj u v) :
+theorem erdos_842 : answer(True) ↔
+    ∀ (n : ℕ), n ≥ 1 →
+    ∀ (σ : Equiv.Perm (Fin (3 * n))),
+    IsSingleCycle σ →
+    (∀ u v : Fin (3 * n),
+      (cycleGraphOfPerm σ).Adj u v → ¬(triangleGraph n).Adj u v) →
     (triangleGraph n ⊔ cycleGraphOfPerm σ).chromaticNumber ≤ 3 := by
   sorry
 

@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/839](https://www.erdosproblems.com/839)
 
+Given a strictly increasing sequence of positive integers where no term equals the sum of
+consecutive earlier terms, is it true that $\limsup a_n / n = \infty$? A stronger form asks
+whether $(1/\log x) \sum_{a_n < x} 1/a_n \to 0$.
+
 A problem of Erdős [Er78f][Er92c].
 
 [Er78f] Erdős, P., *Problems in number theory and combinatorics*, Proc. Sixth Manitoba Conf. on

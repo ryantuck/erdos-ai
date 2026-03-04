@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1096](https://www.erdosproblems.com/1096)
 
+For $1 < q < 1 + \varepsilon$ with $\varepsilon$ sufficiently small, consider the sums
+$\sum_{i \in S} q^i$ over all finite $S \subseteq \mathbb{N}$, ordered by size. Is it true
+that the gaps between consecutive elements tend to zero?
+
 [EJK90] Erdős, P., Joó, I., and Komornik, V., *Characterization of the unique expansions
 $1 = \sum q^{-n_i}$ and related problems*, Bull. Soc. Math. France (1990).
 

@@ -67,7 +67,7 @@ Formally: for every $\varepsilon > 0$ there exists $N$ such that for all $n \geq
 monochromatic triangles of size at least $(1 - \varepsilon) \cdot n^2 / 12$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_76 :
+theorem erdos_76 : answer(True) ↔
     ∀ ε : ℝ, 0 < ε →
     ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
     ∀ col : EdgeTwoColoring n,

@@ -54,16 +54,14 @@ noncomputable def exrKkr (r k n : ℕ) : ℕ :=
 /--
 Erdős Conjecture (Problem 712) — Hypergraph Turán Densities:
 
-For any $k > r > 2$, the Turán density
-$$\lim_{n \to \infty} \mathrm{ex}_r(n, K_k^r) / \binom{n}{r}$$
-exists. Determining the value of this limit for any such $k$, $r$ is the open
-problem.
+For any $k > r > 2$, determine the value of the Turán density
+$$\lim_{n \to \infty} \mathrm{ex}_r(n, K_k^r) / \binom{n}{r}.$$
 -/
 @[category research open, AMS 5]
-theorem erdos_712 (k r : ℕ) (hr : 2 < r) (hk : r < k) :
+theorem erdos_712 : ∀ k r : ℕ, 2 < r → r < k →
     ∃ L : ℝ, Tendsto
       (fun n : ℕ => (exrKkr r k n : ℝ) / (Nat.choose n r : ℝ))
-      atTop (nhds L) := by
+      atTop (nhds L) ∧ L = answer(sorry) := by
   sorry
 
 end Erdos712

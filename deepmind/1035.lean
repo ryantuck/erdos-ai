@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1035](https://www.erdosproblems.com/1035)
 
+Is there a constant $c > 0$ such that every graph on $2^n$ vertices with minimum degree
+$> (1 - c) \cdot 2^n$ contains the $n$-dimensional hypercube $Q_n$ as a subgraph?
+
 [Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is eighty,
 Vol. 2 (Keszthely, 1993), Bolyai Soc. Math. Stud. 2, 97-132.
 -/
@@ -59,13 +62,13 @@ on $2^n$ vertices, if every vertex has degree $> (1 - c) \cdot 2^n$, then $G$ co
 a copy of $Q_n$ as a subgraph.
 -/
 @[category research open, AMS 5]
-theorem erdos_1035 :
-    ∃ c : ℝ, c > 0 ∧
+theorem erdos_1035 : answer(sorry) ↔
+    (∃ c : ℝ, c > 0 ∧
     ∀ n : ℕ,
     ∀ (G : SimpleGraph (Fin (2 ^ n))) [DecidableRel G.Adj],
       (∀ v : Fin (2 ^ n),
         ((Finset.univ.filter (fun w => G.Adj v w)).card : ℝ) > (1 - c) * (2 ^ n : ℝ)) →
-      ContainsSubgraph G (hypercubeGraph n) := by
+      ContainsSubgraph G (hypercubeGraph n)) := by
   sorry
 
 end Erdos1035

@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 493
 
+Does there exist a $k$ such that every sufficiently large integer can be written
+in the form $\prod_i a_i - \sum_i a_i$ for some integers $a_i \geq 2$?
+
 *Reference:* [erdosproblems.com/493](https://www.erdosproblems.com/493)
 -/
 

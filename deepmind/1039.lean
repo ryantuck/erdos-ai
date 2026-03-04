@@ -59,7 +59,7 @@ unit disk, the sublevel radius $\rho(f)$ is at least $C/n$ for some absolute
 constant $C > 0$.
 -/
 @[category research open, AMS 30]
-theorem erdos_1039 :
+theorem erdos_1039 : answer(sorry) ↔
     ∃ C : ℝ, C > 0 ∧ ∀ (n : ℕ) (f : Polynomial ℂ),
       1 ≤ n → f.Monic → f.natDegree = n →
       (∀ z ∈ f.roots, ‖z‖ ≤ 1) →

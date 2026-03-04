@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 481
 
+Let $a_1, \ldots, a_r, b_1, \ldots, b_r \in \mathbb{N}$ with $\sum 1/a_i > 1$. Starting from
+$A_1 = (1)$ and iterating $T(A) = (a_i x_j + b_i)$, prove that some $A_k$ must contain repeated
+elements.
+
 *Reference:* [erdosproblems.com/481](https://www.erdosproblems.com/481)
 
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number

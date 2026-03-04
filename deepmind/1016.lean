@@ -83,7 +83,7 @@ Formulated as: there exists a constant $C$ such that for all $n \geq 3$,
 $h(n) + C \geq \lfloor\log_2 n\rfloor + \log^* n$.
 -/
 @[category research open, AMS 5]
-theorem erdos_1016 :
+theorem erdos_1016 : answer(sorry) ↔
     ∃ C : ℕ, ∀ n, n ≥ 3 →
       pancyclicExcess n + C ≥ Nat.log 2 n + iteratedLog₂ n := by
   sorry

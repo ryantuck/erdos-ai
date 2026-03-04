@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 227
 
+Let $f = \sum a_n z^n$ be an entire function which is not a polynomial. Is it true that if
+the limit of the ratio of the maximum term to the maximum modulus exists, then it must be $0$?
+This was disproved by Clunie and Hayman [ClHa64], who showed the limit can take any value
+in $[0, 1/2]$.
+
 *Reference:* [erdosproblems.com/227](https://www.erdosproblems.com/227)
 
 [ClHa64] Clunie, J. and Hayman, W. K., *The spherical derivative of integral and

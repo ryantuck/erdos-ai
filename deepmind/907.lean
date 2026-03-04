@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/907](https://www.erdosproblems.com/907)
 
+If $f : \mathbb{R} \to \mathbb{R}$ is such that for every $h > 0$ the difference function
+$x \mapsto f(x+h) - f(x)$ is continuous, must $f$ decompose as $g + \varphi$ where $g$ is
+continuous and $\varphi$ is additive?
+
 [dB51] de Bruijn, N. G., _Functions whose differences belong to a given class_,
 Nieuw Arch. Wiskunde (2) 23 (1951), 194-218.
 -/

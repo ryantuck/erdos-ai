@@ -45,8 +45,8 @@ For any 2-colouring $\chi$ of the natural numbers, there exists an infinite set
 $A$ of positive naturals such that all non-empty finite subset sums of elements
 of $A$ are monochromatic. -/
 @[category research solved, AMS 5]
-theorem erdos_532 (χ : ℕ → Bool) :
-    ∃ (A : Set ℕ), A.Infinite ∧ (∀ a ∈ A, 0 < a) ∧
+theorem erdos_532 : answer(True) ↔
+    ∀ χ : ℕ → Bool, ∃ (A : Set ℕ), A.Infinite ∧ (∀ a ∈ A, 0 < a) ∧
     ∃ c : Bool, ∀ S : Finset ℕ, S.Nonempty → (↑S : Set ℕ) ⊆ A →
       χ (∑ i ∈ S, i) = c := by
   sorry

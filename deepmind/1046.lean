@@ -46,9 +46,10 @@ closed disc of radius $2$.
 Proved by Pommerenke [Po59].
 -/
 @[category research solved, AMS 30]
-theorem erdos_1046 (f : Polynomial ℂ) (hf : f.Monic)
-    (hconn : IsConnected {z : ℂ | ‖Polynomial.eval z f‖ < 1}) :
-    ∃ c : ℂ, {z : ℂ | ‖Polynomial.eval z f‖ < 1} ⊆ closedBall c 2 := by
+theorem erdos_1046 : answer(True) ↔
+    ∀ (f : Polynomial ℂ), f.Monic →
+      IsConnected {z : ℂ | ‖Polynomial.eval z f‖ < 1} →
+      ∃ c : ℂ, {z : ℂ | ‖Polynomial.eval z f‖ < 1} ⊆ closedBall c 2 := by
   sorry
 
 end Erdos1046

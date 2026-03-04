@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 794
 
+Is it true that every 3-uniform hypergraph on $3n$ vertices with at least $n^3 + 1$ edges must
+contain either a subgraph on 4 vertices with 3 edges or a subgraph on 5 vertices with 7 edges?
+Disproved by Harris.
+
 *Reference:* [erdosproblems.com/794](https://www.erdosproblems.com/794)
 -/
 

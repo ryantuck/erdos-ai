@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/583](https://www.erdosproblems.com/583)
 
+Every connected graph on $n$ vertices can be partitioned into at most $\lceil n/2 \rceil$
+edge-disjoint paths.
+
 [ErGa59] Erdős, P. and Gallai, T., *On the minimal number of vertices representing the
 edges of a graph*, 1959.
 -/

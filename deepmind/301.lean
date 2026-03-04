@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 301
 
+Let $f(N)$ be the size of the largest subset of $\{1, \ldots, N\}$ such that no element has its
+reciprocal equal to a sum of reciprocals of other elements. Erdős and Graham conjectured that
+$f(N) = (1/2 + o(1))N$.
+
 *Reference:* [erdosproblems.com/301](https://www.erdosproblems.com/301)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
@@ -56,7 +60,7 @@ $|A| \leq (1/2 + \varepsilon)N$, and
 $|A| \geq (1/2 - \varepsilon)N$.
 -/
 @[category research open, AMS 5 11]
-theorem erdos_301 :
+theorem erdos_301 : answer(sorry) ↔
     ∀ ε : ℝ, 0 < ε →
       ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
         (∀ (A : Finset ℕ), A ⊆ Finset.Icc 1 N → UnitFractionSumFree A →

@@ -35,6 +35,8 @@ $(3 - 3/23 + o(1))k$. Kahn and Park [KaPa22] proved this for random graphs.
 [Ha99] Haxell, P. E., _Packing and covering triangles in graphs_. Discrete Math. 195 (1999), 251–254.
 
 [KaPa22] Kahn, J. and Park, J., _Tuza's conjecture for random graphs_. Random Structures & Algorithms 61 (2022), 235–249.
+
+[Er88] Erdős, P., _Problems and results on chromatic numbers in finite and infinite graphs_. Graph theory with applications to algorithms and computer science (1985), 201–213.
 -/
 
 open SimpleGraph Finset
@@ -56,20 +58,16 @@ has size at most $k$. The conclusion states that there exists a subgraph $H \leq
 that is triangle-free, obtained by removing at most $2k$ edges from $G$.
 -/
 @[category research open, AMS 5]
-theorem erdos_167
-    {V : Type*} [Fintype V] [DecidableEq V]
-    (G : SimpleGraph V) [DecidableRel G.Adj]
-    (k : ℕ)
-    -- Hypothesis: every family of pairwise edge-disjoint triangles has size ≤ k
-    (hpack : ∀ (T : Finset (Finset V)),
+theorem erdos_167 : answer(sorry) ↔
+    ∀ {V : Type*} [Fintype V] [DecidableEq V]
+      (G : SimpleGraph V) [DecidableRel G.Adj] (k : ℕ),
+    (∀ (T : Finset (Finset V)),
       (∀ t ∈ T, G.IsNClique 3 t) →
       (∀ t₁ ∈ T, ∀ t₂ ∈ T, t₁ ≠ t₂ → (t₁ ∩ t₂).card ≤ 1) →
-      T.card ≤ k) :
-    -- Conclusion: G can be made triangle-free by removing ≤ 2k edges
+      T.card ≤ k) →
     ∃ (H : SimpleGraph V),
       H ≤ G ∧
       H.CliqueFree 3 ∧
-      (G.edgeSet \ H.edgeSet).ncard ≤ 2 * k := by
-  sorry
+      (G.edgeSet \ H.edgeSet).ncard ≤ 2 * k := by sorry
 
 end Erdos167

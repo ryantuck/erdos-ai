@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 806
 
+Must every set $A \subseteq \{1, \ldots, n\}$ with $|A| \leq \sqrt{n}$ be contained in
+$B + B$ for some $B \subset \mathbb{Z}$ with $|B| = o(\sqrt{n})$?
+
 *Reference:* [erdosproblems.com/806](https://www.erdosproblems.com/806)
 
 [ErNe77] Erdős, P. and Newman, D.J., *Bases for sets of integers*, J. Number Theory (1977).
@@ -41,7 +44,8 @@ This captures the $o(\sqrt{n})$ conjecture. It was resolved by Alon, Bukh, and
 Sudakov [ABS09] with the sharper bound $|B| \leq C \cdot (\log \log n / \log n) \cdot \sqrt{n}$.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_806 (ε : ℝ) (hε : 0 < ε) :
+theorem erdos_806 : answer(True) ↔
+    ∀ (ε : ℝ), 0 < ε →
     ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
     ∀ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a ≤ n) → (A.card : ℝ) ≤ Real.sqrt n →
     ∃ B : Finset ℤ, (B.card : ℝ) ≤ ε * Real.sqrt n ∧

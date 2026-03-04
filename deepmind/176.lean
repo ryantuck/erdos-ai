@@ -60,6 +60,7 @@ For any $c > 0$, there exists some $C > 1$ such that $N(k, ck) \leq C^k$.
 -/
 @[category research open, AMS 5 11]
 theorem erdos_176 :
+    answer(sorry) ↔
     ∀ c : ℝ, 0 < c →
     ∃ C : ℝ, 1 < C ∧
     ∀ k : ℕ, (discrepancyAPNumber k (c * ↑k) : ℝ) ≤ C ^ k := by
@@ -71,6 +72,7 @@ There exists some $C > 1$ such that $N(k, 2) \leq C^k$.
 -/
 @[category research open, AMS 5 11]
 theorem erdos_176.variants.constant_discrepancy :
+    answer(sorry) ↔
     ∃ C : ℝ, 1 < C ∧
     ∀ k : ℕ, (discrepancyAPNumber k 2 : ℝ) ≤ C ^ k := by
   sorry
@@ -81,6 +83,7 @@ There exists some $C > 1$ such that $N(k, \sqrt{k}) \leq C^k$.
 -/
 @[category research open, AMS 5 11]
 theorem erdos_176.variants.sqrt_discrepancy :
+    answer(sorry) ↔
     ∃ C : ℝ, 1 < C ∧
     ∀ k : ℕ, (discrepancyAPNumber k (Real.sqrt ↑k) : ℝ) ≤ C ^ k := by
   sorry

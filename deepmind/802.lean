@@ -46,7 +46,8 @@ every $K_r$-free graph $G$ on $n$ vertices with average degree $t \geq 2$ contai
 independent set of size at least $c \cdot (\log t / t) \cdot n$.
 -/
 @[category research open, AMS 5]
-theorem erdos_802 (r : ℕ) (hr : r ≥ 3) :
+theorem erdos_802 : answer(sorry) ↔
+    ∀ (r : ℕ), r ≥ 3 →
     ∃ c : ℝ, c > 0 ∧
     ∀ (n : ℕ) (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
     G.CliqueFree r →

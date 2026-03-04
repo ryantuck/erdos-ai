@@ -41,7 +41,7 @@ Is it true that there are no $x$ such that $f'(x)$ exists and is positive?
 Erdős proved the distribution function $f$ is purely singular.
 -/
 @[category research solved, AMS 11 26]
-theorem erdos_50 :
+theorem erdos_50 : answer(True) ↔
     ∀ f : ℝ → ℝ,
       (∀ c ∈ Icc (0 : ℝ) 1,
         Tendsto (fun N : ℕ => (totientDensityCount c N : ℝ) / ↑N) atTop (nhds (f c))) →

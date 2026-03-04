@@ -61,7 +61,7 @@ noncomputable def largestPrimeFactor (n : ℕ) : ℕ :=
 
 /-- The Dickman function $\rho : \mathbb{R} \to \mathbb{R}$, the unique continuous function
 satisfying $\rho(u) = 1$ for $0 \le u \le 1$ and $u \rho'(u) = -\rho(u-1)$ for $u > 1$. -/
-noncomputable def dickmanRho : ℝ → ℝ := sorry
+opaque dickmanRho : ℝ → ℝ
 
 /-- The natural density of a set $S \subseteq \mathbb{N}$ exists and equals $d$. -/
 def HasNaturalDensity (S : Set ℕ) (d : ℝ) : Prop :=
@@ -83,8 +83,8 @@ the Dickman function. This asserts independence of the smooth-number events for 
 integers.
 -/
 @[category research open, AMS 11]
-theorem erdos_928 (α β : ℝ) (hα₀ : 0 < α) (hα₁ : α < 1)
-    (hβ₀ : 0 < β) (hβ₁ : β < 1) :
+theorem erdos_928 : answer(sorry) ↔
+    ∀ α β : ℝ, 0 < α → α < 1 → 0 < β → β < 1 →
     HasNaturalDensity (smoothConsecutiveSet α β)
       (dickmanRho (1 / α) * dickmanRho (1 / β)) := by
   sorry

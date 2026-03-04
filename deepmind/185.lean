@@ -61,12 +61,13 @@ $f_3(n) = o(3^n)$.
 -/
 @[category research solved, AMS 5]
 theorem erdos_185 :
-    ∀ ε : ℝ, 0 < ε →
-      ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
-        ∀ A : Finset (Fin n → Fin 3),
-          (A.card : ℝ) > ε * (3 : ℝ) ^ n →
-          ∃ p : Fin 3 → (Fin n → Fin 3),
-            IsCombinatorialLine n p ∧ ∀ j : Fin 3, p j ∈ A := by
+    answer(True) ↔
+      ∀ ε : ℝ, 0 < ε →
+        ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+          ∀ A : Finset (Fin n → Fin 3),
+            (A.card : ℝ) > ε * (3 : ℝ) ^ n →
+            ∃ p : Fin 3 → (Fin n → Fin 3),
+              IsCombinatorialLine n p ∧ ∀ j : Fin 3, p j ∈ A := by
   sorry
 
 end Erdos185

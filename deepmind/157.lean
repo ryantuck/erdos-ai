@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/157](https://www.erdosproblems.com/157)
 
+Erdős, Sárközy, and Sós asked whether there exists an infinite Sidon set that is also an
+asymptotic basis of order 3. This was answered affirmatively by Pilatte.
+
 [ESS94] Erdős, P., Sárközy, A. and Sós, V. T., *On sum sets of Sidon sets*. J. Number Theory
 (1994).
 
@@ -62,7 +65,7 @@ Answered YES by Pilatte [Pi23].
 -/
 @[category research solved, AMS 5 11]
 theorem erdos_157 :
-    ∃ A : Set ℕ, IsInfiniteSidonSet A ∧ IsAsymptoticBasisOrder3 A := by
+    answer(True) ↔ ∃ A : Set ℕ, IsInfiniteSidonSet A ∧ IsAsymptoticBasisOrder3 A := by
   sorry
 
 end Erdos157

@@ -54,7 +54,7 @@ and the frequency of the maximum distance satisfies
 $f(d_{\min}) \cdot f(d_{\max}) \leq (9/8 + \varepsilon) \cdot |A|^2$.
 -/
 @[category research solved, AMS 5 52]
-theorem erdos_957 :
+theorem erdos_957 : answer(True) ↔
     ∀ ε : ℝ, 0 < ε →
     ∃ N₀ : ℕ, ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))), N₀ ≤ A.card →
     ∀ d₁ dk : ℝ,

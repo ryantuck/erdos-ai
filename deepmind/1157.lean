@@ -59,13 +59,13 @@ def edgesSpannedBy {r n : ℕ} (H : UniformHypergraph r n) (S : Finset (Fin n)) 
   (H.edges.filter (· ⊆ S)).card
 
 /-- $H$ is $(k,s)$-free if no set of $k$ vertices spans $s$ or more edges. -/
-def isFree {r n : ℕ} (H : UniformHypergraph r n) (k s : ℕ) : Prop :=
+def IsFree {r n : ℕ} (H : UniformHypergraph r n) (k s : ℕ) : Prop :=
   ∀ S : Finset (Fin n), S.card = k → edgesSpannedBy H S < s
 
 /-- $f_r(n; k, s)$: the maximum number of edges in an $r$-uniform $(k,s)$-free
 hypergraph on $n$ vertices. -/
 noncomputable def extremalNumber (r n k s : ℕ) : ℕ :=
-  sSup {m : ℕ | ∃ H : UniformHypergraph r n, isFree H k s ∧ H.edges.card = m}
+  sSup {m : ℕ | ∃ H : UniformHypergraph r n, IsFree H k s ∧ H.edges.card = m}
 
 /--
 Erdős Problem #1157 — Brown–Erdős–Sós Conjecture (general form) [BES73, Va99]:

@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 894
 
+Is it true that for every lacunary sequence $A \subset \mathbb{N}$, there exists a finite colouring
+of $\mathbb{N}$ with no monochromatic pair whose difference lies in $A$?
+
 *Reference:* [erdosproblems.com/894](https://www.erdosproblems.com/894)
 -/
 

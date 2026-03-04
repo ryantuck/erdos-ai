@@ -51,20 +51,57 @@ noncomputable def discrepancy (x : ℕ → ℤ) (α : ℝ) (N : ℕ) : ℝ :=
 /--
 Erdős Problem 992 (disproved by Berkes and Philipp [BePh94]):
 
-There exists a strictly increasing sequence of positive integers $x_1 < x_2 < \cdots$
-such that for almost all $\alpha \in [0,1]$,
-$$\limsup_{N \to \infty} D(N) / (N \log N)^{1/2} > 0.$$
+Is it true that for every strictly increasing sequence of positive integers
+$x_1 < x_2 < \cdots$ and almost all $\alpha \in [0,1]$, the discrepancy satisfies
+$D(N) \ll N^{1/2} (\log N)^{o(1)}$?
 
-Formulated as: for a.e. $\alpha$, there exists $c > 0$ and infinitely many $N$ with
-$D(N) \ge c \cdot \sqrt{N \cdot \log N}$.
+Here $D(N) \ll N^{1/2} (\log N)^{o(1)}$ is formalized as: for every $\varepsilon > 0$,
+there exists $C > 0$ such that $D(N) \le C \sqrt{N} (\log N)^\varepsilon$ for all
+sufficiently large $N$.
 -/
 @[category research solved, AMS 11 28]
-theorem erdos_992 :
+theorem erdos_992 : answer(False) ↔
+    ∀ (x : ℕ → ℤ), StrictMono x → (∀ n, 0 < x n) →
+    ∀ᵐ α ∂(volume.restrict (Set.Icc (0 : ℝ) 1)),
+      ∀ ε : ℝ, ε > 0 →
+        ∃ C : ℝ, C > 0 ∧
+          ∀ᶠ N in atTop,
+            discrepancy x α N ≤
+              C * Real.sqrt (N : ℝ) * (Real.log (N : ℝ)) ^ ε := by
+  sorry
+
+/--
+Erdős Problem 992, stronger variant (also disproved by [BePh94]):
+
+Is it true that $D(N) \ll N^{1/2} (\log \log N)^{O(1)}$? Here this is formalized as:
+there exist $C > 0$ and $K > 0$ such that $D(N) \le C \sqrt{N} (\log \log N)^K$ for
+all sufficiently large $N$.
+-/
+@[category research solved, AMS 11 28]
+theorem erdos_992.variants.stronger : answer(False) ↔
+    ∀ (x : ℕ → ℤ), StrictMono x → (∀ n, 0 < x n) →
+    ∀ᵐ α ∂(volume.restrict (Set.Icc (0 : ℝ) 1)),
+      ∃ C : ℝ, C > 0 ∧ ∃ K : ℝ, K > 0 ∧
+        ∀ᶠ N in atTop,
+          discrepancy x α N ≤
+            C * Real.sqrt (N : ℝ) *
+              (Real.log (Real.log (N : ℝ))) ^ K := by
+  sorry
+
+/--
+Berkes and Philipp [BePh94] disproved Erdős Problem 992 by constructing a
+strictly increasing sequence of positive integers such that for almost all
+$\alpha \in [0,1]$,
+$$\limsup_{N \to \infty} D(N) / (N \log N)^{1/2} > 0.$$
+-/
+@[category research solved, AMS 11 28]
+theorem erdos_992.variants.berkes_philipp :
     ∃ (x : ℕ → ℤ), StrictMono x ∧ (∀ n, 0 < x n) ∧
     ∀ᵐ α ∂(volume.restrict (Set.Icc (0 : ℝ) 1)),
       ∃ c : ℝ, c > 0 ∧
         ∃ᶠ N in atTop,
-          discrepancy x α N ≥ c * Real.sqrt ((N : ℝ) * Real.log (N : ℝ)) := by
+          discrepancy x α N ≥
+            c * Real.sqrt ((N : ℝ) * Real.log (N : ℝ)) := by
   sorry
 
 end Erdos992

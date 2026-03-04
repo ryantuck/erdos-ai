@@ -44,7 +44,7 @@ no $A_i$ is monochromatic.
 This is conjectured by analogy with the Komjáth result for the $|A_i \cap A_j| \neq 1$
 case, where $\aleph_0$ colours suffice.
 -/
-@[category research open, AMS 5 3]
+@[category research open, AMS 3 5]
 theorem erdos_603 {α : Type*} {ι : Type*} (A : ι → Set α)
     (hcount : ∀ i, #(↥(A i)) = ℵ₀)
     (hne2 : ∀ i j, i ≠ j → (A i ∩ A j).ncard ≠ 2) :

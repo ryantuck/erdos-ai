@@ -21,6 +21,12 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/650](https://www.erdosproblems.com/650)
 
+Let $f(m)$ denote the largest number guaranteed such that for every $N \geq 1$,
+every $m$-element subset $A \subseteq \{1, \ldots, N\}$, and every $t \geq 1$,
+the interval $[t, t+2N)$ contains at least $f(m)$ integers each divisible by a
+distinct element of $A$. Erdős and Sarányi proved $f(m) \gg m^{1/2}$; is it true
+that $f(m) \ll m^{1/2}$?
+
 [Er95c] Erdős, P., *Problems and results in combinatorial number theory*.
 
 [ErSa59] Erdős, P. and Sarányi, J.
@@ -42,7 +48,7 @@ noncomputable def divMatchCount (A : Finset ℕ) (t N : ℕ) : ℕ :=
 /-- $f(m)$: the largest value guaranteed in all configurations. For every $N \geq 1$
 and every $m$-element subset $A$ of $\{1, \ldots, N\}$, every interval $[t, t+2N)$ with
 $t \geq 1$ contains at least $f(m)$ matchable integers. -/
-noncomputable def erdos650_f (m : ℕ) : ℕ :=
+noncomputable def erdos650F (m : ℕ) : ℕ :=
   sInf {c : ℕ | ∃ (N : ℕ) (A : Finset ℕ) (t : ℕ),
     A.card = m ∧ (∀ a ∈ A, 1 ≤ a ∧ a ≤ N) ∧ t ≥ 1 ∧
     divMatchCount A t N = c}
@@ -57,7 +63,7 @@ so this would establish $f(m) \asymp m^{1/2}$.
 theorem erdos_650 : answer(sorry) ↔
     ∃ C : ℝ, 0 < C ∧
     ∃ M₀ : ℕ, ∀ m : ℕ, M₀ ≤ m →
-      (erdos650_f m : ℝ) ≤ C * Real.sqrt (m : ℝ) := by
+      (erdos650F m : ℝ) ≤ C * Real.sqrt (m : ℝ) := by
   sorry
 
 end Erdos650

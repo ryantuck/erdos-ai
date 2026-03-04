@@ -50,8 +50,8 @@ def LambdaFinite (k m : ℕ) : Prop :=
 odd $k \geq 5$, if $p$ is sufficiently large then there exist three consecutive $k$-th
 power residues modulo $p$ in $[1, O_k(1)]$. -/
 @[category research open, AMS 11]
-theorem erdos_436 (k : ℕ) (hk : 5 ≤ k) (hodd : k % 2 = 1) :
-    LambdaFinite k 3 := by
+theorem erdos_436 : answer(sorry) ↔
+    ∀ k : ℕ, 5 ≤ k → k % 2 = 1 → LambdaFinite k 3 := by
   sorry
 
 /-- Hildebrand [Hi91] proved that $\Lambda(k,2)$ is finite for all $k \geq 2$. For any

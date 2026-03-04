@@ -64,7 +64,7 @@ over all graphs on $n$ vertices?
 Resolved: $z(12) = 4$ (confirmed computationally by Bhavik Mehta).
 -/
 @[category research solved, AMS 5]
-theorem erdos_758 : maxCochromaticNumber 12 = 4 := by
+theorem erdos_758 : answer(True) ↔ maxCochromaticNumber 12 = 4 := by
   sorry
 
 end Erdos758

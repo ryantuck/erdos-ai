@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1146
 
+Erdős asked whether the set of 3-smooth numbers {2^m · 3^n : m, n ≥ 0} is an essential component
+with respect to Schnirelmann density.
+
 *Reference:* [erdosproblems.com/1146](https://www.erdosproblems.com/1146)
 
 [Va99] Ruzsa, I. Z., *Sumsets and structure*, Combinatorial Number Theory and Additive

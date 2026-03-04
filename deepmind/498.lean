@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/498](https://www.erdosproblems.com/498)
 
+Given complex numbers $z_1, \ldots, z_n$ with $|z_i| \geq 1$, the number of sign patterns
+$\varepsilon \in \{-1,1\}^n$ for which the signed sum $\sum \varepsilon_i z_i$ lands in any unit
+disc is at most $\binom{n}{\lfloor n/2 \rfloor}$.
+
 [Er45] Erdős, P., _On a lemma of Littlewood and Offord_, Bull. Amer. Math. Soc. 51 (1945),
 898-902.
 

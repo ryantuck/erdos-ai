@@ -105,25 +105,27 @@ def Hypergraph.Is3ChromaticCritical {V : Type*} [DecidableEq V]
 /--
 Erdős Problem 834, transversal formulation (resolved by Li [Li25]):
 
-Every $3$-transversal-critical $3$-uniform hypergraph has a vertex of degree $\leq 6$.
-In particular, there is no such hypergraph with minimum degree $\geq 7$.
+Does there exist a $3$-transversal-critical $3$-uniform hypergraph in which every vertex
+has degree $\geq 7$? Li showed the answer is NO: every such hypergraph has a vertex
+of degree $\leq 6$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_834 (n : ℕ) (H : Hypergraph (Fin n))
-    (hunif : H.IsUniform 3) (hcrit : H.Is3TransversalCritical) :
-    ∃ v : Fin n, H.degree v ≤ 6 := by
+theorem erdos_834 : answer(False) ↔
+    ∃ (n : ℕ) (H : Hypergraph (Fin n)), H.IsUniform 3 ∧ H.Is3TransversalCritical ∧
+      ∀ v : Fin n, H.degree v ≥ 7 := by
   sorry
 
 /--
 Erdős Problem 834, chromatic formulation (resolved by Li [Li25]):
 
-There exists a $3$-chromatic-critical $3$-uniform hypergraph on $9$ vertices
-with minimum degree $\geq 7$.
+Does there exist a $3$-chromatic-critical $3$-uniform hypergraph in which every vertex
+has degree $\geq 7$? Li showed the answer is YES, constructing such a hypergraph
+on $9$ vertices.
 -/
 @[category research solved, AMS 5]
-theorem erdos_834.variants.chromatic :
-    ∃ (H : Hypergraph (Fin 9)), H.IsUniform 3 ∧ H.Is3ChromaticCritical ∧
-      ∀ v : Fin 9, H.degree v ≥ 7 := by
+theorem erdos_834.variants.chromatic : answer(True) ↔
+    ∃ (n : ℕ) (H : Hypergraph (Fin n)), H.IsUniform 3 ∧ H.Is3ChromaticCritical ∧
+      ∀ v : Fin n, H.degree v ≥ 7 := by
   sorry
 
 end Erdos834

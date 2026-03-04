@@ -49,7 +49,7 @@ the number of 4-tuples $(a, b, c, d)$ of natural numbers satisfying
 $n = 2^a + 3^b + 2^c \cdot 3^d$ is at most $C$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_407 :
+theorem erdos_407 : answer(True) ↔
     ∃ C : ℕ, ∀ (n : ℕ) (S : Finset (ℕ × ℕ × ℕ × ℕ)),
       (∀ t ∈ S, n = 2 ^ t.1 + 3 ^ t.2.1 + 2 ^ t.2.2.1 * 3 ^ t.2.2.2) →
       S.card ≤ C := by

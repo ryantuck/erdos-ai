@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/807](https://www.erdosproblems.com/807)
 
+Is it true that for a random graph $G$ on $n$ vertices with edge probability $1/2$,
+$\tau(G) = n - \alpha(G)$ almost surely? Here $\tau(G)$ is the bipartition number (the
+smallest number of pairwise edge-disjoint complete bipartite graphs whose union is $G$)
+and $\alpha(G)$ is the independence number. Disproved by Alon [Al15].
+
 [Al15] Alon, N., _Bipartite decomposition of random graphs_, J. Graph Theory, 2015.
 
 [ABH17] Alon, N., Bohman, T. and Huang, H., _More on bipartite decomposition of random

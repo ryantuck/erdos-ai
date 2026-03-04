@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 435
 
+Determine the largest natural number not representable as a non-negative integer
+linear combination of the interior binomial coefficients $\binom{n}{i}$ for
+$1 \le i \le n-1$, when $n \ge 2$ is not a prime power.
+
 *Reference:* [erdosproblems.com/435](https://www.erdosproblems.com/435)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
@@ -27,9 +31,9 @@ theory_. Monographies de L'Enseignement Mathematique (1980).
 [HwSo24] Hwang, F. K. and Song, J. (2024).
 -/
 
-namespace Erdos435
-
 open Finset BigOperators
+
+namespace Erdos435
 
 /-- The set of natural numbers representable as a non-negative integer linear
 combination of the binomial coefficients $\binom{n}{i}$ for $1 \le i \le n-1$. -/

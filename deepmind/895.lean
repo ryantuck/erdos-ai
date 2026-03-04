@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 895
 
+Is it true that, for all sufficiently large $n$, if $G$ is a triangle-free graph
+on $\{1, \ldots, n\}$ then there must exist an independent set $\{a, b, a+b\}$?
+
 *Reference:* [erdosproblems.com/895](https://www.erdosproblems.com/895)
 
 [Er95d] Erdős, P. and Hajnal, A., unpublished (1995).

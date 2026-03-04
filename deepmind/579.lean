@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 579
 
+Erdős, Hajnal, Sós, and Szemerédi conjectured that for any δ > 0, if n is sufficiently large
+and G is a K_{2,2,2}-free graph on n vertices with at least δn² edges, then G contains an
+independent set of size linear in n.
+
 *Reference:* [erdosproblems.com/579](https://www.erdosproblems.com/579)
 -/
 

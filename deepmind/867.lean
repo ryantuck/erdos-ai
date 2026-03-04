@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/867](https://www.erdosproblems.com/867)
 
+Erdős asked whether a consecutive-sum-free subset of $\{1, \ldots, N\}$ can have at most
+$N/2 + C$ elements for some absolute constant $C$. This was disproved by Coppersmith and Phillips.
+
 [Er92c] Erdős, P., _Some of my favourite problems which recently have been solved_. Proceedings
 of the international conference on set-theoretic topology and its applications, Part 2, Matsuyama
 (1992).

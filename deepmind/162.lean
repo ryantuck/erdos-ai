@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 162
 
+For a 2-colouring of the edges of $K_n$, let $F(n, \alpha)$ be the smallest $m$ such that every
+subset of size at least $m$ has both colour classes containing more than an $\alpha$ fraction of its
+edges. Erdős conjectured that $F(n, \alpha) \sim c_\alpha \log n$ for a constant $c_\alpha > 0$.
+
 *Reference:* [erdosproblems.com/162](https://www.erdosproblems.com/162)
 
 [Er90b] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and differences_.

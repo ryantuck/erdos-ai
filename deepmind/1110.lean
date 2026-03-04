@@ -65,7 +65,7 @@ non-representable numbers that are coprime to $p \cdot q$.
 Since $p > q \geq 2$ and $p, q$ are coprime, the only excluded case is $p = 3, q = 2$.
 -/
 @[category research open, AMS 11]
-theorem erdos_1110 :
+theorem erdos_1110 : answer(sorry) ↔
     ∀ p q : ℕ, 2 ≤ q → q < p → Nat.Coprime p q →
       ¬(p = 3 ∧ q = 2) →
       Set.Infinite {n : ℕ | ¬IsRepresentable p q n ∧ Nat.Coprime n (p * q)} := by

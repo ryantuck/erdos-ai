@@ -44,22 +44,22 @@ namespace Erdos664
 /--
 Erdős Problem 664 (Disproved) [Er81][Er97f]:
 
-There exists $c \in (0, 1)$ such that for any bound $K$, there exist $n$, $m$ and a family
-$A : \mathrm{Fin}(m) \to \mathrm{Finset}(\mathrm{Fin}(n))$ with $|A_i| > c\sqrt{n}$ for
-all $i$ and $|A_i \cap A_j| \leq 1$ for $i \neq j$, such that for every transversal $B$
-(meeting every $A_i$), there exists some $j$ with $|B \cap A_j| > K$.
+Let $c < 1$ be some constant and $A_1, \ldots, A_m \subseteq \{1, \ldots, n\}$ with
+$|A_i| > c\sqrt{n}$ for all $i$ and $|A_i \cap A_j| \leq 1$ for $i \neq j$. Must there
+exist a transversal $B$ (meeting every $A_i$) such that $|B \cap A_i| \leq K$ for all $i$,
+where $K$ depends only on $c$?
 
-Proved by Alon using random subsets of lines of a projective plane, with $c = 2/5$.
+Disproved by Alon using random subsets of lines of a projective plane, with $c = 2/5$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_664 :
-    ∃ c : ℝ, 0 < c ∧ c < 1 ∧
-    ∀ K : ℕ, ∃ n m : ℕ, ∃ A : Fin m → Finset (Fin n),
-      (∀ i, (↑(A i).card : ℝ) > c * Real.sqrt ↑n) ∧
-      (∀ i j, i ≠ j → ((A i) ∩ (A j)).card ≤ 1) ∧
-      ∀ B : Finset (Fin n),
-        (∀ i, ((A i) ∩ B).Nonempty) →
-        ∃ j, ((A j) ∩ B).card > K := by
+theorem erdos_664 : answer(False) ↔
+    ∀ c : ℝ, 0 < c → c < 1 →
+    ∃ K : ℕ, ∀ n m : ℕ, ∀ A : Fin m → Finset (Fin n),
+      (∀ i, (↑(A i).card : ℝ) > c * Real.sqrt ↑n) →
+      (∀ i j, i ≠ j → ((A i) ∩ (A j)).card ≤ 1) →
+      ∃ B : Finset (Fin n),
+        (∀ i, ((A i) ∩ B).Nonempty) ∧
+        (∀ i, ((A i) ∩ B).card ≤ K) := by
   sorry
 
 end Erdos664

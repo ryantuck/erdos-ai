@@ -37,7 +37,7 @@ If $z : \text{Fin}\; n \to \mathbb{C}$ with $z_0 = 1$, and there are infinitely 
 such that the $n - 1$ consecutive power sums $s_k, s_{k+1}, \ldots, s_{k+n-2}$ are all zero,
 then the $z_i$ are a permutation of the $n$-th roots of unity $e^{2\pi i j/n}$.
 -/
-@[category research solved, AMS 30 11]
+@[category research solved, AMS 11 30]
 theorem erdos_974 {n : ℕ} (hn : 2 ≤ n)
     (z : Fin n → ℂ)
     (hz1 : z ⟨0, by omega⟩ = 1)

@@ -55,12 +55,13 @@ set $X \subseteq \{2, \ldots, n\}$ with $\sum_{x \in X} 1 / \log x \geq C$.
 -/
 @[category research solved, AMS 5]
 theorem erdos_191 :
-    ∀ C : ℝ, C > 0 →
-      ∃ N : ℕ, ∀ n ≥ N,
-        ∀ G : SimpleGraph ℕ,
-          ∃ X : Finset ℕ, X ⊆ Finset.Icc 2 n ∧
-            (G.IsClique (X : Set ℕ) ∨ Gᶜ.IsClique (X : Set ℕ)) ∧
-            C ≤ ∑ x ∈ X, (1 : ℝ) / Real.log (x : ℝ) := by
+    answer(True) ↔
+      ∀ C : ℝ, C > 0 →
+        ∃ N : ℕ, ∀ n ≥ N,
+          ∀ G : SimpleGraph ℕ,
+            ∃ X : Finset ℕ, X ⊆ Finset.Icc 2 n ∧
+              (G.IsClique (X : Set ℕ) ∨ Gᶜ.IsClique (X : Set ℕ)) ∧
+              C ≤ ∑ x ∈ X, (1 : ℝ) / Real.log (x : ℝ) := by
   sorry
 
 end Erdos191

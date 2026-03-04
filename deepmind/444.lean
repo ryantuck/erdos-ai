@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/444](https://www.erdosproblems.com/444)
 
+Let $A \subseteq \mathbb{N}$ be infinite and let $d_A(n)$ count the divisors of $n$ that belong
+to $A$. Then for every $k$ the limsup of $\max_{n < x} d_A(n)$ divided by the $k$-th power of
+the partial reciprocal sum $\sum_{a \in A,\, a < x} 1/a$ is infinite.
+
 [ErSa80] Erdős, P. and Sárkőzy, A., *On the number of divisors of $n!$*, 1980.
 
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number

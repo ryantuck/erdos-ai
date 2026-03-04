@@ -39,15 +39,16 @@ def prod4 (a : ℕ) : ℕ := a * (a + 1) * (a + 2) * (a + 3)
 /--
 Erdős Problem 363 (Disproved by Bauer–Bennett [BaBe07]):
 
-For any $N$, there exist starting points $a, b, c > N$ with $a + 4 \leq b$ and $b + 4 \leq c$
-(so the three intervals $\{a, \ldots, a+3\}$, $\{b, \ldots, b+3\}$, $\{c, \ldots, c+3\}$ are
-pairwise disjoint) such that the product of all $12$ elements is a perfect square.
+Are there only finitely many triples $(a, b, c)$ of natural numbers with
+$a + 4 \leq b$ and $b + 4 \leq c$ (so the three intervals of four consecutive integers
+starting at $a$, $b$, $c$ are pairwise disjoint) such that the product of all $12$ elements
+is a perfect square? The answer is no.
 -/
 @[category research solved, AMS 11]
-theorem erdos_363 :
-    ∀ N : ℕ, ∃ a b c : ℕ,
-      N < a ∧ a + 4 ≤ b ∧ b + 4 ≤ c ∧
-      IsSquare (prod4 a * prod4 b * prod4 c) := by
+theorem erdos_363 : answer(False) ↔
+    Set.Finite {t : ℕ × ℕ × ℕ |
+      t.1 + 4 ≤ t.2.1 ∧ t.2.1 + 4 ≤ t.2.2 ∧
+      IsSquare (prod4 t.1 * prod4 t.2.1 * prod4 t.2.2)} := by
   sorry
 
 end Erdos363

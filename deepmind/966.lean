@@ -41,13 +41,14 @@ a monochromatic $k$-term arithmetic progression.
 Proved by Spencer.
 -/
 @[category research solved, AMS 5]
-theorem erdos_966 (k : ℕ) (r : ℕ) (hk : k ≥ 2) (hr : r ≥ 2) :
-    ∃ (A : Set ℕ),
-      (¬∃ a d : ℕ, 0 < d ∧ ∀ i : ℕ, i < k + 1 → a + i * d ∈ A) ∧
-      (∀ c : ℕ → Fin r,
-        ∃ a d : ℕ, 0 < d ∧
-          (∀ i : ℕ, i < k → a + i * d ∈ A) ∧
-          ∀ i : ℕ, i < k → c (a + i * d) = c a) := by
+theorem erdos_966 : answer(True) ↔
+    ∀ (k : ℕ) (r : ℕ), k ≥ 2 → r ≥ 2 →
+      ∃ (A : Set ℕ),
+        (¬∃ a d : ℕ, 0 < d ∧ ∀ i : ℕ, i < k + 1 → a + i * d ∈ A) ∧
+        (∀ c : ℕ → Fin r,
+          ∃ a d : ℕ, 0 < d ∧
+            (∀ i : ℕ, i < k → a + i * d ∈ A) ∧
+            ∀ i : ℕ, i < k → c (a + i * d) = c a) := by
   sorry
 
 end Erdos966

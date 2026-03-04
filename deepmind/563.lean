@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 563
 
+For every 0 ≤ α < 1/2, let F(n, α) be the smallest m such that some 2-colouring of Kₙ forces
+every m-subset of vertices to contain more than α · C(m, 2) edges of each colour. The conjecture
+asserts that F(n, α) ~ c_α · log n for some constant c_α > 0.
+
 *Reference:* [erdosproblems.com/563](https://www.erdosproblems.com/563)
 
 [Er90b] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and

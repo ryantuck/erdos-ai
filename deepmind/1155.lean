@@ -60,11 +60,11 @@ def TriangleFree {V : Type*} (G : SimpleGraph V) : Prop :=
 
     `triangleRemovalExpectedEdges n` is $\mathbb{E}[f(n)]$, the expected number of edges
     remaining when the process terminates. -/
-noncomputable def triangleRemovalExpectedEdges (n : ℕ) : ℝ := sorry
+opaque triangleRemovalExpectedEdges (n : ℕ) : ℝ
 
 /-- The probability that the number of edges remaining after the triangle
     removal process on $K_n$ satisfies a given predicate $P$. -/
-noncomputable def triangleRemovalEdgeProb (n : ℕ) (P : ℕ → Prop) : ℝ := sorry
+opaque triangleRemovalEdgeProb (n : ℕ) (P : ℕ → Prop) : ℝ
 
 /--
 Erdős Problem #1155, Part 1 [Bo98, p.231]:
@@ -73,7 +73,7 @@ $\mathbb{E}[f(n)] \asymp n^{3/2}$, i.e., there exist constants $c_1, c_2 > 0$ su
 sufficiently large $n$, $c_1 \cdot n^{3/2} \leq \mathbb{E}[f(n)] \leq c_2 \cdot n^{3/2}$.
 -/
 @[category research open, AMS 5 60]
-theorem erdos_1155 :
+theorem erdos_1155 : answer(sorry) ↔
     ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧
       ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
         c₁ * (n : ℝ) ^ ((3 : ℝ) / 2) ≤ triangleRemovalExpectedEdges n ∧
@@ -87,7 +87,7 @@ $f(n) \ll n^{3/2}$ almost surely, i.e., there exists $C > 0$ such that with
 probability tending to $1$, $f(n) \leq C \cdot n^{3/2}$.
 -/
 @[category research open, AMS 5 60]
-theorem erdos_1155.variants.almost_sure :
+theorem erdos_1155.variants.almost_sure : answer(sorry) ↔
     ∃ C : ℝ, 0 < C ∧
       Tendsto (fun n : ℕ =>
         triangleRemovalEdgeProb n (fun k => (k : ℝ) ≤ C * (n : ℝ) ^ ((3 : ℝ) / 2)))

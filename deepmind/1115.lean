@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1115](https://www.erdosproblems.com/1115)
 
+Let $f(z)$ be an entire function of finite order, and let $\Gamma$ be a rectifiable path
+on which $f(z) \to \infty$. Let $\ell(r)$ be the length of $\Gamma$ in the disc $|z| < r$.
+Can such a path $\Gamma$ always be found with $\ell(r) \ll r$?
+
 [GoEr79] Gol'dberg, A. A. and Eremenko, A. È., *Asymptotic curves of entire functions*,
 1979.
 -/
@@ -75,10 +79,10 @@ Formally: there exists an entire function of finite order such that for every
 arc-length parameterized path to infinity on which $f \to \infty$, $\ell(r)$ is not $O(r)$.
 -/
 @[category research solved, AMS 30]
-theorem erdos_1115 :
-    ∃ f : ℂ → ℂ, IsEntire f ∧ HasFiniteOrder f ∧
-      ∀ γ : ArcLengthPath, TendsToInfinityAlong f γ →
-        ¬∃ (C R : ℝ), ∀ r : ℝ, R ≤ r → pathLengthInDisk γ r ≤ C * r := by
+theorem erdos_1115 : answer(False) ↔
+    ∀ f : ℂ → ℂ, IsEntire f → HasFiniteOrder f →
+      ∃ γ : ArcLengthPath, TendsToInfinityAlong f γ ∧
+        ∃ (C R : ℝ), ∀ r : ℝ, R ≤ r → pathLengthInDisk γ r ≤ C * r := by
   sorry
 
 end Erdos1115

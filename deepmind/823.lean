@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/823](https://www.erdosproblems.com/823)
 
+Given α ≥ 1, is there a sequence of positive integers n_k, m_k such that n_k / m_k → α and
+σ(n_k) = σ(m_k) for all k, where σ is the sum of divisors function? The answer is yes, proved by
+Pollack.
+
 [Er59c] Erdős, P., 1959.
 
 [Er74b] Erdős, P., 1974.
@@ -47,10 +51,11 @@ sum of divisors function?
 The answer is yes, proved by Pollack [Po15b].
 -/
 @[category research solved, AMS 11]
-theorem erdos_823 (α : ℝ) (hα : α ≥ 1) :
-    ∃ (n m : ℕ → ℕ), (∀ k, 0 < n k) ∧ (∀ k, 0 < m k) ∧
-    (∀ k, Nat.sumDivisors (n k) = Nat.sumDivisors (m k)) ∧
-    Tendsto (fun k => (n k : ℝ) / (m k : ℝ)) atTop (nhds α) := by
+theorem erdos_823 : answer(True) ↔
+    ∀ (α : ℝ), α ≥ 1 →
+      ∃ (n m : ℕ → ℕ), (∀ k, 0 < n k) ∧ (∀ k, 0 < m k) ∧
+      (∀ k, Nat.sumDivisors (n k) = Nat.sumDivisors (m k)) ∧
+      Tendsto (fun k => (n k : ℝ) / (m k : ℝ)) atTop (nhds α) := by
   sorry
 
 end Erdos823

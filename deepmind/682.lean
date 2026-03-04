@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/682](https://www.erdosproblems.com/682)
 
+For almost all $n$, there exists an integer $m$ strictly between consecutive primes
+$p_n$ and $p_{n+1}$ whose least prime factor is at least as large as the prime gap
+$p_{n+1} - p_n$.
+
 [GaTa25] Gafni, A. and Tao, T., who showed the number of exceptional
 $n \in [1, X]$ is $\ll X / (\log X)^2$.
 -/

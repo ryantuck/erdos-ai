@@ -44,7 +44,7 @@ $G(n, 1/2)$ on $n$ vertices satisfies predicate $P$. Here $G(n, 1/2)$ is the
 Erdős–Rényi model where each edge is included independently with
 probability $1/2$, equivalently the uniform distribution over all simple
 graphs on $n$ labelled vertices. -/
-noncomputable def chromaticNumberProb (n : ℕ) (P : ℕ → Prop) : ℝ := sorry
+opaque chromaticNumberProb (n : ℕ) (P : ℕ → Prop) : ℝ
 
 /--
 Erdős Problem 1156, Part 1 [AlSp92]:

@@ -54,9 +54,10 @@ A cycle of length $m$ ($m \geq 3$) is represented as an injective map
 are adjacent.
 -/
 @[category research solved, AMS 5]
-theorem erdos_916 (n : ℕ) (hn : n ≥ 4)
-    (G : SimpleGraph (Fin n)) [DecidableRel G.Adj]
-    (hedge : G.edgeFinset.card ≥ 2 * n - 2) :
+theorem erdos_916 : answer(True) ↔
+    ∀ (n : ℕ), n ≥ 4 →
+    ∀ (G : SimpleGraph (Fin n)) (_ : DecidableRel G.Adj),
+    G.edgeFinset.card ≥ 2 * n - 2 →
     ∃ (k : ℕ) (cycle : Fin (k + 3) → Fin n),
       Function.Injective cycle ∧
       (∀ i : Fin (k + 3), G.Adj (cycle i)

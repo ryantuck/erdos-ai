@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 335
 
+Characterise those $A, B \subseteq \mathbb{N}$ with positive natural density such that
+$d(A + B) = d(A) + d(B)$. The conjecture is that such sets must arise from measurable subsets
+of a compact abelian group via a group rotation with the corresponding measure additivity property.
+
 *Reference:* [erdosproblems.com/335](https://www.erdosproblems.com/335)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
@@ -59,10 +63,11 @@ $\mu(X_A + X_B) = \mu(X_A) + \mu(X_B)$.
 
 The conjecture asks whether all such $A$ and $B$ are generated in a similar way
 (possibly using other compact abelian groups in place of $\mathbb{R}/\mathbb{Z}$).
-We formalize the specific $\mathbb{R}/\mathbb{Z}$ version of the conjectured
-characterisation: if $d(A+B) = d(A)+d(B)$ with positive densities, then $A$ and $B$
-arise from measurable subsets of $[0,1)$ via an irrational rotation, with the
-corresponding measure additivity property.
+We formalize one direction of the specific $\mathbb{R}/\mathbb{Z}$ version of the
+conjectured characterisation: if $d(A+B) = d(A)+d(B)$ with positive densities, then
+$A$ and $B$ arise from measurable subsets of $[0,1)$ via an irrational rotation, with
+the corresponding measure additivity property. The reverse direction (that such
+constructions yield additive density) is not formalized here.
 -/
 @[category research open, AMS 5 11]
 theorem erdos_335 :
@@ -72,7 +77,7 @@ theorem erdos_335 :
       0 < dA → 0 < dB →
       HasNaturalDensity (Set.image2 (· + ·) A B) (dA + dB) →
       ∃ (θ : ℝ) (X_A X_B : Set ℝ),
-        0 < θ ∧
+        Irrational θ ∧
         MeasurableSet X_A ∧ MeasurableSet X_B ∧
         X_A ⊆ Set.Ico 0 1 ∧ X_B ⊆ Set.Ico 0 1 ∧
         volume X_A = ENNReal.ofReal dA ∧

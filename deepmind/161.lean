@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 161
 
+Erdős conjectured that for $t$-uniform hypergraph 2-colourings, the balanced-colouring threshold
+$F^{(t)}(n,\alpha)$ grows polynomially in $\log n$ for any $\alpha > 0$, in contrast with the
+iterated-logarithm growth at $\alpha = 0$.
+
 *Reference:* [erdosproblems.com/161](https://www.erdosproblems.com/161)
 
 [Er90b] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
@@ -43,7 +47,7 @@ def IsBalancedColouring (n t m : ℕ) (α : ℝ) (c : Finset (Fin n) → Bool) :
 
 /-- $F^{(t)}(n, \alpha)$ is the smallest $m$ such that there exists a 2-colouring of the
 $t$-element subsets of $[n]$ that is $\alpha$-balanced at threshold $m$. -/
-noncomputable def F_balanced (t n : ℕ) (α : ℝ) : ℕ :=
+noncomputable def fBalanced (t n : ℕ) (α : ℝ) : ℕ :=
   sInf { m : ℕ | ∃ c : Finset (Fin n) → Bool, IsBalancedColouring n t m α c }
 
 /--
@@ -65,7 +69,7 @@ theorem erdos_161 :
     ∃ C : ℝ, 0 < C ∧
     ∃ D : ℝ, 0 < D ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
-      (F_balanced t n α : ℝ) ≤ C * (Real.log (n : ℝ)) ^ D := by
+      (fBalanced t n α : ℝ) ≤ C * (Real.log (n : ℝ)) ^ D := by
   sorry
 
 end Erdos161

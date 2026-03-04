@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 576
 
+Erdős conjectured that the Turán number of the 3-dimensional hypercube graph $Q_3$
+satisfies $\mathrm{ex}(n; Q_3) \asymp n^{8/5}$.
+
 *Reference:* [erdosproblems.com/576](https://www.erdosproblems.com/576)
 
 References: [Er64c], [ErSi70,p.378], [Er74c,p.78], [Er75], [Er81], [Er93,p.334]

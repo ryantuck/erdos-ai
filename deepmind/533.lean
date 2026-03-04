@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/533](https://www.erdosproblems.com/533)
 
+Let $\delta > 0$. If $n$ is sufficiently large and $G$ is a graph on $n$ vertices with no $K_5$
+and at least $\delta n^2$ edges, must $G$ contain a set of $\gg_\delta n$ vertices containing no
+triangle? Equivalently, is $\delta_3(5) = 0$? Disproved by Balogh and Lenz [BaLe13].
+
 [BaLe13] Balogh, J. and Lenz, J., _Some exact Ramsey-Turán numbers_, 2013.
 -/
 

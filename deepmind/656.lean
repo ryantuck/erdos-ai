@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/656](https://www.erdosproblems.com/656)
 
+Let $A \subseteq \mathbb{N}$ have positive upper density. Must there exist an infinite set
+$B \subseteq \mathbb{N}$ and an integer $t$ such that $B + B + t \subseteq A$?
+Solved affirmatively by Kra, Moreira, Richter, and Robertson [KMRR24].
+
 [Er75b] Erdős, P., *Problems and results on combinatorial number theory III*, 1975.
 
 [KMRR24] Kra, B., Moreira, J., Richter, F., and Robertson, D., 2024.
@@ -46,9 +50,10 @@ $b_1, b_2 \in B$ (where the arithmetic is in $\mathbb{Z}$).
 Proved by Kra, Moreira, Richter, and Robertson [KMRR24].
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_656 (A : Set ℕ) (hA : Nat.upperDensity A > 0) :
-    ∃ (B : Set ℕ) (t : ℤ), Set.Infinite B ∧
-      ∀ b₁ ∈ B, ∀ b₂ ∈ B, ∃ a ∈ A, (a : ℤ) = ↑b₁ + ↑b₂ + t := by
+theorem erdos_656 : answer(True) ↔
+    ∀ (A : Set ℕ), Nat.upperDensity A > 0 →
+      ∃ (B : Set ℕ) (t : ℤ), Set.Infinite B ∧
+        ∀ b₁ ∈ B, ∀ b₂ ∈ B, ∃ a ∈ A, (a : ℤ) = ↑b₁ + ↑b₂ + t := by
   sorry
 
 end Erdos656

@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 464
 
+For any lacunary sequence of natural numbers (where the ratio of consecutive terms is bounded
+away from 1), there exists an irrational number θ such that the sequence of distances from
+θ·nₖ to the nearest integer is not dense in [0, 1/2].
+
 *Reference:* [erdosproblems.com/464](https://www.erdosproblems.com/464)
 -/
 

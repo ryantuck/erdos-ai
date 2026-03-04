@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/328](https://www.erdosproblems.com/328)
 
+Suppose $A \subseteq \mathbb{N}$ has bounded additive representation function
+($1_A * 1_A(n) \leq C$ for all $n$). Can $A$ be partitioned into finitely many subsets,
+each with strictly smaller representation function? Nešetřil and Rödl showed the answer is no.
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
 
@@ -46,20 +50,15 @@ $1 \leq i \leq t$ and $n \in \mathbb{N}$?
 
 Asked by Erdős and Newman. Nešetřil and Rödl [NeRo85] showed the answer is no
 for all $C$ (even if $t$ is also allowed to depend on $A$).
-
-We formalize the negation (the true statement): for every $C \geq 1$, there exists
-$A \subseteq \mathbb{N}$ with representation function bounded by $C$, such that for every finite
-partition of $A$, some part has representation function $\geq C$ at some $n$.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_328 :
+theorem erdos_328 : answer(False) ↔
     ∀ C : ℕ, 1 ≤ C →
-      ∃ A : Set ℕ,
-        (∀ n, repCount A n ≤ C) ∧
-        ∀ t : ℕ, 1 ≤ t →
-          ∀ f : ℕ → Fin t,
-            ∃ (i : Fin t) (n : ℕ),
-              repCount ({a | a ∈ A ∧ f a = i}) n ≥ C := by
+      ∀ A : Set ℕ, (∀ n, repCount A n ≤ C) →
+        ∃ t : ℕ, 1 ≤ t ∧
+          ∃ f : ℕ → Fin t,
+            ∀ (i : Fin t) (n : ℕ),
+              repCount ({a | a ∈ A ∧ f a = i}) n < C := by
   sorry
 
 end Erdos328

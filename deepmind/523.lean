@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 523
 
+Erdős asked whether the supremum of a random Rademacher polynomial on the unit
+circle is asymptotically $C\sqrt{n \log n}$ for some constant $C > 0$.
+
 *Reference:* [erdosproblems.com/523](https://www.erdosproblems.com/523)
 -/
 
@@ -51,16 +54,15 @@ Salem and Zygmund proved that $\sqrt{n \log n}$ is the right order of magnitude.
 This was settled by Halász, who proved this is true with $C = 1$.
 -/
 @[category research solved, AMS 42 60]
-theorem erdos_523
-    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
-    {ε : ℕ → Ω → ℝ}
-    (hRad : ∀ k, IsRademacher μ (ε k))
-    (hIndep : iIndepFun ε μ) :
-    ∃ C : ℝ, 0 < C ∧
-    ∀ᵐ ω ∂μ, Tendsto
-      (fun n => supNormCircle (fun k => ε k ω) n /
-        Real.sqrt ((n : ℝ) * Real.log (n : ℝ)))
-      atTop (nhds C) := by
+theorem erdos_523 : answer(True) ↔
+    ∀ {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+      {ε : ℕ → Ω → ℝ},
+    (∀ k, IsRademacher μ (ε k)) → iIndepFun ε μ →
+      ∃ C : ℝ, 0 < C ∧
+      ∀ᵐ ω ∂μ, Tendsto
+        (fun n => supNormCircle (fun k => ε k ω) n /
+          Real.sqrt ((n : ℝ) * Real.log (n : ℝ)))
+        atTop (nhds C) := by
   sorry
 
 end Erdos523

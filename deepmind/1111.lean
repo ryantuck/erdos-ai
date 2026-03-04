@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1111](https://www.erdosproblems.com/1111)
 
+For any $t, c \geq 1$, does there exist $d$ such that every finite graph with chromatic
+number at least $d$ and clique number less than $t$ contains two anticomplete vertex sets
+each with chromatic number at least $c$?
+
 [ElEr85] El Zahar, M. and Erdős, P., *On the existence of two non-neighboring
 subgraphs in a graph*, Combinatorica, 1985.
 

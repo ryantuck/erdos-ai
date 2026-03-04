@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/721](https://www.erdosproblems.com/721)
 
+Erdős asked for reasonable bounds on the van der Waerden number $W(3,k)$, in particular
+whether $W(3,k) < \exp(k^c)$ for some $c < 1$, and for non-trivial lower bounds.
+
 [Sc21] Schoen, T. (2021)
 
 [BlSi23] Bloom, T. and Sisask, O. (2023)

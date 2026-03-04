@@ -54,6 +54,7 @@ in $S$ has at least $k$ neighbors within $S$.
 -/
 @[category research solved, AMS 5]
 theorem erdos_814 :
+    answer(True) ↔
     ∀ k : ℕ, k ≥ 2 →
     ∃ c : ℝ, c > 0 ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →

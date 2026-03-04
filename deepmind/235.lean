@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/235](https://www.erdosproblems.com/235)
 
+Let $N_k = p_1 \cdots p_k$ be the $k$-th primorial and let $a_1 < \cdots < a_{\varphi(N_k)}$
+be the integers less than $N_k$ coprime to $N_k$. Erdős conjectured that the fraction of
+consecutive gaps $a_{i+1} - a_i \le c \cdot N_k / \varphi(N_k)$ tends to a limit that is a
+continuous function of $c$. This was proved by Hooley.
+
 [Er55c] Erdős, P., _Some problems on number theory_ (1955).
 
 [Ho65] Hooley, C., _On the difference of consecutive numbers prime to n_, Acta Arith. 8 (1963),

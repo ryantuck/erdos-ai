@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/528](https://www.erdosproblems.com/528)
 
+Let $f(n,k)$ count the number of self-avoiding walks of $n$ steps beginning at the origin
+in the integer lattice $\mathbb{Z}^k$. The connective constant $C_k$ is defined as
+$C_k = \lim_{n \to \infty} f(n,k)^{1/n}$. The problem asks to determine $C_k$ exactly.
+
 [HM54] Hammersley, J. M. and Morton, K. W., *Poor man's Monte Carlo*. J. Roy. Statist.
 Soc. Ser. B (1954), 23–38.
 
@@ -45,21 +49,34 @@ noncomputable def selfAvoidingWalkCount (n k : ℕ) : ℕ :=
     (∀ i : Fin n, LatticeAdj (w ⟨i.val, by omega⟩) (w ⟨i.val + 1, by omega⟩)) ∧
     Function.Injective w}
 
+/-- The connective constant $C_k$ for self-avoiding walks on $\mathbb{Z}^k$, defined as
+$C_k = \lim_{n \to \infty} f(n,k)^{1/n}$ where $f(n,k)$ is the number of self-avoiding
+walks of $n$ steps. Returns the limit value if it exists, or $0$ otherwise. -/
+noncomputable def connectiveConstant (k : ℕ) : ℝ :=
+  if h : ∃ C : ℝ, Filter.Tendsto
+    (fun n : ℕ => ((selfAvoidingWalkCount n k : ℝ)) ^ ((1 : ℝ) / (n : ℝ)))
+    atTop (nhds C)
+  then h.choose
+  else 0
+
 /--
-Erdős Problem 528 (Connective Constant for Self-Avoiding Walks):
+Erdős Problem 528 asks to determine the connective constant $C_k$ exactly, where $C_k$ is
+the limit of $f(n,k)^{1/n}$ as $n \to \infty$ and $f(n,k)$ counts the number of
+self-avoiding walks of $n$ steps in $\mathbb{Z}^k$.
 
-Let $f(n,k)$ count the number of self-avoiding walks of $n$ steps beginning at the
-origin in $\mathbb{Z}^k$ (those walks which do not intersect themselves). The connective
-constant $C_k$ is defined as $C_k = \lim_{n\to\infty} f(n,k)^{1/n}$.
-
-Hammersley and Morton [HM54] showed this limit exists. It is trivially true that
-$k \le C_k \le 2k-1$. Kesten [Ke63] proved $C_k = 2k - 1 - 1/(2k) + O(1/k^2)$.
-
-The problem asks to determine $C_k$ exactly. We formalize the existence of the
-connective constant together with the known bounds $k \le C_k \le 2k-1$.
+Hammersley and Morton [HM54] showed this limit exists. Kesten [Ke63] proved
+$C_k = 2k - 1 - 1/(2k) + O(1/k^2)$.
 -/
-@[category research solved, AMS 5 82]
+@[category research open, AMS 5 82]
 theorem erdos_528 :
+    ∀ k : ℕ, 0 < k →
+    connectiveConstant k = answer(sorry) := by
+  sorry
+
+/-- Variant: The connective constant $C_k$ exists and satisfies the known bounds
+$k \le C_k \le 2k - 1$ [HM54] [Ke63]. -/
+@[category research solved, AMS 5 82]
+theorem erdos_528.variants.existence_with_bounds :
     ∀ k : ℕ, 0 < k →
     ∃ C : ℝ,
       (k : ℝ) ≤ C ∧ C ≤ 2 * (k : ℝ) - 1 ∧

@@ -46,7 +46,7 @@ noncomputable def smoothPart (m k : ℕ) : ℕ :=
 
 /-- $f(n)$ for Erdős Problem 684: the smallest $k$ such that the $k$-smooth part
 of $\binom{n}{k}$ exceeds $n^2$. Returns $0$ if no such $k$ exists. -/
-noncomputable def erdos684_f (n : ℕ) : ℕ :=
+noncomputable def erdos684F (n : ℕ) : ℕ :=
   if h : ∃ k : ℕ, smoothPart (n.choose k) k > n ^ 2
   then Nat.find h
   else 0
@@ -60,9 +60,9 @@ $k$-smooth part of $\binom{n}{k}$ exceeds $n^2$ is greater than $K$.
 This follows from Mahler's theorem. The problem asks for effective bounds
 on the growth of $f(n)$.
 -/
-@[category research open, AMS 11]
+@[category research solved, AMS 11]
 theorem erdos_684 :
-    ∀ K : ℕ, ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ → erdos684_f n > K := by
+    ∀ K : ℕ, ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ → erdos684F n > K := by
   sorry
 
 /--
@@ -74,7 +74,7 @@ $f(n) \le n^{30/43 + \varepsilon}$.
 @[category research solved, AMS 11]
 theorem erdos_684.variants.upper_bound :
     ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      (erdos684_f n : ℝ) ≤ (n : ℝ) ^ ((30 : ℝ) / 43 + ε) := by
+      (erdos684F n : ℝ) ≤ (n : ℝ) ^ ((30 : ℝ) / 43 + ε) := by
   sorry
 
 end Erdos684

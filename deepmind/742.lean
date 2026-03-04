@@ -38,13 +38,14 @@ increases the diameter (either by disconnecting the graph or increasing it
 beyond $2$). Then $G$ has at most $n^2/4$ edges.
 -/
 @[category research solved, AMS 5]
-theorem erdos_742 (n : ℕ) (G : SimpleGraph (Fin n))
-    (hconn : G.Connected)
-    (hdiam : G.diam = 2)
-    (hcrit : ∀ v w : Fin n, G.Adj v w →
-      ¬(G.deleteEdges {Sym2.mk (v, w)}).Connected ∨
-      2 < (G.deleteEdges {Sym2.mk (v, w)}).diam) :
-    G.edgeFinset.card ≤ n ^ 2 / 4 := by
+theorem erdos_742 : answer(True) ↔
+    ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
+      G.Connected →
+      G.diam = 2 →
+      (∀ v w : Fin n, G.Adj v w →
+        ¬(G.deleteEdges {Sym2.mk (v, w)}).Connected ∨
+        2 < (G.deleteEdges {Sym2.mk (v, w)}).diam) →
+      G.edgeFinset.card ≤ n ^ 2 / 4 := by
   sorry
 
 end Erdos742

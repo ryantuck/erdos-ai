@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/981](https://www.erdosproblems.com/981)
 
+For every ε > 0, let f_ε(p) be the smallest m such that ∑_{n≤N} (n/p) < εN for all N ≥ m.
+Is it true that ∑_{p<x} f_ε(p) ~ c_ε · x/(log x) for some constant c_ε > 0?
+Proved by Elliott [El69].
+
 [El69] Elliott, P. D. T. A., _On the mean value of $f(p)$_. Proc. London Math. Soc. (3) 21
 (1970), 28–96.
 -/

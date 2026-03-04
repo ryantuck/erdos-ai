@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 179
 
+For integers $1 \leq k < \ell$, let $F_k(N, \ell)$ denote the minimum number of $k$-term
+arithmetic progressions that an $N$-element subset of $\mathbb{N}$ must contain in order to
+guarantee an $\ell$-term arithmetic progression. The problem asks whether
+$F_3(N, 4) = o(N^2)$.
+
 *Reference:* [erdosproblems.com/179](https://www.erdosproblems.com/179)
 
 [FoPo20] Fox, J. and Pohoata, C., *Subset sums, completeness and colorings*. (2020).
@@ -56,6 +61,7 @@ Proved by Fox and Pohoata [FoPo20].
 -/
 @[category research solved, AMS 5]
 theorem erdos_179 :
+    answer(True) ↔
     ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
     ∀ A : Finset ℕ, A.card = N →
     (numAP A 3 : ℝ) ≥ ε * (N : ℝ) ^ 2 →

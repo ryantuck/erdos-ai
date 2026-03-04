@@ -46,7 +46,7 @@ with minimum degree at least $k$ and girth greater than $2s$, the number of
 distinct cycle lengths in $G$ is at least $c \cdot k^s$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_752 :
+theorem erdos_752 : answer(True) ↔
     ∃ c : ℝ, c > 0 ∧
     ∀ (V : Type*) [Fintype V] [DecidableEq V]
       (G : SimpleGraph V) [DecidableRel G.Adj]

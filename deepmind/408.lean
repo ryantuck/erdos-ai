@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/408](https://www.erdosproblems.com/408)
 
+Let $f(n)$ be the number of iterations of Euler's totient function needed to reach $1$.
+Is it true that $f(n)/\log(n)$ has a distribution function, and that $f(n)/\log(n)$
+concentrates around a constant $\alpha$ (expected to be $1/\log 2$)?
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
 number theory*. Monographies de L'Enseignement Mathematique (1980).
 
@@ -39,14 +43,20 @@ $\varphi^{[k]}(n) = \varphi(\varphi^{[k-1]}(n))$.
 -/
 def iteratedTotient (k n : ℕ) : ℕ := Nat.totient^[k] n
 
+/-- The iterated totient function eventually reaches $1$ for any $n \ge 2$,
+since $\varphi(m) < m$ for $m \ge 2$ and $\varphi(1) = 1$. -/
+lemma iteratedTotient_reaches_one {n : ℕ} (hn : 1 < n) :
+    ∃ k, iteratedTotient k n = 1 := by
+  sorry
+
 /--
 $f(n) = \min\{k : \varphi^{[k]}(n) = 1\}$, the number of iterations of Euler's totient
 function needed to reach $1$. Returns $0$ for $n \le 1$.
 This is well-defined for $n \ge 2$ since $\varphi(m) < m$ for $m \ge 2$ and $\varphi(1) = 1$.
 -/
 noncomputable def totientIterationLength (n : ℕ) : ℕ :=
-  if n ≤ 1 then 0
-  else Nat.find (⟨n, by sorry⟩ : ∃ k, iteratedTotient k n = 1)
+  if h : n ≤ 1 then 0
+  else Nat.find (iteratedTotient_reaches_one (by omega))
 
 /--
 Erdős Problem 408 [ErGr80] — Part (a).

@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/649](https://www.erdosproblems.com/649)
 
+Is it true that for any two primes $p, q$ there exists an integer $n$ such that
+$P(n) = p$ and $P(n+1) = q$, where $P(m)$ denotes the greatest prime factor of $m$?
+
 [Er95c] Erdős, P., *Some of my favourite problems which recently have been solved*.
 -/
 

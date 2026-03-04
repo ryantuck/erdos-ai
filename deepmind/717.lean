@@ -73,7 +73,7 @@ $$\chi(G) \leq C \cdot \frac{\sqrt{n}}{\log n} \cdot \sigma(G)$$
 for some absolute constant $C > 0$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_717 :
+theorem erdos_717 : answer(True) ↔
     ∃ C : ℝ, C > 0 ∧
       ∀ (n : ℕ), 2 ≤ n →
         ∀ (G : SimpleGraph (Fin n)),

@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1112](https://www.erdosproblems.com/1112)
 
+Define $r_k(d_1, d_2)$ to be the smallest integer $r$ such that for any lacunary sequence $B$
+with ratio $\geq r$, there exists a sequence $A$ with consecutive gaps in $[d_1, d_2]$ whose
+$k$-fold sumset avoids $B$. The problem asks whether $r_k(d_1, d_2)$ exists for $k \geq 3$.
+
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
 theory_. Monographies de L'Enseignement Mathematique (1980).
 -/
@@ -51,21 +55,17 @@ Known results:
   that $(A+A+A) \cap B \neq \emptyset$ for all $A$ with gaps in $[2,3]$.
 - Further non-existence results by Tang and Yang.
 - The general question of existence of $r_k(d_1, d_2)$ for $k \geq 3$ remains open.
-
-We state the non-existence direction (consistent with all known results):
-for all $k \geq 3$ and valid $d_1 < d_2$, $r_k(d_1, d_2)$ does not exist. That is, for
-every lacunary ratio $r$, there exists a lacunary sequence $B$ with ratio $r$ such
-that no gap-bounded sequence $A$ avoids $B$ with its $k$-fold sumset.
 -/
 @[category research open, AMS 5 11]
-theorem erdos_1112 (d₁ d₂ : ℕ) (hd₁ : 1 ≤ d₁) (hd : d₁ < d₂)
-    (k : ℕ) (hk : 3 ≤ k) (r : ℕ) :
-    ∃ (B : ℕ → ℕ), StrictMono B ∧ (∀ i, 0 < B i) ∧
-      (∀ i, r * B i ≤ B (i + 1)) ∧
-      ∀ (A : ℕ → ℕ), StrictMono A → (∀ i, 0 < A i) →
-        (∀ i, d₁ ≤ A (i + 1) - A i) →
-        (∀ i, A (i + 1) - A i ≤ d₂) →
-        ∃ n, n ∈ kFoldSumset k (Set.range A) ∧ n ∈ Set.range B := by
+theorem erdos_1112 : answer(sorry) ↔
+    ∀ (d₁ d₂ : ℕ), 1 ≤ d₁ → d₁ < d₂ →
+    ∀ (k : ℕ), 3 ≤ k →
+    ∃ (r : ℕ), ∀ (B : ℕ → ℕ), StrictMono B → (∀ i, 0 < B i) →
+      (∀ i, r * B i ≤ B (i + 1)) →
+      ∃ (A : ℕ → ℕ), StrictMono A ∧ (∀ i, 0 < A i) ∧
+        (∀ i, d₁ ≤ A (i + 1) - A i) ∧
+        (∀ i, A (i + 1) - A i ≤ d₂) ∧
+        ∀ n, n ∈ kFoldSumset k (Set.range A) → n ∉ Set.range B := by
   sorry
 
 end Erdos1112

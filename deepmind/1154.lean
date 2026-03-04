@@ -21,6 +21,8 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1154](https://www.erdosproblems.com/1154)
 
+Does there exist, for every α ∈ [0,1], a subring of ℝ with Hausdorff dimension α?
+
 [Er79h] Erdős, P., _Some unconventional problems in number theory_. Math. Mag. 52 (1979), p. 119.
 -/
 
@@ -40,7 +42,7 @@ Borel or Suslin. Edgar and Miller proved that any Borel or analytic subring of $
 either has Hausdorff dimension $0$ or equals $\mathbb{R}$. Mauldin proved the result for
 subfields assuming the continuum hypothesis.
 -/
-@[category research open, AMS 28 13]
+@[category research open, AMS 13 28]
 theorem erdos_1154 : answer(sorry) ↔
     ∀ (α : ℝ), 0 ≤ α → α ≤ 1 →
       ∃ S : Subring ℝ, dimH (↑S : Set ℝ) = ENNReal.ofReal α := by

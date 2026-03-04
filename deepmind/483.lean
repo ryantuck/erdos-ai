@@ -56,7 +56,7 @@ every $k$-coloring of $\{1, \ldots, N\}$ with $N \geq c^k$ has a monochromatic S
 Equivalently, the Schur number $f(k)$ grows at most exponentially in $k$.
 -/
 @[category research open, AMS 5]
-theorem erdos_483 :
+theorem erdos_483 : answer(sorry) ↔
     ∃ c : ℝ, 0 < c ∧
       ∀ k : ℕ, 1 ≤ k →
         ∀ N : ℕ, c ^ k ≤ (N : ℝ) →

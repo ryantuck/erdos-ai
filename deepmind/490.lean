@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 490
 
+If $A, B \subseteq \{1, \ldots, N\}$ are such that all products $ab$ ($a \in A$, $b \in B$)
+are distinct, is it true that $|A| \cdot |B| \ll N^2 / \log N$?
+
 *Reference:* [erdosproblems.com/490](https://www.erdosproblems.com/490)
 
 [Sz76] Szemerédi, E., *On the number of edges in products of sets of integers*. 1976.

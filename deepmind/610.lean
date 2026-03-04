@@ -69,7 +69,7 @@ such that for every graph $G$ on $n$ vertices,
 $\tau(G) \leq n - \omega(n) \cdot \sqrt{n}$.
 -/
 @[category research open, AMS 5]
-theorem erdos_610 :
+theorem erdos_610 : answer(sorry) ↔
     ∃ ω : ℕ → ℝ, Tendsto ω atTop atTop ∧
       ∀ n : ℕ, n ≥ 1 →
         ∀ G : SimpleGraph (Fin n),
@@ -83,7 +83,7 @@ There exists $c > 0$ such that for every graph $G$ on $n$ vertices,
 $\tau(G) \leq n - c \cdot \sqrt{n \cdot \log n}$.
 -/
 @[category research open, AMS 5]
-theorem erdos_610.variants.strong :
+theorem erdos_610.variants.strong : answer(sorry) ↔
     ∃ c : ℝ, c > 0 ∧
       ∀ n : ℕ, n ≥ 2 →
         ∀ G : SimpleGraph (Fin n),

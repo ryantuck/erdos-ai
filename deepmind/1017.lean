@@ -39,21 +39,39 @@ intersections_. Canadian Journal of Mathematics 18 (1966), 106-112.
 Combinatorial Mathematics and its Applications (Proc. Conf., Oxford, 1969) (1971), 97-109.
 -/
 
-open SimpleGraph Finset
+open SimpleGraph Finset Filter
 
 namespace Erdos1017
 
 /--
-Erdős Problem 1017 (Erdős–Goodman–Pósa) [Er71, EGP66]:
+Erdős Problem 1017 [Er71]:
 
-Every simple graph $G$ on $n$ vertices can be decomposed into at most $\lfloor n^2/4 \rfloor$
-edge-disjoint complete subgraphs.
+Erdős asks whether the clique partition number $f(n,k)$ can be improved
+below $\lfloor n^2/4 \rfloor$ when the number of edges $k$ exceeds $n^2/4$.
+-/
+@[category research open, AMS 5]
+theorem erdos_1017 : answer(sorry) ↔
+    ∀ᶠ n in atTop,
+      ∀ (G : SimpleGraph (Fin n)) (dG : DecidableRel G.Adj),
+        haveI := dG;
+        G.edgeFinset.card > n ^ 2 / 4 →
+          ∃ (k : ℕ) (parts : Fin k → Finset (Sym2 (Fin n))),
+            k < n ^ 2 / 4 ∧
+            (∀ i j : Fin k, i ≠ j → Disjoint (parts i) (parts j)) ∧
+            (∀ e, e ∈ G.edgeFinset ↔ ∃ i, e ∈ parts i) ∧
+            (∀ i : Fin k, ∃ (S : Finset (Fin n)),
+              G.IsClique (↑S : Set (Fin n)) ∧
+              parts i = S.offDiag.image (Quot.mk _)) := by
+  sorry
 
-Erdős asks whether this bound can be improved when the number of edges
-exceeds $n^2/4$.
+/--
+Erdős–Goodman–Pósa theorem [EGP66]:
+
+Every simple graph on $n$ vertices can be decomposed into at most
+$\lfloor n^2/4 \rfloor$ edge-disjoint complete subgraphs.
 -/
 @[category research solved, AMS 5]
-theorem erdos_1017 :
+theorem erdos_1017.variants.erdos_goodman_posa :
     ∀ (n : ℕ) (G : SimpleGraph (Fin n)) (dG : DecidableRel G.Adj),
       haveI := dG;
       ∃ (k : ℕ) (parts : Fin k → Finset (Sym2 (Fin n))),

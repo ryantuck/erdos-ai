@@ -39,11 +39,12 @@ reciprocals sum to $1$, i.e. $\sum 1/n_i = 1$.
 Proved by Croot [Cr03].
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_46 (α : Type*) [Finite α] (c : ℕ → α) :
-    ∃ S : Finset ℕ, S.Nonempty ∧
-      (∀ n ∈ S, n ≥ 2) ∧
-      (∃ color : α, ∀ n ∈ S, c n = color) ∧
-      (∑ n ∈ S, (1 : ℚ) / (n : ℚ)) = 1 := by
+theorem erdos_46 : answer(True) ↔
+    ∀ (α : Type*) [Finite α] (c : ℕ → α),
+      ∃ S : Finset ℕ, S.Nonempty ∧
+        (∀ n ∈ S, n ≥ 2) ∧
+        (∃ color : α, ∀ n ∈ S, c n = color) ∧
+        (∑ n ∈ S, (1 : ℚ) / (n : ℚ)) = 1 := by
   sorry
 
 end Erdos46

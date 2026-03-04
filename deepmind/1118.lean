@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1118](https://www.erdosproblems.com/1118)
 
+Let $f(z)$ be a non-constant entire function and let $E(c) = \{z : |f(z)| > c\}$. If $E(c)$ has
+finite measure for some $c > 0$, what is the minimum growth rate of $f$? Moreover, must there
+exist $c' < c$ such that $E(c')$ also has finite measure?
+
 [Ca77] Camera, G., *A short proof of an extremal result of Hayman* (1977).
 
 [Go79b] Gol'dberg, A. A., *The set of deficient values of meromorphic functions of finite order* (1979).
@@ -48,7 +52,7 @@ $E(c) = \{z : |f(z)| > c\}$ has finite (Lebesgue) measure. Then
 $$\int_0^\infty \frac{r}{\log \log M(r)} \, dr < \infty$$
 where $M(r) = \max_{|z|=r} |f(z)|$. This growth condition is best possible.
 -/
-@[category research solved, AMS 30 28]
+@[category research solved, AMS 28 30]
 theorem erdos_1118 (f : ℂ → ℂ) (hf : Differentiable ℂ f)
     (hnc : ∃ z : ℂ, f z ≠ f 0)
     (c : ℝ) (hc : 0 < c)
@@ -66,7 +70,7 @@ measure, but $E(c')$ has infinite measure for all $0 < c' < c$.
 Gol'dberg proved that $T = \{c > 0 : |E(c)| < \infty\}$ can equal $[m, \infty)$ or
 $(m, \infty)$ for any $m > 0$.
 -/
-@[category research solved, AMS 30 28]
+@[category research solved, AMS 28 30]
 theorem erdos_1118.variants.negative_answer :
     ∃ f : ℂ → ℂ, Differentiable ℂ f ∧ (∃ z : ℂ, f z ≠ f 0) ∧
       ∃ c : ℝ, 0 < c ∧

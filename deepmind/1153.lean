@@ -60,14 +60,15 @@ for all $n \geq N$, for any choice of $n$ distinct nodes $x_1, \ldots, x_n \in [
 $$\max_{x \in [a,b]} \sum_k |\ell_k(x)| > \left(\frac{2}{\pi} - \varepsilon\right) \log n.$$
 -/
 @[category research solved, AMS 41]
-theorem erdos_1153 (a b : ℝ) (hab : a < b) (ha : -1 ≤ a) (hb : b ≤ 1)
-    (ε : ℝ) (hε : 0 < ε) :
-    ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
-      ∀ nodes : Fin n → ℝ,
-        Function.Injective nodes →
-        (∀ i, nodes i ∈ Icc (-1 : ℝ) 1) →
-        ∃ x ∈ Icc a b,
-          lebesgueFunction nodes x > (2 / Real.pi - ε) * Real.log (n : ℝ) := by
+theorem erdos_1153 : answer(True) ↔
+    ∀ a b : ℝ, a < b → -1 ≤ a → b ≤ 1 →
+      ∀ ε : ℝ, 0 < ε →
+        ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+          ∀ nodes : Fin n → ℝ,
+            Function.Injective nodes →
+            (∀ i, nodes i ∈ Icc (-1 : ℝ) 1) →
+            ∃ x ∈ Icc a b,
+              lebesgueFunction nodes x > (2 / Real.pi - ε) * Real.log (n : ℝ) := by
   sorry
 
 end Erdos1153

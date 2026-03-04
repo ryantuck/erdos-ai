@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/311](https://www.erdosproblems.com/311)
 
+Let δ(N) denote the minimal non-zero value of |1 − Σ_{n ∈ A} 1/n| over subsets A of {1, …, N}.
+The problem conjectures that δ(N) = e^{-(c+o(1))·N} for some constant c ∈ (0, 1).
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980), p. 40.
 -/

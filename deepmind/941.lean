@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 941
 
+Heath-Brown proved that every sufficiently large integer is the sum of at most three powerful
+numbers (numbers whose prime factors all appear with exponent ≥ 2).
+
 *Reference:* [erdosproblems.com/941](https://www.erdosproblems.com/941)
 
 [He88] Heath-Brown, D.R., _Ternary quadratic forms and sums of three square-full numbers_.

@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/703](https://www.erdosproblems.com/703)
 
+Let $T(n, r)$ be the maximum size of a family of subsets of $\{1, \ldots, n\}$ such that no two
+members intersect in exactly $r$ elements. The conjecture, proved by Frankl and Rödl, asserts that
+for every $\varepsilon > 0$ there exists $\delta > 0$ such that $T(n, r) < (2 - \delta)^n$ whenever
+$\varepsilon n < r < (1/2 - \varepsilon) n$.
+
 [FrRo87] Frankl, P. and Rödl, V., *Forbidden intersections*, Trans. Amer. Math. Soc. 300 (1987),
 259–286.
 -/

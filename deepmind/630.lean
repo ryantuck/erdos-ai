@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/630](https://www.erdosproblems.com/630)
 
+Erdős, Rubin, and Taylor asked whether every planar bipartite graph is 3-choosable
+(i.e., 3-list-colorable). This was proved by Alon and Tarsi.
+
 [ERT80] Erdős, P., Rubin, A. L., and Taylor, H., _Choosability in graphs_. Proceedings of the
 West Coast Conference on Combinatorics, Graph Theory and Computing (1980).
 
@@ -52,10 +55,9 @@ noncomputable def listChromaticNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
   sInf {k : ℕ | IsChoosable G k}
 
 /-- A graph is planar if it can be embedded in the plane without edge crossings.
-Mathlib does not yet have a formalization of graph planarity; we define it
+Mathlib does not yet have a formalization of graph planarity; we axiomatize it
 here as an opaque predicate. -/
-def IsPlanar {V : Type*} [Fintype V] (G : SimpleGraph V) : Prop :=
-  sorry
+opaque IsPlanar {V : Type*} [Fintype V] (G : SimpleGraph V) : Prop
 
 /--
 Erdős Problem 630 [ERT80]:

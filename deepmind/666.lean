@@ -74,24 +74,21 @@ def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
 /--
 Erdős Problem 666 (disproved) [Er91][Er92b][Er97f]:
 
-The original conjecture asked whether for every $\epsilon > 0$, if $n$ is sufficiently large,
-every subgraph of $Q_n$ with $\geq \epsilon \cdot n \cdot 2^{n-1}$ edges contains a $C_6$.
+Is it true that, for every $\epsilon > 0$, if $n$ is sufficiently large, every subgraph of $Q_n$
+with $\geq \epsilon \cdot n \cdot 2^{n-1}$ edges contains a $C_6$?
 
-This is false. Chung [Ch92] and Brouwer, Dejter, and Thomassen [BDT93] constructed
+The answer is no. Chung [Ch92] and Brouwer, Dejter, and Thomassen [BDT93] constructed
 an edge-partition of $Q_n$ into four subgraphs, each containing no $C_6$.
-
-Formalized as the negation: there exists $\epsilon > 0$ such that for all $n \geq 1$, there is a
-subgraph of $Q_n$ with at least $\epsilon \cdot n \cdot 2^{n-1}$ edges that contains no $C_6$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_666 :
-    ∃ ε : ℝ, ε > 0 ∧
-    ∀ n : ℕ, n ≥ 1 →
-    ∃ H : SimpleGraph (Fin n → Bool),
-      (∀ u v : Fin n → Bool, H.Adj u v → (hypercubeGraph n).Adj u v) ∧
-      (↑(H.edgeFinset.card) : ℝ) ≥ ε * ↑n * (2 : ℝ) ^ (n - 1 : ℕ) ∧
-      ¬∃ f : Fin 6 → (Fin n → Bool), Function.Injective f ∧
-        ∀ i j, (cycleGraph 6 (by omega)).Adj i j → H.Adj (f i) (f j) := by
+theorem erdos_666 : answer(False) ↔
+    (∀ ε : ℝ, ε > 0 →
+      ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+      ∀ H : SimpleGraph (Fin n → Bool),
+        (∀ u v, H.Adj u v → (hypercubeGraph n).Adj u v) →
+        (↑(H.edgeFinset.card) : ℝ) ≥ ε * ↑n * (2 : ℝ) ^ (n - 1 : ℕ) →
+        ∃ f : Fin 6 → (Fin n → Bool), Function.Injective f ∧
+          ∀ i j, (cycleGraph 6 (by omega)).Adj i j → H.Adj (f i) (f j)) := by
   sorry
 
 end Erdos666

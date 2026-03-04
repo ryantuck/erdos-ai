@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 343
 
+If a multiset of positive integers has positive lower density, must it be subcomplete?
+That is, must its set of finite subset sums contain an infinite arithmetic progression?
+Proved by Szemerédi and Vu.
+
 *Reference:* [erdosproblems.com/343](https://www.erdosproblems.com/343)
 
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
@@ -60,10 +64,11 @@ A problem of Folkman. Proved by Szemerédi and Vu [SzVu06].
 -/
 @[category research solved, AMS 5 11]
 theorem erdos_343 :
-    ∀ (mult : ℕ → ℕ),
-      mult 0 = 0 →
-      (∃ c : ℝ, 0 < c ∧ ∀ N : ℕ, 0 < N → c * (N : ℝ) ≤ (countUpTo mult N : ℝ)) →
-      ContainsInfiniteAP (subsetSums mult) := by
+    answer(True) ↔
+      ∀ (mult : ℕ → ℕ),
+        mult 0 = 0 →
+        (∃ c : ℝ, 0 < c ∧ ∀ N : ℕ, 0 < N → c * (N : ℝ) ≤ (countUpTo mult N : ℝ)) →
+        ContainsInfiniteAP (subsetSums mult) := by
   sorry
 
 end Erdos343

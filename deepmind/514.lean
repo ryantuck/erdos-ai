@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 514
 
+Does every entire transcendental function admit a continuous path going to infinity along which
+the function grows faster than any polynomial? A related question asks whether the growth rate
+along such a path can be estimated in terms of the maximum modulus.
+
 *Reference:* [erdosproblems.com/514](https://www.erdosproblems.com/514)
 -/
 

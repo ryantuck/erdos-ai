@@ -21,6 +21,8 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/270](https://www.erdosproblems.com/270)
 
+Let $f(n) \to \infty$. Is it true that $\sum 1/(n+1)\cdots(n+f(n))$ is irrational?
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980), p.66.
 
@@ -38,17 +40,26 @@ Let $f(n) \to \infty$ as $n \to \infty$. Is it true that
 $$\sum_{n \geq 1} \frac{1}{(n+1)\cdots(n+f(n))}$$
 is irrational?
 
-Disproved by Crmarić and Kovač [CrKo25]: for any $\alpha \in (0, \infty)$ there exists
-$f : \mathbb{N} \to \mathbb{N}$ such that $f(n) \to \infty$ and the sum equals $\alpha$.
-In particular, choosing $\alpha$ rational gives a counterexample to the original conjecture.
+Disproved by Crmarić and Kovač [CrKo25].
 -/
 @[category research solved, AMS 11 40]
-theorem erdos_270
-    (α : ℝ) (hα : 0 < α) :
-    ∃ f : ℕ → ℕ,
-      Tendsto f atTop atTop ∧
-      HasSum (fun n => (1 : ℝ) / (∏ i ∈ Finset.range (f (n + 1)),
-        ((n : ℝ) + 2 + (i : ℝ)))) α := by
+theorem erdos_270 : answer(False) ↔
+    ∀ f : ℕ → ℕ, Tendsto f atTop atTop →
+      Irrational (∑' n, (1 : ℝ) / ∏ i ∈ Finset.range (f (n + 1)),
+        ((n : ℝ) + 2 + (i : ℝ))) := by
+  sorry
+
+/--
+Stronger result from Crmarić and Kovač [CrKo25]: for any $\alpha > 0$ there exists
+$f : \mathbb{N} \to \mathbb{N}$ with $f(n) \to \infty$ such that the sum equals $\alpha$.
+-/
+@[category research solved, AMS 11 40]
+theorem erdos_270.variants.stronger_disproof :
+    ∀ α : ℝ, 0 < α →
+      ∃ f : ℕ → ℕ,
+        Tendsto f atTop atTop ∧
+        HasSum (fun n => (1 : ℝ) / (∏ i ∈ Finset.range (f (n + 1)),
+          ((n : ℝ) + 2 + (i : ℝ)))) α := by
   sorry
 
 end Erdos270

@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/871](https://www.erdosproblems.com/871)
 
+If $A$ is an additive basis of order $2$ whose representation function tends to infinity,
+can $A$ always be partitioned into two disjoint additive bases of order $2$?
+
 [ErNa88] Erdős, P. and Nathanson, M.B., *Partitions of bases into disjoint unions of bases*,
 J. Number Theory (1988).
 
@@ -63,17 +66,12 @@ be partitioned into two disjoint additive bases.
 
 Disproved by Larsen using Claude Opus 4.5 — only a small modification of
 the argument of [ErNa89] is required.
-
-Formalized as the negation: there exists an additive basis $A$ of order $2$
-whose representation function tends to infinity, yet $A$ cannot be partitioned
-into two disjoint additive bases of order $2$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_871 :
-    ∃ A : Set ℕ,
-      IsAdditiveBasis2 A ∧
-      Tendsto (fun n => (repCount A n : ℝ)) atTop atTop ∧
-      ¬ ∃ A₁ A₂ : Set ℕ,
+theorem erdos_871 : answer(False) ↔
+    ∀ A : Set ℕ, IsAdditiveBasis2 A ∧
+      Tendsto (fun n => (repCount A n : ℝ)) atTop atTop →
+      ∃ A₁ A₂ : Set ℕ,
         A₁ ∪ A₂ = A ∧ Disjoint A₁ A₂ ∧
         IsAdditiveBasis2 A₁ ∧ IsAdditiveBasis2 A₂ := by
   sorry

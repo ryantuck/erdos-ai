@@ -61,10 +61,10 @@ Formally: for all $k \geq 2$ and $l < l'$ in the range $(k, k^2/4]$, there exist
 such that for all $n \geq N_0$, $f(n;k,l) < f(n;k,l')$.
 -/
 @[category research open, AMS 5]
-theorem erdos_766 (k l l' : ℕ) (hk : k ≥ 2)
-    (hl : k < l) (hll' : l < l') (hl' : 4 * l' ≤ k ^ 2) :
-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
-      minExtremalNumber n k l < minExtremalNumber n k l' := by
+theorem erdos_766 : answer(sorry) ↔
+    ∀ (k l l' : ℕ), k ≥ 2 → k < l → l < l' → 4 * l' ≤ k ^ 2 →
+      ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+        minExtremalNumber n k l < minExtremalNumber n k l' := by
   sorry
 
 /--

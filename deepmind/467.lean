@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 467
 
+For all sufficiently large $x$, there exists a choice of congruence classes $a_p$ for every prime
+$p \leq x$, and a partition of the primes $\leq x$ into two non-empty sets, such that every
+$n < x$ is covered by some prime from each part.
+
 *Reference:* [erdosproblems.com/467](https://www.erdosproblems.com/467)
 
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number

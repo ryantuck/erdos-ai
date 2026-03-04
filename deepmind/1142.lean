@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1142
 
+Are there infinitely many $n$ such that $n - 2^k$ is prime for all $1 \leq k$ with
+$2^k < n$?
+
 *Reference:* [erdosproblems.com/1142](https://www.erdosproblems.com/1142)
 
 [Va99] Vaughan, R.C., *Some problems of Erdős in combinatorial number theory*, 1999.

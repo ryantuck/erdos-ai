@@ -62,8 +62,9 @@ must contain a composite number.
 -/
 @[category research open, AMS 11]
 theorem erdos_430 :
-    ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
-    ∃ k : ℕ, 2 ≤ seq n k ∧ ¬(seq n k).Prime := by
+    answer(sorry) ↔
+    (∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+    ∃ k : ℕ, 2 ≤ seq n k ∧ ¬(seq n k).Prime) := by
   sorry
 
 end Erdos430

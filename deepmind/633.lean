@@ -140,10 +140,21 @@ then it can only be dissected into a perfect square number of congruent
 triangles. [So09]
 -/
 @[category research solved, AMS 51]
-theorem erdos_633
+theorem erdos_633.variants.soifer
     (A B C : ℝ × ℝ) (hnd : NonDegenerate A B C)
     (hsides : IntIndepSides A B C) (hangles : IntIndepAngles A B C) :
     ∀ n : ℕ, 1 ≤ n → CanDissectInto A B C n → ∃ m : ℕ, n = m ^ 2 := by
   sorry
+
+/--
+Classify those non-degenerate triangles that can only be cut into a perfect
+square number of congruent triangles. The full classification remains open.
+-/
+@[category research open, AMS 51]
+theorem erdos_633 :
+    {T : (ℝ × ℝ) × (ℝ × ℝ) × (ℝ × ℝ) |
+      NonDegenerate T.1 T.2.1 T.2.2 ∧
+      ∀ n, 1 ≤ n → CanDissectInto T.1 T.2.1 T.2.2 n → ∃ m, n = m ^ 2} =
+    answer(sorry) := by sorry
 
 end Erdos633

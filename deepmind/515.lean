@@ -55,7 +55,7 @@ The case when $f$ has finite order was proved by Zhang [Zh77]. The general case
 was proved by Lewis, Rossi, and Weitsman [LRW84].
 -/
 @[category research solved, AMS 30]
-theorem erdos_515 :
+theorem erdos_515 : answer(True) ↔
     ∀ (f : ℂ → ℂ),
       Differentiable ℂ f →
       (¬ ∃ p : Polynomial ℂ, ∀ z, f z = p.eval z) →

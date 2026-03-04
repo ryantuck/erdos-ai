@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1023
 
+Erdős asked for the asymptotic behaviour of the maximum size of a union-free family of subsets
+of an n-element set, conjecturing that it is asymptotic to $c \cdot 2^n / \sqrt{n}$ for some
+constant $c > 0$.
+
 *Reference:* [erdosproblems.com/1023](https://www.erdosproblems.com/1023)
 
 [Er71] Erdős, P., *Some unsolved problems*, 1971, p. 105.

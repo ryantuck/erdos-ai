@@ -21,6 +21,12 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/954](https://www.erdosproblems.com/954)
 
+Let $0 = a_0 < a_1 < a_2 < \cdots$ be the Rosen sequence, where each $a_{k+1}$ is the
+smallest integer $n$ such that the number of pairs $(i,j)$ with $0 \le i \le j \le k$,
+$j \ge 1$, and $a_i + a_j \le n$ is strictly less than $n$. Is the total pair count
+$R(x) = \#\{(i,j) : i \le j,\, j \ge 1,\, a_i + a_j \le x\}$ equal to
+$x + O(x^{1/4 + o(1)})$?
+
 [Er77c] Erdős, P., *Problems and results in combinatorial number theory*, p.71.
 -/
 
@@ -74,11 +80,12 @@ whether $R(x) \le (1 + o(1))x$.
 -/
 @[category research open, AMS 5 11]
 theorem erdos_954 :
-    ∀ a : ℕ → ℕ, IsRosenSequence a →
-      ∀ ε : ℝ, 0 < ε →
-        ∃ C : ℝ, 0 < C ∧ ∀ᶠ (x : ℕ) in atTop,
-          abs ((rosenPairCountTotal a x : ℝ) - (x : ℝ)) ≤
-            C * (x : ℝ) ^ ((1 : ℝ) / 4 + ε) := by
+    answer(sorry) ↔
+      ∀ a : ℕ → ℕ, IsRosenSequence a →
+        ∀ ε : ℝ, 0 < ε →
+          ∃ C : ℝ, 0 < C ∧ ∀ᶠ (x : ℕ) in atTop,
+            abs ((rosenPairCountTotal a x : ℝ) - (x : ℝ)) ≤
+              C * (x : ℝ) ^ ((1 : ℝ) / 4 + ε) := by
   sorry
 
 end Erdos954

@@ -53,16 +53,12 @@ large integers (i.e., $A$ and $B$ are additive complements). If $A(x)B(x) \sim x
 (exact additive complements), then $A(x)B(x) - x \to \infty$ as $x \to \infty$.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_785
-    (A B : Set ℕ)
-    (hA_inf : Set.Infinite A)
-    (hB_inf : Set.Infinite B)
-    (h_complement : ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ → ∃ a ∈ A, ∃ b ∈ B, a + b = n)
-    (h_asymp : Tendsto
-      (fun x : ℕ => (countingFn A x * countingFn B x : ℝ) / (x : ℝ))
-      atTop (nhds 1)) :
-    Tendsto
-      (fun x : ℕ => (countingFn A x * countingFn B x : ℝ) - (x : ℝ))
+theorem erdos_785 : answer(True) ↔
+    ∀ (A B : Set ℕ), Set.Infinite A → Set.Infinite B →
+    (∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ → ∃ a ∈ A, ∃ b ∈ B, a + b = n) →
+    Tendsto (fun x : ℕ => (countingFn A x * countingFn B x : ℝ) / (x : ℝ))
+      atTop (nhds 1) →
+    Tendsto (fun x : ℕ => (countingFn A x * countingFn B x : ℝ) - (x : ℝ))
       atTop atTop := by
   sorry
 

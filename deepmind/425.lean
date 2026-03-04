@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 425
 
+Let $F(n)$ be the maximum size of a multiplicative Sidon subset of $\{1, \ldots, n\}$
+(where all pairwise products are distinct). The problem asks whether the error term
+$F(n) - \pi(n)$ has a precise asymptotic of the form $c \cdot n^{3/4} (\log n)^{-3/2}$
+for some constant $c > 0$, and poses a generalization to $r$-fold products.
+
 *Reference:* [erdosproblems.com/425](https://www.erdosproblems.com/425)
 
 [Er68] Erdős, P., _On some properties of prime factors of integers_. Nagoya Math. J. (1968).

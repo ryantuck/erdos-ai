@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 525
 
+Is it true that almost all $\pm 1$-coefficient polynomials of degree $n$ attain modulus less
+than $1$ somewhere on the unit circle?
+
 *Reference:* [erdosproblems.com/525](https://www.erdosproblems.com/525)
 
 [Er61] Erdős, P., _Some unsolved problems_, Magyar Tud. Akad. Mat. Kutató Int. Közl. 6 (1961),
@@ -63,7 +66,8 @@ Cook and Nguyen (2021) identified the limiting distribution.
 -/
 @[category research solved, AMS 42]
 theorem erdos_525 :
-    Tendsto (fun n => (countNoSmallValue n : ℝ) / (2 : ℝ) ^ n) atTop (nhds 0) := by
+    answer(True) ↔
+      Tendsto (fun n => (countNoSmallValue n : ℝ) / (2 : ℝ) ^ n) atTop (nhds 0) := by
   sorry
 
 end Erdos525

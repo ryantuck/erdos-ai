@@ -61,14 +61,13 @@ def HasMonochromaticModuli {k : ℕ} (χ : ℕ → Fin k) (S : Finset (ℤ × �
 The Erdős–Graham conjecture asked: for any finite colouring of the positive integers,
 must there exist a covering system all of whose moduli are monochromatic?
 
-The answer is **no**: there exists a finite colouring of the positive integers such that no
-covering system has all its moduli the same colour. This follows from Hough's theorem [Ho15]
-that every covering system must contain a modulus below an absolute bound.
+The answer is **no**, as a consequence of Hough's theorem [Ho15] that every covering system
+must contain a modulus below an absolute bound.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_8 :
-    ∃ k : ℕ, 0 < k ∧ ∃ χ : ℕ → Fin k,
-      ∀ S : Finset (ℤ × ℕ), IsCoveringSystem S → ¬HasMonochromaticModuli χ S := by
+theorem erdos_8 : answer(False) ↔
+    (∀ k : ℕ, 0 < k → ∀ χ : ℕ → Fin k,
+      ∃ S : Finset (ℤ × ℕ), IsCoveringSystem S ∧ HasMonochromaticModuli χ S) := by
   sorry
 
 end Erdos8

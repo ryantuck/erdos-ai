@@ -55,9 +55,10 @@ exceeds $n^c$ for infinitely many $n$.
 -/
 @[category research open, AMS 11]
 theorem erdos_322 :
-    ∀ k : ℕ, 3 ≤ k →
-      ∃ c : ℝ, 0 < c ∧
-        ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ (kthPowerReps k n : ℝ) > (n : ℝ) ^ c := by
+    answer(sorry) ↔
+      ∀ k : ℕ, 3 ≤ k →
+        ∃ c : ℝ, 0 < c ∧
+          ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ (kthPowerReps k n : ℝ) > (n : ℝ) ^ c := by
   sorry
 
 end Erdos322

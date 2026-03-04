@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/491](https://www.erdosproblems.com/491)
 
+If $f$ is an additive arithmetic function (i.e. $f(ab) = f(a) + f(b)$ whenever $\gcd(a,b) = 1$)
+and there is a constant $c$ such that $|f(n+1) - f(n)| < c$ for all $n$, must there exist a
+constant $c'$ such that $f(n) = c' \log n + O(1)$?
+
 [Wi70] Wirsing, E., _A characterization of $\log n$ as an additive arithmetic function_, 1970.
 -/
 
@@ -41,9 +45,9 @@ all $n$, then there exist constants $c'$ and $M$ such that $|f(n) - c' \log n| \
 for all $n \geq 1$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_491 (f : ℕ → ℝ)
-    (hf : IsAdditiveArithmeticFunction f)
-    (hbdd : ∃ c : ℝ, ∀ n : ℕ, |f (n + 1) - f n| < c) :
+theorem erdos_491 : answer(True) ↔
+    ∀ f : ℕ → ℝ, IsAdditiveArithmeticFunction f →
+    (∃ c : ℝ, ∀ n : ℕ, |f (n + 1) - f n| < c) →
     ∃ c' : ℝ, ∃ M : ℝ, ∀ n : ℕ, 1 ≤ n →
       |f n - c' * Real.log (n : ℝ)| ≤ M := by
   sorry

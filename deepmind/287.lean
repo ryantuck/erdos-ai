@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/287](https://www.erdosproblems.com/287)
 
+Is it true that any Egyptian fraction representation of 1 with distinct denominators greater
+than 1 must have a consecutive gap of at least 3?
+
 [Er32] Erdős, P., _Egyszerű bizonyítás Kürschák egy tételére_ (1932).
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number

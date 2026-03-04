@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 271
 
+Stanley sequences are constructed by starting from $\{0, n\}$ and greedily avoiding 3-term
+arithmetic progressions. The Odlyzko–Stanley conjecture asserts a dichotomy on their growth rates:
+every such sequence eventually grows either as $\Theta(k^{\log_2 3})$ or as $\Theta(k^2 / \log k)$.
+
 *Reference:* [erdosproblems.com/271](https://www.erdosproblems.com/271)
 
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number

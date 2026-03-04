@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 345
 
+Asks whether the threshold of completeness $T$ (the least $m$ such that all $n \ge m$ are
+representable as a finite subset sum) satisfies $T(n^k) > T(n^{k+1})$ for infinitely many $k$.
+
 *Reference:* [erdosproblems.com/345](https://www.erdosproblems.com/345)
 
 [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number

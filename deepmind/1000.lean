@@ -58,7 +58,7 @@ $$\lim_{N \to \infty} \frac{1}{N} \sum_{k \leq N} \frac{\varphi_A(k)}{n_k} = 0.$
 Proved by Haight [Ha].
 -/
 @[category research solved, AMS 11]
-theorem erdos_1000 :
+theorem erdos_1000 : answer(True) ↔
     ∃ a : ℕ → ℕ, StrictMono a ∧ (∀ i, 0 < a i) ∧
     Filter.Tendsto
       (fun N : ℕ => (∑ k ∈ Finset.range N, (phiA a k : ℝ) / (a k : ℝ)) / (N : ℝ))

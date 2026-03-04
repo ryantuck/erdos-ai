@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/305](https://www.erdosproblems.com/305)
 
+For integers $1 \leq a < b$, let $D(a,b)$ be the largest denominator in an optimal
+Egyptian fraction representation of $a/b$, and let $D(b) = \max_{1 \leq a < b} D(a,b)$.
+Is it true that $D(b) \ll b(\log b)^{1+o(1)}$?
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
 
@@ -71,6 +75,7 @@ $C \cdot b \cdot (\log b)^{1+\varepsilon}$.
 -/
 @[category research open, AMS 11]
 theorem erdos_305 :
+    answer(sorry) ↔
     ∀ ε : ℝ, 0 < ε →
       ∃ C : ℝ, 0 < C ∧
       ∃ b₀ : ℕ, ∀ b : ℕ, b₀ ≤ b →

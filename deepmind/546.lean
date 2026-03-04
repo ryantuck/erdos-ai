@@ -64,7 +64,7 @@ number of edges.
 This was proved by Sudakov [Su11].
 -/
 @[category research solved, AMS 5]
-theorem erdos_546 :
+theorem erdos_546 : answer(True) ↔
     ∃ C : ℝ, C > 0 ∧
     ∀ (k : ℕ) (G : SimpleGraph (Fin k)),
       (∀ v : Fin k, ∃ w : Fin k, G.Adj v w) →

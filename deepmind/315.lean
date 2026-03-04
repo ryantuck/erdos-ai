@@ -21,6 +21,12 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/315](https://www.erdosproblems.com/315)
 
+Is it true that the Sylvester (greedy) sequence uniquely maximizes the growth rate
+among all Egyptian fraction representations of 1? That is, if
+$a_0 < a_1 < \ldots$ is any strictly increasing sequence of positive integers with
+$\sum 1/a_n = 1$ other than the Sylvester sequence, is $\liminf a_n^{1/2^n} < c_0$,
+where $c_0$ is the Vardi constant?
+
 [Ka25] Kamio, 2025.
 
 [LiTa25] Li and Tang, 2025.
@@ -58,7 +64,7 @@ representation uniquely maximizes the growth rate $\liminf$.
 This was proved independently by Kamio [Ka25] and Li–Tang [LiTa25].
 -/
 @[category research solved, AMS 11 40]
-theorem erdos_315 :
+theorem erdos_315 : answer(True) ↔
     ∀ (a : ℕ → ℕ),
       StrictMono a →
       (∀ n, 0 < a n) →

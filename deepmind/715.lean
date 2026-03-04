@@ -59,12 +59,13 @@ is $3$-regular, and $H$ has at least one vertex.
 Proved by Tashkinov [Ta82].
 -/
 @[category research solved, AMS 5]
-theorem erdos_715 {V : Type*} [Fintype V] [DecidableEq V]
-    (G : SimpleGraph V) [DecidableRel G.Adj]
-    (hreg : G.IsRegularOfDegree 4) :
-    ∃ H : G.Subgraph,
-      H.verts.Nonempty ∧
-      ∀ v : H.verts, H.degree v = 3 := by
+theorem erdos_715 : answer(True) ↔
+    ∀ (V : Type*) [Fintype V] [DecidableEq V]
+      (G : SimpleGraph V) [DecidableRel G.Adj],
+      G.IsRegularOfDegree 4 →
+      ∃ H : G.Subgraph,
+        H.verts.Nonempty ∧
+        ∀ v : H.verts, H.degree v = 3 := by
   sorry
 
 /--
@@ -75,13 +76,14 @@ Every $r$-regular simple graph with $r \geq 5$ contains a $3$-regular subgraph.
 Proved by Alon, Friedland, and Kalai [AFK84].
 -/
 @[category research solved, AMS 5]
-theorem erdos_715.variants.r_geq_5 {V : Type*} [Fintype V] [DecidableEq V]
-    (G : SimpleGraph V) [DecidableRel G.Adj]
-    (r : ℕ) (hr : r ≥ 5)
-    (hreg : G.IsRegularOfDegree r) :
-    ∃ H : G.Subgraph,
-      H.verts.Nonempty ∧
-      ∀ v : H.verts, H.degree v = 3 := by
+theorem erdos_715.variants.r_geq_5 : answer(True) ↔
+    ∀ (V : Type*) [Fintype V] [DecidableEq V]
+      (G : SimpleGraph V) [DecidableRel G.Adj]
+      (r : ℕ), r ≥ 5 →
+      G.IsRegularOfDegree r →
+      ∃ H : G.Subgraph,
+        H.verts.Nonempty ∧
+        ∀ v : H.verts, H.degree v = 3 := by
   sorry
 
 end Erdos715

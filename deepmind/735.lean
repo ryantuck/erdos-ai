@@ -42,6 +42,7 @@ open Finset BigOperators Classical
 
 namespace Erdos735
 
+/-- The Euclidean plane. -/
 abbrev R2 := EuclideanSpace ℝ (Fin 2)
 
 /-- A finite set of points in $\mathbb{R}^2$ admits a balanced weighting if there exist positive

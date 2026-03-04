@@ -56,7 +56,7 @@ The lower density condition is formalized as: there exists $\delta > 1/3$ and $N
 such that $|A \cap [1, N]| \geq \delta \cdot N$ for all $N \geq N_0$.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_1136 :
+theorem erdos_1136 : answer(True) ↔
     ∃ (A : Set ℕ),
       PowerOfTwoSumFree A ∧
       ∃ (δ : ℝ), δ > 1/3 ∧

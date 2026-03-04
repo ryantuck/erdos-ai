@@ -59,6 +59,7 @@ $g(n) \leq \pi(n) + \pi(\lfloor\sqrt{n}\rfloor) + O(n^{5/12 + o(1)})$.
 -/
 @[category research solved, AMS 5 11]
 theorem erdos_795 :
+    answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       (maxDistinctProductSetSize n : ℝ) ≤

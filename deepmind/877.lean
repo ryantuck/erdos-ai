@@ -68,6 +68,7 @@ $f_m(n) = 2^{(1/4+o(1))n}$ established by Balogh–Liu–Sharifzadeh–Treglown 
 -/
 @[category research solved, AMS 5]
 theorem erdos_877 :
+    answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       (maximalSumFreeCount n : ℝ) ≤ ε * (2 : ℝ) ^ ((n : ℝ) / 2) := by

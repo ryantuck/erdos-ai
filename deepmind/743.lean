@@ -50,9 +50,10 @@ Then the complete graph $K_n$ can be decomposed into edge-disjoint copies
 of these trees. Also known as the tree packing conjecture (Gyárfás).
 -/
 @[category research open, AMS 5]
-theorem erdos_743 (n : ℕ) (hn : 2 ≤ n)
-    (T : (k : Fin (n - 1)) → SimpleGraph (Fin (k.val + 2)))
-    (hTree : ∀ k, (T k).IsTree) :
+theorem erdos_743 : answer(sorry) ↔
+    ∀ (n : ℕ), 2 ≤ n →
+    ∀ (T : (k : Fin (n - 1)) → SimpleGraph (Fin (k.val + 2))),
+    (∀ k, (T k).IsTree) →
     ∃ (f : (k : Fin (n - 1)) → Fin (k.val + 2) → Fin n),
       -- Each embedding is injective
       (∀ k, Function.Injective (f k)) ∧

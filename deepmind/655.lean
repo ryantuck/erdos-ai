@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 655
 
+Let $x_1, \ldots, x_n \in \mathbb{R}^2$ be such that no circle centered at one of the $x_i$
+passes through three others. Are there at least $(1 + c) n / 2$ distinct distances for some
+constant $c > 0$ and all $n$ sufficiently large?
+
 *Reference:* [erdosproblems.com/655](https://www.erdosproblems.com/655)
 -/
 
@@ -50,13 +54,13 @@ by the points is at least $(1 + c) \cdot n / 2$ for some constant $c > 0$ and al
 sufficiently large.
 -/
 @[category research open, AMS 52]
-theorem erdos_655 :
-  ∃ c : ℝ, c > 0 ∧
-    ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
-      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
-        P.card = n →
-        NoThreeEquidistantFromCenter P →
-        (distinctDistanceCount P : ℝ) ≥ (1 + c) * (n : ℝ) / 2 := by
+theorem erdos_655 : answer(sorry) ↔
+    ∃ c : ℝ, c > 0 ∧
+      ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+          P.card = n →
+          NoThreeEquidistantFromCenter P →
+          (distinctDistanceCount P : ℝ) ≥ (1 + c) * (n : ℝ) / 2 := by
   sorry
 
 end Erdos655

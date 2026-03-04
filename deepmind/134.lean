@@ -57,6 +57,7 @@ graph with diameter $\leq 2$ by adding at most $\delta n^2$ edges.
 -/
 @[category research solved, AMS 5]
 theorem erdos_134 :
+    answer(True) ↔
     ∀ ε δ : ℝ, 0 < ε → 0 < δ → ∀ᶠ n : ℕ in atTop,
       ∀ G : SimpleGraph (Fin n),
         G.CliqueFree 3 →

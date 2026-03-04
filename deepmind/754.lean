@@ -53,6 +53,7 @@ points at a common distance from $x$, then $k \leq n/2 + C$.
 -/
 @[category research solved, AMS 52]
 theorem erdos_754 :
+    answer(True) ↔
     ∃ C : ℝ, ∀ n : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 4)),
       A.card = n →
       ∀ k : ℕ,

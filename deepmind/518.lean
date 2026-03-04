@@ -50,13 +50,12 @@ $\lceil\sqrt{n}\rceil \leq \text{Nat.sqrt}\; n + 1$ for all $n$.
 Solved in the affirmative by Pokrovskiy, Versteegen, and Williams [PVW24].
 -/
 @[category research solved, AMS 5]
-theorem erdos_518 (n : ℕ)
-    (c : Fin n → Fin n → Bool)
-    (hc : ∀ i j : Fin n, c i j = c j i) :
-    ∃ (b : Bool) (paths : List (List (Fin n))),
-      paths.length ≤ Nat.sqrt n + 1 ∧
-      (∀ p ∈ paths, p.Nodup ∧ IsMonochromaticPath c b p) ∧
-      (∀ v : Fin n, ∃ p ∈ paths, v ∈ p) := by
-  sorry
+theorem erdos_518 : answer(True) ↔
+    ∀ (n : ℕ) (c : Fin n → Fin n → Bool),
+      (∀ i j : Fin n, c i j = c j i) →
+      ∃ (b : Bool) (paths : List (List (Fin n))),
+        paths.length ≤ Nat.sqrt n + 1 ∧
+        (∀ p ∈ paths, p.Nodup ∧ IsMonochromaticPath c b p) ∧
+        (∀ v : Fin n, ∃ p ∈ paths, v ∈ p) := by sorry
 
 end Erdos518

@@ -60,11 +60,11 @@ least $\lfloor n^2/4 \rfloor + k$ edges, where $k < cn$, contains at least $k - 
 many edge-disjoint triangles. Proved by Györi [Gy88].
 -/
 @[category research solved, AMS 5]
-theorem erdos_1009 (c : ℝ) (hc : c > 0) :
+theorem erdos_1009 : answer(True) ↔
+    ∀ c : ℝ, c > 0 →
     ∃ f : ℕ, ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
     ∀ k : ℕ, (k : ℝ) < c * (n : ℝ) →
     G.edgeFinset.card ≥ n ^ 2 / 4 + k →
-    HasEdgeDisjointTriangles G (k - f) := by
-  sorry
+    HasEdgeDisjointTriangles G (k - f) := by sorry
 
 end Erdos1009

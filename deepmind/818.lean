@@ -48,6 +48,7 @@ we have $|A \cdot A| \geq c \cdot |A|^2 / (\log |A|)^C$.
 -/
 @[category research solved, AMS 5 11]
 theorem erdos_818 :
+    answer(True) ↔
     ∃ C : ℝ, C > 0 ∧
     ∀ K : ℝ, K > 0 →
     ∃ c : ℝ, c > 0 ∧

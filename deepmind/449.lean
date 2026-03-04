@@ -42,15 +42,16 @@ def closeDivisorPairs (n : ℕ) : ℕ :=
 
 /-- Erdős Problem 449 (DISPROVED by Ford, via the negative solution to [448]):
 
-For every $K > 0$, the upper density of $\{n : r(n) \geq K \cdot \tau(n)\}$ is positive.
-This disproves the original conjecture that $r(n) < \epsilon \cdot \tau(n)$ for almost all $n$. -/
+Is it true that for every $\epsilon > 0$, $r(n) < \epsilon \cdot \tau(n)$ for
+almost all $n$? The answer is no. -/
 @[category research solved, AMS 11]
-theorem erdos_449 :
-    ∀ K : ℝ, K > 0 →
-    ∃ c : ℝ, c > 0 ∧
-      ∀ N₀ : ℕ, ∃ N : ℕ, N₀ ≤ N ∧
-        c ≤ ((Finset.Icc 1 N).filter (fun n =>
-          (closeDivisorPairs n : ℝ) ≥ K * (n.divisors.card : ℝ))).card / (N : ℝ) := by
+theorem erdos_449 : answer(False) ↔
+    ∀ ε : ℝ, ε > 0 →
+    ∀ δ : ℝ, δ > 0 →
+    ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+      ((Finset.Icc 1 N).filter (fun n =>
+        (closeDivisorPairs n : ℝ) ≥ ε * (n.divisors.card : ℝ))).card /
+          (N : ℝ) < δ := by
   sorry
 
 end Erdos449

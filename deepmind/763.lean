@@ -56,8 +56,9 @@ $\sum_{n \leq N} 1_A \ast 1_A(n) = cN + O(1)$. That is, the error
 term $|\sum_{n \leq N} 1_A \ast 1_A(n) - cN|$ is unbounded.
 -/
 @[category research solved, AMS 11]
-theorem erdos_763 (A : Set ℕ) (c : ℝ) (hc : c > 0) :
-    ¬ ∃ C : ℝ, ∀ N : ℕ, |↑(repSum A N) - c * ↑N| ≤ C := by
+theorem erdos_763 : answer(False) ↔
+    ∃ (A : Set ℕ) (c : ℝ), c > 0 ∧
+      ∃ C : ℝ, ∀ N : ℕ, |↑(repSum A N) - c * ↑N| ≤ C := by
   sorry
 
 end Erdos763

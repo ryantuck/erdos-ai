@@ -60,18 +60,18 @@ noncomputable def finChromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :
 
 /-- A graph on $\text{Fin}(n)$ has girth greater than $m$ if every cycle has length
     strictly greater than $m$. -/
-def hasGirthGt {n : ℕ} (G : SimpleGraph (Fin n)) (m : ℕ) : Prop :=
+def HasGirthGt {n : ℕ} (G : SimpleGraph (Fin n)) (m : ℕ) : Prop :=
   ∀ v : Fin n, ∀ p : G.Walk v v, p.IsCycle → m < p.length
 
 /-- $g_k(n)$ is the largest $m$ such that there exists a graph on $n$ vertices
     with chromatic number $k$ and girth $> m$. Returns $0$ if no such graph exists. -/
 noncomputable def g (k n : ℕ) : ℕ :=
-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n), finChromaticNumber G = k ∧ hasGirthGt G m}
+  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n), finChromaticNumber G = k ∧ HasGirthGt G m}
 
 /-- $h^{(m)}(n)$ is the maximal chromatic number of a graph on $n$ vertices
     with girth $> m$. -/
 noncomputable def h (m n : ℕ) : ℕ :=
-  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n), finChromaticNumber G = k ∧ hasGirthGt G m}
+  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n), finChromaticNumber G = k ∧ HasGirthGt G m}
 
 /--
 **Erdős Problem 626, Part 1** [Er59b][Er62b][Er69b]:

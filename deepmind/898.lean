@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 898
 
+If P is a point in the interior of triangle ABC, and D_a, D_b, D_c are the feet of the
+perpendiculars from P to the sides BC, CA, AB respectively, then
+PA + PB + PC ≥ 2(PD_a + PD_b + PD_c).
+
 *Reference:* [erdosproblems.com/898](https://www.erdosproblems.com/898)
 
 [Er82e] Erdős, P., *Personal favorites*, p.61.

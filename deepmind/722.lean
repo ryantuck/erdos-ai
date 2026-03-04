@@ -69,10 +69,11 @@ necessary divisibility conditions are satisfied, then a Steiner system
 $S(r, k, n)$ exists.
 -/
 @[category research solved, AMS 5]
-theorem erdos_722 (r k : ℕ) (hr : r ≥ 1) (hkr : k > r) :
-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-      SteinerDivisibilityConditions r k n →
-      ∃ F : Finset (Finset (Fin n)), IsSteinerSystem r k n F := by
+theorem erdos_722 : answer(True) ↔
+    ∀ (r k : ℕ), r ≥ 1 → k > r →
+      ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+        SteinerDivisibilityConditions r k n →
+        ∃ F : Finset (Finset (Fin n)), IsSteinerSystem r k n F := by
   sorry
 
 end Erdos722

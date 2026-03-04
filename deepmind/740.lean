@@ -59,13 +59,13 @@ A question of Erdős and Hajnal. Rödl proved the case
 $\mathfrak{m} = \aleph_0$, $r = 3$.
 -/
 @[category research open, AMS 5]
-theorem erdos_740 {V : Type u} (G : SimpleGraph V)
-    (𝔪 : Cardinal.{u}) (h𝔪_inf : ℵ₀ ≤ 𝔪)
-    (hχ : cardChromaticNumber G = 𝔪) (r : ℕ) (hr : 1 ≤ r) :
-    ∃ (W : Type u) (H : SimpleGraph W),
-      cardChromaticNumber H = 𝔪 ∧
-      (∃ f : W → V, Function.Injective f ∧ ∀ a b, H.Adj a b → G.Adj (f a) (f b)) ∧
-      (∀ (w : W) (p : H.Walk w w), p.IsCycle → Odd p.length → r < p.length) := by
+theorem erdos_740 : answer(sorry) ↔
+    ∀ {V : Type u} (G : SimpleGraph V) (𝔪 : Cardinal.{u}),
+      ℵ₀ ≤ 𝔪 → cardChromaticNumber G = 𝔪 → ∀ (r : ℕ), 1 ≤ r →
+        ∃ (W : Type u) (H : SimpleGraph W),
+          cardChromaticNumber H = 𝔪 ∧
+          (∃ f : W → V, Function.Injective f ∧ ∀ a b, H.Adj a b → G.Adj (f a) (f b)) ∧
+          (∀ (w : W) (p : H.Walk w w), p.IsCycle → Odd p.length → r < p.length) := by
   sorry
 
 end Erdos740

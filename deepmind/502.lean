@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/502](https://www.erdosproblems.com/502)
 
+Erdős asked (after Coxeter): what is the maximum size of a subset of $\mathbb{R}^n$
+with only two distinct pairwise distances? Bannai, Bannai, and Stanton proved an
+upper bound of $\binom{n+2}{2}$.
+
 [Er61] Erdős, P., *Számelmélet és gráfelmélet* (1961).
 
 [BBS83] Bannai, E., Bannai, E., and Stanton, D., *An upper bound for the cardinality of an
@@ -43,13 +47,9 @@ noncomputable def IsTwoDistanceSet {n : ℕ} (A : Finset (EuclideanSpace ℝ (Fi
 /--
 Erdős Problem 502 — Bannai–Bannai–Stanton Upper Bound [Er61] [BBS83]:
 
-What is the size of the largest $A \subseteq \mathbb{R}^n$ such that there are only two
-distinct distances between elements of $A$?
-
-Originally asked to Erdős by Coxeter. Bannai, Bannai, and Stanton proved
-that $|A| \le \binom{n+2}{2}$. A simpler proof was given by Petrov and Pohoata
-[PePo21]. The best known lower bound is $\binom{n+1}{2}$ via a construction
-of Alweiss.
+Any two-distance set $A \subseteq \mathbb{R}^n$ has at most $\binom{n+2}{2}$ elements.
+A simpler proof was given by Petrov and Pohoata [PePo21]. The best known lower bound
+is $\binom{n+1}{2}$ via a construction of Alweiss.
 -/
 @[category research solved, AMS 5 52]
 theorem erdos_502

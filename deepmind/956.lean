@@ -52,7 +52,7 @@ one can find a compact convex set $C \subset \mathbb{R}^2$ and $n$ translation v
 translates of $C$ are pairwise disjoint with more than $n^{1+c}$ pairs at
 unit set-distance.
 -/
-@[category research open, AMS 52 5]
+@[category research open, AMS 5 52]
 theorem erdos_956 :
     ∃ c : ℝ, c > 0 ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
@@ -76,7 +76,7 @@ $h(n) \ll n^{4/3}$. For any compact convex set $C$ and $n$ translations with
 pairwise disjoint translates, the number of pairs at unit set-distance
 is $O(n^{4/3})$.
 -/
-@[category research solved, AMS 52 5]
+@[category research solved, AMS 5 52]
 theorem erdos_956.variants.upper_bound :
     ∃ K : ℝ, K > 0 ∧
     ∀ (C : Set (EuclideanSpace ℝ (Fin 2))),

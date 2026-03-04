@@ -75,7 +75,7 @@ $\alpha \geq 3^{1/3} \approx 1.442$. Bradač conjectures that the true value is
 $\alpha = 3^{1/3}$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_150 :
+theorem erdos_150 : answer(True) ↔
     ∃ α : ℝ, α < 2 ∧
       Tendsto (fun n : ℕ => (c n : ℝ) ^ ((1 : ℝ) / (n : ℝ)))
         atTop (nhds α) := by

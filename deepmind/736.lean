@@ -59,7 +59,7 @@ subgraph of $G_m$ is also a subgraph of $G$.
 A conjecture of Walter Taylor. Komjáth and Shelah [KoSh05] proved that
 this is consistently false (not provable in ZFC).
 -/
-@[category research open, AMS 5 3]
+@[category research open, AMS 3 5]
 theorem erdos_736 : answer(sorry) ↔
     ∀ (V : Type u) (G : SimpleGraph V),
     cardChromaticNumber G = aleph 1 →

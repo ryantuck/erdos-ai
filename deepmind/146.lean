@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 146
 
+Erdős and Simonovits conjectured that the Turán number of any $r$-degenerate bipartite
+graph $H$ satisfies $\text{ex}(n; H) = O(n^{2 - 1/r})$.
+
 *Reference:* [erdosproblems.com/146](https://www.erdosproblems.com/146)
 
 [ErSi84] Erdős, P. and Simonovits, M., *Cube-supersaturated graphs and related

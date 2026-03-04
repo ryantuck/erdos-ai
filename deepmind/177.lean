@@ -44,13 +44,24 @@ open Finset BigOperators Real
 namespace Erdos177
 
 /--
+Erdős Problem 177: Find the smallest function $h(d)$ such that there exists
+a $\pm 1$ coloring $f$ of $\mathbb{N}$ where for every $d \geq 1$, the discrepancy over
+any finite arithmetic progression with common difference $d$ is at most $h(d)$.
+-/
+@[category research open, AMS 5 11]
+theorem erdos_177 :
+    ∃ f : ℕ → ℤ, (∀ n, f n = 1 ∨ f n = -1) ∧
+    ∀ d : ℕ, 0 < d → ∀ a k : ℕ, 0 < k →
+      |(↑(∑ i ∈ range k, f (a + i * d)) : ℝ)| ≤ answer(sorry) d := by sorry
+
+/--
 Erdős Problem 177 — Lower bound (Roth [Ro64]):
 For any $\pm 1$ coloring of $\mathbb{N}$ and any $d \geq 1$, there exists a finite arithmetic
 progression of common difference $d$ with discrepancy at least $c \cdot \sqrt{d}$.
 That is, $h(d) \gg d^{1/2}$.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_177 :
+theorem erdos_177.variants.lower :
     ∃ c : ℝ, 0 < c ∧ ∀ f : ℕ → ℤ,
     (∀ n, f n = 1 ∨ f n = -1) →
     ∀ d : ℕ, 0 < d →

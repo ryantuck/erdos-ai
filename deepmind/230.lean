@@ -56,18 +56,15 @@ polynomial $P(z) = \sum_{k=1}^{n} a_k z^k$ with unimodular coefficients
 Kahane [Ka80] disproved this by constructing 'ultraflat' polynomials where
 $|P(z)| = (1+o(1))\sqrt{n}$ uniformly on the unit circle.
 
-Formalized as the negation: for every $\varepsilon > 0$ and all sufficiently large $n$,
-there exists a polynomial with unimodular coefficients whose maximum modulus
-on the unit circle is at most $(1 + \varepsilon)\sqrt{n}$.
+The RHS formalizes the original yes/no question; `answer(False)` records that
+the answer is negative (disproved by Kahane).
 -/
 @[category research solved, AMS 42]
-theorem erdos_230 :
-    ∀ ε : ℝ, 0 < ε →
-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
-    ∃ a : Fin n → ℂ,
-      (∀ k : Fin n, ‖a k‖ = 1) ∧
-      ∀ z : ℂ, ‖z‖ = 1 →
-        ‖∑ k : Fin n, a k * z ^ (k.val + 1)‖ ≤ (1 + ε) * Real.sqrt ↑n := by
+theorem erdos_230 : answer(False) ↔
+    ∃ c : ℝ, 0 < c ∧ ∀ n : ℕ, 2 ≤ n →
+    ∀ a : Fin n → ℂ, (∀ k : Fin n, ‖a k‖ = 1) →
+    ∃ z : ℂ, ‖z‖ = 1 ∧
+      (1 + c) * Real.sqrt ↑n ≤ ‖∑ k : Fin n, a k * z ^ (k.val + 1)‖ := by
   sorry
 
 end Erdos230

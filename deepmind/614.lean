@@ -52,14 +52,12 @@ noncomputable def erdos614_f (n k : ℕ) : ℕ :=
 /--
 **Erdős Problem 614** [FRS97]:
 
-For $n \geq k + 2$, the function $f(n, k)$ is well-defined. The complete graph on $n$ vertices
-witnesses this: every $(k+2)$-element induced subgraph is $K_{k+2}$ with maximum degree
-$k+1 \geq k$. The problem asks to determine the exact value of $f(n, k)$.
+Determine $f(n,k)$, the minimum number of edges in a graph on $n$ vertices such that every
+subset of $k+2$ vertices induces a subgraph with maximum degree at least $k$.
 -/
 @[category research open, AMS 5]
-theorem erdos_614 (n k : ℕ) (hn : n ≥ k + 2) :
-    ∃ G : SimpleGraph (Fin n),
-      G.edgeFinset.card = erdos614_f n k ∧ HasInducedDegreeProp G k := by
+theorem erdos_614 : ∀ n k : ℕ, n ≥ k + 2 →
+    erdos614_f n k = answer(sorry) := by
   sorry
 
 end Erdos614

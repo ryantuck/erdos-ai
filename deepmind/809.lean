@@ -57,12 +57,13 @@ For every $\varepsilon > 0$, for sufficiently large $n$, $F_k(n)$ lies between
 $(1-\varepsilon)n^2/8$ and $(1+\varepsilon)n^2/8$.
 -/
 @[category research open, AMS 5]
-theorem erdos_809 (k : ℕ) (hk : k ≥ 3) (ε : ℝ) (hε : 0 < ε) :
-    ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
-      (∃ r : ℕ, (↑r : ℝ) ≤ (1 + ε) * ↑n ^ 2 / 8 ∧
-        AdmitsRainbowOddCycleColoring k n r) ∧
-      (∀ r : ℕ, (↑r : ℝ) < (1 - ε) * ↑n ^ 2 / 8 →
-        ¬AdmitsRainbowOddCycleColoring k n r) := by
+theorem erdos_809 : answer(sorry) ↔
+    ∀ (k : ℕ), k ≥ 3 → ∀ (ε : ℝ), 0 < ε →
+      ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+        (∃ r : ℕ, (↑r : ℝ) ≤ (1 + ε) * ↑n ^ 2 / 8 ∧
+          AdmitsRainbowOddCycleColoring k n r) ∧
+        (∀ r : ℕ, (↑r : ℝ) < (1 - ε) * ↑n ^ 2 / 8 →
+          ¬AdmitsRainbowOddCycleColoring k n r) := by
   sorry
 
 end Erdos809

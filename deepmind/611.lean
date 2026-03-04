@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/611](https://www.erdosproblems.com/611)
 
+Let $\tau(G)$ denote the minimum number of vertices needed to intersect every maximal
+clique of a graph $G$. Erdős, Gallai, and Tuza conjectured that if every maximal clique
+of $G$ on $n$ vertices has at least $cn$ vertices (for a fixed constant $c > 0$), then
+$\tau(G) = o(n)$.
+
 [EGT92] Erdős, P., Gallai, T., and Tuza, Z., _Covering the cliques of a graph with vertices_.
 Discrete Mathematics (1992).
 

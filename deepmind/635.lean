@@ -78,12 +78,12 @@ threshold $t$ has $|A| \leq (1/2 + \varepsilon) \cdot N$. [Gu83][Ru99]
 Equivalently, $\mathrm{maxDivAvoidance}(N, t) / N \to 1/2$ as $N \to \infty$ for any fixed $t$.
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_635 (t : ℕ) (ht : t ≥ 1) :
-    ∀ ε : ℝ, ε > 0 →
-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
-      ∀ A : Finset ℕ, A ⊆ Finset.Icc 1 N →
-        DivAvoidance A t →
-          (A.card : ℝ) ≤ (1 / 2 + ε) * (N : ℝ) := by
+theorem erdos_635 : answer(True) ↔
+    ∀ t : ℕ, t ≥ 1 → ∀ ε : ℝ, ε > 0 →
+      ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+        ∀ A : Finset ℕ, A ⊆ Finset.Icc 1 N →
+          DivAvoidance A t →
+            (A.card : ℝ) ≤ (1 / 2 + ε) * (N : ℝ) := by
   sorry
 
 end Erdos635

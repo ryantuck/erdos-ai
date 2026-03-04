@@ -42,21 +42,21 @@ namespace Erdos190
 /-- A colouring $\chi : \mathbb{N} \to \mathbb{N}$ has a monochromatic $k$-term arithmetic
 progression within $\{1,\ldots,N\}$: there exist $a \geq 1$ and $d \geq 1$ such that
 $a, a+d, \ldots, a+(k-1) \cdot d$ are all in $\{1,\ldots,N\}$ and all share the same colour. -/
-def hasMonoAP (χ : ℕ → ℕ) (N k : ℕ) : Prop :=
+def HasMonoAP (χ : ℕ → ℕ) (N k : ℕ) : Prop :=
   ∃ a d : ℕ, 0 < d ∧ 1 ≤ a ∧ a + (k - 1) * d ≤ N ∧
     ∀ i : ℕ, i < k → χ (a + i * d) = χ a
 
 /-- A colouring $\chi : \mathbb{N} \to \mathbb{N}$ has a rainbow $3$-term arithmetic
 progression within $\{1,\ldots,N\}$: there exist $a \geq 1$ and $d \geq 1$ such that
 $a, a+d, a+2d$ are all in $\{1,\ldots,N\}$ and their colours are pairwise distinct. -/
-def hasRainbowAP (χ : ℕ → ℕ) (N : ℕ) : Prop :=
+def HasRainbowAP (χ : ℕ → ℕ) (N : ℕ) : Prop :=
   ∃ a d : ℕ, 0 < d ∧ 1 ≤ a ∧ a + 2 * d ≤ N ∧
     χ a ≠ χ (a + d) ∧ χ a ≠ χ (a + 2 * d) ∧ χ (a + d) ≠ χ (a + 2 * d)
 
 /-- $H(k)$ is the smallest $N$ such that any colouring of $\{1,\ldots,N\}$ contains
 either a monochromatic $k$-term AP or a rainbow $3$-term AP. -/
 noncomputable def H (k : ℕ) : ℕ :=
-  sInf {N : ℕ | ∀ χ : ℕ → ℕ, hasMonoAP χ N k ∨ hasRainbowAP χ N}
+  sInf {N : ℕ | ∀ χ : ℕ → ℕ, HasMonoAP χ N k ∨ HasRainbowAP χ N}
 
 /--
 Erdős Problem 190 [ErGr80]:

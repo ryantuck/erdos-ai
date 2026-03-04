@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/506](https://www.erdosproblems.com/506)
 
+What is the minimum number of circles determined by $n$ points in $\mathbb{R}^2$,
+not all on a circle and not all on a line?
+
 [Er61] Erdős, P., _Some unsolved problems_, 1961, p. 245.
 
 [El67] Elliott, P. D. T. A., _On the number of circles determined by $n$ points_, 1967.
@@ -48,6 +51,13 @@ noncomputable def numDeterminedCircles (S : Finset (EuclideanSpace ℝ (Fin 2)))
   Set.ncard {p : EuclideanSpace ℝ (Fin 2) × ℝ |
     0 < p.2 ∧ 3 ≤ Set.ncard {q ∈ (↑S : Set (EuclideanSpace ℝ (Fin 2))) | dist q p.1 = p.2}}
 
+/-- The minimum number of circles determined by any configuration of $n$ points in
+$\mathbb{R}^2$ that are neither all on a circle nor all collinear. Returns $0$ when
+no such configuration exists. -/
+noncomputable def minDeterminedCircles (n : ℕ) : ℕ :=
+  sInf (numDeterminedCircles '' {S : Finset (EuclideanSpace ℝ (Fin 2)) |
+    S.card = n ∧ ¬AllOnCircle S ∧ ¬AllCollinear S})
+
 /--
 Erdős Problem 506 [Er61, p. 245]:
 
@@ -60,11 +70,9 @@ corrected this to the sharper bound $\binom{n-1}{2} + 1 - \lfloor(n-1)/2\rfloor$
 possible (witnessed by $n-1$ points on a circle and one point off it).
 -/
 @[category research solved, AMS 52]
-theorem erdos_506 (S : Finset (EuclideanSpace ℝ (Fin 2)))
-    (hn : 393 < S.card)
-    (hnotcirc : ¬AllOnCircle S)
-    (hnotcol : ¬AllCollinear S) :
-    Nat.choose (S.card - 1) 2 + 1 - (S.card - 1) / 2 ≤ numDeterminedCircles S := by
+theorem erdos_506 : ∀ n : ℕ, 393 < n →
+    minDeterminedCircles n =
+      answer(Nat.choose (n - 1) 2 + 1 - (n - 1) / 2) := by
   sorry
 
 end Erdos506

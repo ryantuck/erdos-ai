@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/768](https://www.erdosproblems.com/768)
 
+Let $A$ be the set of integers $n$ such that for every prime $p$ dividing $n$, there
+exists a divisor $d > 1$ of $n$ with $d \equiv 1 \pmod{p}$. Is it true that there
+exists $c > 0$ such that $|A \cap [1,N]| / N = \exp(-(c+o(1))\sqrt{\log N} \cdot \log \log N)$?
+
 [Er74b] Erdős, P., *Problems and results on combinatorial number theory*.
 -/
 

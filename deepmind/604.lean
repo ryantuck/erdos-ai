@@ -60,7 +60,7 @@ $C \cdot n / \sqrt{\log n}$ distinct pinned distances.
 The integer grid shows this would be best possible.
 -/
 @[category research open, AMS 52]
-theorem erdos_604 :
+theorem erdos_604 : answer(sorry) ↔
     ∃ C : ℝ, C > 0 ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),

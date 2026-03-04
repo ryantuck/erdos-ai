@@ -59,7 +59,7 @@ noncomputable def approxSet (N : ℕ) (A c : ℝ) : Set ℝ :=
       |α - (x : ℝ) / (y : ℝ)| < A / ((y : ℝ) ^ 2)}
 
 /-- $S(N, A, c)$ is the Lebesgue measure of the approximation set. -/
-noncomputable def S_measure (N : ℕ) (A c : ℝ) : ℝ :=
+noncomputable def sMeasure (N : ℕ) (A c : ℝ) : ℝ :=
   (volume (approxSet N A c)).toReal
 
 /--
@@ -70,8 +70,9 @@ For all $A > 0$ and $c > 1$, the limit $\lim_{N \to \infty} S(N, A, c)$ exists.
 Proved by Kesten and Sós [KeSo66].
 -/
 @[category research solved, AMS 11 28]
-theorem erdos_1001 (A c : ℝ) (hA : 0 < A) (hc : 1 < c) :
-    ∃ L : ℝ, Tendsto (fun N : ℕ => S_measure N A c) atTop (nhds L) := by
+theorem erdos_1001 : answer(True) ↔
+    ∀ (A c : ℝ), 0 < A → 1 < c →
+      ∃ L : ℝ, Tendsto (fun N : ℕ => sMeasure N A c) atTop (nhds L) := by
   sorry
 
 end Erdos1001

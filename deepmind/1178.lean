@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1178](https://www.erdosproblems.com/1178)
 
+For $r, e \geq 3$, determine the minimal $d$ such that the $r$-uniform Turán number
+$\operatorname{ex}_r(n; d, e) = o(n^2)$ as $n \to \infty$. The conjecture is that this
+minimal $d$ equals $(r-2) \cdot e + 3$.
+
 [BES73] Brown, W. G., Erdős, P., and Sós, V. T., *On the existence of triangulated spheres
 in 3-graphs, and related problems*, 1973.
 

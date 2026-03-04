@@ -50,7 +50,7 @@ constant $C > 0$ such that every $k$-term monochromatic arithmetic progression
 $\{a, a+d, \ldots, a+(k-1)d\}$ with $a \ge 1$ satisfies $k \le C \cdot a^\varepsilon$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_984 :
+theorem erdos_984 : answer(True) ↔
     ∃ c : ℕ → Fin 2, ∀ ε : ℝ, ε > 0 →
       ∃ C : ℝ, C > 0 ∧ ∀ a d k : ℕ, a ≥ 1 →
         IsMonochromaticAP c a d k →

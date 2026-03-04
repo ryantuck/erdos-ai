@@ -47,14 +47,31 @@ def DistinctSumSet880 (A : Set ℕ) (k : ℕ) : Set ℕ :=
   {n : ℕ | ∃ (S : Finset ℕ), (∀ x ∈ S, x ∈ A) ∧ S.card ≤ k ∧ S.sum id = n}
 
 /--
-Erdős Problem 880 (Hegyvári–Hennecart–Plagne [HHP07]):
+Erdős Problem 880:
+
+Let $A \subset \mathbb{N}$ be an additive basis of order $k$, and let $B$ be the set of
+integers expressible as sums of $k$ or fewer distinct elements of $A$. Is it true that
+$b_{n+1} - b_n = O(1)$?
+
+The answer is **no** in general. Hegyvári, Hennecart, and Plagne [HHP07] showed that
+the answer is yes for $k = 2$ but no for $k \geq 3$.
+-/
+@[category research solved, AMS 11]
+theorem erdos_880 : answer(False) ↔
+    ∀ (k : ℕ) (A : Set ℕ), IsAdditiveBasis880 A k →
+    ∃ C N₀ : ℕ, ∀ b ∈ DistinctSumSet880 A k, b ≥ N₀ →
+    ∃ b' ∈ DistinctSumSet880 A k, b < b' ∧ b' ≤ b + C := by
+  sorry
+
+/--
+Erdős Problem 880, positive result for $k = 2$ (Hegyvári–Hennecart–Plagne [HHP07]):
 
 If $A$ is an additive basis of order $2$, then the distinct sum set $B$ of $A$ (sums of
 at most $2$ distinct elements) has gaps bounded by $2$ for all sufficiently large
 elements: for large enough $b \in B$, the next element of $B$ is at most $b + 2$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_880 (A : Set ℕ) (hA : IsAdditiveBasis880 A 2) :
+theorem erdos_880.variants.bounded_gaps_k_eq_2 (A : Set ℕ) (hA : IsAdditiveBasis880 A 2) :
     ∃ N₀ : ℕ, ∀ b ∈ DistinctSumSet880 A 2, b ≥ N₀ →
     ∃ b' ∈ DistinctSumSet880 A 2, b < b' ∧ b' ≤ b + 2 := by
   sorry

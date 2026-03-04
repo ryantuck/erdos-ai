@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1143
 
+Estimate $F_k(p_1, \ldots, p_u)$, the minimum count of multiples of at least one given prime
+in any interval of $k$ consecutive integers, particularly for $k = \alpha \cdot p_u$
+with $\alpha > 2$.
+
 *Reference:* [erdosproblems.com/1143](https://www.erdosproblems.com/1143)
 
 [Va99] Vaughan, R.C., *On a problem of Erdős, Straus, and Schinzel*, Combinatorica 19 (1999),

@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1175](https://www.erdosproblems.com/1175)
 
+For an uncountable cardinal κ, must there exist a cardinal λ such that every graph with
+chromatic number λ contains a triangle-free subgraph with chromatic number κ?
+
 [Va99] is referenced as the source for this problem (Problem 7.92).
 -/
 

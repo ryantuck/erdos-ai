@@ -83,6 +83,7 @@ Equivalently, $f(n;t) = (1+o(1))\binom{n}{t-1}$ for all $t \geq 3$.
 -/
 @[category research open, AMS 5]
 theorem erdos_643 :
+    answer(sorry) ↔
     ∀ t : ℕ, 3 ≤ t →
     ∀ ε : ℝ, ε > 0 →
     ∃ N : ℕ, ∀ n : ℕ, N ≤ n →

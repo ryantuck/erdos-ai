@@ -46,7 +46,7 @@ def AllPairwiseDistinctDists {α : Type*} [MetricSpace α]
 
 /-- $f_d(n)$ is the minimal $m$ such that any set of at least $m$ points in $\mathbb{R}^d$
 contains a subset of $n$ points with all pairwise distances distinct. -/
-noncomputable def erdos_f (d n : ℕ) : ℕ :=
+noncomputable def erdosF (d n : ℕ) : ℕ :=
   sInf {m : ℕ | ∀ (S : Finset (EuclideanSpace ℝ (Fin d))),
     S.card ≥ m →
     ∃ T : Finset (EuclideanSpace ℝ (Fin d)),
@@ -59,10 +59,12 @@ For fixed $n \geq 3$, $f_d(n) = 2^{o(d)}$ as $d \to \infty$. That is, for every 
 there exists $D_0$ such that for all $d \geq D_0$, $f_d(n) \leq 2^{\varepsilon \cdot d}$.
 -/
 @[category research open, AMS 5 52]
-theorem erdos_1088 (n : ℕ) (hn : n ≥ 3) :
-    ∀ ε : ℝ, ε > 0 →
-    ∃ D₀ : ℕ, ∀ d : ℕ, d ≥ D₀ →
-      (erdos_f d n : ℝ) ≤ (2 : ℝ) ^ (ε * (d : ℝ)) := by
+theorem erdos_1088 :
+    answer(sorry) ↔
+      ∀ (n : ℕ), n ≥ 3 →
+        ∀ ε : ℝ, ε > 0 →
+          ∃ D₀ : ℕ, ∀ d : ℕ, d ≥ D₀ →
+            (erdosF d n : ℝ) ≤ (2 : ℝ) ^ (ε * (d : ℝ)) := by
   sorry
 
 end Erdos1088

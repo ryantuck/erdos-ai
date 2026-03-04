@@ -80,7 +80,7 @@ size $\geq C \cdot r$.
 Erdős and Lovász [ErLo75] proved the weaker bound $\Omega(r / \log r)$.
 -/
 @[category research open, AMS 5]
-theorem erdos_836 :
+theorem erdos_836 : answer(sorry) ↔
     ∃ C : ℝ, C > 0 ∧
     ∀ r : ℕ, r ≥ 2 →
     ∀ (n : ℕ) (H : Hypergraph (Fin n)),

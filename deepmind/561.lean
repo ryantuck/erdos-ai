@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/561](https://www.erdosproblems.com/561)
 
+Determine the two-color size Ramsey number for disjoint unions of stars. If
+$F_1$ and $F_2$ are disjoint unions of stars with non-increasing degree sequences,
+prove that $\hat{R}(F_1, F_2) = \sum \ell_k$ where each $\ell_k$ is the maximum of
+$n_i + m_j - 1$ over pairs with $i + j = k$.
+
 [BEFRS78] Burr, S. A., Erdős, P., Faudree, R. J., Rousseau, C. C., and Schelp, R. H.,
 _Ramsey numbers for the pair sparse graph-path or cycle_, Trans. Amer. Math. Soc. (1978).
 -/

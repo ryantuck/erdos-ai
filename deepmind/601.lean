@@ -81,7 +81,7 @@ Known results:
 - True for $\alpha < \omega_1^{\omega+2}$ (Erdős-Hajnal-Milner, 1970)
 - True for all $\alpha < 2^{\aleph_0}$ assuming Martin's axiom (Larson, 1990)
 -/
-@[category research open, AMS 5 3]
+@[category research open, AMS 3 5]
 theorem erdos_601 (α : Ordinal) (hα : Order.IsSuccLimit α) :
     EHMProperty α := by
   sorry

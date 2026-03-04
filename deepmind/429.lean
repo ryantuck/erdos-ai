@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 429
 
+Erdős asked whether every infinite admissible set of natural numbers has a translate contained
+in the primes. Weisenberg showed the answer is no.
+
 *Reference:* [erdosproblems.com/429](https://www.erdosproblems.com/429)
 
 [We24] Weisenberg, *A counterexample to Erdős' conjecture on sparse sets and primes*, 2024.

@@ -57,7 +57,7 @@ points on the surface of a sphere in $\mathbb{R}^3$ with at least $f(n) \cdot n$
 points at some common distance. (Equivalently, at least $f(n) \cdot n / 2$ unordered pairs.)
 -/
 @[category research solved, AMS 5 52]
-theorem erdos_605 :
+theorem erdos_605 : answer(True) ↔
     ∃ f : ℕ → ℝ, Tendsto f atTop atTop ∧
       ∀ n : ℕ, n ≥ 2 →
         ∃ (R : ℝ) (A : Finset (EuclideanSpace ℝ (Fin 3))),

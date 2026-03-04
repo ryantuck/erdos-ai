@@ -19,6 +19,11 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 687
 
+Let $Y(x)$ be the maximal $y$ such that one can choose one residue class $a_p \pmod{p}$
+for every prime $p \le x$ so that every integer in $\{1, \ldots, y\}$ is covered by at
+least one of these classes. Is it true that $Y(x) = o(x^2)$? Or even
+$Y(x) \ll x^{1+o(1)}$?
+
 *Reference:* [erdosproblems.com/687](https://www.erdosproblems.com/687)
 -/
 
@@ -40,6 +45,7 @@ congruent to at least one of the $a_p \pmod{p}$. Then $Y(x) = o(x^2)$.
 -/
 @[category research open, AMS 11]
 theorem erdos_687 :
+    answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 → ∃ X : ℕ, ∀ x : ℕ, x ≥ X →
     ∀ (a : ℕ → ℕ) (y : ℕ), PrimeCovering x y a →
     (y : ℝ) < ε * (x : ℝ) ^ 2 := by
@@ -52,6 +58,7 @@ by residue classes of primes $\le x$ satisfies $y \le x^{1+\varepsilon}$.
 -/
 @[category research open, AMS 11]
 theorem erdos_687.variants.strong :
+    answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 → ∃ X : ℕ, ∀ x : ℕ, x ≥ X →
     ∀ (a : ℕ → ℕ) (y : ℕ), PrimeCovering x y a →
     (y : ℝ) ≤ (x : ℝ) ^ ((1 : ℝ) + ε) := by

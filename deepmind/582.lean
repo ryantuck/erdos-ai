@@ -44,7 +44,7 @@ in a $2$-coloring of the edges), either $H$ or the complementary subgraph $G \se
 contains a triangle.
 -/
 @[category research solved, AMS 5]
-theorem erdos_582 :
+theorem erdos_582 : answer(True) ↔
     ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
       G.CliqueFree 4 ∧
         ∀ (H : SimpleGraph (Fin n)), H ≤ G →

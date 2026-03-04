@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1044](https://www.erdosproblems.com/1044)
 
+Let $f(z) = \prod_{i=1}^{n} (z - z_i)$ be a monic polynomial with all roots in the closed unit
+disk. If $\Lambda(f)$ is the maximum of the lengths of the boundaries of the connected components
+of $\{z : |f(z)| < 1\}$, determine the infimum of $\Lambda(f)$ over all such $f$.
+
 [EHP58] Erdős, P., Herzog, F., and Piranian, G., *Metric properties of polynomials*,
 J. Analyse Math. 6 (1958), 125–148.
 -/
@@ -56,10 +60,8 @@ Resolved by Tang, who proved that the infimum of $\Lambda(f)$ over all such $f$ 
 -/
 @[category research solved, AMS 30]
 theorem erdos_1044 :
-    (∀ (f : Polynomial ℂ), f.Monic → (∀ z, f.IsRoot z → ‖z‖ ≤ 1) →
-      maxBoundaryLength (fun z => Polynomial.eval z f) ≥ 2) ∧
-    (∀ ε > 0, ∃ (f : Polynomial ℂ), f.Monic ∧ (∀ z, f.IsRoot z → ‖z‖ ≤ 1) ∧
-      maxBoundaryLength (fun z => Polynomial.eval z f) < 2 + ε) := by
+    sInf {L : ℝ | ∃ (f : Polynomial ℂ), f.Monic ∧ (∀ z, f.IsRoot z → ‖z‖ ≤ 1) ∧
+      L = maxBoundaryLength (fun z => Polynomial.eval z f)} = answer((2 : ℝ)) := by
   sorry
 
 end Erdos1044

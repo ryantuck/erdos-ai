@@ -68,7 +68,7 @@ $$2^{(1 - \varepsilon) \cdot n/2} \leq f(n) \leq 2^{(1 + \varepsilon) \cdot n/2}
 Proved independently by Green [Gr04] and Sapozhenko [Sa03].
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_748 :
+theorem erdos_748 : answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       (2 : ℝ) ^ ((1 - ε) * (n : ℝ) / 2) ≤ (sumFreeSubsetCount n : ℝ) ∧

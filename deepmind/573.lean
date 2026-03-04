@@ -21,6 +21,8 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/573](https://www.erdosproblems.com/573)
 
+Is it true that $\operatorname{ex}(n; \{C_3, C_4\}) \sim (n/2)^{3/2}$?
+
 [Er71] Erdős, P., *Topics in combinatorial analysis*, 1971, p.103.
 [Er75] Erdős, P., *Problems and results on combinatorial number theory*, 1975.
 [ErSi82] Erdős, P. and Simonovits, M., 1982.
@@ -68,9 +70,10 @@ References: [Er71,p.103], [Er75], [ErSi82], [Er93,p.336]
 -/
 @[category research open, AMS 5]
 theorem erdos_573 :
-    Tendsto
-      (fun n : ℕ => (exC3C4 n : ℝ) / ((n : ℝ) / 2) ^ ((3 : ℝ) / 2))
-      atTop (nhds 1) := by
+    answer(sorry) ↔
+      Tendsto
+        (fun n : ℕ => (exC3C4 n : ℝ) / ((n : ℝ) / 2) ^ ((3 : ℝ) / 2))
+        atTop (nhds 1) := by
   sorry
 
 end Erdos573

@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1147
 
+Is the set of natural numbers $n \ge 1$ with $\lVert \alpha n^2 \rVert < 1 / \log n$ an additive
+basis of order $2$ for every irrational $\alpha > 0$? Disproved by Konieczny.
+
 *Reference:* [erdosproblems.com/1147](https://www.erdosproblems.com/1147)
 
 [Va99] Vaughan, R.C., *The Hardy-Littlewood method*, 2nd edition, Cambridge University Press,
@@ -56,8 +59,9 @@ This was disproved by Konieczny [Ko16b]. In particular, for $\alpha = \sqrt{2}$,
 the set $A$ is not an additive basis of order $2$.
 -/
 @[category research solved, AMS 11]
-theorem erdos_1147 :
-    ¬ IsAdditiveBasisOrder2 (setA (Real.sqrt 2)) := by
+theorem erdos_1147 : answer(False) ↔
+    ∀ α : ℝ, Irrational α → α > 0 →
+      IsAdditiveBasisOrder2 (setA α) := by
   sorry
 
 end Erdos1147

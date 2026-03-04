@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/215](https://www.erdosproblems.com/215)
 
+Does there exist a set $S \subseteq \mathbb{R}^2$ such that every set congruent to $S$
+contains exactly one point of $\mathbb{Z}^2$? The answer is yes, proved by Jackson and
+Mauldin [JaMa02] using the axiom of choice.
+
 [JaMa02] Jackson, S. and Mauldin, R.D., _On a lattice problem of H. Steinhaus_, Journal of the
 American Mathematical Society 15 (2002), 817-856.
 -/

@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 521
 
+Let $(\varepsilon_k)_{k \geq 0}$ be independently uniformly chosen from $\{-1, 1\}$,
+and let $R_n$ count the number of real roots of $f_n(z) = \sum_{k=0}^{n} \varepsilon_k z^k$.
+Is it true that, almost surely, $\lim_{n \to \infty} R_n / \log n = 2/\pi$?
+
 *Reference:* [erdosproblems.com/521](https://www.erdosproblems.com/521)
 -/
 
@@ -52,12 +56,12 @@ Erdős and Offord showed that the number of real roots of a random degree $n$
 polynomial with $\pm 1$ coefficients is $(2/\pi + o(1)) \log n$ in expectation.
 This conjecture asks whether the convergence holds almost surely.
 -/
-@[category research open, AMS 60 12]
-theorem erdos_521
-    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
-    {ε : ℕ → Ω → ℝ}
-    (hRad : ∀ k, IsRademacher μ (ε k))
-    (hIndep : iIndepFun ε μ) :
+@[category research open, AMS 12 60]
+theorem erdos_521 : answer(sorry) ↔
+    ∀ {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+      {ε : ℕ → Ω → ℝ},
+    (∀ k, IsRademacher μ (ε k)) →
+    iIndepFun ε μ →
     ∀ᵐ ω ∂μ, Tendsto
       (fun n => (numRealRoots (signPoly (fun k => ε k ω) n) : ℝ) / Real.log (n : ℝ))
       atTop (nhds (2 / Real.pi)) := by

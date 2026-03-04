@@ -67,13 +67,13 @@ Proved by Ambrus–Csiszárik–Matolcsi–Varga–Zsámboki [ACMVZ23] who showe
 the stronger bound $m_1 \le 0.247$.
 -/
 @[category research solved, AMS 28 52]
-theorem erdos_232 (A : Set (EuclideanSpace ℝ (Fin 2)))
-    (hA : MeasurableSet A)
-    (hfree : IsUnitDistanceFree A)
-    (ε : ℝ) (hε : 0 < ε) :
-    ∃ R₀ : ℝ, 0 < R₀ ∧ ∀ R : ℝ, R₀ ≤ R →
-      (volume (A ∩ Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal /
-      (volume (Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal ≤ 1 / 4 + ε := by
+theorem erdos_232 : answer(True) ↔
+    ∀ (A : Set (EuclideanSpace ℝ (Fin 2))),
+      MeasurableSet A → IsUnitDistanceFree A →
+      ∀ ε : ℝ, 0 < ε →
+        ∃ R₀ : ℝ, 0 < R₀ ∧ ∀ R : ℝ, R₀ ≤ R →
+          (volume (A ∩ Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal /
+          (volume (Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal ≤ 1 / 4 + ε := by
   sorry
 
 end Erdos232

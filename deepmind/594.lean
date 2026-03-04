@@ -68,10 +68,11 @@ as a subgraph.
 Proved by Erdős, Hajnal, and Shelah [EHS74].
 -/
 @[category research solved, AMS 5]
-theorem erdos_594 {V : Type*} (G : SimpleGraph V)
-    (hG : HasUncountableChromaticNumber G) :
-    ∃ N₀ : ℕ, ∀ (n : ℕ) (hn : n ≥ 3), Odd n → n ≥ N₀ →
-      G.ContainsCopy (cycleGraph n hn) := by
+theorem erdos_594 : answer(True) ↔
+    ∀ {V : Type*} (G : SimpleGraph V),
+      HasUncountableChromaticNumber G →
+      ∃ N₀ : ℕ, ∀ (n : ℕ) (hn : n ≥ 3), Odd n → n ≥ N₀ →
+        G.ContainsCopy (cycleGraph n hn) := by
   sorry
 
 end Erdos594

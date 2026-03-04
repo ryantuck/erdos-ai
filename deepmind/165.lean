@@ -72,7 +72,7 @@ $$
 The conjectured value is $c = 1/2$.
 -/
 @[category research open, AMS 5]
-theorem erdos_165 :
+theorem erdos_165 : answer(sorry) ↔
     ∃ c : ℝ, 0 < c ∧ ∀ ε : ℝ, 0 < ε →
     ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
       (c - ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) ≤ (ramseyR3 k : ℝ) ∧

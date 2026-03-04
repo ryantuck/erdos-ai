@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 929
 
+For $k \geq 2$, let $S(k)$ be the minimal $x$ such that the set of $n$ with $n+1, \ldots, n+k$
+all $x$-smooth has positive upper density. Erdős conjectured that $S(k) \geq k^{1-o(1)}$.
+
 *Reference:* [erdosproblems.com/929](https://www.erdosproblems.com/929)
 
 [Er76d] Erdős, P., *Problems in number theory and combinatorics*. Proceedings of the Sixth
@@ -51,7 +54,7 @@ if $x < k^{1-\varepsilon}$ then the set of $n$ with $n+1, \ldots, n+k$ all $x$-s
 have positive upper density.
 -/
 @[category research open, AMS 11]
-theorem erdos_929 :
+theorem erdos_929 : answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ K : ℕ, ∀ k : ℕ, k ≥ K →
     ∀ x : ℕ, (x : ℝ) < (k : ℝ) ^ (1 - ε) →

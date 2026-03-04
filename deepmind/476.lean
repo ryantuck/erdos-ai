@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 476
 
+For a prime $p$ and $A \subseteq \mathbb{F}_p$, the restricted sumset
+$A \hat{+} A = \{a + b : a, b \in A, a \neq b\}$ satisfies
+$|A \hat{+} A| \geq \min(2|A| - 3, p)$.
+
 *Reference:* [erdosproblems.com/476](https://www.erdosproblems.com/476)
 
 [dSHa94] da Silva, J.A.D. and Hamidoune, Y.O., *Cyclic spaces for Grassmann derivatives and
@@ -47,8 +51,9 @@ A question of Erdős and Heilbronn. Solved in the affirmative by
 da Silva and Hamidoune [dSHa94].
 -/
 @[category research solved, AMS 5 11]
-theorem erdos_476 (p : ℕ) [Fact (Nat.Prime p)] (A : Finset (ZMod p)) :
-    (restrictedSumset A).card ≥ min (2 * A.card - 3) p := by
+theorem erdos_476 : answer(True) ↔
+    ∀ (p : ℕ) [Fact (Nat.Prime p)] (A : Finset (ZMod p)),
+      (restrictedSumset A).card ≥ min (2 * A.card - 3) p := by
   sorry
 
 end Erdos476

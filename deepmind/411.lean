@@ -41,17 +41,16 @@ namespace Erdos411
 def g (n : ℕ) : ℕ := n + Nat.totient n
 
 /--
-Erdős Problem 411 [ErGr80, p.81] — Cambie's conjecture:
+Erdős Problem 411 [ErGr80, p.81]:
 
-If $g(n) = n + \varphi(n)$ and $g_{k+r}(n) = 2 \cdot g_k(n)$ for all sufficiently large $k$,
-then $r = 2$ and $n = 2^l \cdot p$ for some $l \geq 1$ and $p \in \{2, 3, 5, 7, 35, 47\}$.
+For which positive integers $n$ and $r$ does $g_{k+r}(n) = 2 \cdot g_k(n)$ hold for all
+sufficiently large $k$? Cambie conjectures the answer is $r = 2$ and
+$n = 2^l \cdot p$ for $l \geq 1$ and $p \in \{2, 3, 5, 7, 35, 47\}$.
 -/
 @[category research open, AMS 11]
-theorem erdos_411 (n r : ℕ) (hn : 0 < n) (hr : 0 < r)
-    (h : ∃ K : ℕ, ∀ k : ℕ, K ≤ k → g^[k + r] n = 2 * g^[k] n) :
-    r = 2 ∧ ∃ l : ℕ, 1 ≤ l ∧
-      ∃ p : ℕ, (p = 2 ∨ p = 3 ∨ p = 5 ∨ p = 7 ∨ p = 35 ∨ p = 47) ∧
-        n = 2 ^ l * p := by
+theorem erdos_411 :
+    {p : ℕ × ℕ | 0 < p.1 ∧ 0 < p.2 ∧
+      ∃ K, ∀ k, K ≤ k → g^[k + p.2] p.1 = 2 * g^[k] p.1} = answer(sorry) := by
   sorry
 
 end Erdos411

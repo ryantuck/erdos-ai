@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 181
 
+Burr and Erdős conjectured that the Ramsey number of the $n$-dimensional hypercube
+graph $Q_n$ is at most linear in $2^n$, i.e., $R(Q_n) \ll 2^n$.
+
 *Reference:* [erdosproblems.com/181](https://www.erdosproblems.com/181)
 
 [BuEr75] Burr, S. A. and Erdős, P., *On the magnitude of generalized Ramsey numbers for graphs*.
@@ -46,14 +49,14 @@ def hypercubeGraph (n : ℕ) : SimpleGraph (Fin n → Bool) where
 
 /-- An injective graph homomorphism from $H$ to $G$: $G$ contains a (not necessarily
 induced) copy of $H$ as a subgraph. -/
-def containsCopy {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+def ContainsCopy {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
   ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
 
 /-- The diagonal Ramsey number $R(H)$: the minimum $N$ such that for every simple
 graph $G$ on $\operatorname{Fin} N$, either $G$ or $G^c$ contains a copy of $H$. -/
 noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
   sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
-    containsCopy G H ∨ containsCopy Gᶜ H}
+    ContainsCopy G H ∨ ContainsCopy Gᶜ H}
 
 /--
 Erdős Problem 181 [BuEr75]:

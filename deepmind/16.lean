@@ -71,11 +71,11 @@ congruences, Erdős [Er50] showed this set contains an infinite arithmetic progr
 Chen [Ch23] resolved the question negatively.
 -/
 @[category research solved, AMS 11]
-theorem erdos_16 :
-    ¬ ∃ (AP D : Set ℕ),
-        IsInfiniteAP AP ∧
-        HasNaturalDensityZero D ∧
-        oddNotPowerOfTwoPlusPrime = AP ∪ D := by
+theorem erdos_16 : answer(False) ↔
+    ∃ (AP D : Set ℕ),
+      IsInfiniteAP AP ∧
+      HasNaturalDensityZero D ∧
+      oddNotPowerOfTwoPlusPrime = AP ∪ D := by
   sorry
 
 end Erdos16

@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 588
 
+Is it true that the maximum number of k-rich lines determined by n points in the plane with no
+k+1 collinear is o(n²) for all k ≥ 4? This generalises Problem #101 (the case k = 4).
+
 *Reference:* [erdosproblems.com/588](https://www.erdosproblems.com/588)
 -/
 

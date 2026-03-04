@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/702](https://www.erdosproblems.com/702)
 
+If a family of k-element subsets of {1,...,n} has more than C(n-2,k-2) members (where k ≥ 4),
+then some two members of the family intersect in exactly one element.
+
 [Fr77] Frankl, P., *On families of finite sets no two of which intersect in a singleton*,
 Bull. Austral. Math. Soc. 17 (1977), 125–134.
 -/

@@ -107,7 +107,7 @@ Background:
 -/
 @[category research open, AMS 52]
 theorem erdos_106 :
-    ∀ k : ℕ, 0 < k → f (k ^ 2 + 1) = (k : ℝ) := by
+    answer(sorry) ↔ ∀ k : ℕ, 0 < k → f (k ^ 2 + 1) = (k : ℝ) := by
   sorry
 
 end Erdos106

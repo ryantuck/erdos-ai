@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/360](https://www.erdosproblems.com/360)
 
+Determine the asymptotic order of growth of $f(n)$, the minimum number of classes needed to
+partition $\{1, \ldots, n-1\}$ so that $n$ cannot be represented as a sum of distinct elements
+from any single class.
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
 

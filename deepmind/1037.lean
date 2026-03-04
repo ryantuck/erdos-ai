@@ -42,34 +42,34 @@ namespace Erdos1037
 /--
 **Erdős Problem 1037** (Disproved by Cambie, Chan, Hunter) [Er93, p.347]:
 
-The negation of the original conjecture: there exist $\varepsilon > 0$ and
-$C > 0$ such that for all sufficiently large $n$, there exists a graph $G$ on
-$n$ vertices where every degree occurs at most twice, the number of distinct
-degrees is $> (1/2 + \varepsilon) \cdot n$, and yet every clique and every
-independent set has size $\leq C \cdot \log n$.
+Let $G$ be a graph on $n$ vertices in which every degree occurs at most twice,
+and the number of distinct degrees is $> (1/2 + \varepsilon) \cdot n$. Must $G$
+contain a trivial (empty or complete) subgraph of size much larger than
+$\log n$?
 
-That is, one cannot guarantee a trivial subgraph much larger than $\log n$.
+The answer is no. Cambie, Chan, and Hunter gave a construction where the
+largest trivial subgraph has size $O(\log n)$.
 -/
 @[category research solved, AMS 5]
 theorem erdos_1037 :
-    ∃ ε : ℝ, ε > 0 ∧
-    ∃ C : ℝ, C > 0 ∧
+    answer(False) ↔
+    (∀ ε : ℝ, ε > 0 →
+    ∀ C : ℝ, C > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-    ∃ G : SimpleGraph (Fin n),
-    ∃ _ : DecidableRel G.Adj,
+    ∀ G : SimpleGraph (Fin n),
+    ∀ _ : DecidableRel G.Adj,
       -- Every degree occurs at most twice
       (∀ d : ℕ, (Finset.univ.filter (fun v =>
-        (Finset.univ.filter (fun w => G.Adj v w)).card = d)).card ≤ 2) ∧
+        (Finset.univ.filter (fun w => G.Adj v w)).card = d)).card ≤ 2) →
       -- The number of distinct degrees is > (1/2 + ε) · n
       ((Finset.univ.image (fun v =>
         (Finset.univ.filter (fun w => G.Adj v w)).card)).card : ℝ) >
-        (1 / 2 + ε) * (n : ℝ) ∧
-      -- Every clique has size ≤ C · log n
-      (∀ S : Finset (Fin n), G.IsClique (↑S : Set (Fin n)) →
-        (S.card : ℝ) ≤ C * Real.log n) ∧
-      -- Every independent set has size ≤ C · log n
-      (∀ S : Finset (Fin n), Gᶜ.IsClique (↑S : Set (Fin n)) →
-        (S.card : ℝ) ≤ C * Real.log n) := by
+        (1 / 2 + ε) * (n : ℝ) →
+      -- G contains a clique or independent set of size > C · log n
+      (∃ S : Finset (Fin n), G.IsClique (↑S : Set (Fin n)) ∧
+        (S.card : ℝ) > C * Real.log n) ∨
+      (∃ S : Finset (Fin n), Gᶜ.IsClique (↑S : Set (Fin n)) ∧
+        (S.card : ℝ) > C * Real.log n)) := by
   sorry
 
 end Erdos1037

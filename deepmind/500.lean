@@ -80,7 +80,7 @@ due to Razborov [Ra10].
 theorem erdos_500 :
     Tendsto
       (fun n : ℕ => (ex3K43 n : ℝ) / (Nat.choose n 3 : ℝ))
-      atTop (nhds (5 / 9 : ℝ)) := by
+      atTop (nhds answer(sorry)) := by
   sorry
 
 end Erdos500

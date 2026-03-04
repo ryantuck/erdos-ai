@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 226
 
+Is there an entire non-linear function $f$ such that, for all $x \in \mathbb{R}$, $x$ is
+rational if and only if $f(x)$ is?
+
 *Reference:* [erdosproblems.com/226](https://www.erdosproblems.com/226)
 
 [Er57] Erdős, P., _Some unsolved problems_, 1957.
@@ -45,7 +48,7 @@ $f(z) \in B$ if and only if $z \in A$. In [BaSc71] they proved the same result f
 countable dense subsets of $\mathbb{C}$.
 -/
 @[category research solved, AMS 30]
-theorem erdos_226 :
+theorem erdos_226 : answer(True) ↔
     ∃ f : ℂ → ℂ, Differentiable ℂ f ∧
       (¬∃ a b : ℂ, ∀ z, f z = a * z + b) ∧
       (∀ x : ℝ, (∃ q : ℚ, (q : ℝ) = x) ↔ ∃ q : ℚ, (q : ℂ) = f ↑x) := by

@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/339](https://www.erdosproblems.com/339)
 
+Let $A \subseteq \mathbb{N}$ be a basis of order $r$. Must the set of integers representable as
+the sum of exactly $r$ distinct elements from $A$ have positive lower density?
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
 

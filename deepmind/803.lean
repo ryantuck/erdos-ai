@@ -41,7 +41,7 @@ namespace Erdos803
 /-- A simple graph on `Fin m` is *$D$-balanced* if for every pair of vertices
 $u$, $v$, the degree of $u$ is at most $D$ times the degree of $v$. This is
 equivalent to: $\max \deg \leq D \cdot \min \deg$. -/
-noncomputable def isDBalanced {m : ℕ} (H : SimpleGraph (Fin m)) (D : ℕ) : Prop :=
+noncomputable def IsDBalanced {m : ℕ} (H : SimpleGraph (Fin m)) (D : ℕ) : Prop :=
   ∀ u v : Fin m, H.degree u ≤ D * H.degree v
 
 /--
@@ -64,7 +64,7 @@ theorem erdos_803 :
       ∃ (H : SimpleGraph (Fin m)) (f : Fin m → Fin n),
         Function.Injective f ∧
         (∀ u v, H.Adj u v → G.Adj (f u) (f v)) ∧
-        isDBalanced H D ∧
+        IsDBalanced H D ∧
         (H.edgeFinset.card : ℝ) ≥ C * (m : ℝ) * Real.log (m : ℝ) := by
   sorry
 

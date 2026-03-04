@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1123](https://www.erdosproblems.com/1123)
 
+Let $B_1$ be the Boolean algebra of sets of integers modulo sets of density $0$
+and let $B_2$ be the Boolean algebra of sets modulo sets of logarithmic density $0$.
+Are $B_1$ and $B_2$ isomorphic?
+
 [JuKr84] Just, W. and Krawczyk, A., *On certain Boolean algebras $\mathcal{P}(\omega)/I$*,
 Trans. Amer. Math. Soc. 285 (1984), 411-429.
 -/
@@ -57,15 +61,21 @@ iff their symmetric difference has logarithmic density zero. -/
 def LogDensityEquiv (A B : Set ℕ) : Prop :=
   HasLogDensityZero (symmDiff A B)
 
+/-- Natural density equivalence is an equivalence relation. -/
+axiom natDensityEquiv_equivalence : Equivalence NatDensityEquiv
+
+/-- Logarithmic density equivalence is an equivalence relation. -/
+axiom logDensityEquiv_equivalence : Equivalence LogDensityEquiv
+
 /-- The equivalence relation on $\operatorname{Set} \mathbb{N}$ given by natural density zero. -/
 def natDensitySetoid : Setoid (Set ℕ) where
   r := NatDensityEquiv
-  iseqv := by sorry
+  iseqv := natDensityEquiv_equivalence
 
 /-- The equivalence relation on $\operatorname{Set} \mathbb{N}$ given by logarithmic density zero. -/
 def logDensitySetoid : Setoid (Set ℕ) where
   r := LogDensityEquiv
-  iseqv := by sorry
+  iseqv := logDensityEquiv_equivalence
 
 /-- $B_1$: the Boolean algebra of sets of integers modulo sets of natural density $0$. -/
 def BoolAlgModNatDensity : Type := Quotient natDensitySetoid
@@ -73,20 +83,28 @@ def BoolAlgModNatDensity : Type := Quotient natDensitySetoid
 /-- $B_2$: the Boolean algebra of sets of integers modulo sets of logarithmic density $0$. -/
 def BoolAlgModLogDensity : Type := Quotient logDensitySetoid
 
-noncomputable instance : BooleanAlgebra BoolAlgModNatDensity := by sorry
-noncomputable instance : BooleanAlgebra BoolAlgModLogDensity := by sorry
+/-- The quotient of sets of integers by natural density zero sets forms a Boolean algebra. -/
+axiom instBooleanAlgebraBoolAlgModNatDensity : BooleanAlgebra BoolAlgModNatDensity
+
+/-- The quotient of sets of integers by logarithmic density zero sets forms a Boolean algebra. -/
+axiom instBooleanAlgebraBoolAlgModLogDensity : BooleanAlgebra BoolAlgModLogDensity
+
+noncomputable instance : BooleanAlgebra BoolAlgModNatDensity :=
+  instBooleanAlgebraBoolAlgModNatDensity
+noncomputable instance : BooleanAlgebra BoolAlgModLogDensity :=
+  instBooleanAlgebraBoolAlgModLogDensity
 
 /--
 Let $B_1$ be the Boolean algebra of sets of integers modulo sets of density $0$
 and let $B_2$ be the Boolean algebra of sets modulo sets of logarithmic density $0$.
-Prove that $B_1$ and $B_2$ are not isomorphic.
+Is $B_1$ isomorphic to $B_2$?
 
 Note: This is independent of ZFC. Just and Krawczyk [JuKr84] proved under the
 continuum hypothesis that these two algebras ARE isomorphic.
 -/
 @[category research open, AMS 06 11]
 theorem erdos_1123 :
-    ¬ Nonempty (BoolAlgModNatDensity ≃o BoolAlgModLogDensity) := by
+    answer(sorry) ↔ Nonempty (BoolAlgModNatDensity ≃o BoolAlgModLogDensity) := by
   sorry
 
 end Erdos1123

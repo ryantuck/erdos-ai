@@ -19,6 +19,10 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 935
 
+This problem concerns the powerful (2-full) part $Q_2$ of products of consecutive integers
+$n(n+1)\cdots(n+\ell)$. It asks whether $Q_2 < n^{2+\varepsilon}$ for all sufficiently large $n$,
+and whether $Q_2 / n^{\ell+1} \to 0$ as $n \to \infty$.
+
 *Reference:* [erdosproblems.com/935](https://www.erdosproblems.com/935)
 -/
 

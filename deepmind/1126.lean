@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1126
 
+If `f(x+y) = f(x) + f(y)` for almost all `x, y ∈ ℝ`, then there exists an additive function `g`
+such that `f = g` almost everywhere.
+
 *Reference:* [erdosproblems.com/1126](https://www.erdosproblems.com/1126)
 
 [dB66] de Bruijn, N.G., _A difference property for Riemann integrable functions and for

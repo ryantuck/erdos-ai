@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1117](https://www.erdosproblems.com/1117)
 
+For an entire function $f$ which is not a monomial, let $\nu(r)$ count the number of points
+on the circle $|z| = r$ where $|f(z)|$ attains its maximum. Is it possible that
+$\liminf_{r \to \infty} \nu(r) = \infty$?
+
 [Ha74] Hayman, W. K., *Research Problems in Function Theory*, Athlone Press, 1967 (updated 1974).
 
 [HePi68] Herzog, F. and Piranian, G., *Sets of radii of parity for entire functions*, 1968.

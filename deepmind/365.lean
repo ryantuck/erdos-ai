@@ -60,7 +60,7 @@ for all sufficiently large $x$, the number of $n \leq x$ with both $n$ and $n+1$
 is at most $(\log x)^C$.
 -/
 @[category research open, AMS 11]
-theorem erdos_365 :
+theorem erdos_365 : answer(sorry) ↔
     ∃ C : ℝ, 0 < C ∧
       ∃ x₀ : ℕ, ∀ x : ℕ, x₀ ≤ x →
         ∀ S : Finset ℕ, S ⊆ Finset.Icc 1 x →

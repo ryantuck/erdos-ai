@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/446](https://www.erdosproblems.com/446)
 
+Let $\delta(n)$ denote the density of positive integers having a divisor in $(n, 2n)$.
+Erdős studied the rate at which $\delta(n) \to 0$ and conjectured that
+$\delta_1(n) = o(\delta(n))$, where $\delta_1(n)$ is the density of integers with exactly
+one such divisor.
+
 **Bibliography:**
 
 - [Be34] Besicovitch, A. S., proved $\liminf \delta(n) = 0$.

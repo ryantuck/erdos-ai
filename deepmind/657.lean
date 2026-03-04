@@ -21,7 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/657](https://www.erdosproblems.com/657)
 
-A problem of Erdős and Davies.
+Is it true that if $A \subseteq \mathbb{R}^2$ is a set of $n$ points with no isosceles triangles
+(every $3$-point subset determines $3$ distinct distances), then $A$ must determine at least
+$f(n) \cdot n$ distinct distances for some $f(n) \to \infty$?
 
 - [Er73] Erdős, P., *Problems and results on combinatorial number theory*.
 - [Er75f] Erdős, P., *Problems and results in combinatorial geometry*.

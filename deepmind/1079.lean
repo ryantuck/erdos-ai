@@ -70,7 +70,8 @@ $\operatorname{ex}(d; K_{r-1})$ edges among the neighbors of $v$.
 Proved by Bollobás and Thomason [BoTh81].
 -/
 @[category research solved, AMS 5]
-theorem erdos_1079 (r : ℕ) (hr : r ≥ 4) :
+theorem erdos_1079 : answer(True) ↔
+    ∀ r : ℕ, r ≥ 4 →
     ∃ c : ℝ, c > 0 ∧
     ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
     ∀ (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],

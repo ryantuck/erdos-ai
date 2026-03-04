@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/716](https://www.erdosproblems.com/716)
 
+Let $\mathcal{F}$ be the family of all 3-uniform hypergraphs on 6 vertices with 3 edges.
+Is it true that $\mathrm{ex}_3(n, \mathcal{F}) = o(n^2)$? Answered affirmatively by
+Ruzsa and Szemerédi [RuSz78].
+
 [BES73] Brown, W.G., Erdős, P., and Sós, V.T., *Some extremal problems on r-graphs*.
 New Directions in the Theory of Graphs (1973), 55-63.
 
@@ -47,7 +51,7 @@ def Hypergraph3.isFree {n : ℕ} (H : Hypergraph3 n) : Prop :=
 every sufficiently large $\mathcal{F}$-free 3-uniform hypergraph on $n$ vertices has at most
 $\varepsilon \cdot n^2$ edges. -/
 @[category research solved, AMS 5]
-theorem erdos_716 :
+theorem erdos_716 : answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
     ∀ H : Hypergraph3 n, H.isFree →

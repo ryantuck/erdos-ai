@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 214
 
+Let $S \subset \mathbb{R}^2$ be such that no two points in $S$ are distance $1$ apart.
+Must the complement of $S$ contain four points which form a unit square?
+
 *Reference:* [erdosproblems.com/214](https://www.erdosproblems.com/214)
 
 [Ju79] Juhász, R., _Ramsey type theorems in the plane_, 1979.

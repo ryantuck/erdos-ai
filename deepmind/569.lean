@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 569
 
+Is it true that for every $k \geq 1$, there exists a constant $c_k$ such that for any graph $H$
+with $m$ edges and no isolated vertices, $R(C_{2k+1}, H) \leq c_k \cdot m$?
+
 *Reference:* [erdosproblems.com/569](https://www.erdosproblems.com/569)
 
 [EFRS93] Erdős, P., Faudree, R., Rousseau, C., and Schelp, R.

@@ -19,6 +19,9 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 977
 
+Erdős asked whether the greatest prime factor of $2^n - 1$ grows faster than
+linearly in $n$, i.e., whether $P(2^n - 1)/n \to \infty$.
+
 *Reference:* [erdosproblems.com/977](https://www.erdosproblems.com/977)
 
 [Er65b] Erdős, P., *On some problems in number theory*, 1965.
@@ -44,8 +47,9 @@ $P(2^n - 1) \gg n^{1 + 1/(104 \log \log n)}$ for all sufficiently large $n$.
 -/
 @[category research solved, AMS 11]
 theorem erdos_977 :
-    Tendsto (fun n : ℕ => (greatestPrimeFactor (2 ^ n - 1) : ℝ) / (n : ℝ))
-      atTop atTop := by
+    answer(True) ↔
+      Tendsto (fun n : ℕ => (greatestPrimeFactor (2 ^ n - 1) : ℝ) / (n : ℝ))
+        atTop atTop := by
   sorry
 
 end Erdos977

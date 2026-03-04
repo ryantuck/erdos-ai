@@ -56,14 +56,14 @@ noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
 /--
 Erdős Problem 77:
 
-The limit $\lim_{k \to \infty} R(k)^{1/k}$ exists, where $R(k)$ is the diagonal
-Ramsey number. Formulated as: there exists a real number $L$ such that
-$R(k)^{1/k} \to L$ as $k \to \infty$.
+Find the value of $\lim_{k \to \infty} R(k)^{1/k}$, where $R(k)$ is the diagonal
+Ramsey number.
 -/
 @[category research open, AMS 5]
 theorem erdos_77 :
-    ∃ L : ℝ, Tendsto (fun k : ℕ =>
-      (diagonalRamseyNumber k : ℝ) ^ ((1 : ℝ) / (k : ℝ))) atTop (nhds L) := by
+    Tendsto (fun k : ℕ =>
+      (diagonalRamseyNumber k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+      atTop (nhds (answer(sorry) : ℝ)) := by
   sorry
 
 end Erdos77
