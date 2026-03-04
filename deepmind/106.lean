@@ -20,6 +20,9 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 106
 
 *Reference:* [erdosproblems.com/106](https://www.erdosproblems.com/106)
+
+Draw $n$ non-overlapping squares (possibly rotated) inside the unit square. Let $f(n)$ be
+the maximum total side length. Is $f(k^2 + 1) = k$ for every positive integer $k$?
 -/
 
 open BigOperators Real

@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/93](https://www.erdosproblems.com/93)
 
+If $n$ points in $\mathbb{R}^2$ are in convex position (vertices of a convex polygon), then they
+determine at least $\lfloor n/2 \rfloor$ distinct distances. Proved by Altman.
+
 [Al63] Altman, E., _On a problem of P. Erdős_. Amer. Math. Monthly 70 (1963), 148-157.
 -/
 

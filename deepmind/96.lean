@@ -20,6 +20,9 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 96
 
 *Reference:* [erdosproblems.com/96](https://www.erdosproblems.com/96)
+
+Erdős–Moser conjecture: if $n$ points in $\mathbb{R}^2$ are in convex position, then the number
+of pairs at unit distance is $O(n)$.
 -/
 
 namespace Erdos96

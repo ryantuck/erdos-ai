@@ -23,9 +23,10 @@ import FormalConjectures.Util.ProblemImports
 
 [Er95] Erdős, P., _Problems and results in combinatorial analysis and graph theory_, 1995, p. 14.
 
-Erdős originally conjectured $R(G) \geq R(k)$ for all $G$ with $\chi(G) = k$, which fails
-already for $k = 4$: Faudree and McKay showed $R(W) = 17 < 18 = R(4)$ for the
-pentagonal wheel $W$.
+Is it true that for every $\varepsilon > 0$ and all sufficiently large $k$, we have
+$R(G) > (1 - \varepsilon)^k R(k)$ for every graph $G$ with chromatic number $\chi(G) = k$?
+A stronger form asks whether $R(G) > c \cdot R(k)$ for some absolute constant $c > 0$.
+Erdős originally conjectured $R(G) \geq R(k)$, which fails already for $k = 4$.
 -/
 
 open SimpleGraph
@@ -34,7 +35,7 @@ namespace Erdos87
 
 /-- An injective graph homomorphism (embedding) from $H$ into $G$:
 $G$ contains a copy of $H$ as a subgraph. -/
-def containsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
   ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
 
 /-- The (diagonal) graph Ramsey number $R(H)$: the minimum $N$ such that every simple
@@ -43,7 +44,7 @@ complement contains a copy of $H$ (equivalently, every 2-colouring of $K_N$
 contains a monochromatic copy of $H$). -/
 noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
   sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
-    containsSubgraph G H ∨ containsSubgraph Gᶜ H}
+    ContainsSubgraph G H ∨ ContainsSubgraph Gᶜ H}
 
 /-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
 noncomputable def diagRamsey (k : ℕ) : ℕ :=

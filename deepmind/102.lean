@@ -20,6 +20,10 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 102
 
 *Reference:* [erdosproblems.com/102](https://www.erdosproblems.com/102)
+
+Erdős–Purdy conjecture: if an $n$-point set in $\mathbb{R}^2$ determines at least $cn^2$ lines
+each containing more than three points, then some line must contain an unbounded number of
+points as $n \to \infty$.
 -/
 
 namespace Erdos102

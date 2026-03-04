@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/73](https://www.erdosproblems.com/73)
 
+If every induced subgraph of $G$ on $n$ vertices has an independent set of size
+$\geq (n - k)/2$, then removing $O_k(1)$ vertices makes $G$ bipartite.
+Proved by Reed [Re99].
+
 [Re99] Reed, B., _Mangoes and blueberries_. Combinatorica 19 (1999), 267–296.
 -/
 

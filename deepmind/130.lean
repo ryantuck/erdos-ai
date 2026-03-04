@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/130](https://www.erdosproblems.com/130)
 
+Let $A \subseteq \mathbb{R}^2$ be an infinite set with no three collinear and no four concyclic
+points. Can the integer-distance graph on $A$ (adjacent iff at integer distance) have infinite
+chromatic number?
+
 [Er97b] Erdős, P., _Some of my favourite problems which recently have been solved_,
 Proceedings of the International Conference on Discrete Mathematics (ICDM) (1997).
 

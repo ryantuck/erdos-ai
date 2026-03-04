@@ -20,6 +20,9 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 98
 
 *Reference:* [erdosproblems.com/98](https://www.erdosproblems.com/98)
+
+Let $h(n)$ be the minimum number of distinct distances determined by $n$ points in
+$\mathbb{R}^2$ with no three collinear and no four concyclic. Does $h(n)/n \to \infty$?
 -/
 
 namespace Erdos98

@@ -20,6 +20,9 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 50
 
 *Reference:* [erdosproblems.com/50](https://www.erdosproblems.com/50)
+
+The distribution function $f(c) = d(\{n : \varphi(n) < cn\})$ is purely singular: there is
+no $x$ at which $f'(x)$ exists and is positive. Proved by Erdős.
 -/
 
 open Nat Finset Filter Set Classical

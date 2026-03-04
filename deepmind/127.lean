@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/127](https://www.erdosproblems.com/127)
 
+Let $f(m)$ be the excess of the maximum bipartite subgraph size over the Edwards bound
+$m/2 + (\sqrt{8m+1} - 1)/8$. Is $f(m)$ unbounded? Proved by Alon.
+
 [Ed73] Edwards, C.S., _Some extremal properties of bipartite subgraphs_,
 Canadian Journal of Mathematics (1973).
 
@@ -85,7 +88,7 @@ Alon [Al96] proved this in the affirmative: $f(n^2/2) \gg n^{1/2}$.
 Alon [Al96] also showed the upper bound $f(m) \ll m^{1/4}$ for all $m$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_127 :
+theorem erdos_127 : answer(True) ↔
     ∃ (seq : ℕ → ℕ), StrictMono seq ∧
       Filter.Tendsto (fun i => f (seq i)) Filter.atTop Filter.atTop := by
   sorry

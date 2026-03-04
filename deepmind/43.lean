@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/43](https://www.erdosproblems.com/43)
 
+If $A, B \subseteq \{1, \ldots, N\}$ are Sidon sets with $(A-A) \cap (B-B) = \{0\}$, is it true
+that $\binom{|A|}{2} + \binom{|B|}{2} \leq \binom{f(N)}{2} + O(1)$, where $f(N)$ is the maximum
+size of a Sidon set in $\{1, \ldots, N\}$?
+
 [Er95] Erdős, P., _Some of my favourite problems in various branches of combinatorics_.
 Combinatorics, Paul Erdős is Eighty, Vol. 2 (1996), 1–25.
 -/

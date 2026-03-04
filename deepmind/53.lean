@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/53](https://www.erdosproblems.com/53)
 
+For every $k$, if $|A|$ is sufficiently large, then there are at least $|A|^k$ distinct integers
+that are either a sum or product of distinct elements of $A$. Solved by Chang [Ch03].
+
 [ErSz83] Erdős, P. and Szemerédi, E., _On sums and products of integers_. Studies in Pure
 Mathematics, Birkhäuser, Basel (1983), 213-218.
 

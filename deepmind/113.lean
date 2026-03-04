@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/113](https://www.erdosproblems.com/113)
 
+Erdős–Simonovits conjecture (disproved by Janzer): is it true that for a bipartite graph $G$,
+the Turán number satisfies $\mathrm{ex}(n; G) \ll n^{3/2}$ if and only if $G$ is 2-degenerate?
+
 [ErSi84] Erdős, P. and Simonovits, M., *Cube-supersaturated graphs and related problems*,
 Progress in graph theory (Waterloo, Ont., 1982), Academic Press, Toronto, ON, 1984, 203–218.
 
@@ -33,7 +36,7 @@ namespace Erdos113
 
 /-- An injective graph homomorphism from $H$ to $F$; witnesses that $F$ contains a
 subgraph isomorphic to $H$. -/
-def containsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
   ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → F.Adj (f u) (f v)
 
 /-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph
@@ -41,7 +44,7 @@ on $n$ vertices that contains no copy of $H$ as a subgraph. -/
 noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
   sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
     haveI := fv; haveI := dr;
-    Fintype.card V = n ∧ ¬containsSubgraph F H ∧ F.edgeFinset.card = m}
+    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
 
 /-- A graph $G$ is 2-degenerate if every non-empty finite set of vertices contains
 a vertex with at most 2 neighbors within that set. Equivalently, $G$ has no

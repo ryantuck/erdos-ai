@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/57](https://www.erdosproblems.com/57)
 
+If $G$ is a graph with infinite chromatic number and $a_1 < a_2 < \cdots$ are the lengths
+of its odd cycles, then $\sum 1/a_i = \infty$. Conjectured by Erdős and Hajnal [ErHa66],
+proved by Liu and Montgomery [LiMo20].
+
 [ErHa66] Erdős, P. and Hajnal, A., _On chromatic number of graphs and set-systems_, 1966.
 
 [LiMo20] Liu, H. and Montgomery, R., _A solution to Erdős and Hajnal's odd cycle problem_, 2020.

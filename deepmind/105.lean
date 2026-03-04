@@ -20,6 +20,10 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 105
 
 *Reference:* [erdosproblems.com/105](https://www.erdosproblems.com/105)
+
+Erdős–Purdy conjecture (disproved): given $n$ points in $\mathbb{R}^2$, not all collinear, and
+a disjoint set of $n - 3$ points, must there exist a line through at least two of the first
+set that avoids the second? Counterexamples were found by Xichuan.
 -/
 
 namespace Erdos105
@@ -36,7 +40,7 @@ counterexamples. It remains open whether the result holds with $n - 4$ (or
 more generally with $n - O(1)$ or $(1 - o(1))n$ points in $B$).
 The condition $n - 2$ is known to fail via a construction of Hickerson.
 -/
-@[category research solved, AMS 05 52]
+@[category research solved, AMS 5 52]
 theorem erdos_105 : answer(False) ↔
     ∀ n : ℕ, 3 ≤ n →
     ∀ A B : Finset (EuclideanSpace ℝ (Fin 2)),

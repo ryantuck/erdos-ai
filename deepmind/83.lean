@@ -21,8 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/83](https://www.erdosproblems.com/83)
 
-Conjectured by Erdős, Ko, and Rado [ErKoRa61]. Proved by Ahlswede and
-Khachatrian [AhKh97].
+If $\mathcal{F}$ is a family of $2n$-element subsets of $[4n]$ with pairwise intersections
+of size $\geq 2$, then $|\mathcal{F}| \leq \frac{1}{2}(\binom{4n}{2n} - \binom{2n}{n}^2)$.
+Conjectured by Erdős, Ko, and Rado [ErKoRa61], proved by Ahlswede and Khachatrian [AhKh97].
 
 [ErKoRa61] Erdős, P., Ko, C., and Rado, R., _Intersection theorems for systems of
 finite sets_. Quart. J. Math. Oxford Ser. (2) 12 (1961), 313-320.

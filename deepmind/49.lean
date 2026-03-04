@@ -20,6 +20,9 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 49
 
 *Reference:* [erdosproblems.com/49](https://www.erdosproblems.com/49)
+
+The maximum size of a subset of $\{1, \ldots, N\}$ on which Euler's totient function is
+strictly increasing is $(1 + o(1))\pi(N)$. Proved by Tao.
 -/
 
 namespace Erdos49

@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/55](https://www.erdosproblems.com/55)
 
+For every $r \geq 2$, there exists an $r$-Ramsey complete set $A$ with
+$|A \cap \{1,\ldots,N\}| \leq C \cdot r \cdot (\log N)^2$, and this bound is best possible.
+Solved by Conlon, Fox, and Pham [CFP21].
+
 [CFP21] Conlon, D., Fox, J., and Pham, H. T., _The upper bound for Ramsey complete
 sequences_, 2021.
 -/

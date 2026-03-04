@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/31](https://www.erdosproblems.com/31)
 
+Given any infinite set $A \subset \mathbb{N}$, there exists a set $B$ of natural density zero
+such that $A + B$ contains all except finitely many natural numbers. Proved by Lorentz [Lo54].
+
 [Lo54] Lorentz, G. G., _On a problem of additive number theory_. Proc. Amer. Math. Soc. 5 (1954), 838–840.
 -/
 

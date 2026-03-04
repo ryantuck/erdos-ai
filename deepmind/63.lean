@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/63](https://www.erdosproblems.com/63)
 
+Does every graph with infinite chromatic number contain a cycle of length $2^n$ for
+infinitely many $n$? Proved by Liu and Montgomery [LiMo20].
+
 [Er93,Er94b,Er95,Er95d,Er96,Er97b] Various papers by Erdős where this problem appears.
 
 [LiMo20] Liu, H. and Montgomery, R., _A solution to Erdős and Hajnal's odd cycle problem_, 2020.

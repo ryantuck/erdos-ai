@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/52](https://www.erdosproblems.com/52)
 
+The Erdős–Szemerédi sum-product conjecture [ErSz83]: for every $\varepsilon > 0$ there exists
+$c > 0$ such that $\max(|A+A|, |A \cdot A|) \geq c \cdot |A|^{2-\varepsilon}$ for every finite
+set $A$ of integers. The best known bound is due to Bloom [Bl25].
+
 [ErSz83] Erdős, P. and Szemerédi, E., *On sums and products of integers*.
 Studies in pure mathematics, Birkhäuser, Basel (1983), 213–218.
 

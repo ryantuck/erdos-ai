@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/94](https://www.erdosproblems.com/94)
 
+For $n$ points in convex position with distance multiplicities $f(u_i)$, the sum
+$\sum_i f(u_i)^2$ is $O(n^3)$. Proved by Lefmann and Thiele.
+
 [LeTh95] Lefmann, H. and Thiele, T., _Point sets with distinct distances_.
 Combinatorica 15 (1995), 379–408.
 -/

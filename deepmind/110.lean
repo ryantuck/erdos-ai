@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/110](https://www.erdosproblems.com/110)
 
+Is there a function $F$ such that every graph with chromatic number $\aleph_1$ has, for all
+large $n$, a subgraph with chromatic number $n$ on at most $F(n)$ vertices? Disproved:
+Lambie-Hanson constructed a ZFC counterexample.
+
 [EHS82] Erdős, P., Hajnal, A., and Szemerédi, E. — original conjecture.
 
 [KoSh05] Komjáth, P. and Shelah, S. — proved it is consistent with ZFC that the answer is no.
@@ -53,7 +57,7 @@ The analogous statement fails for graphs of chromatic number $\aleph_0$.
 Shelah [KoSh05] proved it is consistent with ZFC that the answer is no.
 Lambie-Hanson [La20] constructed a ZFC counterexample, so the conjecture is **false**.
 -/
-@[category research solved, AMS 5 3]
+@[category research solved, AMS 3 5]
 theorem erdos_110 : answer(False) ↔
     ∃ F : ℕ → ℕ,
       ∀ (V : Type*) (G : SimpleGraph V),

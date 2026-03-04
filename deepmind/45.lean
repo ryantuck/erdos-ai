@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/45](https://www.erdosproblems.com/45)
 
+For every $k$-colouring of the divisors of $n$ (excluding $1$ and $n$), there is a
+monochromatic subset whose reciprocals sum to $1$. Proved by Croot [Cr03].
+
 [Cr03] Croot, E., _On a coloring conjecture about unit fractions_. Annals of Mathematics,
 157 (2003), 545–556.
 -/

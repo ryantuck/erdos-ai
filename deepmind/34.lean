@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/34](https://www.erdosproblems.com/34)
 
+For a permutation $\pi$ of $\{1,\ldots,n\}$, let $S(\pi)$ count the distinct consecutive sums.
+Is $S(\pi) = o(n^2)$ for all $\pi$? Disproved by Hegyvári [He86]; Konieczny [Ko15] showed
+a random permutation has $\sim \frac{1+e^{-2}}{4} \cdot n^2$ distinct consecutive sums.
+
 [He86] Hegyvári, N., _On consecutive sums in sequences_, Acta Math. Hungar. (1986).
 
 [Ko15] Konieczny, J., _Consecutive sums in a random permutation_, preprint (2015).

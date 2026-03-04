@@ -20,6 +20,9 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 104
 
 *Reference:* [erdosproblems.com/104](https://www.erdosproblems.com/104)
+
+Given $n$ points in $\mathbb{R}^2$, the number of unit circles containing at least three of
+the points is $o(n^2)$.
 -/
 
 namespace Erdos104

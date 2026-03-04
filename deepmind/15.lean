@@ -20,6 +20,10 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 15
 
 *Reference:* [erdosproblems.com/15](https://www.erdosproblems.com/15)
+
+Is the alternating series $\sum_{n=1}^{\infty} (-1)^n \cdot n / p_n$ convergent, where $p_n$
+denotes the $n$-th prime? Tao has proved convergence assuming a strong form of the
+Hardy–Littlewood prime tuples conjecture.
 -/
 
 open Filter

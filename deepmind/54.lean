@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/54](https://www.erdosproblems.com/54)
 
+There exists a Ramsey 2-complete set $A$ (every large integer is a monochromatic subset sum
+under any 2-colouring) with $|A \cap \{1,\ldots,N\}| \leq c (\log N)^2$.
+Resolved by Conlon, Fox, and Pham [CFP21].
+
 [CFP21] Conlon, D., Fox, J., and Pham, H.T., _Subset sums, completeness and colorings_. (2021).
 -/
 

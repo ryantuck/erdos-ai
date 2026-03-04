@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/62](https://www.erdosproblems.com/62)
 
+If $G_1$ and $G_2$ are graphs with chromatic number $\aleph_1$, must they share a common
+subgraph with infinite chromatic number?
+
 [EHS74] Erdős, P., Hajnal, A., and Shelah, S., *On some general properties of chromatic numbers*.
 Topics in topology (Proc. Colloq., Keszthely, 1972), Colloq. Math. Soc. Janos Bolyai (1974),
 243-255.

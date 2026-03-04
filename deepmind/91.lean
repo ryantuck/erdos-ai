@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/91](https://www.erdosproblems.com/91)
 
+For large $n$, is it true that every $n$-point set in $\mathbb{R}^2$ minimizing the number of
+distinct distances admits another minimizer of the same size that is not similar to it?
+
 [Er87b] Erdős, P., _Some combinatorial, probabilistic and number theoretic problems_ (1987), p.171.
 
 [Er90] Erdős, P., (1990).

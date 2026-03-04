@@ -20,6 +20,9 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 101
 
 *Reference:* [erdosproblems.com/101](https://www.erdosproblems.com/101)
+
+Given $n$ points in $\mathbb{R}^2$ with no five collinear, the number of lines containing at
+least four of the points is $o(n^2)$.
 -/
 
 namespace Erdos101

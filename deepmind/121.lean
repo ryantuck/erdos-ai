@@ -21,6 +21,11 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/121](https://www.erdosproblems.com/121)
 
+Let $F_k(N)$ be the size of the largest subset of $\{1, \ldots, N\}$ with no $k$ distinct
+elements whose product is a perfect square. Erdős–Sós–Sárközy conjectured
+$F_{2k+1}(N) = (1 - o(1))N$ for $k \geq 2$; disproved by Tao, who showed $F_k(N) \leq
+(1 - c_k)N$ for all $k \geq 4$.
+
 [Er94b] [Er97] [Er97e] [Er98] Erdős, P., various problems papers.
 
 [ESS95] Erdős, P., Sárközy, A. and Sós, V. T., on products of distinct elements of subsets.

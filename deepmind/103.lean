@@ -20,6 +20,9 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 103
 
 *Reference:* [erdosproblems.com/103](https://www.erdosproblems.com/103)
+
+Let $h(n)$ count the number of incongruent $n$-point configurations in $\mathbb{R}^2$ that
+minimize the diameter subject to all pairwise distances being $\geq 1$. Does $h(n) \to \infty$?
 -/
 
 namespace Erdos103

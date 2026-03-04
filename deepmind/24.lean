@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/24](https://www.erdosproblems.com/24)
 
+Every triangle-free graph on $5n$ vertices contains at most $n^5$ copies of $C_5$.
+Proved independently by Grzesik [Gr12] and by Hatami, Hladký, Král, Norine, and
+Razborov [HHKNR13].
+
 [Gr12] Grzesik, A., _On the maximum number of five-cycles in a triangle-free graph_.
 Journal of Combinatorial Theory, Series B (2012), 1061-1066.
 

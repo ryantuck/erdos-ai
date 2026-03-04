@@ -21,9 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/59](https://www.erdosproblems.com/59)
 
-[Er90, Er93, Er97c, Va99] are the original references. Erdős, Frankl, and Rödl [EFR86]
-proved the answer is yes when $G$ is not bipartite. Morris and Saxton [MoSa16] showed
-counterexamples for $G = C_6$.
+Is it true that for every graph $G$, the number of labeled $G$-free graphs on $n$ vertices
+is at most $2^{(1+o(1)) \cdot \operatorname{ex}(n; G)}$? Disproved: the answer is no for
+$G = C_6$ (Morris and Saxton [MoSa16]). Erdős, Frankl, and Rödl [EFR86] proved the
+answer is yes when $G$ is not bipartite.
 -/
 
 open SimpleGraph

@@ -20,6 +20,10 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 78
 
 *Reference:* [erdosproblems.com/78](https://www.erdosproblems.com/78)
+
+Give a constructive proof that $R(k) > C^k$ for some constant $C > 1$, where $R(k)$ is the
+diagonal Ramsey number. Erdős's probabilistic proof that $R(k) \gg k \cdot 2^{k/2}$ is
+non-constructive. Prize: \$100.
 -/
 
 open SimpleGraph

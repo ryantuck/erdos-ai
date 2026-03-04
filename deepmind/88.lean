@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/88](https://www.erdosproblems.com/88)
 
+Erdős–McKay conjecture (proved by Kwan–Sah–Sauermann–Sawhney): if a graph on $n$ vertices
+has no clique or independent set of size $\geq \varepsilon \log n$, then it contains an induced
+subgraph with exactly $m$ edges for every $m \leq \delta n^2$.
+
 [KSSS22] Kwan, M., Sah, A., Sauermann, L., and Sawhney, M.,
 _Anticoncentration in Ramsey graphs and a proof of the Erdős–McKay conjecture_,
 Forum of Mathematics, Pi (2023).

@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/114](https://www.erdosproblems.com/114)
 
+Erdős–Herzog–Piranian conjecture: the arc length of the level curve
+$\{z \in \mathbb{C} : |p(z)| = 1\}$ of a monic polynomial of degree $n$ is maximized when
+$p(z) = z^n - 1$.
+
 [EHP58] Erdős, P., Herzog, F. and Piranian, G., _Metric properties of polynomials_,
 J. Analyse Math. 6 (1958), 125–148.
 -/

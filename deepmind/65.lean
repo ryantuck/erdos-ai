@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/65](https://www.erdosproblems.com/65)
 
+Is the sum of reciprocals of distinct cycle lengths in a graph on $n$ vertices with $kn$
+edges minimised by the complete bipartite graph? Gyárfás, Komlós, and Szemerédi [GKS84]
+proved $\sum 1/a_i \gg \log k$; Liu and Montgomery [LiMo20] proved the sharp bound.
+
 [GKS84] Gyárfás, A., Komlós, J., and Szemerédi, E., *On the distribution of cycle lengths in
 graphs*, J. Graph Theory 8 (1984), 441–462.
 

@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/70](https://www.erdosproblems.com/70)
 
+Is it true that $\mathfrak{c} \to (\beta, n)^2_3$ for every countable ordinal $\beta$ and
+every finite $n \geq 2$, where $\mathfrak{c}$ is the cardinality of the continuum?
+
 [Er87] Erdős, P., *On some of my favourite unsolved problems* (1987).
 -/
 

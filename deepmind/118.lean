@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/118](https://www.erdosproblems.com/118)
 
+Erdős–Hajnal conjecture on partition ordinals (disproved): if $\alpha \to (\alpha, 3)^2$, does
+$\alpha \to (\alpha, n)^2$ hold for all $n \geq 3$? Independently disproved by Schipperus and
+Darby.
+
 [Er87] Erdős, P., *Some of my favourite problems in various branches of combinatorics*.
 
 [Er90] Erdős, P., *Some of my favourite problems in number theory, combinatorics, and geometry*.

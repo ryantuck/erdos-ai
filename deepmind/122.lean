@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/122](https://www.erdosproblems.com/122)
 
+For which arithmetic functions $f$ is it true that the count of $n$ with $n + f(n)$ in a
+short interval $(x, x + F(x))$, divided by $F(x)$, is unbounded? Erdős–Pomerance–Sárközy
+proved this for $f = \tau$ (divisor count) and $f = \omega$ (distinct prime factor count).
+
 [Er97] Erdős, P., *Some of my new and almost new problems and results in combinatorial
 number theory* (1997).
 

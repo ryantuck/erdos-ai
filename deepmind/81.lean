@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/81](https://www.erdosproblems.com/81)
 
+Can the edges of a chordal graph on $n$ vertices be partitioned into at most
+$n^2/6 + O(n)$ cliques?
+
 [EOZ93] Erdős, P., Ordman, E.T., and Zalcstein, Y., *Clique partitions of chordal graphs*,
 Combinatorics, Probability and Computing **2** (1993), 409-415.
 -/

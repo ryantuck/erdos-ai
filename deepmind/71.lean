@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/71](https://www.erdosproblems.com/71)
 
+For every infinite arithmetic progression containing even numbers, there exists $c > 0$
+such that every graph with average degree at least $c$ contains a cycle whose length
+belongs to the progression. Proved by Bollobás [Bo77].
+
 [Bo77] Bollobás, B., *Cycles modulo k*. Bull. London Math. Soc. 9 (1977), 97-98.
 -/
 

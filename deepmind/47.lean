@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/47](https://www.erdosproblems.com/47)
 
+If $A \subseteq \{1, \ldots, N\}$ satisfies $\sum_{a \in A} 1/a > \delta \cdot \log N$ for some
+$\delta > 0$ and $N$ sufficiently large, then $A$ contains a subset whose reciprocals sum to $1$.
+
 Bloom [Bl21] proved that the weaker threshold
 $\sum \frac{1}{n} \gg \frac{\log \log \log N}{\log \log N} \cdot \log N$ suffices,
 which implies the conjecture below.

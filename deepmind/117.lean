@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/117](https://www.erdosproblems.com/117)
 
+Let $h(n)$ be the least $k$ such that every group where each subset of more than $n$ elements
+contains two distinct commuting elements can be covered by $k$ abelian subgroups. Pyber proved
+$c_1^n < h(n) < c_2^n$ for constants $c_2 > c_1 > 1$.
+
 [Er90] Erdős, P., *Some of my favourite unsolved problems*. A tribute to Paul Erdős (1990),
 467-478.
 

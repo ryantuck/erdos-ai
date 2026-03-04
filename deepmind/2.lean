@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/2](https://www.erdosproblems.com/2)
 
+Erdős asked whether the smallest modulus of a covering system can be arbitrarily large.
+Hough [Hou15] showed the answer is no; the best bounds are due to Balister, Bollobás,
+Morris, Sahasrabudhe, and Tiba [BBMST22].
+
 [Hou15] Hough, R. D., _Solution of the minimum modulus problem for covering systems_.
 Annals of Mathematics (2015), 361-382.
 

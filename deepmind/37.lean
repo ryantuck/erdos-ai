@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/37](https://www.erdosproblems.com/37)
 
+A lacunary set cannot be an essential component (a set that strictly increases the
+Schnirelmann density of every set it is added to). Proved by Ruzsa [Ru87].
+
 [Ru87] Ruzsa, I.Z., _Essential components_. Proc. London Math. Soc. (3) **54** (1987), 38–56.
 -/
 

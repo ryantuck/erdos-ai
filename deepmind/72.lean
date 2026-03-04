@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/72](https://www.erdosproblems.com/72)
 
+There exists a density-zero set $A$ and a constant $c > 0$ such that every graph with
+average degree at least $c$ contains a cycle whose length is in $A$. Proved by
+Verstraëte [Ve05]; Liu and Montgomery [LiMo20] showed powers of $2$ work.
+
 [Ve05] Verstraëte, J., *A note on vertex-disjoint cycles*, Combinatorics, Probability and
 Computing 14 (2005), 127-143.
 

@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/111](https://www.erdosproblems.com/111)
 
+Does there exist a graph with chromatic number $\aleph_1$ such that every $n$-vertex induced
+subgraph can be made bipartite by deleting $O(n^{1+\varepsilon})$ edges for every
+$\varepsilon > 0$?
+
 [EHS82] Erdős, P., Hajnal, A. and Szemerédi, E., _On almost bipartite large chromatic
 graphs_. Annals of Discrete Mathematics, 12 (1982), 117-123.
 

@@ -20,6 +20,13 @@ import FormalConjectures.Util.ProblemImports
 # Erdős Problem 95
 
 *Reference:* [erdosproblems.com/95](https://www.erdosproblems.com/95)
+
+For $n$ points in $\mathbb{R}^2$ with distance multiplicities $f(u_i)$, the sum
+$\sum_i f(u_i)^2 \ll_\varepsilon n^{3+\varepsilon}$ for every $\varepsilon > 0$.
+Proved by Guth and Katz (2015) with the stronger bound $O(n^3 \log n)$.
+
+[GuKa15] Guth, L. and Katz, N.H., _On the Erdős distinct distances problem in the plane_,
+Annals of Mathematics **181** (2015), 155–190.
 -/
 
 open Classical

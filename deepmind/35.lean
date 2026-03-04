@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/35](https://www.erdosproblems.com/35)
 
+If $B$ is an additive basis of order $k$ and $A$ has Schnirelmann density $\alpha$, then
+$d_s(A + B) \geq \alpha + \alpha(1-\alpha)/k$. Proved by Plünnecke [Pl70].
+
 [Pl70] Plünnecke, H., _Eine zahlentheoretische Anwendung der Graphentheorie_. J. Reine Angew.
 Math. 243 (1970), 171–183.
 -/

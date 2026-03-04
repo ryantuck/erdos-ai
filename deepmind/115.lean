@@ -21,6 +21,9 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/115](https://www.erdosproblems.com/115)
 
+If the lemniscate $\{z : |p(z)| \leq 1\}$ of a degree-$n$ polynomial is connected, then
+$|p'(z)| \leq (1/2 + o(1)) n^2$ on it. Proved by Eremenko and Lempert.
+
 [Er61, Er90] Early formulations by Erdős.
 [ErLe94] Eremenko, A. and Lempert, L., proved the conjecture.
 [Po59a] Pommerenke, Ch., proved the weaker bound $(e/2)\, n^2$.

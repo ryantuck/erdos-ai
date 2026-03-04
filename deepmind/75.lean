@@ -21,6 +21,10 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/75](https://www.erdosproblems.com/75)
 
+Does there exist a graph on $\aleph_1$ vertices with chromatic number $\aleph_1$ such that
+every set of $n$ vertices contains an independent set of size $> n^{1-\varepsilon}$ for all
+$\varepsilon > 0$ and large $n$?
+
 [EHS82] Erdős, P., Hajnal, A., and Szemerédi, E., _On almost bipartite large chromatic graphs_,
 Annals of Discrete Mathematics 12 (1982), 117-123.
 
