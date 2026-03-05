@@ -1,4 +1,5 @@
-## All 1179 Erdős conjectures are now formalized
+## Mass Formalization of all Erdős Problems using Lean
+
 
 I have utilized Claude (primarily Opus 4.6) to produce formal conjectures for **all 805 remaining Erdős problems**, completing the formalization of the entire set of 1179 conjectures, and achieving [Milestone 1: All open Erdős problems formalized](https://github.com/google-deepmind/formal-conjectures/milestone/1) in the Deepmind Formal Conjectures repo. 
 
@@ -7,6 +8,9 @@ I believe all conjectures adhere to the style guidelines in this repo and `lake 
 After [contributing the conjecture for problem 13](https://github.com/google-deepmind/formal-conjectures/pull/1793) I realized that formalizing the few hundred remaining conjectures basically boiled down to running a for-loop (and enough tokens to pay for it), so set out to accomplish just that.
 
 This work contains no _proofs_, only formalizations of the conjectures.
+
+![](erdos-agents.png)
+
 
 ## Methodology
 
