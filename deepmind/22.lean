@@ -16,6 +16,8 @@ limitations under the License.
 
 import FormalConjectures.Util.ProblemImports
 
+open SimpleGraph
+
 /-!
 # Erdős Problem 22
 
@@ -33,9 +35,14 @@ $(1/8 + o(1))n^2$ many edges. Proved by Fox, Loh, and Zhao [FLZ15], who showed t
 $n \geq 1$ there exists a $K_4$-free graph on $n$ vertices with $\geq n^2/8$ edges and
 independence number $\ll (\log \log n)^{3/2} / (\log n)^{1/2} \cdot n$.
 
-[BoEr76] Bollobás, B. and Erdős, P., _On a Ramsey–Turán type problem_, J. Combin. Theory Ser. B, 1976.
+[BoEr76] Bollobás, B. and Erdős, P., _On a Ramsey–Turán type problem_. J. Combin. Theory Ser. B (1976), 166-168.
 
-[FLZ15] Fox, J., Loh, P.-S., and Zhao, Y., _The critical window for the classical Ramsey–Turán problem_, Combinatorica, 2015.
+[Er90] Erdős, P., _Some of my favourite unsolved problems_. A tribute to Paul Erdős (1990),
+467-478.
+
+[FLZ15] Fox, J., Loh, P.-S., and Zhao, Y., _The critical window for the classical Ramsey–Turán problem_. Combinatorica (2015), 435-476.
+
+See also Erdős Problem 615.
 -/
 
 namespace Erdos22
@@ -55,8 +62,8 @@ theorem erdos_22 : answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
       ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
         ∃ G : SimpleGraph (Fin n),
-          (n : ℝ) ^ 2 / 8 ≤ (G.edgeSet.ncard : ℝ) ∧
-          (∀ s : Finset (Fin n), ¬G.IsNClique 4 s) ∧
+          (n : ℝ) ^ 2 / 8 ≤ (G.edgeFinset.card : ℝ) ∧
+          G.CliqueFree 4 ∧
           (∀ s : Finset (Fin n), G.IsIndepSet ↑s → (s.card : ℝ) ≤ ε * (n : ℝ)) := by
   sorry
 

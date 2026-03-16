@@ -31,10 +31,15 @@ $$
 \le (1.7398\ldots + o(1)) \cdot n \cdot (\log n)^{1/2}.
 $$
 
-See also [711].
+Erdős [Er92c] offered a prize of 2000 rupees for an asymptotic formula.
+
+See also [711]. See also OEIS [A390246](https://oeis.org/A390246).
 
 [ErPo80] Erdős, P. and Pomerance, C., _Matching the natural numbers up to n with distinct multiples
 in another interval_. Nederl. Akad. Wetensch. Proc. Ser. A 83 (= Indag. Math. 42) (1980), 147-161.
+
+[Er92c] Erdős, P., _Some of my forgotten problems in number theory_. Hardy-Ramanujan J. 15 (1992),
+34-50.
 -/
 
 open Nat
@@ -58,7 +63,7 @@ $1 \le k \le n$. The answer is an unknown function $g$ such that $f(n) / g(n) \t
 -/
 @[category research open, AMS 11]
 theorem erdos_710 :
-    Filter.Tendsto (fun n : ℕ => (erdos710F n : ℝ) / answer(sorry) n)
+    Filter.Tendsto (fun n : ℕ => (erdos710F n : ℝ) / (answer(sorry) : ℕ → ℝ) n)
       Filter.atTop (nhds 1) := by
   sorry
 

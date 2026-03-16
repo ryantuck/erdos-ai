@@ -43,7 +43,7 @@ namespace Erdos842
 def triangleGraph (n : ℕ) : SimpleGraph (Fin (3 * n)) where
   Adj u v := u ≠ v ∧ u.val / 3 = v.val / 3
   symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.symm⟩
-  loopless := ⟨fun _ ⟨h, _⟩ => h rfl⟩
+  loopless := fun _ ⟨h, _⟩ => h rfl
 
 /-- A permutation $\sigma$ on `Fin m` is a single $m$-cycle (Hamiltonian cycle): applying $\sigma$
     repeatedly from any vertex can reach every other vertex. -/
@@ -55,7 +55,7 @@ def IsSingleCycle {m : ℕ} (σ : Equiv.Perm (Fin m)) : Prop :=
 def cycleGraphOfPerm {m : ℕ} (σ : Equiv.Perm (Fin m)) : SimpleGraph (Fin m) where
   Adj u v := u ≠ v ∧ (σ u = v ∨ σ v = u)
   symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
-  loopless := ⟨fun _ ⟨h, _⟩ => h rfl⟩
+  loopless := fun _ ⟨h, _⟩ => h rfl
 
 /--
 Erdős Problem 842 [Er92b]:

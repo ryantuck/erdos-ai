@@ -55,7 +55,7 @@ complete bipartite graph $K_{s,t}$. The general problem remains open.
 @[category research open, AMS 5]
 theorem erdos_558 :
     ∀ s t : ℕ, s ≥ 1 → t ≥ 1 → ∀ k : ℕ,
-    multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k = answer(sorry) s t k := by
+    multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k = answer((sorry : ℕ → ℕ → ℕ → ℕ) s t k) := by
   sorry
 
 /--
@@ -114,6 +114,27 @@ theorem erdos_558.variants.ars (s t : ℕ) (hs : s ≥ 1) (ht : t ≥ 1)
         (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ∧
       (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ≤
         C₂ * (k : ℝ) ^ t := by
+  sorry
+
+/--
+Erdős Problem 558, Chung–Graham explicit bounds [ChGr75]:
+
+For all $s \geq 1$, $t \geq 2$, and $k \geq 1$,
+$$
+(2\pi\sqrt{st})^{1/(s+t)} \cdot \frac{s+t}{e^2} \cdot k^{(st-1)/(s+t)}
+\leq R_k(K_{s,t})
+\leq (t-1)(k + k^{1/s})^s.
+$$
+-/
+@[category research solved, AMS 5]
+theorem erdos_558.variants.chung_graham (s t : ℕ) (hs : s ≥ 1) (ht : t ≥ 2) :
+    ∀ k : ℕ, k ≥ 1 →
+      (2 * Real.pi * Real.sqrt ((s : ℝ) * t)) ^ ((1 : ℝ) / ((s : ℝ) + t)) *
+        (((s : ℝ) + t) / (Real.exp 1) ^ 2) *
+        (k : ℝ) ^ (((s : ℝ) * t - 1) / ((s : ℝ) + t)) ≤
+          (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ∧
+      (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ≤
+        ((t : ℝ) - 1) * ((k : ℝ) + (k : ℝ) ^ ((1 : ℝ) / (s : ℝ))) ^ (s : ℕ) := by
   sorry
 
 end Erdos558

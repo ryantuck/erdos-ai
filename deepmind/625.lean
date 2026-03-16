@@ -15,6 +15,7 @@ limitations under the License.
 -/
 
 import FormalConjectures.Util.ProblemImports
+import FormalConjecturesForMathlib.Combinatorics.SimpleGraph.Coloring
 
 /-!
 # Erdős Problem 625
@@ -43,22 +44,7 @@ has a property equals the $G(n, 1/2)$-probability of that property. -/
 def toGraph625 {n : ℕ} (ec : Fin n → Fin n → Bool) : SimpleGraph (Fin n) where
   Adj u v := u ≠ v ∧ ec (min u v) (max u v) = true
   symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, by rwa [min_comm, max_comm]⟩
-  loopless := ⟨fun v ⟨h, _⟩ => h rfl⟩
-
-/-- The chromatic number of a simple graph on `Fin n`: the minimum number of colors $k$
-such that there exists a proper coloring $f : \operatorname{Fin} n \to \operatorname{Fin} k$
-(no two adjacent vertices receive the same color). -/
-noncomputable def finChromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
-  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
-
-/-- The cochromatic number of a simple graph on `Fin n`: the minimum number of parts $k$
-in a coloring $f : \operatorname{Fin} n \to \operatorname{Fin} k$ such that each color class
-induces either a complete subgraph or an independent set. -/
-noncomputable def cochromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
-  sInf {k : ℕ | ∃ f : Fin n → Fin k,
-    ∀ c : Fin k,
-      (∀ u v, f u = c → f v = c → u ≠ v → G.Adj u v) ∨
-      (∀ u v, f u = c → f v = c → u ≠ v → ¬G.Adj u v)}
+  loopless := fun v ⟨h, _⟩ => h rfl
 
 /--
 Erdős Problem 625 [ErGi93]:
@@ -76,7 +62,7 @@ theorem erdos_625 : answer(sorry) ↔
     ∀ M : ℕ, ∀ ε : ℝ, ε > 0 →
     ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
       ((Finset.univ.filter (fun ec : Fin n → Fin n → Bool =>
-        finChromaticNumber (toGraph625 ec) - cochromaticNumber (toGraph625 ec) ≥ M)).card : ℝ) ≥
+        χ(toGraph625 ec).toNat - (cochromaticNumber (toGraph625 ec)).toNat ≥ M)).card : ℝ) ≥
       (1 - ε) * (Fintype.card (Fin n → Fin n → Bool) : ℝ) := by
   sorry
 

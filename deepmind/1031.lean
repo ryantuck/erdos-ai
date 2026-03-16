@@ -23,10 +23,11 @@ import FormalConjectures.Util.ProblemImports
 
 A question of Erdős, Fajtlowicz, and Staton [Er93, p.340].
 
-[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is eighty,
-Vol. 2 (Keszthely, 1993), 97-132.
+[Er93] Erdős, P., _Some of my favorite solved and unsolved problems in graph theory_.
+Quaestiones Mathematicae **16** (1993), 333–350.
 
-[PrRo99] Prömel, H.J. and Rödl, V., _Non-canonical Ramsey-type theorems_. To appear.
+[PrRo99] Prömel, H.J. and Rödl, V., _Non-Ramsey graphs are c log n-universal_.
+J. Combin. Theory Ser. A (1999), 379–384.
 -/
 
 open scoped Topology Real
@@ -48,7 +49,7 @@ then $G$ contains all graphs with $O_c(\log n)$ vertices as induced subgraphs.
 theorem erdos_1031 :
     ∃ c : ℝ, c > 0 ∧
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-    ∀ G : SimpleGraph (Fin n),
+    ∀ G : SimpleGraph (Fin n), ∀ _ : DecidableRel G.Adj,
       G.CliqueFree ⌈10 * Real.log (↑n)⌉₊ →
       Gᶜ.CliqueFree ⌈10 * Real.log (↑n)⌉₊ →
       ∃ S : Finset (Fin n),

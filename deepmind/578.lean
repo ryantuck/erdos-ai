@@ -15,6 +15,7 @@ limitations under the License.
 -/
 
 import FormalConjectures.Util.ProblemImports
+import Mathlib.Combinatorics.SimpleGraph.Copy
 
 /-!
 # Erdős Problem 578
@@ -30,6 +31,7 @@ proved this with any edge-probability $> 1/4$.
 and Computing, 2000.
 -/
 
+open scoped Classical
 open SimpleGraph
 
 namespace Erdos578
@@ -45,10 +47,8 @@ def hypercubeGraph (d : ℕ) : SimpleGraph (Fin d → Bool) where
                (Finset.univ.filter fun i : Fin d => u i ≠ v i) := by
       ext i; simp [ne_comm]
     rw [heq]; exact h
-  loopless := ⟨fun v h => by
-    have : (Finset.univ.filter fun i : Fin d => v i ≠ v i) = ∅ := by
-      ext i; simp
-    rw [this] at h; exact absurd h (by norm_num)⟩
+  loopless := fun v h => by
+    simp [Finset.filter_false_of_mem] at h
 
 /-- The simple graph on `Fin n` determined by a Boolean matrix. Only values at
     `(min u v, max u v)` matter; this ensures symmetry. Under $G(n, 1/2)$, each
@@ -57,7 +57,7 @@ def hypercubeGraph (d : ℕ) : SimpleGraph (Fin d → Bool) where
 def toGraph578 {n : ℕ} (ec : Fin n → Fin n → Bool) : SimpleGraph (Fin n) where
   Adj u v := u ≠ v ∧ ec (min u v) (max u v) = true
   symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, by rwa [min_comm, max_comm]⟩
-  loopless := ⟨fun v ⟨h, _⟩ => h rfl⟩
+  loopless := fun v ⟨h, _⟩ => h rfl
 
 /--
 Erdős Problem 578 [Er90c]:
@@ -80,10 +80,7 @@ theorem erdos_578 :
     ∀ ε : ℝ, ε > 0 →
     ∃ d₀ : ℕ, ∀ d : ℕ, d ≥ d₀ →
       ((Finset.univ.filter (fun ec : Fin (2 ^ d) → Fin (2 ^ d) → Bool =>
-        ∃ f : (Fin d → Bool) → Fin (2 ^ d),
-          Function.Injective f ∧
-          ∀ u v, (hypercubeGraph d).Adj u v →
-            (toGraph578 ec).Adj (f u) (f v))).card : ℝ) ≥
+        (hypercubeGraph d).IsContained (toGraph578 ec))).card : ℝ) ≥
       (1 - ε) * (Fintype.card (Fin (2 ^ d) → Fin (2 ^ d) → Bool) : ℝ) := by
   sorry
 

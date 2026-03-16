@@ -25,6 +25,18 @@ Every triangle-free graph on $5n$ vertices contains at most $n^5$ copies of $C_5
 Proved independently by Grzesik [Gr12] and by Hatami, Hladký, Král, Norine, and
 Razborov [HHKNR13].
 
+[Er90] Erdős, P., _Some of my favourite unsolved problems_. A tribute to Paul Erdős (1990),
+467-478.
+
+[Er92b] Erdős, P., _Some of my favourite problems in various branches of combinatorics_.
+Matematiche (Catania) **47** (1992), 231-240.
+
+[Er97b] Erdős, P., _Some of my favourite problems which recently have been solved_,
+Proceedings of the International Conference on Discrete Mathematics (ICDM) (1997).
+
+[Er97f] Erdős, P., _Some unsolved problems_. Combinatorics, geometry and probability
+(Cambridge, 1993) (1997), 1-10.
+
 [Gr12] Grzesik, A., _On the maximum number of five-cycles in a triangle-free graph_.
 Journal of Combinatorial Theory, Series B (2012), 1061-1066.
 

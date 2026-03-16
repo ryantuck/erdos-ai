@@ -38,8 +38,17 @@ Erdős and Graham note it is easy to show $\lim F(n^{1/2}, n) = \infty$.
 - $\lim F(n^{4/9}, n) = \infty$
 - if $f(n) = o((\log n)^2)$, then $F(f,n) \sim 1$ for almost all $n$.
 
+Van Doorn observes:
+- The existence of infinitely many bounded prime gaps implies
+  $\limsup_{n \to \infty} F(g(n), n) = \infty$ for any $g(n) \to \infty$.
+- Cramér's conjecture implies $\lim F(g(n)(\log n)^2, n) = \infty$ for any $g(n) \to \infty$.
+
 [ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
 theory*. Monographies de L'Enseignement Mathematique (1980).
+
+[EGIP96] Erdős, P., Graham, R., Ivić, A., and Pomerance, C., _On the number of
+divisors of n!_. Analytic Number Theory (Proceedings of a Conference in Honor of
+Heini Halberstam) (1996), 337–355.
 -/
 
 open Filter
@@ -63,7 +72,7 @@ Is it true that $\lim_{n \to \infty} F((\log n)^C, n) = \infty$ for all sufficie
 @[category research open, AMS 11]
 theorem erdos_420 : answer(sorry) ↔
     ∃ C₀ : ℝ, ∀ C : ℝ, C ≥ C₀ →
-      Tendsto (fun n : ℕ => F (fun m => (log (m : ℝ)) ^ C) n)
+      Tendsto (fun n : ℕ => F (fun m => (Real.log (m : ℝ)) ^ C) n)
         atTop atTop := by
   sorry
 
@@ -78,8 +87,8 @@ $a < F(\log n, n) < b$.
 theorem erdos_420.variants.dense_log : answer(sorry) ↔
     ∀ a b : ℝ, 1 < a → a < b →
       ∃ᶠ n in atTop,
-        a < F (fun m => log (m : ℝ)) n ∧
-        F (fun m => log (m : ℝ)) n < b := by
+        a < F (fun m => Real.log (m : ℝ)) n ∧
+        F (fun m => Real.log (m : ℝ)) n < b := by
   sorry
 
 /--
@@ -91,7 +100,7 @@ as $n \to \infty$, then is $F(f, n)$ everywhere dense in $(1, \infty)$?
 @[category research open, AMS 11]
 theorem erdos_420.variants.dense_monotone : answer(sorry) ↔
     ∀ f : ℕ → ℝ, Monotone f →
-      (∀ n : ℕ, f n ≤ log (n : ℝ)) →
+      (∀ n : ℕ, f n ≤ Real.log (n : ℝ)) →
       Tendsto f atTop atTop →
       ∀ a b : ℝ, 1 < a → a < b →
         ∃ᶠ n in atTop,

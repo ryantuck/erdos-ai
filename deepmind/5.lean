@@ -25,6 +25,28 @@ This problem concerns the set of limit points of the normalized prime gap sequen
 $(p_{n+1} - p_n) / \log n$, where $p_n$ denotes the $n$-th prime. The conjecture,
 posed in several papers of Erdős [Er55c, Er57, Er61, Er65b, Er85c, Er90, Er97c],
 asserts that this set of limit points equals $[0, \infty]$.
+
+Related: Erdős Problem 234 (density of normalized prime gaps).
+OEIS: [A001223](https://oeis.org/A001223) (prime gaps).
+
+[Er55c] Erdős, P., _Some problems on number theory_ (1955).
+
+[Er57] Erdős, P., _Some unsolved problems_ (1957).
+
+[Er61] Erdős, P., _Some unsolved problems_. Magyar Tud. Akad. Mat. Kutató Int. Közl. **6**
+(1961), 221–254.
+
+[Er65b] Erdős, P., _Some recent advances and current problems in number theory_. Lectures on
+Modern Mathematics **III** (1965), 196–244.
+
+[Er85c] Erdős, P., _On some of my problems in number theory I would most like to see solved_.
+Number theory (Ootacamund, 1984) (1985), 74–84.
+
+[Er90] Erdős, P., _Some of my favourite unsolved problems_. A tribute to Paul Erdős (1990),
+467–478.
+
+[Er97c] Erdős, P., _Some of my favorite problems and results_. The mathematics of Paul Erdős,
+I (1997).
 -/
 
 open Filter Nat Real
@@ -38,7 +60,7 @@ where $p_n = \texttt{nth Nat.Prime}\; n$ is the $n$-th prime (so $p_0 = 2$, $p_1
 We use $n+1$ in the denominator so that $\log$ is evaluated at a positive argument.
 -/
 noncomputable def normalizedPrimeGap (n : ℕ) : ℝ :=
-  ((nth Nat.Prime (n + 1) : ℝ) - (nth Nat.Prime n : ℝ)) / Real.log ((n : ℝ) + 1)
+  (primeGap n : ℝ) / Real.log ((n : ℝ) + 1)
 
 /--
 Let $p_n$ denote the $n$-th prime. Let $S$ be the set of limit points of the sequence

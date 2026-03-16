@@ -24,13 +24,25 @@ import FormalConjectures.Util.ProblemImports
 For every $k$-colouring of the divisors of $n$ (excluding $1$ and $n$), there is a
 monochromatic subset whose reciprocals sum to $1$. Proved by Croot [Cr03].
 
-[Cr03] Croot, E., _On a coloring conjecture about unit fractions_. Annals of Mathematics,
-157 (2003), 545–556.
+[Er95] Erdős, P., _Some of my favourite problems in various branches of combinatorics_.
+Combinatorics '94 (Catania), Congressus Numerantium **107** (1995).
+
+[Er96b] Erdős, P., _Some problems I presented or planned to present in my short talk_.
+Analytic number theory, Vol. 1 (Allerton Park, IL, 1995) (1996), 333–335.
+
+[Cr03] Croot, E., _On a coloring conjecture about unit fractions_. Ann. of Math. (2)
+**157** (2003), 545–556.
+
+[Gu04] Guy, R., _Unsolved Problems in Number Theory_, 3rd ed. Springer, 2004, Problem B2.
 -/
 
 open Finset BigOperators
 
 namespace Erdos45
+
+/-- The reciprocal sum $\sum_{n \in A} 1/n$ of a finite set of natural numbers. -/
+noncomputable def reciprocalSum (A : Finset ℕ) : ℚ :=
+  ∑ n ∈ A, (1 : ℚ) / (n : ℚ)
 
 /--
 The set of divisors of $n$ strictly between $1$ and $n$:
@@ -55,7 +67,7 @@ theorem erdos_45 :
         ∃ D' : Finset ℕ, D' ⊆ middleDivisors n ∧
           D'.Nonempty ∧
           (∃ j : Fin k, ∀ d ∈ D', c d = j) ∧
-          (∑ d ∈ D', (1 : ℚ) / (d : ℚ)) = 1 := by
+          reciprocalSum D' = 1 := by
   sorry
 
 end Erdos45

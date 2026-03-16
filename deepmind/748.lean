@@ -31,6 +31,8 @@ $\{\lceil n/2 \rceil, \ldots, n\}$).
 This was proved independently by Green [Gr04] and Sapozhenko [Sa03], who showed
 $f(n) \sim c_n \cdot 2^{n/2}$ where $c_n$ depends on the parity of $n$.
 
+See also Problem 877 (maximal sum-free subsets) and OEIS sequence A007865.
+
 [CaEr90] Cameron, P.J. and Erdős, P.
 
 [Er94b] Erdős, P.
@@ -51,6 +53,9 @@ namespace Erdos748
     for all $b, c \in A$, we have $b + c \notin A$. -/
 def IsSumFree (A : Finset ℕ) : Prop :=
   ∀ b ∈ A, ∀ c ∈ A, b + c ∉ A
+
+instance : DecidablePred IsSumFree :=
+  fun A => decidable_of_iff (∀ b ∈ A, ∀ c ∈ A, b + c ∉ A) Iff.rfl
 
 /-- The number of sum-free subsets of $\{1, \ldots, n\}$. -/
 noncomputable def sumFreeSubsetCount (n : ℕ) : ℕ :=

@@ -54,12 +54,13 @@ Only the upper-triangle entries $ec(\min(u, v), \max(u, v))$ for $u \neq v$ are 
 def toGraph {n : ℕ} (ec : Fin n → Fin n → Bool) : SimpleGraph (Fin n) where
   Adj u v := u ≠ v ∧ ec (min u v) (max u v) = true
   symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, by rwa [min_comm, max_comm]⟩
-  loopless := ⟨fun _ ⟨h, _⟩ => h rfl⟩
+  loopless := fun _ ⟨h, _⟩ => h rfl
 
 /-- The fraction of all labeled graphs on $n$ vertices satisfying property $P$.
 Each graph is encoded by a Boolean edge predicate; the graph is read
 from the upper triangle, so every graph has equal weight. -/
 noncomputable def graphFraction (n : ℕ) (P : SimpleGraph (Fin n) → Prop) : ℝ :=
+  haveI : DecidablePred (fun ec => P (toGraph ec)) := fun _ => Classical.dec _
   ((Finset.univ : Finset (Fin n → Fin n → Bool)).filter
     (fun ec => P (toGraph ec))).card /
   ((Finset.univ : Finset (Fin n → Fin n → Bool)).card : ℝ)
@@ -84,6 +85,42 @@ theorem erdos_799 : answer(True) ↔
     ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
       ∀ k : ℕ, (k : ℝ) ≥ ε * (n : ℝ) →
         graphFraction n (fun G => IsChoosable G k) ≥ 1 - δ := by
+  sorry
+
+/--
+Alon's bound [Al92]: The list chromatic number of almost all graphs on $n$ vertices
+is $O\!\left(\frac{n \log \log n}{\log n}\right)$. That is, there exists a constant $C > 0$
+such that for all $\delta > 0$, for all sufficiently large $n$, the fraction of labeled graphs
+on $n$ vertices that are $\lceil C \cdot n \cdot \log \log n / \log n \rceil$-choosable
+is at least $1 - \delta$.
+-/
+@[category research solved, AMS 5]
+theorem erdos_799_alon_upper :
+    ∃ C : ℝ, C > 0 ∧
+    ∀ δ : ℝ, δ > 0 →
+    ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
+      graphFraction n (fun G => IsChoosable G
+        ⌈C * (n : ℝ) * Real.log (Real.log (n : ℝ)) / Real.log (n : ℝ)⌉₊) ≥ 1 - δ := by
+  sorry
+
+/--
+Alon–Krivelevich–Sudakov tight bound [AKS99]: The list chromatic number of almost all
+graphs on $n$ vertices is $\Theta(n / \log n)$. There exist constants $c, C > 0$ such that
+for all $\delta > 0$ and all sufficiently large $n$:
+- the fraction of labeled graphs that are $\lceil C n / \log n \rceil$-choosable is $\ge 1 - \delta$
+  (upper bound on $\chi_L$), and
+- the fraction that are $\lfloor c n / \log n \rfloor$-choosable is $\le \delta$
+  (lower bound on $\chi_L$).
+-/
+@[category research solved, AMS 5]
+theorem erdos_799_aks_tight :
+    ∃ c C : ℝ, c > 0 ∧ C > 0 ∧
+    ∀ δ : ℝ, δ > 0 →
+    ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
+      graphFraction n (fun G => IsChoosable G
+        ⌈C * (n : ℝ) / Real.log (n : ℝ)⌉₊) ≥ 1 - δ ∧
+      graphFraction n (fun G => IsChoosable G
+        ⌊c * (n : ℝ) / Real.log (n : ℝ)⌋₊) ≤ δ := by
   sorry
 
 end Erdos799

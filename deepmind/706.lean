@@ -29,6 +29,9 @@ $\chi(G) \leq L(r)$.
 The case $r = 1$ is the Hadwiger–Nelson problem, for which $5 \leq L(1) \leq 7$.
 
 See also [508], [704], [705].
+
+[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+  Combinatorica **1** (1981), 25–42.
 -/
 
 namespace Erdos706
@@ -38,7 +41,7 @@ are adjacent iff their Euclidean distance belongs to $A$. -/
 noncomputable def multiDistanceGraph (A : Set ℝ) : SimpleGraph (EuclideanSpace ℝ (Fin 2)) where
   Adj x y := x ≠ y ∧ dist x y ∈ A
   symm := fun _ _ ⟨hne, hd⟩ => ⟨hne.symm, by rw [dist_comm]; exact hd⟩
-  loopless := ⟨fun _ h => h.1 rfl⟩
+  loopless := fun _ h => h.1 rfl
 
 /--
 Is it true that $L(r) \leq r^{O(1)}$? That is, does there exist a polynomial bound
