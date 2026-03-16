@@ -1,0 +1,169 @@
+FormalConjectures/ErdosProblems/765.lean:50:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/765.lean:53:/-- The Turán extremal number $\mathrm{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/765.lean:57:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/500.lean:28:A problem of Turán. Turán observed that dividing the vertices into three equal
+FormalConjectures/ErdosProblems/500.lean:62:/-- The $3$-uniform Turán number $\mathrm{ex}_3(n, K_4^3)$: the maximum number of $3$-element
+FormalConjectures/ErdosProblems/500.lean:68:Erdős Problem 500 — Turán's Hypergraph Conjecture [Er61][Er71][Er74c][Er81]:
+FormalConjectures/ErdosProblems/500.lean:70:The $3$-uniform Turán density for $K_4^3$ is exactly $5/9$. Equivalently,
+FormalConjectures/ErdosProblems/500.lean:74:Turán conjectured that the lower bound construction (partition into $3$ equal parts,
+FormalConjectures/ErdosProblems/573.lean:65:Kővári, Sós, and Turán proved that the extremal number for forbidding $C_4$
+FormalConjectures/ErdosProblems/990.lean:24:Can the Erdős–Turán bound on the distribution of polynomial root arguments be improved by
+FormalConjectures/ErdosProblems/990.lean:27:[ErTu50] Erdős, P. and Turán, P., *On the distribution of roots of polynomials*, Annals of
+FormalConjectures/ErdosProblems/990.lean:49:/-- The Erdős–Turán measure
+FormalConjectures/ErdosProblems/990.lean:68:Erdős and Turán [ErTu50] proved such an upper bound with $n$ replaced by $d$ (the degree).
+FormalConjectures/ErdosProblems/59.lean:36:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/59.lean:39:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph on
+FormalConjectures/ErdosProblems/59.lean:41:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/59.lean:44:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/59.lean:48:  Nat.card {F : SimpleGraph (Fin n) // ¬ContainsSubgraph F H}
+FormalConjectures/ErdosProblems/59.lean:69:      (countGFreeGraphs H n : ℝ) ≤ (2 : ℝ) ^ ((1 + ε) * (turanNumber H n : ℝ)) := by
+FormalConjectures/ErdosProblems/87.lean:38:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/87.lean:47:    ContainsSubgraph G H ∨ ContainsSubgraph Gᶜ H}
+FormalConjectures/ErdosProblems/146.lean:22:Erdős and Simonovits conjectured that the Turán number of any $r$-degenerate bipartite
+FormalConjectures/ErdosProblems/146.lean:31:[AKS03] Alon, N., Krivelevich, M., and Sudakov, B., *Turán numbers of bipartite
+FormalConjectures/ErdosProblems/146.lean:42:def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/146.lean:45:/-- The Turán number $\text{ex}(n; H)$: the maximum number of edges in a simple graph on $n$
+FormalConjectures/ErdosProblems/146.lean:47:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/146.lean:50:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/146.lean:77:        (turanNumber H n : ℝ) ≤ C * (n : ℝ) ^ ((2 : ℝ) - 1 / (r : ℝ)) := by
+FormalConjectures/ErdosProblems/974.lean:24:A conjecture of Turán, proved by Tijdeman [Ti66].
+FormalConjectures/ErdosProblems/974.lean:26:[Ti66] Tijdeman, R., _On a conjecture of Turán_, 1966.
+FormalConjectures/ErdosProblems/974.lean:34:Erdős Problem 974 (Turán's conjecture, proved by Tijdeman [Ti66]):
+FormalConjectures/ErdosProblems/1079.lean:28:As Erdős [Er75] says 'if true this would be a nice generalisation of Turán's theorem'.
+FormalConjectures/ErdosProblems/1079.lean:30:This is true (unless $G$ is itself the Turán graph), proved by Bollobás and Thomason [BoTh81].
+FormalConjectures/ErdosProblems/1079.lean:41:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/1079.lean:44:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph
+FormalConjectures/ErdosProblems/1079.lean:46:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1079.lean:49:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/1079.lean:78:      G.edgeFinset.card ≥ turanNumber (⊤ : SimpleGraph (Fin r)) n →
+FormalConjectures/ErdosProblems/1079.lean:82:          turanNumber (⊤ : SimpleGraph (Fin (r - 1))) (G.degree v) := by
+FormalConjectures/ErdosProblems/1035.lean:51:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/1035.lean:71:      ContainsSubgraph G (hypercubeGraph n)) := by
+FormalConjectures/ErdosProblems/546.lean:44:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/546.lean:52:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+FormalConjectures/ErdosProblems/147.lean:27:[Ja23] Janzer, O., _Disproof of a conjecture of Erdős and Simonovits on the Turán number_,
+FormalConjectures/ErdosProblems/147.lean:30:[Ja23b] Janzer, O., _Disproof of a conjecture of Erdős and Simonovits on the Turán number
+FormalConjectures/ErdosProblems/147.lean:40:def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/147.lean:43:/-- The Turán number $\mathrm{ex}(n; H)$: the maximum number of edges in a simple graph on $n$
+FormalConjectures/ErdosProblems/147.lean:45:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/147.lean:48:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/147.lean:76:            C * (n : ℝ) ^ ((2 : ℝ) - 1 / ((r : ℝ) - 1) + ε) ≤ (turanNumber H n : ℝ) := by
+FormalConjectures/ErdosProblems/548.lean:39:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/548.lean:56:    ContainsSubgraphCopy T G := by
+FormalConjectures/ErdosProblems/1011.lean:27:Turán's theorem implies $f_2(n) = \lfloor n^2/4 \rfloor + 1$.
+FormalConjectures/ErdosProblems/329.lean:72:Erdős and Turán [ErTu41] proved the upper bound of 1.
+FormalConjectures/ErdosProblems/329.lean:74:[ErTu41] Erdős, P. and Turán, P., On a problem of Sidon in additive number theory, and on some related problems. J. London Math. Soc. (1941), 212-215.
+FormalConjectures/ErdosProblems/1163.lean:41:Erdős Problem 1163 (Erdős and Turán) [Va99, 5.74]:
+FormalConjectures/ErdosProblems/712.lean:30:Turán proved that, when $r = 2$, this limit is $\frac{1}{2}(1 - \frac{1}{k-1})$.
+FormalConjectures/ErdosProblems/712.lean:48:/-- The $r$-uniform Turán number $\mathrm{ex}_r(n, K_k^r)$: the maximum number of $r$-element
+FormalConjectures/ErdosProblems/712.lean:55:Erdős Conjecture (Problem 712) — Hypergraph Turán Densities:
+FormalConjectures/ErdosProblems/712.lean:57:For any $k > r > 2$, determine the value of the Turán density
+FormalConjectures/ErdosProblems/126.lean:46:Erdős and Turán proved [ErTu34] in their first joint paper that
+FormalConjectures/ErdosProblems/719.lean:42:/-- The Turán number $\mathrm{ex}_r(n; K_{r+1}^r)$: the maximum number of edges in an
+FormalConjectures/ErdosProblems/763.lean:29:A conjecture of Erdős and Turán [Er65b][Er70c].
+FormalConjectures/ErdosProblems/714.lean:32:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/714.lean:35:/-- The Turán extremal number $\operatorname{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/714.lean:39:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/714.lean:52:Kövári, Sós, and Turán proved the matching upper bound
+FormalConjectures/ErdosProblems/159.lean:42:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/159.lean:58:    ContainsSubgraph G C4 ∨ ContainsSubgraph Gᶜ (⊤ : SimpleGraph (Fin n))}
+FormalConjectures/ErdosProblems/40.lean:60:Erdős-Turán conjecture, see Erdõs Problem 28,
+FormalConjectures/ErdosProblems/1162.lean:27:A problem of Erdős and Turán.
+FormalConjectures/ErdosProblems/767.lean:31:[Ji04] Jiang, T., _On the Turán number of cycles with $k$ chords_, 2004.
+FormalConjectures/ErdosProblems/551.lean:53:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/551.lean:62:    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+FormalConjectures/ErdosProblems/571.lean:23:the Turán extremal number satisfies ex(n; G) ≍ n^α?
+FormalConjectures/ErdosProblems/571.lean:33:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/571.lean:36:/-- The Turán extremal number $\mathrm{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/571.lean:40:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/571.lean:46:the Turán extremal number satisfies $\mathrm{ex}(n; G) \asymp n^\alpha$, meaning there exist positive
+FormalConjectures/ErdosProblems/766.lean:39:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/766.lean:42:/-- The Turán extremal number $\operatorname{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/766.lean:46:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/62.lean:45:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/62.lean:65:      ContainsSubgraph G₁ H ∧
+FormalConjectures/ErdosProblems/62.lean:66:      ContainsSubgraph G₂ H := by
+FormalConjectures/ErdosProblems/62.lean:88:      ContainsSubgraph G₁ H ∧
+FormalConjectures/ErdosProblems/62.lean:89:      ContainsSubgraph G₂ H := by
+FormalConjectures/ErdosProblems/713.lean:34:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/713.lean:37:/-- The Turán extremal number $\operatorname{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/713.lean:41:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/576.lean:22:Erdős conjectured that the Turán number of the 3-dimensional hypercube graph $Q_3$
+FormalConjectures/ErdosProblems/576.lean:51:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/576.lean:54:/-- The Turán number $\mathrm{ex}(n; H)$: the maximum number of edges in a simple graph
+FormalConjectures/ErdosProblems/576.lean:56:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/576.lean:59:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/576.lean:79:      c * (n : ℝ) ^ ((8 : ℝ) / 5) ≤ (turanNumber (hypercubeGraph 3) n : ℝ) ∧
+FormalConjectures/ErdosProblems/576.lean:80:      (turanNumber (hypercubeGraph 3) n : ℝ) ≤ C * (n : ℝ) ^ ((8 : ℝ) / 5) := by
+FormalConjectures/ErdosProblems/547.lean:40:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/547.lean:48:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+FormalConjectures/ErdosProblems/1178.lean:24:For $r, e \geq 3$, determine the minimal $d$ such that the $r$-uniform Turán number
+FormalConjectures/ErdosProblems/1178.lean:52:/-- The $r$-uniform Turán number $\operatorname{ex}_r(n; d, e)$: the maximum number of edges in an
+FormalConjectures/ErdosProblems/1178.lean:55:noncomputable def turanNumber (r n d e : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1178.lean:59:/-- The minimal $d$ such that the $r$-uniform Turán number
+FormalConjectures/ErdosProblems/1178.lean:62:  sInf {d : ℕ | (fun n : ℕ => (turanNumber r n d e : ℝ)) =o[atTop]
+FormalConjectures/ErdosProblems/1178.lean:68:For $r, e \geq 3$, the minimal $d$ such that the $r$-uniform Turán number
+FormalConjectures/ErdosProblems/1178.lean:72:Here `turanNumber r n d e` is the maximum number of edges in an $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/575.lean:23:member, some bipartite member has Turán number within a constant factor of the family Turán number.
+FormalConjectures/ErdosProblems/575.lean:37:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/575.lean:40:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph on
+FormalConjectures/ErdosProblems/575.lean:42:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/575.lean:45:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/575.lean:47:/-- The Turán number for a family $\operatorname{ex}(n; \mathcal{F})$: the maximum number of edges
+FormalConjectures/ErdosProblems/575.lean:50:noncomputable def turanNumberFamily
+FormalConjectures/ErdosProblems/575.lean:55:    Fintype.card V = n ∧ (∀ i : ι, ¬ContainsSubgraph F (H i)) ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/575.lean:81:      (turanNumber (H i) n : ℝ) ≤ C * (turanNumberFamily H n : ℝ) := by
+FormalConjectures/ErdosProblems/533.lean:28:[BaLe13] Balogh, J. and Lenz, J., _Some exact Ramsey-Turán numbers_, 2013.
+FormalConjectures/ErdosProblems/533.lean:41:Ramsey-Turán density. This was disproved by Balogh and Lenz [BaLe13], who
+FormalConjectures/ErdosProblems/549.lean:47:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/549.lean:55:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+FormalConjectures/ErdosProblems/950.lean:29:This function was considered by de Bruijn, Erdős, and Turán, who showed that
+FormalConjectures/ErdosProblems/926.lean:47:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/926.lean:50:/-- The Turán number $\mathrm{ex}(n; H)$: the maximum number of edges in a simple graph on $n$
+FormalConjectures/ErdosProblems/926.lean:52:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/926.lean:55:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/926.lean:104:      (turanNumber (graphHk k) n : ℝ) ≤ C * (n : ℝ) ^ ((3 : ℝ) / 2) := by
+FormalConjectures/ErdosProblems/1001.lean:30:A problem of Erdős, Szüsz, and Turán [EST58], who proved the formula
+FormalConjectures/ErdosProblems/1001.lean:40:[EST58] Erdős, P., Szüsz, P., and Turán, P.
+FormalConjectures/ErdosProblems/550.lean:46:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/550.lean:55:    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+FormalConjectures/ErdosProblems/552.lean:38:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/552.lean:47:    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+FormalConjectures/ErdosProblems/22.lean:29:$\mathrm{rt}(n; k, \ell)$ is the Ramsey–Turán number.
+FormalConjectures/ErdosProblems/22.lean:36:[BoEr76] Bollobás, B. and Erdős, P., _On a Ramsey–Turán type problem_, J. Combin. Theory Ser. B, 1976.
+FormalConjectures/ErdosProblems/22.lean:38:[FLZ15] Fox, J., Loh, P.-S., and Zhao, Y., _The critical window for the classical Ramsey–Turán problem_, Combinatorica, 2015.
+FormalConjectures/ErdosProblems/22.lean:44:**Erdős Problem 22** (Bollobás–Erdős Conjecture on Ramsey–Turán numbers,
+FormalConjectures/ErdosProblems/113.lean:25:the Turán number satisfies $\mathrm{ex}(n; G) \ll n^{3/2}$ if and only if $G$ is 2-degenerate?
+FormalConjectures/ErdosProblems/113.lean:39:def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/113.lean:42:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph
+FormalConjectures/ErdosProblems/113.lean:44:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/113.lean:47:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/113.lean:58:For a bipartite graph $G$ on a finite vertex set, the Turán number satisfies
+FormalConjectures/ErdosProblems/113.lean:70:2-degenerate but its Turán number is still $o(n^{3/2})$, the "only if" direction
+FormalConjectures/ErdosProblems/113.lean:79:          (turanNumber G n : ℝ) ≤ C * (n : ℝ) ^ (3 / 2 : ℝ)) := by
+FormalConjectures/ErdosProblems/545.lean:42:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/545.lean:50:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+FormalConjectures/ErdosProblems/60.lean:47:def ContainsSubgraph60 {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/60.lean:53:    ¬ContainsSubgraph60 G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/519.lean:24:A problem of Turán, who proved that the maximum is $\gg 1/n$. This was solved
+FormalConjectures/ErdosProblems/519.lean:32:[Bi94] Biró, A., _On a problem of Turán concerning sums of powers of complex
+FormalConjectures/ErdosProblems/519.lean:35:[Bi00] Biró, A., _An upper estimate in Turán's pure power sum problem_. Indag.
+FormalConjectures/ErdosProblems/519.lean:42:Erdős Problem 519 (Turán's power sum problem) [At61b]:
+FormalConjectures/ErdosProblems/615.lean:28:Equivalently, if $\mathrm{rt}(n; k, \ell)$ denotes the Ramsey-Turán number (maximum number of
+FormalConjectures/ErdosProblems/615.lean:65:/-- The Ramsey-Turán number $\mathrm{rt}(n; k, \ell)$: the maximum number of edges in a graph
+FormalConjectures/ErdosProblems/580.lean:40:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/580.lean:57:        k ≤ n / 2 → T.IsTree → ContainsSubgraph G T := by
+FormalConjectures/ErdosProblems/180.lean:22:Asks whether for every finite family of graphs, some member's Turán number is within a
+FormalConjectures/ErdosProblems/180.lean:23:constant factor of the family's Turán number.
+FormalConjectures/ErdosProblems/180.lean:34:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/180.lean:37:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph
+FormalConjectures/ErdosProblems/180.lean:39:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/180.lean:42:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/180.lean:44:/-- The Turán number for a family $\operatorname{ex}(n; \mathcal{F})$: the maximum number of
+FormalConjectures/ErdosProblems/180.lean:48:noncomputable def turanNumberFamily
+FormalConjectures/ErdosProblems/180.lean:53:    Fintype.card V = n ∧ (∀ i : ι, ¬ContainsSubgraph F (H i)) ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/180.lean:75:      (turanNumber (H i) n : ℝ) ≤ C * (turanNumberFamily H n : ℝ) := by
+FormalConjectures/ErdosProblems/572.lean:27:Here $\mathrm{ex}(n; C_{2k})$ is the Turán extremal number: the maximum number of edges in
+FormalConjectures/ErdosProblems/572.lean:64:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/572.lean:67:/-- The Turán extremal number $\mathrm{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/572.lean:71:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}

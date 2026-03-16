@@ -1,0 +1,165 @@
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/Log/Basic.lean:29:theorem Real.iteratedLog_eq_zero_of_le {x : ℝ} (hx : x ≤ 1) :
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/Log/Basic.lean:33:theorem Real.iteratedLog_eq_zero_of_neg {x : ℝ} (hx : x < 0) :
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/Log/Basic.lean:37:theorem iteratedLog_two : Real.iteratedLog 2 = 1 := by
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/Log/Basic.lean:45:theorem iteratedLog_four : Real.iteratedLog 4 = 2 := by
+FormalConjecturesForMathlib/Data/Nat/Prime/Finset.lean:22:@[reducible] def Finset.Coprime (S : Finset ℕ) : Prop := S.gcd id = 1
+FormalConjecturesForMathlib/Data/Nat/Prime/Finset.lean:24:theorem Finset.Coprime_pair_iff (S : Finset ℕ) (a b : ℕ) (h : S = {a, b}) :
+FormalConjecturesForMathlib/Order/Interval/Finset/Nat.lean:21:theorem Nat.ncard_Iio (b : ℕ) : (Set.Iio b).ncard = b := by
+FormalConjecturesForMathlib/Data/Nat/Prime/Defs.lean:20:lemma Nat.exists_prime_not_dvd (n : ℕ) (hn : n ≠ 0) : ∃ p, p.Prime ∧ ¬p ∣ n := by
+FormalConjecturesForMathlib/Order/Interval/Finset/Basic.lean:20:theorem Finset.Iio_eventually_nonempty (β : Type*) [PartialOrder β] [LocallyFiniteOrder β]
+FormalConjecturesForMathlib/Order/Interval/Finset/Basic.lean:25:theorem Finset.Iio_eventually_card_ne_zero (β : Type*) [PartialOrder β]
+FormalConjecturesForMathlib/Order/Interval/Finset/Basic.lean:31:theorem Set.Iio_eventually_ncard_ne_zero (β : Type*) [PartialOrder β]
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:46:theorem squarefreePart_ne_zero (n : ℕ) : n.squarefreePart ≠ 0 := by
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:49:theorem squarefreePart_zero : squarefreePart 0 = 1 := by
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:53:theorem squarefreePart_of_squarefree {n : ℕ} (hn : Squarefree n) :
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:61:theorem squarefreePart_of_isSquare {n : ℕ} (hn : IsSquare n) :
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:72:theorem squarefreePart_factorization (n : ℕ) {p : ℕ} (hp : p.Prime) :
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:78:theorem Prime.squarefree {p : ℕ} (hp : p.Prime) : Squarefree p := Irreducible.squarefree hp
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:80:theorem squarefree_squarefreePart (n : ℕ) : Squarefree n.squarefreePart := by
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:86:theorem squarefreePart_dvd (n : ℕ) : squarefreePart n ∣ n := by
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:94:theorem squarePart_zero : squarePart 0 = 0 := by simp [squarePart]
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:97:theorem squarefreePart_mul_squarePart (n : ℕ) : n.squarefreePart * n.squarePart = n :=
+FormalConjecturesForMathlib/Data/Nat/Squarefree.lean:100:theorem squarefree_infinite : Set.Infinite { n : ℕ | Squarefree n } :=
+FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean:41:lemma prime_maxPrimeFac_of_one_lt (n : ℕ) (h : 1 < n) :
+FormalConjecturesForMathlib/Order/Filter/atTopBot/Finset.lean:21:theorem Finset.tendsto_card_atTop {α : Type*} [Infinite α] :
+FormalConjecturesForMathlib/Data/Nat/Full.lean:27:def Full (k : ℕ) (n : ℕ) : Prop := ∀ p ∈ n.primeFactors, p^k ∣ n
+FormalConjecturesForMathlib/Data/Nat/Full.lean:35:theorem Full.zero_left (n : ℕ) : (0 : ℕ).Full n := by
+FormalConjecturesForMathlib/Data/Nat/Full.lean:39:theorem Full.one_left (n : ℕ) : (1 : ℕ).Full n := by
+FormalConjecturesForMathlib/Data/Nat/Full.lean:43:theorem Full.zero_right (k : ℕ) : k.Full 0 := by
+FormalConjecturesForMathlib/Data/Nat/Full.lean:47:theorem Full.one_right (k : ℕ) : k.Full 1 := by
+FormalConjecturesForMathlib/Data/Nat/Full.lean:62:theorem full_of_le_full (k : ℕ) (n : ℕ) {m : ℕ} (hk : k ≤ m) (h : m.Full n) : k.Full n :=
+FormalConjecturesForMathlib/Data/Nat/Full.lean:66:theorem not_full_of_prime_mod_prime_sq (n : ℕ) (k : ℕ) {p : ℕ} (hp : p.Prime)
+FormalConjecturesForMathlib/Order/Filter/Cofinite.lean:62:theorem cofinite_eq_atTop {α : Type*} [LinearOrder α] [LocallyFiniteOrder α] [OrderBot α]
+FormalConjecturesForMathlib/Data/Nat/PerfectPower.lean:31:theorem isPerfectPower_iff_factorization_gcd (n : ℕ) :
+FormalConjecturesForMathlib/Data/Nat/Factorization/Basic.lean:21:theorem prod_primeFactors_factorization_apply (n : ℕ) {p : ℕ} (hp : p.Prime) {f : ℕ → ℕ → ℕ}
+FormalConjecturesForMathlib/Topology/Discrete.lean:26:theorem IsHomeomorph.equiv_of_discreteTopology {X  Y : Type*} [TopologicalSpace X]
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/NthRoot.lean:34:theorem nthRoot_of_even {n : ℕ} (hn : Even n) (r : ℝ) : nthRoot n r = r ^ (n⁻¹ : ℝ) :=
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/NthRoot.lean:37:theorem nthRoot_of_odd {n : ℕ} (hn : Odd n) (r : ℝ) :
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/NthRoot.lean:41:theorem nthRoot_of_odd_of_nonpos {n : ℕ} (hn : Odd n) {r : ℝ} (hr : r ≤ 0) :
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/NthRoot.lean:53:theorem nthRoot_of_nonneg {n : ℕ} {r : ℝ} (hr : 0 ≤ r) :
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/NthRoot.lean:67:theorem nthRoot_neg_of_odd {n : ℕ} (hn : Odd n) {r : ℝ} :
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/NthRoot.lean:75:theorem pow_nthRoot {n : ℕ} (r : ℝ) (h : (n ≠ 0 ∧ 0 ≤ r) ∨ Odd n) : nthRoot n r ^ n = r := by
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/NthRoot.lean:86:theorem nthRoot_pow {n : ℕ} (r : ℝ) (h : (n ≠ 0 ∧ 0 ≤ r) ∨ Odd n) : nthRoot n (r ^ n) = r := by
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/NthRoot.lean:97:theorem nthRoot_mul_of_even_of_nonneg {n : ℕ} {a b : ℝ} (hn : Even n)
+FormalConjecturesForMathlib/Analysis/SpecialFunctions/NthRoot.lean:102:theorem nthRoot_mul_of_odd {n : ℕ} {a b : ℝ} (hn : Odd n) :
+FormalConjecturesForMathlib/Data/Set/Density.lean:41:theorem partialDensity_le_one {β : Type*} [Preorder β] [LocallyFiniteOrderBot β]
+FormalConjecturesForMathlib/Data/Set/Density.lean:64:theorem lowerDensity_le_one {β : Type*} [Preorder β] [LocallyFiniteOrderBot β]
+FormalConjecturesForMathlib/Data/Set/Density.lean:72:theorem lowerDensity_nonneg {β : Type*} [Preorder β] [LocallyFiniteOrderBot β]
+FormalConjecturesForMathlib/Data/Set/Density.lean:106:theorem univ {β : Type*} [PartialOrder β] [LocallyFiniteOrder β] [OrderBot β] [Nontrivial β] :
+FormalConjecturesForMathlib/Data/Set/Density.lean:115:theorem univ_nat_hasDensity_one : (@Set.univ ℕ).HasDensity 1 := univ
+FormalConjecturesForMathlib/Data/Set/Density.lean:118:theorem empty {β : Type*} [Preorder β] [LocallyFiniteOrderBot β] (A : Set β := Set.univ) :
+FormalConjecturesForMathlib/Data/Set/Density.lean:122:theorem mono {β : Type*} [PartialOrder β] [LocallyFiniteOrder β] [OrderBot β]
+FormalConjecturesForMathlib/Data/Set/Density.lean:132:theorem nonneg {β : Type*} [Preorder β] [LocallyFiniteOrderBot β] [(atTop : Filter β).NeBot]
+FormalConjecturesForMathlib/Data/Set/Density.lean:145:theorem hasDensity_even : {n : ℕ | Even n}.HasDensity (1 / 2) := by
+FormalConjecturesForMathlib/Data/Set/Density.lean:166:theorem hasDensity_zero_of_finite {S : Set ℕ} (h : S.Finite) : S.HasDensity 0 := by
+FormalConjecturesForMathlib/Data/Set/Density.lean:177:theorem infinite_of_hasDensity_pos {S : Set ℕ} {α : ℝ} (h : S.HasDensity α) (hα : α ≠ 0) :
+FormalConjecturesForMathlib/Analysis/HasGaps.lean:39:theorem HasFejerGaps.hasFabryGaps {f : ℕ → ℕ} (hf : HasFejerGaps f) : HasFabryGaps f := by
+FormalConjecturesForMathlib/Data/Set/Bdd.lean:39:theorem Set.finite_interIio [LocallyFiniteOrderBot β] :
+FormalConjecturesForMathlib/Data/Set/Bdd.lean:47:theorem Set.finite_interIcc [LocallyFiniteOrder β] [OrderBot β] :
+FormalConjecturesForMathlib/Data/Set/Bdd.lean:55:theorem Set.interIio_univ (b : β) : Set.interIio .univ b = Set.Iio b := by
+FormalConjecturesForMathlib/Data/Set/Bdd.lean:59:theorem Set.interIio_univ' (b : β) : Set.univ.interIio b = Set.Iio b := by
+FormalConjecturesForMathlib/Data/Set/Bdd.lean:63:theorem Set.interIio_empty (b : β) : Set.interIio ∅ b = ∅ := by
+FormalConjecturesForMathlib/Data/Set/Bdd.lean:66:theorem Set.interIio_mono {S T : Set β} (h : S ⊆ T) (b : β) : S.interIio b ⊆ T.interIio b :=
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:36:protected theorem Triplewise.eq (hs : s.Triplewise r)
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:42:theorem Triplewise.mono (h : t ⊆ s) (hs : s.Triplewise r) :
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:47:theorem Triplewise_univ_iff :
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:51:theorem triplewise_of_encard_lt (r : α → α → α → Prop)
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:62:theorem triplewise_empty (r : α → α → α → Prop) :
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:67:theorem triplewise_singleton (r : α → α → α → Prop) :
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:73:theorem triplewise_pair
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:80:theorem triplewise_insert :
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:101:theorem triplewise_insert_of_not_mem (hx : x ∉ s) :
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:108:protected theorem Triplewise.insert (hs : s.Triplewise r)
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:113:protected theorem Triplewise.insert_of_not_mem
+FormalConjecturesForMathlib/Data/Set/Triplewise.lean:119:theorem triplewise_set_pred_iff {S : Set α} {P : Set α → Prop} :
+FormalConjecturesForMathlib/Algebra/Polynomial/HasseDeriv.lean:20:theorem Polynomial.hasseDeriv_map {R S : Type*} [Semiring R] [Semiring S]
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:27:theorem Powerfree.of_le {a b : ℕ} (hab : a ≤ b) (hm : Powerfree a m) :
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:30:theorem Powerfree.of_dvd (hrm : r ∣ m) (hm : Powerfree k m) :
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:33:theorem powerfree_congr (hrm : Associated r m) : Powerfree k r ↔ Powerfree k m :=
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:37:theorem powerfree_neg [HasDistribNeg M] : Powerfree k (-m) ↔ Powerfree k m :=
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:41:theorem powerfree_two {m : M} : Powerfree 2 m ↔ Squarefree m where
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:50:theorem IsUnit.powerfree (h : IsUnit m) (hk : k ≠ 0) :
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:54:theorem powerfree_one (hk : k ≠ 0) : Powerfree k (1 : M) :=
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:57:theorem Irreducible.powerfree (h : Irreducible m) (hk : 2 ≤ k) :
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:71:theorem not_powerfree_zero [MonoidWithZero M₀] [Nontrivial M₀] (k : ℕ) :
+FormalConjecturesForMathlib/Algebra/Powerfree.lean:76:theorem Prime.powerfree [CommMonoidWithZero M₀] [IsCancelMulZero M₀] {m : M₀} (h : Prime m)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:48:noncomputable def aprime (G : SimpleGraph α) [DecidableRel G.Adj] : ℝ :=
+FormalConjecturesForMathlib/Algebra/Order/Group/Pointwise/Interval.lean:20:theorem Nat.image_mul_two_Iio_even {n : ℕ} (h : Even n) :
+FormalConjecturesForMathlib/Algebra/Order/Group/Pointwise/Interval.lean:24:theorem Nat.image_mul_two_Iio (n : ℕ) :
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:98:theorem not_isCritical_of_fintype_lt [Fintype V] (k : ℕ) (hk : Fintype.card V < k) :
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:108:theorem colorable_iff_induce_eq_bot (G : SimpleGraph V) (n : ℕ) :
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:39:theorem le_hypergraphRamsey (r n : ℕ) (hne : { m | ∀ (c : Finset (Fin m) → Bool),
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:52:theorem hypergraphRamsey_self (r : ℕ) : hypergraphRamsey r r = r := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:61:theorem IsSidon.subset {A B : Set α} (hB : IsSidon B) (hAB : A ⊆ B) : IsSidon A :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:64:theorem IsSidon.insert {A : Set α} {m : α} [IsRightCancelAdd α] [IsLeftCancelAdd α]
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:111:theorem subset {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:115:theorem isSidon {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) : IsSidon A := hA.2.1
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:118:theorem maximal {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) {x : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:135:theorem IsSidon.insert_ge_max' {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) {s : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:146:theorem IsSidon.exists_insert {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:152:theorem IsSidon.exists_insert_ge {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) (s : ℕ) :
+FormalConjecturesForMathlib/Combinatorics/Additive/Convolution.lean:64:theorem sumRep_eq_powerSeries_coeff (A : Set ℕ) (n : ℕ) : (sumRep A n : ℕ) =
+FormalConjecturesForMathlib/NumberTheory/PrimeGap.lean:23:noncomputable def primeGap (n : ℕ) : ℕ := (n + 1).nth Nat.Prime - n.nth Nat.Prime
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:54:theorem IsPrimitive.mem {S : Set ℕ} {n : ℕ} (h : S.IsPrimitive n) : n ∈ S := h.1
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:56:theorem IsPrimitive.disjoint_properDivisors {S : Set ℕ} {n : ℕ} (h : S.IsPrimitive n) :
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:59:theorem IsPrimitive.not_mem_of_properDivisor {S : Set ℕ} {n d : ℕ} (h : S.IsPrimitive n)
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:63:theorem IsPrimitive.not_mem_of_dvd_of_lt {S : Set ℕ} {n d : ℕ} (h : S.IsPrimitive n)
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:67:theorem isPrimitive_iff {S : Set ℕ} {n : ℕ} :
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:71:theorem isPrimitive_iff' {S : Set ℕ} {n : ℕ} (_hn : 0 < n) :
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:78:theorem mem_primitives_iff {S : Set ℕ} {n : ℕ} : n ∈ S.primitives ↔ S.IsPrimitive n := Iff.rfl
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:81:theorem primitives_subset {S : Set ℕ} : S.primitives ⊆ S := fun _ h => h.mem
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:83:theorem one_isPrimitive_iff {S : Set ℕ} : S.IsPrimitive 1 ↔ 1 ∈ S := by
+FormalConjecturesForMathlib/NumberTheory/Primitive.lean:86:theorem prime_isPrimitive_iff {S : Set ℕ} {p : ℕ} (hp : p.Prime) :
+FormalConjecturesForMathlib/NumberTheory/CoveringSystem.lean:53:theorem iUnion_cosets (c : CoveringSystem R) : ⋃ i, c.coset i = Set.univ :=
+FormalConjecturesForMathlib/Computability/TuringMachine/BusyBeavers.lean:218:theorem haltingNumber_def (n : ℕ) (hn : ∃ a, M.multiStep (init []) n = some a)
+FormalConjecturesForMathlib/Computability/TuringMachine/PostTuringMachine.lean:20:theorem Part.get_eq_get {σ : Type*} {a b : Part σ} (ha : a.Dom) (hb : a.get ha ∈ b) : a = b := by
+FormalConjecturesForMathlib/Computability/TuringMachine/PostTuringMachine.lean:32:theorem apply_get_eval {σ : Type*} {f : σ → Option σ} {s : σ} (H : (Turing.eval f s).Dom) :
+FormalConjecturesForMathlib/Computability/TuringMachine/PostTuringMachine.lean:39:theorem eval_get_eval {σ : Type*} {f : σ → Option σ} {s : σ} (H : (Turing.eval f s).Dom) :
+FormalConjecturesForMathlib/Computability/TuringMachine/PostTuringMachine.lean:46:theorem eval_eq_eval {σ : Type*} {f : σ → Option σ} {a a' : σ} (H : f a = some a'):
+FormalConjecturesForMathlib/Computability/TuringMachine/PostTuringMachine.lean:55:theorem eval_dom_iff {σ : Type*} {f : σ → Option σ} {s : σ} :
+FormalConjecturesForMathlib/Logic/Equiv/Fin/Rotate.lean:21:theorem lt_finRotate_of_ne_last {i : Fin (n + 1)} (hi : i ≠ Fin.last n) :
+FormalConjecturesForMathlib/Geometry/2d.lean:72:theorem IsCcwConvexPolygon.sign_oangle (hp : IsCcwConvexPolygon p) {i j k : Fin n}
+FormalConjecturesForMathlib/Geometry/2d.lean:76:theorem IsCcwConvexPolygon.sign_oangle' (hp : IsCcwConvexPolygon p) {i j k : Fin n}
+FormalConjecturesForMathlib/Geometry/2d.lean:82:theorem IsCcwConvexPolygon.sign_oangle'' (hp : IsCcwConvexPolygon p) {i j k : Fin n}
+FormalConjecturesForMathlib/Geometry/2d.lean:87:theorem IsCcwConvexPolygon.sign_oangle_finRotate (hp : IsCcwConvexPolygon p)
+FormalConjecturesForMathlib/Geometry/2d.lean:103:@[simp] theorem isCcwConvexPolygon_zero (p : Fin 0 → P) : IsCcwConvexPolygon p := finZeroElim
+FormalConjecturesForMathlib/Geometry/2d.lean:105:@[simp] theorem isCcwConvexPolygon_one (p : Fin 1 → P) : IsCcwConvexPolygon p := by intro; omega
+FormalConjecturesForMathlib/Geometry/2d.lean:107:@[simp] theorem isCcwConvexPolygon_two (p : Fin 2 → P) : IsCcwConvexPolygon p := by intro; omega
+FormalConjecturesForMathlib/Geometry/2d.lean:110:theorem isCcwConvexPolygon_four' {p : Fin 4 → P} :
+FormalConjecturesForMathlib/Geometry/2d.lean:130:theorem isCcwConvexPolygon_four (A B C D : P) :
+FormalConjecturesForMathlib/Geometry/2d.lean:140:theorem isConvexPolygon_three_of_affineIndependent {A B C : P}
+FormalConjecturesForMathlib/Geometry/2d.lean:155:theorem isConvexPolygon_three_iff_affineIndependent {A B C : P} :
+FormalConjecturesForMathlib/Geometry/2d.lean:170:theorem isConvexPolygon_triangle (t : Affine.Triangle ℝ P) : IsConvexPolygon t.points := by
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:31:theorem subsetSums_mono {A B : Set M} (h : A ⊆ B) : subsetSums A ⊆ subsetSums B :=
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:46:theorem IsAddComplete.mono {A B : Set M} (h : A ⊆ B) (ha : IsAddComplete A) : IsAddComplete B := by
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:55:theorem IsAddStronglyComplete.isAddComplete {A : Set M} (hA : IsAddStronglyComplete A) :
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:59:theorem IsAddStronglyComplete.mono {A B : Set M} (h : A ⊆ B) (ha : IsAddStronglyComplete A) :
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:67:theorem IsAddStronglyCompleteNatSeq.isAddComplete {A : ℕ → M}
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:73:theorem IsAddStronglyCompleteNatSeq.of_isAddStronglyComplete {A : ℕ → M}
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:80:theorem IsAddStronglyCompleteNatSeq.isAddStronglyComplete {A : ℕ → M}
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:57:theorem card (h : s.IsAPOfLengthWith l a d) : ENat.card s = l := h.1
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:58:theorem eq (h : s.IsAPOfLengthWith l a d) : s = {a + n • d | (n : ℕ) (_ : n < l)} := h.2
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:63:theorem zero : s.IsAPOfLengthWith 0 a d ↔ s = ∅ := by simp [IsAPOfLengthWith]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:68:theorem one : s.IsAPOfLengthWith 1 a d ↔ s = {a} := by simp +contextual [IsAPOfLengthWith]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:76:theorem length (h : s.IsAPOfLengthWith l a d) : s.length = l := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:82:theorem zero : s.IsAPOfLengthWith 0 a d ↔ s = [] := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:88:theorem one : s.IsAPOfLengthWith 1 a d ↔ s = [a] := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:95:theorem Set.isAPOfLengthWith_pair {α : Type*} [DecidableEq α] [AddCommGroup α]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:110:theorem Nat.isAPOfLengthWith_pair {a b : ℕ} (hab : a < b) :
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:137:theorem card (h : s.IsAPOfLength l) : ENat.card s = l := h.choose_spec.choose_spec.1
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:139:theorem eq (h : s.IsAPOfLength l) : ∃ a d : α, s = {a + n • d | (n : ℕ) (_ : n < l)} :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:143:@[simp] theorem zero : s.IsAPOfLength 0 ↔ s = ∅ := by simp [Set.IsAPOfLength]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:146:@[simp] theorem one : s.IsAPOfLength 1 ↔ ∃ a, s = {a} := by simp [IsAPOfLength]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:150:theorem congr {s : Set α} {l₁ l₂ : ℕ∞}
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:163:theorem length (h : s.IsAPOfLength l) : s.length = l := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:168:@[simp] theorem zero : s.IsAPOfLength 0 ↔ s = [] := by simp [IsAPOfLength]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:171:@[simp] theorem one : s.IsAPOfLength 1 ↔ ∃ a, s = [a] := by simp [IsAPOfLength]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:175:theorem congr {s : List α} {l₁ l₂ : ℕ}
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:182:theorem Set.isAPOfLength_pair {α : Type*} [DecidableEq α] [AddCommGroup α] {a b : α} (hab : a ≠ b) :
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:186:theorem Nat.isAPOfLength_pair {a b : ℕ} (hab : a < b) :
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:191:theorem Set.not_isAPOfLength_empty {l : ℕ∞} (hl : 0 < l) :
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:201:theorem Set.isAPOfLengthFree_one (s : Set α) : s.IsAPOfLengthFree 1 := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:205:theorem Set.isAPOfLengthFree_zero (s : Set α) : s.IsAPOfLengthFree 0 := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:209:theorem Set.IsAPOfLength.not_isAPOfLengthFree {s : Set α} {l : ℕ∞}
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:220:theorem Set.IsAPOfLengthFree.maxCard_zero (N : ℕ) : maxCard 0 N = N := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:227:theorem Set.IsAPOfLengthFree.maxCard_one (N : ℕ) : maxCard 1 N = N := by

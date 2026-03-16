@@ -1,0 +1,205 @@
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture34.lean-29-/--
+FormalConjectures/WrittenOnTheWallII/GraphConjecture34.lean-30-WOWII [Conjecture 34](http://cms.dt.uh.edu/faculty/delavinae/research/wowII/)
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture34.lean-31-
+FormalConjectures/WrittenOnTheWallII/GraphConjecture34.lean:32:Let `path(G)` be the floor of the average distance of a connected graph `G`.
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture34.lean-33-Then
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture34.lean-34-`path(G) ≥ ceil( distavg(G, center) + distavg(G, maxEccentricityVertices G) )`.
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture34.lean-35--/
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-90-noncomputable def averageIndepNeighbors (G : SimpleGraph α) : ℝ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-91-  (∑ v ∈ Finset.univ, indepNeighbors G v) / (Fintype.card α : ℝ)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-92-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:93:/-- A unit distance graph in ℝ²:
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-94-A graph where the vertices V are a collection of points in ℝ² and there is
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-95-an edge between two points if and only if the distance between them is 1. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-96-def UnitDistancePlaneGraph (V : Set (EuclideanSpace ℝ (Fin 2))) : SimpleGraph V where
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/DiamExtra.lean-43-variable {α : Type*} {G G' : SimpleGraph α}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/DiamExtra.lean-44-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/DiamExtra.lean-45-/--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/DiamExtra.lean:46:The diameter is the greatest distance between any two vertices. If the graph is disconnected,
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/DiamExtra.lean-47-this will be `0`.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/DiamExtra.lean-48--/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/DiamExtra.lean-49-lemma diam_eq_zero_of_subsingleton [Subsingleton α] : G.diam = 0 := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-38-namespace Erdos1007
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-39-
+FormalConjectures/ErdosProblems/1007.lean:40:/-- A unit-distance representation of a simple graph $G$ in $\mathbb{R}^n$: an injective map
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-41-from vertices to Euclidean $n$-space such that adjacency is equivalent to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-42-distance exactly $1$. -/
+FormalConjectures/ErdosProblems/1007.lean-43-def IsUnitDistRep {V : Type*} (G : SimpleGraph V) (n : ℕ)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-45-  Function.Injective f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-46-  ∀ u v, G.Adj u v ↔ dist (f u) (f v) = 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-47-
+FormalConjectures/ErdosProblems/1007.lean:48:/-- A graph admits a unit-distance representation in $\mathbb{R}^n$. -/
+FormalConjectures/ErdosProblems/1007.lean-49-def HasUnitDistRep {V : Type*} (G : SimpleGraph V) (n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1007.lean-50-  ∃ f : V → EuclideanSpace ℝ (Fin n), IsUnitDistRep G n f
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-51-
+--
+FormalConjectures/ErdosProblems/1007.lean-53-Erdős Problem 1007 [So09e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-55-The smallest number of edges in a graph of dimension exactly $4$ is $9$, where the
+FormalConjectures/ErdosProblems/1007.lean:56:dimension of a graph is the minimal $n$ for a unit-distance representation in $\mathbb{R}^n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-58-This is achieved uniquely by $K_{3,3}$. Proved by House [Ho13], with an alternative
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean-59-proof by Chaffee and Noble [ChNo16].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-21-
+FormalConjectures/ErdosProblems/705.lean-22-*References:*
+FormalConjectures/ErdosProblems/705.lean-23-- [erdosproblems.com/705](https://www.erdosproblems.com/705)
+FormalConjectures/ErdosProblems/705.lean:24:- [OD99] P. O'Donnell, High girth unit-distance graphs. PhD Dissertation, Rutgers University (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-25--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-27-namespace Erdos705
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-30-open SimpleGraph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-32-/--
+FormalConjectures/ErdosProblems/705.lean:33:Let $G$ be a finite unit distance graph in $\mamthbb{R}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-34-Is there some $k$ such that if $G$ has girth $≥ k$, then $\chi(G) ≤ 3$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-35-
+FormalConjectures/ErdosProblems/705.lean:36:The general case was solved by O'Donnell [OD99], who constructed finite unit distance graphs with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-37-chromatic number $4$ and arbitrarily large girth.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-38--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean-39-@[category research solved, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-34-namespace Erdos706
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-35-
+FormalConjectures/ErdosProblems/706.lean:36:/-- The multi-distance graph in $\mathbb{R}^2$: given a set $A$ of positive reals, two points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-37-are adjacent iff their Euclidean distance belongs to $A$. -/
+FormalConjectures/ErdosProblems/706.lean-38-noncomputable def multiDistanceGraph (A : Set ℝ) : SimpleGraph (EuclideanSpace ℝ (Fin 2)) where
+FormalConjectures/ErdosProblems/706.lean-39-  Adj x y := x ≠ y ∧ dist x y ∈ A
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-43-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-44-Is it true that $L(r) \leq r^{O(1)}$? That is, does there exist a polynomial bound
+FormalConjectures/ErdosProblems/706.lean:45:on the chromatic number of multi-distance graphs in $\mathbb{R}^2$ as a function of the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-46-number of allowed distances?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-47-
+FormalConjectures/ErdosProblems/706.lean-48-Formalized as: there exist constants $C, K \in \mathbb{N}$ such that for all $r \geq 1$ and all
+FormalConjectures/ErdosProblems/706.lean:49:sets $A$ of $r$ positive real distances, the multi-distance graph on $\mathbb{R}^2$ with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-50-distance set $A$ is $(C \cdot r^K)$-colorable.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-51--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-52-@[category research open, AMS 5 51]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/934.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/934.lean-51-namespace Erdos934
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/934.lean-52-
+FormalConjectures/ErdosProblems/934.lean:53:/-- Two edges $e_1$, $e_2$ in a simple graph $G$ are at distance at least $t$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/934.lean-54-for every endpoint $u$ of $e_1$ and $v$ of $e_2$ that lie in the same connected
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/934.lean-55-component, $t \leq \operatorname{dist}_G(u, v)$. (Endpoints in different components are
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/934.lean-56-considered infinitely far apart and satisfy any finite distance bound.) -/
+--
+FormalConjectures/ErdosProblems/74.lean-41-  { (E.ncard) | (E : Set (Sym2 V)) (_ : E ⊆ A.edgeSet) (_ : IsBipartite (A.deleteEdges E).coe)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-43-/--
+FormalConjectures/ErdosProblems/74.lean:44:The set of edge distances to a bipartite graph is always non-empty because deleting all edges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-45-from a graph makes it bipartite.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-46--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-47-@[category test, AMS 5]
+--
+FormalConjectures/ErdosProblems/74.lean-67-    (A : Subgraph G) (_ : A.verts.ncard = n) (_ : A.verts.Finite) }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-68-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-69-/--
+FormalConjectures/ErdosProblems/74.lean:70:The set of minimum edge distances to bipartite for subgraphs of size `n` is bounded above.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-71-A graph on `n` vertices has at most `n choose 2` edges, and deleting all of them
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-72-makes the graph bipartite, providing a straightforward upper bound.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-73--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-21-
+FormalConjectures/ErdosProblems/704.lean-22-*Reference:* [erdosproblems.com/704](https://www.erdosproblems.com/704)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-23-
+FormalConjectures/ErdosProblems/704.lean:24:Let $G_n$ be the unit distance graph in $\mathbb{R}^n$, with two vertices joined by an edge
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-25-if and only if the Euclidean distance between them is $1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-27-Estimate the chromatic number $\chi(G_n)$. Does it grow exponentially in $n$? Does
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-47-namespace Erdos704
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-48-
+FormalConjectures/ErdosProblems/704.lean:49:/-- The unit distance graph in $\mathbb{R}^n$: two points are adjacent iff their
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-50-Euclidean distance is exactly $1$. -/
+FormalConjectures/ErdosProblems/704.lean-51-noncomputable def unitDistanceGraph (n : ℕ) : SimpleGraph (EuclideanSpace ℝ (Fin n)) where
+FormalConjectures/ErdosProblems/704.lean-52-  Adj x y := x ≠ y ∧ dist x y = 1
+FormalConjectures/ErdosProblems/704.lean-53-  symm := fun _ _ ⟨hne, hd⟩ => ⟨hne.symm, by rw [dist_comm]; exact hd⟩
+FormalConjectures/ErdosProblems/704.lean-54-  loopless := fun _ ⟨h, _⟩ => h rfl
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-55-
+FormalConjectures/ErdosProblems/704.lean:56:/-- The chromatic number of the unit distance graph in $\mathbb{R}^n$: the minimum number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-57-of colors needed to properly color all points so that no two points at
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-58-distance $1$ share the same color. Returns $0$ if no finite coloring exists. -/
+FormalConjectures/ErdosProblems/704.lean-59-noncomputable def chromaticNumber_unitDist (n : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-74-/--
+FormalConjectures/ErdosProblems/704.lean-75-Erdős Problem 704, Frankl–Wilson lower bound [FrWi81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-76-
+FormalConjectures/ErdosProblems/704.lean:77:The chromatic number of the unit distance graph in $\mathbb{R}^n$ grows at least
+FormalConjectures/ErdosProblems/704.lean-78-exponentially: $\chi(G_n) \geq (1+o(1)) \cdot 1.2^n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-79-
+FormalConjectures/ErdosProblems/704.lean-80-Formalized as: there exist $C > 0$ and $N_0$ such that for all $n \geq N_0$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean-36-namespace Erdos508
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean-38-/--
+FormalConjectures/ErdosProblems/508.lean:39:The unit-distance graph in the plane, i.e. the graph whose vertices are points in the plane
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean-40-and whose edges connect points that are exactly 1 unit apart.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean-41--/
+FormalConjectures/ErdosProblems/508.lean-42-def UnitDistancePlaneGraph : SimpleGraph ℝ² where
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-48-For every $n \geq 1$ and every injective placement of $n$ points in $\mathbb{R}^2$ with all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-49-pairwise distances $\geq 1$, there exists a set of at least $\frac{8}{31}n$ points with
+FormalConjectures/ErdosProblems/1066.lean:50:no two at distance exactly $1$ (an independent set in the unit distance graph).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-51--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-52-@[category research solved, AMS 5 52]
+FormalConjectures/ErdosProblems/1066.lean-53-theorem erdos_1066 (n : ℕ) (hn : n ≥ 1)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-65-For all sufficiently large $n$, there exists an injective placement of $n$ points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-66-in $\mathbb{R}^2$ with all pairwise distances $\geq 1$ such that every independent set in the
+FormalConjectures/ErdosProblems/1066.lean:67:unit distance graph has size at most $\frac{5}{16}n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-68--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-69-@[category research solved, AMS 5 52]
+FormalConjectures/ErdosProblems/1066.lean-70-theorem erdos_1066.variants.upper_bound :
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-47-Is it true that for every $n \geq 1$ and every placement of $n$ points in $\mathbb{R}^2$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-48-there exists a subset of at least $n/4$ points with no two at distance exactly $1$
+FormalConjectures/ErdosProblems/1070.lean:49:(an independent set in the unit distance graph)?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-50--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-51-@[category research open, AMS 5 52]
+FormalConjectures/ErdosProblems/1070.lean-52-theorem erdos_1070 : answer(sorry) ↔
+--
+FormalConjectures/ErdosProblems/1070.lean-74-**Erdős Problem #1070**, upper bound (Moser spindle):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-75-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-76-For all sufficiently large $n$, there exists a placement of $n$ points in $\mathbb{R}^2$
+FormalConjectures/ErdosProblems/1070.lean:77:such that every independent set in the unit distance graph has size at most
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-78-$(2/7)n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-79--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-80-@[category research solved, AMS 5 52]
+--
+FormalConjectures/ErdosProblems/130.lean-22-*Reference:* [erdosproblems.com/130](https://www.erdosproblems.com/130)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-24-Let $A \subseteq \mathbb{R}^2$ be an infinite set with no three collinear and no four concyclic
+FormalConjectures/ErdosProblems/130.lean:25:points. Can the integer-distance graph on $A$ (adjacent iff at integer distance) have infinite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-26-chromatic number?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-28-[Er97b] Erdős, P., _Some of my favourite problems which recently have been solved_,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-59-    p ≠ q → p ≠ r → p ≠ s → q ≠ r → q ≠ s → r ≠ s →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-60-    ¬Concyclic p q r s)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-61-
+FormalConjectures/ErdosProblems/130.lean:62:/-- The integer-distance graph on a point set $A \subseteq \mathbb{R}^2$: vertices are points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-63-of $A$, and two distinct points are adjacent if and only if their Euclidean distance
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-64-is a positive integer. -/
+FormalConjectures/ErdosProblems/130.lean-65-noncomputable def intDistGraph (A : Set (EuclideanSpace ℝ (Fin 2))) :
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-73-/--
+FormalConjectures/ErdosProblems/130.lean-74-Erdős Problem 130 [Er97b] (asked by Andrásfai and Erdős):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-75-Let $A \subseteq \mathbb{R}^2$ be an infinite set with no three points collinear and no four
+FormalConjectures/ErdosProblems/130.lean:76:points concyclic. Consider the integer-distance graph $G$ on $A$, where two distinct points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-77-are adjacent if and only if their Euclidean distance is a positive integer.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-78-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-79-Can the chromatic number of $G$ be infinite?

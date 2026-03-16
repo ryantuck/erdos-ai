@@ -1,0 +1,728 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/381.lean:noncomputable def highlyCompositeCount (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/461.lean:noncomputable def smoothComponent (t n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/461.lean:noncomputable def f (n t : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1045.lean:noncomputable def erdosDelta (n : ℕ) (z : Fin n → ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1045.lean:noncomputable def regularNGon (n : ℕ) : Fin n → ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean:noncomputable def coveringNumber {n r : ℕ} (G : UniformHypergraph n r) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/994.lean:noncomputable def cesaroFrequency (α : ℝ) (E : Set ℝ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean:noncomputable def shiftCount (f : ℕ → ℕ) (F : ℕ → ℝ) (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/95.lean:noncomputable def distinctDistances (P : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/95.lean:noncomputable def distMultiplicity (P : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean:noncomputable def inducedSubgraphSignatures {n : ℕ} (G : SimpleGraph (Fin n)) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean:noncomputable def hPrime (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean:noncomputable def hDivisor (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean:noncomputable def countSat (P : ℕ → Prop) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean:noncomputable def ex3K43 (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/957.lean:noncomputable def distFrequency (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean:noncomputable def distMultiplicity (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/353.lean:noncomputable def sqDist (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/353.lean:noncomputable def triangleArea (p₁ p₂ p₃ : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/353.lean:noncomputable def quadArea (p₁ p₂ p₃ p₄ : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/456.lean:noncomputable def smallestPrimeCong1 (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/456.lean:noncomputable def smallestTotientDiv (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean:noncomputable def sscCountMod (n k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean:noncomputable def totalSubsetsMod (n k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean:noncomputable def exC3C4 (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean:noncomputable def schnirelmannDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1039.lean:noncomputable def sublevelRadius (f : Polynomial ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean:noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean:noncomputable def diagRamsey (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/764.lean:noncomputable def repCount764 (A : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/764.lean:noncomputable def repSum764 (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean:noncomputable def omega1 : Ordinal := (aleph 1).ord
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean:noncomputable def coveringRadius (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean:noncomputable def fk (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean:noncomputable def numEdges {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean:noncomputable def pancyclicExcess (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean:noncomputable def h (n : ℕ) : ℕ∞ := sInf {m | 2 < m ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean:noncomputable def graphFraction (n : ℕ) (P : SimpleGraph (Fin n) → Prop) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/255.lean:noncomputable def discrepancy (z : ℕ → ℝ) (a b : ℝ) (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/190.lean:noncomputable def H (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:noncomputable def countGFreeGraphs {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1023.lean:noncomputable def unionFreeMax (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean:noncomputable def maxAPFreeSize (k : ℕ) (S : Finset ℤ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean:noncomputable def rAp (k N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/791.lean:noncomputable def additiveBasesMinSize (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean:noncomputable def numDistinctDistances (p : EuclideanSpace ℝ (Fin 2))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/323.lean:noncomputable def fKm (k m x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/793.lean:noncomputable def primitiveLikeMaxSize (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/614.lean:noncomputable def erdos614_f (n k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean:noncomputable def primorial : ℕ → ℕ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean:noncomputable def coprimeList (n : ℕ) : List ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean:noncomputable def gapValues (n : ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean:noncomputable def maxGap (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean:noncomputable def F (k N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean:noncomputable def divMatchCount (A : Finset ℕ) (t N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean:noncomputable def erdos650F (m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/969.lean:noncomputable def squarefreeError (x : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/977.lean:noncomputable def greatestPrimeFactor (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1086.lean:noncomputable def triangleArea (p q r : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1086.lean:noncomputable def countTrianglesWithArea (S : Finset (ℝ × ℝ)) (A : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:noncomputable def ramseyR3 (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:noncomputable def ramseyR33 (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean:noncomputable def unitFracSum (S : Finset ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean:noncomputable def bestUnderapprox (n : ℕ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/990.lean:noncomputable def Complex.arg2pi (z : ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/990.lean:noncomputable def rootArgCount (f : Polynomial ℂ) (α β : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/990.lean:noncomputable def erdosTuranMeasure (f : Polynomial ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean:noncomputable def numDistinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/633.lean:noncomputable def sqDist (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/633.lean:noncomputable def sideLengthsSq (A B C : ℝ × ℝ) : Multiset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/633.lean:noncomputable def sideLength (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/633.lean:noncomputable def angle (P Q R : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean:noncomputable def distinctDistanceCountInDim (d : ℕ) (P : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean:noncomputable def minDistinctDistances (d : ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/756.lean:noncomputable def pairCount (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/756.lean:noncomputable def highMultiplicityDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Set ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/354.lean:noncomputable def FloorMultiples (a γ : ℝ) (n : ℕ) : ℤ := ⌊γ ^ n * a⌋
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/354.lean:noncomputable def FloorMultiples.interleave (a b γ : ℝ) (n : ℕ) : ℤ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean:noncomputable def arcLength (S : Set ℂ) : ℝ≥0∞ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean:noncomputable def kRichLineCount (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean:noncomputable def omegaOmega1 : Ordinal := (aleph (ω + 1)).ord
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/435.lean:noncomputable def erdos435Formula (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1087.lean:noncomputable def degenerateQuadrupleCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean:noncomputable def finChromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean:noncomputable def cochromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean:noncomputable def f (A : ℕ → ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean:noncomputable def g (A : ℕ → ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean:noncomputable def countA (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean:noncomputable def cardChromaticNumber {V : Type u}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean:noncomputable def hypergraphMatchingFraction (N m k : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1079.lean:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1079.lean:noncomputable def neighborhoodEdgeCount {n : ℕ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/492.lean:noncomputable def fractionalPosition (a : ℕ → ℕ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:noncomputable def maxBipartiteEdges {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:noncomputable def f (m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean:noncomputable def h3 (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean:noncomputable def sumTwoSqSeq (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/526.lean:noncomputable def CircArcCovers (x y ℓ : ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/526.lean:noncomputable def CircleFullyCovered (ω a : ℕ → ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/21.lean:noncomputable def erdosLovaszF (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean:noncomputable def kAdmissible (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean:noncomputable def primeReciprocalSum (k n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean:noncomputable def primeDensityRatio (A : Set ℕ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:noncomputable def toRandomPolynomial (f : KacPolynomial n S Ω μ) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:noncomputable def roots (f : KacPolynomial n S Ω μ) : Ω → Multiset k :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean:noncomputable def ramseyR (k l : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1011.lean:noncomputable def minTriangleEdges (r n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1084.lean:noncomputable def f (d n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean:noncomputable def ramseyR (k l : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/726.lean:noncomputable def erdos726Sum (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1073.lean:noncomputable def A (x : ℕ) : ℝ := {u | u.Composite ∧ ∃ n, n ! + 1 ≡ 0 [MOD u] ∧ u < x}.ncard
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean:noncomputable def vanDerWaerdenNumber (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean:noncomputable def numKRichLines (S : Finset (Fin 2 → ℝ)) (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/524.lean:noncomputable def supNormInterval (ε : ℕ → ℝ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean:noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/823.lean:noncomputable def Nat.sumDivisors (n : ℕ) : ℕ := ∑ d ∈ n.divisors, d
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1057.lean:noncomputable def carmichaelCount (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/465.lean:noncomputable def distNearestInt465 (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean:noncomputable def countInInterval (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/746.lean:noncomputable def gnmFraction (n m : ℕ) (P : SimpleGraph (Fin n) → Prop) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean:noncomputable def schnirelmannDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/679.lean:noncomputable def omega (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/210.lean:noncomputable def ordinaryLineCount (S : Finset Point2) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/20.lean:noncomputable def f (n k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/996.lean:noncomputable def fourierPartial {T : ℝ} [hT : Fact (0 < T)] (f : Lp ℂ 2 (@haarAddCircle T hT))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/200.lean:noncomputable def longestPrimeArithmeticProgressions (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean:noncomputable def unitDistanceGraph (n : ℕ) : SimpleGraph (EuclideanSpace ℝ (Fin n)) where
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean:noncomputable def chromaticNumber_unitDist (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/468.lean:noncomputable def f (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean:noncomputable def strongChromaticIndex {V : Type*} (G : SimpleGraph V) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/380.lean:noncomputable def largestPrimeFactor380 (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/380.lean:noncomputable def B380 (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/380.lean:noncomputable def squareDivCount380 (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/400.lean:noncomputable def g (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean:noncomputable def sqrtPartialDensity (A : Set ℕ) (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean:noncomputable def sidonUpperDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean:noncomputable def finChromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean:noncomputable def g (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean:noncomputable def h (m n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/786.lean:noncomputable def consecutivePrimesFrom (p : ℕ) (k : ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/84.lean:noncomputable def cycleSetCount (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean:noncomputable def pairsAtDistance
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean:noncomputable def addRepFun (A : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:noncomputable def euclidDistFromOrigin {k : ℕ} (x : Fin k → ℤ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:noncomputable def expectedSAWDist (n k : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1042.lean:noncomputable def pairwiseDistProd {n : ℕ} (z : Fin n → ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1042.lean:noncomputable def nthTransfiniteDiam (F : Set ℂ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1042.lean:noncomputable def transfiniteDiameter (F : Set ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/420.lean:noncomputable def F (f : ℕ → ℝ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1130.lean:noncomputable def lagrangeBasis {n : ℕ} (nodes : Fin n → ℝ) (k : Fin n) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1130.lean:noncomputable def lebesgueFunction {n : ℕ} (nodes : Fin n → ℝ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1130.lean:noncomputable def boundary {n : ℕ} (nodes : Fin n → ℝ) : Fin (n + 2) → ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1130.lean:noncomputable def localMax {n : ℕ} (nodes : Fin n → ℝ) (i : Fin (n + 1)) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/574.lean:noncomputable def exConsecutiveCycles (k : ℕ) (hk : k ≥ 2) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/998.lean:noncomputable def countFracInInterval (α : ℝ) (u v : ℝ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean:noncomputable def cliqueTransversalNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean:noncomputable def erdos446Alpha : ℝ := 1 - (1 + Real.log (Real.log 2)) / Real.log 2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean:noncomputable def minimalDistinctDistances (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean:noncomputable def erdosF (d n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/712.lean:noncomputable def exrKkr (r k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean:noncomputable def edgesNotInMonoTriangleCount {n : ℕ} (c : EdgeTwoColoring n) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/703.lean:noncomputable def T (n r : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean:noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1153.lean:noncomputable def lagrangeBasis {n : ℕ} (nodes : Fin n → ℝ) (k : Fin n) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1153.lean:noncomputable def lebesgueFunction {n : ℕ} (nodes : Fin n → ℝ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean:noncomputable def graphRamseyNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/448.lean:noncomputable def tauPlus (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/442.lean:noncomputable def Real.maxLogOne (x : ℝ) := max x.log 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean:noncomputable def reciprocalSum (A : Finset ℕ) : ℚ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/504.lean:noncomputable def angleAt (x y z : EuclideanSpace ℝ (Fin 2)) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/504.lean:noncomputable def maxGuaranteedAngle (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean:noncomputable def unitDistancePairsCount (points : Finset ℝ²) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean:noncomputable def unitDistanceCounts (n : ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean:noncomputable def maxUnitDistances (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/778.lean:noncomputable def cliqueNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean:noncomputable def g (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean:noncomputable def h (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/858.lean:noncomputable def weakPrimitiveMaxSum (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean:noncomputable def distinctDistances (n : ℕ) (x : Fin n → EuclideanSpace ℝ (Fin 2))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean:noncomputable def numDistinctR (n : ℕ) (x : Fin n → EuclideanSpace ℝ (Fin 2)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/385.lean:noncomputable def F (n : ℕ) : ℕ := sSup {m + m.minFac | (m < n) (_ : m.Composite)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/802.lean:noncomputable def avgDegree {n : ℕ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean:noncomputable def inducedRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/489.lean:noncomputable def GapSumSq (A : Set ℕ) (x : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/739.lean:noncomputable def cardChromaticNumber {V : Type u}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean:noncomputable def triangleFreeDiam2Completion {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean:noncomputable def triangleFreeDiamCompletion {n : ℕ} (r : ℕ) (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean:noncomputable def ordinaryLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean:noncomputable def lineThrough (p q : EuclideanSpace ℝ (Fin 2)) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean:noncomputable def fRk (r k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:noncomputable def smallestCollection (a b : ℕ) : ℕ := sInf (unitFractionExpressible a b)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:noncomputable def smallestCollectionTo (b : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:noncomputable def minTriangleArea (S : Finset ℝ²) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:noncomputable def α (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:noncomputable def lowerBest (n : ℕ) : ℝ := Real.log n / (n : ℝ) ^ 2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:noncomputable def upperBarrier (n : ℕ) : ℝ := 1 / (n : ℝ) ^ ((7 : ℝ) / 6)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:noncomputable def AllOnCircle (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:noncomputable def AllCollinear (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:noncomputable def numDeterminedCircles (S : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:noncomputable def minDeterminedCircles (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean:noncomputable def maxCochromaticOnSurface (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/523.lean:noncomputable def supNormCircle (ε : ℕ → ℝ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/390.lean:noncomputable def f (n : ℕ) : ℕ := sInf {m : ℕ | ∃ k, ∃ f : ℕ → ℕ, StrictMono f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean:noncomputable def IsLine (L : AffineSubspace ℝ Point2) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean:noncomputable def pointMultiplicity (A : Finset (AffineSubspace ℝ Point2)) (p : Point2) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean:noncomputable def IsOrdinaryPoint (A : Finset (AffineSubspace ℝ Point2)) (p : Point2) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean:noncomputable def HasGallaiTriangle (A : Finset (AffineSubspace ℝ Point2)) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean:noncomputable def f (n : ℕ) : ℝ := ⨅ A : {A : Finset ℕ | A.card = n ∧ IsSidon (A : Set ℕ)},
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean:noncomputable def bipartitionNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean:noncomputable def independenceNumber {V : Type*} [Fintype V] (G : SimpleGraph V) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean:noncomputable def chromaticNumber627 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean:noncomputable def cliqueNumber627 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean:noncomputable def f627 (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/176.lean:noncomputable def discrepancyAPNumber (k : ℕ) (ℓ : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean:noncomputable def vanDerWaerden (j k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/604.lean:noncomputable def pinnedDistances (x : EuclideanSpace ℝ (Fin 2))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/225.lean:noncomputable def trigPoly (n : ℕ) (c : ℕ → ℂ) (θ : ℝ) : ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1051.lean:noncomputable def ErdosSeries (a : ℕ → ℤ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean:noncomputable def maxPrimitiveSubsetSumSize (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1092.lean:noncomputable def f (r n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean:noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/724.lean:noncomputable def maxMOLS (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1134.lean:noncomputable def count (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean:noncomputable def schnirelmannDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/935.lean:noncomputable def powerfulPart (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean:noncomputable def egyptianFractionCount (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/929.lean:noncomputable def HasPositiveUpperDensity (S : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1063.lean:noncomputable def n (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean:noncomputable def distinctDistanceCount3d (P : Finset (EuclideanSpace ℝ (Fin 3))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/902.lean:noncomputable def tournamentDominationNumber (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean:noncomputable def folkmanNumber (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/252.lean:noncomputable def erdos_252_sum (k : ℕ) : ℝ := ∑' n, σ k n / (n ! : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1091.lean:noncomputable def HasOddCycleWithDiagonals {V : Type*} (G : SimpleGraph V) (d : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/160.lean:noncomputable def erdos_160.h (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/150.lean:noncomputable def numMinimalVertexCuts {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/150.lean:noncomputable def c (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean:noncomputable def erdos451_nk (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/382.lean:noncomputable def largestPrimeFactor (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/382.lean:noncomputable def HasSquaredLargestPrime (u v : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/642.lean:noncomputable def numChords {u v : V} (p : G.Walk u v) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/767.lean:noncomputable def maxEdgesAvoidingCycleChords (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean:noncomputable def erdosH (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/342.lean:noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean:noncomputable def hypercubeGraph (n : ℕ) : SimpleGraph (Fin n → Bool) where
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean:noncomputable def countPermsOfOrder (n k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/293.lean:noncomputable def v (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean:noncomputable def lowerDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean:noncomputable def expSum512 (A : Finset ℤ) (θ : ℝ) : ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean:noncomputable def multiDistanceGraph (A : Set ℝ) : SimpleGraph (EuclideanSpace ℝ (Fin 2)) where
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1005.lean:noncomputable def fareySimOrderFn (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:noncomputable def maxEdgesNoEdgeDisjointCycles (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean:noncomputable def cardIsSumThreePowerBelow (k x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/127.lean:noncomputable def cutSize {V : Type*} [DecidableEq V] [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/127.lean:noncomputable def maxBipartiteSubgraphSize {V : Type*} [DecidableEq V] [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/127.lean:noncomputable def edwardsLB (m : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/127.lean:noncomputable def f (m : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1055.lean:noncomputable def p (r : ℕ+) : ℕ := Nat.find (exists_p r)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean:noncomputable def minExtremalNumber (n k l : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean:noncomputable def gridCoveringNumber (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean:noncomputable def signPoly (ε : ℕ → ℝ) (n : ℕ) : Polynomial ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean:noncomputable def numRealRoots (p : Polynomial ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/495.lean:noncomputable def distNearestInt (x : ℝ) : ℝ := |x - round x|
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/684.lean:noncomputable def smoothPart (m k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/684.lean:noncomputable def erdos684F (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean:noncomputable def fourRichLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/452.lean:noncomputable def omega (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1131.lean:noncomputable def lagrangeBasis {n : ℕ} (nodes : Fin n → ℝ) (k : Fin n) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1131.lean:noncomputable def lagrangeL2 {n : ℕ} (nodes : Fin n → ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1131.lean:noncomputable def minLagrangeL2 (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/107.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/989.lean:noncomputable def euclidDist (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/989.lean:noncomputable def countInDisk (A : ℕ → ℝ × ℝ) (c : ℝ × ℝ) (r : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/989.lean:noncomputable def discrepancy (A : ℕ → ℝ × ℝ) (r : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean:noncomputable def MaxOverlap (A B : Finset ℤ) : ℕ := iSup <| Overlap A B
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean:noncomputable def M (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean:noncomputable def MinOverlapQuotient (N : ℕ) := (M N : ℝ) / N
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean:noncomputable def maxEquidistantPointsAt (x : ℝ²) (points : Finset ℝ²) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean:noncomputable def possible_f_values (n : ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean:noncomputable def f (n : ℕ) : ℕ := sSup <| possible_f_values n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean:noncomputable def exponentialSum (x : ℕ → ℝ) (k : ℕ) (n : ℕ) : ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/815.lean:noncomputable def IsDegree3Critical {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/17.lean:noncomputable def clusterPrimeCount (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/223.lean:noncomputable def unitDistPairs {d : ℕ} (A : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/872.lean:noncomputable def legalMoves (n : ℕ) (A : Finset ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/872.lean:noncomputable def playGame (n : ℕ) (sL sS : LegalStrategy n) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean:noncomputable def sumFreeSubsetCount (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/771.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean:noncomputable def r3 (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/819.lean:noncomputable def f (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean:noncomputable def distinctDistances (points : Finset ℝ²) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean:noncomputable def distinctDistancesFrom (points : Finset ℝ²) (pt : ℝ²) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/426.lean:noncomputable def numUniqueSubgraphs {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/426.lean:noncomputable def maxUniqueSubgraphs (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean:noncomputable def multicolorRamseyNum (n k r : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean:noncomputable def euclidDist (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean:noncomputable def maxNoIntDistMeasure (r : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean:noncomputable def primorial (k : ℕ) : ℕ := ∏ i ∈ Finset.range k, nth Nat.Prime i
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean:noncomputable def countSmallGaps : List ℕ → ℝ → ℕ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean:noncomputable def gapFraction (k : ℕ) (c : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean:noncomputable def erdos460Seq (n : ℕ) : ℕ → ℕ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean:noncomputable def erdos460Sum (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:noncomputable def turanNumberFamily
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean:noncomputable def randomPowerPartialSum (ε : ℕ → ℝ) (a : ℕ → ℝ) (z : ℂ) (n : ℕ) : ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean:noncomputable def modFraction (m r : ℕ) (S : Finset ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/976.lean:noncomputable def polyProduct (f : Polynomial ℤ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean:noncomputable def maxModulus (f : ℂ → ℂ) (r : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean:noncomputable def nu (f : ℂ → ℂ) (r : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/27.lean:noncomputable def systemLcm (S : Finset (ℤ × ℕ)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/27.lean:noncomputable def uncoveredDensity (S : Finset (ℤ × ℕ)) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean:noncomputable def sqEuclideanDist (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean:noncomputable def numDistinctDistances (n : ℕ) (pts : Fin n → ℝ × ℝ) (i : Fin n) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean:noncomputable def distSqSum (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/103.lean:noncomputable def finiteDiameter (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/103.lean:noncomputable def h (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1096.lean:noncomputable def powerSumSet (q : ℝ) : Set ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/18.lean:noncomputable def practicalH (m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/920.lean:noncomputable def f (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/709.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean:noncomputable def UniformHypergraph.density {n k : ℕ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean:noncomputable def distNearestInt (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean:noncomputable def setA (α : ℝ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/487.lean:noncomputable def HasPositiveUpperDensity487 (A : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/131.lean:noncomputable def erdos131F (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean:noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean:noncomputable def lowerDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean:noncomputable def squarefreeBinomCount (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/634.lean:noncomputable def sqDist (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/634.lean:noncomputable def sideLengthsSq (A B C : ℝ × ℝ) : Multiset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1072.lean:noncomputable def f (p : ℕ) : ℕ := sInf {n | (n)! + 1 ≡ 0 [MOD p]}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1129.lean:noncomputable def lagrangeBasis {n : ℕ} (nodes : Fin n → ℝ) (k : Fin n) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1129.lean:noncomputable def lebesgueFunction {n : ℕ} (nodes : Fin n → ℝ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1129.lean:noncomputable def lebesgueConstant {n : ℕ} (nodes : Fin n → ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1129.lean:noncomputable def boundary {n : ℕ} (nodes : Fin n → ℝ) : Fin (n + 2) → ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean:noncomputable def maximalSumFreeCount (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/50.lean:noncomputable def totientDensityCount (c : ℝ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean:noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/852.lean:noncomputable def nthPrime (n : ℕ) : ℕ := Nat.nth Nat.Prime n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/852.lean:noncomputable def primeGap (n : ℕ) : ℕ := nthPrime (n + 1) - nthPrime n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/852.lean:noncomputable def h (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/662.lean:noncomputable def triangularLatticeNeighborCount (t : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/662.lean:noncomputable def closePairCount
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:noncomputable def selfAvoidingWalkCount (n k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:noncomputable def connectiveConstant (k : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean:noncomputable def diagonalRamsey (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/332.lean:noncomputable def D_A (A : Set ℕ) : Set ℤ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean:noncomputable def fourPlusRichLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean:noncomputable def minSumFreeClasses (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean:noncomputable def lagrangeBasis {n : ℕ} (nodes : Fin n → ℝ) (k : Fin n) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean:noncomputable def lebesgueFunction {n : ℕ} (nodes : Fin n → ℝ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean:noncomputable def firstN (seq : ℕ → ℝ) (n : ℕ) : Fin n → ℝ := fun i => seq i.val
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean:noncomputable def L (seq : ℕ → ℝ) (n : ℕ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean:noncomputable def goodFraction {G : Type*} [AddCommGroup G] [Fintype G] [DecidableEq G]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean:noncomputable def gEps (ε : ℝ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/768.lean:noncomputable def countA (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/898.lean:noncomputable def sqDist898 (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/898.lean:noncomputable def dist898 (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/898.lean:noncomputable def perpFoot898 (P A B : ℝ × ℝ) : ℝ × ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean:noncomputable def cliqueTransversalNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean:noncomputable def independenceNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean:noncomputable def H (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/736.lean:noncomputable def cardChromaticNumber {V : Type u}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/208.lean:noncomputable def erdos208.s : ℕ → ℕ := Nat.nth Squarefree
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/497.lean:noncomputable def dedekindNumber (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean:noncomputable def ramseyR (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/841.lean:noncomputable def erdos841T (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/841.lean:noncomputable def largestPrimeFactor (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean:noncomputable def unitFractionSums (N : ℕ) : Finset ℚ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean:noncomputable def erdos320_S (N : ℕ) : ℕ := (unitFractionSums N).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1170.lean:noncomputable def omega2 : Ordinal := (aleph 2).ord
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/865.lean:noncomputable def f (N k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean:noncomputable def divisorCountIn (A : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean:noncomputable def reciprocalSum (A : Set ℕ) (x : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean:noncomputable def multB2MaxSize (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/827.lean:noncomputable def circumradius (p₁ p₂ p₃ : EuclideanSpace ℝ (Fin 2)) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1040.lean:noncomputable def pairwiseDistProd {n : ℕ} (z : Fin n → ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1040.lean:noncomputable def nthTransfiniteDiam (F : Set ℂ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1040.lean:noncomputable def transfiniteDiameter (F : Set ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1040.lean:noncomputable def sublevelMeasure (F : Set ℂ) (μ : Measure ℂ) : ℝ≥0∞ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/173.lean:noncomputable def euclideanDistSq (p q : ℝ × ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/173.lean:noncomputable def triangleSideSqs (p₁ p₂ p₃ : ℝ × ℝ) : Multiset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean:noncomputable def maxSidonSubsetSize (A : Finset ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean:noncomputable def sidonSubsetNumber (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1085.lean:noncomputable def f (d n : ℕ) : ℕ := ⨆ (s : Finset (ℝ^ d)) (_ : s.card = n), unitDistNum s
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/314.lean:noncomputable def erdos314M (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/314.lean:noncomputable def erdos314Epsilon (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean:noncomputable def distinctDistances {d : ℕ} (S : Finset (EuclideanSpace ℝ (Fin d))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean:noncomputable def distinctDistanceCount {d : ℕ} (S : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean:noncomputable def g (d n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean:noncomputable def monoAPNumber (r k : ℕ) : ℕ := sInf (monoAP_guarantee_set r k)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/14.lean:noncomputable def nonUniqueSumCount (A : Set ℕ) (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/14.lean:noncomputable def almostSquareRoot (ε : ℝ) (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/14.lean:noncomputable def squareRoot (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean:noncomputable def UniformHypergraph.chromaticNumber {V : Type*} [DecidableEq V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean:noncomputable def IsTwoDistanceSet {n : ℕ} (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/648.lean:noncomputable def g (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/795.lean:noncomputable def maxDistinctProductSetSize (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/241.lean:noncomputable def f (N r : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/395.lean:noncomputable def signedSum {n : ℕ} (z : Fin n → ℂ) (ε : Fin n → Bool) : ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean:noncomputable def A (u : ℕ → ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean:noncomputable def t (u : ℕ → ℕ) (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/5.lean:noncomputable def normalizedPrimeGap (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/367.lean:noncomputable def twoFullPart (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1041.lean:noncomputable def length (s : Set ℂ) : ℝ≥0∞ := μH[1] s
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean:noncomputable def sumRepCount (S : Finset ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean:noncomputable def maxB2rSize (r : ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean:noncomputable def diffRepCount (S : Finset ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean:noncomputable def maxDiffBoundedSize (r : ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/394.lean:noncomputable def t (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean:noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1001.lean:noncomputable def approxSet (N : ℕ) (A c : ℝ) : Set ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1001.lean:noncomputable def sMeasure (N : ℕ) (A c : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean:noncomputable def erdos789_h (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/711.lean:noncomputable def f (n m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean:noncomputable def pairwiseDistProd (P : Finset (EuclideanSpace ℝ (Fin 3))) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/441.lean:noncomputable def erdosConstruction (N : ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean:noncomputable def countInRange (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/959.lean:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/959.lean:noncomputable def distMultiplicity (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/278.lean:noncomputable def coveringDensity (moduli : Finset ℕ) (offsets : ℕ → ℤ) : ℚ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/278.lean:noncomputable def inclusionExclusionDensity (moduli : Finset ℕ) : ℚ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean:noncomputable def edgeColors {n k : ℕ} (χ : EdgeColoring n k)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean:noncomputable def maxQuasiSidonCard (δ : ℝ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/482.lean:noncomputable def grahamPollakSeq : ℕ → ℤ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/482.lean:noncomputable def binaryDigit (x : ℝ) (n : ℕ) : ℤ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean:noncomputable def fEpsilon (ε : ℝ) (p : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/464.lean:noncomputable def distNearestInt (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean:noncomputable def omega0 : Ordinal := (aleph 0).ord
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean:noncomputable def omega1 : Ordinal := (aleph 1).ord
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean:noncomputable def omega2 : Ordinal := (aleph 2).ord
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean:noncomputable def omega3 : Ordinal := (aleph 3).ord
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/106.lean:noncomputable def SquarePlacement.region (sq : SquarePlacement) : Set (ℝ × ℝ) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/106.lean:noncomputable def SquarePlacement.sqInterior (sq : SquarePlacement) : Set (ℝ × ℝ) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/106.lean:noncomputable def f (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean:noncomputable def minLeftover (t n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean:noncomputable def ramseyNumber₂ (s t : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/956.lean:noncomputable def setDist956 {α : Type*} [PseudoMetricSpace α]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean:noncomputable def g (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean:noncomputable def leastNondividingPrime (n k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean:noncomputable def maxPrimeGap (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/860.lean:noncomputable def erdosPomeranceH (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/796.lean:noncomputable def multiplicativeBkMax (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean:noncomputable def minEdgeDeletionsForBipartite {W : Type*} [Fintype W]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean:noncomputable def hFun {V : Type*} (G : SimpleGraph V) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/494.lean:noncomputable def sumMultiset (A : Finset ℂ) (k : ℕ) : Multiset ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/494.lean:noncomputable def prodMultiset (A : Finset ℂ) (k : ℕ) : Multiset ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/133.lean:noncomputable def erdos133_f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/227.lean:noncomputable def maxTerm (a : ℕ → ℂ) (r : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/227.lean:noncomputable def maxModulus (f : ℂ → ℂ) (r : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/667.lean:noncomputable def edgesInSubset {n : ℕ} (G : SimpleGraph (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/667.lean:noncomputable def erdosH (n p q : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/667.lean:noncomputable def erdosC (p q : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean:noncomputable def unitDistancePairCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/980.lean:noncomputable def leastKthPowerNonresidue (k p : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean:noncomputable def chebyshevNode (n : ℕ) (k : Fin n) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean:noncomputable def lagrangeBasis {n : ℕ} (nodes : Fin n → ℝ) (i : Fin n) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean:noncomputable def lagrangeInterp {n : ℕ} (nodes : Fin n → ℝ) (f : ℝ → ℝ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean:noncomputable def lagrangeBasisEval {n : ℕ} (a : Fin n → ℝ) (i : Fin n) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean:noncomputable def lebesgueFunction {n : ℕ} (a : Fin n → ℝ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean:noncomputable def lagrangeInterpolation {n : ℕ} (a : Fin n → ℝ) (f : ℝ → ℝ) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean:noncomputable def egyptianCount (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/254.lean:noncomputable def distNearestInt (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean:noncomputable def listChromaticNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean:noncomputable def erdos629_n (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/598.lean:noncomputable def κ : Cardinal := Order.succ (2 ^ ℵ₀)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:noncomputable def MaxWeaklyDivisible (N : ℕ) (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:noncomputable def FirstPrimesMultiples (N k : ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean:noncomputable def graphCliqueNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean:noncomputable def erdos813H (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean:noncomputable def erdos788F (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean:noncomputable def numLinesDetermined
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean:noncomputable def achievableLineCounts (n : ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/368.lean:noncomputable def largestPrimeFactor (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/368.lean:noncomputable def F368 (n : ℕ) : ℕ := largestPrimeFactor (n * (n + 1))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/116.lean:noncomputable def area (S : Set ℂ) : ℝ≥0∞ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean:noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean:noncomputable def largestPrimeFactor (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean:noncomputable def ex3 (n k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean:noncomputable def unitCircleMaxProd (n : ℕ) (a : Fin n → ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean:noncomputable def erdos256_f (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean:noncomputable def extremalNumber60 {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean:noncomputable def labeledC4Count (n : ℕ) (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean:noncomputable def repCount (A : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1093.lean:noncomputable def deficiency (n k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/104.lean:noncomputable def threeRichUnitCircleCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/132.lean:noncomputable def pairCount (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/132.lean:noncomputable def limitedOccurrences (A : Finset (EuclideanSpace ℝ (Fin 2))) : Set ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/328.lean:noncomputable def repCount (A : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean:noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean:noncomputable def lowerDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/297.lean:noncomputable def unitFractionSubsetCount (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean:noncomputable def minEdgesToBipartite {V : Type*} [DecidableEq V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean:noncomputable def fk (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/637.lean:noncomputable def inducedDegree {n : ℕ} (G : SimpleGraph (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/637.lean:noncomputable def inducedDistinctDegrees {n : ℕ} (G : SimpleGraph (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1095.lean:noncomputable def g (k : ℕ) : ℕ := sInf {m | k + 1 < m ∧ k < (m.choose k).minFac}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean:noncomputable def erdos921F (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean:noncomputable def gPairwiseSum (k N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean:noncomputable def pointsOnLine (S : Finset Point2) (p q : Point2) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean:noncomputable def lineCount (S : Finset Point2) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean:noncomputable def bipartiteDistinctDistances
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/886.lean:noncomputable def Erdos886Divisors (n : ℕ) (ε : ℝ) (C : ℝ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/393.lean:noncomputable def erdos393_f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/281.lean:noncomputable def avoidCountAll (n a : ℕ → ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/281.lean:noncomputable def avoidCountFin (n a : ℕ → ℕ) (k N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1115.lean:noncomputable def pathLengthInDisk (γ : ArcLengthPath) (r : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean:noncomputable def ramseyTuranNumber (n k ℓ : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean:noncomputable def rootCount (f : ℂ → ℂ) (r : ℝ) (a : ℂ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1120.lean:noncomputable def lemniscateSet (f : Polynomial ℂ) : Set ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean:noncomputable def hBasis (r : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/809.lean:noncomputable def AdmitsRainbowOddCycleColoring (k n r : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/889.lean:noncomputable def v₀ (n : ℕ) : ℕ∞ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/889.lean:noncomputable def v_l (l n : ℕ) : ℕ∞ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/889.lean:noncomputable def V_l (l n : ℕ) : ℕ∞ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/311.lean:noncomputable def unitFractionDeviation (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1124.lean:noncomputable def unitSquare : Set (EuclideanSpace ℝ (Fin 2)) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1062.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean:noncomputable def Hypergraph3Uniform.independenceNumber {n : ℕ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean:noncomputable def linearHypergraphIndNum (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1169.lean:noncomputable def omega1 : Ordinal := (aleph 1).ord
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1104.lean:noncomputable def triangleFreeMaxChromatic (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/624.lean:noncomputable def H (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean:noncomputable def gnpWeight745 (n : ℕ) (ec : Fin n → Fin n → Bool) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean:noncomputable def gnpProb745 (n : ℕ) (P : SimpleGraph (Fin n) → Prop) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean:noncomputable def componentSize745 {n : ℕ} (G : SimpleGraph (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean:noncomputable def secondLargestComponent745 {n : ℕ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean:noncomputable def S (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/735.lean:noncomputable def AdmitsBalancedWeighting (S : Finset R2) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/735.lean:noncomputable def IsIncentreConfiguration (S : Finset R2) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/261.lean:noncomputable def HasErdos261Property (n : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean:noncomputable def turanNumberFamily
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/419.lean:noncomputable def erdos419_ratio (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/408.lean:noncomputable def totientIterationLength (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/697.lean:noncomputable def δ (m : ℕ) (α : ℝ) : ℝ := (density_exists m α).choose
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/498.lean:noncomputable def signedSum498 {n : ℕ} (z : Fin n → ℂ) (ε : Fin n → Bool) : ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/391.lean:noncomputable def erdos391_t (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean:noncomputable def Erdos975Sum (f : ℤ[X]) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:noncomputable def maxModulus (f : ℂ → ℂ) (r : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/725.lean:noncomputable def latinRectangleCount (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean:noncomputable def ramseyNum {V W : Type*}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/269.lean:noncomputable def a (P : Set ℕ) : ℕ → ℕ := Nat.nth <| HasPrimeFactorsIn P
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/269.lean:noncomputable def partialLcm (P : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/269.lean:noncomputable def series (P : Set ℕ) : ℝ :=  ∑' n, (1 : ℝ) / (partialLcm P n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/433.lean:noncomputable def FrobeniusNumber433 (A : Finset ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/433.lean:noncomputable def g433 (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean:noncomputable def intDistGraph (A : Set (EuclideanSpace ℝ (Fin 2))) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1002.lean:noncomputable def erdosF (α : ℝ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/803.lean:noncomputable def IsDBalanced {m : ℕ} (H : SimpleGraph (Fin m)) (D : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean:noncomputable def countMultiples (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/781.lean:noncomputable def descendingWaveNumber (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean:noncomputable def numGroupsOfOrder (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean:noncomputable def extremalNumber (r n k s : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean:noncomputable def erdosG (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean:noncomputable def countRepresentations (A : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean:noncomputable def countingFunction (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/282.lean:noncomputable def greedyDenominator (A : Set ℕ) (x : ℚ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/282.lean:noncomputable def greedyRemainder (A : Set ℕ) (x : ℚ) : ℕ → ℚ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean:noncomputable def turanNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/717.lean:noncomputable def subdivisionNumber {V : Type*} [Fintype V] [DecidableEq V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/945.lean:noncomputable def F (x : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean:noncomputable def ramseyR4 (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean:noncomputable def countRepresentableIntegers (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean:noncomputable def littlewoodEval (n : ℕ) (ε : Fin (n + 1) → Bool) (z : ℂ) : ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean:noncomputable def countNoSmallValue (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean:noncomputable def atLeastKPointLineCount
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean:noncomputable def exactlyKPointLineCount
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean:noncomputable def bigF (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean:noncomputable def littleF (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean:noncomputable def u (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/844.lean:noncomputable def extremalSet (N : ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/608.lean:noncomputable def numEdgesInC5 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean:noncomputable def numConvexSubsets (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean:noncomputable def distinctDistanceCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/878.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/878.lean:noncomputable def F (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/878.lean:noncomputable def H (x : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean:noncomputable def randMultFun {Ω : Type*} (ε : ℕ → Ω → ℝ) (ω : Ω) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean:noncomputable def partialSum {Ω : Type*} (ε : ℕ → Ω → ℝ) (ω : Ω) (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean:noncomputable def delta1Approx (n m N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/962.lean:noncomputable def erdos962_k (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean:noncomputable def repCount (A : Set ℕ) (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean:noncomputable def F (n : ℕ) (α : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean:noncomputable def f (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/345.lean:noncomputable def thresholdOfCompleteness (A : Set ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/607.lean:noncomputable def Collinear607 (p q r : ℝ × ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/607.lean:noncomputable def lineIncidence607 (P : Finset (ℝ × ℝ)) (p q : ℝ × ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/607.lean:noncomputable def lineSpectrum607 (P : Finset (ℝ × ℝ)) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/607.lean:noncomputable def achievableSpectra607 (n : ℕ) : Set (Finset ℕ) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean:noncomputable def twoColorSizeRamseyNumber {V₁ V₂ : Type*} [Fintype V₁] [Fintype V₂]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1010.lean:noncomputable def triangleCount {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/415.lean:noncomputable def F (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/415.lean:noncomputable def patternCount (k n : ℕ) (σ : Equiv.Perm (Fin k)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean:noncomputable def sortedPrimeFactors (n : ℕ) : List ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean:noncomputable def kthSmallestPrimeFactor (n : ℕ) (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean:noncomputable def countKthPrimeFactor (k p N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/983.lean:noncomputable def smoothCoveringNumber (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean:noncomputable def ramseyNumber {m : ℕ} (G : SimpleGraph (Fin m)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean:noncomputable def discrepancy (x : ℕ → ℤ) (α : ℝ) (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean:noncomputable def erdosRenyiProbability (n m : ℕ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/466.lean:noncomputable def distNearestInt (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/321.lean:noncomputable def R (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/912.lean:noncomputable def h (n : ℕ) : ℕ := (n !).factorization.frange.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean:noncomputable def maxCochromaticNumber (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean:noncomputable def turanNumber (r n d e : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean:noncomputable def minD (r e : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean:noncomputable def upperDensity333 (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/831.lean:noncomputable def distinctCircumradiiCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean:noncomputable def countingFn (A : Set ℕ) (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/961.lean:noncomputable def Erdos961Prop (k n : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/961.lean:noncomputable def f (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/853.lean:noncomputable def r (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/280.lean:noncomputable def sieveCount (n a : ℕ → ℕ) (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/322.lean:noncomputable def kthPowerReps (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/731.lean:noncomputable def leastNonDivisorCentralBinom (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean:noncomputable def nonAvgMax (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/755.lean:noncomputable def unitEquilateralTriangleCount {d : ℕ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/946.lean:noncomputable def erdos946Count (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1000.lean:noncomputable def phiA (a : ℕ → ℕ) (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean:noncomputable def smoothPart23 (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/820.lean:noncomputable def H (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean:noncomputable def numSubgroups (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean:noncomputable def SimpleGraph.minEdgeDistToBipartite {G : SimpleGraph V} (A : G.Subgraph) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean:noncomputable def SimpleGraph.maxSubgraphEdgeDistToBipartite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean:noncomputable def independenceNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean:noncomputable def erdos804_f (m n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean:noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean:noncomputable def cliqueTransversalNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean:noncomputable def inducedEdgeCount {n : ℕ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/34.lean:noncomputable def consecutiveSums (n : ℕ) (σ : Equiv.Perm (Fin n)) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean:noncomputable def ratio (r : ℝ) (f : ℂ → ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/970.lean:noncomputable def jacobsthal (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1034.lean:noncomputable def adjToAtLeastTwoOfTriangle {n : ℕ} (G : SimpleGraph (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean:noncomputable def maxSidonSize (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean:noncomputable def countSidonSubsets (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean:noncomputable def maxAlmostSidonCard (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/753.lean:noncomputable def listChromaticNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/630.lean:noncomputable def listChromaticNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/856.lean:noncomputable def fk (k N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/622.lean:noncomputable def numCycleSpannedSubsets (n : ℕ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1044.lean:noncomputable def lemniscateSublevel (f : ℂ → ℂ) : Set ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1044.lean:noncomputable def maxBoundaryLength (f : ℂ → ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/475.lean:noncomputable def partialSum {n : ℕ} {α : Type*} [AddCommMonoid α]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/534.lean:noncomputable def primeFactors (N : ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/534.lean:noncomputable def candidate (N : ℕ) (S : Finset ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/161.lean:noncomputable def fBalanced (t n : ℕ) (α : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/600.lean:noncomputable def trianglesThrough {n : ℕ} (G : SimpleGraph (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/600.lean:noncomputable def erdosE (n r : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean:noncomputable def ramseyNum {V W : Type*}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/656.lean:noncomputable def Nat.upperDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/763.lean:noncomputable def repCount (A : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/763.lean:noncomputable def repSum (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/372.lean:noncomputable def largestPrimeFactor (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:noncomputable def fErdos563 (n : ℕ) (α : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean:noncomputable def unitDistanceCount
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean:noncomputable def maxUnitDistances (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/879.lean:noncomputable def H (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/821.lean:noncomputable def totientPreimageCount (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/655.lean:noncomputable def distinctDistanceCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean:noncomputable def turanHypergraphNumber (n r : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/82.lean:noncomputable def F (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:noncomputable def erdos589_g (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/459.lean:noncomputable def f (u : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/450.lean:noncomputable def countWithDivisorInRange (x y n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1020.lean:noncomputable def maxEdgesNoMatching (n r k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/513.lean:noncomputable def ratio (r : ℝ) (f : ℂ → ℂ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean:noncomputable def erdos284_f (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean:noncomputable def dichromaticNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/710.lean:noncomputable def erdos710F (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean:noncomputable def ramseyNum {V W : Type*}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean:noncomputable def leastCongruentPrime (a d : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1118.lean:noncomputable def maxModulus (f : ℂ → ℂ) (r : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/635.lean:noncomputable def maxDivAvoidance (N t : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean:noncomputable def countMaximalSidon (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean:noncomputable def leastNoRep (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/675.lean:noncomputable def minimalTranslation (A : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean:noncomputable def f (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1099.lean:noncomputable def hAlpha (α : ℝ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:noncomputable def boundedDiscCover_empty [Nonempty M] (r : ℝ) (hr : 0 < r) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean:noncomputable def p (z : ℕ → ℂ) (n : ℕ) : ℂ → ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean:noncomputable def M (z : ℕ → ℂ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/453.lean:noncomputable def nthPrime (k : ℕ) : ℕ := Nat.nth Nat.Prime k

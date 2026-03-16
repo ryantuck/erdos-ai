@@ -1,0 +1,256 @@
+ai-review/514.md:35:- **References:** [Er61, p.249], [Er82e].
+ai-review/514.md-36-- **Partial result:** Boas (unpublished) proved the affirmative answer to the first part.
+ai-review/514.md-37-- **Tags:** Analysis.
+--
+ai-review/514.md:44:- The references `[Er61, p.249]` and `[Er82e]` from the website are not mentioned in the formalization's docstring. These should be included for traceability.
+/home/ryan/formal-conjectures/ai-review/514.md-45-- The Boas attribution in the `erdos_514` docstring ("proved by Boas, unpublished") is consistent with the website. Good.
+/home/ryan/formal-conjectures/ai-review/514.md-46-- The website does not provide full bibliographic details for the Boas result (it is described as unpublished), so the current attribution is as detailed as possible.
+--
+ai-review/515.md:23:- **[Er82e]** — second Erdős reference, not cited
+/home/ryan/formal-conjectures/ai-review/515.md-24-- **[Hu57]** — Huber (1957), who proved the weaker result that for *each* λ > 0, a path C_λ exists (but not a single path for all λ simultaneously). This important historical predecessor is mentioned on the website but **omitted from the docstring**.
+/home/ryan/formal-conjectures/ai-review/515.md-25-
+ai-review/515.md:26:**Recommendation:** Add the Huber [Hu57] result to the docstring, as it provides important context distinguishing the "for each λ" result from the "for all λ simultaneously" result that is the actual content of the problem. The Erdős references [Er61,p.249] and [Er82e] should also be noted.
+/home/ryan/formal-conjectures/ai-review/515.md-27-
+/home/ryan/formal-conjectures/ai-review/515.md-28-## 3. Variants
+--
+ai-review/703.md:25:- **[Er76b]**, **[Er81]**, **[Er82e]** — further Erdős references
+/home/ryan/formal-conjectures/ai-review/703.md-26-- **[FrFu84b]** — Frankl and Füredi, optimal construction for large *n*
+/home/ryan/formal-conjectures/ai-review/703.md-27-- **[Fr77b]** — Frankl's result for the case *r* = 1
+--
+ai-review/93.md:21:**Website sources:** The [erdosproblems.com/93](https://www.erdosproblems.com/93) page lists the following original Erdős sources: [Er46b], [Er57], [Er61], [Er75f, p.100], [Er82e], [Er87b, p.175], [Er90], [Er92e], [Er95], [Er97e], [Er97f].
+/home/ryan/formal-conjectures/ai-review/93.md-22-
+ai-review/93.md-23-**Current formalization citations:** The docstring mentions only [Al63] (Altman's proof paper) — this is appropriate since Altman proved the result, and the citation is correctly formatted with full bibliographic details matching the website.
+--
+ai-review/911.md:31:> `[Er82e] Erdős, P., _Problems and results in graph theory_. (1982), p. 78.`
+/home/ryan/formal-conjectures/ai-review/911.md-32-
+ai-review/911.md-33-The website (erdosproblems.com/911) lists the source as `[Er82e, p.78]` and provides the canonical citation:
+--
+ai-review/911.md:36:The reference `[Er82e]` is consistent with the website. No additional references are listed on the website for this problem. The citation is correct.
+/home/ryan/formal-conjectures/ai-review/911.md-37-
+/home/ryan/formal-conjectures/ai-review/911.md-38-## 3. Variants
+--
+ai-review/908.md:26:[Er82e] Erdős, P.
+/home/ryan/formal-conjectures/ai-review/908.md-27-```
+/home/ryan/formal-conjectures/ai-review/908.md-28-
+--
+ai-review/601.md:21:- **[Er82e]** Erdős (1982) — ✅ Present
+/home/ryan/formal-conjectures/ai-review/601.md-22-- **[Er87]** Erdős (1987) — ✅ Present
+ai-review/601.md-23-- **[La90]** Larson (1990) — ⚠️ Referenced in the module docstring as "Larson proved this is true..." but the citation tag `[La90]` is **not listed** in the bibliography block at the bottom. A full citation entry should be added:
+--
+ai-review/673.md:20:- `[Er82e]` — Erdős, P., *Some new problems and results in number theory* (1982).
+/home/ryan/formal-conjectures/ai-review/673.md-21-
+ai-review/673.md:22:The website (erdosproblems.com/673) lists the same two references: `[Er79e]` and `[Er82e]`. **The citations match.**
+/home/ryan/formal-conjectures/ai-review/673.md-23-
+ai-review/673.md-24-One minor note: the website mentions Terence Tao's observation in connection with Problem 448 ("a mistaken conjecture of Erdős, which he soon corrected"), but the formalization does not reference Problem 448 explicitly. This is acceptable since Problem 448 is a separate problem; the cross-reference is informational rather than a required citation.
+--
+ai-review/898.md:23:> `[Er82e] Erdős, P., *Personal favorites*, p.61.`
+/home/ryan/formal-conjectures/ai-review/898.md-24-
+ai-review/898.md-25-The website ([erdosproblems.com/898](https://www.erdosproblems.com/898)) cites:
+--
+ai-review/898.md:28:The website does not expand the citation key inline on the problem page. The formalization's expansion to "Erdős, P., *Personal favorites*, p.61" appears to be an editorial interpretation. The actual reference [Er82e] corresponds to:
+/home/ryan/formal-conjectures/ai-review/898.md-29-
+/home/ryan/formal-conjectures/ai-review/898.md-30-> Erdős, P. (1982). "Personal favorites." In *Combinatorics and graph theory* (Calcutta, 1980), Lecture Notes in Math. **885**, Springer, pp. 58–67.
+--
+ai-review/71.md:21:- **[Er82e]** — Erdős source where the conjecture is credited to Erdős and Burr
+/home/ryan/formal-conjectures/ai-review/71.md-22-- **[Er95]** — Additional Erdős reference
+/home/ryan/formal-conjectures/ai-review/71.md-23-- **[Er97b]** — Additional Erdős reference
+--
+ai-review/71.md:25:These three Erdős references are missing from the formalization's docstring. They should be included, at minimum [Er82e] as the original source of the conjecture.
+/home/ryan/formal-conjectures/ai-review/71.md-26-
+/home/ryan/formal-conjectures/ai-review/71.md-27-The website also notes **"See also Problem 72"**, which is closely related (density-zero cycle sets with average degree conditions). This cross-reference is absent from the formalization.
+--
+ai-review/491.md:22:- **[Er46], [Er61], [Er72], [Er82e]** (Erdős papers)
+/home/ryan/formal-conjectures/ai-review/491.md-23-- **[Wi70]** Wirsing, E., *A characterization of log n as an additive arithmetic function*. Symposia Math. (1970), 45–47.
+/home/ryan/formal-conjectures/ai-review/491.md-24-
+--
+ai-review/491.md:77:- Add missing Erdős references [Er46], [Er61], [Er72], [Er82e] to the docstring.
+--
+ai-review/905.md:20:- [Er82e]
+/home/ryan/formal-conjectures/ai-review/905.md-21-- [Er93, p.344]
+/home/ryan/formal-conjectures/ai-review/905.md-22-- [KhNi79] — Hadziivanov and Nikiforov's proof
+--
+ai-review/905.md:73:| Citations | Missing [Er75], [Er82e], [Er93, p.344], [KhNi79] |
+/home/ryan/formal-conjectures/ai-review/905.md-74-| Variants | Missing cross-references to Problems 80 and 1034 |
+/home/ryan/formal-conjectures/ai-review/905.md-75-| Readability | Good; minor improvements possible |
+--
+ai-review/900.md:25:- **[Er82e]** — Erdős 1982.
+/home/ryan/formal-conjectures/ai-review/900.md-26-
+/home/ryan/formal-conjectures/ai-review/900.md-27-These should be included in the docstring, especially the [Er78] reference which contains Erdős's quote about Szemerédi's disagreement. The website also notes the problem status as **PROVED**.
+--
+ai-review/900.md:67:| Citations | Missing [Er78, p.32] and [Er82e] original sources |
+/home/ryan/formal-conjectures/ai-review/900.md-68-| Variants | Complete — no missing variants |
+/home/ryan/formal-conjectures/ai-review/900.md-69-| Readability | Good overall; right-limit encoding is non-standard; path definition is verbose |
+--
+ai-review/903.md:19:- `[Er82e]` — Erdős, P., *Problems and results in combinatorics and graph theory*, 1982.
+/home/ryan/formal-conjectures/ai-review/903.md-20-- `[dBEr48]` — de Bruijn, N.G. and Erdős, P., *On a combinatorial problem*, 1948.
+/home/ryan/formal-conjectures/ai-review/903.md-21-- `[EFSW85]` — Erdős, P., Fowler, J.C., Sós, V.T., and Wilson, R.M., *On 2-designs*, 1985.
+--
+ai-review/903.md:24:- The problem is a **conjecture of Erdős and Sós** — this attribution is not explicitly stated in the docstring, which only says "Erdős Problem 903 [Er82e]".
+/home/ryan/formal-conjectures/ai-review/903.md-25-- It was **proved by Erdős, Fowler, Sós, and Wilson** — this is correctly noted.
+/home/ryan/formal-conjectures/ai-review/903.md-26-
+--
+ai-review/671.md:20:- **[Er82e]** — Erdős (attributed problem source)
+/home/ryan/formal-conjectures/ai-review/671.md-21-- **[Er97f]** — Erdős (1997)
+/home/ryan/formal-conjectures/ai-review/671.md-22-- **[Va99, 2.40]** — Vértesi, *Classical (unweighted) and weighted interpolation* (1999), Problem 2.40
+--
+ai-review/671.md:28:**Verdict:** Citations are incomplete. The docstring should include reference keys from the website, particularly [Va99, 2.40] and [Er82e].
+/home/ryan/formal-conjectures/ai-review/671.md-29-
+/home/ryan/formal-conjectures/ai-review/671.md-30-## 3. Variants
+--
+ai-review/671.md:125:| Citations | **Incomplete** — should include [Va99, 2.40], [Er82e], and other reference keys from the website |
+/home/ryan/formal-conjectures/ai-review/671.md-126-| Variants | Both parts captured correctly |
+/home/ryan/formal-conjectures/ai-review/671.md-127-| Readability | Good; clean code with clear documentation |
+--
+ai-review/191.md:18:| [Er82e] Erdős, 1982 | Erdős (1982) |
+/home/ryan/formal-conjectures/ai-review/191.md-19-| [Ro03] Rödl, 2003 | Rödl (2003) — proved the result |
+/home/ryan/formal-conjectures/ai-review/191.md-20-| [CFS13] Conlon, Fox, Sudakov, 2013 | Conlon, Fox, Sudakov (2013) — optimal bounds |
+--
+ai-review/909.md:14:- Original reference: [Er82e]
+ai-review/909.md-15-- Solution: [AnKe67] — Anderson, R. D. and Keisler, J. E. (1967)
+ai-review/909.md-16-- Notes: "The space of rational points in Hilbert space has this property for n=1." Anderson and Keisler extended to general n ≥ 2.
+--
+ai-review/909.md:20:- The original Erdős reference [Er82e] is not included.
+/home/ryan/formal-conjectures/ai-review/909.md-21-
+ai-review/909.md:22:**Recommendation:** Add [Er82e] to the module docstring for completeness, as it is the original source where Erdős posed the problem.
+/home/ryan/formal-conjectures/ai-review/909.md-23-
+/home/ryan/formal-conjectures/ai-review/909.md-24-## 3. Variants
+--
+ai-review/909.md:92:| Citations | Minor: original ref [Er82e] should be added |
+/home/ryan/formal-conjectures/ai-review/909.md-93-| Variants | Complete |
+/home/ryan/formal-conjectures/ai-review/909.md-94-| Readability | Good |
+--
+FormalConjectures/ErdosProblems/191.lean:39:[Er82e] Erdős, P., 1982.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/191.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/191.lean-41-[Ro03] Rödl, V., 2003.
+--
+ai-review/702.md:24:- [Er82e]
+/home/ryan/formal-conjectures/ai-review/702.md-25-
+/home/ryan/formal-conjectures/ai-review/702.md-26-The website also mentions **Katona (unpublished)** proved the k=4 case, which the docstring does mention. The website notes that the problem is related to **Problem 703**, which could be mentioned in the module docstring as a cross-reference.
+--
+ai-review/720.md:25:- **[Er82e]**
+/home/ryan/formal-conjectures/ai-review/720.md-26-
+ai-review/720.md-27-These should be included in the docstring for completeness. The website also notes:
+--
+FormalConjectures/ErdosProblems/71.lean:26:belongs to the progression. Credited to Erdős and Burr [Er82e]. Proved by Bollobás [Bo77].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/71.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/71.lean-28-See also Problem 72.
+--
+FormalConjectures/ErdosProblems/71.lean:31:[Er82e] Erdős, P., _Problems and results on finite and infinite combinatorial analysis II_,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/71.lean-32-L'Enseignement Math. 27 (1982), 163–176.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/71.lean-33-[Er95] Erdős, P., _Some recent problems and results in graph theory_.
+--
+FormalConjectures/ErdosProblems/71.lean:44:Erdős Problem #71 (credited to Erdős and Burr [Er82e], proved by Bollobás [Bo77]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/71.lean-45-For every infinite arithmetic progression $P = \{a, a+d, a+2d, \ldots\}$ (with $d \geq 1$)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/71.lean-46-that contains even numbers, there exists a constant $c = c(P) > 0$ such that every
+--
+ai-review/902.md:20:The website (erdosproblems.com/902) lists **three** references: [Er63c], [SzSz65], and [Er82e]. The full citations should be:
+/home/ryan/formal-conjectures/ai-review/902.md-21-
+/home/ryan/formal-conjectures/ai-review/902.md-22-- **[Er63c]** Erdős, P., "On a problem in graph theory," *The Mathematical Gazette*, vol. 47, no. 361 (1963), pp. 220–223.
+--
+ai-review/902.md:24:- **[Er82e]** Erdős, P., "Some of my favourite problems which recently have been solved" (1982), pp. 59–79. *(Missing from the formalization entirely.)*
+/home/ryan/formal-conjectures/ai-review/902.md-25-
+ai-review/902.md-26-**Issues:**
+--
+ai-review/902.md:28:- Reference [Er82e] is absent from the formalization but listed on the website.
+/home/ryan/formal-conjectures/ai-review/902.md-29-
+/home/ryan/formal-conjectures/ai-review/902.md-30-## 3. Variants
+--
+ai-review/902.md:85:**Overall assessment:** The formalization is mathematically sound and captures the key known bounds correctly. The main gaps are incomplete citations (missing [Er82e], stub references), missing exact small values ($f(1)=3$, $f(2)=7$, $f(3)=19$), and the absence of a statement for the core open estimation problem.
+--
+ai-review/907.md:14:- **[Er82e]** — missing from the formalization.
+ai-review/907.md-15-- **[dB51]** — present in the formalization as: de Bruijn, N. G., *Functions whose differences belong to a given class*, Nieuw Arch. Wiskunde (2) 23 (1951), 194–218.
+/home/ryan/formal-conjectures/ai-review/907.md-16-
+ai-review/907.md:17:The formalization should include the additional Erdős references [Er81b, p.31] and [Er82e] in the module docstring to match the website.
+/home/ryan/formal-conjectures/ai-review/907.md-18-
+/home/ryan/formal-conjectures/ai-review/907.md-19-Additionally, the website notes Problem 908 as a related problem. The formalization of 908 cross-references 907 (`See also [907]`), but the formalization of 907 does not cross-reference 908. A `See also [908]` note would improve discoverability.
+--
+ai-review/907.md:21:**Verdict:** Missing citations [Er81b, p.31] and [Er82e]. Missing cross-reference to Problem 908.
+/home/ryan/formal-conjectures/ai-review/907.md-22-
+/home/ryan/formal-conjectures/ai-review/907.md-23-## 3. Variants
+--
+ai-review/907.md:67:| Citations | **Missing [Er81b, p.31], [Er82e], and cross-ref to 908** |
+/home/ryan/formal-conjectures/ai-review/907.md-68-| Variants | Complete |
+/home/ryan/formal-conjectures/ai-review/907.md-69-| Readability | Good |
+--
+ai-review/227.md:24:- **[Er82e]** — Erdős, 1982
+/home/ryan/formal-conjectures/ai-review/227.md-25-- **[ClHa64]** — Clunie and Hayman, 1964
+/home/ryan/formal-conjectures/ai-review/227.md-26-
+ai-review/227.md:27:The formalization only cites **[ClHa64]**. The three Erdős source references [Er57], [Er61], and [Er82e] are omitted.
+/home/ryan/formal-conjectures/ai-review/227.md-28-
+/home/ryan/formal-conjectures/ai-review/227.md-29-[Omitted long context line]
+--
+FormalConjectures/ErdosProblems/911.lean:28:[Er82e] Erdős, P., _Problems and results in graph theory_. (1982), p. 78.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean-30-
+--
+ai-review/904.md:14:- References: [Er75], [Er82e]
+ai-review/904.md-15-- Notes: Conjecture attributed to Bollobás and Erdős. Edwards resolved it affirmatively in 1978 [Ed78].
+/home/ryan/formal-conjectures/ai-review/904.md-16-
+--
+ai-review/904.md:21:The original references [Er75] and [Er82e] from Erdős's own publications (where the conjecture was posed) are not included. The attribution to Bollobás-Erdős and the resolution by Edwards are correct.
+/home/ryan/formal-conjectures/ai-review/904.md-22-
+ai-review/904.md:23:**Recommendation:** Consider adding [Er75] and [Er82e] to the module docstring for completeness, since these are the original sources where Erdős stated the problem.
+/home/ryan/formal-conjectures/ai-review/904.md-24-
+/home/ryan/formal-conjectures/ai-review/904.md-25-## 3. Variants
+--
+ai-review/904.md:78:| Citations | Minor: original refs [Er75], [Er82e] could be added |
+/home/ryan/formal-conjectures/ai-review/904.md-79-| Variants | Complete |
+/home/ryan/formal-conjectures/ai-review/904.md-80-| Readability | Good |
+--
+ai-review/163.md:17:The formalization includes three references: `[BuEr75]`, `[Er82e]`, and `[Le17]`.
+/home/ryan/formal-conjectures/ai-review/163.md-18-
+ai-review/163.md-19-**Comparison with [erdosproblems.com/163](https://www.erdosproblems.com/163):**
+--
+ai-review/163.md:22:- **[Er82e]**: Present on the website. The formalization gives a reasonable expansion.
+ai-review/163.md-23-- **[Le17]**: Present on the website. Lee, C., *Ramsey numbers of degenerate graphs*, Ann. of Math. (2017). This is correct.
+/home/ryan/formal-conjectures/ai-review/163.md-24-
+--
+ai-review/116.md:28:- **[Er82e], [Er90], [Er97c]** — later Erdős papers referencing this problem
+/home/ryan/formal-conjectures/ai-review/116.md-29-- **[Wa88] Wagner (1988)** — showed existence of polynomials with measure `≪_ε (log log n)^{-1/2+ε}`, relevant to upper bounds
+/home/ryan/formal-conjectures/ai-review/116.md-30-
+--
+ai-review/466.md:16:- **[Er82e]** — Erdős (1982)
+/home/ryan/formal-conjectures/ai-review/466.md-17-
+/home/ryan/formal-conjectures/ai-review/466.md-18-The current docstring mentions Graham's result `N(X, 1/10) > (log X)/10` but does **not** cite any of these references by name. It also omits **Sárközy's improvement** `N(X, δ) > X^{1/2 - δ^{1/7}}` for sufficiently small δ, which is a significant strengthening mentioned on the website.
+--
+ai-review/466.md:20:**Recommendation:** Add the three references [Er72], [ErGr80], [Er82e] to the docstring, and mention Sárközy's stronger bound.
+/home/ryan/formal-conjectures/ai-review/466.md-21-
+/home/ryan/formal-conjectures/ai-review/466.md-22-## 3. Variants
+--
+FormalConjectures/ErdosProblems/601.lean:39:[Er82e] Erdős, P., _Problems and results on finite and infinite combinatorial analysis II_,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-40-L'Enseignement Math. 27 (1982), 163–176.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-41-
+--
+FormalConjectures/ErdosProblems/601.lean:74:Erdős Problem 601 [EHM70] [Er81] [Er82e] [Er87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-75-
+FormalConjectures/ErdosProblems/601.lean-76-Every limit ordinal has the Erdős-Hajnal-Milner property: if $G$ is a graph
+--
+ai-review/910.md:26:- **References:** [Er82e] (original Erdős source), [Ru58] (Rudin's disproof).
+/home/ryan/formal-conjectures/ai-review/910.md-27-
+/home/ryan/formal-conjectures/ai-review/910.md-28-| Citation | In formalization | On website | Assessment |
+--
+ai-review/910.md:31:| Erdős 1982 | Not cited | `[Er82e]` | **Missing.** The website lists [Er82e] as the original Erdős source for this problem. The formalization should include this reference for completeness, even if the full bibliographic details are not readily available. |
+/home/ryan/formal-conjectures/ai-review/910.md-32-
+ai-review/910.md:33:**Recommendation:** Add a citation for [Er82e] to the module docstring. If the full bibliographic data cannot be determined, at minimum note the reference tag.
+/home/ryan/formal-conjectures/ai-review/910.md-34-
+/home/ryan/formal-conjectures/ai-review/910.md-35----
+--
+FormalConjectures/ErdosProblems/673.lean:42:[Er82e] Erdős, P., _Some new problems and results in number theory_ (1982).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-43--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-44-
+--
+FormalConjectures/ErdosProblems/903.lean:27:[Er82e] Erdős, P., _Problems and results in combinatorics and graph theory_, 1982.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/903.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/903.lean-29-[dBEr48] de Bruijn, N.G. and Erdős, P., _On a combinatorial problem_, 1948.
+--
+FormalConjectures/ErdosProblems/903.lean:43:Erdős Problem 903 [Er82e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/903.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/903.lean-45-Let $n = p^2 + p + 1$ for a prime power $p$ (i.e., $p = q^k$ for some prime $q$ and
+--
+FormalConjectures/ErdosProblems/898.lean:28:[Er82e] Erdős, P., *Personal favorites*, p.61.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/898.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/898.lean-30-
+--
+FormalConjectures/ErdosProblems/163.lean:33:[Er82e] Erdős, P., *Problems and results on finite and infinite graphs*. Recent advances
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-34-in graph theory (Proc. Second Czechoslovak Sympos., Prague, 1982).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-35-

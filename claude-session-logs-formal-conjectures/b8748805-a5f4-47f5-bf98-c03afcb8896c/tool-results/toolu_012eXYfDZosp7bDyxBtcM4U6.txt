@@ -1,0 +1,359 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/12.lean-112--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/12.lean-113-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/12.lean:114:theorem erdos_12.variants.schoen (A : Set ℕ) (hA : IsGood A) (hA' : A.Pairwise Nat.Coprime) :
+FormalConjectures/ErdosProblems/12.lean-115-    (fun N ↦ ((A.interIcc 1 N).ncard : ℝ)) =O[atTop] (fun N ↦ (N : ℝ) ^ (2 / 3 : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/12.lean-116-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/12.lean-122--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/12.lean-123-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/12.lean:124:theorem erdos_12.variants.baier (A : Set ℕ) (hA : IsGood A) (hA' : A.Pairwise Nat.Coprime) :
+FormalConjectures/ErdosProblems/12.lean-125-    (fun N ↦ ((A.interIcc 1 N).ncard : ℝ)) =O[atTop] (fun N ↦ (N : ℝ) ^ (2 / 3 : ℝ) / (N : ℝ).log) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/12.lean-126-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/399.lean-60-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/399.lean-61-theorem erdos_399.variants.erdos_oblath {n x y k : ℕ} :
+FormalConjectures/ErdosProblems/399.lean:62:    x.Coprime y → 1 < x * y → 2 < k → k ≠ 4 →
+FormalConjectures/ErdosProblems/399.lean-63-      n ! ≠ x ^ k + y ^ k ∧ n ! + y ^ k ≠ x ^ k := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/399.lean-64-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/399.lean-75-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/399.lean-76-theorem erdos_399.variants.cambie {n x y : ℕ} :
+FormalConjectures/ErdosProblems/399.lean:77:    x.Coprime y → 1 < x * y → n ! ≠ x ^ 4 + y ^ 4 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/399.lean-78-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/399.lean-79-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/220.lean-41-and $\gcd(m, n) = 1$. -/
+FormalConjectures/ErdosProblems/220.lean-42-def sortedTotatives (n : ℕ) : List ℕ :=
+FormalConjectures/ErdosProblems/220.lean:43:  ((Finset.range n).filter (fun m => 0 < m ∧ Nat.Coprime m n)).sort (· ≤ ·)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/220.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/220.lean-45-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-34--/
+FormalConjectures/ErdosProblems/939.lean-35-def Erdos939Sums (r : ℕ) :=
+FormalConjectures/ErdosProblems/939.lean:36:    {S : Finset ℕ | S.card = r - 2 ∧ S.Coprime ∧ r.Full (∑ s ∈ S, s) ∧ ∀ s ∈ S, r.Full s}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-38-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-56-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/939.lean-57-theorem erdos_939.variants.triples :
+FormalConjectures/ErdosProblems/939.lean:58:    answer(sorry) ↔ {(a,b,c) | ({a, b, c} : Finset ℕ).Coprime ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-59-      (3).Full a ∧ (3).Full b ∧ (3).Full c ∧
+FormalConjectures/ErdosProblems/939.lean-60-      a + b = c}.Infinite := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-75-  simp
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-76-  constructor
+FormalConjectures/ErdosProblems/939.lean:77:  · unfold Finset.Coprime
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-78-    aesop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-79-  · norm_num [Nat.Full, Nat.primeFactors, Nat.primeFactorsList]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean-35-coprime. -/
+FormalConjectures/ErdosProblems/770.lean-36-noncomputable def h (n : ℕ) : ℕ∞ := sInf {m | 2 < m ∧
+FormalConjectures/ErdosProblems/770.lean:37:  (Set.Icc 2 m).Pairwise fun i j => (i.toNat ^ n - 1).Coprime (j.toNat ^ n - 1)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean-38-
+FormalConjectures/ErdosProblems/770.lean-39-/-- `n + 1` is prime iff `h n = n + 1`. #TODO: prove this theorem. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean-43-/-- The sorted list of integers in $\{1, \ldots, n-1\}$ coprime to $n$. -/
+FormalConjectures/ErdosProblems/854.lean-44-noncomputable def coprimeList (n : ℕ) : List ℕ :=
+FormalConjectures/ErdosProblems/854.lean:45:  ((Finset.range n).filter (fun a => 0 < a ∧ Nat.Coprime a n)).sort (· ≤ ·)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean-47-/-- Consecutive differences of a sorted list of natural numbers. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/937.lean-51-        IsPowerful a ∧ IsPowerful (a + d) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/937.lean-52-        IsPowerful (a + 2 * d) ∧ IsPowerful (a + 3 * d) ∧
+FormalConjectures/ErdosProblems/937.lean:53:        Nat.Coprime a (a + d) ∧
+FormalConjectures/ErdosProblems/937.lean:54:        Nat.Coprime a (a + 2 * d) ∧
+FormalConjectures/ErdosProblems/937.lean:55:        Nat.Coprime a (a + 3 * d) ∧
+FormalConjectures/ErdosProblems/937.lean:56:        Nat.Coprime (a + d) (a + 2 * d) ∧
+FormalConjectures/ErdosProblems/937.lean:57:        Nat.Coprime (a + d) (a + 3 * d) ∧
+FormalConjectures/ErdosProblems/937.lean:58:        Nat.Coprime (a + 2 * d) (a + 3 * d) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/937.lean-59-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/937.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-33-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/897.lean-34-theorem erdos_897.parts.i : answer(sorry) ↔ ∀ (f : ℕ → ℝ),
+FormalConjectures/ErdosProblems/897.lean:35:    (∀ᵉ (a > 0) (b > 0), a.Coprime b → f (a * b) = f a + f b) →
+FormalConjectures/ErdosProblems/897.lean-36-    ((Filter.atTop ⊓ Filter.principal {(p, k) : ℕ × ℕ | p.Prime}).limsup
+FormalConjectures/ErdosProblems/897.lean-37-      (fun (p, k) => (f (p^k) / (p^k : ℝ).log : EReal)) = ⊤) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-46-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/897.lean-47-theorem erdos_897.parts.ii : answer(sorry) ↔ ∀ (f : ℕ → ℝ),
+FormalConjectures/ErdosProblems/897.lean:48:    (∀ᵉ (a > 0) (b > 0), a.Coprime b → f (a * b) = f a + f b) →
+FormalConjectures/ErdosProblems/897.lean-49-    ((Filter.atTop ⊓ Filter.principal {(p, k) : ℕ × ℕ | p.Prime}).limsup
+FormalConjectures/ErdosProblems/897.lean-50-      (fun (p, k) => (f (p^k) / (p^k : ℝ).log : EReal)) = ⊤) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-62-theorem erdos_897.variants.log_growth
+FormalConjectures/ErdosProblems/897.lean-63-    (f : ℕ → ℝ)
+FormalConjectures/ErdosProblems/897.lean:64:    (hf : ∀ᵉ (a > 0) (b > 0), a.Coprime b → f (a * b) = f a + f b)
+FormalConjectures/ErdosProblems/897.lean-65-    (C : ℝ) (hf' : ∀ n, |f (n+1) - f n| ≤ C) :
+FormalConjectures/ErdosProblems/897.lean-66-    ∃ c, ∃ (O : ℕ → ℝ), O =O[Filter.atTop] (1 : ℕ → ℝ) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-77-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/897.lean-78-theorem erdos_897.variants.parts.i : answer(sorry) ↔ ∀ (f : ℕ → ℝ),
+FormalConjectures/ErdosProblems/897.lean:79:    (∀ᵉ (a > 0) (b > 0), a.Coprime b → f (a * b) = f a + f b) →
+FormalConjectures/ErdosProblems/897.lean-80-    ((Filter.atTop ⊓ Filter.principal {(p, k) : ℕ × ℕ | p.Prime}).limsup
+FormalConjectures/ErdosProblems/897.lean-81-      (fun (p, k) => (f (p^k) / (p^k : ℝ).log : EReal)) = ⊤) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-92-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/897.lean-93-theorem erdos_897.variants.parts.ii : answer(sorry) ↔ ∀ (f : ℕ → ℝ),
+FormalConjectures/ErdosProblems/897.lean:94:    (∀ᵉ (a > 0) (b > 0), a.Coprime b → f (a * b) = f a + f b) →
+FormalConjectures/ErdosProblems/897.lean-95-    ((Filter.atTop ⊓ Filter.principal {(p, k) : ℕ × ℕ | p.Prime}).limsup
+FormalConjectures/ErdosProblems/897.lean-96-      (fun (p, k) => (f (p^k) / (p^k : ℝ).log : EReal)) = ⊤) →
+--
+FormalConjectures/ErdosProblems/520.lean-41-  prob_of_prime p : p.Prime → ℙ {ω | f p ω = 1} = 1 / 2 ∧ ℙ {ω | f p ω = -1} = 1 / 2
+FormalConjectures/ErdosProblems/520.lean-42-  map_one ω : f 1 ω = 1
+FormalConjectures/ErdosProblems/520.lean:43:  map_mul_of_coprime a b ω : a.Coprime b → f (a * b) ω = f a ω * f b ω
+FormalConjectures/ErdosProblems/520.lean-44-  map_of_not_squarefree n ω : ¬ Squarefree n → f n ω = 0
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-45-
+--
+FormalConjectures/ErdosProblems/971.lean-40-    ∃ c > (0 : ℝ), ∃ C > (0 : ℝ), ∀ᶠ d in atTop,
+FormalConjectures/ErdosProblems/971.lean-41-      C * (d.totient : ℝ) ≤
+FormalConjectures/ErdosProblems/971.lean:42:        #{a < d | a.Coprime d ∧ (leastCongruentPrime a d : ℝ) > (1 + c) * d.totient * log d} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean-43-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean-44-
+--
+FormalConjectures/ErdosProblems/971.lean-53-    ∃ c > (0 : ℝ), ∃ C > (0 : ℝ),
+FormalConjectures/ErdosProblems/971.lean-54-      {d : ℕ | C * (d.totient : ℝ) ≤
+FormalConjectures/ErdosProblems/971.lean:55:        #{a < d | a.Coprime d ∧ (leastCongruentPrime a d : ℝ) > (1 + c) * d.totient * log d}}.Infinite :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean-56-    by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean-57-  sorry
+--
+FormalConjectures/ErdosProblems/971.lean-68-    ∀ ε > (0 : ℝ), ∃ C > (0 : ℝ), ∀ᶠ d in atTop,
+FormalConjectures/ErdosProblems/971.lean-69-      C * (d.totient : ℝ) ≤
+FormalConjectures/ErdosProblems/971.lean:70:        #{a < d | a.Coprime d ∧ (leastCongruentPrime a d : ℝ) < ε * d.totient * log d} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean-71-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean-72-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/246.lean-56-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/246.lean-57-theorem erdos_246 :
+FormalConjectures/ErdosProblems/246.lean:58:    ∀ a b : ℕ, 2 ≤ a → 2 ≤ b → Nat.Coprime a b →
+FormalConjectures/ErdosProblems/246.lean-59-      IsComplete (twoPowerSet a b) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/246.lean-60-  sorry
+--
+FormalConjectures/ErdosProblems/824.lean-51-def erdos824_h (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean-52-  ((Finset.range x ×ˢ Finset.range x).filter
+FormalConjectures/ErdosProblems/824.lean:53:    (fun p => 0 < p.1 ∧ p.1 < p.2 ∧ Nat.Coprime p.1 p.2 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean-54-      sumDivisors p.1 = sumDivisors p.2)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean-55-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/491.lean-35--/
+FormalConjectures/ErdosProblems/491.lean-36-def IsAdditiveArithmeticFunction (f : ℕ → ℝ) : Prop :=
+FormalConjectures/ErdosProblems/491.lean:37:  ∀ a b : ℕ, Nat.Coprime a b → f (a * b) = f a + f b
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/491.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/491.lean-39-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/879.lean-34-distinct elements are coprime. -/
+FormalConjectures/ErdosProblems/879.lean-35-def IsAdmissible (S : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/879.lean:36:  ∀ a ∈ S, ∀ b ∈ S, a ≠ b → Nat.Coprime a b
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/879.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/879.lean-38-/-- An admissible subset of $\{1, \ldots, n\}$ that achieves the maximum sum among all
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/376.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/376.lean-30-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/376.lean:31:theorem erdos_376 : answer(sorry) ↔ { (n : ℕ) | n.centralBinom.Coprime 105 }.Infinite := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/376.lean-32-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/376.lean-33-
+--
+FormalConjectures/ErdosProblems/376.lean-39-theorem erdos_376.variants.prime {p q : ℕ} (h₁ : p.Prime)
+FormalConjectures/ErdosProblems/376.lean-40-    (h₂ : Odd p) (h₃ : q.Prime) (h₄ : Odd q) :
+FormalConjectures/ErdosProblems/376.lean:41:    { (n : ℕ) | n.centralBinom.Coprime (p * q) }.Infinite := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/376.lean-42-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/376.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1052.lean-28-such that $d$ is coprime to $n/d$, and $d < n$. -/
+FormalConjectures/ErdosProblems/1052.lean-29-def properUnitaryDivisors (n : ℕ) : Finset ℕ :=
+FormalConjectures/ErdosProblems/1052.lean:30:  {d ∈ Finset.Ico 1 n | d ∣ n ∧ d.Coprime (n / d)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1052.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1052.lean-32-/-- A number $n > 0$ is a unitary perfect number if it is the sum of its proper unitary divisors. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/999.lean-38--/
+FormalConjectures/ErdosProblems/999.lean-39-def DuffinSchafferApprox (f : ℕ → ℕ) (α : ℝ) : Set (ℤ × ℕ) :=
+FormalConjectures/ErdosProblems/999.lean:40:  {pq | 0 < pq.2 ∧ Nat.Coprime (Int.natAbs pq.1) pq.2 ∧
+FormalConjectures/ErdosProblems/999.lean-41-    |α - (pq.1 : ℝ) / (pq.2 : ℝ)| < (f pq.2 : ℝ) / (pq.2 : ℝ)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/999.lean-42-
+--
+FormalConjectures/ErdosProblems/970.lean-48-noncomputable def jacobsthal (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/970.lean-49-  sInf {m : ℕ | ∀ n : ℕ, 0 < n → n.primeFactors.card ≤ k →
+FormalConjectures/ErdosProblems/970.lean:50:    ∀ a : ℕ, ∃ i : ℕ, i < m ∧ Nat.Coprime (a + i) n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/970.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/970.lean-52-/--
+--
+FormalConjectures/ErdosProblems/1005.lean-41-def fareyFractions (n : ℕ) : List ℚ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1005.lean-42-  ((Finset.Icc 1 n).biUnion fun b =>
+FormalConjectures/ErdosProblems/1005.lean:43:    ((Finset.range (b + 1)).filter fun a => Nat.Coprime a b).image
+FormalConjectures/ErdosProblems/1005.lean-44-      fun (a : ℕ) => (a : ℚ) / (b : ℚ)).sort (· ≤ ·)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1005.lean-45-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/820.lean-33-$2 \leq k < l$ and $\gcd(k^n - 1, l^n - 1) = 1$. -/
+FormalConjectures/ErdosProblems/820.lean-34-noncomputable def H (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/820.lean:35:  sInf {l : ℕ | 2 ≤ l ∧ ∃ k : ℕ, 2 ≤ k ∧ k < l ∧ Nat.Coprime (k ^ n - 1) (l ^ n - 1)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/820.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/820.lean-37-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/820.lean-43-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/820.lean-44-theorem erdos_820 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/820.lean:45:    ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧ Nat.Coprime (2 ^ n - 1) (3 ^ n - 1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/820.lean-46-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/820.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-58-Requires all three input values to be pairwise coprime to each other.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-59--/
+FormalConjectures/ErdosProblems/123.lean:60:def PairwiseCoprime (a b c : ℕ) : Prop := Pairwise (Nat.Coprime.onFun ![a, b, c])
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-62-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-73--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-74-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/123.lean:75:theorem erdos_123 : answer(sorry) ↔ ∀ a > 1, ∀ b > 1, ∀ c > 1, PairwiseCoprime a b c →
+FormalConjectures/ErdosProblems/123.lean-76-    IsDComplete (↑(powers a) * ↑(powers b) * ↑(powers c)) := by sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-77-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-35--/
+FormalConjectures/ErdosProblems/1141.lean-36-def Erdos1141Prop (n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1141.lean:37:  ∀ k, k ^ 2 < n → Coprime n k → (n - k ^ 2).Prime
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-38-
+FormalConjectures/ErdosProblems/1141.lean-39-instance (n : ℕ) : Decidable (Erdos1141Prop n) :=
+FormalConjectures/ErdosProblems/1141.lean:40:  decidable_of_iff (∀ k ≤ .sqrt (n - 1), Coprime n k → (n - k ^ 2).Prime) <| by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-41-    cases n with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-42-    | zero => simp [Erdos1141Prop]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-38-  | 0 => 0
+FormalConjectures/ErdosProblems/460.lean-39-  | k + 1 => sInf {m : ℕ | erdos460Seq n k < m ∧
+FormalConjectures/ErdosProblems/460.lean:40:      ∀ i : ℕ, i ≤ k → Nat.Coprime (n - m) (n - erdos460Seq n i)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-42-/-- The sum $\sum_{0 < a_i < n} 1/a_i$ for the greedy coprime-complement
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean-44-/-- The sorted list of natural numbers less than $n$ that are coprime to $n$. -/
+FormalConjectures/ErdosProblems/235.lean:45:def sortedCoprimes (n : ℕ) : List ℕ :=
+FormalConjectures/ErdosProblems/235.lean:46:  ((Finset.range n).filter (fun a => Nat.Coprime a n)).sort (· ≤ ·)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean-48-/-- Count consecutive gaps $\le$ threshold in a sorted list of naturals. -/
+--
+FormalConjectures/ErdosProblems/235.lean-57-noncomputable def gapFraction (k : ℕ) (c : ℝ) : ℝ :=
+FormalConjectures/ErdosProblems/235.lean-58-  let Nk := primorial k
+FormalConjectures/ErdosProblems/235.lean:59:  let residues := sortedCoprimes Nk
+FormalConjectures/ErdosProblems/235.lean-60-  let threshold := c * (Nk : ℝ) / (Nat.totient Nk : ℝ)
+FormalConjectures/ErdosProblems/235.lean-61-  (countSmallGaps residues threshold : ℝ) / (Nat.totient Nk : ℝ)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/307.lean-58-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/307.lean-59-theorem erdos_307_coprime : answer(True) ↔ ∃ P Q : Finset ℕ, 0 ∉ P ∩ Q ∧ 1 < #P ∧ 1 < #Q ∧
+FormalConjectures/ErdosProblems/307.lean:60:    Set.Pairwise P Nat.Coprime ∧ Set.Pairwise Q Nat.Coprime ∧
+FormalConjectures/ErdosProblems/307.lean-61-    1 = (∑ p ∈ P, (p : ℚ)⁻¹) * (∑ q ∈ Q, (q : ℚ)⁻¹) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/307.lean-62-  simp only [Finset.mem_inter, not_and, true_iff]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/307.lean-69-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/307.lean-70-theorem erdos_307_coprime_one_notMem : answer(sorry) ↔ ∃ P Q : Finset ℕ, 0 ∉ P ∩ Q ∧ 1 ∉ P ∪ Q ∧
+FormalConjectures/ErdosProblems/307.lean:71:    1 < #P ∧ 1 < #Q ∧ Set.Pairwise P Nat.Coprime ∧ Set.Pairwise Q Nat.Coprime ∧
+FormalConjectures/ErdosProblems/307.lean-72-    1 = (∑ p ∈ P, (p : ℚ)⁻¹) * (∑ q ∈ Q, (q : ℚ)⁻¹) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/307.lean-73-  sorry
+--
+FormalConjectures/ErdosProblems/1149.lean-50-    Tendsto (fun x : ℕ =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-51-      (((Finset.Icc 1 x).filter (fun n =>
+FormalConjectures/ErdosProblems/1149.lean:52:        Nat.Coprime n (⌊(n : ℝ) ^ α⌋₊))).card : ℝ) / (x : ℝ))
+FormalConjectures/ErdosProblems/1149.lean-53-      atTop (nhds (6 / Real.pi ^ 2)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-54-  sorry
+--
+FormalConjectures/ErdosProblems/239.lean-43-    answer(True) ↔ ∀ f : ℕ → ℝ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/239.lean-44-    (∀ n ≥ 1, f n = 1 ∨ f n = -1) ∧
+FormalConjectures/ErdosProblems/239.lean:45:    (∀ m n, m.Coprime n → f (m * n) = f m * f n) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/239.lean-46-    f 1 = 1 →
+FormalConjectures/ErdosProblems/239.lean-47-    ∃ L, Tendsto (fun N ↦ (∑ n ∈ Finset.Icc 1 N, f n) / N) atTop (𝓝 L) := by
+--
+FormalConjectures/ErdosProblems/878.lean-54-def ValidAssignment (n : ℕ) (a : Fin n.primeFactors.card → ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/878.lean-55-  (∀ i, a i ≤ n) ∧
+FormalConjectures/ErdosProblems/878.lean:56:  (∀ i j, i ≠ j → Nat.Coprime (a i) (a j)) ∧
+FormalConjectures/ErdosProblems/878.lean-57-  (∀ i, ∀ p : ℕ, Nat.Prime p → p ∣ a i → p ∈ n.primeFactors)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/878.lean-58-
+--
+FormalConjectures/ErdosProblems/1101.lean-48-def IsGood (u : ℕ → ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-49-  StrictMono u ∧
+FormalConjectures/ErdosProblems/1101.lean:50:  (∀ i j, i ≠ j → Coprime (u i) (u j)) ∧
+FormalConjectures/ErdosProblems/1101.lean-51-  Summable (fun n => 1 / (u n : ℝ)) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-52-  ∀ ε > 0, ∀ᶠ x in atTop,
+--
+FormalConjectures/ErdosProblems/1001.lean-56-  {α : ℝ | α ∈ Ioo 0 1 ∧
+FormalConjectures/ErdosProblems/1001.lean-57-    ∃ (x : ℤ) (y : ℕ), N ≤ y ∧ (y : ℝ) ≤ c * N ∧
+FormalConjectures/ErdosProblems/1001.lean:58:      Nat.Coprime (Int.natAbs x) y ∧
+FormalConjectures/ErdosProblems/1001.lean-59-      |α - (x : ℝ) / (y : ℝ)| < A / ((y : ℝ) ^ 2)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1001.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/203.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/203.lean-31-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/203.lean:32:theorem erdos_203 : answer(sorry) ↔ ∃ m, m.Coprime 6 ∧ ∀ k l, ¬ (2^k * 3^l * m + 1).Prime := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/203.lean-33-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/203.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1122.lean-46-theorem erdos_1122
+FormalConjectures/ErdosProblems/1122.lean-47-    (f : ℕ → ℝ)
+FormalConjectures/ErdosProblems/1122.lean:48:    (hf_add : ∀ a b : ℕ, Nat.Coprime a b → f (a * b) = f a + f b)
+FormalConjectures/ErdosProblems/1122.lean-49-    (hA : ∀ ε : ℝ, ε > 0 → ∃ N : ℕ, ∀ X : ℕ, X ≥ N →
+FormalConjectures/ErdosProblems/1122.lean-50-      (((Finset.Icc 1 X).filter (fun n => f (n + 1) < f n)).card : ℝ) ≤ ε * (X : ℝ)) :
+--
+FormalConjectures/ErdosProblems/432.lean-52-    (A B : Set ℕ) (hA : A.Infinite) (hB : B.Infinite)
+FormalConjectures/ErdosProblems/432.lean-53-    (h_coprime : ∀ x ∈ Set.image2 (· + ·) A B,
+FormalConjectures/ErdosProblems/432.lean:54:      ∀ y ∈ Set.image2 (· + ·) A B, x ≠ y → Nat.Coprime x y) :
+FormalConjectures/ErdosProblems/432.lean-55-    upperDensity (Set.image2 (· + ·) A B) = 0 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-56-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-52-/-- A set of natural numbers is *pairwise coprime*. -/
+FormalConjectures/ErdosProblems/691.lean:53:def SetPairwiseCoprime (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/691.lean:54:  ∀ a ∈ A, ∀ b ∈ A, a ≠ b → Nat.Coprime a b
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-55-
+FormalConjectures/ErdosProblems/691.lean-56-/-- The sum of reciprocals of elements of $A$ diverges: for every bound $C > 0$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-67-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/691.lean-68-theorem erdos_691 (A : Set ℕ) (hA : ∀ a ∈ A, a ≥ 2)
+FormalConjectures/ErdosProblems/691.lean:69:    (hCoprime : SetPairwiseCoprime A) :
+FormalConjectures/ErdosProblems/691.lean-70-    IsBehrend A ↔ ReciprocalSumDiverges A := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-71-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1110.lean-67-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/1110.lean-68-theorem erdos_1110 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/1110.lean:69:    ∀ p q : ℕ, 2 ≤ q → q < p → Nat.Coprime p q →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1110.lean-70-      ¬(p = 3 ∧ q = 2) →
+FormalConjectures/ErdosProblems/1110.lean:71:      Set.Infinite {n : ℕ | ¬IsRepresentable p q n ∧ Nat.Coprime n (p * q)} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1110.lean-72-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1110.lean-73-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean-32--/
+FormalConjectures/ErdosProblems/56.lean-33-def WeaklyDivisible (k : ℕ) (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/56.lean:34:    ∀ s ∈ A.powersetCard (k + 1), ¬ Set.Pairwise s Nat.Coprime
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean-36-@[category API, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-29-large (the latter was proved by Sárközy).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-30-
+FormalConjectures/ErdosProblems/883.lean:31:[ErSa97] Erdős, P. and Sárközy, A., on cycles in the coprime graph of integers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-32--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-33-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-40-are connected by an edge if and only if they are coprime ($\gcd = 1$).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-41--/
+FormalConjectures/ErdosProblems/883.lean:42:def coprimeGraph (A : Finset ℕ) : SimpleGraph ℕ where
+FormalConjectures/ErdosProblems/883.lean:43:  Adj x y := x ∈ A ∧ y ∈ A ∧ x ≠ y ∧ Nat.Coprime x y
+FormalConjectures/ErdosProblems/883.lean-44-  symm := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-45-    intro x y ⟨hx, hy, hne, hcop⟩
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-79-      A.card > erdos883Threshold n →
+FormalConjectures/ErdosProblems/883.lean-80-      ∀ k : ℕ, k ≥ 3 → k % 2 = 1 → k ≤ n / 3 + 1 →
+FormalConjectures/ErdosProblems/883.lean:81:        Erdos883.SimpleGraph.ContainsCycle (coprimeGraph A) k := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-82-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-83-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-108-      (∀ a ∈ A, 1 ≤ a ∧ a ≤ n) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-109-      A.card > erdos883Threshold n →
+FormalConjectures/ErdosProblems/883.lean:110:        Erdos883.SimpleGraph.ContainsTripartite (coprimeGraph A) ℓ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-111-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean-112-
+--
+FormalConjectures/ErdosProblems/783.lean-63-      (∃ (A : Finset ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/783.lean-64-        (∀ a ∈ A, 2 ≤ a ∧ a ≤ N) ∧
+FormalConjectures/ErdosProblems/783.lean:65:        (∀ a ∈ A, ∀ b ∈ A, a ≠ b → Nat.Coprime a b) ∧
+FormalConjectures/ErdosProblems/783.lean-66-        (∑ a ∈ A, (1 : ℝ) / (a : ℝ) ≤ C) ∧
+FormalConjectures/ErdosProblems/783.lean-67-        (unsievedCount N A : ℝ) ≤ (dickmanRho (Real.exp C) + ε) * ↑N) ∧
+FormalConjectures/ErdosProblems/783.lean-68-      (∀ (A : Finset ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/783.lean-69-        (∀ a ∈ A, 2 ≤ a ∧ a ≤ N) →
+FormalConjectures/ErdosProblems/783.lean:70:        (∀ a ∈ A, ∀ b ∈ A, a ≠ b → Nat.Coprime a b) →
+FormalConjectures/ErdosProblems/783.lean-71-        (∑ a ∈ A, (1 : ℝ) / (a : ℝ) ≤ C) →
+FormalConjectures/ErdosProblems/783.lean-72-        (dickmanRho (Real.exp C) - ε) * ↑N ≤ (unsievedCount N A : ℝ)) := by

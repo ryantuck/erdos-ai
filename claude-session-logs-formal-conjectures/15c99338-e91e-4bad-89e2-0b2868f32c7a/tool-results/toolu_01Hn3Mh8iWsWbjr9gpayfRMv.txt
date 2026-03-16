@@ -1,0 +1,352 @@
+ai-review/654.md:7:Problem 654 uses `ℝ × ℝ` with a custom `sqEuclideanDist` definition, whereas the majority of related problems in the codebase use `EuclideanSpace ℝ (Fin 2)` with Mathlib's `dist`:
+ai-review/654.md:9:- **Problem 98** (`98.lean:43-52`): Defines `FourPointsConcyclic` and `NoFourConcyclic` over `Finset (EuclideanSpace ℝ (Fin 2))` using `dist`.
+ai-review/654.md:13:The custom `sqEuclideanDist` in 654 is mathematically equivalent to using `dist` for the purpose of counting distinct distances (since `d(p,q) = d(p',q')` iff `d(p,q)² = d(p',q')²` for nonneg distances), but it introduces unnecessary divergence from the rest of the codebase. Switching to `EuclideanSpace ℝ (Fin 2)` with `dist` would align with problems 98, 652, 653, 655, and others.
+ai-review/214.md:13:The `FormalConjecturesForMathlib/Geometry/Euclidean.lean` file provides the `ℝ^n` notation but the formalization already uses the fully spelled-out `EuclideanSpace ℝ (Fin 2)`, which is consistent with other Erdős distance problems (e.g., Problems 93–98, 130, 232).
+ai-review/214.md:48:       ∀ (S : Set (EuclideanSpace ℝ (Fin 2))),
+ai-review/214.md:50:         ∀ (P : Fin 4 → EuclideanSpace ℝ (Fin 2)),
+ai-review/214.md:51:           ∃ (f : EuclideanSpace ℝ (Fin 2) →ᵢ EuclideanSpace ℝ (Fin 2)),
+ai-review/214.md:70:- **Minor:** Could use the `ℝ²` notation from `FormalConjecturesForMathlib/Geometry/2d.lean` for brevity, but the fully explicit `EuclideanSpace ℝ (Fin 2)` is consistent with other Erdős problems and avoids an additional import.
+ai-review/214.md:97:def IsUnitSquare (a b c d : EuclideanSpace ℝ (Fin 2)) : Prop :=
+ai-review/214.md:112:    ∀ (S : Set (EuclideanSpace ℝ (Fin 2))),
+ai-review/214.md:114:      ∃ a b c d : EuclideanSpace ℝ (Fin 2),
+ai-review/105.md:7:- **`EuclideanSpace ℝ (Fin 2)`** is written out in full throughout the file. Several nearby problems (209, 210, 211, 216, 735) define `abbrev Point2 := EuclideanSpace ℝ (Fin 2)` for readability. Problem 105 could use this same abbreviation.
+ai-review/105.md:57:- **Minor:** The set comprehension `{p : EuclideanSpace ℝ (Fin 2) | p ∈ (A : Set _) ∧ p ∈ L}` on line 53 could equivalently be written as `(A : Set _) ∩ (L : Set _)` using set intersection, which may be slightly more idiomatic. However, the current form is unambiguous and consistent with other problems in the codebase (101, 588).
+ai-review/105.md:58:- **Minor:** The type annotation `(A : Set _)` appearing in lines 50, 53, and 54 is necessary for coercion from `Finset` to `Set`, but repeating the full `EuclideanSpace ℝ (Fin 2)` type in the membership condition (line 53–54) is verbose. A `Point2` abbreviation would help.
+ai-review/105.md:86:- **`¬ Collinear ℝ (A : Set (EuclideanSpace ℝ (Fin 2)))`**: Asserts that the points of $A$ do not all lie on a single affine line. Mathlib's `Collinear` checks whether a set is contained in a single 1-dimensional affine subspace. **Correct.**
+ai-review/105.md:88:- **Line existence**: The existential quantifies over all `AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2))` with `Module.finrank ℝ L.direction = 1` (a line). The condition `2 ≤ Set.ncard {p | p ∈ A ∧ p ∈ L}` correctly requires at least two points of $A$ on the line. The condition `∀ p, p ∈ B → p ∉ L` correctly requires the line to avoid all of $B$. **Correct.**
+FormalConjectures/ErdosProblems/95.lean:39:noncomputable def distinctDistances (P : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/95.lean:45:noncomputable def distMultiplicity (P : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/95.lean:61:        ∀ (P : Finset (EuclideanSpace ℝ (Fin 2))),
+ai-review/669.md:13:- Several files (209, 210, 211) use a `Point2` abbreviation (`abbrev Point2 := EuclideanSpace ℝ (Fin 2)`) for cleaner signatures. The `FormalConjecturesForMathlib/Geometry/2d.lean` file provides a scoped notation `ℝ²` for the same type. Problem 669 could use either for conciseness.
+ai-review/669.md:45:- The type `EuclideanSpace ℝ (Fin 2)` appears 8 times. A local abbreviation (as in Problem 209's `Point2` or `2d.lean`'s `ℝ²`) would reduce visual clutter.
+ai-review/669.md:46:- The nested set-builder notation `{p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}` is heavy. A helper predicate like `pointsOnLine P L` could improve clarity, especially since it appears in both `atLeastKPointLineCount` and `exactlyKPointLineCount`.
+ai-review/669.md:81:The `sSup` definitions quantify over *all* `Finset (EuclideanSpace ℝ (Fin 2))` of a given cardinality, which is correct since we want the maximum over all possible n-point configurations in the plane. There is no issue with the uncountability of configurations — `sSup` on ℕ only cares about the *set of achievable natural number values*, which is finite and bounded.
+ai-review/655.md:9:  - Problem 655 uses `EuclideanSpace ℝ (Fin 2)` with Mathlib's `dist`.
+ai-review/655.md:11:  These should ideally use a consistent representation. Mathlib's `EuclideanSpace ℝ (Fin 2)` (as used in 655) is the more canonical choice.
+FormalConjectures/ErdosProblems/958.lean:45:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/958.lean:49:noncomputable def distMultiplicity (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/958.lean:54:def HasDistanceMultiplicityProperty (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/958.lean:62:def IsEquidistantCollinear (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/958.lean:63:  ∃ (p v : EuclideanSpace ℝ (Fin 2)), v ≠ 0 ∧
+FormalConjectures/ErdosProblems/958.lean:69:def IsEquidistantCircular (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/958.lean:71:  ∃ (c : EuclideanSpace ℝ (Fin 2)) (r : ℝ), r > 0 ∧
+FormalConjectures/ErdosProblems/958.lean:73:    ∃ (σ : ℕ → EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/958.lean:91:    (∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+ai-review/465.md:56:- The use of `EuclideanSpace ℝ (Fin 2)` for $\mathbb{R}^2$ is idiomatic.
+FormalConjectures/ErdosProblems/957.lean:46:noncomputable def distFrequency (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/957.lean:59:    ∃ N₀ : ℕ, ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))), N₀ ≤ A.card →
+FormalConjectures/ErdosProblems/957.lean:61:    (∃ p q : EuclideanSpace ℝ (Fin 2), p ∈ A ∧ q ∈ A ∧ p ≠ q ∧ dist p q = d₁) →
+FormalConjectures/ErdosProblems/957.lean:62:    (∀ p q : EuclideanSpace ℝ (Fin 2), p ∈ A → q ∈ A → p ≠ q → d₁ ≤ dist p q) →
+FormalConjectures/ErdosProblems/957.lean:63:    (∃ p q : EuclideanSpace ℝ (Fin 2), p ∈ A ∧ q ∈ A ∧ p ≠ q ∧ dist p q = dk) →
+FormalConjectures/ErdosProblems/957.lean:64:    (∀ p q : EuclideanSpace ℝ (Fin 2), p ∈ A → q ∈ A → dist p q ≤ dk) →
+ai-review/466.md:9:The `EuclideanSpace ℝ (Fin 2)` usage, `dist p 0 ≤ X` disk containment pattern, and `Finset`-based point set representation are standard across ~55 other Erdős problems and are fine as-is.
+ai-review/466.md:55:- **Disk containment:** `dist p 0 ≤ X` correctly represents a closed disk of radius X centered at the origin in `EuclideanSpace ℝ (Fin 2)`.
+ai-review/652.md:7:- **`Erdos653.distinctDistances`** (`FormalConjectures/ErdosProblems/653.lean:39–41`): Counts distinct distances from a point to all others in an indexed configuration `Fin n → EuclideanSpace ℝ (Fin 2)`. Semantically identical, but uses a different point-set representation (indexed function vs Finset).
+ai-review/652.md:8:- **`Erdos1082.distinctDistancesFrom`** (`FormalConjectures/ErdosProblems/1082.lean:40–41`): Counts distinct distances from a Finset of `ℝ²` to a point. Very close to the 652 definition but does not filter out the point itself (so it includes the zero distance if `pt ∈ points`). Also uses the `ℝ²` notation rather than `EuclideanSpace ℝ (Fin 2)`.
+FormalConjectures/ErdosProblems/93.lean:39:def InConvexPosition (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/93.lean:40:  ∀ p ∈ A, p ∉ convexHull ℝ ((↑A : Set (EuclideanSpace ℝ (Fin 2))) \ {p})
+FormalConjectures/ErdosProblems/93.lean:46:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/93.lean:55:    (A : Finset (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/652.lean:47:noncomputable def numDistinctDistances (p : EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/652.lean:48:    (S : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/652.lean:65:            ∀ S : Finset (EuclideanSpace ℝ (Fin 2)), S.card = n →
+ai-review/135.md:57:- "Set of $n$ points in $\mathbb{R}^2$" → `Finset (EuclideanSpace ℝ (Fin 2))`
+FormalConjectures/ErdosProblems/1087.lean:36:def HasRepeatedDistance (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/1087.lean:42:noncomputable def degenerateQuadrupleCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/1087.lean:60:      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+ai-review/504.md:19:[Omitted long matching line]
+ai-review/504.md:54:- "Set of N points in ℝ²" maps directly to `Finset (EuclideanSpace ℝ (Fin 2))` with `.card = N`.
+FormalConjectures/ErdosProblems/588.lean:34:def NoKPlusOneCollinear (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/588.lean:35:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/588.lean:36:    S ⊆ P → S.card = k + 1 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/588.lean:42:noncomputable def kRichLineCount (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/588.lean:43:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/588.lean:45:    k ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+FormalConjectures/ErdosProblems/588.lean:64:          ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+ai-review/653.md:11:- **`Erdos654.numDistinctDistances`** in `ErdosProblems/654.lean:59` is nearly identical in structure to `Erdos653.distinctDistances` — same `Fin n`-indexed approach, same filter/image/card pattern — but uses `ℝ × ℝ` with squared Euclidean distance rather than `EuclideanSpace ℝ (Fin 2)` with `dist`.
+ai-review/653.md:15:The `ℝ²` notation from `FormalConjecturesForMathlib/Geometry/2d.lean:25` could be used to shorten `EuclideanSpace ℝ (Fin 2)`, though this would require an additional import.
+ai-review/653.md:52:**Minor suggestion:** The type `EuclideanSpace ℝ (Fin 2)` appears three times and could be aliased or use the `ℝ²` notation, but this is cosmetic.
+FormalConjectures/ErdosProblems/756.lean:45:noncomputable def pairCount (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/756.lean:50:noncomputable def highMultiplicityDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Set ℝ :=
+FormalConjectures/ErdosProblems/756.lean:64:      ∃ A : Finset (EuclideanSpace ℝ (Fin 2)), A.card = n ∧
+FormalConjectures/ErdosProblems/91.lean:43:noncomputable def numDistinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/91.lean:51:def AreSimilar (A B : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/91.lean:52:  ∃ (f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2)) (r : ℝ),
+FormalConjectures/ErdosProblems/91.lean:54:    (∀ x y : EuclideanSpace ℝ (Fin 2), dist (f x) (f y) = r * dist x y) ∧
+FormalConjectures/ErdosProblems/91.lean:67:    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/91.lean:69:      (∀ B : Finset (EuclideanSpace ℝ (Fin 2)), B.card = n →
+FormalConjectures/ErdosProblems/91.lean:71:      ∃ A' : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/91.lean:73:        (∀ B : Finset (EuclideanSpace ℝ (Fin 2)), B.card = n →
+ai-review/106.md:11:[Omitted long matching line]
+ai-review/104.md:66:- **Minor:** The inner set comprehension `{p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ dist p c = 1}` could equivalently be written as `{p ∈ (↑P : Set _) | dist p c = 1}` using set-builder notation with a binder, matching the style used in `506.lean:52`. This is purely cosmetic.
+ai-review/173.md:23:Additionally, Mathlib provides `EuclideanGeometry` and `dist` on `EuclideanSpace ℝ (Fin 2)` (used by Problems 507, 508, 1071). Using `dist p q ^ 2` from Mathlib's metric space structure would give access to the full Mathlib API (triangle inequality, etc.), though for a `sorry`-based conjecture statement the custom definition is adequate.
+ai-review/209.md:11:The file defines `Erdos209.Point2 := EuclideanSpace ℝ (Fin 2)` and `Erdos209.IsLine` via `Module.finrank ℝ L.direction = 1`. These same patterns appear verbatim or nearly so in several other files:
+ai-review/209.md:15:| `Point2 := EuclideanSpace ℝ (Fin 2)` | Erdős 210, 211, 213, 216, 217 |
+ai-review/209.md:104:The problem is fully precise: every term is well-defined (finite collection of lines, non-parallel, point multiplicity, ordinary point, Gallai triangle). The combinatorial geometry setting (lines in ℝ²) is completely formalized by Lean's `AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2))`.
+FormalConjectures/ErdosProblems/210.lean:34:abbrev Point2 := EuclideanSpace ℝ (Fin 2)
+ai-review/657.md:8:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+ai-review/657.md:19:The `offDiag` variant is cleaner and semantically equivalent. However, note the type difference: `Finset ℝ²` vs `Finset (EuclideanSpace ℝ (Fin 2))`. These are definitionally equal but may cause friction in practice. A shared utility definition (or consolidation to the Mathlib variant) would reduce duplication across problems 93, 95, 135, 657, 958, and 959.
+ai-review/657.md:67:- "Set of $n$ points" → `Finset (EuclideanSpace ℝ (Fin 2))` with `A.card = n`.
+FormalConjectures/ErdosProblems/465.lean:53:    ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/465.lean:71:    ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+ai-review/589.md:7:- **`NoKCollinear k P`** in `FormalConjectures/ErdosProblems/960.lean:38` — Uses Mathlib's `Collinear ℝ` and is parametric in `k`. Semantically, `NoKCollinear (k+1) S` is equivalent to `AtMostKOnAnyLine k S` (no `k+1` points collinear ↔ at most `k` on any line). The main difference is that 960 uses `EuclideanSpace ℝ (Fin 2)` while 589 uses `Fin 2 → ℝ`. These types are definitionally equal modulo the `PiLp` wrapper, but in practice interconversion requires coercions.
+ai-review/606.md:8:- **`Point2` abbreviation**: Problem 209 defines `abbrev Point2 := EuclideanSpace ℝ (Fin 2)`. The `FormalConjecturesForMathlib/Geometry/2d.lean` file provides the `ℝ²` notation for the same type. Problem 606 spells out `EuclideanSpace ℝ (Fin 2)` everywhere — it could use one of these shorthands for conciseness.
+ai-review/606.md:59:- Use the `ℝ²` notation from `FormalConjecturesForMathlib/Geometry/2d.lean` (or `Point2` from 209.lean) instead of repeatedly writing `EuclideanSpace ℝ (Fin 2)`. This would significantly reduce visual clutter.
+FormalConjectures/ErdosProblems/1090.lean:44:    ∃ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/1090.lean:45:      ∀ c : EuclideanSpace ℝ (Fin 2) → Fin 2,
+FormalConjectures/ErdosProblems/1090.lean:46:        ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/1090.lean:48:          k ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (A : Set _) ∧ p ∈ L} ∧
+FormalConjectures/ErdosProblems/653.lean:39:noncomputable def distinctDistances (n : ℕ) (x : Fin n → EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/653.lean:47:noncomputable def numDistinctR (n : ℕ) (x : Fin n → EuclideanSpace ℝ (Fin 2)) : ℕ :=
+FormalConjectures/ErdosProblems/653.lean:61:          ∃ x : Fin n → EuclideanSpace ℝ (Fin 2),
+ai-review/661.md:9:    (X Y : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+ai-review/604.md:68:- The use of `Finset (EuclideanSpace ℝ (Fin 2))` correctly models $n$ distinct points in $\mathbb{R}^2$ (a `Finset` enforces distinctness).
+ai-review/604.md:78:noncomputable def pinnedDistances (x : EuclideanSpace ℝ (Fin 2))
+ai-review/604.md:79:    (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/504.lean:36:noncomputable def angleAt (x y z : EuclideanSpace ℝ (Fin 2)) : ℝ :=
+FormalConjectures/ErdosProblems/504.lean:48:    ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+ai-review/215.md:5:**`IntLattice` definition (line 38):** Problem 215 defines its own `IntLattice` locally. No shared integer lattice definition exists in `FormalConjecturesForMathlib/`. Other problems that touch lattice concepts (e.g., Problems 528, 529 with `LatticeAdj`) also define them locally with different representations (`Fin k → ℤ` rather than a subset of `EuclideanSpace ℝ (Fin 2)`). There is no opportunity to reuse an existing definition here.
+ai-review/215.md:9:**Notation:** `FormalConjecturesForMathlib/Geometry/2d.lean` defines `ℝ²` as notation for `EuclideanSpace ℝ (Fin 2)`. Problem 215 writes out `EuclideanSpace ℝ (Fin 2)` in full. Using the `ℝ²` notation would improve readability marginally, but would require importing the notation file.
+ai-review/215.md:36:- **Minor:** The type `EuclideanSpace ℝ (Fin 2)` appears four times in the theorem statement. Using the `ℝ²` notation from `FormalConjecturesForMathlib/Geometry/2d.lean` or a local abbreviation would reduce visual clutter. That said, avoiding the import keeps the file self-contained.
+ai-review/215.md:59:∃ (S : Set (EuclideanSpace ℝ (Fin 2))),
+ai-review/215.md:60:  ∀ (f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2)),
+ai-review/215.md:73:This correctly defines ℤ² as the set of points in `EuclideanSpace ℝ (Fin 2)` whose coordinates are all integers.
+FormalConjectures/ErdosProblems/209.lean:30:abbrev Point2 := EuclideanSpace ℝ (Fin 2)
+ai-review/668.md:45:- Problem 90 uses the notation `ℝ²` while Problem 668 uses the more verbose `EuclideanSpace ℝ (Fin 2)`. Consistency would improve readability.
+FormalConjectures/ErdosProblems/655.lean:37:def NoThreeEquidistantFromCenter (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/655.lean:46:noncomputable def distinctDistanceCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/655.lean:60:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/506.lean:39:noncomputable def AllOnCircle (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/506.lean:40:  ∃ c : EuclideanSpace ℝ (Fin 2), ∃ r : ℝ, 0 < r ∧ ∀ p ∈ S, dist p c = r
+FormalConjectures/ErdosProblems/506.lean:43:noncomputable def AllCollinear (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/506.lean:44:  ∃ a b : EuclideanSpace ℝ (Fin 2), a ≠ b ∧
+FormalConjectures/ErdosProblems/506.lean:50:noncomputable def numDeterminedCircles (S : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/506.lean:51:  Set.ncard {p : EuclideanSpace ℝ (Fin 2) × ℝ |
+FormalConjectures/ErdosProblems/506.lean:52:    0 < p.2 ∧ 3 ≤ Set.ncard {q ∈ (↑S : Set (EuclideanSpace ℝ (Fin 2))) | dist q p.1 = p.2}}
+FormalConjectures/ErdosProblems/506.lean:58:  sInf (numDeterminedCircles '' {S : Finset (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/668.lean:42:    (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/668.lean:48:  sSup {k : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/668.lean:54:    (P Q : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/668.lean:55:  ∃ f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/668.lean:57:    f '' (↑P : Set (EuclideanSpace ℝ (Fin 2))) = ↑Q
+FormalConjectures/ErdosProblems/668.lean:73:      ∃ (Ps : Fin M → Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/668.lean:93:    ∃ (P Q : Finset (EuclideanSpace ℝ (Fin 2))),
+ai-review/96.md:61:- The file uses `EuclideanSpace ℝ (Fin 2)` throughout rather than the `ℝ²` notation available via `open scoped EuclideanGeometry` (as used in problems 90, 97, and the ForMathlib library). Using `ℝ²` would improve readability.
+FormalConjectures/ErdosProblems/960.lean:38:def NoKCollinear (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/960.lean:39:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/960.lean:40:    S ⊆ P → S.card = k → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/960.lean:46:def IsOrdinaryLine (P : Finset (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/960.lean:47:    (L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/960.lean:49:  Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L} = 2
+FormalConjectures/ErdosProblems/960.lean:55:noncomputable def ordinaryLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/960.lean:56:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) | IsOrdinaryLine P L}
+FormalConjectures/ErdosProblems/960.lean:61:noncomputable def lineThrough (p q : EuclideanSpace ℝ (Fin 2)) :
+FormalConjectures/ErdosProblems/960.lean:62:    AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) :=
+FormalConjectures/ErdosProblems/960.lean:70:def AllPairsOrdinary (A : Finset (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/960.lean:71:    (A' : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/960.lean:84:  sInf {m : ℕ | ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/960.lean:88:    ∃ A' : Finset (EuclideanSpace ℝ (Fin 2)),
+ai-review/210.md:11:The file defines `Erdos210.Point2 := EuclideanSpace ℝ (Fin 2)` and `Erdos210.LiesOnLine` via parametric line membership. These same definitions appear verbatim in other files:
+ai-review/210.md:15:| `Point2 := EuclideanSpace ℝ (Fin 2)` | Erdős 209, 211, 213, 216, 217 |
+ai-review/353.md:9:- **`triangleArea`**: The cross-product formula used here is duplicated in `634.lean` and `633.lean`. Meanwhile, `FormalConjecturesForMathlib/Geometry/2d.lean:175-176` provides a Mathlib-integrated `triangle_area` using `positiveOrientation.areaForm`. Problem 352 already uses this Mathlib version with `Affine.Triangle`. The current formalization's use of `ℝ × ℝ` rather than `EuclideanSpace ℝ (Fin 2)` prevents reuse of the library version.
+ai-review/353.md:11:- **`IsCyclicQuadrilateral`**: A closely related `Concyclic4` definition exists in `ErdosProblems/217.lean:48-50`, using `dist` on `EuclideanSpace ℝ (Fin 2)` rather than `sqDist` on `ℝ × ℝ`. The 353 version additionally requires `0 < r_sq`, which is slightly more careful (excludes degenerate zero-radius case), though the distinctness conditions already handle this.
+ai-review/353.md:91:[Omitted long matching line]
+ai-review/132.md:8:noncomputable def pairCount (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+ai-review/132.md:19:**Recommendation**: Extract `pairCount` into a shared module and import it in both 132.lean and 756.lean. The `ℝ²` notation from `Geometry/2d.lean` could also replace the verbose `EuclideanSpace ℝ (Fin 2)` throughout.
+ai-review/132.md:78:noncomputable def pairCount (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+ai-review/132.md:85:def IsLimitedOccurrence (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : Prop :=
+ai-review/132.md:106:   def IsLimitedOccurrence (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : Prop :=
+ai-review/132.md:121:∀ k : ℕ, ∃ N : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), N ≤ A.card →
+ai-review/662.md:9:- **`ℝ²` notation** from `FormalConjecturesForMathlib/Geometry/2d.lean` (line 25): Provides `scoped notation "ℝ²" => EuclideanSpace ℝ (Fin 2)`. The current file writes out `EuclideanSpace ℝ (Fin 2)` explicitly. Using the notation would improve readability.
+FormalConjectures/ErdosProblems/604.lean:45:noncomputable def pinnedDistances (x : EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/604.lean:46:    (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/604.lean:66:      ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+ai-review/232.md:54:- The repeated `EuclideanSpace ℝ (Fin 2)` in line 75–76 could be aliased with a `let` or `variable` for conciseness, though this is a matter of taste.
+ai-review/232.md:55:- The expression `(0 : EuclideanSpace ℝ (Fin 2))` appears twice; a local notation or `set origin := ...` could reduce clutter.
+ai-review/232.md:77:- **Measure and ball (lines 75–76):** Uses `volume` (Lebesgue measure on `EuclideanSpace ℝ (Fin 2)`) and `Metric.ball 0 R`. The ball is centered at 0, but upper density is translation-invariant, so centering at 0 is without loss of generality. Correct.
+ai-review/506.md:11:- **`EuclideanSpace ℝ (Fin 2)`**: The library provides the `ℝ²` notation in `FormalConjecturesForMathlib/Geometry/2d.lean:25` and a `Point2` abbreviation in Erdős 210 (`FormalConjectures/ErdosProblems/210.lean:34`). Problem 506 uses the raw type throughout; adopting one of these conventions would improve consistency.
+ai-review/506.md:38:- **Improvement:** Replace `EuclideanSpace ℝ (Fin 2)` with `ℝ²` (from `FormalConjecturesForMathlib/Geometry/2d.lean`) or introduce a local abbreviation like `Point2` (as in Erdős 210) to reduce verbosity.
+ai-review/506.md:60:- **Circle identification:** A circle in ℝ² is uniquely determined by its center and positive radius. The formalization correctly identifies circles as elements of `EuclideanSpace ℝ (Fin 2) × ℝ` with positive second component. No two distinct pairs `(center, radius)` describe the same geometric circle.
+ai-review/193.md:16:| Erdos 217 `Collinear3` | Cross-product formula for `EuclideanSpace ℝ (Fin 2)` | 2D only, not applicable. |
+ai-review/130.md:13:- **`ℝ²` notation** (`FormalConjecturesForMathlib/Geometry/2d.lean:25`): The notation `ℝ²` for `EuclideanSpace ℝ (Fin 2)` is available in the `EuclideanGeometry` scope, though using the expanded form is also acceptable.
+ai-review/130.md:87:4. **The graph is on `↥A` (subtype of A).** This means vertices are elements of the subtype `{x : EuclideanSpace ℝ (Fin 2) // x ∈ A}`, not bare points. This is correct and standard for defining induced subgraphs in Lean 4/Mathlib.
+FormalConjectures/ErdosProblems/706.lean:38:noncomputable def multiDistanceGraph (A : Set ℝ) : SimpleGraph (EuclideanSpace ℝ (Fin 2)) where
+ai-review/91.md:9:- **Recommendation:** Replace `numDistinctDistances` with `EuclideanGeometry.distinctDistances`. Note a type difference: Problem 91 uses `EuclideanSpace ℝ (Fin 2)` while the library definition uses `ℝ²` (which is `Fin 2 → ℝ`). These are defeq via `EuclideanSpace`, so this should be compatible, but should be verified.
+FormalConjectures/ErdosProblems/831.lean:35:def NoThreeCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/831.lean:36:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/831.lean:37:    S ⊆ P → S.card = 3 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/831.lean:44:def FourPointsConcyclic (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/831.lean:45:  ∃ c : EuclideanSpace ℝ (Fin 2), ∃ r : ℝ, r > 0 ∧ ∀ p ∈ S, dist p c = r
+FormalConjectures/ErdosProblems/831.lean:51:def NoFourConcyclic (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/831.lean:52:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/831.lean:60:noncomputable def distinctCircumradiiCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/831.lean:63:    ∃ o : EuclideanSpace ℝ (Fin 2), dist a o = r ∧ dist b o = r ∧ dist c o = r}
+FormalConjectures/ErdosProblems/831.lean:79:      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+ai-review/103.md:62:- **Minor:** The type `EuclideanSpace ℝ (Fin 2)` is used throughout instead of the alias `ℝ²` used in `99.lean`. The latter is more concise. However, `EuclideanSpace ℝ (Fin 2)` is explicit and matches the convention in 668.lean, so this is a stylistic choice.
+ai-review/103.md:89:  let minimizers : Set (Finset (EuclideanSpace ℝ (Fin 2))) :=
+ai-review/103.md:91:  Set.ncard {C : Set (Finset (EuclideanSpace ℝ (Fin 2))) |
+ai-review/103.md:112:      ∃ (As : Fin M → Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjecturesForMathlib/Geometry/2d.lean:25:scoped[EuclideanGeometry] notation "ℝ²" => EuclideanSpace ℝ (Fin 2)
+FormalConjecturesForMathlib/Geometry/2d.lean:33:noncomputable instance Module.orientedEuclideanSpaceFinTwo : Module.Oriented ℝ ℝ² (Fin 2) :=
+FormalConjecturesForMathlib/Geometry/2d.lean:184:    positiveOrientation.volumeForm_robust (EuclideanSpace.basisFun (Fin 2) ℝ) rfl, Module.Basis.det_apply]
+FormalConjectures/ErdosProblems/223.lean:85:theorem erdos_223.variants.d2_upper (A : Finset (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/223.lean:97:    ∃ A : Finset (EuclideanSpace ℝ (Fin 2)),
+ai-review/211.md:11:The file defines `Erdos211.Point2 := EuclideanSpace ℝ (Fin 2)` and `Erdos211.LiesOnLine` via parametric line membership. These same definitions appear verbatim in other files:
+ai-review/211.md:15:| `Point2 := EuclideanSpace ℝ (Fin 2)` | Erdős 209, 210, 213, 216, 217 |
+ai-review/211.md:20:- **`Point2`:** Should be extracted to a shared utility. `FormalConjecturesForMathlib/Geometry/2d.lean` already provides the notation `ℝ²` for `EuclideanSpace ℝ (Fin 2)`, but the named abbreviation `Point2` is independently redefined in many files.
+FormalConjectures/ErdosProblems/466.lean:50:    ∃ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/101.lean:34:def NoFiveCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/101.lean:35:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/101.lean:36:    S ⊆ P → S.card = 5 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/101.lean:45:noncomputable def fourRichLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/101.lean:46:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/101.lean:48:    4 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+FormalConjectures/ErdosProblems/101.lean:62:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+ai-review/93.md:11:[Omitted long matching line]
+ai-review/93.md:52:- **Minor:** The coercion `(↑A : Set (EuclideanSpace ℝ (Fin 2))) \ {p}` on line 40 is slightly verbose compared to the `A.erase p` pattern used in Problems 660 (line 41) and 96 (line 36). Using `↑(A.erase p)` would be more concise and consistent with peer files, though mathematically equivalent.
+ai-review/93.md:87:**Potential subtle issue:** The `dist` function on `EuclideanSpace ℝ (Fin 2)` is the standard Euclidean distance, which is correct for this problem. No issues here.
+FormalConjectures/ErdosProblems/214.lean:37:def IsUnitSquare (a b c d : EuclideanSpace ℝ (Fin 2)) : Prop :=
+FormalConjectures/ErdosProblems/214.lean:51:    ∀ (S : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/214.lean:53:      ∃ a b c d : EuclideanSpace ℝ (Fin 2),
+ai-review/706.md:7:- **`Erdos508.UnitDistancePlaneGraph`** (`508.lean:42`): Unit distance graph on `ℝ²` (using `EuclideanGeometry` notation). Note this uses a different vertex type (`ℝ²`) than 706's graph (`EuclideanSpace ℝ (Fin 2)`), so they are not directly interchangeable despite being mathematically equivalent spaces.
+ai-review/706.md:9:- **`SimpleGraph.UnitDistancePlaneGraph`** (`GraphConjectures/Definitions.lean:96`): Unit distance graph on a *subset* `V : Set (EuclideanSpace ℝ (Fin 2))`, used by problem 705.
+ai-review/706.md:55:[Omitted long matching line]
+ai-review/706.md:80:- `Colorable (C * r ^ K)` — when C = 0, this would require `Colorable 0`, which is false for the nonempty vertex type `EuclideanSpace ℝ (Fin 2)`, so C ≥ 1 is implicitly forced. This is fine.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:96:def UnitDistancePlaneGraph (V : Set (EuclideanSpace ℝ (Fin 2))) : SimpleGraph V where
+FormalConjectures/ErdosProblems/1121.lean:51:    (center : Fin n → EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/1121.lean:54:    (hns : ∀ (v : EuclideanSpace ℝ (Fin 2)) (d : ℝ),
+FormalConjectures/ErdosProblems/1121.lean:58:    ∃ p : EuclideanSpace ℝ (Fin 2),
+ai-review/102.md:13:Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+ai-review/102.md:15:  4 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+ai-review/102.md:18:Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+ai-review/102.md:20:  4 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+FormalConjectures/ErdosProblems/98.lean:34:def NoThreeCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/98.lean:35:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/98.lean:36:    S ⊆ P → S.card = 3 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/98.lean:43:def FourPointsConcyclic (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/98.lean:44:  ∃ c : EuclideanSpace ℝ (Fin 2), ∃ r : ℝ, r > 0 ∧ ∀ p ∈ S, dist p c = r
+FormalConjectures/ErdosProblems/98.lean:50:def NoFourConcyclic (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/98.lean:51:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/98.lean:57:noncomputable def distinctDistanceCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/98.lean:73:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/103.lean:34:def IsUnitSeparated (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/103.lean:40:noncomputable def finiteDiameter (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℝ :=
+FormalConjectures/ErdosProblems/103.lean:48:def IsMinimalDiameter (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/103.lean:50:  ∀ B : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/103.lean:58:def AreCongruent (A B : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/103.lean:59:  ∃ f : EuclideanSpace ℝ (Fin 2) ≃ᵢ EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/103.lean:60:    A.image (f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2)) = B
+FormalConjectures/ErdosProblems/103.lean:68:  let minimizers : Set (Finset (EuclideanSpace ℝ (Fin 2))) :=
+FormalConjectures/ErdosProblems/103.lean:70:  Set.ncard {C : Set (Finset (EuclideanSpace ℝ (Fin 2))) |
+FormalConjectures/ErdosProblems/94.lean:38:def ConvexPosition (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/94.lean:39:  ∀ p ∈ A, p ∉ convexHull ℝ ((A : Set (EuclideanSpace ℝ (Fin 2))) \ {p})
+FormalConjectures/ErdosProblems/94.lean:46:noncomputable def distSqSum (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/94.lean:47:  let E := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/94.lean:66:    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/838.lean:40:def InGeneralPosition (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/838.lean:41:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/838.lean:42:    S ⊆ P → S.card = 3 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/838.lean:48:def InConvexPosition (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/838.lean:49:  ∀ p ∈ S, p ∉ convexHull ℝ (↑(S.erase p) : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/838.lean:54:noncomputable def numConvexSubsets (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/838.lean:62:  sInf {k : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/102.lean:35:noncomputable def fourPlusRichLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/102.lean:36:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/102.lean:38:    4 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+FormalConjectures/ErdosProblems/102.lean:57:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/102.lean:60:          ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/102.lean:62:            M ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L} := by
+FormalConjectures/ErdosProblems/669.lean:55:    (P : Finset (EuclideanSpace ℝ (Fin 2))) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/669.lean:56:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/669.lean:58:    k ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+FormalConjectures/ErdosProblems/669.lean:63:    (P : Finset (EuclideanSpace ℝ (Fin 2))) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/669.lean:64:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/669.lean:66:    Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L} = k}
+FormalConjectures/ErdosProblems/669.lean:71:  sSup {m : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/669.lean:77:  sSup {m : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/232.lean:71:    ∀ (A : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/232.lean:75:          (volume (A ∩ Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal /
+FormalConjectures/ErdosProblems/232.lean:76:          (volume (Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal ≤ 1 / 4 + ε := by
+FormalConjectures/ErdosProblems/662.lean:56:    (P : Finset (EuclideanSpace ℝ (Fin 2))) (t : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/662.lean:70:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/217.lean:40:def Collinear3 (p q r : EuclideanSpace ℝ (Fin 2)) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:44:def NoThreeCollinear (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:48:def Concyclic4 (p₁ p₂ p₃ p₄ : EuclideanSpace ℝ (Fin 2)) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:49:  ∃ (c : EuclideanSpace ℝ (Fin 2)) (r : ℝ),
+FormalConjectures/ErdosProblems/217.lean:53:def NoFourConcyclic (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:63:def HasDistanceMultiplicityProperty (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:82:    ∃ N₀ : ℕ, ∀ (S : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/215.lean:38:def IntLattice : Set (EuclideanSpace ℝ (Fin 2)) :=
+FormalConjectures/ErdosProblems/215.lean:51:    ∃ (S : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/215.lean:52:      ∀ (f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/827.lean:38:def InGeneralPosition (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/827.lean:39:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/827.lean:40:    S ⊆ P → S.card = 3 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/827.lean:46:noncomputable def circumradius (p₁ p₂ p₃ : EuclideanSpace ℝ (Fin 2)) : ℝ :=
+FormalConjectures/ErdosProblems/827.lean:58:def AllDistinctCircumradii (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/827.lean:78:    ∃ n : ℕ, ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/827.lean:81:      ∃ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/130.lean:42:def Concyclic (a b c d : EuclideanSpace ℝ (Fin 2)) : Prop :=
+FormalConjectures/ErdosProblems/130.lean:43:  ∃ (center : EuclideanSpace ℝ (Fin 2)) (radius : ℝ),
+FormalConjectures/ErdosProblems/130.lean:52:def ErdosGeneralPosition (A : Set (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/130.lean:53:  (∀ p q r : EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/130.lean:56:    ¬Collinear ℝ ({p, q, r} : Set (EuclideanSpace ℝ (Fin 2)))) ∧
+FormalConjectures/ErdosProblems/130.lean:57:  (∀ p q r s : EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/130.lean:65:noncomputable def intDistGraph (A : Set (EuclideanSpace ℝ (Fin 2))) :
+FormalConjectures/ErdosProblems/130.lean:67:  Adj p q := (p : EuclideanSpace ℝ (Fin 2)) ≠ q ∧
+FormalConjectures/ErdosProblems/130.lean:68:    ∃ n : ℕ, 0 < n ∧ dist (p : EuclideanSpace ℝ (Fin 2)) (q : EuclideanSpace ℝ (Fin 2)) = n
+FormalConjectures/ErdosProblems/130.lean:88:    ∃ (A : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/1066.lean:54:    (f : Fin n → EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/1066.lean:72:      ∃ f : Fin n → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/959.lean:43:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/959.lean:47:noncomputable def distMultiplicity (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/959.lean:65:      ∃ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:59:      ∃ (C : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:61:      ∃ (X : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:65:      ∃ (P : Finset (EuclideanSpace ℝ (Fin 2) × EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:82:    ∀ (C : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:84:    ∀ (X : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:87:    ∀ (P : Finset (EuclideanSpace ℝ (Fin 2) × EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/735.lean:46:abbrev R2 := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/606.lean:44:    (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/606.lean:45:  Set.ncard {l : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/606.lean:46:    ∃ a ∈ A, ∃ b ∈ A, a ≠ b ∧ l = affineSpan ℝ ({a, b} : Set (EuclideanSpace ℝ (Fin 2)))}
+FormalConjectures/ErdosProblems/606.lean:51:  {k | ∃ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/606.lean:82:    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/657.lean:37:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/657.lean:42:def NoIsoscelesTriangles (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/657.lean:43:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/657.lean:60:      ∃ N₀ : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/105.lean:46:    ∀ A B : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/105.lean:50:      ¬ Collinear ℝ (A : Set (EuclideanSpace ℝ (Fin 2))) →
+FormalConjectures/ErdosProblems/105.lean:51:      ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/105.lean:53:        2 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (A : Set _) ∧ p ∈ L} ∧
+FormalConjectures/ErdosProblems/105.lean:54:        ∀ p : EuclideanSpace ℝ (Fin 2), p ∈ (B : Set _) → p ∉ L := by
+FormalConjectures/ErdosProblems/96.lean:35:def ConvexPosition (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/96.lean:36:  ∀ p ∈ P, p ∉ convexHull ℝ (↑(P.erase p) : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/96.lean:43:noncomputable def unitDistancePairCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/96.lean:58:    ∀ (P : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/1124.lean:34:noncomputable def unitSquare : Set (EuclideanSpace ℝ (Fin 2)) :=
+FormalConjectures/ErdosProblems/1124.lean:55:    ∃ (pieces_sq pieces_disk : Fin n → Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/1124.lean:61:        Metric.closedBall (0 : EuclideanSpace ℝ (Fin 2)) (1 / Real.sqrt Real.pi) ∧
+FormalConjectures/ErdosProblems/1124.lean:64:      (∀ i, ∃ f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/216.lean:45:abbrev Point := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/104.lean:35:noncomputable def threeRichUnitCircleCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/104.lean:36:  Set.ncard {c : EuclideanSpace ℝ (Fin 2) |
+FormalConjectures/ErdosProblems/104.lean:37:    3 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ dist p c = 1}}
+FormalConjectures/ErdosProblems/104.lean:51:      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/132.lean:61:noncomputable def pairCount (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/132.lean:67:def IsLimitedOccurrence (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : Prop :=
+FormalConjectures/ErdosProblems/132.lean:71:noncomputable def limitedOccurrences (A : Finset (EuclideanSpace ℝ (Fin 2))) : Set ℝ :=
+FormalConjectures/ErdosProblems/132.lean:82:      ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), 5 ≤ A.card →
+FormalConjectures/ErdosProblems/132.lean:95:      ∀ k : ℕ, ∃ N : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), N ≤ A.card →
+FormalConjectures/ErdosProblems/135.lean:39:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/135.lean:44:def FourPointFiveDist (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/135.lean:45:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/135.lean:65:        ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/1070.lean:53:    ∀ (n : ℕ), n ≥ 1 → ∀ (f : Fin n → EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/1070.lean:67:    (f : Fin n → EuclideanSpace ℝ (Fin 2)) :
+FormalConjectures/ErdosProblems/1070.lean:83:      ∃ f : Fin n → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/661.lean:45:    (X Y : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/661.lean:62:        ∃ X Y : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/211.lean:44:abbrev Point2 := EuclideanSpace ℝ (Fin 2)

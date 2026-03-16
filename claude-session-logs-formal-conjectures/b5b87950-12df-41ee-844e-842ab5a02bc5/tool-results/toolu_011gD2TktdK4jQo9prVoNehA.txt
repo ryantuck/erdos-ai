@@ -1,0 +1,229 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-36-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $h$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-37-natural number is the sum of at most $h$ elements from $A$ (with repetition). -/
+FormalConjectures/ErdosProblems/338.lean:38:def IsAdditiveBasis (A : Set ℕ) (h : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/338.lean-39-  ∃ N₀ : ℕ, ∀ n ≥ N₀, ∃ k ≤ h, n ∈ exactSumset A k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-40-
+FormalConjectures/ErdosProblems/338.lean-41-/-- $n$ is the sum of at most $t$ distinct elements from $A$:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-71-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/338.lean-72-theorem erdos_338 :
+FormalConjectures/ErdosProblems/338.lean-73-    ∀ (A : Set ℕ) (h : ℕ),
+FormalConjectures/ErdosProblems/338.lean:74:      (∀ (F : Finset ℕ), IsAdditiveBasis (A \ ↑F) h) →
+FormalConjectures/ErdosProblems/338.lean-75-      HasRestrictedOrder A := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-76-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-77-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-43-/-- A set $B \subseteq \mathbb{N}$ is an additive basis of order $k$ if every natural number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-44-can be written as a sum of exactly $k$ elements from $B$ (with repetition).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-45-Since $0 \in B$ is assumed separately, "exactly $k$" is equivalent to "at most $k$". -/
+FormalConjectures/ErdosProblems/35.lean:46:def IsAdditiveBasis (B : Set ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/35.lean-47-  ∀ n : ℕ, ∃ f : Fin k → ℕ, (∀ i, f i ∈ B) ∧ ∑ i, f i = n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-49-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-57-@[category research solved, AMS 11]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-58-theorem erdos_35
+FormalConjectures/ErdosProblems/35.lean-59-    (A B : Set ℕ) (k : ℕ) (hk : k ≥ 1)
+FormalConjectures/ErdosProblems/35.lean:60:    (hB : IsAdditiveBasis B k) (h0 : (0 : ℕ) ∈ B) :
+FormalConjectures/ErdosProblems/35.lean-61-    let α := schnirelmannDensity A
+FormalConjectures/ErdosProblems/35.lean-62-    schnirelmannDensity (sumset A B) ≥ α + α * (1 - α) / (k : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-63-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-37-/-- A set $A \subseteq \mathbb{N}$ is an additive basis of order $k$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-38-natural number can be written as a sum of at most $k$ elements from $A$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-39-(with repetition allowed). -/
+FormalConjectures/ErdosProblems/880.lean:40:def IsAdditiveBasis880 (A : Set ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/880.lean-41-  ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/880.lean-42-    ∃ (l : List ℕ), l.length ≤ k ∧ (∀ x ∈ l, x ∈ A) ∧ l.sum = n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-58--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-59-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/880.lean-60-theorem erdos_880 : answer(False) ↔
+FormalConjectures/ErdosProblems/880.lean:61:    ∀ (k : ℕ) (A : Set ℕ), IsAdditiveBasis880 A k →
+FormalConjectures/ErdosProblems/880.lean-62-    ∃ C N₀ : ℕ, ∀ b ∈ DistinctSumSet880 A k, b ≥ N₀ →
+FormalConjectures/ErdosProblems/880.lean-63-    ∃ b' ∈ DistinctSumSet880 A k, b < b' ∧ b' ≤ b + C := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-64-  sorry
+--
+FormalConjectures/ErdosProblems/880.lean-71-elements: for large enough $b \in B$, the next element of $B$ is at most $b + 2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-72--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-73-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/880.lean:74:theorem erdos_880.variants.bounded_gaps_k_eq_2 (A : Set ℕ) (hA : IsAdditiveBasis880 A 2) :
+FormalConjectures/ErdosProblems/880.lean-75-    ∃ N₀ : ℕ, ∀ b ∈ DistinctSumSet880 A 2, b ≥ N₀ →
+FormalConjectures/ErdosProblems/880.lean-76-    ∃ b' ∈ DistinctSumSet880 A 2, b < b' ∧ b' ≤ b + 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-77-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-85-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/880.lean-86-theorem erdos_880.variants.unbounded_gaps_k_ge_3 :
+FormalConjectures/ErdosProblems/880.lean-87-    ∀ k : ℕ, k ≥ 3 →
+FormalConjectures/ErdosProblems/880.lean:88:    ∃ A : Set ℕ, IsAdditiveBasis880 A k ∧
+FormalConjectures/ErdosProblems/880.lean-89-    ∀ C : ℕ, ∃ b ∈ DistinctSumSet880 A k,
+FormalConjectures/ErdosProblems/880.lean-90-      ∀ b' ∈ DistinctSumSet880 A k, b < b' → b + C < b' := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-91-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-42-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $r$ if every sufficiently large natural
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-43-number is the sum of at most $r$ elements from $A$ (with repetition). -/
+FormalConjectures/ErdosProblems/339.lean:44:def IsAdditiveBasis (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/339.lean-45-  ∃ N₀ : ℕ, ∀ n ≥ N₀, ∃ k ≤ r, n ∈ exactSumset A k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-47-/-- The set of integers representable as the sum of exactly $r$ distinct elements from $A$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-65-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/339.lean-66-theorem erdos_339 :
+FormalConjectures/ErdosProblems/339.lean-67-    answer(True) ↔ ∀ (A : Set ℕ) (r : ℕ),
+FormalConjectures/ErdosProblems/339.lean:68:      IsAdditiveBasis A r →
+FormalConjectures/ErdosProblems/339.lean-69-      0 < lowerDensity (distinctExactSumset A r) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-70-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-71-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-45-/-- A set $S \subseteq \mathbb{N}$ is an additive basis of order $2$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-46-natural number can be written as a sum of two elements from $S$. -/
+FormalConjectures/ErdosProblems/1147.lean:47:def IsAdditiveBasisOrder2 (S : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1147.lean-48-  ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ → ∃ a ∈ S, ∃ b ∈ S, n = a + b
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-50-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-61-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/1147.lean-62-theorem erdos_1147 : answer(False) ↔
+FormalConjectures/ErdosProblems/1147.lean-63-    ∀ α : ℝ, Irrational α → α > 0 →
+FormalConjectures/ErdosProblems/1147.lean:64:      IsAdditiveBasisOrder2 (setA α) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-67-end Erdos1147
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-38-if whenever $ab = cd$ for $a, b, c, d \in A$ with $a < b$ and $c < d$, then $a = c$ and $b = d$.
+FormalConjectures/ErdosProblems/425.lean-39-Equivalently, the pairwise products $\{ab : a, b \in A, a < b\}$ are all distinct.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-40--/
+FormalConjectures/ErdosProblems/425.lean:41:def IsMultB2 (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-42-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-43-    a < b → c < d → a * b = c * d → a = c ∧ b = d
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-44-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-53-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-54-$F(n)$ is the maximum cardinality of a multiplicative $B_2$ subset of $\{1, \ldots, n\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-55--/
+FormalConjectures/ErdosProblems/425.lean:56:noncomputable def multB2MaxSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/425.lean-57-  sSup {k : ℕ | ∃ A : Finset ℕ, IsMultB2 A ∧ (∀ x ∈ A, 1 ≤ x ∧ x ≤ n) ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-59-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-53-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $r$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-54-natural number is the sum of at most $r$ elements from $A$. -/
+FormalConjectures/ErdosProblems/337.lean:55:def IsAdditiveBasis (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/337.lean-56-  ∃ N₀ : ℕ, ∀ n ≥ N₀, ∃ k ≤ r, n ∈ exactSumset A k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-58-/-- Count of elements of $A$ in $\{0, 1, \ldots, N\}$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-74-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/337.lean-75-theorem erdos_337 : answer(False) ↔
+FormalConjectures/ErdosProblems/337.lean-76-    ∀ (A : Set ℕ),
+FormalConjectures/ErdosProblems/337.lean:77:      (∃ r : ℕ, IsAdditiveBasis A r) →
+FormalConjectures/ErdosProblems/337.lean-78-      Tendsto (fun N => (countInRange A N : ℝ) / (N : ℝ)) atTop (nhds 0) →
+FormalConjectures/ErdosProblems/337.lean-79-      Tendsto (fun N => (countInRange (sumset A) N : ℝ) /
+FormalConjectures/ErdosProblems/337.lean-80-          (countInRange A N : ℝ)) atTop atTop := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-41-/-- $S$ is a $B_2[r]$ set if every $n$ has at most $r$ representations
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-42-    as $a + b$ with $a \leq b$, $a, b \in S$. -/
+FormalConjectures/ErdosProblems/863.lean:43:def IsB2r (r : ℕ) (S : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/863.lean-44-  ∀ n : ℕ, sumRepCount S n ≤ r
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-46-/-- The maximum cardinality of a $B_2[r]$ subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/863.lean:47:noncomputable def maxB2rSize (r : ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-48-  ((Icc 1 N).powerset.filter (fun S => IsB2r r S)).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-50-/-- The number of representations of a positive integer $n$ as a difference $a - b = n$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-34-/-- A set $A \subseteq \mathbb{N}$ is an additive basis of order $2$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-35-    natural number can be written as $a + b$ with $a, b \in A$. -/
+FormalConjectures/ErdosProblems/869.lean:36:def IsAdditiveBasis2 (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/869.lean-37-  ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ → n ∈ sumset A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-39-/-- A set $B \subseteq \mathbb{N}$ is a minimal additive basis of order $2$ if it is an additive
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-40-    basis of order $2$ and for every element $x \in B$, the set of natural numbers
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-41-    not in the sumset of $B \setminus \{x\}$ is infinite. -/
+FormalConjectures/ErdosProblems/869.lean-42-def IsMinimalAdditiveBasis2 (B : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/869.lean:43:  IsAdditiveBasis2 B ∧
+FormalConjectures/ErdosProblems/869.lean-44-    ∀ x ∈ B, Set.Infinite {n : ℕ | n ∉ sumset (B \ {x})}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-46-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-51--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-52-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/869.lean-53-theorem erdos_869 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/869.lean:54:    ∀ (A₁ A₂ : Set ℕ), IsAdditiveBasis2 A₁ → IsAdditiveBasis2 A₂ → Disjoint A₁ A₂ →
+FormalConjectures/ErdosProblems/869.lean-55-    ∃ B : Set ℕ, B ⊆ A₁ ∪ A₂ ∧ IsMinimalAdditiveBasis2 B := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-56-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-57-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-29-/-- A set `A ⊆ ℕ` is said to be a `B₂[g]` set if for all `n`, the equation
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-30-`a + a' = n, a ≤ a', a, a' ∈ A` has at most `g` solutions. This is defined in [ESS94]. -/
+FormalConjectures/ErdosProblems/158.lean:31:def B2 (g : ℕ) (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/158.lean-32-  ∀ n, {x : ℕ × ℕ | x.1 + x.2 = n ∧ x.1 ≤ x.2 ∧ x.1 ∈ A ∧ x.2 ∈ A}.encard ≤ g
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-34-/-- A set is `B₂[1]` iff it is Sidon. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-44-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $2$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-45-natural number can be written as the sum of two elements of $A$. -/
+FormalConjectures/ErdosProblems/871.lean:46:def IsAdditiveBasis2 (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/871.lean-47-  ∃ N₀ : ℕ, ∀ n ≥ N₀, n ∈ sumset A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-48-
+FormalConjectures/ErdosProblems/871.lean-49-/-- The representation function $r_A(n) = |\{a \in \{0, \ldots, n\} : a \in A \land n - a \in A\}|$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-69--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-70-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/871.lean-71-theorem erdos_871 : answer(False) ↔
+FormalConjectures/ErdosProblems/871.lean:72:    ∀ A : Set ℕ, IsAdditiveBasis2 A ∧
+FormalConjectures/ErdosProblems/871.lean-73-      Tendsto (fun n => (repCount A n : ℝ)) atTop atTop →
+FormalConjectures/ErdosProblems/871.lean-74-      ∃ A₁ A₂ : Set ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-75-        A₁ ∪ A₂ = A ∧ Disjoint A₁ A₂ ∧
+FormalConjectures/ErdosProblems/871.lean:76:        IsAdditiveBasis2 A₁ ∧ IsAdditiveBasis2 A₂ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-77-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-78-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-79-end Erdos871
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-42-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $r$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-43-natural number is the sum of at most $r$ elements from $A$. -/
+FormalConjectures/ErdosProblems/336.lean:44:def IsAdditiveBasis (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/336.lean-45-  ∃ N : ℕ, ∀ n ≥ N, ∃ k ≤ r, n ∈ exactSumset A k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-47-/-- $A$ has exact order $k$ if every sufficiently large natural number is the sum of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-52-/-- $h(r)$ is the maximal $k$ such that some basis of order $r$ has exact order $k$. -/
+FormalConjectures/ErdosProblems/336.lean-53-noncomputable def hBasis (r : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/336.lean:54:  sSup {k : ℕ | ∃ A : Set ℕ, IsAdditiveBasis A r ∧ HasExactOrder A k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-56-/--
+FormalConjectures/ErdosProblems/336.lean-57-Erdős Problem 336 [ErGr80, p.51]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-40-/-- A set $A \subseteq \mathbb{N}$ is an additive basis of order $k$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-41-natural number can be represented as a sum of at most $k$ elements of $A$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-42-(with repetition allowed). -/
+FormalConjectures/ErdosProblems/870.lean:43:def IsAdditiveBasis (A : Set ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/870.lean-44-  ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/870.lean-45-    ∃ (l : List ℕ), l.length ≤ k ∧ (∀ x ∈ l, x ∈ A) ∧ l.sum = n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-47-/-- A set $A$ is a minimal additive basis of order $k$ if it is a basis of order $k$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-48-but removing any single element makes it no longer a basis of order $k$. -/
+FormalConjectures/ErdosProblems/870.lean-49-def IsMinimalAdditiveBasis (A : Set ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/870.lean:50:  IsAdditiveBasis A k ∧ ∀ a ∈ A, ¬ IsAdditiveBasis (A \ {a}) k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-52-/-- The number of representations of $n$ as a sum of at most $k$ elements from $A$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-53-A representation is a non-decreasing list of elements of $A$ with length at
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-75-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/870.lean-76-theorem erdos_870 : answer(sorry) ↔ ∀ (k : ℕ), k ≥ 3 →
+FormalConjectures/ErdosProblems/870.lean-77-    ∃ c : ℝ, c > 0 ∧
+FormalConjectures/ErdosProblems/870.lean:78:      ∀ (A : Set ℕ), IsAdditiveBasis A k →
+FormalConjectures/ErdosProblems/870.lean-79-        (∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ → (repCount A k n : ℝ) ≥ c * Real.log n) →
+FormalConjectures/ErdosProblems/870.lean-80-        ∃ B : Set ℕ, B ⊆ A ∧ IsMinimalAdditiveBasis B k := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean-81-  sorry

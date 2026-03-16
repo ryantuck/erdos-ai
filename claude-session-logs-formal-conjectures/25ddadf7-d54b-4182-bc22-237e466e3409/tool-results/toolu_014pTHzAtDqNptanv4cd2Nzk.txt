@@ -1,0 +1,817 @@
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:27:It states that for any 2-coloring of the complete graph on the ordinal `α`,
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:33:  -- For any 2-coloring of `α`,
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:30:such that any 2-coloring of `F`'s edges contains a copy of `G` in one color or `H` in the other.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:37:such that any 2-coloring of `F`'s edges contains a copy of `G` in one color or `H` in the other.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:39:A 2-coloring is represented by a subgraph `R ≤ F` (the "red" edges); the "blue" edges are `F \ R`.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:26:@[inherit_doc] scoped notation "χ(" G ")" => chromaticNumber G
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:28:lemma le_chromaticNumber_iff_colorable : n ≤ G.chromaticNumber ↔ ∀ m, G.Colorable m → n ≤ m := by
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:29:  simp [chromaticNumber]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:31:lemma le_chromaticNumber_iff_coloring :
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:32:    n ≤ G.chromaticNumber ↔ ∀ m, G.Coloring (Fin m) → n ≤ m := by
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:33:  simp [le_chromaticNumber_iff_colorable, Colorable]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:35:lemma lt_chromaticNumber_iff_not_colorable : n < G.chromaticNumber ↔ ¬ G.Colorable n := by
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:36:  rw [← chromaticNumber_le_iff_colorable, not_le]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:38:lemma le_chromaticNumber_iff_not_colorable (hn : n ≠ 0) :
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:39:    n ≤ G.chromaticNumber ↔ ¬ G.Colorable (n - 1) := by
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:40:  let n + 1 := n; simp [ENat.add_one_le_iff, lt_chromaticNumber_iff_not_colorable]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:51:lemma le_chromaticNumber_of_pairwise_adj (hn : n ≤ Nat.card ι) (f : ι → V)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:52:    (hf : Pairwise fun i j ↦ G.Adj (f i) (f j)) : n ≤ G.chromaticNumber :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:53:  le_chromaticNumber_iff_colorable.2 fun _m hm ↦ hn.trans <| hm.card_le_of_pairwise_adj f hf
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:55:lemma card_div_indepNum_le_chromaticNumber : ⌈(Nat.card V / α(G) : ℚ≥0)⌉₊ ≤ G.chromaticNumber := by
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:59:  simp only [Nat.card_eq_fintype_card, le_chromaticNumber_iff_coloring, Nat.ceil_le]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:71:/-- A set of edges is critical if deleting them reduces the chromatic number. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:73:  (G.deleteEdges edges).chromaticNumber < G.chromaticNumber
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:76:/-- An edge is critical if deleting it reduces the chromatic number. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:80:A set of vertices is critical if deleting them reduces the chromatic number.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:83:  (G'.deleteVerts verts).coe.chromaticNumber < G'.coe.chromaticNumber
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:86:A vertex is critical if deleting it reduces the chromatic number.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:93:A graph `G` is `k`-critical (or vertex-critical) if its chromatic number is `k`,
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:94:and deleting any single vertex reduces the chromatic number.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:96:def IsCritical (k : ℕ) : Prop := G.chromaticNumber = k ∧ ∀ v, (⊤ : G.Subgraph).IsCriticalVertex v
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:102:  have := h ▸ SimpleGraph.chromaticNumber_le_iff_colorable.2 G.colorable_of_fintype
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:109:    G.Colorable n ↔ ∃ coloring : V → Fin n, ∀ i, G.induce {v | coloring v = i} = ⊥ := by
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:118:def Cocolorable (G : SimpleGraph V) (n : ℕ) : Prop := ∃ coloring : V → Fin n,
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:119:  ∀ i, G.induce {v | coloring v = i} = ⊥ ∨ G.induce {v | coloring v = i} = ⊤
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:126:The chromatic number of a graph is the minimal number of colors needed to color it.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:129:If `G` is colorable, then `ENat.toNat G.chromaticNumber` is the `ℕ`-valued chromatic number.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:131:noncomputable def cochromaticNumber (G : SimpleGraph V) : ℕ∞ := ⨅ n ∈ setOf G.Cocolorable, (n : ℕ∞)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:133:/-- The chromatic cardinal is the minimal number of colors need to color it. In contrast to
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:134:`chromaticNumber`, which assigns `⊤ : ℕ∞` to all non-finitely colorable graphs, this definition
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:135:returns a `Cardinal` and can therefore distinguish between different infinite chromatic numbers. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:136:noncomputable def chromaticCardinal.{u} {V : Type u} (G : SimpleGraph V) : Cardinal :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:143:/-- A finite graph is CDS-colorable if it has a proper coloring
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:30:The smallest natural number `m` such that every 2-coloring of the `r`-subsets of a set of size `m`
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:31:contains a monochromatic subset of size `n`.
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:236:    (coloring : M → κ) (k : ℕ) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:238:    ∀ m ∈ ap, coloring m = c
+FormalConjectures/ErdosProblems/751.lean:24:Let $G$ be a graph with chromatic number $\chi(G) = 4$. If $m_1 < m_2 < \cdots$ are the
+FormalConjectures/ErdosProblems/751.lean:29:true for every graph with chromatic number $4$.
+FormalConjectures/ErdosProblems/751.lean:53:      G.chromaticNumber = 4 ∧
+FormalConjectures/ErdosProblems/638.lean:24:every $\kappa$-colouring of the edges of $G$ contains a monochromatic triangle?
+FormalConjectures/ErdosProblems/638.lean:33:/-- A symmetric colouring of a simple graph has a **monochromatic triangle**
+FormalConjectures/ErdosProblems/638.lean:56:property: for every $n \geq 1$, some member of $S$ forces a monochromatic triangle
+FormalConjectures/ErdosProblems/638.lean:61:every $\kappa$-colouring of the edges of $G$ contains a monochromatic triangle?
+FormalConjectures/ErdosProblems/760.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+FormalConjectures/ErdosProblems/760.lean:28:If $G$ is a graph with chromatic number $\chi(G) = m$ then must $G$ contain a subgraph $H$
+FormalConjectures/ErdosProblems/760.lean:46:/-- A colouring $c : V \to \operatorname{Fin} k$ is a cochromatic colouring of $G$ if every
+FormalConjectures/ErdosProblems/760.lean:48:def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/760.lean:54:/-- The cochromatic number $\zeta(G)$ of a finite graph $G$: the minimum number of
+FormalConjectures/ErdosProblems/760.lean:55:colours in a cochromatic colouring. -/
+FormalConjectures/ErdosProblems/760.lean:56:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/760.lean:58:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+FormalConjectures/ErdosProblems/760.lean:64:large chromatic number $m = \chi(G)$, there exists an induced subgraph $H$ of $G$ with
+FormalConjectures/ErdosProblems/760.lean:65:cochromatic number $\zeta(H) \geq C \cdot m / \log m$.
+FormalConjectures/ErdosProblems/760.lean:71:      G.chromaticNumber.toNat ≥ N₀ →
+FormalConjectures/ErdosProblems/760.lean:73:          (cochromaticNumber (G.induce (↑S : Set (Fin n))) : ℝ) ≥
+FormalConjectures/ErdosProblems/760.lean:74:            C * (G.chromaticNumber.toNat : ℝ) / Real.log (G.chromaticNumber.toNat : ℝ) := by
+FormalConjectures/ErdosProblems/1174.lean:38:edge colouring of $G$ with countably many colours ($\mathbb{N}$), some monochromatic $K_3$
+FormalConjectures/ErdosProblems/1174.lean:58:($\mathbb{N}$), some monochromatic $K_{\aleph_0}$ exists — that is, a clique of cardinality
+FormalConjectures/ErdosProblems/556.lean:43:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/556.lean:46:A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+FormalConjectures/ErdosProblems/1177.lean:25:$3$-uniform hypergraphs with chromatic number $\kappa$ not containing $G$.
+FormalConjectures/ErdosProblems/1177.lean:36:/-- A proper coloring of a $3$-uniform hypergraph with vertex type $V$ using colors from $\alpha$
+FormalConjectures/ErdosProblems/1177.lean:37:    is a function $c : V \to \alpha$ such that no hyperedge is monochromatic: for every edge $e$
+FormalConjectures/ErdosProblems/1177.lean:42:/-- A $3$-uniform hypergraph (on vertex type $V$, with edge set `edges`) has cardinal chromatic
+FormalConjectures/ErdosProblems/1177.lean:43:    number $\kappa$ if $\kappa$ is the least cardinality of a color set admitting a proper coloring:
+FormalConjectures/ErdosProblems/1177.lean:44:    - there exists a proper coloring with a color set of cardinality $\le \kappa$, and
+FormalConjectures/ErdosProblems/1177.lean:45:    - every proper coloring requires a color set of cardinality $\ge \kappa$. -/
+FormalConjectures/ErdosProblems/1177.lean:62:a $G$-free $3$-uniform hypergraph with chromatic number $\aleph_1$), then there exists
+FormalConjectures/ErdosProblems/1177.lean:87:hypergraph with chromatic number $\aleph_1$ that contains neither $G$ nor $H$ as a
+FormalConjectures/ErdosProblems/1177.lean:117:of a $G$-free $3$-uniform hypergraph with chromatic number $\kappa$ implies the existence of one
+FormalConjectures/ErdosProblems/1177.lean:118:with chromatic number $\mu$.
+FormalConjectures/ErdosProblems/836.lean:24:Let $r \geq 2$ and $G$ be an $r$-uniform hypergraph with chromatic number 3
+FormalConjectures/ErdosProblems/836.lean:26:is monochromatic). Suppose any two edges of $G$ have a non-empty intersection.
+FormalConjectures/ErdosProblems/836.lean:34:$r$-uniform 3-chromatic hypergraph with $\sim 4^r / \sqrt{r}$ vertices.
+FormalConjectures/ErdosProblems/836.lean:56:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/836.lean:61:/-- A hypergraph has chromatic number 3: it is 3-colorable but not 2-colorable. -/
+FormalConjectures/ErdosProblems/836.lean:73:For every $r$-uniform intersecting hypergraph with chromatic number 3,
+FormalConjectures/ErdosProblems/190.lean:25:(into any number of colours) there is always either a monochromatic $k$-term
+FormalConjectures/ErdosProblems/190.lean:42:/-- A colouring $\chi : \mathbb{N} \to \mathbb{N}$ has a monochromatic $k$-term arithmetic
+FormalConjectures/ErdosProblems/190.lean:57:either a monochromatic $k$-term AP or a rainbow $3$-term AP. -/
+FormalConjectures/ErdosProblems/190.lean:65:such that any finite colouring of $\{1,\ldots,N\}$ always contains either a monochromatic
+FormalConjectures/ErdosProblems/810.lean:25:sufficiently large n, some n-vertex graph with at least εn² edges admits an n-coloring of its edges
+FormalConjectures/ErdosProblems/810.lean:31:/-- A graph on $n$ vertices admits a rainbow $C_4$ coloring with $n$ colors if there
+FormalConjectures/ErdosProblems/810.lean:32:    exists an edge coloring using $n$ colors such that every 4-cycle in the
+FormalConjectures/ErdosProblems/799.lean:24:Is it true that the list chromatic number $\chi_L(G) = o(n)$ for almost all graphs on $n$ vertices?
+FormalConjectures/ErdosProblems/799.lean:32:[AKS99] Alon, N., Krivelevich, M. and Sudakov, B., *List coloring of random and
+FormalConjectures/ErdosProblems/799.lean:38:/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/799.lean:47:proper list coloring. -/
+FormalConjectures/Paper/LatinTableau.lean:26:coloring of the vertices of the graph such that for all k > 0, the
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:35:largest clique subgraph, and $\chi(G)$ to be the chromatic number. Reed's omega, delta, and chi
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:41:    let χ := G.chromaticNumber
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:49:size of the largest clique subgraph, and $\chi(G)$ to be the chromatic number. Reed's omega,
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:55:    let χ := G.chromaticNumber
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:66:  ∀ {V : Type} (G : SimpleGraph V), G.emaxDegree = 6 ∧ G.cliqueNum = 2 → G.chromaticNumber ≤ 5 := by
+FormalConjectures/Paper/DegreeSequencesTriangleFree.lean:172:with chromatic number `n` and `f = 3`. -/
+FormalConjectures/Paper/DegreeSequencesTriangleFree.lean:176:    G.CliqueFree 3 ∧ G.chromaticNumber = n ∧ degreeSequenceMultiplicity G = 3 }
+FormalConjectures/ErdosProblems/1171.lean:26:$(k+1)$-coloring of pairs below $\omega_1^2$ yields either a homogeneous set of order type
+FormalConjectures/ErdosProblems/1171.lean:27:$\omega_1 \cdot \omega$ for the first color or a monochromatic triple for some other color.
+FormalConjectures/ErdosProblems/1171.lean:42:For every $(k+1)$-coloring of pairs of ordinals below $\alpha$, either
+FormalConjectures/ErdosProblems/1171.lean:61:That is, for every $(k+1)$-coloring of pairs of ordinals below $\omega_1^2$, either
+FormalConjectures/ErdosProblems/1171.lean:63:there is a monochromatic triple for one of the remaining $k$ colors.
+FormalConjectures/ErdosProblems/87.lean:27:$R(G) > (1 - \varepsilon)^k R(k)$ for every graph $G$ with chromatic number $\chi(G) = k$?
+FormalConjectures/ErdosProblems/87.lean:44:contains a monochromatic copy of $H$). -/
+FormalConjectures/ErdosProblems/87.lean:58:for every graph $G$ with chromatic number $\chi(G) = k$?
+FormalConjectures/ErdosProblems/87.lean:65:      G.chromaticNumber = k →
+FormalConjectures/ErdosProblems/87.lean:74:for every graph $G$ with chromatic number $\chi(G) = k$?
+FormalConjectures/ErdosProblems/87.lean:81:      G.chromaticNumber = k →
+FormalConjectures/ErdosProblems/750.lean:24:Does there exist, for every function $f$ with $f(m) \to \infty$, a graph with infinite chromatic
+FormalConjectures/ErdosProblems/750.lean:30:[ErHa67b] Erdős, P. and Hajnal, A., _On chromatic number of graphs and set-systems_ (1967).
+FormalConjectures/ErdosProblems/750.lean:32:[EHS82] Erdős, P., Hajnal, A., and Szemerédi, E., _On almost bipartite large chromatic
+FormalConjectures/ErdosProblems/750.lean:53:as $m \to \infty$, a graph $G$ with infinite chromatic number such that every finite set of
+FormalConjectures/ErdosProblems/740.lean:26:Let $\mathfrak{m}$ be an infinite cardinal and $G$ be a graph with chromatic number
+FormalConjectures/ErdosProblems/740.lean:27:$\mathfrak{m}$. Let $r \geq 1$. Must $G$ contain a subgraph of chromatic number
+FormalConjectures/ErdosProblems/740.lean:34:integer $r$, there exists $f_r(\mathfrak{m})$ such that every graph with chromatic
+FormalConjectures/ErdosProblems/740.lean:35:number $\geq f_r(\mathfrak{m})$ contains a subgraph with chromatic number
+FormalConjectures/ErdosProblems/740.lean:45:/-- The cardinal chromatic number of a graph: the infimum of cardinals $\kappa$
+FormalConjectures/ErdosProblems/740.lean:46:for which $G$ admits a proper $\kappa$-coloring. -/
+FormalConjectures/ErdosProblems/740.lean:54:If $G$ is a graph with infinite chromatic number $\mathfrak{m}$, then for every
+FormalConjectures/ErdosProblems/740.lean:55:$r \geq 1$, $G$ contains a subgraph with chromatic number $\mathfrak{m}$ that has
+FormalConjectures/ErdosProblems/532.lean:26:finite subsets of $A$) are monochromatic?
+FormalConjectures/ErdosProblems/532.lean:46:of $A$ are monochromatic. -/
+FormalConjectures/ErdosProblems/57.lean:24:If $G$ is a graph with infinite chromatic number and $a_1 < a_2 < \cdots$ are the lengths
+FormalConjectures/ErdosProblems/57.lean:28:[ErHa66] Erdős, P. and Hajnal, A., _On chromatic number of graphs and set-systems_, 1966.
+FormalConjectures/ErdosProblems/57.lean:39:If $G$ is a graph with infinite chromatic number and $a_1 < a_2 < \cdots$ are the lengths of
+FormalConjectures/ErdosProblems/57.lean:48:    (hχ : G.chromaticNumber = ⊤) :
+FormalConjectures/ErdosProblems/625.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+FormalConjectures/ErdosProblems/625.lean:26:complete graph or an empty graph. Let $\chi(G)$ denote the chromatic number.
+FormalConjectures/ErdosProblems/625.lean:33:[ErGi93] Erdős, P. and Gimbel, J., *Some problems and results in cochromatic theory*, 1993.
+FormalConjectures/ErdosProblems/625.lean:48:/-- The chromatic number of a simple graph on `Fin n`: the minimum number of colors $k$
+FormalConjectures/ErdosProblems/625.lean:49:such that there exists a proper coloring $f : \operatorname{Fin} n \to \operatorname{Fin} k$
+FormalConjectures/ErdosProblems/625.lean:54:/-- The cochromatic number of a simple graph on `Fin n`: the minimum number of parts $k$
+FormalConjectures/ErdosProblems/625.lean:55:in a coloring $f : \operatorname{Fin} n \to \operatorname{Fin} k$ such that each color class
+FormalConjectures/ErdosProblems/625.lean:57:noncomputable def cochromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/625.lean:79:        finChromaticNumber (toGraph625 ec) - cochromaticNumber (toGraph625 ec) ≥ M)).card : ℝ) ≥
+FormalConjectures/ErdosProblems/641.lean:24:A problem of Erdős and Hajnal on chromatic number and edge-disjoint cycles.
+FormalConjectures/ErdosProblems/641.lean:41:chromatic number $\geq f(k)$ then $G$ has $k$ edge-disjoint cycles on the same set
+FormalConjectures/ErdosProblems/641.lean:52:          (f : ℕ∞) ≤ G.chromaticNumber →
+FormalConjectures/ErdosProblems/641.lean:64:finite graph with chromatic number at least $f$ but without $k$ edge-disjoint
+FormalConjectures/ErdosProblems/641.lean:72:          (f : ℕ∞) ≤ G.chromaticNumber ∧
+FormalConjectures/ErdosProblems/984.lean:25:monochromatic arithmetic progression then $k \ll_\varepsilon a^\varepsilon$ for all
+FormalConjectures/ErdosProblems/984.lean:40:/-- An arithmetic progression $\{a, a+d, \ldots, a+(k-1)d\}$ is monochromatic under
+FormalConjectures/ErdosProblems/984.lean:42:def IsMonochromaticAP (c : ℕ → Fin 2) (a d k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/984.lean:49:constant $C > 0$ such that every $k$-term monochromatic arithmetic progression
+FormalConjectures/ErdosProblems/984.lean:56:        IsMonochromaticAP c a d k →
+FormalConjectures/ErdosProblems/553.lean:25:of $K_m$ then there is either a monochromatic triangle in one of the first two
+FormalConjectures/ErdosProblems/553.lean:26:colours or a monochromatic $K_n$ in the third colour. Define $R(3,n)$ similarly
+FormalConjectures/ErdosProblems/553.lean:39:the edges of $K_N$ yields either a monochromatic triangle in colour $1$ or
+FormalConjectures/ErdosProblems/553.lean:40:a monochromatic $K_n$ in colour $2$. Equivalently, every simple graph on $N$
+FormalConjectures/ErdosProblems/553.lean:46:the edges of $K_N$ yields either a monochromatic triangle in one of the
+FormalConjectures/ErdosProblems/553.lean:47:first two colours or a monochromatic $K_n$ in the third colour.
+FormalConjectures/ErdosProblems/1011.lean:25:edges and chromatic number $\geq r$ contains a triangle. Determine $f_r(n)$.
+FormalConjectures/ErdosProblems/1011.lean:31:the largest $m$ such that any triangle-free graph with chromatic number $\geq r$
+FormalConjectures/ErdosProblems/1011.lean:47:with at least $m$ edges and chromatic number $\geq r$ contains a triangle ($3$-clique). -/
+FormalConjectures/ErdosProblems/1011.lean:50:    G.edgeSet.ncard ≥ m → (r : ℕ∞) ≤ G.chromaticNumber → ¬G.CliqueFree 3}
+FormalConjectures/ErdosProblems/21.lean:28:[ErLo75] Erdős, P. and Lovász, L., _Problems and results on 3-chromatic hypergraphs and some
+FormalConjectures/ErdosProblems/518.lean:34:/-- A path is monochromatic of color $b$ under edge coloring $c$ if every
+FormalConjectures/ErdosProblems/518.lean:36:    of length $\leq 1$ is trivially monochromatic. -/
+FormalConjectures/ErdosProblems/518.lean:37:def IsMonochromaticPath {α : Type*} (c : α → α → Bool) (b : Bool) (p : List α) : Prop :=
+FormalConjectures/ErdosProblems/518.lean:44:at most $\lceil\sqrt{n}\rceil$ monochromatic paths, all of the same colour,
+FormalConjectures/ErdosProblems/518.lean:58:        (∀ p ∈ paths, p.Nodup ∧ IsMonochromaticPath c b p) ∧
+FormalConjectures/ErdosProblems/1013.lean:23:vertices of a triangle-free graph with chromatic number $k$?
+FormalConjectures/ErdosProblems/1013.lean:35:triangle-free graph on $n$ vertices with chromatic number exactly $k$. -/
+FormalConjectures/ErdosProblems/1013.lean:37:  sInf {n : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = (k : ℕ∞)}
+FormalConjectures/ErdosProblems/1013.lean:45:chromatic number $k$.
+FormalConjectures/ErdosProblems/300.lean:27:[Cr03] Croot, E., *On a coloring conjecture about unit fractions*. Annals of Mathematics (2003).
+FormalConjectures/ErdosProblems/581.lean:39:proper 2-coloring. We use `Set.ncard` to count edges, avoiding the need for
+FormalConjectures/ErdosProblems/704.lean:27:Estimate the chromatic number $\chi(G_n)$. Does it grow exponentially in $n$? Does
+FormalConjectures/ErdosProblems/704.lean:56:/-- The chromatic number of the unit distance graph in $\mathbb{R}^n$: the minimum number
+FormalConjectures/ErdosProblems/704.lean:58:distance $1$ share the same color. Returns $0$ if no finite coloring exists. -/
+FormalConjectures/ErdosProblems/704.lean:59:noncomputable def chromaticNumber_unitDist (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/704.lean:70:      (fun n : ℕ => (chromaticNumber_unitDist n : ℝ) ^ ((1 : ℝ) / (n : ℝ)))
+FormalConjectures/ErdosProblems/704.lean:77:The chromatic number of the unit distance graph in $\mathbb{R}^n$ grows at least
+FormalConjectures/ErdosProblems/704.lean:86:      (chromaticNumber_unitDist n : ℝ) ≥ C * ((6 : ℝ) / 5) ^ n := by
+FormalConjectures/ErdosProblems/704.lean:100:      (chromaticNumber_unitDist n : ℝ) ≤ C * (3 : ℝ) ^ n := by
+FormalConjectures/ErdosProblems/70.lean:35:for every 2-coloring of increasing triples from ordinals below $\alpha$,
+FormalConjectures/ErdosProblems/811.lean:36:[ErTu93] Erdős, P. and Tuza, Zs., _Rainbow subgraphs in edge-colorings of complete graphs_, 1993.
+FormalConjectures/ErdosProblems/948.lean:24:Erdős initially asked whether this is possible with the set being monochromatic,
+FormalConjectures/ErdosProblems/1128.lean:23:must contain a monochromatic countably infinite sub-product. This was disproved by Prikry and
+FormalConjectures/ErdosProblems/1128.lean:39:$A_1 \times B_1 \times C_1$ is monochromatic?
+FormalConjectures/ErdosProblems/1175.lean:25:chromatic number λ contains a triangle-free subgraph with chromatic number κ?
+FormalConjectures/ErdosProblems/1175.lean:34:/-- The graph $G$ has cardinal chromatic number equal to $\kappa$ if $\kappa$ is the minimum
+FormalConjectures/ErdosProblems/1175.lean:35:cardinality of a color set admitting a proper coloring of $G$:
+FormalConjectures/ErdosProblems/1175.lean:36:- there exists a proper coloring with a color set of cardinality $\leq \kappa$, and
+FormalConjectures/ErdosProblems/1175.lean:37:- every proper coloring uses a color set of cardinality $\geq \kappa$.
+FormalConjectures/ErdosProblems/1175.lean:50:every graph with chromatic number $\lambda$ contains a triangle-free subgraph
+FormalConjectures/ErdosProblems/1175.lean:51:with chromatic number $\kappa$?
+FormalConjectures/ErdosProblems/1175.lean:54:admitting a proper coloring of $G$. Triangle-free means `G.CliqueFree 3` (no
+FormalConjectures/ErdosProblems/597.lean:47:every $2$-coloring of ordered pairs from `OrdinalSet α` yields either:
+FormalConjectures/ErdosProblems/597.lean:53:and monochromaticity means $f(e(i), e(j)) = 0$ for all $i < j$. A "copy of $G$"
+FormalConjectures/ErdosProblems/966.lean:26:must exist a monochromatic non-trivial arithmetic progression of length $k$?
+FormalConjectures/ErdosProblems/966.lean:39:a monochromatic $k$-term arithmetic progression.
+FormalConjectures/ErdosProblems/75.lean:24:Does there exist a graph on $\aleph_1$ vertices with chromatic number $\aleph_1$ such that
+FormalConjectures/ErdosProblems/75.lean:28:[EHS82] Erdős, P., Hajnal, A., and Szemerédi, E., _On almost bipartite large chromatic graphs_,
+FormalConjectures/ErdosProblems/75.lean:43:There exists a graph $G$ on $\aleph_1$ vertices with chromatic number $\aleph_1$ such that for
+FormalConjectures/ErdosProblems/75.lean:64:There exists a graph $G$ on $\aleph_1$ vertices with chromatic number $\aleph_1$ such that
+FormalConjectures/ErdosProblems/626.lean:25:with chromatic number $k$ and girth $> m$. Does
+FormalConjectures/ErdosProblems/626.lean:31:Conversely, if $h^{(m)}(n)$ is the maximal chromatic number of a graph on $n$ vertices
+FormalConjectures/ErdosProblems/626.lean:40:[Er62b] Erdős, P., _On circuits and subgraphs of chromatic graphs_, Mathematika, 1962.
+FormalConjectures/ErdosProblems/626.lean:42:[Er69b] Erdős, P., _Problems and results in chromatic graph theory_, 1969.
+FormalConjectures/ErdosProblems/626.lean:56:/-- The chromatic number of a simple graph on $\text{Fin}(n)$: the minimum number of colors $k$
+FormalConjectures/ErdosProblems/626.lean:57:    such that there exists a proper coloring $f : \text{Fin}(n) \to \text{Fin}(k)$. -/
+FormalConjectures/ErdosProblems/626.lean:67:    with chromatic number $k$ and girth $> m$. Returns $0$ if no such graph exists. -/
+FormalConjectures/ErdosProblems/626.lean:71:/-- $h^{(m)}(n)$ is the maximal chromatic number of a graph on $n$ vertices
+FormalConjectures/ErdosProblems/626.lean:110:theorem erdos_626.variants.maximal_chromatic : answer(sorry) ↔
+FormalConjectures/ErdosProblems/169.lean:39:/-- The van der Waerden property: every $2$-coloring of $\{0, \ldots, N-1\}$ contains
+FormalConjectures/ErdosProblems/169.lean:40:a monochromatic $k$-term arithmetic progression. -/
+FormalConjectures/ErdosProblems/169.lean:50:/-- The van der Waerden number $W(k)$: the smallest $N$ such that any $2$-coloring
+FormalConjectures/ErdosProblems/169.lean:51:of $\{0, \ldots, N-1\}$ contains a monochromatic $k$-term AP. -/
+FormalConjectures/ErdosProblems/63.lean:24:Does every graph with infinite chromatic number contain a cycle of length $2^n$ for
+FormalConjectures/ErdosProblems/63.lean:38:Does every graph with infinite chromatic number contain a cycle of length $2^n$ for
+FormalConjectures/ErdosProblems/63.lean:41:Formalized as: for every graph $G$ with infinite chromatic number, for every bound $N$,
+FormalConjectures/ErdosProblems/63.lean:47:      G.chromaticNumber = ⊤ →
+FormalConjectures/ErdosProblems/8.lean:25:must there exist a covering system all of whose moduli are monochromatic?
+FormalConjectures/ErdosProblems/8.lean:32:monochromaticity impossible.
+FormalConjectures/ErdosProblems/8.lean:54:All moduli in a covering system are **monochromatic** under a colouring $\chi : \mathbb{N} \to \text{Fin}\, k$
+FormalConjectures/ErdosProblems/8.lean:57:def HasMonochromaticModuli {k : ℕ} (χ : ℕ → Fin k) (S : Finset (ℤ × ℕ)) : Prop :=
+FormalConjectures/ErdosProblems/8.lean:62:must there exist a covering system all of whose moduli are monochromatic?
+FormalConjectures/ErdosProblems/8.lean:70:      ∃ S : Finset (ℤ × ℕ), IsCoveringSystem S ∧ HasMonochromaticModuli χ S) := by
+FormalConjectures/ErdosProblems/565.lean:26:an induced monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/565.lean:38:an induced monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/565.lean:40:An induced monochromatic copy of $G$ means: there is an injection
+FormalConjectures/ErdosProblems/802.lean:29:neighbourhood has chromatic number $\leq r - 2$.
+FormalConjectures/ErdosProblems/639.lean:22:Erdős conjectured that in any 2-coloring of the edges of $K_n$, at most $\lfloor n^2/4 \rfloor$
+FormalConjectures/ErdosProblems/639.lean:23:edges do not lie in a monochromatic triangle. This was proved by Keevash and Sudakov for $n \geq 7$.
+FormalConjectures/ErdosProblems/639.lean:30:[KeSu04] Keevash, P. and Sudakov, B., _On the number of edges not covered by monochromatic
+FormalConjectures/ErdosProblems/639.lean:36:/-- A 2-coloring of the edges of the complete graph on $\operatorname{Fin} n$.
+FormalConjectures/ErdosProblems/639.lean:43:/-- An edge $\{u, v\}$ lies in a monochromatic triangle under coloring $c$ if there
+FormalConjectures/ErdosProblems/639.lean:52:do not lie in any monochromatic triangle under coloring $c$. -/
+FormalConjectures/ErdosProblems/639.lean:59:which do not occur in a monochromatic triangle.
+FormalConjectures/ErdosProblems/149.lean:22:The Erdős–Nešetřil conjecture states that the strong chromatic index of any graph with
+FormalConjectures/ErdosProblems/149.lean:44:/-- The strong chromatic index $\chi'_s(G)$: the minimum number of strongly
+FormalConjectures/ErdosProblems/149.lean:46:this is the chromatic number of $L(G)^2$, the square of the line graph. -/
+FormalConjectures/ErdosProblems/178.lean:43:[Be17] Beck, J., *Balanced two-colorings of finite sets in the square*.
+FormalConjectures/ErdosProblems/178.lean:53:coloring $f : \mathbb{N} \to \mathbb{Z}$ with $f(n) \in \{-1, 1\}$ such that for each $d$, the partial
+FormalConjectures/ErdosProblems/118.lean:60:every $2$-coloring of the pairs of elements of $\alpha$ (viewed as the linearly
+FormalConjectures/ErdosProblems/118.lean:67:and monochromaticity means $f(e(i), e(j)) = c$ for all $i < j$. -/
+FormalConjectures/ErdosProblems/118.lean:80:$2$-coloring of pairs from a linearly ordered set of order type $\alpha$ contains either
+FormalConjectures/ErdosProblems/118.lean:81:a monochromatic copy of $\alpha$ in color $0$ (red) or a monochromatic triangle $K_3$ in
+FormalConjectures/ErdosProblems/778.lean:40:/-- A game state in the edge-coloring game on $K_n$:
+FormalConjectures/ErdosProblems/778.lean:47:/-- A strategy for a player in the edge-coloring game:
+FormalConjectures/ErdosProblems/778.lean:51:/-- Play the standard edge-coloring game on $K_n$ (alternating, one edge each, Alice first)
+FormalConjectures/ErdosProblems/778.lean:67:Does Bob have a winning strategy in the standard edge-coloring game on $K_n$
+FormalConjectures/ErdosProblems/1168.lean:40:for any type $\alpha$ of cardinality $\aleph_{\omega+1}$, there exists a coloring of unordered
+FormalConjectures/ErdosProblems/1168.lean:42:- No set of cardinality $\aleph_{\omega+1}$ is monochromatic in color $0$
+FormalConjectures/ErdosProblems/1168.lean:43:- No triple is monochromatic in any color $n \geq 1$
+FormalConjectures/ErdosProblems/1168.lean:49:      -- The coloring is symmetric
+FormalConjectures/ErdosProblems/1168.lean:51:      -- No monochromatic set of cardinality ℵ_{ω+1} for color 0
+FormalConjectures/ErdosProblems/1168.lean:54:      -- No monochromatic triple for any color n ≥ 1
+FormalConjectures/ErdosProblems/919.lean:25:well-ordered set with chromatic number $\geq \aleph_0$ there is a subgraph on
+FormalConjectures/ErdosProblems/919.lean:26:vertices with order-type $\omega$ with chromatic number $\aleph_0$.
+FormalConjectures/ErdosProblems/919.lean:29:constructed a graph on $\omega_1^2$ with chromatic number $\aleph_1$ such that
+FormalConjectures/ErdosProblems/919.lean:30:every strictly smaller subgraph has chromatic number $\leq \aleph_0$.
+FormalConjectures/ErdosProblems/919.lean:32:A similar construction produces a graph on $\omega_2^2$ with chromatic number
+FormalConjectures/ErdosProblems/919.lean:33:$\aleph_2$ such that every smaller subgraph has chromatic number $\leq \aleph_1$.
+FormalConjectures/ErdosProblems/919.lean:35:[Er69b] Erdős, P., _Problems and results in chromatic number theory_.
+FormalConjectures/ErdosProblems/919.lean:45:Is there a graph on a well-ordered set of order type $\omega_2 \cdot \omega_2$ with chromatic
+FormalConjectures/ErdosProblems/919.lean:47:order type has chromatic number $\leq \aleph_0$?
+FormalConjectures/ErdosProblems/919.lean:65:What if instead we ask for $G$ to have chromatic number $\aleph_1$?
+FormalConjectures/ErdosProblems/919.lean:67:Is there a graph on a well-ordered set of order type $\omega_2 \cdot \omega_2$ with chromatic
+FormalConjectures/ErdosProblems/919.lean:69:smaller order type has chromatic number $\leq \aleph_0$?
+FormalConjectures/ErdosProblems/559.lean:25:that there is a graph $H$ with $m$ edges that is Ramsey for $G$ (every 2-coloring
+FormalConjectures/ErdosProblems/559.lean:26:of the edges of $H$ contains a monochromatic copy of $G$).
+FormalConjectures/ErdosProblems/559.lean:45:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/559.lean:47:    contains a monochromatic copy of $G$, i.e., an injective map $f$ from the
+FormalConjectures/ErdosProblems/79.lean:44:/-- The Ramsey property: every 2-coloring of $K_n$ contains $G$ in one color or $H$ in the
+FormalConjectures/ErdosProblems/79.lean:45:    other. A 2-coloring of $K_n$ is a graph $S$ on `Fin n`; one color class is $S$ and the
+FormalConjectures/ErdosProblems/965.lean:22:For every 2-coloring of ℝ, is there an uncountable set $A ⊆ ℝ$ such that
+FormalConjectures/ErdosProblems/965.lean:29:- [Ko16] Komjáth, Péter, A certain 2-coloring of the reals. Real Anal. Exchange (2016), 227--231.
+FormalConjectures/ErdosProblems/965.lean:36:Erdős asks in [Er75b] if for every 2-coloring of ℝ, there is an uncountable set $A ⊆ ℝ$ such that
+FormalConjectures/ErdosProblems/183.lean:24:monochromatic triangle.
+FormalConjectures/ErdosProblems/183.lean:36:$k$-colouring of the edges of $K_n$ contains a monochromatic triangle.
+FormalConjectures/ErdosProblems/183.lean:38:and a monochromatic triangle is three pairwise distinct vertices
+FormalConjectures/ErdosProblems/183.lean:50:$k$ colours then there must exist a monochromatic triangle. The limit
+FormalConjectures/ErdosProblems/833.lean:23:every $r$-uniform hypergraph with chromatic number $3$ has a vertex contained
+FormalConjectures/ErdosProblems/833.lean:28:[ErLo75] Erdős, P. and Lovász, L., *Problems and results on 3-chromatic hypergraphs and some
+FormalConjectures/ErdosProblems/833.lean:46:/-- A proper coloring of a hypergraph: no edge with $\geq 2$ vertices is monochromatic. -/
+FormalConjectures/ErdosProblems/833.lean:51:/-- A hypergraph has chromatic number exactly $k$ if it can be properly colored
+FormalConjectures/ErdosProblems/833.lean:64:in any $r$-uniform hypergraph with chromatic number $3$ there is a vertex
+FormalConjectures/ErdosProblems/179.lean:29:[FoPo20] Fox, J. and Pohoata, C., *Subset sums, completeness and colorings*. (2020).
+FormalConjectures/ErdosProblems/924.lean:25:every $k$-colouring of the edges of $G$ contains a monochromatic copy of $K_l$?
+FormalConjectures/ErdosProblems/924.lean:39:$k$-colouring of the edges of $G$ contains a monochromatic $K_l$.
+FormalConjectures/ErdosProblems/759.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+FormalConjectures/ErdosProblems/759.lean:37:[ErGi93] Erdős, P. and Gimbel, J., *Some problems and results in cochromatic theory*, 1993.
+FormalConjectures/ErdosProblems/759.lean:39:[Gi86] Gimbel, J., *Some remarks on the cochromatic number of a graph*, 1986.
+FormalConjectures/ErdosProblems/759.lean:48:/-- A colouring $c : V \to \operatorname{Fin}(k)$ is a cochromatic colouring of $G$ if every colour
+FormalConjectures/ErdosProblems/759.lean:50:def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/759.lean:56:/-- The cochromatic number $\zeta(G)$ of a finite graph $G$: the minimum number of
+FormalConjectures/ErdosProblems/759.lean:57:colours in a cochromatic colouring. -/
+FormalConjectures/ErdosProblems/759.lean:58:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/759.lean:60:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+FormalConjectures/ErdosProblems/759.lean:66:/-- $z(S_n)$: the maximum cochromatic number over all finite graphs embeddable
+FormalConjectures/ErdosProblems/759.lean:68:noncomputable def maxCochromaticOnSurface (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/759.lean:70:    IsEmbeddableOnSurface G n ∧ cochromaticNumber G = k}
+FormalConjectures/ErdosProblems/759.lean:81:      (maxCochromaticOnSurface n : ℝ) ≤
+FormalConjectures/ErdosProblems/759.lean:94:      (maxCochromaticOnSurface n : ℝ) ≥
+FormalConjectures/ErdosProblems/739.lean:24:If a graph has infinite chromatic number $\mathfrak{m}$, must every infinite cardinal
+FormalConjectures/ErdosProblems/739.lean:25:$\mathfrak{n} < \mathfrak{m}$ be realized as the chromatic number of some subgraph?
+FormalConjectures/ErdosProblems/739.lean:48:/-- The cardinal chromatic number of a graph: the infimum of cardinals $\kappa$
+FormalConjectures/ErdosProblems/739.lean:49:for which $G$ admits a proper $\kappa$-coloring. -/
+FormalConjectures/ErdosProblems/739.lean:57:If $G$ is a graph with infinite chromatic number $\mathfrak{m}$, then for every infinite
+FormalConjectures/ErdosProblems/739.lean:58:cardinal $\mathfrak{n} < \mathfrak{m}$, there is a subgraph of $G$ with chromatic
+FormalConjectures/ErdosProblems/1092.lean:22:vertices is the union of a graph with chromatic number $r$ and a graph with $\leq f_r(m)$ edges,
+FormalConjectures/ErdosProblems/1092.lean:23:then $G$ has chromatic number $\leq r+1$.
+FormalConjectures/ErdosProblems/1092.lean:44:subgraph $H$ on $m$ vertices has chromatic number $\leq r+1$ once we remove $f_r(m)$ edges
+FormalConjectures/ErdosProblems/1092.lean:53:          chromaticNumber (H.coe.deleteEdges E) ≤ (r + 1 : ℕ∞)) →
+FormalConjectures/ErdosProblems/1092.lean:54:      chromaticNumber G ≤ (r + 1 : ℕ∞)}
+FormalConjectures/ErdosProblems/721.lean:51:A 2-coloring $f : \mathbb{N} \to \text{Bool}$ of $\{0, \ldots, n-1\}$ has a monochromatic
+FormalConjectures/ErdosProblems/721.lean:58:`VDWProperty j k n` asserts: every 2-coloring of $\{0, \ldots, n-1\}$ contains
+FormalConjectures/ErdosProblems/721.lean:59:either a monochromatic $j$-AP in one color or a monochromatic $k$-AP in
+FormalConjectures/ErdosProblems/1176.lean:30:Let $G$ be a graph with chromatic number $\aleph_1$. Is it true that there is a colouring of the
+FormalConjectures/ErdosProblems/1176.lean:38:    answer(sorry) ↔ ∀ {V : Type*} (G : SimpleGraph V), G.chromaticCardinal = aleph 1 →
+FormalConjectures/ErdosProblems/45.lean:25:monochromatic subset whose reciprocals sum to $1$. Proved by Croot [Cr03].
+FormalConjectures/ErdosProblems/45.lean:27:[Cr03] Croot, E., _On a coloring conjecture about unit fractions_. Annals of Mathematics,
+FormalConjectures/ErdosProblems/45.lean:45:(excluding $1$ and $n$ itself), there is a monochromatic subset $D' \subseteq D(n)$ whose
+FormalConjectures/ErdosProblems/603.lean:27:monochromatic. If instead we have $|A_i \cap A_j| \neq 1$ then Komjáth showed that this is
+FormalConjectures/ErdosProblems/603.lean:42:no $A_i$ is monochromatic.
+FormalConjectures/ErdosProblems/627.lean:24:Let $\omega(G)$ denote the clique number of $G$ and $\chi(G)$ the chromatic number. If $f(n)$ is the
+FormalConjectures/ErdosProblems/627.lean:39:/-- The chromatic number of a simple graph on `Fin n`: the minimum number of colors
+FormalConjectures/ErdosProblems/627.lean:40:    such that there exists a proper coloring. -/
+FormalConjectures/ErdosProblems/627.lean:41:noncomputable def chromaticNumber627 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/627.lean:53:    r = (chromaticNumber627 G : ℝ) / (cliqueNumber627 G : ℝ)}
+FormalConjectures/ErdosProblems/1091.lean:24:[La79] Larson — proved that $K_4$-free graphs with chromatic number $4$ contain an odd cycle
+FormalConjectures/ErdosProblems/1091.lean:55:Let $G$ be a $K_4$-free graph with chromatic number $4$. Then $G$ contains an odd cycle
+FormalConjectures/ErdosProblems/1091.lean:63:    (hK4 : G.CliqueFree 4) (hχ : G.chromaticNumber = (4 : ℕ∞)) :
+FormalConjectures/ErdosProblems/1091.lean:71:$G$ with chromatic number $4$, in which every induced subgraph on $\leq r$ vertices has
+FormalConjectures/ErdosProblems/1091.lean:72:chromatic number $\leq 3$, contains an odd cycle with at least $f(r)$ diagonals?
+FormalConjectures/ErdosProblems/1091.lean:79:        G.chromaticNumber = (4 : ℕ∞) →
+FormalConjectures/ErdosProblems/1091.lean:81:          (G.induce (↑S : Set (Fin n))).chromaticNumber ≤ (3 : ℕ∞)) →
+FormalConjectures/ErdosProblems/108.lean:32:For every r ≥ 4 and k ≥ 2 is there some finite f(k,r) such that every graph of chromatic number ≥ f(k,r)
+FormalConjectures/ErdosProblems/108.lean:33:contains a subgraph of girth ≥ r and chromatic number ≥ k?
+FormalConjectures/ErdosProblems/108.lean:39:      (hchro : f ≤ SimpleGraph.chromaticNumber G),
+FormalConjectures/ErdosProblems/108.lean:41:    (SimpleGraph.chromaticNumber H.coe ≥ k) := by
+FormalConjectures/ErdosProblems/177.lean:48:a $\pm 1$ coloring $f$ of $\mathbb{N}$ where for every $d \geq 1$, the discrepancy over
+FormalConjectures/ErdosProblems/177.lean:59:For any $\pm 1$ coloring of $\mathbb{N}$ and any $d \geq 1$, there exists a finite arithmetic
+FormalConjectures/ErdosProblems/177.lean:74:For every $\varepsilon > 0$, there exists a $\pm 1$ coloring $f$ of $\mathbb{N}$ such that for every
+FormalConjectures/ErdosProblems/531.lean:26:(for $\emptyset\neq S\subseteq A$) are monochromatic. Estimate $F(k)$.
+FormalConjectures/ErdosProblems/531.lean:42:/-- A 2-coloring $\chi : \mathbb{N} \to \mathrm{Bool}$ admits a **monochromatic subset-sum
+FormalConjectures/ErdosProblems/531.lean:53:/-- The **Folkman number** $F(k)$: the minimum $N$ such that every 2-coloring
+FormalConjectures/ErdosProblems/531.lean:55:are monochromatic. -/
+FormalConjectures/ErdosProblems/531.lean:60:That is, there exists $N$ such that every 2-coloring of $\{1, \ldots, N\}$ has a
+FormalConjectures/ErdosProblems/531.lean:61:monochromatic subset-sum $k$-set. -/
+FormalConjectures/ErdosProblems/609.lean:25:with $n$ colours then there must be a monochromatic odd cycle of length at most $m$.
+FormalConjectures/ErdosProblems/609.lean:29:$n$-coloured to avoid monochromatic odd cycles entirely (partition vertices by
+FormalConjectures/ErdosProblems/609.lean:43:/-- There exists a monochromatic cycle of length $k$ in an edge coloring of $K_N$.
+FormalConjectures/ErdosProblems/609.lean:56:For every $n \geq 1$, every symmetric $n$-coloring of the edges of $K_{2^n+1}$
+FormalConjectures/ErdosProblems/609.lean:57:contains a monochromatic odd cycle. (This establishes that $f(n)$ is finite.)
+FormalConjectures/ErdosProblems/609.lean:71:symmetric $n$-coloring of $K_{2^n+1}$ with no monochromatic odd cycle of length
+FormalConjectures/ErdosProblems/609.lean:87:$n$-coloring of $K_{2^n+1}$ contains a monochromatic odd cycle of length at most
+FormalConjectures/ErdosProblems/595.lean:31:[Fo70] Folkman, J., _Graphs with monochromatic complete subgraphs in every edge
+FormalConjectures/ErdosProblems/595.lean:32:coloring_, SIAM J. Appl. Math. 18 (1970), 19-24.
+FormalConjectures/ErdosProblems/738.lean:32:/-- A graph has infinite chromatic number: it cannot be properly colored
+FormalConjectures/ErdosProblems/738.lean:40:If $G$ is a graph with infinite chromatic number and $G$ is triangle-free
+FormalConjectures/ErdosProblems/706.lean:45:on the chromatic number of multi-distance graphs in $\mathbb{R}^2$ as a function of the
+FormalConjectures/ErdosProblems/483.lean:33:/-- A coloring $f : \mathbb{N} \to \text{Fin}\ k$ has a *monochromatic Schur triple* in
+FormalConjectures/ErdosProblems/483.lean:36:def HasMonochromaticSchurTriple (k N : ℕ) (f : ℕ → Fin k) : Prop :=
+FormalConjectures/ErdosProblems/483.lean:43:monochromatic solution to $a + b = c$. The values $f(k)$ are known as Schur numbers.
+FormalConjectures/ErdosProblems/483.lean:55:every $k$-coloring of $\{1, \ldots, N\}$ with $N \geq c^k$ has a monochromatic Schur triple.
+FormalConjectures/ErdosProblems/483.lean:64:            HasMonochromaticSchurTriple k N f := by
+FormalConjectures/ErdosProblems/1068.lean:30:Does every graph with chromatic number $\aleph_1$ contain a countable subgraph which is
+FormalConjectures/ErdosProblems/1068.lean:35:    ∀ (V : Type) (G : SimpleGraph V), G.chromaticCardinal = ℵ_  1 →
+FormalConjectures/ErdosProblems/187.lean:53:/-- A 2-colouring $\chi : \mathbb{Z} \to \text{Bool}$ has a monochromatic arithmetic progression of
+FormalConjectures/ErdosProblems/187.lean:64:has a monochromatic arithmetic progression with common difference $d$ and
+FormalConjectures/ErdosProblems/187.lean:68:2-colouring such that the longest monochromatic AP with common difference
+FormalConjectures/ErdosProblems/761.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+FormalConjectures/ErdosProblems/761.lean:26:a complete graph or empty graph. The dichromatic number of $G$, denoted by $\delta(G)$,
+FormalConjectures/ErdosProblems/761.lean:29:are no monochromatic oriented cycles.
+FormalConjectures/ErdosProblems/761.lean:48:if there is no monochromatic directed cycle: no vertex can reach itself
+FormalConjectures/ErdosProblems/761.lean:55:/-- The dichromatic number of $G$: the minimum $k$ such that for every orientation
+FormalConjectures/ErdosProblems/761.lean:57:noncomputable def dichromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/761.lean:62:/-- A cochromatic colouring: each colour class induces either a complete
+FormalConjectures/ErdosProblems/761.lean:64:def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/761.lean:70:/-- The cochromatic number $\zeta(G)$: minimum number of colours in a cochromatic
+FormalConjectures/ErdosProblems/761.lean:72:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/761.lean:74:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+FormalConjectures/ErdosProblems/761.lean:79:Must a graph with large chromatic number have large dichromatic number?
+FormalConjectures/ErdosProblems/761.lean:85:      G.chromaticNumber.toNat ≥ m →
+FormalConjectures/ErdosProblems/761.lean:86:        dichromaticNumber G ≥ n) := by
+FormalConjectures/ErdosProblems/761.lean:92:Must a graph with large cochromatic number contain a subgraph with large
+FormalConjectures/ErdosProblems/761.lean:93:dichromatic number? For every $n$ there exists $m$ such that $\zeta(G) \geq m$ implies
+FormalConjectures/ErdosProblems/761.lean:97:theorem erdos_761.variants.cochromatic : answer(sorry) ↔
+FormalConjectures/ErdosProblems/761.lean:99:      cochromaticNumber G ≥ m →
+FormalConjectures/ErdosProblems/761.lean:101:          dichromaticNumber (G.induce (↑S : Set (Fin s))) ≥ n) := by
+FormalConjectures/ErdosProblems/284.lean:33:[Cr01] Croot, E., _On a coloring conjecture about unit fractions_, Annals of Mathematics (2001).
+FormalConjectures/ErdosProblems/1167.lean:32:    for every coloring of the $r$-element subsets of a $\kappa$-sized set with colors from $\iota$,
+FormalConjectures/ErdosProblems/1167.lean:33:    there exists a color $i$ and a monochromatic subset of cardinality $\geq \text{targets}(i)$. -/
+FormalConjectures/ErdosProblems/562.lean:32:monochromatic copy of the complete $r$-uniform hypergraph on $n$ vertices.
+FormalConjectures/ErdosProblems/560.lean:26:edges of $H$ there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/560.lean:60:A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/560.lean:62:contains a monochromatic copy of $G$, i.e., an injective map $f$ from the
+FormalConjectures/ErdosProblems/174.lean:25:$d = d(A,k)$ such that in any $k$-colouring of $\mathbb{R}^d$ there exists a monochromatic
+FormalConjectures/ErdosProblems/174.lean:51:exists $d$ such that any $k$-coloring of $\mathbb{R}^d$ contains a monochromatic
+FormalConjectures/ErdosProblems/76.lean:25:$(1 + o(1)) \, n^2/12$ many edge-disjoint monochromatic triangles.
+FormalConjectures/ErdosProblems/76.lean:30:between parts red and edges within parts blue — any edge-disjoint monochromatic
+FormalConjectures/ErdosProblems/76.lean:49:/-- A 3-vertex set $T \subseteq V(K_n)$ is a monochromatic triangle under colouring `col` if
+FormalConjectures/ErdosProblems/76.lean:51:def IsMonochromaticTriangle {n : ℕ} (col : EdgeTwoColoring n) (T : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/76.lean:63:edge-disjoint monochromatic triangles.
+FormalConjectures/ErdosProblems/76.lean:67:monochromatic triangles of size at least $(1 - \varepsilon) \cdot n^2 / 12$.
+FormalConjectures/ErdosProblems/76.lean:75:      (∀ T ∈ 𝒯, IsMonochromaticTriangle col T) ∧
+FormalConjectures/ErdosProblems/917.lean:25:which has chromatic number $k$ and is critical (i.e. deleting any edge reduces
+FormalConjectures/ErdosProblems/917.lean:26:the chromatic number).
+FormalConjectures/ErdosProblems/917.lean:50:A simple graph $G$ is $k$-critical if its chromatic number equals $k$ and for every
+FormalConjectures/ErdosProblems/917.lean:51:edge $e$, the graph obtained by deleting $e$ has chromatic number strictly less
+FormalConjectures/ErdosProblems/917.lean:55:  G.chromaticNumber = (k : ℕ∞) ∧
+FormalConjectures/ErdosProblems/917.lean:56:  ∀ e ∈ G.edgeSet, (G.deleteEdges {e}).chromaticNumber < (k : ℕ∞)
+FormalConjectures/ErdosProblems/780.lean:28:In other words, this problem asks to determine the chromatic number of the Kneser
+FormalConjectures/ErdosProblems/780.lean:34:[Lo78] Lovász, L., _Kneser's conjecture, chromatic number, and homotopy_. J. Combin.
+FormalConjectures/ErdosProblems/780.lean:37:[AFL86] Alon, N., Frankl, P., and Lovász, L., _The chromatic number of Kneser
+FormalConjectures/ErdosProblems/901.lean:41:A hypergraph has Property B (is $2$-colorable) if there exists a $2$-coloring
+FormalConjectures/ErdosProblems/901.lean:42:of the vertex set such that no edge is monochromatic, i.e., every edge
+FormalConjectures/ErdosProblems/835.lean:53:theorem property_iff_chromaticNumber (k : ℕ) (hk : 0 < k) :
+FormalConjectures/ErdosProblems/835.lean:54:    (J(2 * k, k).chromaticNumber = k + 1) ↔
+FormalConjectures/ErdosProblems/835.lean:59:Alternative statement of Erdős Problem 835 using the chromatic number of the Johnson graph.
+FormalConjectures/ErdosProblems/835.lean:60:This is equivalent to asking whether there exists $k > 2$ such that the chromatic number of the
+FormalConjectures/ErdosProblems/835.lean:67:    J(2 * k, k).chromaticNumber = k + 1) ↔ answer(sorry) := by
+FormalConjectures/ErdosProblems/835.lean:71:It is known that for $3 \leq k \leq 8$, the chromatic number of $J(2k, k)$ is greater than $k+1$,
+FormalConjectures/ErdosProblems/835.lean:75:theorem johnsonGraph_2k_k_chromaticNumber_known_cases (k : ℕ) (hk : 3 ≤ k) (hk' : k ≤ 8) :
+FormalConjectures/ErdosProblems/835.lean:76:    J(2 * k, k).chromaticNumber > k + 1 := by
+FormalConjectures/ErdosProblems/835.lean:82:The chromatic number of $J(18, 9)$ is at least $11$.
+FormalConjectures/ErdosProblems/835.lean:85:theorem johnsonGraph_18_9_chromaticNumber : J(18, 9).chromaticNumber > 9 + 1 := by
+FormalConjectures/ErdosProblems/835.lean:102:/-- Johnson's bound for the chromatic number of the Johnson graph. -/
+FormalConjectures/ErdosProblems/835.lean:104:lemma div_johnsonBound_le_chromaticNum_johnson :
+FormalConjectures/ErdosProblems/835.lean:110:  grw [← card_div_indepNum_le_chromaticNumber, indepNum_johnson_le_johnsonBound] <;> simp
+FormalConjectures/ErdosProblems/835.lean:112:/-- It is known that for $3 \leq k \leq 8$, the chromatic number of $J(2k, k)$ is greater than
+FormalConjectures/ErdosProblems/835.lean:115:theorem chromaticNumber_johnson_2k_k_lower_bound (hk : 3 ≤ k) (hk' : k ≤ 8) :
+FormalConjectures/ErdosProblems/835.lean:116:    k + 1 < J(2 * k, k).chromaticNumber := by
+FormalConjectures/ErdosProblems/835.lean:119:/-- It is also known that for $3 \leq k \leq 203$ odd, the chromatic number of $J(2k, k)$ is
+FormalConjectures/ErdosProblems/835.lean:122:theorem chromaticNumber_johnson_2k_k_lower_bound_odd (hk : 3 ≤ k) (hk' : k ≤ 300) (hk_odd : Odd k) :
+FormalConjectures/ErdosProblems/835.lean:123:    k + 1 < J(2 * k, k).chromaticNumber := by
+FormalConjectures/ErdosProblems/835.lean:124:  grw [← div_johnsonBound_le_chromaticNum_johnson]
+FormalConjectures/ErdosProblems/835.lean:128:It can be seen that the chromatic number of $J(2k,k)$ is $>k+1$ for all odd $k>2$.
+FormalConjectures/ErdosProblems/835.lean:131:theorem johnson_chromaticNumber_odd (k : ℕ) (hk : 2 < k) (h : Odd k) :
+FormalConjectures/ErdosProblems/835.lean:132:    k + 1 < J(2 * k, k).chromaticNumber :=
+FormalConjectures/ErdosProblems/835.lean:136:Ma and Tang have proved that the chromatic number of $J(2k,k)$ is $>k+1$ for all $k>2$ not of the
+FormalConjectures/ErdosProblems/835.lean:140:theorem johnson_chromaticNumber_composite (k : ℕ) (hk : 2 < k) (h : (k + 1).Composite) :
+FormalConjectures/ErdosProblems/835.lean:141:    k + 1 < J(2 * k, k).chromaticNumber :=
+FormalConjectures/ErdosProblems/835.lean:148:theorem johnsonGraph_chromaticNumber_odd_of_johnson_chromaticNumber_composite :
+FormalConjectures/ErdosProblems/835.lean:149:    (type_of% johnson_chromaticNumber_composite) → (type_of% johnson_chromaticNumber_odd) := by
+FormalConjectures/ErdosProblems/835.lean:158:/-- Is the chromatic number of `J(2 * k, k)` always at least `k + 2`? -/
+FormalConjectures/ErdosProblems/835.lean:160:theorem johnson_chromaticNumber : answer(sorry) ↔
+FormalConjectures/ErdosProblems/835.lean:161:    ∀ k ≥ 3, k + 2 ≤ J(2 * k, k).chromaticNumber :=
+FormalConjectures/ErdosProblems/439.lean:37:[KhSz06] Khalfalah, A. and Szemerédi, E., _On the number of monochromatic
+FormalConjectures/ErdosProblems/191.lean:25:non-edges = colour 2). A monochromatic set is a clique in either $G$ or its
+FormalConjectures/ErdosProblems/191.lean:53:2-colouring of the pairs from $\{2, \ldots, n\}$, there exists a monochromatic
+FormalConjectures/ErdosProblems/129.lean:39:/-- An $r$-edge-coloring of the complete graph $K_N$: a function that assigns a
+FormalConjectures/ErdosProblems/129.lean:43:/-- A vertex set $S$ is monochromatic-$K_k$-free in color $c$ under coloring $\chi$ if
+FormalConjectures/ErdosProblems/129.lean:52:every $r$-coloring of the edges of $K_N$, there exists a set of $n$ vertices and
+FormalConjectures/ErdosProblems/129.lean:65:a probabilistic coloring of $K_N$ (each edge independently uniformly at random
+FormalConjectures/ErdosProblems/920.lean:37:$f_k(n)$ is the maximum possible chromatic number of a graph with $n$ vertices
+FormalConjectures/ErdosProblems/920.lean:41:  sSup {(G.chromaticNumber) | (G : SimpleGraph (Fin n)) (_ : G.CliqueFree k)}
+FormalConjectures/ErdosProblems/62.lean:24:If $G_1$ and $G_2$ are graphs with chromatic number $\aleph_1$, must they share a common
+FormalConjectures/ErdosProblems/62.lean:25:subgraph with infinite chromatic number?
+FormalConjectures/ErdosProblems/62.lean:27:[EHS74] Erdős, P., Hajnal, A., and Shelah, S., *On some general properties of chromatic numbers*.
+FormalConjectures/ErdosProblems/62.lean:38:/-- A graph $G$ has chromatic number $\aleph_1$ if it cannot be properly colored by any
+FormalConjectures/ErdosProblems/62.lean:51:If $G_1$, $G_2$ are two graphs with chromatic number $\aleph_1$, must there exist a graph $H$
+FormalConjectures/ErdosProblems/62.lean:52:with infinite chromatic number ($\chi \geq \aleph_0$) which is a subgraph of both $G_1$ and $G_2$?
+FormalConjectures/ErdosProblems/62.lean:56:chromatic number $\aleph_1$.
+FormalConjectures/ErdosProblems/62.lean:64:      H.chromaticNumber = ⊤ ∧
+FormalConjectures/ErdosProblems/62.lean:72:If $G_1$, $G_2$ are two graphs with chromatic number $\aleph_1$, must there exist a graph $H$
+FormalConjectures/ErdosProblems/62.lean:73:with chromatic number at least $4$ which is a subgraph of both $G_1$ and $G_2$?
+FormalConjectures/ErdosProblems/62.lean:75:Every graph with chromatic number $\aleph_1$ contains all sufficiently large odd
+FormalConjectures/ErdosProblems/62.lean:76:cycles (chromatic number $3$), proved by Erdős, Hajnal, and Shelah [EHS74].
+FormalConjectures/ErdosProblems/62.lean:77:Erdős wrote [Er87] that 'probably' every graph with chromatic number $\aleph_1$
+FormalConjectures/ErdosProblems/62.lean:78:contains as subgraphs all graphs with chromatic number $4$ with sufficiently
+FormalConjectures/ErdosProblems/474.lean:41:There exists a $k$-coloring of pairs from a set of cardinality $\kappa$ such that
+FormalConjectures/ErdosProblems/286.lean:30:[Cr01] Croot, E., *On a coloring conjecture about unit fractions*. Annals of Mathematics (2001).
+FormalConjectures/ErdosProblems/705.lean:37:chromatic number $4$ and arbitrarily large girth.
+FormalConjectures/ErdosProblems/705.lean:42:    (UnitDistancePlaneGraph V).girth ≥ k → (UnitDistancePlaneGraph V).chromaticNumber ≤ 3 := by
+FormalConjectures/ErdosProblems/1156.lean:42:/-- The probability that the chromatic number of a uniformly random graph
+FormalConjectures/ErdosProblems/1156.lean:47:opaque chromaticNumberProb (n : ℕ) (P : ℕ → Prop) : ℝ
+FormalConjectures/ErdosProblems/1156.lean:62:          chromaticNumberProb n (· ∈ S) ≥ 1 - ε := by
+FormalConjectures/ErdosProblems/1156.lean:73:That is, the chromatic number cannot be concentrated in any interval of width
+FormalConjectures/ErdosProblems/1156.lean:80:        chromaticNumberProb n (fun k => |(k : ℝ) - f n| < ω n) < 1 / 2 := by
+FormalConjectures/ErdosProblems/78.lean:37:2-colouring of the edges of $K_n$ contains a monochromatic copy of $K_k$.
+FormalConjectures/ErdosProblems/911.lean:38:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/911.lean:40:    \operatorname{Fin} N \to \operatorname{Bool}$) contains a monochromatic copy of
+FormalConjectures/ErdosProblems/558.lean:25:then there is a monochromatic copy of $G$. Determine $R_k(K_{s,t})$
+FormalConjectures/ErdosProblems/558.lean:39:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/558.lean:42:A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+FormalConjectures/ErdosProblems/944.lean:33:The predicate that graph $G$ with chromatic number $k$ is such that every vertex is critical, yet
+FormalConjectures/ErdosProblems/944.lean:40:Let $k \ge 4$ and $r\ge 1$. Must there exist a graph $G$ with chromatic number $k$
+FormalConjectures/ErdosProblems/944.lean:49:Let $k \ge 4$. Must there exist a graph $G$ with chromatic number $k$
+FormalConjectures/ErdosProblems/944.lean:61:Dirac's conjecture was proved, for $k=5$: There exists a graph $G$ with chromatic number $5$, such
+FormalConjectures/ErdosProblems/944.lean:103:on $r$, there exist a graph $G$ with chromatic number $k$ such that every vertex is critical,
+FormalConjectures/ErdosProblems/360.lean:43:A coloring $c$ of $\{1, \ldots, n-1\}$ into $k$ colors is sum-free for $n$ if $n$ cannot be
+FormalConjectures/ErdosProblems/1067.lean:24:- [BoPi24] N. Bowler and M. Pitz, A note on uncountably chromatic graphs. arXiv:2402.05984 (2024).
+FormalConjectures/ErdosProblems/1067.lean:25:- [ErHa66] Erdős, P. and Hajnal, A., On chromatic number of graphs and set-systems. Acta Math. Acad.
+FormalConjectures/ErdosProblems/1067.lean:27:- [Ko13] Komjáth, Péter, A note on chromatic number and connectivity of infinite graphs. Israel
+FormalConjectures/ErdosProblems/1067.lean:30:- [Th17] Thomassen, Carsten, Infinitely connected subgraphs in graphs of uncountable chromatic
+FormalConjectures/ErdosProblems/1067.lean:47:Does every graph with chromatic number $\aleph_1$ contain an infinitely connected subgraph with
+FormalConjectures/ErdosProblems/1067.lean:48:chromatic number $\aleph_1$?
+FormalConjectures/ErdosProblems/1067.lean:59:    answer(False) ↔ ∀ (V : Type) (G : SimpleGraph V), G.chromaticCardinal = ℵ_ 1 →
+FormalConjectures/ErdosProblems/1067.lean:60:      ∃ (H : G.Subgraph), H.coe.chromaticCardinal = ℵ_ 1 ∧ InfinitelyConnected H.coe := by
+FormalConjectures/ErdosProblems/1067.lean:69:    answer(False) ↔ ∀ (V : Type) (G : SimpleGraph V), G.chromaticCardinal = ℵ_ 1 →
+FormalConjectures/ErdosProblems/1067.lean:70:      ∃ (H : G.Subgraph), H.coe.chromaticCardinal = ℵ_ 1 ∧ InfinitelyEdgeConnected H.coe := by
+FormalConjectures/ErdosProblems/602.lean:35:such that no set in the family is monochromatic (both colours appear). -/
+FormalConjectures/ErdosProblems/602.lean:45:monochromatic.
+FormalConjectures/ErdosProblems/151.lean:28:[Er88] Erdős, P., _Problems and results on chromatic numbers in finite and infinite graphs_,
+FormalConjectures/ErdosProblems/736.lean:24:A conjecture of Walter Taylor. Let $G$ be a graph with chromatic number $\aleph_1$.
+FormalConjectures/ErdosProblems/736.lean:25:Is there, for every cardinal number $m$, some graph $G_m$ of chromatic number $m$
+FormalConjectures/ErdosProblems/736.lean:31:[KoSh05] Komjáth, P. and Shelah, S., _Finite subgraphs of uncountably chromatic
+FormalConjectures/ErdosProblems/736.lean:46:/-- The cardinal chromatic number of a graph: the infimum of cardinals $\kappa$
+FormalConjectures/ErdosProblems/736.lean:47:for which $G$ admits a proper $\kappa$-coloring. -/
+FormalConjectures/ErdosProblems/736.lean:55:If $G$ is a graph with chromatic number $\aleph_1$, then for every cardinal $m$,
+FormalConjectures/ErdosProblems/736.lean:56:there exists a graph $G_m$ with chromatic number $m$ such that every finite
+FormalConjectures/ErdosProblems/508.lean:46:scoped notation "χ(ℝ²)" => UnitDistancePlaneGraph.chromaticNumber
+FormalConjectures/ErdosProblems/508.lean:58:Aubrey de Grey improved the lower bound for the chromatic number of the plane
+FormalConjectures/ErdosProblems/508.lean:61:"The chromatic number of the plane is at least 5" Aubrey D. N. J. de Grey, 2018
+FormalConjectures/ErdosProblems/508.lean:70:The "chromatic number of the plane" is at least 4. This can be
+FormalConjectures/ErdosProblems/508.lean:79:This upper bound for the chromatic number of the plane was
+FormalConjectures/ErdosProblems/508.lean:81:plane into hexagons of uniform size and coloring them with a repeating
+FormalConjectures/ErdosProblems/508.lean:93:/-- The chromatic number of the plane is at least 3.
+FormalConjectures/ErdosProblems/508.lean:98:  le_chromaticNumber_of_pairwise_adj (by simp) ![!₂[0, 0], !₂[1, 0], !₂[0.5, Real.sqrt 3 / 2]] <| by
+FormalConjectures/ErdosProblems/138.lean:36:The set of natural numbers that guarantee a monochromatic arithmetic progression.
+FormalConjectures/ErdosProblems/138.lean:39:progression length `k`, any `r`-coloring of the integers `{1, ..., N}` must contain a
+FormalConjectures/ErdosProblems/138.lean:40:monochromatic arithmetic progression of length `k`.
+FormalConjectures/ErdosProblems/138.lean:43:  { N | ∀ coloring : Finset.Icc 1 N → Fin r, ContainsMonoAPofLength coloring k}
+FormalConjectures/ErdosProblems/138.lean:47:always exists some number `N` large enough to guarantee a monochromatic arithmetic progression.
+FormalConjectures/ErdosProblems/138.lean:56:The **van der Waerden number**, is the smallest integer `N` such that any `r`-coloring of
+FormalConjectures/ErdosProblems/138.lean:57:`{1, ..., N}` is guaranteed to contain a monochromatic arithmetic progression of
+FormalConjectures/ErdosProblems/138.lean:64:This represents the smallest integer `N` such that any 2-coloring of `{1, ..., N}`
+FormalConjectures/ErdosProblems/138.lean:65:must contain a monochromatic arithmetic progression of length `k`.
+FormalConjectures/ErdosProblems/630.lean:38:/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/630.lean:47:proper list coloring. -/
+FormalConjectures/ErdosProblems/630.lean:52:/-- The list chromatic number (choice number) of a graph $G$: the minimum $k$
+FormalConjectures/ErdosProblems/173.lean:25:there is a monochromatic congruent copy of $T$.
+FormalConjectures/ErdosProblems/173.lean:62:there is a monochromatic congruent copy of $T$.
+FormalConjectures/ErdosProblems/173.lean:64:Equivalently: if two non-degenerate triangles both fail to have any monochromatic
+FormalConjectures/ErdosProblems/832.lean:25:$r$-uniform hypergraph with chromatic number $k$ has at least $\binom{(r-1)(k-1)+1}{r}$
+FormalConjectures/ErdosProblems/832.lean:28:When $r = 2$ it is a classical fact that chromatic number $k$ implies at least
+FormalConjectures/ErdosProblems/832.lean:37:[Al85] Alon, N., _Hypergraphs with high chromatic number_. Graphs and Combinatorics (1985).
+FormalConjectures/ErdosProblems/832.lean:48:/-- A proper $k$-coloring of a hypergraph: a vertex coloring such that no edge
+FormalConjectures/ErdosProblems/832.lean:49:is monochromatic (for every edge, not all vertices receive the same color). -/
+FormalConjectures/ErdosProblems/832.lean:54:/-- The chromatic number of a uniform hypergraph: the minimum number of colors
+FormalConjectures/ErdosProblems/832.lean:55:needed for a proper coloring (no monochromatic edge). -/
+FormalConjectures/ErdosProblems/832.lean:56:noncomputable def UniformHypergraph.chromaticNumber {V : Type*} [DecidableEq V]
+FormalConjectures/ErdosProblems/832.lean:64:$r$-uniform hypergraph with chromatic number $k$ has at least
+FormalConjectures/ErdosProblems/832.lean:73:      H.chromaticNumber = k →
+FormalConjectures/ErdosProblems/832.lean:80:For $k$ sufficiently large, does every $3$-uniform hypergraph with chromatic number $k$
+FormalConjectures/ErdosProblems/832.lean:89:      H.chromaticNumber = k →
+FormalConjectures/ErdosProblems/640.lean:37:For every $k \geq 3$, does there exist $f(k)$ such that every graph with chromatic number
+FormalConjectures/ErdosProblems/640.lean:39:with chromatic number at least $k$?
+FormalConjectures/ErdosProblems/640.lean:42:and all odd cycles have chromatic number $3$.
+FormalConjectures/ErdosProblems/640.lean:50:          (f : ℕ∞) ≤ G.chromaticNumber →
+FormalConjectures/ErdosProblems/640.lean:53:            (k : ℕ∞) ≤ (G.induce {w : V | w ∈ p.support}).chromaticNumber := by
+FormalConjectures/ErdosProblems/46.lean:24:For every finite colouring of the integers $\geq 2$, there exists a monochromatic finite
+FormalConjectures/ErdosProblems/46.lean:27:[Cr03] Croot, E.S., _On a coloring conjecture about unit fractions_, Annals of Mathematics **157** (2003), 545–556.
+FormalConjectures/ErdosProblems/46.lean:36:monochromatic finite set $\{n_1, \ldots, n_k\}$ with $2 \le n_1 < \cdots < n_k$ whose
+FormalConjectures/ErdosProblems/762.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+FormalConjectures/ErdosProblems/762.lean:35:[EGS90] Erdős, P., Gimbel, J., and Straight, H.J., _Chromatic number versus cochromatic
+FormalConjectures/ErdosProblems/762.lean:45:/-- A cochromatic colouring: each colour class induces either a complete
+FormalConjectures/ErdosProblems/762.lean:47:def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/762.lean:53:/-- The cochromatic number $\zeta(G)$: minimum number of colours in a cochromatic
+FormalConjectures/ErdosProblems/762.lean:55:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/762.lean:57:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+FormalConjectures/ErdosProblems/762.lean:73:          cochromaticNumber G ≥ 4 →
+FormalConjectures/ErdosProblems/762.lean:74:            G.chromaticNumber ≤ cochromaticNumber G + 2 := by
+FormalConjectures/ErdosProblems/564.lean:30:vertices are $2$-coloured then there is a monochromatic copy of the complete $3$-uniform
+FormalConjectures/ErdosProblems/753.lean:41:of size at least $k$ to the vertices, there exists a proper coloring where each
+FormalConjectures/ErdosProblems/753.lean:47:/-- The list chromatic number (choice number) of a graph: the minimum $k$ such
+FormalConjectures/ErdosProblems/834.lean:33:2. **Chromatic criticality**: the chromatic number is $3$, but deleting any
+FormalConjectures/ErdosProblems/834.lean:34:   edge or vertex reduces the chromatic number to at most $2$.
+FormalConjectures/ErdosProblems/834.lean:39:- In the chromatic formulation, there exists a $3$-critical $3$-uniform
+FormalConjectures/ErdosProblems/834.lean:78:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/834.lean:96:/-- A hypergraph is $3$-chromatic-critical if its chromatic number is $3$ and
+FormalConjectures/ErdosProblems/834.lean:119:Erdős Problem 834, chromatic formulation (resolved by Li [Li25]):
+FormalConjectures/ErdosProblems/834.lean:121:Does there exist a $3$-chromatic-critical $3$-uniform hypergraph in which every vertex
+FormalConjectures/ErdosProblems/834.lean:126:theorem erdos_834.variants.chromatic : answer(True) ↔
+FormalConjectures/ErdosProblems/596.lean:25:graph $H$ such that every $n$-coloring of the edges of $H$ contains a monochromatic copy
+FormalConjectures/ErdosProblems/596.lean:26:of $G_2$, and yet for every $G_1$-free graph $H$ there is an $\aleph_0$-coloring of the
+FormalConjectures/ErdosProblems/596.lean:27:edges of $H$ without a monochromatic $G_2$?
+FormalConjectures/ErdosProblems/596.lean:40:/-- A graph $H$ contains a monochromatic copy of $G$ under edge coloring $c$: there exists
+FormalConjectures/ErdosProblems/596.lean:42:def HasMonochromaticCopy {W : Type*} {V : Type*}
+FormalConjectures/ErdosProblems/596.lean:50:(a) For every $n \geq 1$, there exists a $G_1$-free graph $H$ such that every $n$-coloring
+FormalConjectures/ErdosProblems/596.lean:51:    of $H$'s edges contains a monochromatic copy of $G_2$.
+FormalConjectures/ErdosProblems/596.lean:52:(b) For every $G_1$-free graph $H$, there exists a countable coloring of $H$'s edges
+FormalConjectures/ErdosProblems/596.lean:53:    with no monochromatic copy of $G_2$.
+FormalConjectures/ErdosProblems/596.lean:63:      -- whose edges cannot be n-colored without a monochromatic G₂
+FormalConjectures/ErdosProblems/596.lean:67:          ∀ c : V → V → Fin n, HasMonochromaticCopy H G₂ c) ∧
+FormalConjectures/ErdosProblems/596.lean:69:      -- without a monochromatic G₂
+FormalConjectures/ErdosProblems/596.lean:72:        ∃ c : V → V → ℕ, ¬HasMonochromaticCopy H G₂ c) := by
+FormalConjectures/ErdosProblems/1029.lean:25:2-colouring of the edges of $K_n$ contains a monochromatic copy of $K_k$, then
+FormalConjectures/ErdosProblems/1029.lean:46:symmetric 2-colouring of the edges of $K_N$, there is a monochromatic
+FormalConjectures/ErdosProblems/1172.lean:46:/-- The ordinal partition relation $\alpha \to (\beta, \gamma)^2$ for 2-colorings of pairs.
+FormalConjectures/ErdosProblems/1172.lean:47:    For every 2-coloring of the pairs of ordinals below $\alpha$, there is either
+FormalConjectures/ErdosProblems/1172.lean:114:That is, for every 2-coloring of the pairs of ordinals below $\omega_2$, there exists
+FormalConjectures/ErdosProblems/1172.lean:115:a monochromatic homogeneous set of order type $\omega_1 + \omega$.
+FormalConjectures/ErdosProblems/617.lean:24:- [ErGy99] Erdős, Paul and Gyárfás, András, Split and balanced colorings of complete graphs.
+FormalConjectures/ErdosProblems/617.lean:40:    (hV : Fintype.card V = r^2 + 1) (coloring : Sym2 V → Fin r) :
+FormalConjectures/ErdosProblems/617.lean:43:      ∀ u ∈ S, ∀ v ∈ S, u ≠ v → coloring s(u, v) ≠ k := by
+FormalConjectures/ErdosProblems/617.lean:51:    (hV : Fintype.card V = 3^2 + 1) (coloring : Sym2 V → Fin 3) :
+FormalConjectures/ErdosProblems/617.lean:54:      ∀ u ∈ S, ∀ v ∈ S, u ≠ v → coloring s(u, v) ≠ k := by
+FormalConjectures/ErdosProblems/617.lean:62:    (hV : Fintype.card V = 4^2 + 1) (coloring : Sym2 V → Fin 4) :
+FormalConjectures/ErdosProblems/617.lean:65:      ∀ u ∈ S, ∀ v ∈ S, u ≠ v → coloring s(u, v) ≠ k := by
+FormalConjectures/ErdosProblems/617.lean:75:      ∃ (coloring : Sym2 V → Fin r),
+FormalConjectures/ErdosProblems/617.lean:77:          ∀ (k : Fin r), ∃ u ∈ S, ∃ v ∈ S, u ≠ v ∧ coloring s(u, v) = k}.Infinite := by
+FormalConjectures/ErdosProblems/55.lean:38:A set $A$ of natural numbers is Ramsey $r$-complete if for every $r$-coloring of $\mathbb{N}$,
+FormalConjectures/ErdosProblems/159.lean:67:of the edges of $K_N$ contains a monochromatic $C_4$ in one colour or a
+FormalConjectures/ErdosProblems/159.lean:68:monochromatic $K_n$ in the other colour.
+FormalConjectures/ErdosProblems/1170.lean:41:/-- The ordinal partition relation $\kappa \to (\alpha)^2_2$: for every 2-coloring of increasing
+FormalConjectures/ErdosProblems/1170.lean:42:pairs of ordinals below $\kappa$, there exists a monochromatic set of order type $\alpha$.
+FormalConjectures/ErdosProblems/1170.lean:55:2-coloring of pairs of ordinals below $\kappa$, there exists a monochromatic set of
+FormalConjectures/ErdosProblems/1111.lean:24:For any $t, c \geq 1$, does there exist $d$ such that every finite graph with chromatic
+FormalConjectures/ErdosProblems/1111.lean:26:each with chromatic number at least $c$?
+FormalConjectures/ErdosProblems/1111.lean:31:[Wa80b] Wagon, S., *A bound on the chromatic number of graphs without certain
+FormalConjectures/ErdosProblems/1111.lean:52:$\chi$ denotes the chromatic number and $\omega$ the clique number. The condition
+FormalConjectures/ErdosProblems/1111.lean:63:        (d : ℕ∞) ≤ G.chromaticNumber →
+FormalConjectures/ErdosProblems/1111.lean:67:          (c : ℕ∞) ≤ (G.induce A).chromaticNumber ∧
+FormalConjectures/ErdosProblems/1111.lean:68:          (c : ℕ∞) ≤ (G.induce B).chromaticNumber := by
+FormalConjectures/ErdosProblems/645.lean:24:- [BrLa99] Brown, Tom C. and Landman, Bruce M., Monochromatic arithmetic progressions with large
+FormalConjectures/ErdosProblems/645.lean:32:If ℕ is $2$-coloured then there must exist a monochromatic three-term arithmetic progression
+FormalConjectures/ErdosProblems/136.lean:43:/-- An edge coloring of $K_n$ with colors from $\operatorname{Fin} k$, represented as a function
+FormalConjectures/ErdosProblems/136.lean:48:under coloring $\chi$ (using `offDiag` to enumerate all ordered pairs of
+FormalConjectures/ErdosProblems/136.lean:54:/-- A coloring $\chi$ of $K_n$ is $K_4$-five-colored if every 4-element vertex subset
+FormalConjectures/ErdosProblems/136.lean:60:$K_4$-five-colored edge coloring of $K_n$. -/
+FormalConjectures/ErdosProblems/74.lean:111:  *On almost bipartite large chromatic graphs* Theory and practice of combinatorics (1982), 117-123.
+FormalConjectures/ErdosProblems/74.lean:118:Is there a graph of infinite chromatic number such that every finite subgraph on $n$
+FormalConjectures/ErdosProblems/74.lean:123:    (∃ (V : Type u) (G : SimpleGraph V), G.chromaticNumber = ⊤ ∧
+FormalConjectures/ErdosProblems/74.lean:128:Is there a graph of infinite chromatic number such that every finite subgraph on $n$
+FormalConjectures/ErdosProblems/74.lean:133:    ∃ (V : Type u) (G : SimpleGraph V), G.chromaticNumber = ⊤ ∧
+FormalConjectures/ErdosProblems/54.lean:24:There exists a Ramsey 2-complete set $A$ (every large integer is a monochromatic subset sum
+FormalConjectures/ErdosProblems/54.lean:28:[CFP21] Conlon, D., Fox, J., and Pham, H.T., _Subset sums, completeness and colorings_. (2021).
+FormalConjectures/ErdosProblems/54.lean:37:A set $A$ of natural numbers is Ramsey 2-complete if for every 2-coloring of $\mathbb{N}$,
+FormalConjectures/ErdosProblems/1015.lean:25:the vertices can be covered by vertex-disjoint monochromatic copies of $K_t$
+FormalConjectures/ErdosProblems/1015.lean:49:/-- A set $S$ of vertices in `Fin n` is a monochromatic clique of colour $b$
+FormalConjectures/ErdosProblems/1015.lean:58:pairwise disjoint monochromatic $K_t$'s covering all but at most $r$
+FormalConjectures/ErdosProblems/1015.lean:69:symmetric 2-colouring of the edges of $K_N$ contains a monochromatic
+FormalConjectures/ErdosProblems/1015.lean:81:vertex-disjoint monochromatic $K_t$'s is exactly
+FormalConjectures/ErdosProblems/613.lean:28:[Pi01] Pikhurko, O., _Size Ramsey numbers of stars versus 3-chromatic graphs_,
+FormalConjectures/ErdosProblems/720.lean:26:edges of $H$ there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/720.lean:65:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/720.lean:66:    of $H$ contains a monochromatic copy of $G$, i.e., an injective map $f$ from the
+FormalConjectures/ErdosProblems/797.lean:24:Let `f(d)` be the maximal acyclic chromatic number of any graph with maximum degree `d`.
+FormalConjectures/ErdosProblems/797.lean:28:7-coloring*, 1976.
+FormalConjectures/ErdosProblems/797.lean:30:[AMR91] Alon, N., McDiarmid, C., and Reed, B., *Acyclic coloring of graphs*, 1991.
+FormalConjectures/ErdosProblems/797.lean:37:/-- A proper coloring of $G$ is acyclic if for every pair of distinct colors,
+FormalConjectures/ErdosProblems/797.lean:45:Let $f(d)$ be the maximal acyclic chromatic number of any graph with maximum
+FormalConjectures/ErdosProblems/111.lean:24:Does there exist a graph with chromatic number $\aleph_1$ such that every $n$-vertex induced
+FormalConjectures/ErdosProblems/111.lean:28:[EHS82] Erdős, P., Hajnal, A. and Szemerédi, E., _On almost bipartite large chromatic
+FormalConjectures/ErdosProblems/111.lean:40:A graph $G$ (on vertex type $V$) has chromatic number $\aleph_1$ if it cannot be properly
+FormalConjectures/ErdosProblems/111.lean:72:There exists a graph $G$ with chromatic number $\aleph_1$ such that
+FormalConjectures/ErdosProblems/111.lean:75:- For every $G$ with chromatic number $\aleph_1$, $h(G, n) \gg n$, since $G$ must
+FormalConjectures/ErdosProblems/111.lean:77:- Erdős–Hajnal–Szemerédi [EHS82] proved there exists $G$ with chromatic number
+FormalConjectures/ErdosProblems/111.lean:80:  with chromatic number $\aleph_1$ such that $h(G, n) \ll n^{1+\varepsilon}$ for
+FormalConjectures/ErdosProblems/918.lean:24:- [ErHa68b] Erdős, P. and Hajnal, A., On chromatic number of infinite graphs. (1968), 83--98.
+FormalConjectures/ErdosProblems/918.lean:25:- [Er69b] Erdős, P., Problems and results in chromatic graph theory. Proof Techniques in Graph Theory (Proc. Second Ann Arbor Graph Theory Conf., Ann Arbor, Mich., 1968) (1969), 27-35.
+FormalConjectures/ErdosProblems/918.lean:34:/-- Is there a graph with $\aleph_2$ vertices and chromatic number $\aleph_2$ such that every
+FormalConjectures/ErdosProblems/918.lean:35:subgraph on $\aleph_1$ vertices has chromatic number $\leq\aleph_0$? -/
+FormalConjectures/ErdosProblems/918.lean:39:    answer(sorry) ↔ ∃ (V : Type u) (G : SimpleGraph V), #V = ℵ_ 2 ∧ G.chromaticCardinal = ℵ_ 2 ∧
+FormalConjectures/ErdosProblems/918.lean:40:      ∀ (W : Set V) (_ : #W = ℵ₁), (G.induce W).chromaticCardinal ≤ ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:43:/-- Is there a graph with $\aleph_{\omega+1}$ vertices and chromatic number $\aleph_1$ such that
+FormalConjectures/ErdosProblems/918.lean:44:every subgraph on $\aleph_\omega$ vertices has chromatic number $\leq\aleph_0$? -/
+FormalConjectures/ErdosProblems/918.lean:48:    ∃ (V : Type u) (G : SimpleGraph V), #V = ℵ_ (ω + 1) ∧ G.chromaticCardinal = ℵ₁ ∧
+FormalConjectures/ErdosProblems/918.lean:49:      ∀ (W : Set V) (_ : #W = ℵ_ ω), (G.induce W).chromaticCardinal ≤ ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:52:/-- Is there a graph with $\aleph_2$ vertices and chromatic number $\aleph_2$ such that every
+FormalConjectures/ErdosProblems/918.lean:53:subgraph on $\aleph_1$ vertices has chromatic number $\leq\aleph_0$? -/
+FormalConjectures/ErdosProblems/918.lean:57:    answer(sorry) ↔ ∃ (V : Type u) (G : SimpleGraph V), #V = ℵ_ 2 ∧ G.chromaticCardinal = ℵ_ 2 ∧
+FormalConjectures/ErdosProblems/918.lean:58:      ∀ (H : G.Subgraph) (_ : #H.verts = ℵ₁), H.coe.chromaticCardinal ≤ ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:61:/-- Is there a graph with $\aleph_{\omega+1}$ vertices and chromatic number $\aleph_1$ such that
+FormalConjectures/ErdosProblems/918.lean:62:every subgraph on $\aleph_\omega$ vertices has chromatic number $\leq\aleph_0$? -/
+FormalConjectures/ErdosProblems/918.lean:66:      ∃ (V : Type u) (G : SimpleGraph V), #V = ℵ_ (ω + 1) ∧ G.chromaticCardinal = ℵ₁ ∧
+FormalConjectures/ErdosProblems/918.lean:67:      ∀ (H : G.Subgraph) (_ : #H.verts = ℵ_ ω), H.coe.chromaticCardinal ≤ ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:71:there is a graph with chromatic number $\aleph_1$ and $\aleph_k$ vertices where each subgraph on
+FormalConjectures/ErdosProblems/918.lean:72:less than $\aleph_k$ vertices has chromatic number $\leq \aleph_0$. -/
+FormalConjectures/ErdosProblems/918.lean:77:    #V = ℵ_ k ∧ G.chromaticCardinal = ℵ₁ ∧
+FormalConjectures/ErdosProblems/918.lean:78:      ∀ (W : Set V) (_ : #W < ℵ_ k), (G.induce W).chromaticCardinal ≤ ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:87:    ¬∃ (V : Type u) (G : SimpleGraph V), #V = ℵ_ 2 ∧ G.chromaticCardinal = ℵ_ 2 ∧
+FormalConjectures/ErdosProblems/918.lean:88:      ∀ (W : Set V) (_ : #W = ℵ₁), (G.induce W).chromaticCardinal = ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:97:    ¬∃ (V : Type u) (G : SimpleGraph V), #V = ℵ_ 2 ∧ G.chromaticCardinal = ℵ_ 2 ∧
+FormalConjectures/ErdosProblems/918.lean:98:      ∀ (H : G.Subgraph) (_ : #H.verts = ℵ₁), H.coe.chromaticCardinal = ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:107:    ¬∃ (V : Type u) (G : SimpleGraph V), #V = ℵ_ (ω + 1) ∧ G.chromaticCardinal = ℵ₁ ∧
+FormalConjectures/ErdosProblems/918.lean:108:      ∀ (W : Set V) (_ : #W = ℵ_ ω), (G.induce W).chromaticCardinal = ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:117:    ¬∃ (V : Type u) (G : SimpleGraph V), #V = ℵ_ (ω + 1) ∧ G.chromaticCardinal = ℵ₁ ∧
+FormalConjectures/ErdosProblems/918.lean:118:      ∀ (H : G.Subgraph) (_ : #H.verts = ℵ_ ω), H.coe.chromaticCardinal = ℵ₀ := by
+FormalConjectures/ErdosProblems/813.lean:31:almost monochromatic subsets_. (2023).
+FormalConjectures/ErdosProblems/628.lean:26:[Er68b] Erdős, P., _On chromatic number of graphs and set-systems_ (1968).
+FormalConjectures/ErdosProblems/628.lean:36:Let $G$ be a graph with chromatic number $k$ containing no complete graph $K_k$.
+FormalConjectures/ErdosProblems/628.lean:38:subgraphs of $G$ with chromatic numbers $\geq a$ and $\geq b$ respectively.
+FormalConjectures/ErdosProblems/628.lean:42:    (k : ℕ) (hk : G.chromaticNumber = k)
+FormalConjectures/ErdosProblems/628.lean:46:      (G.induce S).chromaticNumber ≥ a ∧
+FormalConjectures/ErdosProblems/628.lean:47:      (G.induce T).chromaticNumber ≥ b := by
+FormalConjectures/ErdosProblems/842.lean:26:Does $G$ have chromatic number at most $3$?
+FormalConjectures/ErdosProblems/842.lean:64:and adding a Hamiltonian cycle (with all new edges). Then $G$ has chromatic
+FormalConjectures/ErdosProblems/842.lean:76:    (triangleGraph n ⊔ cycleGraphOfPerm σ).chromaticNumber ≤ 3 := by
+FormalConjectures/ErdosProblems/189.lean:48:monochromatic region is Lebesgue measurable and has measure zero).
+FormalConjectures/ErdosProblems/737.lean:24:Let $G$ be a graph with chromatic number $\aleph_1$. Must there exist an
+FormalConjectures/ErdosProblems/737.lean:38:/-- A graph has uncountable chromatic number: it cannot be properly colored
+FormalConjectures/ErdosProblems/737.lean:63:If $G$ is a graph with chromatic number $\geq \aleph_1$ (uncountable), then there
+FormalConjectures/ErdosProblems/1032.lean:25:there is a $4$-chromatic critical graph on $n$ vertices with minimum degree at least $c \cdot n$.
+FormalConjectures/ErdosProblems/1032.lean:40:A simple graph $G$ is $k$-critical if its chromatic number equals $k$ and for every
+FormalConjectures/ErdosProblems/1032.lean:41:edge $e$, the graph obtained by deleting $e$ has chromatic number strictly less
+FormalConjectures/ErdosProblems/1032.lean:45:  G.chromaticNumber = (k : ℕ∞) ∧
+FormalConjectures/ErdosProblems/1032.lean:46:  ∀ e ∈ G.edgeSet, (G.deleteEdges {e}).chromaticNumber < (k : ℕ∞)
+FormalConjectures/ErdosProblems/1032.lean:52:a $4$-chromatic critical graph on $n$ vertices with minimum degree at least $c \cdot n$?
+FormalConjectures/ErdosProblems/1032.lean:55:- Simonovits [Si72] and Toft [To72] independently constructed $4$-chromatic
+FormalConjectures/ErdosProblems/1032.lean:57:- Dirac gave an example of a $6$-chromatic critical graph with minimum degree $> n/2$.
+FormalConjectures/ErdosProblems/1032.lean:58:- This problem is also open for $5$-chromatic critical graphs.
+FormalConjectures/ErdosProblems/58.lean:50:    G.chromaticNumber ≤ (2 * k + 2 : ℕ) ∧
+FormalConjectures/ErdosProblems/58.lean:51:    (G.chromaticNumber = (2 * k + 2 : ℕ) ↔ ∃ s : Finset V, G.IsNClique (2 * k + 2) s) := by
+FormalConjectures/ErdosProblems/1006.lean:32:[NeRo78b] Nešetřil, J. and Rödl, V., *A short proof of the existence of highly chromatic
+FormalConjectures/ErdosProblems/629.lean:25:the list chromatic number $\chi_L(G) > k$.
+FormalConjectures/ErdosProblems/629.lean:43:/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/629.lean:52:proper list coloring. -/
+FormalConjectures/ErdosProblems/629.lean:57:/-- The list chromatic number (choice number) of a graph $G$: the minimum $k$
+FormalConjectures/ErdosProblems/629.lean:63:chromatic number greater than $k$. -/
+FormalConjectures/ErdosProblems/554.lean:42:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/554.lean:45:\operatorname{Fin} k$. A monochromatic copy of $G$ in colour $a$ is an injective map
+FormalConjectures/ErdosProblems/894.lean:23:of $\mathbb{N}$ with no monochromatic pair whose difference lies in $A$?
+FormalConjectures/ErdosProblems/894.lean:41:Is it true that there must exist a finite colouring of $\mathbb{N}$ with no monochromatic
+FormalConjectures/ErdosProblems/894.lean:45:chromatic number?
+FormalConjectures/ErdosProblems/303.lean:24:- [BrRo91] Brown, Tom C. and Rödl, Voijtech, Monochromatic solutions to equations with unit
+FormalConjectures/ErdosProblems/303.lean:31:Is it true that in any finite colouring of the integers there exists a monochromatic solution
+FormalConjectures/ErdosProblems/1022.lean:28:$r$-uniform hypergraphs with chromatic number 3.
+FormalConjectures/ErdosProblems/1022.lean:36:    a 2-coloring of the ground set such that no edge is monochromatic:
+FormalConjectures/ErdosProblems/921.lean:25:vertices with chromatic number $k$ in which every odd cycle has length $> m$.
+FormalConjectures/ErdosProblems/921.lean:35:[KST84] Kierstead, H., Szemerédi, E., and Trotter, W., *On coloring graphs with locally
+FormalConjectures/ErdosProblems/921.lean:43:/-- The largest $m$ such that there exists a graph on $n$ vertices with chromatic
+FormalConjectures/ErdosProblems/921.lean:47:    G.chromaticNumber = (k : ℕ∞) ∧
+FormalConjectures/ErdosProblems/594.lean:24:A problem of Erdős and Hajnal: does every graph with chromatic number
+FormalConjectures/ErdosProblems/594.lean:28:[ErHa66] Erdős, P. and Hajnal, A., *On chromatic number of graphs and
+FormalConjectures/ErdosProblems/594.lean:35:of chromatic numbers*, Topics in Topology, Colloq. Math. Soc. Janos Bolyai
+FormalConjectures/ErdosProblems/594.lean:43:/-- A graph has uncountable chromatic number: it cannot be properly colored
+FormalConjectures/ErdosProblems/594.lean:63:Every graph with uncountable chromatic number (i.e., chromatic number
+FormalConjectures/ErdosProblems/809.lean:38:$r$-edge-coloring such that every cycle of length $2k+1$ is rainbow
+FormalConjectures/ErdosProblems/77.lean:25:of the edges of $K_n$ contains a monochromatic copy of $K_k$, then find the value of
+FormalConjectures/ErdosProblems/77.lean:49:symmetric 2-colouring of the edges of $K_N$, there is a monochromatic
+FormalConjectures/ErdosProblems/744.lean:40:/-- A graph $G$ is $k$-critical if it has chromatic number exactly $k$ (i.e., is
+FormalConjectures/ErdosProblems/758.lean:24:The cochromatic number of $G$, denoted $\zeta(G)$, is the minimum number of colours
+FormalConjectures/ErdosProblems/758.lean:29:[ErGi93] Erdős, P. and Gimbel, J., *Some problems and results in cochromatic theory* (1993).
+FormalConjectures/ErdosProblems/758.lean:31:[Gi86] Gimbel, J., *The chromatic and cochromatic number of a graph* (1986).
+FormalConjectures/ErdosProblems/758.lean:38:/-- A cochromatic coloring of a simple graph $G$ with $k$ colors is a function
+FormalConjectures/ErdosProblems/758.lean:41:def IsCochromaticColoring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/758.lean:47:/-- The cochromatic number $\zeta(G)$: the minimum number of colors needed for a
+FormalConjectures/ErdosProblems/758.lean:48:cochromatic coloring of $G$. -/
+FormalConjectures/ErdosProblems/758.lean:49:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/758.lean:51:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColoring G k c}
+FormalConjectures/ErdosProblems/758.lean:53:/-- $z(n)$: the maximum cochromatic number over all simple graphs on $n$
+FormalConjectures/ErdosProblems/758.lean:55:noncomputable def maxCochromaticNumber (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/758.lean:56:  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n), cochromaticNumber G = k}
+FormalConjectures/ErdosProblems/758.lean:61:Is it true that $z(12) = 4$, where $z(n)$ is the maximum cochromatic number
+FormalConjectures/ErdosProblems/758.lean:67:theorem erdos_758 : answer(True) ↔ maxCochromaticNumber 12 = 4 := by
+FormalConjectures/ErdosProblems/1104.lean:29:/-- Maximum chromatic number of a triangle-free graph on `n` vertices. -/
+FormalConjectures/ErdosProblems/1104.lean:31:  sSup {χ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = χ}
+FormalConjectures/ErdosProblems/1104.lean:41:where $f(n)$ denotes the maximum chromatic number of a triangle-free graph on
+FormalConjectures/ErdosProblems/1104.lean:58:where $f(n)$ denotes the maximum chromatic number of a triangle-free graph on
+FormalConjectures/ErdosProblems/557.lean:36:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/557.lean:39:A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+FormalConjectures/ErdosProblems/1169.lean:35:/-- The ordinal partition relation $\alpha \to (\beta, \gamma)^2$ for 2-colorings of pairs.
+FormalConjectures/ErdosProblems/1169.lean:36:    For every 2-coloring of the pairs of ordinals below $\alpha$, there is either
+FormalConjectures/ErdosProblems/1169.lean:56:That is, for every natural number $k$, there exists a 2-coloring of the pairs
+FormalConjectures/ErdosProblems/1169.lean:57:of ordinals below $\omega_1^2$ such that no subset of order type $\omega_1^2$ is monochromatic
+FormalConjectures/ErdosProblems/1169.lean:58:in the first color and no subset of order type $k$ is monochromatic in the
+FormalConjectures/ErdosProblems/130.lean:26:chromatic number?
+FormalConjectures/ErdosProblems/130.lean:79:Can the chromatic number of $G$ be infinite?
+FormalConjectures/ErdosProblems/130.lean:90:      (intDistGraph A).chromaticNumber = ⊤ := by
+FormalConjectures/ErdosProblems/631.lean:24:The list chromatic number $\chi_L(G)$ is defined to be the minimal $k$ such that for any
+FormalConjectures/ErdosProblems/631.lean:48:/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/631.lean:57:proper list coloring. -/
+FormalConjectures/ErdosProblems/19.lean:63:    G.chromaticNumber = n := by
+FormalConjectures/ErdosProblems/922.lean:26:chromatic number at most $k + 2$?
+FormalConjectures/ErdosProblems/167.lean:39:[Er88] Erdős, P., _Problems and results on chromatic numbers in finite and infinite graphs_. Graph theory with applications to algorithms and computer science (1985), 201–213.
+FormalConjectures/ErdosProblems/843.lean:33:distinct monochromatic elements of $A$. -/
+FormalConjectures/ErdosProblems/843.lean:45:can be written as a monochromatic sum of distinct squares.
+FormalConjectures/ErdosProblems/593.lean:25:$3$-uniform hypergraph of chromatic number $> \aleph_0$.
+FormalConjectures/ErdosProblems/593.lean:29:chromatic number $\geq \aleph_1$ must contain all finite bipartite graphs but need not
+FormalConjectures/ErdosProblems/593.lean:33:in every $3$-uniform hypergraph of uncountable chromatic number. By analogy
+FormalConjectures/ErdosProblems/593.lean:50:/-- A proper coloring of a $3$-uniform hypergraph: no edge is monochromatic
+FormalConjectures/ErdosProblems/593.lean:56:/-- A $3$-uniform hypergraph has uncountable chromatic number: it admits no
+FormalConjectures/ErdosProblems/593.lean:57:    proper coloring with countably many colors. -/
+FormalConjectures/ErdosProblems/593.lean:68:/-- A $3$-uniform hypergraph is $2$-colorable: it admits a proper coloring with
+FormalConjectures/ErdosProblems/593.lean:69:    two colors such that no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/593.lean:77:uncountable chromatic number if and only if it is $2$-colorable.
+FormalConjectures/ErdosProblems/593.lean:80:chromatic number $\geq \aleph_1$ must contain all finite bipartite graphs but need not
+FormalConjectures/ErdosProblems/549.lean:63:The bipartition condition is expressed via a proper 2-coloring where one color
+FormalConjectures/ErdosProblems/110.lean:24:Is there a function $F$ such that every graph with chromatic number $\aleph_1$ has, for all
+FormalConjectures/ErdosProblems/110.lean:25:large $n$, a subgraph with chromatic number $n$ on at most $F(n)$ vertices? Disproved:
+FormalConjectures/ErdosProblems/110.lean:40:A graph $G$ (on vertex type $V$) has chromatic number $\aleph_1$ if:
+FormalConjectures/ErdosProblems/110.lean:42:    (i.e., the chromatic number exceeds $\aleph_0$), and
+FormalConjectures/ErdosProblems/110.lean:51:Is there some function $F : \mathbb{N} \to \mathbb{N}$ such that every graph $G$ with chromatic
+FormalConjectures/ErdosProblems/110.lean:52:number $\aleph_1$ has, for all sufficiently large $n$, a subgraph with chromatic number $n$ on at
+FormalConjectures/ErdosProblems/110.lean:56:The analogous statement fails for graphs of chromatic number $\aleph_0$.
+FormalConjectures/ErdosProblems/110.lean:69:            H.coe.chromaticNumber = ↑n := by
+FormalConjectures/ErdosProblems/484.lean:24:integers representable as a monochromatic sum $a + b$ with $a \neq b$.
+FormalConjectures/ErdosProblems/484.lean:41:integers in $\{1, \ldots, N\}$ representable as a monochromatic sum, i.e., as $a + b$
+FormalConjectures/ErdosProblems/717.lean:24:Let $G$ be a graph on $n$ vertices with chromatic number $\chi(G)$ and let $\sigma(G)$ be
+FormalConjectures/ErdosProblems/717.lean:80:          (G.chromaticNumber.toNat : ℝ) ≤
+FormalConjectures/ErdosProblems/923.lean:22:Is it true that, for every $k$, there is some $f(k)$ such that if $G$ has chromatic number
+FormalConjectures/ErdosProblems/923.lean:23:$\geq f(k)$ then $G$ contains a triangle-free subgraph with chromatic number $\geq k$?
+FormalConjectures/ErdosProblems/923.lean:27:[Ro77] Rödl, V., *On the chromatic number of subgraphs of a given graph*, Proc. Amer.
+FormalConjectures/ErdosProblems/923.lean:36:Is it true that, for every $k$, there is some $f(k)$ such that if $G$ has chromatic number
+FormalConjectures/ErdosProblems/923.lean:37:$\geq f(k)$ then $G$ contains a triangle-free subgraph with chromatic number $\geq k$?
+FormalConjectures/ErdosProblems/923.lean:48:            (f : ℕ∞) ≤ G.chromaticNumber →
+FormalConjectures/ErdosProblems/923.lean:50:              (k : ℕ∞) ≤ H.coe.chromaticNumber ∧
+FormalConjectures/ErdosProblems/561.lean:48:a graph $H$ such that for every 2-coloring of the edges of $H$, either color 1
+FormalConjectures/ErdosProblems/582.lean:25:of the edges produces a monochromatic $K_3$?
+FormalConjectures/ErdosProblems/582.lean:31:[Fo70] Folkman, J., *Graphs with monochromatic complete subgraphs in every edge coloring*.
+FormalConjectures/ErdosProblems/582.lean:39:there is a monochromatic $K_3$. Existence was proved by Folkman [Fo70].
+FormalConjectures/ErdosProblems/582.lean:43:in a $2$-coloring of the edges), either $H$ or the complementary subgraph $G \setminus H$
+FormalConjectures/ErdosProblems/555.lean:25:then there is a monochromatic copy of $G$. Determine the value of $R_k(C_{2n})$.
+FormalConjectures/ErdosProblems/555.lean:47:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/555.lean:50:A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+FormalConjectures/ErdosProblems/781.lean:25:a monochromatic $k$-term descending wave: a sequence $x_1 < \cdots < x_k$ such that,
+FormalConjectures/ErdosProblems/781.lean:52:/-- A 2-colouring of $\{0, \ldots, n-1\}$ contains a monochromatic $k$-term
+FormalConjectures/ErdosProblems/781.lean:54:def HasMonochromaticDescendingWave (k n : ℕ) (c : Fin n → Bool) : Prop :=
+FormalConjectures/ErdosProblems/781.lean:59:a monochromatic $k$-term descending wave. -/
+FormalConjectures/ErdosProblems/781.lean:61:  sInf {n : ℕ | ∀ c : Fin n → Bool, HasMonochromaticDescendingWave k n c}
+FormalConjectures/ErdosProblems/925.lean:26:edges of $G$ with no monochromatic triangle) then $G$ contains an independent set
+FormalConjectures/ErdosProblems/925.lean:48:2-colouring of its edges with no monochromatic triangle. Equivalently,

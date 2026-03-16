@@ -1,0 +1,286 @@
+/home/ryan/formal-conjectures/ai-review/16.md-8-
+/home/ryan/formal-conjectures/ai-review/16.md-9-**Two of the three custom definitions in this file have equivalents in `FormalConjecturesForMathlib` that should be preferred.**
+/home/ryan/formal-conjectures/ai-review/16.md-10-
+ai-review/16.md:11:### `HasNaturalDensityZero`
+/home/ryan/formal-conjectures/ai-review/16.md-12-
+ai-review/16.md:13:The file defines its own `HasNaturalDensityZero` (lines 53–55) using `Set.ncard (S ∩ Set.Icc 1 N) / N → 0`. The project already has a well-developed density library at `FormalConjecturesForMathlib/Data/Set/Density.lean` which provides:
+/home/ryan/formal-conjectures/ai-review/16.md-14-
+ai-review/16.md-15-- `Set.HasDensity (S : Set β) (α : ℝ) (A : Set β)` — general natural density via `Tendsto` of `partialDensity` (line 86–88).
+/home/ryan/formal-conjectures/ai-review/16.md-16-- `partialDensity` uses `Set.interIio` (elements `< b`) rather than `Set.Icc 1 N` (elements in `[1, N]`).
+/home/ryan/formal-conjectures/ai-review/16.md-17-
+ai-review/16.md:18:These two formulations are asymptotically equivalent (they differ by at most one element at each step, which vanishes in the limit), so `S.HasDensity 0` from the utility library is a drop-in replacement for `HasNaturalDensityZero S`. Using the shared definition would allow leveraging existing lemmas like `hasDensity_zero_of_finite`, `HasDensity.mono`, and `HasDensity.nonneg`.
+/home/ryan/formal-conjectures/ai-review/16.md-19-
+ai-review/16.md:20:**Recommendation:** Replace `HasNaturalDensityZero S` with `S.HasDensity 0` (from `Set.HasDensity`).
+/home/ryan/formal-conjectures/ai-review/16.md-21-
+/home/ryan/formal-conjectures/ai-review/16.md-22-### `IsInfiniteAP`
+/home/ryan/formal-conjectures/ai-review/16.md-23-
+--
+/home/ryan/formal-conjectures/ai-review/16.md-83-
+ai-review/16.md-84-The code is well-structured and readable. Minor notes:
+/home/ryan/formal-conjectures/ai-review/16.md-85-
+ai-review/16.md:86:- The namespace `Erdos16` and definition names (`oddNotPowerOfTwoPlusPrime`, `HasNaturalDensityZero`, `IsInfiniteAP`) are clear and self-documenting.
+/home/ryan/formal-conjectures/ai-review/16.md-87-- The docstrings on all three definitions and the main theorem are thorough and include LaTeX.
+ai-review/16.md:88:- The `open Filter` at line 38 is needed for `atTop` and `nhds` in `HasNaturalDensityZero`. If the custom definitions are replaced with utility imports, this may become unnecessary.
+/home/ryan/formal-conjectures/ai-review/16.md-89-
+ai-review/16.md-90-**One readability improvement:** In `oddNotPowerOfTwoPlusPrime` (line 47), the quantifier `∀ (k : ℕ) (q : ℕ), Nat.Prime q → n ≠ 2 ^ k + q` reads naturally, but naming the prime variable `q` rather than `p` is slightly surprising given the docstring uses `p`. Consider renaming to `p` for consistency.
+/home/ryan/formal-conjectures/ai-review/16.md-91-
+--
+ai-review/16.md-118-theorem erdos_16 : answer(False) ↔
+ai-review/16.md-119-    ∃ (AP D : Set ℕ),
+/home/ryan/formal-conjectures/ai-review/16.md-120-      IsInfiniteAP AP ∧
+ai-review/16.md:121:      HasNaturalDensityZero D ∧
+/home/ryan/formal-conjectures/ai-review/16.md-122-      oddNotPowerOfTwoPlusPrime = AP ∪ D
+/home/ryan/formal-conjectures/ai-review/16.md-123-```
+/home/ryan/formal-conjectures/ai-review/16.md-124-
+ai-review/16.md-125-Since `answer(False) = False`, this iff encodes:
+/home/ryan/formal-conjectures/ai-review/16.md-126-- (→) `False → ∃ ...` — vacuously true.
+ai-review/16.md:127:- (←) `∃ ... → False` — i.e., `¬ ∃ (AP D : Set ℕ), IsInfiniteAP AP ∧ HasNaturalDensityZero D ∧ oddNotPowerOfTwoPlusPrime = AP ∪ D`.
+/home/ryan/formal-conjectures/ai-review/16.md-128-
+ai-review/16.md-129-This correctly formalizes "the answer is no: there do not exist an infinite AP and a density-zero set whose union equals the target set." ✅
+/home/ryan/formal-conjectures/ai-review/16.md-130-
+--
+/home/ryan/formal-conjectures/ai-review/16.md-137-
+ai-review/16.md-138-This correctly defines the set of odd natural numbers n such that for all k ≥ 0 and all primes q, n ≠ 2^k + q. The set includes 0? No: `Odd 0` is false in Lean/Mathlib, so 0 is correctly excluded. ✅
+/home/ryan/formal-conjectures/ai-review/16.md-139-
+ai-review/16.md:140:### `HasNaturalDensityZero` definition
+/home/ryan/formal-conjectures/ai-review/16.md-141-
+/home/ryan/formal-conjectures/ai-review/16.md-142-```lean
+ai-review/16.md:143:def HasNaturalDensityZero (S : Set ℕ) : Prop :=
+ai-review/16.md-144-  Tendsto (fun N : ℕ => (Set.ncard (S ∩ Set.Icc 1 N) : ℝ) / (N : ℝ))
+/home/ryan/formal-conjectures/ai-review/16.md-145-    atTop (nhds 0)
+/home/ryan/formal-conjectures/ai-review/16.md-146-```
+--
+/home/ryan/formal-conjectures/ai-review/16.md-168-
+/home/ryan/formal-conjectures/ai-review/16.md-169-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/16.md-170-|-----------|-----------|
+ai-review/16.md:171:| Code reuse | ⚠️ `HasNaturalDensityZero` and `IsInfiniteAP` should use existing utility definitions from `FormalConjecturesForMathlib` |
+/home/ryan/formal-conjectures/ai-review/16.md-172-| Citations | ✅ Complete and accurate. Optionally add related problems 9/10/11 and OEIS A006285. |
+ai-review/16.md-173-| Variants | ✅ Main variant captured. Optional: formalize the intermediate "contains an infinite AP" result. |
+ai-review/16.md-174-| Readability | ✅ Good. Minor: rename `q` → `p` in `oddNotPowerOfTwoPlusPrime` for docstring consistency. |
+--
+/home/ryan/formal-conjectures/ai-review/31.md-6-
+/home/ryan/formal-conjectures/ai-review/31.md-7-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/31.md-8-
+ai-review/31.md:9:**Issue: Both `sumset` and `HasNaturalDensityZero` are custom definitions that duplicate existing infrastructure.**
+/home/ryan/formal-conjectures/ai-review/31.md-10-
+/home/ryan/formal-conjectures/ai-review/31.md-11-### Sumset
+/home/ryan/formal-conjectures/ai-review/31.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/31.md-21-
+ai-review/31.md-22-**Recommendation:** Remove `sumset` and use `A + B` with `open scoped Pointwise`.
+/home/ryan/formal-conjectures/ai-review/31.md-23-
+ai-review/31.md:24:### HasNaturalDensityZero
+/home/ryan/formal-conjectures/ai-review/31.md-25-
+ai-review/31.md-26-The custom definition at lines 39–41:
+/home/ryan/formal-conjectures/ai-review/31.md-27-```lean
+ai-review/31.md:28:def HasNaturalDensityZero (B : Set ℕ) : Prop :=
+ai-review/31.md-29-  ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+ai-review/31.md-30-    (((Finset.range N).filter (· ∈ B)).card : ℝ) / (N : ℝ) < ε
+/home/ryan/formal-conjectures/ai-review/31.md-31-```
+--
+ai-review/31.md-36-  Tendsto (fun (b : β) => S.partialDensity A b) atTop (𝓝 α)
+/home/ryan/formal-conjectures/ai-review/31.md-37-```
+/home/ryan/formal-conjectures/ai-review/31.md-38-
+ai-review/31.md:39:Using `B.HasDensity 0` is equivalent to the custom `HasNaturalDensityZero B`: both express that the proportion of elements of `B` in `{0, …, N-1}` tends to zero. The `HasDensity` version is more idiomatic (using `Tendsto` and the `𝓝` filter) and comes with supporting lemmas such as `Nat.hasDensity_zero_of_finite` (line 166).
+/home/ryan/formal-conjectures/ai-review/31.md-40-
+/home/ryan/formal-conjectures/ai-review/31.md-41-Several other problems already use `HasDensity 0` instead of custom definitions — e.g., Problems 340 (line 178) and 1054 (line 45).
+/home/ryan/formal-conjectures/ai-review/31.md-42-
+ai-review/31.md:43:**Recommendation:** Replace `HasNaturalDensityZero B` with `B.HasDensity 0` and import `FormalConjecturesForMathlib.Data.Set.Density`.
+/home/ryan/formal-conjectures/ai-review/31.md-44-
+/home/ryan/formal-conjectures/ai-review/31.md-45-### Cofinite complement
+/home/ryan/formal-conjectures/ai-review/31.md-46-
+--
+ai-review/31.md-97-The code is short and clean. Specific observations:
+/home/ryan/formal-conjectures/ai-review/31.md-98-
+ai-review/31.md-99-- **Module docstring:** Clear and informative, with a proper LaTeX statement and full Lorentz citation.
+ai-review/31.md:100:- **Definition docstrings:** Both `sumset` and `HasNaturalDensityZero` have docstrings that clearly explain what they define.
+ai-review/31.md-101-- **Namespace:** `Erdos31` is appropriate.
+ai-review/31.md-102-- **Opens:** `open scoped Classical` is used; this is needed for decidability of set membership in the filter definition.
+/home/ryan/formal-conjectures/ai-review/31.md-103-
+ai-review/31.md-104-**Minor suggestions:**
+ai-review/31.md-105-- The `sumset` docstring says "$A + B$: the set of all $a + b$ with $a \in A$, $b \in B$" — this would become unnecessary if using Mathlib's pointwise addition.
+ai-review/31.md:106:- The `HasNaturalDensityZero` epsilon-delta formulation is mathematically correct but less idiomatic than the `Tendsto`-based formulation. The latter would be clearer to a Lean user familiar with Mathlib conventions.
+/home/ryan/formal-conjectures/ai-review/31.md-107-
+/home/ryan/formal-conjectures/ai-review/31.md-108-Overall readability is good. Adopting the shared definitions would slightly improve it by reducing boilerplate.
+/home/ryan/formal-conjectures/ai-review/31.md-109-
+--
+/home/ryan/formal-conjectures/ai-review/31.md-136-
+/home/ryan/formal-conjectures/ai-review/31.md-137-This correctly defines the Minkowski sum (sumset) of two sets of natural numbers. An element n is in the sumset iff it can be written as a + b with a ∈ A and b ∈ B. This is the standard definition.
+/home/ryan/formal-conjectures/ai-review/31.md-138-
+ai-review/31.md:139:### Definition: `HasNaturalDensityZero`
+/home/ryan/formal-conjectures/ai-review/31.md-140-
+/home/ryan/formal-conjectures/ai-review/31.md-141-```lean
+ai-review/31.md:142:def HasNaturalDensityZero (B : Set ℕ) : Prop :=
+ai-review/31.md-143-  ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+ai-review/31.md-144-    (((Finset.range N).filter (· ∈ B)).card : ℝ) / (N : ℝ) < ε
+/home/ryan/formal-conjectures/ai-review/31.md-145-```
+--
+/home/ryan/formal-conjectures/ai-review/31.md-155-
+/home/ryan/formal-conjectures/ai-review/31.md-156-```lean
+ai-review/31.md-157-theorem erdos_31 (A : Set ℕ) (hA : A.Infinite) :
+ai-review/31.md:158:    ∃ B : Set ℕ, HasNaturalDensityZero B ∧
+ai-review/31.md-159-      Set.Finite {n : ℕ | n ∉ sumset A B} := by
+/home/ryan/formal-conjectures/ai-review/31.md-160-  sorry
+/home/ryan/formal-conjectures/ai-review/31.md-161-```
+/home/ryan/formal-conjectures/ai-review/31.md-162-
+ai-review/31.md-163-- **Hypothesis:** `A.Infinite` correctly requires A to be an infinite subset of ℕ. This is necessary — for finite A, the sumset A + B is always "sparse" in some sense, and one cannot generally cover all but finitely many naturals.
+ai-review/31.md:164:- **Conclusion, first conjunct:** `HasNaturalDensityZero B` requires B to have natural density zero. This matches the problem statement.
+ai-review/31.md-165-- **Conclusion, second conjunct:** `Set.Finite {n : ℕ | n ∉ sumset A B}` states that the set of naturals NOT in A + B is finite. Equivalently, A + B is cofinite. This matches "A + B contains all except finitely many natural numbers."
+ai-review/31.md-166-- **Existential over B:** The problem asks for the *existence* of such a B, and the formalization correctly uses `∃ B`. Note that B is not required to be infinite or to have any other property besides density zero — this is correct, as Lorentz's theorem makes no such additional restriction.
+/home/ryan/formal-conjectures/ai-review/31.md-167-
+--
+/home/ryan/formal-conjectures/ai-review/50.md-12-
+/home/ryan/formal-conjectures/ai-review/50.md-13-Mathlib provides `Nat.totient` (used here) and standard filter/topology machinery (`Tendsto`, `atTop`, `nhds`, `HasDerivAt`), which are all appropriately used. No custom utilities are reinvented.
+/home/ryan/formal-conjectures/ai-review/50.md-14-
+ai-review/50.md:15:**One minor observation:** Several other Erdős problems involve natural density computations with the same pattern `(Finset.range (N + 1)).filter (fun n => ...).card / N`. If more problems follow this pattern, a shared `naturalDensityCount` helper could be factored out. At present, this is not actionable — only this problem uses this specific pattern.
+/home/ryan/formal-conjectures/ai-review/50.md-16-
+/home/ryan/formal-conjectures/ai-review/50.md-17----
+/home/ryan/formal-conjectures/ai-review/50.md-18-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-50-
+FormalConjectures/ErdosProblems/122.lean-51-/-- The natural density of a set $A \subseteq \mathbb{N}$ is zero: the proportion of elements
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-52-in $\{0, \ldots, N-1\}$ belonging to $A$ tends to $0$ as $N \to \infty$. -/
+FormalConjectures/ErdosProblems/122.lean:53:def HasNaturalDensityZero (A : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-54-  Tendsto
+FormalConjectures/ErdosProblems/122.lean-55-    (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-56-    atTop (nhds 0)
+--
+FormalConjectures/ErdosProblems/122.lean-59-for every $\varepsilon > 0$, the set $\{n : f(n)/F(n) \ge \varepsilon\}$ has natural
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-60-density zero. -/
+FormalConjectures/ErdosProblems/122.lean-61-def AlmostAllRatioVanishes (f : ℕ → ℕ) (F : ℕ → ℝ) : Prop :=
+FormalConjectures/ErdosProblems/122.lean:62:  ∀ ε : ℝ, 0 < ε → HasNaturalDensityZero {n : ℕ | ε ≤ (f n : ℝ) / F n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-63-
+FormalConjectures/ErdosProblems/122.lean-64-/-- The Erdős-122 property of $f$: for any positive $F$ with $f(n)/F(n) \to 0$
+FormalConjectures/ErdosProblems/122.lean-65-in natural density, the ratio $\#\{n \in \mathbb{N} : n+f(n) \in (x, x+F(x))\} / F(x)$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-38-/-- The natural (asymptotic) density of a set $A \subseteq \mathbb{N}$ is zero if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-39-$|A \cap \{0, \ldots, n\}| / (n+1) \to 0$ as $n \to \infty$. -/
+FormalConjectures/ErdosProblems/1123.lean:40:def HasNaturalDensityZero (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1123.lean-41-  Tendsto (fun n : ℕ =>
+FormalConjectures/ErdosProblems/1123.lean-42-    ((Finset.filter (· ∈ A) (Finset.range (n + 1))).card : ℝ) / ((n : ℝ) + 1))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-43-    atTop (nhds 0)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-54-/-- Two sets of naturals are equivalent mod natural-density-$0$ sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-55-iff their symmetric difference has natural density zero. -/
+FormalConjectures/ErdosProblems/1123.lean-56-def NatDensityEquiv (A B : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1123.lean:57:  HasNaturalDensityZero (symmDiff A B)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-59-/-- Two sets of naturals are equivalent mod log-density-$0$ sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-60-iff their symmetric difference has logarithmic density zero. -/
+--
+FormalConjectures/ErdosProblems/673.lean-58-  ((divs.zip divs.tail).map (fun p => (p.1 : ℝ) / (p.2 : ℝ))).sum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-60-/-- The natural density of a set $A \subseteq \mathbb{N}$ is zero. -/
+FormalConjectures/ErdosProblems/673.lean:61:def HasNaturalDensityZero (A : Set ℕ) [DecidablePred (· ∈ A)] : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-62-  Tendsto
+FormalConjectures/ErdosProblems/673.lean-63-    (fun N : ℕ => (((Finset.range N).filter (· ∈ A)).card : ℝ) / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-64-    atTop (nhds 0)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-71--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-72-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/673.lean-73-theorem erdos_673 :
+FormalConjectures/ErdosProblems/673.lean:74:    answer(True) ↔ ∀ M : ℝ, HasNaturalDensityZero {n : ℕ | erdosG n ≤ M} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-77-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-46-    Filter.atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-48-/-- A set has natural density $d$ if its upper and lower densities both equal $d$. -/
+FormalConjectures/ErdosProblems/335.lean:49:def HasNaturalDensity (A : Set ℕ) (d : ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-50-  upperDensity A = d ∧ lowerDensity A = d
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-52-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-72-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/335.lean-73-theorem erdos_335 :
+FormalConjectures/ErdosProblems/335.lean-74-    ∀ (A B : Set ℕ) (dA dB : ℝ),
+FormalConjectures/ErdosProblems/335.lean:75:      HasNaturalDensity A dA →
+FormalConjectures/ErdosProblems/335.lean:76:      HasNaturalDensity B dB →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-77-      0 < dA → 0 < dB →
+FormalConjectures/ErdosProblems/335.lean:78:      HasNaturalDensity (Set.image2 (· + ·) A B) (dA + dB) →
+FormalConjectures/ErdosProblems/335.lean-79-      ∃ (θ : ℝ) (X_A X_B : Set ℝ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-80-        Irrational θ ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-81-        MeasurableSet X_A ∧ MeasurableSet X_B ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-39-/-- A set $A \subseteq \mathbb{N}$ has natural density zero if for every $\varepsilon > 0$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-40-there exists $N$ such that for all $x \geq N$, the proportion of elements of $A$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-41-below $x$ is less than $\varepsilon$. -/
+FormalConjectures/ErdosProblems/955.lean:42:def HasNaturalDensityZero (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/955.lean-43-  ∀ ε : ℝ, ε > 0 → ∃ N : ℕ, ∀ x : ℕ, x ≥ N →
+FormalConjectures/ErdosProblems/955.lean-44-    ((Finset.filter (· ∈ A) (Finset.range x)).card : ℝ) / (x : ℝ) < ε
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-45-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-51-function.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-52--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-53-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/955.lean:54:theorem erdos_955 (A : Set ℕ) (hA : HasNaturalDensityZero A) :
+FormalConjectures/ErdosProblems/955.lean:55:    HasNaturalDensityZero {n : ℕ | sumProperDivisors n ∈ A} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-56-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-58-end Erdos955
+--
+FormalConjectures/ErdosProblems/928.lean-64-opaque dickmanRho : ℝ → ℝ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-66-/-- The natural density of a set $S \subseteq \mathbb{N}$ exists and equals $d$. -/
+FormalConjectures/ErdosProblems/928.lean:67:def HasNaturalDensity (S : Set ℕ) (d : ℝ) : Prop :=
+FormalConjectures/ErdosProblems/928.lean-68-  Filter.Tendsto (fun N : ℕ => ((S ∩ {i | 1 ≤ i ∧ i ≤ N}).ncard : ℝ) / N)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-69-    atTop (nhds d)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-70-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-85-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/928.lean-86-theorem erdos_928 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/928.lean-87-    ∀ α β : ℝ, 0 < α → α < 1 → 0 < β → β < 1 →
+FormalConjectures/ErdosProblems/928.lean:88:    HasNaturalDensity (smoothConsecutiveSet α β)
+FormalConjectures/ErdosProblems/928.lean-89-      (dickmanRho (1 / α) * dickmanRho (1 / β)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-90-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-91-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-37-/-- A set $B \subseteq \mathbb{N}$ has natural density zero if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-38-    $|B \cap \{0, \ldots, N-1\}| / N \to 0$ as $N \to \infty$. -/
+FormalConjectures/ErdosProblems/31.lean:39:def HasNaturalDensityZero (B : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/31.lean-40-  ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/31.lean-41-    (((Finset.range N).filter (· ∈ B)).card : ℝ) / (N : ℝ) < ε
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-48--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-49-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/31.lean-50-theorem erdos_31 (A : Set ℕ) (hA : A.Infinite) :
+FormalConjectures/ErdosProblems/31.lean:51:    ∃ B : Set ℕ, HasNaturalDensityZero B ∧
+FormalConjectures/ErdosProblems/31.lean-52-      Set.Finite {n : ℕ | n ∉ sumset A B} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-53-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-46-    Filter.atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-48-/-- A set of natural numbers has natural density $d$. -/
+FormalConjectures/ErdosProblems/378.lean:49:def HasNaturalDensity (A : Set ℕ) (d : ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-50-  upperDensity A = d ∧ lowerDensity A = d
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-52-/-- The number of values $k$ with $1 \le k < n$ such that $\binom{n}{k}$ is squarefree. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-69--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-70-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/378.lean-71-theorem erdos_378 (r : ℕ) :
+FormalConjectures/ErdosProblems/378.lean:72:    ∃ d : ℝ, d > 0 ∧ HasNaturalDensity (squarefreeBinomAtLeast r) d := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-73-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-75-end Erdos378
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-50-A set $S \subseteq \mathbb{N}$ has natural density zero if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-51-$|S \cap \{1, \ldots, N\}| / N \to 0$ as $N \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-52--/
+FormalConjectures/ErdosProblems/16.lean:53:def HasNaturalDensityZero (S : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/16.lean-54-  Tendsto (fun N : ℕ => (Set.ncard (S ∩ Set.Icc 1 N) : ℝ) / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-55-    atTop (nhds 0)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-56-
+--
+FormalConjectures/ErdosProblems/16.lean-74-theorem erdos_16 : answer(False) ↔
+FormalConjectures/ErdosProblems/16.lean-75-    ∃ (AP D : Set ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-76-      IsInfiniteAP AP ∧
+FormalConjectures/ErdosProblems/16.lean:77:      HasNaturalDensityZero D ∧
+FormalConjectures/ErdosProblems/16.lean-78-      oddNotPowerOfTwoPlusPrime = AP ∪ D := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-79-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-80-

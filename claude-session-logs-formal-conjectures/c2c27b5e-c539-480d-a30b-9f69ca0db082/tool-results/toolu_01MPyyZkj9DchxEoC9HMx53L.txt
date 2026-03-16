@@ -1,0 +1,737 @@
+FormalConjectures/ErdosProblems/760.lean-56-noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/760.lean-57-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/760.lean:58:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-60-/--
+--
+FormalConjectures/ErdosProblems/616.lean-49-/-- The covering number $\tau(G)$: the minimum size of a transversal. -/
+FormalConjectures/ErdosProblems/616.lean-50-noncomputable def coveringNumber {n r : ℕ} (G : UniformHypergraph n r) : ℕ :=
+FormalConjectures/ErdosProblems/616.lean:51:  sInf {k : ℕ | ∃ S : Finset (Fin n), S.card = k ∧ IsTransversal G S}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean-52-
+FormalConjectures/ErdosProblems/616.lean-53-/-- The subhypergraph of $G$ induced on vertex set $W$: edges of $G$ contained in $W$. -/
+--
+FormalConjectures/ErdosProblems/556.lean-48-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/556.lean-49-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/556.lean:50:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-51-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/556.lean-52-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean-46-/-- A set $S \subseteq \mathbb{R}$ contains an infinite arithmetic progression if there exist
+FormalConjectures/ErdosProblems/199.lean-47-$a, d \in \mathbb{R}$ with $d \neq 0$ such that $a + n \cdot d \in S$ for all $n : \mathbb{N}$. -/
+FormalConjectures/ErdosProblems/199.lean:48:def HasInfiniteAP (S : Set ℝ) : Prop :=
+FormalConjectures/ErdosProblems/199.lean-49-  ∃ a d : ℝ, d ≠ 0 ∧ ∀ n : ℕ, (a + ↑n * d) ∈ S
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean-34-/-- Let `h n` be the minimal number such that `2 ^ n - 1, ..., (h n) ^ n - 1` are mutually
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean-35-coprime. -/
+FormalConjectures/ErdosProblems/770.lean:36:noncomputable def h (n : ℕ) : ℕ∞ := sInf {m | 2 < m ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean-37-  (Set.Icc 2 m).Pairwise fun i j => (i.toNat ^ n - 1).Coprime (j.toNat ^ n - 1)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean-38-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean-61-    that there exists a pancyclic graph on $n$ vertices with $n + h$ edges. -/
+FormalConjectures/ErdosProblems/1016.lean-62-noncomputable def pancyclicExcess (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1016.lean:63:  sInf {h : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean-64-    numEdges G = n + h ∧ IsPancyclic G}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean-65-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-51-convex polytope). -/
+FormalConjectures/ErdosProblems/651.lean-52-noncomputable def fk (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/651.lean:53:  sInf {m : ℕ | ∀ P : Finset (EuclideanSpace ℝ (Fin k)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-54-    P.card = m →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-55-    InGeneralPositionRk k P →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-44-contains a monochromatic copy of $H$). -/
+FormalConjectures/ErdosProblems/87.lean-45-noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean:46:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-47-    ContainsSubgraph G H ∨ ContainsSubgraph Gᶜ H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-41-vertices contains a $3$-clique or its complement contains an $n$-clique. -/
+FormalConjectures/ErdosProblems/553.lean-42-noncomputable def ramseyR3 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean:43:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-44-
+FormalConjectures/ErdosProblems/553.lean-45-/-- The Ramsey number $R(3,3,n)$: the minimum $N$ such that every $3$-colouring of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-50-two colour classes); the third colour class is the complement $(G_1 \sqcup G_2)^c$. -/
+FormalConjectures/ErdosProblems/553.lean-51-noncomputable def ramseyR33 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean:52:  sInf {N : ℕ | ∀ (G₁ G₂ : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-53-    Disjoint G₁ G₂ →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-54-    ¬G₁.CliqueFree 3 ∨ ¬G₂.CliqueFree 3 ∨ ¬(G₁ ⊔ G₂)ᶜ.CliqueFree n}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean-50-$t \geq 1$ contains at least $f(m)$ matchable integers. -/
+FormalConjectures/ErdosProblems/650.lean-51-noncomputable def erdos650F (m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/650.lean:52:  sInf {c : ℕ | ∃ (N : ℕ) (A : Finset ℕ) (t : ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean-53-    A.card = m ∧ (∀ a ∈ A, 1 ≤ a ∧ a ≤ N) ∧ t ≥ 1 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean-54-    divMatchCount A t N = c}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/614.lean-47-This is the function $f(n, k)$ from Erdős Problem 614. -/
+FormalConjectures/ErdosProblems/614.lean-48-noncomputable def erdos614_f (n k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/614.lean:49:  sInf {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/614.lean-50-    G.edgeFinset.card = m ∧ HasInducedDegreeProp G k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/614.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/791.lean-49-of $A$ (a finite additive 2-basis). This is the function $g(n)$ in Erdős Problem 791. -/
+FormalConjectures/ErdosProblems/791.lean-50-noncomputable def additiveBasesMinSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/791.lean:51:  sInf {k : ℕ | ∃ A : Finset ℕ, A.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/791.lean-52-    A ⊆ Finset.range (n + 1) ∧ Finset.range (n + 1) ⊆ A + A}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/791.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean-35-triangle-free graph on $n$ vertices with chromatic number exactly $k$. -/
+FormalConjectures/ErdosProblems/1013.lean-36-noncomputable def h3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1013.lean:37:  sInf {n : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = (k : ℕ∞)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean-39-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean-54--/
+FormalConjectures/ErdosProblems/581.lean-55-noncomputable def f (m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/581.lean:56:  sInf {k : ℕ | ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean-57-    G.CliqueFree 3 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean-58-    G.edgeSet.ncard = m ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-50-(no two adjacent vertices receive the same color). -/
+FormalConjectures/ErdosProblems/625.lean-51-noncomputable def finChromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/625.lean:52:  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-53-
+FormalConjectures/ErdosProblems/625.lean-54-/-- The cochromatic number of a simple graph on `Fin n`: the minimum number of parts $k$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-56-induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/625.lean-57-noncomputable def cochromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/625.lean:58:  sInf {k : ℕ | ∃ f : Fin n → Fin k,
+FormalConjectures/ErdosProblems/625.lean-59-    ∀ c : Fin k,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-60-      (∀ u v, f u = c → f v = c → u ≠ v → G.Adj u v) ∨
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-44-$n$ points in $\mathbb{R}^d$. -/
+FormalConjectures/ErdosProblems/1083.lean-45-noncomputable def minDistinctDistances (d : ℕ) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1083.lean:46:  sInf {m : ℕ | ∃ (P : Finset (EuclideanSpace ℝ (Fin d))),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-47-    P.card = n ∧ distinctDistanceCountInDim d P = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-48-
+--
+FormalConjectures/ErdosProblems/569.lean-42-noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/569.lean-43-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+FormalConjectures/ErdosProblems/569.lean:44:  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-45-    Embeds G F ∨ Embeds H Fᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-46-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-49-contains a copy of $G$. -/
+FormalConjectures/ErdosProblems/546.lean-50-noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/546.lean:51:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-52-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/710.lean-46-$1 \le k \le n$. -/
+FormalConjectures/ErdosProblems/710.lean-47-noncomputable def erdos710F (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/710.lean:48:  sInf {f : ℕ | ∃ g : Fin n → ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/710.lean-49-    Function.Injective g ∧
+FormalConjectures/ErdosProblems/710.lean-50-    (∀ i : Fin n, n < g i) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-57-tournament of size $m$. -/
+FormalConjectures/ErdosProblems/112.lean-58-noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/112.lean:59:  sInf {k : ℕ | ∀ (V : Type) [Fintype V], Fintype.card V = k →
+FormalConjectures/ErdosProblems/112.lean-60-    ∀ G : Digraph V,
+FormalConjectures/ErdosProblems/112.lean-61-      (∃ S : Finset V, S.card = n ∧ G.IsIndepSet S) ∨
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-36-(equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1014.lean-37-noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1014.lean:38:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-40-/--
+--
+FormalConjectures/ErdosProblems/761.lean-72-noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/761.lean-73-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/761.lean:74:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-75-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-76-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-41-    (equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1030.lean-42-noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1030.lean:43:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-45-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-50-/-- A set of natural numbers contains an infinite arithmetic progression
+FormalConjectures/ErdosProblems/343.lean-51-$\{a + nd : n \in \mathbb{N}\}$ for some $a \geq 0$ and $d > 0$. -/
+FormalConjectures/ErdosProblems/343.lean:52:def ContainsInfiniteAP (S : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/343.lean-53-  ∃ (a d : ℕ), 0 < d ∧ ∀ n : ℕ, a + n * d ∈ S
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1011.lean-47-with at least $m$ edges and chromatic number $\geq r$ contains a triangle ($3$-clique). -/
+FormalConjectures/ErdosProblems/1011.lean-48-noncomputable def minTriangleEdges (r n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1011.lean:49:  sInf {m : ℕ | ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/1011.lean-50-    G.edgeSet.ncard ≥ m → (r : ℕ∞) ≤ G.chromaticNumber → ¬G.CliqueFree 3}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1011.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/21.lean-58--/
+FormalConjectures/ErdosProblems/21.lean-59-noncomputable def erdosLovaszF (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/21.lean:60:  sInf {k : ℕ | ∃ F : Finset (Finset ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/21.lean-61-    F.card = k ∧ IsIntersectingNFamily F n ∧ CoversAllSmallSets F n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/21.lean-62-
+--
+FormalConjectures/ErdosProblems/560.lean-65-noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/560.lean-66-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/560.lean:67:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean-68-    Nat.card H.edgeSet = m ∧
+FormalConjectures/ErdosProblems/560.lean-69-    ∀ (c : Fin N → Fin N → Bool),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-46-this is the chromatic number of $L(G)^2$, the square of the line graph. -/
+FormalConjectures/ErdosProblems/149.lean-47-noncomputable def strongChromaticIndex {V : Type*} (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/149.lean:48:  sInf {k : ℕ | ∃ (c : G.edgeSet → Fin k),
+FormalConjectures/ErdosProblems/149.lean-49-    ∀ (e₁ e₂ : G.edgeSet), c e₁ = c e₂ → e₁ ≠ e₂ →
+FormalConjectures/ErdosProblems/149.lean-50-      ∀ u ∈ (e₁ : Sym2 V), ∀ v ∈ (e₂ : Sym2 V), u ≠ v ∧ ¬G.Adj u v}
+--
+FormalConjectures/ErdosProblems/559.lean-50-noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/559.lean-51-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/559.lean:52:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean-53-    Nat.card H.edgeSet = m ∧
+FormalConjectures/ErdosProblems/559.lean-54-    ∀ (c : Fin N → Fin N → Bool),
+--
+FormalConjectures/ErdosProblems/626.lean-57-    such that there exists a proper coloring $f : \text{Fin}(n) \to \text{Fin}(k)$. -/
+FormalConjectures/ErdosProblems/626.lean-58-noncomputable def finChromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/626.lean:59:  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean-61-/-- A graph on $\text{Fin}(n)$ has girth greater than $m$ if every cycle has length
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean-48-contains a subset of $n$ points with all pairwise distances distinct. -/
+FormalConjectures/ErdosProblems/1088.lean-49-noncomputable def erdosF (d n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1088.lean:50:  sInf {m : ℕ | ∀ (S : Finset (EuclideanSpace ℝ (Fin d))),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean-51-    S.card ≥ m →
+FormalConjectures/ErdosProblems/1088.lean-52-    ∃ T : Finset (EuclideanSpace ℝ (Fin d)),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean-32--/
+FormalConjectures/ErdosProblems/89.lean-33-noncomputable def minimalDistinctDistances (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/89.lean:34:  sInf {(distinctDistances points : ℝ) | (points : Finset ℝ²) (_ : points.card = n)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean-36-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean-47-$\alpha \cdot \binom{|X|}{2}$ edges of each colour. -/
+FormalConjectures/ErdosProblems/563.lean-48-noncomputable def fErdos563 (n : ℕ) (α : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/563.lean:49:  sInf {m : ℕ | ∃ (c : Fin n → Fin n → Bool),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean-50-    (∀ i j, c i j = c j i) ∧
+FormalConjectures/ErdosProblems/563.lean-51-    ∀ X : Finset (Fin n), (X.card : ℝ) ≥ (m : ℝ) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-55-    transversal of $G$. -/
+FormalConjectures/ErdosProblems/611.lean-56-noncomputable def cliqueTransversalNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/611.lean:57:  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal G T ∧ T.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-59-/-- Every maximal clique of $G$ with at least $2$ vertices has at least $m$ vertices. -/
+--
+FormalConjectures/ErdosProblems/911.lean-44-noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/911.lean-45-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/911.lean:46:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean-47-    Nat.card H.edgeSet = m ∧
+FormalConjectures/ErdosProblems/911.lean-48-    ∀ (c : Fin N → Fin N → Bool),
+--
+FormalConjectures/ErdosProblems/565.lean-44-noncomputable def inducedRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/565.lean-45-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/565.lean:46:  sInf {m : ℕ | ∃ (H : SimpleGraph (Fin m)),
+FormalConjectures/ErdosProblems/565.lean-47-    ∀ (c : Fin m → Fin m → Bool),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean-48-    (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean-32--/
+FormalConjectures/ErdosProblems/85.lean-33-noncomputable def f (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/85.lean:34:  sInf {k : ℕ | ∀ (G : SimpleGraph (Fin n)), G.minDegree ≥ k → (cycleGraph 4) ⊑ G}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean-36-/--
+--
+FormalConjectures/ErdosProblems/568.lean-39-noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/568.lean-40-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+FormalConjectures/ErdosProblems/568.lean:41:  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean-42-    Embeds G F ∨ Embeds H Fᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/600.lean-60-on $n$ vertices with at least that many edges has an edge in at least $r$ triangles. -/
+FormalConjectures/ErdosProblems/600.lean-61-noncomputable def erdosE (n r : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/600.lean:62:  sInf {m : ℕ | ∀ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/600.lean-63-    IsTriangleCovered G → G.edgeFinset.card ≥ m →
+FormalConjectures/ErdosProblems/600.lean-64-    ∃ u v : Fin n, G.Adj u v ∧ trianglesThrough G u v ≥ r}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/161.lean-49-$t$-element subsets of $[n]$ that is $\alpha$-balanced at threshold $m$. -/
+FormalConjectures/ErdosProblems/161.lean-50-noncomputable def fBalanced (t n : ℕ) (α : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/161.lean:51:  sInf { m : ℕ | ∃ c : Finset (Fin n) → Bool, IsBalancedColouring n t m α c }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/161.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/161.lean-53-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-59--/
+FormalConjectures/ErdosProblems/807.lean-60-noncomputable def bipartitionNumber {V : Type*} (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/807.lean:61:  sInf {k : ℕ | ∃ (A B : Fin k → Set V), IsBicliqueCover G k A B}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-63-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-46-$\text{Fin}(N)$, either $G$ embeds into $H$ or $G$ embeds into $H^c$ as a subgraph. -/
+FormalConjectures/ErdosProblems/800.lean-47-noncomputable def graphRamseyNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/800.lean:48:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)), HasSubgraphCopy G H ∨ HasSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-50-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/390.lean-34-/-- Let `f n` be the smallest integer for which `n!` can be represented as the product of distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/390.lean-35-integers greater than n, the largest of which is `f n`. -/
+FormalConjectures/ErdosProblems/390.lean:36:noncomputable def f (n : ℕ) : ℕ := sInf {m : ℕ | ∃ k, ∃ f : ℕ → ℕ, StrictMono f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/390.lean-37-  n < f 0 ∧ f (k - 1) = m ∧ ∏ i < k, f i = n !}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/390.lean-38-
+--
+FormalConjectures/ErdosProblems/759.lean-58-noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/759.lean-59-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/759.lean:60:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-62-/-- Embeddability of a finite simple graph on the orientable surface of genus $n$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean-56-no such configuration exists. -/
+FormalConjectures/ErdosProblems/506.lean-57-noncomputable def minDeterminedCircles (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/506.lean:58:  sInf (numDeterminedCircles '' {S : Finset (EuclideanSpace ℝ (Fin 2)) |
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean-59-    S.card = n ∧ ¬AllOnCircle S ∧ ¬AllCollinear S})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-87-exist integers $1 < n_1 < n_2 < \dots < n_k$ with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-88-$$\frac{a}{b} = \sum_{i=1}^k \frac{1}{n_i}$$ -/
+FormalConjectures/ErdosProblems/304.lean:89:noncomputable def smallestCollection (a b : ℕ) : ℕ := sInf (unitFractionExpressible a b)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-90-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-91--- in fact `(unitFractionExpressible a b).Nonempty` should always be true, but we do not prove it
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-82--/
+FormalConjectures/ErdosProblems/960.lean-83-noncomputable def fRk (r k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/960.lean:84:  sInf {m : ℕ | ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-85-    A.card = n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-86-    NoKCollinear k A →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-39-whose three edges all receive the same colour. -/
+FormalConjectures/ErdosProblems/183.lean-40-noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/183.lean:41:  sInf {n : ℕ | ∀ (c : Fin n → Fin n → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-42-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/183.lean-43-    ∃ (a b d : Fin n), a ≠ b ∧ a ≠ d ∧ b ≠ d ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean-39-exists (the set is empty and `sInf` defaults to $0$). -/
+FormalConjectures/ErdosProblems/619.lean-40-noncomputable def triangleFreeDiamCompletion {n : ℕ} (r : ℕ) (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/619.lean:41:  sInf {k : ℕ | ∃ H : SimpleGraph (Fin n), G ≤ H ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean-42-    H.CliqueFree 3 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean-43-    H.Connected ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean-60-transversal of $G$. -/
+FormalConjectures/ErdosProblems/610.lean-61-noncomputable def cliqueTransversalNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/610.lean:62:  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal G T ∧ T.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean-64-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean-35-diameter at most $2$ and remains triangle-free. -/
+FormalConjectures/ErdosProblems/618.lean-36-noncomputable def triangleFreeDiam2Completion {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/618.lean:37:  sInf {k : ℕ | ∃ H : SimpleGraph (Fin n), G ≤ H ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean-38-    H.CliqueFree 3 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean-39-    H.Connected ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-55-    size $n$). -/
+FormalConjectures/ErdosProblems/159.lean-56-noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/159.lean:57:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/159.lean-58-    ContainsSubgraph G C4 ∨ ContainsSubgraph Gᶜ (⊤ : SimpleGraph (Fin n))}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-59-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-57-    graphs. -/
+FormalConjectures/ErdosProblems/804.lean-58-noncomputable def erdos804_f (m n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/804.lean:59:  sInf { k : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/804.lean-60-    (∀ S : Finset (Fin n), S.card = m →
+FormalConjectures/ErdosProblems/804.lean-61-      ∃ T : Finset (Fin n), T ⊆ S ∧ T.card ≥ Nat.ceil (Real.log (n : ℝ)) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-40-    such that there exists a proper coloring. -/
+FormalConjectures/ErdosProblems/627.lean-41-noncomputable def chromaticNumber627 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/627.lean:42:  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-43-
+FormalConjectures/ErdosProblems/627.lean-44-/-- The clique number of a simple graph on `Fin n`: the maximum size of a clique. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/902.lean-54-$n$-domination property. -/
+FormalConjectures/ErdosProblems/902.lean-55-noncomputable def tournamentDominationNumber (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/902.lean:56:  sInf {m : ℕ | ∃ (T : Tournament (Fin m)), T.hasDominationProperty n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/902.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/902.lean-58-/--
+--
+FormalConjectures/ErdosProblems/601.lean-53-/-- A graph has an infinite path: an injective sequence of vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-54-such that consecutive vertices are adjacent. -/
+FormalConjectures/ErdosProblems/601.lean:55:def HasInfinitePath {V : Type*} (G : SimpleGraph V) : Prop :=
+FormalConjectures/ErdosProblems/601.lean-56-  ∃ f : ℕ → V, Function.Injective f ∧ ∀ n : ℕ, G.Adj (f n) (f (n + 1))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-57-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/160.lean-30--/
+FormalConjectures/ErdosProblems/160.lean-31-noncomputable def erdos_160.h (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/160.lean:32:    sInf {k | ∃ (colouring : Finset.Icc 1 n → Fin k), ∀ (progression : Set ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/160.lean-33-    (progression ⊆ Finset.Icc 1 n ∧ progression.IsAPOfLength 4) →
+FormalConjectures/ErdosProblems/160.lean-34-    3 ≤ (colouring '' {k | (k : ℕ) ∈ progression}).ncard}
+--
+FormalConjectures/ErdosProblems/551.lean-59-noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/551.lean-60-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/551.lean:61:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-62-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-63-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-49-graphs $G$ on $k$ vertices with exactly $l$ edges. -/
+FormalConjectures/ErdosProblems/766.lean-50-noncomputable def minExtremalNumber (n k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/766.lean:51:  sInf {m : ℕ | ∃ G : SimpleGraph (Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-52-    G.edgeSet.ncard = l ∧ extremalNumber G n = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-45-a copy of $G$. -/
+FormalConjectures/ErdosProblems/547.lean-46-noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/547.lean:47:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-48-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-49-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-59-set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/165.lean-60-noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/165.lean:61:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-63-/--
+--
+FormalConjectures/ErdosProblems/738.lean-32-/-- A graph has infinite chromatic number: it cannot be properly colored
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean-33-with finitely many colors. -/
+FormalConjectures/ErdosProblems/738.lean:34:def HasInfiniteChromaticNumber {V : Type*} (G : SimpleGraph V) : Prop :=
+FormalConjectures/ErdosProblems/738.lean-35-  ∀ n : ℕ, IsEmpty (G.Coloring (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean-36-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/127.lean-73--/
+FormalConjectures/ErdosProblems/127.lean-74-noncomputable def f (m : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/127.lean:75:  sInf {r : ℝ | ∃ (V : Type) (_ : Fintype V) (_ : DecidableEq V)
+FormalConjectures/ErdosProblems/127.lean-76-    (G : SimpleGraph V) (_ : DecidableRel G.Adj),
+FormalConjectures/ErdosProblems/127.lean-77-    G.edgeFinset.card = m ∧ r = (maxBipartiteSubgraphSize G : ℝ) - edwardsLB m}
+--
+FormalConjectures/ErdosProblems/758.lean-49-noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/758.lean-50-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/758.lean:51:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColoring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-52-
+FormalConjectures/ErdosProblems/758.lean-53-/-- $z(n)$: the maximum cochromatic number over all simple graphs on $n$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean-34-contains no non-trivial $k$-term arithmetic progression. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean-35-noncomputable
+FormalConjectures/ErdosProblems/817.lean:36:def g (k : ℕ) (n : ℕ) : ℕ := sInf { N | ∃ A ⊆ Finset.Icc 1 N, A.card = n ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean-37-    ∀ s, s ⊆ { ∑ a ∈ B, a | B ∈ A.powerset } → s.IsAPOfLengthFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean-38-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-48--/
+FormalConjectures/ErdosProblems/36.lean-49-noncomputable def M (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/36.lean:50:  sInf {MaxOverlap A B | (A : Finset ℤ) (B : Finset ℤ)
+FormalConjectures/ErdosProblems/36.lean-51-    (_disjoint : Disjoint A B)
+FormalConjectures/ErdosProblems/36.lean-52-    (_union : A ∪ B = Finset.Icc (1 : ℤ) (2 * n))
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1131.lean-52-/-- The minimum of the $L^2$ functional over all choices of $n$ distinct nodes in $[-1, 1]$. -/
+FormalConjectures/ErdosProblems/1131.lean-53-noncomputable def minLagrangeL2 (n : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/1131.lean:54:  sInf {v : ℝ | ∃ nodes : Fin n → ℝ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1131.lean-55-    Function.Injective nodes ∧
+FormalConjectures/ErdosProblems/1131.lean-56-    (∀ i, nodes i ∈ Set.Icc (-1 : ℝ) 1) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-52-a copy of $G$. -/
+FormalConjectures/ErdosProblems/549.lean-53-noncomputable def ramseyNumber {m : ℕ} (G : SimpleGraph (Fin m)) : ℕ :=
+FormalConjectures/ErdosProblems/549.lean:54:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-55-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-56-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/983.lean-46-only divisible by primes from $\{p_1,\ldots,p_r\}$. -/
+FormalConjectures/ErdosProblems/983.lean-47-noncomputable def smoothCoveringNumber (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/983.lean:48:  sInf {r : ℕ | ∀ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a ≤ n) → A.card = k →
+FormalConjectures/ErdosProblems/983.lean-49-    ∃ P : Finset ℕ, (∀ p ∈ P, Nat.Prime p) ∧ P.card = r ∧
+FormalConjectures/ErdosProblems/983.lean-50-      ∃ B : Finset ℕ, B ⊆ A ∧ B.card > r ∧ ∀ b ∈ B, IsSmoothWrt b P}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-50-cover all $n^2$ grid points. -/
+FormalConjectures/ErdosProblems/798.lean-51-noncomputable def gridCoveringNumber (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/798.lean:52:  sInf {k : ℕ | ∃ S : Finset (ℤ × ℤ), S.card = k ∧ CoversIntGrid n S}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-54-/--
+--
+FormalConjectures/ErdosProblems/561.lean-50-noncomputable def twoColorSizeRamseyNumber {V₁ V₂ : Type*} [Fintype V₁] [Fintype V₂]
+FormalConjectures/ErdosProblems/561.lean-51-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/561.lean:52:  sInf {m : ℕ | ∃ (n : ℕ) (H : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-53-    H.edgeSet.ncard = m ∧
+FormalConjectures/ErdosProblems/561.lean-54-    ∀ c : Fin n → Fin n → Bool,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-43-set of size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/812.lean-44-noncomputable def diagonalRamsey (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/812.lean:45:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree n ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-47-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean-47-of the edges of $K_n$ that is $\alpha$-balanced at threshold $m$. -/
+FormalConjectures/ErdosProblems/162.lean-48-noncomputable def F (n : ℕ) (α : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/162.lean:49:  sInf { m : ℕ | ∃ c : Finset (Fin n) → Bool, IsEdgeBalanced n m α c }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean-51-/--
+--
+FormalConjectures/ErdosProblems/558.lean-44-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/558.lean-45-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/558.lean:46:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-47-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/558.lean-48-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+--
+FormalConjectures/ErdosProblems/709.lean-48-injective assignment $g : A \to \text{interval}$ with $a \mid g(a)$ for all $a \in A$. -/
+FormalConjectures/ErdosProblems/709.lean-49-noncomputable def f (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/709.lean:50:  sInf {m : ℕ | ∀ (A : Finset ℕ) (hA : A.Nonempty),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/709.lean-51-    A.card = n → (∀ a ∈ A, 2 ≤ a) →
+FormalConjectures/ErdosProblems/709.lean-52-    ∀ k : ℕ,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-56-graph $G$ on $\operatorname{Fin} N$, either $G$ or $G^c$ contains a copy of $H$. -/
+FormalConjectures/ErdosProblems/181.lean-57-noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/181.lean:58:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-59-    ContainsCopy G H ∨ ContainsCopy Gᶜ H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-60--/
+FormalConjectures/ErdosProblems/838.lean-61-noncomputable def f (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/838.lean:62:  sInf {k : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-63-    P.card = n ∧ InGeneralPosition P ∧ numConvexSubsets P = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-64-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1072.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1072.lean-30-/-- For any prime $p$, let $f(p)$ be the least integer such that $f(p)! + 1 \equiv 0 \mod p$. -/
+FormalConjectures/ErdosProblems/1072.lean:31:noncomputable def f (p : ℕ) : ℕ := sInf {n | (n)! + 1 ≡ 0 [MOD p]}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1072.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1072.lean-33-/-- Is it true that there are infinitely many $p$ for which $f(p) = p − 1$? -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-59-size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/986.lean-60-noncomputable def ramseyR (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/986.lean:61:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-63-/--
+--
+FormalConjectures/ErdosProblems/832.lean-56-noncomputable def UniformHypergraph.chromaticNumber {V : Type*} [DecidableEq V]
+FormalConjectures/ErdosProblems/832.lean-57-    [Fintype V] {r : ℕ} (H : UniformHypergraph V r) : ℕ :=
+FormalConjectures/ErdosProblems/832.lean:58:  sInf {k : ℕ | k ≥ 1 ∧ ∃ f : V → Fin k, H.IsProperColoring k f}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean-60-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-59-with $d > 0$ and $AP = \{a + md \mid m \in \mathbb{N}\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-60--/
+FormalConjectures/ErdosProblems/16.lean:61:def IsInfiniteAP (AP : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/16.lean-62-  ∃ (a d : ℕ), 0 < d ∧ AP = {n : ℕ | ∃ m : ℕ, n = a + m * d}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-63-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-58-length `k`. It is defined as the infimum of the (non-empty) set of all such numbers `N`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-59--/
+FormalConjectures/ErdosProblems/138.lean:60:noncomputable def monoAPNumber (r k : ℕ) : ℕ := sInf (monoAP_guarantee_set r k)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-62-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-49-that many points determines at least $n$ distinct distances. -/
+FormalConjectures/ErdosProblems/1089.lean-50-noncomputable def g (d n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1089.lean:51:  sInf {m : ℕ | ∀ (S : Finset (EuclideanSpace ℝ (Fin d))), S.card ≥ m →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-52-    distinctDistanceCount S ≥ n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-51-transversal of $G$. -/
+FormalConjectures/ErdosProblems/151.lean-52-noncomputable def cliqueTransversalNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/151.lean:53:  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal G T ∧ T.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-54-
+FormalConjectures/ErdosProblems/151.lean-55-/-- $S$ is an independent set in $G$: no two distinct vertices of $S$ are adjacent. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-65-independence number over all triangle-free graphs on $n$ vertices. -/
+FormalConjectures/ErdosProblems/151.lean-66-noncomputable def H (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/151.lean:67:  sInf { k : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ independenceNumber G = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-68-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-69-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-58-over all $N$-element sets $A \subset \mathbb{R}$. -/
+FormalConjectures/ErdosProblems/530.lean-59-noncomputable def sidonSubsetNumber (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/530.lean:60:  sInf {m : ℕ | ∃ A : Finset ℝ, A.card = N ∧ maxSidonSubsetSize A = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-62-/--
+--
+FormalConjectures/ErdosProblems/762.lean-55-noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/762.lean-56-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/762.lean:57:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-59-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean-76-each $N$. -/
+FormalConjectures/ErdosProblems/1179.lean-77-noncomputable def gEps (ε : ℝ) (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1179.lean:78:  sInf {k : ℕ | ∀ (G : Type) [hG : AddCommGroup G] [hF : Fintype G] [hD : DecidableEq G],
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean-79-    Fintype.card G = N →
+FormalConjectures/ErdosProblems/1179.lean-80-    @goodFraction G hG hF hD ε k ≥ 1 - 1 / (N : ℝ)}
+--
+FormalConjectures/ErdosProblems/550.lean-52-noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/550.lean-53-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/550.lean:54:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-55-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-56-
+--
+FormalConjectures/ErdosProblems/552.lean-44-noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/552.lean-45-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/552.lean:46:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-47-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-55--/
+FormalConjectures/ErdosProblems/360.lean-56-noncomputable def minSumFreeClasses (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/360.lean:57:  sInf {k : ℕ | ∃ c : ℕ → Fin k, SumFreeColoring n k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-59-/--
+--
+FormalConjectures/ErdosProblems/875.lean-31-/-- The set of $r$-fold subset sums of a set $A \subseteq \mathbb{N}$: all sums
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/875.lean-32-$a_1 + \cdots + a_r$ where $a_1, \ldots, a_r$ are $r$ distinct elements of $A$. -/
+FormalConjectures/ErdosProblems/875.lean:33:def rSubsetSumsInf (A : Set ℕ) (r : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/875.lean-34-  {s | ∃ S : Finset ℕ, (↑S : Set ℕ) ⊆ A ∧ S.card = r ∧ S.sum id = s}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/875.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-54-size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/166.lean-55-noncomputable def ramseyR4 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/166.lean:56:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-58-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-47-clique of size $k$ in some colour. -/
+FormalConjectures/ErdosProblems/1029.lean-48-noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1029.lean:49:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/1029.lean-50-    ∃ (b : Bool) (S : Finset (Fin N)), S.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-51-      ∀ i ∈ S, ∀ j ∈ S, i ≠ j → c i j = b}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/711.lean-39-$1 \leq k \leq n$. When $m = n$ this coincides with the function in Problem 710. -/
+FormalConjectures/ErdosProblems/711.lean-40-noncomputable def f (n m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/711.lean:41:  sInf {f : ℕ | ∃ g : Fin n → ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/711.lean-42-    Function.Injective g ∧
+FormalConjectures/ErdosProblems/711.lean-43-    (∀ i : Fin n, m < g i) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-42-$\{a, b\} = \{c, d\}$ as multisets (i.e. either $a = c$ and $b = d$, or
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-43-$a = d$ and $b = c$). -/
+FormalConjectures/ErdosProblems/157.lean:44:def IsInfiniteSidonSet (A : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-45-  Set.Infinite A ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-46-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+--
+FormalConjectures/ErdosProblems/555.lean-52-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/555.lean-53-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/555.lean:54:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-55-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/555.lean-56-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-56-    graph $G$ on $\operatorname{Fin} N$, either $G$ or $G^c$ contains a copy of $H$. -/
+FormalConjectures/ErdosProblems/163.lean-57-noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/163.lean:58:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-59-    containsCopy G H ∨ containsCopy Gᶜ H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-40-set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/544.lean-41-noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/544.lean:42:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-44-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/133.lean-55-(e.g. for $n = 1$) the infimum of the empty set is $0$. -/
+FormalConjectures/ErdosProblems/133.lean-56-noncomputable def erdos133_f (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/133.lean:57:  sInf { k : ℕ | ∀ (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/133.lean-58-    ¬HasTriangle G → HasDiameterAtMostTwo G →
+FormalConjectures/ErdosProblems/133.lean-59-    ∃ v : Fin n, k ≤ G.degree v }
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean-46-product has only finitely many prime factors). -/
+FormalConjectures/ErdosProblems/663.lean-47-noncomputable def leastNondividingPrime (n k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/663.lean:48:  sInf {p : ℕ | Nat.Prime p ∧ ¬(p ∣ ∏ i ∈ Finset.range k, (n + i + 1))}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean-50-/--
+--
+FormalConjectures/ErdosProblems/720.lean-69-noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/720.lean-70-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/720.lean:71:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-72-    Nat.card H.edgeSet = m ∧
+FormalConjectures/ErdosProblems/720.lean-73-    ∀ (c : Fin N → Fin N → Bool),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/781.lean-59-a monochromatic $k$-term descending wave. -/
+FormalConjectures/ErdosProblems/781.lean-60-noncomputable def descendingWaveNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/781.lean:61:  sInf {n : ℕ | ∀ c : Fin n → Bool, HasMonochromaticDescendingWave k n c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/781.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/781.lean-63-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-51-    every set of $7$ vertices contains a triangle. -/
+FormalConjectures/ErdosProblems/813.lean-52-noncomputable def erdos813H (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/813.lean:53:  sInf (graphCliqueNumber '' {G : SimpleGraph (Fin n) | EverySevenSetHasTriangle G})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-55-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-59-vertices. -/
+FormalConjectures/ErdosProblems/1015.lean-60-noncomputable def minLeftover (t n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1015.lean:61:  sInf {r : ℕ | ∀ (c : Fin n → Fin n → Bool), (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/1015.lean-62-    ∃ (cliques : Finset (Finset (Fin n))),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-63-      (∀ S ∈ cliques, S.card = t) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-70-clique of size $s$ in one colour or of size $t$ in the other. -/
+FormalConjectures/ErdosProblems/1015.lean-71-noncomputable def ramseyNumber₂ (s t : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1015.lean:72:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/1015.lean-73-    (∃ S : Finset (Fin N), S.card = s ∧ IsMonoClique N c S false) ∨
+FormalConjectures/ErdosProblems/1015.lean-74-    (∃ S : Finset (Fin N), S.card = t ∧ IsMonoClique N c S true)}
+--
+FormalConjectures/ErdosProblems/554.lean-47-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/554.lean-48-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/554.lean:49:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-50-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/554.lean-51-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean-63-chromatic number greater than $k$. -/
+FormalConjectures/ErdosProblems/629.lean-64-noncomputable def erdos629_n (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/629.lean:65:  sInf {n : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean-66-    G.Colorable 2 ∧ listChromaticNumber G > k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean-67-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-136-@[category research solved, AMS 52]
+FormalConjectures/ErdosProblems/97.lean-137-theorem erdos_97.variants.three_unit_distance_cut_min :
+FormalConjectures/ErdosProblems/97.lean:138:    sInf {n : ℕ | ∃ (V : Finset ℝ²) (A B : Finset ℝ²),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-139-      n = V.card ∧ ConvexIndep V ∧ A.Nonempty ∧ B.Nonempty ∧ IsCut V A B ∧
+FormalConjectures/ErdosProblems/97.lean-140-      HasNUnitDistancePointsOn 3 B A ∧ HasNUnitDistancePointsOn 3 A B} = 20 := by
+--
+FormalConjectures/ErdosProblems/744.lean-50-noncomputable def minEdgesToBipartite {V : Type*} [DecidableEq V]
+FormalConjectures/ErdosProblems/744.lean-51-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/744.lean:52:  sInf {m : ℕ | ∃ S : Finset (Sym2 V), S.card = m ∧
+FormalConjectures/ErdosProblems/744.lean-53-    (G.deleteEdges (↑S : Set (Sym2 V))).Colorable 2}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean-56-minimum number of edges to delete from $G$ to make it bipartite. -/
+FormalConjectures/ErdosProblems/744.lean-57-noncomputable def fk (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/744.lean:58:  sInf {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean-59-    IsKCritical G k ∧ minEdgesToBipartite G = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean-53-length $n$. -/
+FormalConjectures/ErdosProblems/256.lean-54-noncomputable def erdos256_f (n : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/256.lean:55:  sInf {y : ℝ | ∃ (a : Fin n → ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean-56-    (∀ i, 0 < a i) ∧ Monotone a ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean-57-    y = unitCircleMaxProd n a}
+--
+FormalConjectures/ErdosProblems/570.lean-43-noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/570.lean-44-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+FormalConjectures/ErdosProblems/570.lean:45:  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-46-    Embeds G F ∨ Embeds H Fᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/311.lean-36-all subsets of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/311.lean-37-noncomputable def unitFractionDeviation (N : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/311.lean:38:  sInf { x : ℝ | x > 0 ∧ ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧
+FormalConjectures/ErdosProblems/311.lean-39-    x = |1 - ∑ n ∈ A, (1 : ℝ) / n| }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/311.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-50-clique of size $k$ in some colour. -/
+FormalConjectures/ErdosProblems/77.lean-51-noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/77.lean:52:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/77.lean-53-    ∃ (b : Bool) (S : Finset (Fin N)), S.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-54-      ∀ i ∈ S, ∀ j ∈ S, i ≠ j → c i j = b}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-47-contains a copy of $G$. -/
+FormalConjectures/ErdosProblems/545.lean-48-noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/545.lean:49:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-50-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-51-
+--
+FormalConjectures/ErdosProblems/745.lean-76-noncomputable def secondLargestComponent745 {n : ℕ}
+FormalConjectures/ErdosProblems/745.lean-77-    (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/745.lean:78:  sInf {k : ℕ | ∀ u v : Fin n,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-79-    componentSize745 G u > k → componentSize745 G v > k → G.Reachable u v}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-80-
+--
+FormalConjectures/ErdosProblems/344.lean-40-/-- A set of natural numbers contains an infinite arithmetic progression:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-41-there exist $a \geq 0$ and $d > 0$ such that $a + nd \in S$ for all $n \in \mathbb{N}$. -/
+FormalConjectures/ErdosProblems/344.lean:42:def ContainsInfiniteAP (S : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/344.lean-43-  ∃ (a d : ℕ), 0 < d ∧ ∀ n : ℕ, a + n * d ∈ S
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-44-
+--
+FormalConjectures/ErdosProblems/557.lean-41-noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/557.lean-42-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/557.lean:43:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-44-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/557.lean-45-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1095.lean-43-Let $g(k)>k+1$ be the smallest $n$ such that all prime factors of $\binom{n}{k}$ are $>k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1095.lean-44--/
+FormalConjectures/ErdosProblems/1095.lean:45:noncomputable def g (k : ℕ) : ℕ := sInf {m | k + 1 < m ∧ k < (m.choose k).minFac}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1095.lean-46-
+FormalConjectures/ErdosProblems/1095.lean-47--- TODO: Add erdos_1095.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean-48-with $|A| \geq N + g$ contains all pairwise sums of some $k$ integers. -/
+FormalConjectures/ErdosProblems/866.lean-49-noncomputable def gPairwiseSum (k N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/866.lean:50:  sInf {g : ℕ | ∀ A : Finset ℤ,
+FormalConjectures/ErdosProblems/866.lean-51-    (∀ a ∈ A, 1 ≤ a ∧ a ≤ 2 * (N : ℤ)) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean-52-    A.card ≥ N + g → HasPairwiseSums A k}

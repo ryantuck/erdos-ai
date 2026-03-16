@@ -1,0 +1,371 @@
+/home/ryan/formal-conjectures/ai-review/129.md-10-
+/home/ryan/formal-conjectures/ai-review/129.md-11-These two definitions are in separate namespaces (`Erdos129` vs `Erdos136`) and are not shared. A shared definition in a utility file (or in `FormalConjecturesForMathlib`) would reduce duplication.
+/home/ryan/formal-conjectures/ai-review/129.md-12-
+ai-review/129.md-13-**Related infrastructure exists but is not directly applicable:**
+/home/ryan/formal-conjectures/ai-review/129.md-14-
+ai-review/129.md:15:- `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:33–36` defines `hypergraphRamsey` for 2-colorings of r-uniform hypergraphs. This is structurally similar to `multicolorRamseyNum` but restricted to 2 colors and formulated via hypergraph subsets rather than edge colorings, so it cannot directly replace the Problem 129 definitions.
+/home/ryan/formal-conjectures/ai-review/129.md-16-- `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean` provides graph coloring utilities built on `SimpleGraph`, which uses a different abstraction.
+ai-review/129.md:17:- Problems 555–558 define `multicolorRamseyNumber` using `SimpleGraph`, a different representation.
+/home/ryan/formal-conjectures/ai-review/129.md-18-
+ai-review/129.md:19:**Recommendation:** Extract `EdgeColoring` into a shared file to be used by both Problem 129 and Problem 136 (and potentially other Erdős–Gyárfás problems). The remaining definitions (`IsMonoKkFree`, `multicolorRamseyNum`) are specific enough to remain local.
+/home/ryan/formal-conjectures/ai-review/129.md-20-
+/home/ryan/formal-conjectures/ai-review/129.md-21-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/129.md-22-
+ai-review/129.md-23-The formalization cites:
+/home/ryan/formal-conjectures/ai-review/129.md-24-
+--
+/home/ryan/formal-conjectures/ai-review/129.md-34-
+ai-review/129.md-35-**Missing variant.** The website describes a generalization that Erdős conjectured:
+/home/ryan/formal-conjectures/ai-review/129.md-36-
+/home/ryan/formal-conjectures/ai-review/129.md-37-> For all r, k ≥ 2, there exist constants C₁, C₂ > 1 (depending only on r) such that C₁^(n^(1/(k−1))) < R(n; k, r) < C₂^(n^(1/(k−1))).
+/home/ryan/formal-conjectures/ai-review/129.md-38-
+ai-review/129.md:39:This generalized conjecture is **not captured** in the formalization, which only addresses k = 3. Since the `multicolorRamseyNum` definition already supports arbitrary k, adding this variant would be straightforward:
+/home/ryan/formal-conjectures/ai-review/129.md-40-
+/home/ryan/formal-conjectures/ai-review/129.md-41-```lean
+ai-review/129.md-42-theorem erdos_129.variants.general_bounds :
+ai-review/129.md-43-    ∀ r : ℕ, 2 ≤ r → ∀ k : ℕ, 2 ≤ k →
+ai-review/129.md-44-      ∃ C₁ C₂ : ℝ, 1 < C₁ ∧ 1 < C₂ ∧
+ai-review/129.md-45-        ∀ n : ℕ, C₁ ^ (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 1))
+ai-review/129.md:46:          < (multicolorRamseyNum n k r : ℝ)
+ai-review/129.md:47:        ∧ (multicolorRamseyNum n k r : ℝ)
+ai-review/129.md-48-          < C₂ ^ (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 1)) := by sorry
+/home/ryan/formal-conjectures/ai-review/129.md-49-```
+/home/ryan/formal-conjectures/ai-review/129.md-50-
+ai-review/129.md-51-Note: the status of this generalized conjecture is itself unclear given the issues with the k = 3 case. Whether this variant is worth adding depends on whether the general conjecture is also considered disproved or whether it may have a correct reformulation.
+/home/ryan/formal-conjectures/ai-review/129.md-52-
+--
+/home/ryan/formal-conjectures/ai-review/129.md-75-
+/home/ryan/formal-conjectures/ai-review/129.md-76-### 6.1 Directed vs. Undirected Edges
+/home/ryan/formal-conjectures/ai-review/129.md-77-
+/home/ryan/formal-conjectures/ai-review/129.md-78-**The `EdgeColoring` definition colors ordered pairs (directed edges) rather than unordered edges.** The standard Ramsey-theoretic setting concerns undirected complete graphs, where χ({x, y}) is well-defined regardless of ordering. The formalization does not enforce χ x y = χ y x.
+/home/ryan/formal-conjectures/ai-review/129.md-79-
+ai-review/129.md:80:Consequently, `multicolorRamseyNum` as defined quantifies over ALL functions Fin N → Fin N → Fin r, including non-symmetric ones. This means R_ordered ≥ R_undirected (more adversarial colorings require at least as large an N).
+/home/ryan/formal-conjectures/ai-review/129.md-81-
+ai-review/129.md-82-**Impact on the theorem's truth value:** The theorem asserts `answer(False)`, i.e., the conjecture is false. The standard counterexample (probabilistic argument by Girao) shows R_undirected(n; 3, 2) ≥ Cⁿ for some C > 1, using a symmetric random coloring. Since R_ordered ≥ R_undirected, this lower bound transfers: R_ordered(n; 3, 2) ≥ Cⁿ as well, contradicting C^√n. **So the truth value `False` is preserved**, and the theorem is correct despite the ordered-pair formulation.
+/home/ryan/formal-conjectures/ai-review/129.md-83-
+ai-review/129.md-84-However, the definition does not match the standard mathematical concept. If these definitions were used in a more nuanced theorem (e.g., establishing exact asymptotics), the directed/undirected distinction could matter. **Recommendation:** Add a symmetry constraint to `EdgeColoring` or define it on `Sym2 (Fin N)` (unordered pairs) for mathematical precision.
+/home/ryan/formal-conjectures/ai-review/129.md-85-
+/home/ryan/formal-conjectures/ai-review/129.md-86-### 6.2 `IsMonoKkFree` Definition
+/home/ryan/formal-conjectures/ai-review/129.md-87-
+ai-review/129.md-88-The definition states: for every k-subset T ⊆ S, there exist distinct x, y ∈ T with χ x y ≠ c. This correctly captures "T does not contain a monochromatic K_k in color c." The existential quantifier (one non-c edge suffices to break monochromaticity) is the right logical form.
+/home/ryan/formal-conjectures/ai-review/129.md-89-
+ai-review/129.md:90:### 6.3 `multicolorRamseyNum` Definition
+/home/ryan/formal-conjectures/ai-review/129.md-91-
+/home/ryan/formal-conjectures/ai-review/129.md-92-The definition uses `sInf` over naturals, which returns 0 if the set is empty. For degenerate inputs (e.g., n = 0 or k ≤ 2), the set could be nonempty trivially or behave unexpectedly. This is not a correctness issue for the stated theorem (which quantifies over all n and fixes k = 3, r ≥ 1) but is worth noting for robustness.
+/home/ryan/formal-conjectures/ai-review/129.md-93-
+/home/ryan/formal-conjectures/ai-review/129.md-94-### 6.4 Status Discrepancy
+/home/ryan/formal-conjectures/ai-review/129.md-95-
+--
+/home/ryan/formal-conjectures/ai-review/183.md-6-
+/home/ryan/formal-conjectures/ai-review/183.md-7-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/183.md-8-
+ai-review/183.md-9-**Issue: Duplicated multicolor Ramsey definition.**
+/home/ryan/formal-conjectures/ai-review/183.md-10-
+ai-review/183.md:11:Problem 556 (`FormalConjectures/ErdosProblems/556.lean`) already defines a general `multicolorRamseyNumber` that computes the k-colour Ramsey number R_k(G) for an arbitrary graph G. The `multicolorRamseyTriangle` defined here is mathematically identical to `multicolorRamseyNumber (completeGraph (Fin 3)) k` — a monochromatic triangle in a k-coloring of K_n is exactly a monochromatic copy of K₃.
+/home/ryan/formal-conjectures/ai-review/183.md-12-
+ai-review/183.md-13-The two definitions use the same representation (symmetric function `c : Fin N → Fin N → Fin k`) and differ only in how the monochromatic substructure is specified:
+ai-review/183.md-14-- Problem 183: directly asserts three pairwise-distinct vertices with matching edge colors.
+ai-review/183.md-15-- Problem 556: asserts an injective map from V(G) into Fin N preserving colors.
+/home/ryan/formal-conjectures/ai-review/183.md-16-
+/home/ryan/formal-conjectures/ai-review/183.md-17-For G = K₃ on `Fin 3`, these are equivalent.
+/home/ryan/formal-conjectures/ai-review/183.md-18-
+/home/ryan/formal-conjectures/ai-review/183.md-19-**Additionally**, `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey r n` for 2-colorings of r-uniform hypergraphs. While this is the 2-color case and uses a different representation (coloring hyperedges rather than graph edges), it shows the project has infrastructure for Ramsey numbers.
+/home/ryan/formal-conjectures/ai-review/183.md-20-
+ai-review/183.md-21-**Recommendation:** Either:
+ai-review/183.md:22:- (a) Redefine `multicolorRamseyTriangle k` as `multicolorRamseyNumber (completeGraph (Fin 3)) k` (importing from 556), or
+ai-review/183.md:23:- (b) Factor the general `multicolorRamseyNumber` into a shared utility file (e.g., `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` or a new file) and have both Problems 183 and 556 import from it. This would be the preferred approach since it centralizes the definition.
+/home/ryan/formal-conjectures/ai-review/183.md-24-
+/home/ryan/formal-conjectures/ai-review/183.md-25-Option (b) is recommended since it avoids a circular dependency between problem files and puts the general definition in the library.
+/home/ryan/formal-conjectures/ai-review/183.md-26-
+/home/ryan/formal-conjectures/ai-review/183.md-27----
+/home/ryan/formal-conjectures/ai-review/183.md-28-
+--
+ai-review/183.md-66-       ∀ L : ℝ, Tendsto (...) atTop (nhds L) → L ≥ 380 ^ ((1 : ℝ) / 5) := by sorry
+/home/ryan/formal-conjectures/ai-review/183.md-67-   ```
+/home/ryan/formal-conjectures/ai-review/183.md-68-
+ai-review/183.md-69-2. **Upper bound (proven):** R(3;k) ≤ ⌈e·k!⌉. This is a concrete known result and could be stated independently:
+/home/ryan/formal-conjectures/ai-review/183.md-70-   ```
+ai-review/183.md:71:   theorem multicolorRamseyTriangle_upper (k : ℕ) :
+ai-review/183.md:72:       multicolorRamseyTriangle k ≤ ⌈Real.exp 1 * ↑(Nat.factorial k)⌉₊ := by sorry
+/home/ryan/formal-conjectures/ai-review/183.md-73-   ```
+/home/ryan/formal-conjectures/ai-review/183.md-74-
+ai-review/183.md-75-3. **Determining the value:** The website says "determine the limit," which asks not just for existence but for the actual value. A variant could conjecture a specific value or bounds on L.
+/home/ryan/formal-conjectures/ai-review/183.md-76-
+ai-review/183.md-77-4. **Divergence alternative:** If the conjecture is false (the limit is +∞), one could formalize the alternative:
+/home/ryan/formal-conjectures/ai-review/183.md-78-   ```
+ai-review/183.md-79-   theorem erdos_183_alt :
+ai-review/183.md:80:       Tendsto (fun k => (multicolorRamseyTriangle k : ℝ) ^ ((1:ℝ)/(k:ℝ))) atTop atTop
+/home/ryan/formal-conjectures/ai-review/183.md-81-   ```
+/home/ryan/formal-conjectures/ai-review/183.md-82-   This would be a useful counterpart for an open problem where the truth value is unknown.
+/home/ryan/formal-conjectures/ai-review/183.md-83-
+/home/ryan/formal-conjectures/ai-review/183.md-84----
+/home/ryan/formal-conjectures/ai-review/183.md-85-
+/home/ryan/formal-conjectures/ai-review/183.md-86-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/183.md-87-
+ai-review/183.md-88-The code is clean and well-structured. Specific observations:
+/home/ryan/formal-conjectures/ai-review/183.md-89-
+ai-review/183.md-90-- **Namespace:** `Erdos183` is appropriate and follows project conventions.
+ai-review/183.md:91:- **Definition docstring:** The docstring for `multicolorRamseyTriangle` clearly explains the mathematical meaning. The LaTeX-style description of k-colourings and monochromatic triangles is helpful.
+ai-review/183.md-92-- **Theorem docstring:** Well-written, includes the problem statement and known bounds. The mathematical context is clearly presented.
+ai-review/183.md-93-- **Variable naming:** The choice of `d` for the third vertex of the triangle (instead of the more conventional `c`, which would clash with the coloring function) is reasonable but slightly non-standard. A name like `e` or `v₃` might be clearer, though `d` is fine.
+ai-review/183.md-94-- **Expression style:** `(1 : ℝ) / (k : ℝ)` is clear but could be written as `(k : ℝ)⁻¹` for conciseness, though the current form is arguably more readable for non-Lean-experts.
+/home/ryan/formal-conjectures/ai-review/183.md-95-
+/home/ryan/formal-conjectures/ai-review/183.md-96-Overall readability is good.
+--
+/home/ryan/formal-conjectures/ai-review/183.md-118-
+/home/ryan/formal-conjectures/ai-review/183.md-119----
+/home/ryan/formal-conjectures/ai-review/183.md-120-
+/home/ryan/formal-conjectures/ai-review/183.md-121-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/183.md-122-
+ai-review/183.md:123:### Definition: `multicolorRamseyTriangle`
+/home/ryan/formal-conjectures/ai-review/183.md-124-
+/home/ryan/formal-conjectures/ai-review/183.md-125-```lean
+ai-review/183.md:126:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+ai-review/183.md-127-  sInf {n : ℕ | ∀ (c : Fin n → Fin n → Fin k),
+/home/ryan/formal-conjectures/ai-review/183.md-128-    (∀ i j, c i j = c j i) →
+ai-review/183.md-129-    ∃ (a b d : Fin n), a ≠ b ∧ a ≠ d ∧ b ≠ d ∧
+/home/ryan/formal-conjectures/ai-review/183.md-130-      c a b = c a d ∧ c a b = c b d}
+/home/ryan/formal-conjectures/ai-review/183.md-131-```
+--
+ai-review/183.md-145-### Theorem: `erdos_183`
+/home/ryan/formal-conjectures/ai-review/183.md-146-
+/home/ryan/formal-conjectures/ai-review/183.md-147-```lean
+ai-review/183.md-148-theorem erdos_183 :
+ai-review/183.md-149-    ∃ L : ℝ,
+ai-review/183.md:150:      Tendsto (fun k : ℕ => (multicolorRamseyTriangle k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+ai-review/183.md-151-        atTop (nhds L) := by
+/home/ryan/formal-conjectures/ai-review/183.md-152-  sorry
+/home/ryan/formal-conjectures/ai-review/183.md-153-```
+/home/ryan/formal-conjectures/ai-review/183.md-154-
+ai-review/183.md-155-**Analysis:**
+/home/ryan/formal-conjectures/ai-review/183.md-156-
+ai-review/183.md-157-1. **Logical structure:** "There exists a finite real L such that R(3;k)^{1/k} → L as k → ∞." This correctly formalizes the conjecture that the limit exists and is finite. ✓
+/home/ryan/formal-conjectures/ai-review/183.md-158-
+ai-review/183.md-159-2. **Exponent expression:** `(1 : ℝ) / (k : ℝ)` computes the k-th root exponent. When k = 0, this is `1 / 0 = 0` in ℝ, giving `R(3;0)^0 = 1` (or `0^0 = 1` in Lean). This is harmless since only the eventual behavior matters for `atTop`. ✓
+/home/ryan/formal-conjectures/ai-review/183.md-160-
+ai-review/183.md:161:3. **Cast correctness:** `(multicolorRamseyTriangle k : ℝ)` coerces ℕ to ℝ, which is the standard approach. ✓
+/home/ryan/formal-conjectures/ai-review/183.md-162-
+/home/ryan/formal-conjectures/ai-review/183.md-163-4. **Potential concern — should this use `Filter.atTop` restricted to k ≥ 1?** No, this is unnecessary. The `atTop` filter ignores any finite prefix, so behavior at k = 0 is irrelevant. ✓
+/home/ryan/formal-conjectures/ai-review/183.md-164-
+/home/ryan/formal-conjectures/ai-review/183.md-165-### Verdict
+/home/ryan/formal-conjectures/ai-review/183.md-166-
+/home/ryan/formal-conjectures/ai-review/183.md-167-**Correct and mathematically sound.** The formalization faithfully captures the conjecture that lim_{k→∞} R(3;k)^{1/k} exists as a finite real number. No mathematical flaws are present. The only point of note is the interpretive choice that "the limit exists" means "exists and is finite" — this is a reasonable and likely intended interpretation given the prize structure described on the website.
+/home/ryan/formal-conjectures/ai-review/183.md-168-
+ai-review/183.md:169:The main deficiency is the absence of formalizations of known proven results (upper/lower bounds) as variants, and the opportunity to reuse the more general `multicolorRamseyNumber` definition from Problem 556.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-43-$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-44-
+FormalConjectures/ErdosProblems/556.lean-45-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/556.lean-46-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-47-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/556.lean:48:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/556.lean-49-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/556.lean-50-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-51-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/556.lean-52-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-53-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-58-For all $n \geq 3$, the 3-colour Ramsey number of the cycle $C_n$ satisfies
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-59-$$R_3(C_n) \leq 4n - 3.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-60--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-61-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/556.lean-62-theorem erdos_556 (n : ℕ) (hn : n ≥ 3) :
+FormalConjectures/ErdosProblems/556.lean:63:    multicolorRamseyNumber (cycleGraph n hn) 3 ≤ 4 * n - 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-64-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-66-end Erdos556
+--
+FormalConjectures/ErdosProblems/183.lean-35-/-- The multicolor Ramsey number $R(3;k)$: the minimum $n$ such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-36-$k$-colouring of the edges of $K_n$ contains a monochromatic triangle.
+FormalConjectures/ErdosProblems/183.lean-37-A $k$-colouring is a symmetric function $c : \operatorname{Fin} n \to \operatorname{Fin} n \to \operatorname{Fin} k$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-38-and a monochromatic triangle is three pairwise distinct vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-39-whose three edges all receive the same colour. -/
+FormalConjectures/ErdosProblems/183.lean:40:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/183.lean-41-  sInf {n : ℕ | ∀ (c : Fin n → Fin n → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-42-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/183.lean-43-    ∃ (a b d : Fin n), a ≠ b ∧ a ≠ d ∧ b ≠ d ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-44-      c a b = c a d ∧ c a b = c b d}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-45-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-55-$R(3;k) \ge 380^{k/5} - O(1)$, giving $R(3;k)^{1/k} \ge 380^{1/5} \approx 3.2806$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-56--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-57-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/183.lean-58-theorem erdos_183 :
+FormalConjectures/ErdosProblems/183.lean-59-    ∃ L : ℝ,
+FormalConjectures/ErdosProblems/183.lean:60:      Tendsto (fun k : ℕ => (multicolorRamseyTriangle k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+FormalConjectures/ErdosProblems/183.lean-61-        atTop (nhds L) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-62-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-64-end Erdos183
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-49-    ∃ x ∈ T, ∃ y ∈ T, x ≠ y ∧ χ x y ≠ c
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-50-
+FormalConjectures/ErdosProblems/129.lean-51-/-- The generalized Ramsey number $R(n; k, r)$: the smallest $N$ such that for
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-52-every $r$-coloring of the edges of $K_N$, there exists a set of $n$ vertices and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-53-a color $c$ such that the set is $K_k$-free in color $c$. -/
+FormalConjectures/ErdosProblems/129.lean:54:noncomputable def multicolorRamseyNum (n k r : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/129.lean-55-  sInf {N : ℕ | ∀ (χ : EdgeColoring N r),
+FormalConjectures/ErdosProblems/129.lean-56-    ∃ (S : Finset (Fin N)) (c : Fin r),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-57-      S.card = n ∧ IsMonoKkFree χ c k S}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-59-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-67--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-68-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/129.lean-69-theorem erdos_129 : answer(False) ↔
+FormalConjectures/ErdosProblems/129.lean-70-    ∀ r : ℕ, 1 ≤ r →
+FormalConjectures/ErdosProblems/129.lean-71-      ∃ C : ℝ, 1 < C ∧
+FormalConjectures/ErdosProblems/129.lean:72:        ∀ n : ℕ, (multicolorRamseyNum n 3 r : ℝ) < C ^ Real.sqrt (n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-73-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-75-end Erdos129
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-39-$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-40-
+FormalConjectures/ErdosProblems/558.lean-41-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/558.lean-42-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-43-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/558.lean:44:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/558.lean-45-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/558.lean-46-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-47-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/558.lean-48-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-49-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-53-complete bipartite graph $K_{s,t}$. The general problem remains open.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-54--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-55-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/558.lean-56-theorem erdos_558 :
+FormalConjectures/ErdosProblems/558.lean-57-    ∀ s t : ℕ, s ≥ 1 → t ≥ 1 → ∀ k : ℕ,
+FormalConjectures/ErdosProblems/558.lean:58:    multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k = answer((sorry : ℕ → ℕ → ℕ → ℕ) s t k) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-59-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-61-/--
+FormalConjectures/ErdosProblems/558.lean-62-Erdős Problem 558, Chung–Graham result [ChGr75]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-63-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-70-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/558.lean-71-theorem erdos_558.variants.K22 :
+FormalConjectures/ErdosProblems/558.lean-72-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/558.lean-73-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/558.lean-74-      (1 - ε) * (k : ℝ) ^ 2 ≤
+FormalConjectures/ErdosProblems/558.lean:75:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:76:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean-77-        (1 + ε) * (k : ℝ) ^ 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-78-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-79-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-80-/--
+FormalConjectures/ErdosProblems/558.lean-81-Erdős Problem 558, Alon–Rónyai–Szabó result [ARS99]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-89-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/558.lean-90-theorem erdos_558.variants.K33 :
+FormalConjectures/ErdosProblems/558.lean-91-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/558.lean-92-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/558.lean-93-      (1 - ε) * (k : ℝ) ^ 3 ≤
+FormalConjectures/ErdosProblems/558.lean:94:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:95:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean-96-        (1 + ε) * (k : ℝ) ^ 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-97-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-98-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-99-/--
+FormalConjectures/ErdosProblems/558.lean-100-Erdős Problem 558, Alon–Rónyai–Szabó result [ARS99]:
+--
+FormalConjectures/ErdosProblems/558.lean-109-theorem erdos_558.variants.ars (s t : ℕ) (hs : s ≥ 1) (ht : t ≥ 1)
+FormalConjectures/ErdosProblems/558.lean-110-    (hst : s ≥ Nat.factorial (t - 1) + 1) :
+FormalConjectures/ErdosProblems/558.lean-111-    ∃ C₁ : ℝ, C₁ > 0 ∧ ∃ C₂ : ℝ, C₂ > 0 ∧
+FormalConjectures/ErdosProblems/558.lean-112-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/558.lean-113-      C₁ * (k : ℝ) ^ t ≤
+FormalConjectures/ErdosProblems/558.lean:114:        (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:115:      (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean-116-        C₂ * (k : ℝ) ^ t := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-117-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-118-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-119-end Erdos558
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-47-$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-48-
+FormalConjectures/ErdosProblems/555.lean-49-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/555.lean-50-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-51-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/555.lean:52:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/555.lean-53-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/555.lean-54-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-55-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/555.lean-56-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-57-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-63-$$R_k(C_{2n}) \geq C \cdot k^{1 + 1/(2n)}.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-64--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-65-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/555.lean-66-theorem erdos_555 (n : ℕ) (hn : n ≥ 2) :
+FormalConjectures/ErdosProblems/555.lean-67-    ∃ C : ℝ, C > 0 ∧ ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/555.lean:68:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≥
+FormalConjectures/ErdosProblems/555.lean-69-        C * (k : ℝ) ^ ((1 : ℝ) + 1 / (2 * (n : ℝ))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-70-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-71-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-72-/--
+FormalConjectures/ErdosProblems/555.lean-73-Erdős Problem 555, upper bound [Er81c]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-76-$$R_k(C_{2n}) \leq C \cdot k^{1 + 1/(n - 1)}.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-77--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-78-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/555.lean-79-theorem erdos_555.variants.upper_bound (n : ℕ) (hn : n ≥ 2) :
+FormalConjectures/ErdosProblems/555.lean-80-    ∃ C : ℝ, C > 0 ∧ ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/555.lean:81:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/555.lean-82-        C * (k : ℝ) ^ ((1 : ℝ) + 1 / ((n : ℝ) - 1)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-83-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-84-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-85-/--
+FormalConjectures/ErdosProblems/555.lean-86-Chung–Graham upper bound [ChGr75]: $R_k(C_4) \leq k^2 + k + 1$ for all $k \geq 2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-87--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-88-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/555.lean-89-theorem erdos_555.variants.chung_graham_upper (k : ℕ) (hk : k ≥ 2) :
+FormalConjectures/ErdosProblems/555.lean:90:    multicolorRamseyNumber (cycleGraph 4 (by omega)) k ≤ k ^ 2 + k + 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-91-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-92-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-93-end Erdos555
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-42-$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-43-
+FormalConjectures/ErdosProblems/554.lean-44-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-45-\operatorname{Fin} k$. A monochromatic copy of $G$ in colour $a$ is an injective map
+FormalConjectures/ErdosProblems/554.lean-46-$f : V \to \operatorname{Fin} N$ such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/554.lean:47:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/554.lean-48-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/554.lean-49-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-50-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/554.lean-51-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-52-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-62--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-63-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/554.lean-64-theorem erdos_554 (n : ℕ) (hn : n ≥ 2) :
+FormalConjectures/ErdosProblems/554.lean-65-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/554.lean-66-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/554.lean:67:      (multicolorRamseyNumber (cycleGraph (2 * n + 1) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/554.lean:68:        ε * (multicolorRamseyNumber (⊤ : SimpleGraph (Fin 3)) k : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-69-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-71-end Erdos554
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-36-$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-37-
+FormalConjectures/ErdosProblems/557.lean-38-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/557.lean-39-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-40-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/557.lean:41:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/557.lean-42-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/557.lean-43-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-44-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/557.lean-45-    ∃ (a : Fin k) (f : V → Fin N), Function.Injective f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-46-      ∀ u v, G.Adj u v → c (f u) (f v) = a}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-54-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/557.lean-55-theorem erdos_557 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/557.lean-56-    ∃ C : ℕ, ∀ (n : ℕ) (hn : n ≥ 1) (T : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-57-      T.IsTree →
+FormalConjectures/ErdosProblems/557.lean-58-      ∀ k : ℕ, k ≥ 1 →
+FormalConjectures/ErdosProblems/557.lean:59:        multicolorRamseyNumber T k ≤ k * n + C := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-60-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-62-end Erdos557

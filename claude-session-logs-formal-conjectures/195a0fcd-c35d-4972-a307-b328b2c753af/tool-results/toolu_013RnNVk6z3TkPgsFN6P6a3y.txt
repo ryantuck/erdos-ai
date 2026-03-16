@@ -1,0 +1,169 @@
+ai-review/703.md:25:- **[Er76b]**, **[Er81]**, **[Er82e]** — further Erdős references
+ai-review/735.md:18:- **Original reference:** [Er81] (Erdős's mention of the problem)
+ai-review/735.md:25:**Issue:** The original reference [Er81] from the website is not mentioned in the formalization. While [ABKPR08] is the resolution paper and is correctly cited, the original Erdős reference should also be included for completeness. The website acknowledges Noga Alon, which is also absent from the docstring.
+ai-review/735.md:102:| Citations | Missing [Er81] original reference; [ABKPR08] correctly cited |
+ai-review/718.md:17:- The website also references the original conjecture source as **[Er81]** (Erdős, Hajnal, and Mader, 1981) and Dirac's result as **[Di60]** and Mader's as **[Ma67]**. The docstring mentions these results in prose but does not give formal citation keys for them. This is acceptable since they provide background context rather than the solution.
+ai-review/718.md:19:**Minor note:** The website explicitly attributes the conjecture to 1981. The docstring says "A conjecture of Erdős, Hajnal, and Mader" without a year. Adding "[Er81]" would improve traceability.
+ai-review/718.md:78:| Citations | ✅ Correct, minor improvement possible (add [Er81] year) |
+ai-review/1178.md:23:The formalization cites **[BES73], [Er75b], [Er81]**. Comparing against the website:
+ai-review/1178.md:27:- **[Er81]** — Not listed on the website for this problem. Same caveat.
+ai-review/706.md:17:The website attributes this problem to **[Er81]**, which is not cited in the formalization's docstring. The docstring should include:
+ai-review/706.md:19:> [Er81] P. Erdős, *Problems and results in combinatorial analysis and combinatorics*, 1981.
+ai-review/706.md:23:**Verdict:** Missing the [Er81] citation.
+ai-review/706.md:93:| Citations | **Missing [Er81] reference** |
+ai-review/734.md:21:> [Er81] Erdős, P., *Problems and results in graph theory and combinatorics*, Proceedings of the Southeastern Conference on Combinatorics, Graph Theory, and Computing (1981), p. 35.
+ai-review/745.md:10:- **[Er81]**: Erdős, P., *On the combinatorial problems which I would most like to see solved*. Combinatorica 1 (1981), 25-42.
+ai-review/745.md:13:These match the references listed on [erdosproblems.com/745](https://www.erdosproblems.com/745). The website lists the same two references ([Er81] as the original source, [KSS80] as the resolution). The citation formatting is correct and complete.
+FormalConjectures/ErdosProblems/500.lean:52:[Er81] Erdős, P., _Combinatorial problems and results_ (1981).
+FormalConjectures/ErdosProblems/500.lean:74:Erdős Problem 500 — Turán's Hypergraph Conjecture [Er61][Er71][Er74c][Er81]:
+FormalConjectures/ErdosProblems/556.lean:26:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+FormalConjectures/ErdosProblems/556.lean:69:Erdős Problem 556 [Er81][Er81c]:
+FormalConjectures/ErdosProblems/182.lean:27:Asked by Erdős and Sauer [Er75] [Er78] [Er81]. Resolved by Janzer and Sudakov [JaSu23], who
+FormalConjectures/ErdosProblems/182.lean:45:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+FormalConjectures/ErdosProblems/182.lean:72:Erdős Problem 182 (Erdős–Sauer conjecture) [Er75] [Er81]:
+FormalConjectures/ErdosProblems/740.lean:24:A question of Erdős and Hajnal [Er69b][Er71, p.100][Er81][Er95d].
+FormalConjectures/ErdosProblems/740.lean:52:Erdős Problem 740 [Er69b][Er71][Er81][Er95d]:
+FormalConjectures/ErdosProblems/57.lean:29:Erdős later asked ([Er81]) whether the odd cycle lengths must have positive upper density
+FormalConjectures/ErdosProblems/57.lean:60:Variant of Erdős Problem 57 (Erdős [Er81]):
+FormalConjectures/ErdosProblems/704.lean:36:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+FormalConjectures/ErdosProblems/742.lean:34:**Erdős Problem 742** [Er81]:
+FormalConjectures/ErdosProblems/739.lean:33:[Er81] Erdős, P., 1981.
+FormalConjectures/ErdosProblems/739.lean:55:Erdős Problem 739 [Er81]:
+FormalConjectures/ErdosProblems/703.lean:35:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_, 1981.
+FormalConjectures/ErdosProblems/712.lean:42:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_.
+FormalConjectures/ErdosProblems/743.lean:38:[Er81] Erdős, P.
+FormalConjectures/ErdosProblems/743.lean:46:**Erdős Problem 743** [Er81]:
+FormalConjectures/ErdosProblems/733.lean:32:[Er81] Erdős, P., 1981.
+FormalConjectures/ErdosProblems/733.lean:70:**Erdős Problem 733** [Er81]:
+FormalConjectures/ErdosProblems/724.lean:35:[Er81] Erdős, P., 1981.
+FormalConjectures/ErdosProblems/724.lean:69:Erdős Problem 724 [Er81]:
+FormalConjectures/ErdosProblems/664.lean:34:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+FormalConjectures/ErdosProblems/664.lean:48:Erdős Problem 664 (Disproved) [Er81][Er97f]:
+FormalConjectures/ErdosProblems/571.lean:31:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+FormalConjectures/ErdosProblems/191.lean:37:[Er81] Erdős, P., 1981.
+FormalConjectures/ErdosProblems/719.lean:26:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+FormalConjectures/ErdosProblems/719.lean:58:Erdős Problem 719 (Erdős–Sauer conjecture) [Er81]:
+FormalConjectures/ErdosProblems/706.lean:33:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+FormalConjectures/ErdosProblems/738.lean:24:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_.
+FormalConjectures/ErdosProblems/738.lean:38:Erdős Problem 738 (Gyárfás conjecture) [Er81]:
+FormalConjectures/ErdosProblems/140.lean:33:[Er81] Erdős, P., *On the combinatorial problems which I would most like to see solved*.
+FormalConjectures/ErdosProblems/576.lean:32:- [Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_. Combinatorica (1981), 25-42.
+FormalConjectures/ErdosProblems/576.lean:66:Erdős Conjecture (Problem 576) [Er64c], [ErSi70], [Er74c], [Er81], [Er93]:
+FormalConjectures/ErdosProblems/159.lean:30:[Er81] Erdős, P., *On the combinatorial problems which I would most like to see solved*,
+FormalConjectures/ErdosProblems/601.lean:36:[Er81] Erdős, P., _Solved and unsolved problems in combinatorics and combinatorial
+FormalConjectures/ErdosProblems/601.lean:77:Erdős Problem 601 [EHM70] [Er81] [Er82e] [Er87]:
+FormalConjectures/ErdosProblems/736.lean:53:Erdős Problem 736 [Er81] [Er93, p. 343]:
+FormalConjectures/ErdosProblems/138.lean:27:- [Er81] Erdős, P., On the combinatorial problems which I would most like to see solved. Combinatorica (1981), 25-42.
+FormalConjectures/ErdosProblems/138.lean:101:In [Er81] Erdős asks whether $\frac{W(k+1)}{W(k)} \to \infty$.
+FormalConjectures/ErdosProblems/138.lean:109:In [Er81] Erdős asks whether $W(k+1) - W(k) \to \infty$.
+FormalConjectures/ErdosProblems/715.lean:37:[Er81] Erdős, P. (1981).
+FormalConjectures/ErdosProblems/715.lean:51:**Erdős Problem 715** [Er75][Er81]:
+FormalConjectures/ErdosProblems/1178.lean:33:[Er81] Erdős, P., *On the combinatorial problems which I would most like to see solved*, 1981.
+FormalConjectures/ErdosProblems/1178.lean:66:Erdős Problem 1178 [BES73] [Er75b] [Er81]:
+FormalConjectures/ErdosProblems/732.lean:35:[Er81] Erdős, P., 1981.
+FormalConjectures/ErdosProblems/732.lean:57:Erdős Problem 732 [Er81]:
+FormalConjectures/ErdosProblems/111.lean:31:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_.
+FormalConjectures/ErdosProblems/111.lean:81:- Erdős [Er81] conjectured this upper bound can be improved: there should exist $G$
+FormalConjectures/ErdosProblems/702.lean:31:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_, 1981.
+FormalConjectures/ErdosProblems/737.lean:61:Erdős Problem 737 [EHS74] [Er81]:
+FormalConjectures/ErdosProblems/734.lean:37:[Er81] Erdős, P., _Problems and results in graph theory and combinatorics_,
+FormalConjectures/ErdosProblems/211.lean:37:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+FormalConjectures/ErdosProblems/211.lean:75:[Er75f] [Er81] [Er83c] [Er84]:
+FormalConjectures/ErdosProblems/744.lean:29:[Er81] Erdős, P.
+FormalConjectures/ErdosProblems/599.lean:33:[Er81] Erdős, P. (1981).
+FormalConjectures/ErdosProblems/599.lean:46:Erdős Problem 599 (Erdős-Menger Conjecture) [Er81][Er87]:
+FormalConjectures/ErdosProblems/701.lean:28:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+FormalConjectures/ErdosProblems/725.lean:35:[Er81] Erdős, P. (1981).
+FormalConjectures/ErdosProblems/725.lean:54:Erdős Problem 725 [Er81]:
+FormalConjectures/ErdosProblems/718.lean:24:A conjecture of Erdős, Hajnal, and Mader [Er81]. Dirac proved that every graph on $n$
+FormalConjectures/ErdosProblems/718.lean:30:[Er81] Erdős, P., _Problems and results in graph theory and combinatorics_. Proceedings of
+FormalConjectures/ErdosProblems/77.lean:50:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_.
+FormalConjectures/ErdosProblems/745.lean:30:[Er81] Erdős, P., _On the combinatorial problems which I would most like to
+FormalConjectures/ErdosProblems/745.lean:82:Erdős Problem 745 [Er81]:
+FormalConjectures/ErdosProblems/216.lean:33:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+ai-review/211.md:38:- **[Er81]**
+ai-review/211.md:48:1. **Missing Erdős citation tags.** The docstring includes [Be83] and [SzTr83] but omits the Erdős references [Er75f], [Er81], [Er83c], [Er84] that appear on the website.
+ai-review/743.md:15:The docstring references `[Er81] Erdős, P.` which matches the website's primary citation.
+ai-review/184.md:44:- **References:** [EGP66], [Er71], [Er76], [Er81], [Er83b], [BM22], [CFS14].
+ai-review/184.md:49:| [Er71], [Er76], [Er81], [Er83b] | Theorem docstring only | Yes | OK. |
+ai-review/721.md:21:- **[Er81]** — Erdős (1981)
+ai-review/721.md:86:| Citations | Missing [Er80] and [Er81] from the website |
+ai-review/664.md:11:The formalization includes references **[Er81]** and **[Er97f]**, matching the website. Specific details:
+ai-review/664.md:13:- **[Er81]**: Listed as `Erdős, P., _Combinatorial problems in geometry and number theory_ (1981)` — matches the website citation tag.
+ai-review/664.md:20:The website describes a **weaker variant** from [Er81]: replacing the pairwise intersection condition `|A_i ∩ A_j| ≤ 1` with the stronger structural requirement that every pair of points lies in exactly one A_i (i.e., the A_i form the lines of a projective plane). This weaker conjecture **remains open** and is conjectured by Alon to also be false.
+ai-review/111.md:32:The docstring includes two references: [EHS82] and [Er81]. The website [erdosproblems.com/111](https://www.erdosproblems.com/111) lists several additional references:
+ai-review/111.md:45:- [Er81] — cited as "Erdős, P., *On the combinatorial problems which I would most like to see solved*. Combinatorica, 1 (1981), 25-42." This is a standard and correct citation.
+ai-review/722.md:22:**Missing**: The website lists **[Er81]** (Erdős, 1981) as the original source of the problem. This should be added to the docstring for completeness:
+ai-review/722.md:24:> [Er81] Erdős, P., *Problems and results in graph theory and combinatorics*, 1981.
+ai-review/722.md:82:| Citations | Missing [Er81] original source reference |
+ai-review/740.md:30:**Module docstring** (line 24): `[Er69b][Er71, p.100][Er81][Er95d]` — matches the website.
+ai-review/740.md:32:**Theorem docstring** (line 52): `[Er69b][Er71][Er81][Er95d]` — **missing the page reference `p.100`** for [Er71]. Should be `[Er69b][Er71, p.100][Er81][Er95d]` to match the website.
+ai-review/740.md:44:| Girth variant from [Er81] (no cycles at all of length ≤ C, not just odd) | **No** | No |
+ai-review/740.md:46:**Missing variant:** The website states: *Erdős [Er81] also posed the analogous question with girth (requiring subgraphs with no cycles of length ≤ C).* This girth variant is not mentioned or formalized. It could be captured by dropping the `Odd p.length` hypothesis in the cycle condition. The [Er95d] triangle-free remark (even $r=3$ is open) is also not explicitly noted.
+ai-review/740.md:89:| Variants | Partial | Girth variant from [Er81] not mentioned |
+ai-review/736.md:14:- **[Er81]** — Erdős's original mention
+ai-review/736.md:20:- [Er81] ✓
+ai-review/736.md:87:| Citations | **Complete** — all website references ([Er81], [Er93], [KoSh05], Taylor attribution) are present |
+ai-review/712.md:18:- [Er81]
+ai-review/712.md:20:The formalization's module docstring does **not** include explicit citation tags for these references, unlike Problem 500 which lists `[Er61]`, `[Er71]`, `[Er74c]`, `[Er81]`, and `[Ra10]` with brief descriptions. For consistency, Problem 712 should include these references with at least minimal bibliographic detail, e.g.:
+ai-review/712.md:28:[Er81] Erdős, P., *Combinatorial problems and results* (1981).
+ai-review/601.md:20:- **[Er81]** Erdős (1981) — ✅ Present
+ai-review/77.md:35:- [Er61], [Er69b], [Er71], [Er81], [Er88], [Er90b], [Er93], [Er95], [Er97c], [Er97d], [Va99]
+ai-review/140.md:24:- **[Er81]** — Erdős, 1981
+ai-review/140.md:30:- `[Er81]` — matches.
+ai-review/182.md:49:| Erdos 1981 | `[Er81]` | Yes | OK |
+ai-review/599.md:14:- **[Er81]** — `Erdős, P. (1981).` — No title or journal provided. The website also provides no further detail for this reference. ✅ Matches.
+ai-review/747.md:25:**Missing:** The website also references **[Er81]** as the original Erdős source where the problem appeared. This should be added to the docstring for completeness. The website also attributes the problem to **Shamir (1979)**, which the docstring does mention, but a formal [Er81] citation line would be consistent with the project's citation conventions.
+ai-review/747.md:70:| Citations | ⚠️ Minor gap | Missing [Er81] reference |
+ai-review/210.md:39:- **[Er81]**
+ai-review/210.md:53:1. **Missing Erdős citation tags.** The docstring mentions results by Motzkin, Kelly–Moser, Csima–Sawyer, and Green–Tao by name, but does not include any of the Erdős citation tags ([Er61], [Er75f], [Er81], [Er83c], [Er84], [Er85]) that appear on the website.
+ai-review/732.md:24:- **Current (732.lean:36):** `[Er81] Erdős, P., 1981.`
+ai-review/732.md:25:- **Website (erdosproblems.com/732):** Lists `[Er81]` as the source. No further bibliographic detail is given on the website itself.
+ai-review/732.md:26:- **734.lean provides a fuller citation** for the same [Er81]: `Erdős, P., Problems and results in graph theory and combinatorics, Proceedings of the Southeastern Conference on Combinatorics, Graph Theory, and Computing (1981), p. 35.`
+ai-review/732.md:28:Since both 732 and 734 cite [Er81] and are from the same 1981 paper, the fuller citation from 734 should be used here as well.
+ai-review/732.md:32:**Recommendation:** Expand the `[Er81]` citation to match the full form used in `734.lean`.
+ai-review/576.md:19:The docstring references: `[Er64c], [ErSi70,p.378], [Er74c,p.78], [Er75], [Er81], [Er93,p.334]`.
+ai-review/576.md:21:The website (erdosproblems.com/576) lists: `[Er64c], [ErSi70], [Er74c], [Er75], [Er81], [Er93]`.
+ai-review/556.md:14:- `[Er81]` — Erdős, P., *On the combinatorial problems which I would most like to see solved* (1981).
+ai-review/738.md:22:> [Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_. Combinatorica 1 (1981), 25-42.
+ai-review/738.md:25:- **Source:** [Er81]
+ai-review/159.md:27:The formalization lists `[Er81]`, `[Er84d]`, `[EFRS78]`, and `[Sp77]` but **omits [Er78]**, which is the original source of the problem (with prize). Conversely, the website does list [Er81], [Er84d], [EFRS78], and [Sp77] as well, so those are correct.
+ai-review/159.md:30:- The citation shorthand references (e.g., `[Er81] Erdős, P., *Problems and results in graph theory*.`) lack full bibliographic detail — journal name, year, page numbers are missing. Some examples:
+ai-review/725.md:14:- **[Er81]** Erdős, P. (1981). ✓ Matches website (the source attribution).
+ai-review/744.md:23:- `[Er81]` — Erdős, P.
+ai-review/714.md:14:- **[Er64c], [Er67b], [Er69], [Er71, p.103], [Er74c, p.77], [Er75], [Er81], [Er93, p.334]** — various Erdős papers
+ai-review/571.md:13:- [Er74c, p.78], [Er75], [Er78, p.30], [Er81], [ErSi84], [Er91]
+ai-review/571.md:21:The docstring should at minimum cite the Erdős–Simonovits attribution more precisely. It currently says "Erdős Problem 571 (Erdős–Simonovits)" which is acceptable as a short attribution, but adding at least one or two key references (e.g., [Er81] or [ErSi84]) would improve traceability.
+ai-review/571.md:75:| Citations | Minimal; should add key references [Er81], [ErSi84] |
+ai-review/57.md:43:- **[Er69b], [Er74d], [Er81], [Er90], [Er93], [Er94b], [Er95], [Er95d], [Er96], [Er97b]** — Various Erdős papers where the problem and its variants were discussed over the decades.
+ai-review/57.md:50:**Recommendation:** Add the journal information for [LiMo20]. The additional Erdős references are not strictly necessary but [Er81] is relevant if the upper density variant is added (see §3).
+ai-review/57.md:58:**(a) Positive upper density (Erdős [Er81]).** Erdős later asked whether the odd cycle lengths $\{a_i\}$ of a graph with infinite chromatic number must have positive upper density among the odd numbers. This is a strictly stronger statement than the reciprocal divergence (positive upper density implies reciprocal divergence, but not conversely). This could be formalized as:
+ai-review/57.md:147:| Citations | [LiMo20] should include journal info; [Er81] relevant if variants are added |
+ai-review/57.md:148:| Variants | Missing: positive upper density [Er81], upper density ≥ 1/2 [Er95d/Er96], cross-ref to Problem 65 |
+ai-review/1159.md:16:- `[Er81]` — Erdős, P. (1981), who posed the stronger question for all pairwise balanced block designs. **This reference is missing from the formalization entirely.**
+ai-review/1159.md:18:**Recommendation:** Flesh out citations with full titles and publication venues. Add the `[Er81]` reference.
+ai-review/1159.md:24:- **Erdős (1981) [Er81]** posed the stronger question for all pairwise balanced block designs, not just projective planes. This stronger variant is **not captured** in the formalization.
+ai-review/1159.md:28:1. A note or cross-reference to the stronger block design variant from [Er81].
+ai-review/1159.md:76:| Citations | Incomplete — [ESS83] and [Va99] lack full details; [Er81] missing |
+ai-review/1159.md:77:| Variants | Block design generalization ([Er81]) not captured; ESS log bound not formalized |
+ai-review/717.md:20:- **[Er81]** — Erdős, P. (1981)
+ai-review/704.md:19:- **[Er81]** — Missing. The website lists an original Erdős reference from 1981 that should be included for provenance.
+ai-review/704.md:79:| Missing citations ([Er81], [Pr20]) | Low |
+ai-review/724.md:13:The docstring includes references [Er81], [CES60], [Wi74], and [Be83c], which all appear on the website. However, the website also mentions:
+ai-review/191.md:17:| [Er81] Erdős, 1981 | Erdős (1981) |
+ai-review/701.md:86:| Citations | **Incomplete** — missing [Er81], [Ch74], [St74], [FrKu23], [Bo11] |
+ai-review/719.md:19:> [Er81] Erdős, P., *On the combinatorial problems which I would most like to see solved*, 1981.
+ai-review/719.md:21:The website ([erdosproblems.com/719](https://www.erdosproblems.com/719)) attributes the problem to Erdős and Sauer, with reference [Er81]. The formalization's docstring correctly identifies this as a conjecture of Erdős and Sauer.
+ai-review/719.md:23:**Note:** Problem 500 in the codebase also cites [Er81] but gives the title as *Combinatorial problems and results* (1981). These may be different 1981 Erdős papers, or one title may be inaccurate. The title used in 719 ("On the combinatorial problems which I would most like to see solved") matches the commonly cited 1981 paper and is consistent with Problem 1178's citation of the same reference. The discrepancy in Problem 500 should be investigated separately.
+ai-review/719.md:25:No additional references are listed on the website beyond [Er81].
+ai-review/719.md:86:| Citations | Correct; minor cross-problem inconsistency in [Er81] title |
+ai-review/742.md:18:- `[Er81]` — in the theorem attribute
+ai-review/733.md:17:- `[Er81]` — listed as "Erdős, P., 1981." This is incomplete. The website lists the source as `[Er81]` but does not give a full citation either. The docstring entry is consistent with the website.
+ai-review/715.md:18:- References: [Er75], [Er81]
+ai-review/715.md:23:- The docstring references [Er75], [Er81], [Ta82], and [AFK84] — all matching the website.
+ai-review/715.md:25:[Omitted long matching line]
+ai-review/715.md:87:| Citations | Consistent with website; minor improvement possible for [Er75]/[Er81] titles |
+ai-review/702.md:23:- [Er81]
+ai-review/720.md:24:- **[Er81]**
+ai-review/500.md:16:The formalization includes references [Er61], [Er71], [Er74c], [Er81], and [Ra10], matching what appears on [erdosproblems.com/500](https://www.erdosproblems.com/500). The citations are given in shorthand form (author, title, year) without full journal/volume details. The website itself uses the same shorthand identifiers so this is consistent.
+ai-review/737.md:23:The `[Er81]` shorthand in the `@[category]` annotation docstring is also unexpanded and has no corresponding full citation in the file.

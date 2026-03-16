@@ -1,0 +1,403 @@
+FormalConjecturesForMathlib.lean:36:import FormalConjecturesForMathlib.Combinatorics.Ramsey
+FormalConjecturesForMathlib.lean:46:import FormalConjecturesForMathlib.Combinatorics.SimpleGraph.SizeRamsey
+FormalConjectures/GreensOpenProblems/85.lean:29:- [Mu02] Mubayi, Dhruv. "Some exact results and new asymptotics for hypergraph Turán numbers." Combinatorics, Probability and Computing 11.3 (2002): 299-309 Conjecture 1.4.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:23:# Size Ramsey Number
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:25:This file defines the size Ramsey number for simple graphs.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:29:The size Ramsey number `r̂(G, H)` is the minimum number of edges in a graph `F`
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:36:The size Ramsey number `r̂(G, H)` is the minimum number of edges in a graph `F`
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:41:noncomputable def sizeRamsey {α β : Type*} [Fintype α] [Fintype β]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:49:A graph `G` is **Ramsey size linear** if there exists a constant `c > 0` such that
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:52:def IsRamseySizeLinear {α : Type*} [Fintype α] (G : SimpleGraph α) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:55:    (sizeRamsey G H : ℝ) ≤ c * H.edgeSet.ncard
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:157:The anti-Ramsey number $\mathrm{AR}(n, H)$: maximum colors to edge-color $K_n$ without rainbow $H$.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:159:noncomputable def antiRamseyNum {α : Type*} [Fintype α] (H : SimpleGraph α) (n : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:21:# Hypergraph Ramsey Numbers
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:23:This file defines the `r`-uniform hypergraph Ramsey number `R_r(n)`.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:29:The `r`-uniform hypergraph Ramsey number `R_r(n)`.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:33:noncomputable def hypergraphRamsey (r n : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:38:/-- `n ≤ hypergraphRamsey r n` when the set is nonempty. -/
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:39:theorem le_hypergraphRamsey (r n : ℕ) (hne : { m | ∀ (c : Finset (Fin m) → Bool),
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:42:    n ≤ hypergraphRamsey r n := by
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:51:/-- `hypergraphRamsey r r = r` for any `r`. -/
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:52:theorem hypergraphRamsey_self (r : ℕ) : hypergraphRamsey r r = r := by
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:62:  exact le_antisymm (Nat.sInf_le h_mem) (le_hypergraphRamsey r r ⟨r, h_mem⟩)
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:25:This proposition asserts the ordinal Ramsey property `α → (β, c)²`.
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:32:def OrdinalCardinalRamsey (α β : Ordinal.{u}) (c : Cardinal.{u}) : Prop :=
+FormalConjectures/ErdosProblems/500.lean:28:A problem of Turán. Turán observed that dividing the vertices into three equal
+FormalConjectures/ErdosProblems/500.lean:62:/-- The $3$-uniform Turán number $\mathrm{ex}_3(n, K_4^3)$: the maximum number of $3$-element
+FormalConjectures/ErdosProblems/500.lean:68:Erdős Problem 500 — Turán's Hypergraph Conjecture [Er61][Er71][Er74c][Er81]:
+FormalConjectures/ErdosProblems/500.lean:70:The $3$-uniform Turán density for $K_4^3$ is exactly $5/9$. Equivalently,
+FormalConjectures/ErdosProblems/500.lean:74:Turán conjectured that the lower bound construction (partition into $3$ equal parts,
+FormalConjectures/ErdosProblems/638.lean:23:finite induced subgraph of $G$ belongs to a given family $S$ with the Ramsey property, and
+FormalConjectures/ErdosProblems/638.lean:55:Let $S$ be a family of finite graphs (indexed by vertex count) with the Ramsey
+FormalConjectures/ErdosProblems/636.lean:39:of Ramsey graphs_ (2021).
+FormalConjectures/ErdosProblems/1105.lean:29:- [Yu21] L.-T. Yuan, The anti-Ramsey number for paths. arXiv:2102.00807 (2021).
+FormalConjectures/ErdosProblems/1105.lean:37:The anti-Ramsey number $\mathrm{AR}(n,G)$ is the maximum possible number of colours in which the
+FormalConjectures/ErdosProblems/1105.lean:51:    ((fun n => (antiRamseyNum (cycleGraph k) n : ℝ) - ((k - 2 : ℝ) / 2 + 1 / (k - 1)) * n)
+FormalConjectures/ErdosProblems/1105.lean:69:    antiRamseyNum (pathGraph k) n = max ((k - 2).choose 2 + 1) ((ℓ - 1).choose 2 +
+FormalConjectures/ErdosProblems/556.lean:42:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/556.lean:48:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/556.lean:58:For all $n \geq 3$, the 3-colour Ramsey number of the cycle $C_n$ satisfies
+FormalConjectures/ErdosProblems/556.lean:63:    multicolorRamseyNumber (cycleGraph n hn) 3 ≤ 4 * n - 3 := by
+FormalConjectures/ErdosProblems/573.lean:65:Kővári, Sós, and Turán proved that the extremal number for forbidding $C_4$
+FormalConjectures/ErdosProblems/765.lean:53:/-- The Turán extremal number $\mathrm{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/59.lean:39:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph on
+FormalConjectures/ErdosProblems/87.lean:41:/-- The (diagonal) graph Ramsey number $R(H)$: the minimum $N$ such that every simple
+FormalConjectures/ErdosProblems/87.lean:45:noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean:49:/-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
+FormalConjectures/ErdosProblems/87.lean:50:noncomputable def diagRamsey (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean:51:  graphRamseyNumber (⊤ : SimpleGraph (Fin k))
+FormalConjectures/ErdosProblems/87.lean:66:      (diagRamsey k : ℝ) * (1 - ε) ^ k < (graphRamseyNumber G : ℝ) := by
+FormalConjectures/ErdosProblems/87.lean:82:      c * (diagRamsey k : ℝ) < (graphRamseyNumber G : ℝ) := by
+FormalConjectures/ErdosProblems/190.lean:30:This type of problem belongs to 'canonical' Ramsey theory. The existence
+FormalConjectures/ErdosProblems/146.lean:22:Erdős and Simonovits conjectured that the Turán number of any $r$-degenerate bipartite
+FormalConjectures/ErdosProblems/146.lean:31:[AKS03] Alon, N., Krivelevich, M., and Sudakov, B., *Turán numbers of bipartite
+FormalConjectures/ErdosProblems/146.lean:32:graphs and related Ramsey-type questions*, Combinatorics, Probability and
+FormalConjectures/ErdosProblems/146.lean:45:/-- The Turán number $\text{ex}(n; H)$: the maximum number of edges in a simple graph on $n$
+FormalConjectures/ErdosProblems/591.lean:40:theorem erdos_591 : answer(True) ↔ OrdinalCardinalRamsey (ω ^ ω ^ 2) (ω ^ ω ^ 2) 3 := by
+FormalConjectures/ErdosProblems/974.lean:24:A conjecture of Turán, proved by Tijdeman [Ti66].
+FormalConjectures/ErdosProblems/974.lean:26:[Ti66] Tijdeman, R., _On a conjecture of Turán_, 1966.
+FormalConjectures/ErdosProblems/974.lean:34:Erdős Problem 974 (Turán's conjecture, proved by Tijdeman [Ti66]):
+FormalConjectures/ErdosProblems/546.lean:34:[Su11] Sudakov, B., _A conjecture of Erdős on graph Ramsey numbers_. Advances in
+FormalConjectures/ErdosProblems/546.lean:47:/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin} k$: the minimum
+FormalConjectures/ErdosProblems/990.lean:24:Can the Erdős–Turán bound on the distribution of polynomial root arguments be improved by
+FormalConjectures/ErdosProblems/990.lean:27:[ErTu50] Erdős, P. and Turán, P., *On the distribution of roots of polynomials*, Annals of
+FormalConjectures/ErdosProblems/990.lean:49:/-- The Erdős–Turán measure
+FormalConjectures/ErdosProblems/990.lean:51:noncomputable def erdosTuranMeasure (f : Polynomial ℂ) : ℝ :=
+FormalConjectures/ErdosProblems/990.lean:68:Erdős and Turán [ErTu50] proved such an upper bound with $n$ replaced by $d$ (the degree).
+FormalConjectures/ErdosProblems/990.lean:78:          C * Real.sqrt (↑f.support.card * Real.log (erdosTuranMeasure f)) := by
+FormalConjectures/ErdosProblems/553.lean:38:/-- The Ramsey number $R(3,n)$: the minimum $N$ such that every $2$-colouring of
+FormalConjectures/ErdosProblems/553.lean:45:/-- The Ramsey number $R(3,3,n)$: the minimum $N$ such that every $3$-colouring of
+FormalConjectures/ErdosProblems/1030.lean:24:If $R(k,l)$ is the Ramsey number then prove the existence of some $c > 0$ such that
+FormalConjectures/ErdosProblems/1030.lean:39:/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
+FormalConjectures/ErdosProblems/147.lean:27:[Ja23] Janzer, O., _Disproof of a conjecture of Erdős and Simonovits on the Turán number_,
+FormalConjectures/ErdosProblems/147.lean:30:[Ja23b] Janzer, O., _Disproof of a conjecture of Erdős and Simonovits on the Turán number
+FormalConjectures/ErdosProblems/147.lean:43:/-- The Turán number $\mathrm{ex}(n; H)$: the maximum number of edges in a simple graph on $n$
+FormalConjectures/ErdosProblems/1011.lean:27:Turán's theorem implies $f_2(n) = \lfloor n^2/4 \rfloor + 1$.
+FormalConjectures/ErdosProblems/1014.lean:22:Erdős conjectured that for fixed $k \geq 3$, the ratio of consecutive Ramsey numbers
+FormalConjectures/ErdosProblems/1014.lean:34:/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
+FormalConjectures/ErdosProblems/1014.lean:45:where $R(k, l)$ is the Ramsey number.
+FormalConjectures/ErdosProblems/1079.lean:28:As Erdős [Er75] says 'if true this would be a nice generalisation of Turán's theorem'.
+FormalConjectures/ErdosProblems/1079.lean:30:This is true (unless $G$ is itself the Turán graph), proved by Bollobás and Thomason [BoTh81].
+FormalConjectures/ErdosProblems/1079.lean:44:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph
+FormalConjectures/ErdosProblems/592.lean:37:    OrdinalCardinalRamsey (ω ^ β) (ω ^ β) 3 ↔ (answer(sorry) : Ordinal.{u} → Prop) β := by
+FormalConjectures/ErdosProblems/329.lean:72:Erdős and Turán [ErTu41] proved the upper bound of 1.
+FormalConjectures/ErdosProblems/329.lean:74:[ErTu41] Erdős, P. and Turán, P., On a problem of Sidon in additive number theory, and on some related problems. J. London Math. Soc. (1941), 212-215.
+FormalConjectures/ErdosProblems/567.lean:26:In other words, is $G$ Ramsey size linear? A special case of Problem 566.
+FormalConjectures/ErdosProblems/567.lean:30:[EFRS93] Erdős, Faudree, Rousseau and Schelp, _Ramsey size linear graphs_.
+FormalConjectures/ErdosProblems/567.lean:57:Is $Q_3$ (the 3-dimensional hypercube) Ramsey size linear?
+FormalConjectures/ErdosProblems/567.lean:60:theorem erdos_567_Q3 : answer(sorry) ↔ IsRamseySizeLinear Q3 := by
+FormalConjectures/ErdosProblems/567.lean:66:Is $K_{3,3}$ Ramsey size linear?
+FormalConjectures/ErdosProblems/567.lean:69:theorem erdos_567_K33 : answer(sorry) ↔ IsRamseySizeLinear K33 := by
+FormalConjectures/ErdosProblems/567.lean:75:Is $H_5$ ($C_5$ with two vertex-disjoint chords) Ramsey size linear?
+FormalConjectures/ErdosProblems/567.lean:78:theorem erdos_567_H5 : answer(sorry) ↔ IsRamseySizeLinear H5 := by
+FormalConjectures/ErdosProblems/112.lean:24:A problem of Erdős and Rado on directed Ramsey numbers $k(n,m)$: the minimal $k$ such that
+FormalConjectures/ErdosProblems/112.lean:55:/-- The directed Ramsey number $k(n,m)$: the minimal $k$ such that every directed graph
+FormalConjectures/ErdosProblems/112.lean:58:noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/112.lean:65:Erdős Problem 112: Determine the directed Ramsey number $k(n,m)$.
+FormalConjectures/ErdosProblems/112.lean:71:      dirRamseyNum n m = answer(sorry) := by
+FormalConjectures/ErdosProblems/112.lean:81:      dirRamseyNum n m ≤ (2 ^ (m - 1) * (n - 1) ^ m + n - 2) / (2 * n - 3) := by
+FormalConjectures/ErdosProblems/112.lean:90:      dirRamseyNum n 3 ≤ n ^ 2 := by
+FormalConjectures/ErdosProblems/85.lean:43:-- TODO: add connection to Ramsey number, weaker version and implied bounds from additional material.
+FormalConjectures/ErdosProblems/559.lean:24:Let $\hat{R}(G)$ denote the size Ramsey number, the minimal number of edges $m$ such
+FormalConjectures/ErdosProblems/559.lean:25:that there is a graph $H$ with $m$ edges that is Ramsey for $G$ (every 2-coloring
+FormalConjectures/ErdosProblems/559.lean:35:[RoSz00] Rödl, V. and Szemerédi, E., _On size Ramsey numbers of graphs with bounded degree_. Combinatorica 20 (2000), 257-262.
+FormalConjectures/ErdosProblems/559.lean:42:/-- The size Ramsey number $\hat{R}(G)$: the minimum number of edges in a graph $H$
+FormalConjectures/ErdosProblems/559.lean:43:    that is Ramsey for $G$.
+FormalConjectures/ErdosProblems/559.lean:45:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/559.lean:50:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/559.lean:66:with maximum degree at most $d$, the size Ramsey number satisfies $\hat{R}(G) \leq C \cdot n$.
+FormalConjectures/ErdosProblems/559.lean:76:            sizeRamseyNumber G ≤ C * n) := by
+FormalConjectures/ErdosProblems/714.lean:35:/-- The Turán extremal number $\operatorname{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/714.lean:52:Kövári, Sós, and Turán proved the matching upper bound
+FormalConjectures/ErdosProblems/79.lean:24:We say $G$ is *Ramsey size linear* if $R(G,H) \ll m$ for all graphs $H$ with $m$ edges
+FormalConjectures/ErdosProblems/79.lean:27:Are there infinitely many graphs $G$ which are not Ramsey size linear but such
+FormalConjectures/ErdosProblems/79.lean:44:/-- The Ramsey property: every 2-coloring of $K_n$ contains $G$ in one color or $H$ in the
+FormalConjectures/ErdosProblems/79.lean:47:def RamseyProp {p q : ℕ} (G : SimpleGraph (Fin p)) (H : SimpleGraph (Fin q))
+FormalConjectures/ErdosProblems/79.lean:55:/-- A graph $G$ is Ramsey size linear if there exists $C > 0$ such that for every graph $H$
+FormalConjectures/ErdosProblems/79.lean:56:    with no isolated vertices, the Ramsey property $R(G,H)$ holds at some
+FormalConjectures/ErdosProblems/79.lean:58:def IsRamseySizeLinear {p : ℕ} (G : SimpleGraph (Fin p)) : Prop :=
+FormalConjectures/ErdosProblems/79.lean:61:    ∃ n : ℕ, (n : ℝ) ≤ C * (H.edgeFinset.card : ℝ) ∧ RamseyProp G H n
+FormalConjectures/ErdosProblems/79.lean:63:/-- **Erdős Problem 79**: Are there infinitely many graphs which are not Ramsey
+FormalConjectures/ErdosProblems/79.lean:73:      ¬ IsRamseySizeLinear G ∧
+FormalConjectures/ErdosProblems/79.lean:77:        IsRamseySizeLinear H := by
+FormalConjectures/ErdosProblems/800.lean:30:[BuEr75] Burr, S. A. and Erdős, P., _On the magnitude of generalized Ramsey numbers for graphs_,
+FormalConjectures/ErdosProblems/800.lean:33:[Al94] Alon, N., _Subdivided graphs have linear Ramsey numbers_, 1994.
+FormalConjectures/ErdosProblems/800.lean:45:/-- The graph Ramsey number $R(G)$: the minimum $N$ such that for every graph $H$ on
+FormalConjectures/ErdosProblems/800.lean:47:noncomputable def graphRamseyNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/800.lean:58:the graph Ramsey number $R(G) \leq C \cdot n$.
+FormalConjectures/ErdosProblems/800.lean:68:        (graphRamseyNumber G : ℝ) ≤ C * (n : ℝ) := by
+FormalConjectures/ErdosProblems/712.lean:30:Turán proved that, when $r = 2$, this limit is $\frac{1}{2}(1 - \frac{1}{k-1})$.
+FormalConjectures/ErdosProblems/712.lean:48:/-- The $r$-uniform Turán number $\mathrm{ex}_r(n, K_k^r)$: the maximum number of $r$-element
+FormalConjectures/ErdosProblems/712.lean:55:Erdős Conjecture (Problem 712) — Hypergraph Turán Densities:
+FormalConjectures/ErdosProblems/712.lean:57:For any $k > r > 2$, determine the value of the Turán density
+FormalConjectures/ErdosProblems/569.lean:39:/-- The Ramsey number $R(G, H)$: the minimum $N$ such that for any graph $F$
+FormalConjectures/ErdosProblems/565.lean:24:Let $R^*(G)$ be the induced Ramsey number: the minimal $m$ such that there is a
+FormalConjectures/ErdosProblems/565.lean:36:/-- The induced Ramsey number $R^*(G)$: the minimum $m$ such that there exists a
+FormalConjectures/ErdosProblems/565.lean:44:noncomputable def inducedRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/565.lean:54:$n$ vertices, the induced Ramsey number $R^*(G) \leq 2^{Cn}$.
+FormalConjectures/ErdosProblems/565.lean:62:      inducedRamseyNumber G ≤ 2 ^ (C * n) := by
+FormalConjectures/ErdosProblems/1163.lean:41:Erdős Problem 1163 (Erdős and Turán) [Va99, 5.74]:
+FormalConjectures/ErdosProblems/40.lean:60:Erdős-Turán conjecture, see Erdõs Problem 28,
+FormalConjectures/ErdosProblems/562.lean:30:Let $R_r(n)$ denote the $r$-uniform hypergraph Ramsey number: the minimal $m$ such that if we
+FormalConjectures/ErdosProblems/562.lean:40:    ∀ r ≥ 3, (fun n ↦ log^[r - 1] (hypergraphRamsey r n)) ~[atTop] (fun n ↦ (n : ℝ)) := by
+FormalConjectures/ErdosProblems/560.lean:24:Let $\hat{R}(G)$ denote the size Ramsey number, the minimal number of edges $m$ such
+FormalConjectures/ErdosProblems/560.lean:40:[ErRo93] Erdős, P. and Rousseau, C.C., *The size Ramsey number of a complete bipartite
+FormalConjectures/ErdosProblems/560.lean:43:[EFRS78b] Erdős, P., Faudree, R.J., Rousseau, C.C., and Schelp, R.H., *The size Ramsey
+FormalConjectures/ErdosProblems/560.lean:46:[NeRo78] Nešetřil, J. and Rödl, V., *The Ramsey property for graphs with forbidden complete
+FormalConjectures/ErdosProblems/560.lean:49:[CFW23] Conlon, D., Fox, J., and Wigderson, Y., *Ramsey numbers of books and
+FormalConjectures/ErdosProblems/560.lean:57:/-- The size Ramsey number $\hat{R}(G)$: the minimum number of edges in a graph $H$
+FormalConjectures/ErdosProblems/560.lean:58:that is Ramsey for $G$.
+FormalConjectures/ErdosProblems/560.lean:60:A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/560.lean:65:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/560.lean:84:      (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) >
+FormalConjectures/ErdosProblems/560.lean:96:      (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) <
+FormalConjectures/ErdosProblems/560.lean:112:        (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) ∧
+FormalConjectures/ErdosProblems/560.lean:113:      (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) ≤
+FormalConjectures/ErdosProblems/965.lean:30:- [SWCol] Sokoup Dániel and Weiss, William, Sums and Anti-Ramsey Colourings of ℝ. https://danieltsoukup.github.io/academic/finset_colouring.pdf
+FormalConjectures/ErdosProblems/174.lean:24:A finite set $A \subset \mathbb{R}^n$ is called Ramsey if, for any $k \geq 1$, there exists some
+FormalConjectures/ErdosProblems/174.lean:26:copy of $A$. Characterise the Ramsey sets in $\mathbb{R}^n$.
+FormalConjectures/ErdosProblems/174.lean:29:that every Ramsey set is 'spherical': it lies on the surface of some sphere.
+FormalConjectures/ErdosProblems/174.lean:30:Graham has conjectured that every spherical set is Ramsey, which would give a
+FormalConjectures/ErdosProblems/174.lean:33:Known Ramsey sets include vertices of $k$-dimensional rectangles [EGMRSS73],
+FormalConjectures/ErdosProblems/174.lean:38:Straus, E. G., _Euclidean Ramsey theorems_, J. Combin. Theory Ser. A, 1973.
+FormalConjectures/ErdosProblems/174.lean:43:[Kr91] Kříž, I., _Permutation groups in Euclidean Ramsey theory_, Proc. Amer. Math. Soc., 1991.
+FormalConjectures/ErdosProblems/174.lean:45:[Kr92] Kříž, I., _All trapezoids are Ramsey_, Discrete Math., 1992.
+FormalConjectures/ErdosProblems/174.lean:50:/-- A finite subset $A$ of $\mathbb{R}^n$ is Euclidean Ramsey if for every $k \geq 1$, there
+FormalConjectures/ErdosProblems/174.lean:53:def IsEuclideanRamsey (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/174.lean:68:A finite set $A \subset \mathbb{R}^n$ is Ramsey if and only if it is spherical.
+FormalConjectures/ErdosProblems/174.lean:70:The forward direction (Ramsey $\to$ spherical) was proved by Erdős, Graham,
+FormalConjectures/ErdosProblems/174.lean:73:The reverse direction (spherical $\to$ Ramsey) is Graham's open conjecture.
+FormalConjectures/ErdosProblems/174.lean:78:      IsEuclideanRamsey n A ↔ IsSpherical n A := by
+FormalConjectures/ErdosProblems/551.lean:26:Here $R(C_k, K_n)$ is the off-diagonal Ramsey number, $C_k$ is the cycle graph on
+FormalConjectures/ErdosProblems/551.lean:35:*On cycle-complete graph Ramsey numbers*, J. Graph Theory 2 (1978), 53–64.
+FormalConjectures/ErdosProblems/551.lean:37:[BoEr73] Bondy, J. A. and Erdős, P., *Ramsey numbers for cycles in graphs*,
+FormalConjectures/ErdosProblems/551.lean:40:[Ni05] Nikiforov, V., *The cycle-complete graph Ramsey numbers*,
+FormalConjectures/ErdosProblems/551.lean:44:*Cycle-complete graph Ramsey numbers*, Trans. Amer. Math. Soc. 374 (2021), 5469–5481.
+FormalConjectures/ErdosProblems/551.lean:56:/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/551.lean:59:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/551.lean:87:    offDiagRamseyNumber (cycleGraph k (by omega)) (⊤ : SimpleGraph (Fin n)) =
+FormalConjectures/ErdosProblems/595.lean:34:[NeRo75] Nešetřil, J. and Rödl, V., _The Ramsey property for graphs with
+FormalConjectures/ErdosProblems/126.lean:46:Erdős and Turán proved [ErTu34] in their first joint paper that
+FormalConjectures/ErdosProblems/126.lean:51:[ErTu34] Erdős, Paul and Turan, Paul, _On a Problem in the Elementary Theory of Numbers_. Amer. Math. Monthly (1934), 608-611.
+FormalConjectures/ErdosProblems/571.lean:23:the Turán extremal number satisfies ex(n; G) ≍ n^α?
+FormalConjectures/ErdosProblems/571.lean:36:/-- The Turán extremal number $\mathrm{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/571.lean:46:the Turán extremal number satisfies $\mathrm{ex}(n; G) \asymp n^\alpha$, meaning there exist positive
+FormalConjectures/ErdosProblems/719.lean:42:/-- The Turán number $\mathrm{ex}_r(n; K_{r+1}^r)$: the maximum number of edges in an
+FormalConjectures/ErdosProblems/183.lean:22:Erdős asked whether the limit of R(3;k)^{1/k} exists, where R(3;k) is the multicolor Ramsey
+FormalConjectures/ErdosProblems/183.lean:35:/-- The multicolor Ramsey number $R(3;k)$: the minimum $n$ such that every
+FormalConjectures/ErdosProblems/183.lean:40:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/183.lean:60:      Tendsto (fun k : ℕ => (multicolorRamseyTriangle k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+FormalConjectures/ErdosProblems/763.lean:29:A conjecture of Erdős and Turán [Er65b][Er70c].
+FormalConjectures/ErdosProblems/78.lean:25:diagonal Ramsey number. Erdős's probabilistic proof that $R(k) \gg k \cdot 2^{k/2}$ is
+FormalConjectures/ErdosProblems/78.lean:36:Let $R(k)$ be the Ramsey number for $K_k$, the minimal $n$ such that every
+FormalConjectures/ErdosProblems/911.lean:35:/-- The size Ramsey number $\hat{R}(G)$: the minimum number of edges in a graph $H$
+FormalConjectures/ErdosProblems/911.lean:36:    that is Ramsey for $G$.
+FormalConjectures/ErdosProblems/911.lean:38:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/911.lean:44:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/911.lean:73:          sizeRamseyNumber G > f C * Nat.card G.edgeSet := by
+FormalConjectures/ErdosProblems/713.lean:37:/-- The Turán extremal number $\operatorname{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/767.lean:31:[Ji04] Jiang, T., _On the Turán number of cycles with $k$ chords_, 2004.
+FormalConjectures/ErdosProblems/568.lean:36:/-- The Ramsey number $R(G, H)$: the minimum $N$ such that for any graph $F$
+FormalConjectures/ErdosProblems/568.lean:63:In other words, is $G$ Ramsey size linear?
+FormalConjectures/ErdosProblems/161.lean:29:differences_. Mathematics of Ramsey theory, Algorithms Combin. 5 (1990), 12-28.
+FormalConjectures/ErdosProblems/134.lean:37:[Al94] Alon, N., _Explicit Ramsey graphs and orthonormal labelings_ (1994).
+FormalConjectures/ErdosProblems/766.lean:42:/-- The Turán extremal number $\operatorname{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/165.lean:26:$R(3,k)$ is the Ramsey number: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/165.lean:43:[AKS80] Ajtai, M., Komlós, J. and Szemerédi, E., _A note on Ramsey numbers_.
+FormalConjectures/ErdosProblems/165.lean:46:[HHKP25] Hefty, L., Horn, P., King, R. and Pfender, F., _On the Ramsey number
+FormalConjectures/ErdosProblems/165.lean:57:/-- The Ramsey number $R(3,k)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/575.lean:23:member, some bipartite member has Turán number within a constant factor of the family Turán number.
+FormalConjectures/ErdosProblems/575.lean:40:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph on
+FormalConjectures/ErdosProblems/575.lean:47:/-- The Turán number for a family $\operatorname{ex}(n; \mathcal{F})$: the maximum number of edges
+FormalConjectures/ErdosProblems/566.lean:24:- [EFRS93] Erdős, Faudree, Rousseau and Schelp, _Ramsey size linear graphs_.
+FormalConjectures/ErdosProblems/566.lean:37:is $G$ Ramsey size linear?
+FormalConjectures/ErdosProblems/566.lean:44:      -- Then G is Ramsey size linear
+FormalConjectures/ErdosProblems/566.lean:49:        (sizeRamsey G H : ℝ) ≤ c * H.edgeSet.ncard := by
+FormalConjectures/ErdosProblems/159.lean:52:/-- The graph Ramsey number $R(C_4, K_n)$: the minimum $N$ such that every simple
+FormalConjectures/ErdosProblems/159.lean:66:The Ramsey number $R(C_4, K_n)$ is the minimum $N$ such that every 2-colouring
+FormalConjectures/ErdosProblems/547.lean:43:/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin}(k)$: the minimum $N$
+FormalConjectures/ErdosProblems/61.lean:55:[ErHa89] Erdős, P. and Hajnal, A., Ramsey-type theorems. Discrete Appl. Math. (1989), 37-52.
+FormalConjectures/ErdosProblems/533.lean:28:[BaLe13] Balogh, J. and Lenz, J., _Some exact Ramsey-Turán numbers_, 2013.
+FormalConjectures/ErdosProblems/533.lean:41:Ramsey-Turán density. This was disproved by Balogh and Lenz [BaLe13], who
+FormalConjectures/ErdosProblems/129.lean:33:[Er97b] Erdős, P. and Gyárfás, A., *A variant of the classical Ramsey problem*,
+FormalConjectures/ErdosProblems/129.lean:51:/-- The generalized Ramsey number $R(n; k, r)$: the smallest $N$ such that for
+FormalConjectures/ErdosProblems/129.lean:54:noncomputable def multicolorRamseyNum (n k r : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/129.lean:72:        ∀ n : ℕ, (multicolorRamseyNum n 3 r : ℝ) < C ^ Real.sqrt (n : ℝ) := by
+FormalConjectures/ErdosProblems/1162.lean:27:A problem of Erdős and Turán.
+FormalConjectures/ErdosProblems/920.lean:27:- [GrYa68] Graver, Jack E. and Yackel, James, Some graph theoretic results associated with Ramsey's
+FormalConjectures/ErdosProblems/576.lean:22:Erdős conjectured that the Turán number of the 3-dimensional hypercube graph $Q_3$
+FormalConjectures/ErdosProblems/576.lean:54:/-- The Turán number $\mathrm{ex}(n; H)$: the maximum number of edges in a simple graph
+FormalConjectures/ErdosProblems/613.lean:28:[Pi01] Pikhurko, O., _Size Ramsey numbers of stars versus 3-chromatic graphs_,
+FormalConjectures/ErdosProblems/214.lean:27:[Ju79] Juhász, R., _Ramsey type theorems in the plane_, 1979.
+FormalConjectures/ErdosProblems/181.lean:22:Burr and Erdős conjectured that the Ramsey number of the $n$-dimensional hypercube
+FormalConjectures/ErdosProblems/181.lean:27:[BuEr75] Burr, S. A. and Erdős, P., *On the magnitude of generalized Ramsey numbers for graphs*.
+FormalConjectures/ErdosProblems/181.lean:55:/-- The diagonal Ramsey number $R(H)$: the minimum $N$ such that for every simple
+FormalConjectures/ErdosProblems/812.lean:27:Here $R(n)$ denotes the diagonal Ramsey number $R(n,n)$: the minimum $N$ such that
+FormalConjectures/ErdosProblems/812.lean:41:/-- The diagonal Ramsey number $R(n) = R(n,n)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/812.lean:44:noncomputable def diagonalRamsey (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/812.lean:51:sufficiently large $n$? That is, do the diagonal Ramsey numbers grow at least
+FormalConjectures/ErdosProblems/812.lean:58:      (diagonalRamsey (n + 1) : ℝ) / (diagonalRamsey n : ℝ) ≥ 1 + c := by
+FormalConjectures/ErdosProblems/812.lean:71:      (diagonalRamsey (n + 1) : ℝ) - (diagonalRamsey n : ℝ) ≥ c * (n : ℝ) ^ 2 := by
+FormalConjectures/ErdosProblems/564.lean:38:    ∃ c > 0, ∀ᶠ n in atTop, (2 : ℝ)^(2 : ℝ)^(c * n) ≤ hypergraphRamsey 3 n := by
+FormalConjectures/ErdosProblems/558.lean:29:[ChGr75] Chung, F.R.K. and Graham, R.L., *On multicolor Ramsey numbers for complete
+FormalConjectures/ErdosProblems/558.lean:38:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/558.lean:44:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/558.lean:52:Erdős Problem 558: Determine $R_k(K_{s,t})$, the $k$-colour Ramsey number of the
+FormalConjectures/ErdosProblems/558.lean:58:    multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k = answer((sorry : ℕ → ℕ → ℕ → ℕ) s t k) := by
+FormalConjectures/ErdosProblems/558.lean:75:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:76:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean:94:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:95:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean:114:        (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:115:      (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/550.lean:34:*Multipartite graph—sparse graph Ramsey numbers*, Combinatorica **5** (1985), 311–318.
+FormalConjectures/ErdosProblems/550.lean:36:[Ch77] Chvátal, V., *Tree-complete graph Ramsey numbers*,
+FormalConjectures/ErdosProblems/550.lean:49:/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/550.lean:52:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/550.lean:90:      offDiagRamseyNumber T (completeMultipartiteGraph sizes) ≤
+FormalConjectures/ErdosProblems/550.lean:91:        (k - 1) * (offDiagRamseyNumber T
+FormalConjectures/ErdosProblems/1178.lean:24:For $r, e \geq 3$, determine the minimal $d$ such that the $r$-uniform Turán number
+FormalConjectures/ErdosProblems/1178.lean:52:/-- The $r$-uniform Turán number $\operatorname{ex}_r(n; d, e)$: the maximum number of edges in an
+FormalConjectures/ErdosProblems/1178.lean:59:/-- The minimal $d$ such that the $r$-uniform Turán number
+FormalConjectures/ErdosProblems/1178.lean:68:For $r, e \geq 3$, the minimal $d$ such that the $r$-uniform Turán number
+FormalConjectures/ErdosProblems/552.lean:24:Determine the Ramsey number $R(C_4, S_n)$, where $S_n = K_{1,n}$ is the star on
+FormalConjectures/ErdosProblems/552.lean:41:/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/552.lean:44:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/552.lean:89:      (offDiagRamseyNumber (cycleGraph 4 (by omega)) (starGraph n) : ℝ) ≤
+FormalConjectures/ErdosProblems/926.lean:50:/-- The Turán number $\mathrm{ex}(n; H)$: the maximum number of edges in a simple graph on $n$
+FormalConjectures/ErdosProblems/986.lean:24:Erdős conjectured that for any fixed $k \geq 3$, the Ramsey number $R(k,n)$ satisfies
+FormalConjectures/ErdosProblems/986.lean:37:[Sp77] Spencer, J., _Asymptotic lower bounds for Ramsey functions_. Discrete Math. 20 (1977),
+FormalConjectures/ErdosProblems/986.lean:46:[AKS80] Ajtai, M., Komlós, J. and Szemerédi, E., _A note on Ramsey numbers_. J. Combin.
+FormalConjectures/ErdosProblems/986.lean:57:/-- The Ramsey number $R(k,n)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/596.lean:30:and $G_2 = C_6$ is an example (Nešetřil–Rödl for the finite Ramsey property, Erdős–Hajnal
+FormalConjectures/ErdosProblems/596.lean:55:The known example is $G_1 = C_4$, $G_2 = C_6$ (Nešetřil–Rödl for the finite Ramsey
+FormalConjectures/ErdosProblems/596.lean:62:      -- (a) Finite Ramsey property: for every n ≥ 1, there exists a G₁-free graph
+FormalConjectures/ErdosProblems/832.lean:35:differences_. Mathematics of Ramsey Theory (1974).
+FormalConjectures/ErdosProblems/1029.lean:24:If $R(k)$ is the diagonal Ramsey number for $K_k$, the minimal $n$ such that every
+FormalConjectures/ErdosProblems/1029.lean:36:[Sp75] Spencer, J., *Ramsey's theorem — a new lower bound*, J. Combin. Theory Ser. A 18 (1975), 108–115.
+FormalConjectures/ErdosProblems/1029.lean:45:/-- The diagonal Ramsey number $R(k)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/1029.lean:48:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1029.lean:65:      (diagonalRamseyNumber k : ℝ) ≥ C * (k : ℝ) * (2 : ℝ) ^ ((k : ℝ) / 2) := by
+FormalConjectures/ErdosProblems/720.lean:24:Let $\hat{R}(G)$ denote the size Ramsey number, the minimal number of edges $m$ such
+FormalConjectures/ErdosProblems/720.lean:34:$\hat{R}(P_n) \ll n$ and $\hat{R}(C_n) \ll n$ (i.e., the size Ramsey numbers are linear).
+FormalConjectures/ErdosProblems/720.lean:40:[Be83b] Beck, J., _On size Ramsey number of paths, trees, and circuits I_.
+FormalConjectures/ErdosProblems/720.lean:62:/-- The size Ramsey number $\hat{R}(G)$: the minimum number of edges in a graph $H$
+FormalConjectures/ErdosProblems/720.lean:63:    that is Ramsey for $G$.
+FormalConjectures/ErdosProblems/720.lean:65:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/720.lean:69:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/720.lean:83:The size Ramsey number of the path $P_n$ is at most linear in $n$.
+FormalConjectures/ErdosProblems/720.lean:92:      sizeRamseyNumber (pathGraph n) ≤ C * (n + 1) := by
+FormalConjectures/ErdosProblems/720.lean:98:The size Ramsey number of the cycle $C_n$ is at most linear in $n$.
+FormalConjectures/ErdosProblems/720.lean:106:      sizeRamseyNumber (cycleGraph n hn) ≤ C * n := by
+FormalConjectures/ErdosProblems/136.lean:32:[Er97b] Erdős, P. and Gyárfás, A., *A variant of the classical Ramsey problem* (1997).
+FormalConjectures/ErdosProblems/1001.lean:30:A problem of Erdős, Szüsz, and Turán [EST58], who proved the formula
+FormalConjectures/ErdosProblems/1001.lean:40:[EST58] Erdős, P., Szüsz, P., and Turán, P.
+FormalConjectures/ErdosProblems/549.lean:33:[EFRS82] Erdős, P., Faudree, R.J., Rousseau, C.C., and Schelp, R.H., *The size Ramsey
+FormalConjectures/ErdosProblems/549.lean:36:[Bu74] Burr, S.A., *Ramsey numbers of trees*, 1974.
+FormalConjectures/ErdosProblems/549.lean:38:[NSZ16] Norin, S., Sun, H., and Zhao, Y., *The Ramsey number of a triple star*, 2016.
+FormalConjectures/ErdosProblems/549.lean:50:/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin}(m)$: the minimum $N$
+FormalConjectures/ErdosProblems/163.lean:30:[BuEr75] Burr, S.A. and Erdős, P., *On the Ramsey multiplicity of graphs — problems
+FormalConjectures/ErdosProblems/163.lean:36:[Le17] Lee, C., *Ramsey numbers of degenerate graphs*. Ann. of Math. (2017).
+FormalConjectures/ErdosProblems/163.lean:55:/-- The diagonal Ramsey number $R(H)$: the minimum $N$ such that for every simple
+FormalConjectures/ErdosProblems/1015.lean:29:Erdős notes that $f(t) \ll 4^t$, by comparing to the Ramsey number $R(t)$.
+FormalConjectures/ErdosProblems/1015.lean:68:/-- The 2-colour Ramsey number $R(s, t)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/55.lean:24:For every $r \geq 2$, there exists an $r$-Ramsey complete set $A$ with
+FormalConjectures/ErdosProblems/55.lean:28:[CFP21] Conlon, D., Fox, J., and Pham, H. T., _The upper bound for Ramsey complete
+FormalConjectures/ErdosProblems/55.lean:38:A set $A$ of natural numbers is Ramsey $r$-complete if for every $r$-coloring of $\mathbb{N}$,
+FormalConjectures/ErdosProblems/55.lean:42:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/55.lean:51:For every $r \geq 2$, there exists an $r$-Ramsey complete set $A$ such that
+FormalConjectures/ErdosProblems/55.lean:58:        IsRamseyComplete A r ∧
+FormalConjectures/ErdosProblems/55.lean:68:cannot be $r$-Ramsey complete, showing the upper bound is best possible [CFP21].
+FormalConjectures/ErdosProblems/55.lean:78:          ¬ IsRamseyComplete A r := by
+FormalConjectures/ErdosProblems/561.lean:24:Determine the two-color size Ramsey number for disjoint unions of stars. If
+FormalConjectures/ErdosProblems/561.lean:30:_Ramsey numbers for the pair sparse graph-path or cycle_, Trans. Amer. Math. Soc. (1978).
+FormalConjectures/ErdosProblems/561.lean:47:/-- The two-color size Ramsey number $\hat{R}(G_1, G_2)$: the minimum number of edges in
+FormalConjectures/ErdosProblems/561.lean:50:noncomputable def twoColorSizeRamseyNumber {V₁ V₂ : Type*} [Fintype V₁] [Fintype V₂]
+FormalConjectures/ErdosProblems/561.lean:70:Let $\hat{R}(F_1, F_2)$ denote the two-color size Ramsey number. Let $F_1$ and $F_2$ be
+FormalConjectures/ErdosProblems/561.lean:86:    twoColorSizeRamseyNumber
+FormalConjectures/ErdosProblems/193.lean:28:Originally conjectured by Gerver and Ramsey [GeRa79], who showed that the answer is yes for
+FormalConjectures/ErdosProblems/193.lean:31:[GeRa79] Gerver, J. and Ramsey, L. T., 1979.
+FormalConjectures/ErdosProblems/950.lean:29:This function was considered by de Bruijn, Erdős, and Turán, who showed that
+FormalConjectures/ErdosProblems/162.lean:29:Mathematics of Ramsey theory, Algorithms and Combinatorics, 5 (1990), Springer, Berlin, 12-28.
+FormalConjectures/ErdosProblems/54.lean:24:There exists a Ramsey 2-complete set $A$ (every large integer is a monochromatic subset sum
+FormalConjectures/ErdosProblems/54.lean:37:A set $A$ of natural numbers is Ramsey 2-complete if for every 2-coloring of $\mathbb{N}$,
+FormalConjectures/ErdosProblems/54.lean:41:def IsRamsey2Complete (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/54.lean:50:There exists a Ramsey 2-complete set $A$ of positive integers and a constant $c > 0$
+FormalConjectures/ErdosProblems/54.lean:59:      IsRamsey2Complete A ∧
+FormalConjectures/ErdosProblems/813.lean:28:differences_. Mathematics of Ramsey theory, Algorithms Combin., 5 (1990), 12-28.
+FormalConjectures/ErdosProblems/813.lean:30:[BuSu23] Bucić, M. and Sudakov, B., _Tight Ramsey-type results for cliques vs large
+FormalConjectures/ErdosProblems/554.lean:41:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/554.lean:47:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/554.lean:67:      (multicolorRamseyNumber (cycleGraph (2 * n + 1) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/554.lean:68:        ε * (multicolorRamseyNumber (⊤ : SimpleGraph (Fin 3)) k : ℝ) := by
+FormalConjectures/ErdosProblems/843.lean:25:who showed that the set of $k$-th powers contains a sparse Ramsey $r$-complete
+FormalConjectures/ErdosProblems/843.lean:31:/-- A set $A \subseteq \mathbb{N}$ is Ramsey $r$-complete if for every $r$-colouring of $A$,
+FormalConjectures/ErdosProblems/843.lean:34:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/843.lean:43:The set of perfect squares is Ramsey $2$-complete. That is, for any
+FormalConjectures/ErdosProblems/843.lean:51:    answer(True) ↔ IsRamseyComplete {n : ℕ | ∃ m : ℕ, m ≥ 1 ∧ n = m ^ 2} 2 := by
+FormalConjectures/ErdosProblems/637.lean:39:[BuSu07] Bukh, B. and Sudakov, B., _Induced subgraphs of Ramsey graphs with
+FormalConjectures/ErdosProblems/1031.lean:29:[PrRo99] Prömel, H.J. and Rödl, V., _Non-canonical Ramsey-type theorems_. To appear.
+FormalConjectures/ErdosProblems/545.lean:24:Let $G$ be a graph with $m$ edges and no isolated vertices. Is the Ramsey number $R(G)$
+FormalConjectures/ErdosProblems/545.lean:45:/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin}(k)$: the minimum
+FormalConjectures/ErdosProblems/545.lean:70:Let $G$ be a graph with $m$ edges and no isolated vertices. Is the Ramsey number
+FormalConjectures/ErdosProblems/22.lean:29:$\mathrm{rt}(n; k, \ell)$ is the Ramsey–Turán number.
+FormalConjectures/ErdosProblems/22.lean:36:[BoEr76] Bollobás, B. and Erdős, P., _On a Ramsey–Turán type problem_, J. Combin. Theory Ser. B, 1976.
+FormalConjectures/ErdosProblems/22.lean:38:[FLZ15] Fox, J., Loh, P.-S., and Zhao, Y., _The critical window for the classical Ramsey–Turán problem_, Combinatorica, 2015.
+FormalConjectures/ErdosProblems/22.lean:44:**Erdős Problem 22** (Bollobás–Erdős Conjecture on Ramsey–Turán numbers,
+FormalConjectures/ErdosProblems/615.lean:28:Equivalently, if $\mathrm{rt}(n; k, \ell)$ denotes the Ramsey-Turán number (maximum number of
+FormalConjectures/ErdosProblems/615.lean:65:/-- The Ramsey-Turán number $\mathrm{rt}(n; k, \ell)$: the maximum number of edges in a graph
+FormalConjectures/ErdosProblems/615.lean:68:noncomputable def ramseyTuranNumber (n k ℓ : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/180.lean:22:Asks whether for every finite family of graphs, some member's Turán number is within a
+FormalConjectures/ErdosProblems/180.lean:23:constant factor of the family's Turán number.
+FormalConjectures/ErdosProblems/180.lean:37:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph
+FormalConjectures/ErdosProblems/180.lean:44:/-- The Turán number for a family $\operatorname{ex}(n; \mathcal{F})$: the maximum number of
+FormalConjectures/ErdosProblems/572.lean:27:Here $\mathrm{ex}(n; C_{2k})$ is the Turán extremal number: the maximum number of edges in
+FormalConjectures/ErdosProblems/572.lean:67:/-- The Turán extremal number $\mathrm{ex}(n; H)$: the maximum number of edges in a
+FormalConjectures/ErdosProblems/77.lean:24:If $R(k)$ is the diagonal Ramsey number, the minimal $n$ such that every 2-colouring
+FormalConjectures/ErdosProblems/77.lean:36:_An exponential improvement for diagonal Ramsey_. (2023).
+FormalConjectures/ErdosProblems/77.lean:39:_An improved upper bound for diagonal Ramsey numbers_. (2024).
+FormalConjectures/ErdosProblems/77.lean:48:/-- The diagonal Ramsey number $R(k)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/77.lean:51:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/77.lean:60:Ramsey number.
+FormalConjectures/ErdosProblems/77.lean:65:      (diagonalRamseyNumber k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+FormalConjectures/ErdosProblems/166.lean:26:$R(4,k)$ is the Ramsey number: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/166.lean:36:[AKS80] Ajtai, M., Komlós, J., and Szemerédi, E., *A note on Ramsey numbers*,
+FormalConjectures/ErdosProblems/166.lean:39:[Sp77] Spencer, J., *Asymptotic lower bounds for Ramsey functions*, Discrete Math.
+FormalConjectures/ErdosProblems/166.lean:52:/-- The Ramsey number $R(4,k)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/590.lean:40:theorem erdos_590 : OrdinalCardinalRamsey (ω ^ ω) (ω ^ ω) 3 := by
+FormalConjectures/ErdosProblems/590.lean:48:theorem erdos_590.variants.two : OrdinalCardinalRamsey (ω ^ 2) (ω ^ 2) 3 := by
+FormalConjectures/ErdosProblems/590.lean:57:    ¬ OrdinalCardinalRamsey (ω ^ n) (ω ^ n) 3 := by
+FormalConjectures/ErdosProblems/590.lean:66:theorem erdos_590.variants.finite_cardinal (m : ℕ) : OrdinalCardinalRamsey (ω ^ ω) (ω ^ ω) m := by
+FormalConjectures/ErdosProblems/113.lean:25:the Turán number satisfies $\mathrm{ex}(n; G) \ll n^{3/2}$ if and only if $G$ is 2-degenerate?
+FormalConjectures/ErdosProblems/113.lean:42:/-- The Turán number $\operatorname{ex}(n; H)$: the maximum number of edges in a simple graph
+FormalConjectures/ErdosProblems/113.lean:58:For a bipartite graph $G$ on a finite vertex set, the Turán number satisfies
+FormalConjectures/ErdosProblems/113.lean:70:2-degenerate but its Turán number is still $o(n^{3/2})$, the "only if" direction
+FormalConjectures/ErdosProblems/805.lean:32:[AlSu07] Alon, N. and Sudakov, B., _Ramsey-type properties of graphs_.
+FormalConjectures/ErdosProblems/805.lean:34:[ABS21] Alon, N., Bucić, M. and Sudakov, B., _Induced subgraphs of Ramsey graphs_.
+FormalConjectures/ErdosProblems/570.lean:26:$R$ denotes the two-colour Ramsey number and $C_k$ the cycle on $k$ vertices?
+FormalConjectures/ErdosProblems/570.lean:29:graph Ramsey numbers_ (1993).
+FormalConjectures/ErdosProblems/570.lean:41:/-- The Ramsey number $R(G, H)$: the minimum $N$ such that for any graph $F$
+FormalConjectures/ErdosProblems/570.lean:62:Ramsey number.
+FormalConjectures/ErdosProblems/557.lean:24:A problem of Erdős and Graham on multicolour Ramsey numbers for trees.
+FormalConjectures/ErdosProblems/557.lean:35:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/557.lean:41:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/557.lean:59:        multicolorRamseyNumber T k ≤ k * n + C := by
+FormalConjectures/ErdosProblems/555.lean:46:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/555.lean:52:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/555.lean:68:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≥
+FormalConjectures/ErdosProblems/555.lean:81:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/555.lean:90:    multicolorRamseyNumber (cycleGraph 4 (by omega)) k ≤ k ^ 2 + k + 1 := by
+FormalConjectures/ErdosProblems/519.lean:24:A problem of Turán, who proved that the maximum is $\gg 1/n$. This was solved
+FormalConjectures/ErdosProblems/519.lean:32:[Bi94] Biró, A., _On a problem of Turán concerning sums of powers of complex
+FormalConjectures/ErdosProblems/519.lean:35:[Bi00] Biró, A., _An upper estimate in Turán's pure power sum problem_. Indag.
+FormalConjectures/ErdosProblems/519.lean:42:Erdős Problem 519 (Turán's power sum problem) [At61b]:
+FormalConjectures/ErdosProblems/544.lean:38:/-- The Ramsey number $R(3,k)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/544.lean:49:That is, the consecutive differences of the Ramsey numbers $R(3,k)$
+FormalConjectures/ErdosProblems/88.lean:29:_Anticoncentration in Ramsey graphs and a proof of the Erdős–McKay conjecture_,
+FormalConjectures/ErdosProblems/925.lean:25:vertices which is not Ramsey for $K_3$ (i.e. there exists a 2-colouring of the
+FormalConjectures/ErdosProblems/925.lean:39:[AlRo05] Alon, N. and Rödl, V., _Sharp bounds for some multicolor Ramsey numbers_,
+FormalConjectures/ErdosProblems/925.lean:47:/-- A graph $G$ on $n$ vertices is "not Ramsey for $K_3$" if there exists a
+FormalConjectures/ErdosProblems/925.lean:50:def IsNotRamseyForTriangle {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/925.lean:57:graph $G$ on $n$ vertices which is not Ramsey for $K_3$ contains an independent set
+FormalConjectures/ErdosProblems/925.lean:63:      ∀ G : SimpleGraph (Fin n), IsNotRamseyForTriangle G →

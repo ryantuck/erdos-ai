@@ -1,0 +1,469 @@
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-108-  else 0
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-109-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-110-/-- Average distance of `G`. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:111:noncomputable def averageDistance (G : SimpleGraph α) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-112-  if Fintype.card α > 1 then
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-113-    (∑ u ∈ Finset.univ, ∑ v ∈ Finset.univ, (G.dist u v : ℝ)) /
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-114-      ((Fintype.card α : ℝ) * ((Fintype.card α : ℝ) - 1))
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-93-/-- A unit distance graph in ℝ²:
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-94-A graph where the vertices V are a collection of points in ℝ² and there is
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-95-an edge between two points if and only if the distance between them is 1. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:96:def UnitDistancePlaneGraph (V : Set (EuclideanSpace ℝ (Fin 2))) : SimpleGraph V where
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-97-  Adj x y := Dist.dist x y = 1
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-98-  symm x y := by simp [PseudoMetricSpace.dist_comm]
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-99-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-57-/-- `ConvexIndep S` means that `S` consists of extremal points of its convex hull,
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-58-i.e., the point set encloses a convex shape.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-59-Also known as a "convex-independent set". -/
+FormalConjecturesForMathlib/Geometry/2d.lean:60:def ConvexIndep (S : Set ℝ²) : Prop :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-61-  ∀ a ∈ S, a ∉ convexHull ℝ (S \ {a})
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-62-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-63-/-- The set `P` contains a convex `n`-gon.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-64-See also `IsConvexPolygon`. -/
+FormalConjecturesForMathlib/Geometry/2d.lean:65:def HasConvexNGon (n : ℕ) (P : Set ℝ²) : Prop :=
+FormalConjecturesForMathlib/Geometry/2d.lean-66-  ∃ S : Finset ℝ², S.card = n ∧ ↑S ⊆ P ∧ ConvexIndep S
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-67-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-68-/-- The statement that a sequence of points form a counter-clockwise convex polygon. -/
+FormalConjecturesForMathlib/Geometry/2d.lean:69:def IsCcwConvexPolygon (p : Fin n → P) : Prop :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-70-  ∀ ⦃i j k⦄, i < j → j < k → (∡ (p i) (p j) (p k)).sign = 1
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-71-
+FormalConjecturesForMathlib/Geometry/2d.lean-72-theorem IsCcwConvexPolygon.sign_oangle (hp : IsCcwConvexPolygon p) {i j k : Fin n}
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-133-  isCcwConvexPolygon_four'
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-134-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-135-/-- The statement that a sequence of points form a convex polygon. -/
+FormalConjecturesForMathlib/Geometry/2d.lean:136:def IsConvexPolygon {n : ℕ} (p : Fin n → P) : Prop :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-137-  IsCcwConvexPolygon p ∨ IsCcwConvexPolygon fun i => p (-i)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-138-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-139-/-- Three affine independent points always form a convex polygon. -/
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-188-  ring
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-189-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-190-/--
+FormalConjecturesForMathlib/Geometry/2d.lean:191:Given a finite set of points in the plane, we define the number of distinct distances between pairs
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-192-of points.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-193--/
+FormalConjecturesForMathlib/Geometry/2d.lean:194:noncomputable def distinctDistances (points : Finset ℝ²) : ℕ :=
+FormalConjecturesForMathlib/Geometry/2d.lean-195-  (points.offDiag.image fun (pair : ℝ² × ℝ²) => dist pair.1 pair.2).card
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-196-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-197-end EuclideanGeometry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/95.lean-36-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/95.lean-37-The set of distinct distances determined by a finite point set $P$ in $\mathbb{R}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/95.lean-38--/
+FormalConjectures/ErdosProblems/95.lean:39:noncomputable def distinctDistances (P : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/95.lean-40-  ((P.product P).filter (fun pq => pq.1 ≠ pq.2)).image (fun pq => dist pq.1 pq.2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/95.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/95.lean-42-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-42-namespace Erdos958
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-44-/-- The set of distinct distances determined by a finite point set in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/958.lean:45:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-46-  ((A ×ˢ A).filter (fun p => p.1 ≠ p.2)).image (fun p => dist p.1 p.2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-48-/-- The number of unordered pairs in $A$ at distance $d$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-51-
+FormalConjectures/ErdosProblems/958.lean-52-/-- The distance multiplicity property: $A$ has exactly $n-1$ distinct distances and the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-53-multiplicities are exactly $\{1, 2, \ldots, n-1\}$. -/
+FormalConjectures/ErdosProblems/958.lean:54:def HasDistanceMultiplicityProperty (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-55-  A.card ≥ 2 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-56-  (distinctDistances A).card = A.card - 1 ∧
+FormalConjectures/ErdosProblems/958.lean-57-  ∀ m : ℕ, (1 ≤ m ∧ m ≤ A.card - 1) ↔
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-44-/-- A finite point set in $\mathbb{R}^k$ is in convex position if no point lies in the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-45-convex hull of the remaining points (the points are the vertices of a convex polytope). -/
+FormalConjectures/ErdosProblems/651.lean:46:def InConvexPositionRk (k : ℕ) (S : Finset (EuclideanSpace ℝ (Fin k))) : Prop :=
+FormalConjectures/ErdosProblems/651.lean-47-  ∀ p ∈ S, p ∉ convexHull ℝ (↑(S.erase p) : Set (EuclideanSpace ℝ (Fin k)))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-48-
+FormalConjectures/ErdosProblems/651.lean-49-/-- $f_k(n)$: the smallest integer $m$ such that any $m$ points in general position
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-36-convex hull of the remaining points. Equivalently, the points are the vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-37-of a convex polygon.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-38--/
+FormalConjectures/ErdosProblems/93.lean:39:def InConvexPosition (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/93.lean-40-  ∀ p ∈ A, p ∉ convexHull ℝ ((↑A : Set (EuclideanSpace ℝ (Fin 2))) \ {p})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-42-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-43-The set of distinct pairwise distances between distinct points in a finite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-44-point set in $\mathbb{R}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-45--/
+FormalConjectures/ErdosProblems/93.lean:46:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-47-  A.offDiag.image (fun pq => dist pq.1 pq.2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-49-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean-44-The number of distinct distances from a point $p$ to other points in a finite set
+FormalConjectures/ErdosProblems/652.lean-45-$S \subset \mathbb{R}^2$. That is, $R(p) = \#\{\operatorname{dist}(p, q) : q \in S, q \neq p\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean-46--/
+FormalConjectures/ErdosProblems/652.lean:47:noncomputable def numDistinctDistances (p : EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/652.lean-48-    (S : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean-49-  ((S.filter (· ≠ p)).image (dist p)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1087.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1087.lean-34-/-- A 4-element point set in $\mathbb{R}^2$ has a repeated distance if there exist two distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1087.lean-35-    unordered pairs of points determining the same distance. -/
+FormalConjectures/ErdosProblems/1087.lean:36:def HasRepeatedDistance (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1087.lean-37-  ∃ a ∈ S, ∃ b ∈ S, ∃ c ∈ S, ∃ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1087.lean-38-    a ≠ b ∧ c ≠ d ∧ (a ≠ c ∨ b ≠ d) ∧ (a ≠ d ∨ b ≠ c) ∧ dist a b = dist c d
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1087.lean-39-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/756.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/756.lean-48-/-- The set of distances that occur with multiplicity greater than $|A|$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/756.lean-49-(counting ordered pairs). -/
+FormalConjectures/ErdosProblems/756.lean:50:noncomputable def highMultiplicityDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Set ℝ :=
+FormalConjectures/ErdosProblems/756.lean-51-  {d : ℝ | A.card < pairCount A d}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/756.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/756.lean-53-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-38-/-- The number of distinct pairwise distances determined by a finite point set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-39-in $\mathbb{R}^d$. -/
+FormalConjectures/ErdosProblems/1083.lean:40:noncomputable def distinctDistanceCountInDim (d : ℕ) (P : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+FormalConjectures/ErdosProblems/1083.lean-41-  Set.ncard {r : ℝ | ∃ p ∈ P, ∃ q ∈ P, p ≠ q ∧ r = dist p q}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-42-
+FormalConjectures/ErdosProblems/1083.lean-43-/-- $f_d(n)$: the minimal number of distinct distances determined by any set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-44-$n$ points in $\mathbb{R}^d$. -/
+FormalConjectures/ErdosProblems/1083.lean:45:noncomputable def minDistinctDistances (d : ℕ) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1083.lean-46-  sInf {m : ℕ | ∃ (P : Finset (EuclideanSpace ℝ (Fin d))),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-47-    P.card = n ∧ distinctDistanceCountInDim d P = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-40-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-41-The number of distinct positive distances determined by a finite point set $A$ in $\mathbb{R}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-42--/
+FormalConjectures/ErdosProblems/91.lean:43:noncomputable def numDistinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-44-  ((A ×ˢ A).filter (fun pq => pq.1 ≠ pq.2)).image (fun pq => dist pq.1 pq.2) |>.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-46-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-48-
+FormalConjectures/ErdosProblems/704.lean-49-/-- The unit distance graph in $\mathbb{R}^n$: two points are adjacent iff their
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean-50-Euclidean distance is exactly $1$. -/
+FormalConjectures/ErdosProblems/704.lean:51:noncomputable def unitDistanceGraph (n : ℕ) : SimpleGraph (EuclideanSpace ℝ (Fin n)) where
+FormalConjectures/ErdosProblems/704.lean-52-  Adj x y := x ≠ y ∧ dist x y = 1
+FormalConjectures/ErdosProblems/704.lean-53-  symm := fun _ _ ⟨hne, hd⟩ => ⟨hne.symm, by rw [dist_comm]; exact hd⟩
+FormalConjectures/ErdosProblems/704.lean-54-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean-30-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean-31-The minimum number of distinct distances guaranteed for any set of $n$ points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean-32--/
+FormalConjectures/ErdosProblems/89.lean:33:noncomputable def minimalDistinctDistances (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/89.lean-34-  sInf {(distinctDistances points : ℝ) | (points : Finset ℝ²) (_ : points.card = n)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean-36-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/670.lean-34-for any two distinct unordered pairs $\{a, b\}$ and $\{c, d\}$ of points from $A$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/670.lean-35-(where $a \neq b$ and $c \neq d$), $|d(a, b) - d(c, d)| \geq 1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/670.lean-36--/
+FormalConjectures/ErdosProblems/670.lean:37:def AllPairwiseDistancesDifferByOne {X : Type*} [PseudoMetricSpace X]
+FormalConjectures/ErdosProblems/670.lean-38-    (A : Finset X) : Prop :=
+FormalConjectures/ErdosProblems/670.lean-39-  ∀ a b c d : X, a ∈ A → b ∈ A → c ∈ A → d ∈ A →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/670.lean-40-    a ≠ b → c ≠ d →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-45-namespace Erdos605
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-47-/-- The number of ordered pairs of distinct points from $A$ at Euclidean distance $d$. -/
+FormalConjectures/ErdosProblems/605.lean:48:noncomputable def pairsAtDistance
+FormalConjectures/ErdosProblems/605.lean-49-    (A : Finset (EuclideanSpace ℝ (Fin 3))) (d : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-50-  (A.offDiag.filter (fun p => dist p.1 p.2 = d)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-32-Given a finite set of points, this function counts the number of **unordered pairs** of distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-33-points that are at a distance of exactly 1 from each other.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-34--/
+FormalConjectures/ErdosProblems/90.lean:35:noncomputable def unitDistancePairsCount (points : Finset ℝ²) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-36-  (points.offDiag.filter (fun p => dist p.1 p.2 = 1)).card / 2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-39-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-40-The set of all possible numbers of unit distances for a configuration of $n$ points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-41--/
+FormalConjectures/ErdosProblems/90.lean:42:noncomputable def unitDistanceCounts (n : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/90.lean-43-  {unitDistancePairsCount points | (points : Finset ℝ²) (_ : points.card = n)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-45-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-63-The **maximum number of unit distances** determined by any set of $n$ points in the plane.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-64-This function is often denoted as $u(n)$ in combinatorics.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-65--/
+FormalConjectures/ErdosProblems/90.lean:66:noncomputable def maxUnitDistances (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-67-  sSup (unitDistanceCounts n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-68-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-69-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/604.lean-42-The set of distinct distances from a point $x$ to all points in a finite set $A$ in
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/604.lean-43-$\mathbb{R}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/604.lean-44--/
+FormalConjectures/ErdosProblems/604.lean:45:noncomputable def pinnedDistances (x : EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/604.lean-46-    (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/604.lean-47-  A.image (fun y => dist x y)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/604.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-36-For a configuration of $n$ points in the Euclidean plane, $R(x_i)$ counts the number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-37-of distinct distances from $x_i$ to all other points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-38--/
+FormalConjectures/ErdosProblems/653.lean:39:noncomputable def distinctDistances (n : ℕ) (x : Fin n → EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/653.lean-40-    (i : Fin n) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-41-  ((Finset.univ.filter (· ≠ i)).image (fun j => dist (x i) (x j))).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-38-/-- Points in $\mathbb{R}^3$ are in convex position if every point is a vertex of the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-39-    convex hull, i.e., no point lies in the convex hull of the remaining points. -/
+FormalConjectures/ErdosProblems/660.lean:40:def InConvexPosition3d (P : Finset (EuclideanSpace ℝ (Fin 3))) : Prop :=
+FormalConjectures/ErdosProblems/660.lean-41-  ∀ p ∈ P, p ∉ convexHull ℝ (↑(P.erase p) : Set (EuclideanSpace ℝ (Fin 3)))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-43-/-- The number of distinct pairwise distances determined by a finite point set in
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-44-    $\mathbb{R}^3$. -/
+FormalConjectures/ErdosProblems/660.lean:45:noncomputable def distinctDistanceCount3d (P : Finset (EuclideanSpace ℝ (Fin 3))) : ℕ :=
+FormalConjectures/ErdosProblems/660.lean-46-  Set.ncard {d : ℝ | ∃ p ∈ P, ∃ q ∈ P, p ≠ q ∧ d = dist p q}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-48-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-25-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-26-open EuclideanGeometry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-27-
+FormalConjectures/ErdosProblems/1082.lean:28:/-- Given a finite set of points in the plane, we define the number of distinct distances between
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-29-pairs of points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-30-
+FormalConjectures/ErdosProblems/1082.lean-31-TODO(csonne): Remove this once formal conjectures is bumped.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-32--/
+FormalConjectures/ErdosProblems/1082.lean:33:noncomputable def distinctDistances (points : Finset ℝ²) : ℕ :=
+FormalConjectures/ErdosProblems/1082.lean-34-  (points.offDiag.image fun (pair : ℝ² × ℝ²) => dist pair.1 pair.2).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-36-/-- The number of distinct distances from a finite set `points` to a point `pt`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-37-
+FormalConjectures/ErdosProblems/1082.lean-38-TODO(csonne): Move to ForMathlib.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-39--/
+FormalConjectures/ErdosProblems/1082.lean:40:noncomputable def distinctDistancesFrom (points : Finset ℝ²) (pt : ℝ²) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-41-  (points.image fun x => dist x pt).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-43-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-35-
+FormalConjectures/ErdosProblems/706.lean-36-/-- The multi-distance graph in $\mathbb{R}^2$: given a set $A$ of positive reals, two points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean-37-are adjacent iff their Euclidean distance belongs to $A$. -/
+FormalConjectures/ErdosProblems/706.lean:38:noncomputable def multiDistanceGraph (A : Set ℝ) : SimpleGraph (EuclideanSpace ℝ (Fin 2)) where
+FormalConjectures/ErdosProblems/706.lean-39-  Adj x y := x ≠ y ∧ dist x y ∈ A
+FormalConjectures/ErdosProblems/706.lean-40-  symm := fun _ _ ⟨hne, hd⟩ => ⟨hne.symm, by rw [dist_comm]; exact hd⟩
+FormalConjectures/ErdosProblems/706.lean-41-  loopless := fun _ h => h.1 rfl
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean-35-the convex hull of the remaining points. Equivalently, all points are
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean-36-vertices of their convex hull (they form a convex polygon).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean-37--/
+FormalConjectures/ErdosProblems/94.lean:38:def ConvexPosition (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/94.lean-39-  ∀ p ∈ A, p ∉ convexHull ℝ ((A : Set (EuclideanSpace ℝ (Fin 2))) \ {p})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean-41-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-56-/-- The number of distinct distances from point $i$ to all other points in the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-57-    configuration. Uses squared distances since $d(p,q) = d(p',q')$ iff
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-58-    $d(p,q)^2 = d(p',q')^2$ for nonnegative distances. -/
+FormalConjectures/ErdosProblems/654.lean:59:noncomputable def numDistinctDistances (n : ℕ) (pts : Fin n → ℝ × ℝ) (i : Fin n) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-60-  ((univ.filter (· ≠ i)).image (fun j => sqEuclideanDist (pts i) (pts j))).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-62-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean-44-/-- A set in $\mathbb{R}^2$ has no integer distances if for every pair of distinct points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean-45-$a, b$ in the set, the Euclidean distance $|a - b|$ is not an integer. -/
+FormalConjectures/ErdosProblems/953.lean:46:def NoIntegerDistances (A : Set (ℝ × ℝ)) : Prop :=
+FormalConjectures/ErdosProblems/953.lean-47-  ∀ a ∈ A, ∀ b ∈ A, a ≠ b → ∀ n : ℤ, euclidDist a b ≠ ↑n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean-49-/-- The supremum of the Lebesgue measure of measurable subsets of $B(0, r)$ in $\mathbb{R}^2$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-60-occurs exactly $j$ times as an unordered pair. We count ordered pairs from
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-61-`S.offDiag`, so the $j$-th distance yields $2(j+1)$ ordered pairs (since
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-62-`Fin (n-1)` is 0-indexed). -/
+FormalConjectures/ErdosProblems/217.lean:63:def HasDistanceMultiplicityProperty (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/217.lean-64-  ∃ (d : Fin (S.card - 1) → ℝ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-65-    Function.Injective d ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-66-    (∀ p ∈ S, ∀ q ∈ S, p ≠ q → ∃ i, dist p q = d i) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-51-/-- A set in a metric space is *unit-distance-free* if no two points in the set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-52-are exactly distance $1$ apart. -/
+FormalConjectures/ErdosProblems/232.lean:53:def IsUnitDistanceFree {X : Type*} [PseudoMetricSpace X] (A : Set X) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-54-  ∀ x ∈ A, ∀ y ∈ A, dist x y ≠ 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-56-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean-39-The unit-distance graph in the plane, i.e. the graph whose vertices are points in the plane
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean-40-and whose edges connect points that are exactly 1 unit apart.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean-41--/
+FormalConjectures/ErdosProblems/508.lean:42:def UnitDistancePlaneGraph : SimpleGraph ℝ² where
+FormalConjectures/ErdosProblems/508.lean-43-  Adj x y := dist x y = 1
+FormalConjectures/ErdosProblems/508.lean-44-  symm _ _ := by simp [_root_.dist_comm]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean-45-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean-41-two distinct positive real numbers that occur as distances between pairs
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean-42-of distinct points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean-43--/
+FormalConjectures/ErdosProblems/502.lean:44:noncomputable def IsTwoDistanceSet {n : ℕ} (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/502.lean-45-  Set.ncard {d : ℝ | ∃ x ∈ A, ∃ y ∈ A, x ≠ y ∧ d = dist x y} = 2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean-47-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/100.lean-31-namespace Erdos100
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/100.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/100.lean-33-/-- If two distances in A differ, they differ by at least 1. -/
+FormalConjectures/ErdosProblems/100.lean:34:def DistancesSeparated (A : Finset ℝ²) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/100.lean-35-  ∀ p₁ q₁ p₂ q₂, p₁ ∈ A → q₁ ∈ A → p₂ ∈ A → q₂ ∈ A →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/100.lean-36-    dist p₁ q₁ ≠ dist p₂ q₂ →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/100.lean-37-    |dist p₁ q₁ - dist p₂ q₂| ≥ 1
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-39-/-- The set of distinct distances determined by a finite set of points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-40-in $d$-dimensional Euclidean space. -/
+FormalConjectures/ErdosProblems/1089.lean:41:noncomputable def distinctDistances {d : ℕ} (S : Finset (EuclideanSpace ℝ (Fin d))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-42-  S.biUnion (fun a => (S.erase a).image (fun b => dist a b))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-44-/-- The number of distinct distances determined by a finite set of points. -/
+FormalConjectures/ErdosProblems/1089.lean:45:noncomputable def distinctDistanceCount {d : ℕ} (S : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-46-  (distinctDistances S).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean-48-/-- $g_d(n)$ is the minimal number of points in $\mathbb{R}^d$ such that any collection of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-32-convex hull of the remaining points. Equivalently, the points are the vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-33-of a convex polygon.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-34--/
+FormalConjectures/ErdosProblems/96.lean:35:def ConvexPosition (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/96.lean-36-  ∀ p ∈ P, p ∉ convexHull ℝ (↑(P.erase p) : Set (EuclideanSpace ℝ (Fin 2)))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-38-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-40-(Using ordered pairs; the number of unordered pairs is exactly half this,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-41-so the $O(n)$ bound is equivalent.)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-42--/
+FormalConjectures/ErdosProblems/96.lean:43:noncomputable def unitDistancePairCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-44-  (P.offDiag.filter (fun pq => dist pq.1 pq.2 = 1)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-46-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/959.lean-40-namespace Erdos959
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/959.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/959.lean-42-/-- The set of distinct distances determined by a finite point set in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/959.lean:43:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/959.lean-44-  ((A ×ˢ A).filter (fun p => p.1 ≠ p.2)).image (fun p => dist p.1 p.2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/959.lean-45-
+FormalConjectures/ErdosProblems/959.lean-46-/-- The multiplicity of distance $d$ in $A$: the number of unordered pairs at distance $d$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/655.lean-43-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/655.lean-44-The number of distinct pairwise distances determined by a finite point set in $\mathbb{R}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/655.lean-45--/
+FormalConjectures/ErdosProblems/655.lean:46:noncomputable def distinctDistanceCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/655.lean-47-  Set.ncard {d : ℝ | ∃ p ∈ P, ∃ q ∈ P, p ≠ q ∧ d = dist p q}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/655.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/655.lean-49-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean-41-/-- The number of distinct bipartite distances between two finite point sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean-42-in $\mathbb{R}^2$, i.e., the number of distinct values $\operatorname{dist}(x, y)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean-43-for $x \in X$, $y \in Y$. -/
+FormalConjectures/ErdosProblems/661.lean:44:noncomputable def bipartiteDistinctDistances
+FormalConjectures/ErdosProblems/661.lean-45-    (X Y : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/661.lean-46-  Set.ncard {d : ℝ | ∃ x ∈ X, ∃ y ∈ Y, d = dist x y}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean-38-namespace Erdos668
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean-40-/-- The number of ordered pairs of distinct points in $P$ at unit distance. -/
+FormalConjectures/ErdosProblems/668.lean:41:noncomputable def unitDistanceCount
+FormalConjectures/ErdosProblems/668.lean-42-    (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean-43-  ((P ×ˢ P).filter (fun pq => pq.1 ≠ pq.2 ∧ dist pq.1 pq.2 = 1)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean-45-/-- The maximum number of ordered unit distance pairs among all $n$-point
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean-46-    sets in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/668.lean:47:noncomputable def maxUnitDistances (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/668.lean-48-  sSup {k : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean-49-    P.card = n ∧ unitDistanceCount P = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-34-namespace Erdos657
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-36-/-- The number of distinct pairwise distances in a finite point set $A \subseteq \mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/657.lean:37:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-38-  (((A ×ˢ A).filter (fun p => p.1 ≠ p.2)).image (fun p => dist p.1 p.2)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-40-/-- A finite point set $A \subseteq \mathbb{R}^2$ has no isosceles triangles if every $3$-element
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-58-A finite set of points is in convex position if no point lies in the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-59-convex hull of the remaining points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-60--/
+FormalConjectures/ErdosProblems/216.lean:61:def InConvexPosition (S : Finset Point) : Prop :=
+FormalConjectures/ErdosProblems/216.lean-62-  ∀ p ∈ S, p ∉ convexHull ℝ (↑(S.erase p) : Set Point)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-64-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-67-1. $T$ is in convex position (the $k$ points form the vertices of a convex polygon), and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-68-2. no other point of $S$ lies in the interior of the convex hull of $T$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-69--/
+FormalConjectures/ErdosProblems/216.lean:70:def HasEmptyConvexKGon (S : Finset Point) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/216.lean-71-  ∃ T : Finset Point, T ⊆ S ∧ T.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-72-    InConvexPosition T ∧
+FormalConjectures/ErdosProblems/216.lean-73-    ∀ p ∈ S, p ∉ T → p ∉ interior (convexHull ℝ (↑T : Set Point))
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-36-namespace Erdos135
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-38-/-- The number of distinct pairwise distances in a finite point set $A \subseteq \mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/135.lean:39:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-40-  (((A ×ˢ A).filter (fun p => p.1 ≠ p.2)).image (fun p => dist p.1 p.2)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-42-/-- A finite point set $A \subseteq \mathbb{R}^2$ satisfies the "four-point, five-distance" property
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-37-For a given subgraph `A`, this is the set of all numbers `k` such that `A` can be made
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-38-bipartite by deleting `k` edges.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-39--/
+FormalConjectures/ErdosProblems/74.lean:40:def SimpleGraph.edgeDistancesToBipartite {G : SimpleGraph V} (A : G.Subgraph) : Set ℕ :=
+FormalConjectures/ErdosProblems/74.lean-41-  { (E.ncard) | (E : Set (Sym2 V)) (_ : E ⊆ A.edgeSet) (_ : IsBipartite (A.deleteEdges E).coe)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean-43-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-52-A set of points $A$ has n unit distance points at $p$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-53-if there exist at least $n$ other points in $A$ that are at unit distance from $p$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-54--/
+FormalConjectures/ErdosProblems/97.lean:55:def HasNUnitDistancePointsAt (n : ℕ) (A : Finset ℝ²) (p : ℝ²) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-56-  (A.filter fun q ↦ dist p q = 1).card ≥ n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-58-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-59-A set of points $A$ has n unit distance points on a set of points $B$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-60-if for every point in $B$, there exist at least $n$ other points in $A$ that are at unit distance from it.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-61--/
+FormalConjectures/ErdosProblems/97.lean:62:def HasNUnitDistancePointsOn (n : ℕ) (A : Finset ℝ²) (B : Finset ℝ²) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-63-  ∀ p ∈ B, HasNUnitDistancePointsAt n A p
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-65-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-66-A set of points $A$ has n unit distance property
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-67-if for every point in $A$, there exist at least $n$ other points in $A$ that are at unit distance from it.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-68--/
+FormalConjectures/ErdosProblems/97.lean:69:def HasNUnitDistanceProperty (n : ℕ) (A : Finset ℝ²) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-70-  HasNUnitDistancePointsOn n A A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-71-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean-72-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-54-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-55-The number of distinct pairwise distances determined by a finite point set in $\mathbb{R}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-56--/
+FormalConjectures/ErdosProblems/98.lean:57:noncomputable def distinctDistanceCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/98.lean-58-  Set.ncard {d : ℝ | ∃ p ∈ P, ∃ q ∈ P, p ≠ q ∧ dist p q = d}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-60-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-45-A finite point set $S$ in $\mathbb{R}^2$ is in convex position if no point of $S$ lies in
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-46-the convex hull of the remaining points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-47--/
+FormalConjectures/ErdosProblems/838.lean:48:def InConvexPosition (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/838.lean-49-  ∀ p ∈ S, p ∉ convexHull ℝ (↑(S.erase p) : Set (EuclideanSpace ℝ (Fin 2)))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-51-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-52-The number of subsets of $P$ that are in convex position.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-53--/
+FormalConjectures/ErdosProblems/838.lean:54:noncomputable def numConvexSubsets (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-55-  (P.powerset.filter fun S => InConvexPosition S).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-57-/--

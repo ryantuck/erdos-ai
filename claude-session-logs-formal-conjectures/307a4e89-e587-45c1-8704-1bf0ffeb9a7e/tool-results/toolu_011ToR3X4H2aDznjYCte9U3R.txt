@@ -1,0 +1,261 @@
+FormalConjecturesForMathlib.lean:40:import FormalConjecturesForMathlib.Combinatorics.SimpleGraph.Coloring
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:27:It states that for any 2-coloring of the complete graph on the ordinal `α`,
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:33:  -- For any 2-coloring of `α`,
+FormalConjectures/Paper/LatinTableau.lean:26:coloring of the vertices of the graph such that for all k > 0, the
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:30:such that any 2-coloring of `F`'s edges contains a copy of `G` in one color or `H` in the other.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:37:such that any 2-coloring of `F`'s edges contains a copy of `G` in one color or `H` in the other.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:39:A 2-coloring is represented by a subgraph `R ≤ F` (the "red" edges); the "blue" edges are `F \ R`.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:19:import Mathlib.Combinatorics.SimpleGraph.Coloring
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:31:lemma le_chromaticNumber_iff_coloring :
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:32:    n ≤ G.chromaticNumber ↔ ∀ m, G.Coloring (Fin m) → n ≤ m := by
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:42:lemma Coloring.injective_comp_of_pairwise_adj (C : G.Coloring α) (f : ι → V)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:59:  simp only [Nat.card_eq_fintype_card, le_chromaticNumber_iff_coloring, Nat.ceil_le]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:109:    G.Colorable n ↔ ∃ coloring : V → Fin n, ∀ i, G.induce {v | coloring v = i} = ⊥ := by
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:118:def Cocolorable (G : SimpleGraph V) (n : ℕ) : Prop := ∃ coloring : V → Fin n,
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:119:  ∀ i, G.induce {v | coloring v = i} = ⊥ ∨ G.induce {v | coloring v = i} = ⊤
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:137:  sInf {κ : Cardinal | ∃ (C : Type u) (_ : Cardinal.mk C = κ), Nonempty (G.Coloring C)}
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:143:/-- A finite graph is CDS-colorable if it has a proper coloring
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:148:    ∃ (C : G.Coloring Nat), ∀ k : Nat,
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:30:The smallest natural number `m` such that every 2-coloring of the `r`-subsets of a set of size `m`
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:236:    (coloring : M → κ) (k : ℕ) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:238:    ∀ m ∈ ap, coloring m = c
+FormalConjectures/ErdosProblems/1177.lean:36:/-- A proper coloring of a $3$-uniform hypergraph with vertex type $V$ using colors from $\alpha$
+FormalConjectures/ErdosProblems/1177.lean:39:def IsProperColoring3 {V α : Type*} (edges : Set (Finset V)) (c : V → α) : Prop :=
+FormalConjectures/ErdosProblems/1177.lean:43:    number $\kappa$ if $\kappa$ is the least cardinality of a color set admitting a proper coloring:
+FormalConjectures/ErdosProblems/1177.lean:44:    - there exists a proper coloring with a color set of cardinality $\le \kappa$, and
+FormalConjectures/ErdosProblems/1177.lean:45:    - every proper coloring requires a color set of cardinality $\ge \kappa$. -/
+FormalConjectures/ErdosProblems/1177.lean:47:  (∃ (α : Type), #α ≤ κ ∧ ∃ c : V → α, IsProperColoring3 edges c) ∧
+FormalConjectures/ErdosProblems/1177.lean:48:  ∀ (α : Type), (∃ c : V → α, IsProperColoring3 edges c) → κ ≤ #α
+FormalConjectures/ErdosProblems/836.lean:56:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/836.lean:57:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/836.lean:63:  (∃ f : V → Fin 3, H.IsProperColoring f) ∧
+FormalConjectures/ErdosProblems/836.lean:64:  (∀ f : V → Fin 2, ¬H.IsProperColoring f)
+FormalConjectures/ErdosProblems/810.lean:25:sufficiently large n, some n-vertex graph with at least εn² edges admits an n-coloring of its edges
+FormalConjectures/ErdosProblems/810.lean:31:/-- A graph on $n$ vertices admits a rainbow $C_4$ coloring with $n$ colors if there
+FormalConjectures/ErdosProblems/810.lean:32:    exists an edge coloring using $n$ colors such that every 4-cycle in the
+FormalConjectures/ErdosProblems/810.lean:34:def AdmitsRainbowC4Coloring (n : ℕ) (G : SimpleGraph (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/810.lean:58:        AdmitsRainbowC4Coloring n G := by
+FormalConjectures/ErdosProblems/1171.lean:26:$(k+1)$-coloring of pairs below $\omega_1^2$ yields either a homogeneous set of order type
+FormalConjectures/ErdosProblems/1171.lean:42:For every $(k+1)$-coloring of pairs of ordinals below $\alpha$, either
+FormalConjectures/ErdosProblems/1171.lean:61:That is, for every $(k+1)$-coloring of pairs of ordinals below $\omega_1^2$, either
+FormalConjectures/ErdosProblems/146.lean:74:      Nonempty (H.Coloring (Fin 2)) →
+FormalConjectures/ErdosProblems/799.lean:32:[AKS99] Alon, N., Krivelevich, M. and Sudakov, B., *List coloring of random and
+FormalConjectures/ErdosProblems/799.lean:38:/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/799.lean:41:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+FormalConjectures/ErdosProblems/799.lean:47:proper list coloring. -/
+FormalConjectures/ErdosProblems/799.lean:50:    ∃ f : V → ℕ, IsProperListColoring G L f
+FormalConjectures/ErdosProblems/581.lean:39:proper 2-coloring. We use `Set.ncard` to count edges, avoiding the need for
+FormalConjectures/ErdosProblems/581.lean:45:    Nonempty (H.Coloring (Fin 2)) ∧
+FormalConjectures/ErdosProblems/169.lean:39:/-- The van der Waerden property: every $2$-coloring of $\{0, \ldots, N-1\}$ contains
+FormalConjectures/ErdosProblems/169.lean:50:/-- The van der Waerden number $W(k)$: the smallest $N$ such that any $2$-coloring
+FormalConjectures/ErdosProblems/300.lean:27:[Cr03] Croot, E., *On a coloring conjecture about unit fractions*. Annals of Mathematics (2003).
+FormalConjectures/ErdosProblems/740.lean:46:for which $G$ admits a proper $\kappa$-coloring. -/
+FormalConjectures/ErdosProblems/740.lean:49:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+FormalConjectures/ErdosProblems/625.lean:49:such that there exists a proper coloring $f : \operatorname{Fin} n \to \operatorname{Fin} k$
+FormalConjectures/ErdosProblems/625.lean:55:in a coloring $f : \operatorname{Fin} n \to \operatorname{Fin} k$ such that each color class
+FormalConjectures/ErdosProblems/518.lean:34:/-- A path is monochromatic of color $b$ under edge coloring $c$ if every
+FormalConjectures/ErdosProblems/147.lean:71:      Nonempty (H.Coloring (Fin 2)) →
+FormalConjectures/ErdosProblems/633.lean:33:[So09] Soifer, A., *The Mathematical Coloring Book*, Springer, 2009.
+FormalConjectures/ErdosProblems/1007.lean:29:[So09e] Soifer, A., *The Mathematical Coloring Book*, Springer, 2009.
+FormalConjectures/ErdosProblems/149.lean:52:/-- Erdős–Nešetřil Strong Edge Coloring Conjecture (Erdős Problem 149) [ErNe85]:
+FormalConjectures/ErdosProblems/704.lean:58:distance $1$ share the same color. Returns $0$ if no finite coloring exists. -/
+FormalConjectures/ErdosProblems/919.lean:55:      (∀ (α : Type), Nonempty (G.Coloring α) → aleph 2 ≤ #α) ∧
+FormalConjectures/ErdosProblems/919.lean:59:        Nonempty ((G.induce S).Coloring ℕ)) := by
+FormalConjectures/ErdosProblems/919.lean:77:      (∀ (α : Type), Nonempty (G.Coloring α) → aleph 1 ≤ #α) ∧
+FormalConjectures/ErdosProblems/919.lean:78:      (∃ (α : Type), #α ≤ aleph 1 ∧ Nonempty (G.Coloring α)) ∧
+FormalConjectures/ErdosProblems/919.lean:82:        Nonempty ((G.induce S).Coloring ℕ)) := by
+FormalConjectures/ErdosProblems/70.lean:35:for every 2-coloring of increasing triples from ordinals below $\alpha$,
+FormalConjectures/ErdosProblems/597.lean:47:every $2$-coloring of ordered pairs from `OrdinalSet α` yields either:
+FormalConjectures/ErdosProblems/75.lean:52:      ¬Nonempty (G.Coloring ℕ) ∧
+FormalConjectures/ErdosProblems/75.lean:73:      ¬Nonempty (G.Coloring ℕ) ∧
+FormalConjectures/ErdosProblems/626.lean:57:    such that there exists a proper coloring $f : \text{Fin}(n) \to \text{Fin}(k)$. -/
+FormalConjectures/ErdosProblems/811.lean:36:[ErTu93] Erdős, P. and Tuza, Zs., _Rainbow subgraphs in edge-colorings of complete graphs_, 1993.
+FormalConjectures/ErdosProblems/811.lean:60:def IsBalancedColoring (n m : ℕ) (c : Sym2 (Fin n) → Fin m) : Prop :=
+FormalConjectures/ErdosProblems/811.lean:88:        IsBalancedColoring n 6 c →
+FormalConjectures/ErdosProblems/1175.lean:35:cardinality of a color set admitting a proper coloring of $G$:
+FormalConjectures/ErdosProblems/1175.lean:36:- there exists a proper coloring with a color set of cardinality $\leq \kappa$, and
+FormalConjectures/ErdosProblems/1175.lean:37:- every proper coloring uses a color set of cardinality $\geq \kappa$.
+FormalConjectures/ErdosProblems/1175.lean:39:Here `G.Coloring α` is a graph homomorphism from $G$ to the complete graph on $\alpha$,
+FormalConjectures/ErdosProblems/1175.lean:43:  (∃ (α : Type), Cardinal.mk α ≤ κ ∧ Nonempty (G.Coloring α)) ∧
+FormalConjectures/ErdosProblems/1175.lean:44:  ∀ (α : Type), Nonempty (G.Coloring α) → κ ≤ Cardinal.mk α
+FormalConjectures/ErdosProblems/1175.lean:54:admitting a proper coloring of $G$. Triangle-free means `G.CliqueFree 3` (no
+FormalConjectures/ErdosProblems/79.lean:44:/-- The Ramsey property: every 2-coloring of $K_n$ contains $G$ in one color or $H$ in the
+FormalConjectures/ErdosProblems/79.lean:45:    other. A 2-coloring of $K_n$ is a graph $S$ on `Fin n`; one color class is $S$ and the
+FormalConjectures/ErdosProblems/1168.lean:40:for any type $\alpha$ of cardinality $\aleph_{\omega+1}$, there exists a coloring of unordered
+FormalConjectures/ErdosProblems/1168.lean:49:      -- The coloring is symmetric
+FormalConjectures/ErdosProblems/559.lean:25:that there is a graph $H$ with $m$ edges that is Ramsey for $G$ (every 2-coloring
+FormalConjectures/ErdosProblems/559.lean:45:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/639.lean:22:Erdős conjectured that in any 2-coloring of the edges of $K_n$, at most $\lfloor n^2/4 \rfloor$
+FormalConjectures/ErdosProblems/639.lean:36:/-- A 2-coloring of the edges of the complete graph on $\operatorname{Fin} n$.
+FormalConjectures/ErdosProblems/639.lean:39:structure EdgeTwoColoring (n : ℕ) where
+FormalConjectures/ErdosProblems/639.lean:43:/-- An edge $\{u, v\}$ lies in a monochromatic triangle under coloring $c$ if there
+FormalConjectures/ErdosProblems/639.lean:46:def EdgeTwoColoring.inMonoTriangle {n : ℕ} (c : EdgeTwoColoring n)
+FormalConjectures/ErdosProblems/639.lean:52:do not lie in any monochromatic triangle under coloring $c$. -/
+FormalConjectures/ErdosProblems/639.lean:53:noncomputable def edgesNotInMonoTriangleCount {n : ℕ} (c : EdgeTwoColoring n) : ℕ :=
+FormalConjectures/ErdosProblems/639.lean:65:theorem erdos_639 (n : ℕ) (hn : 7 ≤ n) (c : EdgeTwoColoring n) :
+FormalConjectures/ErdosProblems/178.lean:43:[Be17] Beck, J., *Balanced two-colorings of finite sets in the square*.
+FormalConjectures/ErdosProblems/178.lean:53:coloring $f : \mathbb{N} \to \mathbb{Z}$ with $f(n) \in \{-1, 1\}$ such that for each $d$, the partial
+FormalConjectures/ErdosProblems/778.lean:40:/-- A game state in the edge-coloring game on $K_n$:
+FormalConjectures/ErdosProblems/778.lean:47:/-- A strategy for a player in the edge-coloring game:
+FormalConjectures/ErdosProblems/778.lean:51:/-- Play the standard edge-coloring game on $K_n$ (alternating, one edge each, Alice first)
+FormalConjectures/ErdosProblems/778.lean:67:Does Bob have a winning strategy in the standard edge-coloring game on $K_n$
+FormalConjectures/ErdosProblems/739.lean:49:for which $G$ admits a proper $\kappa$-coloring. -/
+FormalConjectures/ErdosProblems/739.lean:52:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+FormalConjectures/ErdosProblems/118.lean:60:every $2$-coloring of the pairs of elements of $\alpha$ (viewed as the linearly
+FormalConjectures/ErdosProblems/118.lean:80:$2$-coloring of pairs from a linearly ordered set of order type $\alpha$ contains either
+FormalConjectures/ErdosProblems/627.lean:40:    such that there exists a proper coloring. -/
+FormalConjectures/ErdosProblems/595.lean:32:coloring_, SIAM J. Appl. Math. 18 (1970), 19-24.
+FormalConjectures/ErdosProblems/965.lean:22:For every 2-coloring of ℝ, is there an uncountable set $A ⊆ ℝ$ such that
+FormalConjectures/ErdosProblems/965.lean:29:- [Ko16] Komjáth, Péter, A certain 2-coloring of the reals. Real Anal. Exchange (2016), 227--231.
+FormalConjectures/ErdosProblems/965.lean:36:Erdős asks in [Er75b] if for every 2-coloring of ℝ, there is an uncountable set $A ⊆ ℝ$ such that
+FormalConjectures/ErdosProblems/179.lean:29:[FoPo20] Fox, J. and Pohoata, C., *Subset sums, completeness and colorings*. (2020).
+FormalConjectures/ErdosProblems/833.lean:46:/-- A proper coloring of a hypergraph: no edge with $\geq 2$ vertices is monochromatic. -/
+FormalConjectures/ErdosProblems/833.lean:47:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/833.lean:55:  (∃ f : V → Fin k, H.IsProperColoring f) ∧
+FormalConjectures/ErdosProblems/833.lean:56:  ∀ f : V → Fin (k - 1), ¬H.IsProperColoring f
+FormalConjectures/ErdosProblems/759.lean:41:[GiTh97] Gimbel, J. and Thomassen, C., *Coloring graphs with fixed genus and girth*, 1997.
+FormalConjectures/ErdosProblems/45.lean:27:[Cr03] Croot, E., _On a coloring conjecture about unit fractions_. Annals of Mathematics,
+FormalConjectures/ErdosProblems/721.lean:51:A 2-coloring $f : \mathbb{N} \to \text{Bool}$ of $\{0, \ldots, n-1\}$ has a monochromatic
+FormalConjectures/ErdosProblems/721.lean:58:`VDWProperty j k n` asserts: every 2-coloring of $\{0, \ldots, n-1\}$ contains
+FormalConjectures/ErdosProblems/62.lean:41:  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+FormalConjectures/ErdosProblems/62.lean:42:  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+FormalConjectures/ErdosProblems/531.lean:42:/-- A 2-coloring $\chi : \mathbb{N} \to \mathrm{Bool}$ admits a **monochromatic subset-sum
+FormalConjectures/ErdosProblems/531.lean:53:/-- The **Folkman number** $F(k)$: the minimum $N$ such that every 2-coloring
+FormalConjectures/ErdosProblems/531.lean:60:That is, there exists $N$ such that every 2-coloring of $\{1, \ldots, N\}$ has a
+FormalConjectures/ErdosProblems/738.lean:35:  ∀ n : ℕ, IsEmpty (G.Coloring (Fin n))
+FormalConjectures/ErdosProblems/1167.lean:32:    for every coloring of the $r$-element subsets of a $\kappa$-sized set with colors from $\iota$,
+FormalConjectures/ErdosProblems/286.lean:30:[Cr01] Croot, E., *On a coloring conjecture about unit fractions*. Annals of Mathematics (2001).
+FormalConjectures/ErdosProblems/129.lean:39:/-- An $r$-edge-coloring of the complete graph $K_N$: a function that assigns a
+FormalConjectures/ErdosProblems/129.lean:41:def EdgeColoring (N r : ℕ) : Type := Fin N → Fin N → Fin r
+FormalConjectures/ErdosProblems/129.lean:43:/-- A vertex set $S$ is monochromatic-$K_k$-free in color $c$ under coloring $\chi$ if
+FormalConjectures/ErdosProblems/129.lean:46:def IsMonoKkFree {N r : ℕ} (χ : EdgeColoring N r) (c : Fin r)
+FormalConjectures/ErdosProblems/129.lean:52:every $r$-coloring of the edges of $K_N$, there exists a set of $n$ vertices and
+FormalConjectures/ErdosProblems/129.lean:55:  sInf {N : ℕ | ∀ (χ : EdgeColoring N r),
+FormalConjectures/ErdosProblems/129.lean:65:a probabilistic coloring of $K_N$ (each edge independently uniformly at random
+FormalConjectures/ErdosProblems/901.lean:41:A hypergraph has Property B (is $2$-colorable) if there exists a $2$-coloring
+FormalConjectures/ErdosProblems/474.lean:41:There exists a $k$-coloring of pairs from a set of cardinality $\kappa$ such that
+FormalConjectures/ErdosProblems/634.lean:27:[So09c] Soifer, A., *The Mathematical Coloring Book*, Springer, 2009.
+FormalConjectures/ErdosProblems/177.lean:48:a $\pm 1$ coloring $f$ of $\mathbb{N}$ where for every $d \geq 1$, the discrepancy over
+FormalConjectures/ErdosProblems/177.lean:59:For any $\pm 1$ coloring of $\mathbb{N}$ and any $d \geq 1$, there exists a finite arithmetic
+FormalConjectures/ErdosProblems/177.lean:74:For every $\varepsilon > 0$, there exists a $\pm 1$ coloring $f$ of $\mathbb{N}$ such that for every
+FormalConjectures/ErdosProblems/609.lean:43:/-- There exists a monochromatic cycle of length $k$ in an edge coloring of $K_N$.
+FormalConjectures/ErdosProblems/609.lean:56:For every $n \geq 1$, every symmetric $n$-coloring of the edges of $K_{2^n+1}$
+FormalConjectures/ErdosProblems/609.lean:71:symmetric $n$-coloring of $K_{2^n+1}$ with no monochromatic odd cycle of length
+FormalConjectures/ErdosProblems/609.lean:87:$n$-coloring of $K_{2^n+1}$ contains a monochromatic odd cycle of length at most
+FormalConjectures/ErdosProblems/483.lean:33:/-- A coloring $f : \mathbb{N} \to \text{Fin}\ k$ has a *monochromatic Schur triple* in
+FormalConjectures/ErdosProblems/483.lean:55:every $k$-coloring of $\{1, \ldots, N\}$ with $N \geq c^k$ has a monochromatic Schur triple.
+FormalConjectures/ErdosProblems/284.lean:33:[Cr01] Croot, E., _On a coloring conjecture about unit fractions_, Annals of Mathematics (2001).
+FormalConjectures/ErdosProblems/1170.lean:41:/-- The ordinal partition relation $\kappa \to (\alpha)^2_2$: for every 2-coloring of increasing
+FormalConjectures/ErdosProblems/1170.lean:55:2-coloring of pairs of ordinals below $\kappa$, there exists a monochromatic set of
+FormalConjectures/ErdosProblems/560.lean:60:A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/736.lean:47:for which $G$ admits a proper $\kappa$-coloring. -/
+FormalConjectures/ErdosProblems/736.lean:50:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+FormalConjectures/ErdosProblems/174.lean:51:exists $d$ such that any $k$-coloring of $\mathbb{R}^d$ contains a monochromatic
+FormalConjectures/ErdosProblems/76.lean:42:def EdgeTwoColoring (n : ℕ) := Sym2 (Fin n) → Bool
+FormalConjectures/ErdosProblems/76.lean:51:def IsMonochromaticTriangle {n : ℕ} (col : EdgeTwoColoring n) (T : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/76.lean:73:    ∀ col : EdgeTwoColoring n,
+FormalConjectures/ErdosProblems/360.lean:43:A coloring $c$ of $\{1, \ldots, n-1\}$ into $k$ colors is sum-free for $n$ if $n$ cannot be
+FormalConjectures/ErdosProblems/360.lean:46:def SumFreeColoring (n k : ℕ) (c : ℕ → Fin k) : Prop :=
+FormalConjectures/ErdosProblems/360.lean:57:  sInf {k : ℕ | ∃ c : ℕ → Fin k, SumFreeColoring n k c}
+FormalConjectures/ErdosProblems/508.lean:81:plane into hexagons of uniform size and coloring them with a repeating
+FormalConjectures/ErdosProblems/508.lean:84:Soifer, Alexander (2008), The Mathematical Coloring Book: Mathematics of Coloring and the Colorful Life of its Creators, New York: Springer, ISBN 978-0-387-74640-1
+FormalConjectures/ErdosProblems/832.lean:48:/-- A proper $k$-coloring of a hypergraph: a vertex coloring such that no edge
+FormalConjectures/ErdosProblems/832.lean:50:def UniformHypergraph.IsProperColoring {V : Type*} [DecidableEq V] {r : ℕ}
+FormalConjectures/ErdosProblems/832.lean:55:needed for a proper coloring (no monochromatic edge). -/
+FormalConjectures/ErdosProblems/832.lean:58:  sInf {k : ℕ | k ≥ 1 ∧ ∃ f : V → Fin k, H.IsProperColoring k f}
+FormalConjectures/ErdosProblems/46.lean:27:[Cr03] Croot, E.S., _On a coloring conjecture about unit fractions_, Annals of Mathematics **157** (2003), 545–556.
+FormalConjectures/ErdosProblems/138.lean:39:progression length `k`, any `r`-coloring of the integers `{1, ..., N}` must contain a
+FormalConjectures/ErdosProblems/138.lean:43:  { N | ∀ coloring : Finset.Icc 1 N → Fin r, ContainsMonoAPofLength coloring k}
+FormalConjectures/ErdosProblems/138.lean:56:The **van der Waerden number**, is the smallest integer `N` such that any `r`-coloring of
+FormalConjectures/ErdosProblems/138.lean:64:This represents the smallest integer `N` such that any 2-coloring of `{1, ..., N}`
+FormalConjectures/ErdosProblems/1172.lean:46:/-- The ordinal partition relation $\alpha \to (\beta, \gamma)^2$ for 2-colorings of pairs.
+FormalConjectures/ErdosProblems/1172.lean:47:    For every 2-coloring of the pairs of ordinals below $\alpha$, there is either
+FormalConjectures/ErdosProblems/1172.lean:114:That is, for every 2-coloring of the pairs of ordinals below $\omega_2$, there exists
+FormalConjectures/ErdosProblems/55.lean:38:A set $A$ of natural numbers is Ramsey $r$-complete if for every $r$-coloring of $\mathbb{N}$,
+FormalConjectures/ErdosProblems/911.lean:38:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/834.lean:78:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/834.lean:79:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/834.lean:100:  (∃ f : V → Fin 3, H.IsProperColoring f) ∧
+FormalConjectures/ErdosProblems/834.lean:101:  (∀ f : V → Fin 2, ¬H.IsProperColoring f) ∧
+FormalConjectures/ErdosProblems/834.lean:102:  (∀ e ∈ H.edges, ∃ f : V → Fin 2, (H.eraseEdge e).IsProperColoring f) ∧
+FormalConjectures/ErdosProblems/834.lean:103:  (∀ v : V, v ∈ H.vertices → ∃ f : V → Fin 2, (H.eraseVertex v).IsProperColoring f)
+FormalConjectures/ErdosProblems/136.lean:43:/-- An edge coloring of $K_n$ with colors from $\operatorname{Fin} k$, represented as a function
+FormalConjectures/ErdosProblems/136.lean:45:def EdgeColoring (n k : ℕ) : Type := Fin n → Fin n → Fin k
+FormalConjectures/ErdosProblems/136.lean:48:under coloring $\chi$ (using `offDiag` to enumerate all ordered pairs of
+FormalConjectures/ErdosProblems/136.lean:50:noncomputable def edgeColors {n k : ℕ} (χ : EdgeColoring n k)
+FormalConjectures/ErdosProblems/136.lean:54:/-- A coloring $\chi$ of $K_n$ is $K_4$-five-colored if every 4-element vertex subset
+FormalConjectures/ErdosProblems/136.lean:56:def IsK4FiveColored {n k : ℕ} (χ : EdgeColoring n k) : Prop :=
+FormalConjectures/ErdosProblems/136.lean:60:$K_4$-five-colored edge coloring of $K_n$. -/
+FormalConjectures/ErdosProblems/136.lean:62:  sInf {k : ℕ | ∃ χ : EdgeColoring n k, IsK4FiveColored χ}
+FormalConjectures/ErdosProblems/630.lean:30:[AlTa92] Alon, N. and Tarsi, M., _Colorings and orientations of graphs_. Combinatorica 12
+FormalConjectures/ErdosProblems/630.lean:38:/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/630.lean:41:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+FormalConjectures/ErdosProblems/630.lean:47:proper list coloring. -/
+FormalConjectures/ErdosProblems/630.lean:50:    ∃ f : V → ℕ, IsProperListColoring G L f
+FormalConjectures/ErdosProblems/596.lean:25:graph $H$ such that every $n$-coloring of the edges of $H$ contains a monochromatic copy
+FormalConjectures/ErdosProblems/596.lean:26:of $G_2$, and yet for every $G_1$-free graph $H$ there is an $\aleph_0$-coloring of the
+FormalConjectures/ErdosProblems/596.lean:40:/-- A graph $H$ contains a monochromatic copy of $G$ under edge coloring $c$: there exists
+FormalConjectures/ErdosProblems/596.lean:50:(a) For every $n \geq 1$, there exists a $G_1$-free graph $H$ such that every $n$-coloring
+FormalConjectures/ErdosProblems/596.lean:52:(b) For every $G_1$-free graph $H$, there exists a countable coloring of $H$'s edges
+FormalConjectures/ErdosProblems/720.lean:65:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/753.lean:41:of size at least $k$ to the vertices, there exists a proper coloring where each
+FormalConjectures/ErdosProblems/54.lean:28:[CFP21] Conlon, D., Fox, J., and Pham, H.T., _Subset sums, completeness and colorings_. (2021).
+FormalConjectures/ErdosProblems/54.lean:37:A set $A$ of natural numbers is Ramsey 2-complete if for every 2-coloring of $\mathbb{N}$,
+FormalConjectures/ErdosProblems/617.lean:24:- [ErGy99] Erdős, Paul and Gyárfás, András, Split and balanced colorings of complete graphs.
+FormalConjectures/ErdosProblems/617.lean:40:    (hV : Fintype.card V = r^2 + 1) (coloring : Sym2 V → Fin r) :
+FormalConjectures/ErdosProblems/617.lean:43:      ∀ u ∈ S, ∀ v ∈ S, u ≠ v → coloring s(u, v) ≠ k := by
+FormalConjectures/ErdosProblems/617.lean:51:    (hV : Fintype.card V = 3^2 + 1) (coloring : Sym2 V → Fin 3) :
+FormalConjectures/ErdosProblems/617.lean:54:      ∀ u ∈ S, ∀ v ∈ S, u ≠ v → coloring s(u, v) ≠ k := by
+FormalConjectures/ErdosProblems/617.lean:62:    (hV : Fintype.card V = 4^2 + 1) (coloring : Sym2 V → Fin 4) :
+FormalConjectures/ErdosProblems/617.lean:65:      ∀ u ∈ S, ∀ v ∈ S, u ≠ v → coloring s(u, v) ≠ k := by
+FormalConjectures/ErdosProblems/617.lean:75:      ∃ (coloring : Sym2 V → Fin r),
+FormalConjectures/ErdosProblems/617.lean:77:          ∀ (k : Fin r), ∃ u ∈ S, ∃ v ∈ S, u ≠ v ∧ coloring s(u, v) = k}.Infinite := by
+FormalConjectures/ErdosProblems/921.lean:35:[KST84] Kierstead, H., Szemerédi, E., and Trotter, W., *On coloring graphs with locally
+FormalConjectures/ErdosProblems/737.lean:41:  ∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)
+FormalConjectures/ErdosProblems/189.lean:45:Vjekoslav Kovač, "Coloring and density theorems for configurations of a given volume", 2023
+FormalConjectures/ErdosProblems/629.lean:43:/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/629.lean:46:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+FormalConjectures/ErdosProblems/629.lean:52:proper list coloring. -/
+FormalConjectures/ErdosProblems/629.lean:55:    ∃ f : V → ℕ, IsProperListColoring G L f
+FormalConjectures/ErdosProblems/797.lean:28:7-coloring*, 1976.
+FormalConjectures/ErdosProblems/797.lean:30:[AMR91] Alon, N., McDiarmid, C., and Reed, B., *Acyclic coloring of graphs*, 1991.
+FormalConjectures/ErdosProblems/797.lean:37:/-- A proper coloring of $G$ is acyclic if for every pair of distinct colors,
+FormalConjectures/ErdosProblems/797.lean:39:def IsAcyclicColoring {V : Type*} (G : SimpleGraph V) {α : Type*}
+FormalConjectures/ErdosProblems/797.lean:40:    (c : G.Coloring α) : Prop :=
+FormalConjectures/ErdosProblems/797.lean:55:        ∃ (k : ℕ) (c : G.Coloring (Fin k)),
+FormalConjectures/ErdosProblems/797.lean:56:          IsAcyclicColoring G c ∧ (k : ℝ) ≤ C * (d : ℝ) ^ ((4 : ℝ) / 3)) ∧
+FormalConjectures/ErdosProblems/797.lean:62:          ∀ (k : ℕ), (∃ c : G.Coloring (Fin k), IsAcyclicColoring G c) →
+FormalConjectures/ErdosProblems/1169.lean:35:/-- The ordinal partition relation $\alpha \to (\beta, \gamma)^2$ for 2-colorings of pairs.
+FormalConjectures/ErdosProblems/1169.lean:36:    For every 2-coloring of the pairs of ordinals below $\alpha$, there is either
+FormalConjectures/ErdosProblems/1169.lean:56:That is, for every natural number $k$, there exists a 2-coloring of the pairs
+FormalConjectures/ErdosProblems/809.lean:38:$r$-edge-coloring such that every cycle of length $2k+1$ is rainbow
+FormalConjectures/ErdosProblems/809.lean:40:noncomputable def AdmitsRainbowOddCycleColoring (k n r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/809.lean:64:          AdmitsRainbowOddCycleColoring k n r) ∧
+FormalConjectures/ErdosProblems/809.lean:66:          ¬AdmitsRainbowOddCycleColoring k n r) := by
+FormalConjectures/ErdosProblems/594.lean:46:  ∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)
+FormalConjectures/ErdosProblems/1022.lean:36:    a 2-coloring of the ground set such that no edge is monochromatic:
+FormalConjectures/ErdosProblems/758.lean:38:/-- A cochromatic coloring of a simple graph $G$ with $k$ colors is a function
+FormalConjectures/ErdosProblems/758.lean:41:def IsCochromaticColoring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/758.lean:48:cochromatic coloring of $G$. -/
+FormalConjectures/ErdosProblems/758.lean:51:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColoring G k c}
+FormalConjectures/ErdosProblems/593.lean:50:/-- A proper coloring of a $3$-uniform hypergraph: no edge is monochromatic
+FormalConjectures/ErdosProblems/593.lean:52:def Hypergraph3.IsProperColoring {V : Type*} (H : Hypergraph3 V)
+FormalConjectures/ErdosProblems/593.lean:57:    proper coloring with countably many colors. -/
+FormalConjectures/ErdosProblems/593.lean:60:  ∀ (C : Type*) [Countable C], ¬∃ c : V → C, H.IsProperColoring c
+FormalConjectures/ErdosProblems/593.lean:68:/-- A $3$-uniform hypergraph is $2$-colorable: it admits a proper coloring with
+FormalConjectures/ErdosProblems/593.lean:71:  ∃ c : V → Bool, H.IsProperColoring c
+FormalConjectures/ErdosProblems/110.lean:46:  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+FormalConjectures/ErdosProblems/110.lean:47:  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+FormalConjectures/ErdosProblems/549.lean:63:The bipartition condition is expressed via a proper 2-coloring where one color
+FormalConjectures/ErdosProblems/549.lean:73:    (∃ c : T.Coloring (Fin 2),
+FormalConjectures/ErdosProblems/113.lean:76:      Nonempty (G.Coloring (Fin 2)) →
+FormalConjectures/ErdosProblems/631.lean:48:/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/631.lean:51:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+FormalConjectures/ErdosProblems/631.lean:57:proper list coloring. -/
+FormalConjectures/ErdosProblems/631.lean:60:    ∃ f : V → ℕ, IsProperListColoring G L f
+FormalConjectures/ErdosProblems/561.lean:48:a graph $H$ such that for every 2-coloring of the edges of $H$, either color 1
+FormalConjectures/ErdosProblems/582.lean:31:[Fo70] Folkman, J., *Graphs with monochromatic complete subgraphs in every edge coloring*.
+FormalConjectures/ErdosProblems/582.lean:43:in a $2$-coloring of the edges), either $H$ or the complementary subgraph $G \setminus H$
+FormalConjectures/ErdosProblems/111.lean:44:  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+FormalConjectures/ErdosProblems/111.lean:45:  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+FormalConjectures/ErdosProblems/111.lean:55:    Nonempty (H'.Coloring (Fin 2)) ∧

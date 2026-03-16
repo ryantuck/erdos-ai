@@ -1,0 +1,249 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-39-Graph Theory with Applications to Algorithms and Computer Science (1988).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-40-
+FormalConjectures/ErdosProblems/78.lean:41:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is Eighty,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-42-Vol. 2 (1993), p. 337.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-43-
+--
+FormalConjectures/ErdosProblems/1034.lean-26-*Reference:* [erdosproblems.com/1034](https://www.erdosproblems.com/1034)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1034.lean-27-
+FormalConjectures/ErdosProblems/1034.lean:28:[Er93] Erdős, P., *On some of my favourite theorems* (1993), p. 344.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1034.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1034.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1037.lean-32-largest trivial subgraph has size $O(\log n)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1037.lean-33-
+FormalConjectures/ErdosProblems/1037.lean:34:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1037.lean-35-is eighty, Vol. 2 (Keszthely, 1993), 97-132.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1037.lean-36--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-28-A problem of Erdős, Faudree, and Sós [Er93, p.346], who proved there exist
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-29-$\gg n^{3/2}$ many such subgraphs, and note that $n^{5/2}$ would be best possible.
+FormalConjectures/ErdosProblems/636.lean:30:Erdős credits Alon and Bollobás in [Er93].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-32-This was proved by Kwan and Sudakov [KwSu21].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-33-
+FormalConjectures/ErdosProblems/636.lean:34:[Er93] Erdős, P., _Some of my favorite solved and unsolved problems in graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-35-theory_. Quaestiones Mathematicae (1993), 333-350.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-36-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-24-question about the size Ramsey number of stars $K_{1,n}$ versus the family of odd cycles.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-25-Faudree proved the conjecture holds when the graph has exactly $2n+1$ vertices (unpublished,
+FormalConjectures/ErdosProblems/613.lean:26:referenced in [Er93]). Disproved in general by Pikhurko [Pi01].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-27-
+FormalConjectures/ErdosProblems/613.lean-28-*Reference:* [erdosproblems.com/613](https://www.erdosproblems.com/613)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-29-
+FormalConjectures/ErdosProblems/613.lean:30:[Er93] Erdős, P., _Some of my favorite solved and unsolved problems in graph theory_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-31-Quaestiones Mathematicae **16** (1993), 333–350.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-77-can be written as the union of a bipartite graph and a graph with maximum degree less than $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-78-That is, the conjecture holds when restricted to graphs with exactly $2n+1$ vertices.
+FormalConjectures/ErdosProblems/613.lean:79:This result is unpublished but referenced in [Er93].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-80--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean-81-@[category research solved, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1032.lean-25-there is a $4$-chromatic critical graph on $n$ vertices with minimum degree at least $c \cdot n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1032.lean-26-
+FormalConjectures/ErdosProblems/1032.lean:27:- [Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is Eighty,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1032.lean-28-  Vol. 2 (1993), 97-132.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1032.lean-29-- [Si72] Simonovits, M., 1972.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/752.lean-36-Matematiche (Catania) (1992), 231–240.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/752.lean-37-
+FormalConjectures/ErdosProblems/752.lean:38:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is eighty,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/752.lean-39-Vol. 2 (Keszthely, 1993), 97–132.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/752.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/752.lean-56-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/752.lean-57-**Erdős–Faudree–Schelp Conjecture (proved by Sudakov–Verstraëte)
+FormalConjectures/ErdosProblems/752.lean:58:(Erdős Problem 752)** [Er92b][Er93][Er94b][SuVe08]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/752.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/752.lean-60-There exists an absolute constant $c > 0$ such that for every finite graph $G$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean-34-[ErSi82] Erdős, P. and Simonovits, M., *Compactness results in extremal graph theory*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean-35-Combinatorica **2** (1982), 275-288.
+FormalConjectures/ErdosProblems/573.lean:36:[Er93] Erdős, P., 1993, p.336.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean-37-[KST54] Kővári, T., Sós, V. T., and Turán, P., *On a problem of K. Zarankiewicz*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean-38-Colloq. Math. **3** (1954), 50-57.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-35-$\mathrm{ex}(n; C_4) = \frac{1}{2} q(q+1)^2$ when $n = q^2 + q + 1$ and $q$ is a prime power.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-36-
+FormalConjectures/ErdosProblems/765.lean:37:[Er93] Erdős, P., *On some of my favourite theorems*. Combinatorics, Paul Erdős is eighty,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-38-Vol. 2 (Keszthely, 1993), 97–132.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-39-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-66-/--
+FormalConjectures/ErdosProblems/765.lean:67:Erdős's refined conjecture from [Er93] (still open):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-68-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-69-$\mathrm{ex}(n; C_4) = \frac{n^{3/2}}{2} + O(n)$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean-28-Progress in graph theory (Waterloo, Ont., 1982), Academic Press, Toronto, ON, 1984, 203–218.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean-29-
+FormalConjectures/ErdosProblems/113.lean:30:[Er93] Erdős, P., *Some of my favorite solved and unsolved problems in graph theory*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean-31-Quaestiones Mathematicae **16** (1993), 333–350.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-31-[Er81c] Erdős, P., _Some problems in combinatorics, graph theory and probability_ (1981).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-32-
+FormalConjectures/ErdosProblems/544.lean:33:[Er93] Erdős, P., _Some of my favourite problems in various branches of combinatorics_ (1993), p. 339.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1035.lean-25-$> (1 - c) \cdot 2^n$ contains the $n$-dimensional hypercube $Q_n$ as a subgraph?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1035.lean-26-
+FormalConjectures/ErdosProblems/1035.lean:27:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is eighty,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1035.lean-28-Vol. 2 (Keszthely, 1993), Bolyai Soc. Math. Stud. 2, 97-132.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1035.lean-29--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-34-Griffiths, Hurley, Morris, Sahasrabudhe, and Tiba [BBCGHMST24].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-35-
+FormalConjectures/ErdosProblems/77.lean:36:Erdős conjectured the limit is "perhaps 2 but we have no real evidence for this" [Er93].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-38-Erdős offered \$100 for proving the limit exists, and \$1,000 (later raised to \$10,000
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-57-combinatorics_. Congressus Numerantium (1990).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-58-
+FormalConjectures/ErdosProblems/77.lean:59:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is Eighty,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-60-Vol. 2 (1993).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-61-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1033.lean-30-The lower bound was improved to $(21/16)n$ by Fan [Fa88].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1033.lean-31-
+FormalConjectures/ErdosProblems/1033.lean:32:[Er93] Erdős, P., _On some of my favourite theorems_ (1993).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1033.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1033.lean-34-[ErLa85] Erdős, P. and Laskar, R.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-32-  Graph Theory, and Computing (1978), 29–40.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-33-
+FormalConjectures/ErdosProblems/548.lean:34:[Er93] Erdős, P., *Some of my favorite solved and unsolved problems in graph theory*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-35-  Quaestiones Mathematicae **16** (1993), 333–350.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-36-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean-29-Progress in graph theory (Waterloo, Ont., 1982), Academic Press, Toronto, ON, 1984, 203–218.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean-30-
+FormalConjectures/ErdosProblems/147.lean:31:[Er93] Erdős, P., _Some of my favorite solved and unsolved problems in graph theory_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean-32-Quaestiones Mathematicae **16** (1993), 333–350.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean-33-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1031.lean-24-A question of Erdős, Fajtlowicz, and Staton [Er93, p.340].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1031.lean-25-
+FormalConjectures/ErdosProblems/1031.lean:26:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is eighty,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1031.lean-27-Vol. 2 (Keszthely, 1993), 97-132.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1031.lean-28-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-38-[Er96] Erdős, P., _Some recent problems and results in graph theory_, 1996.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-39-
+FormalConjectures/ErdosProblems/811.lean:40:[ClWa23] Clemen, F. and Wagner, A., 2023.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-41-
+FormalConjectures/ErdosProblems/811.lean:42:[AxCl24] Axenovich, M. and Clemen, F., 2024.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-43--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-44-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-80-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-81-The companion question about $K_4$ (which also has $6$ edges) was answered
+FormalConjectures/ErdosProblems/811.lean:82:negatively by Clemen and Wagner [ClWa23].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-83--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-84-@[category research open, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-28-$\gg n^{1/2}$ many copies of $C_4$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-29-
+FormalConjectures/ErdosProblems/60.lean:30:Conjectured by Erdős and Simonovits [Er90][Er93], who could not even prove that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-31-at least 2 copies of $C_4$ are guaranteed. The behaviour of $\mathrm{ex}(n; C_4)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-32-is the subject of problem [765].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-38-(1990), 467–478.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-39-
+FormalConjectures/ErdosProblems/60.lean:40:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-41-eighty, Vol. 2 (Keszthely, 1993), 97–132.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-50-/--
+FormalConjectures/ErdosProblems/60.lean:51:Erdős Problem 60 [Er90][Er93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-53-Does every graph on $n$ vertices with more than $\mathrm{ex}(n; C_4)$ edges contain
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-30-$R(k+1,k) - R(k,k) > k^c$ for any $c > 1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-31-
+FormalConjectures/ErdosProblems/1030.lean:32:[Er93] Erdős, P., _On some of my favourite theorems_ (1993), p. 339.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-33--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-36-differences*. Mathematics of Ramsey theory, Algorithms Combin., 5 (1990), 12-28.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-37-
+FormalConjectures/ErdosProblems/146.lean:38:[Er93] Erdős, P., *Some of my favorite solved and unsolved problems in graph theory*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-39-Quaestiones Mathematicae **16** (1993), 333–350.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-66-[Er61] Erdős, P. (1961). [Er71] Erdős, P. (1971). [Er78] Erdős, P. (1978).
+FormalConjectures/ErdosProblems/165.lean:67:[Er90b] Erdős, P. (1990). [Er93] Erdős, P. (1993). [Er97c] Erdős, P. (1997).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-68--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-69-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-50-geometry_. Proceedings of the Fifth Canadian Number Theory Association Conference (1992).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-51-
+FormalConjectures/ErdosProblems/86.lean:52:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-53-eighty, Vol. 2 (Keszthely, 1993), 97–132.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-98-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-99-/--
+FormalConjectures/ErdosProblems/86.lean:100:Erdős Problem 86 [Er90][Er91][Er92b][Er93][Er94b][Er95][Er97f]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-101-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-102-Is it true that for every $\varepsilon > 0$, if $n$ is sufficiently large, every subgraph of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-36-[Er69b] Erdős, P. (1969).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-37-
+FormalConjectures/ErdosProblems/917.lean:38:[Er93] Erdős, P. (1993).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-40-[To70] Toft, B. (1970).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-73-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-74-/--
+FormalConjectures/ErdosProblems/917.lean:75:Erdős Problem 917, Part 2 [Er69b][Er93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-76-$f_6(n) \sim n^2/4$. For all $\varepsilon > 0$ and sufficiently large $n$, the maximum number of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-77-edges in a $6$-critical graph on $n$ vertices is asymptotically $n^2/4$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-31-- [Er75] Erdős, P., _Some recent progress on extremal problems in graph theory_. (1975).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-32-- [Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_. Combinatorica (1981), 25-42.
+FormalConjectures/ErdosProblems/576.lean:33:- [Er93] Erdős, P., _Some of my favorite solved and unsolved problems in graph theory_. Quaestiones Mathematicae (1993), 333-350.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-34-- [ErSi70] Erdős, P., Simonovits, M., _Some extremal problems in graph theory_. Combinatorial Theory and Its Applications, I-III (1970), 377-390.
+FormalConjectures/ErdosProblems/576.lean-35-- [JaSu22] Janzer, O., Sudakov, B., _On the Turán number of the hypercube_. arXiv:2211.02015 (2024).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-65-/--
+FormalConjectures/ErdosProblems/576.lean:66:Erdős Conjecture (Problem 576) [Er64c], [ErSi70], [Er74c], [Er81], [Er93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-67-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-68-Let $Q_3$ be the 3-dimensional hypercube graph. Erdős and Simonovits proved that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-32-[Er74c] Erdős, P., 1974.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-33-
+FormalConjectures/ErdosProblems/926.lean:34:[Er93] Erdős, P., 1993.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-36-[Fu91] Füredi, Z., 1991.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-28-Infinite and finite sets, Vol. 1 (1975), 214–240.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-29-
+FormalConjectures/ErdosProblems/181.lean:30:[Er93] Erdős, P., *Some of my favorite solved and unsolved problems in graph theory*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-31-Quaestiones Mathematicae **16** (1993), 333–350.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-24-A question of Erdős and Rényi. Proved by Shelah [Sh98].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-25-
+FormalConjectures/ErdosProblems/1036.lean:26:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is eighty,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-27-Vol. 2 (Keszthely, 1993), p.346.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-28-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-40-[Er91] Erdős, P., _Problems and results in combinatorial number theory_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-41-
+FormalConjectures/ErdosProblems/579.lean:42:[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is eighty,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-43-Vol. 2 (Keszthely, 1993), 97–132, p.340.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-44--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-36-[Sp75] Spencer, J., *Ramsey's theorem — a new lower bound*, J. Combin. Theory Ser. A 18 (1975), 108–115.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-37-
+FormalConjectures/ErdosProblems/1029.lean:38:[Er93] Erdős, P., *On some of my favourite theorems* (1993).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-39--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-40-

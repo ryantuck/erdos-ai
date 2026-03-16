@@ -1,0 +1,203 @@
+FormalConjectures/GreensOpenProblems/15.lean:24:- [BJP14] T. Brown, V. Jungić and A. Poelstra, "On double 3-term arithmetic progressions",
+ai-review/391.md:5:No reusable code was found in the existing codebase. The problem concerns factorial representations and an asymptotic limit involving `1/e`, which is a standalone number-theoretic topic. The `FormalConjecturesForMathlib` library contains infrastructure for covering systems, arithmetic progressions, and density, none of which are applicable here.
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:28:  set consisting of an arithmetic progression of length `l` (possibly infinite) with first term
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:32:  of an arithmetic progression of length `l`, for some some first term and difference.
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:38:A set $S$ is an arithmetic progression of length $l$ with first term $a$ and difference $d$
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:60:/-- An arithmetic progression with first term `a` and difference `d` is of length zero if and only
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:65:/-- An arithmetic progression with first term `a` and difference `d` is of length one if and only
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:79:/-- An arithmetic progression with first term `a` and difference `d` is of length zero if and only
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:85:/-- An arithmetic progression with first term `a` and difference `d` is of length one if and only
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:93:/-- In an abelian additive group `α`, the set `{a, b}` with `a ≠ b` is an arithmetic progression of
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:108:/-- The set `{a, b} : Set ℕ` with `a < b` is an arithmetic progression of length `2` with
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:117:The predicate that a set `s` is an arithmetic progression of length `l` (possibly infinite).
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:119:arithmetic progression.
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:142:/-- Only the empty set is a finite arithmetic progression of length $0$. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:145:/-- Only singletons are finite arithmetic progressions of length $1$. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:148:/-- If a set is an arithmetic progression of lengths `l₁` and `l₂`, then the lengths are
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:167:/-- Only the empty list is a finite arithmetic progression of length $0$. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:170:/-- Only singletons are finite arithmetic progressions of length $1$. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:173:/-- If a list is an arithmetic progression of lengths `l₁` and `l₂`, then the lengths are
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:190:/-- The empty set is not an arithmetic progression of positive length. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:195:/-- We say that a set `s` is free of arithmetic progressions of length `l` if `s` contains no
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:196:non-trivial arithmetic progressions of length `l`. Written as `Set.IsAPOfLengthFree s l`. --/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:200:/-- Any set is free of arithmetic progressions of length `1`, because such APs are all trivial. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:204:/-- Any set is free of arithmetic progressions of length `0`, because such APs are all trivial. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:208:/-- Any non-trivial arithmetic progression cannot be free of arithmetic progressions. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:215:any non-trivial $k$-term arithmetic progression.
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:231:/-- A set `A` contains an arithmetic progression of length `k` with difference `d`. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:241:A function `f : α → β` has a monotone `k`-term arithmetic progression if there exists an
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:242:arithmetic progression `l` of length `k` in `α` such that its image under `f` is sorted.
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:249:any non-trivial `k`-term arithmetic progression.
+ai-review/16.md:46:- **[Ch23]** — Chen, _The set of odd integers not of the form 2^k + p is not the union of an infinite arithmetic progression and a density-zero set_ (2023).
+ai-review/16.md:63:The erdosproblems.com page for Problem 16 states only the single question: "Is the set of odd integers not of the form 2^k + p the union of an infinite arithmetic progression and a set of density 0?" No additional variants are mentioned on the website.
+ai-review/16.md:67:1. **Erdős [Er50]:** The set *contains* an infinite arithmetic progression (proved via covering congruences). This is a weaker positive result.
+ai-review/16.md:99:- The standard notion of an infinite arithmetic progression.
+ai-review/16.md:157:This correctly characterizes an infinite one-sided arithmetic progression {a, a+d, a+2d, ...} with positive common difference d. ✅
+ai-review/201.md:60:  [Ri69] Riddell, J., *On sets of numbers containing no l terms in arithmetic progression*.
+FormalConjectures/GreensOpenProblems/9.lean:25:  arithmetic progressions." arXiv preprint arXiv:2007.03528 (2020).
+FormalConjectures/GreensOpenProblems/9.lean:34:non-trivial $k$-term arithmetic progressions.
+FormalConjectures/GreensOpenProblems/37.lean:23:an arithmetic progression of length `k` with common difference `d`?
+FormalConjectures/GreensOpenProblems/37.lean:27:- [Green & Tao, *The primes contain arbitrarily long arithmetic progressions* (arXiv:math/0404188)](https://arxiv.org/abs/math/0404188)
+FormalConjectures/GreensOpenProblems/37.lean:35:/-- `A` contains an arithmetic progression of length `k` and common difference `d` for every `d ∈ {1, …, N}`. -/
+FormalConjectures/GreensOpenProblems/37.lean:39:an arithmetic progression of length `k` with common difference `d`. -/
+FormalConjectures/GreensOpenProblems/37.lean:45:an arithmetic progression of length `k` with common difference `d`.
+ai-review/140.md:38:The website mentions that "the original sources (ErGr80, Er81) conjecture this result generalizes to k-term arithmetic progressions for all k" and links to Problem 3 for related context.
+ai-review/278.md:27:Both references match the website. The Simpson reference in the formalization is: *"Simpson, R. J., Exact coverings of the integers by arithmetic progressions. Discrete Mathematics 59 (1986), 181–190."* This is consistent with what the website attributes to Simpson.
+ai-review/190.md:58:**Ambiguity assessment: Low.** The one potential ambiguity is what "rainbow arithmetic progression" means:
+ai-review/190.md:61:- The original problem statement says "a rainbow arithmetic progression" without specifying the length.
+ai-review/525.md:5:[Omitted long matching line]
+ai-review/456.md:74:- **"smallest prime ≡ 1 (mod n)"** — unambiguous, directly captured by `sInf` over primes satisfying the congruence. By Dirichlet's theorem on primes in arithmetic progressions, the set is nonempty for all n ≥ 1, so `sInf` is well-defined. For n = 0, the set is empty (no prime p satisfies p ≡ 1 [MOD 0], i.e., 0 ∣ (p−1)), so `sInf` returns 0, which is harmless since n = 0 is excluded from the density computation (Finset.Icc 1 x).
+ai-review/177.md:56:The problem as stated on erdosproblems.com is precise: it asks for the smallest function h(d) bounding the discrepancy of a ±1 coloring over all APs of common difference d. All objects involved (arithmetic progressions, ±1 colorings, discrepancy as an absolute value of partial sums) have unambiguous mathematical definitions.
+ai-review/343.md:57:> If a multiset of positive integers has positive lower density, must its set of finite subset sums contain an infinite arithmetic progression?
+ai-review/343.md:63:- "Subset sums contain an infinite arithmetic progression" → `ContainsInfiniteAP (subsetSums mult)`. Unambiguous.
+ai-review/343.md:110:This is a standard and correct definition of "S contains an infinite arithmetic progression." The requirement `0 < d` excludes trivial constant progressions. ✅
+ai-review/664.md:5:No significant code from `FormalConjecturesForMathlib` is directly applicable. The formalization relies only on basic `Finset` operations (`card`, `∩`, `Nonempty`), `Fin n` as the universe type, and `Real.sqrt` — all from Mathlib. The existing library infrastructure (arithmetic progressions, Sidon sets, density, etc.) does not overlap with this problem's domain of transversals of near-sunflower families.
+ai-review/453.md:26:- [Po79] with the description: `Pomerance, C., _A note on the least prime in an arithmetic progression_.`
+ai-review/453.md:29:1. The citation title appears incorrect. Pomerance's 1979 paper relevant to this problem is likely *"The prime number graph"* (Journal of the London Mathematical Society, 1979), which uses convex hull arguments on the prime number graph. The title *"A note on the least prime in an arithmetic progression"* is a different Pomerance paper and does not match this problem's content.
+ai-review/453.md:32:**Recommendation:** Verify and correct the [Po79] citation title. The convex hull proof technique described on the website matches *"The prime number graph"* rather than a paper about primes in arithmetic progressions.
+ai-review/272.md:5:The codebase provides `Set.IsAPOfLengthWith` and `Set.IsAPOfLength` in `FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean`, which define arithmetic progressions on `Set α` using `ENat.card` and `ℕ∞` lengths. Problem 272 defines its own `IsNonEmptyFiniteAP` on `Finset ℕ`.
+ai-review/272.md:58:The conjecture $t = N^2/2 + O(N)$ is a precise asymptotic statement. The formalization correctly unpacks the big-$O$ notation into explicit upper and lower bounds with a universal constant $C > 0$. The notions involved (finite subsets, intersection, arithmetic progression) are all well-defined and standard.
+ai-review/272.md:60:The only potential ambiguity is in the definition of "arithmetic progression" — specifically whether singletons count. The formalization allows singletons (any set $\{a\}$ is a trivial AP with $d = 0$), which is the standard convention. The `Nonempty` requirement correctly excludes the empty set.
+ai-review/187.md:103:The original problem statement is: *"Find the best function f(d) such that, in any 2-colouring of the integers, at least one colour class contains an arithmetic progression with common difference d of length f(d) for infinitely many d."*
+ai-review/179.md:5:The codebase has a well-developed arithmetic progression library at `FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean` with definitions including:
+ai-review/179.md:25:- **Possibly incorrect paper title.** The Fox–Pohoata result establishing $F_k(N,\ell) = N^{2-o(1)}$ is from their work on arithmetic progressions, not subset sums. The paper "Subset sums, completeness and colorings" (Advances in Mathematics, 2020) is a different paper by the same authors that deals with sumset completeness. The relevant paper for this problem may be a different Fox–Pohoata publication. This should be verified against the erdosproblems.com reference list.
+ai-review/71.md:55:> "Is it true that for every infinite arithmetic progression $P$ which contains even numbers there is some constant $c = c(P)$ such that every graph with average degree at least $c$ contains a cycle whose length is in $P$?"
+ai-review/71.md:58:- "Infinite arithmetic progression" → parametrized by $a, d$ with $d \geq 1$
+ai-review/192.md:54:The only potential source of ambiguity is the geometric formulation (sequences in ℝ^d with unit-vector steps), but the formalization wisely focuses on the equivalent combinatorial formulation, which is simpler and avoids the need to define unit vectors and arithmetic progressions in ℝ^d.
+ai-review/459.md:19:No other definitions from `FormalConjecturesForMathlib` appear directly applicable—the problem is about prime factorization structure rather than arithmetic progressions, Ramsey theory, or additive combinatorics.
+ai-review/72.md:42:| Bollobás 1977 | Mentioned in docstring but not formally cited | [Bo77] | **Missing citation.** The docstring says "Bollobás proved such a constant exists when A is an infinite arithmetic progression" but does not provide a full reference. |
+ai-review/72.md:72:Problem 71 (Bollobás's theorem) is a special case: for every infinite arithmetic progression containing even numbers, there exists such a c. The docstring alludes to this but doesn't cross-reference Problem 71. A note linking the two would improve context.
+ai-review/344.md:18:  This should be extracted to a shared utility. The `FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean` file already defines various AP predicates (`Set.IsAPOfLength`, `Set.ContainsAP`, etc.) but does not appear to have an exact match for "contains an infinite arithmetic progression as a subset." A shared definition would benefit problems 343, 344, and potentially others.
+ai-review/344.md:26:- **[SzVu06]**: Szemerédi, E. and Vu, V.H., *Finite and infinite arithmetic progressions in sumsets*. Annals of Mathematics (2006). — **Matches the website.**
+ai-review/344.md:65:The original problem uses asymptotic notation (`≫`), which the formalization correctly unpacks into explicit quantifiers: `∃ N₀, ∀ N ≥ N₀, c√N ≤ |A ∩ [1,N]|`. The notions of "subset sums" and "infinite arithmetic progression" are standard and unambiguous.
+ai-review/199.md:51:- "3-term arithmetic progression" has a standard meaning: three distinct equally-spaced real numbers `a, a+d, a+2d` with `d ≠ 0`.
+ai-review/199.md:52:- "Infinite arithmetic progression" standardly means a one-sided sequence `{a + nd : n ∈ ℕ}` with `d ≠ 0`.
+ai-review/362.md:5:No directly reusable code exists in `FormalConjecturesForMathlib/` for this problem. The problem concerns counting subsets with a given sum, which is distinct from the combinatorics utilities available (arithmetic progressions, Ramsey theory, Sidon sets, sum-free sets, etc.).
+FormalConjectures/ErdosProblems/196.lean:26:/-- Must every permutation of $\mathbb{N}$, contain a monotone 4-term arithmetic progression?-/
+FormalConjectures/ErdosProblems/199.lean:24:If $A \subset \mathbb{R}$ does not contain a 3-term arithmetic progression then must
+FormalConjectures/ErdosProblems/199.lean:25:$\mathbb{R} \setminus A$ contain an infinite arithmetic progression?
+FormalConjectures/ErdosProblems/199.lean:41:/-- A set $A \subseteq \mathbb{R}$ contains a 3-term arithmetic progression if there exist
+FormalConjectures/ErdosProblems/199.lean:46:/-- A set $S \subseteq \mathbb{R}$ contains an infinite arithmetic progression if there exist
+FormalConjectures/ErdosProblems/199.lean:54:If $A \subset \mathbb{R}$ does not contain a 3-term arithmetic progression, must
+FormalConjectures/ErdosProblems/199.lean:55:$\mathbb{R} \setminus A$ contain an infinite arithmetic progression?
+FormalConjectures/ErdosProblems/190.lean:26:arithmetic progression or a rainbow arithmetic progression (i.e. all
+FormalConjectures/ErdosProblems/190.lean:66:$k$-term arithmetic progression or a rainbow arithmetic progression?
+FormalConjectures/ErdosProblems/984.lean:25:monochromatic arithmetic progression then $k \ll_\varepsilon a^\varepsilon$ for all
+FormalConjectures/ErdosProblems/984.lean:40:/-- An arithmetic progression $\{a, a+d, \ldots, a+(k-1)d\}$ is monochromatic under
+FormalConjectures/ErdosProblems/984.lean:49:constant $C > 0$ such that every $k$-term monochromatic arithmetic progression
+FormalConjectures/ErdosProblems/453.lean:32:[Po79] Pomerance, C., _A note on the least prime in an arithmetic progression_.
+FormalConjectures/ErdosProblems/201.lean:27:$\{1,\ldots,N\}$ without a $k$-term arithmetic progression.
+FormalConjectures/ErdosProblems/201.lean:54:A finset of integers contains a $k$-term arithmetic progression if there
+FormalConjectures/ErdosProblems/200.lean:30:The length of the longest arithmetic progression of primes in $\{1,\ldots,n\}$.
+FormalConjectures/ErdosProblems/200.lean:36:Does the longest arithmetic progression of primes in $\{1,\ldots,N\}$ have length $o(\log N)$?
+FormalConjectures/ErdosProblems/177.lean:29:where $P_d$ ranges over all finite arithmetic progressions with common difference $d$.
+FormalConjectures/ErdosProblems/177.lean:49:any finite arithmetic progression with common difference $d$ is at most $h(d)$.
+FormalConjectures/ErdosProblems/177.lean:75:$d \geq 1$ and every finite arithmetic progression of common difference $d$ with $k$ terms,
+FormalConjectures/ErdosProblems/185.lean:28:size of a subset of $\{1,\ldots,3^n\}$ without a three-term arithmetic progression.
+FormalConjectures/ErdosProblems/937.lean:24:Are there infinitely many four-term arithmetic progressions of coprime powerful
+FormalConjectures/ErdosProblems/937.lean:43:There are infinitely many four-term arithmetic progressions of pairwise coprime
+FormalConjectures/ErdosProblems/343.lean:23:That is, must its set of finite subset sums contain an infinite arithmetic progression?
+FormalConjectures/ErdosProblems/343.lean:31:[SzVu06] Szemerédi, E. and Vu, V.H., *Finite and infinite arithmetic progressions in sumsets*.
+FormalConjectures/ErdosProblems/343.lean:50:/-- A set of natural numbers contains an infinite arithmetic progression
+FormalConjectures/ErdosProblems/343.lean:61:contain an infinite arithmetic progression?
+FormalConjectures/ErdosProblems/169.lean:23:integers containing no $k$-term arithmetic progression. Is
+FormalConjectures/ErdosProblems/169.lean:40:a monochromatic $k$-term arithmetic progression. -/
+FormalConjectures/ErdosProblems/169.lean:58:positive integers containing no $k$-term arithmetic progression.
+FormalConjectures/ErdosProblems/84.lean:41:[Ve04] Verstraëte, J., _On arithmetic progressions of cycle lengths in graphs_.
+FormalConjectures/ErdosProblems/966.lean:25:arithmetic progression of length $k + 1$, yet in any $r$-colouring of $A$ there
+FormalConjectures/ErdosProblems/966.lean:26:must exist a monochromatic non-trivial arithmetic progression of length $k$?
+FormalConjectures/ErdosProblems/966.lean:38:$(k+1)$-term arithmetic progression, yet every $r$-colouring of $A$ contains
+FormalConjectures/ErdosProblems/966.lean:39:a monochromatic $k$-term arithmetic progression.
+FormalConjectures/ErdosProblems/1114.lean:25:zeros of the derivative of a polynomial with roots in arithmetic progression.
+FormalConjectures/ErdosProblems/1114.lean:37:form an arithmetic progression: $a, a+d, a+2d, \ldots, a+nd$ for some $a \in \mathbb{R}$, $d > 0$.
+FormalConjectures/ErdosProblems/1114.lean:43:endpoints. By symmetry of the arithmetic progression, the zeros of $f'$ are
+FormalConjectures/ErdosProblems/271.lean:23:arithmetic progressions. The Odlyzko–Stanley conjecture asserts a dichotomy on their growth rates:
+FormalConjectures/ErdosProblems/271.lean:54:contains no three-term arithmetic progression.
+FormalConjectures/ErdosProblems/71.lean:24:For every infinite arithmetic progression containing even numbers, there exists $c > 0$
+FormalConjectures/ErdosProblems/71.lean:37:For every infinite arithmetic progression $P = \{a, a+d, a+2d, \ldots\}$ (with $d \geq 1$)
+FormalConjectures/ErdosProblems/198.lean:34:every infinite arithmetic progression in $V$ but $X_k$ intersects every
+FormalConjectures/ErdosProblems/198.lean:35:$k$-element arithmetic progression in at most two points.
+FormalConjectures/ErdosProblems/198.lean:59:Let $P_1,P_2,\ldots$ be an enumeration of all countably many infinite arithmetic progressions. We
+FormalConjectures/ErdosProblems/198.lean:62:contains at least one element from every infinite arithmetic progression, and is a lacunary set, so
+FormalConjectures/ErdosProblems/198.lean:66:Sidon set, and intersects every arithmetic progression, since for any $a,d\in \mathbb{N}$,
+FormalConjectures/ErdosProblems/141.lean:24:- [Wikipedia](https://en.wikipedia.org/wiki/Primes_in_arithmetic_progression#Consecutive_primes_in_arithmetic_progression)
+FormalConjectures/ErdosProblems/141.lean:51:The predicate that a set `s` is both an arithmetic progression of length `l` and a progression
+FormalConjectures/ErdosProblems/141.lean:58:There are 3 consecutive primes in arithmetic progression.
+FormalConjectures/ErdosProblems/141.lean:72:Let $k≥3$. Are there $k$ consecutive primes in arithmetic progression?
+FormalConjectures/ErdosProblems/141.lean:88:Are there $11$ consecutive primes in arithmetic progression?
+FormalConjectures/ErdosProblems/141.lean:96:The set of arithmetic progressions of consecutive primes of length $k$.
+FormalConjectures/ErdosProblems/141.lean:110:Fix a $k \geq 3$. Is it true that there are infinitely many arithmetic prime progressions of length $k$?
+FormalConjectures/ErdosProblems/3.lean:29:long arithmetic progressions?
+FormalConjectures/ErdosProblems/275.lean:24:- [CrVE70] R.B. Crittenden and C.L. Vanden Eynden, *Any n arithmetic progressions covering the first
+FormalConjectures/ErdosProblems/197.lean:31:3-term arithmetic progressions?
+FormalConjectures/ErdosProblems/219.lean:28:The set of arithmetic progressions of primes
+FormalConjectures/ErdosProblems/219.lean:71:Are there arbitrarily long arithmetic progressions of primes?
+FormalConjectures/ErdosProblems/219.lean:73:Ref: Green, Ben and Tao, Terence, _The primes contain arbitrarily long arithmetic progressions_
+FormalConjectures/ErdosProblems/882.lean:38:arithmetic progressions, subset sums and divisibility_, 1999.
+FormalConjectures/ErdosProblems/194.lean:30:Let $k\geq 3$. Must any ordering of $\mathbb{R}$ contain a monotone $k$-term arithmetic progression,
+FormalConjectures/ErdosProblems/139.lean:35:$k$-term arithmetic progression. Prove that $r_k(N) = o(N)$.
+FormalConjectures/ErdosProblems/721.lean:43:An arithmetic progression of length $j$ with first term $a$ and common
+FormalConjectures/ErdosProblems/721.lean:52:$j$-term arithmetic progression in color $c$.
+FormalConjectures/ErdosProblems/179.lean:23:arithmetic progressions that an $N$-element subset of $\mathbb{N}$ must contain in order to
+FormalConjectures/ErdosProblems/179.lean:24:guarantee an $\ell$-term arithmetic progression. The problem asks whether
+FormalConjectures/ErdosProblems/179.lean:37:A finite set of natural numbers contains a $k$-term arithmetic progression
+FormalConjectures/ErdosProblems/179.lean:45:The number of $k$-term arithmetic progressions in $A$, counted as pairs $(a, d)$
+FormalConjectures/ErdosProblems/179.lean:57:$k$-term arithmetic progressions that an $N$-element set $A \subseteq \mathbb{N}$ must contain to
+FormalConjectures/ErdosProblems/179.lean:58:guarantee an $\ell$-term arithmetic progression. Is it true that $F_3(N, 4) = o(N^2)$?
+FormalConjectures/ErdosProblems/179.lean:75:progressions but no $\ell$-term arithmetic progression.
+FormalConjectures/ErdosProblems/176.lean:25:there must exist a $k$-term arithmetic progression $P$ such that
+FormalConjectures/ErdosProblems/176.lean:47:/-- The arithmetic progression discrepancy number $N(k, \ell)$: the minimal $N$ such
+FormalConjectures/ErdosProblems/160.lean:29:so that every four-term arithmetic progression must contain at least three distinct colours.
+FormalConjectures/ErdosProblems/817.lean:34:contains no non-trivial $k$-term arithmetic progression. -/
+FormalConjectures/ErdosProblems/817.lean:44:contains no non-trivial $k$-term arithmetic progression. Estimate $g_k(n)$. In
+FormalConjectures/ErdosProblems/187.lean:25:at least one colour class contains an arithmetic progression with common
+FormalConjectures/ErdosProblems/187.lean:53:/-- A 2-colouring $\chi : \mathbb{Z} \to \text{Bool}$ has a monochromatic arithmetic progression of
+FormalConjectures/ErdosProblems/187.lean:64:has a monochromatic arithmetic progression with common difference $d$ and
+FormalConjectures/ErdosProblems/192.lean:26:$d$ must $A$ contain a three-term arithmetic progression?
+FormalConjectures/ErdosProblems/192.lean:56:contain a three-term arithmetic progression.
+FormalConjectures/ErdosProblems/192.lean:69:that contains no three-term arithmetic progression.
+FormalConjectures/ErdosProblems/142.lean:34:of $\{1, \dots, N\}$ that does not contain any non-trivial $k$-term arithmetic progression.
+FormalConjectures/ErdosProblems/142.lean:42:of $\{1, \dots, N\}$ that does not contain any non-trivial $k$-term arithmetic progression.
+FormalConjectures/ErdosProblems/142.lean:52:subset of $\{1, \dots, N\}$ that does not contain any non-trivial $k$-term arithmetic progression.
+FormalConjectures/ErdosProblems/142.lean:64:of $\{1, \dots, N\}$ that does not contain any non-trivial $3$-term arithmetic progression.
+FormalConjectures/ErdosProblems/131.lean:39:arithmetic progressions, subset sums and divisibility*, 1999.
+FormalConjectures/ErdosProblems/195.lean:26:- [Ge19] Geneson, Jesse, Forbidden arithmetic progressions in permutations of subsets of the
+FormalConjectures/ErdosProblems/195.lean:34:monotone $k$-term arithmetic progression $x_1 < \cdots < x_k$?
+FormalConjectures/ErdosProblems/140.lean:25:non-trivial $3$-term arithmetic progression. Is it true that $r_3(N) \ll N / (\log N)^C$ for
+FormalConjectures/ErdosProblems/140.lean:43:arithmetic progression: for all $a, b, c \in S$ satisfying $a + c = 2b$,
+FormalConjectures/ErdosProblems/140.lean:58:non-trivial $3$-term arithmetic progression. Then $r_3(N) \ll N / (\log N)^C$
+FormalConjectures/ErdosProblems/16.lean:25:contains an infinite arithmetic progression, and asked whether this set is the union of an
+FormalConjectures/ErdosProblems/16.lean:35:infinite arithmetic progression and a density-zero set_ (2023).
+FormalConjectures/ErdosProblems/16.lean:58:A set $AP \subseteq \mathbb{N}$ is an infinite arithmetic progression if there exist $a, d \in \mathbb{N}$
+FormalConjectures/ErdosProblems/16.lean:66:is **not** the union of an infinite arithmetic progression and a set of natural density zero.
+FormalConjectures/ErdosProblems/16.lean:70:congruences, Erdős [Er50] showed this set contains an infinite arithmetic progression.
+FormalConjectures/ErdosProblems/253.lean:30:arithmetic progression contains infinitely many integers that are the sum of distinct $a_i$s. -/
+FormalConjectures/ErdosProblems/253.lean:37:$\frac{a_{i+1}}{a_i} \to 1$. If every arithmetic progression contains infinitely many
+FormalConjectures/ErdosProblems/188.lean:34:points unit distance apart, and no $k$-term arithmetic progression of blue points with distance 1.
+FormalConjectures/ErdosProblems/188.lean:42:points unit distance apart, and no $k$-term arithmetic progression of blue points with distance 1?
+FormalConjectures/ErdosProblems/1097.lean:29:is a non-trivial three-term arithmetic progression `a, b, c ∈ A` with
+FormalConjectures/ErdosProblems/1097.lean:37:common differences in three-term arithmetic progressions is $O(n^{3/2})$.
+FormalConjectures/ErdosProblems/1097.lean:54:distinct common differences of three-term arithmetic progressions.
+FormalConjectures/ErdosProblems/138.lean:25:- [Be68] Berlekamp, E. R., A construction for partitions which avoid long arithmetic progressions. Canad. Math. Bull. (1968), 409-414.
+FormalConjectures/ErdosProblems/138.lean:36:The set of natural numbers that guarantee a monochromatic arithmetic progression.
+FormalConjectures/ErdosProblems/138.lean:40:monochromatic arithmetic progression of length `k`.
+FormalConjectures/ErdosProblems/138.lean:47:always exists some number `N` large enough to guarantee a monochromatic arithmetic progression.
+FormalConjectures/ErdosProblems/138.lean:57:`{1, ..., N}` is guaranteed to contain a monochromatic arithmetic progression of
+FormalConjectures/ErdosProblems/138.lean:65:must contain a monochromatic arithmetic progression of length `k`.
+FormalConjectures/ErdosProblems/272.lean:38:A finset of natural numbers is a non-empty finite arithmetic progression if it is
+FormalConjectures/ErdosProblems/847.lean:32:three-term arithmetic progression.
+FormalConjectures/ErdosProblems/847.lean:40:three-term arithmetic progression.
+FormalConjectures/ErdosProblems/847.lean:47:a three-term arithmetic progression, and yet every subset of $A$ of size $n$ contains a subset of
+FormalConjectures/ErdosProblems/847.lean:48:size $\geq \mu n$ without a three-term arithmetic progression.
+FormalConjectures/ErdosProblems/278.lean:40:[Si86] Simpson, R. J., *Exact coverings of the integers by arithmetic progressions*.
+ai-review/658.md:5:[Omitted long matching line]
+FormalConjectures/ErdosProblems/218.lean:45:at $n+1$. This is equivalent to the existence of infinitely many arithmetic progressions of
+FormalConjectures/ErdosProblems/168.lean:30:3-term arithmetic progression of the form `n, 2n, 3n`. -/
+FormalConjectures/ErdosProblems/318.lean:114:/-- Every infinite arithmetic progression has property `P₁`. This is proved in [Sa82b]. -/
+FormalConjectures/ErdosProblems/672.lean:33:Can the product of an arithmetic progression of positive integers $n, n + d, ..., n + (k - 1)d$
+FormalConjectures/ErdosProblems/344.lean:27:[SzVu06] Szemerédi, E. and Vu, V.H., *Finite and infinite arithmetic progressions in sumsets*.
+FormalConjectures/ErdosProblems/344.lean:40:/-- A set of natural numbers contains an infinite arithmetic progression:
+FormalConjectures/ErdosProblems/344.lean:51:$P(A)$ of all finite subset sums of $A$ contains an infinite arithmetic progression.
+FormalConjectures/ErdosProblems/645.lean:24:- [BrLa99] Brown, Tom C. and Landman, Bruce M., Monochromatic arithmetic progressions with large
+FormalConjectures/ErdosProblems/645.lean:32:If ℕ is $2$-coloured then there must exist a monochromatic three-term arithmetic progression
+FormalConjectures/ErdosProblems/782.lean:25:the squares do not contain arithmetic progressions of length 4. An affirmative

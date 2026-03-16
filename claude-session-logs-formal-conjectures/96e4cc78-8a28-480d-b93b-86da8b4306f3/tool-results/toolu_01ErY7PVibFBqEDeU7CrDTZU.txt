@@ -1,0 +1,333 @@
+FormalConjectures/Paper/Kurepa.lean-59-theorem kurepa_conjecture.prime_reduction : (∀ n, 2 < n → (!n : ℕ) % n ≠ 0)
+FormalConjectures/Paper/Kurepa.lean-60-    ↔ (∀ p, 2 < p → p.Prime → (!p : ℕ) % p ≠ 0) := by
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-61-  refine ⟨fun h p hp hp_prime ↦ h p hp, fun h n hn h_mod ↦ ?_⟩
+FormalConjectures/Paper/Kurepa.lean:62:  have : n.primeFactorsList.prod ≠ n := by
+FormalConjectures/Paper/Kurepa.lean:63:    have (p : ℕ) (h_mem : p ∈ n.primeFactorsList) : p = 2 := by
+FormalConjectures/Paper/Kurepa.lean:64:      have hp : p.Prime := prime_of_mem_primeFactorsList h_mem
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-65-      refine hp.eq_two_or_odd.resolve_right fun _ ↦ ?_
+FormalConjectures/Paper/Kurepa.lean-66-      have : p ∣ ∑ a ∈ range n, (a)! := .trans (by simp)
+FormalConjectures/Paper/Kurepa.lean:67:        (dvd_of_mem_primeFactorsList h_mem |>.trans (dvd_of_mod_eq_zero h_mod))
+FormalConjectures/Paper/Kurepa.lean-68-      have hxp : range p ⊆ range n := by
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-69-        simp only [range_subset_range]
+FormalConjectures/Paper/Kurepa.lean:70:        exact le_of_mem_primeFactorsList h_mem
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-71-      rw [← CharP.cast_eq_zero_iff (ZMod p), cast_sum,
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-72-        ← sum_subset hxp (fun _ _ _ ↦ CharP.cast_eq_zero_iff _ p _ |>.2 <|
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-73-        hp.dvd_factorial.2 <| by aesop), ← cast_sum, CharP.cast_eq_zero_iff _ p] at this
+--
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-81-    | S + 4 =>
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-82-      simp +decide [left_factorial, mod_eq_zero_of_dvd ∘ Nat.dvd_factorial _,
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-83-        dvd_iff_mod_eq_zero,Nat.add_mod, Finset.sum_nat_mod, Finset.sum_range_succ'] at this
+FormalConjectures/Paper/Kurepa.lean:84:  exact this <| prod_primeFactorsList hn.ne_bot
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-86-/--
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-87-An equivalent formulation in terms of the gcd of $n!$ and $!n$.
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean-24-Takes the junk value `0` for `n = 0` and `n = 1`.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean-25-
+FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean-26-TODO Consider redefining this using the computable implementation:
+FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean:27:`n.primeFactorsList.getLastI`. -/
+FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean-28-noncomputable def maxPrimeFac (n : ℕ) : ℕ := sSup {p : ℕ | p.Prime ∧ p ∣ n}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean-29-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean-30-@[simp]
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-89--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-90-@[category research solved, AMS 11]
+FormalConjectures/Wikipedia/PerfectNumbers.lean-91-theorem odd_perfect_number.lower_bound (n : ℕ) (hn : Odd n) (hp : Perfect n) :
+FormalConjectures/Wikipedia/PerfectNumbers.lean:92:    n > 10^1500 ∧ (n.primeFactorsList).length ≥ 101 := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-93-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-94-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-95-/--
+--
+/home/ryan/formal-conjectures/ai-review/369.md-4-
+ai-review/369.md-5-The file defines a local `IsSmooth (y : ℝ) (m : ℕ)` predicate. Multiple other Erdős problems define nearly identical predicates:
+/home/ryan/formal-conjectures/ai-review/369.md-6-
+ai-review/369.md:7:- **Problem 334** (`334.lean:37`): `def IsSmooth (B n : ℕ) : Prop := ∀ p ∈ n.primeFactorsList, p ≤ B` — ℕ-valued bound, uses `primeFactorsList`.
+ai-review/369.md-8-- **Problem 929** (`929.lean:34`): `def IsSmooth (x m : ℕ) : Prop := ∀ p ∈ m.primeFactors, p ≤ x` — ℕ-valued bound, uses `primeFactors` (Finset).
+ai-review/369.md-9-- **Problem 928** (`928.lean:59`): defines `largestPrimeFactor` then compares against a real-valued threshold, achieving the same effect differently.
+/home/ryan/formal-conjectures/ai-review/369.md-10-
+--
+ai-review/369.md-86-**Smoothness condition `∀ j : ℕ, j < k → IsSmooth ((n : ℝ) ^ ε) (a + j)`:**
+/home/ryan/formal-conjectures/ai-review/369.md-87-- Checks all k elements a, a+1, ..., a+k-1. ✅
+ai-review/369.md-88-- The smoothness bound is `(n : ℝ) ^ ε`, which is exactly n^ε as a real number. ✅
+ai-review/369.md:89:- `IsSmooth` checks `∀ p ∈ m.primeFactorsList, (p : ℝ) ≤ y`, comparing prime factors (cast to ℝ) against the real bound. ✅
+/home/ryan/formal-conjectures/ai-review/369.md-90-
+ai-review/369.md-91-**Edge cases:**
+ai-review/369.md-92-- For n = 0 or n = 1: since we require n ≥ N for sufficiently large N, these are excluded. ✅
+ai-review/369.md:93:- For a = 0 or a = 1: since a ≥ ⌊n/2⌋ and n is sufficiently large, a ≥ 2. `primeFactorsList` returns [] for 0 and 1 (vacuously smooth), but this case cannot arise. ✅
+/home/ryan/formal-conjectures/ai-review/369.md-94-- `n ^ ε` for ε ∈ (0, 1) and large n gives a bound that grows subpolynomially relative to n. The smoothness condition is meaningful. ✅
+/home/ryan/formal-conjectures/ai-review/369.md-95-- There is no upper bound on ε, so ε ≥ 1 is allowed. For ε ≥ 1, n^ε ≥ n, so every number ≤ n is trivially n^ε-smooth. The statement remains true (and trivially so) for large ε. This is not a flaw — the interesting case is small ε. ✅
+/home/ryan/formal-conjectures/ai-review/369.md-96-
+--
+/home/ryan/formal-conjectures/ai-review/452.md-2-
+/home/ryan/formal-conjectures/ai-review/452.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/452.md-4-
+ai-review/452.md:5:The `omega` definition at line 44 uses `(Nat.primeFactorsList n).toFinset.card`, which is identical to the definition in `ErdosProblems/679.lean:34`. However, `ErdosProblems/685.lean:38` provides a simpler, **computable** alternative:
+/home/ryan/formal-conjectures/ai-review/452.md-6-
+/home/ryan/formal-conjectures/ai-review/452.md-7-```lean
+ai-review/452.md-8-def omega (n : ℕ) : ℕ := n.primeFactors.card
+/home/ryan/formal-conjectures/ai-review/452.md-9-```
+/home/ryan/formal-conjectures/ai-review/452.md-10-
+ai-review/452.md:11:Since `Nat.primeFactors` already returns a `Finset ℕ`, the roundtrip through `primeFactorsList` → `toFinset` is unnecessary and forces the definition to be `noncomputable`. The 685-style definition is preferable. Ideally, a single shared `omega` definition would live in a utility file (e.g., `FormalConjecturesForMathlib/Data/Nat/`) and be reused across problems 452, 679, and 685.
+/home/ryan/formal-conjectures/ai-review/452.md-12-
+ai-review/452.md-13-**Recommendation:** Replace the `omega` definition with `n.primeFactors.card` and drop `noncomputable`.
+/home/ryan/formal-conjectures/ai-review/452.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/451.md-6-
+ai-review/451.md-7-**Growth rate pattern:** Problem 721 uses an identical superpolynomial/subexponential pattern: `∀ d, 0 < d → ∃ K₀, ∀ k ≥ K₀, (k : ℝ)^d < f k` and the analogous exponential upper bound. The pattern is duplicated but is simple enough that extracting a shared definition would be over-engineering.
+/home/ryan/formal-conjectures/ai-review/451.md-8-
+ai-review/451.md:9:**Prime factor infrastructure:** `FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean` provides `maxPrimeFac` and related lemmas. Problem 367 uses `n.factorization.support.filter` for prime factor analysis. Problem 452 uses `Nat.primeFactorsList`. None of these directly simplify the current `noInteriorPrimeFactor` definition, which is already clean.
+/home/ryan/formal-conjectures/ai-review/451.md-10-
+ai-review/451.md-11-**Verdict:** No significant reuse opportunities. The code is appropriately self-contained.
+/home/ryan/formal-conjectures/ai-review/451.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/334.md-10-
+/home/ryan/formal-conjectures/ai-review/334.md-11-| File | Definition | Bound type | Collection |
+/home/ryan/formal-conjectures/ai-review/334.md-12-|------|-----------|------------|------------|
+ai-review/334.md:13:| `334.lean` | `IsSmooth (B n : ℕ)` | `ℕ` | `primeFactorsList` |
+ai-review/334.md-14-| `929.lean` | `IsSmooth (x m : ℕ)` | `ℕ` | `primeFactors` |
+ai-review/334.md:15:| `369.lean` | `IsSmooth (y : ℝ) (m : ℕ)` | `ℝ` | `primeFactorsList` |
+ai-review/334.md-16-| `983.lean` | `IsSmoothWrt (a : ℕ) (P : Finset ℕ)` | Finset | — |
+/home/ryan/formal-conjectures/ai-review/334.md-17-
+ai-review/334.md-18-Additionally, `FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean` defines `Nat.maxPrimeFac` (the greatest prime divisor), which provides an equivalent characterization: `n` is `B`-smooth iff `maxPrimeFac n ≤ B` (for `n > 1`). A shared definition in `FormalConjecturesForMathlib` could unify all of these.
+/home/ryan/formal-conjectures/ai-review/334.md-19-
+ai-review/334.md-20-**Recommendation:** Extract a canonical `Nat.IsSmooth` definition into `FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean` (or a new file) and prove the equivalence with `maxPrimeFac`. The `ℝ`-bound variant in 369 can be a thin wrapper. This would eliminate four redundant definitions.
+/home/ryan/formal-conjectures/ai-review/334.md-21-
+ai-review/334.md:22:There is also a minor inconsistency: Problem 334 uses `primeFactorsList` (a `List`) while Problem 929 uses `primeFactors` (a `Finset`). These are equivalent for membership predicates (`p ∈ n.primeFactorsList ↔ p ∈ n.primeFactors`), but using `primeFactors` (the finset) is generally preferred in Mathlib-style code.
+/home/ryan/formal-conjectures/ai-review/334.md-23-
+/home/ryan/formal-conjectures/ai-review/334.md-24----
+/home/ryan/formal-conjectures/ai-review/334.md-25-
+--
+ai-review/334.md-106-### Definition: `IsSmooth`
+/home/ryan/formal-conjectures/ai-review/334.md-107-
+/home/ryan/formal-conjectures/ai-review/334.md-108-```lean
+ai-review/334.md:109:def IsSmooth (B n : ℕ) : Prop := ∀ p ∈ n.primeFactorsList, p ≤ B
+/home/ryan/formal-conjectures/ai-review/334.md-110-```
+/home/ryan/formal-conjectures/ai-review/334.md-111-
+ai-review/334.md:112:- For `n = 0`: `Nat.primeFactorsList 0 = []`, so `IsSmooth B 0` is vacuously true for all `B`. This means 0 is considered $B$-smooth for any $B$, which is a reasonable convention (0 has no prime factors to violate the bound).
+ai-review/334.md:113:- For `n = 1`: `Nat.primeFactorsList 1 = []`, so 1 is also vacuously smooth. Correct — 1 is smooth by standard convention.
+ai-review/334.md-114-- For prime `p` and `n = p`: `IsSmooth B p ↔ p ≤ B`. Correct.
+/home/ryan/formal-conjectures/ai-review/334.md-115-
+/home/ryan/formal-conjectures/ai-review/334.md-116-The definition is mathematically sound.
+--
+ai-review/122.md-15-∀ ε > 0, Set.HasDensity {n : ℕ | ε ≤ (f n : ℝ) / F n} 0
+/home/ryan/formal-conjectures/ai-review/122.md-16-```
+/home/ryan/formal-conjectures/ai-review/122.md-17-
+ai-review/122.md:18:**`Nat.primeFactorsList` can be simplified.** The expression `(Nat.primeFactorsList n).toFinset.card` is equivalent to `n.primeFactors.card` in modern Mathlib. The latter is more idiomatic and readable.
+/home/ryan/formal-conjectures/ai-review/122.md-19-
+/home/ryan/formal-conjectures/ai-review/122.md-20-**No existing shared utility for `shiftCount`.** Problem 237 defines a similar `countRepresentations` but with different semantics. The `shiftCount` definition is problem-specific and does not have a reusable counterpart.
+/home/ryan/formal-conjectures/ai-review/122.md-21-
+--
+/home/ryan/formal-conjectures/ai-review/122.md-55-
+ai-review/122.md-56-- **Good**: Definitions are broken into well-named components (`shiftCount`, `HasNaturalDensityZero`, `AlmostAllRatioVanishes`, `HasErdos122Property`) with clear docstrings.
+ai-review/122.md-57-- **Good**: The docstring for the main theorem clearly explains the mathematical context, known results, and open status.
+ai-review/122.md:58:- **Minor improvement**: `(Nat.primeFactorsList n).toFinset.card` → `n.primeFactors.card` would be more concise.
+ai-review/122.md-59-- **Minor improvement**: The `shiftCount` docstring says "it suffices to search n in the range [0, x + ⌈F(x)⌉]" which is correct but the code uses `Finset.range (x + ⌈F x⌉₊ + 1)`, i.e., [0, x + ⌈F(x)⌉₊]. The `+ 1` is because `Finset.range` is exclusive. This is correct but could be noted more explicitly.
+/home/ryan/formal-conjectures/ai-review/122.md-60-
+/home/ryan/formal-conjectures/ai-review/122.md-61-## 5. Formalizability
+--
+ai-review/122.md-84-- **`HasNaturalDensityZero`**: Standard formulation of density-zero sets.
+ai-review/122.md-85-- **`AlmostAllRatioVanishes`**: Correctly captures "f(n)/F(n) → 0 in natural density."
+ai-review/122.md-86-- **`HasErdos122Property`**: The universal quantification over F, positivity of F, the density condition, and the frequently-unbounded conclusion all correctly encode the problem.
+ai-review/122.md:87:- **Theorem statement**: `(Nat.divisors n).card` = τ(n) and `(Nat.primeFactorsList n).toFinset.card` = ω(n). Both are correct representations of the divisor count and distinct prime factor count respectively.
+ai-review/122.md-88-- **Known results**: Erdős, Pomerance, and Sárközy (1997) did prove this for τ and ω. The theorem is a correct statement of known mathematics.
+/home/ryan/formal-conjectures/ai-review/122.md-89-
+ai-review/122.md-90-### Metadata concern:
+--
+/home/ryan/formal-conjectures/ai-review/122.md-92-
+ai-review/122.md-93-### Edge case:
+ai-review/122.md-94-- **F(n) = 0 or negative**: The definition requires `∀ n, 0 < F n`, which correctly rules out degenerate cases.
+ai-review/122.md:95:- **n = 0**: For n = 0, `Nat.divisors 0 = ∅` so `(Nat.divisors 0).card = 0`, and `Nat.primeFactorsList 0 = []` so its card is 0. These edge cases don't affect the asymptotic statement but are handled consistently.
+/home/ryan/formal-conjectures/ai-review/122.md-96-
+/home/ryan/formal-conjectures/ai-review/122.md-97-### Summary
+ai-review/122.md-98-The formalization is **mathematically correct** for what it states. The main gaps are:
+--
+/home/ryan/formal-conjectures/ai-review/648.md-2-
+/home/ryan/formal-conjectures/ai-review/648.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/648.md-4-
+ai-review/648.md:5:**`greatestPrimeFactor` definition is duplicated.** Problem 648 defines its own `greatestPrimeFactor` at line 42 as `n.primeFactorsList.foldr max 0`. This identical definition appears in at least two other files:
+ai-review/648.md-6-- `ErdosProblems/649.lean:33`
+ai-review/648.md-7-- `ErdosProblems/976.lean:34`
+/home/ryan/formal-conjectures/ai-review/648.md-8-
+ai-review/648.md-9-Additionally, a shared utility `Nat.maxPrimeFac` exists in `FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean:28`, defined as `sSup {p : ℕ | p.Prime ∧ p ∣ n}`. This is mathematically equivalent for `n > 1` and also returns `0` for `n ≤ 1` (for `n = 0` via `Set.Infinite.Nat.sSup_eq_zero`, for `n = 1` via the empty set). The shared definition comes with supporting lemmas (`prime_maxPrimeFac_of_one_lt`, `maxPrimeFac_eq_of_dvd_of_le`, `one_lt_maxPrimeFac_iff`).
+/home/ryan/formal-conjectures/ai-review/648.md-10-
+ai-review/648.md:11:**Recommendation:** Replace the local `greatestPrimeFactor` with `Nat.maxPrimeFac` from the shared utility, or at minimum consolidate the three identical `primeFactorsList.foldr max 0` definitions into one shared computable definition.
+/home/ryan/formal-conjectures/ai-review/648.md-12-
+/home/ryan/formal-conjectures/ai-review/648.md-13-The `sSup` + `Fin t` + `StrictMono` pattern for defining "longest subsequence with property" is a well-established idiom in the codebase (see Problems 357, 400, 391). No further reuse concern there.
+/home/ryan/formal-conjectures/ai-review/648.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/648.md-61-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/648.md-62-
+/home/ryan/formal-conjectures/ai-review/648.md-63-### Definition of `greatestPrimeFactor`
+ai-review/648.md:64:`n.primeFactorsList.foldr max 0` returns the maximum element of the prime factors list, or `0` if the list is empty (i.e., when $n \leq 1$). This correctly models $P(m)$ for the intended domain ($m \geq 2$).
+/home/ryan/formal-conjectures/ai-review/648.md-65-
+/home/ryan/formal-conjectures/ai-review/648.md-66-### Definition of `g`
+ai-review/648.md-67-The `sSup` is well-behaved here:
+--
+/home/ryan/formal-conjectures/ai-review/534.md-9-  (Icc 1 N).filter (fun p => Nat.Prime p ∧ p ∣ N)
+/home/ryan/formal-conjectures/ai-review/534.md-10-```
+/home/ryan/formal-conjectures/ai-review/534.md-11-
+ai-review/534.md:12:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/534.md-13-
+/home/ryan/formal-conjectures/ai-review/534.md-14-The `candidate` definition and the overall structure of the theorem are problem-specific and do not have obvious reuse candidates in `FormalConjecturesForMathlib/`.
+/home/ryan/formal-conjectures/ai-review/534.md-15-
+--
+/home/ryan/formal-conjectures/ai-review/205.md-2-
+/home/ryan/formal-conjectures/ai-review/205.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/205.md-4-
+ai-review/205.md:5:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/205.md-6-
+/home/ryan/formal-conjectures/ai-review/205.md-7-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/205.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/205.md-37-
+ai-review/205.md-38-**Minor issues:**
+/home/ryan/formal-conjectures/ai-review/205.md-39-
+ai-review/205.md:40:- Using `Ω` (via `open scoped Omega`) instead of `primeFactorsList.length` would improve readability and match the docstring notation `Ω(m)`. Currently the docstring says "Ω(m)" but the code says `primeFactorsList.length`, which is a notational mismatch.
+ai-review/205.md:41:- The expression `((n - 2 ^ k).primeFactorsList.length : ℝ)` is verbose. With `Ω`, this becomes `(Ω (n - 2 ^ k) : ℝ)`.
+ai-review/205.md-42-- The cast chain `((n - 2 ^ k : ℕ) : ℝ)` inside `Real.log (Real.log ...)` is clear but slightly awkward; this is a minor stylistic point.
+/home/ryan/formal-conjectures/ai-review/205.md-43-
+ai-review/205.md-44-**Overall:** The code is reasonably readable but would benefit from using standard Mathlib notation.
+--
+/home/ryan/formal-conjectures/ai-review/205.md-60-
+ai-review/205.md-61-**Natural number subtraction:** The guard `2 ^ k ≤ n` correctly prevents truncation issues with natural subtraction (`n - 2^k` would be 0 if `2^k > n` in ℕ).
+/home/ryan/formal-conjectures/ai-review/205.md-62-
+ai-review/205.md:63:**Edge case handling:** When `n = 2^k` (i.e., `m = 0`), `primeFactorsList` of 0 is empty (length 0) and `log(log(0)) = log(0) = 0` in Mathlib, so `0 < 0` is false. When `m = 1`, `log(log(1)) = log(0) = 0` and `Ω(1) = 0`, so again `0 < 0` is false. These edge cases are handled correctly — the formalization implicitly requires `m ≥ 2` and large enough that `log(log(m)) > 0`, which aligns with mathematical intent.
+/home/ryan/formal-conjectures/ai-review/205.md-64-
+/home/ryan/formal-conjectures/ai-review/205.md-65-**No flaws identified.** The formalization faithfully captures the original conjecture and its disproof. Any incompleteness is limited to the missing variants discussed in Section 3, not to the core statement.
+/home/ryan/formal-conjectures/ai-review/205.md-66-
+--
+/home/ryan/formal-conjectures/ai-review/205.md-68-
+/home/ryan/formal-conjectures/ai-review/205.md-69-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/205.md-70-|-----------|-----------|
+ai-review/205.md:71:| Code reuse | Use `Ω` from Mathlib instead of `primeFactorsList.length` |
+/home/ryan/formal-conjectures/ai-review/205.md-72-| Citations | Missing Romanoff, Tao references; missing cross-ref to Problem 851 |
+/home/ryan/formal-conjectures/ai-review/205.md-73-| Variants | ε-relaxation, odd counterexamples not captured |
+/home/ryan/formal-conjectures/ai-review/205.md-74-| Readability | Good; would improve with `Ω` notation |
+--
+/home/ryan/formal-conjectures/ai-review/372.md-17-
+ai-review/372.md-18-Both definitions agree on all inputs: they return 0 for `n ≤ 1` and the largest prime factor for `n > 1`. The library version comes with useful lemmas (`prime_maxPrimeFac_of_one_lt`, `maxPrimeFac_eq_of_dvd_of_le`, `one_lt_maxPrimeFac_iff`). The local definition could be replaced by `Nat.maxPrimeFac`.
+/home/ryan/formal-conjectures/ai-review/372.md-19-
+ai-review/372.md:20:Additionally, at least four other Erdős problems (368, 380, 382, and others) independently define the same `largestPrimeFactor` using the identical `n.factorization.support.sup id` pattern. Problem 928 uses a `primeFactors.max'` variant, and problems 648, 649, 683, 700, 976 use `primeFactorsList.fold` variants. All of these are candidates for consolidation onto `Nat.maxPrimeFac`.
+/home/ryan/formal-conjectures/ai-review/372.md-21-
+/home/ryan/formal-conjectures/ai-review/372.md-22-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/372.md-23-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-90-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/122.lean-91-theorem erdos_122 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-92-    HasErdos122Property (fun n => (Nat.divisors n).card) ∧
+FormalConjectures/ErdosProblems/122.lean:93:    HasErdos122Property (fun n => (Nat.primeFactorsList n).toFinset.card) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-94-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-95-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-96-end Erdos122
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-76-  constructor
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-77-  · unfold Finset.Coprime
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-78-    aesop
+FormalConjectures/ErdosProblems/939.lean:79:  · norm_num [Nat.Full, Nat.primeFactors, Nat.primeFactorsList]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-80-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-81-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-82-/-- Cambie has also found solutions when $r=7$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/679.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/679.lean-33-/-- The number of distinct prime factors of $n$ ($\omega(n)$ in analytic number theory). -/
+FormalConjectures/ErdosProblems/679.lean-34-noncomputable def omega (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/679.lean:35:  (Nat.primeFactorsList n).toFinset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/679.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/679.lean-37-/--
+FormalConjectures/ErdosProblems/679.lean-38-Erdős Problem 679, Part 1 [Er79d]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/366.lean-37-@[category test, AMS 11]
+FormalConjectures/ErdosProblems/366.lean-38-theorem exists_three_full_then_two_full : (∃ n > 0, (3).Full n ∧ (2).Full (n + 1)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/366.lean-39-  use 8
+FormalConjectures/ErdosProblems/366.lean:40:  norm_num +contextual [Nat.Full, Nat.primeFactors, Nat.primeFactorsList]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/366.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/366.lean-42-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/366.lean-43-Are there infinitely many 3-full $n$ such that $n+1$ is 2-full?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/976.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/976.lean-33-/-- The greatest prime factor of a natural number $n$, or $0$ if $n \leq 1$. -/
+FormalConjectures/ErdosProblems/976.lean-34-def greatestPrimeFactor (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/976.lean:35:  n.primeFactorsList.foldr max 0
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/976.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/976.lean-37-/-- The product of $|f(m)|$ for $m = 1, \ldots, n$. -/
+FormalConjectures/ErdosProblems/976.lean-38-noncomputable def polyProduct (f : Polynomial ℤ) (n : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/649.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/649.lean-32-/-- The greatest prime factor of $n$, or $0$ if $n \le 1$. -/
+FormalConjectures/ErdosProblems/649.lean-33-def greatestPrimeFactor (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/649.lean:34:  n.primeFactorsList.foldr max 0
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/649.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/649.lean-36-/--
+FormalConjectures/ErdosProblems/649.lean-37-Erdős Problem 649 (disproved):
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/369.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/369.lean-41-/-- A natural number $m$ is $y$-smooth if every prime factor of $m$ is at most $y$. -/
+FormalConjectures/ErdosProblems/369.lean-42-def IsSmooth (y : ℝ) (m : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/369.lean:43:  ∀ p ∈ m.primeFactorsList, (p : ℝ) ≤ y
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/369.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/369.lean-45-/--
+FormalConjectures/ErdosProblems/369.lean-46-Erdős Problem 369 [ErGr80, p.69]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/452.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/452.lean-43-/-- The number of distinct prime factors of $n$ ($\omega(n)$ in analytic number theory). -/
+FormalConjectures/ErdosProblems/452.lean-44-noncomputable def omega (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/452.lean:45:  (Nat.primeFactorsList n).toFinset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/452.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/452.lean-47-/--
+FormalConjectures/ErdosProblems/452.lean-48-Erdős Problem 452 [ErGr80, p.90]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/961.lean-49-    push_neg
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/961.lean-50-    intro hm0
+FormalConjectures/ErdosProblems/961.lean-51-    obtain ⟨p, hp, hpm⟩ := Nat.exists_prime_and_dvd (by omega : m ≠ 1)
+FormalConjectures/ErdosProblems/961.lean:52:    exact ⟨p, (Nat.mem_primeFactorsList hm0).mpr ⟨hp, hpm⟩, hp.two_le⟩
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/961.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/961.lean-54-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/961.lean-55-theorem erdos_961.well_defined (k : ℕ) (hk : 0 < k): ∃ n, Erdos961Prop k n := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/700.lean-44-  else 0
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/700.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/700.lean-46-/-- The largest prime factor of $n$. Returns $0$ if $n \le 1$. -/
+FormalConjectures/ErdosProblems/700.lean:47:def greatestPrimeFactor (n : ℕ) : ℕ := n.primeFactorsList.foldl max 0
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/700.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/700.lean-49-/--
+FormalConjectures/ErdosProblems/700.lean-50-Erdős Problem 700, Part (a) [ErSz78]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/648.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/648.lean-41-/-- The greatest prime factor of $n$, or $0$ if $n \leq 1$. -/
+FormalConjectures/ErdosProblems/648.lean-42-def greatestPrimeFactor (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/648.lean:43:  n.primeFactorsList.foldr max 0
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/648.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/648.lean-45-/-- $g(n)$ is the largest $t$ such that there exist integers $2 \leq a_1 < a_2 < \cdots < a_t < n$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/648.lean-46-with $P(a_1) > P(a_2) > \cdots > P(a_t)$, where $P(m)$ is the greatest prime factor. -/
+--
+FormalConjectures/ErdosProblems/205.lean-46-theorem erdos_205 : answer(False) ↔
+FormalConjectures/ErdosProblems/205.lean-47-    (∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+FormalConjectures/ErdosProblems/205.lean-48-      ∃ k : ℕ, 2 ^ k ≤ n ∧
+FormalConjectures/ErdosProblems/205.lean:49:        ((n - 2 ^ k).primeFactorsList.length : ℝ) <
+FormalConjectures/ErdosProblems/205.lean-50-          Real.log (Real.log ((n - 2 ^ k : ℕ) : ℝ))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/205.lean-51-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/205.lean-52-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/931.lean-62-  use 10, 3, (by norm_num), (by norm_num)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/931.lean-63-  use (0, 13)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/931.lean-64-  norm_num [Finset.prod_Icc_succ_top]
+FormalConjectures/ErdosProblems/931.lean:65:  norm_num +decide [Nat.primeFactors, Nat.primeFactorsList]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/931.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/931.lean-67-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/931.lean-68-Erdős was unable to prove that if the two products have the same factors
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-33-/-- The largest prime factor of $n$, or $1$ if $n$ has no prime factors (convention). -/
+FormalConjectures/ErdosProblems/683.lean-34-def largestPrimeFactor (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/683.lean:35:  n.primeFactorsList.foldl max 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-37-/--
+FormalConjectures/ErdosProblems/683.lean-38-Erdős Problem 683 [Er76d][Er79d]: Is it true that there exists a constant $c > 0$ such that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/334.lean-34-namespace Erdos334
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/334.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/334.lean-36-/-- A natural number is $B$-smooth if all its prime factors are at most $B$. -/
+FormalConjectures/ErdosProblems/334.lean:37:def IsSmooth (B n : ℕ) : Prop := ∀ p ∈ n.primeFactorsList, p ≤ B
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/334.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/334.lean-39-/--
+FormalConjectures/ErdosProblems/334.lean-40-Erdős Problem 334 [ErGr80, p.70] [Er82d, p.55]:

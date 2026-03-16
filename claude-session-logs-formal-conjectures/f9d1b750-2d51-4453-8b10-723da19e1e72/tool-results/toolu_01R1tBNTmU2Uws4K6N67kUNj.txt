@@ -1,0 +1,363 @@
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/339137.lean-39--/
+FormalConjectures/Mathoverflow/339137.lean-40-def IsZeroOne (P : ℝ[X]) := P.coeffs ⊆ {1}
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/339137.lean-41-
+FormalConjectures/Mathoverflow/339137.lean:42:-- TODO(lezeau): add probabilistic reformulation and statement
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/339137.lean-43--- that coefficients must at least lie in `[0, 1]`
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/339137.lean-44-/--
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/339137.lean-45-Let $P(x), Q(x) ∈ ℝ[x]$ be two monic polynomials with non-negative coefficients.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-25-be the largest integer such that the walk visits every lattice point within distance $R_n$ of the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-26-origin in its first $n$ steps. Is it true that $\log R_n \asymp \sqrt{\log n}$ almost surely?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-27-
+FormalConjectures/ErdosProblems/1164.lean:28:[Va99] Vershik, A., *Random walks on random and changing graphs*, 1999, Problem 6.76.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-30-[Re90] Révész, P., *Random Walk in Random and Non-Random Environments*, World Scientific, 1990.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-26-[ERT80] Erdős, P., Rubin, A. L. and Taylor, H., *Choosability in graphs*, Proc. West Coast
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-27-Conf. on Combinatorics, Graph Theory and Computing, Congressus Numerantium 26 (1980), 125–157.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-28-
+FormalConjectures/ErdosProblems/799.lean:29:[Al92] Alon, N., *Choice numbers of graphs: a probabilistic approach*, Combin. Probab.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-30-Comput. 1 (1992), 107–114.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-32-[AKS99] Alon, N., Krivelevich, M. and Sudakov, B., *List coloring of random and
+FormalConjectures/ErdosProblems/799.lean:33:pseudo-random graphs*, Combinatorica 19 (1999), 453–472.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-36-namespace Erdos799
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-74-$n \geq n_0$ and all $k \geq \varepsilon n$, the fraction of labeled graphs on $n$ vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-75-that are $k$-choosable is at least $1 - \delta$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-76-
+FormalConjectures/ErdosProblems/799.lean:77:The answer is yes. Alon [Al92] proved that the random graph on $n$ vertices with edge
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-78-probability $1/2$ has $\chi_L(G) \ll (\log \log n / \log n) \cdot n$ almost surely. Alon,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-79-Krivelevich, and Sudakov [AKS99] improved this to $\chi_L(G) \asymp n / \log n$ almost surely.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-80--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-25-$3$-uniform hypergraph on $3n$ vertices with $\ell(n)$ edges must contain $n$ vertex-disjoint
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-26-edges?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-27-
+FormalConjectures/ErdosProblems/747.lean:28:[JKV08] Johansson, A., Kahn, J., and Vu, V., _Factors in random graphs_, Random Structures
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-29-& Algorithms 33 (2008), 1-28.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-31-[Ka23] Kahn, J., _Asymptotics for Shamir's problem_, Annals of Mathematics 198 (2023), 1-69.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-59-/--
+FormalConjectures/ErdosProblems/747.lean-60-Erdős Problem 747 (Shamir's problem):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-61-
+FormalConjectures/ErdosProblems/747.lean:62:For every $\varepsilon > 0$, almost surely a random $3$-uniform hypergraph on $3n$ vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-63-with at least $(1 + \varepsilon) \cdot n \cdot \log n$ edges contains $n$ vertex-disjoint edges.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-64-
+FormalConjectures/ErdosProblems/747.lean-65-Formally: for every $\varepsilon > 0$ and $\delta > 0$, there exists $n_0$ such that for all
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-25-needed to colour the vertices of $G$ such that each colour class induces either a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-26-complete graph or an empty graph. Let $\chi(G)$ denote the chromatic number.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-27-
+FormalConjectures/ErdosProblems/625.lean:28:If $G$ is a random graph with $n$ vertices and each edge included independently with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-29-probability $1/2$, is it true that almost surely
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-30-$$\chi(G) - \zeta(G) \to \infty$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-31-as $n \to \infty$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-38-namespace Erdos625
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-39-
+FormalConjectures/ErdosProblems/625.lean:40:/-- The simple graph on `Fin n` determined by a Boolean edge matrix. Under $G(n, 1/2)$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-41-each Boolean matrix is equally likely, so the fraction of matrices whose graph
+FormalConjectures/ErdosProblems/625.lean:42:has a property equals the $G(n, 1/2)$-probability of that property. -/
+FormalConjectures/ErdosProblems/625.lean-43-def toGraph625 {n : ℕ} (ec : Fin n → Fin n → Bool) : SimpleGraph (Fin n) where
+FormalConjectures/ErdosProblems/625.lean-44-  Adj u v := u ≠ v ∧ ec (min u v) (max u v) = true
+FormalConjectures/ErdosProblems/625.lean-45-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, by rwa [min_comm, max_comm]⟩
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-63-/--
+FormalConjectures/ErdosProblems/625.lean-64-Erdős Problem 625 [ErGi93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-65-
+FormalConjectures/ErdosProblems/625.lean:66:In the Erdős–Rényi random graph $G(n, 1/2)$ — the uniform distribution over all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-67-labelled simple graphs on $n$ vertices — is it true that the difference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-68-$\chi(G) - \zeta(G)$ tends to infinity almost surely as $n \to \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-69-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-24-For large $n$, is it true that every $n$-point set in $\mathbb{R}^2$ minimizing the number of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-25-distinct distances admits another minimizer of the same size that is not similar to it?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-26-
+FormalConjectures/ErdosProblems/91.lean:27:[Er87b] Erdős, P., _Some combinatorial, probabilistic and number theoretic problems_ (1987), p.171.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-29-[Er90] Erdős, P., (1990).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/746.lean-57-/--
+FormalConjectures/ErdosProblems/746.lean-58-Erdős Problem 746 [ErRe66, KoSz83]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/746.lean-59-
+FormalConjectures/ErdosProblems/746.lean:60:For every $\varepsilon > 0$, almost surely a random graph on $n$ vertices with at least
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/746.lean-61-$(1/2 + \varepsilon) \cdot n \cdot \log n$ edges is Hamiltonian.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/746.lean-62-
+FormalConjectures/ErdosProblems/746.lean-63-Formally: for every $\varepsilon > 0$ and $\delta > 0$, there exists $n_0$ such that for all
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-24-There exists a set $A \subseteq \mathbb{N}$ that is an additive basis of order 2 (i.e.,
+FormalConjectures/ErdosProblems/29.lean-25-$A + A = \mathbb{N}$) whose representation function grows sub-polynomially: $r_A(n) = o(n^\varepsilon)$
+FormalConjectures/ErdosProblems/29.lean:26:for every $\varepsilon > 0$. First proved by Erdős via probabilistic methods; an explicit
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-27-construction was given by Jain, Pham, Sawhney, and Zakharov (2024).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-29-
+--
+FormalConjectures/ErdosProblems/29.lean-46-2. The additive representation function $r_A(n) = (1_A * 1_A)(n)$ grows sub-polynomially:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-47-   $r_A(n) = o(n^\varepsilon)$ for every $\varepsilon > 0$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-48-
+FormalConjectures/ErdosProblems/29.lean:49:The existence of such a set was first proved by Erdős using probabilistic methods
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-50-(answering a question of Sidon from 1932). An explicit construction was given by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-51-Jain, Pham, Sawhney, and Zakharov (2024).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-52--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-21-
+FormalConjectures/ErdosProblems/807.lean-22-*Reference:* [erdosproblems.com/807](https://www.erdosproblems.com/807)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-23-
+FormalConjectures/ErdosProblems/807.lean:24:Is it true that for a random graph $G$ on $n$ vertices with edge probability $1/2$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-25-$\tau(G) = n - \alpha(G)$ almost surely? Here $\tau(G)$ is the bipartition number (the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-26-smallest number of pairwise edge-disjoint complete bipartite graphs whose union is $G$)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-27-and $\alpha(G)$ is the independence number. Disproved by Alon [Al15].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-28-
+FormalConjectures/ErdosProblems/807.lean:29:[Al15] Alon, N., _Bipartite decomposition of random graphs_, J. Graph Theory, 2015.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-31-[ABH17] Alon, N., Bohman, T. and Huang, H., _More on bipartite decomposition of random
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-32-graphs_, J. Graph Theory, 2017.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-71-/--
+FormalConjectures/ErdosProblems/807.lean-72-Erdős Problem 807 (disproved by Alon [Al15]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-73-
+FormalConjectures/ErdosProblems/807.lean:74:Is it true that for a random graph $G$ on $n$ vertices with edge probability $1/2$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-75-$\tau(G) = n - \alpha(G)$ almost surely?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-77-The bipartition number $\tau(G)$ is the smallest number of pairwise edge-disjoint
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-78-complete bipartite graphs whose union is $G$. The independence number $\alpha(G)$ is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-79-the size of the largest independent set in $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-80-
+FormalConjectures/ErdosProblems/807.lean:81:In the $G(n, 1/2)$ model every labeled graph on $n$ vertices is equally likely, so
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-82-"almost surely" means the proportion of graphs satisfying the property tends
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-83-to $1$ as $n \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-84-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean-28-Originally asked by Cohen. Erdős observed that colouring according to whether
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean-29-$\{\sqrt{2} \cdot n\} < 1/2$ or not implies $f(d) \ll d$ (using the fact that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean-30-$\|\sqrt{2} \cdot q\| \gg 1/q$ for all $q$, where $\|x\|$ is the distance to the
+FormalConjectures/ErdosProblems/187.lean:31:nearest integer). Beck [Be80] improved this using the probabilistic method,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean-32-constructing a colouring that shows $f(d) \le (1+o(1))\log_2 d$. Van der Waerden's
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean-33-theorem implies $f(d) \to \infty$ is necessary.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-27-constant $C = C(r) > 1$ such that $R(n; 3, r) < C^{\sqrt{n}}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-29-As pointed out by Antonio Girao, the problem as stated is easily
+FormalConjectures/ErdosProblems/129.lean:30:disproved. A probabilistic argument shows $R(n; 3, 2) \geq C^n$ for some $C > 1$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-31-contradicting the claimed bound. The correct formulation is unclear.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-33-[Er97b] Erdős, P. and Gyárfás, A., *A variant of the classical Ramsey problem*,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-62-$R(n; 3, r) < C^{\sqrt{n}}$ for all positive integers $n$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-63-
+FormalConjectures/ErdosProblems/129.lean-64-As observed by Antonio Girao, the problem as stated is easily disproved:
+FormalConjectures/ErdosProblems/129.lean:65:a probabilistic coloring of $K_N$ (each edge independently uniformly at random
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-66-in $r$ colors) shows $R(n; 3, 2) \geq C^n$, contradicting the conjecture.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-67--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-68-@[category research solved, AMS 5]
+--
+FormalConjectures/Other/BeaverMathOlympiad.lean-86-see doi:[10.1017/S0017089508004655](https://doi.org/10.1017/S0017089508004655) (Corollary 4).
+/home/ryan/formal-conjectures/FormalConjectures/Other/BeaverMathOlympiad.lean-87-
+FormalConjectures/Other/BeaverMathOlympiad.lean-88-It is equivalent to non-termination of the [`1RB1RA_0LC1LE_1LD1LC_1LA0LB_1LF1RE_---0RA`](https://wiki.bbchallenge.org/wiki/Antihydra) 6-state Turing machine (from all-0 tape). Note that the conjecture
+FormalConjectures/Other/BeaverMathOlympiad.lean:89:that the machine does not halt is based on [a probabilistic argument](https://wiki.bbchallenge.org/wiki/Antihydra#Trajectory).
+/home/ryan/formal-conjectures/FormalConjectures/Other/BeaverMathOlympiad.lean-90-
+/home/ryan/formal-conjectures/FormalConjectures/Other/BeaverMathOlympiad.lean-91-This machine and its mathematical reformulations were found by [bbchallenge.org](bbchallenge.org)
+/home/ryan/formal-conjectures/FormalConjectures/Other/BeaverMathOlympiad.lean-92-contributors mxdys and Rachel Hunter on June 28th 2024.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-21-
+FormalConjectures/ErdosProblems/1156.lean-22-*Reference:* [erdosproblems.com/1156](https://www.erdosproblems.com/1156)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-23-
+FormalConjectures/ErdosProblems/1156.lean:24:Let $G$ be a random graph on $n$ vertices, in which every edge is included
+FormalConjectures/ErdosProblems/1156.lean:25:independently with probability $1/2$ (the Erdős–Rényi model $G(n, 1/2)$).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-27-Bollobás proved that $\chi(G) \sim n / (2 \log_2 n)$ with high probability.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-28-Shamir and Spencer proved concentration within $o(\sqrt{n})$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-40-namespace Erdos1156
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-41-
+FormalConjectures/ErdosProblems/1156.lean:42:/-- The probability that the chromatic number of a uniformly random graph
+FormalConjectures/ErdosProblems/1156.lean:43:$G(n, 1/2)$ on $n$ vertices satisfies predicate $P$. Here $G(n, 1/2)$ is the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-44-Erdős–Rényi model where each edge is included independently with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-45-probability $1/2$, equivalently the uniform distribution over all simple
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-46-graphs on $n$ labelled vertices. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-49-/--
+FormalConjectures/ErdosProblems/1156.lean-50-Erdős Problem 1156, Part 1 [AlSp92]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-51-
+FormalConjectures/ErdosProblems/1156.lean:52:There exists a constant $C$ such that $\chi(G(n, 1/2))$ is almost surely concentrated
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-53-on at most $C$ values. That is, for every $\varepsilon > 0$ and all sufficiently large $n$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-54-there is a set $S$ of at most $C$ natural numbers with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-55-$\mathbb{P}(\chi(G) \in S) \geq 1 - \varepsilon$.
+--
+FormalConjectures/ErdosProblems/78.lean-22-*Reference:* [erdosproblems.com/78](https://www.erdosproblems.com/78)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-24-Give a constructive proof that $R(k) > C^k$ for some constant $C > 1$, where $R(k)$ is the
+FormalConjectures/ErdosProblems/78.lean:25:diagonal Ramsey number. Erdős's probabilistic proof that $R(k) \gg k \cdot 2^{k/2}$ is
+FormalConjectures/ErdosProblems/78.lean-26-non-constructive. Prize: \$100.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-27--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-28-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-37-2-colouring of the edges of $K_n$ contains a monochromatic copy of $K_k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-38-Give a constructive proof that $R(k) > C^k$ for some constant $C > 1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-39-
+FormalConjectures/ErdosProblems/78.lean:40:Erdős gave a simple probabilistic (non-constructive) proof that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-41-$R(k) \gg k \cdot 2^{k/2}$. This problem asks for an explicit/constructive
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-42-lower bound that is still exponential in $k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-27-[Er90c] Erdős, P., *Problems and results in graph theory and combinatorics*. 1990.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-28-
+FormalConjectures/ErdosProblems/578.lean:29:[Ri00] Riordan, O., *Spanning subgraphs of random graphs*. Combinatorics, Probability
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-30-and Computing, 2000.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-31--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-50-    simp [Finset.filter_false_of_mem] at h
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-52-/-- The simple graph on `Fin n` determined by a Boolean matrix. Only values at
+FormalConjectures/ErdosProblems/578.lean:53:    `(min u v, max u v)` matter; this ensures symmetry. Under $G(n, 1/2)$, each
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-54-    Boolean matrix is equally likely, and the fraction of matrices whose graph
+FormalConjectures/ErdosProblems/578.lean:55:    has a property equals the probability that $G(n, 1/2)$ has that property. -/
+FormalConjectures/ErdosProblems/578.lean-56-def toGraph578 {n : ℕ} (ec : Fin n → Fin n → Bool) : SimpleGraph (Fin n) where
+FormalConjectures/ErdosProblems/578.lean-57-  Adj u v := u ≠ v ∧ ec (min u v) (max u v) = true
+FormalConjectures/ErdosProblems/578.lean-58-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, by rwa [min_comm, max_comm]⟩
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-61-/--
+FormalConjectures/ErdosProblems/578.lean-62-Erdős Problem 578 [Er90c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-63-
+FormalConjectures/ErdosProblems/578.lean:64:In the Erdős–Rényi random graph $G(2^d, 1/2)$ — the uniform distribution over all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-65-labelled simple graphs on $2^d$ vertices — the probability that $G$ contains a copy
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-66-of $Q_d$ (the $d$-dimensional hypercube) tends to $1$ as $d \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean-67-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/753.lean-29-[ERT80] Erdős, P., Rubin, A. L., and Taylor, H., _Choosability in graphs_. Proceedings of the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/753.lean-30-West Coast Conference on Combinatorics, Graph Theory and Computing (1980), 125-157.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/753.lean-31-
+FormalConjectures/ErdosProblems/753.lean:32:[Al92] Alon, N., _Choice numbers of graphs: a probabilistic approach_. Combinatorics, Probability
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/753.lean-33-and Computing 1 (1992), 107-114.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/753.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/753.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-28-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-30-Erdős and Szekeres [ErSz35] proved $k \cdot 2^{k/2} \ll R(k) \leq \binom{2k-1}{k-1}$.
+FormalConjectures/ErdosProblems/1029.lean:31:The probabilistic method gives $R(k) \geq (1+o(1)) \cdot \frac{1}{\sqrt{2}\, e} \cdot k \cdot 2^{k/2}$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-32-improved by Spencer [Sp75] to $R(k) \geq (1+o(1)) \cdot \frac{\sqrt{2}}{e} \cdot k \cdot 2^{k/2}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-34-[ErSz35] Erdős, P. and Szekeres, G., *A combinatorial problem in geometry*, Compositio Math. 2 (1935), 463–470.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean-30-A conjecture of Choi, who proved $f(n) \ll n^{3/4}$. Adenwalla provided a construction proving
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean-31-$f(n) \gg n^{1/2}$. The bound $f(n) \ll (n \log n)^{2/3}$ was proved by Baltz, Schoen, and
+FormalConjectures/ErdosProblems/788.lean:32:Srivastav. The work of Alon and Pham on random Cayley graphs implies
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean-33-$f(n) \leq n^{3/5+o(1)}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean-35-[AlPh25] Alon, N. and Pham, H.T., _Random Cayley graphs_.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-21-
+FormalConjectures/ErdosProblems/745.lean-22-*Reference:* [erdosproblems.com/745](https://www.erdosproblems.com/745)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-23-
+FormalConjectures/ErdosProblems/745.lean:24:Describe the size of the second largest component of the random graph on $n$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-25-vertices, where each edge is included independently with probability $1/n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-27-Erdős believed that almost surely the second largest component has size
+--
+FormalConjectures/ErdosProblems/745.lean-52-  (Finset.univ.filter (fun p : Fin n × Fin n => p.1 < p.2 ∧ ec p.1 p.2 = true)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-54-/-- The probability weight of a specific edge configuration under the
+FormalConjectures/ErdosProblems/745.lean:55:Erdős–Rényi model $G(n, 1/n)$: each edge is included independently
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-56-with probability $1/n$. -/
+FormalConjectures/ErdosProblems/745.lean-57-noncomputable def gnpWeight745 (n : ℕ) (ec : Fin n → Fin n → Bool) : ℝ :=
+FormalConjectures/ErdosProblems/745.lean-58-  (1 / (n : ℝ)) ^ edgeCount745 ec *
+FormalConjectures/ErdosProblems/745.lean-59-  (1 - 1 / (n : ℝ)) ^ (n.choose 2 - edgeCount745 ec)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-60-
+FormalConjectures/ErdosProblems/745.lean:61:/-- The $G(n, 1/n)$-probability of a graph property $P$: the sum of weights
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-62-over all edge configurations whose graph satisfies $P$. -/
+FormalConjectures/ErdosProblems/745.lean-63-noncomputable def gnpProb745 (n : ℕ) (P : SimpleGraph (Fin n) → Prop) : ℝ :=
+FormalConjectures/ErdosProblems/745.lean-64-  (Finset.univ.filter (fun ec : Fin n → Fin n → Bool =>
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-81-/--
+FormalConjectures/ErdosProblems/745.lean-82-Erdős Problem 745 [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-83-
+FormalConjectures/ErdosProblems/745.lean:84:In the Erdős–Rényi random graph $G(n, 1/n)$, the second largest connected
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-85-component almost surely has size $O(\log n)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-86-
+FormalConjectures/ErdosProblems/745.lean-87-Formally: there exists a constant $C > 0$ such that for every $\varepsilon > 0$
+FormalConjectures/ErdosProblems/745.lean:88:there exists $n_0$ such that for all $n \geq n_0$, the $G(n, 1/n)$-probability
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-89-that the second largest component has size at most $C \cdot \log n$ is at least
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-90-$1 - \varepsilon$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-91-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-31-It is trivial that $\tau(G) \leq 3 \cdot \nu(G)$. The examples of $K_4$ and $K_5$ show that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-32-$2k$ would be best possible. Haxell [Ha99] improved the trivial bound to
+FormalConjectures/ErdosProblems/167.lean:33:$(3 - 3/23 + o(1))k$. Kahn and Park [KaPa22] proved this for random graphs.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-35-[Ha99] Haxell, P. E., _Packing and covering triangles in graphs_. Discrete Math. 195 (1999), 251–254.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-36-
+FormalConjectures/ErdosProblems/167.lean:37:[KaPa22] Kahn, J. and Park, J., _Tuza's conjecture for random graphs_. Random Structures & Algorithms 61 (2022), 235–249.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-39-[Er88] Erdős, P., _Problems and results on chromatic numbers in finite and infinite graphs_. Graph theory with applications to algorithms and computer science (1985), 201–213.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-40--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-21-
+FormalConjectures/ErdosProblems/1155.lean-22-*Reference:* [erdosproblems.com/1155](https://www.erdosproblems.com/1155)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-23-
+FormalConjectures/ErdosProblems/1155.lean:24:Construct a random graph on $n$ vertices in the following way: begin with the complete graph
+FormalConjectures/ErdosProblems/1155.lean:25:$K_n$. At each stage, choose uniformly a random triangle in the graph and delete all the edges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-26-of this triangle. Repeat until the graph is triangle-free. If $f(n)$ is the number of edges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-27-remaining, is it true that $\mathbb{E}[f(n)] \asymp n^{3/2}$ and that $f(n) \ll n^{3/2}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-28-almost surely?
+--
+FormalConjectures/ErdosProblems/900.lean-22-*Reference:* [erdosproblems.com/900](https://www.erdosproblems.com/900)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-24-There exists a function $f$ with $f(c) \to 0$ as $c \to (1/2)^+$ and $f(c) \to 1$ as
+FormalConjectures/ErdosProblems/900.lean:25:$c \to \infty$, such that for every $c > 1/2$, a random graph $G(n, \lfloor cn \rfloor)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-26-with high probability contains a path of length at least $f(c) \cdot n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-27-
+FormalConjectures/ErdosProblems/900.lean:28:[AKS81] Ajtai, M., Komlós, J. and Szemerédi, E., _The longest path in a random graph_,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-29-Combinatorica 1 (1981), 1-12.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-41-        G.Adj (path ⟨i, by omega⟩) (path ⟨i + 1, by omega⟩)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-43-open Classical in
+FormalConjectures/ErdosProblems/900.lean:44:/-- The probability that a uniformly random simple graph on $\operatorname{Fin}(n)$ with exactly
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-45-$m$ edges satisfies a given property, in the Erdős–Rényi $G(n,m)$ model.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-46-This is the fraction $|\{G \in G(n,m) \mid P(G)\}| / |G(n,m)|$. -/
+FormalConjectures/ErdosProblems/900.lean:47:noncomputable def erdosRenyiProbability (n m : ℕ)
+FormalConjectures/ErdosProblems/900.lean-48-    (P : SimpleGraph (Fin n) → Prop) : ℝ :=
+FormalConjectures/ErdosProblems/900.lean-49-  let total := Finset.univ.filter (fun G : SimpleGraph (Fin n) => G.edgeFinset.card = m)
+FormalConjectures/ErdosProblems/900.lean-50-  ((total.filter (fun G => P G)).card : ℝ) / (total.card : ℝ)
+--
+FormalConjectures/ErdosProblems/900.lean-53-Erdős Problem 900 (proved by Ajtai, Komlós, and Szemerédi [AKS81]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-54-
+FormalConjectures/ErdosProblems/900.lean-55-There exists $f : \mathbb{R} \to \mathbb{R}$ with $f(c) \to 0$ as $c \to (1/2)^+$ and
+FormalConjectures/ErdosProblems/900.lean:56:$f(c) \to 1$ as $c \to \infty$, such that for every $c > 1/2$, a random graph
+FormalConjectures/ErdosProblems/900.lean:57:$G(n, \lfloor cn \rfloor)$ with high probability contains a path of length at least
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-58-$f(c) \cdot n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-59--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-60-@[category research solved, AMS 5 60]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-65-    (Filter.Tendsto f Filter.atTop (nhds 1)) ∧
+FormalConjectures/ErdosProblems/900.lean-66-    (∀ c : ℝ, c > 1/2 → ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/900.lean-67-      ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/900.lean:68:        erdosRenyiProbability n (⌊c * (n : ℝ)⌋₊)
+FormalConjectures/ErdosProblems/900.lean-69-          (fun G => GraphHasLongPath G (⌊f c * (n : ℝ)⌋₊)) ≥ 1 - ε) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-70-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean-71-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean-56-constant $c_\alpha$ as $n \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean-58-This sharpens the known bound $F(n, \alpha) = \Theta(\log n)$ (established via the
+FormalConjectures/ErdosProblems/162.lean:59:probabilistic method) to an exact asymptotic with a well-defined constant.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean-60--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean-61-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/162.lean-62-theorem erdos_162 :

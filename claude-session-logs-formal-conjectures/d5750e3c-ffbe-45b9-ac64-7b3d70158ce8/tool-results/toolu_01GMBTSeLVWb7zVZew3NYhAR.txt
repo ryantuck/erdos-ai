@@ -1,0 +1,169 @@
+FormalConjectures/ErdosProblems/294.lean:28:Erdős and Graham [ErGr80] showed $t(N) \ll N / \log N$, but had no idea of the true value
+FormalConjectures/ErdosProblems/294.lean:34:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/294.lean:61:Erdős Problem 294 — Upper bound (Erdős–Graham) [ErGr80]:
+FormalConjectures/ErdosProblems/284.lean:35:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/284.lean:50:Erdős Problem 284 (Proved) [ErGr80]:
+FormalConjectures/ErdosProblems/343.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/302.lean:27:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/302.lean:43:Erdős Problem 302 [ErGr80]:
+FormalConjectures/ErdosProblems/450.lean:36:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/459.lean:35:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/191.lean:34:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in
+FormalConjectures/ErdosProblems/279.lean:34:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/372.lean:35:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/372.lean:51:Erdős Problem 372 [ErPo78] [ErGr80] [Er85c]:
+FormalConjectures/ErdosProblems/369.lean:35:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/34.lean:31:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/403.lean:27:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in
+FormalConjectures/ErdosProblems/186.lean:43:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/280.lean:33:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/333.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/333.lean:43:Erdős Problem 333 [ErGr80] (DISPROVED):
+FormalConjectures/ErdosProblems/272.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/291.lean:34:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/305.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/415.lean:31:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in
+FormalConjectures/ErdosProblems/411.lean:34:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/205.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/345.lean:27:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/334.lean:24:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/461.lean:27:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/318.lean:28:  - [ErGr80] Erdős, P. and Graham, R., Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/318.lean:102:[Sa82] credits this observation to Erdős, who presumably found this after [ErGr80]. -/
+FormalConjectures/ErdosProblems/309.lean:28:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/309.lean:57:Erdős Problem 309 (disproved) [ErGr80]:
+FormalConjectures/ErdosProblems/282.lean:24:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/430.lean:30:Erdős and Graham [ErGr80] write 'preliminary calculations made by Selfridge indicate
+FormalConjectures/ErdosProblems/430.lean:34:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/430.lean:57:Erdős Problem 430 [ErGr80]:
+FormalConjectures/ErdosProblems/365.lean:27:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/433.lean:38:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/433.lean:63:Erdős Problem 433 [ErGr80]:
+FormalConjectures/ErdosProblems/346.lean:25: - [ErGr80] Erdős, P. and Graham, R., Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/346.lean:60:/-- Erdős and Graham [ErGr80] remark that it is easy to see that if `A (n + 1) / A n > (1 + √5) / 2`
+FormalConjectures/ErdosProblems/346.lean:68:/-- Erdős and Graham [ErGr80] also say that it is not hard to construct very irregular sequences
+FormalConjectures/ErdosProblems/344.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/408.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/408.lean:63:Erdős Problem 408 [ErGr80] — Part (a).
+FormalConjectures/ErdosProblems/408.lean:86:Erdős Problem 408 [ErGr80] — Part (b).
+FormalConjectures/ErdosProblems/419.lean:27:Erdős and Graham [ErGr80] noted that any number of the shape $1 + 1/k$ for $k \geq 1$
+FormalConjectures/ErdosProblems/419.lean:34:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/261.lean:26:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/287.lean:29:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/401.lean:28:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/1.lean:92:sums all differ by at least $1$ is proposed in [Er73] and [ErGr80].
+FormalConjectures/ErdosProblems/1.lean:96:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number theory_. Monographies de L'Enseignement Mathematique (1980).
+FormalConjectures/ErdosProblems/311.lean:27:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/336.lean:28:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/281.lean:30:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/393.lean:34:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in
+FormalConjectures/ErdosProblems/297.lean:30:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/335.lean:28:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/328.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/193.lean:33:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/193.lean:45:Erdős Problem 193 [ErGr80]:
+FormalConjectures/ErdosProblems/432.lean:26:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/467.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/467.lean:43:The note on the website indicates the original source [ErGr80] is ambiguous
+FormalConjectures/ErdosProblems/292.lean:27:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/405.lean:36:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/1113.lean:26:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/482.lean:34:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/278.lean:37:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/337.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/337.lean:64:Erdős Problem 337 [ErGr80] [ErGr80b]:
+FormalConjectures/ErdosProblems/394.lean:24:- [ErGr80] Erdős, P. and Graham, R., Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/394.lean:64:In [ErGr80] they mention a conjecture of Erdős that the sum is $o(x^2)$. This was proved by Erdős
+FormalConjectures/ErdosProblems/367.lean:27:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/423.lean:36:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/384.lean:31:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/265.lean:27:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/356.lean:27:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/314.lean:32:Erdős and Graham [ErGr80] believe the exponent $2$ is best possible, i.e.,
+FormalConjectures/ErdosProblems/314.lean:35:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/314.lean:64:Erdős Problem 314 [ErGr80] (proved by Lim–Steinerberger [LiSt24]):
+FormalConjectures/ErdosProblems/173.lean:35:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjecturesForMathlib/NumberTheory/CoveringSystem.lean:44:[ErGr80] Erdős, P. and Graham, R., Old and new problems and results in combinatorial number theory. Monographies de L'Enseignement Mathematique (1980).
+FormalConjectures/ErdosProblems/247.lean:50:[ErGr80] Erdős, P. and Graham, R.,
+FormalConjectures/ErdosProblems/444.lean:30:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/320.lean:44:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number theory*. Monographies de L'Enseignement Mathematique (1980).
+FormalConjectures/ErdosProblems/360.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/1112.lean:28:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/1112.lean:42:Erdős Problem 1112 [ErGr80]:
+FormalConjectures/ErdosProblems/478.lean:31:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/407.lean:32:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in
+FormalConjectures/ErdosProblems/378.lean:27:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/18.lean:43:- [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number theory_. Monographies de L'Enseignement Mathematique (1980).
+FormalConjectures/ErdosProblems/327.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/327.lean:44:Erdős Problem 327 [ErGr80]: Suppose $A \subseteq \{1, \ldots, N\}$ is such that for all
+FormalConjectures/ErdosProblems/327.lean:73:Erdős Problem 327, Part 2 [ErGr80]: If $a, b \in A$ with $a \neq b$ implies
+FormalConjectures/ErdosProblems/286.lean:27:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/140.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/187.lean:45:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/192.lean:34:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/192.lean:53:Erdős Problem 192, Part 1 [ErGr80]:
+FormalConjectures/ErdosProblems/192.lean:66:Erdős Problem 192, Part 2 [ErGr80]:
+FormalConjectures/ErdosProblems/452.lean:37:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/308.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/308.lean:46:Erdős Problem 308 [ErGr80]:
+FormalConjectures/ErdosProblems/339.lean:27:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/293.lean:39:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/342.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/310.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/382.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/382.lean:48:Erdős Problem 382 (Part 1) [ErGr80]:
+FormalConjectures/ErdosProblems/382.lean:66:Erdős Problem 382 (Part 2) [ErGr80]:
+FormalConjectures/ErdosProblems/451.lean:33:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/148.lean:40:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/1051.lean:28:- [ErGr80] Erdős, P. and Graham, R., Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/176.lean:39:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/290.lean:35:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/262.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/262.lean:46:Erdős Problem 262 [ErGr80] [Er88c]:
+FormalConjectures/ErdosProblems/270.lean:26:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/296.lean:27:Erdős and Graham [ErGr80] asked: Estimate $k(N)$. Is it true that $k(N) = o(\log N)$?
+FormalConjectures/ErdosProblems/296.lean:33:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/296.lean:48:Erdős Problem 296 [ErGr80] (resolved by Hunter–Sawhney via Bloom [Bl21]):
+FormalConjectures/ErdosProblems/8.lean:39:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/178.lean:37:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/420.lean:41:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/338.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/338.lean:56:Erdős Problem 338 [ErGr80]:
+FormalConjectures/ErdosProblems/374.lean:31:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/374.lean:59:Erdős Problem 374 [ErGr76][ErGr80]:
+FormalConjectures/ErdosProblems/29.lean:32:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/271.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/400.lean:29:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/380.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/468.lean:30:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/468.lean:54:Erdős Problem 468, strong form [ErGr80]:
+FormalConjectures/ErdosProblems/468.lean:66:Erdős Problem 468, weak form [ErGr80]:
+FormalConjectures/ErdosProblems/404.lean:33:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/300.lean:24:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/300.lean:43:Erdős Problem 300 [ErGr80] [LiSa24]:
+FormalConjectures/ErdosProblems/435.lean:28:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/301.lean:28:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/301.lean:45:Erdős Problem 301 [ErGr80]:
+FormalConjectures/ErdosProblems/431.lean:39:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/431.lean:51:Erdős Problem 431 [ErGr80]: Are there two infinite sets $A$ and $B$ of natural
+FormalConjectures/ErdosProblems/323.lean:29:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/323.lean:50:**Erdős Problem 323, Part 1** [ErGr80]:
+FormalConjectures/ErdosProblems/323.lean:66:**Erdős Problem 323, Part 2** [ErGr80]:
+FormalConjectures/ErdosProblems/375.lean:25: - [ErGr80] Erdős, P. and Graham, R., Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/201.lean:42:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/481.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/340.lean:130:Erdős and Graham [ErGr80] also asked about the difference set $A - A$ and whether this has
+FormalConjectures/ErdosProblems/340.lean:133:[ErGr80] Erdős, P. and Graham, R., Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/340.lean:142:Erdős and Graham [ErGr80] also asked about the difference set $A - A$ and whether this
+FormalConjectures/ErdosProblems/340.lean:145:[ErGr80] Erdős, P. and Graham, R., Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/190.lean:34:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/190.lean:62:Erdős Problem 190 [ErGr80]:
+FormalConjectures/ErdosProblems/1050.lean:36:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/199.lean:34:[ErGr80] Erdős, P. and Graham, R.
+FormalConjectures/ErdosProblems/171.lean:45:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/456.lean:37:[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in
+FormalConjectures/ErdosProblems/462.lean:28:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/37.lean:38:[ErGr80] Erdős, P. and Graham, R.L., _Old and new problems and results in combinatorial
+FormalConjectures/ErdosProblems/388.lean:36:[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+FormalConjectures/ErdosProblems/388.lean:52:Erdős Problem 388 [Er76d] [ErGr80] [Er92e]:
+FormalConjectures/ErdosProblems/388.lean:68:Erdős Problem 388 (General conjecture) [Er76d] [ErGr80] [Er92e]:

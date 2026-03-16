@@ -1,0 +1,208 @@
+FormalConjectures/GreensOpenProblems/85.lean:29:- [Mu02] Mubayi, Dhruv. "Some exact results and new asymptotics for hypergraph Turán numbers." Combinatorics, Probability and Computing 11.3 (2002): 299-309 Conjecture 1.4.
+FormalConjectures/ErdosProblems/616.lean:24:Let $r \geq 3$. For an $r$-uniform hypergraph $G$ let $\tau(G)$ denote the covering number
+FormalConjectures/ErdosProblems/616.lean:28:Determine the best possible $t$ such that, if $G$ is an $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/616.lean:40:/-- An $r$-uniform hypergraph on vertex set `Fin n`. -/
+FormalConjectures/ErdosProblems/616.lean:45:/-- A set $S$ of vertices is a transversal of hypergraph $G$ if it meets every edge. -/
+FormalConjectures/ErdosProblems/616.lean:53:/-- The subhypergraph of $G$ induced on vertex set $W$: edges of $G$ contained in $W$. -/
+FormalConjectures/ErdosProblems/616.lean:59:/-- The local covering property: every induced subhypergraph on at most
+FormalConjectures/ErdosProblems/616.lean:66:If $G$ is an $r$-uniform hypergraph ($r \geq 3$) where every subhypergraph on at most
+FormalConjectures/ErdosProblems/616.lean:79:For every $r \geq 3$, there exists an $r$-uniform hypergraph $G$ satisfying the local
+FormalConjectures/ErdosProblems/716.lean:24:Let $\mathcal{F}$ be the family of all 3-uniform hypergraphs on 6 vertices with 3 edges.
+FormalConjectures/ErdosProblems/716.lean:37:/-- A 3-uniform hypergraph on `Fin n`: a family of 3-element subsets. -/
+FormalConjectures/ErdosProblems/716.lean:42:/-- A 3-uniform hypergraph is $\mathcal{F}$-free (where $\mathcal{F}$ is the family of all
+FormalConjectures/ErdosProblems/716.lean:43:3-uniform hypergraphs on 6 vertices with 3 edges) if every 6-element subset of
+FormalConjectures/ErdosProblems/716.lean:51:every sufficiently large $\mathcal{F}$-free 3-uniform hypergraph on $n$ vertices has at most
+FormalConjectures/ErdosProblems/500.lean:49:[Ra10] Razborov, A., _On 3-hypergraphs with forbidden 4-vertex configurations_ (2010).
+FormalConjectures/ErdosProblems/500.lean:56:/-- A $3$-uniform hypergraph on `Fin n` is $K_4^3$-free if every edge has exactly $3$
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:23:This file defines the `r`-uniform hypergraph Ramsey number `R_r(n)`.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:29:The `r`-uniform hypergraph Ramsey number `R_r(n)`.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:33:noncomputable def hypergraphRamsey (r n : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:38:/-- `n ≤ hypergraphRamsey r n` when the set is nonempty. -/
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:39:theorem le_hypergraphRamsey (r n : ℕ) (hne : { m | ∀ (c : Finset (Fin m) → Bool),
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:42:    n ≤ hypergraphRamsey r n := by
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:51:/-- `hypergraphRamsey r r = r` for any `r`. -/
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:52:theorem hypergraphRamsey_self (r : ℕ) : hypergraphRamsey r r = r := by
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:62:  exact le_antisymm (Nat.sInf_le h_mem) (le_hypergraphRamsey r r ⟨r, h_mem⟩)
+FormalConjectures/ErdosProblems/1177.lean:24:Let $G$ be a finite $3$-uniform hypergraph, and let $F_G(\kappa)$ denote the collection of
+FormalConjectures/ErdosProblems/1177.lean:25:$3$-uniform hypergraphs with chromatic number $\kappa$ not containing $G$.
+FormalConjectures/ErdosProblems/1177.lean:36:/-- A proper coloring of a $3$-uniform hypergraph with vertex type $V$ using colors from $\alpha$
+FormalConjectures/ErdosProblems/1177.lean:42:/-- A $3$-uniform hypergraph (on vertex type $V$, with edge set `edges`) has cardinal chromatic
+FormalConjectures/ErdosProblems/1177.lean:51:    edge of $H$ (i.e., $G$ does not embed as a sub-hypergraph of $H$). Each edge of $G$ maps to
+FormalConjectures/ErdosProblems/1177.lean:61:Let $G$ be a finite $3$-uniform hypergraph. If $F_G(\aleph_1)$ is non-empty (i.e., there exists
+FormalConjectures/ErdosProblems/1177.lean:62:a $G$-free $3$-uniform hypergraph with chromatic number $\aleph_1$), then there exists
+FormalConjectures/ErdosProblems/1177.lean:85:Let $G$ and $H$ be finite $3$-uniform hypergraphs. If $F_G(\aleph_1)$ and $F_H(\aleph_1)$ are both
+FormalConjectures/ErdosProblems/1177.lean:87:hypergraph with chromatic number $\aleph_1$ that contains neither $G$ nor $H$ as a
+FormalConjectures/ErdosProblems/1177.lean:88:sub-hypergraph.
+FormalConjectures/ErdosProblems/1177.lean:115:Let $G$ be a finite $3$-uniform hypergraph. If $\kappa$ and $\mu$ are uncountable cardinals
+FormalConjectures/ErdosProblems/1177.lean:117:of a $G$-free $3$-uniform hypergraph with chromatic number $\kappa$ implies the existence of one
+FormalConjectures/ErdosProblems/836.lean:24:Let $r \geq 2$ and $G$ be an $r$-uniform hypergraph with chromatic number 3
+FormalConjectures/ErdosProblems/836.lean:34:$r$-uniform 3-chromatic hypergraph with $\sim 4^r / \sqrt{r}$ vertices.
+FormalConjectures/ErdosProblems/836.lean:44:/-- A hypergraph on vertex type $V$. -/
+FormalConjectures/ErdosProblems/836.lean:48:/-- A hypergraph is $r$-uniform if every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/836.lean:52:/-- The vertices of a hypergraph (the union of all edges). -/
+FormalConjectures/ErdosProblems/836.lean:56:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/836.lean:61:/-- A hypergraph has chromatic number 3: it is 3-colorable but not 2-colorable. -/
+FormalConjectures/ErdosProblems/836.lean:66:/-- A hypergraph is intersecting if any two edges share at least one vertex. -/
+FormalConjectures/ErdosProblems/836.lean:73:For every $r$-uniform intersecting hypergraph with chromatic number 3,
+FormalConjectures/ErdosProblems/836.lean:77:such hypergraph, there exist two distinct edges whose intersection has
+FormalConjectures/ErdosProblems/747.lean:25:$3$-uniform hypergraph on $3n$ vertices with $\ell(n)$ edges must contain $n$ vertex-disjoint
+FormalConjectures/ErdosProblems/747.lean:43:/-- The set of all $3$-uniform hypergraphs on $\operatorname{Fin} N$ with exactly $m$ edges. -/
+FormalConjectures/ErdosProblems/747.lean:44:def hypergraphsWithEdges (N m : ℕ) : Finset (Finset (Finset (Fin N))) :=
+FormalConjectures/ErdosProblems/747.lean:47:/-- A $3$-uniform hypergraph $H$ contains a matching of size $k$: there exist
+FormalConjectures/ErdosProblems/747.lean:53:/-- The fraction of $3$-uniform hypergraphs on $\operatorname{Fin} N$ with $m$ edges that
+FormalConjectures/ErdosProblems/747.lean:54:    contain a matching of size $k$. Returns $0$ if no such hypergraphs exist. -/
+FormalConjectures/ErdosProblems/747.lean:55:noncomputable def hypergraphMatchingFraction (N m k : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/747.lean:56:  ((hypergraphsWithEdges N m).filter (fun H => HasMatching H k)).card /
+FormalConjectures/ErdosProblems/747.lean:57:  ((hypergraphsWithEdges N m).card : ℝ)
+FormalConjectures/ErdosProblems/747.lean:62:For every $\varepsilon > 0$, almost surely a random $3$-uniform hypergraph on $3n$ vertices
+FormalConjectures/ErdosProblems/747.lean:67:the fraction of $3$-uniform hypergraphs on $3n$ vertices with $m$ edges containing a perfect
+FormalConjectures/ErdosProblems/747.lean:79:        hypergraphMatchingFraction (3 * n) m n ≥ 1 - δ := by
+FormalConjectures/ErdosProblems/21.lean:28:[ErLo75] Erdős, P. and Lovász, L., _Problems and results on 3-chromatic hypergraphs and some
+FormalConjectures/ErdosProblems/712.lean:42:/-- An $r$-uniform hypergraph on `Fin n` is $K_k^r$-free if every edge has exactly $r$
+FormalConjectures/ErdosProblems/833.lean:23:every $r$-uniform hypergraph with chromatic number $3$ has a vertex contained
+FormalConjectures/ErdosProblems/833.lean:28:[ErLo75] Erdős, P. and Lovász, L., *Problems and results on 3-chromatic hypergraphs and some
+FormalConjectures/ErdosProblems/833.lean:37:/-- A hypergraph on vertex type $V$, represented as a finset of edges,
+FormalConjectures/ErdosProblems/833.lean:42:/-- A hypergraph is $r$-uniform if every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/833.lean:46:/-- A proper coloring of a hypergraph: no edge with $\geq 2$ vertices is monochromatic. -/
+FormalConjectures/ErdosProblems/833.lean:51:/-- A hypergraph has chromatic number exactly $k$ if it can be properly colored
+FormalConjectures/ErdosProblems/833.lean:58:/-- The degree of a vertex $v$ in a hypergraph is the number of edges containing $v$. -/
+FormalConjectures/ErdosProblems/833.lean:64:in any $r$-uniform hypergraph with chromatic number $3$ there is a vertex
+FormalConjectures/ErdosProblems/207.lean:26:a $3$-uniform hypergraph where every pair of vertices is in exactly one edge, and
+FormalConjectures/ErdosProblems/207.lean:51:The girth condition forbids short "cycles" in the hypergraph: any collection of
+FormalConjectures/ErdosProblems/780.lean:24:Suppose $n \geq kr + (t-1)(k-1)$ and the edges of the complete $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/780.lean:38:hypergraphs_. Trans. Amer. Math. Soc. **298** (1986), 359--370.
+FormalConjectures/ErdosProblems/780.lean:46:If $n \geq kr + (t-1)(k-1)$ and the edges of the complete $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/780.lean:50:Here an "edge" of the complete $r$-uniform hypergraph on $\text{Fin}\; n$ is an
+FormalConjectures/ErdosProblems/474.lean:27:[Er95d] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/1075.lean:23:sufficiently large, any $r$-uniform hypergraph on $n$ vertices with at least
+FormalConjectures/ErdosProblems/1075.lean:34:/-- An $r$-uniform hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/1075.lean:39:/-- The subhypergraph of $H$ induced by a vertex set $S$: all edges entirely within $S$. -/
+FormalConjectures/ErdosProblems/1075.lean:49:for any target size $M$, for all sufficiently large $n$, any $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/901.lean:22:Let $m(n)$ denote the minimum number of edges in an $n$-uniform hypergraph that does not have
+FormalConjectures/ErdosProblems/901.lean:34:An $n$-uniform hypergraph is a finite collection of edges where each edge
+FormalConjectures/ErdosProblems/901.lean:41:A hypergraph has Property B (is $2$-colorable) if there exists a $2$-coloring
+FormalConjectures/ErdosProblems/901.lean:50:Let $m(n)$ be minimal such that there is an $n$-uniform hypergraph with $m(n)$ edges
+FormalConjectures/ErdosProblems/901.lean:55:every $n$-uniform hypergraph without Property B has at least $c \cdot n \cdot 2^n$ edges.
+FormalConjectures/ErdosProblems/901.lean:68:an $n$-uniform hypergraph without Property B with at most $c \cdot n \cdot 2^n$ edges.
+FormalConjectures/ErdosProblems/837.lean:26:hypergraphs with
+FormalConjectures/ErdosProblems/837.lean:37:[Er74d] Erdős, P. and Simonovits, M., problem on hypergraph density jumps.
+FormalConjectures/ErdosProblems/837.lean:44:/-- A $k$-uniform hypergraph on $n$ vertices: a collection of $k$-element subsets
+FormalConjectures/ErdosProblems/837.lean:50:/-- The edge density of a $k$-uniform hypergraph: $|E| / \binom{n}{k}$. -/
+FormalConjectures/ErdosProblems/837.lean:56:/-- $H$ is a sub-hypergraph of $G$ via an injective vertex map $f$,
+FormalConjectures/ErdosProblems/837.lean:62:/-- The density jump set $A_k$ for $k$-uniform hypergraphs.
+FormalConjectures/ErdosProblems/837.lean:64:    (a) any sequence of $k$-uniform hypergraphs with $\liminf$ density $> \alpha$
+FormalConjectures/ErdosProblems/837.lean:101:Determine the density jump set $A_3$ for $3$-uniform hypergraphs.
+FormalConjectures/ErdosProblems/812.lean:34:[Er91] Erdős, P., _Problems and results on graphs and hypergraphs_, 1991.
+FormalConjectures/ErdosProblems/834.lean:24:Does there exist a $3$-critical $3$-uniform hypergraph in which every vertex
+FormalConjectures/ErdosProblems/834.lean:30:   size $3$, and for every edge $e$ the hypergraph $H \setminus \{e\}$ has a transversal
+FormalConjectures/ErdosProblems/834.lean:37:- In the transversal formulation, every $3$-critical $3$-uniform hypergraph
+FormalConjectures/ErdosProblems/834.lean:40:  hypergraph on $9$ vertices with minimum degree $7$ (answer: YES).
+FormalConjectures/ErdosProblems/834.lean:51:/-- A hypergraph on vertex type $V$, represented as a finset of edges,
+FormalConjectures/ErdosProblems/834.lean:56:/-- A hypergraph is $r$-uniform if every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/834.lean:60:/-- The degree of a vertex $v$ in a hypergraph is the number of edges containing $v$. -/
+FormalConjectures/ErdosProblems/834.lean:64:/-- The vertices of a hypergraph (the union of all edges). -/
+FormalConjectures/ErdosProblems/834.lean:68:/-- The hypergraph obtained by removing an edge. -/
+FormalConjectures/ErdosProblems/834.lean:73:/-- The hypergraph obtained by removing a vertex (and all edges containing it). -/
+FormalConjectures/ErdosProblems/834.lean:78:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/834.lean:88:/-- A hypergraph is $3$-transversal-critical if the minimum transversal has
+FormalConjectures/ErdosProblems/834.lean:96:/-- A hypergraph is $3$-chromatic-critical if its chromatic number is $3$ and
+FormalConjectures/ErdosProblems/834.lean:108:Does there exist a $3$-transversal-critical $3$-uniform hypergraph in which every vertex
+FormalConjectures/ErdosProblems/834.lean:109:has degree $\geq 7$? Li showed the answer is NO: every such hypergraph has a vertex
+FormalConjectures/ErdosProblems/834.lean:121:Does there exist a $3$-chromatic-critical $3$-uniform hypergraph in which every vertex
+FormalConjectures/ErdosProblems/834.lean:122:has degree $\geq 7$? Li showed the answer is YES, constructing such a hypergraph
+FormalConjectures/ErdosProblems/832.lean:25:$r$-uniform hypergraph with chromatic number $k$ has at least $\binom{(r-1)(k-1)+1}{r}$
+FormalConjectures/ErdosProblems/832.lean:34:[Er74d] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/832.lean:42:/-- An $r$-uniform hypergraph on a finite vertex set $V$: a collection of
+FormalConjectures/ErdosProblems/832.lean:48:/-- A proper $k$-coloring of a hypergraph: a vertex coloring such that no edge
+FormalConjectures/ErdosProblems/832.lean:54:/-- The chromatic number of a uniform hypergraph: the minimum number of colors
+FormalConjectures/ErdosProblems/832.lean:64:$r$-uniform hypergraph with chromatic number $k$ has at least
+FormalConjectures/ErdosProblems/832.lean:80:For $k$ sufficiently large, does every $3$-uniform hypergraph with chromatic number $k$
+FormalConjectures/ErdosProblems/562.lean:30:Let $R_r(n)$ denote the $r$-uniform hypergraph Ramsey number: the minimal $m$ such that if we
+FormalConjectures/ErdosProblems/562.lean:31:$2$-colour all edges of the complete $r$-uniform hypergraph on $m$ vertices then there must be some
+FormalConjectures/ErdosProblems/562.lean:32:monochromatic copy of the complete $r$-uniform hypergraph on $n$ vertices.
+FormalConjectures/ErdosProblems/562.lean:40:    ∀ r ≥ 3, (fun n ↦ log^[r - 1] (hypergraphRamsey r n)) ~[atTop] (fun n ↦ (n : ℝ)) := by
+FormalConjectures/ErdosProblems/1020.lean:22:Conjecture on the maximum number of edges in an $r$-uniform hypergraph on $n$ vertices
+FormalConjectures/ErdosProblems/1020.lean:38:/-- An $r$-uniform hypergraph on vertex set `Fin n`: every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/1020.lean:42:/-- A matching of size $k$ in a hypergraph: $k$ pairwise vertex-disjoint edges. -/
+FormalConjectures/ErdosProblems/1020.lean:47:/-- `maxEdgesNoMatching n r k` is the maximum number of edges in an $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/1020.lean:56:For all $r \geq 3$, the maximum number of edges in an $r$-uniform hypergraph on $n$ vertices
+FormalConjectures/ErdosProblems/564.lean:29:Let $R_3(n)$ be the minimal $m$ such that if the edges of the $3$-uniform hypergraph on $m$
+FormalConjectures/ErdosProblems/564.lean:31:hypergraph on $n$ vertices.
+FormalConjectures/ErdosProblems/564.lean:38:    ∃ c > 0, ∀ᶠ n in atTop, (2 : ℝ)^(2 : ℝ)^(c * n) ≤ hypergraphRamsey 3 n := by
+FormalConjectures/ErdosProblems/719.lean:33:/-- An $r$-uniform hypergraph on `Fin n`: a family of $r$-element subsets. -/
+FormalConjectures/ErdosProblems/719.lean:37:/-- An $r$-uniform hypergraph is $K_{r+1}^r$-free: no $(r+1)$-element vertex set has
+FormalConjectures/ErdosProblems/719.lean:43:$r$-uniform $K_{r+1}^r$-free hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/719.lean:59:Is every $r$-uniform hypergraph $G$ on $n$ vertices the union of at most
+FormalConjectures/ErdosProblems/563.lean:28:[Er90b] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/1006.lean:33:hypergraphs without short cycles*, 1978.
+FormalConjectures/ErdosProblems/161.lean:22:Erdős conjectured that for $t$-uniform hypergraph 2-colourings, the balanced-colouring threshold
+FormalConjectures/ErdosProblems/161.lean:28:[Er90b] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/813.lean:27:[Er91] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/1076.lean:24:Let $k \geq 5$ and let $\mathcal{F}_k$ be the family of all 3-uniform hypergraphs with $k$
+FormalConjectures/ErdosProblems/1076.lean:44:/-- A 3-uniform hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/1076.lean:49:/-- A 3-uniform hypergraph $G$ on $k$ vertices is a subhypergraph of $H$ on $n$ vertices
+FormalConjectures/ErdosProblems/1076.lean:52:def IsSubhypergraph {k n : ℕ} (G : Hypergraph3 k) (H : Hypergraph3 n) : Prop :=
+FormalConjectures/ErdosProblems/1076.lean:56:/-- $\mathcal{F}_k$: the family of all 3-uniform hypergraphs with $k$ vertices and exactly
+FormalConjectures/ErdosProblems/1076.lean:61:/-- $H$ is $\mathcal{F}_k$-free if it contains no subhypergraph from $\mathcal{F}_k$. -/
+FormalConjectures/ErdosProblems/1076.lean:63:  ∀ G : Hypergraph3 k, G ∈ familyF k → ¬IsSubhypergraph G H
+FormalConjectures/ErdosProblems/1076.lean:66:$\mathcal{F}_k$-free 3-uniform hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/794.lean:22:Is it true that every 3-uniform hypergraph on $3n$ vertices with at least $n^3 + 1$ edges must
+FormalConjectures/ErdosProblems/794.lean:31:/-- A 3-uniform hypergraph $H$ contains a $(k, m)$-subhypergraph if there exist $k$
+FormalConjectures/ErdosProblems/794.lean:33:def ContainsSubhypergraph {N : ℕ} (H : Finset (Finset (Fin N))) (k m : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/794.lean:39:Is it true that every 3-uniform hypergraph on $3n$ vertices with at least $n^3 + 1$
+FormalConjectures/ErdosProblems/794.lean:43:Balogh observed that every 3-uniform hypergraph on 5 vertices with 7
+FormalConjectures/ErdosProblems/794.lean:44:edges contains a sub-hypergraph on 4 vertices with 3 edges, so the second
+FormalConjectures/ErdosProblems/794.lean:46:statement: the 3-uniform hypergraph on $\{1, \ldots, 9\}$ with 28 edges, formed by taking
+FormalConjectures/ErdosProblems/794.lean:54:    ContainsSubhypergraph H 4 3 ∨ ContainsSubhypergraph H 5 7 := by
+FormalConjectures/ErdosProblems/1024.lean:24:Let $f(n)$ be such that every $3$-uniform linear hypergraph on $n$ vertices contains
+FormalConjectures/ErdosProblems/1024.lean:27:A hypergraph is linear if $|A \cap B| \leq 1$ for all edges $A$ and $B$. An independent
+FormalConjectures/ErdosProblems/1024.lean:28:set of vertices is one which contains no edges. A $3$-uniform linear hypergraph
+FormalConjectures/ErdosProblems/1024.lean:42:/-- A $3$-uniform hypergraph on `Fin n`: a family of $3$-element subsets. -/
+FormalConjectures/ErdosProblems/1024.lean:47:/-- A $3$-uniform hypergraph is *linear* if any two distinct edges share
+FormalConjectures/ErdosProblems/1024.lean:64:    $3$-uniform linear hypergraphs on $n$ vertices, i.e. the largest $f$ such
+FormalConjectures/ErdosProblems/1024.lean:65:    that every such hypergraph has an independent set of size at least $f$. -/
+FormalConjectures/ErdosProblems/1024.lean:74:all $3$-uniform linear hypergraphs on $n$ vertices.
+FormalConjectures/ErdosProblems/1022.lean:24:[Er71] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/1022.lean:28:$r$-uniform hypergraphs with chromatic number 3.
+FormalConjectures/ErdosProblems/1022.lean:46:$t$ and every finite hypergraph $\mathcal{F}$ on $n$ vertices, if all edges
+FormalConjectures/ErdosProblems/775.lean:24:Is there a 3-uniform hypergraph on $n$ vertices which contains at least
+FormalConjectures/ErdosProblems/775.lean:28:$k \geq 3$, every $k$-uniform hypergraph on $n$ vertices contains at most
+FormalConjectures/ErdosProblems/775.lean:34:/-- A subset $S$ of vertices is complete in a $k$-uniform hypergraph $H$ if every
+FormalConjectures/ErdosProblems/775.lean:40:/-- A clique in a $k$-uniform hypergraph is a maximal complete subhypergraph:
+FormalConjectures/ErdosProblems/775.lean:47:/-- The set of distinct clique sizes in a $k$-uniform hypergraph. -/
+FormalConjectures/ErdosProblems/775.lean:54:There is no 3-uniform hypergraph on $n$ vertices which contains at least $n - O(1)$
+FormalConjectures/ErdosProblems/775.lean:56:there exists a 3-uniform hypergraph on $n$ vertices with at least $n - C$ distinct
+FormalConjectures/ErdosProblems/775.lean:60:$k$-uniform hypergraph on $n$ vertices is at most $n - f_k(n)$ where $f_k(n) \to \infty$.
+FormalConjectures/ErdosProblems/643.lean:24:Let $f(n;t)$ be minimal such that if a $t$-uniform hypergraph on $n$ vertices
+FormalConjectures/ErdosProblems/643.lean:59:/-- A $t$-uniform hypergraph on `Fin n`: a family of $t$-element subsets. -/
+FormalConjectures/ErdosProblems/643.lean:63:/-- A hypergraph contains the "complementary pairs" configuration:
+FormalConjectures/ErdosProblems/643.lean:77:for all $n \geq N$, every $t$-uniform hypergraph on $n$ vertices with more than
+FormalConjectures/ErdosProblems/1157.lean:24:Let $r \geq 2$. Let $F$ be the family of all $r$-uniform hypergraphs with $k$ vertices
+FormalConjectures/ErdosProblems/1157.lean:28:hypergraph on $n$ vertices such that no $k$ vertices span $s$ or more edges.
+FormalConjectures/ErdosProblems/1157.lean:51:/-- An $r$-uniform hypergraph on $n$ vertices: a family of $r$-element subsets of
+FormalConjectures/ErdosProblems/1157.lean:66:hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/1178.lean:40:/-- An $r$-uniform hypergraph on vertex type $V$ is a set of $r$-element subsets of $V$. -/
+FormalConjectures/ErdosProblems/1178.lean:44:/-- An $r$-uniform hypergraph on $n$ vertices contains a sub-hypergraph on $d$ vertices
+FormalConjectures/ErdosProblems/1178.lean:45:with $e$ edges: there exist $d$ vertices in $\operatorname{Fin} n$ such that the hypergraph has
+FormalConjectures/ErdosProblems/1178.lean:47:contains all $r$-uniform hypergraphs on $d$ vertices with $e$ edges, avoiding $F$ means
+FormalConjectures/ErdosProblems/1178.lean:53:$r$-uniform hypergraph on $n$ vertices that contains no $r$-uniform sub-hypergraph
+FormalConjectures/ErdosProblems/1178.lean:69:$\operatorname{ex}_r(n, F) = o(n^2)$ (where $F$ is the family of all $r$-uniform hypergraphs
+FormalConjectures/ErdosProblems/1178.lean:72:Here `turanNumber r n d e` is the maximum number of edges in an $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/1158.lean:22:Erdős asks whether the extremal number for complete $t$-partite $t$-uniform hypergraphs satisfies
+FormalConjectures/ErdosProblems/1158.lean:35:/-- A $t$-uniform hypergraph on $\operatorname{Fin}(n)$: every edge has exactly $t$ vertices. -/
+FormalConjectures/ErdosProblems/1158.lean:39:/-- A $t$-uniform hypergraph $E$ on $\operatorname{Fin}(n)$ contains a copy of the complete
+FormalConjectures/ErdosProblems/1158.lean:40:$t$-partite $t$-uniform hypergraph $K_t(r)$ if there exist $t$ pairwise disjoint vertex classes,
+FormalConjectures/ErdosProblems/1158.lean:52:Let $K_t(r)$ be the complete $t$-partite $t$-uniform hypergraph with $r$ vertices in
+FormalConjectures/ErdosProblems/1158.lean:60:there exists a $t$-uniform hypergraph on $n$ vertices with no $K_t(r)$ copy and at least
+FormalConjectures/ErdosProblems/593.lean:24:Characterize those finite $3$-uniform hypergraphs which appear in every
+FormalConjectures/ErdosProblems/593.lean:25:$3$-uniform hypergraph of chromatic number $> \aleph_0$.
+FormalConjectures/ErdosProblems/593.lean:32:We define a finite $3$-uniform hypergraph $F$ to be *obligatory* if it appears
+FormalConjectures/ErdosProblems/593.lean:33:in every $3$-uniform hypergraph of uncountable chromatic number. By analogy
+FormalConjectures/ErdosProblems/593.lean:35:hypergraphs are exactly the $2$-colorable ones.
+FormalConjectures/ErdosProblems/593.lean:44:/-- A $3$-uniform hypergraph on vertex type $V$: a collection of $3$-element
+FormalConjectures/ErdosProblems/593.lean:50:/-- A proper coloring of a $3$-uniform hypergraph: no edge is monochromatic
+FormalConjectures/ErdosProblems/593.lean:56:/-- A $3$-uniform hypergraph has uncountable chromatic number: it admits no
+FormalConjectures/ErdosProblems/593.lean:62:/-- A finite $3$-uniform hypergraph $F$ on $W$ embeds into $H$ on $V$: there is an
+FormalConjectures/ErdosProblems/593.lean:68:/-- A $3$-uniform hypergraph is $2$-colorable: it admits a proper coloring with
+FormalConjectures/ErdosProblems/593.lean:76:A finite $3$-uniform hypergraph appears in every $3$-uniform hypergraph of
+FormalConjectures/ErdosProblems/162.lean:28:[Er90b] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and differences_.

@@ -1,0 +1,834 @@
+FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-55-theorem lehmer_mahler_measure_problem.variants.best (f : ℤ[X])
+FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-56-    (hf : mahlerMeasureZ f > 1) : mahlerMeasureZ f ≥ mahlerMeasureZ lehmerPolynomial := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-57-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-59-/--
+FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean:60:If $f$ is not reciprocal and $M(f) > 1$ then $M(f) \ge M(X^3 - X - 1)$.
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-61--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-62-@[category research solved, AMS 11]
+FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean:63:theorem lehmer_mahler_measure_problem.variants.not_reciprocal (f : ℤ[X])
+FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-64-    (hf : mahlerMeasureZ f > 1) (hf' : f.reverse ≠ f) :
+FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-65-    mahlerMeasureZ f ≥ mahlerMeasureZ (X^3 - X - 1) := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-66-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-67-
+FormalConjectures/Wikipedia/LehmerMahlerMeasureProblem.lean-68-/-- `Polynomial.HasOddCoeffs f` means that all coefficients of `f : Polynomial ℤ` are odd. -/
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-29-/--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-30-Given a set `S` and an element `b` in an order `β`, where all intervals bounded above are finite,
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-31-we define the partial density of `S` (relative to a set `A`) to be the proportion of elements in
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-32-`{x ∈ A | x < b}` that lie in `S ∩ A`.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-33-
+FormalConjecturesForMathlib/Data/Set/Density.lean:34:This definition was inspired from https://github.com/b-mehta/unit-fractions
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-35--/
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-36-@[inline]
+FormalConjecturesForMathlib/Data/Set/Density.lean-37-noncomputable abbrev partialDensity {β : Type*} [Preorder β] [LocallyFiniteOrderBot β]
+FormalConjecturesForMathlib/Data/Set/Density.lean-38-    (S : Set β) (A : Set β := Set.univ) (b : β) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-39-  (Set.interIio (S ∩ A) b).ncard / (Set.interIio A b).ncard
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-19-/-!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-20-# Erdős Problem 65
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-21-
+FormalConjectures/ErdosProblems/65.lean-22-*Reference:* [erdosproblems.com/65](https://www.erdosproblems.com/65)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-23-
+FormalConjectures/ErdosProblems/65.lean:24:Is the sum of reciprocals of distinct cycle lengths in a graph on $n$ vertices with $kn$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-25-edges minimised by the complete bipartite graph? Gyárfás, Komlós, and Szemerédi [GKS84]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-26-proved $\sum 1/a_i \gg \log k$; Liu and Montgomery [LiMo20] proved the sharp bound.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-28-[GKS84] Gyárfás, A., Komlós, J., and Szemerédi, E., *On the distribution of cycle lengths in
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-29-graphs*, J. Graph Theory 8 (1984), 441–462.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-55-The first question was proved by Gyárfás, Komlós, and Szemerédi [GKS84].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-56-Liu and Montgomery [LiMo20] proved the asymptotically sharp lower bound
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-57-$\geq (1/2 - o(1)) \log k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-58-
+FormalConjectures/ErdosProblems/65.lean-59-The remaining open question is formalized below: for any graph $G$ on $n$ vertices whose edge
+FormalConjectures/ErdosProblems/65.lean:60:count equals $a \cdot b$ for some partition $a + b = n$, the sum of reciprocals of distinct cycle
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-61-lengths of $G$ is at least the corresponding sum for the complete bipartite graph $K_{a,b}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-62--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean-63-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/65.lean-64-theorem erdos_65 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/65.lean-65-    ∀ (n : ℕ) (G : SimpleGraph (Fin n)) (a b : ℕ), a + b = n →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-30-open MeasureTheory
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-32-namespace Erdos206
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-34-/--
+FormalConjectures/ErdosProblems/206.lean:35:The sum of unit fractions with denominators from a finset of naturals:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-36-$\sum_{m \in S} 1/m$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-37--/
+FormalConjectures/ErdosProblems/206.lean-38-noncomputable def unitFracSum (S : Finset ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/206.lean-39-  ∑ m ∈ S, (1 : ℝ) / (m : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-41-/--
+FormalConjectures/ErdosProblems/206.lean:42:$R_n(x)$: the maximal sum of $n$ distinct unit fractions (with positive integer
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-43-denominators) that is strictly less than $x$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-44--/
+FormalConjectures/ErdosProblems/206.lean-45-noncomputable def bestUnderapprox (n : ℕ) (x : ℝ) : ℝ :=
+FormalConjectures/ErdosProblems/206.lean-46-  sSup {s : ℝ | ∃ S : Finset ℕ, S.card = n ∧ (∀ m ∈ S, 0 < m) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-47-    s = unitFracSum S ∧ s < x}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-67-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-68-/--
+FormalConjectures/ErdosProblems/206.lean-69-Erdős Problem 206 (Disproved by Kovač [Ko24b]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-71-Let $x > 0$ be a real number. For any $n \geq 1$ let $R_n(x)$ be the maximal sum of $n$
+FormalConjectures/ErdosProblems/206.lean:72:distinct unit fractions which is $< x$. Erdős and Graham asked whether, for
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-73-almost all $x$, the best underapproximations are eventually constructed in a
+FormalConjectures/ErdosProblems/206.lean-74-greedy fashion: $R_{n+1}(x) = R_n(x) + 1/m$ where $m$ is the smallest new
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-75-denominator keeping the sum below $x$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-77-Kovač proved this is false — the set of $x \in (0,\infty)$ for which the best
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-18-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-19-/-!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-20-# Erdős Problem 301
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-21-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-22-Let $f(N)$ be the size of the largest subset of $\{1, \ldots, N\}$ such that no element has its
+FormalConjectures/ErdosProblems/301.lean:23:reciprocal equal to a sum of reciprocals of other elements. Erdős and Graham conjectured that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-24-$f(N) = (1/2 + o(1))N$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-25-
+FormalConjectures/ErdosProblems/301.lean-26-*Reference:* [erdosproblems.com/301](https://www.erdosproblems.com/301)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-28-[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-32-open Finset BigOperators
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-34-namespace Erdos301
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-35-
+FormalConjectures/ErdosProblems/301.lean:36:/-- A finset $A$ of positive integers is *unit-fraction-sum-free* if for no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-37-element $a \in A$ can $1/a$ be expressed as a sum $\sum_{b \in S} 1/b$ for some
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-38-nonempty $S \subseteq A$ with $a \notin S$. That is, there are no solutions to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-39-$1/a = 1/b_1 + \cdots + 1/b_k$ with distinct $a, b_1, \ldots, b_k \in A$. -/
+FormalConjectures/ErdosProblems/301.lean-40-def UnitFractionSumFree (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/301.lean-41-  ∀ a ∈ A, ∀ S : Finset ℕ, S ⊆ A → a ∉ S → S.Nonempty →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-52-The example $A = (N/2, N] \cap \mathbb{N}$ shows that $f(N) \geq N/2$. Wouter van Doorn
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-53-has shown $f(N) \leq (25/28 + o(1))N$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-54-
+FormalConjectures/ErdosProblems/301.lean-55-We formalize the conjectured statement: for every $\varepsilon > 0$, for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-56-sufficiently large $N$,
+FormalConjectures/ErdosProblems/301.lean:57:(1) every unit-fraction-sum-free $A \subseteq \{1, \ldots, N\}$ has
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-58-$|A| \leq (1/2 + \varepsilon)N$, and
+FormalConjectures/ErdosProblems/301.lean:59:(2) there exists a unit-fraction-sum-free $A \subseteq \{1, \ldots, N\}$ with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-60-$|A| \geq (1/2 - \varepsilon)N$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-61--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-62-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/301.lean-63-theorem erdos_301 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/301.lean-64-    ∀ ε : ℝ, 0 < ε →
+--
+FormalConjectures/ErdosProblems/300.lean-22-*Reference:* [erdosproblems.com/300](https://www.erdosproblems.com/300)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-24-[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-25-theory*. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-26-
+FormalConjectures/ErdosProblems/300.lean:27:[Cr03] Croot, E., *On a coloring conjecture about unit fractions*. Annals of Mathematics (2003).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-29-[LiSa24] Liu, J. and Sawhney, M., *On a conjecture of Erdős and Graham about Egyptian
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-30-fractions* (2024).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-31--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-32-
+--
+FormalConjectures/ErdosProblems/26.lean-26-  arXiv:1908.00488 [math.NT] (2019)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-27--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-29-namespace Erdos26
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-30-
+FormalConjectures/ErdosProblems/26.lean:31:/-- A sequence of naturals $(a_i)$ is _thick_ if their sum of reciprocals diverges:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-32-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-33-  \sum_i \frac{1}{a_i} = \infty
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-34-$$-/
+FormalConjectures/ErdosProblems/26.lean-35-def IsThick {ι : Type*} (A : ι → ℕ) : Prop := ¬Summable (fun i ↦ (1 : ℝ) / A i)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-36-
+--
+FormalConjectures/ErdosProblems/57.lean-38-Erdős Problem 57 (Conjectured by Erdős-Hajnal [ErHa66], proved by Liu-Montgomery [LiMo20]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-39-If $G$ is a graph with infinite chromatic number and $a_1 < a_2 < \cdots$ are the lengths of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-40-the odd cycles of $G$, then $\sum 1/a_i = \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-41-
+FormalConjectures/ErdosProblems/57.lean-42-We formalize "$\sum 1/a_i = \infty$" as: for any real bound $B$, there exists a finite set $T$
+FormalConjectures/ErdosProblems/57.lean:43:of odd natural numbers, each of which is the length of some cycle in $G$, whose reciprocals
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-44-sum to at least $B$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-45--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-46-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/57.lean-47-theorem erdos_57 {V : Type*} (G : SimpleGraph V)
+FormalConjectures/ErdosProblems/57.lean-48-    (hχ : G.chromaticNumber = ⊤) :
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-60-Is $\lim_{k \to \infty} f(k) / \log W(k) = \infty$, where $W(k)$ is the van der Waerden
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-61-number?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-62-
+FormalConjectures/ErdosProblems/169.lean-63-This is formalized as: for every constant $C > 0$, for all sufficiently large $k$,
+FormalConjectures/ErdosProblems/169.lean:64:there exists a finite AP-free set $A$ of positive integers whose reciprocal sum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-65-exceeds $C \cdot \log W(k)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-66--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-67-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/169.lean-68-theorem erdos_169 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/169.lean-69-    ∀ C : ℝ, 0 < C → ∃ k₀ : ℕ, ∀ k : ℕ, k₀ ≤ k →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean-35-namespace Erdos685
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean-37-/-- The number of distinct prime divisors of $n$ (the arithmetic function $\omega(n)$). -/
+FormalConjectures/ErdosProblems/685.lean-38-def omega (n : ℕ) : ℕ := n.primeFactors.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean-39-
+FormalConjectures/ErdosProblems/685.lean:40:/-- The sum of reciprocals of primes $p$ with $k < p < n$: $\sum_{k < p < n} \frac{1}{p}$. -/
+FormalConjectures/ErdosProblems/685.lean-41-noncomputable def primeReciprocalSum (k n : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/685.lean-42-  ∑ p ∈ (Finset.range n).filter (fun p => k < p ∧ Nat.Prime p), (1 : ℝ) / p
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean-44-/--
+FormalConjectures/ErdosProblems/685.lean-45-Erdős Problem 685 [Er79d]: For all $\varepsilon \in (0, 1)$ and $\delta > 0$, there exists $N_0$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean-27-namespace Erdos313
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean-29-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean-30-This set contains all solutions `(m, P)` to the Erdős problem 313.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean-31-A solution is a pair where `m` is an integer `≥ 2` and `P` is a non-empty, finite set of
+FormalConjectures/ErdosProblems/313.lean:32:distinct prime numbers, such that the sum of the reciprocals of the primes in `P` equals `1 - 1/m`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean-33--/
+FormalConjectures/ErdosProblems/313.lean-34-def erdos_313_solutions : Set (ℕ × Finset ℕ) :=
+FormalConjectures/ErdosProblems/313.lean-35-  {(m, P) | 2 ≤ m ∧ P.Nonempty ∧ (∀ p ∈ P, p.Prime) ∧ ∑ p ∈ P, (1 : ℚ) / p = 1 - 1 / m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean-37-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-31-$k(N)$ is not $o(\log N)$; it grows like $\log N$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-33-[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-34-theory*. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-35-
+FormalConjectures/ErdosProblems/296.lean:36:[Bl21] Bloom, T., *On a density conjecture about unit fractions*. (2021).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-37--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-39-open Finset BigOperators
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-41-namespace Erdos296
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-42-
+FormalConjectures/ErdosProblems/296.lean:43:/-- The reciprocal sum $\sum_{n \in A} 1/n$ of a finite set of natural numbers. -/
+FormalConjectures/ErdosProblems/296.lean:44:noncomputable def reciprocalSum (A : Finset ℕ) : ℚ :=
+FormalConjectures/ErdosProblems/296.lean-45-  ∑ n ∈ A, (1 : ℚ) / (n : ℚ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-47-/--
+FormalConjectures/ErdosProblems/296.lean-48-Erdős Problem 296 [ErGr80] (resolved by Hunter–Sawhney via Bloom [Bl21]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-50-$k(N) = (1 - o(1)) \log N$, where $k(N)$ is the maximum number of pairwise
+FormalConjectures/ErdosProblems/296.lean:51:disjoint subsets of $\{1, \ldots, N\}$ whose reciprocal sums each equal $1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-52-
+FormalConjectures/ErdosProblems/296.lean-53-We formalize the non-trivial lower bound: for every $\varepsilon > 0$, for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-54-sufficiently large $N$, one can find at least $\lfloor (1 - \varepsilon) \ln N \rfloor$
+FormalConjectures/ErdosProblems/296.lean:55:pairwise disjoint subsets of $\{1, \ldots, N\}$, each with reciprocal sum exactly $1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-56--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-57-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/296.lean-58-theorem erdos_296 (ε : ℝ) (hε : 0 < ε) :
+FormalConjectures/ErdosProblems/296.lean-59-    ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+FormalConjectures/ErdosProblems/296.lean-60-      ∃ (k : ℕ) (family : Fin k → Finset ℕ),
+FormalConjectures/ErdosProblems/296.lean-61-        (k : ℝ) ≥ (1 - ε) * Real.log (N : ℝ) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-62-        (∀ i, family i ⊆ Finset.Icc 1 N) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-63-        (∀ i j, i ≠ j → Disjoint (family i) (family j)) ∧
+FormalConjectures/ErdosProblems/296.lean:64:        (∀ i, reciprocalSum (family i) = 1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-67-end Erdos296
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-24-open Asymptotics Filter
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-25-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-26-namespace Erdos304
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-28-/--
+FormalConjectures/ErdosProblems/304.lean:29:The set of `k` for which `a / b` can be expressed as a sum of `k` distinct unit fractions.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-30--/
+FormalConjectures/ErdosProblems/304.lean-31-def unitFractionExpressible (a b : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/304.lean-32-  {k | ∃ s : Finset ℕ, s.card = k ∧ (∀ n ∈ s, n > 1) ∧ (a / b : ℚ) = ∑ n ∈ s, (n : ℚ)⁻¹}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean-34-@[category API, simp, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-20-# Erdős Problem 45
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-21-
+FormalConjectures/ErdosProblems/45.lean-22-*Reference:* [erdosproblems.com/45](https://www.erdosproblems.com/45)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-24-For every $k$-colouring of the divisors of $n$ (excluding $1$ and $n$), there is a
+FormalConjectures/ErdosProblems/45.lean:25:monochromatic subset whose reciprocals sum to $1$. Proved by Croot [Cr03].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-26-
+FormalConjectures/ErdosProblems/45.lean:27:[Cr03] Croot, E., _On a coloring conjecture about unit fractions_. Annals of Mathematics,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-28-157 (2003), 545–556.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-31-open Finset BigOperators
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-42-/--
+FormalConjectures/ErdosProblems/45.lean-43-Proved by Croot [Cr03]: for every $k \geq 2$, there exists a positive integer $n$ such that
+FormalConjectures/ErdosProblems/45.lean-44-for any $k$-colouring of the set $D(n) = \{d : d \mid n,\, 1 < d < n\}$ of divisors of $n$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-45-(excluding $1$ and $n$ itself), there is a monochromatic subset $D' \subseteq D(n)$ whose
+FormalConjectures/ErdosProblems/45.lean:46:reciprocals sum to $1$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-47-$$\sum_{d \in D'} \frac{1}{d} = 1.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-48-
+FormalConjectures/ErdosProblems/45.lean-49-*Reference:* [Cr03]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-50--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-51-@[category research solved, AMS 5 11]
+--
+FormalConjectures/ErdosProblems/310.lean-22-*Reference:* [erdosproblems.com/310](https://www.erdosproblems.com/310)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-24-[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-25-theory*. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-26-
+FormalConjectures/ErdosProblems/310.lean:27:[Bl21] Bloom, T., *On a density conjecture about unit fractions* (2021).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-28-
+FormalConjectures/ErdosProblems/310.lean:29:[LiSa24] Liu, J. and Sawhney, M., *On a conjecture of Erdős on unit fractions* (2024).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-32-open Finset BigOperators
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean-34-namespace Erdos310
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-30-where $c > 0$ is some absolute constant and $c_0 = 1.26408\cdots$ is the Vardi constant.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-31-The lower bound is due to Konyagin [Ko14] and the upper bound to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-32-Elsholtz and Planitzer [ElPl21].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-34-[Ko14] Konyagin, S., _On the number of representations of an integer as a sum of distinct
+FormalConjectures/ErdosProblems/148.lean:35:unit fractions_, 2014.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-37-[ElPl21] Elsholtz, C. and Planitzer, S., _The number of solutions of the Erdős–Straus
+FormalConjectures/ErdosProblems/148.lean:38:equation and sums of $k$ unit fractions_, Proc. R. Soc. Edinb. A Math. (2021).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-40-[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-41-number theory_, Monographies de L'Enseignement Mathématique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-42--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-44-open BigOperators Real Filter
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-46-namespace Erdos148
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-48-/-- $F(k)$ is the number of $k$-element sets of positive integers
+FormalConjectures/ErdosProblems/148.lean:49:whose unit fractions sum to $1$: $1/n_1 + \cdots + 1/n_k = 1$. -/
+FormalConjectures/ErdosProblems/148.lean:50:noncomputable def egyptianFractionCount (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/148.lean-51-  Set.ncard {S : Finset ℕ | S.card = k ∧ (∀ n ∈ S, 0 < n) ∧
+FormalConjectures/ErdosProblems/148.lean-52-    ∑ n ∈ S, (1 : ℚ) / (n : ℚ) = 1}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-53-
+FormalConjectures/ErdosProblems/148.lean-54-/-- Konyagin lower bound [Ko14]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-55-There exists an absolute constant $c > 0$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-56-$2^{c^{k/\log k}} \le F(k)$ for all sufficiently large $k$. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-57-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/148.lean-58-theorem erdos_148.variants.konyagin_lower_bound :
+FormalConjectures/ErdosProblems/148.lean-59-    ∃ c : ℝ, 0 < c ∧ ∀ᶠ k : ℕ in atTop,
+FormalConjectures/ErdosProblems/148.lean-60-      (2 : ℝ) ^ (c ^ ((k : ℝ) / Real.log k)) ≤
+FormalConjectures/ErdosProblems/148.lean:61:        (egyptianFractionCount k : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-62-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-63-
+FormalConjectures/ErdosProblems/148.lean-64-/-- Elsholtz–Planitzer upper bound [ElPl21]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-65-There exists a constant $c_0 > 1$ (the Vardi constant, $c_0 \approx 1.26408$) such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-66-for every $\varepsilon > 0$, $F(k) \le c_0^{(1/5 + \varepsilon) \cdot 2^k}$ for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-67-sufficiently large $k$. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-68-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/148.lean-69-theorem erdos_148.variants.elsholtz_planitzer_upper_bound :
+FormalConjectures/ErdosProblems/148.lean-70-    ∃ c₀ : ℝ, 1 < c₀ ∧ ∀ ε : ℝ, 0 < ε → ∀ᶠ k : ℕ in atTop,
+FormalConjectures/ErdosProblems/148.lean:71:      (egyptianFractionCount k : ℝ) ≤
+FormalConjectures/ErdosProblems/148.lean-72-        c₀ ^ ((1 / 5 + ε) * (2 : ℝ) ^ (k : ℕ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-73-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-74-
+FormalConjectures/ErdosProblems/148.lean-75-/-- Erdős Problem 148 [ErGr80, p. 32]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-76-Find good estimates for $F(k)$, the number of representations of $1$
+FormalConjectures/ErdosProblems/148.lean:77:as a sum of exactly $k$ distinct unit fractions.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-78-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-79-The open problem is to close the gap between the known bounds. This
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-80-conjecture asserts that the correct order of magnitude is exponential
+FormalConjectures/ErdosProblems/148.lean-81-in $2^k$: there exist constants $1 < c_1 \le c_2$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-82-$c_1^{2^k} \le F(k) \le c_2^{2^k}$ for all sufficiently large $k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-83-In particular, the Konyagin lower bound should be improvable to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-84-exponential in $2^k$ to match the Elsholtz–Planitzer upper bound. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-85-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/148.lean-86-theorem erdos_148 :
+FormalConjectures/ErdosProblems/148.lean-87-    ∃ c₁ c₂ : ℝ, 1 < c₁ ∧ 1 < c₂ ∧ ∀ᶠ k : ℕ in atTop,
+FormalConjectures/ErdosProblems/148.lean:88:      c₁ ^ ((2 : ℝ) ^ (k : ℕ)) ≤ (egyptianFractionCount k : ℝ) ∧
+FormalConjectures/ErdosProblems/148.lean:89:      (egyptianFractionCount k : ℝ) ≤ c₂ ^ ((2 : ℝ) ^ (k : ℕ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-90-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-91-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean-92-end Erdos148
+--
+FormalConjectures/ErdosProblems/308.lean-22-*Reference:* [erdosproblems.com/308](https://www.erdosproblems.com/308)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-24-[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-25-number theory*. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-26-
+FormalConjectures/ErdosProblems/308.lean:27:[Cr99] Croot, E., *On unit fractions*. Ph.D. thesis, University of Georgia (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-30-open Finset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-32-open scoped BigOperators
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-34-namespace Erdos308
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-36-/--
+FormalConjectures/ErdosProblems/308.lean:37:A positive integer $k$ is representable as a sum of distinct unit fractions with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-38-denominators from $\{1, \ldots, N\}$ if there exists a subset $S \subseteq \{1, \ldots, N\}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-39-such that $\sum_{n \in S} 1/n = k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-40--/
+FormalConjectures/ErdosProblems/308.lean-41-def IsRepresentableUnitFractionSum (N : ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/308.lean-42-  ∃ S : Finset ℕ, (∀ n ∈ S, 1 ≤ n ∧ n ≤ N) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-45-/--
+FormalConjectures/ErdosProblems/308.lean-46-Erdős Problem 308 [ErGr80]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-48-Is it true that for every $N \geq 1$, the set of positive integers representable as sums of
+FormalConjectures/ErdosProblems/308.lean:49:distinct unit fractions with denominators from $\{1, \ldots, N\}$ has the shape
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-50-$\{1, \ldots, m\}$ for some $m$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-52-This was essentially solved by Croot [Cr99], who showed that if $f(N)$ is the smallest
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-53-positive integer not so representable, and $m_N = \lfloor \sum_{n \leq N} 1/n \rfloor$, then
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-54-for all sufficiently large $N$ the set of representable positive integers is either
+--
+FormalConjectures/ErdosProblems/293.lean-50-def AppearsInKTermEgyptian (k n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/293.lean-51-  ∃ S : Finset ℕ, S.card = k ∧ n ∈ S ∧ (∀ m ∈ S, 0 < m) ∧
+FormalConjectures/ErdosProblems/293.lean-52-    ∑ m ∈ S, (1 : ℚ) / (m : ℚ) = 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/293.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/293.lean-54-/-- $v(k)$ is the smallest positive integer that does not appear in any representation
+FormalConjectures/ErdosProblems/293.lean:55:of $1$ as a sum of exactly $k$ distinct unit fractions. -/
+FormalConjectures/ErdosProblems/293.lean-56-noncomputable def v (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/293.lean-57-  sInf {n : ℕ | 0 < n ∧ ¬AppearsInKTermEgyptian k n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/293.lean-58-
+FormalConjectures/ErdosProblems/293.lean-59-/-- Bleicher–Erdős lower bound [BlEr75]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/293.lean-60-There exists a constant $c > 0$ such that $v(k) \geq c \cdot k!$ for all $k \geq 1$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-20-# Erdős Problem 286
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-21-
+FormalConjectures/ErdosProblems/286.lean-22-*Reference:* [erdosproblems.com/286](https://www.erdosproblems.com/286)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-24-For sufficiently large $k$, do there exist $k$ distinct positive integers in an interval of
+FormalConjectures/ErdosProblems/286.lean:25:width $(e - 1 + o(1))k$ whose reciprocals sum to $1$? Solved affirmatively by Croot.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-27-[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-28-theory*. Monographies de L'Enseignement Mathématique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-29-
+FormalConjectures/ErdosProblems/286.lean:30:[Cr01] Croot, E., *On a coloring conjecture about unit fractions*. Annals of Mathematics (2001).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-31--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-33-open Filter Finset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-35-namespace Erdos286
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-40-and integers $n_1 < \cdots < n_k \in I$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-41-$$1 = \frac{1}{n_1} + \cdots + \frac{1}{n_k}?$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-43-The answer is yes. For every $\varepsilon > 0$, for all sufficiently large $k$, there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-44-exist $k$ distinct positive integers in an interval of width at most
+FormalConjectures/ErdosProblems/286.lean:45:$(e - 1 + \varepsilon)k$ whose reciprocals sum to $1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-46--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-47-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/286.lean-48-theorem erdos_286 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean-49-    answer(True) ↔
+FormalConjectures/ErdosProblems/286.lean-50-    ∀ ε : ℝ, 0 < ε →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-28-open Finset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-30-namespace Erdos327
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-31-
+FormalConjectures/ErdosProblems/327.lean:32:/-- A finite set $A$ of positive integers is *unit-fraction-pair-free* if there are
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-33-no distinct $a, b \in A$ satisfying $(a + b) \mid ab$, equivalently, no distinct
+FormalConjectures/ErdosProblems/327.lean:34:$a, b \in A$ such that $\frac{1}{a} + \frac{1}{b}$ is a unit fraction. -/
+FormalConjectures/ErdosProblems/327.lean-35-def UnitFractionPairFree (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-36-  ∀ a ∈ A, ∀ b ∈ A, a ≠ b → ¬((a + b) ∣ (a * b))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-37-
+FormalConjectures/ErdosProblems/327.lean:38:/-- A finite set $A$ of positive integers satisfies the strong unit-fraction-pair
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-39-condition if there are no distinct $a, b \in A$ satisfying $(a + b) \mid 2ab$. -/
+FormalConjectures/ErdosProblems/327.lean-40-def StrongUnitFractionPairFree (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-41-  ∀ a ∈ A, ∀ b ∈ A, a ≠ b → ¬((a + b) ∣ (2 * a * b))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-43-/--
+FormalConjectures/ErdosProblems/327.lean-44-Erdős Problem 327 [ErGr80]: Suppose $A \subseteq \{1, \ldots, N\}$ is such that for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-45-distinct $a, b \in A$, $(a + b) \nmid ab$ (equivalently, $\frac{1}{a} + \frac{1}{b}$ is never
+FormalConjectures/ErdosProblems/327.lean:46:a unit fraction). The odd numbers in $\{1, \ldots, N\}$ give a set of size $\sim N/2$ with this
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-47-property. We conjecture the maximum size is $(\frac{1}{2} + o(1))N$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-48-
+FormalConjectures/ErdosProblems/327.lean-49-Note: Wouter van Doorn has shown that the density cannot exceed $25/28$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-50--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean-51-@[category research open, AMS 5 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-33-where $\log_i$ denotes the $i$-fold iterated logarithm.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-34-
+FormalConjectures/ErdosProblems/320.lean-35-Bettin, Grenié, Molteni, and Sanna [BGMS25] improved the lower bound to:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-36-$$\log S(N) \geq (N/\log N)(2 \log 2 (1 - 3/(2 \log_k N)) \cdot \prod_{i=3}^{k} \log_i N)$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-37-
+FormalConjectures/ErdosProblems/320.lean:38:[BlEr75] Bleicher, M. N. and Erdős, P., *Denominators of unit fractions*, J. Number Theory (1975).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-39-
+FormalConjectures/ErdosProblems/320.lean:40:[BlEr76b] Bleicher, M. N. and Erdős, P., *Denominators of unit fractions II*, Illinois J. Math. (1976).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-42-[BGMS25] Bettin, S., Grenié, L., Molteni, G., and Sanna, C. (2025).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-44-[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number theory*. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-45--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-49-open scoped Topology
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-51-namespace Erdos320
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-52-
+FormalConjectures/ErdosProblems/320.lean:53:/-- The set of all unit-fraction subset sums from $\{1, \ldots, N\}$:
+FormalConjectures/ErdosProblems/320.lean-54-$\left\{ \sum_{n \in A} 1/n : A \subseteq \{1, \ldots, N\} \right\}$ as a finite set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-55-rationals. -/
+FormalConjectures/ErdosProblems/320.lean-56-noncomputable def unitFractionSums (N : ℕ) : Finset ℚ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-57-  (Finset.Icc 1 N).powerset.image
+FormalConjectures/ErdosProblems/320.lean-58-    (fun A => A.sum (fun n => (1 : ℚ) / ↑n))
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-20-# Erdős Problem 46
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-21-
+FormalConjectures/ErdosProblems/46.lean-22-*Reference:* [erdosproblems.com/46](https://www.erdosproblems.com/46)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-24-For every finite colouring of the integers $\geq 2$, there exists a monochromatic finite
+FormalConjectures/ErdosProblems/46.lean:25:set whose reciprocals sum to $1$. Proved by Croot [Cr03].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-26-
+FormalConjectures/ErdosProblems/46.lean:27:[Cr03] Croot, E.S., _On a coloring conjecture about unit fractions_, Annals of Mathematics **157** (2003), 545–556.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-30-open Finset BigOperators
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-32-namespace Erdos46
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-34-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-35-For every finite colouring of the positive integers $\ge 2$, there exists a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-36-monochromatic finite set $\{n_1, \ldots, n_k\}$ with $2 \le n_1 < \cdots < n_k$ whose
+FormalConjectures/ErdosProblems/46.lean:37:reciprocals sum to $1$, i.e. $\sum 1/n_i = 1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-39-Proved by Croot [Cr03].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-40--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean-41-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/46.lean-42-theorem erdos_46 : answer(True) ↔
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-19-/-!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-20-# Erdős Problem 298
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-21-
+FormalConjectures/ErdosProblems/298.lean-22-*References:*
+FormalConjectures/ErdosProblems/298.lean-23-- [erdosproblems.com/298](https://www.erdosproblems.com/298)
+FormalConjectures/ErdosProblems/298.lean:24:- [Bl21] Bloom, T. F., On a density conjecture about unit fractions. arXiv:2112.03726 (2021).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-25--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-27-namespace Erdos298
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-29-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-33-The answer is yes, proved by Bloom [Bl21].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-35-This was formalized in Lean 3 by Bloom and Mehta.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-36--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-37-@[category research formally solved using other_system at
+FormalConjectures/ErdosProblems/298.lean:38:"https://github.com/b-mehta/unit-fractions/blob/master/src/final_results.lean", AMS 11]
+FormalConjectures/ErdosProblems/298.lean-39-theorem erdos_298 : answer(True) ↔ (∀ (A : Set ℕ), 0 ∉ A → A.HasPosDensity →
+FormalConjectures/ErdosProblems/298.lean-40-    ∃ (S : Finset ℕ), ↑S ⊆ A ∧ ∑ n ∈ S, (1 / n : ℚ) = 1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-41-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean-43-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-21-
+FormalConjectures/ErdosProblems/444.lean-22-*Reference:* [erdosproblems.com/444](https://www.erdosproblems.com/444)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-24-Let $A \subseteq \mathbb{N}$ be infinite and let $d_A(n)$ count the divisors of $n$ that belong
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-25-to $A$. Then for every $k$ the limsup of $\max_{n < x} d_A(n)$ divided by the $k$-th power of
+FormalConjectures/ErdosProblems/444.lean:26:the partial reciprocal sum $\sum_{a \in A,\, a < x} 1/a$ is infinite.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-28-[ErSa80] Erdős, P. and Sárkőzy, A., *On the number of divisors of $n!$*, 1980.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-30-[ErGr80] Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-31-theory*. Monographies de L'Enseignement Mathematique, 1980.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-37-
+FormalConjectures/ErdosProblems/444.lean-38-/-- $d_A(n)$: the number of elements of $A$ that divide $n$. -/
+FormalConjectures/ErdosProblems/444.lean-39-noncomputable def divisorCountIn (A : Set ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-40-  (n.divisors.filter (· ∈ A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-41-
+FormalConjectures/ErdosProblems/444.lean:42:/-- The partial sum of reciprocals of elements of $A$ in $[1, x)$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-43-$$\sum_{\substack{a \in A \\ 1 \leq a < x}} \frac{1}{a}.$$ -/
+FormalConjectures/ErdosProblems/444.lean:44:noncomputable def reciprocalSum (A : Set ℕ) (x : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/444.lean-45-  ∑ a ∈ (Finset.Ico 1 x).filter (· ∈ A), (1 : ℝ) / (a : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-46-
+FormalConjectures/ErdosProblems/444.lean-47-/-- Erdős Problem 444 [ErGr80, p.88] (PROVED):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-49-Let $A \subseteq \mathbb{N}$ be infinite and $d_A(n)$ count the number of $a \in A$ dividing $n$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-58-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/444.lean-59-theorem erdos_444 (A : Set ℕ) (hA : A.Infinite) (k : ℕ) :
+FormalConjectures/ErdosProblems/444.lean-60-    ∀ M : ℝ, 0 < M →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-61-    ∃ᶠ x in atTop,
+FormalConjectures/ErdosProblems/444.lean-62-    ∃ n : ℕ, 1 ≤ n ∧ n < x ∧
+FormalConjectures/ErdosProblems/444.lean:63:    M * (reciprocalSum A x) ^ k < (divisorCountIn A n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-64-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-66-end Erdos444
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean-40-open Classical Real Finset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean-42-namespace Erdos294
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean-43-
+FormalConjectures/ErdosProblems/294.lean:44:/-- There exists a representation of $1$ as a sum of distinct unit fractions
+FormalConjectures/ErdosProblems/294.lean-45-$1/n_1 + \cdots + 1/n_k$ with $t = n_1 < \cdots < n_k \leq N$. Formally: there exists a
+FormalConjectures/ErdosProblems/294.lean:46:finite set $S \subseteq \{t, \ldots, N\}$ containing $t$ whose reciprocals sum to $1$. -/
+FormalConjectures/ErdosProblems/294.lean-47-def HasUnitFractionRepFrom (t N : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/294.lean-48-  ∃ S : Finset ℕ, t ∈ S ∧ (∀ m ∈ S, t ≤ m) ∧ (∀ m ∈ S, m ≤ N) ∧
+FormalConjectures/ErdosProblems/294.lean-49-    (∀ m ∈ S, 1 ≤ m) ∧ (S.sum fun m => (1 : ℚ) / m) = 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean-50-
+FormalConjectures/ErdosProblems/294.lean:51:/-- $t(N)$: the least positive integer $t$ such that there is no unit fraction
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean-52-representation of $1$ using distinct integers from $\{t, \ldots, N\}$ starting at $t$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean-53-Returns $N + 1$ as a default if no such $t$ exists. -/
+FormalConjectures/ErdosProblems/294.lean-54-noncomputable def leastNoRep (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/294.lean-55-  if h : ∃ t : ℕ, 1 ≤ t ∧ ¬HasUnitFractionRepFrom t N then
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean-56-    Nat.find h
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-41-  sSup { k | ∏ i ∈ Finset.range k, u i ≤ x }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-43-/-- A sequence is "good" if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-44-1. it is strictly monotone
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-45-2. it is pairwise coprime
+FormalConjectures/ErdosProblems/1101.lean:46:3. the sum of reciprocals converges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-47-4. the gap between consecutive elements in A(u) is bounded relative to t_x. -/
+FormalConjectures/ErdosProblems/1101.lean-48-def IsGood (u : ℕ → ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-49-  StrictMono u ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean-50-  (∀ i j, i ≠ j → Coprime (u i) (u j)) ∧
+FormalConjectures/ErdosProblems/1101.lean-51-  Summable (fun n => 1 / (u n : ℝ)) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/355.lean-20-/-!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/355.lean-21-# Erdős Problem 355
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/355.lean-22-
+FormalConjectures/ErdosProblems/355.lean-23-*References:*
+FormalConjectures/ErdosProblems/355.lean-24-- [erdosproblems.com/355](https://www.erdosproblems.com/355)
+FormalConjectures/ErdosProblems/355.lean:25:- [DoKo25] W. van Doorn and V. Kovač, Lacunary sequences whose reciprocal sums represent all
+FormalConjectures/ErdosProblems/355.lean-26-  rationals in an interval. arXiv:2509.24971 (2025).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/355.lean-27--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/355.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/355.lean-29-namespace Erdos355
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/355.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-28-$\sum_{u \leq n \leq eu} 1/n = 1 + o(1)$, and hence if $f(k) = u$ then $k \geq (e-1-o(1))u$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-30-Essentially solved by Croot [Cr01], who showed that for any $N > 1$ there exists
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-31-some $k \geq 1$ and $N < n_1 < \cdots < n_k \leq (e+o(1))N$ with $1 = \sum 1/n_i$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-32-
+FormalConjectures/ErdosProblems/284.lean:33:[Cr01] Croot, E., _On a coloring conjecture about unit fractions_, Annals of Mathematics (2001).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-35-[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-36-theory_. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-37--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-39-open Filter Finset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-41-namespace Erdos284
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-43-/-- $f(k)$ is the maximal value of the minimum element in any set of $k$ distinct positive
+FormalConjectures/ErdosProblems/284.lean:44:integers whose reciprocals sum to $1$. -/
+FormalConjectures/ErdosProblems/284.lean-45-noncomputable def erdos284_f (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/284.lean-46-  sSup {m : ℕ | ∃ S : Finset ℕ, S.card = k ∧ (∀ n ∈ S, 0 < n) ∧
+FormalConjectures/ErdosProblems/284.lean-47-    S.sum (fun n => (1 : ℚ) / ↑n) = 1 ∧ m ∈ S ∧ ∀ n ∈ S, m ≤ n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-49-/--
+FormalConjectures/ErdosProblems/284.lean-50-Erdős Problem 284 (Proved) [ErGr80]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-52-$f(k) = (1+o(1)) \, k/(e-1)$, where $f(k)$ is the maximal minimum element in any
+FormalConjectures/ErdosProblems/284.lean:53:representation of $1$ as a sum of $k$ distinct unit fractions.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-55-Equivalently, $f(k) \cdot (e-1) / k \to 1$ as $k \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-56--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-57-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/284.lean-58-theorem erdos_284 :
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-20-# Erdős Problem 299
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-21-
+FormalConjectures/ErdosProblems/299.lean-22-*References:*
+FormalConjectures/ErdosProblems/299.lean-23-- [erdosproblems.com/298](https://www.erdosproblems.com/298)
+FormalConjectures/ErdosProblems/299.lean-24-- [erdosproblems.com/299](https://www.erdosproblems.com/299)
+FormalConjectures/ErdosProblems/299.lean:25:- [Bl21] Bloom, T. F., On a density conjecture about unit fractions. arXiv:2112.03726 (2021).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-26--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-28-open Filter
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-30-namespace Erdos299
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-37-[erdosproblems.com/298] by Bloom [Bl21].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-39-This was formalized in Lean 3 by Bloom and Mehta.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-40--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-41-@[category research formally solved using other_system at
+FormalConjectures/ErdosProblems/299.lean:42:"https://github.com/b-mehta/unit-fractions/blob/master/src/final_results.lean", AMS 11 40]
+FormalConjectures/ErdosProblems/299.lean-43-theorem erdos_299 : answer(False) ↔ (∃ (a : ℕ → ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-44-    StrictMono a ∧ (∀ n, 0 < a n) ∧
+FormalConjectures/ErdosProblems/299.lean-45-    (fun n ↦ (a (n + 1) : ℝ) - a n) =O[atTop] (1 : ℕ → ℝ) ∧
+FormalConjectures/ErdosProblems/299.lean-46-    ∀ S : Finset ℕ, ∑ i ∈ S, (1 : ℝ) / a i ≠ 1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean-47-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-31-open Finset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-33-namespace Erdos302
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-34-
+FormalConjectures/ErdosProblems/302.lean:35:/-- A finset $A$ of positive integers is *unit-fraction-triple-free* if there are
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-36-no distinct $a, b, c \in A$ satisfying $\frac{1}{a} = \frac{1}{b} + \frac{1}{c}$. -/
+FormalConjectures/ErdosProblems/302.lean-37-def UnitFractionTripleFree (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-38-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-39-    a ≠ b → a ≠ c → b ≠ c →
+FormalConjectures/ErdosProblems/302.lean-40-    (1 : ℝ) / (a : ℝ) ≠ (1 : ℝ) / (b : ℝ) + (1 : ℝ) / (c : ℝ)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-57-open, with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-58-$\frac{5}{8} \leq \liminf \frac{f(N)}{N} \leq \limsup \frac{f(N)}{N} \leq \frac{9}{10}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-59-
+FormalConjectures/ErdosProblems/302.lean-60-We formalize the original conjecture as stated: for every $\varepsilon > 0$, for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-61-sufficiently large $N$,
+FormalConjectures/ErdosProblems/302.lean:62:(1) every unit-fraction-triple-free $A \subseteq \{1,\ldots,N\}$ has
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-63-$|A| \leq (\frac{1}{2} + \varepsilon)N$, and
+FormalConjectures/ErdosProblems/302.lean:64:(2) there exists a unit-fraction-triple-free $A \subseteq \{1,\ldots,N\}$ with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-65-$|A| \geq (\frac{1}{2} - \varepsilon)N$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-66--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-67-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/302.lean-68-theorem erdos_302 : answer(False) ↔
+FormalConjectures/ErdosProblems/302.lean-69-    ∀ ε : ℝ, 0 < ε →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-34-open Classical
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-36-namespace Erdos292
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-38-/-- A positive integer $n$ is Egyptian representable if there exists a finite set
+FormalConjectures/ErdosProblems/292.lean:39:of distinct positive integers with maximum element $n$ whose reciprocals sum to $1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-40-That is, there exist $1 \leq m_1 < \cdots < m_k = n$ with $\sum 1/m_i = 1$. -/
+FormalConjectures/ErdosProblems/292.lean-41-def IsEgyptianRepresentable (n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/292.lean-42-  ∃ S : Finset ℕ, n ∈ S ∧ (∀ m ∈ S, 1 ≤ m) ∧ (∀ m ∈ S, m ≤ n) ∧
+FormalConjectures/ErdosProblems/292.lean-43-    (S.sum fun m => (1 : ℚ) / m) = 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-45-/-- Count of Egyptian representable numbers in $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/292.lean:46:noncomputable def egyptianCount (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-47-  ((Finset.Icc 1 N).filter fun n => IsEgyptianRepresentable n).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-49-/--
+FormalConjectures/ErdosProblems/292.lean-50-Erdős Problem 292 (Proved) [ErGr80, p.35]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-57--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-58-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/292.lean-59-theorem erdos_292 : answer(True) ↔
+FormalConjectures/ErdosProblems/292.lean-60-    ∀ ε : ℝ, 0 < ε →
+FormalConjectures/ErdosProblems/292.lean-61-    ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+FormalConjectures/ErdosProblems/292.lean:62:      (egyptianCount N : ℝ) / (N : ℝ) ≥ 1 - ε := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-63-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean-65-end Erdos292
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-38-Let $k \geq 2$. Is it true that, for any distinct integers $1 < n_1 < \cdots < n_k$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-39-$1 = 1/n_1 + \cdots + 1/n_k$, we must have $\max(n_{i+1} - n_i) \geq 3$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-41-The example $1 = 1/2 + 1/3 + 1/6$ shows that $3$ would be best possible here.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-42-The lower bound of $\geq 2$ is equivalent to saying that $1$ is not the sum of
+FormalConjectures/ErdosProblems/287.lean:43:reciprocals of consecutive integers, proved by Erdős [Er32].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-44--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-45-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/287.lean-46-theorem erdos_287 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/287.lean-47-    ∀ (S : Finset ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-48-      2 ≤ S.card →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean-102-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean-103-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean-104-Koizumi [Ko25] showed that $a_n = \lfloor \alpha^{2^n} \rfloor$ is an irrationality sequence
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean-105-for all but countably many $\alpha > 1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean-106-
+FormalConjectures/ErdosProblems/263.lean:107:[Ko25] Koizumi, J., Irrationality of the reciprocal sum of doubly exponential sequences,
+FormalConjectures/ErdosProblems/263.lean-108-       arXiv:2504.05933 (2025).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean-109--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean-110-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/263.lean-111-theorem erdos_263.variants.doubly_exponential_all_but_countable :
+FormalConjectures/ErdosProblems/263.lean-112-    ∀ᶠ (α : ℝ) in .cocountable, α > 1 → IsIrrationalitySequence (fun n : ℕ => ⌊α ^ 2 ^ n⌋₊) := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/267.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/267.lean-48-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/267.lean-49-Good [Go74] and Bicknell and Hoggatt [BiHo76] have shown that $\sum_n \frac 1 {F_{2^n}}$ is irrational.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/267.lean-50-
+FormalConjectures/ErdosProblems/267.lean-51-Ref:
+FormalConjectures/ErdosProblems/267.lean:52:* [Go74] Good, I. J., _A reciprocal series of Fibonacci numbers_
+FormalConjectures/ErdosProblems/267.lean:53:* [BiHo76] Hoggatt, Jr., V. E. and Bicknell, Marjorie, _A reciprocal series of Fibonacci numbers with subscripts $2\sp{n}k$_
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/267.lean-54--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/267.lean-55-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/267.lean-56-theorem erdos_267.variants.specialization_pow_two :
+FormalConjectures/ErdosProblems/267.lean-57-    Irrational <| ∑' k, 1 / (Nat.fib <| 2^k) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/267.lean-58-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean-113-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean-114-  |A| \geq (1 - \frac{1}{e} + o(1))N
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean-115-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean-116-follows from the main result of Croot [Cr01].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean-117-
+FormalConjectures/ErdosProblems/319.lean:118:[Cr01] Croot, III, Ernest S., _On unit fractions with denominators in short intervals_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean-119-Acta Arith. (2001), 99-114.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean-120--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean-121-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/319.lean-122-theorem erdos_319.variants.lb : ∃ (o : ℕ → ℝ), (o =o[atTop] (1 : ℕ → ℝ)) ∧
+FormalConjectures/ErdosProblems/319.lean-123-    ∀ᶠ N in atTop, (1 - 1 / rexp 1 + o N) * N ≤ sSup { (#A : ℝ) | (A) (_ : A ⊆ Finset.Icc 1 N)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-19-/-!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-20-# Erdős Problem 309
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-21-
+FormalConjectures/ErdosProblems/309.lean-22-*Reference:* [erdosproblems.com/309](https://www.erdosproblems.com/309)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-23-
+FormalConjectures/ErdosProblems/309.lean:24:Let $F(N)$ count the number of positive integers representable as sums of distinct unit fractions
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-25-with denominators from $\{1, \ldots, N\}$. Erdős conjectured that $F(N) = o(\log N)$. This was
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-26-disproved by Yokota, who showed $F(N) = \Theta(\log N)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-28-[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-29-number theory_. Monographies de L'Enseignement Mathematique (1980).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-36-open scoped BigOperators
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-38-namespace Erdos309
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-40-/--
+FormalConjectures/ErdosProblems/309.lean:41:A positive integer $k$ is representable as a sum of distinct unit fractions with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-42-denominators from $\{1, \ldots, N\}$ if there exists a subset $S \subseteq \{1, \ldots, N\}$ such
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-43-that $\sum_{n \in S} 1/n = k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-44--/
+FormalConjectures/ErdosProblems/309.lean-45-def IsRepresentableUnitFractionSum (N : ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/309.lean-46-  ∃ S : Finset ℕ, (∀ n ∈ S, 1 ≤ n ∧ n ≤ N) ∧
+FormalConjectures/ErdosProblems/309.lean-47-    ∑ n ∈ S, (1 : ℚ) / (n : ℚ) = (k : ℚ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-49-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-50-$F(N)$ counts the number of positive integers that can be represented as sums of distinct
+FormalConjectures/ErdosProblems/309.lean:51:unit fractions with denominators from $\{1, \ldots, N\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-52--/
+FormalConjectures/ErdosProblems/309.lean-53-noncomputable def countRepresentableIntegers (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-54-  ((Finset.range (N + 1)).filter (fun k => 0 < k ∧ IsRepresentableUnitFractionSum N k)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-56-/--
+FormalConjectures/ErdosProblems/309.lean-57-Erdős Problem 309 (disproved) [ErGr80]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-58-
+FormalConjectures/ErdosProblems/309.lean:59:Let $N \geq 1$. How many integers can be written as the sum of distinct unit fractions
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-60-with denominators from $\{1, \ldots, N\}$? Erdős conjectured that there are $o(\log N)$ such
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-61-integers. This was disproved.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-63-The trivial upper bound is $F(N) \leq \log N + O(1)$. Yokota [Yo97] proved that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-64-$F(N) \geq \log N - O(\log \log N)$, establishing that $F(N) = \Theta(\log N)$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-20-# Erdős Problem 47
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-21-
+FormalConjectures/ErdosProblems/47.lean-22-*Reference:* [erdosproblems.com/47](https://www.erdosproblems.com/47)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-24-If $A \subseteq \{1, \ldots, N\}$ satisfies $\sum_{a \in A} 1/a > \delta \cdot \log N$ for some
+FormalConjectures/ErdosProblems/47.lean:25:$\delta > 0$ and $N$ sufficiently large, then $A$ contains a subset whose reciprocals sum to $1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-27-Bloom [Bl21] proved that the weaker threshold
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-28-$\sum \frac{1}{n} \gg \frac{\log \log \log N}{\log \log N} \cdot \log N$ suffices,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-29-which implies the conjecture below.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-52-/-- A set of natural numbers is *pairwise coprime*. -/
+FormalConjectures/ErdosProblems/691.lean-53-def SetPairwiseCoprime (A : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-54-  ∀ a ∈ A, ∀ b ∈ A, a ≠ b → Nat.Coprime a b
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-55-
+FormalConjectures/ErdosProblems/691.lean:56:/-- The sum of reciprocals of elements of $A$ diverges: for every bound $C > 0$,
+FormalConjectures/ErdosProblems/691.lean:57:some finite subset of $A$ achieves a reciprocal sum exceeding $C$. -/
+FormalConjectures/ErdosProblems/691.lean-58-def ReciprocalSumDiverges (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/691.lean-59-  ∀ C : ℝ, C > 0 → ∃ F : Finset ℕ, (∀ a ∈ F, a ∈ A) ∧
+FormalConjectures/ErdosProblems/691.lean-60-    C < ∑ a ∈ F, (1 : ℝ) / (a : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-62-/--
+FormalConjectures/ErdosProblems/691.lean-63-Erdős Problem 691 (pairwise coprime case) [Er79e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-64-If $A$ is a set of pairwise coprime integers (all $\geq 2$), then $A$ is a Behrend
+FormalConjectures/ErdosProblems/691.lean:65:sequence if and only if the sum of reciprocals $\sum_{a \in A} 1/a$ diverges.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-66--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-67-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/691.lean-68-theorem erdos_691 (A : Set ℕ) (hA : ∀ a ∈ A, a ≥ 2)
+FormalConjectures/ErdosProblems/691.lean-69-    (hCoprime : SetPairwiseCoprime A) :
+FormalConjectures/ErdosProblems/691.lean-70-    IsBehrend A ↔ ReciprocalSumDiverges A := by

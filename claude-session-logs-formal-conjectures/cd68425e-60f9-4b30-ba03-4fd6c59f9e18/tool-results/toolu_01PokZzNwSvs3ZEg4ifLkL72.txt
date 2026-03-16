@@ -1,0 +1,275 @@
+/home/ryan/formal-conjectures/ai-review/610.md-14-
+/home/ryan/formal-conjectures/ai-review/610.md-15-- `SimpleGraph.IsClique` — used correctly by the formalization.
+/home/ryan/formal-conjectures/ai-review/610.md-16-- `Maximal G.IsClique s` (in `Mathlib.Combinatorics.SimpleGraph.Clique`) — equivalent to the custom `IsMaximalCliqueFS` but defined on `Set α`. The custom definition `∀ v ∉ S, ¬G.IsClique ↑(insert v S)` is logically equivalent to the `Maximal` predicate for finite sets (since any proper superset must contain at least one new element), but using `Maximal` directly would be more idiomatic and would avoid reinventing existing infrastructure.
+ai-review/610.md:17:- `SimpleGraph.indepNum` and `SimpleGraph.IsIndepSet` — Problem 151 redefines `IsIndependentSet` and `independenceNumber` instead of using these.
+/home/ryan/formal-conjectures/ai-review/610.md-18-
+ai-review/610.md-19-**Recommendation:** Extract the shared definitions into a common file. Consider building `IsMaximalCliqueFS` as a wrapper around `Maximal G.IsClique ↑S` to leverage existing Mathlib lemmas about maximal elements.
+/home/ryan/formal-conjectures/ai-review/610.md-20-
+--
+/home/ryan/formal-conjectures/ai-review/615.md-2-
+/home/ryan/formal-conjectures/ai-review/615.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/615.md-4-
+ai-review/615.md:5:**Issue: Custom `IsIndependentSet` duplicates Mathlib's `SimpleGraph.IsIndepSet`.**
+/home/ryan/formal-conjectures/ai-review/615.md-6-
+ai-review/615.md-7-The file defines its own `IsIndependentSet` on `Finset V`:
+/home/ryan/formal-conjectures/ai-review/615.md-8-```lean
+--
+/home/ryan/formal-conjectures/ai-review/615.md-10-  ∀ u ∈ S, ∀ v ∈ S, u ≠ v → ¬G.Adj u v
+/home/ryan/formal-conjectures/ai-review/615.md-11-```
+/home/ryan/formal-conjectures/ai-review/615.md-12-
+ai-review/615.md:13:Mathlib already provides `SimpleGraph.IsIndepSet` (on `Set V`), which is used in Problem 22's formalization via `G.IsIndepSet ↑s`. The two are mathematically equivalent (`Set.Pairwise s (fun u v => ¬G.Adj u v)` vs the explicit double quantification). Replacing the custom definition with Mathlib's would improve consistency with the rest of the codebase.
+/home/ryan/formal-conjectures/ai-review/615.md-14-
+/home/ryan/formal-conjectures/ai-review/615.md-15-Additionally, `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` defines `indepNum` with notation `α(G)`, which could be used in the `ramseyTuranNumber` definition instead of the explicit independence-set-size condition.
+/home/ryan/formal-conjectures/ai-review/615.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/615.md-55-
+ai-review/615.md-56-- **Good:** The module docstring is thorough, explaining the problem, its equivalent Ramsey–Turán formulation, the history, and the resolution.
+ai-review/615.md-57-- **Good:** The `ramseyTuranNumber` definition, while unused, aids understanding.
+ai-review/615.md:58:- **Minor:** Using Mathlib's `IsIndepSet` instead of a custom `IsIndependentSet` would make the code more idiomatic and recognizable to Lean/Mathlib users.
+ai-review/615.md-59-- **Minor:** The EHSS variant uses the dotted namespace `erdos_615.variants.EHSS`, which is a clean organizational pattern.
+/home/ryan/formal-conjectures/ai-review/615.md-60-
+/home/ryan/formal-conjectures/ai-review/615.md-61-## 5. Formalizability
+--
+/home/ryan/formal-conjectures/ai-review/615.md-92-
+/home/ryan/formal-conjectures/ai-review/615.md-93-| Criterion | Rating | Notes |
+/home/ryan/formal-conjectures/ai-review/615.md-94-|-----------|--------|-------|
+ai-review/615.md:95:| Code reuse | Needs improvement | Custom `IsIndependentSet` should use Mathlib's `IsIndepSet`; inconsistent edge-counting API vs Problem 22 |
+/home/ryan/formal-conjectures/ai-review/615.md-96-| Citations | Needs improvement | Missing [Er91]; references lack titles/journals compared to Problem 22's style |
+/home/ryan/formal-conjectures/ai-review/615.md-97-| Variants | Partial | EHSS included; Sudakov [Su03] and FLZ lower bound not formalized; no cross-ref to Problem 22 |
+/home/ryan/formal-conjectures/ai-review/615.md-98-| Readability | Good | Clear docstring and organization; minor improvements possible with Mathlib idioms |
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-90-/-! ### Independent domination -/
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-91-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-92-def IsIndepDominating (G : SimpleGraph α) (D : Set α) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:93:  G.IsIndepSet D ∧ G.IsDominating D
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-94-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-95-@[mk_iff]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-96-structure IsNIndepDominatingSet (n : ℕ) (D : Finset α) : Prop where
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:97:  isIndep : G.IsIndepSet D
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-98-  isDominating : G.IsDominating D
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-99-  card_eq : D.card = n
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-100-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-46-    that maximize the quantity `|s| - |N(s)|`, where `N(s)`
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-47-    is the neighborhood of the set `s`. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-48-noncomputable def aprime (G : SimpleGraph α) [DecidableRel G.Adj] : ℝ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:49:  letI indep_sets : Finset (Finset α) := univ.powerset.filter (fun s => G.IsIndepSet (s : Set α))
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-50-  letI diff (s : Finset α) : ℤ := (s.card : ℤ) - (⋃ v ∈ (s : Set α), G.neighborSet v).toFinset.card
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-51-  letI max_diff := (indep_sets.image diff).max
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-52-  letI critical_sets := indep_sets.filter (fun s ↦ diff s = max_diff.getD 0)
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-62-  rw [← mul_one (Fintype.card V), ← Fintype.card_fin m]
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-63-  refine Finset.card_mul_le_card_mul (c · = ·)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-64-    (by simp [Finset.bipartiteAbove, Finset.filter_nonempty_iff])
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:65:    fun b _ ↦ IsIndepSet.card_le_indepNum ?_
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:66:  simpa [IsIndepSet, Set.Pairwise] using fun x hx y hy _ ↦ c.not_adj_of_mem_colorClass hx hy
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-67-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-68-instance (f : ι → V) : Std.Symm fun i j ↦ G.Adj (f i) (f j) where symm _ _ := .symm
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-69-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-138-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-139-/-- The maximum size of the union of k finite independent sets. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-140-noncomputable def indepNumK (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:141:  sSup {n | ∃ f : Fin k → Set V, (∀ i, G.IsIndepSet (f i)) ∧ (⋃ i, f i).ncard = n}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-142-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-143-/-- A finite graph is CDS-colorable if it has a proper coloring
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-144-by natural numbers such that for all `k > 0`, the number of
+--
+/home/ryan/formal-conjectures/ai-review/73.md-4-
+ai-review/73.md-5-**Custom `IndepSetIn` definition is unnecessary.** The file defines `SimpleGraph.IndepSetIn` (lines 35–37), a custom predicate for an independent set within a vertex subset. Mathlib already provides:
+/home/ryan/formal-conjectures/ai-review/73.md-6-
+ai-review/73.md:7:- `SimpleGraph.IsIndepSet` (in `Mathlib.Combinatorics.SimpleGraph.Clique`, line 789): `abbrev IsIndepSet (s : Set α) : Prop := s.Pairwise (fun v w ↦ ¬G.Adj v w)`
+ai-review/73.md:8:- `SimpleGraph.IsNIndepSet` (line 854): a structure combining `IsIndepSet` with `card_eq`.
+/home/ryan/formal-conjectures/ai-review/73.md-9-
+ai-review/73.md:10:The custom `IndepSetIn` bundles two things: (a) `I ⊆ S` (containment in a subset) and (b) pairwise non-adjacency. This could be replaced by `G.IsIndepSet ↑I ∧ I ⊆ S`, using Mathlib's existing definition. This would improve interoperability with other lemmas.
+/home/ryan/formal-conjectures/ai-review/73.md-11-
+ai-review/73.md-12-**Inconsistency across the codebase.** Multiple Erdős problems define their own independent set predicates:
+ai-review/73.md-13-- Problem 73: `SimpleGraph.IndepSetIn` (containment + non-adjacency)
+ai-review/73.md:14:- Problem 750: `Erdos750.IsIndepSet` (non-adjacency, allows u = v)
+ai-review/73.md:15:- Problem 804: `Erdos804.IsIndepSet` (non-adjacency, does **not** require u ≠ v — subtly different)
+ai-review/73.md-16-- Problem 922: uses `Set.Pairwise` inline with `¬G.Adj`
+/home/ryan/formal-conjectures/ai-review/73.md-17-
+ai-review/73.md:18:A shared definition (or consistent use of Mathlib's `SimpleGraph.IsIndepSet`) would reduce redundancy.
+/home/ryan/formal-conjectures/ai-review/73.md-19-
+ai-review/73.md-20-**Bipartiteness encoding.** The formalization encodes bipartiteness via a 2-coloring function `f : Fin n → Bool` with the property that adjacent non-deleted vertices get different colors. Mathlib defines `IsBipartite G := G.Colorable 2`, which is equivalent. Problem 74 uses `IsBipartite` directly. The manual encoding here is not wrong but is less idiomatic.
+/home/ryan/formal-conjectures/ai-review/73.md-21-
+--
+/home/ryan/formal-conjectures/ai-review/73.md-119-
+/home/ryan/formal-conjectures/ai-review/73.md-120-| Category | Assessment |
+/home/ryan/formal-conjectures/ai-review/73.md-121-|---|---|
+ai-review/73.md:122:| Code reuse | Custom `IndepSetIn` could use Mathlib's `IsIndepSet`; bipartiteness could use `IsBipartite` |
+/home/ryan/formal-conjectures/ai-review/73.md-123-| Citations | [Re99] correct; missing [EHS82] and other website references; missing link to Problem 922 |
+/home/ryan/formal-conjectures/ai-review/73.md-124-| Variants | k = 0 trivial case could be added as a variant |
+/home/ryan/formal-conjectures/ai-review/73.md-125-| Readability | Good overall; would benefit from inline comment on the ℕ subtraction encoding |
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-44-/-- A finite set of vertices is independent in $G$ if no two distinct vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-45-    in the set are adjacent. -/
+FormalConjectures/ErdosProblems/750.lean:46:def IsIndepSet {V : Type*} (G : SimpleGraph V) (S : Finset V) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-47-  ∀ u ∈ S, ∀ v ∈ S, u ≠ v → ¬G.Adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-49-/--
+--
+FormalConjectures/ErdosProblems/750.lean-64-    ∃ (V : Type) (G : SimpleGraph V),
+FormalConjectures/ErdosProblems/750.lean-65-      (∀ k : ℕ, ¬G.Colorable k) ∧
+FormalConjectures/ErdosProblems/750.lean-66-      ∀ (S : Finset V), ∃ I : Finset V,
+FormalConjectures/ErdosProblems/750.lean:67:        I ⊆ S ∧ IsIndepSet G I ∧
+FormalConjectures/ErdosProblems/750.lean-68-        (S.card : ℝ) / 2 - (f S.card : ℝ) ≤ (I.card : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-69-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-70-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-41-
+FormalConjectures/ErdosProblems/112.lean-42-/-- An independent set in a directed graph: a set $S$ of vertices with no directed
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-43-edges between any two of its members (in either direction). -/
+FormalConjectures/ErdosProblems/112.lean:44:def Digraph.IsIndepSet {V : Type*} (G : Digraph V) (S : Finset V) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-45-  ∀ u ∈ S, ∀ v ∈ S, ¬ G.adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-46-
+FormalConjectures/ErdosProblems/112.lean-47-/-- A transitive tournament on vertex set $S$ in directed graph $G$: there is a bijection
+--
+FormalConjectures/ErdosProblems/112.lean-58-noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/112.lean-59-  sInf {k : ℕ | ∀ (V : Type) [Fintype V], Fintype.card V = k →
+FormalConjectures/ErdosProblems/112.lean-60-    ∀ G : Digraph V,
+FormalConjectures/ErdosProblems/112.lean:61:      (∃ S : Finset V, S.card = n ∧ G.IsIndepSet S) ∨
+FormalConjectures/ErdosProblems/112.lean-62-      (∃ S : Finset V, S.card = m ∧ G.IsTransTournament S)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-64-/--
+--
+/home/ryan/formal-conjectures/ai-review/501.md-2-
+/home/ryan/formal-conjectures/ai-review/501.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/501.md-4-
+ai-review/501.md:5:The `IndependentFamily` definition (line 48) is specific to this problem's set-theoretic context. The codebase contains many graph-theoretic `IsIndepSet` definitions (e.g., in problems 151, 615, 750, 804) but these operate on `SimpleGraph`/`Finset` and are not applicable here. No existing definition in `FormalConjecturesForMathlib/` captures this concept. No reuse opportunity identified.
+/home/ryan/formal-conjectures/ai-review/501.md-6-
+/home/ryan/formal-conjectures/ai-review/501.md-7-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/501.md-8-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-41-
+FormalConjectures/ErdosProblems/804.lean-42-/-- An independent set in a simple graph: a finset of vertices with no edges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-43-    between any two of its members. -/
+FormalConjectures/ErdosProblems/804.lean:44:def IsIndepSet {V : Type*} (G : SimpleGraph V) (S : Finset V) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-45-  ∀ u ∈ S, ∀ v ∈ S, ¬G.Adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-46-
+FormalConjectures/ErdosProblems/804.lean-47-/-- The independence number of a graph on $n$ vertices: the maximum cardinality
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-48-    of an independent set. -/
+FormalConjectures/ErdosProblems/804.lean-49-noncomputable def independenceNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/804.lean:50:  ((univ : Finset (Fin n)).powerset.filter (IsIndepSet G)).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-52-/-- $f(m, n)$ is the largest $k$ such that every graph on $n$ vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-53-    in which every induced subgraph on $m$ vertices has an independent set of
+--
+FormalConjectures/ErdosProblems/804.lean-59-  sInf { k : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/804.lean-60-    (∀ S : Finset (Fin n), S.card = m →
+FormalConjectures/ErdosProblems/804.lean-61-      ∃ T : Finset (Fin n), T ⊆ S ∧ T.card ≥ Nat.ceil (Real.log (n : ℝ)) ∧
+FormalConjectures/ErdosProblems/804.lean:62:        IsIndepSet G T) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-63-    independenceNum G = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-65-/--
+--
+ai-review/22.md-57-        ∃ G : SimpleGraph (Fin n),
+ai-review/22.md-58-          (n : ℝ) ^ 2 / 8 ≤ (G.edgeFinset.card : ℝ) ∧
+/home/ryan/formal-conjectures/ai-review/22.md-59-          G.CliqueFree 4 ∧
+ai-review/22.md:60:          (∀ s : Finset (Fin n), G.IsIndepSet ↑s → (s.card : ℝ) ≤ ε * (n : ℝ))
+/home/ryan/formal-conjectures/ai-review/22.md-61-```
+/home/ryan/formal-conjectures/ai-review/22.md-62-
+/home/ryan/formal-conjectures/ai-review/22.md-63-## 5. Formalizability
+--
+/home/ryan/formal-conjectures/ai-review/22.md-76-
+ai-review/22.md-77-- **Edge count:** `(n : ℝ) ^ 2 / 8 ≤ (G.edgeSet.ncard : ℝ)` correctly says the graph has ≥ n²/8 edges. Since `Fin n` is finite, `edgeSet` is finite and `ncard` returns the true cardinality (not the junk value 0). ✅
+ai-review/22.md-78-- **K₄-freeness:** `∀ s : Finset (Fin n), ¬G.IsNClique 4 s` says no 4-element clique exists. `IsNClique 4 s` requires both `G.IsClique s` (pairwise adjacent) and `#s = 4`. This correctly captures K₄-freeness. ✅
+ai-review/22.md:79:- **Independence number bound:** `∀ s : Finset (Fin n), G.IsIndepSet ↑s → (s.card : ℝ) ≤ ε * (n : ℝ)` says every independent set has at most εn vertices. Since `Fin n` is finite, every subset is representable as a `Finset`, so quantifying over `Finset (Fin n)` captures all independent sets. `IsIndepSet` (defined as `s.Pairwise (fun v w ↦ ¬G.Adj v w)`) is the standard definition. ✅
+ai-review/22.md-80-- **Quantifier structure:** `∀ ε > 0, ∃ N, ∀ n ≥ N, ∃ G, ...` correctly captures "for every ε > 0 and sufficiently large n, there exists such a graph." ✅
+ai-review/22.md-81-- **Answer polarity:** `answer(True)` is correct — the conjecture was proved affirmatively by Fox, Loh, and Zhao. ✅
+/home/ryan/formal-conjectures/ai-review/22.md-82-
+--
+/home/ryan/formal-conjectures/ai-review/599.md-2-
+/home/ryan/formal-conjectures/ai-review/599.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/599.md-4-
+ai-review/599.md:5:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/599.md-6-
+/home/ryan/formal-conjectures/ai-review/599.md-7-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/599.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/599.md-29-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/599.md-30-
+ai-review/599.md-31-**Minor improvements possible:**
+ai-review/599.md:32:- Replace the manual independent set predicates with `G.IsIndepSet A` and `G.IsIndepSet B`. This would reduce line 56–57 from two quantified lines to two concise terms.
+ai-review/599.md-33-- The existential block is well-structured: the index type `ι`, source/destination functions, path family, and separator `S` are clearly laid out.
+/home/ryan/formal-conjectures/ai-review/599.md-34-- The conjunctive conditions are in logical order (sources in A, destinations in B, paths, disjointness, S meets each path uniquely, S separates).
+/home/ryan/formal-conjectures/ai-review/599.md-35-
+ai-review/599.md:36:**Overall:** Readable. The main readability improvement would be adopting `IsIndepSet`.
+/home/ryan/formal-conjectures/ai-review/599.md-37-
+/home/ryan/formal-conjectures/ai-review/599.md-38-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/599.md-39-
+--
+/home/ryan/formal-conjectures/ai-review/599.md-51-|--------|-----------|
+ai-review/599.md-52-| Universe polymorphism (`V : Type*`) | ✅ Correctly handles infinite graphs |
+/home/ryan/formal-conjectures/ai-review/599.md-53-| Disjointness of A, B (`Disjoint A B`) | ✅ Required by the problem |
+ai-review/599.md:54:| Independence of A, B | ✅ Semantically equivalent to `IsIndepSet` (see §1) |
+/home/ryan/formal-conjectures/ai-review/599.md-55-| Paths from A to B (`src i ∈ A`, `dst i ∈ B`, `IsPath`) | ✅ Correct |
+/home/ryan/formal-conjectures/ai-review/599.md-56-| Full vertex-disjointness (`List.Disjoint ... support`) | ✅ Correct for this problem (not internal disjointness) |
+/home/ryan/formal-conjectures/ai-review/599.md-57-| S meets each path in exactly one vertex (`∃!`) | ✅ Correct |
+--
+/home/ryan/formal-conjectures/ai-review/599.md-71-
+/home/ryan/formal-conjectures/ai-review/599.md-72-| Criterion | Verdict |
+/home/ryan/formal-conjectures/ai-review/599.md-73-|-----------|---------|
+ai-review/599.md:74:| Code reuse | Use `G.IsIndepSet` instead of manual encoding |
+/home/ryan/formal-conjectures/ai-review/599.md-75-| Citations | ✅ Complete and consistent with website |
+/home/ryan/formal-conjectures/ai-review/599.md-76-| Variants | ✅ All captured |
+ai-review/599.md:77:| Readability | Good; minor improvement via `IsIndepSet` |
+/home/ryan/formal-conjectures/ai-review/599.md-78-| Formalizability | ✅ Unambiguous |
+/home/ryan/formal-conjectures/ai-review/599.md-79-| Correctness | ✅ Mathematically correct and complete |
+--
+/home/ryan/formal-conjectures/ai-review/151.md-10-
+/home/ryan/formal-conjectures/ai-review/151.md-11-These are identical definitions placed in separate namespaces. They should be consolidated into a shared file (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean`, which already houses other graph invariants like `dominationNumber`, `ecliqueNum`, etc.).
+/home/ryan/formal-conjectures/ai-review/151.md-12-
+ai-review/151.md:13:Additionally, `IsIndependentSet` and `independenceNumber` in 151.lean duplicate Mathlib's existing `SimpleGraph.IsIndepSet` / `SimpleGraph.indepNum`. The file `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` already defines notation `α(G)` for `indepNum G` and proves basic lemmas (`indepNum_pos`, `indepNum_of_isEmpty`). The custom definitions in 151.lean should be replaced with these Mathlib equivalents.
+/home/ryan/formal-conjectures/ai-review/151.md-14-
+/home/ryan/formal-conjectures/ai-review/151.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/151.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/112.md-9-- **`FormalConjecturesForMathlib/Combinatorics/Ramsey.lean`** defines `hypergraphRamsey` using a similar `sInf` pattern. Not directly applicable.
+/home/ryan/formal-conjectures/ai-review/112.md-10-- The `sInf` + `Fintype.card` pattern for defining extremal quantities is used consistently across Problems 112, 568, 902, 983, and others. Problem 112 follows this convention correctly.
+/home/ryan/formal-conjectures/ai-review/112.md-11-
+ai-review/112.md:12:**Verdict:** No direct code reuse opportunities. The custom `Digraph`, `IsIndepSet`, `IsTransTournament`, and `dirRamseyNum` definitions are appropriate for this problem. However, if `Digraph` gains an antisymmetry field (see §6), it may become worth unifying with `Tournament` from Problem 902 (a `Tournament` would then be a `Digraph` that is additionally complete).
+/home/ryan/formal-conjectures/ai-review/112.md-13-
+/home/ryan/formal-conjectures/ai-review/112.md-14-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/112.md-15-
+--
+ai-review/112.md-78-**This causes `dirRamseyNum n m = 0` for all `n ≥ 2`, `m ≥ 2`**, making the formalization mathematically vacuous. Here is why:
+/home/ryan/formal-conjectures/ai-review/112.md-79-
+ai-review/112.md-80-Consider the "complete bidirectional digraph" on any vertex set $V$: define `adj u v := (u ≠ v)`. This satisfies `loopless`. For this graph:
+ai-review/112.md:81:- **No independent set of size ≥ 2 exists**: For any distinct $u, v \in S$, we have `adj u v`, so `IsIndepSet` fails.
+ai-review/112.md-82-- **No transitive tournament of size ≥ 2 exists**: `IsTransTournament` requires `adj (f i) (f j) ↔ i < j`. For $i < j$, this gives `adj (f i) (f j)` (true) and `adj (f j) (f i) ↔ j < i` (i.e., True ↔ False), a contradiction.
+/home/ryan/formal-conjectures/ai-review/112.md-83-
+/home/ryan/formal-conjectures/ai-review/112.md-84-Since this counterexample graph exists for every finite vertex set, the defining set for `sInf` is **empty**, and `sInf ∅ = 0` in `ℕ`. Thus `dirRamseyNum n m = 0` trivially, and all three theorems become vacuously true or trivially true statements about 0.
+--
+/home/ryan/formal-conjectures/ai-review/112.md-121-| Aspect | Status |
+/home/ryan/formal-conjectures/ai-review/112.md-122-|--------|--------|
+/home/ryan/formal-conjectures/ai-review/112.md-123-| `Digraph` definition | **BUG** — missing antisymmetry makes `dirRamseyNum` trivially 0 |
+ai-review/112.md:124:| `IsIndepSet` definition | ✅ Correct |
+/home/ryan/formal-conjectures/ai-review/112.md-125-| `IsTransTournament` definition | ✅ Correct |
+/home/ryan/formal-conjectures/ai-review/112.md-126-| `dirRamseyNum` definition | ✅ Correct structure, but depends on `Digraph` fix |
+/home/ryan/formal-conjectures/ai-review/112.md-127-| Erdős–Rado upper bound formula | ✅ Correct (pending `Digraph` fix) |
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-45-
+FormalConjectures/ErdosProblems/805.lean-46-/-- An independent set in a simple graph: a finset of vertices with no edges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-47-    between any two of its members. -/
+FormalConjectures/ErdosProblems/805.lean:48:def IsIndepSet {V : Type*} (G : SimpleGraph V) (S : Finset V) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-49-  ∀ u ∈ S, ∀ v ∈ S, ¬G.Adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-50-
+FormalConjectures/ErdosProblems/805.lean-51-/-- The Erdős–Hajnal property for Problem 805: a graph $G$ on $\operatorname{Fin}(n)$ has
+--
+FormalConjectures/ErdosProblems/805.lean-54-def ErdosHajnalProperty {n : ℕ} (G : SimpleGraph (Fin n)) (m k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/805.lean-55-  ∀ S : Finset (Fin n), S.card = m →
+FormalConjectures/ErdosProblems/805.lean-56-    (∃ T : Finset (Fin n), T ⊆ S ∧ T.card ≥ k ∧ IsFinsetClique G T) ∧
+FormalConjectures/ErdosProblems/805.lean:57:    (∃ T : Finset (Fin n), T ⊆ S ∧ T.card ≥ k ∧ IsIndepSet G T)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-59-/--
+FormalConjectures/ErdosProblems/805.lean-60-Erdős–Hajnal conjecture [Er91]: is there a graph on $n$ vertices such that every
+--
+FormalConjectures/ErdosProblems/22.lean-57-        ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/22.lean-58-          (n : ℝ) ^ 2 / 8 ≤ (G.edgeSet.ncard : ℝ) ∧
+FormalConjectures/ErdosProblems/22.lean-59-          (∀ s : Finset (Fin n), ¬G.IsNClique 4 s) ∧
+FormalConjectures/ErdosProblems/22.lean:60:          (∀ s : Finset (Fin n), G.IsIndepSet ↑s → (s.card : ℝ) ≤ ε * (n : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-61-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-63-end Erdos22

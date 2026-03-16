@@ -1,0 +1,114 @@
+ai-review/50.md:36:[Omitted long matching line]
+ai-review/50.md:152:- **`answer(True)`:** Correct if Erdős did prove the result (see §2 for the status discrepancy). The problem asks "Is it true that...?" and the answer is yes.
+ai-review/50.md:156:**Verdict: Incorrect due to the unrestricted domain of `HasDerivAt`. The theorem as written is a false proposition (`True ↔ False`). Fixing requires restricting `x` to `Icc 0 1`, or equivalently, defining the canonical density function and stating the property about it directly. Additionally, the `solved` status should be justified with a specific citation, given the discrepancy with the website.**
+ai-review/178.md:5:[Omitted long matching line]
+ai-review/178.md:16:- **[Be81]** — Correct. Beck, J., *Roth's estimate of the discrepancy of integer sequences is nearly sharp*. Combinatorica 1 (1981), 319–325. Matches.
+ai-review/178.md:60:**Quantifier order:** `∀ a → ∃ f → ∀ d → ∃ C → ∀ m, i` — This correctly says: for any collection of strictly increasing sequences, there exists a single ±1 coloring such that for each d, the discrepancy along the first d sequences is uniformly bounded by some constant depending on d (and the collection). This matches the problem statement.
+ai-review/148.md:50:**Minor suggestion**: The docstring for `erdos_148` says "there exist constants $1 < c_1 \le c_2$" but the Lean code only requires `1 < c₁ ∧ 1 < c₂`, without asserting `c₁ ≤ c₂`. This is a harmless discrepancy (the statement with `c₁ ≤ c₂` is equivalent in strength), but the docstring could be updated for precise alignment.
+ai-review/148.md:52:**Verdict**: Highly readable. One minor docstring/code discrepancy.
+ai-review/148.md:134:| Readability | Excellent; one minor docstring discrepancy (`c₁ ≤ c₂`) |
+ai-review/448.md:18:There is a minor discrepancy: the library's `partialDensity` uses `Set.Iio` (elements strictly less than `b`), while the formalization uses `Finset.Icc 1 N` (elements from 1 to N inclusive). These define the same notion of natural density in the limit, but switching to the library would require verifying this equivalence or adjusting the convention.
+ai-review/95.md:67:**Overall assessment: Correct, with one semantic discrepancy that does not affect validity.**
+ai-review/95.md:106:| Correctness | Correct | Ordered vs. unordered pair discrepancy is absorbed by existential constant; mathematically equivalent |
+ai-review/91.md:28:**Issues:** The website spells the author as "Kovacs" (no accent) while the formalization uses "Kovács" (with accent). The accent is likely more correct for a Hungarian name, so this is arguably an improvement, but it does not match the website's rendering. Minor discrepancy only.
+ai-review/255.md:5:The `discrepancy` definition at line 39 uses the standard pattern:
+ai-review/255.md:11:- **Erdos 992** (`ErdosProblems/992.lean`): defines its own `discrepancy` for fractional-part sequences, with a supremum over intervals.
+ai-review/255.md:14:- **Erdos 988, 989** (`ErdosProblems/988.lean`, `989.lean`): geometric discrepancy variants (spherical caps, disks) with analogous structure.
+ai-review/255.md:16:There is also `FormalConjecturesForMathlib/Data/Set/Density.lean` which provides `partialDensity`, `upperDensity`, and `lowerDensity` utilities that formalize asymptotic counting proportions. While these don't directly replace the discrepancy definition (which is a difference, not a ratio), they represent the closest existing infrastructure for this kind of counting.
+ai-review/255.md:18:**Recommendation**: No immediate consolidation is needed since each problem's discrepancy notion is mathematically distinct. However, a shared utility for "count of sequence elements in an interval up to N" (i.e., `((Finset.range N).filter (fun n => a ≤ z n ∧ z n ≤ b)).card`) could reduce duplication across 255, 492, 992, and the equidistribution definitions.
+ai-review/255.md:39:The formalization captures only the base result (existence of a sub-interval with unbounded discrepancy). The website documents two significant stronger results that are not formalized:
+ai-review/255.md:41:1. **Schmidt's 1972 strengthening** `[Sc72]`: For any sequence in `[0,1]`, all but countably many intervals of the shape `[0, x]` have unbounded discrepancy. This is a much stronger structural statement—it constrains the "bad" intervals to be of a specific form and shows almost all of them witness unbounded discrepancy.
+ai-review/255.md:45:   This provides a quantitative lower bound on the growth rate of the discrepancy, which is essentially best possible.
+ai-review/255.md:47:**Recommendation**: Add at least one variant capturing Schmidt's 1972 result. Erdos 992 provides a good template for how to formalize multiple variants of a discrepancy problem.
+ai-review/255.md:53:- The docstring uses `n ≤ N` in the mathematical notation (`\#\{n \leq N : z_n \in I\}`) but the implementation uses `range N`, which gives `n < N`. This is a standard 0-indexed vs 1-indexed discrepancy that doesn't affect the mathematics, but the docstring should be consistent with the code. It should say `n < N` to match `range N`.
+ai-review/255.md:55:- The helper definition `discrepancy` is well-documented with both LaTeX and English.
+ai-review/255.md:65:- The discrepancy of a sequence with respect to a sub-interval is an elementary counting expression
+ai-review/255.md:66:- The conclusion (unbounded discrepancy for some interval) is a clear first-order statement
+ai-review/255.md:68:The only minor source of ambiguity in the original problem is what "interval" means—open, closed, half-open? The formalization uses closed intervals `[a, b]`, which is a reasonable default. The website's notation `D_N(I)` uses a generic interval `I`. For discrepancy theory, the choice between open/closed/half-open endpoints typically does not matter for the unboundedness conclusion (a single point cannot contribute more than 1 to the count), so this choice is mathematically inconsequential.
+ai-review/255.md:77:- **Conclusion structure** (`∃ a b, 0 ≤ a ∧ a ≤ b ∧ b ≤ 1 ∧ ...`): Correctly requires the interval `[a, b]` to be a sub-interval of `[0, 1]`. The condition `a ≤ b` (rather than `a < b`) technically allows degenerate intervals where `a = b`, but this is harmless—a degenerate interval has measure zero, so its discrepancy equals the count of exact hits, which is bounded for any fixed point. The existential quantifier would simply never need to choose such an interval. ✓
+ai-review/255.md:78:- **Unboundedness** (`∀ M : ℝ, ∃ N : ℕ, |discrepancy z a b N| ≥ M`): This correctly captures `limsup_{N→∞} |D_N(I)| = ∞`. The standard formalization would use `Filter.atTop` and `Filter.Frequently`, but the explicit quantifier form is equivalent and arguably more readable. ✓
+ai-review/255.md:79:- **Discrepancy definition**: `(((range N).filter (fun n => a ≤ z n ∧ z n ≤ b)).card : ℝ) - (N : ℝ) * (b - a)` correctly computes the signed discrepancy (count minus expected). The absolute value is taken in the theorem statement via `|discrepancy z a b N|`. ✓
+ai-review/255.md:82:**One subtlety worth noting**: The unboundedness condition `∀ M : ℝ, ∃ N : ℕ, |discrepancy z a b N| ≥ M` is slightly stronger than `limsup = ∞` in a formal sense—it says the absolute discrepancy exceeds every real bound, whereas `limsup = ∞` in Lean's `Filter.limsup` formalism might handle the `⊥` filter case differently for degenerate sequences. However, since `ℕ` is infinite and `atTop` is not `⊥`, these are equivalent here. ✓
+ai-review/343.md:86:[Omitted long matching line]
+ai-review/18.md:31:**Rating: Good, with one minor discrepancy.**
+ai-review/408.md:102:This correctly formalizes "f(n)/log n has a distribution function." The use of `Finset.range N` (giving {0, ..., N-1}) is equivalent to the standard density definition using {1, ..., N} since the finite discrepancy does not affect the limit. **Correct.**
+ai-review/447.md:20:- **Citation key / year mismatch**: The key `[Kl71]` implies a 1971 publication, but the bibliographic entry says 1968. This discrepancy should be investigated and corrected.
+ai-review/110.md:39:[Omitted long matching line]
+ai-review/54.md:59:**Paper title discrepancy:** The formalization cites [CFP21] as *"Subset sums, completeness and colorings"* while Problem 55 cites the same authors/year as *"The upper bound for Ramsey complete sequences."* These may be different papers or different versions of the same work. This should be verified and made consistent.
+ai-review/254.md:56:[Omitted long matching line]
+ai-review/177.md:7:**Significant overlap with Problem 176.** Problem 176 (`FormalConjectures/ErdosProblems/176.lean`) defines `discrepancyAPNumber` using the identical sum-over-AP pattern `∑ i ∈ range k, f (a + i * d)` and the identical ±1 coloring constraint `∀ n, f n = 1 ∨ f n = -1`. Problem 178 also uses the same coloring pattern.
+ai-review/177.md:11:- The sum `∑ i ∈ range k, f (a + i * d)` appears identically in all three files. A shared definition for the discrepancy of a coloring along an AP would be beneficial.
+ai-review/177.md:50:- One minor readability concern: the cast `(↑(∑ i ∈ range k, f (a + i * d)) : ℝ)` is somewhat heavy. This is a necessary artifact of working with ℤ-valued functions and ℝ-valued bounds, so it is unavoidable, but a named definition for the AP discrepancy would improve readability.
+ai-review/177.md:56:The problem as stated on erdosproblems.com is precise: it asks for the smallest function h(d) bounding the discrepancy of a ±1 coloring over all APs of common difference d. All objects involved (arithmetic progressions, ±1 colorings, discrepancy as an absolute value of partial sums) have unambiguous mathematical definitions.
+ai-review/177.md:68:The statement asserts existence of a ±1 coloring f achieving discrepancy bound h(d) for all d simultaneously:
+ai-review/177.md:76:**Concern — one-directional statement:** The problem asks for the *smallest* h(d), but the formalization only captures the upper bound direction: "there exists f such that discrepancy ≤ h(d)." It does not state that h(d) is **optimal**, i.e., that for any smaller bound, no coloring achieves it. A complete formalization would additionally require something like:
+ai-review/177.md:79:∀ g : ℕ → ℝ, (∃ f : ℕ → ℤ, ... discrepancy ≤ g d) → ∀ d, 0 < d → h(d) ≤ g(d)
+ai-review/177.md:98:This states: for any ±1 coloring and any d ≥ 1, some AP with difference d has discrepancy ≥ c√d. This correctly formalizes h(d) ≫ √d (Roth's result). The quantifier structure (∀ f, ∀ d, ∃ AP) is correct — for *every* coloring and *every* d, a high-discrepancy AP must exist. ✅
+ai-review/177.md:110:This states: for each ε > 0, there exists a coloring (possibly depending on ε) bounding discrepancy by d^{8+ε} for all APs simultaneously. This correctly formalizes Beck's result. The quantifier order (∀ ε, ∃ f, ∀ d, ∀ AP) correctly allows f to depend on ε but requires it to work for all d and all APs of each difference. ✅
+ai-review/114.md:30:- **Date discrepancy (Fryntov–Nazarov):** The docstring says "Fryntov–Nazarov (2008)" but the website lists "Fryntov & Nazarov (2009)". Should be verified against the actual publication date.
+ai-review/114.md:65:- **Minor:** The docstring's "Known partial results" section is a nice addition for context, though it contains the date discrepancy noted above.
+ai-review/132.md:133:**Correctness rating**: **Incorrect as-is** due to the ordered/unordered pair factor-of-2 discrepancy. The mathematical intent is clear and the logical structure is sound, but the `IsLimitedOccurrence` definition imposes a strictly tighter bound than the problem requires, which (a) invalidates the Hopf–Pannwitz justification in the docstring, and (b) potentially changes the truth value of the conjecture.
+ai-review/462.md:26:The citation is **accurate and complete**. No discrepancy between the formalization and the website.
+ai-review/129.md:96:The formalization is tagged `@[category research solved]`, while the website lists the problem as **OPEN**. This apparent discrepancy is explained by interpretation: the formalization treats the literal conjecture as disproved (solved in the negative), while the website considers the intended/corrected problem as still open. The formalization's tagging is defensible but could benefit from a comment explaining this distinction.
+ai-review/180.md:92:The formalization's `category research solved` with `answer(False)` is defensible for the literal statement, but the discrepancy with the website should be noted and potentially discussed in the docstring.
+ai-review/180.md:120:**Verdict**: The formalization is mathematically correct and complete. The only concern is the status discrepancy with the website (OPEN vs. solved), which should be documented.
+ai-review/180.md:131:| Correctness | Mathematically correct; **status discrepancy** — website says OPEN, formalization says solved |
+ai-review/187.md:56:**Overall:** Citations are thorough and well-formatted. The only minor discrepancy is the missing page reference "p.17" for [ErGr80].
+ai-review/8.md:37:[Omitted long matching line]
+ai-review/156.md:64:**The formalization is mathematically correct** with one minor convention discrepancy:
+ai-review/441.md:86:**Integer rounding**: `Nat.sqrt (N / 2)` computes $\lfloor\sqrt{\lfloor N/2\rfloor}\rfloor$ rather than $\lfloor\sqrt{N/2}\rfloor$. For odd $N$, $\lfloor N/2 \rfloor = (N-1)/2$, introducing a discrepancy of $O(N^{-1/2})$ in the square root. This is absorbed into the $O(1)$ term and does not affect any of the three theorems. **Correct.**
+ai-review/176.md:5:The `discrepancyAPNumber` definition is self-contained and does not reuse existing infrastructure. Two potential areas of reuse exist:
+ai-review/176.md:9:- **Van der Waerden number** (`FormalConjectures/ErdosProblems/169.lean`): The docstring notes that `N(k,k) = W(k)`, and `vanDerWaerdenNumber` is defined in Problem 169 via `Nat.find`. However, no formal connection is established between `discrepancyAPNumber k k` and `vanDerWaerdenNumber k`. This could be a useful lemma to state (even as `sorry`), but is not strictly necessary.
+ai-review/176.md:32:3. $N(k, 2) \leq C^k$ — **captured** as `erdos_176.variants.constant_discrepancy`.
+ai-review/176.md:33:4. $N(k, \sqrt{k}) \leq C^k$ — **captured** as `erdos_176.variants.sqrt_discrepancy`.
+ai-review/176.md:46:- The docstring for `discrepancyAPNumber` is clear and matches the mathematical definition.
+ai-review/176.md:49:- The naming convention (`erdos_176.variants.constant_discrepancy`, `erdos_176.variants.sqrt_discrepancy`) is descriptive.
+ai-review/176.md:59:- Using `ℓ : ℝ` for the discrepancy threshold accommodates the `√k` variant naturally.
+ai-review/176.md:71:### Definition of `discrepancyAPNumber`
+ai-review/176.md:83:The statement `∀ c : ℝ, 0 < c → ∃ C : ℝ, 1 < C ∧ ∀ k : ℕ, (discrepancyAPNumber k (c * ↑k) : ℝ) ≤ C ^ k` correctly formalizes the conjecture. The cast `(discrepancyAPNumber k (c * ↑k) : ℝ)` coerces from `ℕ` to `ℝ` for comparison with `C ^ k`.
+ai-review/176.md:87:- `constant_discrepancy`: Uses `discrepancyAPNumber k 2`, correctly formalizing $N(k, 2) \leq C^k$.
+ai-review/176.md:88:- `sqrt_discrepancy`: Uses `discrepancyAPNumber k (Real.sqrt ↑k)`, correctly formalizing $N(k, \sqrt{k}) \leq C^k$.
+ai-review/176.md:94:Problem 67 (Erdős discrepancy problem, proved by Tao) considers *homogeneous* APs of the form $\{d, 2d, \ldots, md\}$, whereas Problem 176 considers general APs $\{a, a+d, \ldots, a+(k-1)d\}$. Problem 67 uses a different encoding (`f : ℕ → ({-1, 1} : Finset ℝ)` with subtype coercion). The two problems are related but distinct, and the different formalizations are appropriate.
+ai-review/464.md:63:### 6a. The interval discrepancy: [0, 1] vs [0, 1/2]
+FormalConjectures/ErdosProblems/255.lean:22:For any infinite sequence in [0,1], must there exist a sub-interval whose discrepancy is
+FormalConjectures/ErdosProblems/255.lean:35:The discrepancy of a sequence $z : \mathbb{N} \to \mathbb{R}$ at length $N$ with respect to
+FormalConjectures/ErdosProblems/255.lean:39:noncomputable def discrepancy (z : ℕ → ℝ) (a b : ℝ) (N : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/255.lean:45:Let $z_1, z_2, \ldots \in [0,1]$ be an infinite sequence. Define the discrepancy
+FormalConjectures/ErdosProblems/255.lean:58:      ∀ M : ℝ, ∃ N : ℕ, |discrepancy z a b N| ≥ M := by
+FormalConjectures/ErdosProblems/177.lean:48:a $\pm 1$ coloring $f$ of $\mathbb{N}$ where for every $d \geq 1$, the discrepancy over
+FormalConjectures/ErdosProblems/177.lean:60:progression of common difference $d$ with discrepancy at least $c \cdot \sqrt{d}$.
+FormalConjectures/ErdosProblems/178.lean:40:[Be81] Beck, J., *Roth's estimate of the discrepancy of integer sequences is nearly sharp*.
+FormalConjectures/ErdosProblems/176.lean:47:/-- The arithmetic progression discrepancy number $N(k, \ell)$: the minimal $N$ such
+FormalConjectures/ErdosProblems/176.lean:51:noncomputable def discrepancyAPNumber (k : ℕ) (ℓ : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/176.lean:66:    ∀ k : ℕ, (discrepancyAPNumber k (c * ↑k) : ℝ) ≤ C ^ k := by
+FormalConjectures/ErdosProblems/176.lean:74:theorem erdos_176.variants.constant_discrepancy :
+FormalConjectures/ErdosProblems/176.lean:77:    ∀ k : ℕ, (discrepancyAPNumber k 2 : ℝ) ≤ C ^ k := by
+FormalConjectures/ErdosProblems/176.lean:85:theorem erdos_176.variants.sqrt_discrepancy :
+FormalConjectures/ErdosProblems/176.lean:88:    ∀ k : ℕ, (discrepancyAPNumber k (Real.sqrt ↑k) : ℝ) ≤ C ^ k := by
+FormalConjectures/ErdosProblems/1028.lean:37:/-- The discrepancy sum of a $\pm 1$ function $f$ over a subset $X$ of $\operatorname{Fin}(n)$:
+FormalConjectures/ErdosProblems/1028.lean:39:def discrepancySum (n : ℕ) (f : Fin n → Fin n → ℤ) (X : Finset (Fin n)) : ℤ :=
+FormalConjectures/ErdosProblems/1028.lean:51:  with discrepancy at least $C_1 \cdot n^{3/2}$.
+FormalConjectures/ErdosProblems/1028.lean:53:  have discrepancy at most $C_2 \cdot n^{3/2}$.
+FormalConjectures/ErdosProblems/1028.lean:59:    -- Lower bound: every ±1 function has a subset with large discrepancy
+FormalConjectures/ErdosProblems/1028.lean:62:        C₁ * (n : ℝ) ^ ((3 : ℝ) / 2) ≤ |(discrepancySum n f X : ℝ)|) ∧
+FormalConjectures/ErdosProblems/1028.lean:66:        |(discrepancySum n f X : ℝ)| ≤ C₂ * (n : ℝ) ^ ((3 : ℝ) / 2)) := by
+FormalConjectures/ErdosProblems/187.lean:35:[Be80] Beck, J., *Roth's estimate of the discrepancy of integer sequences is nearly
+FormalConjectures/ErdosProblems/989.lean:53:/-- The discrepancy $f(r) = \sup_c \left| |A \cap \mathrm{disk}(c,r)| - \pi r^2 \right|$. -/
+FormalConjectures/ErdosProblems/989.lean:54:noncomputable def discrepancy (A : ℕ → ℝ × ℝ) (r : ℝ) : ℝ :=
+FormalConjectures/ErdosProblems/989.lean:66:      discrepancy A r ≥ C * Real.sqrt r := by
+FormalConjectures/ErdosProblems/989.lean:78:      discrepancy A r ≤ C * Real.sqrt (r * Real.log r) := by
+FormalConjectures/ErdosProblems/991.lean:37:[Br08] Brauchart, J. S., *Optimal discrete Riesz energy and discrepancy*,
+FormalConjectures/ErdosProblems/991.lean:64:pairwise distances), then the spherical cap discrepancy of $A$ is $o(n)$:
+FormalConjectures/ErdosProblems/992.lean:25:almost all $\alpha \in [0,1]$, the discrepancy
+FormalConjectures/ErdosProblems/992.lean:42:/-- The discrepancy of the sequence $\{\alpha \cdot x(n)\} \pmod{1}$ with respect to
+FormalConjectures/ErdosProblems/992.lean:45:noncomputable def discrepancy (x : ℕ → ℤ) (α : ℝ) (N : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/992.lean:55:$x_1 < x_2 < \cdots$ and almost all $\alpha \in [0,1]$, the discrepancy satisfies
+FormalConjectures/ErdosProblems/992.lean:69:            discrepancy x α N ≤
+FormalConjectures/ErdosProblems/992.lean:86:          discrepancy x α N ≤
+FormalConjectures/ErdosProblems/992.lean:103:          discrepancy x α N ≥
+FormalConjectures/ErdosProblems/988.lean:24:If $P \subseteq S^2$ is a subset of the unit sphere then define the discrepancy
+FormalConjectures/ErdosProblems/988.lean:49:$t \in [-1,1]$) such that the discrepancy
+FormalConjectures/ErdosProblems/67.lean:24:- [Ta16] Tao, Terence, The Erdős discrepancy problem. Discrete Anal. (2016), Paper No. 1, 29.
+FormalConjectures/ErdosProblems/67.lean:31:**The Erdős discrepancy problem**
+FormalConjectures/ErdosProblems/67.lean:43:**The Erdős discrepancy problem (complex variant)**
+FormalConjectures/ErdosProblems/1124.lean:27:[La90b] Laczkovich, M., _Equidecomposability and discrepancy; a solution of Tarski's

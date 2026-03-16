@@ -1,0 +1,269 @@
+ai-review/111.md-107-- **`minEdgeDeletionsForBipartite`**: Uses `sInf` on the set `{k : ℕ | ∃ H' ≤ H, Nonempty (H'.Coloring (Fin 2)) ∧ (H.edgeSet \ H'.edgeSet).ncard = k}`. This set is always nonempty: take H' = ⊥ (the empty graph), which is 2-colorable, and the number of deleted edges equals the number of edges in H. Since `sInf` on a nonempty subset of ℕ returns the minimum, this correctly computes the minimum number of edge deletions. **Correct.**
+/home/ryan/formal-conjectures/ai-review/111.md-108-
+ai-review/111.md:109:- **`hFun`**: Uses `sSup` on `{k : ℕ | ∃ S : Finset V, S.card = n ∧ k = minEdgeDeletionsForBipartite (G.induce (S : Set V))}`.
+ai-review/111.md-110-  - **Nonemptiness:** For a graph with χ = ℵ₁, the vertex set V is uncountable, so for any finite n, there exist Finsets of size n. The set is nonempty. **OK.**
+ai-review/111.md-111-  - **Boundedness:** Each value in the set is at most n choose 2 (since an induced subgraph on n vertices has at most n(n−1)/2 edges). The set is bounded above. **OK.**
+--
+ai-review/186.md-75-**Definition `nonAvgMax`** (lines 67–68):
+/home/ryan/formal-conjectures/ai-review/186.md-76-```
+ai-review/186.md:77:sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ IsNonAveraging A ∧ A.card = k}
+/home/ryan/formal-conjectures/ai-review/186.md-78-```
+/home/ryan/formal-conjectures/ai-review/186.md-79-The set is nonempty (take $A = \emptyset$ with $k = 0$, or any singleton with $k = 1$) and bounded above by $N$ (any subset of $\text{Finset.Icc}\ 1\ N$ has at most $N$ elements). So `sSup` over $\mathbb{N}$ returns the correct maximum. **Correct.**
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/16.lean-39-/-- The maximum size of a solution-free subset of $[N]$. -/
+FormalConjectures/GreensOpenProblems/16.lean-40-noncomputable def f (N : ℕ) : ℕ :=
+FormalConjectures/GreensOpenProblems/16.lean:41:  sSup {k : ℕ | ∃ A : Finset ℕ, A ⊆ range (N + 1) ∧ SolutionFree A ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/16.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/16.lean-43-/-- What is the largest subset of $[N]$ with no solution to $x + 3y = 2z + 2w$ in distinct integers $x, y, z, w$? -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/16.lean-75-/-- The maximum size of a Zhao-solution-free subset of $[N]$. -/
+FormalConjectures/GreensOpenProblems/16.lean-76-noncomputable def g (N : ℕ) : ℕ :=
+FormalConjectures/GreensOpenProblems/16.lean:77:  sSup {k : ℕ | ∃ A : Finset ℕ, A ⊆ range (N + 1) ∧ ZhaoSolutionFree A ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/16.lean-78-
+FormalConjectures/GreensOpenProblems/16.lean-79-/-- From [Yufei Zhao]: Is there a subset of $\{1, \ldots, N\}$ of size
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/72.lean-42-/-- The maximal size of an allowed set -/
+FormalConjectures/GreensOpenProblems/72.lean-43-noncomputable def AllowedSetSize (k : ℕ) (N : ℕ) : ℕ :=
+FormalConjectures/GreensOpenProblems/72.lean:44:  sSup {r | ∃ s, r = s.card ∧ AllowedSet N k s}
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/72.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/72.lean-46-/-- By the pigeon hole principle, the size of a subset of an $N \times N$ grid such that no $k$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean-63-subsets of an $n$-element set such that no $4$ vertices span all $4$ triples. -/
+FormalConjectures/ErdosProblems/500.lean-64-noncomputable def ex3K43 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/500.lean:65:  sSup {m : ℕ | ∃ H : Finset (Finset (Fin n)), IsK43Free H ∧ H.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean-67-/--
+--
+ai-review/131.md-75-**Definition `erdos131F`** (line 55–56):
+/home/ryan/formal-conjectures/ai-review/131.md-76-```
+ai-review/131.md:77:sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ IsNonDividing A ∧ A.card = k}
+/home/ryan/formal-conjectures/ai-review/131.md-78-```
+/home/ryan/formal-conjectures/ai-review/131.md-79-The set is nonempty (take $A = \emptyset$, which vacuously satisfies `IsNonDividing` with card 0) and bounded above by $N$. So `sSup` over `ℕ` (a conditionally complete lattice) returns the correct maximum. **Correct.**
+--
+ai-review/121.md-48-**The problem is precise and clearly formalizable.** There is minimal ambiguity:
+/home/ryan/formal-conjectures/ai-review/121.md-49-
+ai-review/121.md:50:- "Largest subset of {1,...,N}" is unambiguous and maps directly to `sSup` over cardinalities of finsets contained in `Finset.Icc 1 N`.
+/home/ryan/formal-conjectures/ai-review/121.md-51-- "Product of k distinct elements is a perfect square" is unambiguous and maps to the `NoKSquareProduct` predicate using `Finset.prod` and `IsSquare`.
+/home/ryan/formal-conjectures/ai-review/121.md-52-- The asymptotic statement `F_{2k+1}(N) = (1-o(1))N` is standard and maps cleanly to `Tendsto (F(2k+1,N)/N) atTop (nhds 1)`.
+--
+/home/ryan/formal-conjectures/ai-review/121.md-69-
+ai-review/121.md-70-### Well-definedness of `F`:
+ai-review/121.md:71:The definition uses `sSup` on `{m : N | exists A ⊆ Icc 1 N, A.card = m ∧ NoKSquareProduct k A}`. This set is:
+ai-review/121.md-72-- **Nonempty**: The empty finset has card 0 and satisfies `NoKSquareProduct k ∅` vacuously (for k >= 1).
+ai-review/121.md-73-- **Bounded above**: Any A ⊆ Icc 1 N has card <= N.
+--
+ai-review/151.md-72-1. **Natural number subtraction:** The expression `n - H n` uses natural number subtraction, which truncates to 0 if H(n) > n. Mathematically, H(n) ≤ n always holds (the independence number of any graph on n vertices is at most n), so this truncation never activates. However, proving theorems about this statement will require establishing H(n) ≤ n as a lemma, which adds proof burden.
+/home/ryan/formal-conjectures/ai-review/151.md-73-
+ai-review/151.md:74:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/151.md-75-
+ai-review/151.md-76-3. **`sInf` for `H`:** Similarly well-behaved: the set is nonempty (the edgeless graph provides a witness), so `sInf` returns the correct minimum. The `sInf` of the empty set on ℕ is 0, but this edge case doesn't arise.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1023.lean-43-    $\operatorname{Fin}(n)$. -/
+FormalConjectures/ErdosProblems/1023.lean-44-noncomputable def unionFreeMax (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1023.lean:45:  sSup {k : ℕ | ∃ 𝓕 : Finset (Finset (Fin n)), IsUnionFreeFamily 𝓕 ∧ 𝓕.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1023.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1023.lean-47-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/635.lean-49-divisibility-avoidance property with threshold $t$. -/
+FormalConjectures/ErdosProblems/635.lean-50-noncomputable def maxDivAvoidance (N t : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/635.lean:51:  sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ DivAvoidance A t ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/635.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/635.lean-53-/--
+--
+/home/ryan/formal-conjectures/ai-review/284.md-61-
+/home/ryan/formal-conjectures/ai-review/284.md-62-```
+ai-review/284.md:63:sSup {m : ℕ | ∃ S : Finset ℕ, S.card = k ∧ (∀ n ∈ S, 0 < n) ∧
+ai-review/284.md-64-    S.sum (fun n => (1 : ℚ) / ↑n) = 1 ∧ m ∈ S ∧ ∀ n ∈ S, m ≤ n}
+/home/ryan/formal-conjectures/ai-review/284.md-65-```
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-44--/
+FormalConjectures/ErdosProblems/206.lean-45-noncomputable def bestUnderapprox (n : ℕ) (x : ℝ) : ℝ :=
+FormalConjectures/ErdosProblems/206.lean:46:  sSup {s : ℝ | ∃ S : Finset ℕ, S.card = n ∧ (∀ m ∈ S, 0 < m) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-47-    s = unitFracSum S ∧ s < x}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean-51-no $k$ distinct elements of $A$ have a product that is a perfect square. -/
+FormalConjectures/ErdosProblems/121.lean-52-noncomputable def F (k N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/121.lean:53:  sSup {m : ℕ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ A.card = m ∧ NoKSquareProduct k A}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean-55-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/793.lean-57--/
+FormalConjectures/ErdosProblems/793.lean-58-noncomputable def primitiveLikeMaxSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/793.lean:59:  sSup {k : ℕ | ∃ A : Finset ℕ, IsPrimitiveLike A ∧ (∀ x ∈ A, 1 ≤ x ∧ x ≤ n) ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/793.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/793.lean-61-/--
+--
+ai-review/60.md-138-### Definition: `extremalNumber60`
+/home/ryan/formal-conjectures/ai-review/60.md-139-
+ai-review/60.md:140:`sSup {m : ℕ | ∃ G : SimpleGraph (Fin n), ¬ContainsSubgraph60 G H ∧ G.edgeSet.ncard = m}` computes the supremum of edge counts among $H$-free graphs on $n$ vertices. For the intended use ($H = C_4$, $n$ finite):
+/home/ryan/formal-conjectures/ai-review/60.md-141-
+ai-review/60.md-142-- **Nonemptiness:** The empty graph is always $C_4$-free with 0 edges, so the set is nonempty.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-44-integers whose reciprocals sum to $1$. -/
+FormalConjectures/ErdosProblems/284.lean-45-noncomputable def erdos284_f (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/284.lean:46:  sSup {m : ℕ | ∃ S : Finset ℕ, S.card = k ∧ (∀ n ∈ S, 0 < n) ∧
+FormalConjectures/ErdosProblems/284.lean-47-    S.sum (fun n => (1 : ℚ) / ↑n) = 1 ∧ m ∈ S ∧ ∀ n ∈ S, m ≤ n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean-48-
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean-28-  obtain ⟨v⟩ := ‹Nonempty V›
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean-29-  rw [← Nat.add_one_le_iff]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean:30:  exact le_csSup ⟨Nat.card V, by simp [mem_upperBounds, isNIndepSet_iff, Finset.card_le_univ]⟩
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean-31-    ⟨{v}, by simp [isNIndepSet_iff]⟩
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean-32-
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-41-noncomputable def m (G : SimpleGraph α) [DecidableRel G.Adj] : ℝ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-42-  let matchings := { M : Subgraph G | M.IsMatching }
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:43:  sSup (Set.image (fun M => (M.edgeSet.toFinset.card : ℝ)) matchings)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-44-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-45-/-- The maximum cardinality among all independent sets `s`
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-56-/-- `largestInducedForestSize G` is the size of a largest induced forest of `G`. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-57-noncomputable def largestInducedForestSize (G : SimpleGraph α) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:58:  sSup { n | ∃ s : Finset α, (G.induce s).IsAcyclic ∧ s.card = n }
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-59-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-60-/-- The degree sequence of a graph, sorted in nondecreasing order. -/
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-72-bipartite subgraph of `G`. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-73-noncomputable def largestInducedBipartiteSubgraphSize (G : SimpleGraph α) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:74:  sSup { n | ∃ s : Finset α, (G.induce s).IsBipartite ∧ s.card = n }
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-75-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-76-/-- `b G` is the number of vertices of a largest induced bipartite subgraph of `G`.
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-139-/-- The maximum size of the union of k finite independent sets. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-140-noncomputable def indepNumK (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:141:  sSup {n | ∃ f : Fin k → Set V, (∀ i, G.IsIndepSet (f i)) ∧ (⋃ i, f i).ncard = n}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-142-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-143-/-- A finite graph is CDS-colorable if it has a proper coloring
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean-216--/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean-217-noncomputable def Set.IsAPOfLengthFree.maxCard (k : ℕ) (N : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:218:  sSup {Finset.card S | (S) (_ : S ⊆ Finset.Icc 1 N) (_ : (S : Set ℕ).IsAPOfLengthFree k)}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean-219-
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean-220-theorem Set.IsAPOfLengthFree.maxCard_zero (N : ℕ) : maxCard 0 N = N := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-46-sum-free subset $B$ with $|B| \geq l$. -/
+FormalConjectures/ErdosProblems/790.lean-47-noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/790.lean:48:  sSup {l : ℕ | ∀ (A : Finset ℤ), A.card = n →
+FormalConjectures/ErdosProblems/790.lean-49-    ∃ B : Finset ℤ, B ⊆ A ∧ l ≤ B.card ∧ IsSumFree B}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/712.lean-50-$r$-subsets. -/
+FormalConjectures/ErdosProblems/712.lean-51-noncomputable def exrKkr (r k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/712.lean:52:  sSup {m : ℕ | ∃ H : Finset (Finset (Fin n)), IsKkrFree r k H ∧ H.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/712.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/712.lean-54-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-66--/
+FormalConjectures/ErdosProblems/807.lean-67-noncomputable def independenceNumber {V : Type*} [Fintype V] (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/807.lean:68:  sSup {k : ℕ | ∃ S : Finset V, S.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-69-    ∀ v ∈ S, ∀ w ∈ S, v ≠ w → ¬G.Adj v w}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-70-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-49-a sum-free subset of size at least $k$. -/
+FormalConjectures/ErdosProblems/792.lean-50-noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/792.lean:51:  sSup {k : ℕ | ∀ (A : Finset ℤ), A.card = n →
+FormalConjectures/ErdosProblems/792.lean-52-    ∃ B : Finset ℤ, B ⊆ A ∧ IsSumFreeSet B ∧ k ≤ B.card}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-55-primitive set. -/
+FormalConjectures/ErdosProblems/882.lean-56-noncomputable def maxPrimitiveSubsetSumSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/882.lean:57:  sSup {k : ℕ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 n ∧ A.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-58-    IsPrimitive (subsetSums A)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-59-
+--
+FormalConjectures/ErdosProblems/92.lean-36-  letI otherPoints := points.erase x
+FormalConjectures/ErdosProblems/92.lean-37-  letI distances := otherPoints.image (dist x)
+FormalConjectures/ErdosProblems/92.lean:38:  sSup (distances.image fun d ↦ (otherPoints.filter fun p ↦ dist x p = d).card)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean-40-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/131.lean-54-/-- $F(N)$ is the maximal cardinality of a non-dividing subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/131.lean-55-noncomputable def erdos131F (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/131.lean:56:  sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ IsNonDividing A ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/131.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/131.lean-58-/--
+--
+FormalConjectures/ErdosProblems/151.lean-59-/-- The independence number $\alpha(G)$: the maximum cardinality of an independent set. -/
+FormalConjectures/ErdosProblems/151.lean-60-noncomputable def independenceNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/151.lean:61:  sSup { k : ℕ | ∃ S : Finset (Fin n), IsIndependentSet G S ∧ S.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-63-/-- $H(n)$ is maximal such that every triangle-free graph on $n$ vertices contains
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-52-/-- The maximum size of a Sidon subset of $A$. -/
+FormalConjectures/ErdosProblems/530.lean-53-noncomputable def maxSidonSubsetSize (A : Finset ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/530.lean:54:  sSup {k : ℕ | ∃ S : Finset ℝ, S ⊆ A ∧ IsSidonSet S ∧ S.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-55-
+FormalConjectures/ErdosProblems/530.lean-56-/-- $\ell(N)$: the largest $k$ such that every $N$-element subset of $\mathbb{R}$ contains
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-55--/
+FormalConjectures/ErdosProblems/425.lean-56-noncomputable def multB2MaxSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/425.lean:57:  sSup {k : ℕ | ∃ A : Finset ℕ, IsMultB2 A ∧ (∀ x ∈ A, 1 ≤ x ∧ x ≤ n) ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-59-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean-44-subset $B$ of size $\geq h$ with the sum-length property. -/
+FormalConjectures/ErdosProblems/789.lean-45-noncomputable def erdos789_h (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/789.lean:46:  sSup { h : ℕ | ∀ (A : Finset ℤ), A.card = n →
+FormalConjectures/ErdosProblems/789.lean-47-    ∃ B : Finset ℤ, B ⊆ A ∧ h ≤ B.card ∧ SumLengthProperty B }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-52-sum-avoiding subset of size at least $m$. -/
+FormalConjectures/ErdosProblems/787.lean-53-noncomputable def g (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/787.lean:54:  sSup {m : ℕ | ∀ A : Finset ℝ, A.card = n →
+FormalConjectures/ErdosProblems/787.lean-55-    ∃ B : Finset ℝ, IsSumAvoidingIn A B ∧ B.card ≥ m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-56-
+--
+FormalConjectures/ErdosProblems/813.lean-46-/-- The clique number of a graph on $n$ vertices: the supremum of sizes of cliques. -/
+FormalConjectures/ErdosProblems/813.lean-47-noncomputable def graphCliqueNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/813.lean:48:  sSup {k : ℕ | ∃ S : Finset (Fin n), S.card = k ∧ G.IsClique (↑S : Set (Fin n))}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-50-/-- $h(n)$ is the minimum clique number over all graphs on $n$ vertices in which
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean-66-/-- $F(N)$ is the maximal cardinality of a non-averaging subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/186.lean-67-noncomputable def nonAvgMax (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/186.lean:68:  sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ IsNonAveraging A ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean-70-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-66-$\mathcal{F}_k$-free 3-uniform hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/1076.lean-67-noncomputable def ex3 (n k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1076.lean:68:  sSup {m : ℕ | ∃ H : Hypergraph3 n, IsFkFree k H ∧ H.edges.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-70-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean-79-@[category research solved, AMS 51]
+FormalConjectures/ErdosProblems/503.lean-80-theorem erdos_503.variants.lower_bound (n : ℕ) :
+FormalConjectures/ErdosProblems/503.lean:81:    (n + 1).choose 2 ≤ sSup {(A.ncard) | (A : Set (ℝ^n)) (hA : A.IsIsosceles)} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean-82-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean-83-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-50-/-- $k(N)$ is the maximum size of an admissible subset of $\{1,\ldots,N\}$. -/
+FormalConjectures/ErdosProblems/874.lean-51-noncomputable def kAdmissible (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/874.lean:52:  sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ IsAdmissible874 A ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-54-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/433.lean-58-$\gcd(A) = 1$. -/
+FormalConjectures/ErdosProblems/433.lean-59-noncomputable def g433 (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/433.lean:60:  sSup (FrobeniusNumber433 '' {A : Finset ℕ | A ⊆ Icc 1 n ∧ A.card = k ∧ A.gcd id = 1})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/433.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/433.lean-62-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-66-hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/1157.lean-67-noncomputable def extremalNumber (r n k s : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1157.lean:68:  sSup {m : ℕ | ∃ H : UniformHypergraph r n, IsFree H k s ∧ H.edges.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-70-/--
+--
+FormalConjectures/ErdosProblems/878.lean-59-/-- $F(n)$: the maximum of $\sum a_i$ over all valid assignments for $n$. -/
+FormalConjectures/ErdosProblems/878.lean-60-noncomputable def F (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/878.lean:61:  sSup {s | ∃ a : Fin n.primeFactors.card → ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/878.lean-62-    ValidAssignment n a ∧ s = ∑ i, a i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/878.lean-63-
+--
+FormalConjectures/ErdosProblems/1024.lean-59-noncomputable def Hypergraph3Uniform.independenceNumber {n : ℕ}
+FormalConjectures/ErdosProblems/1024.lean-60-    (H : Hypergraph3Uniform n) : ℕ :=
+FormalConjectures/ErdosProblems/1024.lean:61:  sSup {k : ℕ | ∃ S : Finset (Fin n), H.IsIndependent S ∧ S.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-63-/-- `linearHypergraphIndNum n` is the minimum independence number over all

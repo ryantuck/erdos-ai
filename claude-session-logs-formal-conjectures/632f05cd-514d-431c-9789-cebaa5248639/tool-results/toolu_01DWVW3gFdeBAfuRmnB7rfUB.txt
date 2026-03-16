@@ -1,0 +1,1941 @@
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PollocksConjecture.lean-43-/-! ## Auxiliary definition -/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PollocksConjecture.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PollocksConjecture.lean-45-/-- The set of natural numbers that are **not** a sum of $4$ tetrahedral numbers. -/
+FormalConjectures/Wikipedia/PollocksConjecture.lean:46:def NotSumOfFourTetrahedral : Set ℕ :=
+FormalConjectures/Wikipedia/PollocksConjecture.lean-47-  {N : ℕ | ∀ f : Fin 4 → ℕ, N ≠ ∑ i, tetrahedral (f i)}
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PollocksConjecture.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PollocksConjecture.lean-49-/-! ## Statements -/
+--
+FormalConjectures/Wikipedia/SumOfThreeCubes.lean-33-variable {R : Type*} [Ring R]
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/SumOfThreeCubes.lean-34-
+FormalConjectures/Wikipedia/SumOfThreeCubes.lean-35-/-- The predicate that `n : R` is a sum of three cubes. -/
+FormalConjectures/Wikipedia/SumOfThreeCubes.lean:36:def IsSumOfThreeCubes (n : R) : Prop :=
+FormalConjectures/Wikipedia/SumOfThreeCubes.lean-37-  ∃ x y z : R, n = x^3 + y^3 + z^3
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/SumOfThreeCubes.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/SumOfThreeCubes.lean-39-@[category test, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/AgohGiuga.lean-54-An integer `p ≥ 2` is prime if and only if it satifies the congruence
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/AgohGiuga.lean-55-`∑_{i=1}^{p-1} i^{p-1} ≡ -1 [MOD p]`.
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/AgohGiuga.lean-56--/
+FormalConjectures/Wikipedia/AgohGiuga.lean:57:def AgohGiugaSum : Prop := ∀ p ≥ 2, p.Prime ↔
+FormalConjectures/Wikipedia/AgohGiuga.lean-58-  p ∣ 1 + ∑ i ∈ Finset.Ioo 0 p, i^(p - 1 : ℕ)
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/AgohGiuga.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/AgohGiuga.lean-60-/-- The **Agoh-Giuga Conjecture**, Agoh's formulation -/
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Analysis/HasGaps.lean-34-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Analysis/HasGaps.lean-35-/-- A sequence of natural numbers `n₀ < n₁ < ...` is said to have Fejér gaps if `∑' 1 / nₖ < ∞`.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Analysis/HasGaps.lean-36-This is the terminology adopted in [Wa01] and some other sources. -/
+FormalConjecturesForMathlib/Analysis/HasGaps.lean:37:def HasFejerGaps (n : ℕ → ℕ) : Prop := StrictMono n ∧ Summable (fun k => (n k : ℝ)⁻¹)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Analysis/HasGaps.lean-38-
+FormalConjecturesForMathlib/Analysis/HasGaps.lean-39-theorem HasFejerGaps.hasFabryGaps {f : ℕ → ℕ} (hf : HasFejerGaps f) : HasFabryGaps f := by
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Analysis/HasGaps.lean-40-  refine ⟨hf.1, tendsto_atTop_mono'
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-42-The restricted sumset of a set $S$, denoted $S \hat{+} S$, is the set
+FormalConjectures/GreensOpenProblems/2.lean-43-$\lbrace s_1 + s_2 : s_1, s_2 \in S, s_1 \neq s_2 \rbrace$.
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-44--/
+FormalConjectures/GreensOpenProblems/2.lean:45:def restrictedSumset (S : Finset ℤ) : Finset ℤ :=
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-46-  S.offDiag.image (fun p => p.1 + p.2)
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-48-/--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-49-We define the construction from [Sa21, p1] as
+FormalConjectures/GreensOpenProblems/2.lean-50-$M(A) := \max \{|S| : S \subseteq A \text{ and } (S \hat{+} S) \cap A = \varnothing \}$.
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-51--/
+FormalConjectures/GreensOpenProblems/2.lean:52:def maxRestrictedSumAvoidingSubsetSize (A : Finset ℤ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-53-  (A.powerset.filter fun S => Disjoint (restrictedSumset S) A).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-55-/--
+--
+FormalConjectures/ErdosProblems/675.lean-49-  ∀ n : ℕ, ∃ t : ℕ, t ≥ 1 ∧ ∀ a : ℕ, 1 ≤ a → a ≤ n → (a ∈ A ↔ a + t ∈ A)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/675.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/675.lean-51-/-- A natural number is a sum of two squares. -/
+FormalConjectures/ErdosProblems/675.lean:52:def IsSumOfTwoSquares (n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/675.lean-53-  ∃ a b : ℕ, n = a ^ 2 + b ^ 2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/675.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/675.lean-55-/-- The set of natural numbers that are sums of two squares. -/
+FormalConjectures/ErdosProblems/675.lean:56:def sumOfTwoSquaresSet : Set ℕ := {n | IsSumOfTwoSquares n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/675.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/675.lean-58-/-- The set of squarefree natural numbers. -/
+FormalConjectures/ErdosProblems/675.lean-59-def squarefreeSet : Set ℕ := {n | Squarefree n}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean-30-namespace Erdos350
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean-32-/-- The predicate that all (finite) subsets of `A` have distinct sums. -/
+FormalConjectures/ErdosProblems/350.lean:33:def DistinctSubsetSums {M : Type*} [AddCommMonoid M] (A : Set M) : Prop :=
+FormalConjectures/ErdosProblems/350.lean-34-  Set.Pairwise {X : Finset M | ↑X ⊆ A} fun X Y => X.sum id ≠ Y.sum id
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean-36-/-- The predicate that all (finite) subsets of `A` have distinct sums, decidable version -/
+FormalConjectures/ErdosProblems/350.lean:37:def DecidableDistinctSubsetSums {M : Type*} [AddCommMonoid M] [DecidableEq M] (A : Finset M) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean-38-  ∀ X ⊆ A, ∀ Y ⊆ A, X ≠ Y → X.sum id ≠ Y.sum id
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean-40-@[category test, AMS 5 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-44-/-- The set of all finite subset sums $P(A)$ of a multiset.
+FormalConjectures/ErdosProblems/343.lean-45-A finite submultiset is $b : \mathbb{N} \to_0 \mathbb{N}$ with $b(n) \leq \mathrm{mult}(n)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-46-for all $n$. The sum is $\sum n \cdot b(n)$. -/
+FormalConjectures/ErdosProblems/343.lean:47:def subsetSums (mult : ℕ → ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/343.lean-48-  {s : ℕ | ∃ (b : ℕ →₀ ℕ), (∀ n, b n ≤ mult n) ∧ s = b.sum (fun n k => n * k)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-50-/-- A set of natural numbers contains an infinite arithmetic progression
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-29-namespace Erdos869
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-30-
+FormalConjectures/ErdosProblems/869.lean-31-/-- The sumset $A + A$: the set of all $a + b$ with $a, b \in A$. -/
+FormalConjectures/ErdosProblems/869.lean:32:def sumset (A : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ A, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-34-/-- A set $A \subseteq \mathbb{N}$ is an additive basis of order $2$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-35-    natural number can be written as $a + b$ with $a, b \in A$. -/
+--
+/home/ryan/formal-conjectures/ai-review/790.md-2-
+/home/ryan/formal-conjectures/ai-review/790.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/790.md-4-
+ai-review/790.md:5:The formalization defines `Erdos790.IsSumFree` locally. Several related "sum-free" definitions exist in the codebase:
+/home/ryan/formal-conjectures/ai-review/790.md-6-
+ai-review/790.md-7-- **`IsSumFree` in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`**: Defined as `Disjoint (A + A) A` — the classical sum-free notion (no `a + b = c` with `a, b, c ∈ A`). This is a *different* concept from 790's notion.
+ai-review/790.md-8-- **`Erdos876.IsSumFreeErdos`** (`ErdosProblems/876.lean`): No element equals the sum of finitely many distinct *smaller* elements. Works over `Set ℕ` and allows singleton sums. Similar in spirit but differs in domain (ℕ vs ℤ), container type (Set vs Finset), and the "smaller" constraint.
+--
+/home/ryan/formal-conjectures/ai-review/790.md-10-
+ai-review/790.md-11-**Verdict**: Problem 790's "sum-free" notion — no element equals the sum of two or more *other distinct* elements — is genuinely distinct from all existing definitions. The local definition is justified. No reuse opportunity exists.
+/home/ryan/formal-conjectures/ai-review/790.md-12-
+ai-review/790.md:13:**Note**: The name `IsSumFree` shadows the definition in `Basic.lean`, though the `Erdos790` namespace prevents actual conflicts. A more descriptive name like `IsDistinctSumFree` could reduce confusion, but this is minor.
+/home/ryan/formal-conjectures/ai-review/790.md-14-
+/home/ryan/formal-conjectures/ai-review/790.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/790.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/790.md-78-### Definition `IsSumFree`
+/home/ryan/formal-conjectures/ai-review/790.md-79-
+/home/ryan/formal-conjectures/ai-review/790.md-80-```lean
+ai-review/790.md:81:def IsSumFree (B : Finset ℤ) : Prop :=
+ai-review/790.md-82-  ∀ b ∈ B, ∀ S : Finset ℤ, S ⊆ B.erase b → S.card ≥ 2 → b ≠ S.sum id
+/home/ryan/formal-conjectures/ai-review/790.md-83-```
+/home/ryan/formal-conjectures/ai-review/790.md-84-
+--
+/home/ryan/formal-conjectures/ai-review/790.md-87-### Definition `maxSumFreeSize`
+/home/ryan/formal-conjectures/ai-review/790.md-88-
+/home/ryan/formal-conjectures/ai-review/790.md-89-```lean
+ai-review/790.md:90:noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+ai-review/790.md-91-  sSup {l : ℕ | ∀ (A : Finset ℤ), A.card = n → ∃ B : Finset ℤ, B ⊆ A ∧ l ≤ B.card ∧ IsSumFree B}
+/home/ryan/formal-conjectures/ai-review/790.md-92-```
+/home/ryan/formal-conjectures/ai-review/790.md-93-
+--
+/home/ryan/formal-conjectures/ai-review/291.md-19-
+/home/ryan/formal-conjectures/ai-review/291.md-20-This would connect the problem to Mathlib's existing API. The current custom `harmonicLcmNumerator` definition is mathematically correct but does not leverage this. Whether this is preferable is debatable — the current approach is more self-contained and closer to the original problem statement.
+/home/ryan/formal-conjectures/ai-review/291.md-21-
+ai-review/291.md:22:**Problem 290** defines `harmonicPartialSum` (harmonic partial sums as rationals), which is related but serves a different purpose (reduced-fraction denominator comparisons vs. gcd with lcm).
+/home/ryan/formal-conjectures/ai-review/291.md-23-
+/home/ryan/formal-conjectures/ai-review/291.md-24----
+/home/ryan/formal-conjectures/ai-review/291.md-25-
+--
+/home/ryan/formal-conjectures/ai-review/483.md-2-
+/home/ryan/formal-conjectures/ai-review/483.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/483.md-4-
+ai-review/483.md:5:The definition `HasMonochromaticSchurTriple` is self-contained in `483.lean`. There is a closely related definition `IsSumFree` in `FormalConjecturesForMathlib/Combinatorics/Basic.lean:30`:
+/home/ryan/formal-conjectures/ai-review/483.md-6-
+/home/ryan/formal-conjectures/ai-review/483.md-7-```lean
+ai-review/483.md:8:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/ai-review/483.md-9-```
+/home/ryan/formal-conjectures/ai-review/483.md-10-
+/home/ryan/formal-conjectures/ai-review/483.md-11-A k-coloring of {1,...,N} avoids monochromatic Schur triples if and only if each color class is sum-free. This connection is mathematically fundamental but does not affect the correctness of the current formalization—the two notions operate at different levels (colorings vs. sets), and using `IsSumFree` here would make the statement less direct.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/763.lean-44-  ((Finset.range (n + 1)).filter (fun a => a ∈ A ∧ (n - a) ∈ A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/763.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/763.lean-46-/-- The partial sum $\sum_{n=0}^{N} 1_A \ast 1_A(n)$. -/
+FormalConjectures/ErdosProblems/763.lean:47:noncomputable def repSum (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/763.lean-48-  (Finset.range (N + 1)).sum (fun n => repCount A n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/763.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/763.lean-50-/--
+--
+/home/ryan/formal-conjectures/ai-review/764.md-2-
+/home/ryan/formal-conjectures/ai-review/764.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/764.md-4-
+ai-review/764.md:5:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/764.md-6-
+ai-review/764.md-7-The current implementation uses a Cartesian product of `Finset.range` with a filter, which is mathematically equivalent but bypasses the shared infrastructure. Refactoring `repCount764` in terms of `sumConv` would:
+/home/ryan/formal-conjectures/ai-review/764.md-8-- Be more consistent with other files (Problems 28, 40, 66, 749, 943 all use `sumRep`/`sumConv`).
+--
+FormalConjectures/ErdosProblems/476.lean-37-The restricted sumset $A \hat{+} A = \{a + b : a, b \in A, a \neq b\}$, consisting of all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-38-pairwise sums of distinct elements from $A$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-39--/
+FormalConjectures/ErdosProblems/476.lean:40:def restrictedSumset {p : ℕ} (A : Finset (ZMod p)) : Finset (ZMod p) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-41-  A.biUnion (fun a => (A.erase a).image (fun b => a + b))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-43-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/867.lean-39-elements are listed in increasing order as $a_1 < a_2 < \cdots < a_t$, no sum of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/867.lean-40-two or more consecutive elements ($a_i + a_{i+1} + \cdots + a_j$ with $i < j$)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/867.lean-41-lies in $A$. -/
+FormalConjectures/ErdosProblems/867.lean:42:def ConsecutiveSumFree (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/867.lean-43-  let s := A.sort (· ≤ ·)
+FormalConjectures/ErdosProblems/867.lean-44-  ∀ i j : ℕ, i < j → j < s.length →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/867.lean-45-    (∑ k ∈ Finset.Icc i j, s.getD k 0) ∉ A
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/475.lean-32-/--
+FormalConjectures/ErdosProblems/475.lean-33-The partial sum of a sequence $f$ at index $m$: the sum $f(0) + f(1) + \cdots + f(m)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/475.lean-34--/
+FormalConjectures/ErdosProblems/475.lean:35:noncomputable def partialSum {n : ℕ} {α : Type*} [AddCommMonoid α]
+FormalConjectures/ErdosProblems/475.lean-36-    (f : Fin n → α) (m : Fin n) : α :=
+FormalConjectures/ErdosProblems/475.lean-37-  (univ.filter (fun i : Fin n => i ≤ m)).sum f
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/475.lean-38-
+--
+/home/ryan/formal-conjectures/ai-review/31.md-12-
+ai-review/31.md-13-The custom definition at line 35:
+/home/ryan/formal-conjectures/ai-review/31.md-14-```lean
+ai-review/31.md:15:def sumset (A B : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/ai-review/31.md-16-```
+/home/ryan/formal-conjectures/ai-review/31.md-17-
+ai-review/31.md-18-This is mathematically equivalent to `A + B` under `open scoped Pointwise` from `Mathlib.Algebra.Group.Pointwise.Set.Basic` (line 285), which defines `s + t = Set.image2 (· + ·) s t`. Membership is characterized by `Set.mem_add`: `x ∈ s + t ↔ ∃ a ∈ s, ∃ b ∈ t, x = a + b`, which is identical to the custom definition.
+--
+ai-review/31.md-131-### Definition: `sumset`
+/home/ryan/formal-conjectures/ai-review/31.md-132-
+/home/ryan/formal-conjectures/ai-review/31.md-133-```lean
+ai-review/31.md:134:def sumset (A B : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/ai-review/31.md-135-```
+/home/ryan/formal-conjectures/ai-review/31.md-136-
+ai-review/31.md:137:This correctly defines the Minkowski sum (sumset) of two sets of natural numbers. An element n is in the sumset iff it can be written as a + b with a ∈ A and b ∈ B. This is the standard definition.
+/home/ryan/formal-conjectures/ai-review/31.md-138-
+ai-review/31.md-139-### Definition: `HasNaturalDensityZero`
+/home/ryan/formal-conjectures/ai-review/31.md-140-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/34.lean-39-A consecutive sum is $\sum_{i \in [u,v]} (\sigma(i) + 1)$ for $u \leq v$ in $\operatorname{Fin}(n)$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/34.lean-40-corresponding to summing consecutive values of a permutation of $\{1,\ldots,n\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/34.lean-41--/
+FormalConjectures/ErdosProblems/34.lean:42:noncomputable def consecutiveSums (n : ℕ) (σ : Equiv.Perm (Fin n)) : Finset ℕ :=
+FormalConjectures/ErdosProblems/34.lean-43-  ((Finset.univ (α := Fin n)) ×ˢ (Finset.univ (α := Fin n))).filter (fun p => p.1 ≤ p.2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/34.lean-44-    |>.image (fun p => ∑ i ∈ Finset.Icc p.1 p.2, ((σ i).val + 1))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/34.lean-45-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1028.lean-36-
+FormalConjectures/ErdosProblems/1028.lean-37-/-- The discrepancy sum of a $\pm 1$ function $f$ over a subset $X$ of $\operatorname{Fin}(n)$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1028.lean-38-$\sum_{x \neq y \in X} f(x, y)$ over ordered pairs with $x \neq y$. -/
+FormalConjectures/ErdosProblems/1028.lean:39:def discrepancySum (n : ℕ) (f : Fin n → Fin n → ℤ) (X : Finset (Fin n)) : ℤ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1028.lean-40-  X.sum fun x => (X.filter (· ≠ x)).sum fun y => f x y
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1028.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1028.lean-42-/--
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-27-A set $A$ is said to be sum-free if the sumset $A + A$ is disjoint from $A$, i.e.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-28-if the equation $a + b = c$ has no solution with $a, b, c \in A$.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-29--/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:30:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-31-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-32-/-- A set $A$ of natural numbers is said to have bounded gaps if there exists an integer $p$ such
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-33-that $A ∩ [n, n + 1, ..., n + p]$ is nonempty for all $n$. -/
+--
+/home/ryan/formal-conjectures/ai-review/858.md-4-
+/home/ryan/formal-conjectures/ai-review/858.md-5-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/858.md-6-
+ai-review/858.md:7:- **`Set.HasLogDensity`** (`FormalConjecturesForMathlib/Data/Set/Density.lean:196`): This defines logarithmic density as `(1/log n) * Σ_{k ∈ A, k ≤ n} 1/k → d`. The quantity in Erdős 858 is structurally identical — `(1/log N) * Σ_{n ∈ A} 1/n` — but `weakPrimitiveMaxSum` takes the supremum over all qualifying sets `A ⊆ {1,…,N}` rather than studying the density of a fixed set. No direct reuse opportunity, but worth noting for context.
+/home/ryan/formal-conjectures/ai-review/858.md-8-
+/home/ryan/formal-conjectures/ai-review/858.md-9-- No other reuse opportunities identified. The `IsWeakPrimitive` and `weakPrimitiveMaxSum` definitions are problem-specific and appropriately scoped within the `Erdos858` namespace.
+/home/ryan/formal-conjectures/ai-review/858.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/691.md-28-### `ReciprocalSumDiverges` (lines 58–60)
+ai-review/691.md-29-Erdős Problem 26 (`26.lean`, line 35) defines:
+/home/ryan/formal-conjectures/ai-review/691.md-30-```lean
+ai-review/691.md:31:def IsThick {ι : Type*} (A : ι → ℕ) : Prop := ¬Summable (fun i ↦ (1 : ℝ) / A i)
+/home/ryan/formal-conjectures/ai-review/691.md-32-```
+ai-review/691.md:33:The 691 definition uses a different but equivalent characterization (every bound is exceeded by some finite partial sum). While mathematically equivalent, using `¬Summable` is more idiomatic in Lean/Mathlib and more concise. However, since Problem 26 uses an indexed sequence `ι → ℕ` rather than a `Set ℕ`, the definitions aren't directly interchangeable without an adapter. A set-based version like `¬Summable (fun a : A ↦ (1 : ℝ) / (a : ℕ))` would be cleaner.
+/home/ryan/formal-conjectures/ai-review/691.md-34-
+ai-review/691.md-35-**Recommendation:** Refactor `691.lean` to use `Set.HasDensity`, `Set.Pairwise Nat.Coprime`, and a `¬Summable`-based divergence condition. Remove all four custom definitions.
+/home/ryan/formal-conjectures/ai-review/691.md-36-
+--
+/home/ryan/formal-conjectures/ai-review/691.md-71-
+ai-review/691.md-72-2. **`n + 1` in `countMultiples`** (line 44): The filter checks `a ∣ (n + 1)` because `Finset.range N` gives `{0, ..., N-1}` and we want to check divisibility of `{1, ..., N}`. This off-by-one adjustment is a readability hazard.
+/home/ryan/formal-conjectures/ai-review/691.md-73-
+ai-review/691.md:74:3. **Namespace clutter:** Four definitions (`countMultiples`, `IsBehrend`, `SetPairwiseCoprime`, `ReciprocalSumDiverges`) are defined when all could be replaced by existing library constructs.
+/home/ryan/formal-conjectures/ai-review/691.md-75-
+ai-review/691.md-76-4. **`open Classical Filter` and `open scoped BigOperators Topology`:** The `BigOperators` scope is opened but `∑` is not used in the theorem statement (only in `ReciprocalSumDiverges`). The opens are fine but slightly broader than necessary.
+/home/ryan/formal-conjectures/ai-review/691.md-77-
+--
+/home/ryan/formal-conjectures/ai-review/691.md-120-
+/home/ryan/formal-conjectures/ai-review/691.md-121-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/691.md-122-|-----------|-----------|
+ai-review/691.md:123:| Code reuse | **Poor** — Four redundant definitions; should use `Set.HasDensity`, `Set.Pairwise Nat.Coprime`, and `¬Summable` |
+/home/ryan/formal-conjectures/ai-review/691.md-124-| Citations | **Good** — Matches website; omission of Tenenbaum reference is acceptable |
+/home/ryan/formal-conjectures/ai-review/691.md-125-| Variants | **Partial** — Only the solved pairwise coprime case is formalized; general open problem and other partial results are missing |
+/home/ryan/formal-conjectures/ai-review/691.md-126-| Readability | **Fair** — Off-by-one adjustments obscure intent; using library definitions would improve clarity |
+--
+ai-review/54.md-25-abbrev IsRamsey2Complete (A : Set ℕ) : Prop := IsRamseyComplete A 2
+/home/ryan/formal-conjectures/ai-review/54.md-26-```
+/home/ryan/formal-conjectures/ai-review/54.md-27-
+ai-review/54.md:28:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/54.md-29-
+ai-review/54.md-30-**Recommendation:** Promote `IsRamseyComplete` (parameterized by `r`) to a shared definition used by Problems 54, 55, and 843.
+/home/ryan/formal-conjectures/ai-review/54.md-31-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-23-open scoped List
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-24-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-25-/-- The set of subset sums of a set `A ⊆ M`. -/
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:26:def subsetSums (A : Set M) : Set M :=
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-27-  {n | ∃ B : Finset M, ↑B ⊆ A ∧ n = ∑ i ∈ B, i}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-28-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-29-/-- If `A ⊆ B`, then `subsetSums A ⊆ subsetSums B`. -/
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-32-  fun _ ⟨C, hC⟩ => ⟨C, hC.1.trans h, hC.2⟩
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-33-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-34-/-- The set of subset sums of a sequence `ℕ → M`, where repetition is allowed. -/
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:35:def subseqSums' (A : ℕ → M) : Set M :=
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-36-  {n | ∃ B : Finset ℕ, n = ∑ i ∈ B, A i}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-37-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean-38-variable [Preorder M]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-28-A set $A \subseteq \mathbb{N}$ is sum-free in the sense of Erdős if no element of $A$ can be
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-29-expressed as the sum of finitely many distinct smaller elements of $A$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-30--/
+FormalConjectures/ErdosProblems/876.lean:31:def IsSumFreeErdos (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/876.lean-32-  ∀ a ∈ A, ∀ S : Finset ℕ, S.Nonempty → (∀ x ∈ S, x ∈ A) → (∀ x ∈ S, x < a) → S.sum id ≠ a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-34-/--
+--
+/home/ryan/formal-conjectures/ai-review/320.md-10-
+ai-review/320.md-11-- **Problem 874** (`ErdosProblems/874.lean`): Uses `powersetCard` with `.image (fun S => S.sum id)` for counting distinct subset sums — a parallel pattern.
+/home/ryan/formal-conjectures/ai-review/320.md-12-
+ai-review/320.md:13:**Recommendation:** A shared definition for the unit-fraction sum `fun (A : Finset ℕ) => A.sum (fun n => (1 : ℚ) / ↑n)` could be extracted to a utility file and reused across Problems 297, 320, and 321. The `unitFractionSums` definition in 320 and the filtering/injection constructions in 297/321 all build on the same primitive.
+/home/ryan/formal-conjectures/ai-review/320.md-14-
+/home/ryan/formal-conjectures/ai-review/320.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/320.md-16-
+--
+ai-review/297.md-5-**Opportunity identified.** Problem 296 (`FormalConjectures/ErdosProblems/296.lean:44`) defines:
+/home/ryan/formal-conjectures/ai-review/297.md-6-
+/home/ryan/formal-conjectures/ai-review/297.md-7-```lean
+ai-review/297.md:8:noncomputable def reciprocalSum (A : Finset ℕ) : ℚ :=
+ai-review/297.md-9-  ∑ n ∈ A, (1 : ℚ) / (n : ℚ)
+/home/ryan/formal-conjectures/ai-review/297.md-10-```
+/home/ryan/formal-conjectures/ai-review/297.md-11-
+--
+/home/ryan/formal-conjectures/ai-review/333.md-8-
+/home/ryan/formal-conjectures/ai-review/333.md-9-- `FormalConjecturesForMathlib/Data/Set/Density.lean` provides `Set.upperDensity`, `Set.lowerDensity`, `Set.HasDensity`, and related lemmas (monotonicity, nonnegativity, density of finite sets, etc.). The local `upperDensity333` computes the same quantity — `limsup of |A ∩ {0,…,N−1}| / N` — but via `Finset.range` and `Finset.filter` rather than `Set.interIio` and `Set.ncard`. These are equivalent for `ℕ`.
+/home/ryan/formal-conjectures/ai-review/333.md-10-
+ai-review/333.md:11:- Problem 335 (`ErdosProblems/335.lean`) similarly defines its own `upperDensity` and `lowerDensity` duplicates. Problem 337 defines its own `countInRange` and `sumset`. All of these are candidates for consolidation.
+/home/ryan/formal-conjectures/ai-review/333.md-12-
+ai-review/333.md:13:- The sumset `Set.image2 (· + ·) B B` is expressed inline, which is fine, but `FormalConjecturesForMathlib/Combinatorics/Basic.lean` and `Combinatorics/Additive/Basis.lean` contain related definitions (`IsSidon`, `IsAdditiveBasis`, etc.) that provide broader context. The sumset definition in Problem 337 (`Erdos337.sumset`) is also equivalent.
+/home/ryan/formal-conjectures/ai-review/333.md-14-
+ai-review/333.md-15-**Recommendation:** Replace `upperDensity333` with `Set.upperDensity` from `Data/Set/Density.lean` (applied to `Set.univ`), or at minimum import and reference the shared definition. This would also allow leveraging existing lemmas like `hasDensity_zero_of_finite` and `HasDensity.mono`.
+/home/ryan/formal-conjectures/ai-review/333.md-16-
+--
+FormalConjectures/ErdosProblems/53.lean-39-The set of all subset sums of a finite set of integers:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean-40-$\{ \sum_{i \in S} i \mid S \subseteq A \}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean-41--/
+FormalConjectures/ErdosProblems/53.lean:42:def subsetSums (A : Finset ℤ) : Finset ℤ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean-43-  A.powerset.image (fun S => ∑ i ∈ S, i)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean-45-/--
+--
+/home/ryan/formal-conjectures/ai-review/315.md-6-
+/home/ryan/formal-conjectures/ai-review/315.md-7-**Growth rate pattern.** Problem 265 (`FormalConjectures/ErdosProblems/265.lean`) uses the nearly identical expression `a n ^ (1 / 2 ^ n)` but with `Tendsto` instead of `Filter.liminf`. No shared utility for "doubly exponential growth rate" exists in `FormalConjectures/Util/`, though the pattern recurs across at least Problems 265, 293, and 315. A shared definition is not strictly necessary but could be considered if more problems use this pattern.
+/home/ryan/formal-conjectures/ai-review/315.md-8-
+ai-review/315.md:9:**Egyptian fraction infrastructure.** Problems 206, 282, 287, 293, 296, 300, and 305 all work with Egyptian fractions in various forms (finite sums via `Finset`, infinite sums via `HasSum`, greedy algorithms). Each defines its own ad-hoc infrastructure. Problem 315's use of `HasSum (fun n => (1 : ℝ) / (a n : ℝ)) 1` is standard and consistent with the existing codebase conventions — no better alternative exists in `FormalConjecturesForMathlib/`.
+/home/ryan/formal-conjectures/ai-review/315.md-10-
+/home/ryan/formal-conjectures/ai-review/315.md-11-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/315.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/403.md-4-
+/home/ryan/formal-conjectures/ai-review/403.md-5-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/403.md-6-
+ai-review/403.md:7:Problem 1108 (`FormalConjectures/ErdosProblems/1108.lean`) defines a reusable `FactorialSums` set:
+/home/ryan/formal-conjectures/ai-review/403.md-8-```lean
+ai-review/403.md:9:def FactorialSums : Set ℕ :=
+ai-review/403.md-10-  {m : ℕ | ∃ S : Finset ℕ, m = ∑ n ∈ S, n.factorial}
+/home/ryan/formal-conjectures/ai-review/403.md-11-```
+ai-review/403.md-12-Problem 403 could be reformulated in terms of `FactorialSums` (i.e., `Set.Finite {p : ℕ × Finset ℕ | ...}` could reference it), but the overlap is only partial — 403 requires tracking the specific pair `(m, S)` rather than just membership in a set of sums. The current self-contained formulation is arguably cleaner for this problem.
+--
+/home/ryan/formal-conjectures/ai-review/763.md-2-
+/home/ryan/formal-conjectures/ai-review/763.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/763.md-4-
+ai-review/763.md:5:**Issue found.** The file defines its own local `repCount` and `repSum` in the `Erdos763` namespace, but the codebase already provides `AdditiveCombinatorics.sumRep` in `FormalConjecturesForMathlib/Combinatorics/Additive/Convolution.lean`. This existing definition computes exactly the same quantity:
+/home/ryan/formal-conjectures/ai-review/763.md-6-
+/home/ryan/formal-conjectures/ai-review/763.md-7-- `sumRep A n = ((antidiagonal n).filter (fun p => p.1 ∈ A ∧ p.2 ∈ A)).card` (via `sumRep_def`)
+/home/ryan/formal-conjectures/ai-review/763.md-8-- `repCount A n = ((range (n+1)).filter (fun a => a ∈ A ∧ (n-a) ∈ A)).card`
+/home/ryan/formal-conjectures/ai-review/763.md-9-
+ai-review/763.md:10:These are provably equal since `Finset.antidiagonal n` bijects with `Finset.range (n+1)` via `(a, b) ↦ a` (with `b = n - a`). Problem 28 (`28.lean`) already uses `sumRep` from the library directly. Problem 763 should do the same, replacing the local `repCount`/`repSum` definitions with `sumRep` and a partial sum over it (or defining only `repSum` in terms of `sumRep`).
+/home/ryan/formal-conjectures/ai-review/763.md-11-
+/home/ryan/formal-conjectures/ai-review/763.md-12-Problem 764 has the same duplication issue with its `repCount764` definition, though that is a 3-fold convolution for which no library definition exists yet.
+/home/ryan/formal-conjectures/ai-review/763.md-13-
+--
+/home/ryan/formal-conjectures/ai-review/423.md-2-
+/home/ryan/formal-conjectures/ai-review/423.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/423.md-4-
+ai-review/423.md:5:No reusable code was found in the existing codebase. Problem 423 is a number theory / integer sequence problem concerning the Hofstadter–Ulam self-generating sequence. The codebase's combinatorial infrastructure (chromatic numbers, Ramsey theory, graph coloring, sunflowers, set families) is not relevant here. The problem is self-contained and the definitions (`IsConsecutiveBlockSum`, `IsHofstadterSeq`) are appropriately bespoke.
+/home/ryan/formal-conjectures/ai-review/423.md-6-
+/home/ryan/formal-conjectures/ai-review/423.md-7-The use of `Finset.Icc` and `∑ l ∈ Finset.Icc i j, a l` from Mathlib is standard and appropriate.
+/home/ryan/formal-conjectures/ai-review/423.md-8-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/345.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/345.lean-35-/-- The set of all finite subset sums of a set $A \subseteq \mathbb{N}$. That is,
+FormalConjectures/ErdosProblems/345.lean-36-$P(A) = \{\sum_{n \in B} n : B \subseteq A, B \text{ finite}\}$. -/
+FormalConjectures/ErdosProblems/345.lean:37:def subsetSums (A : Set ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/345.lean-38-  {s | ∃ (B : Finset ℕ), (↑B : Set ℕ) ⊆ A ∧ s = ∑ n ∈ B, n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/345.lean-39-
+FormalConjectures/ErdosProblems/345.lean-40-/-- The threshold of completeness $T(A)$: the least $m$ such that
+--
+/home/ryan/formal-conjectures/ai-review/439.md-8-
+ai-review/439.md-9-Potential reuse considerations:
+ai-review/439.md-10-- **`IsPerfectPower` from `FormalConjecturesForMathlib/Data/Nat/PerfectPower.lean`**: This was *correctly not used* for the k-th power variant. `IsPerfectPower` requires both the base and exponent to be > 1, which would exclude values like $1^k = 1$. The formalization's direct existential `∃ z : ℕ, z ^ k = x + y` is more appropriate here.
+ai-review/439.md:11:- **`SumsetAvoidSquares` from Problem 438**: Problem 438 defines a `SumsetAvoidSquares` predicate for finite sets avoiding square sums. While thematically related, it applies to finite subsets of `{1, …, N}` and is not suitable for the infinite coloring context of Problem 439.
+ai-review/439.md-12-- **Ramsey coloring pattern from Problem 843/984**: Problems 843 and 984 use similar finite-coloring patterns (`ℕ → Fin c` or `ℕ → Fin r`). The pattern used in 439 is consistent with codebase conventions.
+/home/ryan/formal-conjectures/ai-review/439.md-13-
+ai-review/439.md-14-**Verdict:** No improvements needed. Appropriate reuse decisions were made.
+--
+ai-review/131.md-5-The formalization follows a well-established pattern used across several related Erdős problems. Specifically:
+/home/ryan/formal-conjectures/ai-review/131.md-6-
+/home/ryan/formal-conjectures/ai-review/131.md-7-- **Problem 186** (`ErdosProblems/186.lean`) is the most closely related — it defines `IsNonAveraging` and `nonAvgMax` using an almost identical structure. Problem 186 is directly connected to Problem 131 via the Pham–Zakharov paper [PhZa24], which uses non-averaging sets to establish the upper bound for non-dividing sets. A cross-reference between the two files would be valuable.
+ai-review/131.md:8:- **Problem 882** (`ErdosProblems/882.lean`) defines `IsPrimitive` (no element divides another) and `maxPrimitiveSubsetSumSize` using the same `sSup` extremal function pattern.
+ai-review/131.md:9:- **Problem 790** (`ErdosProblems/790.lean`) defines `IsSumFree` and `maxSumFreeSize` with the same structural pattern.
+/home/ryan/formal-conjectures/ai-review/131.md-10-- **Problem 874** (`ErdosProblems/874.lean`) uses `rSubsetSums` with `.sum id` and a similar extremal function.
+/home/ryan/formal-conjectures/ai-review/131.md-11-- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides foundational `IsSumFree` and `IsSidon` definitions, but nothing directly reusable for `IsNonDividing`.
+/home/ryan/formal-conjectures/ai-review/131.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/656.md-59-- The `@[category research solved, AMS 5 11]` tag is accurate.
+ai-review/656.md-60-- The use of `B : Set ℕ` and `t : ℤ` correctly captures the domain: B lives in ℕ while the shift t is an integer.
+ai-review/656.md-61-- The casting `(a : ℤ) = ↑b₁ + ↑b₂ + t` correctly handles the mixed-type arithmetic. The existence of `a ∈ A` (a natural number) implicitly enforces that `b₁ + b₂ + t ≥ 0`, which is the right constraint. Since B is infinite and t is fixed, this is satisfiable for any choice of B with sufficiently large minimum element.
+ai-review/656.md:62:- The quantifier structure `∀ b₁ ∈ B, ∀ b₂ ∈ B` correctly includes the case `b₁ = b₂`, matching the standard definition of B + B (the sumset includes `2b` for `b ∈ B`).
+/home/ryan/formal-conjectures/ai-review/656.md-63-
+ai-review/656.md-64-**Minor concern:**
+/home/ryan/formal-conjectures/ai-review/656.md-65-
+--
+/home/ryan/formal-conjectures/ai-review/15.md-88-
+ai-review/15.md-89-**Division safety:** `Nat.nth Nat.Prime n` is always a prime ≥ 2 (since `Nat.Prime` is infinite), so the cast to `ℝ` is always positive and division is well-defined. No division-by-zero issues.
+/home/ryan/formal-conjectures/ai-review/15.md-90-
+ai-review/15.md:91:**Convergence formulation:** `∃ L : ℝ, Tendsto (fun N => ∑ n ∈ Finset.range N, ...) atTop (nhds L)` is the standard definition of convergence of a series via partial sums. This is equivalent to `Summable` for the terms, but the partial-sum formulation is more appropriate here since the limit value is unknown and the series is not absolutely convergent.
+/home/ryan/formal-conjectures/ai-review/15.md-92-
+/home/ryan/formal-conjectures/ai-review/15.md-93-**No mathematical flaws identified.** An experienced mathematician would find this formalization faithful to the original problem statement.
+/home/ryan/formal-conjectures/ai-review/15.md-94-
+--
+/home/ryan/formal-conjectures/ai-review/261.md-6-
+/home/ryan/formal-conjectures/ai-review/261.md-7-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/261.md-8-
+ai-review/261.md:9:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/261.md-10-
+/home/ryan/formal-conjectures/ai-review/261.md-11-No relevant utilities in `FormalConjecturesForMathlib/` apply here. The `StrictMono`, `HasSum`, `Set.Infinite`, and `Set.Countable` usages all come directly from Mathlib. **No reuse issues.**
+/home/ryan/formal-conjectures/ai-review/261.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/476.md-6-
+/home/ryan/formal-conjectures/ai-review/476.md-7-```lean
+/home/ryan/formal-conjectures/ai-review/476.md-8--- Green 2 (cleaner)
+ai-review/476.md:9:def restrictedSumset (S : Finset ℤ) : Finset ℤ :=
+/home/ryan/formal-conjectures/ai-review/476.md-10-  S.offDiag.image (fun p => p.1 + p.2)
+/home/ryan/formal-conjectures/ai-review/476.md-11-
+/home/ryan/formal-conjectures/ai-review/476.md-12--- Erdős 476 (current)
+ai-review/476.md:13:def restrictedSumset {p : ℕ} (A : Finset (ZMod p)) : Finset (ZMod p) :=
+/home/ryan/formal-conjectures/ai-review/476.md-14-  A.biUnion (fun a => (A.erase a).image (fun b => a + b))
+/home/ryan/formal-conjectures/ai-review/476.md-15-```
+/home/ryan/formal-conjectures/ai-review/476.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/94.md-11-
+ai-review/94.md-12-  **Recommendation:** Import and use `EuclideanGeometry.ConvexIndep` from the shared library rather than redefining. This is exactly the purpose of that definition.
+/home/ryan/formal-conjectures/ai-review/94.md-13-
+ai-review/94.md:14:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/94.md-15-
+ai-review/94.md-16-  **Recommendation:** Rewrite `distSqSum` using the same `distMultiplicity`/`distinctDistances` decomposition as Problem 95, or import those definitions directly.
+/home/ryan/formal-conjectures/ai-review/94.md-17-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-48-  else ∏ p ∈ n.factorization.support, (ε p ω) ^ (n.factorization p)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-50-/-- The partial sum $\sum_{m=1}^{N} f(m)$. -/
+FormalConjectures/ErdosProblems/1144.lean:51:noncomputable def partialSum {Ω : Type*} (ε : ℕ → Ω → ℝ) (ω : Ω) (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-52-  ∑ m ∈ Finset.Icc 1 N, randMultFun ε ω m
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-54-/--
+--
+/home/ryan/formal-conjectures/ai-review/293.md-12-
+ai-review/293.md-13-- **Problem 292** (`IsEgyptianRepresentable`): Similar structure but without a fixed `k` and with a maximum-element constraint.
+/home/ryan/formal-conjectures/ai-review/293.md-14-
+ai-review/293.md:15:- **Problem 296** defines `reciprocalSum (A : Finset ℕ) : ℚ := ∑ n ∈ A, (1 : ℚ) / (n : ℚ)`, which could be reused in 293's definitions to improve readability.
+/home/ryan/formal-conjectures/ai-review/293.md-16-
+ai-review/293.md-17-- **Problem 304** (`unitFractionExpressible`): Closely related — it counts terms needed to represent `a/b`; problem 293 concerns the special case `a/b = 1` from the perspective of which denominators appear.
+/home/ryan/formal-conjectures/ai-review/293.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/521.md-6-
+ai-review/521.md-7-**`numRealRoots`**: Unique to 521.lean. Problem 522 uses Mathlib's `Polynomial.roots` (which gives a multiset over the splitting field) rather than a count of real roots. There is no existing utility in the codebase for counting real roots. The definition using `Set.ncard` is reasonable, though one might alternatively use `Polynomial.roots` composed with a filter, as 522 does for complex roots in the unit disk.
+/home/ryan/formal-conjectures/ai-review/521.md-8-
+ai-review/521.md:9:**`signPoly`**: Unique to 521.lean. Related problems define similar polynomial constructions locally (e.g., `supNormCircle` in 523, `supNormInterval` in 524, `randomPowerPartialSum` in 527), but none are directly reusable since each problem evaluates the polynomial differently.
+/home/ryan/formal-conjectures/ai-review/521.md-10-
+ai-review/521.md-11-**`iIndepFun`**: Correctly imported from Mathlib via `ProblemImports`. Used consistently across 11+ problem files.
+/home/ryan/formal-conjectures/ai-review/521.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/157.md-6-
+ai-review/157.md-7-- **`IsInfiniteSidonSet`** duplicates `IsSidon` from `FormalConjecturesForMathlib/Combinatorics/Basic.lean:38`. The existing `IsSidon` is generic over any `Set α` and has the same Sidon property. The formalization could replace `IsInfiniteSidonSet A` with `Set.Infinite A ∧ IsSidon A`.
+/home/ryan/formal-conjectures/ai-review/157.md-8-
+ai-review/157.md:9:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/157.md-10-
+ai-review/157.md-11-Additionally, the `IsSidon` definition already has supporting infrastructure: `IsSidon.subset`, `IsSidon.insert`, and `IsSidon.avoids_isAPOfLength_three`.
+/home/ryan/formal-conjectures/ai-review/157.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/360.md-2-
+/home/ryan/formal-conjectures/ai-review/360.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/360.md-4-
+ai-review/360.md:5:The formalization defines a custom `SumFreeColoring` predicate and `minSumFreeClasses` function. These are **appropriately specialized** and do not duplicate existing codebase definitions:
+/home/ryan/formal-conjectures/ai-review/360.md-6-
+/home/ryan/formal-conjectures/ai-review/360.md-7-- `IsSumFree` in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` captures `Disjoint (A + A) A` — a different notion (no `a + b = c` with all three in `A`). Problem 360 instead asks whether a *target number* `n` can be represented as a sum of distinct elements from a color class, which is a fundamentally different condition.
+/home/ryan/formal-conjectures/ai-review/360.md-8-- `IsSumFreeErdos` in `ErdosProblems/876.lean` captures "no element is the sum of distinct smaller elements of the set" — again a different self-referential condition.
+ai-review/360.md:9:- Problem 360's notion is: for a *fixed external target* `n`, no subset of any color class sums to `n`. This is correctly captured by the custom definition and cannot be replaced by either existing `IsSumFree` variant.
+/home/ryan/formal-conjectures/ai-review/360.md-10-
+ai-review/360.md-11-The asymptotic bound structure (`∃ C₁ C₂ : ℝ, 0 < C₁ ∧ 0 < C₂ ∧ ∃ N₀ ...`) follows a well-established pattern used in Problems 790, 748, 792, and others. No shared utility for this pattern exists, but none is necessary — the pattern is simple and clear inline.
+/home/ryan/formal-conjectures/ai-review/360.md-12-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean-29-`{1,...,N}` such that for all non-empty `S ⊆ A`, the sum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean-30-`∑ n ∈ S, n` is not a square.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean-31--/
+FormalConjectures/ErdosProblems/587.lean:32:def MaxNotSqSum (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean-33-    (Finset.Icc 1 N |>.powerset.filter fun A => ∀ S ⊆ A, S ≠ ⊥ →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean-34-      ¬ IsSquare (∑ n ∈ S, n)).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean-35-
+--
+/home/ryan/formal-conjectures/ai-review/839.md-10-
+ai-review/839.md-11-- **`contiguousSubSums` in `FormalConjectures/ErdosProblems/356.lean`** (line 40): Defines the set of all contiguous subsequence sums. While related in spirit (contiguous sums over `Finset.Icc`), the 839 definition is about *exclusion* (no term equals such a sum) rather than *enumeration*, so direct reuse doesn't simplify the statement.
+/home/ryan/formal-conjectures/ai-review/839.md-12-
+ai-review/839.md:13:- **`IsGoodFor` in `FormalConjectures/ErdosProblems/359.lean`** (line 31): Problem 359 uses `Finset.Icc a b ⊆ Finset.Iic j` to express "sum of consecutive earlier terms." The 839 definition `SumOfConsecutiveFree` uses `j ≤ k → k < i` for the same purpose. These are equivalent formulations but with different structural choices. No significant reuse opportunity.
+/home/ryan/formal-conjectures/ai-review/839.md-14-
+ai-review/839.md-15-**Verdict:** Part 2 would benefit from being restated using `Set.HasLogDensity (Set.range a) 0` for consistency with the rest of the codebase. The `SumOfConsecutiveFree` definition is bespoke and appropriate.
+/home/ryan/formal-conjectures/ai-review/839.md-16-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-42-denominators from $\{1, \ldots, N\}$ if there exists a subset $S \subseteq \{1, \ldots, N\}$ such
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-43-that $\sum_{n \in S} 1/n = k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-44--/
+FormalConjectures/ErdosProblems/309.lean:45:def IsRepresentableUnitFractionSum (N : ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/309.lean-46-  ∃ S : Finset ℕ, (∀ n ∈ S, 1 ≤ n ∧ n ≤ N) ∧
+FormalConjectures/ErdosProblems/309.lean-47-    ∑ n ∈ S, (1 : ℚ) / (n : ℚ) = (k : ℚ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-48-
+--
+/home/ryan/formal-conjectures/ai-review/53.md-4-
+/home/ryan/formal-conjectures/ai-review/53.md-5-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/53.md-6-
+ai-review/53.md:7:`FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean` defines a `subsetSums` over `Set M`:
+/home/ryan/formal-conjectures/ai-review/53.md-8-
+/home/ryan/formal-conjectures/ai-review/53.md-9-```lean
+ai-review/53.md:10:def subsetSums (A : Set M) : Set M :=
+ai-review/53.md-11-  {n | ∃ B : Finset M, ↑B ⊆ A ∧ n = ∑ i ∈ B, i}
+/home/ryan/formal-conjectures/ai-review/53.md-12-```
+/home/ryan/formal-conjectures/ai-review/53.md-13-
+ai-review/53.md:14:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/53.md-15-
+/home/ryan/formal-conjectures/ai-review/53.md-16-No existing `subsetProducts` definition exists anywhere in the codebase, so that definition is necessarily new.
+/home/ryan/formal-conjectures/ai-review/53.md-17-
+--
+/home/ryan/formal-conjectures/ai-review/53.md-53-
+ai-review/53.md-54-The code is clean and well-structured:
+/home/ryan/formal-conjectures/ai-review/53.md-55-
+ai-review/53.md:56:- The helper definitions `subsetSums` and `subsetProducts` are clearly documented with LaTeX in their docstrings.
+/home/ryan/formal-conjectures/ai-review/53.md-57-- The theorem statement is readable and follows the pattern of other Erdos problem formalizations.
+/home/ryan/formal-conjectures/ai-review/53.md-58-- The namespace `Erdos53` prevents collisions with the global `subsetSums`.
+/home/ryan/formal-conjectures/ai-review/53.md-59-- The `open Finset BigOperators` is appropriate and minimal.
+--
+/home/ryan/formal-conjectures/ai-review/532.md-4-
+ai-review/532.md-5-**Opportunities identified:**
+/home/ryan/formal-conjectures/ai-review/532.md-6-
+ai-review/532.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/532.md-8-
+ai-review/532.md:9:- **Problem 531 (`HasMonoSubsetSumSet`)**: Problem 531 defines `HasMonoSubsetSumSet` for finite sets. The structure is closely parallel — both deal with monochromatic subset sums — but 531 uses `Finset` with bounded elements while 532 uses an infinite `Set ℕ`. No direct reuse is possible, but the pattern is consistent, which is good.
+/home/ryan/formal-conjectures/ai-review/532.md-10-
+ai-review/532.md-11-**Verdict:** The current inlined approach is reasonable. Using `subsetSums` would add an import dependency for marginal readability gain. No strong recommendation to change.
+/home/ryan/formal-conjectures/ai-review/532.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/309.md-4-
+ai-review/309.md-5-Several existing formalizations in the codebase deal with sums of distinct unit fractions over subsets of `{1, …, N}`:
+/home/ryan/formal-conjectures/ai-review/309.md-6-
+ai-review/309.md:7:- **Problem 46** (`ErdosProblems/46.lean`): Uses the identical reciprocal-sum pattern `∑ n ∈ S, (1 : ℚ) / (n : ℚ) = 1` over a `Finset ℕ` with membership constraints `n ≥ 2`. The definition `IsRepresentableUnitFractionSum` in Problem 309 is essentially a generalization of this pattern (summing to arbitrary `k` rather than `1`).
+/home/ryan/formal-conjectures/ai-review/309.md-8-
+ai-review/309.md-9-- **Problem 47** (`ErdosProblems/47.lean`): Works with `∀ a ∈ A, 1 ≤ a ∧ a ≤ N` — the exact same membership predicate used in `IsRepresentableUnitFractionSum`. It also uses `(1 : ℝ) / a` sums with `Real.log N` bounds.
+/home/ryan/formal-conjectures/ai-review/309.md-10-
+ai-review/309.md-11-- **Problem 856** (`ErdosProblems/856.lean`): Uses `A ⊆ Finset.Icc 1 N` as a cleaner alternative to the membership predicate `∀ n ∈ S, 1 ≤ n ∧ n ≤ N` used in Problem 309. The `Finset.Icc 1 N` idiom is more concise and could be adopted here.
+/home/ryan/formal-conjectures/ai-review/309.md-12-
+ai-review/309.md:13:**Recommendation:** The definition `IsRepresentableUnitFractionSum` could use `S ⊆ Finset.Icc 1 N` instead of `∀ n ∈ S, 1 ≤ n ∧ n ≤ N` for consistency with Problem 856's style. Similarly, `countRepresentableIntegers` could filter over `Finset.Icc 1 N` rather than `Finset.range (N + 1)` for clarity. However, these are minor stylistic points — the current formulation is logically equivalent.
+/home/ryan/formal-conjectures/ai-review/309.md-14-
+/home/ryan/formal-conjectures/ai-review/309.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/309.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/309.md-46-
+ai-review/309.md-47-The code is generally well-structured. Minor observations:
+/home/ryan/formal-conjectures/ai-review/309.md-48-
+ai-review/309.md:49:- The definition `IsRepresentableUnitFractionSum` uses `ℚ` for the reciprocal sum while the theorem `erdos_309` uses `ℝ` for `Real.log` and the coercion of `countRepresentableIntegers`. This is mathematically fine (the sum is rational), but creates a mild type-universe mismatch in presentation.
+/home/ryan/formal-conjectures/ai-review/309.md-50-
+/home/ryan/formal-conjectures/ai-review/309.md-51-- `countRepresentableIntegers` filters `Finset.range (N + 1)` with `0 < k ∧ IsRepresentableUnitFractionSum N k`. The `0 < k` condition is slightly redundant given the name says "positive integers," but it's good to have it explicit.
+/home/ryan/formal-conjectures/ai-review/309.md-52-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/875.lean-30-
+FormalConjectures/ErdosProblems/875.lean-31-/-- The set of $r$-fold subset sums of a set $A \subseteq \mathbb{N}$: all sums
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/875.lean-32-$a_1 + \cdots + a_r$ where $a_1, \ldots, a_r$ are $r$ distinct elements of $A$. -/
+FormalConjectures/ErdosProblems/875.lean:33:def rSubsetSumsInf (A : Set ℕ) (r : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/875.lean-34-  {s | ∃ S : Finset ℕ, (↑S : Set ℕ) ⊆ A ∧ S.card = r ∧ S.sum id = s}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/875.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/875.lean-36-/-- An infinite set $A \subseteq \mathbb{N}$ is *admissible* if the $r$-fold subset sums $S_r$ are
+--
+/home/ryan/formal-conjectures/ai-review/45.md-10-
+ai-review/45.md-11-`FormalConjectures/ErdosProblems/296.lean` (line 44) defines:
+/home/ryan/formal-conjectures/ai-review/45.md-12-```lean
+ai-review/45.md:13:noncomputable def reciprocalSum (A : Finset ℕ) : ℚ :=
+ai-review/45.md-14-  ∑ n ∈ A, (1 : ℚ) / (n : ℚ)
+/home/ryan/formal-conjectures/ai-review/45.md-15-```
+/home/ryan/formal-conjectures/ai-review/45.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/792.md-4-
+/home/ryan/formal-conjectures/ai-review/792.md-5-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/792.md-6-
+ai-review/792.md:7:**Issue identified.** The file defines its own `IsSumFreeSet (B : Finset ℤ)` as `∀ a ∈ B, ∀ b ∈ B, a + b ∉ B`. A library-level definition already exists in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`:
+/home/ryan/formal-conjectures/ai-review/792.md-8-
+/home/ryan/formal-conjectures/ai-review/792.md-9-```lean
+ai-review/792.md:10:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/ai-review/792.md-11-```
+/home/ryan/formal-conjectures/ai-review/792.md-12-
+ai-review/792.md:13:This general definition works over any `AddCommMonoid` and uses pointwise set addition. The local `IsSumFreeSet` is mathematically equivalent (for `Finset ℤ` coerced to `Set ℤ`) but uses explicit quantifiers instead of the `Disjoint`/pointwise formulation. The file could potentially use the library definition applied to `(B : Set ℤ)`, or at minimum document the equivalence.
+/home/ryan/formal-conjectures/ai-review/792.md-14-
+ai-review/792.md:15:Additionally, at least three other Erdős problems (748, 877, 790) define their own local `IsSumFree` predicates with slight type variations (`Finset ℕ` vs `Finset ℤ`). There is an opportunity to consolidate these definitions or have them reference the library version. Problem 748 even provides a `DecidablePred` instance that could be useful.
+/home/ryan/formal-conjectures/ai-review/792.md-16-
+/home/ryan/formal-conjectures/ai-review/792.md-17-The `maxSumFreeSize` definition uses the same `sSup`-based pattern as Problem 790, which is a reasonable convention.
+/home/ryan/formal-conjectures/ai-review/792.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/792.md-46-
+ai-review/792.md-47-**Good overall.** The code is well-structured with clear docstrings explaining each theorem. Minor observations:
+/home/ryan/formal-conjectures/ai-review/792.md-48-
+ai-review/792.md:49:- The name `IsSumFreeSet` is slightly inconsistent with the convention `IsSumFree` used in every other problem file (748, 877, 790, 876) and the library definition. Renaming to `IsSumFree` would improve consistency.
+/home/ryan/formal-conjectures/ai-review/792.md-50-- The docstring for `maxSumFreeSize` clearly explains the mathematical meaning.
+/home/ryan/formal-conjectures/ai-review/792.md-51-- The namespace `Erdos792` cleanly scopes all definitions.
+/home/ryan/formal-conjectures/ai-review/792.md-52-
+--
+/home/ryan/formal-conjectures/ai-review/771.md-45-
+ai-review/771.md-46-The problem is precisely stated and the formalization is unambiguous. Key considerations:
+/home/ryan/formal-conjectures/ai-review/771.md-47-
+ai-review/771.md:48:- **Quantifier structure:** The definition `f(n) = sSup {k | ∀ m ≥ 1, ∃ S ⊆ [1,n], |S| = k ∧ ¬IsSubsetSum S m}` correctly allows `S` to depend on `m`, which is essential — the Erdős–Graham construction chooses $S = \{kp : 1 \leq k < n/p\}$ where $p$ depends on $m$.
+ai-review/771.md-49-- **Well-definedness of `sSup`:** The set is nonempty (contains 0, since the empty set avoids all positive integers as subset sums) and bounded above (by $n$, since $S \subseteq \{1, \ldots, n\}$). So `sSup` on `ℕ` yields the actual maximum. A formal proof would need to establish `BddAbove` and `Set.Nonempty` for the argument set.
+/home/ryan/formal-conjectures/ai-review/771.md-50-- **The `o(1)` encoding** as `∀ ε > 0, ∃ N₀, ∀ n ≥ N₀, ...` is standard and unambiguous.
+ai-review/771.md-51-- **Edge cases with `Real.log`:** For $n = 0$ or $n = 1$, `Real.log ↑n ≤ 0`, making $n / \log n \leq 0$, so the bounds degenerate. This is harmless because of the `∃ N₀` quantifier — the bounds only need to hold eventually.
+--
+/home/ryan/formal-conjectures/ai-review/290.md-2-
+/home/ryan/formal-conjectures/ai-review/290.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/290.md-4-
+ai-review/290.md:5:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/290.md-6-
+ai-review/290.md:7:Note that Problem 291 (`harmonicLcmNumerator`, `lcmUpTo`) and Problem 314 (`erdos314M`, `erdos314Epsilon`) define their own harmonic-related helpers in separate namespaces. There is no shared utility in `FormalConjecturesForMathlib/`. This is acceptable since each problem's helper serves a different purpose, but if more harmonic-sum problems arise, a shared `harmonicPartialSum` definition could be extracted.
+/home/ryan/formal-conjectures/ai-review/290.md-8-
+ai-review/290.md-9-**Verdict:** Current approach is reasonable. No immediate code reuse opportunity.
+/home/ryan/formal-conjectures/ai-review/290.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/206.md-2-
+/home/ryan/formal-conjectures/ai-review/206.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/206.md-4-
+ai-review/206.md:5:**Potential for shared `unitFracSum` definition.** Problem 301 (`ErdosProblems/301.lean`) uses the identical pattern `∑ b ∈ S, (1 : ℝ) / (b : ℝ)` inline within `UnitFractionSumFree`, rather than factoring it into a named definition. Problem 206 defines `unitFracSum` for this purpose. If a shared utility were created (e.g., in `Util/`), both problems could reference it.
+/home/ryan/formal-conjectures/ai-review/206.md-6-
+ai-review/206.md-7-Problem 304 (`ErdosProblems/304.lean`) defines `unitFractionExpressible` over `ℚ` using `(n : ℚ)⁻¹` notation, which is a different type (`ℚ` vs `ℝ`) and a different question (exact representation vs. underapproximation), so direct reuse is not practical.
+/home/ryan/formal-conjectures/ai-review/206.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/206.md-44-
+ai-review/206.md-45-The code is well-structured and readable. Specific observations:
+/home/ryan/formal-conjectures/ai-review/206.md-46-
+ai-review/206.md:47:- The three definitions (`unitFracSum`, `bestUnderapprox`, `IsEventuallyGreedy`) are clearly named and have good docstrings explaining the mathematical content.
+/home/ryan/formal-conjectures/ai-review/206.md-48-- The use of `namespace Erdos206` and `open scoped BigOperators` / `open MeasureTheory` is clean.
+/home/ryan/formal-conjectures/ai-review/206.md-49-- The theorem docstring provides adequate mathematical context.
+ai-review/206.md-50-- Minor suggestion: the docstring for `IsEventuallyGreedy` could mention that "greedy" means choosing the smallest eligible denominator, to match the informal description more closely.
+--
+ai-review/57.md-20-**(b) `IsThick` from Problem 26.** Problem 26 (`FormalConjectures/ErdosProblems/26.lean`, line 35) defines:
+/home/ryan/formal-conjectures/ai-review/57.md-21-
+/home/ryan/formal-conjectures/ai-review/57.md-22-```lean
+ai-review/57.md:23:def IsThick {ι : Type*} (A : ι → ℕ) : Prop := ¬Summable (fun i ↦ (1 : ℝ) / A i)
+/home/ryan/formal-conjectures/ai-review/57.md-24-```
+/home/ryan/formal-conjectures/ai-review/57.md-25-
+/home/ryan/formal-conjectures/ai-review/57.md-26-[Omitted long context line]
+--
+ai-review/186.md-5-The formalization follows the standard `sSup` + `Finset.Icc` extremal function pattern used across many Erdős problems:
+/home/ryan/formal-conjectures/ai-review/186.md-6-
+/home/ryan/formal-conjectures/ai-review/186.md-7-- **Problem 131** (`ErdosProblems/131.lean`) is the most closely related — it defines `IsNonDividing` and `erdos131F` using an almost identical structure. Pham–Zakharov [PhZa24] use non-averaging sets to bound non-dividing sets, establishing a deep mathematical connection. Problem 131 already cross-references Problem 186 in its review; the reverse cross-reference would also be valuable.
+ai-review/186.md:8:- **Problem 882** (`ErdosProblems/882.lean`) defines `IsPrimitive` and `maxPrimitiveSubsetSumSize` with the same pattern.
+ai-review/186.md:9:- **Problem 790** (`ErdosProblems/790.lean`) defines `IsSumFree` and `maxSumFreeSize` similarly.
+/home/ryan/formal-conjectures/ai-review/186.md-10-- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides `IsSumFree`, `IsSidon`, and `Finset.maxSidonSubsetCard` — related additive combinatorics definitions, but none directly reusable for `IsNonAveraging`.
+/home/ryan/formal-conjectures/ai-review/186.md-11-- **`FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean`** provides `Set.IsAPOfLengthFree.maxCard` using the same `sSup` over `Finset.Icc` pattern. Non-averaging is a strictly stronger condition than 3-AP-free (every non-averaging set is 3-AP-free, but not vice versa), so these are distinct concepts.
+/home/ryan/formal-conjectures/ai-review/186.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/748.md-2-
+/home/ryan/formal-conjectures/ai-review/748.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/748.md-4-
+ai-review/748.md:5:The file defines its own `Erdos748.IsSumFree` for `Finset ℕ`:
+/home/ryan/formal-conjectures/ai-review/748.md-6-
+/home/ryan/formal-conjectures/ai-review/748.md-7-```lean
+ai-review/748.md:8:def IsSumFree (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/ai-review/748.md-9-  ∀ b ∈ A, ∀ c ∈ A, b + c ∉ A
+/home/ryan/formal-conjectures/ai-review/748.md-10-```
+/home/ryan/formal-conjectures/ai-review/748.md-11-
+ai-review/748.md:12:An identical definition exists in `FormalConjectures/ErdosProblems/877.lean` (line 43) as `Erdos877.IsSumFree`, and a near-identical one in `FormalConjectures/ErdosProblems/792.lean` (line 45) as `Erdos792.IsSumFreeSet` (over `Finset ℤ`).
+/home/ryan/formal-conjectures/ai-review/748.md-13-
+ai-review/748.md-14-There is also a generic definition in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` (line 30):
+/home/ryan/formal-conjectures/ai-review/748.md-15-
+/home/ryan/formal-conjectures/ai-review/748.md-16-```lean
+ai-review/748.md:17:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/ai-review/748.md-18-```
+/home/ryan/formal-conjectures/ai-review/748.md-19-
+ai-review/748.md:20:This generic definition operates on `Set α` rather than `Finset ℕ`, and uses the pointwise sumset formulation. It is semantically equivalent (for subsets of ℕ), but bridging it to the `Finset` context would require coercion lemmas. The local definition is reasonable for a self-contained formalization, though a shared `Finset`-level definition used across problems 748, 877, and 792 would reduce duplication.
+/home/ryan/formal-conjectures/ai-review/748.md-21-
+ai-review/748.md-22-**Verdict:** Mild duplication. A shared `IsSumFree` definition for `Finset ℕ` (or a bridge lemma to the generic `Set`-level one) could serve problems 748, 877, and 792 simultaneously.
+/home/ryan/formal-conjectures/ai-review/748.md-23-
+--
+/home/ryan/formal-conjectures/ai-review/282.md-6-
+/home/ryan/formal-conjectures/ai-review/282.md-7-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/282.md-8-
+ai-review/282.md:9:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/282.md-10-
+/home/ryan/formal-conjectures/ai-review/282.md-11-**No reusable infrastructure in FormalConjecturesForMathlib applies.** The density definitions in `FormalConjecturesForMathlib/Data/Set/Density.lean`, the AP machinery in `FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean`, and the additive combinatorics utilities are all unrelated to the Egyptian fraction greedy algorithm. The definitions in 282 are self-contained and appropriately so.
+/home/ryan/formal-conjectures/ai-review/282.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/785.md-15-
+/home/ryan/formal-conjectures/ai-review/785.md-16-The `(Finset.Icc 1 x).filter (· ∈ A)).card` pattern is the most common convention in this codebase and is acceptable as-is, though a shared utility would reduce duplication across the 20+ files using it.
+/home/ryan/formal-conjectures/ai-review/785.md-17-
+ai-review/785.md:18:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/785.md-19-
+ai-review/785.md-20-**Verdict:** No critical reuse issues. The local definitions are adequate.
+/home/ryan/formal-conjectures/ai-review/785.md-21-
+--
+/home/ryan/formal-conjectures/ai-review/867.md-2-
+/home/ryan/formal-conjectures/ai-review/867.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/867.md-4-
+ai-review/867.md:5:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/867.md-6-
+ai-review/867.md:7:No existing definition in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` covers the "consecutive-sum-free" property. The `IsSumFree` definition there concerns the standard sum-free condition (no `a + b = c` with `a, b, c ∈ A`), which is a different concept.
+/home/ryan/formal-conjectures/ai-review/867.md-8-
+/home/ryan/formal-conjectures/ai-review/867.md-9-The `Finset.sort` + `List.getD` pattern appears in several other problems (690, 854, 220, 235) and is a well-established idiom in the codebase.
+/home/ryan/formal-conjectures/ai-review/867.md-10-
+--
+ai-review/395.md-5-**Issue found.** The `signedSum` definition in `395.lean` (line 39):
+/home/ryan/formal-conjectures/ai-review/395.md-6-
+/home/ryan/formal-conjectures/ai-review/395.md-7-```lean
+ai-review/395.md:8:noncomputable def signedSum {n : ℕ} (z : Fin n → ℂ) (ε : Fin n → Bool) : ℂ :=
+ai-review/395.md-9-  ∑ i : Fin n, (if ε i then (1 : ℂ) else (-1 : ℂ)) * z i
+/home/ryan/formal-conjectures/ai-review/395.md-10-```
+/home/ryan/formal-conjectures/ai-review/395.md-11-
+ai-review/395.md-12-is identical to `signedSum498` in `ErdosProblems/498.lean` (line 44):
+/home/ryan/formal-conjectures/ai-review/395.md-13-
+/home/ryan/formal-conjectures/ai-review/395.md-14-```lean
+ai-review/395.md:15:noncomputable def signedSum498 {n : ℕ} (z : Fin n → ℂ) (ε : Fin n → Bool) : ℂ :=
+ai-review/395.md-16-  ∑ i : Fin n, (if ε i then (1 : ℂ) else (-1 : ℂ)) * z i
+/home/ryan/formal-conjectures/ai-review/395.md-17-```
+/home/ryan/formal-conjectures/ai-review/395.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/336.md-2-
+/home/ryan/formal-conjectures/ai-review/336.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/336.md-4-
+ai-review/336.md:5:The file defines three local helpers—`exactSumset`, `IsAdditiveBasis`, `HasExactOrder`—and a noncomputable `hBasis` inside the `Erdos336` namespace. Identical copies of `exactSumset` and `IsAdditiveBasis` appear in `337.lean`, `338.lean`, and `339.lean`. These should ideally be factored into a shared utility file.
+/home/ryan/formal-conjectures/ai-review/336.md-6-
+ai-review/336.md-7-The library file `FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean` provides `Set.IsAsymptoticAddBasisOfOrder A n`, which states that cofinitely many elements lie in `A ^ n` (the `n`-fold Minkowski sum). This is close but **not identical** to the local `IsAdditiveBasis`:
+/home/ryan/formal-conjectures/ai-review/336.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/336.md-11-
+/home/ryan/formal-conjectures/ai-review/336.md-12-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/336.md-13-
+ai-review/336.md:14:**Verdict**: The local definitions are reasonable for this problem. However, the duplicated `exactSumset` and `IsAdditiveBasis` across four files (336–339) should be consolidated.
+/home/ryan/formal-conjectures/ai-review/336.md-15-
+/home/ryan/formal-conjectures/ai-review/336.md-16-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/336.md-17-
+--
+ai-review/343.md-97-{s : ℕ | ∃ (b : ℕ →₀ ℕ), (∀ n, b n ≤ mult n) ∧ s = b.sum (fun n k => n * k)}
+/home/ryan/formal-conjectures/ai-review/343.md-98-```
+/home/ryan/formal-conjectures/ai-review/343.md-99-
+ai-review/343.md:100:This defines `subsetSums` as the set of all values `∑ n * b(n)` where `b` is a finitely-supported function with `b(n) ≤ mult(n)`. This correctly captures "choose a finite submultiset and sum its elements (with multiplicity)."
+/home/ryan/formal-conjectures/ai-review/343.md-101-
+ai-review/343.md-102-**One subtlety:** The sum `b.sum (fun n k => n * k)` includes the term for `n = 0`, but since `b 0 ≤ mult 0 = 0` forces `b 0 = 0`, the `n = 0` term contributes `0 * 0 = 0`. This is correct.
+/home/ryan/formal-conjectures/ai-review/343.md-103-
+--
+/home/ryan/formal-conjectures/ai-review/538.md-2-
+/home/ryan/formal-conjectures/ai-review/538.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/538.md-4-
+ai-review/538.md:5:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/538.md-6-
+/home/ryan/formal-conjectures/ai-review/538.md-7-The `numPrimeProductReps` definition is unique to this file and appropriately specialized. Similar divisor-counting-with-filter patterns exist in Problems 446, 534, and 691, but none are directly reusable here since this definition counts specifically the representations `m = p * a` with `p` prime. No changes recommended.
+/home/ryan/formal-conjectures/ai-review/538.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/356.md-2-
+/home/ryan/formal-conjectures/ai-review/356.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/356.md-4-
+ai-review/356.md:5:**`Erdos357.HasDistinctSums`** (in `ErdosProblems/357.lean`) defines a closely related concept — it checks whether all contiguous subsequence sums are *distinct* (injectivity on `OrdConnected` finsets). Problem 356's `contiguousSubSums` computes the *set* of all such sums. These serve different mathematical purposes (counting distinct sums vs. requiring all sums to be distinct), so direct reuse isn't appropriate.
+/home/ryan/formal-conjectures/ai-review/356.md-6-
+ai-review/356.md-7-However, there is a stylistic opportunity: `contiguousSubSums` enumerates pairs `(u, v)` with `u ≤ v` in `Fin k` and sums over `Icc u v`. Problem 357 instead uses `{J : Finset ι | (J : Set ι).OrdConnected}` to identify contiguous index sets. A shared helper — e.g., a definition returning the finset of all `OrdConnected` sub-finsets of `Fin k` — could unify both files. This is a minor style improvement, not a correctness concern.
+/home/ryan/formal-conjectures/ai-review/356.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/284.md-8-
+ai-review/284.md-9-- **Problem 286** (`286.lean`) formalizes essentially the same result of Croot (the interval version: there exist $k$ distinct positive integers in an interval of width $(e - 1 + o(1))k$ whose reciprocals sum to 1). It uses the same `Finset ℕ` approach and the same `S.sum (fun n => (1 : ℚ) / ↑n) = 1` idiom. The shared predicate pattern `S.card = k ∧ (∀ n ∈ S, 0 < n) ∧ S.sum (fun n => (1 : ℚ) / ↑n) = 1` appears verbatim in both 284 and 286 and could be factored out.
+/home/ryan/formal-conjectures/ai-review/284.md-10-
+ai-review/284.md:11:- **Problem 290** (`290.lean`) defines `harmonicPartialSum` for partial harmonic sums over intervals. While not directly reusable here, the pattern of defining utility functions for reciprocal sums is relevant.
+/home/ryan/formal-conjectures/ai-review/284.md-12-
+/home/ryan/formal-conjectures/ai-review/284.md-13-- **`FormalConjecturesForMathlib/Data/Real/Constants.lean`** stores mathematical constants. The constant $1/(e-1)$ appears in problems 284, 285, and 286; a named constant could improve readability across all three.
+/home/ryan/formal-conjectures/ai-review/284.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/788.md-9-
+ai-review/788.md-10-There is an existing `IsSumFree` definition in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`:
+/home/ryan/formal-conjectures/ai-review/788.md-11-```lean
+ai-review/788.md:12:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/ai-review/788.md-13-```
+/home/ryan/formal-conjectures/ai-review/788.md-14-
+ai-review/788.md:15:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/788.md-16-
+/home/ryan/formal-conjectures/ai-review/788.md-17-The `sSup`-based extremal function pattern and the `Finset.Ioo` interval usage are consistent with other problems (e.g., 874, 882) and do not need further abstraction.
+/home/ryan/formal-conjectures/ai-review/788.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/788.md-77-
+ai-review/788.md-78-**One subtle point**: The condition uses "distinct" elements (c₁ ≠ c₂), which excludes the diagonal sum 2c for c ∈ C. This means C could contain an element c with 2c ∈ B. In additive combinatorics, this is the standard "restricted sumset" interpretation C +̂ C, and is consistent with the problem as stated. If the problem intended the full sumset C + C (including 2c), the condition would be strictly stronger. The formalization follows the literal statement correctly.
+/home/ryan/formal-conjectures/ai-review/788.md-79-
+ai-review/788.md:80:**Verdict: High formalizability. No ambiguity in the core definition; the formalization makes a defensible choice on the restricted vs. full sumset question.**
+/home/ryan/formal-conjectures/ai-review/788.md-81-
+/home/ryan/formal-conjectures/ai-review/788.md-82-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/788.md-83-
+--
+/home/ryan/formal-conjectures/ai-review/300.md-4-
+ai-review/300.md-5-Several nearby Egyptian fraction problems define closely related predicates:
+/home/ryan/formal-conjectures/ai-review/300.md-6-
+ai-review/300.md:7:- **Problem 296** (`296.lean:44`) defines `reciprocalSum (A : Finset ℕ) : ℚ` as `∑ n ∈ A, (1 : ℚ) / (n : ℚ)`.
+ai-review/300.md-8-- **Problem 292** (`292.lean:41–43`) defines `IsEgyptianRepresentable` using `(S.sum fun m => (1 : ℚ) / m) = 1`.
+/home/ryan/formal-conjectures/ai-review/300.md-9-- **Problem 297** defines `unitFractionSubsetCount` counting subsets with reciprocal sum 1.
+ai-review/300.md:10:- **Problem 301** defines `UnitFractionSumFree`, and **Problem 302** defines `UnitFractionTripleFree`.
+/home/ryan/formal-conjectures/ai-review/300.md-11-
+ai-review/300.md:12:Problem 300's `Egyptian1Free` inlines the reciprocal sum as `∑ n ∈ S, (1 : ℝ) / (n : ℝ)` over `ℝ`, whereas 296 defines `reciprocalSum` over `ℚ`. A shared utility (e.g., a `Finset.reciprocalSum` definition parameterized by the target field) could reduce duplication across problems 292, 296, 297, 300, 301, and 302. This is a longer-term refactoring concern rather than a blocking issue for this file.
+/home/ryan/formal-conjectures/ai-review/300.md-13-
+/home/ryan/formal-conjectures/ai-review/300.md-14-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/300.md-15-
+--
+ai-review/34.md-11-Problem 356 (`FormalConjectures/ErdosProblems/356.lean`, line 40) defines:
+/home/ryan/formal-conjectures/ai-review/34.md-12-
+/home/ryan/formal-conjectures/ai-review/34.md-13-```lean
+ai-review/34.md:14:def contiguousSubSums {k : ℕ} (a : Fin k → ℤ) : Finset ℤ :=
+ai-review/34.md-15-  ((univ ×ˢ univ).filter (fun p : Fin k × Fin k => p.1 ≤ p.2)).image
+/home/ryan/formal-conjectures/ai-review/34.md-16-    (fun p => ∑ i ∈ Icc p.1 p.2, a i)
+/home/ryan/formal-conjectures/ai-review/34.md-17-```
+--
+ai-review/34.md-19-Problem 34 defines:
+/home/ryan/formal-conjectures/ai-review/34.md-20-
+/home/ryan/formal-conjectures/ai-review/34.md-21-```lean
+ai-review/34.md:22:noncomputable def consecutiveSums (n : ℕ) (σ : Equiv.Perm (Fin n)) : Finset ℕ :=
+ai-review/34.md-23-  ((Finset.univ (α := Fin n)) ×ˢ (Finset.univ (α := Fin n))).filter (fun p => p.1 ≤ p.2)
+/home/ryan/formal-conjectures/ai-review/34.md-24-    |>.image (fun p => ∑ i ∈ Finset.Icc p.1 p.2, ((σ i).val + 1))
+/home/ryan/formal-conjectures/ai-review/34.md-25-```
+--
+/home/ryan/formal-conjectures/ai-review/52.md-9-**No significant code reuse issues.** The formalization is self-contained, relying only on Mathlib's `Finset` pointwise operations (`A + A`, `A * A`) via `open scoped Pointwise`. These are standard Mathlib definitions from `Mathlib.Algebra.Group.Pointwise.Set.Basic`, where `A + A = image2 (· + ·) A A` (and similarly for `*`).
+/home/ryan/formal-conjectures/ai-review/52.md-10-
+ai-review/52.md-11-The `FormalConjecturesForMathlib` library contains related additive combinatorics infrastructure:
+ai-review/52.md:12:- `Combinatorics/Basic.lean` defines `IsSumFree`, `IsSidon` — not directly relevant here.
+/home/ryan/formal-conjectures/ai-review/52.md-13-- `Combinatorics/Additive/Convolution.lean` defines `sumConv` and `sumRep` — relevant to counting representations but not to this statement.
+/home/ryan/formal-conjectures/ai-review/52.md-14-- `Combinatorics/Additive/Basis.lean` defines additive/multiplicative bases — not applicable.
+/home/ryan/formal-conjectures/ai-review/52.md-15-
+/home/ryan/formal-conjectures/ai-review/52.md-16-None of these are useful for Problem 52's statement, which only needs the cardinalities of `A + A` and `A * A`. The formalization correctly uses the simplest available tools.
+/home/ryan/formal-conjectures/ai-review/52.md-17-
+ai-review/52.md:18:**Neighboring problem:** Erdős Problem 53 (`ErdosProblems/53.lean`) is thematically related (also by Erdős–Szemerédi, same citation [ErSz83]) but concerns *subset* sums/products rather than *pairwise* sumsets/product sets, so its definitions (`subsetSums`, `subsetProducts`) are not applicable here.
+/home/ryan/formal-conjectures/ai-review/52.md-19-
+/home/ryan/formal-conjectures/ai-review/52.md-20----
+/home/ryan/formal-conjectures/ai-review/52.md-21-
+--
+/home/ryan/formal-conjectures/ai-review/323.md-2-
+/home/ryan/formal-conjectures/ai-review/323.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/323.md-4-
+ai-review/323.md:5:**Strong overlap with Problem 325.** Problem 325 defines `IsSumThreePower k n` (∃ a b c, a^k + b^k + c^k = n) and `cardIsSumThreePowerBelow k x`, which is exactly the special case m = 3 of Problem 323's `IsSumOfKthPowers k 3 n` and `fKm k 3 x`. The two definitions are mathematically equivalent:
+/home/ryan/formal-conjectures/ai-review/323.md-6-
+/home/ryan/formal-conjectures/ai-review/323.md-7-- `IsSumThreePower k n` ↔ `IsSumOfKthPowers k 3 n` (three named variables vs. `Fin 3 → ℕ`)
+/home/ryan/formal-conjectures/ai-review/323.md-8-- `cardIsSumThreePowerBelow k x` = `fKm k 3 x` (both count naturals ≤ x representable as sums of three k-th powers, though 325 uses `Set.Iic`/`ncard` while 323 uses `Finset.range`/`card`)
+/home/ryan/formal-conjectures/ai-review/323.md-9-
+ai-review/323.md-10-Problem 325's main conjecture (`erdos_325`) — that f_{k,3}(x) ≫ x^{3/k} for k ≥ 3 — is a special case of Part 2 of Problem 323 (with m = 3 and k ≥ 3 > 3 = m). **Recommendation:** Problem 325 should import and reuse Problem 323's definitions to avoid redundancy.
+/home/ryan/formal-conjectures/ai-review/323.md-11-
+ai-review/323.md:12:**Relationship with Problem 322.** Problem 322 defines `kthPowerReps k n`, counting the *number of representations* of n as a sum of k k-th powers (ordered tuples). Problem 323's `IsSumOfKthPowers` is the existential version (does at least one representation exist?). These are related but distinct: 322 counts representations, 323 counts representable numbers. No direct reuse opportunity, though a shared definition for sums of k-th powers could unify the existential check.
+/home/ryan/formal-conjectures/ai-review/323.md-13-
+/home/ryan/formal-conjectures/ai-review/323.md-14-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/323.md-15-
+--
+/home/ryan/formal-conjectures/ai-review/65.md-10-  ```
+/home/ryan/formal-conjectures/ai-review/65.md-11-  The formalization of Problem 65 rebuilds this concept inline via universally quantified `T_G` and `T_K` Finsets constrained to equal the cycle-length set. Extracting a shared `cycleLengths` definition (or promoting one of the existing ones) would reduce redundancy across at least three problems.
+/home/ryan/formal-conjectures/ai-review/65.md-12-
+ai-review/65.md:13:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/65.md-14-
+/home/ryan/formal-conjectures/ai-review/65.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/65.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/345.md-2-
+/home/ryan/formal-conjectures/ai-review/345.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/345.md-4-
+ai-review/345.md:5:**Issue found.** The file defines a local `Erdos345.subsetSums` (line 37) that is a direct duplicate of the library-level `subsetSums` in `FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean` (line 26). Both have identical definitions:
+/home/ryan/formal-conjectures/ai-review/345.md-6-
+/home/ryan/formal-conjectures/ai-review/345.md-7-```lean
+/home/ryan/formal-conjectures/ai-review/345.md-8--- 345.lean (local)
+ai-review/345.md:9:def subsetSums (A : Set ℕ) : Set ℕ :=
+ai-review/345.md-10-  {s | ∃ (B : Finset ℕ), (↑B : Set ℕ) ⊆ A ∧ s = ∑ n ∈ B, n}
+/home/ryan/formal-conjectures/ai-review/345.md-11-
+/home/ryan/formal-conjectures/ai-review/345.md-12--- AdditivelyComplete.lean (library, generalized over AddCommMonoid)
+ai-review/345.md:13:def subsetSums (A : Set M) : Set M :=
+ai-review/345.md-14-  {n | ∃ B : Finset M, ↑B ⊆ A ∧ n = ∑ i ∈ B, i}
+/home/ryan/formal-conjectures/ai-review/345.md-15-```
+/home/ryan/formal-conjectures/ai-review/345.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/345.md-78-
+/home/ryan/formal-conjectures/ai-review/345.md-79-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/345.md-80-|---|---|
+ai-review/345.md:81:| Code reuse | `subsetSums` duplicates library definition; should use `AdditivelyComplete.subsetSums` |
+/home/ryan/formal-conjectures/ai-review/345.md-82-| Citations | [ErGr80] present and correct; OEIS A001661 reference missing |
+/home/ryan/formal-conjectures/ai-review/345.md-83-| Variants | Main question captured; $k = 2^t$ sub-conjecture and test lemmas for known values not formalized |
+/home/ryan/formal-conjectures/ai-review/345.md-84-| Readability | Good overall; minor notation overlap in docstring |
+--
+ai-review/789.md-5-The formalization follows the standard patterns used across the codebase:
+/home/ryan/formal-conjectures/ai-review/789.md-6-
+ai-review/789.md-7-- **`sSup` extremal function pattern**: Identical in structure to `nonAvgMax` in Problem 186, `maxSumFreeSize` in Problem 790, `erdos788F` in Problem 788, `kAdmissible` in Problem 874, and many others. No shared utility is factored out for this, but the pattern is idiomatic and consistent.
+ai-review/789.md:8:- **`SumLengthProperty`**: This definition is unique to Problem 789. No existing definition in the codebase captures this exact property. Related concepts exist (e.g., `IsSidonSet` in Problem 43/156, `DistinctSubsetSums` in Problem 350, `IsB2r` in Problem 863), but none are equivalent. The definition is appropriately specific.
+ai-review/789.md-9-- **Asymptotic bound structure**: The `∃ C > 0, ∀ n, ...` pattern for the upper bound and `∃ C > 0, ∃ N₀, ∀ n ≥ N₀, ...` pattern for the lower bound are standard across the codebase and correctly applied here.
+/home/ryan/formal-conjectures/ai-review/789.md-10-
+ai-review/789.md-11-**Verdict**: No meaningful code reuse opportunities. The existing code is appropriate.
+--
+/home/ryan/formal-conjectures/ai-review/789.md-70-
+ai-review/789.md-71-- **`SumLengthProperty`**: Mathematically sound modulo the empty-list issue noted above. The use of `List ℤ` with membership constraints correctly models multisets of elements from B (order-insensitive since only sum and length matter).
+/home/ryan/formal-conjectures/ai-review/789.md-72-
+ai-review/789.md:73:- **`erdos789_h`**: The `sSup` definition is well-founded. The set `{ h : ℕ | ∀ A, A.card = n → ∃ B ⊆ A, h ≤ B.card ∧ SumLengthProperty B }` is:
+/home/ryan/formal-conjectures/ai-review/789.md-74-  - Non-empty (contains 0, since B = ∅ works).
+/home/ryan/formal-conjectures/ai-review/789.md-75-  - Bounded above (by n, since B ⊆ A and |A| = n).
+/home/ryan/formal-conjectures/ai-review/789.md-76-
+--
+/home/ryan/formal-conjectures/ai-review/322.md-2-
+/home/ryan/formal-conjectures/ai-review/322.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/322.md-4-
+ai-review/322.md:5:**Significant overlap with Erdős 323.** Problem 323 defines `IsSumOfKthPowers k m n` (a predicate for representability as a sum of `m` k-th powers) and `fKm k m x` (counting representable numbers up to `x`). Problem 322's `kthPowerReps` counts the *number of representations* rather than whether a representation exists, so these are related but distinct: `kthPowerReps` is a counting function on ordered tuples, while `IsSumOfKthPowers` is an existential predicate.
+/home/ryan/formal-conjectures/ai-review/322.md-6-
+/home/ryan/formal-conjectures/ai-review/322.md-7-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/322.md-8-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-55-
+FormalConjectures/ErdosProblems/691.lean-56-/-- The sum of reciprocals of elements of $A$ diverges: for every bound $C > 0$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-57-some finite subset of $A$ achieves a reciprocal sum exceeding $C$. -/
+FormalConjectures/ErdosProblems/691.lean:58:def ReciprocalSumDiverges (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/691.lean-59-  ∀ C : ℝ, C > 0 → ∃ F : Finset ℕ, (∀ a ∈ F, a ∈ A) ∧
+FormalConjectures/ErdosProblems/691.lean-60-    C < ∑ a ∈ F, (1 : ℝ) / (a : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-61-
+--
+/home/ryan/formal-conjectures/ai-review/460.md-4-
+ai-review/460.md-5-Several existing definitions in the codebase overlap with patterns used in 460.lean:
+/home/ryan/formal-conjectures/ai-review/460.md-6-
+ai-review/460.md:7:- **`ReciprocalSumDiverges`** (Problem 691, `691.lean:58`): Defines divergence of reciprocal sums over a set. Problem 460 instead defines a concrete `erdos460Sum : ℕ → ℝ` and uses `Tendsto erdos460Sum atTop atTop`. These are different formulations (one parameterized by a set, the other by a sequence indexed by `n`), so direct reuse is not straightforward, but the pattern is consistent.
+ai-review/460.md-8-- **Greedy `sInf` pattern** (Problems 282, 820, 970): The `sInf`-based greedy construction in `erdos460Seq` follows the same idiom used in `greedyDenominator` (282.lean:32) and the Jacobsthal function (970.lean:49). No shared utility exists for this pattern, which is reasonable since each greedy condition is problem-specific.
+ai-review/460.md-9-- **Reciprocal sum over filtered Finset** (Problems 65, 691, 950): The `erdos460Sum` pattern `F.sum (fun k => (1 : ℝ) / (k : ℝ))` is standard and matches usage elsewhere. No abstraction needed.
+/home/ryan/formal-conjectures/ai-review/460.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/460.md-71-
+/home/ryan/formal-conjectures/ai-review/460.md-72-The coprimality condition uses `n - m` and `n - erdos460Seq n i` as natural number subtractions. For terms $m < n$ and $a_i < n$, these are positive and match the intended integer subtraction. For terms $m \geq n$, `n - m = 0` in `ℕ`, and `Nat.Coprime 0 x` requires $x = 1$. This means the sequence effectively "stalls" or returns 0 once it passes $n$, which is fine since those terms are excluded from the sum. **No correctness issue for the theorem as stated.**
+/home/ryan/formal-conjectures/ai-review/460.md-73-
+ai-review/460.md:74:### Sum definition (`erdos460Sum`)
+/home/ryan/formal-conjectures/ai-review/460.md-75-
+/home/ryan/formal-conjectures/ai-review/460.md-76-- Ranges over `k ∈ Finset.range n` (indices 0 through $n-1$).
+/home/ryan/formal-conjectures/ai-review/460.md-77-- Filters for `0 < erdos460Seq n k ∧ erdos460Seq n k < n`.
+--
+/home/ryan/formal-conjectures/ai-review/498.md-2-
+/home/ryan/formal-conjectures/ai-review/498.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/498.md-4-
+ai-review/498.md:5:**Issue found.** Problem 395 (`FormalConjectures/ErdosProblems/395.lean`) defines an identical helper function `Erdos395.signedSum` at line 39:
+/home/ryan/formal-conjectures/ai-review/498.md-6-
+/home/ryan/formal-conjectures/ai-review/498.md-7-```lean
+ai-review/498.md:8:noncomputable def signedSum {n : ℕ} (z : Fin n → ℂ) (ε : Fin n → Bool) : ℂ :=
+ai-review/498.md-9-  ∑ i : Fin n, (if ε i then (1 : ℂ) else (-1 : ℂ)) * z i
+/home/ryan/formal-conjectures/ai-review/498.md-10-```
+/home/ryan/formal-conjectures/ai-review/498.md-11-
+ai-review/498.md:12:This is character-for-character the same as `Erdos498.signedSum498` (line 44 of 498.lean). The two problems are directly related—498 is the classical Littlewood–Offord problem and 395 is the reverse Littlewood–Offord problem—so sharing a single definition would be natural. A shared `signedSum` could be factored into a common utility or one problem could import the other's namespace.
+/home/ryan/formal-conjectures/ai-review/498.md-13-
+/home/ryan/formal-conjectures/ai-review/498.md-14-Problem 525 (Littlewood polynomials) also uses the same `Fin n → Bool` sign-vector encoding with a similar filtering-and-counting pattern, further supporting the case for a shared definition.
+/home/ryan/formal-conjectures/ai-review/498.md-15-
+--
+/home/ryan/formal-conjectures/ai-review/498.md-40-
+ai-review/498.md-41-The code is clear and well-structured. Minor observations:
+/home/ryan/formal-conjectures/ai-review/498.md-42-
+ai-review/498.md:43:- The helper is named `signedSum498` with a numeric suffix to avoid namespace collisions. If a shared definition is introduced (see §1), this ad-hoc suffix becomes unnecessary. Within the `Erdos498` namespace, a plain `signedSum` would suffice (as Problem 395 already does).
+/home/ryan/formal-conjectures/ai-review/498.md-44-- The use of `open Finset BigOperators` (line 38) mixes a namespace open with a scoped open. Problem 395 uses the more precise `open Finset` / `open scoped BigOperators` on separate lines. Consistency with the rest of the codebase would favor the two-line form, though both compile.
+/home/ryan/formal-conjectures/ai-review/498.md-45-- The docstring is thorough and includes a good informal mathematical description of the statement.
+/home/ryan/formal-conjectures/ai-review/498.md-46-
+--
+/home/ryan/formal-conjectures/ai-review/302.md-4-
+ai-review/302.md-5-Several closely related definitions exist in the codebase:
+/home/ryan/formal-conjectures/ai-review/302.md-6-
+ai-review/302.md:7:[Omitted long matching line]
+ai-review/302.md-8-- **Problem 303** (`ErdosProblems/303.lean`): Uses the same equation 1/a = 1/b + 1/c but in a coloring/Ramsey context rather than a density context. No shared predicate is possible since 303 operates over `ℤ` (with a coloring function) rather than `Finset ℕ`.
+ai-review/302.md-9-- **Problem 327** (`UnitFractionPairFree` in `ErdosProblems/327.lean`): Involves the related condition (a+b) | ab, i.e., 1/a + 1/b is a unit fraction. This is a different equation and a different predicate.
+/home/ryan/formal-conjectures/ai-review/302.md-10-- **No shared utilities** in `FormalConjecturesForMathlib/` are applicable. There is no centralized unit-fraction predicate, and the current self-contained definition is appropriate.
+--
+/home/ryan/formal-conjectures/ai-review/294.md-2-
+/home/ryan/formal-conjectures/ai-review/294.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/294.md-4-
+ai-review/294.md:5:Several nearby Erdős problems (292, 293, 296, 297, 300, 301, 302) deal with unit fraction sums over finite sets of natural numbers. Each defines its own bespoke predicate — e.g., `IsEgyptianRepresentable` (292), `AppearsInKTermEgyptian` (293), `reciprocalSum` (296), `unitFractionSubsetCount` (297), `Egyptian1Free` (300). No shared unit fraction utility module exists in `FormalConjecturesForMathlib/`.
+/home/ryan/formal-conjectures/ai-review/294.md-6-
+ai-review/294.md:7:Problem 294's `HasUnitFractionRepFrom` is sufficiently specialized (requires `t ∈ S`, bounds `t ≤ m ≤ N`, and sums to 1 over `ℚ`) that it cannot be trivially replaced by any existing definition. However, the recurring pattern `(S.sum fun m => (1 : ℚ) / m) = 1` across multiple files (292, 293, 294, 296, 297) suggests a `reciprocalSum` helper in a shared utility would reduce duplication. This is a codebase-wide concern, not specific to 294.
+/home/ryan/formal-conjectures/ai-review/294.md-8-
+ai-review/294.md-9-**Verdict:** No immediate reuse opportunity for this file alone. Longer-term, a shared `Finset.reciprocalSum` definition could serve problems 292–302.
+/home/ryan/formal-conjectures/ai-review/294.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/308.md-2-
+/home/ryan/formal-conjectures/ai-review/308.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/308.md-4-
+ai-review/308.md:5:**Critical duplication found.** The definition `IsRepresentableUnitFractionSum` is duplicated verbatim between `ErdosProblems/308.lean` (lines 41–43, in namespace `Erdos308`) and `ErdosProblems/309.lean` (lines 45–47, in namespace `Erdos309`). These are identical:
+/home/ryan/formal-conjectures/ai-review/308.md-6-
+/home/ryan/formal-conjectures/ai-review/308.md-7-```lean
+ai-review/308.md:8:def IsRepresentableUnitFractionSum (N : ℕ) (k : ℕ) : Prop :=
+ai-review/308.md-9-  ∃ S : Finset ℕ, (∀ n ∈ S, 1 ≤ n ∧ n ≤ N) ∧
+ai-review/308.md-10-    ∑ n ∈ S, (1 : ℚ) / (n : ℚ) = (k : ℚ)
+/home/ryan/formal-conjectures/ai-review/308.md-11-```
+--
+/home/ryan/formal-conjectures/ai-review/308.md-55-
+/home/ryan/formal-conjectures/ai-review/308.md-56-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/308.md-57-
+ai-review/308.md:58:The problem is **highly formalizable** as stated. The question "is the set of representable integers always an initial segment?" is a clean, unambiguous combinatorial statement. The definition `IsRepresentableUnitFractionSum` directly captures the mathematical notion.
+/home/ryan/formal-conjectures/ai-review/308.md-59-
+ai-review/308.md-60-**Ambiguity assessment: Very low.** The only minor subtlety is whether "representable" means the subset $S$ must be nonempty — here the definition allows the empty set (which sums to 0), but since the theorem only asserts representability for $k \geq 1$, this is not a problem. The empty set summing to 0 is mathematically correct and does not affect the statement.
+/home/ryan/formal-conjectures/ai-review/308.md-61-
+--
+/home/ryan/formal-conjectures/ai-review/308.md-78-
+/home/ryan/formal-conjectures/ai-review/308.md-79-correctly characterize that the representable set among positive integers is exactly $\{1, \ldots, m\}$. Note that $k = 0$ is excluded from condition (1) via `1 ≤ k`, which is appropriate since 0 is not a "positive integer" in the problem statement. Condition (2) does technically cover $k = 0$ when $m = 0$ (i.e., no positive integer is representable), which is fine — for $N \geq 1$, we always have $m \geq 1$ since $1/1 = 1$ is representable.
+/home/ryan/formal-conjectures/ai-review/308.md-80-
+ai-review/308.md:81:**One potential concern:** The definition `IsRepresentableUnitFractionSum` does not enforce that the elements of $S$ are *distinct* — but since $S$ is a `Finset ℕ`, elements are automatically distinct. This is correct.
+/home/ryan/formal-conjectures/ai-review/308.md-82-
+ai-review/308.md-83-**Another subtle point:** The definition requires $\forall n \in S, 1 \leq n \wedge n \leq N$ rather than $S \subseteq \text{Finset.Icc 1 N}$. These are equivalent, but the current formulation is slightly more verbose. This is a stylistic choice and not incorrect.
+/home/ryan/formal-conjectures/ai-review/308.md-84-
+--
+/home/ryan/formal-conjectures/ai-review/37.md-17-This same duplication exists in Problems 35 and 1146 (Problem 35 uses yet another formulation via `sInf` over a set of ratios rather than `⨅`).
+/home/ryan/formal-conjectures/ai-review/37.md-18-
+/home/ryan/formal-conjectures/ai-review/37.md-19-### Sumset
+ai-review/37.md:20:The local `sumset` definition duplicates Mathlib's pointwise `Set.add` (available via `open Pointwise`). Problem 38 already uses `A + {b}` with `open Pointwise` instead of a custom `sumset`. The definition `sumset A B` is exactly `A + B` under pointwise addition. The custom definition should be removed in favor of `open Pointwise` and using `A + B`.
+/home/ryan/formal-conjectures/ai-review/37.md-21-
+/home/ryan/formal-conjectures/ai-review/37.md-22-### Lacunary Sets
+/home/ryan/formal-conjectures/ai-review/37.md-23-[Omitted long context line]
+--
+/home/ryan/formal-conjectures/ai-review/339.md-33-
+/home/ryan/formal-conjectures/ai-review/339.md-34-This variant weakens the hypothesis (from "A is a basis of order r" to "the r-fold sumset has positive upper density") and weakens the conclusion (from positive *lower* density to positive *upper* density). It was also answered affirmatively by HHP03.
+/home/ryan/formal-conjectures/ai-review/339.md-35-
+ai-review/339.md:36:**Recommendation**: Add a second theorem capturing this variant. The definitions needed (`upperDensity`, `exactSumset`) are already available or easily defined.
+/home/ryan/formal-conjectures/ai-review/339.md-37-
+/home/ryan/formal-conjectures/ai-review/339.md-38-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/339.md-39-
+--
+/home/ryan/formal-conjectures/ai-review/438.md-4-
+ai-review/438.md-5-The `SumsetAvoidSquares` predicate defined at line 42 is specific to this problem and there is no existing equivalent in the codebase. However, several related patterns exist:
+/home/ryan/formal-conjectures/ai-review/438.md-6-
+ai-review/438.md:7:- **Problem 787** (`ErdosProblems/787.lean:48`) defines `IsSumAvoidingIn` for sum-avoiding sets in ℝ, but with a different semantic (avoiding sums that land *in* a set, rather than avoiding sums that *are* squares).
+ai-review/438.md:8:- **Problem 37** (`ErdosProblems/37.lean:44`) defines a `sumset` for `Set ℕ`, but 438 works with `Finset ℕ` and a predicate rather than explicit sumset construction.
+ai-review/438.md:9:- **Problem 587** (`ErdosProblems/587.lean:32`) defines `MaxNotSqSum` for *subset sums* avoiding squares — related but distinct (subset sums vs. pairwise sums).
+/home/ryan/formal-conjectures/ai-review/438.md-10-
+ai-review/438.md-11-The asymptotic density bound pattern `∀ ε > 0, ∃ N₀, ∀ N ≥ N₀, ... ≤ (c + ε) * N` is standard in the codebase (see problems 49, 140, 333, 340). Problem 49 (`ErdosProblems/49.lean:41–48`) is structurally the closest match, using the same `∀ x ∈ A, 1 ≤ x ∧ x ≤ N` membership constraint and the same ε-based density formulation.
+/home/ryan/formal-conjectures/ai-review/438.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/337.md-4-
+ai-review/337.md-5-Several definitions in this file are duplicated across multiple Erdos problem files (336, 337, 338, 339) and have library equivalents:
+/home/ryan/formal-conjectures/ai-review/337.md-6-
+ai-review/337.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/337.md-8-
+ai-review/337.md-9-- **`sumset`**: Defined as `{n | ∃ a ∈ A, ∃ b ∈ A, n = a + b}`. This is mathematically identical to Mathlib's pointwise `A + A` (via `open scoped Pointwise`). The same ad-hoc `sumset` appears in `ErdosProblems/31.lean`, `35.lean`, `37.lean`, `869.lean`, and `871.lean`. Replacing with Mathlib's pointwise notation would improve consistency and unlock existing lemmas.
+/home/ryan/formal-conjectures/ai-review/337.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/337.md-61-
+ai-review/337.md-62-- **Division by zero**: When `countInRange A N = 0` (possible for small N), Lean's real division gives `0/0 = 0`. This does not affect correctness: for `Tendsto ... atTop atTop` to hold, we need the ratio to be eventually ≥ M for any M. Since any additive basis must be infinite, `countInRange A N > 0` for all sufficiently large N, so the division-by-zero issue only arises finitely often and is handled by the `atTop` filter.
+/home/ryan/formal-conjectures/ai-review/337.md-63-
+ai-review/337.md:64:- **`IsAdditiveBasis` definition**: The "at most r summands" formulation via `∃ k ≤ r, n ∈ exactSumset A k` is the standard definition. Note that `exactSumset A 0 = {0}` (empty sum), so for `k = 0` only `n = 0` is representable. This is correct.
+/home/ryan/formal-conjectures/ai-review/337.md-65-
+ai-review/337.md:66:- **`sumset` definition**: `{n | ∃ a ∈ A, ∃ b ∈ A, n = a + b}` is the standard 2-fold sumset A + A. Correct.
+/home/ryan/formal-conjectures/ai-review/337.md-67-
+/home/ryan/formal-conjectures/ai-review/337.md-68-**No mathematical flaws identified.** The formalization faithfully captures Erdos Problem 337.
+/home/ryan/formal-conjectures/ai-review/337.md-69-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-41-Here $\tau$ is the divisor counting function, which is `σ 0` in mathlib.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-42-Also, for simplicity, we use `Nat.floor` to convert rational values to natural numbers, instead of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-43-dealing with negative values. -/
+FormalConjectures/ErdosProblems/975.lean:44:noncomputable def Erdos975Sum (f : ℤ[X]) (x : ℝ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-45-  ∑ n ≤ ⌊x⌋₊, σ 0 ⌊f.eval ↑n⌋₊
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-47-/--
+--
+/home/ryan/formal-conjectures/ai-review/431.md-2-
+/home/ryan/formal-conjectures/ai-review/431.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/431.md-4-
+ai-review/431.md:5:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/431.md-6-
+ai-review/431.md-7-**Verdict:** No code reuse issues.
+/home/ryan/formal-conjectures/ai-review/431.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/46.md-4-
+ai-review/46.md-5-**`reciprocalSum` from Problem 296.** Problem 296 (`FormalConjectures/ErdosProblems/296.lean:44`) defines:
+/home/ryan/formal-conjectures/ai-review/46.md-6-```lean
+ai-review/46.md:7:noncomputable def reciprocalSum (A : Finset ℕ) : ℚ :=
+ai-review/46.md-8-  ∑ n ∈ A, (1 : ℚ) / (n : ℚ)
+/home/ryan/formal-conjectures/ai-review/46.md-9-```
+ai-review/46.md-10-This is exactly the expression used inline in Problem 46's statement (`∑ n ∈ S, (1 : ℚ) / (n : ℚ)`). The same inline pattern also appears in Problem 45. All three could share the `reciprocalSum` definition for consistency and readability.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-34-
+FormalConjectures/ErdosProblems/344.lean-35-/-- The subset sum set $P(A)$: the set of all sums $\sum_{n \in B} n$ for finite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-36-$B \subseteq A$. -/
+FormalConjectures/ErdosProblems/344.lean:37:def subsetSums (A : Set ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/344.lean-38-  {s : ℕ | ∃ (B : Finset ℕ), (↑B : Set ℕ) ⊆ A ∧ B.sum id = s}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-39-
+FormalConjectures/ErdosProblems/344.lean-40-/-- A set of natural numbers contains an infinite arithmetic progression:
+--
+/home/ryan/formal-conjectures/ai-review/866.md-2-
+/home/ryan/formal-conjectures/ai-review/866.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/866.md-4-
+ai-review/866.md:5:The custom definitions `HasPairwiseSums` and `gPairwiseSum` are specific to this problem and do not duplicate existing code in the repository. Related but distinct constructs exist:
+/home/ryan/formal-conjectures/ai-review/866.md-6-
+ai-review/866.md:7:- **Problem 871** defines `sumset` (as a `Set ℕ`), but this is a different concept (A + A) from the pairwise sums of k chosen integers.
+/home/ryan/formal-conjectures/ai-review/866.md-8-- **`IsSidon`** in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` deals with *distinct* pairwise sums, which is the "dual" notion but not directly applicable.
+/home/ryan/formal-conjectures/ai-review/866.md-9-- **`FormalConjecturesForMathlib/Analysis/Asymptotics/Basic.lean`** provides `≪`/`≫` notation for `IsBigO`, which could be used to state the asymptotic bounds more idiomatically. However, the current formulation uses explicit constants (`∃ C, C > 0 ∧ ...`), which is equivalent and arguably more explicit for the upper bound theorem.
+/home/ryan/formal-conjectures/ai-review/866.md-10-
+--
+ai-review/866.md-60-The `HasPairwiseSums` definition is:
+/home/ryan/formal-conjectures/ai-review/866.md-61-
+/home/ryan/formal-conjectures/ai-review/866.md-62-```lean
+ai-review/866.md:63:def HasPairwiseSums (A : Finset ℤ) (k : ℕ) : Prop :=
+ai-review/866.md-64-  ∃ b : Fin k → ℤ, ∀ i j : Fin k, i < j → (b i + b j) ∈ A
+/home/ryan/formal-conjectures/ai-review/866.md-65-```
+/home/ryan/formal-conjectures/ai-review/866.md-66-
+--
+/home/ryan/formal-conjectures/ai-review/866.md-73-- If |A| ≥ N + 1, then A must contain at least one even number (since there are only N odd numbers in {1, …, 2N}).
+/home/ryan/formal-conjectures/ai-review/866.md-74-- If |A| = N, it is possible that A = {1, 3, 5, …, 2N−1} (all odd), containing no even number.
+/home/ryan/formal-conjectures/ai-review/866.md-75-
+ai-review/866.md:76:Therefore, with the current definition, `gPairwiseSum k N = 1` for all k ≥ 2 and all N ≥ 1. This contradicts the known result g₃(N) = 2, proving the formalization is incorrect.
+/home/ryan/formal-conjectures/ai-review/866.md-77-
+ai-review/866.md-78-**Fix:** Add `Function.Injective b` to `HasPairwiseSums`:
+/home/ryan/formal-conjectures/ai-review/866.md-79-
+/home/ryan/formal-conjectures/ai-review/866.md-80-```lean
+ai-review/866.md:81:def HasPairwiseSums (A : Finset ℤ) (k : ℕ) : Prop :=
+ai-review/866.md-82-  ∃ b : Fin k → ℤ, Function.Injective b ∧
+ai-review/866.md-83-    ∀ i j : Fin k, i < j → (b i + b j) ∈ A
+/home/ryan/formal-conjectures/ai-review/866.md-84-```
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/498.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/498.lean-42-/-- The signed sum of complex numbers $z$ with signs $\varepsilon \in \{-1, 1\}^n$ (encoded as
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/498.lean-43-`Bool`). -/
+FormalConjectures/ErdosProblems/498.lean:44:noncomputable def signedSum498 {n : ℕ} (z : Fin n → ℂ) (ε : Fin n → Bool) : ℂ :=
+FormalConjectures/ErdosProblems/498.lean-45-  ∑ i : Fin n, (if ε i then (1 : ℂ) else (-1 : ℂ)) * z i
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/498.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/498.lean-47-/--
+--
+/home/ryan/formal-conjectures/ai-review/675.md-4-
+ai-review/675.md-5-**`IsSumOfTwoSquares`**: Duplicated verbatim in Problem 222 (`FormalConjectures/ErdosProblems/222.lean:43`). The definitions are identical:
+/home/ryan/formal-conjectures/ai-review/675.md-6-```lean
+ai-review/675.md:7:def IsSumOfTwoSquares (n : ℕ) : Prop := ∃ a b : ℕ, n = a ^ 2 + b ^ 2
+/home/ryan/formal-conjectures/ai-review/675.md-8-```
+/home/ryan/formal-conjectures/ai-review/675.md-9-This should be factored into a shared definition in `FormalConjecturesForMathlib`.
+/home/ryan/formal-conjectures/ai-review/675.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/241.md-68-- The formalization note in the `f` docstring explaining the generalization to arbitrary `r` is helpful.
+/home/ryan/formal-conjectures/ai-review/241.md-69-
+ai-review/241.md-70-**Suggestions:**
+ai-review/241.md:71:- The `f` definition is somewhat dense. A named predicate like `IsB_hSet A r` (or `HasDistinctRFoldSums`) extracted from the filter body would improve readability and reusability:
+/home/ryan/formal-conjectures/ai-review/241.md-72-  ```lean
+ai-review/241.md:73:  def HasDistinctRFoldSums (A : Finset ℕ) (r : ℕ) : Prop :=
+ai-review/241.md-74-    ∀ m₁ m₂ : Multiset ℕ, m₁.card = r → m₂.card = r →
+/home/ryan/formal-conjectures/ai-review/241.md-75-      (∀ x ∈ m₁, x ∈ A) → (∀ x ∈ m₂, x ∈ A) →
+/home/ryan/formal-conjectures/ai-review/241.md-76-      m₁.sum = m₂.sum → m₁ = m₂
+--
+/home/ryan/formal-conjectures/ai-review/154.md-17-
+ai-review/154.md-18-**Issue: `sumset` duplicates Mathlib's pointwise addition on `Finset`.**
+/home/ryan/formal-conjectures/ai-review/154.md-19-
+ai-review/154.md:20:The file defines `sumset (A : Finset ℕ) : Finset ℕ := Finset.image₂ (· + ·) A A` (line 49). This is exactly `A + A` under Mathlib's `open scoped Pointwise`, which is `Finset.image₂ (· + ·) A A` by definition. Problems 152 and 153 both use the pointwise `A + A` notation directly.
+/home/ryan/formal-conjectures/ai-review/154.md-21-
+ai-review/154.md-22-**Recommendation:** Replace `sumset (A n)` with `(A n) + (A n)` (or `A n + A n`) using `open scoped Pointwise`, eliminating the local `sumset` definition.
+/home/ryan/formal-conjectures/ai-review/154.md-23-
+--
+/home/ryan/formal-conjectures/ai-review/154.md-118-
+ai-review/154.md-119-### Definition: `sumset`
+/home/ryan/formal-conjectures/ai-review/154.md-120-```lean
+ai-review/154.md:121:def sumset (A : Finset ℕ) : Finset ℕ := Finset.image₂ (· + ·) A A
+/home/ryan/formal-conjectures/ai-review/154.md-122-```
+/home/ryan/formal-conjectures/ai-review/154.md-123-
+/home/ryan/formal-conjectures/ai-review/154.md-124-**Correct.** This computes `{a + b | a ∈ A, b ∈ A}` as a `Finset`, which is the standard sumset A + A. The use of `image₂` correctly handles deduplication (since `Finset` elements are unique).
+--
+/home/ryan/formal-conjectures/ai-review/808.md-2-
+/home/ryan/formal-conjectures/ai-review/808.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/808.md-4-
+ai-review/808.md:5:The definitions `graphSumset` and `graphProdset` are unique to this file and are the only graph-restricted sumset/product set constructions in the codebase. Several other Erdős problems define standard (non-graph-restricted) sumsets:
+/home/ryan/formal-conjectures/ai-review/808.md-6-
+/home/ryan/formal-conjectures/ai-review/808.md-7-- Problem 52 (`ErdosProblems/52.lean`) uses Mathlib's pointwise `A + A` and `A * A` via `open scoped Pointwise` — the natural approach for unrestricted sum-product problems.
+/home/ryan/formal-conjectures/ai-review/808.md-8-- Problem 154 uses `Finset.image₂ (· + ·) A A`.
+ai-review/808.md:9:- Problems 31, 35, 37, 337, etc. define custom `sumset` on `Set ℕ`.
+/home/ryan/formal-conjectures/ai-review/808.md-10-
+/home/ryan/formal-conjectures/ai-review/808.md-11-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/808.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/296.md-2-
+/home/ryan/formal-conjectures/ai-review/296.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/296.md-4-
+ai-review/296.md:5:The file defines a local `reciprocalSum` in namespace `Erdos296`:
+/home/ryan/formal-conjectures/ai-review/296.md-6-
+/home/ryan/formal-conjectures/ai-review/296.md-7-```lean
+ai-review/296.md:8:noncomputable def reciprocalSum (A : Finset ℕ) : ℚ :=
+ai-review/296.md-9-  ∑ n ∈ A, (1 : ℚ) / (n : ℚ)
+/home/ryan/formal-conjectures/ai-review/296.md-10-```
+/home/ryan/formal-conjectures/ai-review/296.md-11-
+ai-review/296.md-12-Several other Erdős problems define similar constructs:
+/home/ryan/formal-conjectures/ai-review/296.md-13-
+ai-review/296.md:14:- **Problem 444** defines `reciprocalSum` over `Set ℕ` with a bound parameter (different signature, not directly reusable).
+ai-review/296.md-15-- **Problems 45, 47** use inline `∑ d ∈ S, (1 : ℚ) / (d : ℚ)` or `∑ a ∈ A, (1 : ℝ) / a` directly in theorem statements without a named definition.
+/home/ryan/formal-conjectures/ai-review/296.md-16-
+/home/ryan/formal-conjectures/ai-review/296.md-17-There is no shared `reciprocalSum` utility in `FormalConjecturesForMathlib/` or `Util/`. Each problem defines its own variant locally. The local definition here is appropriate given the differing type signatures (this one returns `ℚ`, Problem 444's returns `ℝ`, Problem 47 uses an inline `ℝ`-valued sum).
+--
+/home/ryan/formal-conjectures/ai-review/338.md-6-
+ai-review/338.md-7-- **`exactSumset`**: Defined identically in `ErdosProblems/336.lean`, `337.lean`, `338.lean`, and `339.lean`. All four use `{n : ℕ | ∃ (f : Fin k → ℕ), (∀ i, f i ∈ A) ∧ n = ∑ i, f i}`.
+/home/ryan/formal-conjectures/ai-review/338.md-8-
+ai-review/338.md:9:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/338.md-10-
+ai-review/338.md-11-- **`IsDistinctSum`** and **`HasRestrictedOrder`/`HasRestrictedOrderAtMost`**: These are unique to Problem 338 and have no library equivalents. They correctly capture the "restricted order" concept using `Finset` (whose elements are distinct by construction) with `s.sum id`.
+/home/ryan/formal-conjectures/ai-review/338.md-12-
+ai-review/338.md:13:**Recommendation**: Consider extracting the shared definitions (`exactSumset`, `IsAdditiveBasis`) into a common utility file to eliminate duplication across Problems 336–339. The `IsDistinctSum`/`HasRestrictedOrder` definitions are appropriately problem-specific.
+/home/ryan/formal-conjectures/ai-review/338.md-14-
+/home/ryan/formal-conjectures/ai-review/338.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/338.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/338.md-83-
+ai-review/338.md-84-- **`exactSumset A k`**: Correctly defines the set of sums of exactly $k$ elements from $A$ with repetition allowed, using `f : Fin k → ℕ` (which allows repeated values). The condition `n = ∑ i, f i` is the standard encoding.
+/home/ryan/formal-conjectures/ai-review/338.md-85-
+ai-review/338.md:86:- **`IsAdditiveBasis A h`**: The "at most $h$ summands" formulation via `∃ k ≤ h, n ∈ exactSumset A k` is the standard asymptotic definition. Note that `exactSumset A 0 = {0}` (the empty sum), so `k = 0` only covers `n = 0`, which is correct.
+/home/ryan/formal-conjectures/ai-review/338.md-87-
+ai-review/338.md-88-- **`IsDistinctSum A t n`**: Uses `Finset ℕ` whose elements are automatically distinct. The condition `↑s ⊆ A ∧ s.card ≤ t ∧ s.sum id = n` correctly encodes "n is a sum of at most t distinct elements from A." The use of `s.sum id` (rather than indexed sums) is appropriate for distinct-element sums.
+/home/ryan/formal-conjectures/ai-review/338.md-89-
+--
+/home/ryan/formal-conjectures/ai-review/512.md-9-
+/home/ryan/formal-conjectures/ai-review/512.md-10-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/512.md-11-
+ai-review/512.md:12:**Verdict:** The local definition `expSum512` is reasonable. A shared `e : ℝ → ℂ` (or `ℂ → ℂ`) additive character helper could reduce duplication across multiple problems but is not strictly necessary.
+/home/ryan/formal-conjectures/ai-review/512.md-13-
+/home/ryan/formal-conjectures/ai-review/512.md-14-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/512.md-15-
+--
+/home/ryan/formal-conjectures/ai-review/444.md-37-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/444.md-38-
+ai-review/444.md-39-The code is well-organized:
+ai-review/444.md:40:- Two clearly named helper definitions (`divisorCountIn`, `reciprocalSum`) with docstrings including LaTeX.
+/home/ryan/formal-conjectures/ai-review/444.md-41-- The main theorem docstring includes both the limsup formulation and the "equivalently" reformulation that is actually formalized, bridging the gap between the standard statement and the Lean encoding.
+/home/ryan/formal-conjectures/ai-review/444.md-42-- The `∃ᶠ x in atTop` idiom is the standard Lean/Mathlib way to express "for arbitrarily large x," making the formalization idiomatic.
+/home/ryan/formal-conjectures/ai-review/444.md-43-
+--
+/home/ryan/formal-conjectures/ai-review/222.md-4-
+/home/ryan/formal-conjectures/ai-review/222.md-5-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/222.md-6-
+ai-review/222.md:7:**Duplicate definition found.** `IsSumOfTwoSquares` is defined identically in both `ErdosProblems/222.lean` (line 43) and `ErdosProblems/675.lean` (line 52):
+/home/ryan/formal-conjectures/ai-review/222.md-8-
+/home/ryan/formal-conjectures/ai-review/222.md-9-```lean
+ai-review/222.md:10:def IsSumOfTwoSquares (n : ℕ) : Prop :=
+ai-review/222.md-11-  ∃ a b : ℕ, n = a ^ 2 + b ^ 2
+/home/ryan/formal-conjectures/ai-review/222.md-12-```
+/home/ryan/formal-conjectures/ai-review/222.md-13-
+ai-review/222.md:14:These two definitions live in separate namespaces (`Erdos222` and `Erdos675`), so they don't conflict, but they should ideally be deduplicated into a shared utility or a common namespace. Problem 675 also defines `sumOfTwoSquaresSet : Set ℕ := {n | IsSumOfTwoSquares n}`, which could likewise be shared.
+/home/ryan/formal-conjectures/ai-review/222.md-15-
+/home/ryan/formal-conjectures/ai-review/222.md-16-Additionally, `Nat.nth` is used consistently across 26+ problem files for sequence enumeration, so `sumTwoSqSeq` follows established conventions.
+/home/ryan/formal-conjectures/ai-review/222.md-17-
+--
+/home/ryan/formal-conjectures/ai-review/362.md-4-
+/home/ryan/formal-conjectures/ai-review/362.md-5-No directly reusable code exists in `FormalConjecturesForMathlib/` for this problem. The problem concerns counting subsets with a given sum, which is distinct from the combinatorics utilities available (arithmetic progressions, Ramsey theory, Sidon sets, sum-free sets, etc.).
+/home/ryan/formal-conjectures/ai-review/362.md-6-
+ai-review/362.md:7:Several other Erdős problems deal with subset sums (Problems 343, 350, 532, 543, 948, 963), but none define shared infrastructure for *counting* subsets with a prescribed sum. The `powerset.filter` + `sum id` pattern is used ad hoc in each file. A shared definition like `Finset.subsetsWithSum (A : Finset ℕ) (t : ℕ) := A.powerset.filter (fun S => S.sum id = t)` could improve reuse across Problems 362, 350, 543, and others, but this is a minor stylistic point rather than a significant gap.
+/home/ryan/formal-conjectures/ai-review/362.md-8-
+/home/ryan/formal-conjectures/ai-review/362.md-9-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/362.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/169.md-16-- All three definitions are mathematically equivalent for the 2-color symmetric case W(k, k), but they differ in domain (`ℕ → Bool` on all naturals vs. `Finset.Icc 1 N → Fin r`) and indexing (0-based vs. 1-based). Reconciling them would require proving equivalence lemmas.
+/home/ryan/formal-conjectures/ai-review/169.md-17-
+ai-review/169.md-18-**Reciprocal Sums:**
+ai-review/169.md:19:- The reciprocal sum `∑ n ∈ A, (1 : ℝ) / (↑n : ℝ)` is written inline in `erdos_169`. Other files define named helpers: `Erdos296.reciprocalSum` (over `ℚ`), `Erdos444.reciprocalSum` (over `ℝ`, partial sums). A shared `reciprocalSum` definition over `ℝ` could reduce repetition.
+/home/ryan/formal-conjectures/ai-review/169.md-20-
+ai-review/169.md-21-**Recommendation:** The local definitions are acceptable for a self-contained problem file. However, if the project moves toward a unified API, `Erdos169.vanDerWaerdenNumber` should be replaced with (or shown equivalent to) `Erdos138.W`, and `IsAPFree` should be reconciled with `Set.IsAPOfLengthFree`.
+/home/ryan/formal-conjectures/ai-review/169.md-22-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-36-namespace Erdos336
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-38-/-- The set of all sums of exactly $k$ elements from $A$ (with repetition allowed). -/
+FormalConjectures/ErdosProblems/336.lean:39:def exactSumset (A : Set ℕ) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/336.lean-40-  {n : ℕ | ∃ (f : Fin k → ℕ), (∀ i, f i ∈ A) ∧ n = ∑ i, f i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-42-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $r$ if every sufficiently large
+--
+ai-review/475.md-5-The formalization introduces a local `partialSum` definition:
+/home/ryan/formal-conjectures/ai-review/475.md-6-
+/home/ryan/formal-conjectures/ai-review/475.md-7-```lean
+ai-review/475.md:8:noncomputable def partialSum {n : ℕ} {α : Type*} [AddCommMonoid α]
+ai-review/475.md-9-    (f : Fin n → α) (m : Fin n) : α :=
+ai-review/475.md-10-  (univ.filter (fun i : Fin n => i ≤ m)).sum f
+/home/ryan/formal-conjectures/ai-review/475.md-11-```
+/home/ryan/formal-conjectures/ai-review/475.md-12-
+ai-review/475.md-13-This computes prefix sums by filtering `Finset.univ` for indices `i ≤ m`. Potential reuse considerations:
+/home/ryan/formal-conjectures/ai-review/475.md-14-
+ai-review/475.md:15:- **Problem 476** (`FormalConjectures/ErdosProblems/476.lean`) defines `restrictedSumset` operating on `ZMod p` finsets — a related but structurally different operation.
+/home/ryan/formal-conjectures/ai-review/475.md-16-- **Problem 540** (`FormalConjectures/ErdosProblems/540.lean`) deals with subset sums in `ZMod N`, demonstrating the standard `∑ n ∈ S, n` pattern. Not directly applicable since 475 requires *ordered* partial sums, not subset sums.
+/home/ryan/formal-conjectures/ai-review/475.md-17-- **Problem 883** (`FormalConjectures/ErdosProblems/883.lean`) uses `Function.Injective` with `ZMod`-indexed functions, a similar structural pattern.
+/home/ryan/formal-conjectures/ai-review/475.md-18-- **`FormalConjecturesForMathlib/`** provides `IsMulBasisOfOrder` (additive basis definitions) and `Finset.Card` utilities, but nothing directly applicable to sequenceable sets.
+--
+/home/ryan/formal-conjectures/ai-review/29.md-14-
+/home/ryan/formal-conjectures/ai-review/29.md-15-All of these compute `((Finset.range (n + 1)).filter (fun a => a ∈ A ∧ (n - a) ∈ A)).card`. The only difference is the name (`addRepFun` vs `repCount`). This definition should be factored out into a shared utility (e.g., `FormalConjecturesForMathlib/Combinatorics/Basic.lean` or a new `AdditiveCombi.lean`) and reused across all four+ files.
+/home/ryan/formal-conjectures/ai-review/29.md-16-
+ai-review/29.md:17:Similarly, the additive basis of order 2 condition `∀ n : ℕ, ∃ a ∈ A, ∃ b ∈ A, a + b = n` is expressed inline in Problem 29 rather than using a named predicate. Problems 869 and 871 both define `IsAdditiveBasis2` and `sumset` for this purpose. Problem 29's formulation is actually *stronger* (every natural number, not just sufficiently large ones — see Correctness below), but even so, a shared definition could be parameterized or the existing `IsAdditiveBasis2` could be referenced.
+/home/ryan/formal-conjectures/ai-review/29.md-18-
+ai-review/29.md-19-**Recommendation:** Extract `repCount`/`addRepFun` into a shared file and have all problems import it. Consider also a shared `IsAdditiveBasis2` or at minimum a shared `sumset`.
+/home/ryan/formal-conjectures/ai-review/29.md-20-
+--
+/home/ryan/formal-conjectures/ai-review/543.md-7-- `sscCountMod` / `totalSubsetsMod` — count SSC subsets and total subsets of `ZMod n`
+/home/ryan/formal-conjectures/ai-review/543.md-8-
+ai-review/543.md-9-**Potential reuse from Problem 1179** (`FormalConjectures/ErdosProblems/1179.lean`):
+ai-review/543.md:10:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/543.md-11-
+/home/ryan/formal-conjectures/ai-review/543.md-12-No other files in `FormalConjecturesForMathlib` provide directly reusable components. Problem 18 (practical numbers) also deals with subset sums of divisors, but in a different algebraic setting.
+/home/ryan/formal-conjectures/ai-review/543.md-13-
+--
+/home/ryan/formal-conjectures/ai-review/869.md-2-
+/home/ryan/formal-conjectures/ai-review/869.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/869.md-4-
+ai-review/869.md:5:**Significant reuse opportunities exist.** All three custom definitions (`sumset`, `IsAdditiveBasis2`, `IsMinimalAdditiveBasis2`) can be replaced with existing Mathlib/FormalConjecturesForMathlib definitions:
+/home/ryan/formal-conjectures/ai-review/869.md-6-
+/home/ryan/formal-conjectures/ai-review/869.md-7-- **`sumset A`** is exactly `A + A` under `open scoped Pointwise`. The Pointwise instance for `Set ℕ` is already available via `Mathlib.Algebra.Group.Pointwise.Set.Basic`. At least 19 other Erdős problem files already use `open scoped Pointwise` for this purpose (e.g., 791, 868, 40).
+/home/ryan/formal-conjectures/ai-review/869.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/869.md-40-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/869.md-41-
+/home/ryan/formal-conjectures/ai-review/869.md-42-- The custom definitions obscure the connection to Mathlib's standard additive combinatorics vocabulary. Using `IsAsymptoticAddBasisOfOrder` and Pointwise `A + A` would immediately signal to a Lean/Mathlib-literate reader what the definitions mean.
+ai-review/869.md:43:- The `IsMinimalAdditiveBasis2` definition uses the roundabout `Set.Infinite {n | n ∉ sumset (B \ {x})}` instead of the more direct `¬(B \ {x}).IsAsymptoticAddBasisOfOrder 2`. The latter is more readable and matches Problem 868's style.
+ai-review/869.md:44:- The namespace `Erdos869` correctly scopes the definitions, preventing collisions with the identical `sumset` definitions in files 871, 31, 35, 337, and 1146.
+/home/ryan/formal-conjectures/ai-review/869.md-45-- The docstrings on the custom definitions are clear and well-written.
+/home/ryan/formal-conjectures/ai-review/869.md-46-
+ai-review/869.md-47-**Recommendation:** Switching to Mathlib definitions would improve readability and reduce cognitive overhead for readers familiar with the Mathlib additive combinatorics library.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean-41-
+FormalConjectures/ErdosProblems/866.lean-42-/-- A finset $A$ of integers contains all pairwise sums of some $k$ integers: there exist
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean-43-$b_1, \ldots, b_k \in \mathbb{Z}$ such that $b_i + b_j \in A$ for all $i < j$. -/
+FormalConjectures/ErdosProblems/866.lean:44:def HasPairwiseSums (A : Finset ℤ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/866.lean-45-  ∃ b : Fin k → ℤ, ∀ i j : Fin k, i < j → (b i + b j) ∈ A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean-47-/-- $g_k(N)$ is the minimal $g \in \mathbb{N}$ such that every $A \subseteq \{1, \ldots, 2N\}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean-48-with $|A| \geq N + g$ contains all pairwise sums of some $k$ integers. -/
+FormalConjectures/ErdosProblems/866.lean:49:noncomputable def gPairwiseSum (k N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/866.lean-50-  sInf {g : ℕ | ∀ A : Finset ℤ,
+FormalConjectures/ErdosProblems/866.lean-51-    (∀ a ∈ A, 1 ≤ a ∧ a ≤ 2 * (N : ℤ)) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean-52-    A.card ≥ N + g → HasPairwiseSums A k}
+--
+/home/ryan/formal-conjectures/ai-review/484.md-4-
+ai-review/484.md-5-Several related files in the codebase define infrastructure that is conceptually adjacent but not directly reusable here:
+/home/ryan/formal-conjectures/ai-review/484.md-6-
+ai-review/484.md:7:- **Problem 476** (`476.lean`) defines `restrictedSumset` for `Finset (ZMod p)`, computing `A ⊕ A = {a + b : a, b ∈ A, a ≠ b}`. This is the exact same combinatorial operation (restricted/distinct-element sumset) that Problem 484 needs, but it is specialized to `ZMod p`. A generalized version (over any `AddCommMonoid` with `DecidableEq`) factored into `FormalConjecturesForMathlib` would serve both problems.
+ai-review/484.md-8-- **Problem 483** (`483.lean`) defines `HasMonochromaticSchurTriple` using the same coloring pattern `f : ℕ → Fin k` over `{1,…,N}`. The coloring infrastructure is identical; a shared "monochromatic pair" predicate (two elements in the same color class) could be extracted.
+ai-review/484.md:9:- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides `IsSidon`, `IsSumFree`, and related additive combinatorics definitions. While `IsSidon` is thematically connected (Sidon sets have all pairwise sums distinct, so their restricted sumsets are large), it is not directly applicable to the statement.
+/home/ryan/formal-conjectures/ai-review/484.md-10-
+ai-review/484.md-11-**Recommendation:** The most actionable reuse opportunity is generalizing `restrictedSumset` from Problem 476 and placing it in a shared utility. However, since Problem 484 inlines the sum condition (`∃ a … ∃ b … a ≠ b ∧ χ a = χ b ∧ a + b = n`) rather than using a named restricted sumset, this is a minor style concern rather than a correctness issue. The current self-contained approach is acceptable.
+/home/ryan/formal-conjectures/ai-review/484.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/484.md-42-
+ai-review/484.md-43-The code is clean and readable. Minor observations:
+/home/ryan/formal-conjectures/ai-review/484.md-44-
+ai-review/484.md:45:- The inline existential chain (`∃ a ∈ Finset.Icc 1 N, ∃ b ∈ Finset.Icc 1 N, a ≠ b ∧ χ a = χ b ∧ a + b = n`) is clear but somewhat long. An alternative would be to define a predicate `IsMonochromaticSum χ N n` for readability, similar to how Problem 483 defines `HasMonochromaticSchurTriple`. This is a style preference, not a defect.
+ai-review/484.md-46-- The use of `(S.card : ℝ) ≥ c * (N : ℝ)` with the coercion to `ℝ` is standard for this codebase and handles the interaction between `ℕ` cardinalities and real-valued constants correctly.
+/home/ryan/formal-conjectures/ai-review/484.md-47-- The `open Finset` is appropriate given the heavy use of `Finset.Icc`.
+/home/ryan/formal-conjectures/ai-review/484.md-48-
+--
+/home/ryan/formal-conjectures/ai-review/344.md-6-
+ai-review/344.md-7-- **`subsetSums`**: A generic `subsetSums` is already defined in `FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:26-27` for any `AddCommMonoid M`:
+/home/ryan/formal-conjectures/ai-review/344.md-8-  ```lean
+ai-review/344.md:9:  def subsetSums (A : Set M) : Set M :=
+ai-review/344.md-10-    {n | ∃ B : Finset M, ↑B ⊆ A ∧ n = ∑ i ∈ B, i}
+/home/ryan/formal-conjectures/ai-review/344.md-11-  ```
+ai-review/344.md:12:  The local definition in 344.lean (`B.sum id = s`) is definitionally equivalent for `ℕ` but differs in the order of equality and uses `B.sum id` instead of `∑ i ∈ B, i`. Problems 253 and 347 already import and use the shared `subsetSums` from AdditivelyComplete.lean rather than defining their own. Problem 344 should do the same. Note that the shared definition also comes with `subsetSums_mono` and related lemmas that would be useful.
+/home/ryan/formal-conjectures/ai-review/344.md-13-
+ai-review/344.md-14-- **`ContainsInfiniteAP`**: This predicate is defined identically in both `Erdos343` (line 52) and `Erdos344` (line 42). Both define:
+/home/ryan/formal-conjectures/ai-review/344.md-15-  ```lean
+--
+/home/ryan/formal-conjectures/ai-review/344.md-78-
+ai-review/344.md-79-- **Positivity constraint**: `hA_pos : ∀ a ∈ A, 0 < a` correctly ensures elements of `A` are positive integers (excluding 0). This is needed because including 0 would be mathematically trivial/degenerate, and the original problem concerns positive integers.
+/home/ryan/formal-conjectures/ai-review/344.md-80-
+ai-review/344.md:81:- **Subset sums**: The definition `{s : ℕ | ∃ (B : Finset ℕ), (↑B : Set ℕ) ⊆ A ∧ B.sum id = s}` correctly captures `P(A)` — all sums of finite subsets of `A`. It correctly allows the empty subset (giving 0 ∈ subsetSums A).
+/home/ryan/formal-conjectures/ai-review/344.md-82-
+ai-review/344.md-83-- **Infinite AP**: `∃ (a d : ℕ), 0 < d ∧ ∀ n : ℕ, a + n * d ∈ S` is the standard definition. The constraint `0 < d` correctly excludes the trivial case of a single point repeated.
+/home/ryan/formal-conjectures/ai-review/344.md-84-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1107.lean-30-/--
+FormalConjectures/ErdosProblems/1107.lean-31-Helper Property: $n$ is the sum of at most $r+1$ numbers, each of which is $r$-full.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1107.lean-32--/
+FormalConjectures/ErdosProblems/1107.lean:33:def SumOfRPowerful (r n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1107.lean-34-  ∃ s : List ℕ, s.length ≤ r + 1 ∧ (∀ x ∈ s, Nat.Full r x) ∧ s.sum = n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1107.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1107.lean-36-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-41-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-42-The sumset $A + B = \{a + b \mid a \in A, b \in B\}$ for sets of natural numbers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-43--/
+FormalConjectures/ErdosProblems/37.lean:44:def sumset (A B : Set ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-45-  {n | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-47-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/306477.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/306477.lean-36-/-- The predicate that `n` can be written as $\binom{w+2}{2} + \binom{x+3}{4} + \binom{y+5}{6} + \binom{z+7}{8}$
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/306477.lean-37-for nonnegative integers $w, x, y, z$. -/
+FormalConjectures/OEIS/306477.lean:38:def IsSumOfBinomials (n : ℕ) : Prop :=
+FormalConjectures/OEIS/306477.lean-39-  ∃ w x y z : ℕ, n = (w + 2).choose 2 + (x + 3).choose 4 + (y + 5).choose 6 + (z + 7).choose 8
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/306477.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/306477.lean-41-@[category test, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-38-namespace Erdos871
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-39-
+FormalConjectures/ErdosProblems/871.lean-40-/-- The sumset $A + A = \{a + b : a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/871.lean:41:def sumset (A : Set ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/871.lean-42-  {n : ℕ | ∃ a ∈ A, ∃ b ∈ A, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-44-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $2$ if every sufficiently large
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean-42-/-- A subset $A$ of an additive commutative group is subset-sum complete if every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean-43-element of the group can be expressed as a sum over some subset of $A$. -/
+FormalConjectures/ErdosProblems/543.lean:44:def SubsetSumComplete {G : Type*} [AddCommGroup G]
+FormalConjectures/ErdosProblems/543.lean-45-    (A : Finset G) : Prop :=
+FormalConjectures/ErdosProblems/543.lean-46-  ∀ g : G, ∃ S : Finset G, S ⊆ A ∧ ∑ x ∈ S, x = g
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/308734.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/308734.lean-40-/-- The predicate that `n` can be written as $(2^a \cdot 3^b)^2 + (2^c \cdot 5^d)^2 + x^2 + y^2$
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/308734.lean-41-for nonnegative integers $a, b, c, d, x, y$. -/
+FormalConjectures/OEIS/308734.lean:42:def IsSumOfFourSquaresWithPowers (n : ℕ) : Prop :=
+FormalConjectures/OEIS/308734.lean-43-  ∃ a b c d x y : ℕ, n = (2 ^ a * 3 ^ b) ^ 2 + (2 ^ c * 5 ^ d) ^ 2 + x ^ 2 + y ^ 2
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/308734.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/308734.lean-45-@[category test, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/303656.lean-39-namespace OeisA303656
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/303656.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/303656.lean-41-/-- The predicate that `n` can be written as $a^2 + b^2 + 3^c + 5^d$ for nonnegative integers. -/
+FormalConjectures/OEIS/303656.lean:42:def IsSumOfTwoSquaresAndPowersOf3And5 (n : ℕ) : Prop :=
+FormalConjectures/OEIS/303656.lean-43-  ∃ a b c d : ℕ, n = a ^ 2 + b ^ 2 + 3 ^ c + 5 ^ d
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/303656.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/303656.lean-45-@[category test, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/287616.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/287616.lean-34-/-- The predicate that `n` can be written as $x(x+1)/2 + y(3y+1)/2 + z(5z+1)/2$ for
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/287616.lean-35-nonnegative integers $x, y, z$. -/
+FormalConjectures/OEIS/287616.lean:36:def IsSumOfTriangularAndGeneralizedPolygonal (n : ℕ) : Prop :=
+FormalConjectures/OEIS/287616.lean-37-  ∃ x y z : ℕ, n = x * (x + 1) / 2 + y * (3 * y + 1) / 2 + z * (5 * z + 1) / 2
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/287616.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/287616.lean-39-@[category test, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/281976.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/281976.lean-37-/-- The predicate that `n` can be written as $x^2 + y^2 + z^2 + w^2$ with $x, y, z, w$ nonnegative
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/281976.lean-38-integers, $z \leq w$, such that both $x$ and $x + 24y$ are squares. -/
+FormalConjectures/OEIS/281976.lean:39:def IsSumOfFourSquaresWithSquareConditions (n : ℕ) : Prop :=
+FormalConjectures/OEIS/281976.lean-40-  ∃ x y z w : ℕ, n = x ^ 2 + y ^ 2 + z ^ 2 + w ^ 2 ∧ z ≤ w ∧ IsSquare x ∧ IsSquare (x + 24 * y)
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/281976.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/281976.lean-42-@[category test, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean-28-`DivisorSumSet t` is the set of natural numbers `n` such that `t` can be represented as
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean-29-a sum of distinct divisors of `n`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean-30--/
+FormalConjectures/ErdosProblems/859.lean:31:def DivisorSumSet (t : ℕ) := { n : ℕ | ∃ s ⊆ Nat.divisors n, t = ∑ i ∈ s, i }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean-33-open Asymptotics Filter
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-32-- Every element in `S` is an `$r$-powerful` number.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-33-- The sum of the elements in `S`, i.e., `$\sum_{s \in S} s$`, is also an `$r$-powerful` number.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-34--/
+FormalConjectures/ErdosProblems/939.lean:35:def Erdos939Sums (r : ℕ) :=
+FormalConjectures/ErdosProblems/939.lean-36-    {S : Finset ℕ | S.card = r - 2 ∧ S.Coprime ∧ r.Full (∑ s ∈ S, s) ∧ ∀ s ∈ S, r.Full s}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean-38-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/764.lean-41-    (fun p => p.1 + p.2 ≤ n ∧ p.1 ∈ A ∧ p.2 ∈ A ∧ (n - p.1 - p.2) ∈ A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/764.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/764.lean-43-/-- The partial sum $\sum_{n=0}^{N} 1_A \ast 1_A \ast 1_A(n)$. -/
+FormalConjectures/ErdosProblems/764.lean:44:noncomputable def repSum764 (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/764.lean-45-  (Finset.range (N + 1)).sum (fun n => repCount764 A n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/764.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/764.lean-47-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-32-namespace Erdos31
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-33-
+FormalConjectures/ErdosProblems/31.lean-34-/-- The sumset $A + B$: the set of all $a + b$ with $a \in A$, $b \in B$. -/
+FormalConjectures/ErdosProblems/31.lean:35:def sumset (A B : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-37-/-- A set $B \subseteq \mathbb{N}$ has natural density zero if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-38-    $|B \cap \{0, \ldots, N-1\}| / N \to 0$ as $N \to \infty$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/323.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/323.lean-39-/-- An integer $n$ is a sum of $m$ nonnegative $k$-th powers if there exist
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/323.lean-40-nonnegative integers $a_1, \ldots, a_m$ with $n = a_1^k + \cdots + a_m^k$. -/
+FormalConjectures/ErdosProblems/323.lean:41:def IsSumOfKthPowers (k m n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/323.lean-42-  ∃ a : Fin m → ℕ, n = ∑ i, (a i) ^ k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/323.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/323.lean-44-/-- $f_{k,m}(x)$ counts the number of natural numbers $\leq x$ which can be
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-32-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-33-  \sum_i \frac{1}{a_i} = \infty
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-34-$$-/
+FormalConjectures/ErdosProblems/26.lean:35:def IsThick {ι : Type*} (A : ι → ℕ) : Prop := ¬Summable (fun i ↦ (1 : ℝ) / A i)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-37-@[category test, AMS 11]
+FormalConjectures/ErdosProblems/26.lean-38-theorem not_isThick_of_finite {ι : Type*} [Finite ι] (A : ι → ℕ) : ¬IsThick A := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-46-/-- A subset $B$ of a finite set $A \subseteq \mathbb{R}$ is *sum-avoiding in $A$* if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-47-$B \subseteq A$ and for all distinct $b_1, b_2 \in B$, their sum $b_1 + b_2 \notin A$. -/
+FormalConjectures/ErdosProblems/787.lean:48:def IsSumAvoidingIn (A B : Finset ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-49-  B ⊆ A ∧ ∀ b₁ ∈ B, ∀ b₂ ∈ B, b₁ ≠ b₂ → b₁ + b₂ ∉ A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-50-
+FormalConjectures/ErdosProblems/787.lean-51-/-- $g(n)$: the largest $m$ such that every $n$-element subset of $\mathbb{R}$ contains a
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-38-/-- The partial sum of Legendre symbols $(n/p)$ for $n = 1, \ldots, N$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-39-    We use the Jacobi symbol which coincides with the Legendre symbol for prime $p$. -/
+FormalConjectures/ErdosProblems/981.lean:40:def legendrePartialSum (p : ℕ) (N : ℕ) : ℤ :=
+FormalConjectures/ErdosProblems/981.lean-41-  (Finset.Icc 1 N).sum (fun n => jacobiSym (n : ℤ) p)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-42-
+FormalConjectures/ErdosProblems/981.lean-43-/-- $f_\varepsilon(p)$: the smallest positive integer $m$ such that for all $N \ge m$,
+--
+FormalConjectures/ErdosProblems/206.lean-35-The sum of unit fractions with denominators from a finset of naturals:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-36-$\sum_{m \in S} 1/m$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-37--/
+FormalConjectures/ErdosProblems/206.lean:38:noncomputable def unitFracSum (S : Finset ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/206.lean-39-  ∑ m ∈ S, (1 : ℝ) / (m : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean-41-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-37-element $a \in A$ can $1/a$ be expressed as a sum $\sum_{b \in S} 1/b$ for some
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-38-nonempty $S \subseteq A$ with $a \notin S$. That is, there are no solutions to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-39-$1/a = 1/b_1 + \cdots + 1/b_k$ with distinct $a, b_1, \ldots, b_k \in A$. -/
+FormalConjectures/ErdosProblems/301.lean:40:def UnitFractionSumFree (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/301.lean-41-  ∀ a ∈ A, ∀ S : Finset ℕ, S ⊆ A → a ∉ S → S.Nonempty →
+FormalConjectures/ErdosProblems/301.lean-42-    ∑ b ∈ S, (1 : ℝ) / (b : ℝ) ≠ (1 : ℝ) / (a : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-39-namespace Erdos438
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-41-/-- No sum of two elements of $A$ is a perfect square. -/
+FormalConjectures/ErdosProblems/438.lean:42:def SumsetAvoidSquares (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-43-  ∀ a ∈ A, ∀ b ∈ A, ¬IsSquare (a + b)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-44-
+FormalConjectures/ErdosProblems/438.lean-45-/-- Erdős Problem 438 (solved):
+--
+FormalConjectures/ErdosProblems/1081.lean-42-  0 < m ∧ ∀ p : ℕ, p.Prime → p ∣ m → p ^ 2 ∣ m
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean-44-/-- A natural number is expressible as the sum of two squarefull numbers. -/
+FormalConjectures/ErdosProblems/1081.lean:45:def IsSumOfTwoSquarefull (n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1081.lean-46-  ∃ a b : ℕ, IsSquarefull a ∧ IsSquarefull b ∧ n = a + b
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean-47-
+FormalConjectures/ErdosProblems/1081.lean-48-/-- $A(x)$: the count of natural numbers $n$ in $[1, x]$ that are sums of two
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-41-/-- A natural number is a sum of two squares if it can be written as $a^2 + b^2$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-42-for some natural numbers $a$ and $b$. -/
+FormalConjectures/ErdosProblems/222.lean:43:def IsSumOfTwoSquares (n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/222.lean-44-  ∃ a b : ℕ, n = a ^ 2 + b ^ 2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-46-/-- The $k$-th element (0-indexed) of the increasing enumeration of natural
+--
+FormalConjectures/ErdosProblems/685.lean-38-def omega (n : ℕ) : ℕ := n.primeFactors.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean-39-
+FormalConjectures/ErdosProblems/685.lean-40-/-- The sum of reciprocals of primes $p$ with $k < p < n$: $\sum_{k < p < n} \frac{1}{p}$. -/
+FormalConjectures/ErdosProblems/685.lean:41:noncomputable def primeReciprocalSum (k n : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/685.lean-42-  ∑ p ∈ (Finset.range n).filter (fun p => k < p ∧ Nat.Prime p), (1 : ℝ) / p
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean-44-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-38-
+FormalConjectures/ErdosProblems/874.lean-39-/-- The set of $r$-fold subset sums of $A$: all possible values of $a_1 + \cdots + a_r$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-40-where $a_1, \ldots, a_r$ are $r$ distinct elements of $A$. -/
+FormalConjectures/ErdosProblems/874.lean:41:def rSubsetSums (A : Finset ℕ) (r : ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-42-  (A.powersetCard r).image (fun S => S.sum id)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-44-/-- A set $A \subseteq \mathbb{N}$ is *admissible* (in the sense of Straus) if the $r$-fold subset
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-43-namespace Erdos337
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-44-
+FormalConjectures/ErdosProblems/337.lean-45-/-- The sumset $A + A = \{a + b : a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/337.lean:46:def sumset (A : Set ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/337.lean-47-  {n : ℕ | ∃ a ∈ A, ∃ b ∈ A, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-49-/-- The set of all sums of exactly $k$ elements from $A$ (with repetition). -/
+FormalConjectures/ErdosProblems/337.lean:50:def exactSumset (A : Set ℕ) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/337.lean-51-  {n : ℕ | ∃ (f : Fin k → ℕ), (∀ i, f i ∈ A) ∧ n = ∑ i, f i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-53-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $r$ if every sufficiently large
+--
+FormalConjectures/ErdosProblems/839.lean-40-/-- A sequence $a : \mathbb{N} \to \mathbb{N}$ is "sum-of-consecutive-free" if no term equals
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-41-the sum of a contiguous block of earlier terms. That is, for all $i$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-42-$a_i \neq a_j + a_{j+1} + \cdots + a_k$ for any $j \leq k < i$. -/
+FormalConjectures/ErdosProblems/839.lean:43:def SumOfConsecutiveFree (a : ℕ → ℕ) : Prop :=
+FormalConjectures/ErdosProblems/839.lean-44-  ∀ i : ℕ, ∀ j k : ℕ, j ≤ k → k < i →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-45-    a i ≠ ∑ l ∈ Finset.Icc j k, a l
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-46-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/468.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/468.lean-38-/-- Prefix sums of a list with accumulator.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/468.lean-39-Returns $[\mathrm{acc}+a_1, \mathrm{acc}+a_1+a_2, \ldots]$. -/
+FormalConjectures/ErdosProblems/468.lean:40:def prefixSums : List ℕ → ℕ → List ℕ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/468.lean-41-  | [], _ => []
+FormalConjectures/ErdosProblems/468.lean-42-  | a :: as, acc => (acc + a) :: prefixSums as (acc + a)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/468.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean-37-/-- A subset $B$ of $\mathbb{Z}$ has the "sum-length property" if whenever
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean-38-$a_1 + \cdots + a_r = b_1 + \cdots + b_s$ with all $a_i, b_j \in B$, then $r = s$. -/
+FormalConjectures/ErdosProblems/789.lean:39:def SumLengthProperty (B : Finset ℤ) : Prop :=
+FormalConjectures/ErdosProblems/789.lean-40-  ∀ (as bs : List ℤ), (∀ a ∈ as, a ∈ B) → (∀ b ∈ bs, b ∈ B) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean-41-    as.sum = bs.sum → as.length = bs.length
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/395.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/395.lean-37-/-- The signed sum of complex numbers $z$ with signs $\varepsilon \in \{-1, 1\}^n$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/395.lean-38-(encoded as `Bool`). -/
+FormalConjectures/ErdosProblems/395.lean:39:noncomputable def signedSum {n : ℕ} (z : Fin n → ℂ) (ε : Fin n → Bool) : ℂ :=
+FormalConjectures/ErdosProblems/395.lean-40-  ∑ i : Fin n, (if ε i then (1 : ℂ) else (-1 : ℂ)) * z i
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/395.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/395.lean-42-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean-45-    consecutive terms of the sequence $a$, using indices from $\{1, \ldots, k - 1\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean-46-    That is, there exist $i, j$ with $1 \le i$, $i + 1 \le j$, $j \le k - 1$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean-47-    $m = a(i) + a(i+1) + \cdots + a(j)$. -/
+FormalConjectures/ErdosProblems/423.lean:48:def IsConsecutiveBlockSum (a : ℕ → ℕ) (k : ℕ) (m : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/423.lean-49-  ∃ i j : ℕ, 1 ≤ i ∧ i + 1 ≤ j ∧ j + 1 ≤ k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean-50-    m = ∑ l ∈ Finset.Icc i j, a l
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-42-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-43-The sumset $A + B = \{a + b \mid a \in A, b \in B\}$ for sets of natural numbers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-44--/
+FormalConjectures/ErdosProblems/1146.lean:45:def sumset (A B : Set ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-46-  {n | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-48-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-30-namespace Erdos338
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-32-/-- The set of all sums of exactly $k$ elements from $A$ (with repetition allowed). -/
+FormalConjectures/ErdosProblems/338.lean:33:def exactSumset (A : Set ℕ) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/338.lean-34-  {n : ℕ | ∃ (f : Fin k → ℕ), (∀ i, f i ∈ A) ∧ n = ∑ i, f i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-36-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $h$ if every sufficiently large
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-40-
+FormalConjectures/ErdosProblems/338.lean-41-/-- $n$ is the sum of at most $t$ distinct elements from $A$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-42-there exists a finite subset $s \subseteq A$ with $|s| \leq t$ and $\sum_{x \in s} x = n$. -/
+FormalConjectures/ErdosProblems/338.lean:43:def IsDistinctSum (A : Set ℕ) (t : ℕ) (n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/338.lean-44-  ∃ (s : Finset ℕ), ↑s ⊆ A ∧ s.card ≤ t ∧ s.sum id = n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-46-/-- $A$ has restricted order at most $t$ if every sufficiently large natural number
+--
+FormalConjectures/ErdosProblems/1108.lean-30-The set $A = \left\{ \sum_{n\in S}n! : S\subset \mathbb{N}\text{ finite}\right\}$ of all finite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1108.lean-31-sums of distinct factorials.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1108.lean-32--/
+FormalConjectures/ErdosProblems/1108.lean:33:def FactorialSums : Set ℕ :=
+FormalConjectures/ErdosProblems/1108.lean-34-  {m : ℕ | ∃ S : Finset ℕ, m = ∑ n ∈ S, n.factorial}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1108.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1108.lean-36-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean-41-/-- A set $A \subseteq \mathbb{N}$ is power-of-2 sum-free if no two elements (not necessarily
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean-42-    distinct) sum to a power of $2$. -/
+FormalConjectures/ErdosProblems/1136.lean:43:def PowerOfTwoSumFree (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1136.lean-44-  ∀ a b : ℕ, a ∈ A → b ∈ A → ∀ k : ℕ, a + b ≠ 2 ^ k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean-46-/-- The counting function $|A \cap [1, N]|$ for a set $A \subseteq \mathbb{N}$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/14.lean-34-as the sum of two elements from $A$ (either because they are not representable at all, or
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/14.lean-35-because they are representable in more than one way).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/14.lean-36--/
+FormalConjectures/ErdosProblems/14.lean:37:noncomputable def nonUniqueSumCount (A : Set ℕ) (N : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/14.lean-38-  ((Set.Icc 1 N) \ (allUniqueSums A)).ncard
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/14.lean-39-
+FormalConjectures/ErdosProblems/14.lean-40-noncomputable def almostSquareRoot (ε : ℝ) (N : ℕ) : ℝ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-41-namespace Erdos296
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-43-/-- The reciprocal sum $\sum_{n \in A} 1/n$ of a finite set of natural numbers. -/
+FormalConjectures/ErdosProblems/296.lean:44:noncomputable def reciprocalSum (A : Finset ℕ) : ℚ :=
+FormalConjectures/ErdosProblems/296.lean-45-  ∑ n ∈ A, (1 : ℚ) / (n : ℚ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean-47-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/726.lean-35-/-- The weighted sum of $1/p$ over primes $p \le n$ for which $n \bmod p$ lies in $(p/2, p)$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/726.lean-36-i.e., $2 \cdot (n \bmod p) > p$. This captures the condition $n \equiv r \pmod{p}$ for some
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/726.lean-37-integer $r$ with $p/2 < r < p$. -/
+FormalConjectures/ErdosProblems/726.lean:38:noncomputable def erdos726Sum (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/726.lean-39-  ((Finset.range (n + 1)).filter Nat.Prime).sum
+FormalConjectures/ErdosProblems/726.lean-40-    (fun p => if 2 * (n % p) > p then (1 : ℝ) / (p : ℝ) else 0)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/726.lean-41-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/356.lean-37-/-- The set of all contiguous subsequence sums of a finite integer sequence.
+FormalConjectures/ErdosProblems/356.lean-38-For a sequence $a : \operatorname{Fin} k \to \mathbb{Z}$, this is
+FormalConjectures/ErdosProblems/356.lean-39-$\{\sum_{i=u}^{v} a_i : 0 \leq u \leq v < k\}$. -/
+FormalConjectures/ErdosProblems/356.lean:40:def contiguousSubSums {k : ℕ} (a : Fin k → ℤ) : Finset ℤ :=
+FormalConjectures/ErdosProblems/356.lean-41-  ((univ ×ˢ univ).filter (fun p : Fin k × Fin k => p.1 ≤ p.2)).image
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/356.lean-42-    (fun p => ∑ i ∈ Icc p.1 p.2, a i)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/356.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-40-/-- A finset $B \subseteq \mathbb{Z}$ is "sum-free" in the sense of Erdős Problem 790 if no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-41-element of $B$ equals the sum of two or more other distinct elements of $B$. -/
+FormalConjectures/ErdosProblems/790.lean:42:def IsSumFree (B : Finset ℤ) : Prop :=
+FormalConjectures/ErdosProblems/790.lean-43-  ∀ b ∈ B, ∀ S : Finset ℤ, S ⊆ B.erase b → S.card ≥ 2 → b ≠ S.sum id
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-44-
+FormalConjectures/ErdosProblems/790.lean-45-/-- $l(n)$: the largest $l$ such that every $n$-element subset $A$ of $\mathbb{Z}$ contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-46-sum-free subset $B$ with $|B| \geq l$. -/
+FormalConjectures/ErdosProblems/790.lean:47:noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/790.lean-48-  sSup {l : ℕ | ∀ (A : Finset ℤ), A.card = n →
+FormalConjectures/ErdosProblems/790.lean-49-    ∃ B : Finset ℤ, B ⊆ A ∧ l ≤ B.card ∧ IsSumFree B}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-41-
+FormalConjectures/ErdosProblems/444.lean-42-/-- The partial sum of reciprocals of elements of $A$ in $[1, x)$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-43-$$\sum_{\substack{a \in A \\ 1 \leq a < x}} \frac{1}{a}.$$ -/
+FormalConjectures/ErdosProblems/444.lean:44:noncomputable def reciprocalSum (A : Set ℕ) (x : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/444.lean-45-  ∑ a ∈ (Finset.Ico 1 x).filter (· ∈ A), (1 : ℝ) / (a : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-46-
+FormalConjectures/ErdosProblems/444.lean-47-/-- Erdős Problem 444 [ErGr80, p.88] (PROVED):
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/489.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/489.lean-33-/-- The squared-gap sum `∑_{b_i < x} (b_{i+1} - b_i)²`, where `b_i` enumerates the positive
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/489.lean-34-integers not divisible by any element of `A`. -/
+FormalConjectures/ErdosProblems/489.lean:35:noncomputable def GapSumSq (A : Set ℕ) (x : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/489.lean-36-  letI B := sievedSet A
+FormalConjectures/ErdosProblems/489.lean-37-  let b := Nat.nth (· ∈ B)
+FormalConjectures/ErdosProblems/489.lean-38-  ∑ i < Nat.count (· ∈ B) x, ((b (i + 1) : ℝ) - b i) ^ 2
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/290.lean-43-namespace Erdos290
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/290.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/290.lean-45-/-- The partial harmonic sum $\sum_{n=a}^{b} 1/n$ as a rational number. -/
+FormalConjectures/ErdosProblems/290.lean:46:def harmonicPartialSum (a b : ℕ) : ℚ :=
+FormalConjectures/ErdosProblems/290.lean-47-  (Finset.Icc a b).sum (fun n => (1 : ℚ) / ↑n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/290.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/290.lean-49-/--
+--
+FormalConjectures/ErdosProblems/320.lean-53-/-- The set of all unit-fraction subset sums from $\{1, \ldots, N\}$:
+FormalConjectures/ErdosProblems/320.lean-54-$\left\{ \sum_{n \in A} 1/n : A \subseteq \{1, \ldots, N\} \right\}$ as a finite set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-55-rationals. -/
+FormalConjectures/ErdosProblems/320.lean:56:noncomputable def unitFractionSums (N : ℕ) : Finset ℚ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-57-  (Finset.Icc 1 N).powerset.image
+FormalConjectures/ErdosProblems/320.lean-58-    (fun A => A.sum (fun n => (1 : ℚ) / ↑n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-60-/-- $S(N)$ counts the number of distinct sums $\sum_{n \in A} 1/n$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-61-for $A \subseteq \{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/320.lean:62:noncomputable def erdos320_S (N : ℕ) : ℕ := (unitFractionSums N).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean-64-/--
+FormalConjectures/ErdosProblems/320.lean-65-**Erdős Problem 320** [ErGr80, p. 43]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/858.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/858.lean-56-/-- The maximum of $\sum_{n \in A} \frac{1}{n}$ over all weak-primitive subsets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/858.lean-57-$A \subseteq \{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/858.lean:58:noncomputable def weakPrimitiveMaxSum (N : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/858.lean-59-  sSup {x : ℝ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/858.lean-60-    IsWeakPrimitive A ∧
+FormalConjectures/ErdosProblems/858.lean-61-    x = ∑ n ∈ A, (1 : ℝ) / (n : ℝ)}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-43-/-- A finset of integers is sum-free if for all $a, b$ in the set, $a + b$ is not
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-44-in the set. -/
+FormalConjectures/ErdosProblems/792.lean:45:def IsSumFreeSet (B : Finset ℤ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-46-  ∀ a ∈ B, ∀ b ∈ B, a + b ∉ B
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-48-/-- $f(n)$ is the largest $k$ such that every $n$-element subset of $\mathbb{Z}$ contains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-49-a sum-free subset of size at least $k$. -/
+FormalConjectures/ErdosProblems/792.lean:50:noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/792.lean-51-  sSup {k : ℕ | ∀ (A : Finset ℤ), A.card = n →
+FormalConjectures/ErdosProblems/792.lean-52-    ∃ B : Finset ℤ, B ⊆ A ∧ IsSumFreeSet B ∧ k ≤ B.card}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-43-namespace Erdos882
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-45-/-- The set of all non-empty subset sums of a finset $A$ of natural numbers. -/
+FormalConjectures/ErdosProblems/882.lean:46:def subsetSums (A : Finset ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-47-  (A.powerset.filter (· ≠ ∅)).image (fun S => S.sum id)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-49-/-- A finset of natural numbers is *primitive* if no element divides another
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-54-/-- The maximum size of $A \subseteq \{1, \ldots, n\}$ whose non-empty subset sums form a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-55-primitive set. -/
+FormalConjectures/ErdosProblems/882.lean:56:noncomputable def maxPrimitiveSubsetSumSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/882.lean-57-  sSup {k : ℕ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 n ∧ A.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-58-    IsPrimitive (subsetSums A)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean-59-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean-47-/-- For a finite abelian group $G$, a subset $A \subseteq G$, and element $g \in G$,
+FormalConjectures/ErdosProblems/1179.lean-48-$F_A(g) = \#\{S \subseteq A : \sum_{x \in S} x = g\}$ counts the subsets of $A$ (including
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean-49-$\emptyset$) whose element-sum equals $g$. -/
+FormalConjectures/ErdosProblems/1179.lean:50:def subsetSumCount {G : Type*} [AddCommGroup G] [DecidableEq G]
+FormalConjectures/ErdosProblems/1179.lean-51-    (A : Finset G) (g : G) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean-52-  (A.powerset.filter (fun S => S.sum id = g)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-34-namespace Erdos808
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-35-
+FormalConjectures/ErdosProblems/808.lean-36-/-- The graph-restricted sumset $\{f(i) + f(j) : (i, j) \in E(G)\}$. -/
+FormalConjectures/ErdosProblems/808.lean:37:def graphSumset {n : ℕ} (f : Fin n → ℕ) (G : SimpleGraph (Fin n))
+FormalConjectures/ErdosProblems/808.lean-38-    [DecidableRel G.Adj] : Finset ℕ :=
+FormalConjectures/ErdosProblems/808.lean-39-  (Finset.univ.filter (fun p : Fin n × Fin n => G.Adj p.1 p.2)).image
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-40-    (fun p => f p.1 + f p.2)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean-43-$k$-set** within $\{1, \ldots, N\}$ if there is a $k$-element set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean-44-$A \subseteq \{1, \ldots, N\}$ whose non-empty subset sums all lie in
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean-45-$\{1, \ldots, N\}$ and receive the same color. -/
+FormalConjectures/ErdosProblems/531.lean:46:def HasMonoSubsetSumSet (χ : ℕ → Bool) (k N : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/531.lean-47-  ∃ A : Finset ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean-48-    A.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean-49-    (∀ a ∈ A, 1 ≤ a ∧ a ≤ N) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-33-namespace Erdos35
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-34-
+FormalConjectures/ErdosProblems/35.lean-35-/-- The sumset $A + B$: the set of all $a + b$ with $a \in A$, $b \in B$. -/
+FormalConjectures/ErdosProblems/35.lean:36:def sumset (A B : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-37-
+FormalConjectures/ErdosProblems/35.lean-38-/-- Schnirelmann density of a set $A \subseteq \mathbb{N}$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-39-$$d_s(A) = \inf_{N \geq 1} \frac{|A \cap \{1, \ldots, N\}|}{N}$$ -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-43-A coloring $c$ of $\{1, \ldots, n-1\}$ into $k$ colors is sum-free for $n$ if $n$ cannot be
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-44-expressed as a sum of distinct elements from any single color class.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-45--/
+FormalConjectures/ErdosProblems/360.lean:46:def SumFreeColoring (n k : ℕ) (c : ℕ → Fin k) : Prop :=
+FormalConjectures/ErdosProblems/360.lean-47-  ∀ j : Fin k, ∀ S : Finset ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-48-    S ⊆ Icc 1 (n - 1) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-49-    (∀ x ∈ S, c x = j) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-53-The minimum number of color classes needed so that $\{1, \ldots, n-1\}$ can be colored
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-54-into classes where $n$ is not a sum of distinct elements from any single class.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-55--/
+FormalConjectures/ErdosProblems/360.lean:56:noncomputable def minSumFreeClasses (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/360.lean-57-  sInf {k : ℕ | ∃ c : ℕ → Fin k, SumFreeColoring n k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-59-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-44-/-- The set of natural numbers expressible as the sum of at most $k$ distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-45-elements of $A$. -/
+FormalConjectures/ErdosProblems/880.lean:46:def DistinctSumSet880 (A : Set ℕ) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/880.lean-47-  {n : ℕ | ∃ (S : Finset ℕ), (∀ x ∈ S, x ∈ A) ∧ S.card ≤ k ∧ S.sum id = n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean-49-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean-26-namespace Erdos325
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean-28-/-- A predicate for $n$ to be the sum of three $k$th powers. -/
+FormalConjectures/ErdosProblems/325.lean:29:def IsSumThreePower (k n : ℕ) : Prop := ∃ a b c, a ^ k + b ^ k + c ^ k = n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean-31-/-- The number of integers $\leq x$ which are the sum of three $k$th powers. -/
+FormalConjectures/ErdosProblems/325.lean:32:noncomputable def cardIsSumThreePowerBelow (k x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean-33-  {n ∈ Set.Iic x | IsSumThreePower k n}.ncard
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean-35-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-38-denominators from $\{1, \ldots, N\}$ if there exists a subset $S \subseteq \{1, \ldots, N\}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-39-such that $\sum_{n \in S} 1/n = k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-40--/
+FormalConjectures/ErdosProblems/308.lean:41:def IsRepresentableUnitFractionSum (N : ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/308.lean-42-  ∃ S : Finset ℕ, (∀ n ∈ S, 1 ≤ n ∧ n ≤ N) ∧
+FormalConjectures/ErdosProblems/308.lean-43-    ∑ n ∈ S, (1 : ℚ) / (n : ℚ) = (k : ℚ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean-44-
+--
+FormalConjectures/ErdosProblems/1112.lean-34-/-- The $k$-fold sumset of a set $S$ of natural numbers: all sums $s_1 + \cdots + s_k$
+FormalConjectures/ErdosProblems/1112.lean-35-with each $s_i \in S$. Defined recursively: $0S = \{0\}$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-36-$(k+1)S = \{a + b \mid a \in S,\, b \in kS\}$. -/
+FormalConjectures/ErdosProblems/1112.lean:37:def kFoldSumset : ℕ → Set ℕ → Set ℕ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-38-  | 0, _ => {0}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-39-  | k + 1, S => {n | ∃ a ∈ S, ∃ b ∈ kFoldSumset k S, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean-36-namespace Erdos512
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean-38-/-- The exponential sum $\sum_{n \in A} e(n\theta)$ where $e(x) = e^{2\pi ix}$. -/
+FormalConjectures/ErdosProblems/512.lean:39:noncomputable def expSum512 (A : Finset ℤ) (θ : ℝ) : ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean-40-  ∑ n ∈ A, Complex.exp (2 * ↑Real.pi * ↑n * ↑θ * Complex.I)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean-41-
+FormalConjectures/ErdosProblems/512.lean-42-/-- Erdős Problem 512 (Littlewood's conjecture [Ko81] [MPS81]): There exists an absolute
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-36-namespace Erdos339
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-38-/-- The set of all sums of exactly $k$ elements from $A$ (with repetition allowed). -/
+FormalConjectures/ErdosProblems/339.lean:39:def exactSumset (A : Set ℕ) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/339.lean-40-  {n : ℕ | ∃ (f : Fin k → ℕ), (∀ i, f i ∈ A) ∧ n = ∑ i, f i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-42-/-- $A \subseteq \mathbb{N}$ is an additive basis of order $r$ if every sufficiently large natural
+--
+FormalConjectures/ErdosProblems/339.lean-45-  ∃ N₀ : ℕ, ∀ n ≥ N₀, ∃ k ≤ r, n ∈ exactSumset A k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-47-/-- The set of integers representable as the sum of exactly $r$ distinct elements from $A$. -/
+FormalConjectures/ErdosProblems/339.lean:48:def distinctExactSumset (A : Set ℕ) (r : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/339.lean-49-  {n : ℕ | ∃ (s : Finset ℕ), ↑s ⊆ A ∧ s.card = r ∧ s.sum id = n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-50-
+FormalConjectures/ErdosProblems/339.lean-51-/-- The lower density of $A \subseteq \mathbb{N}$:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-45-namespace Erdos987
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-47-/-- The exponential sum $S(x, k, n) = \sum_{j < n} e^{2\pi i k x_j}$. -/
+FormalConjectures/ErdosProblems/987.lean:48:noncomputable def exponentialSum (x : ℕ → ℝ) (k : ℕ) (n : ℕ) : ℂ :=
+FormalConjectures/ErdosProblems/987.lean-49-  ∑ j ∈ Finset.range n, Complex.exp (2 * ↑Real.pi * Complex.I * ↑((k : ℝ) * x j))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-51-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-41-/-- A finite set of natural numbers is *sum-free* if for all $b, c \in A$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-42-we have $b + c \notin A$. -/
+FormalConjectures/ErdosProblems/877.lean:43:def IsSumFree (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-44-  ∀ b ∈ A, ∀ c ∈ A, b + c ∉ A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-46-/-- A subset $A$ of $\{1, \ldots, n\}$ is a *maximal sum-free subset* if it is sum-free
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-47-and no element of $\{1, \ldots, n\} \setminus A$ can be added while preserving
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-48-sum-freeness. -/
+FormalConjectures/ErdosProblems/877.lean:49:def IsMaximalSumFree (A : Finset ℕ) (n : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-50-  A ⊆ Finset.Icc 1 n ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-51-  IsSumFree A ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-52-  ∀ x ∈ Finset.Icc 1 n, x ∉ A → ¬ IsSumFree (insert x A)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-54-/-- The number of maximal sum-free subsets of $\{1, \ldots, n\}$. -/
+FormalConjectures/ErdosProblems/877.lean:55:noncomputable def maximalSumFreeCount (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-56-  ((Finset.Icc 1 n).powerset.filter (fun A => IsMaximalSumFree A n)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-58-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean-43-  μ {ω | X ω = 1} = μ {ω | X ω = -1}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean-45-/-- The partial sum of the random power series $\sum_{k=0}^{n-1} \varepsilon_k a_k z^k$. -/
+FormalConjectures/ErdosProblems/527.lean:46:noncomputable def randomPowerPartialSum (ε : ℕ → ℝ) (a : ℕ → ℝ) (z : ℂ) (n : ℕ) : ℂ :=
+FormalConjectures/ErdosProblems/527.lean-47-  ∑ k ∈ Finset.range n, ((ε k * a k : ℝ) : ℂ) * z ^ k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean-49-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/771.lean-40-namespace Erdos771
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/771.lean-41-
+FormalConjectures/ErdosProblems/771.lean-42-/-- $m$ is a subset sum of $S$: there exists $A \subseteq S$ with $\sum_{a \in A} a = m$. -/
+FormalConjectures/ErdosProblems/771.lean:43:def IsSubsetSum (S : Finset ℕ) (m : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/771.lean-44-  ∃ A : Finset ℕ, A ⊆ S ∧ A.sum id = m
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/771.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/771.lean-46-/-- $f(n)$ is the maximum $k$ such that for every positive integer $m$, there exists
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/469.lean-25-namespace Erdos469
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/469.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/469.lean-27-/-- The proposition that `n` is a sum of distinct proper divisors. -/
+FormalConjectures/ErdosProblems/469.lean:28:def Nat.IsSumDivisors (n : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/469.lean-29-  ∃ S ⊆ n.properDivisors, ∑ d ∈ S, d = n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/469.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/469.lean-31-open Erdos469
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-42-/-- The sum $\sum_{0 < a_i < n} 1/a_i$ for the greedy coprime-complement
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-43-sequence. -/
+FormalConjectures/ErdosProblems/460.lean:44:noncomputable def erdos460Sum (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-45-  ((Finset.range n).filter (fun k =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-46-    0 < erdos460Seq n k ∧ erdos460Seq n k < n)).sum
+FormalConjectures/ErdosProblems/460.lean-47-    (fun k => (1 : ℝ) / (erdos460Seq n k : ℝ))
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-49-/-- A finite set of natural numbers is *sum-free* if it contains no three
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-50-    elements $a$, $b$, $c$ (not necessarily distinct) with $b + c = a$. Equivalently,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-51-    for all $b, c \in A$, we have $b + c \notin A$. -/
+FormalConjectures/ErdosProblems/748.lean:52:def IsSumFree (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-53-  ∀ b ∈ A, ∀ c ∈ A, b + c ∉ A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-54-
+FormalConjectures/ErdosProblems/748.lean-55-instance : DecidablePred IsSumFree :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1096.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1096.lean-39-/-- The set of all numbers expressible as $\sum_{i \in S} q^i$ for some finite set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1096.lean-40-$S \subseteq \mathbb{N}$. -/
+FormalConjectures/ErdosProblems/1096.lean:41:noncomputable def powerSumSet (q : ℝ) : Set ℝ :=
+FormalConjectures/ErdosProblems/1096.lean-42-  {x : ℝ | ∃ S : Finset ℕ, x = S.sum (fun i => q ^ i)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1096.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1096.lean-44-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-46-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-48-/-- The sumset $A + A = \{a + b \mid a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/154.lean:49:def sumset (A : Finset ℕ) : Finset ℕ := Finset.image₂ (· + ·) A A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-51-/-- The fraction of elements in a finite set of naturals that are congruent to $r$ modulo $m$. -/
+FormalConjectures/ErdosProblems/154.lean-52-noncomputable def modFraction (m r : ℕ) (S : Finset ℕ) : ℝ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean-43-and $\operatorname{dist}(a, b) = \operatorname{dist}(c, d)$. This equals
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean-44-$4 \cdot \sum_i f(u_i)^2$ where $f(u_i)$ counts unordered pairs at distance $u_i$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean-45--/
+FormalConjectures/ErdosProblems/94.lean:46:noncomputable def distSqSum (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/94.lean-47-  let E := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/94.lean-48-  Set.ncard {x : E × E × E × E |
+FormalConjectures/ErdosProblems/94.lean-49-    x.1 ∈ (A : Set E) ∧ x.2.1 ∈ (A : Set E) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean-27-open Filter Asymptotics
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean-28-
+FormalConjectures/ErdosProblems/357.lean:29:def HasDistinctSums {ι α : Type*} [Preorder ι] [AddCommMonoid α] (a : ι → α) : Prop :=
+FormalConjectures/ErdosProblems/357.lean-30-  {J : Finset ι | (J : Set ι).OrdConnected}.InjOn (fun J ↦ ∑ x ∈ J, a x)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean-32-/-- Let $f(n)$ be the maximal $k$ such that there exist integers $1 \le a_1 < \dotsc < a_k \le n$

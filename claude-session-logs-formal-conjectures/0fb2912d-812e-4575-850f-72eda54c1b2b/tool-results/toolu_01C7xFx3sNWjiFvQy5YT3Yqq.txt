@@ -1,0 +1,419 @@
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/1308.0994/BoxdotConjecture.lean-125--/
+FormalConjectures/Arxiv/1308.0994/BoxdotConjecture.lean-126-inductive KTProof : Set Formula → Formula → Prop
+FormalConjectures/Arxiv/1308.0994/BoxdotConjecture.lean:127:/-- Embedding of K proofs into KT. -/
+FormalConjectures/Arxiv/1308.0994/BoxdotConjecture.lean-128-| lift_K {Γ} {α} (h : KProof Γ α) : KTProof Γ α
+FormalConjectures/Arxiv/1308.0994/BoxdotConjecture.lean-129-/-- T-axiom schema: every instance of `□α ~> α` is a theorem. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-51-@[category research open, AMS 51]
+FormalConjectures/Wikipedia/InscribedSquare.lean-52-theorem inscribed_square_problem :
+FormalConjectures/Wikipedia/InscribedSquare.lean:53:    answer(sorry) ↔ ∀ (γ : Circle → ℝ²) (hγ : IsEmbedding γ),
+FormalConjectures/Wikipedia/InscribedSquare.lean-54-      ∃ t₁ t₂ t₃ t₄, IsRectangle (γ t₁) (γ t₂) (γ t₃) (γ t₄) 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-55-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-61-@[category research open, AMS 51]
+FormalConjectures/Wikipedia/InscribedSquare.lean-62-theorem inscribed_rectangle_problem :
+FormalConjectures/Wikipedia/InscribedSquare.lean:63:    answer(sorry) ↔ ∀ (γ : Circle → ℝ²) (hγ : IsEmbedding γ) (r : ℝ) (hr : r > 0),
+FormalConjectures/Wikipedia/InscribedSquare.lean-64-      ∃ t₁ t₂ t₃ t₄, IsRectangle (γ t₁) (γ t₂) (γ t₃) (γ t₄) r := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-65-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-69--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-70-@[category research solved, AMS 51]
+FormalConjectures/Wikipedia/InscribedSquare.lean:71:theorem exists_inscribed_rectangle (γ : Circle → ℝ²) (hγ : IsEmbedding γ) :
+FormalConjectures/Wikipedia/InscribedSquare.lean-72-    ∃ t₁ t₂ t₃ t₄ r, IsRectangle (γ t₁) (γ t₂) (γ t₃) (γ t₄) r := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-73-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-78-@[category research solved, AMS 51]
+FormalConjectures/Wikipedia/InscribedSquare.lean-79-theorem exists_inscribed_rectangle_of_smooth (γ : Circle → ℝ²)
+FormalConjectures/Wikipedia/InscribedSquare.lean:80:    (hγ : IsEmbedding γ) (hγ' : ContMDiff (𝓡 1) (𝓡 2) ∞ γ) (r : ℝ) (hr : r > 0) :
+FormalConjectures/Wikipedia/InscribedSquare.lean-81-    ∃ t₁ t₂ t₃ t₄, IsRectangle (γ t₁) (γ t₂) (γ t₃) (γ t₄) r := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-82-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-87-@[category research solved, AMS 51]
+FormalConjectures/Wikipedia/InscribedSquare.lean-88-theorem exists_inscribed_square_of_C2 (γ : Circle → ℝ²)
+FormalConjectures/Wikipedia/InscribedSquare.lean:89:    (hγ : IsEmbedding γ) (hγ' : ContMDiff (𝓡 1) (𝓡 2) 2 γ) :
+FormalConjectures/Wikipedia/InscribedSquare.lean-90-    ∃ t₁ t₂ t₃ t₄, IsRectangle (γ t₁) (γ t₂) (γ t₃) (γ t₄) 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/InscribedSquare.lean-91-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-49-/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/765.lean:50:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/765.lean-51-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-52-
+--
+FormalConjectures/ErdosProblems/765.lean-55-noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/765.lean-56-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/765.lean:57:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-59-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-40-/-- An injective graph homomorphism from $H$ to $F$; witnesses that $F$ contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-41-subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/146.lean:42:def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/146.lean-43-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → F.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-44-
+--
+FormalConjectures/ErdosProblems/146.lean-48-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/146.lean-49-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/146.lean:50:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-52-/-- A graph $G$ is $r$-degenerate if every non-empty finite set of vertices contains
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-34-/-- An injective graph homomorphism from $H$ to $G$; witnesses that $G$ contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-35-subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/59.lean:36:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/59.lean-37-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-38-
+--
+FormalConjectures/ErdosProblems/59.lean-42-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/59.lean-43-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/59.lean:44:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-46-/-- The number of labeled simple graphs on $n$ vertices that do not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/59.lean-47-noncomputable def countGFreeGraphs {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/59.lean:48:  Nat.card {F : SimpleGraph (Fin n) // ¬ContainsSubgraph F H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-50-/--
+--
+FormalConjectures/ErdosProblems/87.lean-36-/-- An injective graph homomorphism (embedding) from $H$ into $G$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-37-$G$ contains a copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/87.lean:38:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/87.lean-39-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-40-
+--
+FormalConjectures/ErdosProblems/87.lean-45-noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean-46-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/87.lean:47:    ContainsSubgraph G H ∨ ContainsSubgraph Gᶜ H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-48-
+FormalConjectures/ErdosProblems/87.lean-49-/-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-42-/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-43-function from $V(G)$ to $V(H)$ that preserves adjacency. -/
+FormalConjectures/ErdosProblems/546.lean:44:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/546.lean-45-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-46-
+--
+FormalConjectures/ErdosProblems/546.lean-50-noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/546.lean-51-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/546.lean:52:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-54-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1079.lean-39-/-- An injective graph homomorphism from $H$ to $G$; witnesses that $G$ contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1079.lean-40-    subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/1079.lean:41:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/1079.lean-42-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1079.lean-43-
+--
+FormalConjectures/ErdosProblems/1079.lean-47-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/1079.lean-48-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/1079.lean:49:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1079.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1079.lean-51-/-- The number of edges of $G$ both of whose endpoints lie in a set $S$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-37-/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-38-function from $V(G)$ to $V(H)$ that preserves adjacency. -/
+FormalConjectures/ErdosProblems/548.lean:39:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/548.lean-40-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-41-
+--
+FormalConjectures/ErdosProblems/548.lean-54-    (hE : 2 * G.edgeSet.ncard ≥ (k - 1) * n + 2)
+FormalConjectures/ErdosProblems/548.lean-55-    (T : SimpleGraph (Fin (k + 1))) (hT : T.IsTree) :
+FormalConjectures/ErdosProblems/548.lean:56:    ContainsSubgraphCopy T G := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-57-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-58-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean-38-/-- An injective graph homomorphism from $H$ to $F$; witnesses that $F$ contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean-39-subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/147.lean:40:def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/147.lean-41-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → F.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean-42-
+--
+FormalConjectures/ErdosProblems/147.lean-46-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/147.lean-47-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/147.lean:48:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean-50-/--
+--
+FormalConjectures/ErdosProblems/1035.lean-49-/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a copy of $H$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1035.lean-50-as a subgraph. -/
+FormalConjectures/ErdosProblems/1035.lean:51:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/1035.lean-52-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1035.lean-53-
+--
+FormalConjectures/ErdosProblems/1035.lean-69-      (∀ v : Fin (2 ^ n),
+FormalConjectures/ErdosProblems/1035.lean-70-        ((Finset.univ.filter (fun w => G.Adj v w)).card : ℝ) > (1 - c) * (2 ^ n : ℝ)) →
+FormalConjectures/ErdosProblems/1035.lean:71:      ContainsSubgraph G (hypercubeGraph n)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1035.lean-72-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1035.lean-73-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-31-/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/714.lean:32:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/714.lean-33-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-34-
+--
+FormalConjectures/ErdosProblems/714.lean-37-noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/714.lean-38-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/714.lean:39:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-41-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-40-/-- An injective graph homomorphism from $H$ to $G$ witnesses that $G$ contains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-41-    a subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/159.lean:42:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/159.lean-43-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-44-
+--
+FormalConjectures/ErdosProblems/159.lean-56-noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/159.lean-57-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/159.lean:58:    ContainsSubgraph G C4 ∨ ContainsSubgraph Gᶜ (⊤ : SimpleGraph (Fin n))}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-60-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-38-/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/766.lean:39:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/766.lean-40-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-41-
+--
+FormalConjectures/ErdosProblems/766.lean-44-noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/766.lean-45-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/766.lean:46:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-47-
+FormalConjectures/ErdosProblems/766.lean-48-/-- The minimum extremal number $f(n;k,l)$: the minimum of $\operatorname{ex}(n;G)$ over all
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-44-/-- $G$ contains $H$ as a subgraph via an injective adjacency-preserving map. -/
+FormalConjectures/ErdosProblems/62.lean:45:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/62.lean-46-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-47-
+--
+FormalConjectures/ErdosProblems/62.lean-63-    ∃ (U : Type*) (H : SimpleGraph U),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-64-      H.chromaticNumber = ⊤ ∧
+FormalConjectures/ErdosProblems/62.lean:65:      ContainsSubgraph G₁ H ∧
+FormalConjectures/ErdosProblems/62.lean:66:      ContainsSubgraph G₂ H := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-67-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-68-
+--
+FormalConjectures/ErdosProblems/62.lean-86-    ∃ (U : Type*) (H : SimpleGraph U),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-87-      ¬ H.Colorable 3 ∧
+FormalConjectures/ErdosProblems/62.lean:88:      ContainsSubgraph G₁ H ∧
+FormalConjectures/ErdosProblems/62.lean:89:      ContainsSubgraph G₂ H := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-90-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-91-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-51-/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-52-function from $V(G)$ to $V(H)$ that preserves adjacency. -/
+FormalConjectures/ErdosProblems/551.lean:53:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/551.lean-54-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-55-
+--
+FormalConjectures/ErdosProblems/551.lean-60-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/551.lean-61-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/551.lean:62:    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-63-
+FormalConjectures/ErdosProblems/551.lean-64-/-- The cycle graph on $k$ vertices ($k \geq 3$): vertex $i$ is adjacent to vertex $j$ iff
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-32-/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/571.lean:33:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/571.lean-34-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-35-
+--
+FormalConjectures/ErdosProblems/571.lean-38-noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/571.lean-39-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/571.lean:40:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-42-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-33-/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/713.lean:34:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/713.lean-35-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-36-
+--
+FormalConjectures/ErdosProblems/713.lean-39-noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/713.lean-40-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/713.lean:41:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-43-/--
+--
+FormalConjectures/ErdosProblems/576.lean-49-/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a copy of $H$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-50-as a subgraph. -/
+FormalConjectures/ErdosProblems/576.lean:51:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/576.lean-52-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-53-
+--
+FormalConjectures/ErdosProblems/576.lean-57-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/576.lean-58-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/576.lean:59:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-61-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-38-/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-39-function from $V(G)$ to $V(H)$ that preserves adjacency. -/
+FormalConjectures/ErdosProblems/547.lean:40:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/547.lean-41-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-42-
+--
+FormalConjectures/ErdosProblems/547.lean-46-noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/547.lean-47-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/547.lean:48:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-50-/--
+--
+FormalConjectures/ErdosProblems/575.lean-35-/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a copy of $H$ as a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean-36-subgraph. -/
+FormalConjectures/ErdosProblems/575.lean:37:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/575.lean-38-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean-39-
+--
+FormalConjectures/ErdosProblems/575.lean-43-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/575.lean-44-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/575.lean:45:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean-46-
+FormalConjectures/ErdosProblems/575.lean-47-/-- The Turán number for a family $\operatorname{ex}(n; \mathcal{F})$: the maximum number of edges
+--
+FormalConjectures/ErdosProblems/575.lean-53-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/575.lean-54-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/575.lean:55:    Fintype.card V = n ∧ (∀ i : ι, ¬ContainsSubgraph F (H i)) ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean-57-/-- A graph is bipartite if there is a $2$-colouring of its vertices such that every edge connects
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-45-/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-46-function from $V(G)$ to $V(H)$ that preserves adjacency. -/
+FormalConjectures/ErdosProblems/549.lean:47:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/549.lean-48-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-49-
+--
+FormalConjectures/ErdosProblems/549.lean-53-noncomputable def ramseyNumber {m : ℕ} (G : SimpleGraph (Fin m)) : ℕ :=
+FormalConjectures/ErdosProblems/549.lean-54-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/549.lean:55:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-57-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-18-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-19-/-!
+FormalConjectures/ErdosProblems/707.lean:20:# Erdős Problem 707: Embedding Sidon Sets in Perfect Difference Sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-21-
+FormalConjectures/ErdosProblems/707.lean-22-*References:*
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-45-/-- An injective graph homomorphism from $H$ to $G$; witnesses that $G$ contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-46-subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/926.lean:47:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/926.lean-48-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-49-
+--
+FormalConjectures/ErdosProblems/926.lean-53-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/926.lean-54-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/926.lean:55:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-56-
+FormalConjectures/ErdosProblems/926.lean-57-/-- Vertex type for the graph $H_k$: one center vertex $x$, $k$ spoke vertices
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-91-            hs.trans (by simp [isSquare_iff_exists_sq, Set.subset_def])
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-92-          simpa [S', Set.image_preimage_eq_iff] using h
+FormalConjectures/ErdosProblems/318.lean:93:        rw [← hS', Finset.sum_map, Function.Embedding.coeFn_mk]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-94-        simpa [Nat.cast_pow] using Summable.sum_le_tsum S' (fun _ _ => by positivity) (by simp)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-95-    · intro _ _; grind
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-36-/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-37-function from $V(G)$ to $V(H)$ that preserves adjacency. -/
+FormalConjectures/ErdosProblems/552.lean:38:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/552.lean-39-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-40-
+--
+FormalConjectures/ErdosProblems/552.lean-45-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/552.lean-46-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/552.lean:47:    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-48-
+FormalConjectures/ErdosProblems/552.lean-49-/-- The cycle graph on $k$ vertices ($k \geq 3$): vertex $i$ is adjacent to vertex $j$ iff
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean-37-/-- An injective graph homomorphism from $H$ to $F$; witnesses that $F$ contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean-38-subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/113.lean:39:def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/113.lean-40-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → F.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean-41-
+--
+FormalConjectures/ErdosProblems/113.lean-45-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/113.lean-46-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/113.lean:47:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean-49-/-- A graph $G$ is 2-degenerate if every non-empty finite set of vertices contains
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-44-/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-45-function from $V(G)$ to $V(H)$ that preserves adjacency. -/
+FormalConjectures/ErdosProblems/550.lean:46:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/550.lean-47-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-48-
+--
+FormalConjectures/ErdosProblems/550.lean-53-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/550.lean-54-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/550.lean:55:    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-57-/-- The complete multipartite graph with vertex class sizes given by `sizes`.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean-38-/-- An injective graph homomorphism from $H$ to $G$; witnesses that $G$ contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean-39-copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/580.lean:40:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/580.lean-41-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean-55-      n / 2 ≤ (Finset.univ.filter (fun v => n / 2 ≤ G.degree v)).card →
+FormalConjectures/ErdosProblems/580.lean-56-      ∀ (k : ℕ) (T : SimpleGraph (Fin k)) [DecidableRel T.Adj],
+FormalConjectures/ErdosProblems/580.lean:57:        k ≤ n / 2 → T.IsTree → ContainsSubgraph G T := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean-58-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean-59-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-63-/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/572.lean:64:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/572.lean-65-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-66-
+--
+FormalConjectures/ErdosProblems/572.lean-69-noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/572.lean-70-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/572.lean:71:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-73-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-40-/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-41-function from $V(G)$ to $V(H)$ that preserves adjacency. -/
+FormalConjectures/ErdosProblems/545.lean:42:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/545.lean-43-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-44-
+--
+FormalConjectures/ErdosProblems/545.lean-48-noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/545.lean-49-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/545.lean:50:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-52-/-- The "as complete as possible" graph with $\binom{n}{2} + t$ edges on $n + 1$ vertices.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-46-/-- $G$ contains $H$ as a subgraph (via an injective homomorphism). -/
+FormalConjectures/ErdosProblems/60.lean:47:def ContainsSubgraph60 {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/60.lean-48-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-49-
+--
+FormalConjectures/ErdosProblems/60.lean-51-noncomputable def extremalNumber60 {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/60.lean-52-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/60.lean:53:    ¬ContainsSubgraph60 G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-54-
+FormalConjectures/ErdosProblems/60.lean-55-/-- The number of labeled copies of $C_4$ in $G$: injective maps $f : \mathrm{Fin}\, 4 \to \mathrm{Fin}\, n$
+--
+FormalConjectures/ErdosProblems/180.lean-32-/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a copy of $H$ as a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean-33-subgraph. -/
+FormalConjectures/ErdosProblems/180.lean:34:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/180.lean-35-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean-36-
+--
+FormalConjectures/ErdosProblems/180.lean-40-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/180.lean-41-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/180.lean:42:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean-43-
+FormalConjectures/ErdosProblems/180.lean-44-/-- The Turán number for a family $\operatorname{ex}(n; \mathcal{F})$: the maximum number of
+--
+FormalConjectures/ErdosProblems/180.lean-51-  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+FormalConjectures/ErdosProblems/180.lean-52-    haveI := fv; haveI := dr;
+FormalConjectures/ErdosProblems/180.lean:53:    Fintype.card V = n ∧ (∀ i : ι, ¬ContainsSubgraph F (H i)) ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean-55-/--

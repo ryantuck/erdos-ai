@@ -1,0 +1,455 @@
+FormalConjectures/WrittenOnTheWallII/GraphConjecture19.lean:30:If `G` is connected then the size `b(G)` of a largest induced bipartite subgraph
+FormalConjectures/WrittenOnTheWallII/GraphConjecture40.lean:30:number and `b(G)` is the largest induced bipartite subgraph size.
+FormalConjectures/WrittenOnTheWallII/GraphConjecture58.lean:30:bipartite subgraph and `l(v)` is the independence number of `G.neighborSet v`.
+FormalConjectures/WrittenOnTheWallII/README.md:26:   subgraph. Then
+FormalConjectures/WrittenOnTheWallII/README.md:35:   `b(G)` the largest induced bipartite subgraph size.
+FormalConjectures/Paper/StrongSensitivityConjecture.lean:41:* [Induced Subgraphs of Hypercubes and a Proof of the Sensitivity Conjecture](https://arxiv.org/abs/1907.00847)
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:35:largest clique subgraph, and $\chi(G)$ to be the chromatic number. Reed's omega, delta, and chi
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:49:size of the largest clique subgraph, and $\chi(G)$ to be the chromatic number. Reed's omega,
+FormalConjectures/Paper/DegreeSequencesTriangleFree.lean:147:There exists a triangle-free graph `H` containing `G` as an induced subgraph such that:
+FormalConjectures/Paper/DegreeSequencesTriangleFree.lean:150:(iii) if `J` is the subgraph of `H` induced by the vertices not in `G`, then `f(J)=3` and `δ(J) ≥ 2n`. -/
+FormalConjectures/Paper/DegreeSequencesTriangleFree.lean:162:/-- **Theorem 2.** Every triangle-free graph is an induced subgraph of one
+FormalConjectures/ErdosProblems/638.lean:23:finite induced subgraph of $G$ belongs to a given family $S$ with the Ramsey property, and
+FormalConjectures/ErdosProblems/638.lean:40:/-- The induced subgraph of $G$ pulled back along an embedding
+FormalConjectures/ErdosProblems/638.lean:42:def inducedFinSubgraph {V : Type*} (G : SimpleGraph V) {m : ℕ}
+FormalConjectures/ErdosProblems/638.lean:60:every finite induced subgraph of $G$ belongs (up to isomorphism) to $S$, and
+FormalConjectures/ErdosProblems/638.lean:73:        ∃ H ∈ S m, FinGraphIso (inducedFinSubgraph G f) H) ∧
+FormalConjectures/ErdosProblems/636.lean:25:set on $\gg \log n$ many vertices. Must $G$ contain $\gg n^{5/2}$ induced subgraphs which
+FormalConjectures/ErdosProblems/636.lean:29:$\gg n^{3/2}$ many such subgraphs, and note that $n^{5/2}$ would be best possible.
+FormalConjectures/ErdosProblems/636.lean:38:[KwSu21] Kwan, M. and Sudakov, B., _Proof of a conjecture on induced subgraphs
+FormalConjectures/ErdosProblems/636.lean:47:subgraphs of a graph $G$ on $\operatorname{Fin}(n)$. For each subset $S$ of vertices,
+FormalConjectures/ErdosProblems/636.lean:48:we record $(|S|, |E(G[S])|)$ where $G[S]$ is the induced subgraph on $S$. -/
+FormalConjectures/ErdosProblems/636.lean:49:noncomputable def inducedSubgraphSignatures {n : ℕ} (G : SimpleGraph (Fin n)) :
+FormalConjectures/ErdosProblems/636.lean:59:at most $C \cdot \log_2(n)$, then $G$ has at least $c \cdot n^{5/2}$ distinct induced subgraph
+FormalConjectures/ErdosProblems/636.lean:60:signatures (pairs (vertex count, edge count) among all induced subgraphs of $G$).
+FormalConjectures/ErdosProblems/636.lean:75:    ((inducedSubgraphSignatures G).card : ℝ) ≥ c * (↑n : ℝ) ^ ((5 : ℝ) / 2) := by
+FormalConjectures/ErdosProblems/760.lean:28:If $G$ is a graph with chromatic number $\chi(G) = m$ then must $G$ contain a subgraph $H$
+FormalConjectures/ErdosProblems/760.lean:32:subgraph $H$ with $\zeta(H) \gg (m / \log m)^{1/2}$. The proposed bound would be best
+FormalConjectures/ErdosProblems/760.lean:47:colour class induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/760.lean:64:large chromatic number $m = \chi(G)$, there exists an induced subgraph $H$ of $G$ with
+FormalConjectures/ErdosProblems/616.lean:29:where every subgraph $G'$ on at most $3r - 3$ vertices has $\tau(G') \leq 1$, we have
+FormalConjectures/ErdosProblems/182.lean:25:contain if it does not have a $k$-regular subgraph? Is it $\ll n^{1+o(1)}$?
+FormalConjectures/ErdosProblems/182.lean:29:least $C \cdot n \cdot \log(\log(n))$ edges contains a $k$-regular subgraph.
+FormalConjectures/ErdosProblems/182.lean:41:  regular subgraphs_, 2023.
+FormalConjectures/ErdosProblems/182.lean:44:  subgraphs_, J. Combin. Theory Ser. B 63 (1995), 41–54.
+FormalConjectures/ErdosProblems/182.lean:51:/-- $G$ contains a $k$-regular subgraph: there exists a nonempty finite graph $H$ that
+FormalConjectures/ErdosProblems/182.lean:54:def ContainsKRegularSubgraph {V : Type*} (G : SimpleGraph V) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/182.lean:65:edges contains a $k$-regular subgraph.
+FormalConjectures/ErdosProblems/182.lean:77:      ContainsKRegularSubgraph G k := by
+FormalConjectures/Wikipedia/SnakeInTheBox.lean:40:A subgraph `G'` is a 'snake' of length `k` in graph `G` if it is an induced path of length `k`.
+FormalConjectures/Wikipedia/SnakeInTheBox.lean:42:def IsSnakeInGraphOfLength {V : Type u} [DecidableEq V] (G : SimpleGraph V) (G' : Subgraph G)
+FormalConjectures/Wikipedia/SnakeInTheBox.lean:51:  sSup {k | ∃ (S : Subgraph G), IsSnakeInGraphOfLength G S k}
+FormalConjectures/Wikipedia/SnakeInTheBox.lean:73:    use (⊤ : Subgraph _), by simp, ∅, ∅
+FormalConjectures/ErdosProblems/765.lean:49:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/765.lean:50:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/765.lean:54:simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/765.lean:57:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/87.lean:37:$G$ contains a copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/87.lean:38:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/87.lean:42:graph $G$ on $N$ vertices either contains a copy of $H$ as a subgraph or whose
+FormalConjectures/ErdosProblems/87.lean:47:    ContainsSubgraph G H ∨ ContainsSubgraph Gᶜ H}
+FormalConjectures/ErdosProblems/146.lean:41:subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/146.lean:42:def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/146.lean:46:vertices that contains no copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/146.lean:50:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/146.lean:54:subgraph of $G$ has minimum degree at most $r$. -/
+FormalConjectures/ErdosProblems/146.lean:61:If $H$ is a bipartite graph that is $r$-degenerate (i.e., every induced subgraph of $H$
+FormalConjectures/ErdosProblems/751.lean:47:negative answer since $\chi(G) = 4$ forces a subgraph with minimum degree $\geq 3$.
+FormalConjectures/ErdosProblems/625.lean:56:induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/546.lean:42:/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+FormalConjectures/ErdosProblems/546.lean:44:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/546.lean:52:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+FormalConjectures/ErdosProblems/614.lean:25:where every set of $k+2$ vertices induces a subgraph with maximum degree at least $k$.
+FormalConjectures/ErdosProblems/614.lean:40:in the subset (i.e., the induced subgraph on that subset has maximum degree $\geq k$). -/
+FormalConjectures/ErdosProblems/614.lean:46:every subset of $k + 2$ vertices induces a subgraph with maximum degree at least $k$.
+FormalConjectures/ErdosProblems/614.lean:56:subset of $k+2$ vertices induces a subgraph with maximum degree at least $k$.
+FormalConjectures/ErdosProblems/128.lean:30:Let G be a graph with n vertices such that every subgraph on ≥ $n/2$
+FormalConjectures/ErdosProblems/1035.lean:25:$> (1 - c) \cdot 2^n$ contains the $n$-dimensional hypercube $Q_n$ as a subgraph?
+FormalConjectures/ErdosProblems/1035.lean:50:as a subgraph. -/
+FormalConjectures/ErdosProblems/1035.lean:51:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/1035.lean:62:a copy of $Q_n$ as a subgraph.
+FormalConjectures/ErdosProblems/1035.lean:71:      ContainsSubgraph G (hypercubeGraph n)) := by
+FormalConjectures/ErdosProblems/59.lean:35:subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/59.lean:36:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/59.lean:40:$n$ vertices that contains no copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/59.lean:44:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/59.lean:46:/-- The number of labeled simple graphs on $n$ vertices that do not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/59.lean:48:  Nat.card {F : SimpleGraph (Fin n) // ¬ContainsSubgraph F H}
+FormalConjectures/ErdosProblems/1008.lean:24:[CFS14b] Conlon, D., Fox, J., and Sudakov, B., on the existence of $C_4$-free subgraphs
+FormalConjectures/ErdosProblems/1008.lean:40:/-- A simple graph is $C_4$-free if it contains no 4-cycle as a subgraph. -/
+FormalConjectures/ErdosProblems/1008.lean:47:contains a $C_4$-free subgraph with at least $c \cdot m^{2/3}$ edges.
+FormalConjectures/ErdosProblems/548.lean:37:/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+FormalConjectures/ErdosProblems/548.lean:39:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/548.lean:56:    ContainsSubgraphCopy T G := by
+FormalConjectures/ErdosProblems/23.lean:62:any bipartite subgraph must omit at least $n^2$ edges.
+FormalConjectures/ErdosProblems/581.lean:22:Determine the maximum number of edges in a bipartite subgraph that every
+FormalConjectures/ErdosProblems/581.lean:29:[Al96] Alon, N., *Bipartite subgraphs*. Combinatorica 16 (1996), 301–311.
+FormalConjectures/ErdosProblems/581.lean:37:The maximum number of edges in a bipartite spanning subgraph of a graph $G$ on
+FormalConjectures/ErdosProblems/581.lean:38:a finite vertex type. A spanning subgraph $H \leq G$ is bipartite iff it admits a
+FormalConjectures/ErdosProblems/581.lean:50:contain a bipartite subgraph with at least $k$ edges. Equivalently, $f(m)$ is
+FormalConjectures/ErdosProblems/147.lean:39:subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/147.lean:40:def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/147.lean:44:vertices that contains no copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/147.lean:48:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/1079.lean:40:    subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/1079.lean:41:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/1079.lean:45:    on $n$ vertices that contains no copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/1079.lean:49:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/740.lean:27:$\mathfrak{m}$. Let $r \geq 1$. Must $G$ contain a subgraph of chromatic number
+FormalConjectures/ErdosProblems/740.lean:35:number $\geq f_r(\mathfrak{m})$ contains a subgraph with chromatic number
+FormalConjectures/ErdosProblems/740.lean:55:$r \geq 1$, $G$ contains a subgraph with chromatic number $\mathfrak{m}$ that has
+FormalConjectures/ErdosProblems/597.lean:39:/-- A graph $G$ contains a complete bipartite subgraph $K_{\kappa,\kappa}$ if there exist
+FormalConjectures/ErdosProblems/1175.lean:25:chromatic number λ contains a triangle-free subgraph with chromatic number κ?
+FormalConjectures/ErdosProblems/1175.lean:50:every graph with chromatic number $\lambda$ contains a triangle-free subgraph
+FormalConjectures/ErdosProblems/1175.lean:55:3-clique, i.e., no triangle). The subgraph relation $H \leq G$ holds when every
+FormalConjectures/ErdosProblems/811.lean:29:of $G$? (That is, a subgraph isomorphic to $G$ where each edge receives a
+FormalConjectures/ErdosProblems/811.lean:36:[ErTu93] Erdős, P. and Tuza, Zs., _Rainbow subgraphs in edge-colorings of complete graphs_, 1993.
+FormalConjectures/ErdosProblems/626.lean:40:[Er62b] Erdős, P., _On circuits and subgraphs of chromatic graphs_, Mathematika, 1962.
+FormalConjectures/ErdosProblems/666.lean:26:sufficiently large, every subgraph of $Q_n$ with $\geq \epsilon \cdot n \cdot 2^{n-1}$
+FormalConjectures/ErdosProblems/666.lean:30:an edge-partition of $Q_n$ into four subgraphs, each containing no $C_6$.
+FormalConjectures/ErdosProblems/666.lean:41:[Ch92] Chung, F., *Subgraphs of a hypercube containing no small even cycles*. J. Graph
+FormalConjectures/ErdosProblems/666.lean:44:[BDT93] Brouwer, A. E., Dejter, I. J., and Thomassen, C., *Highly symmetric subgraphs
+FormalConjectures/ErdosProblems/666.lean:77:Is it true that, for every $\epsilon > 0$, if $n$ is sufficiently large, every subgraph of $Q_n$
+FormalConjectures/ErdosProblems/666.lean:81:an edge-partition of $Q_n$ into four subgraphs, each containing no $C_6$.
+FormalConjectures/ErdosProblems/919.lean:25:well-ordered set with chromatic number $\geq \aleph_0$ there is a subgraph on
+FormalConjectures/ErdosProblems/919.lean:30:every strictly smaller subgraph has chromatic number $\leq \aleph_0$.
+FormalConjectures/ErdosProblems/919.lean:33:$\aleph_2$ such that every smaller subgraph has chromatic number $\leq \aleph_1$.
+FormalConjectures/ErdosProblems/919.lean:46:number $\aleph_2$ such that every subgraph induced on a subset of strictly smaller
+FormalConjectures/ErdosProblems/919.lean:68:number exactly $\aleph_1$ such that every subgraph induced on a subset of strictly
+FormalConjectures/ErdosProblems/714.lean:31:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/714.lean:32:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/714.lean:36:simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/714.lean:39:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/79.lean:28:that all of their proper subgraphs are?
+FormalConjectures/ErdosProblems/79.lean:39:/-- `IsSubgraphOf H G` means $H$ is isomorphic to a subgraph of $G$: there exists an
+FormalConjectures/ErdosProblems/79.lean:41:def IsSubgraphOf {α β : Type*} (H : SimpleGraph α) (G : SimpleGraph β) : Prop :=
+FormalConjectures/ErdosProblems/79.lean:49:  ∀ S : SimpleGraph (Fin n), IsSubgraphOf G S ∨ IsSubgraphOf H Sᶜ
+FormalConjectures/ErdosProblems/79.lean:64:    size linear but all of whose proper subgraphs are? A graph $H$ is a proper subgraph
+FormalConjectures/ErdosProblems/79.lean:65:    of $G$ if $H$ embeds into $G$ (as a subgraph) but $G$ does not embed into $H$.
+FormalConjectures/ErdosProblems/79.lean:75:        IsSubgraphOf H G →
+FormalConjectures/ErdosProblems/79.lean:76:        ¬ IsSubgraphOf G H →
+FormalConjectures/ErdosProblems/800.lean:40:/-- A graph $G$ on $\text{Fin}(n)$ has a subgraph copy in $H$ if there is an injective function
+FormalConjectures/ErdosProblems/800.lean:42:def HasSubgraphCopy {n N : ℕ} (G : SimpleGraph (Fin n)) (H : SimpleGraph (Fin N)) : Prop :=
+FormalConjectures/ErdosProblems/800.lean:46:$\text{Fin}(N)$, either $G$ embeds into $H$ or $G$ embeds into $H^c$ as a subgraph. -/
+FormalConjectures/ErdosProblems/800.lean:48:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)), HasSubgraphCopy G H ∨ HasSubgraphCopy G Hᶜ}
+FormalConjectures/ErdosProblems/1077.lean:34:least $n^{1+α}$ edges, then must $G$ contain a $D$-balanced subgraph on $m > n^{1-α}$ vertices with
+FormalConjectures/ErdosProblems/1077.lean:41:        ∃ (H : Subgraph G),
+FormalConjectures/ErdosProblems/759.lean:49:class induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/739.lean:25:$\mathfrak{n} < \mathfrak{m}$ be realized as the chromatic number of some subgraph?
+FormalConjectures/ErdosProblems/739.lean:58:cardinal $\mathfrak{n} < \mathfrak{m}$, there is a subgraph of $G$ with chromatic
+FormalConjectures/ErdosProblems/1092.lean:21:Let $f_r(n)$ be maximal such that, if a graph $G$ has the property that every subgraph $H$ on $m$
+FormalConjectures/ErdosProblems/1092.lean:44:subgraph $H$ on $m$ vertices has chromatic number $\leq r+1$ once we remove $f_r(m)$ edges
+FormalConjectures/ErdosProblems/1092.lean:50:      (∀ H : Subgraph G,
+FormalConjectures/ErdosProblems/150.lean:45:/-- A set $S$ of vertices is a vertex separator of $G$ if the subgraph induced by
+FormalConjectures/ErdosProblems/1091.lean:71:$G$ with chromatic number $4$, in which every induced subgraph on $\leq r$ vertices has
+FormalConjectures/ErdosProblems/807.lean:43:subgraphs (specified by pairs of disjoint vertex sets) that are pairwise
+FormalConjectures/ErdosProblems/807.lean:58:complete bipartite subgraphs needed to cover all edges of $G$.
+FormalConjectures/ErdosProblems/551.lean:51:/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+FormalConjectures/ErdosProblems/551.lean:53:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/551.lean:62:    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+FormalConjectures/ErdosProblems/571.lean:32:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/571.lean:33:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/571.lean:37:simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/571.lean:40:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/108.lean:33:contains a subgraph of girth ≥ r and chromatic number ≥ k?
+FormalConjectures/ErdosProblems/108.lean:40:    ∃ (H : G.Subgraph), (SimpleGraph.girth H.coe ≥ r) ∧
+FormalConjectures/ErdosProblems/595.lean:31:[Fo70] Folkman, J., _Graphs with monochromatic complete subgraphs in every edge
+FormalConjectures/ErdosProblems/595.lean:35:forbidden complete subgraphs_, J. Combinatorial Theory Ser. B 20 (1976), 243-249.
+FormalConjectures/ErdosProblems/62.lean:25:subgraph with infinite chromatic number?
+FormalConjectures/ErdosProblems/62.lean:44:/-- $G$ contains $H$ as a subgraph via an injective adjacency-preserving map. -/
+FormalConjectures/ErdosProblems/62.lean:45:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/62.lean:52:with infinite chromatic number ($\chi \geq \aleph_0$) which is a subgraph of both $G_1$ and $G_2$?
+FormalConjectures/ErdosProblems/62.lean:55:finding such a common subgraph in any finite collection of graphs with
+FormalConjectures/ErdosProblems/62.lean:65:      ContainsSubgraph G₁ H ∧
+FormalConjectures/ErdosProblems/62.lean:66:      ContainsSubgraph G₂ H := by
+FormalConjectures/ErdosProblems/62.lean:73:with chromatic number at least $4$ which is a subgraph of both $G_1$ and $G_2$?
+FormalConjectures/ErdosProblems/62.lean:78:contains as subgraphs all graphs with chromatic number $4$ with sufficiently
+FormalConjectures/ErdosProblems/62.lean:88:      ContainsSubgraph G₁ H ∧
+FormalConjectures/ErdosProblems/62.lean:89:      ContainsSubgraph G₂ H := by
+FormalConjectures/ErdosProblems/547.lean:38:/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+FormalConjectures/ErdosProblems/547.lean:40:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/547.lean:48:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+FormalConjectures/ErdosProblems/738.lean:41:(contains no $K_3$), must $G$ contain every finite tree as an induced subgraph?
+FormalConjectures/ErdosProblems/61.lean:32:For a graph $H$, consider all graphs $G$ that do not contain $H$ as an induced subgraph.
+FormalConjectures/ErdosProblems/127.lean:24:Let $f(m)$ be the excess of the maximum bipartite subgraph size over the Edwards bound
+FormalConjectures/ErdosProblems/127.lean:27:[Ed73] Edwards, C.S., _Some extremal properties of bipartite subgraphs_,
+FormalConjectures/ErdosProblems/127.lean:30:[Al96] Alon, N., _Bipartite subgraphs_, Combinatorica 16 (1996), 301–311.
+FormalConjectures/ErdosProblems/127.lean:50:The maximum bipartite subgraph size of $G$: the maximum over all vertex bipartitions
+FormalConjectures/ErdosProblems/127.lean:52:edges in any bipartite subgraph of $G$ (the max-cut).
+FormalConjectures/ErdosProblems/127.lean:54:noncomputable def maxBipartiteSubgraphSize {V : Type*} [DecidableEq V] [Fintype V]
+FormalConjectures/ErdosProblems/127.lean:59:The Edwards lower bound: every graph with $m$ edges has a bipartite subgraph of size at
+FormalConjectures/ErdosProblems/127.lean:67:bipartite subgraph with at least $\operatorname{edwardsLB}(m) + r$ edges. Equivalently,
+FormalConjectures/ErdosProblems/127.lean:69:$$\operatorname{maxBipartiteSubgraphSize}(G) - \operatorname{edwardsLB}(m).$$
+FormalConjectures/ErdosProblems/127.lean:77:    G.edgeFinset.card = m ∧ r = (maxBipartiteSubgraphSize G : ℝ) - edwardsLB m}
+FormalConjectures/ErdosProblems/127.lean:81:Let $f(m)$ be maximal such that every graph with $m$ edges contains a bipartite subgraph with
+FormalConjectures/ErdosProblems/815.lean:25:with $n$ vertices and $2n - 2$ edges such that every proper induced subgraph has
+FormalConjectures/ErdosProblems/815.lean:42:    proper induced subgraph has a vertex of degree at most $2$. -/
+FormalConjectures/ErdosProblems/1068.lean:30:Does every graph with chromatic number $\aleph_1$ contain a countable subgraph which is
+FormalConjectures/ErdosProblems/585.lean:38:3-regular subgraphs_ (1995).
+FormalConjectures/ErdosProblems/713.lean:33:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/713.lean:34:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/713.lean:38:simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/713.lean:41:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/761.lean:63:subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/761.lean:92:Must a graph with large cochromatic number contain a subgraph with large
+FormalConjectures/ErdosProblems/761.lean:94:$G$ contains an induced subgraph with $\delta \geq n$.
+FormalConjectures/ErdosProblems/86.lean:25:and $n \cdot 2^{n-1}$ edges). Is it true that every subgraph of $Q_n$ with
+FormalConjectures/ErdosProblems/86.lean:28:Equivalently, let $f(n)$ be the maximum number of edges in a subgraph of $Q_n$
+FormalConjectures/ErdosProblems/86.lean:70:Is it true that for every $\varepsilon > 0$, if $n$ is sufficiently large, every subgraph of
+FormalConjectures/ErdosProblems/766.lean:38:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/766.lean:39:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/766.lean:43:simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/766.lean:46:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/560.lean:47:subgraphs*, Journal of Combinatorial Theory, Series B, 1978.
+FormalConjectures/ErdosProblems/1098.lean:23:contains no infinite complete subgraph, then there is a finite bound on the size of its complete
+FormalConjectures/ErdosProblems/1098.lean:24:subgraphs. Proved by Neumann, who showed this holds iff the centre of $G$ has finite index.
+FormalConjectures/ErdosProblems/1098.lean:47:infinite complete subgraph (i.e., no infinite set of pairwise non-commuting
+FormalConjectures/ErdosProblems/1098.lean:48:elements), then there is a finite bound on the size of complete subgraphs of $\Gamma$.
+FormalConjectures/ErdosProblems/1098.lean:50:Neumann proved that $\Gamma$ contains no infinite complete subgraph if and only if
+FormalConjectures/ErdosProblems/1098.lean:52:contains no complete subgraph on more than $n$ vertices.
+FormalConjectures/ErdosProblems/576.lean:50:as a subgraph. -/
+FormalConjectures/ErdosProblems/576.lean:51:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/576.lean:55:on $n$ vertices that contains no copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/576.lean:59:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/575.lean:36:subgraph. -/
+FormalConjectures/ErdosProblems/575.lean:37:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/575.lean:41:$n$ vertices that contains no copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/575.lean:45:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/575.lean:49:as a subgraph. -/
+FormalConjectures/ErdosProblems/575.lean:55:    Fintype.card V = n ∧ (∀ i : ι, ¬ContainsSubgraph F (H i)) ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/1021.lean:61:/-- A graph $G$ contains $H$ as a subgraph if there is an injective vertex map
+FormalConjectures/ErdosProblems/1021.lean:63:def containsSubgraph {V W : Type*} (G : SimpleGraph V)
+FormalConjectures/ErdosProblems/1021.lean:71:graph not containing the 1-subdivision of $K_k$ as a subgraph has at most
+FormalConjectures/ErdosProblems/1021.lean:82:    ¬containsSubgraph G (subdivisionKComplete k) →
+FormalConjectures/ErdosProblems/426.lean:22:Let $f(n)$ be the maximum number of unique subgraphs in a graph on $n$ vertices.
+FormalConjectures/ErdosProblems/426.lean:39:Two subgraphs of a graph $G$ are isomorphic if there exists a graph isomorphism
+FormalConjectures/ErdosProblems/426.lean:43:def SubgraphIsomorphic {V : Type*} {G : SimpleGraph V}
+FormalConjectures/ErdosProblems/426.lean:44:    (H₁ H₂ : G.Subgraph) : Prop :=
+FormalConjectures/ErdosProblems/426.lean:48:A subgraph $H$ of $G$ is a "unique subgraph" if it is the only subgraph of $G$
+FormalConjectures/ErdosProblems/426.lean:49:in its isomorphism class: every subgraph $H'$ of $G$ isomorphic to $H$ must equal $H$.
+FormalConjectures/ErdosProblems/426.lean:51:def IsUniqueSubgraph {V : Type*} {G : SimpleGraph V}
+FormalConjectures/ErdosProblems/426.lean:52:    (H : G.Subgraph) : Prop :=
+FormalConjectures/ErdosProblems/426.lean:53:  ∀ H' : G.Subgraph, SubgraphIsomorphic H H' → H' = H
+FormalConjectures/ErdosProblems/426.lean:56:The number of unique subgraphs of a graph $G$ on $n$ vertices.
+FormalConjectures/ErdosProblems/426.lean:58:noncomputable def numUniqueSubgraphs {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/426.lean:59:  Set.ncard {H : G.Subgraph | IsUniqueSubgraph H}
+FormalConjectures/ErdosProblems/426.lean:62:$f(n)$ is the maximum number of unique subgraphs over all graphs on $n$ vertices.
+FormalConjectures/ErdosProblems/426.lean:64:noncomputable def maxUniqueSubgraphs (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/426.lean:65:  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n), numUniqueSubgraphs G = k}
+FormalConjectures/ErdosProblems/426.lean:70:We say $H$ is a unique subgraph of $G$ if there is exactly one way to find $H$ as a
+FormalConjectures/ErdosProblems/426.lean:71:subgraph (not necessarily induced) of $G$. Let $f(n)$ be the maximum number of
+FormalConjectures/ErdosProblems/426.lean:72:distinct unique subgraphs in a graph on $n$ vertices.
+FormalConjectures/ErdosProblems/426.lean:75:$\gg 2^{\binom{n}{2} - O(n^{3/2+o(1)})}$ many unique subgraphs. This was improved by
+FormalConjectures/ErdosProblems/426.lean:77:unique subgraphs.
+FormalConjectures/ErdosProblems/426.lean:94:        (maxUniqueSubgraphs n : ℝ) /
+FormalConjectures/ErdosProblems/1036.lean:42:$c \cdot \log n$, then $G$ has at least $2^{\delta n}$ pairwise non-isomorphic induced subgraphs.
+FormalConjectures/ErdosProblems/82.lean:32:A predicate that holds if $S$ is a regular induced subgraph of $G$
+FormalConjectures/ErdosProblems/82.lean:34:def IsRegularInduced {G : SimpleGraph V} (S : Subgraph G) : Prop :=
+FormalConjectures/ErdosProblems/82.lean:39:contains a regular induced subgraph on at least $F(n)$ vertices.
+FormalConjectures/ErdosProblems/82.lean:42:  sSup {k | ∀ (G : SimpleGraph (Fin n)), ∃ S : Subgraph G,
+FormalConjectures/ErdosProblems/82.lean:57:[AKS07] Alon, N. and Krivelevich, M. and Sudakov, B., Large nearly regular induced subgraphs. arXiv:0710.2106 (2007).
+FormalConjectures/ErdosProblems/837.lean:28:then there exist subgraphs $H_n \subseteq G_n$ such that $|H_n| \to \infty$ and
+FormalConjectures/ErdosProblems/837.lean:58:def UniformHypergraph.IsSubgraphVia {m n k : ℕ} (H : UniformHypergraph m k)
+FormalConjectures/ErdosProblems/837.lean:65:        contains growing subgraphs with $\liminf$ density $> \beta$;
+FormalConjectures/ErdosProblems/837.lean:70:      -- (a) Density jump: liminf density > α implies dense growing subgraphs
+FormalConjectures/ErdosProblems/837.lean:75:        -- Conclusion: ∃ subgraphs Hᵢ with |Hᵢ| → ∞ and liminf density > β
+FormalConjectures/ErdosProblems/837.lean:79:            (H i).IsSubgraphVia (G i) f) ∧
+FormalConjectures/ErdosProblems/837.lean:89:            (H i).IsSubgraphVia (G i) f) ∧
+FormalConjectures/ErdosProblems/73.lean:24:If every induced subgraph of $G$ on $n$ vertices has an independent set of size
+FormalConjectures/ErdosProblems/73.lean:42:Let $k \geq 0$. If $G$ is a finite graph such that every induced subgraph $H$ on $n$
+FormalConjectures/ErdosProblems/1075.lean:24:$(1+\varepsilon)(n/r)^r$ edges contains a subgraph on $m$ vertices with at least $c_r m^r$ edges,
+FormalConjectures/ErdosProblems/1075.lean:40:def UniformHypergraph.inducedSubgraph {n r : ℕ}
+FormalConjectures/ErdosProblems/1075.lean:54:for every $M$, eventually (for large $n$) we can find a subgraph on $\geq M$ vertices.
+FormalConjectures/ErdosProblems/1075.lean:66:      ((H.inducedSubgraph S).card : ℝ) ≥ c_r * (S.card : ℝ) ^ r := by
+FormalConjectures/ErdosProblems/181.lean:51:induced) copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/926.lean:46:subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/926.lean:47:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/926.lean:51:vertices that contains no copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/926.lean:55:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/1067.lean:30:- [Th17] Thomassen, Carsten, Infinitely connected subgraphs in graphs of uncountable chromatic
+FormalConjectures/ErdosProblems/1067.lean:47:Does every graph with chromatic number $\aleph_1$ contain an infinitely connected subgraph with
+FormalConjectures/ErdosProblems/1067.lean:60:      ∃ (H : G.Subgraph), H.coe.chromaticCardinal = ℵ_ 1 ∧ InfinitelyConnected H.coe := by
+FormalConjectures/ErdosProblems/1067.lean:70:      ∃ (H : G.Subgraph), H.coe.chromaticCardinal = ℵ_ 1 ∧ InfinitelyEdgeConnected H.coe := by
+FormalConjectures/ErdosProblems/1018.lean:25:least ⌈n^{1+ε}⌉ edges contains an induced subgraph on at most C vertices which is non-planar.
+FormalConjectures/ErdosProblems/1018.lean:45:least $\lceil n^{1+\varepsilon} \rceil$ edges contains an induced subgraph on at most $C$ vertices
+FormalConjectures/ErdosProblems/640.lean:38:at least $f(k)$ contains an odd cycle whose vertices span an induced subgraph
+FormalConjectures/ErdosProblems/762.lean:46:    subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/736.lean:26:such that every finite subgraph of $G_m$ is a subgraph of $G$?
+FormalConjectures/ErdosProblems/736.lean:31:[KoSh05] Komjáth, P. and Shelah, S., _Finite subgraphs of uncountably chromatic
+FormalConjectures/ErdosProblems/736.lean:57:subgraph of $G_m$ is also a subgraph of $G$.
+FormalConjectures/ErdosProblems/1037.lean:26:contain a trivial (empty or complete) subgraph of size 'much larger' than
+FormalConjectures/ErdosProblems/1037.lean:32:largest trivial subgraph has size $O(\log n)$.
+FormalConjectures/ErdosProblems/1037.lean:47:contain a trivial (empty or complete) subgraph of size much larger than
+FormalConjectures/ErdosProblems/1037.lean:51:largest trivial subgraph has size $O(\log n)$.
+FormalConjectures/ErdosProblems/801.lean:36:/-- The number of edges in the subgraph of $G$ induced by a subset $S$ of vertices,
+FormalConjectures/ErdosProblems/584.lean:47:For every graph $G$ on $n$ vertices with $\delta n^2$ edges, there exists a subgraph $H_1$
+FormalConjectures/ErdosProblems/584.lean:72:For every graph $G$ on $n$ vertices with $\delta n^2$ edges, there exists a subgraph $H_2$
+FormalConjectures/ErdosProblems/566.lean:33:Let $G$ be such that any subgraph on $k$ vertices has at most $2k-3$ edges.
+FormalConjectures/ErdosProblems/566.lean:36:In other words: if $G$ is sparse (every induced subgraph on $k$ vertices has $≤ 2k-3$ edges),
+FormalConjectures/ErdosProblems/566.lean:42:      -- G is sparse: every induced subgraph on k ≥ 2 vertices has ≤ 2k - 3 edges
+FormalConjectures/ErdosProblems/814.lean:26:must contain an induced subgraph on at most $(1-c_k)n$ vertices with minimum degree at least $k$?
+FormalConjectures/ErdosProblems/814.lean:29:conjecture of Erdős, Faudree, Rousseau, and Schelp [EFRS90], who proved that such a subgraph
+FormalConjectures/ErdosProblems/159.lean:41:    a subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/159.lean:42:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/159.lean:53:    graph $G$ on $N$ vertices either contains a copy of $C_4$ as a subgraph, or the
+FormalConjectures/ErdosProblems/159.lean:58:    ContainsSubgraph G C4 ∨ ContainsSubgraph Gᶜ (⊤ : SimpleGraph (Fin n))}
+FormalConjectures/ErdosProblems/552.lean:36:/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+FormalConjectures/ErdosProblems/552.lean:38:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/552.lean:47:    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+FormalConjectures/ErdosProblems/804.lean:25:subgraph on $m$ vertices has an independent set of size at least $\log n$ must
+FormalConjectures/ErdosProblems/804.lean:53:    in which every induced subgraph on $m$ vertices has an independent set of
+FormalConjectures/ErdosProblems/550.lean:44:/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+FormalConjectures/ErdosProblems/550.lean:46:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/550.lean:55:    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+FormalConjectures/ErdosProblems/74.lean:37:For a given subgraph `A`, this is the set of all numbers `k` such that `A` can be made
+FormalConjectures/ErdosProblems/74.lean:40:def SimpleGraph.edgeDistancesToBipartite {G : SimpleGraph V} (A : G.Subgraph) : Set ℕ :=
+FormalConjectures/ErdosProblems/74.lean:48:theorem SimpleGraph.edgeDistancesToBipartite_nonempty {G : SimpleGraph V} (A : G.Subgraph) :
+FormalConjectures/ErdosProblems/74.lean:56:The minimum number of edges that must be deleted from a subgraph `A` to make it bipartite.
+FormalConjectures/ErdosProblems/74.lean:58:noncomputable def SimpleGraph.minEdgeDistToBipartite {G : SimpleGraph V} (A : G.Subgraph) : ℕ :=
+FormalConjectures/ErdosProblems/74.lean:63:induced subgraphs `A` of `G` on `n` vertices.
+FormalConjectures/ErdosProblems/74.lean:65:def SimpleGraph.subgraphEdgeDistsToBipartite (G : SimpleGraph V) (n : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/74.lean:67:    (A : Subgraph G) (_ : A.verts.ncard = n) (_ : A.verts.Finite) }
+FormalConjectures/ErdosProblems/74.lean:70:The set of minimum edge distances to bipartite for subgraphs of size `n` is bounded above.
+FormalConjectures/ErdosProblems/74.lean:75:theorem SimpleGraph.subgraphEdgeDistsToBipartite_bddAbove (G : SimpleGraph V) (n : ℕ) :
+FormalConjectures/ErdosProblems/74.lean:76:    BddAbove (SimpleGraph.subgraphEdgeDistsToBipartite G n) := by
+FormalConjectures/ErdosProblems/74.lean:78:  simp only [upperBounds, Set.mem_setOf_eq, SimpleGraph.subgraphEdgeDistsToBipartite,
+FormalConjectures/ErdosProblems/74.lean:88:    · rw [← Set.ncard_coe_finset A.coe.edgeFinset, coe_edgeFinset A.coe, ← Subgraph.image_coe_edgeSet_coe A]
+FormalConjectures/ErdosProblems/74.lean:94:  simp only [Subgraph.deleteEdges_verts, exists_prop, Set.mem_setOf_eq]
+FormalConjectures/ErdosProblems/74.lean:102:such that any subgraph of $G$ on $n$ vertices can be made bipartite by deleting
+FormalConjectures/ErdosProblems/74.lean:106:over all $n$-vertex subgraphs. This means there exists at least one $n$-vertex
+FormalConjectures/ErdosProblems/74.lean:107:subgraph that requires exactly this many edge deletions.
+FormalConjectures/ErdosProblems/74.lean:113:noncomputable def SimpleGraph.maxSubgraphEdgeDistToBipartite
+FormalConjectures/ErdosProblems/74.lean:114:    (G : SimpleGraph V) (n : ℕ) : ℕ := sSup <| SimpleGraph.subgraphEdgeDistsToBipartite G n
+FormalConjectures/ErdosProblems/74.lean:118:Is there a graph of infinite chromatic number such that every finite subgraph on $n$
+FormalConjectures/ErdosProblems/74.lean:124:    ∀ n, G.maxSubgraphEdgeDistToBipartite n ≤ f n) := by
+FormalConjectures/ErdosProblems/74.lean:128:Is there a graph of infinite chromatic number such that every finite subgraph on $n$
+FormalConjectures/ErdosProblems/74.lean:134:    ∀ n, G.maxSubgraphEdgeDistToBipartite n ≤ (n : ℝ).sqrt := by
+FormalConjectures/ErdosProblems/797.lean:38:    the subgraph induced by vertices of those two colors is acyclic (a forest). -/
+FormalConjectures/ErdosProblems/1111.lean:29:subgraphs in a graph*, Combinatorica, 1985.
+FormalConjectures/ErdosProblems/1111.lean:32:induced subgraphs*, J. Combin. Theory Ser. B, 1980.
+FormalConjectures/ErdosProblems/163.lean:25:that every subgraph of $H$ contains a vertex of degree at most $d$ (i.e., $H$ is
+FormalConjectures/ErdosProblems/163.lean:44:    induced) copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/578.lean:29:[Ri00] Riordan, O., *Spanning subgraphs of random graphs*. Combinatorics, Probability
+FormalConjectures/ErdosProblems/111.lean:25:subgraph can be made bipartite by deleting $O(n^{1+\varepsilon})$ edges for every
+FormalConjectures/ErdosProblems/111.lean:60:induced subgraphs $H$ of $G$ of the minimum number of edges that must be deleted
+FormalConjectures/ErdosProblems/111.lean:63:That is, $h(G, n)$ is the smallest $k$ such that every induced subgraph of $G$ on
+FormalConjectures/ErdosProblems/918.lean:35:subgraph on $\aleph_1$ vertices has chromatic number $\leq\aleph_0$? -/
+FormalConjectures/ErdosProblems/918.lean:36:-- Formalisation note: source material [ErHa68b] uses only induced subgraphs
+FormalConjectures/ErdosProblems/918.lean:44:every subgraph on $\aleph_\omega$ vertices has chromatic number $\leq\aleph_0$? -/
+FormalConjectures/ErdosProblems/918.lean:53:subgraph on $\aleph_1$ vertices has chromatic number $\leq\aleph_0$? -/
+FormalConjectures/ErdosProblems/918.lean:54:-- Formalisation note: It is not clear whether this question for general subgraphs is open or not
+FormalConjectures/ErdosProblems/918.lean:56:theorem erdos_918.variants.all_subgraphs.parts.i :
+FormalConjectures/ErdosProblems/918.lean:58:      ∀ (H : G.Subgraph) (_ : #H.verts = ℵ₁), H.coe.chromaticCardinal ≤ ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:62:every subgraph on $\aleph_\omega$ vertices has chromatic number $\leq\aleph_0$? -/
+FormalConjectures/ErdosProblems/918.lean:64:theorem erdos_918.variants.all_subgraphs.parts.ii :
+FormalConjectures/ErdosProblems/918.lean:67:      ∀ (H : G.Subgraph) (_ : #H.verts = ℵ_ ω), H.coe.chromaticCardinal ≤ ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:71:there is a graph with chromatic number $\aleph_1$ and $\aleph_k$ vertices where each subgraph on
+FormalConjectures/ErdosProblems/918.lean:84:This is the first question with induced subgraphs. -/
+FormalConjectures/ErdosProblems/918.lean:94:This is the first question with all subgraphs. -/
+FormalConjectures/ErdosProblems/918.lean:96:theorem erdos_918.variants.eq_aleph_0_all_subgraphs.parts.i :
+FormalConjectures/ErdosProblems/918.lean:98:      ∀ (H : G.Subgraph) (_ : #H.verts = ℵ₁), H.coe.chromaticCardinal = ℵ₀ := by
+FormalConjectures/ErdosProblems/918.lean:104:This is the second question with induced subgraphs. -/
+FormalConjectures/ErdosProblems/918.lean:114:This is the second question with all subgraphs. -/
+FormalConjectures/ErdosProblems/918.lean:116:theorem erdos_918.variants.eq_aleph_0_all_subgraphs.parts.ii (ω : Ordinal) :
+FormalConjectures/ErdosProblems/918.lean:118:      ∀ (H : G.Subgraph) (_ : #H.verts = ℵ_ ω), H.coe.chromaticCardinal = ℵ₀ := by
+FormalConjectures/ErdosProblems/58.lean:44:clique subgraph.
+FormalConjectures/ErdosProblems/1019.lean:23:edges contain a saturated (maximal) planar subgraph on more than 3 vertices?
+FormalConjectures/ErdosProblems/1019.lean:43:$\lfloor n^2/4 \rfloor + \lfloor (n+1)/2 \rfloor$ edges contains a maximal planar subgraph
+FormalConjectures/ErdosProblems/594.lean:66:as a subgraph.
+FormalConjectures/ErdosProblems/715.lean:24:Does every regular graph of degree $4$ contain a regular subgraph of degree $3$?
+FormalConjectures/ErdosProblems/715.lean:26:subgraph of degree $3$?
+FormalConjectures/ErdosProblems/715.lean:29:proved that every $4$-regular graph plus an edge contains a $3$-regular subgraph,
+FormalConjectures/ErdosProblems/715.lean:31:subgraph.
+FormalConjectures/ErdosProblems/715.lean:39:[Ta82] Tashkinov, V. A., _Regular subgraphs of regular graphs_ (1982).
+FormalConjectures/ErdosProblems/715.lean:41:[AFK84] Alon, N., Friedland, S., and Kalai, G., _Regular subgraphs of almost
+FormalConjectures/ErdosProblems/715.lean:52:Every $4$-regular simple graph contains a $3$-regular subgraph.
+FormalConjectures/ErdosProblems/715.lean:54:A subgraph $H$ of $G$ is $3$-regular if every vertex of $H$ has exactly $3$ neighbours
+FormalConjectures/ErdosProblems/715.lean:55:in $H$. We express this using Mathlib's `SimpleGraph.Subgraph`: there exists a
+FormalConjectures/ErdosProblems/715.lean:56:subgraph $H$ of $G$ such that `H.coe` (the coercion to a `SimpleGraph` on `H.verts`)
+FormalConjectures/ErdosProblems/715.lean:66:      ∃ H : G.Subgraph,
+FormalConjectures/ErdosProblems/715.lean:74:Every $r$-regular simple graph with $r \geq 5$ contains a $3$-regular subgraph.
+FormalConjectures/ErdosProblems/715.lean:84:      ∃ H : G.Subgraph,
+FormalConjectures/ErdosProblems/628.lean:38:subgraphs of $G$ with chromatic numbers $\geq a$ and $\geq b$ respectively.
+FormalConjectures/ErdosProblems/60.lean:46:/-- $G$ contains $H$ as a subgraph (via an injective homomorphism). -/
+FormalConjectures/ErdosProblems/60.lean:47:def ContainsSubgraph60 {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/60.lean:53:    ¬ContainsSubgraph60 G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/60.lean:56:preserving $C_4$ adjacency. Each unordered $C_4$ subgraph yields $8$ labeled copies
+FormalConjectures/ErdosProblems/916.lean:28:contains a subgraph homeomorphic to $K_4$.
+FormalConjectures/ErdosProblems/19.lean:45:- each clique is a complete subgraph of $G$ (an $n$-clique),
+FormalConjectures/ErdosProblems/167.lean:57:has size at most $k$. The conclusion states that there exists a subgraph $H \leq G$
+FormalConjectures/ErdosProblems/805.lean:25:in which every induced subgraph on $g(n)$ vertices contains a clique of size $\geq \log n$
+FormalConjectures/ErdosProblems/805.lean:34:[ABS21] Alon, N., Bucić, M. and Sudakov, B., _Induced subgraphs of Ramsey graphs_.
+FormalConjectures/ErdosProblems/805.lean:52:    the property that every induced subgraph on $m$ vertices contains both a clique and an
+FormalConjectures/ErdosProblems/805.lean:61:induced subgraph on $\lfloor (\log n)^3 \rfloor$ vertices contains both a clique and an
+FormalConjectures/ErdosProblems/809.lean:26:so that every subgraph isomorphic to $C_{2k+1}$ has no colour repeating on the edges.
+FormalConjectures/ErdosProblems/549.lean:45:/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+FormalConjectures/ErdosProblems/549.lean:47:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/549.lean:55:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+FormalConjectures/ErdosProblems/718.lean:34:on topological complete subgraphs_. European J. Combin. (1998), 19, 883–887.
+FormalConjectures/ErdosProblems/180.lean:33:subgraph. -/
+FormalConjectures/ErdosProblems/180.lean:34:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/180.lean:38:on $n$ vertices that contains no copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/180.lean:42:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/180.lean:46:$\mathcal{F}$ as a subgraph. The family is given as a function from a finite index type
+FormalConjectures/ErdosProblems/180.lean:53:    Fintype.card V = n ∧ (∀ i : ι, ¬ContainsSubgraph F (H i)) ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/1031.lean:40:$\geq 10 \log n$, then $G$ contains an induced regular subgraph on $\geq c \log n$ vertices
+FormalConjectures/ErdosProblems/1031.lean:44:that for any $c > 0$, if $G$ contains no trivial subgraph on $\geq c \log n$ vertices
+FormalConjectures/ErdosProblems/1031.lean:45:then $G$ contains all graphs with $O_c(\log n)$ vertices as induced subgraphs.
+FormalConjectures/ErdosProblems/620.lean:25:triangle-free induced subgraph must $G$ contain?
+FormalConjectures/ErdosProblems/620.lean:28:triangle-free induced subgraph with at least $m$ vertices. It is known that
+FormalConjectures/ErdosProblems/620.lean:57:contains a triangle-free induced subgraph of size at least $n^{1/2 - \varepsilon}$.
+FormalConjectures/ErdosProblems/620.lean:76:vertices such that every triangle-free induced subgraph has at most $n^{1/2 + \varepsilon}$
+FormalConjectures/ErdosProblems/545.lean:40:/-- A graph $H$ contains a copy of graph $G$ (as a subgraph) if there is an injective
+FormalConjectures/ErdosProblems/545.lean:42:def ContainsSubgraphCopy {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/545.lean:50:    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+FormalConjectures/ErdosProblems/794.lean:23:contain either a subgraph on 4 vertices with 3 edges or a subgraph on 5 vertices with 7 edges?
+FormalConjectures/ErdosProblems/794.lean:40:edges must contain either a subgraph on 4 vertices with 3 edges or a subgraph on
+FormalConjectures/ErdosProblems/927.lean:25:subgraphs) that can occur in a graph on $n$ vertices. Is it true that
+FormalConjectures/ErdosProblems/927.lean:42:/-- A set of vertices forms a clique (complete subgraph) in $G$ if every pair
+FormalConjectures/ErdosProblems/637.lean:25:set on $\gg \log n$ vertices then $G$ contains an induced subgraph on $\gg n$ vertices
+FormalConjectures/ErdosProblems/637.lean:33:an induced subgraph which contains $\gg n^{2/3}$ distinct degrees (with no
+FormalConjectures/ErdosProblems/637.lean:39:[BuSu07] Bukh, B. and Sudakov, B., _Induced subgraphs of Ramsey graphs with
+FormalConjectures/ErdosProblems/637.lean:43:degrees in induced subgraphs_, 2020.
+FormalConjectures/ErdosProblems/637.lean:50:/-- The degree of vertex $v$ in the induced subgraph $G[S]$. -/
+FormalConjectures/ErdosProblems/637.lean:56:    subgraph $G[S]$. -/
+FormalConjectures/ErdosProblems/637.lean:68:subgraph $G[S]$ has at least $c_2 \cdot n^{1/2}$ distinct degrees.
+FormalConjectures/ErdosProblems/883.lean:28:a complete $(1,\ell,\ell)$ tripartite subgraph for every fixed $\ell$ when $n$ is sufficiently
+FormalConjectures/ErdosProblems/883.lean:85:A graph $G$ contains a complete $(1,\ell,\ell)$ tripartite subgraph: there exist a vertex $v$
+FormalConjectures/ErdosProblems/883.lean:99:then $G(A)$ must contain a complete $(1,\ell,\ell)$ tripartite subgraph?
+FormalConjectures/ErdosProblems/744.lean:41:$k$-colorable but not $(k-1)$-colorable) and every proper subgraph (strictly
+FormalConjectures/ErdosProblems/923.lean:23:$\geq f(k)$ then $G$ contains a triangle-free subgraph with chromatic number $\geq k$?
+FormalConjectures/ErdosProblems/923.lean:27:[Ro77] Rödl, V., *On the chromatic number of subgraphs of a given graph*, Proc. Amer.
+FormalConjectures/ErdosProblems/923.lean:37:$\geq f(k)$ then $G$ contains a triangle-free subgraph with chromatic number $\geq k$?
+FormalConjectures/ErdosProblems/923.lean:49:            ∃ H : G.Subgraph,
+FormalConjectures/ErdosProblems/88.lean:26:subgraph with exactly $m$ edges for every $m \leq \delta n^2$.
+FormalConjectures/ErdosProblems/88.lean:37:/-- Count edges in the induced subgraph on vertex set $S$:
+FormalConjectures/ErdosProblems/88.lean:47:contains an induced subgraph with exactly $m$ edges for all $m \leq \delta n^2$.
+FormalConjectures/ErdosProblems/582.lean:31:[Fo70] Folkman, J., *Graphs with monochromatic complete subgraphs in every edge coloring*.
+FormalConjectures/ErdosProblems/582.lean:42:is $K_4$-free, such that for any subgraph $H \leq G$ (representing one color class
+FormalConjectures/ErdosProblems/582.lean:43:in a $2$-coloring of the edges), either $H$ or the complementary subgraph $G \setminus H$
+FormalConjectures/ErdosProblems/922.lean:24:Let $k \geq 0$. Let $G$ be a graph such that every subgraph $H$ contains an independent
+FormalConjectures/ErdosProblems/922.lean:39:If every induced subgraph of $G$ on $n$ vertices has an independent set of
+FormalConjectures/ErdosProblems/803.lean:29:vertices and $\geq n \log n$ edges such that every $D$-balanced subgraph on $m$
+FormalConjectures/ErdosProblems/803.lean:53:$D$-balanced subgraph on $m$ vertices with at least $C \cdot m \cdot \log(m)$
+FormalConjectures/ErdosProblems/580.lean:23:contain every tree on at most $n/2$ vertices as a subgraph?
+FormalConjectures/ErdosProblems/580.lean:39:copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/580.lean:40:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/580.lean:57:        k ≤ n / 2 → T.IsTree → ContainsSubgraph G T := by
+FormalConjectures/ErdosProblems/1017.lean:71:$\lfloor n^2/4 \rfloor$ edge-disjoint complete subgraphs.
+FormalConjectures/ErdosProblems/572.lean:28:an $n$-vertex graph that does not contain the even cycle $C_{2k}$ as a subgraph.
+FormalConjectures/ErdosProblems/572.lean:63:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/572.lean:64:def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/572.lean:68:simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/572.lean:71:    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+FormalConjectures/ErdosProblems/130.lean:84:no infinite complete subgraph.
+FormalConjectures/ErdosProblems/925.lean:49:there is a subgraph $H \leq G$ such that both $H$ and $G \setminus H$ are triangle-free. -/
+FormalConjectures/ErdosProblems/113.lean:38:subgraph isomorphic to $H$. -/
+FormalConjectures/ErdosProblems/113.lean:39:def ContainsSubgraph {V U : Type*} (F : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/113.lean:43:on $n$ vertices that contains no copy of $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/113.lean:47:    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+FormalConjectures/ErdosProblems/113.lean:51:induced subgraph with minimum degree at least 3. -/
+FormalConjectures/ErdosProblems/113.lean:62:if and only if $G$ is 2-degenerate (i.e., $G$ has no induced subgraph with minimum
+FormalConjectures/ErdosProblems/775.lean:25:$n - O(1)$ different sizes of cliques (maximal complete subgraphs)?
+FormalConjectures/ErdosProblems/110.lean:25:large $n$, a subgraph with chromatic number $n$ on at most $F(n)$ vertices? Disproved:
+FormalConjectures/ErdosProblems/110.lean:52:number $\aleph_1$ has, for all sufficiently large $n$, a subgraph with chromatic number $n$ on at
+FormalConjectures/ErdosProblems/110.lean:66:          ∃ H : G.Subgraph,

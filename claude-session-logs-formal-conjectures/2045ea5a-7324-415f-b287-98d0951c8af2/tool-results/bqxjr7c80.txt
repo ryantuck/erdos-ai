@@ -1,0 +1,342 @@
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Group/Action/Pointwise/Set/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/CoveringSystem.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Subgroup.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Pointwise/Set.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Pointwise/Finset.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Action/Pointwise/Set.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Action/Pointwise/Finset.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Submonoid/Pointwise.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Subring/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Subring/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Subring/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Subsemiring/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Subsemiring/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Ring/Subsemiring/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Algebra/Tower.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Algebra/Operations.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Algebra/Operations.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Algebra/Spectrum/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Algebra/Subalgebra/Tower.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Algebra/Subalgebra/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Scalar.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Scalar.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Lattice.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Lattice.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/BigOperators.lean:open Pointwise Function
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Small.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/ListOfFn.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Set/Finite.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Scalar.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Scalar.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Scalar.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Scalar.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Scalar.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/BigOperators.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Interval.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Pointwise/Finset/Density.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Action/Pointwise/Set/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Action/Pointwise/Set/Finite.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Action/Pointwise/Finset.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Submonoid/Units.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Translate.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Group/Subgroup/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Pointwise/Stabilizer.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/MonoidAlgebra/Support.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/MvPolynomial/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/MvPolynomial/Eval.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Order/Group/Pointwise/Bounds.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Order/Group/Pointwise/CompleteLattice.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Order/Group/Action/Flag.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Order/CompleteField.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Order/Field/Pointwise.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Order/Interval/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Order/Module/Pointwise.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Order/UpperLower.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Expect.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Category/Grp/EpiMono.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Category/Grp/Injective.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/SkewMonoidAlgebra/Support.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/Lattice.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/Torsion/Basic.lean:open Pointwise Submodule
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/Torsion/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/Submodule/Bilinear.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/Submodule/Ker.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/Submodule/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/Submodule/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/Submodule/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/Submodule/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/PointwisePi.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/LocalizedModule/Int.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/LocalizedModule/Submodule.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Module/ZLattice/Basic.lean:open scoped Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/AddTorsor/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Coeff.lean:open scoped Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Star/NonUnitalSubalgebra.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Star/NonUnitalSubalgebra.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Star/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Star/Subalgebra.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/Star/Center.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Subgroup.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Pointwise/Set/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Pointwise/Finset.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Action/Pointwise/Set.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Action/Pointwise/Finset.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Submonoid/Pointwise.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Set/Pointwise/Support.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Set/Semiring.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Real/Archimedean.lean:open Pointwise CauSeq
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Real/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Real/Embedding.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Real/Embedding.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/DFinsupp/Interval.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Finset/Finsupp.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Finset/NatDivisors.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Finset/SMulAntidiagonal.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Finset/MulAntidiagonal.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Finset/MulAntidiagonal.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Data/Multiset/Interval.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Constructions/HaarToSphere.lean:open scoped Pointwise ENNReal NNReal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Group/MeasurableEquiv.lean:open scoped Pointwise NNReal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Group/Arithmetic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Group/GeometryOfNumbers.lean:open scoped Pointwise NNReal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Group/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Group/AEStabilizer.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CurveIntegral/Basic.lean:open scoped Pointwise unitInterval
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Haar/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Haar/OfBasis.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Haar/Quotient.lean:open scoped Pointwise NNReal ENNReal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/QuasiMeasurePreserving.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/QuasiMeasurePreserving.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/EverywherePos.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Hausdorff.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Finiteness.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/Alternating/MaximalSubgroups.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Perm/ConjAct.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Perm/MaximalSubgroups.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Divisible.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/QuotientGroup/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/QuotientGroup/Basic.lean:open scoped Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/QuotientGroup/Defs.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/QuotientGroup/Finite.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/CoprodI.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/CoprodI.lean:open Pointwise Cardinal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Submonoid/Inverses.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/DoubleCoset.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Sylow.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Index.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Index.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Transfer.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Commensurable.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Complement.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Complement.lean:open Pointwise MulAction
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/CosetCover.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Basic.lean:When `G` is a group and `a : G`, `s : Set G`, with  `open scoped Pointwise` we can write:
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Basic.lean:  or `s <• a` with `open scoped Pointwise RightActions`)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Basic.lean:If instead `G` is an additive group, we can write (with  `open scoped Pointwise` still)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Basic.lean:  or `s <+ᵥ a` with `open scoped Pointwise RightActions`)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Defs.lean:When `G` is a group and `a : G`, `s : Set G`, with  `open scoped Pointwise` we can write:
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Defs.lean:  or `s <• a` with `open scoped Pointwise RightActions`)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Defs.lean:If instead `G` is an additive group, we can write (with  `open scoped Pointwise` still)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Defs.lean:  or `s <+ᵥ a` with `open scoped Pointwise RightActions`)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Defs.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/Coset/Card.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/Defs.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/Jordan.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/Jordan.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/FixedPoints.lean:To properly use theorems using `fixedBy (Set α) g`, you should `open Pointwise` in your file.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/FixedPoints.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/FixedPoints.lean:The theorems below need the `Pointwise` scoped to be opened (using `open Pointwise`)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/Blocks.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/Primitive.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/Support.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/MultipleTransitivity.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/SubMulAction/Combination.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/SubMulAction/OfFixingSubgroup.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/SubMulAction/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/GroupTheory/GroupAction/SubMulAction/OfStabilizer.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Tiling/Tile.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/Energy.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/AP/Three/Behrend.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/AP/Three/Defs.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/RuzsaCovering.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/VerySmallDoubling.lean:open scoped Pointwise RightActions
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/CauchyDavenport.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/FreimanHom.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/Convolution.lean:open scoped Pointwise RightActions
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/SmallTripling.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/ETransform.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/PluenneckeRuzsa.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/SubsetSum.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Additive/DoublingConst.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/Extremal/RuzsaSzemeredi.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/CategoryTheory/Galois/IsFundamentalgroup.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/FieldTheory/IsAlgClosed/Spectrum.lean:open scoped Pointwise Polynomial
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/FieldTheory/KrullTopology.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/FieldTheory/Galois/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/FieldTheory/Galois/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/FieldTheory/Galois/Infinite.lean:open Pointwise FiniteGaloisIntermediateField AlgEquiv
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RepresentationTheory/Subrepresentation.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/OpenSubgroup.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/Nonarchimedean/TotallyDisconnected.lean:open Pointwise TopologicalSpace
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/Nonarchimedean/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/Group/CompactOpen.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/Group/ClosedSubgroup.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/Group/Quotient.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/Order/Field.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/Order/UpperLower.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/AsymptoticCone.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/PontryaginDual.lean:open Pointwise Function
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/GroupWithZero.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/RestrictedProduct/TopologicalSpace.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/Module/UniformConvergence.lean:open scoped Pointwise UniformConvergence Uniformity
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/ProperAction/Basic.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Algebra/UniformMulAction.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/UrysohnsLemma.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Bornology/Absorbs.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Bornology/BoundedOperation.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Bornology/BoundedOperation.lean:open Pointwise Set
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/ContinuousMap/StoneWeierstrass.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Topology/Instances/AddCircle/DenseSubgroup.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/DedekindDomain/Different.lean:open Pointwise Polynomial in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Nakayama.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Nakayama.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Nakayama.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Nakayama.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Nakayama.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/IsPrimary.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/AlgebraTower.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/QuotSMulTop.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/IdealFilter/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/LocalProperties/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Regular/RegularSequence.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Valuation/ValuationSubring.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Valuation/ValuationSubring.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Valuation/ValuationSubring.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Valuation/RamificationGroup.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/RingHom/FiniteType.lean:open scoped Pointwise TensorProduct
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/RingHom/FiniteType.lean:open scoped Pointwise TensorProduct
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/RingHom/FinitePresentation.lean:open scoped Pointwise TensorProduct
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/RingHom/Finite.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Spectrum/Prime/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Spectrum/Prime/ChevalleyComplexity.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Spectrum/Prime/Chevalley.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/GradedAlgebra/Homogeneous/Ideal.lean:open Pointwise DirectSum
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Lattice.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/GoingUp.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Defs.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Maximal.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Over.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Operations.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Operations.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Operations.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Prime.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Pointwise.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Maps.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Maps.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Quotient/Basic.lean:open scoped Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Quotient/Operations.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Ideal/Colon.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/FractionalIdeal/Norm.lean:open scoped Pointwise nonZeroDivisors
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Support.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Invariant/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Invariant/Profinite.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Invariant/Profinite.lean:open Pointwise CategoryTheory
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/HahnSeries/Summable.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Localization/Away/Basic.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Localization/Away/Basic.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Localization/Integer.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Frobenius.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/TwoSidedIdeal/Operations.lean:open Pointwise Set
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/TwoSidedIdeal/Operations.lean:open Pointwise Set in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Extension/Cotangent/Basis.lean:open Pointwise MvPolynomial TensorProduct
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Adjoin/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Adjoin/Tower.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/RingTheory/Adjoin/FG.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Geometry/Group/Growth/LinearLowerBound.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Geometry/Group/Growth/QuotientInter.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Transitive.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/Action/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/Action/Regular.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/Action/OfMinimal.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/AddCircleAdd.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Minimal.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/FixedPoints/Prufer.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/NumberTheory/RamificationInertia/Galois.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/NumberTheory/RamificationInertia/Galois.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/NumberTheory/NumberField/CanonicalEmbedding/NormLeOne.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/NumberTheory/ModularForms/CongruenceSubgroups.lean:open Pointwise ConjAct
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/NumberTheory/ModularForms/Cusps.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/NumberTheory/ModularForms/Cusps.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Normed/Group/Bounded.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Normed/Order/UpperLower.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Normed/Module/Ball/Pointwise.lean:open Pointwise Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Normed/Module/Ball/RadialEquiv.lean:open scoped Pointwise Set.Notation Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Normed/Module/Convex.lean:open Pointwise in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Analytic/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Analytic/ConvergenceRadius.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/AmpleSet.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Segment.lean:open scoped Pointwise Convex
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Intrinsic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Body.lean:open scoped Pointwise Topology NNReal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Gauge.lean:open scoped Pointwise Topology NNReal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Hull.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Basic.lean:open scoped Pointwise ENNReal NNReal ComplexOrder
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convolution.lean:open scoped Pointwise NNReal Filter
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/LocallyConvex/Separation.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/LocallyConvex/Basic.lean:open Pointwise Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/BumpFunction/FiniteDimension.lean:open scoped Pointwise Topology NNReal Convolution ContDiff
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Deriv/CompMul.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Deriv/Shift.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Equiv.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Add.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/BoxIntegral/UnitPartition.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/AlgebraicTopology/FundamentalGroupoid/SimplyConnected.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/LinearAlgebra/AffineSpace/AffineSubspace/Basic.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/LinearAlgebra/AffineSpace/AffineSubspace/Defs.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/LinearAlgebra/AffineSpace/Basis.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/LinearAlgebra/Span/Basic.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/LinearAlgebra/Span/Defs.lean:open Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/LinearAlgebra/CliffordAlgebra/SpinGroup.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/LinearAlgebra/CliffordAlgebra/SpinGroup.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/791.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean:open scoped Pointwise Asymptotics
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/741.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/819.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/28.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/124.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/274.lean:open scoped Pointwise Cardinal
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean:open Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/52.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/26.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/57.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/61.lean:open scoped Pointwise Topology
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/58.lean:open scoped Pointwise
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/60.lean:open scoped Pointwise

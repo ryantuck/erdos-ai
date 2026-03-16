@@ -1,0 +1,1599 @@
+     15 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean:research open, AMS 11
+     11 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/409.lean:research open, AMS 11
+     10 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/634.lean:research solved, AMS 52
+     10 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:API, AMS 11
+      9 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/494.lean:research solved, AMS 5
+      9 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean:research solved, AMS 5 11
+      9 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean:test, AMS 5
+      8 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/835.lean:research solved, AMS 5
+      8 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1142.lean:test, AMS 11
+      7 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/353.lean:research solved, AMS 28 52
+      7 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean:test, AMS 11
+      7 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/252.lean:research solved, AMS 11
+      7 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1059.lean:test, AMS 11
+      6 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/902.lean:research solved, AMS 5
+      6 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean:research open, AMS 5
+      6 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/223.lean:research solved, AMS 52
+      6 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/168.lean:API, AMS 5 11
+      6 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1085.lean:research solved, AMS 52
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean:research solved, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/946.lean:research solved, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/878.lean:research open, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean:research solved, AMS 5 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean:undergraduate, AMS 5 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean:research solved, AMS 5 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/686.lean:research open, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:test, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:API, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/470.lean:research solved, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean:test, AMS 5 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean:research open, AMS 5 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean:research solved, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/20.lean:test, AMS 5
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/133.lean:research solved, AMS 5
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/12.lean:research solved, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean:research solved, AMS 5 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1074.lean:test, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1074.lean:research open, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1063.lean:research solved, AMS 11
+      5 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1052.lean:test, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean:research solved, AMS 11 28
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/961.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/944.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/936.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/920.lean:research solved, AMS 05
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/918.lean:research open, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/889.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/697.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/678.lean:test, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean:research open, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/612.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/609.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/590.lean:research solved, AMS 3
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:research solved, AMS 51
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:research solved, AMS 51
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/459.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean:undergraduate, AMS 5 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/422.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/416.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/399.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/394.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/377.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/375.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/349.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/321.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean:research open, AMS 5 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean:research open, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/288.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/264.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/262.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/210.lean:research solved, AMS 5 52
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/15.lean:research open, AMS 11 40
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/142.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean:research open, AMS 5 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean:research open, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/124.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean:research solved, AMS 5 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean:research open, AMS 3 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean:research solved, AMS 30
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean:research solved, AMS 5
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1102.lean:research solved, AMS 11
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1084.lean:research solved, AMS 52
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/107.lean:research solved, AMS 52
+      4 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/978.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean:research solved, AMS 52
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/962.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/944.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/940.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/939.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/931.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/9.lean:test, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/887.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/885.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/880.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/856.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/841.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/835.lean:research open, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/830.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/820.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean:research solved, AMS 5 52
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/781.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/778.lean:research open, AMS 5 91
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/777.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean:research open, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/767.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/751.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/723.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/708.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/686.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/684.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/676.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/675.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/674.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean:research solved, AMS 5 52
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/647.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/635.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/633.lean:research solved, AMS 51
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean:research open, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/617.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/613.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/6.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:research solved, AMS 05 52
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:research open, AMS 05
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/535.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/523.lean:research solved, AMS 42 60
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:research solved, AMS 30
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:research open, AMS 51
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/499.lean:research solved, AMS 15
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/492.lean:research solved, AMS 11 28
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/491.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/480.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/477.lean:research open, AMS 12
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/466.lean:research solved, AMS 11 52
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/457.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/456.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/443.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/441.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/439.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/436.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/427.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/420.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean:undergraduate, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/418.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/415.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/413.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/411.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/408.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/403.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/402.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/394.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/387.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/386.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/385.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/373.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/361.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean:research open, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/359.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/346.lean:test, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/342.lean:research open, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean:research open, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/320.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/293.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/270.lean:research solved, AMS 11 40
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/241.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/231.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean:test, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/227.lean:research solved, AMS 30
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean:API, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/218.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean:research solved, AMS 52
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean:research solved, AMS 5 52
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/208.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/2.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/182.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/18.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/176.lean:research open, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/145.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/127.lean:research solved, AMS 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/12.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean:research open, AMS 3 5
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/11.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/11.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1095.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1072.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1064.lean:research solved, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1055.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean:research open, AMS 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1046.lean:research solved, AMS 30
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1042.lean:research solved, AMS 30 31
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1038.lean:research solved, AMS 28
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1007.lean:research solved, AMS 5 51
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/10.lean:research solved, AMS 5 11
+      3 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/10.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/997.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/989.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean:research open, AMS 11 42
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/978.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/976.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean:research open, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/967.lean:research open, AMS 11 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/965.lean:research solved, AMS 03 05
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/964.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean:research open, AMS 5 51
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean:research open, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean:research solved, AMS 28 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/945.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/945.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean:graduate, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/940.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/937.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/935.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/934.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean:research open, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/919.lean:research open, AMS 3 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/918.lean:undergraduate, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/918.lean:high_school, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/915.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/913.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/912.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/910.lean:research solved, AMS 54
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/901.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/896.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/892.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/888.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/886.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/879.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/875.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/872.lean:research open, AMS 5 91
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/865.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/865.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/860.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/853.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/852.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/84.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/835.lean:test, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/830.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/828.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/827.lean:research solved, AMS 5 51
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/825.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/823.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/819.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean:research solved, AMS 05
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/793.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/791.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/786.lean:test, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/786.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/784.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/782.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/780.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/775.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean:test, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/755.lean:research solved, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/753.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/75.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/741.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean:test, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/727.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/727.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/723.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/72.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/715.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/710.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/709.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/708.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/700.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/700.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/699.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/698.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/695.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/694.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/687.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/685.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/680.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/679.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/672.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean:research open, AMS 41
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/67.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean:research open, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean:research open, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/665.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/646.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/644.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/641.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/637.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/634.lean:research open, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/632.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/631.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/621.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/620.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/61.lean:research solved, AMS 05
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/607.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean:research solved, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/600.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/584.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/541.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/540.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/539.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/532.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:research open, AMS 5 60
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/524.lean:research solved, AMS 42 60
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:research solved, AMS 12 60
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean:research solved, AMS 12 60
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean:research open, AMS 12 60
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean:research solved, AMS 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:research open, AMS 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/513.lean:research solved, AMS 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/511.lean:research solved, AMS 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/510.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean:research solved, AMS 3 28
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/49.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/49.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/485.lean:research solved, AMS 12
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/478.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/477.lean:research solved, AMS 12
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/470.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/468.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/465.lean:research solved, AMS 11 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/464.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/46.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/459.lean:undergraduate, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/456.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/453.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/449.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/448.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/442.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/440.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/434.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/417.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/416.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/413.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/411.lean:test, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/409.lean:test, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/406.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/405.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/404.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/401.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/400.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/4.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/393.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/392.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/391.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/388.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/387.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/382.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/380.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/373.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/368.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/367.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/366.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/364.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/362.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/356.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/354.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/351.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean:test, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/346.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/345.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/324.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/323.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/321.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/317.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean:test, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/297.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/294.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/293.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/285.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/279.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/274.lean:research open, AMS 20
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/269.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/267.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/267.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/266.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/265.lean:research open, AMS 11 40
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/261.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/258.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/255.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/252.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/242.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/241.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/240.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/233.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/226.lean:research solved, AMS 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/221.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/220.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean:test, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/214.lean:research solved, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/21.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean:research solved, AMS 11 28
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/205.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/195.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/192.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/19.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/188.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/178.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/177.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean:research open, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/173.lean:research solved, AMS 5 51
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/17.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean:graduate, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/164.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/160.lean:research solved, AMS 5 51
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/160.lean:research open, AMS 5 51
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/150.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/150.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/144.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/143.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean:test, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/14.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean:test, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/137.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/134.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/132.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/132.lean:research open, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/131.lean:research solved, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean:research solved, AMS 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/118.lean:research solved, AMS 3 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean:research open, AMS 3 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean:research solved, AMS 60
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean:research solved, AMS 5 20
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean:research open, AMS 20
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/116.lean:research solved, AMS 28 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean:research open, AMS 5 60
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean:research open, AMS 5 60
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean:research open, AMS 26 41
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean:test, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean:research open, AMS 26 41
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1124.lean:research solved, AMS 28 51
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1121.lean:research solved, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1118.lean:research solved, AMS 28 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1113.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1109.lean:research open, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1108.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1106.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1105.lean:research solved, AMS 05
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1104.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1100.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1100.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1099.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1097.lean:undergraduate, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1093.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1092.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1079.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1074.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/107.lean:test, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean:research solved, AMS 5 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1065.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1062.lean:research solved, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1060.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/106.lean:research solved, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1056.lean:undergraduate, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1056.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean:high_school, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1053.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1050.lean:research solved, AMS 11 40
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1040.lean:research solved, AMS 28 30
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/104.lean:research open, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1032.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean:research open, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/103.lean:research open, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1025.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1023.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1021.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1018.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1006.lean:research solved, AMS 5
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1003.lean:research open, AMS 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1001.lean:research solved, AMS 11 28
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/100.lean:research solved, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/100.lean:research open, AMS 52
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1.lean:undergraduate, AMS 5 11
+      2 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/999.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/998.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/997.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/996.lean:research solved, AMS 42
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/996.lean:research open, AMS 42
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/995.lean:research open, AMS 11 42
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/994.lean:research solved, AMS 11 28
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean:research solved, AMS 31 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/990.lean:research open, AMS 12 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/99.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/988.lean:research solved, AMS 11 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/985.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/985.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/984.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/983.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/982.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/980.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/977.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/977.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/974.lean:research solved, AMS 11 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/973.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/972.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/970.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/969.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/969.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/967.lean:research solved, AMS 11 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/966.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/963.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/962.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/961.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/961.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/959.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/957.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/956.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/956.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/954.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean:research open, AMS 28 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/952.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/951.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/951.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/951.lean:API, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/95.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/948.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/945.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/943.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/941.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/94.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/938.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/937.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/935.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/932.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/932.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/931.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/929.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/924.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/923.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/922.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/920.lean:research open, AMS 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean:test, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/918.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/916.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/914.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/913.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/912.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/909.lean:research solved, AMS 54
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/908.lean:research solved, AMS 26 28
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/907.lean:research solved, AMS 26 39
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/906.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/905.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/904.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/903.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/900.lean:research solved, AMS 5 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean:test, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/9.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/9.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/898.lean:research solved, AMS 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/896.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/895.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/894.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/893.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/893.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean:test, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/889.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/888.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/887.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/886.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/885.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/884.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/883.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/881.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/88.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/873.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/870.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/867.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/859.lean:high_school, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/858.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/858.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/857.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/857.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/855.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/851.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/851.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/850.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/849.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/848.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/848.lean:research formally solved using lean4 at "https://github.com/The-Obstacle-Is-The-Way/erdos-banger/blob/1cc2ac8e9d70516e979733c6ea5c4d2eb652d1f5/formal/lean/Erdos/848.lean", AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/847.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/846.lean:research formally solved using formal_conjectures at "https://github.com/google-deepmind/formal-conjectures/blob/2404258180688283e5141021c75464dc2acfb798/FormalConjectures/ErdosProblems/846.lean", AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/845.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/844.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/843.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/842.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/841.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/84.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/831.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/829.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/828.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/826.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/822.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/821.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/82.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/82.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/816.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/815.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/815.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean:research open, AMS 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/810.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/81.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/81.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/809.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean:research solved, AMS 5 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/806.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/803.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/802.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/80.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/8.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/797.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/796.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/796.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/795.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/794.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/791.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/786.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/786.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/786.lean:API, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/783.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/779.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/774.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/771.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/769.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/768.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/764.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/763.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/756.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/756.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/754.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/752.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/749.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/746.lean:research solved, AMS 5 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean:research solved, AMS 5 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/743.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/742.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/739.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/737.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/736.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/735.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/734.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/733.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/732.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/731.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/730.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/730.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/730.lean:high_school, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/729.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/728.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/726.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/725.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/724.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/722.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/718.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/717.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/716.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/712.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/711.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/711.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/710.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/71.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/706.lean:research open, AMS 5 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/705.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/703.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/702.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/701.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/7.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/699.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/694.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/693.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/69.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/69.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/689.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/688.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/688.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/682.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/681.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/68.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/68.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/679.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/678.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/677.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/677.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/674.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/672.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/670.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean:undergraduate, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/667.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/664.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/662.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/66.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/659.lean:research formally solved using lean4 at "https://github.com/plby/lean-proofs/blob/226d5fad7143dcebea2bbb5ec87f18a3a1dcea69/src/v4.24.0/ErdosProblems/Erdos659.lean", AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/658.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/658.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/656.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/655.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/655.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/65.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/649.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/648.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/647.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/645.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/642.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/640.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/64.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/638.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/633.lean:research open, AMS 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/630.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/63.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/63.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/628.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean:research open, AMS 5 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/624.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/623.lean:research open, AMS 3
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/622.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/617.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/614.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/612.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/61.lean:research open, AMS 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/608.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/604.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/604.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/603.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/602.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/598.lean:research open, AMS 03 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/596.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/592.lean:research open, AMS 3
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/591.lean:research solved, AMS 3
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/586.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/583.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/582.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/58.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean:research solved, AMS 5 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/577.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/574.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/566.lean:research open, AMS 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/564.lean:research open, AMS 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/562.lean:research open, AMS 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/542.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/541.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/537.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/536.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/535.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/534.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/533.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:research solved, AMS 5 82
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:research open, AMS 5 82
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean:research solved, AMS 40 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/526.lean:research solved, AMS 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean:research solved, AMS 42
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/524.lean:research open, AMS 42 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:research open, AMS 12 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean:research open, AMS 11 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/52.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/519.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/518.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/517.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/517.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/515.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/513.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean:research solved, AMS 42
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/510.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/51.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:API, AMS 54
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean:high_school, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean:high_school, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/505.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/504.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:research open, AMS 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean:research open, AMS 3 28
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/50.lean:research solved, AMS 11 26
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/5.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/498.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/497.lean:research solved, AMS 5 6
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/496.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/495.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/493.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/490.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/490.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/489.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/489.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/488.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/487.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/486.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/484.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/483.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/482.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/481.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/48.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/479.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/475.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/473.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/472.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/471.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/471.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/470.lean:high_school, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/469.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/467.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/463.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/462.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/462.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/461.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/461.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/455.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/455.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/452.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/450.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/447.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/445.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/437.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/436.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/435.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/433.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/430.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/429.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/426.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/421.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/419.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/418.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/418.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/414.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/412.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/410.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/41.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/41.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/408.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/407.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/399.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/398.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/397.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/396.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/395.lean:research solved, AMS 5 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/392.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/390.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/390.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/39.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/389.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/389.lean:high_school, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/385.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/384.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/384.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/383.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/381.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/38.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/377.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/376.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/376.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/375.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/374.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/372.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/371.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/370.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/369.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/366.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/366.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/365.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/364.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/363.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean:graduate, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/359.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean:high_school, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/355.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/352.lean:research open, AMS 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/351.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/350.lean:API, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/349.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/348.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/347.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/346.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/345.lean:test, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/341.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean:undergraduate, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/34.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/334.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/332.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/331.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/331.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/330.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean:undergraduate, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/328.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/327.lean:undergraduate, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/326.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/326.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/325.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/322.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/317.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/317.lean:graduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/316.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/316.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/316.lean:high_school, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/315.lean:research solved, AMS 11 40
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/314.lean:undergraduate, AMS 40
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/314.lean:research solved, AMS 11 40
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/314.lean:research open, AMS 11 40
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/313.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/312.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/311.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/310.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/308.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/307.lean:undergraduate, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/307.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/307.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/306.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/306.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/305.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:API, simp, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/303.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/301.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/30.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/3.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean:research solved, AMS 11 40
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/299.lean:research formally solved using other_system at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/298.lean:research formally solved using other_system at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/296.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/295.lean:undergraduate, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/295.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/295.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/292.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/290.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/289.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/286.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/283.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/283.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/282.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/281.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/280.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/28.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/279.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/278.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/278.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/277.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/276.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/275.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/274.lean:research solved, AMS 20
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/273.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/273.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/272.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/271.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/271.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/270.lean:research open, AMS 11 40
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/27.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/269.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/268.lean:research solved, AMS 40 54
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/265.lean:research solved, AMS 11 40
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/264.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/263.lean:research formally solved using formal_conjectures at "https://github.com/google-deepmind/formal-conjectures/blob/c8cf651906abe91051cf835d4232ad5648412113/FormalConjectures/ErdosProblems/263.lean#L298", AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/261.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/259.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/258.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/257.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/257.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/257.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean:research solved, AMS 11 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean:research open, AMS 11 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/254.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/253.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/251.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/250.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/25.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/249.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/248.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/246.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/244.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/244.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/243.lean:research open, AMS 40
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/24.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/239.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/238.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/238.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/236.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/234.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/233.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean:research solved, AMS 28 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/230.lean:research solved, AMS 42
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/229.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/229.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/228.lean:research solved, AMS 5 12 41
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/225.lean:research solved, AMS 42
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/224.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/215.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/214.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/213.lean:research solved, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/213.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/212.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/21.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/207.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean:research open, AMS 11 28
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/205.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/204.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/203.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/200.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/200.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/20.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/197.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/196.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/195.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/194.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/191.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/190.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/190.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/189.lean:research solved, AMS 5 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/189.lean:research open, AMS 5 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/189.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/188.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/185.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/184.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/182.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/177.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/175.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/173.lean:research open, AMS 5 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/172.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/171.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/170.lean:research solved, AMS 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/170.lean:research open, AMS 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/170.lean:API, AMS 05
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/17.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/17.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean:graduate, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/168.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/168.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/168.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/161.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean:API, AMS 5, simp
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/155.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/148.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/145.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/139.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/137.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/133.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/131.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean:research open, AMS 5 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/13.lean:research solved, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/13.lean:research open, AMS 5 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/128.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean:research formally solved using formal_conjectures at "https://github.com/google-deepmind/formal-conjectures/blob/300bf771bdbef43d7b9aa2521e633a50fd54dd28/FormalConjectures/ErdosProblems/125.lean", AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/124.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/120.lean:research solved, AMS 05 28
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/120.lean:research open, AMS 05 28
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/12.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean:research solved, AMS 5 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1176.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1170.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean:research solved, AMS 20
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1169.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean:research open, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean:research solved, AMS 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean:research solved, AMS 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean:research open, AMS 5 20
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean:research solved, AMS 20
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean:research solved, AMS 5 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean:research open, AMS 5 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean:research solved, AMS 5 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1154.lean:research open, AMS 13 28
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1153.lean:research solved, AMS 41
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean:research open, AMS 41
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1150.lean:research open, AMS 12 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1150.lean:graduate, AMS 12 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/115.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean:high_school, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean:research open, AMS 11 60
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1142.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1142.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1137.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1135.lean:research open, AMS 11 37
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1134.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1134.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1133.lean:research open, AMS 41
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1131.lean:research open, AMS 41
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1130.lean:research solved, AMS 41
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1129.lean:research solved, AMS 41
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1128.lean:research solved, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1127.lean:research solved, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1126.lean:research solved, AMS 28 39
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1125.lean:research solved, AMS 26
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean:research open, AMS 06 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1122.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1120.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1119.lean:research solved, AMS 3 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1115.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1114.lean:research solved, AMS 26
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1111.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1110.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1110.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1107.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1107.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1103.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/110.lean:research solved, AMS 3 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1099.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1098.lean:research solved, AMS 5 20
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1097.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1096.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1095.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1094.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1091.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1091.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean:research solved, AMS 5 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1087.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1086.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1085.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1084.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean:research open, AMS 51
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean:research formally solved using formal_conjectures at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1080.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/108.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1078.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1077.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1075.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1075.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1073.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1071.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1071.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/107.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1068.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1067.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1067.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1063.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1062.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1061.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/106.lean:research open, AMS 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1059.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1058.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1057.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1055.lean:undergraduate, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1052.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1052.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1051.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1051.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1050.lean:research open, AMS 11 40
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/105.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1049.lean:test, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1049.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1049.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1048.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1047.lean:research solved, AMS 30 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1045.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1045.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1044.lean:research solved, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1044.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean:research solved, AMS 28 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean:research formally solved using lean4 at
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1041.lean:research solved, AMS 32
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1041.lean:research open, AMS 32
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1040.lean:research open, AMS 28 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1039.lean:research open, AMS 30
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1038.lean:research open, AMS 28
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1037.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1035.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1034.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1033.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1031.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1028.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1027.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1026.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1022.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1020.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean:research solved, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1019.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean:research open, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1012.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1011.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1010.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean:research open, AMS 5 52
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1009.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1008.lean:research solved, AMS 5
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1005.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1004.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1004.lean:research open, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1003.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1002.lean:research open, AMS 11 28
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1000.lean:research solved, AMS 11
+      1 /home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/100.lean:research formally solved using formal_conjectures at "https://github.com/theaustinhatfield/formal-conjectures/blob/solve-erdos-100-piepmeyer/FormalConjectures/ErdosProblems/100.lean", AMS 52

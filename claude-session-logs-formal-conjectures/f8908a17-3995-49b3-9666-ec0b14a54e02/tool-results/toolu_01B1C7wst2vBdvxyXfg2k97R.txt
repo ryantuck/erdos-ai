@@ -1,0 +1,489 @@
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-128-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-129-If `G` is colorable, then `ENat.toNat G.chromaticNumber` is the `ℕ`-valued chromatic number.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-130--/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:131:noncomputable def cochromaticNumber (G : SimpleGraph V) : ℕ∞ := ⨅ n ∈ setOf G.Cocolorable, (n : ℕ∞)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-132-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-133-/-- The chromatic cardinal is the minimal number of colors need to color it. In contrast to
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-134-`chromaticNumber`, which assigns `⊤ : ℕ∞` to all non-finitely colorable graphs, this definition
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-21-
+FormalConjectures/ErdosProblems/760.lean-22-*Reference:* [erdosproblems.com/760](https://www.erdosproblems.com/760)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-23-
+FormalConjectures/ErdosProblems/760.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-25-needed to colour the vertices of $G$ such that each colour class induces either
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-26-a complete graph or an empty graph.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-44-namespace Erdos760
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-45-
+FormalConjectures/ErdosProblems/760.lean:46:/-- A colouring $c : V \to \operatorname{Fin} k$ is a cochromatic colouring of $G$ if every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-47-colour class induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/760.lean-48-def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/760.lean-49-    (c : V → Fin k) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-51-    (∀ u v, c u = i → c v = i → u ≠ v → G.Adj u v) ∨
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-52-    (∀ u v, c u = i → c v = i → u ≠ v → ¬G.Adj u v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-53-
+FormalConjectures/ErdosProblems/760.lean:54:/-- The cochromatic number $\zeta(G)$ of a finite graph $G$: the minimum number of
+FormalConjectures/ErdosProblems/760.lean:55:colours in a cochromatic colouring. -/
+FormalConjectures/ErdosProblems/760.lean:56:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/760.lean-57-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/760.lean-58-  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-59-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-63-There exists a constant $C > 0$ such that for every graph $G$ with sufficiently
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-64-large chromatic number $m = \chi(G)$, there exists an induced subgraph $H$ of $G$ with
+FormalConjectures/ErdosProblems/760.lean:65:cochromatic number $\zeta(H) \geq C \cdot m / \log m$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-66--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-67-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/760.lean-68-theorem erdos_760 :
+--
+FormalConjectures/ErdosProblems/760.lean-70-    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-71-      G.chromaticNumber.toNat ≥ N₀ →
+FormalConjectures/ErdosProblems/760.lean-72-        ∃ (S : Finset (Fin n)),
+FormalConjectures/ErdosProblems/760.lean:73:          (cochromaticNumber (G.induce (↑S : Set (Fin n))) : ℝ) ≥
+FormalConjectures/ErdosProblems/760.lean-74-            C * (G.chromaticNumber.toNat : ℝ) / Real.log (G.chromaticNumber.toNat : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-76-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-21-
+FormalConjectures/ErdosProblems/625.lean-22-*Reference:* [erdosproblems.com/625](https://www.erdosproblems.com/625)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-23-
+FormalConjectures/ErdosProblems/625.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-25-needed to colour the vertices of $G$ such that each colour class induces either a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-26-complete graph or an empty graph. Let $\chi(G)$ denote the chromatic number.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-30-$$\chi(G) - \zeta(G) \to \infty$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-31-as $n \to \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-32-
+FormalConjectures/ErdosProblems/625.lean:33:[ErGi93] Erdős, P. and Gimbel, J., *Some problems and results in cochromatic theory*, 1993.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-36-open SimpleGraph Finset
+--
+FormalConjectures/ErdosProblems/625.lean-51-noncomputable def finChromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/625.lean-52-  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-53-
+FormalConjectures/ErdosProblems/625.lean:54:/-- The cochromatic number of a simple graph on `Fin n`: the minimum number of parts $k$
+FormalConjectures/ErdosProblems/625.lean-55-in a coloring $f : \operatorname{Fin} n \to \operatorname{Fin} k$ such that each color class
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-56-induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/625.lean:57:noncomputable def cochromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/625.lean-58-  sInf {k : ℕ | ∃ f : Fin n → Fin k,
+FormalConjectures/ErdosProblems/625.lean-59-    ∀ c : Fin k,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-60-      (∀ u v, f u = c → f v = c → u ≠ v → G.Adj u v) ∨
+--
+FormalConjectures/ErdosProblems/625.lean-76-    ∀ M : ℕ, ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/625.lean-77-    ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
+FormalConjectures/ErdosProblems/625.lean-78-      ((Finset.univ.filter (fun ec : Fin n → Fin n → Bool =>
+FormalConjectures/ErdosProblems/625.lean:79:        finChromaticNumber (toGraph625 ec) - cochromaticNumber (toGraph625 ec) ≥ M)).card : ℝ) ≥
+FormalConjectures/ErdosProblems/625.lean-80-      (1 - ε) * (Fintype.card (Fin n → Fin n → Bool) : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-81-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean-82-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-21-
+FormalConjectures/ErdosProblems/759.lean-22-*Reference:* [erdosproblems.com/759](https://www.erdosproblems.com/759)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-23-
+FormalConjectures/ErdosProblems/759.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-25-needed to colour the vertices of $G$ such that each colour class induces either
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-26-a complete graph or an empty graph.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-34-Solved by Gimbel and Thomassen [GiTh97], who proved
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-35-$$z(S_n) \asymp \sqrt{n} / \log n.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-36-
+FormalConjectures/ErdosProblems/759.lean:37:[ErGi93] Erdős, P. and Gimbel, J., *Some problems and results in cochromatic theory*, 1993.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-38-
+FormalConjectures/ErdosProblems/759.lean:39:[Gi86] Gimbel, J., *Some remarks on the cochromatic number of a graph*, 1986.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-41-[GiTh97] Gimbel, J. and Thomassen, C., *Coloring graphs with fixed genus and girth*, 1997.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-42--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-46-namespace Erdos759
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-47-
+FormalConjectures/ErdosProblems/759.lean:48:/-- A colouring $c : V \to \operatorname{Fin}(k)$ is a cochromatic colouring of $G$ if every colour
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-49-class induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/759.lean-50-def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/759.lean-51-    (c : V → Fin k) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-53-    (∀ u v, c u = i → c v = i → u ≠ v → G.Adj u v) ∨
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-54-    (∀ u v, c u = i → c v = i → u ≠ v → ¬G.Adj u v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-55-
+FormalConjectures/ErdosProblems/759.lean:56:/-- The cochromatic number $\zeta(G)$ of a finite graph $G$: the minimum number of
+FormalConjectures/ErdosProblems/759.lean:57:colours in a cochromatic colouring. -/
+FormalConjectures/ErdosProblems/759.lean:58:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/759.lean-59-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/759.lean-60-  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-61-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-63-This is axiomatized since surface topology is not available in Mathlib. -/
+FormalConjectures/ErdosProblems/759.lean-64-opaque IsEmbeddableOnSurface {m : ℕ} (_ : SimpleGraph (Fin m)) (_ : ℕ) : Prop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-65-
+FormalConjectures/ErdosProblems/759.lean:66:/-- $z(S_n)$: the maximum cochromatic number over all finite graphs embeddable
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-67-on the orientable surface of genus $n$. -/
+FormalConjectures/ErdosProblems/759.lean-68-noncomputable def maxCochromaticOnSurface (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/759.lean-69-  sSup {k : ℕ | ∃ (m : ℕ) (G : SimpleGraph (Fin m)),
+FormalConjectures/ErdosProblems/759.lean:70:    IsEmbeddableOnSurface G n ∧ cochromaticNumber G = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-71-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-72-/--
+FormalConjectures/ErdosProblems/759.lean-73-Erdős Problem 759, upper bound (Gimbel–Thomassen [GiTh97]):
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-21-
+FormalConjectures/ErdosProblems/761.lean-22-*Reference:* [erdosproblems.com/761](https://www.erdosproblems.com/761)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-23-
+FormalConjectures/ErdosProblems/761.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-25-needed to colour the vertices of $G$ such that each colour class induces either
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-26-a complete graph or empty graph. The dichromatic number of $G$, denoted by $\delta(G)$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-27-is the minimum number $k$ of colours required such that, in any orientation of
+--
+FormalConjectures/ErdosProblems/761.lean-59-  sInf {k : ℕ | ∀ D : V → V → Prop, IsOrientation G D →
+FormalConjectures/ErdosProblems/761.lean-60-    ∃ c : V → Fin k, IsAcyclicColouring D k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-61-
+FormalConjectures/ErdosProblems/761.lean:62:/-- A cochromatic colouring: each colour class induces either a complete
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-63-subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/761.lean-64-def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/761.lean-65-    (c : V → Fin k) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-67-    (∀ u v, c u = i → c v = i → u ≠ v → G.Adj u v) ∨
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-68-    (∀ u v, c u = i → c v = i → u ≠ v → ¬G.Adj u v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-69-
+FormalConjectures/ErdosProblems/761.lean:70:/-- The cochromatic number $\zeta(G)$: minimum number of colours in a cochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-71-colouring. -/
+FormalConjectures/ErdosProblems/761.lean:72:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/761.lean-73-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/761.lean-74-  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-75-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-89-/--
+FormalConjectures/ErdosProblems/761.lean-90-**Erdős Problem 761, Question 2** (Erdős–Gimbel):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-91-
+FormalConjectures/ErdosProblems/761.lean:92:Must a graph with large cochromatic number contain a subgraph with large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-93-dichromatic number? For every $n$ there exists $m$ such that $\zeta(G) \geq m$ implies
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-94-$G$ contains an induced subgraph with $\delta \geq n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-95--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-96-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/761.lean:97:theorem erdos_761.variants.cochromatic : answer(sorry) ↔
+FormalConjectures/ErdosProblems/761.lean-98-    (∀ n : ℕ, ∃ m : ℕ, ∀ (s : ℕ) (G : SimpleGraph (Fin s)),
+FormalConjectures/ErdosProblems/761.lean:99:      cochromaticNumber G ≥ m →
+FormalConjectures/ErdosProblems/761.lean-100-        ∃ (S : Finset (Fin s)),
+FormalConjectures/ErdosProblems/761.lean-101-          dichromaticNumber (G.induce (↑S : Set (Fin s))) ≥ n) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-102-  sorry
+--
+/home/ryan/formal-conjectures/ai-review/758.md-4-
+ai-review/758.md-5-**Issue found.** `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean` already provides:
+ai-review/758.md-6-- `Cocolorable` (line 118): `∃ coloring : V → Fin n, ∀ i, G.induce {v | coloring v = i} = ⊥ ∨ G.induce {v | coloring v = i} = ⊤`
+ai-review/758.md:7:- `cochromaticNumber` (line 131): `⨅ n ∈ setOf G.Cocolorable, (n : ℕ∞)`
+/home/ryan/formal-conjectures/ai-review/758.md-8-
+ai-review/758.md:9:Problem 758 defines its own local `IsCochromaticColoring` and `cochromaticNumber` that are mathematically equivalent but differ in formulation:
+ai-review/758.md:10:- The local version spells out the cochromatic condition via explicit adjacency quantifiers rather than induced subgraph equality with `⊥`/`⊤`.
+ai-review/758.md:11:- The local `cochromaticNumber` returns `ℕ` (via `sInf`) while the utility version returns `ℕ∞` (via `⨅`).
+/home/ryan/formal-conjectures/ai-review/758.md-12-
+/home/ryan/formal-conjectures/ai-review/758.md-13-This same duplication exists in problems 625, 759, 760, 761, and 762. All should be consolidated to use the shared utility definitions. The `maxCochromaticNumber` definition is problem-specific and appropriately local.
+/home/ryan/formal-conjectures/ai-review/758.md-14-
+ai-review/758.md:15:**Recommendation:** Replace `IsCochromaticColoring` and the local `cochromaticNumber` with the shared `Cocolorable` and `cochromaticNumber` from the utility file. Adjust `maxCochromaticNumber` to use `cochromaticNumber` from the utility (noting the `ℕ∞` type will require conversion via `ENat.toNat` or similar).
+/home/ryan/formal-conjectures/ai-review/758.md-16-
+/home/ryan/formal-conjectures/ai-review/758.md-17-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/758.md-18-
+ai-review/758.md-19-The formalization includes:
+ai-review/758.md:20:- `[ErGi93]` Erdős, P. and Gimbel, J., *Some problems and results in cochromatic theory* (1993).
+ai-review/758.md:21:- `[Gi86]` Gimbel, J., *The chromatic and cochromatic number of a graph* (1986).
+/home/ryan/formal-conjectures/ai-review/758.md-22-
+/home/ryan/formal-conjectures/ai-review/758.md-23-The website attributes the problem to Erdős and Gimbel and references [Gi86]. The citations are consistent with the website. The resolution credit to Bhavik Mehta (computational verification) is mentioned in the theorem docstring, consistent with the website.
+/home/ryan/formal-conjectures/ai-review/758.md-24-
+--
+ai-review/758.md-42-The code is well-structured and readable:
+/home/ryan/formal-conjectures/ai-review/758.md-43-- Clear docstrings explain each definition with LaTeX notation.
+/home/ryan/formal-conjectures/ai-review/758.md-44-- The namespace `Erdos758` avoids name collisions.
+ai-review/758.md:45:- The progression from `IsCochromaticColoring` → `cochromaticNumber` → `maxCochromaticNumber` → `erdos_758` is logical.
+/home/ryan/formal-conjectures/ai-review/758.md-46-
+ai-review/758.md-47-**Minor note:** The local definition `IsCochromaticColoring` takes `k` as an explicit parameter separately from the coloring function `c : V → Fin k`, which is slightly unusual—bundling them or using the utility definition would be more idiomatic.
+/home/ryan/formal-conjectures/ai-review/758.md-48-
+--
+/home/ryan/formal-conjectures/ai-review/758.md-50-
+/home/ryan/formal-conjectures/ai-review/758.md-51-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/758.md-52-
+ai-review/758.md:53:The problem is entirely concrete and unambiguous: it asks whether a specific natural number (z(12)) equals 4. The definitions of cochromatic number and z(n) are standard and well-defined in combinatorics. There is no ambiguity whatsoever.
+/home/ryan/formal-conjectures/ai-review/758.md-54-
+ai-review/758.md-55-**Assessment: Fully formalizable, no ambiguity.**
+/home/ryan/formal-conjectures/ai-review/758.md-56-
+/home/ryan/formal-conjectures/ai-review/758.md-57-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/758.md-58-
+ai-review/758.md-59-### Definition: `IsCochromaticColoring`
+ai-review/758.md:60:Correctly captures the cochromatic condition: for each color class, either all distinct pairs are adjacent (clique) or no distinct pairs are adjacent (independent set). The universal quantification over all vertices with filtering by color assignment is mathematically sound. Empty color classes vacuously satisfy both conditions, which is correct (they don't affect the partition).
+/home/ryan/formal-conjectures/ai-review/758.md-61-
+ai-review/758.md:62:### Definition: `cochromaticNumber`
+ai-review/758.md-63-Uses `sInf` over `{k : ℕ | ∃ c : V → Fin k, IsCochromaticColoring G k c}`. This is correct:
+ai-review/758.md-64-- The set is always nonempty for finite graphs (k = |V| works: assign each vertex a distinct color, making each class a singleton, which is trivially both a clique and independent set).
+/home/ryan/formal-conjectures/ai-review/758.md-65-- `sInf` on `ℕ` returns 0 for the empty set, but this edge case doesn't arise for nonempty vertex sets.
+ai-review/758.md:66:- For the empty graph on `Fin 0`, k = 0 works (vacuous), so `cochromaticNumber = 0`, which is the standard convention.
+/home/ryan/formal-conjectures/ai-review/758.md-67-
+ai-review/758.md-68-### Definition: `maxCochromaticNumber`
+ai-review/758.md:69:Uses `sSup` over `{k : ℕ | ∃ G : SimpleGraph (Fin n), cochromaticNumber G = k}`. This is correct:
+ai-review/758.md:70:- For `ℕ`, `sSup` (from `ConditionallyCompleteLinearOrderBot`) requires the set to be nonempty and bounded above for the expected behavior. Both conditions hold: there exists at least one graph on `Fin n` (so the set is nonempty), and `cochromaticNumber G ≤ n` for any graph on n vertices (so the set is bounded above).
+/home/ryan/formal-conjectures/ai-review/758.md-71-
+ai-review/758.md-72-### Theorem statement: `erdos_758`
+ai-review/758.md-73-`answer(True) ↔ maxCochromaticNumber 12 = 4` correctly encodes: "The answer is yes, z(12) = 4." The `answer(True)` wrapper with the `solved` tag appropriately reflects the resolved status.
+--
+/home/ryan/formal-conjectures/ai-review/759.md-2-
+/home/ryan/formal-conjectures/ai-review/759.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/759.md-4-
+ai-review/759.md:5:**Significant duplication exists.** The definitions `IsCochromaticColouring` and `cochromaticNumber` in `759.lean` are essentially identical to those in:
+/home/ryan/formal-conjectures/ai-review/759.md-6-
+ai-review/759.md-7-- **`ErdosProblems/758.lean`** (lines 41–51): Same logic, but uses American spelling `IsCochromaticColoring`. The definitions are structurally identical.
+ai-review/759.md-8-- **`ErdosProblems/762.lean`** (lines 47–57): Identical definitions with identical British spelling.
+ai-review/759.md:9:- **`FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean`** (lines 118–131): Provides `Cocolorable` and `cochromaticNumber` using a different but equivalent formulation based on `G.induce` returning `⊥` or `⊤`, and returning `ℕ∞` instead of `ℕ`.
+/home/ryan/formal-conjectures/ai-review/759.md-10-
+ai-review/759.md:11:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/759.md-12-
+/home/ryan/formal-conjectures/ai-review/759.md-13-The `maxCochromaticOnSurface` definition is unique to 759 and cannot be reused from elsewhere.
+/home/ryan/formal-conjectures/ai-review/759.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/759.md-18-
+/home/ryan/formal-conjectures/ai-review/759.md-19-| Citation | Docstring | Website | Match? |
+/home/ryan/formal-conjectures/ai-review/759.md-20-|----------|-----------|---------|--------|
+ai-review/759.md:21:| [ErGi93] | Erdős, P. and Gimbel, J., *Some problems and results in cochromatic theory*, 1993. | Erdős and Gimbel (1993) | Yes |
+ai-review/759.md:22:| [Gi86] | Gimbel, J., *Some remarks on the cochromatic number of a graph*, 1986. | Gimbel (1986) | Yes |
+/home/ryan/formal-conjectures/ai-review/759.md-23-| [GiTh97] | Gimbel, J. and Thomassen, C., *Coloring graphs with fixed genus and girth*, 1997. | Gimbel and Thomassen (1997) | Yes |
+/home/ryan/formal-conjectures/ai-review/759.md-24-
+/home/ryan/formal-conjectures/ai-review/759.md-25-All citations are properly documented. The website also mentions Raphael Steiner as a contributor, but this appears to be related to other problems (762), not 759 directly.
+--
+/home/ryan/formal-conjectures/ai-review/759.md-68-
+ai-review/759.md-69-- **`IsCochromaticColouring`**: Correctly captures that each color class induces either a clique or an independent set. The quantification over `u ≠ v` correctly excludes self-loops (which don't exist in `SimpleGraph`).
+/home/ryan/formal-conjectures/ai-review/759.md-70-
+ai-review/759.md:71:- **`cochromaticNumber`**: Uses `sInf` on ℕ. The set `{k | ∃ c : V → Fin k, IsCochromaticColouring G k c}` is non-empty for any finite graph (take k = Fintype.card V and assign each vertex a distinct color), so `sInf` returns the correct minimum. Returns `0` only for graphs on `Fin 0`, which is correct (the empty graph has cochromatic number 0).
+/home/ryan/formal-conjectures/ai-review/759.md-72-
+ai-review/759.md-73-- **`IsEmbeddableOnSurface`**: Opaque axiomatization. Takes graphs on `Fin m` (finite vertex sets), which is appropriate since surface embeddings are only meaningful for finite graphs.
+/home/ryan/formal-conjectures/ai-review/759.md-74-
+ai-review/759.md:75:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/759.md-76-
+/home/ryan/formal-conjectures/ai-review/759.md-77-### Theorem Statements
+/home/ryan/formal-conjectures/ai-review/759.md-78-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-21-
+FormalConjectures/ErdosProblems/758.lean-22-*Reference:* [erdosproblems.com/758](https://www.erdosproblems.com/758)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-23-
+FormalConjectures/ErdosProblems/758.lean:24:The cochromatic number of $G$, denoted $\zeta(G)$, is the minimum number of colours
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-25-needed to colour the vertices of $G$ such that each colour class induces either
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-26-a complete graph or an empty graph (independent set). Let $z(n)$ be the maximum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-27-value of $\zeta(G)$ over all graphs $G$ with $n$ vertices.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-28-
+FormalConjectures/ErdosProblems/758.lean:29:[ErGi93] Erdős, P. and Gimbel, J., *Some problems and results in cochromatic theory* (1993).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-30-
+FormalConjectures/ErdosProblems/758.lean:31:[Gi86] Gimbel, J., *The chromatic and cochromatic number of a graph* (1986).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-32--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-34-open SimpleGraph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-36-namespace Erdos758
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-37-
+FormalConjectures/ErdosProblems/758.lean:38:/-- A cochromatic coloring of a simple graph $G$ with $k$ colors is a function
+FormalConjectures/ErdosProblems/758.lean-39-$c : V \to \text{Fin}(k)$ such that each color class is either a clique (all pairs
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-40-adjacent) or an independent set (no pairs adjacent). -/
+FormalConjectures/ErdosProblems/758.lean-41-def IsCochromaticColoring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+--
+FormalConjectures/ErdosProblems/758.lean-44-    (∀ u v : V, c u = i → c v = i → u ≠ v → G.Adj u v) ∨
+FormalConjectures/ErdosProblems/758.lean-45-    (∀ u v : V, c u = i → c v = i → u ≠ v → ¬G.Adj u v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-46-
+FormalConjectures/ErdosProblems/758.lean:47:/-- The cochromatic number $\zeta(G)$: the minimum number of colors needed for a
+FormalConjectures/ErdosProblems/758.lean:48:cochromatic coloring of $G$. -/
+FormalConjectures/ErdosProblems/758.lean:49:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/758.lean-50-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/758.lean-51-  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColoring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-52-
+FormalConjectures/ErdosProblems/758.lean:53:/-- $z(n)$: the maximum cochromatic number over all simple graphs on $n$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-54-vertices. -/
+FormalConjectures/ErdosProblems/758.lean-55-noncomputable def maxCochromaticNumber (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/758.lean:56:  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n), cochromaticNumber G = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-58-/--
+FormalConjectures/ErdosProblems/758.lean-59-Erdős Problem 758 [ErGi93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-60-
+FormalConjectures/ErdosProblems/758.lean:61:Is it true that $z(12) = 4$, where $z(n)$ is the maximum cochromatic number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-62-over all graphs on $n$ vertices?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-63-
+FormalConjectures/ErdosProblems/758.lean-64-Resolved: $z(12) = 4$ (confirmed computationally by Bhavik Mehta).
+--
+/home/ryan/formal-conjectures/ai-review/625.md-2-
+/home/ryan/formal-conjectures/ai-review/625.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/625.md-4-
+ai-review/625.md:5:The formalization defines its own `finChromaticNumber`, `cochromaticNumber`, and `toGraph625` locally in the `Erdos625` namespace, but the codebase already provides reusable versions:
+/home/ryan/formal-conjectures/ai-review/625.md-6-
+ai-review/625.md-7-- **`SimpleGraph.Cocolorable`** (`FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:118`): Defines cocolorability using `G.induce {v | coloring v = i} = ⊥ ∨ ... = ⊤`, which is equivalent to the explicit pairwise condition used in 625.lean.
+ai-review/625.md:8:- **`SimpleGraph.cochromaticNumber`** (`Coloring.lean:131`): Returns `ℕ∞` via `⨅ n ∈ setOf G.Cocolorable, (n : ℕ∞)`.
+ai-review/625.md-9-- **`SimpleGraph.chromaticNumber`** (Mathlib): Already available and used throughout the codebase with notation `χ(G)`.
+/home/ryan/formal-conjectures/ai-review/625.md-10-
+ai-review/625.md:11:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/625.md-12-
+ai-review/625.md-13-**Recommendation:** Replace local definitions with imports from `FormalConjecturesForMathlib.Combinatorics.SimpleGraph.Coloring` and Mathlib's `SimpleGraph.chromaticNumber`. The `toGraph625` construction for encoding G(n,1/2) is problem-specific and appropriately defined locally.
+/home/ryan/formal-conjectures/ai-review/625.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/625.md-16-
+ai-review/625.md-17-The formalization cites:
+/home/ryan/formal-conjectures/ai-review/625.md-18-
+ai-review/625.md:19:> [ErGi93] Erdős, P. and Gimbel, J., *Some problems and results in cochromatic theory*, 1993.
+/home/ryan/formal-conjectures/ai-review/625.md-20-
+ai-review/625.md-21-The website (erdosproblems.com/625) confirms this reference and additionally notes:
+/home/ryan/formal-conjectures/ai-review/625.md-22-
+--
+/home/ryan/formal-conjectures/ai-review/625.md-42-
+/home/ryan/formal-conjectures/ai-review/625.md-43-- The name `toGraph625` is problem-specific and clear in context but somewhat opaque; a name like `boolMatrixToGraph` would be more descriptive. However, the problem-specific naming avoids namespace collisions and is a reasonable convention.
+/home/ryan/formal-conjectures/ai-review/625.md-44-- The docstring on `erdos_625` clearly explains both the probabilistic and combinatorial formulations and their equivalence.
+ai-review/625.md:45:- The `finChromaticNumber` and `cochromaticNumber` definitions use `sInf` over explicit set-builder notation, which is standard and readable.
+/home/ryan/formal-conjectures/ai-review/625.md-46-
+ai-review/625.md-47-**Minor:** The `open SimpleGraph Finset` at the top could be scoped more narrowly if desired.
+/home/ryan/formal-conjectures/ai-review/625.md-48-
+--
+ai-review/625.md-68-- **Chromatic number definition** is standard: minimum k such that a proper k-coloring exists.
+/home/ryan/formal-conjectures/ai-review/625.md-69-- **Cochromatic number definition** correctly requires each color class to be either a clique or an independent set, matching the mathematical definition.
+/home/ryan/formal-conjectures/ai-review/625.md-70-- **The main statement** correctly encodes "χ − ζ → ∞ a.s." as the ε-δ counting condition.
+ai-review/625.md:71:- **Natural number subtraction** `finChromaticNumber - cochromaticNumber` is safe here because χ(G) ≥ ζ(G) always holds (any proper coloring is a valid cochromatic coloring, since each color class is an independent set).
+/home/ryan/formal-conjectures/ai-review/625.md-72-
+ai-review/625.md-73-### Observations:
+ai-review/625.md:74:- **`sInf` over potentially empty sets:** If n = 0, both `finChromaticNumber` and `cochromaticNumber` take `sInf` of sets that include k = 0 (vacuously). For n ≥ 1, the chromatic number set excludes k = 0 (no function `Fin n → Fin 0` exists) but includes k = n. The `sInf` of a nonempty subset of ℕ is well-defined and correct. For the empty set, `sInf ∅ = 0` in ℕ, but this edge case (n = 0) is harmless since graphs on 0 vertices trivially satisfy any coloring bound.
+/home/ryan/formal-conjectures/ai-review/625.md-75-- **`answer(sorry)`** is appropriately used since the problem is open — though recent work by Heckel strongly suggests the answer is **true**, the full result for all n has not been established.
+/home/ryan/formal-conjectures/ai-review/625.md-76-- **The `@[category research open, AMS 5 60]` tag** is appropriate (Graph Theory and Probability).
+/home/ryan/formal-conjectures/ai-review/625.md-77-
+/home/ryan/formal-conjectures/ai-review/625.md-78-### No mathematical errors detected.
+/home/ryan/formal-conjectures/ai-review/625.md-79-
+ai-review/625.md:80:The formalization is a faithful and correct encoding of Erdős Problem 625. The main recommendation is to reuse the existing `Cocolorable`/`cochromaticNumber` and Mathlib's `chromaticNumber` definitions rather than defining local versions.
+--
+/home/ryan/formal-conjectures/ai-review/761.md-2-
+/home/ryan/formal-conjectures/ai-review/761.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/761.md-4-
+ai-review/761.md:5:**Significant duplication identified.** The definitions `IsCochromaticColouring` and `cochromaticNumber` in `Erdos761` (lines 63–74) are **identical** to those in:
+/home/ryan/formal-conjectures/ai-review/761.md-6-- `ErdosProblems/760.lean` (lines 46–58)
+/home/ryan/formal-conjectures/ai-review/761.md-7-- `ErdosProblems/759.lean` (lines 50–60)
+/home/ryan/formal-conjectures/ai-review/761.md-8-- `ErdosProblems/762.lean` (lines 47–57)
+--
+/home/ryan/formal-conjectures/ai-review/761.md-10-
+ai-review/761.md-11-Additionally, `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean` already provides:
+ai-review/761.md-12-- `Cocolorable` (line 118): semantically equivalent using `G.induce S = ⊥ ∨ G.induce S = ⊤`
+ai-review/761.md:13:- `cochromaticNumber` (line 131): an `ℕ∞`-valued version using `Cocolorable`
+/home/ryan/formal-conjectures/ai-review/761.md-14-
+ai-review/761.md:15:The local `IsCochromaticColouring`/`cochromaticNumber` definitions could be replaced by the utility library's `Cocolorable`/`cochromaticNumber`, though the utility version returns `ℕ∞` rather than `ℕ`, which would require `.toNat` conversion. At minimum, these five Erdős problems (758–762) should share a single definition.
+/home/ryan/formal-conjectures/ai-review/761.md-16-
+/home/ryan/formal-conjectures/ai-review/761.md-17-The `IsOrientation` predicate (lines 42–45) is essentially the same as the `Orientation` structure in `ErdosProblems/1006.lean` (lines 45–49), differing only in being a bare `Prop` vs. a structure with named fields. These could be unified.
+/home/ryan/formal-conjectures/ai-review/761.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/761.md-30-
+ai-review/761.md-31-The website states two questions:
+/home/ryan/formal-conjectures/ai-review/761.md-32-1. Must a graph with large chromatic number have large dichromatic number?
+ai-review/761.md:33:2. Must a graph with large cochromatic number contain a graph with large dichromatic number?
+/home/ryan/formal-conjectures/ai-review/761.md-34-
+ai-review/761.md-35-The formalization captures both:
+ai-review/761.md-36-- `erdos_761` (line 83): Question 1 (χ large → δ large)
+ai-review/761.md:37:- `erdos_761.variants.cochromatic` (line 97): Question 2 (ζ large → induced subgraph with δ large)
+/home/ryan/formal-conjectures/ai-review/761.md-38-
+/home/ryan/formal-conjectures/ai-review/761.md-39-**All variants are captured.** The website also notes that a positive answer to Q2 implies Q1 via Problem 760; the docstring correctly mentions this relationship.
+/home/ryan/formal-conjectures/ai-review/761.md-40-
+--
+/home/ryan/formal-conjectures/ai-review/761.md-52-
+ai-review/761.md-53-- "Large chromatic number implies large dichromatic number" has a standard formalization as: ∀ n, ∃ m, χ(G) ≥ m → δ(G) ≥ n.
+/home/ryan/formal-conjectures/ai-review/761.md-54-- The dichromatic number has a precise definition (minimum k such that every orientation admits an acyclic k-coloring).
+ai-review/761.md:55:- The cochromatic number has a precise definition (minimum colors where each class is complete or independent).
+/home/ryan/formal-conjectures/ai-review/761.md-56-
+ai-review/761.md:57:**One minor ambiguity:** In Q2, "contain a graph with large dichromatic number" could mean either subgraph or induced subgraph. The formalization uses **induced subgraph** (`G.induce`), which is the natural choice for cochromatic number questions (since cochromatic properties concern vertex partitions and induced structure). This matches the convention in Problem 760 as well. The ambiguity is low.
+/home/ryan/formal-conjectures/ai-review/761.md-58-
+/home/ryan/formal-conjectures/ai-review/761.md-59-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/761.md-60-
+--
+/home/ryan/formal-conjectures/ai-review/761.md-68-
+ai-review/761.md-69-**`IsCochromaticColouring`** (lines 64–68): Each color class must induce either a complete graph or an independent set. The disjunction is per-color-class (each class independently chooses complete or independent). **Correct.**
+/home/ryan/formal-conjectures/ai-review/761.md-70-
+ai-review/761.md:71:**`cochromaticNumber`** (lines 72–74): Analogous to `dichromaticNumber`, uses `sInf`. Non-empty for finite graphs (k = |V| trivially works). **Correct.**
+/home/ryan/formal-conjectures/ai-review/761.md-72-
+/home/ryan/formal-conjectures/ai-review/761.md-73-### Theorem Statements
+/home/ryan/formal-conjectures/ai-review/761.md-74-
+ai-review/761.md-75-**`erdos_761`** (lines 83–87): Formalizes Q1 as `∀ n, ∃ m, ∀ (s : ℕ) (G : SimpleGraph (Fin s)), χ(G) ≥ m → δ(G) ≥ n`. This correctly captures "graphs with sufficiently large chromatic number must have large dichromatic number." The use of `answer(sorry)` reflects that the problem is open and the truth value is unknown. Quantifying over `Fin s` covers all finite graphs up to isomorphism. **Correct.**
+/home/ryan/formal-conjectures/ai-review/761.md-76-
+ai-review/761.md:77:**`erdos_761.variants.cochromatic`** (lines 97–102): Formalizes Q2 as `∀ n, ∃ m, ∀ (s : ℕ) (G : SimpleGraph (Fin s)), ζ(G) ≥ m → ∃ S : Finset (Fin s), δ(G.induce S) ≥ n`. This correctly captures "graphs with large cochromatic number contain an induced subgraph with large dichromatic number." **Correct.**
+/home/ryan/formal-conjectures/ai-review/761.md-78-
+ai-review/761.md-79-**Note on the `induce` usage in Q2** (line 101): `G.induce (↑S : Set (Fin s))` induces on a `Set` coercion of a `Finset`. The `dichromaticNumber` function requires `[Fintype V]`. The induced subgraph on a `Set` from a `Finset` coercion should have a `Fintype` instance, so this should type-check. **Correct.**
+/home/ryan/formal-conjectures/ai-review/761.md-80-
+--
+/home/ryan/formal-conjectures/ai-review/761.md-86-
+ai-review/761.md-87-**The formalization is mathematically correct and complete.** The only actionable items are:
+/home/ryan/formal-conjectures/ai-review/761.md-88-1. Add the [ErGi93] citation to the docstring.
+ai-review/761.md:89:2. Consider centralizing the duplicated `IsCochromaticColouring`/`cochromaticNumber` and `IsOrientation` definitions.
+--
+/home/ryan/formal-conjectures/ai-review/760.md-2-
+/home/ryan/formal-conjectures/ai-review/760.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/760.md-4-
+ai-review/760.md:5:**Significant duplication found.** Both Problem 760 and Problem 762 define identical local copies of `IsCochromaticColouring` and `cochromaticNumber`. Furthermore, `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean` already provides:
+/home/ryan/formal-conjectures/ai-review/760.md-6-
+/home/ryan/formal-conjectures/ai-review/760.md-7-- `SimpleGraph.Cocolorable` (line 118) — an equivalent predicate defined via `G.induce {v | coloring v = i} = ⊥ ∨ ... = ⊤`, which is mathematically equivalent to the local `IsCochromaticColouring`.
+ai-review/760.md:8:- `SimpleGraph.cochromaticNumber` (line 131) — returning `ℕ∞` via `⨅ n ∈ setOf G.Cocolorable, (n : ℕ∞)`.
+/home/ryan/formal-conjectures/ai-review/760.md-9-
+ai-review/760.md-10-The library definitions are preferable because:
+/home/ryan/formal-conjectures/ai-review/760.md-11-- They use `ℕ∞`, which is consistent with `chromaticNumber`'s return type and avoids `sInf ∅ = 0` edge-case confusion with `ℕ`.
+ai-review/760.md:12:- They express the cochromatic condition structurally (induced subgraph equals `⊥` or `⊤`) rather than pointwise, which is more idiomatic Mathlib style.
+/home/ryan/formal-conjectures/ai-review/760.md-13-- They avoid code duplication across Problems 760 and 762.
+/home/ryan/formal-conjectures/ai-review/760.md-14-
+ai-review/760.md:15:**Recommendation:** Import `FormalConjecturesForMathlib.Combinatorics.SimpleGraph.Coloring` and use `Cocolorable`/`cochromaticNumber` from there. If the `ℕ∞` return type is inconvenient for the bound statement, convert via `.toNat` (as is already done for `chromaticNumber`).
+/home/ryan/formal-conjectures/ai-review/760.md-16-
+/home/ryan/formal-conjectures/ai-review/760.md-17-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/760.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/760.md-48-
+/home/ryan/formal-conjectures/ai-review/760.md-49-The problem uses $f \gg g$ (Vinogradov notation), which is standard for "there exists $C > 0$ such that $f \geq C \cdot g$ for sufficiently large arguments." The formalization correctly interprets this as $\exists C > 0, \exists N_0, \forall G$ with $\chi(G) \geq N_0, \ldots$
+/home/ryan/formal-conjectures/ai-review/760.md-50-
+ai-review/760.md:51:The only minor ambiguity is the meaning of "subgraph" — which could mean general subgraph or induced subgraph. In the context of cochromatic number (a vertex-partition property), induced subgraphs are the natural choice, and this matches the AKS97 result. The formalization correctly uses `G.induce`.
+/home/ryan/formal-conjectures/ai-review/760.md-52-
+/home/ryan/formal-conjectures/ai-review/760.md-53-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/760.md-54-
+--
+ai-review/760.md-64-### Observations:
+ai-review/760.md-65-- **`Real.log` base:** Mathlib's `Real.log` is the natural logarithm. In combinatorics, $\log$ often means natural log (or the base doesn't matter up to constants, which are absorbed into $C$). This is fine.
+ai-review/760.md-66-- **Edge case when $m = 0$ or $m = 1$:** If $\chi(G) = 0$ (empty type) or $\chi(G) = 1$ (edgeless), then $\log m \leq 0$ and the bound $C \cdot m / \log m$ is nonpositive, so it's trivially satisfied. The $N_0$ threshold handles this gracefully.
+ai-review/760.md:67:- **Local `cochromaticNumber` returns `ℕ`:** The local definition uses `sInf` on `ℕ`, which gives 0 for the empty set. For finite graphs with at least one vertex, the set is always nonempty (color each vertex distinctly), so this is not a problem in practice. However, the `ℕ∞` version from the library is more robust.
+/home/ryan/formal-conjectures/ai-review/760.md-68-
+ai-review/760.md-69-### Potential issue:
+ai-review/760.md:70:- The local `cochromaticNumber` requires `[Fintype V]`, but `G.induce (↑S : Set (Fin n))` has vertex type `↑S : Set (Fin n)`. This should have a `Fintype` instance since `S` is a `Finset`, so this works. No issue.
+/home/ryan/formal-conjectures/ai-review/760.md-71-
+ai-review/760.md:72:**Verdict:** The formalization is mathematically correct and faithfully represents the problem as stated on the website. The main recommendation is to use the shared cochromatic number definitions from `FormalConjecturesForMathlib` to avoid code duplication with Problem 762.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-21-
+FormalConjectures/ErdosProblems/762.lean-22-*Reference:* [erdosproblems.com/762](https://www.erdosproblems.com/762)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-23-
+FormalConjectures/ErdosProblems/762.lean:24:The cochromatic number of $G$, denoted by $\zeta(G)$, is the minimum number of colours
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-25-needed to colour the vertices of $G$ such that each colour class induces either a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-26-complete graph or empty graph.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-32-This has been disproved by Steiner [St24b], who constructed a graph $G$ with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-33-$\omega(G) = 4$, $\zeta(G) = 4$, and $\chi(G) = 7$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-34-
+FormalConjectures/ErdosProblems/762.lean:35:[EGS90] Erdős, P., Gimbel, J., and Straight, H.J., _Chromatic number versus cochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-36-number in graphs with bounded clique number_, European J. Combin. 11 (1990), 235–240.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-38-[St24b] Steiner, R., _A counterexample to the Erdős–Gimbel–Straight conjecture_, 2024.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-43-namespace Erdos762
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-44-
+FormalConjectures/ErdosProblems/762.lean:45:/-- A cochromatic colouring: each colour class induces either a complete
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-46-    subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/762.lean-47-def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/762.lean-48-    (c : V → Fin k) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-50-    (∀ u v, c u = i → c v = i → u ≠ v → G.Adj u v) ∨
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-51-    (∀ u v, c u = i → c v = i → u ≠ v → ¬G.Adj u v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-52-
+FormalConjectures/ErdosProblems/762.lean:53:/-- The cochromatic number $\zeta(G)$: minimum number of colours in a cochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-54-    colouring. -/
+FormalConjectures/ErdosProblems/762.lean:55:noncomputable def cochromaticNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/762.lean-56-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/762.lean-57-  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-58-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-70-    answer(False) ↔
+FormalConjectures/ErdosProblems/762.lean-71-      ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-72-        G.CliqueFree 5 →
+FormalConjectures/ErdosProblems/762.lean:73:          cochromaticNumber G ≥ 4 →
+FormalConjectures/ErdosProblems/762.lean:74:            G.chromaticNumber ≤ cochromaticNumber G + 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-77-end Erdos762

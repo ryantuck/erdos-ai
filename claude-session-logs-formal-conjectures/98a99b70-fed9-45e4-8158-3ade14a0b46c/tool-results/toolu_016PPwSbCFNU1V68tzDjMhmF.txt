@@ -1,0 +1,198 @@
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean:30:  exact le_csSup ⟨Nat.card V, by simp [mem_upperBounds, isNIndepSet_iff, Finset.card_le_univ]⟩
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean:31:    ⟨{v}, by simp [isNIndepSet_iff]⟩
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:21:import Mathlib.Data.Multiset.Interval
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:57:  Sym2.lift ⟨fun u v => (G.neighborFinset u ∪ G.neighborFinset v).card,
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:58:    fun u v => by simp [Finset.union_comm]⟩ e
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:65:    (neighbor_sizes.min' (Finset.Nonempty.image h _))
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:92:/-- The set of vertices of minimum eccentricity. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:93:noncomputable def graphCenter (G : SimpleGraph α) : Set α :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:100:/-- The set of vertices of maximum eccentricity. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:101:noncomputable def maxEccentricityVertices (G : SimpleGraph α) : Set α :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:105:noncomputable def distToSet (G : SimpleGraph α) (v : α) (S : Set α) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:106:  if h : S.toFinset.Nonempty then
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:126:noncomputable def ecc (G : SimpleGraph α) (S : Set α) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:133:noncomputable def distavg (G : SimpleGraph α) (S : Set α) : ℝ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:140:def IsPathCover (G : SimpleGraph α) (P : Finset (Finset α)) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:143:  (∀ s ∈ P, ∃ (u v : α) (p : G.Walk u v), p.IsPath ∧ s = p.support.toFinset)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:174:/-- The multiset of degrees of a graph. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:175:def degreeMultiset (G : SimpleGraph α) [DecidableRel G.Adj] : Multiset ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:184:  -- The set of all multisets of degrees that sum to less than or equal to `limit`
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:23:This file introduces dominating sets and related invariants.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:27:* `SimpleGraph.IsDominating`   : A set of vertices that dominates all vertices.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:28:* `SimpleGraph.IsNDominatingSet` : A dominating set with `n` vertices.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:30:* `SimpleGraph.IsTotalDominating` : A total dominating set.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:31:* `SimpleGraph.IsTotalNDominatingSet` : A total dominating set with `n` vertices.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:46:def IsDominating (G : SimpleGraph α) (D : Set α) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:66:def IsTotalDominating (G : SimpleGraph α) (D : Set α) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:83:def IsConnectedDominating (G : SimpleGraph α) (D : Set α) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:92:def IsIndepDominating (G : SimpleGraph α) (D : Set α) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:107:def IsEdgeCover (G : SimpleGraph α) (M : Set (Sym2 α)) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:118:def IsEdgeDominating (G : SimpleGraph α) (M : Set (Sym2 α)) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Johnson.lean:17:import FormalConjecturesForMathlib.Data.Finset.Card
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Johnson.lean:25:The Johnson graph $J(n, k)$ has as vertices the $k$-subsets of an $n$-set.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Johnson.lean:29:def johnson (n k : ℕ) : SimpleGraph {s : Finset (Fin n) // #s = k} where
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Johnson.lean:36:lemma johnson_adj_iff_ge {s t : {s : Finset (Fin n) // #s = k}} :
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Johnson.lean:47:    rw [Nat.add_one_le_iff, ← hs, card_lt_card_iff_of_subset inter_subset_left]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Johnson.lean:50:    exact eq_of_subset_of_card_le hst (by simp [*])
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Johnson.lean:52:lemma not_johnson_adj_iff_lt {s t : {s : Finset (Fin n) // #s = k}} :
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:33:  letI leaves (T : Subgraph G) := T.verts.toFinset.filter (fun v => T.degree v = 1)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:45:/-- The maximum cardinality among all independent sets `s`
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:47:    is the neighborhood of the set `s`. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:50:  letI diff (s : Finset α) : ℤ := (s.card : ℤ) - (⋃ v ∈ (s : Set α), G.neighborSet v).toFinset.card
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:83:  (G.induce (G.neighborSet v)).indepNum
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:96:def UnitDistancePlaneGraph (V : Set (EuclideanSpace ℝ (Fin 2))) : SimpleGraph V where
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:120:def edegree {V : Type*} (G : SimpleGraph V) (v : V) : ℕ∞ := (G.neighborSet v).encard
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:126:def ecliqueNum {V : Type} (G : SimpleGraph V) : ℕ∞ := ⨆ (s : Finset V) (_ : G.IsClique s), #s
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/DiamExtra.lean:36:    * `SimpleGraph.center`: the set of vertices with eccentricity equal to the graph's radius.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:20:import Mathlib.Data.Set.Card
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:55:    (sizeRamsey G H : ℝ) ≤ c * H.edgeSet.ncard
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:20:import Mathlib.Data.Set.Card
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:64:    (by simp [Finset.bipartiteAbove, Finset.filter_nonempty_iff])
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:65:    fun b _ ↦ IsIndepSet.card_le_indepNum ?_
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:82:def Subgraph.IsCriticalVerts (verts : Set V) (G' : G.Subgraph) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:131:noncomputable def cochromaticNumber (G : SimpleGraph V) : ℕ∞ := ⨅ n ∈ setOf G.Cocolorable, (n : ℕ∞)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:139:/-- The maximum size of the union of k finite independent sets. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:146:the union of `k` independent sets. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:154:  Function.Injective fun e : H.edgeSet => c (Sym2.map f e)
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:16:import Mathlib.Data.Set.Card
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:21:This file defines the VC dimension of a set family as the maximum size of a set it shatters.
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:24:variable {α : Type*} {𝒜 ℬ : Set (Set α)} {A B : Set α} {a : α} {d d' : ℕ}
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:27:/-- A set family `𝒜` shatters a set `A` if restricting `𝒜` to `A` gives rise to all subsets of `A`.
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:32:  hs <| Set.singleton_subset_iff.2 ha
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:40:lemma Shatters.exists_superset (h : Shatters 𝒜 A) : ∃ B ∈ 𝒜, A ⊆ B :=
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:41:  let ⟨B, hB, hst⟩ := h .rfl; ⟨B, hB, Set.inter_eq_left.1 hst⟩
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:43:lemma Shatters.of_forall_subset (h : ∀ B, B ⊆ A → B ∈ 𝒜) : Shatters 𝒜 A :=
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:44:  fun B hB ↦ ⟨B, h _ hB, Set.inter_eq_right.2 hB⟩
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:52:protected lemma Shatters.subset_iff (h : Shatters 𝒜 A) : B ⊆ A ↔ ∃ u ∈ 𝒜, A ∩ u = B :=
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:53:  ⟨fun hB ↦ h hB, by rintro ⟨u, _, rfl⟩; exact Set.inter_subset_left⟩
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:55:lemma shatters_iff : Shatters 𝒜 A ↔ (A ∩ ·) '' 𝒜 = A.powerset :=
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:56:  ⟨fun h ↦ by ext B; simp [h.subset_iff], fun h B hB ↦ h.superset hB⟩
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:58:lemma univ_shatters : Shatters .univ A := .of_forall_subset <| by simp
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:61:  simp [Shatters, Set.eq_univ_iff_forall]
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:65:by `[d + 1]` and `A` of sets of `𝒜` indexed by `2^[d + 1]` such that `x i ∈ A s ↔ i ∈ s` for all
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:77:  exact hd (x ∘ Fin.castLE h) (A ∘ Set.image (Fin.castLE h)) (by simp [hA]) fun i s ↦
+FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean:80:@[simp] lemma HasVCDimAtMost.empty : HasVCDimAtMost (∅ : Set (Set α)) d := by simp [HasVCDimAtMost]
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:16:import FormalConjecturesForMathlib.Combinatorics.SetFamily.VCDim
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:17:import Mathlib.Algebra.Group.Action.Pointwise.Set.Basic
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:22:This file defines the Vapnik–Chervonenkis (aka VC) dimension of a set in a group, defined as the
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:25:It also defines the VCₙ dimension, which has no set family analogue.
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:30:variable {G : Type*} [CommGroup G] {A B : Set G} {n d d' : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:48:  exact hd (x ∘ Fin.castLE h) (y ∘ Set.image (Fin.castLE h)) fun i s ↦ (hxy ..).trans <| by simp
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:59:protected lemma HasMulVCDimAtMost.empty : HasMulVCDimAtMost (∅ : Set G) d := by
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:63:protected lemma HasMulVCDimAtMost.univ : HasMulVCDimAtMost (.univ : Set G) d := by
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:89:  exact hd (x · ∘ Fin.castLE h) (y ∘ Set.image (Fin.castLE h ∘ ·)) fun i s ↦
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:101:protected lemma HasMulVCNDimAtMost.empty : HasMulVCNDimAtMost (∅ : Set G) n d := by
+FormalConjecturesForMathlib/Combinatorics/Additive/VCDim.lean:105:protected lemma HasMulVCNDimAtMost.univ : HasMulVCNDimAtMost (.univ : Set G) n d := by
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:16:import Mathlib.Data.Finset.Basic
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:30:The smallest natural number `m` such that every 2-coloring of the `r`-subsets of a set of size `m`
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:31:contains a monochromatic subset of size `n`.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:36:      ∃ (color : Bool), ∀ (e : Finset (Fin m)), e ⊆ S → e.card = r → c e = color }
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:38:/-- `n ≤ hypergraphRamsey r n` when the set is nonempty. -/
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:39:theorem le_hypergraphRamsey (r n : ℕ) (hne : { m | ∀ (c : Finset (Fin m) → Bool),
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:41:      ∃ (color : Bool), ∀ (e : Finset (Fin m)), e ⊆ S → e.card = r → c e = color }.Nonempty) :
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:45:  have : ∃ (S : Finset (Fin m)), S.card = n ∧ _ := hm (fun _ ↦ false)
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:53:  have h_mem : r ∈ { m | ∀ (c : Finset (Fin m) → Bool),
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:55:        ∃ (color : Bool), ∀ (e : Finset (Fin m)), e ⊆ S → e.card = r → c e = color } := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:27:A set $A$ is said to be sum-free if the sumset $A + A$ is disjoint from $A$, i.e.
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:36:/-- A Sidon set is a set, such that such that all pairwise sums of elements are distinct apart from
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:38:def IsSidon (A : Set α) : Prop := ∀ᵉ (i₁ ∈ A) (j₁ ∈ A) (i₂ ∈ A) (j₂ ∈ A),
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:43:lemma IsSidon.avoids_isAPOfLength_three {A : Set ℕ} (hA : IsSidon A)
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:52:    rw [Set.eq_of_subset_of_ncard_le (Set.inter_subset_right) (by linarith)]
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:58:  simp [hY, this.1, setOf_and] at hY_card
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:61:theorem IsSidon.subset {A B : Set α} (hB : IsSidon B) (hAB : A ⊆ B) : IsSidon A :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:64:theorem IsSidon.insert {A : Set α} {m : α} [IsRightCancelAdd α] [IsLeftCancelAdd α]
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:65:    (hA : IsSidon A) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:66:    IsSidon (A ∪ {m}) ↔ (m ∈ A ∨ ∀ᵉ (a ∈ A) (b ∈ A), m + m ≠ a + b ∧ ∀ c ∈ A, m + a ≠ b + c) := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:96:Maximal Sidon sets in an interval.
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:98:We follow the convention that `IsMaximalSidonSetIn A N` means `A ⊆ {1, …, N}` is Sidon and
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:99:is inclusion-maximal among subsets of `Set.Icc 1 N` with the Sidon property.
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:102:/-- `IsMaximalSidonSetIn A N` means `A ⊆ {1, …, N}` is Sidon and cannot be extended within
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:103:`{1, …, N}` while remaining Sidon. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:104:def IsMaximalSidonSetIn (A : Set ℕ) (N : ℕ) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:105:  A ⊆ Set.Icc 1 N ∧ IsSidon A ∧
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:106:    ∀ ⦃x : ℕ⦄, x ∈ Set.Icc 1 N → x ∉ A → ¬ IsSidon (A ∪ {x})
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:108:namespace IsMaximalSidonSetIn
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:110:/-- If `A` is a maximal Sidon set in `{1, …, N}`, then `A ⊆ {1, …, N}`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:111:theorem subset {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:114:/-- If `A` is a maximal Sidon set in `{1, …, N}`, then `A` is Sidon. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:115:theorem isSidon {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) : IsSidon A := hA.2.1
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:118:theorem maximal {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) {x : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:119:    (hx : x ∈ Set.Icc 1 N) (hxA : x ∉ A) : ¬ IsSidon (A ∪ {x}) := hA.2.2 hx hxA
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:121:end IsMaximalSidonSetIn
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:127:instance (A : Finset α) [DecidableEq α] : Decidable (IsSidon (A : Set α)) :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:130:/-- The maximum size of a Sidon set in the supplied `Finset`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:131:def maxSidonSubsetCard (A : Finset α) [DecidableEq α] : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:132:  (A.powerset.filter fun B : Finset α ↦ IsSidon (B : Set α)).sup Finset.card
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:134:/-- If `A` is finite Sidon, then `A ∪ {s}` is also Sidon provided `s ≥ A.max + 1`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:135:theorem IsSidon.insert_ge_max' {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) {s : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:137:    IsSidon (A ∪ {s}) := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:143:  exact (IsSidon.insert hA).2 <| by simpa [this] using fun a ha b hb ↦
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:146:theorem IsSidon.exists_insert {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:147:    ∃ m ∉ A, IsSidon (A ∪ {m}) := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:152:theorem IsSidon.exists_insert_ge {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) (s : ℕ) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:153:    ∃ m ≥ s, m ∉ A ∧ IsSidon (A ∪ {m}) := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:19:import Mathlib.Data.Set.Card
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:27:- `Set.IsAPOfLengthWith (s : Set α) (l : ℕ∞) (a d : α)` : predicate asserting that `s` is the
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:31:- `Set.IsAPOfLength (s : Set α) (l : ℕ∞)` : predicate asserting that `s` is the set consisting
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:40:This can be written as `Set.IsAPOfLengthWith a l a d`, where `l : ℕ∞` may take the infinite
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:43:def Set.IsAPOfLengthWith (s : Set α) (l : ℕ∞) (a d : α) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:55:variable {s : Set α} {l : ℕ∞} {a d : α}
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:93:/-- In an abelian additive group `α`, the set `{a, b}` with `a ≠ b` is an arithmetic progression of
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:95:theorem Set.isAPOfLengthWith_pair {α : Type*} [DecidableEq α] [AddCommGroup α]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:99:  rw [Finset.card_insert_of_notMem (by simpa only [Finset.mem_singleton])]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:108:/-- The set `{a, b} : Set ℕ` with `a < b` is an arithmetic progression of length `2` with
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:117:The predicate that a set `s` is an arithmetic progression of length `l` (possibly infinite).
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:121:def Set.IsAPOfLength (s : Set α) (l : ℕ∞) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:135:variable {s : Set α} {l : ℕ∞}
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:142:/-- Only the empty set is a finite arithmetic progression of length $0$. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:143:@[simp] theorem zero : s.IsAPOfLength 0 ↔ s = ∅ := by simp [Set.IsAPOfLength]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:150:theorem congr {s : Set α} {l₁ l₂ : ℕ∞}
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:182:theorem Set.isAPOfLength_pair {α : Type*} [DecidableEq α] [AddCommGroup α] {a b : α} (hab : a ≠ b) :
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:184:  ⟨a, b - a, Set.isAPOfLengthWith_pair hab⟩
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:190:/-- The empty set is not an arithmetic progression of positive length. -/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:191:theorem Set.not_isAPOfLength_empty {l : ℕ∞} (hl : 0 < l) :
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:192:    ¬Set.IsAPOfLength (∅ : Set α) l :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:193:  fun h ↦ by simp_all [h.congr <| Set.IsAPOfLength.zero.2 rfl]
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:195:/-- We say that a set `s` is free of arithmetic progressions of length `l` if `s` contains no
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:196:non-trivial arithmetic progressions of length `l`. Written as `Set.IsAPOfLengthFree s l`. --/
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:197:def Set.IsAPOfLengthFree (s : Set α) (l : ℕ∞) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:201:theorem Set.isAPOfLengthFree_one (s : Set α) : s.IsAPOfLengthFree 1 := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:205:theorem Set.isAPOfLengthFree_zero (s : Set α) : s.IsAPOfLengthFree 0 := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:209:theorem Set.IsAPOfLength.not_isAPOfLengthFree {s : Set α} {l : ℕ∞}
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:214:Define the largest possible size of a subset of $\{1, \dots, N\}$ that does not contain
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:217:noncomputable def Set.IsAPOfLengthFree.maxCard (k : ℕ) (N : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:220:theorem Set.IsAPOfLengthFree.maxCard_zero (N : ℕ) : maxCard 0 N = N := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:223:  refine ⟨⟨Finset.Icc 1 N, Subset.rfl, Nat.card_Icc _ _⟩, ?_⟩
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:227:theorem Set.IsAPOfLengthFree.maxCard_one (N : ℕ) : maxCard 1 N = N := by
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:235:def ContainsMonoAPofLength {κ : Type} [Finite κ] {M : Set α}
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:248:Define the largest possible size of a subset of a finset `s` that does not contain
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:251:noncomputable def Finset.maxAPFreeCard (k : ℕ) (s : Finset α) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean:252:  (s.powerset.filter fun t : Finset α ↦ (t : Set α).IsAPOfLengthFree k).sup Finset.card
+FormalConjecturesForMathlib/Combinatorics/Additive/Convolution.lean:52:noncomputable def sumRep (A : Set ℕ) : ℕ → ℕ := (𝟙_A ∗ 𝟙_A)
+FormalConjecturesForMathlib/Combinatorics/Additive/Convolution.lean:64:theorem sumRep_eq_powerSeries_coeff (A : Set ℕ) (n : ℕ) : (sumRep A n : ℕ) =
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:17:import FormalConjecturesForMathlib.Algebra.Group.Action.Pointwise.Set.Basic
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:18:import Mathlib.Algebra.Group.Pointwise.Set.BigOperators
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:19:import Mathlib.Algebra.Group.Pointwise.Set.Finite
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:26:variable {M : Type*} [CommMonoid M] {A : Set M} {m n : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:33:def IsMulBasisOfOrder (A : Set M) (n : ℕ) : Prop := ∀ a, a ∈ A ^ n
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:37:def IsMulBasis (A : Set M) : Prop := ∃ n, A.IsMulBasisOfOrder n
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:45:  have := Set.mem_finset_prod (t := .univ) (f := fun _ : Fin n ↦ A)
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:68:def IsAsymptoticMulBasisOfOrder (A : Set M) (n : ℕ) : Prop := ∀ᶠ a in cofinite, a ∈ A ^ n
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:72:def IsAsymptoticMulBasis (A : Set M) : Prop := ∃ n, A.IsAsymptoticMulBasisOfOrder n
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:86:/-- A set `A : Set M` is an asymptotic multiplicative basis of order `n` if a cofinite set of
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:89:/-- A set `A : Set M` is an asymptotic additive basis of order `n` if a cofinite set of
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:94:  have := Set.mem_finset_prod (t := .univ) (f := fun _ : Fin n ↦ A)
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:97:/-- A set `A : Set M` is an asymptotic multiplicative basis of order `2` if a cofinite set of
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:100:/-- A set `A : Set M` is an asymptotic additive basis of order `2` if a cofinite set of
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:110:/-- If `M` is infinite, then no set `A` is an asymptotic multiplicative basis of order `0`. -/
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:112:/-- If `M` is infinite, then no set `A` is an asymptotic additive basis of order `0`. -/]
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:114:  simpa [IsAsymptoticMulBasisOfOrder, ← not_infinite] using Set.infinite_of_finite_compl (by simp)
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:142:  refine ((hA.smul_set (a := a ^ n)).union <| finite_Iio <| a ^ n).subset ?_
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:152:  simp only [m.add_comm, pow_add, setOf_mem_eq, this, diff_union_self, subset_def, mem_compl_iff,
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:156:  exact smul_set_subset_mul (pow_mem_pow ha) hb.1
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:158:/-- For `M` equipped with a directed order, a set is an asymptotic multiplicative basis of order `1`
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:161:/-- For `M` equipped with a directed order, a set is an asymptotic additive basis of order `1`
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:165:  simp [IsAsymptoticMulBasisOfOrder, cofinite_hasBasis_Ioi.eventually_iff, Set.subset_def]
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:169:/-- For `M` equipped with a directed order, a set is an asymptotic multiplicative basis of order `1`
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:172:/-- For `M` equipped with a directed order, a set is an asymptotic additive basis of order `1`
+FormalConjecturesForMathlib/Combinatorics/Additive/Basis.lean:176:  simp [IsAsymptoticMulBasisOfOrder, cofinite_hasBasis_Ici.eventually_iff, Set.subset_def]

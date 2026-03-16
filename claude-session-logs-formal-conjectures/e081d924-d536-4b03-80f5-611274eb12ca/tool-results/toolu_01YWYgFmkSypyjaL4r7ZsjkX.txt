@@ -1,0 +1,861 @@
+/home/ryan/formal-conjectures/ai-review/552.md-7-### `ContainsSubgraphCopy` (lines 38–39)
+/home/ryan/formal-conjectures/ai-review/552.md-8-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/552.md-9-
+ai-review/552.md-10-**Recommendation:** Replace `ContainsSubgraphCopy G H` with `G.IsContained H` from Mathlib.
+/home/ryan/formal-conjectures/ai-review/552.md-11-
+ai-review/552.md:12:### `offDiagRamseyNumber` (lines 44–47)
+/home/ryan/formal-conjectures/ai-review/552.md-13-This identical definition appears in `551.lean` (lines 59–62). Neither is factored into a shared utility file. Using Mathlib's `IsContained` would also simplify this definition.
+/home/ryan/formal-conjectures/ai-review/552.md-14-
+ai-review/552.md:15:**Recommendation:** Extract `offDiagRamseyNumber` into a shared file (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Ramsey.lean` or a new utility), parameterized over Mathlib's `IsContained`.
+/home/ryan/formal-conjectures/ai-review/552.md-16-
+/home/ryan/formal-conjectures/ai-review/552.md-17-### `cycleGraph` (lines 51–60)
+ai-review/552.md-18-Mathlib provides `SimpleGraph.cycleGraph : (n : ℕ) → SimpleGraph (Fin n)` in `Mathlib.Combinatorics.SimpleGraph.Circulant`, defined via `circulantGraph {1}`. This is a cleaner, more general definition with proven properties. The hand-rolled version in 552.lean (and identically in 551.lean, 555.lean, 556.lean) uses modular arithmetic and takes an unnecessary proof obligation `hk : k ≥ 3`.
+/home/ryan/formal-conjectures/ai-review/552.md-19-
+ai-review/552.md-20-**Recommendation:** Replace with Mathlib's `SimpleGraph.cycleGraph 4`. The Mathlib version handles all `n` (returning `⊥` for `n = 0` and degeneracies for small `n`), so no proof obligation is needed.
+--
+/home/ryan/formal-conjectures/ai-review/552.md-57-- Proof of `loopless` for both `cycleGraph` and `starGraph` is clean and short.
+/home/ryan/formal-conjectures/ai-review/552.md-58-- The `symm` proofs using `Or.elim` / `Or.inr` / `Or.inl` are idiomatic.
+/home/ryan/formal-conjectures/ai-review/552.md-59-
+/home/ryan/formal-conjectures/ai-review/552.md-60-### Suggestions
+/home/ryan/formal-conjectures/ai-review/552.md-61-- The use of `answer(sorry)` with `↔` is a convention in this codebase for open problems. This is readable to those familiar with the pattern but could benefit from a brief comment for newcomers.
+ai-review/552.md:62:- The cast `(offDiagRamseyNumber ... : ℝ)` on line 89 is necessary for the real-valued inequality but slightly obscures the statement. This is unavoidable given the use of `Real.sqrt`.
+/home/ryan/formal-conjectures/ai-review/552.md-63-- Using Mathlib's `SimpleGraph.cycleGraph` would remove the `(by omega)` proof term on line 89, making the theorem statement cleaner.
+/home/ryan/formal-conjectures/ai-review/552.md-64-
+/home/ryan/formal-conjectures/ai-review/552.md-65-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/552.md-66-
+ai-review/552.md-67-The problem asks: "Is it true that, for any c > 0, there are infinitely many n such that R(C₄, Sₙ) ≤ n + √n − c?"
+--
+/home/ryan/formal-conjectures/ai-review/552.md-83-
+/home/ryan/formal-conjectures/ai-review/552.md-84-### Mathematical Correctness
+/home/ryan/formal-conjectures/ai-review/552.md-85-
+ai-review/552.md-86-The formalization is **mathematically correct** with one minor concern:
+/home/ryan/formal-conjectures/ai-review/552.md-87-
+ai-review/552.md:88:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/552.md-89-
+ai-review/552.md-90-2. **`cycleGraph` correctness (lines 51–60):** The adjacency relation `(i.val + 1) % k = j.val ∨ (j.val + 1) % k = i.val` correctly defines the cycle C_k for k ≥ 3. The `loopless` proof correctly handles the edge cases. This is equivalent to Mathlib's `cycleGraph` (via circulant graphs with jump set {1}) for k ≥ 3.
+/home/ryan/formal-conjectures/ai-review/552.md-91-
+ai-review/552.md-92-3. **`starGraph` correctness (lines 64–68):** The definition correctly makes vertex 0 adjacent to all other vertices and no other edges. This is K_{1,n} on n + 1 vertices. ✓
+/home/ryan/formal-conjectures/ai-review/552.md-93-
+--
+/home/ryan/formal-conjectures/ai-review/552.md-99-The formalization is complete for the specific Erdős question. No mathematical content is missing.
+/home/ryan/formal-conjectures/ai-review/552.md-100-
+/home/ryan/formal-conjectures/ai-review/552.md-101-### Summary
+/home/ryan/formal-conjectures/ai-review/552.md-102-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/552.md-103-|-----------|-----------|
+ai-review/552.md:104:| Code reuse | `ContainsSubgraphCopy`, `offDiagRamseyNumber`, and `cycleGraph` should use Mathlib equivalents or be shared |
+/home/ryan/formal-conjectures/ai-review/552.md-105-| Citations | Shorthand only; two references from the website are missing |
+/home/ryan/formal-conjectures/ai-review/552.md-106-| Variants | Core question captured; exact-value results omitted (acceptable) |
+/home/ryan/formal-conjectures/ai-review/552.md-107-| Readability | Good; would improve slightly with Mathlib's `cycleGraph` |
+/home/ryan/formal-conjectures/ai-review/552.md-108-| Formalizability | Low ambiguity; faithful to the stated problem |
+/home/ryan/formal-conjectures/ai-review/552.md-109-| Correctness | Mathematically correct and complete |
+--
+/home/ryan/formal-conjectures/ai-review/95.md-7-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/95.md-8-
+ai-review/95.md-9-Several opportunities for code reuse exist:
+/home/ryan/formal-conjectures/ai-review/95.md-10-
+ai-review/95.md-11-- **`distinctDistances`** is defined locally in `Erdos95` using `(P.product P).filter (fun pq => pq.1 ≠ pq.2)` followed by `.image`. Nearly identical definitions exist in:
+ai-review/95.md:12:  - `ErdosProblems/93.lean` — uses `A.offDiag.image (...)`, returning `Finset ℝ`
+/home/ryan/formal-conjectures/ai-review/95.md-13-  - `ErdosProblems/958.lean` — uses `(A ×ˢ A).filter (fun p => p.1 ≠ p.2)`, returning `Finset ℝ`
+/home/ryan/formal-conjectures/ai-review/95.md-14-  - `ErdosProblems/959.lean`, `1089.lean` — similar definitions
+ai-review/95.md:15:  - `FormalConjecturesForMathlib/Geometry/2d.lean` — `EuclideanGeometry.distinctDistances` uses `offDiag` but returns `ℕ` (the count), not `Finset ℝ` (the set)
+/home/ryan/formal-conjectures/ai-review/95.md-16-
+/home/ryan/formal-conjectures/ai-review/95.md-17-  A shared definition in `FormalConjecturesForMathlib` returning `Finset ℝ` would eliminate this duplication across at least five problem files.
+/home/ryan/formal-conjectures/ai-review/95.md-18-
+ai-review/95.md-19-- **`distMultiplicity`** is defined locally and also appears (with minor variations) in `958.lean`, `959.lean`, and `957.lean`. The key difference: Problem 95 counts **ordered** pairs, while 958/959/957 divide by 2 for **unordered** pairs. A shared definition parameterized by ordered vs. unordered, or simply a single ordered-pair version with a `/2` wrapper, would reduce duplication.
+/home/ryan/formal-conjectures/ai-review/95.md-20-
+ai-review/95.md:21:- The `P.product P` idiom could be replaced with `P ×ˢ P` (used in 958.lean) or `P.offDiag` (used in 93.lean) for consistency. Using `offDiag` is more idiomatic in Mathlib for filtering out the diagonal.
+/home/ryan/formal-conjectures/ai-review/95.md-22-
+/home/ryan/formal-conjectures/ai-review/95.md-23-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/95.md-24-
+ai-review/95.md-25-The formalization cites:
+/home/ryan/formal-conjectures/ai-review/95.md-26-
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-41-/--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-42-The restricted sumset of a set $S$, denoted $S \hat{+} S$, is the set
+FormalConjectures/GreensOpenProblems/2.lean-43-$\lbrace s_1 + s_2 : s_1, s_2 \in S, s_1 \neq s_2 \rbrace$.
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-44--/
+FormalConjectures/GreensOpenProblems/2.lean:45:def restrictedSumset (S : Finset ℤ) : Finset ℤ :=
+FormalConjectures/GreensOpenProblems/2.lean:46:  S.offDiag.image (fun p => p.1 + p.2)
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-48-/--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-49-We define the construction from [Sa21, p1] as
+FormalConjectures/GreensOpenProblems/2.lean-50-$M(A) := \max \{|S| : S \subseteq A \text{ and } (S \hat{+} S) \cap A = \varnothing \}$.
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-51--/
+FormalConjectures/GreensOpenProblems/2.lean-52-def maxRestrictedSumAvoidingSubsetSize (A : Finset ℤ) : ℕ :=
+FormalConjectures/GreensOpenProblems/2.lean:53:  (A.powerset.filter fun S => Disjoint (restrictedSumset S) A).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-55-/--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-56-Let $A \subset \mathbf{Z}$ be a set of $n$ integers. Is there a set $S \subset A$ of size
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-57-$(\log n)^{100}$ such that the restricted sumset$S \hat{+} S$ is disjoint from $A$?
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-58--/
+--
+ai-review/96.md-16-  def ConvexIndep (S : Set ℝ²) : Prop :=
+/home/ryan/formal-conjectures/ai-review/96.md-17-    ∀ a ∈ S, a ∉ convexHull ℝ (S \ {a})
+/home/ryan/formal-conjectures/ai-review/96.md-18-  ```
+/home/ryan/formal-conjectures/ai-review/96.md-19-  Problem 97 already uses `ConvexIndep` from ForMathlib. Problem 96 should do the same rather than defining its own local copy. The `P.erase p` vs `S \ {p}` formulations are equivalent (via `Finset.coe_erase`), so there is no mathematical distinction.
+/home/ryan/formal-conjectures/ai-review/96.md-20-
+ai-review/96.md:21:- **`unitDistancePairCount`** at `96.lean:43` counts *ordered* pairs using `P.offDiag.filter`. A closely related definition exists in:
+ai-review/96.md-22-  - `90.lean:35` as `unitDistancePairsCount` — counts *unordered* pairs (divides by 2)
+ai-review/96.md-23-  - `668.lean:41` as `unitDistanceCount` — uses product filter
+/home/ryan/formal-conjectures/ai-review/96.md-24-
+/home/ryan/formal-conjectures/ai-review/96.md-25-  These could be unified. In particular, the ordered-pair version in 96 is exactly twice the unordered version in 90, so either could serve as the canonical definition with a simple lemma relating them.
+/home/ryan/formal-conjectures/ai-review/96.md-26-
+--
+/home/ryan/formal-conjectures/ai-review/96.md-80-
+ai-review/96.md-81-Detailed analysis:
+/home/ryan/formal-conjectures/ai-review/96.md-82-
+ai-review/96.md-83-- **`ConvexPosition` (line 35):** Correctly captures the definition that no point lies in the convex hull of the others. The use of `P.erase p` is equivalent to removing p from the set. ✓
+/home/ryan/formal-conjectures/ai-review/96.md-84-
+ai-review/96.md:85:- **`unitDistancePairCount` (line 43):** Counts ordered pairs (a, b) with a ≠ b and dist(a, b) = 1 via `P.offDiag.filter`. The docstring correctly notes the ordered/unordered distinction and that the O(n) bound is equivalent either way. ✓
+/home/ryan/formal-conjectures/ai-review/96.md-86-
+ai-review/96.md-87-- **`erdos_96` (line 56):** States ∃ C > 0, ∀ P in convex position, unitDistancePairCount(P) ≤ C · |P|. This is a correct formalization of the Erdős–Moser conjecture. The use of `(unitDistancePairCount P : ℝ)` and `(P.card : ℝ)` with real-valued inequality is appropriate for expressing the linear bound. ✓
+/home/ryan/formal-conjectures/ai-review/96.md-88-
+ai-review/96.md-89-- **Edge cases:** The statement holds vacuously for empty sets and singletons (unitDistancePairCount = 0), which is correct. For sets of size 2 or 3 in convex position, the bound trivially holds for any C ≥ 6 (since at most 6 ordered pairs exist among 3 points). No issues with degenerate cases. ✓
+/home/ryan/formal-conjectures/ai-review/96.md-90-
+--
+ai-review/476.md-1-# Review: Erdős Problem 476
+/home/ryan/formal-conjectures/ai-review/476.md-2-
+/home/ryan/formal-conjectures/ai-review/476.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/476.md-4-
+ai-review/476.md:5:**`restrictedSumset` definition is duplicated.** Green's Open Problem 2 (`GreensOpenProblems/2.lean:45`) defines the same concept more concisely:
+/home/ryan/formal-conjectures/ai-review/476.md-6-
+/home/ryan/formal-conjectures/ai-review/476.md-7-```lean
+/home/ryan/formal-conjectures/ai-review/476.md-8--- Green 2 (cleaner)
+ai-review/476.md:9:def restrictedSumset (S : Finset ℤ) : Finset ℤ :=
+ai-review/476.md:10:  S.offDiag.image (fun p => p.1 + p.2)
+/home/ryan/formal-conjectures/ai-review/476.md-11-
+/home/ryan/formal-conjectures/ai-review/476.md-12--- Erdős 476 (current)
+ai-review/476.md:13:def restrictedSumset {p : ℕ} (A : Finset (ZMod p)) : Finset (ZMod p) :=
+/home/ryan/formal-conjectures/ai-review/476.md-14-  A.biUnion (fun a => (A.erase a).image (fun b => a + b))
+/home/ryan/formal-conjectures/ai-review/476.md-15-```
+/home/ryan/formal-conjectures/ai-review/476.md-16-
+ai-review/476.md:17:Both compute `{a + b : a, b ∈ S, a ≠ b}` but the `offDiag.image` pattern is more idiomatic and readable. Consider extracting a shared polymorphic `restrictedSumset` definition into `FormalConjecturesForMathlib/Combinatorics/` that works over any `DecidableEq` + `Add` type, usable by both problems. The `biUnion`+`erase`+`image` pattern also appears in `ErdosProblems/1089.lean` for distances.
+/home/ryan/formal-conjectures/ai-review/476.md-18-
+/home/ryan/formal-conjectures/ai-review/476.md-19-No other reuse opportunities from `FormalConjecturesForMathlib` were identified — the existing additive combinatorics infrastructure (Sidon sets, sum-free sets, convolutions, bases) does not directly apply to this restricted sumset cardinality bound.
+/home/ryan/formal-conjectures/ai-review/476.md-20-
+/home/ryan/formal-conjectures/ai-review/476.md-21-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/476.md-22-
+--
+/home/ryan/formal-conjectures/ai-review/476.md-45-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/476.md-46-
+/home/ryan/formal-conjectures/ai-review/476.md-47-**Good overall, minor improvement possible.**
+/home/ryan/formal-conjectures/ai-review/476.md-48-
+/home/ryan/formal-conjectures/ai-review/476.md-49-- The code is clean and well-structured with appropriate docstrings.
+ai-review/476.md:50:- The `restrictedSumset` definition via `biUnion`/`erase`/`image` is correct but slightly harder to parse than the `offDiag.image` alternative used in `GreensOpenProblems/2.lean`.
+/home/ryan/formal-conjectures/ai-review/476.md-51-- The namespace `Erdos476` cleanly scopes the definitions.
+/home/ryan/formal-conjectures/ai-review/476.md-52-
+/home/ryan/formal-conjectures/ai-review/476.md-53-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/476.md-54-
+ai-review/476.md-55-**Unambiguous; fully formalizable.** The problem statement is precise: it specifies the ground set ($\mathbb{F}_p$ for prime $p$), the operation (restricted sumset with distinct summands), and the exact bound ($\min(2|A|-3, p)$). There is no room for misinterpretation.
+--
+/home/ryan/formal-conjectures/ai-review/476.md-58-
+/home/ryan/formal-conjectures/ai-review/476.md-59-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/476.md-60-
+ai-review/476.md-61-**Mathematically correct.** Detailed analysis:
+/home/ryan/formal-conjectures/ai-review/476.md-62-
+ai-review/476.md:63:- **`restrictedSumset` definition**: Computes $\{a+b : a \in A, b \in A \setminus \{a\}\}$ via `A.biUnion (fun a => (A.erase a).image (fun b => a + b))`. This is exactly $A \hat{+} A$. Correctness holds because `Finset.biUnion` takes the union, `erase a` removes $a$ from $A$, and `image (fun b => a + b)` sums. The result is automatically de-duplicated as a `Finset`. ✓
+/home/ryan/formal-conjectures/ai-review/476.md-64-
+ai-review/476.md-65-- **Type-level correctness**: `ZMod p` with `[Fact (Nat.Prime p)]` ensures $p$ is prime and `ZMod p` is the finite field $\mathbb{F}_p$. ✓
+/home/ryan/formal-conjectures/ai-review/476.md-66-
+ai-review/476.md-67-- **Bound expression**: `min (2 * A.card - 3) p` operates on `ℕ`. When $|A| \leq 1$, truncated subtraction gives 0, which is correct (the mathematical bound is negative, so trivially satisfied). When $|A| \geq 2$, $2|A|-3$ is the correct positive integer. ✓
+/home/ryan/formal-conjectures/ai-review/476.md-68-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-190-/--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-191-Given a finite set of points in the plane, we define the number of distinct distances between pairs
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-192-of points.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-193--/
+FormalConjecturesForMathlib/Geometry/2d.lean-194-noncomputable def distinctDistances (points : Finset ℝ²) : ℕ :=
+FormalConjecturesForMathlib/Geometry/2d.lean:195:  (points.offDiag.image fun (pair : ℝ² × ℝ²) => dist pair.1 pair.2).card
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-196-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-197-end EuclideanGeometry
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-198-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-199-
+FormalConjecturesForMathlib/Geometry/2d.lean-200-def IsIsosceles {α : Type*} [Dist α] (p q r : α) : Prop :=
+--
+/home/ryan/formal-conjectures/ai-review/660.md-4-
+ai-review/660.md-5-Several opportunities for code reuse exist:
+/home/ryan/formal-conjectures/ai-review/660.md-6-
+/home/ryan/formal-conjectures/ai-review/660.md-7-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/660.md-8-
+ai-review/660.md:9:- **`distinctDistanceCount3d`**: Problem 98 (`FormalConjectures/ErdosProblems/98.lean`) defines `distinctDistanceCount` for ℝ² using the same `Set.ncard` approach with the same structure (`∃ p ∈ P, ∃ q ∈ P, p ≠ q ∧ ...`). A dimension-generic version could serve both. Meanwhile, problem 93 takes a different approach, returning a `Finset ℝ` via `A.offDiag.image`, which is arguably cleaner since it avoids needing `Set.ncard` for what is clearly a finite set.
+/home/ryan/formal-conjectures/ai-review/660.md-10-
+/home/ryan/formal-conjectures/ai-review/660.md-11-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/660.md-12-
+ai-review/660.md-13-The formalization references:
+/home/ryan/formal-conjectures/ai-review/660.md-14-- `[Er97e]` Erdős 1997 — **Correct and matches the website.**
+--
+/home/ryan/formal-conjectures/ai-review/660.md-25-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/660.md-26-
+ai-review/660.md-27-The code is generally readable. Minor suggestions:
+/home/ryan/formal-conjectures/ai-review/660.md-28-
+/home/ryan/formal-conjectures/ai-review/660.md-29-- The name `InConvexPosition3d` is clear but inconsistent with `InConvexPositionRk` in problem 651. A uniform naming convention would improve navigability.
+ai-review/660.md:30:- The name `distinctDistanceCount3d` is descriptive. However, using a `Finset`-based approach (like problem 93's `offDiag.image`) rather than `Set.ncard` would be more idiomatic for a finite computation and would avoid the need for the `Set.ncard` machinery. The `Set.ncard` approach requires showing the set is finite before extracting useful cardinality facts, adding proof burden.
+/home/ryan/formal-conjectures/ai-review/660.md-31-- The docstring is well-written and correctly explains the o(1) formulation in ε-N terms.
+/home/ryan/formal-conjectures/ai-review/660.md-32-
+/home/ryan/formal-conjectures/ai-review/660.md-33-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/660.md-34-
+ai-review/660.md-35-**Assessment: Clearly formalizable, low ambiguity.**
+--
+ai-review/550.md-1-# AI Review: Erdős Problem 550
+/home/ryan/formal-conjectures/ai-review/550.md-2-
+/home/ryan/formal-conjectures/ai-review/550.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/550.md-4-
+ai-review/550.md:5:**Significant duplication detected.** The definitions `ContainsSubgraphCopy` and `offDiagRamseyNumber` are copied verbatim across at least three files:
+/home/ryan/formal-conjectures/ai-review/550.md-6-
+/home/ryan/formal-conjectures/ai-review/550.md-7-- `ErdosProblems/549.lean` (lines 45–55)
+/home/ryan/formal-conjectures/ai-review/550.md-8-- `ErdosProblems/550.lean` (lines 44–55)
+/home/ryan/formal-conjectures/ai-review/550.md-9-- `ErdosProblems/551.lean` (lines 51–62)
+/home/ryan/formal-conjectures/ai-review/550.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/550.md-59-
+ai-review/550.md-60-- **Monotonicity:** `hsizes_mono : Monotone sizes` on `Fin k` ensures sizes 0 ≤ sizes 1 ≤ ··· ≤ sizes (k−1), matching the problem's m₁ ≤ ··· ≤ mₖ.
+/home/ryan/formal-conjectures/ai-review/550.md-61-
+ai-review/550.md-62-- **K_{m₁,m₂} construction:** `completeMultipartiteGraph (bipSizes m₁ m₂)` correctly constructs the complete bipartite graph with part sizes m₁ and m₂ (the two smallest), matching the problem statement.
+/home/ryan/formal-conjectures/ai-review/550.md-63-
+ai-review/550.md:64:- **Natural number subtraction:** The expression `offDiagRamseyNumber T (...) - 1` uses ℕ subtraction. Since any Ramsey number R(G₁, G₂) for non-empty graphs G₁, G₂ is ≥ 1 (and trees on n ≥ N₀ vertices are non-empty), this does not underflow in practice. Similarly, `k - 1` is safe since k ≥ 2.
+/home/ryan/formal-conjectures/ai-review/550.md-65-
+ai-review/550.md:66:- **sInf well-definedness:** The `offDiagRamseyNumber` uses `sInf`, which returns 0 for the empty set in ℕ. For finite graphs, the classical Ramsey theorem guarantees the defining set is nonempty, so sInf returns the true minimum. This is mathematically sound for the intended use.
+/home/ryan/formal-conjectures/ai-review/550.md-67-
+ai-review/550.md-68-- **IsTree:** The formalization uses Mathlib's `SimpleGraph.IsTree`, which correctly characterizes trees (connected acyclic graphs). This is appropriate.
+/home/ryan/formal-conjectures/ai-review/550.md-69-
+/home/ryan/formal-conjectures/ai-review/550.md-70-**No mathematical flaws identified.** The formalization faithfully captures the conjecture as stated on erdosproblems.com.
+/home/ryan/formal-conjectures/ai-review/550.md-71-
+/home/ryan/formal-conjectures/ai-review/550.md-72-## Summary
+/home/ryan/formal-conjectures/ai-review/550.md-73-
+/home/ryan/formal-conjectures/ai-review/550.md-74-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/550.md-75-|-----------|-----------|
+ai-review/550.md:76:| Code reuse | Duplication of `ContainsSubgraphCopy` and `offDiagRamseyNumber` across 549/550/551; should be shared |
+/home/ryan/formal-conjectures/ai-review/550.md-77-| Citations | Complete and correctly formatted |
+/home/ryan/formal-conjectures/ai-review/550.md-78-| Variants | All captured |
+/home/ryan/formal-conjectures/ai-review/550.md-79-| Readability | Good |
+/home/ryan/formal-conjectures/ai-review/550.md-80-| Formalizability | Unambiguous; clearly formalizable |
+/home/ryan/formal-conjectures/ai-review/550.md-81-| Correctness | Mathematically correct and complete |
+--
+/home/ryan/formal-conjectures/ai-review/135.md-2-
+/home/ryan/formal-conjectures/ai-review/135.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/135.md-4-
+ai-review/135.md-5-The `numDistances` definition at line 39 is **duplicated nearly verbatim** in Problem 657 (`FormalConjectures/ErdosProblems/657.lean:37`). Both use the same `(A ×ˢ A).filter`-then-`.image` pattern. Several other problems (93, 95, 958, 1082) define equivalent `distinctDistances` functions.
+/home/ryan/formal-conjectures/ai-review/135.md-6-
+ai-review/135.md:7:More importantly, `FormalConjecturesForMathlib/Geometry/2d.lean:194` already provides a shared `EuclideanGeometry.distinctDistances` definition using the cleaner `offDiag` approach:
+/home/ryan/formal-conjectures/ai-review/135.md-8-
+/home/ryan/formal-conjectures/ai-review/135.md-9-```lean
+ai-review/135.md-10-noncomputable def distinctDistances (points : Finset ℝ²) : ℕ :=
+ai-review/135.md:11:  (points.offDiag.image fun (pair : ℝ² × ℝ²) => dist pair.1 pair.2).card
+/home/ryan/formal-conjectures/ai-review/135.md-12-```
+/home/ryan/formal-conjectures/ai-review/135.md-13-
+ai-review/135.md:14:This is mathematically equivalent (both produce the same set of distance values since `dist` is symmetric) and could replace the local `numDistances`. The `offDiag` approach is preferred because it directly produces unordered pairs, making the intent clearer.
+/home/ryan/formal-conjectures/ai-review/135.md-15-
+/home/ryan/formal-conjectures/ai-review/135.md-16-The `FourPointFiveDist` predicate is specific to this problem and has no direct analogue elsewhere, though its structure mirrors `NoIsoscelesTriangles` in Problem 657 (checking subset properties on k-element subsets).
+/home/ryan/formal-conjectures/ai-review/135.md-17-
+ai-review/135.md:18:**Recommendation:** Replace the local `numDistances` with the shared `EuclideanGeometry.distinctDistances` from `2d.lean`, or at minimum switch to the `offDiag` idiom for consistency with Problems 93 and 1082.
+/home/ryan/formal-conjectures/ai-review/135.md-19-
+/home/ryan/formal-conjectures/ai-review/135.md-20-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/135.md-21-
+ai-review/135.md-22-The formalization lists three references:
+/home/ryan/formal-conjectures/ai-review/135.md-23-- **[Er97b]** — matches website ("Er97b"). Website specifies **p. 231**; the formalization omits the page number.
+--
+/home/ryan/formal-conjectures/ai-review/135.md-46-
+/home/ryan/formal-conjectures/ai-review/135.md-47-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/135.md-48-
+ai-review/135.md-49-The code is well-structured and readable. The docstrings are thorough, explaining both the original conjecture and Tao's disproof. Minor suggestions:
+/home/ryan/formal-conjectures/ai-review/135.md-50-
+ai-review/135.md:51:- The `numDistances` definition uses `(A ×ˢ A).filter (fun p => p.1 ≠ p.2)` which generates ordered pairs. While mathematically equivalent for counting distinct distance *values* (since `dist` is symmetric), using `A.offDiag` would be both shorter and semantically clearer, as it better reflects "unordered pairs of distinct points."
+/home/ryan/formal-conjectures/ai-review/135.md-52-- The `FourPointFiveDist` docstring says "four-point, five-distance property" which is clear and well-chosen.
+/home/ryan/formal-conjectures/ai-review/135.md-53-
+/home/ryan/formal-conjectures/ai-review/135.md-54-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/135.md-55-
+ai-review/135.md-56-The problem is **fully and unambiguously formalizable**. All components have precise mathematical meanings:
+--
+/home/ryan/formal-conjectures/ai-review/135.md-88-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/135.md-89-|---|---|
+/home/ryan/formal-conjectures/ai-review/135.md-90-| Code reuse | `numDistances` is duplicated; shared `distinctDistances` from `2d.lean` could be used |
+/home/ryan/formal-conjectures/ai-review/135.md-91-| Citations | Page numbers missing for [Er97b] (p.231) and [Er97e] (p.531); prize not noted |
+/home/ryan/formal-conjectures/ai-review/135.md-92-| Variants | Stronger conjecture (≫n points with all distances distinct) not captured |
+ai-review/135.md:93:| Readability | Good; `offDiag` idiom would be slightly cleaner |
+/home/ryan/formal-conjectures/ai-review/135.md-94-| Formalizability | Unambiguous; fully formalizable |
+/home/ryan/formal-conjectures/ai-review/135.md-95-| Correctness | Mathematically correct; minor note that small-set vacuity makes RHS trivially false |
+--
+ai-review/136.md-53-def EdgeColoring (n k : ℕ) : Type := Fin n → Fin n → Fin k
+/home/ryan/formal-conjectures/ai-review/136.md-54-```
+/home/ryan/formal-conjectures/ai-review/136.md-55-
+/home/ryan/formal-conjectures/ai-review/136.md-56-allows *asymmetric* colorings where `χ i j ≠ χ j i`. However, edges of K_n are unordered pairs, so a valid edge coloring must satisfy `χ i j = χ j i`.
+/home/ryan/formal-conjectures/ai-review/136.md-57-
+ai-review/136.md:58:The `edgeColors` function uses `S.offDiag`, which produces all *ordered* pairs `(i, j)` with `i ≠ j`. For a 4-element set, this yields 12 ordered pairs, whereas K₄ has only 6 edges. The image `S.offDiag.image (fun p => χ p.1 p.2)` therefore counts colors from both `χ i j` and `χ j i`.
+/home/ryan/formal-conjectures/ai-review/136.md-59-
+ai-review/136.md-60-**Consequences:**
+/home/ryan/formal-conjectures/ai-review/136.md-61-
+/home/ryan/formal-conjectures/ai-review/136.md-62-- If `χ` is symmetric, the 12 ordered pairs produce the same color set as the 6 unordered edges — no issue.
+/home/ryan/formal-conjectures/ai-review/136.md-63-- If `χ` is not symmetric, the color count can be artificially inflated. For example, one could use fewer total colors `k` but achieve ≥5 distinct values on a K₄ by exploiting asymmetry. This makes the "at least 5 colors" condition *easier* to satisfy.
+--
+/home/ryan/formal-conjectures/ai-review/136.md-67-
+ai-review/136.md-68-1. **Use `Sym2`**: Redefine `EdgeColoring n k := Sym2 (Fin n) → Fin k` and compute `edgeColors` over the `Finset.image Sym2.mk` of the 2-element subsets. This is the most principled fix and aligns with other problems in the codebase (810, 811, 809).
+/home/ryan/formal-conjectures/ai-review/136.md-69-
+ai-review/136.md-70-2. **Add symmetry constraint**: Keep the ordered-pair representation but add a symmetry hypothesis wherever `χ` is used, e.g., define `IsK4FiveColored` only for `χ` satisfying `∀ i j, χ i j = χ j i`.
+/home/ryan/formal-conjectures/ai-review/136.md-71-
+ai-review/136.md:72:3. **Use `Finset.filter` on offDiag**: Restrict to pairs `(i, j)` with `i < j` to count only one representative per edge. This is more fragile but avoids changing the type.
+/home/ryan/formal-conjectures/ai-review/136.md-73-
+ai-review/136.md:74:**Secondary observation**: The definition permits coloring self-loops (`χ i i`), but `offDiag` correctly excludes diagonal entries, so this is not a problem in practice — just a minor inelegance.
+/home/ryan/formal-conjectures/ai-review/136.md-75-
+/home/ryan/formal-conjectures/ai-review/136.md-76-## Summary
+/home/ryan/formal-conjectures/ai-review/136.md-77-
+/home/ryan/formal-conjectures/ai-review/136.md-78-| Category | Assessment |
+/home/ryan/formal-conjectures/ai-review/136.md-79-|---|---|
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean-16-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean-17-import Mathlib.Data.ZMod.Defs
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean-18-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean-19-/--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean-20-A perfect difference set modulo `n` is a set `D` such that the map `(a, b) ↦ a - b` from
+FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean:21:`D.offDiag` to `{x : ZMod n | x ≠ 0}` is a bijection.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean-22--/
+FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean-23-def IsPerfectDifferenceSet (D : Set ℕ) (n : ℕ) : Prop :=
+FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean:24:  D.offDiag.BijOn (fun (a, b) => (a - b : ZMod n)) {x : ZMod n | x ≠ 0}
+--
+/home/ryan/formal-conjectures/ai-review/484.md-2-
+/home/ryan/formal-conjectures/ai-review/484.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/484.md-4-
+ai-review/484.md-5-Several related files in the codebase define infrastructure that is conceptually adjacent but not directly reusable here:
+/home/ryan/formal-conjectures/ai-review/484.md-6-
+ai-review/484.md:7:- **Problem 476** (`476.lean`) defines `restrictedSumset` for `Finset (ZMod p)`, computing `A ⊕ A = {a + b : a, b ∈ A, a ≠ b}`. This is the exact same combinatorial operation (restricted/distinct-element sumset) that Problem 484 needs, but it is specialized to `ZMod p`. A generalized version (over any `AddCommMonoid` with `DecidableEq`) factored into `FormalConjecturesForMathlib` would serve both problems.
+ai-review/484.md-8-- **Problem 483** (`483.lean`) defines `HasMonochromaticSchurTriple` using the same coloring pattern `f : ℕ → Fin k` over `{1,…,N}`. The coloring infrastructure is identical; a shared "monochromatic pair" predicate (two elements in the same color class) could be extracted.
+/home/ryan/formal-conjectures/ai-review/484.md-9-- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides `IsSidon`, `IsSumFree`, and related additive combinatorics definitions. While `IsSidon` is thematically connected (Sidon sets have all pairwise sums distinct, so their restricted sumsets are large), it is not directly applicable to the statement.
+/home/ryan/formal-conjectures/ai-review/484.md-10-
+ai-review/484.md:11:**Recommendation:** The most actionable reuse opportunity is generalizing `restrictedSumset` from Problem 476 and placing it in a shared utility. However, since Problem 484 inlines the sum condition (`∃ a … ∃ b … a ≠ b ∧ χ a = χ b ∧ a + b = n`) rather than using a named restricted sumset, this is a minor style concern rather than a correctness issue. The current self-contained approach is acceptable.
+/home/ryan/formal-conjectures/ai-review/484.md-12-
+/home/ryan/formal-conjectures/ai-review/484.md-13-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/484.md-14-
+ai-review/484.md-15-**Website ([erdosproblems.com/484](https://www.erdosproblems.com/484)) states:**
+ai-review/484.md-16-- Original attribution: **[Er61, p.230]** — described as "a conjecture of Roth."
+--
+/home/ryan/formal-conjectures/ai-review/657.md-7-```lean
+ai-review/657.md-8-noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/ai-review/657.md-9-  (((A ×ˢ A).filter (fun p => p.1 ≠ p.2)).image (fun p => dist p.1 p.2)).card
+/home/ryan/formal-conjectures/ai-review/657.md-10-```
+/home/ryan/formal-conjectures/ai-review/657.md-11-
+ai-review/657.md:12:Additionally, `FormalConjecturesForMathlib/Geometry/2d.lean:194-195` provides `EuclideanGeometry.distinctDistances` using `offDiag` instead of `filter`:
+/home/ryan/formal-conjectures/ai-review/657.md-13-
+/home/ryan/formal-conjectures/ai-review/657.md-14-```lean
+ai-review/657.md-15-noncomputable def distinctDistances (points : Finset ℝ²) : ℕ :=
+ai-review/657.md:16:  (points.offDiag.image fun (pair : ℝ² × ℝ²) => dist pair.1 pair.2).card
+/home/ryan/formal-conjectures/ai-review/657.md-17-```
+/home/ryan/formal-conjectures/ai-review/657.md-18-
+ai-review/657.md:19:The `offDiag` variant is cleaner and semantically equivalent. However, note the type difference: `Finset ℝ²` vs `Finset (EuclideanSpace ℝ (Fin 2))`. These are definitionally equal but may cause friction in practice. A shared utility definition (or consolidation to the Mathlib variant) would reduce duplication across problems 93, 95, 135, 657, 958, and 959.
+/home/ryan/formal-conjectures/ai-review/657.md-20-
+ai-review/657.md-21-**`NoIsoscelesTriangles` could use `IsIsosceles`.** The file `FormalConjecturesForMathlib/Geometry/2d.lean:200-201` defines:
+/home/ryan/formal-conjectures/ai-review/657.md-22-
+/home/ryan/formal-conjectures/ai-review/657.md-23-```lean
+ai-review/657.md-24-def IsIsosceles {α : Type*} [Dist α] (p q r : α) : Prop :=
+--
+ai-review/475.md-10-  (univ.filter (fun i : Fin n => i ≤ m)).sum f
+/home/ryan/formal-conjectures/ai-review/475.md-11-```
+/home/ryan/formal-conjectures/ai-review/475.md-12-
+ai-review/475.md-13-This computes prefix sums by filtering `Finset.univ` for indices `i ≤ m`. Potential reuse considerations:
+/home/ryan/formal-conjectures/ai-review/475.md-14-
+ai-review/475.md:15:- **Problem 476** (`FormalConjectures/ErdosProblems/476.lean`) defines `restrictedSumset` operating on `ZMod p` finsets — a related but structurally different operation.
+/home/ryan/formal-conjectures/ai-review/475.md-16-- **Problem 540** (`FormalConjectures/ErdosProblems/540.lean`) deals with subset sums in `ZMod N`, demonstrating the standard `∑ n ∈ S, n` pattern. Not directly applicable since 475 requires *ordered* partial sums, not subset sums.
+/home/ryan/formal-conjectures/ai-review/475.md-17-- **Problem 883** (`FormalConjectures/ErdosProblems/883.lean`) uses `Function.Injective` with `ZMod`-indexed functions, a similar structural pattern.
+/home/ryan/formal-conjectures/ai-review/475.md-18-- **`FormalConjecturesForMathlib/`** provides `IsMulBasisOfOrder` (additive basis definitions) and `Finset.Card` utilities, but nothing directly applicable to sequenceable sets.
+/home/ryan/formal-conjectures/ai-review/475.md-19-
+/home/ryan/formal-conjectures/ai-review/475.md-20-No existing `partialSum` or prefix-sum utility exists elsewhere in the codebase. The definition is general enough (polymorphic in `α`) that it could be promoted to `FormalConjecturesForMathlib` if other problems require it.
+--
+/home/ryan/formal-conjectures/ai-review/787.md-2-
+/home/ryan/formal-conjectures/ai-review/787.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/787.md-4-
+ai-review/787.md-5-**Significant overlap with Green's Open Problem 2** (`FormalConjectures/GreensOpenProblems/2.lean`). Green2 formalizes the same mathematical problem (the Erdős–Moser sum-free set problem) over ℤ rather than ℝ, with shared references (Sanders [Sa21], Ruzsa [Ru05]). Green2 defines:
+/home/ryan/formal-conjectures/ai-review/787.md-6-
+ai-review/787.md:7:- `restrictedSumset` (the restricted sumset S +̂ S)
+/home/ryan/formal-conjectures/ai-review/787.md-8-- `maxRestrictedSumAvoidingSubsetSize` (equivalent to g(n) but defined per-set rather than as a worst-case over all sets of size n)
+/home/ryan/formal-conjectures/ai-review/787.md-9-
+ai-review/787.md-10-These two formalizations should ideally share infrastructure. In particular:
+/home/ryan/formal-conjectures/ai-review/787.md-11-
+ai-review/787.md:12:- `IsSumAvoidingIn A B` in 787 is equivalent to `B ⊆ A ∧ Disjoint (restrictedSumset B) A` from Green2. The Green2 definition using `offDiag` and `Disjoint` is arguably more idiomatic and leverages Mathlib's pointwise set operations.
+/home/ryan/formal-conjectures/ai-review/787.md-13-- The `IsSumFree` definition in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` (`Disjoint (A + A) A`) is the unrestricted version (includes a + a), so it is a **different** concept and should NOT be substituted here. The distinction is mathematically important.
+/home/ryan/formal-conjectures/ai-review/787.md-14-
+ai-review/787.md:15:**Recommendation:** Consider refactoring `IsSumAvoidingIn` to use `restrictedSumset` from Green2, or better yet, extract a shared definition into a utility file parameterized over the ambient type. The Choi reduction (any real set can be reduced to integers) means the ℝ and ℤ versions are equivalent, so a unified treatment is natural.
+/home/ryan/formal-conjectures/ai-review/787.md-16-
+/home/ryan/formal-conjectures/ai-review/787.md-17-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/787.md-18-
+ai-review/787.md-19-The formalization includes three references: Sanders [Sa21], Beker [Be25], Ruzsa [Ru05]. Comparing against [erdosproblems.com/787](https://www.erdosproblems.com/787):
+/home/ryan/formal-conjectures/ai-review/787.md-20-
+--
+/home/ryan/formal-conjectures/ai-review/502.md-4-
+ai-review/502.md-5-Several existing definitions in the codebase count distinct pairwise distances and could be unified with `IsTwoDistanceSet`:
+/home/ryan/formal-conjectures/ai-review/502.md-6-
+ai-review/502.md-7-- **`Erdos1083.distinctDistanceCountInDim`** (`1083.lean:40–41`) uses an identical `Set.ncard` pattern over the same set comprehension and is parameterized by dimension `d`. `IsTwoDistanceSet A` is mathematically equivalent to `distinctDistanceCountInDim n A = 2`; the two definitions could share a common helper.
+ai-review/502.md-8-- **`Erdos1089.distinctDistances`** (`1089.lean:41–42`) provides a `Finset`-based approach (`S.biUnion (fun a => (S.erase a).image (fun b => dist a b))`) that avoids `Set.ncard` entirely and works in arbitrary dimension `d`. Problem 502 could be restated as `(Erdos1089.distinctDistances A).card = 2`.
+ai-review/502.md:9:- **`Erdos93.distinctDistances`** (`93.lean:46–47`) uses `A.offDiag.image`, another clean `Finset` encoding, though it is specialized to dimension 2.
+/home/ryan/formal-conjectures/ai-review/502.md-10-
+ai-review/502.md-11-**Recommendation:** Extract a shared, dimension-generic `distinctDistanceCount` definition (preferably `Finset`-based as in 1089) into a utility module and have problems 93, 98, 502, 655, 660, 1083, and 1089 all reference it. Alternatively, at minimum, `IsTwoDistanceSet` should be defined in terms of one of the existing distance-count definitions rather than re-inventing the set comprehension locally.
+/home/ryan/formal-conjectures/ai-review/502.md-12-
+/home/ryan/formal-conjectures/ai-review/502.md-13-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/502.md-14-
+--
+ai-review/605.md-1-# AI Review: Erdős Problem 605
+/home/ryan/formal-conjectures/ai-review/605.md-2-
+/home/ryan/formal-conjectures/ai-review/605.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/605.md-4-
+ai-review/605.md:5:**Partial overlap with Problem 90.** The `pairsAtDistance` helper in `605.lean` is closely related to `Erdos90.unitDistancePairsCount` in `ErdosProblems/90.lean`. Both filter `offDiag` by a distance predicate. Key differences:
+/home/ryan/formal-conjectures/ai-review/605.md-6-
+/home/ryan/formal-conjectures/ai-review/605.md-7-| | Problem 90 | Problem 605 |
+/home/ryan/formal-conjectures/ai-review/605.md-8-|---|---|---|
+/home/ryan/formal-conjectures/ai-review/605.md-9-| Space | ℝ² | ℝ³ (EuclideanSpace ℝ (Fin 3)) |
+ai-review/605.md-10-| Distance | Fixed at 1 | Parametric `d : ℝ` |
+ai-review/605.md:11:| Counting | Unordered (divides by 2) | Ordered (raw offDiag count) |
+/home/ryan/formal-conjectures/ai-review/605.md-12-
+/home/ryan/formal-conjectures/ai-review/605.md-13-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/605.md-14-
+ai-review/605.md:15:The `FormalConjecturesForMathlib/Geometry/2d.lean` file contains `distinctDistances` using `offDiag`, but it counts *distinct* distances rather than pairs at a *given* distance, so it is not directly reusable here.
+/home/ryan/formal-conjectures/ai-review/605.md-16-
+/home/ryan/formal-conjectures/ai-review/605.md-17-No existing code in `FormalConjecturesForMathlib/` provides sphere-constraint predicates or repeated-distance counting that could be reused.
+/home/ryan/formal-conjectures/ai-review/605.md-18-
+/home/ryan/formal-conjectures/ai-review/605.md-19-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/605.md-20-
+--
+/home/ryan/formal-conjectures/ai-review/605.md-73-
+/home/ryan/formal-conjectures/ai-review/605.md-74-The constraint `∀ x ∈ A, ‖x‖ = R` with `R > 0` correctly encodes "n points on a sphere of radius R centered at the origin in ℝ³." Since the problem is invariant under rigid motions, centering at the origin is WLOG. **Correct.**
+/home/ryan/formal-conjectures/ai-review/605.md-75-
+/home/ryan/formal-conjectures/ai-review/605.md-76-### 6.3 Distance counting
+/home/ryan/formal-conjectures/ai-review/605.md-77-
+ai-review/605.md:78:`pairsAtDistance A d` counts ordered pairs `(p₁, p₂)` in `A.offDiag` with `dist p₁ p₂ = d`. For a set of n points, if k unordered pairs are at distance d, then `pairsAtDistance A d = 2k`. The formalization requires `2k ≥ f(n) · n`. The original problem requires `k ≥ g(n) · n` for some g → ∞. Since `f(n) = 2g(n) → ∞ ⟺ g(n) → ∞`, the ordered-pair formulation is **equivalent**. **Correct.**
+/home/ryan/formal-conjectures/ai-review/605.md-79-
+/home/ryan/formal-conjectures/ai-review/605.md-80-### 6.4 Quantifier structure
+/home/ryan/formal-conjectures/ai-review/605.md-81-
+ai-review/605.md-82-The formalization states:
+/home/ryan/formal-conjectures/ai-review/605.md-83-```
+--
+ai-review/661.md-10-  Set.ncard {d : ℝ | ∃ x ∈ X, ∃ y ∈ Y, d = dist x y}
+/home/ryan/formal-conjectures/ai-review/661.md-11-```
+/home/ryan/formal-conjectures/ai-review/661.md-12-
+ai-review/661.md-13-**Existing code in the codebase:**
+/home/ryan/formal-conjectures/ai-review/661.md-14-
+ai-review/661.md:15:- `EuclideanGeometry.distinctDistances` in `FormalConjecturesForMathlib/Geometry/2d.lean` counts distinct distances within a *single* point set using `Finset.offDiag.image`. This is fundamentally different (self-distances with `p ≠ q` vs. cross-distances), so it cannot be directly reused.
+/home/ryan/formal-conjectures/ai-review/661.md-16-
+/home/ryan/formal-conjectures/ai-review/661.md-17-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/661.md-18-
+ai-review/661.md-19-**Verdict:** The custom definition is justified since no existing bipartite variant exists. Consider whether a shared `bipartiteDistinctDistances` utility in `FormalConjecturesForMathlib/Geometry/` would benefit other problems (e.g., if bipartite distance counting arises elsewhere). Minor stylistic preference: `(X ×ˢ Y).image (fun p => dist p.1 p.2) |>.card` would be more consistent with codebase conventions.
+/home/ryan/formal-conjectures/ai-review/661.md-20-
+--
+/home/ryan/formal-conjectures/ai-review/217.md-49-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/217.md-50-
+ai-review/217.md-51-The problem is **moderately formalizable** with some inherent ambiguity:
+/home/ryan/formal-conjectures/ai-review/217.md-52-
+ai-review/217.md-53-- **"The $i$-th distance occurs $i$ times"**: The formalization interprets this as: there exist $n-1$ distinct distances that can be labeled $d_1, d_2, \ldots, d_{n-1}$ such that $d_i$ occurs exactly $i$ times as an unordered pair. This is a natural and standard reading.
+ai-review/217.md:54:- **Counting convention**: The formalization uses ordered pairs via `offDiag` and compensates with a factor of 2, which is correct since `dist` is symmetric.
+ai-review/217.md-55-- **"Sufficiently large $n$"**: Formalized as $\exists N_0, \forall n \geq N_0$, which is standard.
+/home/ryan/formal-conjectures/ai-review/217.md-56-- The problem statement is precise enough that the formalization is essentially forced — there is minimal ambiguity in how to interpret it.
+/home/ryan/formal-conjectures/ai-review/217.md-57-
+ai-review/217.md-58-**Assessment:** Low ambiguity. The formalization choices are natural.
+/home/ryan/formal-conjectures/ai-review/217.md-59-
+--
+/home/ryan/formal-conjectures/ai-review/755.md-8-
+ai-review/755.md-9-- **`unitDistNum` (`FormalConjecturesForMathlib/Geometry/Metric.lean`, line 25):** Counts unit distance *pairs* using `Finset.sym2`. This is conceptually related (unit distances) but counts pairs rather than triangles, so it cannot directly replace `unitEquilateralTriangleCount`. It could be useful in a proof relating pair counts to triangle counts.
+/home/ryan/formal-conjectures/ai-review/755.md-10-
+/home/ryan/formal-conjectures/ai-review/755.md-11-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/755.md-12-
+ai-review/755.md:13:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/755.md-14-
+/home/ryan/formal-conjectures/ai-review/755.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/755.md-16-
+ai-review/755.md-17-The formalization cites three references. Comparing with the website:
+/home/ryan/formal-conjectures/ai-review/755.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/668.md-2-
+/home/ryan/formal-conjectures/ai-review/668.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/668.md-4-
+ai-review/668.md-5-There is significant duplication with **Problem 90** (`ErdosProblems/90.lean`) and **Problem 96** (`ErdosProblems/96.lean`), both of which define their own unit distance counting functions and work in ℝ²:
+/home/ryan/formal-conjectures/ai-review/668.md-6-
+ai-review/668.md:7:- **Problem 90** defines `unitDistancePairsCount` (unordered pairs via `offDiag` divided by 2) and its own `maxUnitDistances` (via `sSup`). It also proves `unitDistanceCounts_BddAbove`, a lemma showing the set of achievable counts is bounded — something Problem 668 lacks but implicitly relies on for `sSup` to be meaningful.
+ai-review/668.md:8:- **Problem 96** defines `unitDistancePairCount` (ordered pairs via `offDiag`).
+/home/ryan/formal-conjectures/ai-review/668.md-9-
+/home/ryan/formal-conjectures/ai-review/668.md-10-Problem 668 defines yet another variant, `unitDistanceCount`, using the Cartesian product `P ×ˢ P` with an explicit `pq.1 ≠ pq.2` filter. All three files independently define essentially the same concept. These definitions should be consolidated into a shared utility (e.g., in `FormalConjecturesForMathlib/`).
+/home/ryan/formal-conjectures/ai-review/668.md-11-
+/home/ryan/formal-conjectures/ai-review/668.md-12-Additionally, Problem 668's `maxUnitDistances` duplicates Problem 90's definition of the same name. The `AreCongruent` definition could also be reused by other geometric problems (e.g., 687, 633, 634 which also deal with congruence in ℝ²).
+/home/ryan/formal-conjectures/ai-review/668.md-13-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-42-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-43-The set of distinct pairwise distances between distinct points in a finite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-44-point set in $\mathbb{R}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-45--/
+FormalConjectures/ErdosProblems/93.lean-46-noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/93.lean:47:  A.offDiag.image (fun pq => dist pq.1 pq.2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-49-/--
+FormalConjectures/ErdosProblems/93.lean-50-Erdős Problem 93: If $n$ distinct points in $\mathbb{R}^2$ form a convex polygon, then they
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-51-determine at least $\lfloor n/2 \rfloor$ distinct distances. Proved by Altman [Al63].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/93.lean-52--/
+--
+/home/ryan/formal-conjectures/ai-review/93.md-46-
+ai-review/93.md-47-The code is clean and well-structured. Specific observations:
+/home/ryan/formal-conjectures/ai-review/93.md-48-
+ai-review/93.md-49-- **Good:** The docstrings for both `InConvexPosition` and `distinctDistances` are clear and provide mathematical context.
+ai-review/93.md-50-- **Good:** The namespace `Erdos93` keeps definitions scoped.
+ai-review/93.md:51:- **Good:** The `offDiag` pattern for distance computation is idiomatic and consistent with the codebase convention (used in Problems 90, 96, 605, 1082, etc.).
+ai-review/93.md-52-- **Minor:** The coercion `(↑A : Set (EuclideanSpace ℝ (Fin 2))) \ {p}` on line 40 is slightly verbose compared to the `A.erase p` pattern used in Problems 660 (line 41) and 96 (line 36). Using `↑(A.erase p)` would be more concise and consistent with peer files, though mathematically equivalent.
+ai-review/93.md-53-- **Minor:** The hypothesis `hn : 2 ≤ A.card` could alternatively be `hn : A.Nontrivial` or some similar predicate, but the current form is perfectly clear and directly usable.
+/home/ryan/formal-conjectures/ai-review/93.md-54-
+ai-review/93.md-55-**Overall readability: Good.** No significant issues.
+/home/ryan/formal-conjectures/ai-review/93.md-56-
+--
+/home/ryan/formal-conjectures/ai-review/93.md-74-
+ai-review/93.md-75-**The formalization is mathematically correct.** Detailed analysis:
+/home/ryan/formal-conjectures/ai-review/93.md-76-
+ai-review/93.md-77-- **`InConvexPosition` (line 39–40):** The definition `∀ p ∈ A, p ∉ convexHull ℝ ((↑A : Set ...) \ {p})` correctly captures convex position (a.k.a. convex independence). Since `A` is a `Finset`, all elements are distinct by construction — no additional injectivity hypothesis is needed.
+/home/ryan/formal-conjectures/ai-review/93.md-78-
+ai-review/93.md:79:- **`distinctDistances` (line 46–47):** `A.offDiag.image (fun pq => dist pq.1 pq.2)` correctly computes the set of all pairwise distances between distinct points. `offDiag` produces all ordered pairs (p, q) with p ≠ q; applying `dist` and taking the image gives the set of distinct distance values. This is correct.
+/home/ryan/formal-conjectures/ai-review/93.md-80-
+ai-review/93.md-81-- **Theorem statement (line 54–58):** `A.card / 2 ≤ (distinctDistances A).card` where `/` is natural number division (i.e., ⌊n/2⌋). This exactly matches the problem statement.
+/home/ryan/formal-conjectures/ai-review/93.md-82-
+ai-review/93.md-83-- **Hypothesis `2 ≤ A.card`:** This is a reasonable guard. The theorem is actually vacuously/trivially true for n = 0 and n = 1 (both sides equal 0), so this hypothesis is not strictly necessary but is good mathematical hygiene — the problem is only interesting for n ≥ 2.
+/home/ryan/formal-conjectures/ai-review/93.md-84-
+--
+/home/ryan/formal-conjectures/ai-review/132.md-11-
+/home/ryan/formal-conjectures/ai-review/132.md-12-These are textually identical definitions in separate namespaces (`Erdos132` vs `Erdos756`). Since Problems 132 and 756 are explicitly related (the website lists them as related, and 756.lean cross-references 132), this duplication should be factored out into a shared utility — possibly in `FormalConjecturesForMathlib/Geometry/Metric.lean`, which already defines `unitDistNum` for unit-distance counting.
+/home/ryan/formal-conjectures/ai-review/132.md-13-
+ai-review/132.md-14-Other related files with similar distance-counting patterns:
+ai-review/132.md-15-- **Problem 95** (`ErdosProblems/95.lean`): `distMultiplicity` — a similar ordered-pair distance count.
+ai-review/132.md:16:- **Problem 93** (`ErdosProblems/93.lean`): `distinctDistances` using `offDiag` (unordered pairs).
+ai-review/132.md-17-- **`FormalConjecturesForMathlib/Geometry/2d.lean`**: Provides `ℝ²` notation and `distinctDistances` for finsets.
+/home/ryan/formal-conjectures/ai-review/132.md-18-
+ai-review/132.md-19-**Recommendation**: Extract `pairCount` into a shared module and import it in both 132.lean and 756.lean. The `ℝ²` notation from `Geometry/2d.lean` could also replace the verbose `EuclideanSpace ℝ (Fin 2)` throughout.
+/home/ryan/formal-conjectures/ai-review/132.md-20-
+/home/ryan/formal-conjectures/ai-review/132.md-21-## 2. Citations
+--
+/home/ryan/formal-conjectures/ai-review/132.md-98-Under the formalization's definition, the diameter of a regular pentagon ($n = 5$) is achieved by $5$ unordered pairs $= 10$ ordered pairs. The formalization requires `pairCount A d ≤ 5`, but the actual ordered pair count is $10$. Therefore, **the diameter of the regular pentagon is NOT a limited-occurrence distance under the formalization's definition**.
+/home/ryan/formal-conjectures/ai-review/132.md-99-
+/home/ryan/formal-conjectures/ai-review/132.md-100-This contradicts the docstring's claim that Hopf–Pannwitz "makes [the diameter] a limited-occurrence distance whenever it is realized." The docstring's reasoning is valid only if "at most $n$ pairs" means at most $n$ unordered pairs and the bound is also $n$ unordered pairs — but the code implements a bound of $n$ on **ordered** pairs.
+/home/ryan/formal-conjectures/ai-review/132.md-101-
+ai-review/132.md-102-**The fix**: Either
+ai-review/132.md:103:1. **Change `pairCount` to count unordered pairs** (e.g., using `A.offDiag` or `A.sym2` instead of `A ×ˢ A`, and dividing by 2 or counting directly), keeping the bound at `A.card`, or
+ai-review/132.md-104-2. **Change the bound to `2 * A.card`** in `IsLimitedOccurrence`:
+/home/ryan/formal-conjectures/ai-review/132.md-105-   ```lean
+ai-review/132.md-106-   def IsLimitedOccurrence (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : Prop :=
+/home/ryan/formal-conjectures/ai-review/132.md-107-     0 < pairCount A d ∧ pairCount A d ≤ 2 * A.card
+/home/ryan/formal-conjectures/ai-review/132.md-108-   ```
+--
+ai-review/98.md-9-- **`FourPointsConcyclic` / `NoFourConcyclic`** (lines 43–52): Identical definitions appear in `831.lean:44–53`. Problem 217 defines a different but equivalent `Concyclic4` taking four explicit point arguments (rather than a `Finset`), and Problem 654 defines `FourConcyclic` using squared distances. These should be unified into a shared utility.
+/home/ryan/formal-conjectures/ai-review/98.md-10-
+ai-review/98.md-11-- **`distinctDistanceCount`** (lines 57–58): Uses `Set.ncard` on a set comprehension. A cleaner, `Finset`-based alternative already exists in `FormalConjecturesForMathlib/Geometry/2d.lean:194–195`:
+/home/ryan/formal-conjectures/ai-review/98.md-12-  ```lean
+ai-review/98.md-13-  noncomputable def distinctDistances (points : Finset ℝ²) : ℕ :=
+ai-review/98.md:14:    (points.offDiag.image fun (pair : ℝ² × ℝ²) => dist pair.1 pair.2).card
+/home/ryan/formal-conjectures/ai-review/98.md-15-  ```
+ai-review/98.md-16-  This `Finset.card`-based version is strictly preferable for formalization: it avoids needing to prove the set is finite (which `Set.ncard` requires for nontrivial reasoning), and it composes better with `Finset` lemmas. Problems 93 and 95 also define their own `distinctDistances` using similar `Finset`-based approaches.
+/home/ryan/formal-conjectures/ai-review/98.md-17-
+ai-review/98.md-18-**Recommendation:** Import and reuse `distinctDistances` from `FormalConjecturesForMathlib/Geometry/2d.lean`, and consider centralizing `NoThreeCollinear` and `NoFourConcyclic` into a shared geometry utility module.
+/home/ryan/formal-conjectures/ai-review/98.md-19-
+--
+/home/ryan/formal-conjectures/ai-review/98.md-52-
+ai-review/98.md-53-The code is generally well-structured and readable. Specific observations:
+/home/ryan/formal-conjectures/ai-review/98.md-54-
+ai-review/98.md-55-- **Good:** Each definition has a clear docstring. The main theorem's docstring restates the problem and explains the formal encoding.
+ai-review/98.md-56-- **Good:** The namespace `Erdos98` keeps definitions local.
+ai-review/98.md:57:- **Minor improvement:** The `distinctDistanceCount` definition uses nested existentials (`∃ p ∈ P, ∃ q ∈ P, p ≠ q ∧ dist p q = d`) which is slightly harder to read than the `offDiag.image` pattern. The `Finset`-based alternative from `2d.lean` is more concise and idiomatic.
+ai-review/98.md-58-- **Minor:** The docstring for `FourPointsConcyclic` says "Four points" but the definition takes an arbitrary `Finset` — it works correctly when `S.card = 4` (as enforced by `NoFourConcyclic`), but the type signature alone doesn't enforce the four-point constraint. This is fine in context but slightly misleading in isolation.
+/home/ryan/formal-conjectures/ai-review/98.md-59-
+/home/ryan/formal-conjectures/ai-review/98.md-60-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/98.md-61-
+ai-review/98.md-62-**Assessment: Highly formalizable. Low ambiguity.**
+--
+/home/ryan/formal-conjectures/ai-review/551.md-1-# Erdős Problem 551 — Review
+/home/ryan/formal-conjectures/ai-review/551.md-2-
+/home/ryan/formal-conjectures/ai-review/551.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/551.md-4-
+ai-review/551.md:5:There is significant code duplication. The definitions `ContainsSubgraphCopy`, `offDiagRamseyNumber`, and `cycleGraph` are copy-pasted verbatim across problems 549, 550, 551, and 552. These should be extracted into a shared utility file.
+/home/ryan/formal-conjectures/ai-review/551.md-6-
+ai-review/551.md-7-More importantly, **Mathlib already provides equivalent infrastructure**:
+/home/ryan/formal-conjectures/ai-review/551.md-8-
+/home/ryan/formal-conjectures/ai-review/551.md-9-- `SimpleGraph.IsContained G H` (`G ⊑ H`) in `Mathlib.Combinatorics.SimpleGraph.Copy` is semantically equivalent to `ContainsSubgraphCopy G H`. It is defined via injective graph homomorphisms (not embeddings), matching the non-induced containment notion used here.
+/home/ryan/formal-conjectures/ai-review/551.md-10-- `SimpleGraph.Copy G H` gives the type of copies (injective homomorphisms), providing a richer API.
+/home/ryan/formal-conjectures/ai-review/551.md-11-
+ai-review/551.md:12:The custom `ContainsSubgraphCopy` could be replaced by `SimpleGraph.IsContained`, and `offDiagRamseyNumber` could be refactored to use it. A shared definition of `offDiagRamseyNumber` using Mathlib's `IsContained` should live in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/`.
+/home/ryan/formal-conjectures/ai-review/551.md-13-
+/home/ryan/formal-conjectures/ai-review/551.md-14-The `cycleGraph` definition is also duplicated (with slight variations) in problems 552, 554, 555, and 720. A single shared definition would be appropriate.
+/home/ryan/formal-conjectures/ai-review/551.md-15-
+/home/ryan/formal-conjectures/ai-review/551.md-16-The `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` file defines `hypergraphRamsey` (r-uniform hypergraph Ramsey numbers), which is a different concept and not directly reusable here.
+/home/ryan/formal-conjectures/ai-review/551.md-17-
+--
+/home/ryan/formal-conjectures/ai-review/551.md-45-
+ai-review/551.md-46-The code is generally readable. A few observations:
+/home/ryan/formal-conjectures/ai-review/551.md-47-
+/home/ryan/formal-conjectures/ai-review/551.md-48-- The `cycleGraph` definition and its `loopless` proof are clear and well-structured.
+ai-review/551.md-49-- The use of `⊤ : SimpleGraph (Fin n)` for $K_n$ is idiomatic and well-explained in the docstring.
+ai-review/551.md:50:- The `offDiagRamseyNumber` definition using `sInf` is clean, though it could benefit from a note that the set is nonempty (which follows from Ramsey's theorem) to ensure the `sInf` is meaningful and doesn't degenerate to `0`.
+/home/ryan/formal-conjectures/ai-review/551.md-51-- The hypothesis names `hk`, `hn`, `hne` are standard and clear.
+/home/ryan/formal-conjectures/ai-review/551.md-52-- The namespace `Erdos551` appropriately scopes all local definitions.
+/home/ryan/formal-conjectures/ai-review/551.md-53-
+/home/ryan/formal-conjectures/ai-review/551.md-54-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/551.md-55-
+--
+ai-review/551.md-71-**Verification of the statement:** The conjecture asserts $R(C_k, K_n) = (k-1)(n-1)+1$ for $k \geq n \geq 3$, $\neg(k=3 \wedge n=3)$. This matches the literature exactly.
+/home/ryan/formal-conjectures/ai-review/551.md-72-
+ai-review/551.md-73-**Verification of definitions:**
+/home/ryan/formal-conjectures/ai-review/551.md-74-
+ai-review/551.md-75-- `ContainsSubgraphCopy`: Correctly captures non-induced subgraph containment via injective adjacency-preserving maps. ✓
+ai-review/551.md:76:- `offDiagRamseyNumber`: Defined as $\inf\{N \mid \forall H \text{ on } \operatorname{Fin} N,\; G_1 \subseteq H \lor G_2 \subseteq H^c\}$. This is the standard definition. ✓
+ai-review/551.md-77-- `cycleGraph k`: Adjacency is `(i+1) mod k = j ∨ (j+1) mod k = i`, which correctly captures the cycle $C_k$. The `loopless` and `symm` proofs are correct. ✓
+ai-review/551.md-78-- The complete graph $K_n$ as `⊤ : SimpleGraph (Fin n)` is correct — it's the graph where every pair of distinct vertices is adjacent. ✓
+/home/ryan/formal-conjectures/ai-review/551.md-79-- The exclusion `¬(k = 3 ∧ n = 3)` is necessary because $R(C_3, K_3) = R(K_3, K_3) = 6$, while $(3-1)(3-1)+1 = 5$. ✓
+/home/ryan/formal-conjectures/ai-review/551.md-80-
+ai-review/551.md:81:**Potential concern with `sInf`:** If the defining set for `offDiagRamseyNumber` were empty, `sInf` would return `0`, which would be mathematically incorrect. However, by Ramsey's theorem the set is always nonempty for finite graphs, so this is not an actual issue — but the definition does not prove this inline. A more robust definition might use `Nat.find` with a proof of existence, though for a `sorry`-based conjecture statement the current approach is acceptable.
+/home/ryan/formal-conjectures/ai-review/551.md-82-
+ai-review/551.md-83-**Hypothesis ordering:** The formalization uses `k ≥ n` and `n ≥ 3`, from which `k ≥ 3` follows. This is correct and minimal.
+/home/ryan/formal-conjectures/ai-review/551.md-84-
+ai-review/551.md-85-**Overall assessment: correct and complete for the main conjecture. The two subsidiary questions from the website are not captured.**
+--
+/home/ryan/formal-conjectures/ai-review/91.md-2-
+/home/ryan/formal-conjectures/ai-review/91.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/91.md-4-
+ai-review/91.md-5-**Several opportunities for reuse exist:**
+/home/ryan/formal-conjectures/ai-review/91.md-6-
+ai-review/91.md:7:- **`distinctDistances` from `FormalConjecturesForMathlib/Geometry/2d.lean`** (line 194): This is functionally equivalent to the locally-defined `numDistinctDistances` in Problem 91. The library version uses `Finset.offDiag` (which directly gives pairs with distinct components) instead of filtering the full product `A ×ˢ A` with `pq.1 ≠ pq.2`. The `offDiag` approach is cleaner and more idiomatic. Problem 89 already imports and uses this shared definition via `open EuclideanGeometry`.
+/home/ryan/formal-conjectures/ai-review/91.md-8-
+ai-review/91.md-9-- **Recommendation:** Replace `numDistinctDistances` with `EuclideanGeometry.distinctDistances`. Note a type difference: Problem 91 uses `EuclideanSpace ℝ (Fin 2)` while the library definition uses `ℝ²` (which is `Fin 2 → ℝ`). These are defeq via `EuclideanSpace`, so this should be compatible, but should be verified.
+/home/ryan/formal-conjectures/ai-review/91.md-10-
+/home/ryan/formal-conjectures/ai-review/91.md-11-- **`AreSimilar`** has no existing counterpart in the shared library. This definition is problem-specific and reasonable to keep local, though it could be promoted to the shared library if other problems need geometric similarity.
+/home/ryan/formal-conjectures/ai-review/91.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/91.md-43-
+/home/ryan/formal-conjectures/ai-review/91.md-44-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/91.md-45-
+ai-review/91.md-46-**Generally good, with minor suggestions:**
+/home/ryan/formal-conjectures/ai-review/91.md-47-
+ai-review/91.md:48:- The `numDistinctDistances` definition is clear but could be simplified by using `offDiag` instead of the filter pattern (see Code Reuse above).
+/home/ryan/formal-conjectures/ai-review/91.md-49-- The `AreSimilar` definition correctly captures geometric similarity (scaling + distance-preserving map), though the name could be more specific (e.g., `AreGeometricallySimilar`) to distinguish from other notions of similarity. This is a minor style point.
+/home/ryan/formal-conjectures/ai-review/91.md-50-- The docstring on `erdos_91` is well-written and accurately summarizes the conjecture.
+/home/ryan/formal-conjectures/ai-review/91.md-51-- The `answer(sorry)` wrapper correctly indicates this is an open problem where even the truth value is unknown.
+/home/ryan/formal-conjectures/ai-review/91.md-52-
+/home/ryan/formal-conjectures/ai-review/91.md-53-## 5. Formalizability
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-45-namespace Erdos605
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-47-/-- The number of ordered pairs of distinct points from $A$ at Euclidean distance $d$. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-48-noncomputable def pairsAtDistance
+FormalConjectures/ErdosProblems/605.lean-49-    (A : Finset (EuclideanSpace ℝ (Fin 3))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/605.lean:50:  (A.offDiag.filter (fun p => dist p.1 p.2 = d)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-52-/--
+FormalConjectures/ErdosProblems/605.lean-53-Erdős Problem 605 [Er85]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/605.lean-55-There exists a function $f(n) \to \infty$ such that for all $n \geq 2$, one can place $n$ distinct
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-31-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-32-Given a finite set of points, this function counts the number of **unordered pairs** of distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-33-points that are at a distance of exactly 1 from each other.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-34--/
+FormalConjectures/ErdosProblems/90.lean-35-noncomputable def unitDistancePairsCount (points : Finset ℝ²) : ℕ :=
+FormalConjectures/ErdosProblems/90.lean:36:  (points.offDiag.filter (fun p => dist p.1 p.2 = 1)).card / 2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-39-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-40-The set of all possible numbers of unit distances for a configuration of $n$ points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-41--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-54-  use n.choose 2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-55-  rintro _ ⟨points, rfl, rfl⟩
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-56-  rw [points.card.choose_two_right]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-57-  gcongr
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-58-  refine (card_filter_le _ _).trans_eq ?_
+FormalConjectures/ErdosProblems/90.lean:59:  rw [offDiag_card, Nat.mul_sub_left_distrib, mul_one]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-62-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-63-The **maximum number of unit distances** determined by any set of $n$ points in the plane.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean-64-This function is often denoted as $u(n)$ in combinatorics.
+--
+FormalConjectures/ErdosProblems/551.lean-54-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-55-
+FormalConjectures/ErdosProblems/551.lean-56-/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-57-graph $H$ on $N$ vertices contains a copy of $G_1$ or its complement contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-58-copy of $G_2$. -/
+FormalConjectures/ErdosProblems/551.lean:59:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/551.lean-60-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/551.lean-61-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-62-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-63-
+FormalConjectures/ErdosProblems/551.lean-64-/-- The cycle graph on $k$ vertices ($k \geq 3$): vertex $i$ is adjacent to vertex $j$ iff
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-82-Here $C_k$ is the cycle graph on $k$ vertices and $K_n$ is the complete graph on $n$
+FormalConjectures/ErdosProblems/551.lean-83-vertices (expressed as $\top : \text{SimpleGraph}(\text{Fin}\; n)$).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-84--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-85-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/551.lean-86-theorem erdos_551 (k n : ℕ) (hk : k ≥ n) (hn : n ≥ 3) (hne : ¬(k = 3 ∧ n = 3)) :
+FormalConjectures/ErdosProblems/551.lean:87:    offDiagRamseyNumber (cycleGraph k (by omega)) (⊤ : SimpleGraph (Fin n)) =
+FormalConjectures/ErdosProblems/551.lean-88-      (k - 1) * (n - 1) + 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-89-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-90-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-91-end Erdos551
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-29-pairs of points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-30-
+FormalConjectures/ErdosProblems/1082.lean-31-TODO(csonne): Remove this once formal conjectures is bumped.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-32--/
+FormalConjectures/ErdosProblems/1082.lean-33-noncomputable def distinctDistances (points : Finset ℝ²) : ℕ :=
+FormalConjectures/ErdosProblems/1082.lean:34:  (points.offDiag.image fun (pair : ℝ² × ℝ²) => dist pair.1 pair.2).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-36-/-- The number of distinct distances from a finite set `points` to a point `pt`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-37-
+FormalConjectures/ErdosProblems/1082.lean-38-TODO(csonne): Move to ForMathlib.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1082.lean-39--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-56-    ¬Concyclic4 p₁ p₂ p₃ p₄
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-58-/-- A set $S$ of $n$ points has the distance multiplicity property if there exist $n-1$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-59-distinct pairwise distances such that (in some ordering) the $j$-th distance
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-60-occurs exactly $j$ times as an unordered pair. We count ordered pairs from
+FormalConjectures/ErdosProblems/217.lean:61:`S.offDiag`, so the $j$-th distance yields $2(j+1)$ ordered pairs (since
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-62-`Fin (n-1)` is 0-indexed). -/
+FormalConjectures/ErdosProblems/217.lean-63-def HasDistanceMultiplicityProperty (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/217.lean-64-  ∃ (d : Fin (S.card - 1) → ℝ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-65-    Function.Injective d ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-66-    (∀ p ∈ S, ∀ q ∈ S, p ≠ q → ∃ i, dist p q = d i) ∧
+FormalConjectures/ErdosProblems/217.lean-67-    (∀ i : Fin (S.card - 1),
+FormalConjectures/ErdosProblems/217.lean:68:      (S.offDiag.filter (fun pq => dist pq.1 pq.2 = d i)).card = 2 * (i.val + 1))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-70-/--
+FormalConjectures/ErdosProblems/217.lean-71-Erdős Conjecture (Problem 217) [Er83c, Er87b, Er97e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-73-For all sufficiently large $n$, there does not exist a set of $n$ points in $\mathbb{R}^2$,
+--
+FormalConjectures/ErdosProblems/550.lean-47-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-48-
+FormalConjectures/ErdosProblems/550.lean-49-/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-50-graph $H$ on $N$ vertices contains a copy of $G_1$ or its complement contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-51-copy of $G_2$. -/
+FormalConjectures/ErdosProblems/550.lean:52:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/550.lean-53-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/550.lean-54-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-55-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-57-/-- The complete multipartite graph with vertex class sizes given by `sizes`.
+--
+FormalConjectures/ErdosProblems/550.lean-85-    (hsizes_mono : Monotone sizes) :
+FormalConjectures/ErdosProblems/550.lean-86-    let m₁ := sizes ⟨0, by omega⟩
+FormalConjectures/ErdosProblems/550.lean-87-    let m₂ := sizes ⟨1, by omega⟩
+FormalConjectures/ErdosProblems/550.lean-88-    ∃ N₀ : ℕ, ∀ (n : ℕ), n ≥ N₀ →
+FormalConjectures/ErdosProblems/550.lean-89-    ∀ (T : SimpleGraph (Fin n)), T.IsTree →
+FormalConjectures/ErdosProblems/550.lean:90:      offDiagRamseyNumber T (completeMultipartiteGraph sizes) ≤
+FormalConjectures/ErdosProblems/550.lean:91:        (k - 1) * (offDiagRamseyNumber T
+FormalConjectures/ErdosProblems/550.lean-92-          (completeMultipartiteGraph (bipSizes m₁ m₂)) - 1) + m₁ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-93-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-94-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-95-end Erdos550
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-43-/-- An edge coloring of $K_n$ with colors from $\operatorname{Fin} k$, represented as a function
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-44-on ordered pairs of vertices. -/
+FormalConjectures/ErdosProblems/136.lean-45-def EdgeColoring (n k : ℕ) : Type := Fin n → Fin n → Fin k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-47-/-- The set of distinct colors used on edges within vertex subset $S$
+FormalConjectures/ErdosProblems/136.lean:48:under coloring $\chi$ (using `offDiag` to enumerate all ordered pairs of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-49-distinct vertices in $S$). -/
+FormalConjectures/ErdosProblems/136.lean-50-noncomputable def edgeColors {n k : ℕ} (χ : EdgeColoring n k)
+FormalConjectures/ErdosProblems/136.lean-51-    (S : Finset (Fin n)) : Finset (Fin k) :=
+FormalConjectures/ErdosProblems/136.lean:52:  S.offDiag.image (fun p => χ p.1 p.2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-54-/-- A coloring $\chi$ of $K_n$ is $K_4$-five-colored if every 4-element vertex subset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-55-has at least 5 distinct colors on its edges. -/
+FormalConjectures/ErdosProblems/136.lean-56-def IsK4FiveColored {n k : ℕ} (χ : EdgeColoring n k) : Prop :=
+FormalConjectures/ErdosProblems/136.lean-57-  ∀ S : Finset (Fin n), S.card = 4 → 5 ≤ (edgeColors χ S).card
+--
+FormalConjectures/ErdosProblems/552.lean-39-  ∃ f : V → W, Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-40-
+FormalConjectures/ErdosProblems/552.lean-41-/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-42-graph $H$ on $N$ vertices contains a copy of $G_1$ or its complement contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-43-copy of $G_2$. -/
+FormalConjectures/ErdosProblems/552.lean:44:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/552.lean-45-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/552.lean-46-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-47-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-48-
+FormalConjectures/ErdosProblems/552.lean-49-/-- The cycle graph on $k$ vertices ($k \geq 3$): vertex $i$ is adjacent to vertex $j$ iff
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-84--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-85-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/552.lean-86-theorem erdos_552 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/552.lean-87-    ∀ c : ℝ, c > 0 →
+FormalConjectures/ErdosProblems/552.lean-88-    ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧
+FormalConjectures/ErdosProblems/552.lean:89:      (offDiagRamseyNumber (cycleGraph 4 (by omega)) (starGraph n) : ℝ) ≤
+FormalConjectures/ErdosProblems/552.lean-90-        ↑n + Real.sqrt ↑n - c := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-91-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-92-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-93-end Erdos552
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean-46-namespace Erdos991
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean-48-/-- The product of pairwise distances of a finite set of points. -/
+FormalConjectures/ErdosProblems/991.lean-49-noncomputable def pairwiseDistProd (P : Finset (EuclideanSpace ℝ (Fin 3))) : ℝ :=
+FormalConjectures/ErdosProblems/991.lean:50:  ∏ p ∈ P.offDiag, ‖p.1 - p.2‖
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean-52-/-- A finite set of points on $S^2$ maximises the pairwise distance product
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean-53-among all sets of the same cardinality on $S^2$. -/
+FormalConjectures/ErdosProblems/991.lean-54-def IsMaxPairwiseDist (P : Finset (EuclideanSpace ℝ (Fin 3))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/991.lean-55-  (∀ p ∈ P, ‖p‖ = 1) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-39-The number of ordered pairs of distinct points in $P$ that are at unit distance.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-40-(Using ordered pairs; the number of unordered pairs is exactly half this,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-41-so the $O(n)$ bound is equivalent.)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-42--/
+FormalConjectures/ErdosProblems/96.lean-43-noncomputable def unitDistancePairCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/96.lean:44:  (P.offDiag.filter (fun pq => dist pq.1 pq.2 = 1)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-46-/--
+FormalConjectures/ErdosProblems/96.lean-47-Erdős Problem 96 (Erdős–Moser conjecture):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-48-If $n$ points in $\mathbb{R}^2$ form a convex polygon (are in convex position), then there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/96.lean-49-are $O(n)$ many pairs which are distance $1$ apart.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-59-            k < n ^ 2 / 4 ∧
+FormalConjectures/ErdosProblems/1017.lean-60-            (∀ i j : Fin k, i ≠ j → Disjoint (parts i) (parts j)) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-61-            (∀ e, e ∈ G.edgeFinset ↔ ∃ i, e ∈ parts i) ∧
+FormalConjectures/ErdosProblems/1017.lean-62-            (∀ i : Fin k, ∃ (S : Finset (Fin n)),
+FormalConjectures/ErdosProblems/1017.lean-63-              G.IsClique (↑S : Set (Fin n)) ∧
+FormalConjectures/ErdosProblems/1017.lean:64:              parts i = S.offDiag.image (Quot.mk _)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-67-/--
+FormalConjectures/ErdosProblems/1017.lean-68-Erdős–Goodman–Pósa theorem [EGP66]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-69-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-78-        k ≤ n ^ 2 / 4 ∧
+FormalConjectures/ErdosProblems/1017.lean-79-        (∀ i j : Fin k, i ≠ j → Disjoint (parts i) (parts j)) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-80-        (∀ e, e ∈ G.edgeFinset ↔ ∃ i, e ∈ parts i) ∧
+FormalConjectures/ErdosProblems/1017.lean-81-        (∀ i : Fin k, ∃ (S : Finset (Fin n)),
+FormalConjectures/ErdosProblems/1017.lean-82-          G.IsClique (↑S : Set (Fin n)) ∧
+FormalConjectures/ErdosProblems/1017.lean:83:          parts i = S.offDiag.image (Quot.mk _)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-84-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1017.lean-86-end Erdos1017
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-36-/--
+FormalConjectures/ErdosProblems/476.lean-37-The restricted sumset $A \hat{+} A = \{a + b : a, b \in A, a \neq b\}$, consisting of all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-38-pairwise sums of distinct elements from $A$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-39--/
+FormalConjectures/ErdosProblems/476.lean:40:def restrictedSumset {p : ℕ} (A : Finset (ZMod p)) : Finset (ZMod p) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-41-  A.biUnion (fun a => (A.erase a).image (fun b => a + b))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-43-/--
+FormalConjectures/ErdosProblems/476.lean-44-Erdős-Heilbronn Conjecture (Problem 476):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-45-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-51-da Silva and Hamidoune [dSHa94].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-52--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-53-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/476.lean-54-theorem erdos_476 : answer(True) ↔
+FormalConjectures/ErdosProblems/476.lean-55-    ∀ (p : ℕ) [Fact (Nat.Prime p)] (A : Finset (ZMod p)),
+FormalConjectures/ErdosProblems/476.lean:56:      (restrictedSumset A).card ≥ min (2 * A.card - 3) p := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-57-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-59-end Erdos476
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean-27-namespace Erdos126
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean-28-
+FormalConjectures/ErdosProblems/126.lean-29-def IsMaximalAddFactorsCard (f : ℕ → ℕ) : Prop := ∀ n,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean-30-    IsGreatest
+FormalConjectures/ErdosProblems/126.lean-31-      { m | ∀ (A : Finset ℕ), A.card = n →
+FormalConjectures/ErdosProblems/126.lean:32:        m ≤ (∏ ⟨a, b⟩ ∈ A.offDiag, (a + b)).primeFactors.card}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean-33-      (f n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean-35-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean-36-Let $f(n)$ be maximal such that if $A\subseteq\mathbb{N}$ has $|A| = n$ then
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/126.lean-37-$\prod_{a\neq b\in A}(a + b)$ has at least $f(n)$ distinct prime factors.

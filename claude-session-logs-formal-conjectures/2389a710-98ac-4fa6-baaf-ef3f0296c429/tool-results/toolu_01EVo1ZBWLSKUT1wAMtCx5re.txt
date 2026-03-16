@@ -1,0 +1,336 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/171.lean-49-namespace Erdos171
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/171.lean-50-
+FormalConjectures/ErdosProblems/171.lean:51:/-- A combinatorial line in $[t]^N$ is a family of $t$ points parametrized by $\operatorname{Fin} t$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/171.lean-52-determined by a non-empty set $S$ of "active" coordinates and fixed values $c$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/171.lean-53-for inactive coordinates. The $i$-th point has coordinate $j$ equal to $i$ if $j$ is
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-58-    (∃ d ∈ distinctDistances A, distMultiplicity A d = m)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-59-
+FormalConjectures/ErdosProblems/958.lean:60:/-- A finite point set is equidistant-collinear if the points are equally spaced along a
+FormalConjectures/ErdosProblems/958.lean-61-line: $A = \{p, p + v, p + 2v, \ldots, p + (n-1)v\}$ for some $p, v$ with $v \neq 0$. -/
+FormalConjectures/ErdosProblems/958.lean-62-def IsEquidistantCollinear (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-83-Is it true that if a finite set $A \subset \mathbb{R}^2$ satisfies the distance multiplicity
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-84-property (exactly $n-1$ distinct distances with multiplicities $\{1, \ldots, n-1\}$), then $A$
+FormalConjectures/ErdosProblems/958.lean:85:must be a set of equidistant points on a line or equidistant points on a circle?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-86-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/958.lean-87-The answer is no. This was proved by Clemen, Dumitrescu, and Liu [CDL25].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-20-# Erdős Problem 588
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-21-
+FormalConjectures/ErdosProblems/588.lean:22:Is it true that the maximum number of k-rich lines determined by n points in the plane with no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-23-k+1 collinear is o(n²) for all k ≥ 4? This generalises Problem #101 (the case k = 4).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-24-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-30-/--
+FormalConjectures/ErdosProblems/588.lean:31:A finite point set in $\mathbb{R}^2$ has no $(k+1)$ collinear points if every $(k+1)$-element
+FormalConjectures/ErdosProblems/588.lean:32:subset is not collinear (i.e., no line contains $k+1$ or more of the points).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-33--/
+FormalConjectures/ErdosProblems/588.lean-34-def NoKPlusOneCollinear (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-47-/--
+FormalConjectures/ErdosProblems/588.lean:48:Let $f_k(n)$ be the maximum number of lines containing at least $k$ points,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-49-over all configurations of $n$ points in $\mathbb{R}^2$ with no $k+1$ collinear.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean-50-Is it true that $f_k(n) = o(n^2)$ for all $k \geq 4$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean-44-
+FormalConjectures/ErdosProblems/1069.lean-45-/-- The number of $k$-rich lines determined by a finite point set $S \subseteq \mathbb{R}^2$:
+FormalConjectures/ErdosProblems/1069.lean:46:lines containing at least $k$ points of $S$. -/
+FormalConjectures/ErdosProblems/1069.lean-47-noncomputable def numKRichLines (S : Finset (Fin 2 → ℝ)) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1069.lean-48-  Set.ncard {L : Set (Fin 2 → ℝ) | IsLine L ∧ k ≤ (S.filter (· ∈ L)).card}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/185.lean-40-namespace Erdos185
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/185.lean-41-
+FormalConjectures/ErdosProblems/185.lean:42:/-- A combinatorial line in $\{0,1,2\}^n$ consists of three points parameterized by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/185.lean-43-$j \in \{0,1,2\}$, such that there exists a nonempty set $S$ of "active" coordinates
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/185.lean-44-where the $j$-th point has value $j$ at each active coordinate, and all three points
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/185.lean-55-For every $\varepsilon > 0$, there exists $N$ such that for all $n \ge N$, every subset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/185.lean-56-$A \subseteq \{0,1,2\}^n$ of size $|A| > \varepsilon \cdot 3^n$ contains a combinatorial
+FormalConjectures/ErdosProblems/185.lean:57:line (three points on a line).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/185.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/185.lean-59-Equivalently, the maximum size $f_3(n)$ of a line-free subset of $\{0,1,2\}^n$ satisfies
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/210.lean-21-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/210.lean-22-Let $f(n)$ denote the minimum number of ordinary lines determined by $n$
+FormalConjectures/ErdosProblems/210.lean:23:non-collinear points in the plane. Erdős asked whether $f(n) \to \infty$ and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/210.lean-24-how fast it grows.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/210.lean-25-
+--
+FormalConjectures/ErdosProblems/210.lean-34-abbrev Point2 := EuclideanSpace ℝ (Fin 2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/210.lean-35-
+FormalConjectures/ErdosProblems/210.lean:36:/-- Point $r$ lies on the line through distinct points $p$ and $q$. -/
+FormalConjectures/ErdosProblems/210.lean-37-def LiesOnLine (p q r : Point2) : Prop :=
+FormalConjectures/ErdosProblems/210.lean-38-  ∃ t : ℝ, r - p = t • (q - p)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/210.lean-39-
+FormalConjectures/ErdosProblems/210.lean-40-/-- A finite set of points is not all collinear: there exist three
+FormalConjectures/ErdosProblems/210.lean:41:non-collinear points in $S$. -/
+FormalConjectures/ErdosProblems/210.lean-42-def NotAllCollinear (S : Finset Point2) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/210.lean-43-  ∃ p ∈ S, ∃ q ∈ S, ∃ r ∈ S, p ≠ q ∧ p ≠ r ∧ q ≠ r ∧ ¬LiesOnLine p q r
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-24-Let $k \geq 3$. Does there exist a finite set $A \subset \mathbb{R}^2$ such that, in any
+FormalConjectures/ErdosProblems/1090.lean:25:2-colouring of $A$, there exists a line which contains at least $k$ points from $A$, and all the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-26-points of $A$ on the line have the same colour?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-33-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-34-Let $k \geq 3$. Does there exist a finite set $A \subset \mathbb{R}^2$ such that, in any
+FormalConjectures/ErdosProblems/1090.lean:35:2-colouring of $A$, there exists a line which contains at least $k$ points from $A$, and all the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-36-points of $A$ on the line have the same colour?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-37-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/733.lean-45-  (q.1 - p.1) * (r.2 - p.2) = (r.1 - p.1) * (q.2 - p.2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/733.lean-46-
+FormalConjectures/ErdosProblems/733.lean:47:/-- A line determined by a point set $P$: the set of all points in $P$ collinear
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/733.lean-48-with a given pair of distinct points. -/
+FormalConjectures/ErdosProblems/733.lean-49-def IsLine (P : Finset (ℝ × ℝ)) (L : Finset (ℝ × ℝ)) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-21-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-22-For a set of $n$ points in $\mathbb{R}^2$ with no $k$ collinear, let $f_{r,k}(n)$ be the
+FormalConjectures/ErdosProblems/960.lean:23:minimum number of ordinary lines that guarantees the existence of $r$ points whose
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-24-$\binom{r}{2}$ determined lines are all ordinary. Erdős asked whether $f_{r,k}(n) = o(n^2)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-25-for fixed $r, k \geq 2$, and more strongly whether $f_{r,k}(n) = O(n)$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-34-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-35-A finite point set in $\mathbb{R}^2$ has no $k$ collinear if every $k$-element subset
+FormalConjectures/ErdosProblems/960.lean:36:is not collinear (i.e., no line contains $k$ or more of the points).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-37--/
+FormalConjectures/ErdosProblems/960.lean-38-def NoKCollinear (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-51-/--
+FormalConjectures/ErdosProblems/960.lean-52-The number of ordinary lines determined by a point set $P$: the number of
+FormalConjectures/ErdosProblems/960.lean:53:lines (1-dimensional affine subspaces) containing exactly two points of $P$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-54--/
+FormalConjectures/ErdosProblems/960.lean-55-noncomputable def ordinaryLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-58-/--
+FormalConjectures/ErdosProblems/960.lean:59:The line through two distinct points in $\mathbb{R}^2$: the affine span of $\{p, q\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-60--/
+FormalConjectures/ErdosProblems/960.lean:61:noncomputable def lineThrough (p q : EuclideanSpace ℝ (Fin 2)) :
+FormalConjectures/ErdosProblems/960.lean-62-    AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-63-  affineSpan ℝ {p, q}
+--
+FormalConjectures/ErdosProblems/960.lean-71-    (A' : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-72-  A' ⊆ A ∧
+FormalConjectures/ErdosProblems/960.lean:73:  ∀ p ∈ A', ∀ q ∈ A', p ≠ q → IsOrdinaryLine A (lineThrough p q)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-75-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean-24-Let $g(n)$ be maximal such that in any set of $n$ points in $\mathbb{R}^2$ with no four
+FormalConjectures/ErdosProblems/589.lean:25:points on a line there exists a subset of $g(n)$ points with no three points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean-26-on a line. Estimate $g(n)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean-44-/-- `erdos589_g n` is the largest $m$ such that every set of $n$ points in $\mathbb{R}^2$
+FormalConjectures/ErdosProblems/589.lean:45:with no four on a line contains a subset of at least $m$ points with no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean-46-three on a line. -/
+FormalConjectures/ErdosProblems/589.lean-47-noncomputable def erdos589_g (n : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-44-Does there exist an absolute constant $C > 1$ such that every finite projective plane
+FormalConjectures/ErdosProblems/1159.lean:45:has a set of points $S$ meeting every line in at least $1$ and at most $C$ points?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-46--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-47-@[category research open, AMS 5 51]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-24-Let $t(n)$ be the minimum number of points in $\{1, \ldots, n\}^2$ such that the $\binom{t}{2}$
+FormalConjectures/ErdosProblems/798.lean:25:lines determined by these points cover all points in $\{1, \ldots, n\}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-27-Estimate $t(n)$. In particular, is it true that $t(n) = o(n)$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-42-/-- A finite set $S$ of points in $\{1, \ldots, n\}^2$ covers the grid if every point
+FormalConjectures/ErdosProblems/798.lean:43:in $\{1, \ldots, n\}^2$ lies on a line determined by two distinct points of $S$. -/
+FormalConjectures/ErdosProblems/798.lean-44-def CoversIntGrid (n : ℕ) (S : Finset (ℤ × ℤ)) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean-45-  (∀ p ∈ S, 1 ≤ p.1 ∧ p.1 ≤ ↑n ∧ 1 ≤ p.2 ∧ p.2 ≤ ↑n) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-30-/--
+FormalConjectures/ErdosProblems/101.lean:31:A finite point set in $\mathbb{R}^2$ has no five collinear points if every five-element subset
+FormalConjectures/ErdosProblems/101.lean:32:is not collinear (i.e., no line contains five or more of the points).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-33--/
+FormalConjectures/ErdosProblems/101.lean-34-def NoFiveCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-50-/--
+FormalConjectures/ErdosProblems/101.lean-51-Erdős Problem #101: Given $n$ points in $\mathbb{R}^2$, no five of which are collinear,
+FormalConjectures/ErdosProblems/101.lean:52:the number of lines containing at least four of the points is $o(n^2)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-53-
+FormalConjectures/ErdosProblems/101.lean-54-Formally: for every $\varepsilon > 0$ there exists $N$ such that for all $n \geq N$ and every
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-31-/--
+FormalConjectures/ErdosProblems/102.lean:32:The number of distinct affine lines in $\mathbb{R}^2$ that contain at least $4$ points from $P$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-33-(i.e., more than $3$ points, as in the problem statement).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-34--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-42-
+FormalConjectures/ErdosProblems/102.lean-43-For fixed $c > 0$, let $h_c(n)$ denote the largest integer $h$ such that: for every
+FormalConjectures/ErdosProblems/102.lean:44:$n$-point set $P$ in $\mathbb{R}^2$ with at least $c \cdot n^2$ lines each containing more than $3$ points
+FormalConjectures/ErdosProblems/102.lean:45:of $P$, some line contains at least $h$ points of $P$. (In other words, $h_c(n)$ is the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-46-minimum, over all such configurations $P$, of the maximum collinearity.)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-48-The conjecture is that $h_c(n) \to \infty$ as $n \to \infty$, i.e., for each fixed $c > 0$ and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-49-each $M \in \mathbb{N}$, there exists $N$ such that for all $n \geq N$, every $n$-point configuration
+FormalConjectures/ErdosProblems/102.lean:50:with at least $c \cdot n^2$ four-rich lines must contain some line with at least $M$ points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-51--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/102.lean-52-@[category research open, AMS 5 52]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-41-  (q 0 - p 0) * (r 1 - p 1) = (q 1 - p 1) * (r 0 - p 0)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-42-
+FormalConjectures/ErdosProblems/217.lean:43:/-- A finite point set in $\mathbb{R}^2$ has no three collinear points. -/
+FormalConjectures/ErdosProblems/217.lean-44-def NoThreeCollinear (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-45-  ∀ p ∈ S, ∀ q ∈ S, ∀ r ∈ S, p ≠ q → p ≠ r → q ≠ r → ¬Collinear3 p q r
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/831.lean-31-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/831.lean-32-A finite point set in $\mathbb{R}^2$ has no three collinear if every three-element subset
+FormalConjectures/ErdosProblems/831.lean:33:is not collinear (i.e., no line contains three or more of the points).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/831.lean-34--/
+FormalConjectures/ErdosProblems/831.lean-35-def NoThreeCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-24-Given any $n$ distinct points in $\mathbb{R}^2$, let $f(n)$ count the number of distinct
+FormalConjectures/ErdosProblems/606.lean:25:lines determined by these points. What are the possible values of $f(n)$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-27-A question of Grünbaum. The Sylvester-Gallai theorem implies that if the points are not
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-41-/-- The number of distinct lines determined by a finite point set $A$ in $\mathbb{R}^2$.
+FormalConjectures/ErdosProblems/606.lean:42:A line is the affine span of a pair of distinct points from $A$. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-43-noncomputable def numLinesDetermined
+FormalConjectures/ErdosProblems/606.lean-44-    (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+--
+FormalConjectures/ErdosProblems/606.lean-46-    ∃ a ∈ A, ∃ b ∈ A, a ≠ b ∧ l = affineSpan ℝ ({a, b} : Set (EuclideanSpace ℝ (Fin 2)))}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-47-
+FormalConjectures/ErdosProblems/606.lean:48:/-- The set of achievable line counts for configurations of exactly $n$ points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-49-in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/606.lean-50-noncomputable def achievableLineCounts (n : ℕ) : Set ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-57-For sufficiently large $n$, every integer in $[c \cdot n^{3/2}, \binom{n}{2}]$ is achievable
+FormalConjectures/ErdosProblems/606.lean:58:as a line count for some configuration of $n$ points in $\mathbb{R}^2$, except for
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-59-$\binom{n}{2} - 1$ and $\binom{n}{2} - 3$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-60--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/105.lean-33-Let $A, B \subset \mathbb{R}^2$ be disjoint finite sets with $|A| = n$ and $|B| = n - 3$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/105.lean-34-with not all of $A$ contained on a single line. The conjecture asks whether
+FormalConjectures/ErdosProblems/105.lean:35:there must exist a line containing at least two points from $A$ and no points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/105.lean-36-from $B$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/105.lean-37-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-30-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-31-A finite point set in $\mathbb{R}^2$ has no three collinear if every three-element subset
+FormalConjectures/ErdosProblems/98.lean:32:is not collinear (i.e., no line contains three or more of the points).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-33--/
+FormalConjectures/ErdosProblems/98.lean-34-def NoThreeCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean-24-Let $S \subseteq \mathbb{Z}^3$ be a finite set and let $A = \{a_1, a_2, \ldots\} \subset \mathbb{Z}^3$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean-25-be an infinite $S$-walk, so that $a_{i+1} - a_i \in S$ for all $i$. Must $A$ contain three
+FormalConjectures/ErdosProblems/193.lean:26:collinear points?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean-28-Originally conjectured by Gerver and Ramsey [GeRa79], who showed that the answer is yes for
+FormalConjectures/ErdosProblems/193.lean:29:$\mathbb{Z}^2$, and for $\mathbb{Z}^3$ that the largest number of collinear points can be bounded.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean-31-[GeRa79] Gerver, J. and Ramsey, L. T., 1979.
+--
+FormalConjectures/ErdosProblems/193.lean-46-Let $S \subseteq \mathbb{Z}^3$ be a finite set and let $a : \mathbb{N} \to \mathbb{Z}^3$ be an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean-47-injective $S$-walk (i.e. $a(i+1) - a(i) \in S$ for all $i$, visiting infinitely many distinct
+FormalConjectures/ErdosProblems/193.lean:48:points). Then the range of $a$ must contain three collinear points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean-49--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/193.lean-50-@[category research open, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-24-Let $F_k(n)$ be minimal such that for any $n$ points in $\mathbb{R}^2$ there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-25-exist at most $F_k(n)$ many distinct lines passing through at least $k$ of the
+FormalConjectures/ErdosProblems/669.lean:26:points, and $f_k(n)$ similarly but with lines passing through exactly $k$ points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-28-Estimate $f_k(n)$ and $F_k(n)$ — in particular, determine $\lim F_k(n)/n^2$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-50-namespace Erdos669
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-51-
+FormalConjectures/ErdosProblems/669.lean:52:/-- The number of affine lines in $\mathbb{R}^2$ passing through at least $k$ points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-53-from a finite point set $P$. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-54-noncomputable def atLeastKPointLineCount
+--
+FormalConjectures/ErdosProblems/669.lean-58-    k ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-59-
+FormalConjectures/ErdosProblems/669.lean:60:/-- The number of affine lines in $\mathbb{R}^2$ passing through exactly $k$ points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-61-from a finite point set $P$. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-62-noncomputable def exactlyKPointLineCount
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-67-
+FormalConjectures/ErdosProblems/669.lean-68-/-- $F_k(n)$: the maximum over all $n$-point sets $P \subseteq \mathbb{R}^2$ of the number of
+FormalConjectures/ErdosProblems/669.lean:69:lines passing through at least $k$ points of $P$. -/
+FormalConjectures/ErdosProblems/669.lean-70-noncomputable def bigF (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/669.lean-71-  sSup {m : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-73-
+FormalConjectures/ErdosProblems/669.lean-74-/-- $f_k(n)$: the maximum over all $n$-point sets $P \subseteq \mathbb{R}^2$ of the number of
+FormalConjectures/ErdosProblems/669.lean:75:lines passing through exactly $k$ points of $P$. -/
+FormalConjectures/ErdosProblems/669.lean-76-noncomputable def littleF (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/669.lean-77-  sSup {m : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-47-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-48-A finite set of points in $\mathbb{R}^2$ is in general position if no three distinct
+FormalConjectures/ErdosProblems/216.lean:49:points are collinear (i.e., for any three distinct points, the third does
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-50-not lie on the affine line through the other two).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/216.lean-51--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-24-Let $1 \leq k < n$. Given $n$ points in $\mathbb{R}^2$, at most $n - k$ on any line,
+FormalConjectures/ErdosProblems/211.lean:25:there are $\gg kn$ many lines which contain at least two points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-27-Proved by Beck [Be83] and Szemerédi–Trotter [SzTr83].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-29-In particular, given any $2n$ points with at most $n$ on a line there
+FormalConjectures/ErdosProblems/211.lean:30:are $\gg n^2$ many lines formed by the points.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-32-[Be83] Beck, J., _On the lattice property of the plane and some problems of Dirac,
+--
+FormalConjectures/ErdosProblems/211.lean-44-abbrev Point2 := EuclideanSpace ℝ (Fin 2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-45-
+FormalConjectures/ErdosProblems/211.lean:46:/-- Point $r$ lies on the line through points $p$ and $q$. -/
+FormalConjectures/ErdosProblems/211.lean-47-def LiesOnLine (p q r : Point2) : Prop :=
+FormalConjectures/ErdosProblems/211.lean-48-  ∃ t : ℝ, r - p = t • (q - p)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-49-
+FormalConjectures/ErdosProblems/211.lean:50:/-- The line through two points, as a set of points. -/
+FormalConjectures/ErdosProblems/211.lean:51:def lineThrough (p q : Point2) : Set Point2 :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-52-  {r | LiesOnLine p q r}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-56-  (S.filter (fun r => LiesOnLine p q r)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-57-
+FormalConjectures/ErdosProblems/211.lean:58:/-- The number of distinct lines containing at least two points of $S$. -/
+FormalConjectures/ErdosProblems/211.lean-59-noncomputable def lineCount (S : Finset Point2) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-60-  (((S ×ˢ S).filter (fun pq => pq.1 ≠ pq.2)).image
+FormalConjectures/ErdosProblems/211.lean:61:    (fun pq => lineThrough pq.1 pq.2)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-63-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/735.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/735.lean-24-Given any $n$ points in $\mathbb{R}^2$, when can one assign positive weights to the points
+FormalConjectures/ErdosProblems/735.lean:25:such that the sum of the weights along every line containing at least two points
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/735.lean-26-is the same?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/735.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/735.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/735.lean-48-/-- A finite set of points in $\mathbb{R}^2$ admits a balanced weighting if there exist positive
+FormalConjectures/ErdosProblems/735.lean:49:real weights such that the total weight on every line through $\geq 2$ points is the same. -/
+FormalConjectures/ErdosProblems/735.lean-50-noncomputable def AdmitsBalancedWeighting (S : Finset R2) : Prop :=
+FormalConjectures/ErdosProblems/735.lean-51-  ∃ (w : R2 → ℝ),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-50-/-- A point set $A \subseteq \mathbb{R}^2$ is in Erdős general position if no three distinct
+FormalConjectures/ErdosProblems/130.lean:51:points of $A$ are collinear, and no four distinct points of $A$ are concyclic. -/
+FormalConjectures/ErdosProblems/130.lean-52-def ErdosGeneralPosition (A : Set (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/130.lean-53-  (∀ p q r : EuclideanSpace ℝ (Fin 2),
+--
+FormalConjectures/ErdosProblems/130.lean-81-Note: The clique number is always finite. The Anning–Erdős theorem [AnEr45]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-82-shows that any infinite set of points in the plane with all pairwise integer
+FormalConjectures/ErdosProblems/130.lean:83:distances must be collinear; since $A$ has no three collinear points, $A$ contains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-84-no infinite complete subgraph.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/130.lean-85--/

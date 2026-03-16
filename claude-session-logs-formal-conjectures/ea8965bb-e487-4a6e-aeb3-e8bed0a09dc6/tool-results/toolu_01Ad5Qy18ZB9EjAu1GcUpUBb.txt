@@ -1,0 +1,156 @@
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-21-# D-Balanced graphs
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-22-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean:23:`SimpleGraph.IsBalanced G D` is the condition that the maximum degree of a simple graph $G$ is
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean:24:at most $D$ times the minimum degree.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-25--/
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-26-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-32-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-33-/--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean:34:We call a graph $D$-balanced (or $D$-almost-regular) if the maximum degree is at most $D$ times the
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean:35:minimum degree.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-36--/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-37-def IsBalanced (G : SimpleGraph V) (D : ℝ) [DecidableRel G.Adj] : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean:38:    G.maxDegree <= D * G.minDegree
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-39-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Balanced.lean-40-end SimpleGraph
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Polynomial/Basic.lean-31--/
+FormalConjecturesForMathlib/Algebra/Polynomial/Basic.lean-32-def BunyakovskyCondition (f : ℤ[X]) : Prop :=
+FormalConjecturesForMathlib/Algebra/Polynomial/Basic.lean:33:  1 ≤ f.degree ∧ Irreducible f ∧ 0 < f.leadingCoeff
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Polynomial/Basic.lean-34-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Polynomial/Basic.lean-35-/--
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-45-noncomputable def temp_v (G : SimpleGraph α) [DecidableRel G.Adj] (v : α) : ℝ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-46-  let n := Fintype.card α
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:47:  let deg := G.degree v
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-48-  if n = deg then 0 else (deg : ℝ) / ((n : ℝ) - (deg : ℝ))
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-49-
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-71-  let card := Fintype.card α
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-72-  if card < 2 then 0 else
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:73:    let degrees := Multiset.ofList (List.map (fun v => G.degree v) Finset.univ.toList)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:74:    let sorted_degrees := degrees.sort (· ≤ ·)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:75:    ↑((sorted_degrees[card - 2]?).getD 0)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-76-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-77-/-- Local eccentricity of a vertex. -/
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-168-    e.lift ⟨fun u v => szeged_aux G u v * szeged_aux G v u, by simp [mul_comm]⟩
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-169-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:170:/-- The average degree of `G`. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-171-noncomputable def averageDegree (G : SimpleGraph α) [DecidableRel G.Adj] : ℚ  :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:172:  (∑ v, (G.degree v : ℚ)) / (Fintype.card α : ℚ)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-173-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:174:/-- The multiset of degrees of a graph. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:175:def degreeMultiset (G : SimpleGraph α) [DecidableRel G.Adj] : Multiset ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:176:  Finset.univ.val.map fun v => G.degree v
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-177-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:178:/-- The annihilation number of a graph. This is the largest number of degrees that can be added
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-179-together without going over the total number of edges of that graph. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-180-def annihilationNumber (G : SimpleGraph α) [DecidableRel G.Adj] : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:181:  -- Calculate the limit: The number of edges (Sum of degrees / 2)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-182-  letI limit := G.edgeFinset.card
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-183-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:184:  -- The set of all multisets of degrees that sum to less than or equal to `limit`
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:185:  Finset.Iic (degreeMultiset G)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-186-    |>.filter (fun S ↦ Multiset.sum S ≤ limit)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-187-    |>.sup Multiset.card
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-190-Computes the annihilation number of a graph G.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-191-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:192:It calculates the degree sequence, sorts it ascendingly, and finds the largest prefix length 'k'
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-193-(where `0 ≤ k ≤ |V(G)|`) such that the sum of the prefix is less than or equal to the sum of the corresponding suffix.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-194--/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-195-noncomputable def annihilationNumber' (G : SimpleGraph α) [DecidableRel G.Adj] : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:196:  -- 1. Get the degree sequence sorted in ascending order.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:197:  -- G.degree_list returns the list of degrees.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:198:  letI degrees := (Finset.univ.image fun v => G.degree v).sort (· ≤ ·)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-199-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-200-  -- 2. Define the condition for the annihilation number.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:201:  -- k represents the number of smallest degrees considered (the length of the prefix).
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:202:  letI condition (k : ℕ) : Bool := (degrees.take k).sum ≤ (degrees.drop k).sum
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-203-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-204-  -- 3. Find the maximum k in {0, ..., n} satisfying the condition.
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-208-  -- 4. Return the maximum candidate.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-209-  -- The list of candidates is guaranteed to be non-empty because k=0 always satisfies
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:210:  -- the condition (0 ≤ sum of all degrees).
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-211-  candidates.getLast!
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-212-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-219-## Residue
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-220-The residue of a graph is the number of zeros remaining after iteratively applying the Havel-Hakimi
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:221:algorithm to the degree sequence until all remaining degrees are zero.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-222--/
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-223-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-224-/--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:225:Helper function: Performs one step of the Havel-Hakimi reduction on a degree sequence.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-226-Assumes the input list `s` is sorted descending.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-227-Removes the first element `d`, decrements the next `d` elements by 1, and re-sorts the list descending.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-228-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-229-Note: when `s` is the list of vertices arising from a simple graph, if the first index is `s` then
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:230:the degree list always has length at least `s+1` so this makes sense.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-231--/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-232-private def havelHakimiStep (s : List ℕ) : List ℕ :=
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-247-private partial def residueAux : List ℕ → ℕ
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-248-  | [] => 0        -- Empty sequence, residue is 0.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:249:  | 0 :: s => 1 + s.length -- If the largest degree is 0 (and the list is sorted), all are 0.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-250-  | s => residueAux (havelHakimiStep s) -- Apply one reduction step and recurse.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-251-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-252-/--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-253-Computes the residue of a graph G, ,i.e. the number of zeros remaining after iteratively applying the Havel-Hakimi
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:254:algorithm to the degree sequence until all remaining degrees are zero.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:255:Starts with the descending degree sequence and applies the Havel-Hakimi process.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-256--/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-257-noncomputable def residue (G : SimpleGraph α) [DecidableRel G.Adj] : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:258:  -- Get the degree sequence sorted in descending order and apply `residueAux`.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:259:  residueAux ((Finset.univ.image fun v => G.degree v).sort (· ≥ ·))
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-260-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-261-/--
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-109-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-110-/-- The minimum edge cover number of `G`. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean:111:noncomputable def edgeCoverNumber (G : SimpleGraph α) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-112-  sInf {n | ∃ M : Finset (Sym2 α), G.IsEdgeCover (M : Set (Sym2 α)) ∧ M.card = n}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Domination.lean-113-
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-31-noncomputable def Ls (G : SimpleGraph α) [DecidableRel G.Adj] : ℝ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-32-  letI spanningTrees := { T : Subgraph G | T.IsSpanning ∧ IsTree T.coe }
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:33:  letI leaves (T : Subgraph G) := T.verts.toFinset.filter (fun v => T.degree v = 1)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-34-  letI num_leaves (T : Subgraph G) := (leaves T).card
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-35-  sSup (Set.image (fun T => (num_leaves T : ℝ)) spanningTrees)
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-58-  sSup { n | ∃ s : Finset α, (G.induce s).IsAcyclic ∧ s.card = n }
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-59-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:60:/-- The degree sequence of a graph, sorted in nondecreasing order. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:61:noncomputable def degreeSequence (G : SimpleGraph α) [DecidableRel G.Adj] : List ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:62:  (Finset.univ.val.map fun v : α => G.degree v).sort (· ≤ ·)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-63-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-64-/--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:65:The maximum number of occurrences of any term of the degree sequence of `G`.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-66--/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:67:noncomputable def degreeSequenceMultiplicity (G : SimpleGraph α) [DecidableRel G.Adj] : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:68:  letI degs := degreeSequence G
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-69-  (List.max? (degs.map (fun d => degs.count d))).getD 0
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-70-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-113-    P.Infinite ∧ (∀ p ∈ P, p.IsPath) ∧ P.Pairwise InternallyDisjoint
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-114-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:115:/-- Infinite graphs: definitions for max degree and clique number so that the maximum
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:116:degree (resp. clique number) of a graph with unbounded degree (resp. clique size) is
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-117-`∞` rather than 0.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-118--/
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-119-noncomputable
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:120:def edegree {V : Type*} (G : SimpleGraph V) (v : V) : ℕ∞ := (G.neighborSet v).encard
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-121-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-122-noncomputable
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:123:def emaxDegree {V : Type*} (G : SimpleGraph V) : ℕ∞ := ⨆ v, G.edegree v
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-124-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-125-noncomputable
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-52-def IsRamseySizeLinear {α : Type*} [Fintype α] (G : SimpleGraph α) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-53-  ∃ c > (0 : ℝ), ∀ (n : ℕ) (H : SimpleGraph (Fin n)) [DecidableRel H.Adj],
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:54:    (∀ v, 0 < H.degree v) →
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-55-    (sizeRamsey G H : ℝ) ≤ c * H.edgeSet.ncard
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-56-

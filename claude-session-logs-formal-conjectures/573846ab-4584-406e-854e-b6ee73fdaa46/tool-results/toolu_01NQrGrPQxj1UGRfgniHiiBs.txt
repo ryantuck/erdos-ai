@@ -1,0 +1,356 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean-41-/-- A set $A \subseteq \mathbb{R}$ contains a 3-term arithmetic progression if there exist
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean-42-$a, d \in \mathbb{R}$ with $d \neq 0$ such that $a, a + d, a + 2d \in A$. -/
+FormalConjectures/ErdosProblems/199.lean:43:def HasThreeTermAP (A : Set ℝ) : Prop :=
+FormalConjectures/ErdosProblems/199.lean-44-  ∃ a d : ℝ, d ≠ 0 ∧ a ∈ A ∧ (a + d) ∈ A ∧ (a + 2 * d) ∈ A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean-46-/-- A set $S \subseteq \mathbb{R}$ contains an infinite arithmetic progression if there exist
+FormalConjectures/ErdosProblems/199.lean-47-$a, d \in \mathbb{R}$ with $d \neq 0$ such that $a + n \cdot d \in S$ for all $n : \mathbb{N}$. -/
+FormalConjectures/ErdosProblems/199.lean:48:def HasInfiniteAP (S : Set ℝ) : Prop :=
+FormalConjectures/ErdosProblems/199.lean-49-  ∃ a d : ℝ, d ≠ 0 ∧ ∀ n : ℕ, (a + ↑n * d) ∈ S
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean-51-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean-55-exist integers $a$, $d$ with $d \neq 0$ such that $a + i \cdot d \in S$ for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean-56-$0 \leq i < k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean-57--/
+FormalConjectures/ErdosProblems/201.lean:58:def HasKTermAP (k : ℕ) (S : Finset ℤ) : Prop :=
+FormalConjectures/ErdosProblems/201.lean-59-  ∃ a d : ℤ, d ≠ 0 ∧ ∀ i : Fin k, (a + (i.val : ℤ) * d) ∈ S
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean-61-/-- The maximum cardinality of a subset of $S$ that contains no $k$-term AP. -/
+FormalConjectures/ErdosProblems/201.lean:62:noncomputable def maxAPFreeSize (k : ℕ) (S : Finset ℤ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean-63-  Finset.sup (S.powerset.filter (fun T => ¬HasKTermAP k T)) Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/201.lean-64-
+FormalConjectures/ErdosProblems/201.lean-65-/-- $R_k(N)$: the size of the largest subset of $\{1, \ldots, N\}$ without a $k$-term AP. -/
+--
+FormalConjectures/ErdosProblems/190.lean-42-/-- A colouring $\chi : \mathbb{N} \to \mathbb{N}$ has a monochromatic $k$-term arithmetic
+FormalConjectures/ErdosProblems/190.lean-43-progression within $\{1,\ldots,N\}$: there exist $a \geq 1$ and $d \geq 1$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/190.lean-44-$a, a+d, \ldots, a+(k-1) \cdot d$ are all in $\{1,\ldots,N\}$ and all share the same colour. -/
+FormalConjectures/ErdosProblems/190.lean:45:def HasMonoAP (χ : ℕ → ℕ) (N k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/190.lean-46-  ∃ a d : ℕ, 0 < d ∧ 1 ≤ a ∧ a + (k - 1) * d ≤ N ∧
+FormalConjectures/ErdosProblems/190.lean-47-    ∀ i : ℕ, i < k → χ (a + i * d) = χ a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/190.lean-48-
+FormalConjectures/ErdosProblems/190.lean-49-/-- A colouring $\chi : \mathbb{N} \to \mathbb{N}$ has a rainbow $3$-term arithmetic
+FormalConjectures/ErdosProblems/190.lean-50-progression within $\{1,\ldots,N\}$: there exist $a \geq 1$ and $d \geq 1$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/190.lean-51-$a, a+d, a+2d$ are all in $\{1,\ldots,N\}$ and their colours are pairwise distinct. -/
+FormalConjectures/ErdosProblems/190.lean:52:def HasRainbowAP (χ : ℕ → ℕ) (N : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/190.lean-53-  ∃ a d : ℕ, 0 < d ∧ 1 ≤ a ∧ a + 2 * d ≤ N ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/190.lean-54-    χ a ≠ χ (a + d) ∧ χ a ≠ χ (a + 2 * d) ∧ χ (a + d) ≠ χ (a + 2 * d)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/190.lean-55-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/984.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/984.lean-40-/-- An arithmetic progression $\{a, a+d, \ldots, a+(k-1)d\}$ is monochromatic under
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/984.lean-41-    colouring $c$ if all its elements receive the same colour. -/
+FormalConjectures/ErdosProblems/984.lean:42:def IsMonochromaticAP (c : ℕ → Fin 2) (a d k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/984.lean-43-  d ≥ 1 ∧ k ≥ 1 ∧ ∃ color : Fin 2, ∀ i : ℕ, i < k → c (a + i * d) = color
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/984.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/984.lean-45-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-34-/-- A finset of natural numbers is $k$-AP-free if it contains no arithmetic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-35-progression of length $k$ with positive common difference. -/
+FormalConjectures/ErdosProblems/169.lean:36:def IsAPFree (k : ℕ) (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/169.lean-37-  ¬∃ a d : ℕ, 0 < d ∧ ∀ i : ℕ, i < k → a + i * d ∈ A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-38-
+FormalConjectures/ErdosProblems/169.lean-39-/-- The van der Waerden property: every $2$-coloring of $\{0, \ldots, N-1\}$ contains
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-67-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/169.lean-68-theorem erdos_169 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/169.lean-69-    ∀ C : ℝ, 0 < C → ∃ k₀ : ℕ, ∀ k : ℕ, k₀ ≤ k →
+FormalConjectures/ErdosProblems/169.lean:70:      ∃ A : Finset ℕ, (∀ n ∈ A, 0 < n) ∧ IsAPFree k A ∧
+FormalConjectures/ErdosProblems/169.lean-71-        C * Real.log (↑(vanDerWaerdenNumber k) : ℝ) <
+FormalConjectures/ErdosProblems/169.lean-72-          ∑ n ∈ A, (1 : ℝ) / (↑n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/169.lean-73-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-51-The predicate that a set `s` is both an arithmetic progression of length `l` and a progression
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-52-of `l` consecutive primes.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-53--/
+FormalConjectures/ErdosProblems/141.lean:54:def Set.IsAPAndPrimeProgressionOfLength (s : Set ℕ) (l : ℕ) :=
+FormalConjectures/ErdosProblems/141.lean:55:   s.IsAPOfLength l ∧ s.IsPrimeProgressionOfLength l
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-57-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-58-There are 3 consecutive primes in arithmetic progression.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-62-  use {3, 5, 7}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-63-  constructor
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-64-  · use 3, 2
+FormalConjectures/ErdosProblems/141.lean:65:    unfold Set.IsAPOfLengthWith
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-66-    constructor
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-67-    · aesop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-68-    · norm_num [exists_lt_succ_right, or_assoc, eq_comm, Set.insert_def]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/200.lean-30-The length of the longest arithmetic progression of primes in $\{1,\ldots,n\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/200.lean-31--/
+FormalConjectures/ErdosProblems/200.lean-32-noncomputable def longestPrimeArithmeticProgressions (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/200.lean:33:  sSup {(k : ℕ) | ∃ s ⊆ Set.Icc 1 n, s.IsAPOfLength k ∧ ∀ m ∈ s, m.Prime}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/200.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/200.lean-35-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/200.lean-36-Does the longest arithmetic progression of primes in $\{1,\ldots,N\}$ have length $o(\log N)$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-39-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/198.lean-40-lemma baumgartner_strong (V : Type*) [AddCommGroup V] [Module ℚ V] (k : ℕ) :
+FormalConjectures/ErdosProblems/198.lean-41-    ∃ X : Set V,
+FormalConjectures/ErdosProblems/198.lean:42:      (∀ Y, Y.IsAPOfLength ⊤ → (X ∩ Y).Nonempty) ∧
+FormalConjectures/ErdosProblems/198.lean:43:      (∀ Y, IsAPOfLength Y k → (X ∩ Y).ncard ≤ 2) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-44-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-46-/-- The statement for which Baumgartner actually writes a proof. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-47-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/198.lean-48-lemma baumgartner_headline (V : Type*) [AddCommGroup V] [Module ℚ V] :
+FormalConjectures/ErdosProblems/198.lean-49-    ∃ X : Set V,
+FormalConjectures/ErdosProblems/198.lean:50:      (∀ Y, IsAPOfLength Y ⊤ → (X ∩ Y).Nonempty) ∧
+FormalConjectures/ErdosProblems/198.lean:51:      (∀ Y, IsAPOfLength Y 3 → (X ∩ Y).ncard ≤ 2) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-52-  baumgartner_strong V 3
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-54-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-70--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-71-@[category research formally solved using lean4 at
+FormalConjectures/ErdosProblems/198.lean-72-"https://github.com/plby/lean-proofs/blob/main/src/v4.24.0/ErdosProblems/Erdos198.lean", AMS 5 11]
+FormalConjectures/ErdosProblems/198.lean:73:theorem erdos_198 : (∀ A : Set ℕ, IsSidon A → (∃ Y, IsAPOfLength Y ⊤ ∧ Y ⊆ Aᶜ)) ↔
+FormalConjectures/ErdosProblems/198.lean-74-    answer(False) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-76-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-79--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-80-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/198.lean-81-theorem erdos_198.variants.concrete :  ∃ (A : Set ℕ), A = {n ! + n | n} ∧
+FormalConjectures/ErdosProblems/198.lean:82:    IsSidon A ∧ (∀ Y, IsAPOfLength Y ⊤ → (A ∩ Y).Nonempty) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-83-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-84-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-85-end Erdos198
+--
+FormalConjectures/ErdosProblems/176.lean-48-that for every $f : \{1,\ldots,N\} \to \{-1,1\}$, there exists a $k$-term arithmetic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/176.lean-49-progression $a, a+d, \ldots, a+(k-1)d$ with $d \geq 1$ and all terms in $\{1,\ldots,N\}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/176.lean-50-such that $|\sum_i f(a + id)| \geq \ell$. -/
+FormalConjectures/ErdosProblems/176.lean:51:noncomputable def discrepancyAPNumber (k : ℕ) (ℓ : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/176.lean-52-  sInf { N : ℕ | ∀ f : ℕ → ℤ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/176.lean-53-    (∀ n, 1 ≤ n → n ≤ N → (f n = 1 ∨ f n = -1)) →
+FormalConjectures/ErdosProblems/176.lean-54-    ∃ a d : ℕ, 0 < d ∧ 1 ≤ a ∧ a + (k - 1) * d ≤ N ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/194.lean-36-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/194.lean-37-theorem erdos_194 :
+FormalConjectures/ErdosProblems/194.lean-38-  answer(False) ↔ ∀ k ≥ 3, ∀ r : ℝ → ℝ → Prop, IsStrictTotalOrder ℝ r →
+FormalConjectures/ErdosProblems/194.lean:39:    ∃ s : List ℝ, s.IsAPOfLength k ∧ (s.Pairwise r ∨ s.Pairwise (flip r)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/194.lean-40-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/194.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/194.lean-42-end Erdos194
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/938.lean-30-Are there only finitely many three-term progressions of consecutive terms $n_k,n_{k+1},n_{k+2}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/938.lean-31--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/938.lean-32-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/938.lean:33:theorem erdos_938 : answer(sorry) ↔ {P : Finset ℕ | (P : Set ℕ).IsAPOfLength 3 ∧ ∃ k,
+FormalConjectures/ErdosProblems/938.lean-34-    P = {nth Powerful k, nth Powerful (k + 1), nth Powerful (k + 2)}}.Finite := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/938.lean-35-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/938.lean-36-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/160.lean-30--/
+FormalConjectures/ErdosProblems/160.lean-31-noncomputable def erdos_160.h (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/160.lean-32-    sInf {k | ∃ (colouring : Finset.Icc 1 n → Fin k), ∀ (progression : Set ℕ),
+FormalConjectures/ErdosProblems/160.lean:33:    (progression ⊆ Finset.Icc 1 n ∧ progression.IsAPOfLength 4) →
+FormalConjectures/ErdosProblems/160.lean-34-    3 ≤ (colouring '' {k | (k : ℕ) ∈ progression}).ncard}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/160.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/160.lean-36-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/139.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/139.lean-28-namespace Erdos139
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/139.lean-29-
+FormalConjectures/ErdosProblems/139.lean:30:noncomputable abbrev r := Set.IsAPOfLengthFree.maxCard
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/139.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/139.lean-32-/--
+FormalConjectures/ErdosProblems/139.lean-33-**Erdős Problem 139**:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-38-if there exist natural numbers $a$ and $d$ with $d \geq 1$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-39-$a + i \cdot d \in A$ for all $0 \leq i < k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-40--/
+FormalConjectures/ErdosProblems/179.lean:41:def ContainsAP (A : Finset ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/179.lean-42-  ∃ a d : ℕ, d ≥ 1 ∧ ∀ i : ℕ, i < k → a + i * d ∈ A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-44-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-45-The number of $k$-term arithmetic progressions in $A$, counted as pairs $(a, d)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-46-with $d \geq 1$ such that $a + i \cdot d \in A$ for all $0 \leq i < k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-47--/
+FormalConjectures/ErdosProblems/179.lean:48:def numAP (A : Finset ℕ) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/179.lean-49-  if h : A.Nonempty then
+FormalConjectures/ErdosProblems/179.lean-50-    let M := A.max' h
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-51-    ((Finset.Icc 0 M ×ˢ Finset.Icc 1 M).filter
+--
+FormalConjectures/ErdosProblems/179.lean-65-    ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/179.lean-66-    ∀ A : Finset ℕ, A.card = N →
+FormalConjectures/ErdosProblems/179.lean-67-    (numAP A 3 : ℝ) ≥ ε * (N : ℝ) ^ 2 →
+FormalConjectures/ErdosProblems/179.lean:68:    ContainsAP A 4 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-69-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-71-/--
+--
+FormalConjectures/ErdosProblems/179.lean-82-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/179.lean-83-    ∃ A : Finset ℕ, A.card = N ∧
+FormalConjectures/ErdosProblems/179.lean-84-    (numAP A 3 : ℝ) ≥ (N : ℝ) ^ (2 - ε) ∧
+FormalConjectures/ErdosProblems/179.lean:85:    ¬ContainsAP A ℓ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-86-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-87-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-88-end Erdos179
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-44-difference $d$ lies in $\{0, \ldots, n-1\}$ if $d \geq 1$ and all terms
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-45-$a + id$ for $i < j$ are less than $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-46--/
+FormalConjectures/ErdosProblems/721.lean:47:def APInRange (n a d j : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-48-  d ≥ 1 ∧ ∀ i < j, a + i * d < n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-50-/--
+FormalConjectures/ErdosProblems/721.lean-51-A 2-coloring $f : \mathbb{N} \to \text{Bool}$ of $\{0, \ldots, n-1\}$ has a monochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-52-$j$-term arithmetic progression in color $c$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-53--/
+FormalConjectures/ErdosProblems/721.lean:54:def HasMonoAP (f : ℕ → Bool) (n j : ℕ) (c : Bool) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-55-  ∃ a d, APInRange n a d j ∧ ∀ i < j, f (a + i * d) = c
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean-57-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean-34-contains no non-trivial $k$-term arithmetic progression. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean-35-noncomputable
+FormalConjectures/ErdosProblems/817.lean-36-def g (k : ℕ) (n : ℕ) : ℕ := sInf { N | ∃ A ⊆ Finset.Icc 1 N, A.card = n ∧
+FormalConjectures/ErdosProblems/817.lean:37:    ∀ s, s ⊆ { ∑ a ∈ B, a | B ∈ A.powerset } → s.IsAPOfLengthFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean-39-/-- Let $k \geq 3$. Define $g_k(n)$ to be the minimal $N$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean-40-$\{1, ..., N\}$ contains some $A$ of size $|A| = n$ such that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-50-/-- A set of natural numbers contains an infinite arithmetic progression
+FormalConjectures/ErdosProblems/343.lean-51-$\{a + nd : n \in \mathbb{N}\}$ for some $a \geq 0$ and $d > 0$. -/
+FormalConjectures/ErdosProblems/343.lean:52:def ContainsInfiniteAP (S : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/343.lean-53-  ∃ (a d : ℕ), 0 < d ∧ ∀ n : ℕ, a + n * d ∈ S
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-55-/--
+--
+FormalConjectures/ErdosProblems/187.lean-53-/-- A 2-colouring $\chi : \mathbb{Z} \to \text{Bool}$ has a monochromatic arithmetic progression of
+FormalConjectures/ErdosProblems/187.lean-54-length $k$ with common difference $d$: there exist a starting point $a \in \mathbb{Z}$ and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean-55-a colour $c$ such that $\chi(a + i \cdot d) = c$ for all $0 \le i < k$. -/
+FormalConjectures/ErdosProblems/187.lean:56:def HasMonoAP (χ : ℤ → Bool) (d : ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/187.lean-57-  ∃ a : ℤ, ∃ c : Bool, ∀ i : ℕ, i < k → χ (a + ↑i * ↑d) = c
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/187.lean-59-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/142.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/142.lean-28-namespace Erdos142
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/142.lean-29-
+FormalConjectures/ErdosProblems/142.lean:30:noncomputable abbrev r := Set.IsAPOfLengthFree.maxCard
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/142.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/142.lean-32-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/142.lean-33-Prove an asymptotic formula for $r_k(N)$, the largest possible size of a subset
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean-42-/-- A finite set $S \subseteq \mathbb{N}$ is $3$-AP-free if it contains no non-trivial $3$-term
+FormalConjectures/ErdosProblems/140.lean-43-arithmetic progression: for all $a, b, c \in S$ satisfying $a + c = 2b$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean-44-we have $a = b$ (which forces $a = b = c$, i.e., the progression is trivial). -/
+FormalConjectures/ErdosProblems/140.lean:45:def IsThreeAPFree (S : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean-46-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, a + c = 2 * b → a = b
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean-48-/-- $r_3(N)$ is the maximum size of a $3$-AP-free subset of $\{1, \ldots, N\}$. -/
+--
+FormalConjectures/ErdosProblems/253.lean-29-/-- The predicate that `a : ℕ → ℕ` is a strictly monotone sequence such that every infinite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/253.lean-30-arithmetic progression contains infinitely many integers that are the sum of distinct $a_i$s. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/253.lean-31-@[inline]
+FormalConjectures/ErdosProblems/253.lean:32:def RepresentsAPs (a : ℕ → ℕ) : Prop :=
+FormalConjectures/ErdosProblems/253.lean:33:    StrictMono a ∧ ∀ l, l.IsAPOfLength ⊤ → (subsetSums (Set.range a) ∩ l).Infinite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/253.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/253.lean-35-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/253.lean-36-Let $a_1 < a_2 < \dotsc$ be an infinite sequence of positive integers such that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/3.lean-31-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/3.lean-32-theorem erdos_3 : answer(sorry) ↔ ∀ A : Set ℕ,
+FormalConjectures/ErdosProblems/3.lean-33-    (¬ Summable fun a : A ↦ 1 / (a : ℝ)) →
+FormalConjectures/ErdosProblems/3.lean:34:    ∃ᶠ (k : ℕ) in Filter.atTop, ∃ S ⊆ A, S.IsAPOfLength k := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/3.lean-35-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/3.lean-36-
+FormalConjectures/ErdosProblems/3.lean-37--- TODO(firsching): add the various known bounds as variants.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/188.lean-35--/
+FormalConjectures/ErdosProblems/188.lean-36-def s := { k : ℕ | ∃ blue : Set ℂ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/188.lean-37-    (Set.univ \ blue).Pairwise (fun c₁ c₂ => dist c₁ c₂ ≠ 1) ∧
+FormalConjectures/ErdosProblems/188.lean:38:    ¬ (∃ bs ⊆ blue, (∃ s, bs.IsAPOfLengthWith k s 1)) }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/188.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/188.lean-40-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/188.lean-41-What is the smallest $k$ such that $\mathbb{R}^2$ can be red/blue coloured with no pair of red
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-58-A set $AP \subseteq \mathbb{N}$ is an infinite arithmetic progression if there exist $a, d \in \mathbb{N}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-59-with $d > 0$ and $AP = \{a + md \mid m \in \mathbb{N}\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-60--/
+FormalConjectures/ErdosProblems/16.lean:61:def IsInfiniteAP (AP : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/16.lean-62-  ∃ (a d : ℕ), 0 < d ∧ AP = {n : ℕ | ∃ m : ℕ, n = a + m * d}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-64-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean-28-The set of arithmetic progressions of primes
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean-29--/
+FormalConjectures/ErdosProblems/219.lean-30-def primeArithmeticProgressions : Set (Set ℕ) :=
+FormalConjectures/ErdosProblems/219.lean:31:  {s | (∀ p ∈ s, p.Prime) ∧ ∃ l > 0, s.IsAPOfLength l}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean-33-@[category test, AMS 5 11]
+FormalConjectures/ErdosProblems/219.lean-34-theorem primeArithmeticProgression_3_5_7 : {3, 5, 7} ∈ primeArithmeticProgressions := by
+FormalConjectures/ErdosProblems/219.lean:35:  simp only [primeArithmeticProgressions, gt_iff_lt, Set.IsAPOfLength, Set.IsAPOfLengthWith,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean-36-    smul_eq_mul, exists_prop, exists_and_left, existsAndEq, true_and, Set.mem_setOf_eq,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean-37-    Set.mem_insert_iff, Set.mem_singleton_iff, forall_eq_or_imp, forall_eq,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/219.lean-38-    ENat.card_eq_coe_fintype_card, Fintype.card_ofFinset, Set.toFinset_insert,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/847.lean-31-in any subset of $A$ of size $n$ there is a subset of size at least $\epsilon n$ which contains no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/847.lean-32-three-term arithmetic progression.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/847.lean-33--/
+FormalConjectures/ErdosProblems/847.lean:34:def HasFew3APs (A : Set ℕ) := ∃ (ε : ℝ), ε > 0 ∧ ∀ (B : Set ℕ), B ⊆ A → Finite B →
+FormalConjectures/ErdosProblems/847.lean-35-  ∃ (C : Set ℕ), C ⊆ B ∧ C.ncard ≥ ε * B.ncard ∧ ThreeAPFree C
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/847.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/847.lean-37-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/672.lean-27-/-- Erdős problem 672 conjectures that the below holds for any $k ≥ 4$ and $l > 1$. -/
+FormalConjectures/ErdosProblems/672.lean-28-def Erdos672With (k l : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/672.lean-29-  ∀ (s : Finset ℕ), s.card = k → ∀ᵉ (n > 0) (d > 0), n.gcd d = 1 →
+FormalConjectures/ErdosProblems/672.lean:30:    Set.IsAPOfLengthWith s k n d → ∀ q, ∏ i ∈ s, i ≠ q ^ l
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/672.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/672.lean-32-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/672.lean-33-Can the product of an arithmetic progression of positive integers $n, n + d, ..., n + (k - 1)d$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1097.lean-29-is a non-trivial three-term arithmetic progression `a, b, c ∈ A` with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1097.lean-30-`b - a = d` and `c - b = d`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1097.lean-31--/
+FormalConjectures/ErdosProblems/1097.lean:32:def CommonDifferencesThreeTermAP (A : Finset ℤ) : Set ℤ :=
+FormalConjectures/ErdosProblems/1097.lean-33-  {d : ℤ | d ≠ 0 ∧ ∃ a ∈ A, ∃ b ∈ A, ∃ c ∈ A, b - a = d ∧ c - b = d}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1097.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1097.lean-35-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/272.lean-39-nonempty and equals $\{a, a+d, a+2d, \ldots, a+(n-1) \cdot d\}$ for some $a, d \in \mathbb{N}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/272.lean-40-where $n = |S|$. When $|S| \geq 2$ this forces $d > 0$ (so elements are distinct).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/272.lean-41--/
+FormalConjectures/ErdosProblems/272.lean:42:def IsNonEmptyFiniteAP (S : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/272.lean-43-  S.Nonempty ∧ ∃ (a d : ℕ), ∀ x, x ∈ S ↔ ∃ i, i < S.card ∧ x = a + i * d
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/272.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/272.lean-45-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-39-
+FormalConjectures/ErdosProblems/344.lean-40-/-- A set of natural numbers contains an infinite arithmetic progression:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-41-there exist $a \geq 0$ and $d > 0$ such that $a + nd \in S$ for all $n \in \mathbb{N}$. -/
+FormalConjectures/ErdosProblems/344.lean:42:def ContainsInfiniteAP (S : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/344.lean-43-  ∃ (a d : ℕ), 0 < d ∧ ∀ n : ℕ, a + n * d ∈ S
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-45-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-113-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-114-/-- Every infinite arithmetic progression has property `P₁`. This is proved in [Sa82b]. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-115-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/318.lean:116:theorem erdos_318.infinite_AP {A : Set ℕ} (hA : A.IsAPOfLength ⊤) : P₁ A := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-117-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-118-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/318.lean-119-/-- Does the set of squares excluding 1 have property `P₁`? -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-39-progression length `k`, any `r`-coloring of the integers `{1, ..., N}` must contain a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-40-monochromatic arithmetic progression of length `k`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-41--/
+FormalConjectures/ErdosProblems/138.lean:42:def monoAP_guarantee_set (r k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/138.lean-43-  { N | ∀ coloring : Finset.Icc 1 N → Fin r, ContainsMonoAPofLength coloring k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-45-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-57-`{1, ..., N}` is guaranteed to contain a monochromatic arithmetic progression of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-58-length `k`. It is defined as the infimum of the (non-empty) set of all such numbers `N`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-59--/
+FormalConjectures/ErdosProblems/138.lean:60:noncomputable def monoAPNumber (r k : ℕ) : ℕ := sInf (monoAP_guarantee_set r k)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-62-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-63-An abbreviation for the van der Waerden number for 2 colors, commonly written as `W(k)`.

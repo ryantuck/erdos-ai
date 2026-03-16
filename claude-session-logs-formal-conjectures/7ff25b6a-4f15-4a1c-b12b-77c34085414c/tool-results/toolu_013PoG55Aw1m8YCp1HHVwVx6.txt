@@ -1,0 +1,921 @@
+FormalConjectures/ErdosProblems/373.lean:41:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/373.lean:42:theorem erdos_373 : S.Finite := by
+FormalConjectures/ErdosProblems/373.lean:43:  sorry
+FormalConjectures/ErdosProblems/373.lean:44:
+FormalConjectures/ErdosProblems/373.lean:45:/--
+FormalConjectures/ErdosProblems/373.lean:46:Show that if `P(n(n+1)) / log n → ∞` where `P(m)` denotes the largest prime factor of `m`, then
+FormalConjectures/ErdosProblems/373.lean:47:the equation `n!=a_1!a_2!···a_k!`, with `n−1 > a_1 ≥ a_2 ≥ ··· ≥ a_k`, has only
+FormalConjectures/ErdosProblems/373.lean:48:finitely many solutions.
+FormalConjectures/ErdosProblems/373.lean:49:-/
+FormalConjectures/ErdosProblems/373.lean:50:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/373.lean:51:theorem erdos_373.variants.of_limit
+FormalConjectures/ErdosProblems/373.lean:52:    (H : Filter.atTop.Tendsto (fun (n : ℕ) => (n*(n+1)).maxPrimeFac / (n : ℝ).log) Filter.atTop) :
+FormalConjectures/ErdosProblems/373.lean:53:    S.Finite := by
+FormalConjectures/ErdosProblems/373.lean:54:  sorry
+FormalConjectures/ErdosProblems/373.lean:55:
+FormalConjectures/ErdosProblems/373.lean:56:-- Formalisation note: at the time of writing, the website states "Erdős proved that this problem
+FormalConjectures/ErdosProblems/373.lean:57:-- would also follow from showing that $P(n(n - 1)) > 4\log n$". This is slightly unclear
+FormalConjectures/ErdosProblems/373.lean:58:-- as to which $n$ is meant here, as for example the inequality fails for $n = 4$.
+FormalConjectures/ErdosProblems/373.lean:59:-- The referenced material (Theorem 2 of https://users.renyi.hu/~p_erdos/1976-39.pdf), shows
+FormalConjectures/ErdosProblems/373.lean:60:-- that no non-trivial solutions hold for any `n` with `n > n_0` and `P(n(n - 1)) > 4 log n`.
+FormalConjectures/ErdosProblems/373.lean:61:-- So for finiteness, it is enough to assume the inequality holds for sufficiently large `n`.
+FormalConjectures/ErdosProblems/373.lean:62:/--
+FormalConjectures/ErdosProblems/373.lean:63:Show that if `P(n(n−1)) > 4 log n` for large enough `n`, where `P(m)` denotes the
+FormalConjectures/ErdosProblems/373.lean:64:largest prime factor of `m`, then the equation `n!=a_1!a_2!···a_k!`, with
+FormalConjectures/ErdosProblems/373.lean:65:`n−1 > a_1 ≥ a_2 ≥ ··· ≥ a_k`, has only finitely many solutions.
+FormalConjectures/ErdosProblems/373.lean:66:-/
+FormalConjectures/ErdosProblems/373.lean:67:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/373.lean:68:theorem erdos_373.variants.of_lower_bound
+FormalConjectures/ErdosProblems/609.lean:59:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/609.lean:60:theorem erdos_609 :
+FormalConjectures/ErdosProblems/609.lean:61:    ∀ n : ℕ, n ≥ 1 →
+FormalConjectures/ErdosProblems/609.lean:62:    ∀ χ : Fin (2^n + 1) → Fin (2^n + 1) → Fin n,
+FormalConjectures/ErdosProblems/609.lean:63:      (∀ u v, χ u v = χ v u) →
+FormalConjectures/ErdosProblems/609.lean:64:      ∃ k, Odd k ∧ HasMonoCycle609 χ k := by
+FormalConjectures/ErdosProblems/609.lean:65:  sorry
+FormalConjectures/ErdosProblems/609.lean:66:
+FormalConjectures/ErdosProblems/609.lean:67:/--
+FormalConjectures/ErdosProblems/609.lean:68:**Erdős Problem 609** (Day–Johnson lower bound) [DaJo17]:
+FormalConjectures/ErdosProblems/609.lean:69:
+FormalConjectures/ErdosProblems/609.lean:70:There exists $c > 0$ such that for all sufficiently large $n$, there exists a
+FormalConjectures/ErdosProblems/609.lean:71:symmetric $n$-coloring of $K_{2^n+1}$ with no monochromatic odd cycle of length
+FormalConjectures/ErdosProblems/609.lean:72:less than $2^{c \cdot \sqrt{\log n}}$.
+FormalConjectures/ErdosProblems/609.lean:73:-/
+FormalConjectures/ErdosProblems/609.lean:74:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/609.lean:75:theorem erdos_609.variants.lower_bound :
+FormalConjectures/ErdosProblems/1150.lean:34:@[category research open, AMS 12 30]
+FormalConjectures/ErdosProblems/1150.lean:35:theorem erdos_1150 :
+FormalConjectures/ErdosProblems/1150.lean:36:    answer(sorry) ↔ ∃ c > 0, ∀ᶠ n in Filter.atTop,
+FormalConjectures/ErdosProblems/1150.lean:37:      ∀ P : ℂ[X],  (∀ i ≤ P.natDegree, P.coeff i = - 1 ∨ P.coeff i = 1) → P.natDegree = n →
+FormalConjectures/ErdosProblems/1150.lean:38:        ⨆ z : Metric.sphere (0 : ℂ) 1, ‖P.eval (z : ℂ)‖ > (1 + c) * Real.sqrt n := by
+FormalConjectures/ErdosProblems/1150.lean:39:  sorry
+FormalConjectures/ErdosProblems/1150.lean:40:
+FormalConjectures/ErdosProblems/1150.lean:41:/--
+FormalConjectures/ErdosProblems/1150.lean:42:The trivial lower bound from Parseval's identity: for any polynomial $P$ of degree $n$ with
+FormalConjectures/ErdosProblems/1150.lean:43:coefficients in $\{-1, 1\}$, we have $\max_{|z|=1} |P(z)| \geq \sqrt{n+1}$.
+FormalConjectures/ErdosProblems/1150.lean:44:
+FormalConjectures/ErdosProblems/1150.lean:45:This follows from Parseval's identity:
+FormalConjectures/ErdosProblems/1150.lean:46:$$\frac{1}{2\pi} \int_0^{2\pi} |P(e^{i\theta})|^2 d\theta = \sum_{k=0}^{n} |a_k|^2 = n+1$$
+FormalConjectures/ErdosProblems/1150.lean:47:since each $|a_k|^2 = 1$.
+FormalConjectures/ErdosProblems/1150.lean:48:-/
+FormalConjectures/ErdosProblems/1150.lean:49:@[category graduate, AMS 12 30]
+FormalConjectures/ErdosProblems/1150.lean:50:theorem erdos_1150.variants.parseval_lower_bound (P : ℂ[X]) (n : ℕ)
+FormalConjectures/ErdosProblems/616.lean:69:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/616.lean:70:theorem erdos_616 :
+FormalConjectures/ErdosProblems/616.lean:71:    ∀ r : ℕ, 3 ≤ r →
+FormalConjectures/ErdosProblems/616.lean:72:    ∀ n : ℕ, ∀ G : UniformHypergraph n r,
+FormalConjectures/ErdosProblems/616.lean:73:    HasLocalCoveringProperty G →
+FormalConjectures/ErdosProblems/616.lean:74:    (coveringNumber G : ℝ) ≤ (1 : ℝ) / 5 * (r : ℝ) := by
+FormalConjectures/ErdosProblems/616.lean:75:  sorry
+FormalConjectures/ErdosProblems/616.lean:76:
+FormalConjectures/ErdosProblems/616.lean:77:/--
+FormalConjectures/ErdosProblems/616.lean:78:Erdős Problem 616 — Lower bound [EHT91]:
+FormalConjectures/ErdosProblems/616.lean:79:For every $r \geq 3$, there exists an $r$-uniform hypergraph $G$ satisfying the local
+FormalConjectures/ErdosProblems/616.lean:80:covering property with $\tau(G) \geq \frac{3}{16}r + \frac{7}{8}$.
+FormalConjectures/ErdosProblems/616.lean:81:-/
+FormalConjectures/ErdosProblems/616.lean:82:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/616.lean:83:theorem erdos_616.variants.lower_bound :
+FormalConjectures/ErdosProblems/513.lean:38:@[category research open, AMS 30]
+FormalConjectures/ErdosProblems/513.lean:39:theorem erdos_513.sup : answer(sorry) =
+FormalConjectures/ErdosProblems/513.lean:40:    ⨆ f : {f : ℂ → ℂ // Transcendental ℂ[X] f ∧ Differentiable ℂ f},
+FormalConjectures/ErdosProblems/513.lean:41:    (liminf (fun r : ℝ => ratio r f) atTop) := by
+FormalConjectures/ErdosProblems/513.lean:42:  sorry
+FormalConjectures/ErdosProblems/513.lean:43:
+FormalConjectures/ErdosProblems/513.lean:44:/-- For all transcendental entire function `f`, `liminf (fun r : ℝ => ratio r f) atTop ≤ 2 / π - c`
+FormalConjectures/ErdosProblems/513.lean:45:for some `c > 0`. This is proved in [ClHa64]. -/
+FormalConjectures/ErdosProblems/513.lean:46:@[category research solved, AMS 30]
+FormalConjectures/ErdosProblems/513.lean:47:theorem erdos_513.upper_bound : ∃ c > 0,
+FormalConjectures/ErdosProblems/513.lean:48:    ⨆ f : {f : ℂ → ℂ // Transcendental ℂ[X] f ∧ Differentiable ℂ f},
+FormalConjectures/ErdosProblems/513.lean:49:    (liminf (fun r : ℝ => ratio r f) atTop) ≤ 2 / π - c := by
+FormalConjectures/ErdosProblems/513.lean:50:  sorry
+FormalConjectures/ErdosProblems/513.lean:51:
+FormalConjectures/ErdosProblems/513.lean:52:/-- For all transcendental entire function `f`, `liminf (fun r : ℝ => ratio r f) atTop > 1 / 2`. -/
+FormalConjectures/ErdosProblems/513.lean:53:@[category research solved, AMS 30]
+FormalConjectures/ErdosProblems/513.lean:54:theorem erdos_513.lower_bound :
+FormalConjectures/ErdosProblems/560.lean:81:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/560.lean:82:theorem erdos_560.variants.lower_bound :
+FormalConjectures/ErdosProblems/835.lean:47:@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/835.lean:48:theorem erdos_835 : (∃ k > 2, Property k) ↔ answer(sorry) := by
+FormalConjectures/ErdosProblems/835.lean:49:  sorry
+FormalConjectures/ErdosProblems/835.lean:50:
+FormalConjectures/ErdosProblems/835.lean:51:
+FormalConjectures/ErdosProblems/835.lean:52:@[category test, AMS 5]
+FormalConjectures/ErdosProblems/835.lean:53:theorem property_iff_chromaticNumber (k : ℕ) (hk : 0 < k) :
+FormalConjectures/ErdosProblems/835.lean:54:    (J(2 * k, k).chromaticNumber = k + 1) ↔
+FormalConjectures/ErdosProblems/835.lean:55:    Property k := by
+FormalConjectures/ErdosProblems/835.lean:56:  sorry
+FormalConjectures/ErdosProblems/835.lean:57:
+FormalConjectures/ErdosProblems/835.lean:58:/--
+FormalConjectures/ErdosProblems/835.lean:59:Alternative statement of Erdős Problem 835 using the chromatic number of the Johnson graph.
+FormalConjectures/ErdosProblems/835.lean:60:This is equivalent to asking whether there exists $k > 2$ such that the chromatic number of the
+FormalConjectures/ErdosProblems/835.lean:61:Johnson graph $J(2k, k)$ is $k+1$.
+FormalConjectures/ErdosProblems/835.lean:62:-/
+FormalConjectures/ErdosProblems/835.lean:63:@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/835.lean:64:theorem erdos_835.variants.johnson : (∃ l,
+FormalConjectures/ErdosProblems/835.lean:65:    -- making sure k > 2
+FormalConjectures/ErdosProblems/835.lean:66:    letI k := l + 3
+FormalConjectures/ErdosProblems/835.lean:67:    J(2 * k, k).chromaticNumber = k + 1) ↔ answer(sorry) := by
+FormalConjectures/ErdosProblems/835.lean:68:  sorry
+FormalConjectures/ErdosProblems/835.lean:69:
+FormalConjectures/ErdosProblems/835.lean:70:/--
+FormalConjectures/ErdosProblems/835.lean:71:It is known that for $3 \leq k \leq 8$, the chromatic number of $J(2k, k)$ is greater than $k+1$,
+FormalConjectures/ErdosProblems/835.lean:72:see [Johnson graphs](https://aeb.win.tue.nl/graphs/Johnson.html).
+FormalConjectures/ErdosProblems/835.lean:73:-/
+FormalConjectures/ErdosProblems/835.lean:74:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/835.lean:75:theorem johnsonGraph_2k_k_chromaticNumber_known_cases (k : ℕ) (hk : 3 ≤ k) (hk' : k ≤ 8) :
+FormalConjectures/ErdosProblems/835.lean:76:    J(2 * k, k).chromaticNumber > k + 1 := by
+FormalConjectures/ErdosProblems/835.lean:77:  sorry
+FormalConjectures/ErdosProblems/835.lean:78:
+FormalConjectures/ErdosProblems/835.lean:79:/--
+FormalConjectures/ErdosProblems/835.lean:80:The smallest case not on this page is $k=9$:
+FormalConjectures/ErdosProblems/835.lean:81:But that one can be solved as well:
+FormalConjectures/ErdosProblems/835.lean:82:The chromatic number of $J(18, 9)$ is at least $11$.
+FormalConjectures/ErdosProblems/835.lean:83:-/
+FormalConjectures/ErdosProblems/835.lean:84:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/835.lean:85:theorem johnsonGraph_18_9_chromaticNumber : J(18, 9).chromaticNumber > 9 + 1 := by
+FormalConjectures/ErdosProblems/835.lean:86:  sorry
+FormalConjectures/ErdosProblems/835.lean:87:
+FormalConjectures/ErdosProblems/835.lean:88:
+FormalConjectures/ErdosProblems/835.lean:89:/-- Johnson's upper bound on the maximum size `A(n, d, w)` of a `n`-dimensional binary code of
+FormalConjectures/ErdosProblems/835.lean:90:distance `d` and weight `w` is as follows:
+FormalConjectures/ErdosProblems/835.lean:91:* If `d > 2 * w`, then `A(n, d, w) = 1`.
+FormalConjectures/ErdosProblems/835.lean:92:* If `d ≤ 2 * w`, then `A(n, d, w) ≤ ⌊n / w * A(n - 1, d, w - 1)⌋`. -/
+FormalConjectures/ErdosProblems/835.lean:93:def johnsonBound : ℕ → ℕ → ℕ → ℕ
+FormalConjectures/ErdosProblems/835.lean:94:  | 0, _d, _w => 1
+FormalConjectures/ErdosProblems/835.lean:95:  | _n, _d, 0 => 1
+FormalConjectures/ErdosProblems/835.lean:96:  | n + 1, d, w + 1 => if 2 * (w + 1) < d then 1 else (n + 1) * johnsonBound n d w / (w + 1)
+FormalConjectures/ErdosProblems/835.lean:97:
+FormalConjectures/ErdosProblems/835.lean:98:/-- Johnson's bound for the independence number of the Johnson graph. -/
+FormalConjectures/ErdosProblems/835.lean:99:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/835.lean:100:lemma indepNum_johnson_le_johnsonBound : α(J(n, k)) ≤ johnsonBound n 4 k := sorry
+FormalConjectures/ErdosProblems/835.lean:101:
+FormalConjectures/ErdosProblems/835.lean:102:/-- Johnson's bound for the chromatic number of the Johnson graph. -/
+FormalConjectures/ErdosProblems/835.lean:103:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/835.lean:104:lemma div_johnsonBound_le_chromaticNum_johnson :
+FormalConjectures/ErdosProblems/835.lean:105:    ⌈(n.choose k / johnsonBound n 4 k : ℚ≥0)⌉₊ ≤ χ(J(n, k)) := by
+FormalConjectures/ErdosProblems/835.lean:106:  obtain hnk | hkn := lt_or_ge n k
+FormalConjectures/ErdosProblems/835.lean:107:  · simp [Nat.choose_eq_zero_of_lt, *]
+FormalConjectures/ErdosProblems/835.lean:108:  have : Nonempty {s : Finset (Fin n) // #s = k} := by
+FormalConjectures/ErdosProblems/835.lean:109:    simpa [Finset.Nonempty] using Finset.powersetCard_nonempty (s := .univ).2 <| by simpa
+FormalConjectures/ErdosProblems/835.lean:110:  grw [← card_div_indepNum_le_chromaticNumber, indepNum_johnson_le_johnsonBound] <;> simp
+FormalConjectures/ErdosProblems/835.lean:111:
+FormalConjectures/ErdosProblems/835.lean:112:/-- It is known that for $3 \leq k \leq 8$, the chromatic number of $J(2k, k)$ is greater than
+FormalConjectures/ErdosProblems/835.lean:113:$k+1$, see [Johnson graphs](https://aeb.win.tue.nl/graphs/Johnson.html). -/
+FormalConjectures/ErdosProblems/835.lean:114:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/835.lean:115:theorem chromaticNumber_johnson_2k_k_lower_bound (hk : 3 ≤ k) (hk' : k ≤ 8) :
+FormalConjectures/ErdosProblems/835.lean:116:    k + 1 < J(2 * k, k).chromaticNumber := by
+FormalConjectures/ErdosProblems/835.lean:117:  sorry
+FormalConjectures/ErdosProblems/835.lean:118:
+FormalConjectures/ErdosProblems/835.lean:119:/-- It is also known that for $3 \leq k \leq 203$ odd, the chromatic number of $J(2k, k)$ is
+FormalConjectures/ErdosProblems/835.lean:120:greater than $k+1$, see [Johnson graphs](https://aeb.win.tue.nl/graphs/Johnson.html). -/
+FormalConjectures/ErdosProblems/835.lean:121:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/835.lean:122:theorem chromaticNumber_johnson_2k_k_lower_bound_odd (hk : 3 ≤ k) (hk' : k ≤ 300) (hk_odd : Odd k) :
+FormalConjectures/ErdosProblems/459.lean:55:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/459.lean:56:theorem erdos_459 (ε : ℝ) (hε : 0 < ε) :
+FormalConjectures/ErdosProblems/459.lean:57:    Tendsto (fun x : ℕ =>
+FormalConjectures/ErdosProblems/459.lean:58:      (((Finset.Icc 1 x).filter (fun n =>
+FormalConjectures/ErdosProblems/459.lean:59:        (f n : ℝ) > (1 + ε) * (n : ℝ))).card : ℝ) / (x : ℝ))
+FormalConjectures/ErdosProblems/459.lean:60:      atTop (nhds 0) := by
+FormalConjectures/ErdosProblems/459.lean:61:  sorry
+FormalConjectures/ErdosProblems/459.lean:62:
+FormalConjectures/ErdosProblems/459.lean:63:/--
+FormalConjectures/ErdosProblems/459.lean:64:Erdős Problem 459 (lower bound) [ErGr80, p.91]:
+FormalConjectures/ErdosProblems/459.lean:65:
+FormalConjectures/ErdosProblems/459.lean:66:For all $u \geq 2$, $f(u) \geq u + 2$.
+FormalConjectures/ErdosProblems/459.lean:67:-/
+FormalConjectures/ErdosProblems/459.lean:68:@[category undergraduate, AMS 11]
+FormalConjectures/ErdosProblems/459.lean:69:theorem erdos_459.variants.lower_bound (u : ℕ) (hu : 2 ≤ u) :
+FormalConjectures/ErdosProblems/864.lean:60:@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/864.lean:61:theorem erdos_864 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/864.lean:62:    (∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/864.lean:63:    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/864.lean:64:    (maxAlmostSidonCard N : ℝ) ≤ (2 / Real.sqrt 3 + ε) * Real.sqrt (N : ℝ)) := by
+FormalConjectures/ErdosProblems/864.lean:65:  sorry
+FormalConjectures/ErdosProblems/864.lean:66:
+FormalConjectures/ErdosProblems/864.lean:67:/--
+FormalConjectures/ErdosProblems/864.lean:68:**Erdős Problem 864** — Lower bound (Erdős–Freud [ErFr91]):
+FormalConjectures/ErdosProblems/864.lean:69:
+FormalConjectures/ErdosProblems/864.lean:70:For every $\varepsilon > 0$, for sufficiently large $N$,
+FormalConjectures/ErdosProblems/864.lean:71:$$f(N) \ge \left(\frac{2}{\sqrt{3}} - \varepsilon\right) \sqrt{N}.$$
+FormalConjectures/ErdosProblems/864.lean:72:-/
+FormalConjectures/ErdosProblems/864.lean:73:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/864.lean:74:theorem erdos_864.variants.lower_bound :
+FormalConjectures/ErdosProblems/820.lean:43:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/820.lean:44:theorem erdos_820 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/820.lean:45:    ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧ Nat.Coprime (2 ^ n - 1) (3 ^ n - 1) := by
+FormalConjectures/ErdosProblems/820.lean:46:  sorry
+FormalConjectures/ErdosProblems/820.lean:47:
+FormalConjectures/ErdosProblems/820.lean:48:/--
+FormalConjectures/ErdosProblems/820.lean:49:**Erdős Problem 820** — Part 2 (lower bound):
+FormalConjectures/ErdosProblems/820.lean:50:
+FormalConjectures/ErdosProblems/820.lean:51:Is it true that there exists $c > 0$ such that for all $\varepsilon > 0$,
+FormalConjectures/ErdosProblems/820.lean:52:for infinitely many $n$,
+FormalConjectures/ErdosProblems/820.lean:53:$H(n) > \exp(n^{(c - \varepsilon)/\log\log n})$?
+FormalConjectures/ErdosProblems/820.lean:54:-/
+FormalConjectures/ErdosProblems/820.lean:55:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/820.lean:56:theorem erdos_820.variants.lower_bound : answer(sorry) ↔
+FormalConjectures/ErdosProblems/946.lean:46:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/946.lean:47:theorem erdos_946 : {n : ℕ | σ 0 n = σ 0 (n + 1)}.Infinite := by
+FormalConjectures/ErdosProblems/946.lean:48:  sorry
+FormalConjectures/ErdosProblems/946.lean:49:
+FormalConjectures/ErdosProblems/946.lean:50:/--
+FormalConjectures/ErdosProblems/946.lean:51:There are infinitely many $n$ such that $τ(n) = τ(n + 5040)$. Proved in [Sp81].
+FormalConjectures/ErdosProblems/946.lean:52:-/
+FormalConjectures/ErdosProblems/946.lean:53:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/946.lean:54:theorem erdos_946.variants.spiro_5040 : {n : ℕ | σ 0 n = σ 0 (n + 5040)}.Infinite := by
+FormalConjectures/ErdosProblems/946.lean:55:  sorry
+FormalConjectures/ErdosProblems/946.lean:56:
+FormalConjectures/ErdosProblems/946.lean:57:/-- Number of $n \le x$ with $τ(n) = τ(n+1)$. -/
+FormalConjectures/ErdosProblems/946.lean:58:noncomputable def erdos946Count (x : ℝ) : ℝ :=
+FormalConjectures/ErdosProblems/946.lean:59:  ((Finset.range (⌊x⌋₊ + 1)).filter (fun n => σ 0 n = σ 0 (n + 1))).card
+FormalConjectures/ErdosProblems/946.lean:60:
+FormalConjectures/ErdosProblems/946.lean:61:/--
+FormalConjectures/ErdosProblems/946.lean:62:The number of $n \le x$ with $τ(n) = τ(n+1)$ is at least $x / (\log x)^7$ for all sufficiently
+FormalConjectures/ErdosProblems/946.lean:63:large $x$. Proved in [He84].
+FormalConjectures/ErdosProblems/946.lean:64:-/
+FormalConjectures/ErdosProblems/946.lean:65:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/946.lean:66:theorem erdos_946.variants.heathbrown_lower_bound :
+FormalConjectures/ErdosProblems/946.lean:67:    (fun x => x / (x.log)^7) =O[atTop] erdos946Count := by
+FormalConjectures/ErdosProblems/946.lean:68:  sorry
+FormalConjectures/ErdosProblems/946.lean:69:
+FormalConjectures/ErdosProblems/946.lean:70:/--
+FormalConjectures/ErdosProblems/946.lean:71:Improved lower bound in [Hi85]: $Ω(x / (\log \log x)^3)$.
+FormalConjectures/ErdosProblems/946.lean:72:-/
+FormalConjectures/ErdosProblems/946.lean:73:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/946.lean:74:theorem erdos_946.variants.hildebrand_lower_bound :
+FormalConjectures/ErdosProblems/890.lean:37:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/890.lean:38:theorem erdos_890.parts.a :
+FormalConjectures/ErdosProblems/890.lean:39:    answer(sorry) ↔ ∀ k ≥ 1, liminf (fun n ↦ (∑ i ∈ range k, (ω (n + i) : EReal))) atTop ≤ k + π k := by
+FormalConjectures/ErdosProblems/890.lean:40:  sorry
+FormalConjectures/ErdosProblems/890.lean:41:
+FormalConjectures/ErdosProblems/890.lean:42:/--
+FormalConjectures/ErdosProblems/890.lean:43:Is it true that
+FormalConjectures/ErdosProblems/890.lean:44:$\limsup_{n\to \infty}\left(\sum_{0\leq i < k}\omega(n+i)\right) \frac{\log\log n}{\log n}=1?$
+FormalConjectures/ErdosProblems/890.lean:45:-/
+FormalConjectures/ErdosProblems/890.lean:46:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/890.lean:47:theorem erdos_890.parts.b :
+FormalConjectures/ErdosProblems/890.lean:48:    answer(sorry) ↔ ∀ k ≥ 1, limsup (fun n ↦ (∑ i ∈ range k, (ω (n + i) : EReal)) *
+FormalConjectures/ErdosProblems/890.lean:49:      (log (log n) / log n)) atTop = 1 := by
+FormalConjectures/ErdosProblems/890.lean:50:  sorry
+FormalConjectures/ErdosProblems/890.lean:51:
+FormalConjectures/ErdosProblems/890.lean:52:/--
+FormalConjectures/ErdosProblems/890.lean:53:A question of Erdős and Selfridge [ErSe67], who observe that
+FormalConjectures/ErdosProblems/890.lean:54:$\liminf_{n\to \infty}\sum_{0\leq i < k}\omega(n+i)\geq k+\pi(k)-1$ for every $k$. This follows from
+FormalConjectures/ErdosProblems/890.lean:55:Pólya's theorem that the set of $k$-smooth integers has unbounded gaps - indeed,
+FormalConjectures/ErdosProblems/890.lean:56:$n(n+1)\cdots (n+k-1)$ is divisible by all primes $\leq k$ and, provided $n$ is large, all but at
+FormalConjectures/ErdosProblems/890.lean:57:most one of $n,n+1,\ldots,n+k-1$ has a prime factor $>k$ by Pólya's theorem.
+FormalConjectures/ErdosProblems/890.lean:58:-/
+FormalConjectures/ErdosProblems/890.lean:59:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/890.lean:60:theorem erdos_890.variants.liminf_lower_bound (k : ℕ) :
+FormalConjectures/ErdosProblems/503.lean:34:@[category research open, AMS 51]
+FormalConjectures/ErdosProblems/503.lean:35:theorem erdos_503 (n : ℕ) :
+FormalConjectures/ErdosProblems/503.lean:36:    IsGreatest {(A.ncard) | (A : Set (ℝ^n)) (hA : A.IsIsosceles)} answer(sorry) := by
+FormalConjectures/ErdosProblems/503.lean:37:  sorry
+FormalConjectures/ErdosProblems/503.lean:38:
+FormalConjectures/ErdosProblems/503.lean:39:/--
+FormalConjectures/ErdosProblems/503.lean:40:When $n = 2$, the answer is 6 (due to Kelly [ErKe47] - an alternative proof is given by Kovács [Ko24c]).
+FormalConjectures/ErdosProblems/503.lean:41:
+FormalConjectures/ErdosProblems/503.lean:42:[ErKe47] Erdős, Paul and Kelly, L. M., Elementary Problems and Solutions: Solutions: E735. Amer. Math. Monthly (1947), 227-229.
+FormalConjectures/ErdosProblems/503.lean:43:[Ko24c] Z. Kovács, A note on Erdős's mysterious remark. arXiv:2412.05190 (2024).
+FormalConjectures/ErdosProblems/503.lean:44:-/
+FormalConjectures/ErdosProblems/503.lean:45:@[category research solved, AMS 51]
+FormalConjectures/ErdosProblems/503.lean:46:theorem erdos_503.variants.R2 :
+FormalConjectures/ErdosProblems/503.lean:47:    IsGreatest {(A.ncard) | (A : Set ℝ²) (hA : A.IsIsosceles)} 6 := by
+FormalConjectures/ErdosProblems/503.lean:48:  sorry
+FormalConjectures/ErdosProblems/503.lean:49:
+FormalConjectures/ErdosProblems/503.lean:50:/--
+FormalConjectures/ErdosProblems/503.lean:51:When $n = 3$, the answer is 8 (due to Croft [Cr62]).
+FormalConjectures/ErdosProblems/503.lean:52:
+FormalConjectures/ErdosProblems/503.lean:53:[Cr62] Croft, H. T., $9$-point and $7$-point configurations in $3$-space. Proc. London Math. Soc. (3) (1962), 400-424.
+FormalConjectures/ErdosProblems/503.lean:54:-/
+FormalConjectures/ErdosProblems/503.lean:55:@[category research solved, AMS 51]
+FormalConjectures/ErdosProblems/503.lean:56:theorem erdos_503.variants.R3 :
+FormalConjectures/ErdosProblems/503.lean:57:    IsGreatest {(A.ncard) | (A : Set ℝ³) (hA : A.IsIsosceles)} 8 := by
+FormalConjectures/ErdosProblems/503.lean:58:  sorry
+FormalConjectures/ErdosProblems/503.lean:59:
+FormalConjectures/ErdosProblems/503.lean:60:/--
+FormalConjectures/ErdosProblems/503.lean:61:The best upper bound known in general is due to Blokhius [Bl84] who showed that
+FormalConjectures/ErdosProblems/503.lean:62:$$
+FormalConjectures/ErdosProblems/503.lean:63:|A| \leq \binom{n + 2}{2}
+FormalConjectures/ErdosProblems/503.lean:64:$$
+FormalConjectures/ErdosProblems/503.lean:65:
+FormalConjectures/ErdosProblems/503.lean:66:[Bl84] Blokhuis, A., Few-distance sets. (1984), iv+70.
+FormalConjectures/ErdosProblems/503.lean:67:-/
+FormalConjectures/ErdosProblems/503.lean:68:@[category research solved, AMS 51]
+FormalConjectures/ErdosProblems/503.lean:69:theorem erdos_503.variants.upper_bound (n : ℕ) :
+FormalConjectures/ErdosProblems/503.lean:70:    ∀ m ∈ {(A.ncard) | (A : Set (ℝ^n)) (hA : A.IsIsosceles)}, m ≤ (n + 2).choose 2 := by
+FormalConjectures/ErdosProblems/503.lean:71:  sorry
+FormalConjectures/ErdosProblems/503.lean:72:
+FormalConjectures/ErdosProblems/503.lean:73:/--
+FormalConjectures/ErdosProblems/503.lean:74:Alweiss has observed a lower bound of $\binom{n + 1}{2}$ follows from considering the subset of
+FormalConjectures/ErdosProblems/503.lean:75:$\mathbb{R}^{n + 1}$ formed of all vectors $e_i + e_j$ where $e_i$, $e_j$ are distinct coordinate
+FormalConjectures/ErdosProblems/503.lean:76:vectors. This set can be viewed as a subset of some $\mathbb{R}^n$, and is easily checked to have
+FormalConjectures/ErdosProblems/503.lean:77:the required property.
+FormalConjectures/ErdosProblems/503.lean:78:-/
+FormalConjectures/ErdosProblems/503.lean:79:@[category research solved, AMS 51]
+FormalConjectures/ErdosProblems/503.lean:80:theorem erdos_503.variants.lower_bound (n : ℕ) :
+FormalConjectures/ErdosProblems/1097.lean:39:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/1097.lean:40:theorem erdos_1097 : answer(sorry) ↔ ∃ C > (0 : ℝ), ∀ (A : Finset ℤ),
+FormalConjectures/ErdosProblems/1097.lean:41:    (CommonDifferencesThreeTermAP A).ncard ≤ C * (A.card : ℝ) ^ (3 / 2 : ℝ) := by
+FormalConjectures/ErdosProblems/1097.lean:42:  sorry
+FormalConjectures/ErdosProblems/1097.lean:43:
+FormalConjectures/ErdosProblems/1097.lean:44:/--
+FormalConjectures/ErdosProblems/1097.lean:45:A weaker bound has been proven: there are always at most $n^2$ such values of $d$.
+FormalConjectures/ErdosProblems/1097.lean:46:-/
+FormalConjectures/ErdosProblems/1097.lean:47:@[category undergraduate, AMS 11]
+FormalConjectures/ErdosProblems/1097.lean:48:theorem erdos_1097.variants.weaker :
+FormalConjectures/ErdosProblems/1097.lean:49:    ∀ A, (CommonDifferencesThreeTermAP A).ncard ≤ A.card ^ 2 := by
+FormalConjectures/ErdosProblems/1097.lean:50:  sorry
+FormalConjectures/ErdosProblems/1097.lean:51:
+FormalConjectures/ErdosProblems/1097.lean:52:/--
+FormalConjectures/ErdosProblems/1097.lean:53:A trivial lower bound: for sufficiently large `n` there exist sets $A$ with $|A| = n$ that contain at least $\Omega(n)$
+FormalConjectures/ErdosProblems/1097.lean:54:distinct common differences of three-term arithmetic progressions.
+FormalConjectures/ErdosProblems/1097.lean:55:-/
+FormalConjectures/ErdosProblems/1097.lean:56:@[category undergraduate, AMS 11]
+FormalConjectures/ErdosProblems/1097.lean:57:theorem erdos_1097.variants.lower_bound : ∃ c > (0 : ℝ), ∀ᶠ n in Filter.atTop, ∃ (A : Finset ℤ),
+FormalConjectures/ErdosProblems/688.lean:48:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/688.lean:49:theorem erdos_688 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/688.lean:50:    ∀ δ : ℝ, δ > 0 →
+FormalConjectures/ErdosProblems/688.lean:51:    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/688.lean:52:      ¬∃ a : ℕ → ℕ, PrimeCoveringInRange n δ a := by
+FormalConjectures/ErdosProblems/688.lean:53:  sorry
+FormalConjectures/ErdosProblems/688.lean:54:
+FormalConjectures/ErdosProblems/688.lean:55:/-- Known lower bound: $\varepsilon_n \gg (\log \log \log n) / (\log \log n)$.
+FormalConjectures/ErdosProblems/688.lean:56:For some constant $C > 0$, for all sufficiently large $n$, there exists a
+FormalConjectures/ErdosProblems/688.lean:57:covering using primes in $(n^{C \cdot \log\log\log(n)/\log\log(n)}, n]$. -/
+FormalConjectures/ErdosProblems/688.lean:58:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/688.lean:59:theorem erdos_688.variants.lower_bound :
+FormalConjectures/ErdosProblems/927.lean:66:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/927.lean:67:theorem erdos_927 : answer(False) ↔
+FormalConjectures/ErdosProblems/927.lean:68:    (∀ C : ℕ, ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
+FormalConjectures/ErdosProblems/927.lean:69:      ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/927.lean:70:        (graphCliqueSizes G).ncard + Nat.log 2 n + C ≤ n) := by
+FormalConjectures/ErdosProblems/927.lean:71:  sorry
+FormalConjectures/ErdosProblems/927.lean:72:
+FormalConjectures/ErdosProblems/927.lean:73:/--
+FormalConjectures/ErdosProblems/927.lean:74:Spencer's lower bound [Sp71]: there exists a constant $C$ such that for every $n$,
+FormalConjectures/ErdosProblems/927.lean:75:some graph on $n$ vertices has at least $n - \lfloor \log_2 n \rfloor - C$ distinct
+FormalConjectures/ErdosProblems/927.lean:76:maximal clique sizes.
+FormalConjectures/ErdosProblems/927.lean:77:-/
+FormalConjectures/ErdosProblems/927.lean:78:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/927.lean:79:theorem erdos_927.variants.spencer_lower_bound :
+FormalConjectures/ErdosProblems/945.lean:46:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/945.lean:47:theorem erdos_945 : answer(sorry) ↔ Erdos945Prop := by
+FormalConjectures/ErdosProblems/945.lean:48:  sorry
+FormalConjectures/ErdosProblems/945.lean:49:
+FormalConjectures/ErdosProblems/945.lean:50:def Erdos945Constant : Prop :=
+FormalConjectures/ErdosProblems/945.lean:51:  ∃ C > (0 : ℝ),  ∀ᶠ x : ℝ in atTop,
+FormalConjectures/ErdosProblems/945.lean:52:    ∃ a b : ℕ, a ≠ b ∧
+FormalConjectures/ErdosProblems/945.lean:53:    ↑a ∈ Set.Icc x (x + log x ^ C) ∧
+FormalConjectures/ErdosProblems/945.lean:54:    ↑b ∈ Set.Icc x (x + log x ^ C) ∧
+FormalConjectures/ErdosProblems/945.lean:55:    τ a = τ b
+FormalConjectures/ErdosProblems/945.lean:56:
+FormalConjectures/ErdosProblems/945.lean:57:/--
+FormalConjectures/ErdosProblems/945.lean:58:Is there a constant $C > 0$ such that, for all large $x$, every interval $[x, x+(\log x)C]$
+FormalConjectures/ErdosProblems/945.lean:59:contains two integers with the same number of divisors?
+FormalConjectures/ErdosProblems/945.lean:60:-/
+FormalConjectures/ErdosProblems/945.lean:61:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/945.lean:62:theorem erdos_945.variants.constant : answer(sorry) ↔ Erdos945Constant := by
+FormalConjectures/ErdosProblems/945.lean:63:  sorry
+FormalConjectures/ErdosProblems/945.lean:64:
+FormalConjectures/ErdosProblems/945.lean:65:-- TODO(firsching): show equivalence
+FormalConjectures/ErdosProblems/945.lean:66:/--
+FormalConjectures/ErdosProblems/945.lean:67:The two ways of phrasing the conjecture are equivalent.
+FormalConjectures/ErdosProblems/945.lean:68:-/
+FormalConjectures/ErdosProblems/945.lean:69:@[category undergraduate, AMS 11]
+FormalConjectures/ErdosProblems/945.lean:70:theorem erdos_945.equivalence : Erdos945Prop ↔ Erdos945Constant := by
+FormalConjectures/ErdosProblems/945.lean:71:  sorry
+FormalConjectures/ErdosProblems/945.lean:72:
+FormalConjectures/ErdosProblems/945.lean:73:/--
+FormalConjectures/ErdosProblems/945.lean:74:Erdős and Mirsky [ErMi52] proved that $\frac{(\log x)^{1/2}}{\log\log x}\ll F(x)$.
+FormalConjectures/ErdosProblems/945.lean:75:-/
+FormalConjectures/ErdosProblems/945.lean:76:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/945.lean:77:theorem erdos_945.variants.lower_bound :
+FormalConjectures/ErdosProblems/781.lean:69:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/781.lean:70:theorem erdos_781 :
+FormalConjectures/ErdosProblems/781.lean:71:    ∃ C : ℝ, C > 0 ∧ ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/781.lean:72:      (descendingWaveNumber k : ℝ) ≥ C * (k : ℝ) ^ 3 := by
+FormalConjectures/ErdosProblems/781.lean:73:  sorry
+FormalConjectures/ErdosProblems/781.lean:74:
+FormalConjectures/ErdosProblems/781.lean:75:/--
+FormalConjectures/ErdosProblems/781.lean:76:Erdős Problem 781, lower bound [BEF90]:
+FormalConjectures/ErdosProblems/781.lean:77:For all $k \geq 1$, $f(k) \geq k^2 - k + 1$.
+FormalConjectures/ErdosProblems/781.lean:78:-/
+FormalConjectures/ErdosProblems/781.lean:79:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/781.lean:80:theorem erdos_781.variants.bef_lower_bound (k : ℕ) (hk : k ≥ 1) :
+FormalConjectures/ErdosProblems/1148.lean:42:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/1148.lean:43:theorem erdos_1148 : answer(sorry) ↔ ∀ᶠ n in atTop, Erdos1148Prop n := by
+FormalConjectures/ErdosProblems/1148.lean:44:  sorry
+FormalConjectures/ErdosProblems/1148.lean:45:
+FormalConjectures/ErdosProblems/1148.lean:46:/--
+FormalConjectures/ErdosProblems/1148.lean:47:The largest integer known which cannot be written this way is $6563$.
+FormalConjectures/ErdosProblems/1148.lean:48:-/
+FormalConjectures/ErdosProblems/1148.lean:49:@[category high_school, AMS 11]
+FormalConjectures/ErdosProblems/1148.lean:50:theorem erdos_1148.variants.lower_bound : ¬ Erdos1148Prop 6563 := by
+FormalConjectures/ErdosProblems/975.lean:54:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/975.lean:55:theorem erdos_975 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/975.lean:56:    ∀ f : ℤ[X], f.natDegree ≠ 0 → Irreducible f → (∀ᶠ n in atTop, 1 ≤ f.eval n) →
+FormalConjectures/ErdosProblems/975.lean:57:    ∃ c > (0 : ℝ), Tendsto (fun x ↦ Erdos975Sum f x / (x * log x)) atTop (𝓝 c) := by
+FormalConjectures/ErdosProblems/975.lean:58:  sorry
+FormalConjectures/ErdosProblems/975.lean:59:
+FormalConjectures/ErdosProblems/975.lean:60:/--
+FormalConjectures/ErdosProblems/975.lean:61:The correctness of the growth rate is shown in [Va39] (lower bound) and [Er52b] (upper bound).
+FormalConjectures/ErdosProblems/975.lean:62:-/
+FormalConjectures/ErdosProblems/975.lean:63:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/975.lean:64:theorem erdos_975.variants.upper_bound (f : ℤ[X]) (hf : Irreducible f)
+FormalConjectures/ErdosProblems/975.lean:65:    (hf_pos : ∀ᶠ n in atTop, 1 ≤ f.eval n) : Erdos975Sum f =O[atTop] (fun x ↦ x * log x) := by
+FormalConjectures/ErdosProblems/975.lean:66:  sorry
+FormalConjectures/ErdosProblems/975.lean:67:
+FormalConjectures/ErdosProblems/975.lean:68:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/975.lean:69:theorem erdos_975.variants.lower_bound (f : ℤ[X]) (hf : Irreducible f) (hfdeg : f.natDegree ≠ 0)
+FormalConjectures/ErdosProblems/1062.lean:46:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/1062.lean:47:theorem erdos_1062.parts.ii :
+FormalConjectures/ErdosProblems/1062.lean:48:    (∃ l, Tendsto (fun n => (f n : ℝ) / n) atTop (𝓝 l) ∧ Irrational l) ↔ answer(sorry) := by
+FormalConjectures/ErdosProblems/1062.lean:49:  sorry
+FormalConjectures/ErdosProblems/1062.lean:50:
+FormalConjectures/ErdosProblems/1062.lean:51:/-- The interval `[⌊n/3⌋, n]` is fork-free, and therefore `f n` is at least `⌈2n / 3⌉`. -/
+FormalConjectures/ErdosProblems/1062.lean:52:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/1062.lean:53:theorem erdos_1062.variants.lower_bound (n : ℕ) : ⌈(2 * n / 3 : ℝ)⌉₊ ≤ f n := by
+FormalConjectures/ErdosProblems/1070.lean:51:@[category research open, AMS 5 52]
+FormalConjectures/ErdosProblems/1070.lean:52:theorem erdos_1070 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/1070.lean:53:    ∀ (n : ℕ), n ≥ 1 → ∀ (f : Fin n → EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/1070.lean:54:      ∃ S : Finset (Fin n),
+FormalConjectures/ErdosProblems/1070.lean:55:        (S.card : ℝ) ≥ (n : ℝ) / 4 ∧
+FormalConjectures/ErdosProblems/1070.lean:56:        ∀ i ∈ S, ∀ j ∈ S, i ≠ j → dist (f i) (f j) ≠ 1 := by
+FormalConjectures/ErdosProblems/1070.lean:57:  sorry
+FormalConjectures/ErdosProblems/1070.lean:58:
+FormalConjectures/ErdosProblems/1070.lean:59:/--
+FormalConjectures/ErdosProblems/1070.lean:60:**Erdős Problem #1070**, lower bound [Cr67]:
+FormalConjectures/ErdosProblems/1070.lean:61:
+FormalConjectures/ErdosProblems/1070.lean:62:For every $n \geq 1$ and every placement of $n$ points in $\mathbb{R}^2$, there exists a subset
+FormalConjectures/ErdosProblems/1070.lean:63:of at least $0.22936n$ points with no two at distance exactly $1$.
+FormalConjectures/ErdosProblems/1070.lean:64:-/
+FormalConjectures/ErdosProblems/1070.lean:65:@[category research solved, AMS 5 52]
+FormalConjectures/ErdosProblems/1070.lean:66:theorem erdos_1070.variants.lower_bound (n : ℕ) (hn : n ≥ 1)
+FormalConjectures/ErdosProblems/866.lean:59:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/866.lean:60:theorem erdos_866 (k : ℕ) (hk : k ≥ 3) :
+FormalConjectures/ErdosProblems/866.lean:61:    ∃ C : ℝ, C > 0 ∧ ∀ N : ℕ, N ≥ 1 →
+FormalConjectures/ErdosProblems/866.lean:62:      (gPairwiseSum k N : ℝ) ≤ C * (N : ℝ) ^ ((1 : ℝ) - 1 / (2 : ℝ) ^ k) := by
+FormalConjectures/ErdosProblems/866.lean:63:  sorry
+FormalConjectures/ErdosProblems/866.lean:64:
+FormalConjectures/ErdosProblems/866.lean:65:/--
+FormalConjectures/ErdosProblems/866.lean:66:Erdős Problem 866 [CES75]: $g_3(N) = 2$ for all sufficiently large $N$.
+FormalConjectures/ErdosProblems/866.lean:67:-/
+FormalConjectures/ErdosProblems/866.lean:68:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/866.lean:69:theorem erdos_866.variants.g3 :
+FormalConjectures/ErdosProblems/866.lean:70:    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ → gPairwiseSum 3 N = 2 := by
+FormalConjectures/ErdosProblems/866.lean:71:  sorry
+FormalConjectures/ErdosProblems/866.lean:72:
+FormalConjectures/ErdosProblems/866.lean:73:/--
+FormalConjectures/ErdosProblems/866.lean:74:Erdős Problem 866, lower bound for large $k$ [CES75]:
+FormalConjectures/ErdosProblems/866.lean:75:For every $\varepsilon > 0$, there exists $k_0$ such that for all $k \geq k_0$,
+FormalConjectures/ErdosProblems/866.lean:76:$g_k(N) > N^{1 - \varepsilon}$ for all sufficiently large $N$.
+FormalConjectures/ErdosProblems/866.lean:77:-/
+FormalConjectures/ErdosProblems/866.lean:78:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/866.lean:79:theorem erdos_866.variants.lower_bound_large_k :
+FormalConjectures/ErdosProblems/921.lean:56:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/921.lean:57:theorem erdos_921 : answer(True) ↔
+FormalConjectures/ErdosProblems/921.lean:58:    ∀ k : ℕ, k ≥ 4 →
+FormalConjectures/ErdosProblems/921.lean:59:      (∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/921.lean:60:        (erdos921F k n : ℝ) ≥ C * (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 2))) ∧
+FormalConjectures/ErdosProblems/921.lean:61:      (∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/921.lean:62:        (erdos921F k n : ℝ) ≤ C * (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 2))) := by
+FormalConjectures/ErdosProblems/921.lean:63:  sorry
+FormalConjectures/ErdosProblems/921.lean:64:
+FormalConjectures/ErdosProblems/921.lean:65:/--
+FormalConjectures/ErdosProblems/921.lean:66:Erdős Problem 921, lower bound [Er69b] [KST84]:
+FormalConjectures/ErdosProblems/921.lean:67:
+FormalConjectures/ErdosProblems/921.lean:68:For every $k \geq 4$, there exist $C > 0$ and $N_0$ such that for all $n \geq N_0$,
+FormalConjectures/ErdosProblems/921.lean:69:$f_k(n) \geq C \cdot n^{1/(k-2)}$.
+FormalConjectures/ErdosProblems/921.lean:70:-/
+FormalConjectures/ErdosProblems/921.lean:71:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/921.lean:72:theorem erdos_921.variants.lower_bound (k : ℕ) (hk : k ≥ 4) :
+FormalConjectures/ErdosProblems/896.lean:53:@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/896.lean:54:theorem erdos_896 :
+FormalConjectures/ErdosProblems/896.lean:55:    ∃ C : ℝ, 0 < C ∧
+FormalConjectures/ErdosProblems/896.lean:56:    ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+FormalConjectures/ErdosProblems/896.lean:57:      ∀ A B : Finset ℕ, A ⊆ Finset.Icc 1 N → B ⊆ Finset.Icc 1 N →
+FormalConjectures/ErdosProblems/896.lean:58:        (uniqueProductCount A B : ℝ) ≤ C * (N : ℝ) ^ 2 / Real.log (N : ℝ) := by
+FormalConjectures/ErdosProblems/896.lean:59:  sorry
+FormalConjectures/ErdosProblems/896.lean:60:
+FormalConjectures/ErdosProblems/896.lean:61:/-- Known lower bound (van Doorn): for any $\varepsilon > 0$ and all sufficiently large $N$,
+FormalConjectures/ErdosProblems/896.lean:62:there exist $A, B \subseteq \{1,\ldots,N\}$ with
+FormalConjectures/ErdosProblems/896.lean:63:$F(A,B) \geq (1-\varepsilon) \cdot N^2 / \log N$. [Er72] -/
+FormalConjectures/ErdosProblems/896.lean:64:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/896.lean:65:theorem erdos_896.variants.lower_bound :
+FormalConjectures/ErdosProblems/859.lean:39:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/859.lean:40:theorem erdos_859.variants.erdos_upper_lower_bounds : ∃ᵉ (c₃ > (0 : ℝ)) (c₄ > (0 : ℝ)) (t₀ : ℕ),
+FormalConjectures/ErdosProblems/133.lean:67:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/133.lean:68:theorem erdos_133 : answer(False) ↔
+FormalConjectures/ErdosProblems/133.lean:69:    Tendsto (fun n : ℕ => (erdos133_f n : ℝ) / Real.sqrt n) atTop atTop := by
+FormalConjectures/ErdosProblems/133.lean:70:  sorry
+FormalConjectures/ErdosProblems/133.lean:71:
+FormalConjectures/ErdosProblems/133.lean:72:/--
+FormalConjectures/ErdosProblems/133.lean:73:Erdős Problem 133 (Moore bound lower bound [ErPa90]):
+FormalConjectures/ErdosProblems/133.lean:74:$f(n) \geq \lfloor\sqrt{n-1}\rfloor$ for all $n \geq 1$.
+FormalConjectures/ErdosProblems/133.lean:75:
+FormalConjectures/ErdosProblems/133.lean:76:Proof sketch: a graph with max degree $d$ and diameter $\leq 2$ has at most
+FormalConjectures/ErdosProblems/133.lean:77:$1 + d + d(d-1) = d^2+1$ vertices. Hence if $G$ is triangle-free on $n$
+FormalConjectures/ErdosProblems/133.lean:78:vertices with diameter $\leq 2$ and max degree $d$, then $n \leq d^2+1$,
+FormalConjectures/ErdosProblems/133.lean:79:giving $d \geq \sqrt{n-1}$.
+FormalConjectures/ErdosProblems/133.lean:80:-/
+FormalConjectures/ErdosProblems/133.lean:81:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/133.lean:82:theorem erdos_133.variants.lower_bound (n : ℕ) (hn : 1 ≤ n) :
+FormalConjectures/ErdosProblems/55.lean:54:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/55.lean:55:theorem erdos_55 :
+FormalConjectures/ErdosProblems/55.lean:56:    ∀ r : ℕ, 2 ≤ r →
+FormalConjectures/ErdosProblems/55.lean:57:      ∃ (A : Set ℕ),
+FormalConjectures/ErdosProblems/55.lean:58:        IsRamseyComplete A r ∧
+FormalConjectures/ErdosProblems/55.lean:59:          ∃ C : ℝ, C > 0 ∧
+FormalConjectures/ErdosProblems/55.lean:60:            ∃ N₀ : ℕ, ∀ N ≥ N₀,
+FormalConjectures/ErdosProblems/55.lean:61:              (((Finset.Icc 1 N).filter (fun n => n ∈ A)).card : ℝ) ≤
+FormalConjectures/ErdosProblems/55.lean:62:                C * (r : ℝ) * (Real.log (N : ℝ)) ^ 2 := by
+FormalConjectures/ErdosProblems/55.lean:63:  sorry
+FormalConjectures/ErdosProblems/55.lean:64:
+FormalConjectures/ErdosProblems/55.lean:65:/--
+FormalConjectures/ErdosProblems/55.lean:66:There exists $c > 0$ such that any set $A$ with
+FormalConjectures/ErdosProblems/55.lean:67:$|A \cap \{1, \ldots, N\}| \leq c \cdot r \cdot (\log N)^2$ for all large $N$
+FormalConjectures/ErdosProblems/55.lean:68:cannot be $r$-Ramsey complete, showing the upper bound is best possible [CFP21].
+FormalConjectures/ErdosProblems/55.lean:69:-/
+FormalConjectures/ErdosProblems/55.lean:70:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/55.lean:71:theorem erdos_55.variants.lower_bound :
+FormalConjectures/ErdosProblems/840.lean:64:@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/840.lean:65:theorem erdos_840 :
+FormalConjectures/ErdosProblems/840.lean:66:    ∀ δ : ℝ, δ > 0 →
+FormalConjectures/ErdosProblems/840.lean:67:    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/840.lean:68:    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/840.lean:69:    |(maxQuasiSidonCard δ N : ℝ) - answer(sorry) * Real.sqrt (N : ℝ)| ≤
+FormalConjectures/ErdosProblems/840.lean:70:      ε * Real.sqrt (N : ℝ) := by
+FormalConjectures/ErdosProblems/840.lean:71:  sorry
+FormalConjectures/ErdosProblems/840.lean:72:
+FormalConjectures/ErdosProblems/840.lean:73:/--
+FormalConjectures/ErdosProblems/840.lean:74:**Erdős Problem 840** — Lower bound (Erdős–Freud [ErFr91]):
+FormalConjectures/ErdosProblems/840.lean:75:
+FormalConjectures/ErdosProblems/840.lean:76:For every $\varepsilon > 0$ and $\delta > 0$, for sufficiently large $N$,
+FormalConjectures/ErdosProblems/840.lean:77:$f_\delta(N) \geq (2/\sqrt{3} - \varepsilon) \cdot \sqrt{N}$.
+FormalConjectures/ErdosProblems/840.lean:78:-/
+FormalConjectures/ErdosProblems/840.lean:79:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/840.lean:80:theorem erdos_840.variants.lower_bound :
+FormalConjectures/ErdosProblems/233.lean:36:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/233.lean:37:theorem sum_of_squares_of_prime_gaps_lower_bound :
+FormalConjectures/ErdosProblems/789.lean:54:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/789.lean:55:theorem erdos_789 :
+FormalConjectures/ErdosProblems/789.lean:56:    ∃ C : ℝ, C > 0 ∧ ∀ n : ℕ,
+FormalConjectures/ErdosProblems/789.lean:57:      (erdos789_h n : ℝ) ≤ C * (n : ℝ) ^ ((1 : ℝ) / 2) := by
+FormalConjectures/ErdosProblems/789.lean:58:  sorry
+FormalConjectures/ErdosProblems/789.lean:59:
+FormalConjectures/ErdosProblems/789.lean:60:/--
+FormalConjectures/ErdosProblems/789.lean:61:Erdős Problem 789, lower bound (Erdős [Er62c] and Choi [Ch74b]):
+FormalConjectures/ErdosProblems/789.lean:62:$h(n) \gg (n \log n)^{1/3}$, i.e., there exist $C > 0$ and $N_0$ such that for all
+FormalConjectures/ErdosProblems/789.lean:63:$n \geq N_0$, $h(n) \geq C \cdot (n \cdot \log n)^{1/3}$.
+FormalConjectures/ErdosProblems/789.lean:64:-/
+FormalConjectures/ErdosProblems/789.lean:65:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/789.lean:66:theorem erdos_789.variants.lower_bound :
+FormalConjectures/ErdosProblems/394.lean:44:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/394.lean:45:theorem erdos_394_part_a :
+FormalConjectures/ErdosProblems/394.lean:46:    answer(sorry) ↔
+FormalConjectures/ErdosProblems/394.lean:47:      ∃ c > 0, (fun x ↦ ∑ n ∈ Icc 1 ⌊x⌋₊,
+FormalConjectures/ErdosProblems/394.lean:48:      (t 2 n : ℝ)) ≪ (fun x ↦ x ^ 2 / (Real.log x) ^ c) := by
+FormalConjectures/ErdosProblems/394.lean:49:  sorry
+FormalConjectures/ErdosProblems/394.lean:50:
+FormalConjectures/ErdosProblems/394.lean:51:/--
+FormalConjectures/ErdosProblems/394.lean:52:Is it true that, for $k\geq 2$, $\sum_{n\leq x}t_{k+1}(n) =o\left(\sum_{n\leq x}t_k(n)\right)?$
+FormalConjectures/ErdosProblems/394.lean:53:-/
+FormalConjectures/ErdosProblems/394.lean:54:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/394.lean:55:theorem erdos_394_part_b :
+FormalConjectures/ErdosProblems/394.lean:56:    answer(sorry) ↔
+FormalConjectures/ErdosProblems/394.lean:57:      ∀ k ≥ 2, (fun (x : ℝ) ↦ ∑ n ∈ Icc 1 ⌊x⌋₊,
+FormalConjectures/ErdosProblems/394.lean:58:      (t (k + 1) n : ℝ)) =o[atTop]
+FormalConjectures/ErdosProblems/394.lean:59:      (fun (x : ℝ) ↦ ∑ n ∈ Icc 1 ⌊x⌋₊,
+FormalConjectures/ErdosProblems/394.lean:60:      (t k n : ℝ)) := by
+FormalConjectures/ErdosProblems/394.lean:61:  sorry
+FormalConjectures/ErdosProblems/394.lean:62:
+FormalConjectures/ErdosProblems/394.lean:63:/--
+FormalConjectures/ErdosProblems/394.lean:64:In [ErGr80] they mention a conjecture of Erdős that the sum is $o(x^2)$. This was proved by Erdős
+FormalConjectures/ErdosProblems/394.lean:65:and Hall [ErHa78], who proved that in fact
+FormalConjectures/ErdosProblems/394.lean:66:$\sum_{n\leq x}t_2(n)\ll \frac{\log\log\log x}{\log\log x}x^2.$
+FormalConjectures/ErdosProblems/394.lean:67:-/
+FormalConjectures/ErdosProblems/394.lean:68:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/394.lean:69:theorem erdos_394_hall_bound :
+FormalConjectures/ErdosProblems/394.lean:70:    (fun x ↦ ∑ n ∈ Icc 1 ⌊x⌋₊, (t 2 n : ℝ)) ≪
+FormalConjectures/ErdosProblems/394.lean:71:    (fun x ↦ x ^ 2 * (Real.log (Real.log (Real.log x)) / Real.log (Real.log x))) := by
+FormalConjectures/ErdosProblems/394.lean:72:  sorry
+FormalConjectures/ErdosProblems/394.lean:73:
+FormalConjectures/ErdosProblems/394.lean:74:/--
+FormalConjectures/ErdosProblems/394.lean:75:Erdős and Hall conjecture that the sum is $o(x^2/(\log x)^c)$ for any $c<\log 2$.
+FormalConjectures/ErdosProblems/394.lean:76:-/
+FormalConjectures/ErdosProblems/394.lean:77:@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/394.lean:78:theorem erdos_394_hall_conjecture :
+FormalConjectures/ErdosProblems/394.lean:79:    ∀ c < Real.log 2, (fun x ↦ ∑ n ∈ Icc 1 ⌊x⌋₊,
+FormalConjectures/ErdosProblems/394.lean:80:    (t 2 n : ℝ)) =o[atTop]
+FormalConjectures/ErdosProblems/394.lean:81:    (fun x ↦ x ^ 2 / (Real.log x) ^ c) := by
+FormalConjectures/ErdosProblems/394.lean:82:  sorry
+FormalConjectures/ErdosProblems/394.lean:83:
+FormalConjectures/ErdosProblems/394.lean:84:/--
+FormalConjectures/ErdosProblems/394.lean:85:Since $t_2(p)=p-1$ for prime $p$ it is trivial that $\sum_{n\leq x}t_2(n)\gg \frac{x^2}{\log x}$.
+FormalConjectures/ErdosProblems/394.lean:86:-/
+FormalConjectures/ErdosProblems/394.lean:87:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/394.lean:88:theorem erdos_394_lower_bound :
+FormalConjectures/ErdosProblems/791.lean:64:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/791.lean:65:theorem erdos_791.variants.lower_bound :
+FormalConjectures/ErdosProblems/241.lean:57:@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/241.lean:58:theorem erdos_241 :
+FormalConjectures/ErdosProblems/241.lean:59:    answer(sorry) ↔ (fun N ↦ (f N 3 : ℝ)) ~[atTop] (fun N ↦ (N : ℝ) ^ ((1 : ℝ) / 3)) := by
+FormalConjectures/ErdosProblems/241.lean:60:  sorry
+FormalConjectures/ErdosProblems/241.lean:61:
+FormalConjectures/ErdosProblems/241.lean:62:/--
+FormalConjectures/ErdosProblems/241.lean:63:Bose and Chowla [BoCh62] provided a construction proving one half of this, namely
+FormalConjectures/ErdosProblems/241.lean:64:$(1+o(1))N^{1/3}\leq f(N)$.
+FormalConjectures/ErdosProblems/241.lean:65:-/
+FormalConjectures/ErdosProblems/241.lean:66:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/241.lean:67:theorem erdos_241.variants.lower_bound :
+FormalConjectures/ErdosProblems/21.lean:80:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/21.lean:81:theorem erdos_21 : answer(True) ↔
+FormalConjectures/ErdosProblems/21.lean:82:    (∃ C : ℝ, 0 < C ∧ ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+FormalConjectures/ErdosProblems/21.lean:83:      (erdosLovaszF n : ℝ) ≤ C * n) := by
+FormalConjectures/ErdosProblems/21.lean:84:  sorry
+FormalConjectures/ErdosProblems/21.lean:85:
+FormalConjectures/ErdosProblems/21.lean:86:/--
+FormalConjectures/ErdosProblems/21.lean:87:The Erdős–Lovász lower bound [ErLo75]: $f(n) \geq \lceil (8/3)n - 3 \rceil$ for all $n \geq 1$.
+FormalConjectures/ErdosProblems/21.lean:88:This was proved in the same paper that introduced the conjecture.
+FormalConjectures/ErdosProblems/21.lean:89:-/
+FormalConjectures/ErdosProblems/21.lean:90:theorem erdos_21_lower_bound :
+FormalConjectures/ErdosProblems/222.lean:57:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/222.lean:58:theorem erdos_222 :
+FormalConjectures/ErdosProblems/222.lean:59:    ∃ C : ℝ, C > 0 ∧ ∀ᶠ k in atTop,
+FormalConjectures/ErdosProblems/222.lean:60:      ((sumTwoSqSeq (k + 1) : ℝ) - (sumTwoSqSeq k : ℝ)) ≤
+FormalConjectures/ErdosProblems/222.lean:61:        C * (sumTwoSqSeq k : ℝ) ^ ((1 : ℝ) / 4) := by
+FormalConjectures/ErdosProblems/222.lean:62:  sorry
+FormalConjectures/ErdosProblems/222.lean:63:
+FormalConjectures/ErdosProblems/222.lean:64:/--
+FormalConjectures/ErdosProblems/222.lean:65:Richards (1982) lower bound on gaps in the sum-of-two-squares sequence [Ri82]:
+FormalConjectures/ErdosProblems/222.lean:66:for every $\delta > 0$, there are infinitely many $k$ such that
+FormalConjectures/ErdosProblems/222.lean:67:$n_{k+1} - n_k \geq (1/4 - \delta) \cdot \log n_k$.
+FormalConjectures/ErdosProblems/222.lean:68:
+FormalConjectures/ErdosProblems/222.lean:69:This is equivalent to $\limsup_{k \to \infty} (n_{k+1} - n_k) / \log n_k \geq 1/4$.
+FormalConjectures/ErdosProblems/222.lean:70:-/
+FormalConjectures/ErdosProblems/222.lean:71:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/222.lean:72:theorem erdos_222.variants.lower_bound :
+FormalConjectures/ErdosProblems/524.lean:58:@[category research open, AMS 42 60]
+FormalConjectures/ErdosProblems/524.lean:59:theorem erdos_524
+FormalConjectures/ErdosProblems/524.lean:60:    {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+FormalConjectures/ErdosProblems/524.lean:61:    {ε : ℕ → Ω → ℝ}
+FormalConjectures/ErdosProblems/524.lean:62:    (hRad : ∀ k, IsRademacher μ (ε k))
+FormalConjectures/ErdosProblems/524.lean:63:    (hIndep : iIndepFun ε μ) :
+FormalConjectures/ErdosProblems/524.lean:64:    ∀ᵐ ω ∂μ,
+FormalConjectures/ErdosProblems/524.lean:65:      (fun n => supNormInterval (fun k => ε k ω) n) =Θ[atTop]
+FormalConjectures/ErdosProblems/524.lean:66:        (answer(sorry) : ℕ → ℝ) := by
+FormalConjectures/ErdosProblems/524.lean:67:  sorry
+FormalConjectures/ErdosProblems/524.lean:68:
+FormalConjectures/ErdosProblems/524.lean:69:/-- Erdős showed that for almost all $\omega$ and every $\delta > 0$,
+FormalConjectures/ErdosProblems/524.lean:70:$M_n(\omega) / n^{1/2 - \delta} \to \infty$. -/
+FormalConjectures/ErdosProblems/524.lean:71:@[category research solved, AMS 42 60]
+FormalConjectures/ErdosProblems/524.lean:72:theorem erdos_524.variants.lower_bound
+FormalConjectures/ErdosProblems/920.lean:47:@[category research open, AMS 05]
+FormalConjectures/ErdosProblems/920.lean:48:theorem erdos_920 :
+FormalConjectures/ErdosProblems/920.lean:49:    answer(sorry) ↔ ∀ k : ℕ, k ≥ 4 → ∃ c > 0,
+FormalConjectures/ErdosProblems/920.lean:50:      (fun n ↦ f k n) ≫ (fun n ↦ (n : ℝ) ^ (1 - 1 / ((k : ℝ) - 1)) / (log n) ^ c) := by
+FormalConjectures/ErdosProblems/920.lean:51:  sorry
+FormalConjectures/ErdosProblems/920.lean:52:
+FormalConjectures/ErdosProblems/920.lean:53:/--
+FormalConjectures/ErdosProblems/920.lean:54:Graver and Yackel [GrYa68] proved that
+FormalConjectures/ErdosProblems/920.lean:55:$f_k(n) \ll \left(n\frac{\log\log n}{\log n}\right)^{1-\frac{1}{k-1}}.$
+FormalConjectures/ErdosProblems/920.lean:56:-/
+FormalConjectures/ErdosProblems/920.lean:57:@[category research solved, AMS 05]
+FormalConjectures/ErdosProblems/920.lean:58:theorem erdos_920.variants.upper_bound (k : ℕ) (hk : k ≥ 3) :
+FormalConjectures/ErdosProblems/920.lean:59:    (fun n ↦ f k n) ≪ (fun n ↦ ((n : ℝ) * log (log n) / log n) ^ (1 - 1 / ((k : ℝ) - 1))) := by
+FormalConjectures/ErdosProblems/920.lean:60:  sorry
+FormalConjectures/ErdosProblems/920.lean:61:
+FormalConjectures/ErdosProblems/920.lean:62:/--
+FormalConjectures/ErdosProblems/920.lean:63:It is known that $f_3(n)\asymp (n/\log n)^{1/2}$ (see [erdosproblems.com/1104]).
+FormalConjectures/ErdosProblems/920.lean:64:-/
+FormalConjectures/ErdosProblems/920.lean:65:@[category research solved, AMS 05]
+FormalConjectures/ErdosProblems/920.lean:66:theorem erdos_920.variants.k_eq_3 :
+FormalConjectures/ErdosProblems/920.lean:67:    (fun n ↦ (f 3 n : ℝ)) =Θ[atTop] (fun n ↦ ((n : ℝ) / log n) ^ (1 / 2 : ℝ)) := by
+FormalConjectures/ErdosProblems/920.lean:68:  sorry
+FormalConjectures/ErdosProblems/920.lean:69:
+FormalConjectures/ErdosProblems/920.lean:70:/--
+FormalConjectures/ErdosProblems/920.lean:71:The lower bound $R(4,m) \gg m^3/(\log m)^4$ of Mattheus and Verstraete [MaVe23]
+FormalConjectures/ErdosProblems/920.lean:72:(see [erdosproblems.com/166]) implies $f_4(n) \gg \frac{n^{2/3}}{(\log n)^{4/3}}$.
+FormalConjectures/ErdosProblems/920.lean:73:-/
+FormalConjectures/ErdosProblems/920.lean:74:@[category research solved, AMS 05]
+FormalConjectures/ErdosProblems/920.lean:75:theorem erdos_920.variants.lower_bound_f4 :
+FormalConjectures/ErdosProblems/920.lean:76:    (fun n ↦ f 4 n) ≫ (fun n ↦ (n : ℝ) ^ (2 / 3 : ℝ) / (log n) ^ (4 / 3 : ℝ)) := by
+FormalConjectures/ErdosProblems/920.lean:77:  sorry
+FormalConjectures/ErdosProblems/920.lean:78:
+FormalConjectures/ErdosProblems/920.lean:79:/--
+FormalConjectures/ErdosProblems/920.lean:80:A positive answer to this question would follow from [erdosproblems.com/986]. The known bounds for
+FormalConjectures/ErdosProblems/920.lean:81:that problem imply $f_k(n) \gg \frac{n^{1-\frac{2}{k+1}}}{(\log n)^{c_k}}.$
+FormalConjectures/ErdosProblems/920.lean:82:-/
+FormalConjectures/ErdosProblems/920.lean:83:@[category research solved, AMS 05]
+FormalConjectures/ErdosProblems/920.lean:84:theorem erdos_920.variants.lower_bound (k : ℕ) (hk : k ≥ 3) :
+FormalConjectures/ErdosProblems/327.lean:51:@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/327.lean:52:theorem erdos_327 :
+FormalConjectures/ErdosProblems/327.lean:53:    ∀ ε : ℝ, 0 < ε →
+FormalConjectures/ErdosProblems/327.lean:54:      ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+FormalConjectures/ErdosProblems/327.lean:55:        ∀ (A : Finset ℕ), A ⊆ Finset.Icc 1 N → UnitFractionPairFree A →
+FormalConjectures/ErdosProblems/327.lean:56:          (A.card : ℝ) ≤ (1 / 2 + ε) * (N : ℝ) := by
+FormalConjectures/ErdosProblems/327.lean:57:  sorry
+FormalConjectures/ErdosProblems/327.lean:58:
+FormalConjectures/ErdosProblems/327.lean:59:/--
+FormalConjectures/ErdosProblems/327.lean:60:The odd numbers in $\{1, \ldots, N\}$ witness that there exists a `UnitFractionPairFree` subset
+FormalConjectures/ErdosProblems/327.lean:61:of size $\geq (\frac{1}{2} - \varepsilon) N$ for any $\varepsilon > 0$ and sufficiently
+FormalConjectures/ErdosProblems/327.lean:62:large $N$.
+FormalConjectures/ErdosProblems/327.lean:63:-/
+FormalConjectures/ErdosProblems/327.lean:64:@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/327.lean:65:theorem erdos_327.variants.lower_bound :
+FormalConjectures/ErdosProblems/329.lean:46:@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/329.lean:47:theorem erdos_329 : sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} =
+FormalConjectures/ErdosProblems/329.lean:48:    answer(sorry) := by
+FormalConjectures/ErdosProblems/329.lean:49:  sorry
+FormalConjectures/ErdosProblems/329.lean:50:
+FormalConjectures/ErdosProblems/329.lean:51:/--
+FormalConjectures/ErdosProblems/329.lean:52:Erdős proved that upper density `1 / 2` can be attained; in particular,
+FormalConjectures/ErdosProblems/329.lean:53:there exists a Sidon set whose upper density is *at least* `1 / 2`.
+FormalConjectures/ErdosProblems/329.lean:54:-/
+FormalConjectures/ErdosProblems/329.lean:55:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/329.lean:56:theorem erdos_329.lower_bound : ∃ (A : Set ℕ), IsSidon A ∧ sidonUpperDensity A ≥ 1/2 := by
+FormalConjectures/ErdosProblems/704.lean:67:@[category research open, AMS 5 52]
+FormalConjectures/ErdosProblems/704.lean:68:theorem erdos_704 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/704.lean:69:    ∃ L : ℝ, Tendsto
+FormalConjectures/ErdosProblems/704.lean:70:      (fun n : ℕ => (chromaticNumber_unitDist n : ℝ) ^ ((1 : ℝ) / (n : ℝ)))
+FormalConjectures/ErdosProblems/704.lean:71:      atTop (nhds L) := by
+FormalConjectures/ErdosProblems/704.lean:72:  sorry
+FormalConjectures/ErdosProblems/704.lean:73:
+FormalConjectures/ErdosProblems/704.lean:74:/--
+FormalConjectures/ErdosProblems/704.lean:75:Erdős Problem 704, Frankl–Wilson lower bound [FrWi81]:
+FormalConjectures/ErdosProblems/704.lean:76:
+FormalConjectures/ErdosProblems/704.lean:77:The chromatic number of the unit distance graph in $\mathbb{R}^n$ grows at least
+FormalConjectures/ErdosProblems/704.lean:78:exponentially: $\chi(G_n) \geq (1+o(1)) \cdot 1.2^n$.
+FormalConjectures/ErdosProblems/704.lean:79:
+FormalConjectures/ErdosProblems/704.lean:80:Formalized as: there exist $C > 0$ and $N_0$ such that for all $n \geq N_0$,
+FormalConjectures/ErdosProblems/704.lean:81:$\chi(G_n) \geq C \cdot (6/5)^n$.
+FormalConjectures/ErdosProblems/704.lean:82:-/
+FormalConjectures/ErdosProblems/704.lean:83:@[category research solved, AMS 5 52]
+FormalConjectures/ErdosProblems/704.lean:84:theorem erdos_704.variants.lower_bound :
+FormalConjectures/ErdosProblems/44.lean:31:@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:32:theorem maxSidonSubsetCard_icc_bound (N : ℕ) (hN : 1 ≤ N) :
+FormalConjectures/ErdosProblems/44.lean:33:    maxSidonSubsetCard (Icc 1 N) ≤ 2 * Real.sqrt N := by
+FormalConjectures/ErdosProblems/44.lean:34:  sorry
+FormalConjectures/ErdosProblems/44.lean:35:
+FormalConjectures/ErdosProblems/44.lean:36:/--
+FormalConjectures/ErdosProblems/44.lean:37:**Erdős Problem 44:** Let N ≥ 1 and `A ⊆ {1,…,N}` be a Sidon set. Is it true that, for any ε > 0,
+FormalConjectures/ErdosProblems/44.lean:38:there exist M = M(ε) and `B ⊆ {N+1,…,M}` such that `A ∪ B ⊆ {1,…,M}` is a Sidon set
+FormalConjectures/ErdosProblems/44.lean:39:of size at least `(1−ε)M^{1/2}`?
+FormalConjectures/ErdosProblems/44.lean:40:
+FormalConjectures/ErdosProblems/44.lean:41:This problem asks whether any Sidon set can be extended to achieve a density
+FormalConjectures/ErdosProblems/44.lean:42:arbitrarily close to the optimal density for Sidon sets.
+FormalConjectures/ErdosProblems/44.lean:43:-/
+FormalConjectures/ErdosProblems/44.lean:44:@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:45:theorem erdos_44 : answer(sorry) ↔ ∀ᵉ (N ≥ (1 : ℕ)) (A ⊆ Finset.Icc 1 N), IsSidon (A : Set ℕ) →
+FormalConjectures/ErdosProblems/44.lean:46:    ∀ᵉ (ε > (0 : ℝ)), ∃ᵉ (M > N) (B ⊆ Finset.Icc (N + 1) M),
+FormalConjectures/ErdosProblems/44.lean:47:      IsSidon (A ∪ B : Set ℕ) ∧ (1 - ε) * Real.sqrt M ≤ (A ∪ B).card := by
+FormalConjectures/ErdosProblems/44.lean:48:  sorry
+FormalConjectures/ErdosProblems/44.lean:49:
+FormalConjectures/ErdosProblems/44.lean:50:/--
+FormalConjectures/ErdosProblems/44.lean:51:The case where we start with an empty set (constructing large Sidon sets).
+FormalConjectures/ErdosProblems/44.lean:52:-/
+FormalConjectures/ErdosProblems/44.lean:53:@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:54:theorem erdos_44.empty_start : answer(sorry) ↔ ∀ᵉ (ε > (0 : ℝ)), ∀ᶠ (M : ℕ) in Filter.atTop,
+FormalConjectures/ErdosProblems/44.lean:55:    ∃ᵉ (A ⊆ Finset.Icc 1 M), IsSidon (A : Set ℕ) ∧ (1 - ε) * Real.sqrt M ≤ A.card := by
+FormalConjectures/ErdosProblems/44.lean:56:  sorry
+FormalConjectures/ErdosProblems/44.lean:57:
+FormalConjectures/ErdosProblems/44.lean:58:/-! ## Related results and examples -/
+FormalConjectures/ErdosProblems/44.lean:59:
+FormalConjectures/ErdosProblems/44.lean:60:/--
+FormalConjectures/ErdosProblems/44.lean:61:The set `{1, 2, 4, 8, 13}` is a Sidon set in `{1, ..., 13}`.
+FormalConjectures/ErdosProblems/44.lean:62:-/
+FormalConjectures/ErdosProblems/44.lean:63:@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:64:theorem example_sidon_set : IsSidon ({1, 2, 4, 8, 13} : Set ℕ) := by
+FormalConjectures/ErdosProblems/44.lean:65:  sorry
+FormalConjectures/ErdosProblems/44.lean:66:
+FormalConjectures/ErdosProblems/44.lean:67:/--
+FormalConjectures/ErdosProblems/44.lean:68:For any `N`, there exists a Sidon set of size at least `√N/2`.
+FormalConjectures/ErdosProblems/44.lean:69:-/
+FormalConjectures/ErdosProblems/44.lean:70:@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:71:theorem sidon_set_lower_bound (N : ℕ) (hN : 1 ≤ N) :
+FormalConjectures/ErdosProblems/934.lean:64:@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/934.lean:65:theorem erdos_934 :
+FormalConjectures/ErdosProblems/934.lean:66:    ∀ t : ℕ, 3 ≤ t →
+FormalConjectures/ErdosProblems/934.lean:67:    ∀ ε : ℝ, 0 < ε →
+FormalConjectures/ErdosProblems/934.lean:68:    ∃ D₀ : ℕ, ∀ d : ℕ, D₀ ≤ d →
+FormalConjectures/ErdosProblems/934.lean:69:    ∀ (V : Type*) [Fintype V] (G : SimpleGraph V),
+FormalConjectures/ErdosProblems/934.lean:70:      G.maxDegree ≤ d →
+FormalConjectures/ErdosProblems/934.lean:71:      (G.edgeFinset.card : ℝ) > (1 + ε) * (d : ℝ) ^ t →
+FormalConjectures/ErdosProblems/934.lean:72:      ∃ e₁ ∈ G.edgeSet, ∃ e₂ ∈ G.edgeSet,
+FormalConjectures/ErdosProblems/934.lean:73:        e₁ ≠ e₂ ∧ EdgesAtDist G e₁ e₂ t := by
+FormalConjectures/ErdosProblems/934.lean:74:  sorry
+FormalConjectures/ErdosProblems/934.lean:75:
+FormalConjectures/ErdosProblems/934.lean:76:/-- Erdős Problem 934, lower bound direction of the asymptotic conjecture [CCJK22]:
+FormalConjectures/ErdosProblems/934.lean:77:For all $t \geq 3$ and $\varepsilon > 0$, there are infinitely many $d$ for which some graph
+FormalConjectures/ErdosProblems/934.lean:78:with maximum degree $\leq d$ and at least $(1 - \varepsilon) \cdot d^t$ edges has no pair of
+FormalConjectures/ErdosProblems/934.lean:79:distinct edges at distance $\geq t$. -/
+FormalConjectures/ErdosProblems/934.lean:80:@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/934.lean:81:theorem erdos_934.variants.lower_bound :
+FormalConjectures/ErdosProblems/585.lean:66:@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/585.lean:67:theorem erdos_585 :
+FormalConjectures/ErdosProblems/585.lean:68:    ∀ n, maxEdgesNoEdgeDisjointCycles n = answer(sorry) := by
+FormalConjectures/ErdosProblems/585.lean:69:  sorry
+FormalConjectures/ErdosProblems/585.lean:70:
+FormalConjectures/ErdosProblems/585.lean:71:/--
+FormalConjectures/ErdosProblems/585.lean:72:Erdős Problem 585, Lower Bound [PRS95]:
+FormalConjectures/ErdosProblems/585.lean:73:
+FormalConjectures/ErdosProblems/585.lean:74:There exists a constant $c > 0$ such that for all sufficiently large $n$,
+FormalConjectures/ErdosProblems/585.lean:75:the maximum number of edges in an $n$-vertex graph with no two edge-disjoint
+FormalConjectures/ErdosProblems/585.lean:76:cycles on the same vertex set is at least $c \cdot n \cdot \log(\log(n))$.
+FormalConjectures/ErdosProblems/585.lean:77:-/
+FormalConjectures/ErdosProblems/585.lean:78:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/585.lean:79:theorem erdos_585.variants.lower_bound :
+FormalConjectures/ErdosProblems/759.lean:78:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/759.lean:79:theorem erdos_759 :
+FormalConjectures/ErdosProblems/759.lean:80:    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/759.lean:81:      (maxCochromaticOnSurface n : ℝ) ≤
+FormalConjectures/ErdosProblems/759.lean:82:        C * Real.sqrt (n : ℝ) / Real.log (n : ℝ) := by
+FormalConjectures/ErdosProblems/759.lean:83:  sorry
+FormalConjectures/ErdosProblems/759.lean:84:
+FormalConjectures/ErdosProblems/759.lean:85:/--
+FormalConjectures/ErdosProblems/759.lean:86:Erdős Problem 759, lower bound (Gimbel [Gi86]):
+FormalConjectures/ErdosProblems/759.lean:87:
+FormalConjectures/ErdosProblems/759.lean:88:There exist $C > 0$ and $N_0$ such that for all $n \geq N_0$,
+FormalConjectures/ErdosProblems/759.lean:89:$$z(S_n) \geq C \cdot \sqrt{n} / \log n.$$
+FormalConjectures/ErdosProblems/759.lean:90:-/
+FormalConjectures/ErdosProblems/759.lean:91:@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/759.lean:92:theorem erdos_759.variants.lower_bound :
+FormalConjectures/ErdosProblems/535.lean:63:@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/535.lean:64:theorem erdos_535 (r : ℕ) (hr : 3 ≤ r) :
+FormalConjectures/ErdosProblems/535.lean:65:    ∃ c : ℝ, 0 < c ∧
+FormalConjectures/ErdosProblems/535.lean:66:    ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+FormalConjectures/ErdosProblems/535.lean:67:      ∀ A : Finset ℕ, A ⊆ Icc 1 N → IsGCDUniformFree A r →
+FormalConjectures/ErdosProblems/535.lean:68:        (A.card : ℝ) ≤ (N : ℝ) ^ (c / Real.log (Real.log (N : ℝ))) := by
+FormalConjectures/ErdosProblems/535.lean:69:  sorry
+FormalConjectures/ErdosProblems/535.lean:70:
+FormalConjectures/ErdosProblems/535.lean:71:/--
+FormalConjectures/ErdosProblems/535.lean:72:**Erdős Problem 535** (Lower bound, proved by Erdős [Er64] for $r = 3$):
+FormalConjectures/ErdosProblems/535.lean:73:
+FormalConjectures/ErdosProblems/535.lean:74:There exists a constant $c > 0$ and $N_0$ such that for all $N \geq N_0$,
+FormalConjectures/ErdosProblems/535.lean:75:there exists a $3$-GCD-uniform-free subset of $\{1, \ldots, N\}$ of size at
+FormalConjectures/ErdosProblems/535.lean:76:least $N^{c / \log\log N}$.
+FormalConjectures/ErdosProblems/535.lean:77:
+FormalConjectures/ErdosProblems/535.lean:78:See [Er64].
+FormalConjectures/ErdosProblems/535.lean:79:-/
+FormalConjectures/ErdosProblems/535.lean:80:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/535.lean:81:theorem erdos_535.variants.lower_bound :
+FormalConjectures/ErdosProblems/160.lean:44:@[category research solved, AMS 5 51]
+FormalConjectures/ErdosProblems/160.lean:45:theorem erdos_160.known_upper :
+FormalConjectures/ErdosProblems/160.lean:46:    (fun n => (erdos_160.h n : ℝ)) =O[atTop] fun n => (n : ℝ) ^ ((2 : ℝ) / 3) := by
+FormalConjectures/ErdosProblems/160.lean:47:  sorry
+FormalConjectures/ErdosProblems/160.lean:48:
+FormalConjectures/ErdosProblems/160.lean:49:open Real
+FormalConjectures/ErdosProblems/160.lean:50:
+FormalConjectures/ErdosProblems/160.lean:51:/--
+FormalConjectures/ErdosProblems/160.lean:52:Estimate $h(n)$ by finding a better upper bound.
+FormalConjectures/ErdosProblems/160.lean:53:-/
+FormalConjectures/ErdosProblems/160.lean:54:@[category research open, AMS 5 51]
+FormalConjectures/ErdosProblems/160.lean:55:theorem erdos_160.better_upper :
+FormalConjectures/ErdosProblems/160.lean:56:    let upper_bound : ℕ → ℝ := answer(sorry)
+FormalConjectures/ErdosProblems/160.lean:57:    (fun n => (erdos_160.h n : ℝ)) =O[atTop] upper_bound ∧
+FormalConjectures/ErdosProblems/160.lean:58:    upper_bound =o[atTop] fun n => (n : ℝ) ^ ((2 : ℝ) / 3) := by
+FormalConjectures/ErdosProblems/160.lean:59:  sorry
+FormalConjectures/ErdosProblems/160.lean:60:
+FormalConjectures/ErdosProblems/160.lean:61:/--
+FormalConjectures/ErdosProblems/160.lean:62:Estimate $h(n)$ by finding a better lower bound.
+FormalConjectures/ErdosProblems/160.lean:63:-/
+FormalConjectures/ErdosProblems/160.lean:64:@[category research open, AMS 5 51]
+FormalConjectures/ErdosProblems/160.lean:65:theorem erdos_160.better_lower:
+FormalConjectures/ErdosProblems/160.lean:66:    let lower_bound : ℕ → ℝ := answer(sorry)
+FormalConjectures/ErdosProblems/160.lean:67:    (lower_bound =O[atTop] fun n => (erdos_160.h n : ℝ)) ∧
+FormalConjectures/ErdosProblems/160.lean:68:    ∀ c > 0,
+FormalConjectures/ErdosProblems/160.lean:69:    (fun (n : ℕ) => exp (c * log n ^ ((1 : ℝ) / 12))) =O[atTop] (fun n => (erdos_160.h n : ℝ)) →
+FormalConjectures/ErdosProblems/160.lean:70:    ∀ c > 0, (fun (n : ℕ) => exp (c * log n ^ ((1 : ℝ) / 12))) =o[atTop] lower_bound := by
+FormalConjectures/ErdosProblems/882.lean:67:@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/882.lean:68:theorem erdos_882 :
+FormalConjectures/ErdosProblems/882.lean:69:    ∃ C : ℝ, ∃ N₀ : ℕ, ∀ n ≥ N₀,
+FormalConjectures/ErdosProblems/882.lean:70:      (maxPrimitiveSubsetSumSize n : ℝ) ≤ Real.log n / Real.log 2 + C := by
+FormalConjectures/ErdosProblems/882.lean:71:  sorry
+FormalConjectures/ErdosProblems/882.lean:72:
+FormalConjectures/ErdosProblems/882.lean:73:/--
+FormalConjectures/ErdosProblems/882.lean:74:Erdős Problem 882, lower bound [ELRSS99]:
+FormalConjectures/ErdosProblems/882.lean:75:
+FormalConjectures/ErdosProblems/882.lean:76:For all sufficiently large $n$, there exists $A \subseteq \{1, \ldots, n\}$ with
+FormalConjectures/ErdosProblems/882.lean:77:$|A| > \log_2 n - 1$ such that the non-empty subset sums of $A$ form a primitive set.
+FormalConjectures/ErdosProblems/882.lean:78:-/
+FormalConjectures/ErdosProblems/882.lean:79:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/882.lean:80:theorem erdos_882.variants.lower_bound :
+FormalConjectures/ErdosProblems/148.lean:57:@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/148.lean:58:theorem erdos_148.variants.konyagin_lower_bound :
+FormalConjectures/ErdosProblems/721.lean:81:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/721.lean:82:theorem erdos_721 :
+FormalConjectures/ErdosProblems/721.lean:83:    ∃ c : ℝ, 0 < c ∧ c < 1 ∧
+FormalConjectures/ErdosProblems/721.lean:84:    ∃ N₀ : ℕ, ∀ k : ℕ, k ≥ N₀ →
+FormalConjectures/ErdosProblems/721.lean:85:    (vanDerWaerden 3 k : ℝ) < Real.exp ((k : ℝ) ^ c) := by
+FormalConjectures/ErdosProblems/721.lean:86:  sorry
+FormalConjectures/ErdosProblems/721.lean:87:
+FormalConjectures/ErdosProblems/721.lean:88:/--
+FormalConjectures/ErdosProblems/721.lean:89:$W(3, k)$ grows superpolynomially: for every degree $d$,
+FormalConjectures/ErdosProblems/721.lean:90:$W(3, k) > k^d$ for all sufficiently large $k$.
+FormalConjectures/ErdosProblems/721.lean:91:
+FormalConjectures/ErdosProblems/721.lean:92:Green [Gr22] proved $W(3,k) \geq \exp(c(\log k)^{4/3}/(\log \log k)^{1/3})$,
+FormalConjectures/ErdosProblems/721.lean:93:improved by Hunter [Hu22] to $W(3,k) \geq \exp(c(\log k)^2/\log \log k)$.
+FormalConjectures/ErdosProblems/721.lean:94:-/
+FormalConjectures/ErdosProblems/721.lean:95:@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/721.lean:96:theorem erdos_721.variants.lower_bound :

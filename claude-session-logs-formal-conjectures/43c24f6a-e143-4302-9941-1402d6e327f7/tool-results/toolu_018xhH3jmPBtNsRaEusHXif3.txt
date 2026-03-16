@@ -1,0 +1,483 @@
+FormalConjectures/ErdosProblems/579.lean-65-              δ * (n : ℝ) ^ 2 ≤ (G.edgeSet.ncard : ℝ) →
+FormalConjectures/ErdosProblems/579.lean-66-                ∃ S : Finset (Fin n),
+FormalConjectures/ErdosProblems/579.lean-67-                  c * (n : ℝ) ≤ (S.card : ℝ) ∧
+FormalConjectures/ErdosProblems/579.lean:68:                  (G.induce (S : Set (Fin n))).CliqueFree 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-69-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-71-end Erdos579
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/895.lean-47-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/895.lean-48-theorem erdos_895 : answer(True) ↔
+FormalConjectures/ErdosProblems/895.lean-49-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/895.lean:50:    ∀ G : SimpleGraph (Fin n), G.CliqueFree 3 →
+FormalConjectures/ErdosProblems/895.lean-51-    ∃ a b : Fin n,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/895.lean-52-      a ≠ b ∧ a.val ≥ 1 ∧ b.val ≥ 1 ∧
+FormalConjectures/ErdosProblems/895.lean-53-      ∃ h : a.val + b.val < n,
+--
+FormalConjectures/ErdosProblems/24.lean-52-theorem erdos_24 :
+FormalConjectures/ErdosProblems/24.lean-53-    ∀ (n : ℕ) (G : SimpleGraph (Fin (5 * n))) (h : DecidableRel G.Adj),
+FormalConjectures/ErdosProblems/24.lean-54-    haveI := h
+FormalConjectures/ErdosProblems/24.lean:55:    G.CliqueFree 3 →
+FormalConjectures/ErdosProblems/24.lean-56-    (Finset.univ.filter (fun (f : Fin 5 → Fin (5 * n)) =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/24.lean-57-      Function.Injective f ∧
+FormalConjectures/ErdosProblems/24.lean-58-      ∀ i : Fin 5, G.Adj (f i) (f (i + 1)))).card
+--
+FormalConjectures/ErdosProblems/612.lean-73-theorem erdos_612 (k : ℕ) (hk : k ≥ 2) :
+FormalConjectures/ErdosProblems/612.lean-74-    ∃ C : ℝ, ∀ (n : ℕ) (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/612.lean-75-      G.Connected →
+FormalConjectures/ErdosProblems/612.lean:76:      G.CliqueFree (k + 1) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/612.lean-77-      G.minDegree ≥ 1 →
+FormalConjectures/ErdosProblems/612.lean-78-      (G.diam : ℝ) ≤ (3 - 2 / (k : ℝ)) * ((n : ℝ) / (G.minDegree : ℝ)) + C := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/612.lean-79-  sorry
+--
+FormalConjectures/ErdosProblems/612.lean-90-theorem erdos_612.variants.triangle_free :
+FormalConjectures/ErdosProblems/612.lean-91-    ∃ C : ℝ, ∀ (n : ℕ) (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/612.lean-92-      G.Connected →
+FormalConjectures/ErdosProblems/612.lean:93:      G.CliqueFree 3 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/612.lean-94-      G.minDegree ≥ 1 →
+FormalConjectures/ErdosProblems/612.lean-95-      (G.diam : ℝ) ≤ 2 * ((n : ℝ) / (G.minDegree : ℝ)) + C := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/612.lean-96-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-40-a monochromatic $K_n$ in colour $2$. Equivalently, every simple graph on $N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-41-vertices contains a $3$-clique or its complement contains an $n$-clique. -/
+FormalConjectures/ErdosProblems/553.lean-42-noncomputable def ramseyR3 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean:43:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-44-
+FormalConjectures/ErdosProblems/553.lean-45-/-- The Ramsey number $R(3,3,n)$: the minimum $N$ such that every $3$-colouring of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-46-the edges of $K_N$ yields either a monochromatic triangle in one of the
+--
+FormalConjectures/ErdosProblems/553.lean-51-noncomputable def ramseyR33 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean-52-  sInf {N : ℕ | ∀ (G₁ G₂ : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-53-    Disjoint G₁ G₂ →
+FormalConjectures/ErdosProblems/553.lean:54:    ¬G₁.CliqueFree 3 ∨ ¬G₂.CliqueFree 3 ∨ ¬(G₁ ⊔ G₂)ᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-56-/--
+FormalConjectures/ErdosProblems/553.lean-57-Erdős Problem 553 [ErSo80]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-40-    vertices contains either a $k$-clique or an independent set of size $l$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-41-    (equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1030.lean-42-noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1030.lean:43:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-45-/--
+FormalConjectures/ErdosProblems/1030.lean-46-Erdős Problem 1030 [Er93, p. 339]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1011.lean-47-with at least $m$ edges and chromatic number $\geq r$ contains a triangle ($3$-clique). -/
+FormalConjectures/ErdosProblems/1011.lean-48-noncomputable def minTriangleEdges (r n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1011.lean-49-  sInf {m : ℕ | ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/1011.lean:50:    G.edgeSet.ncard ≥ m → (r : ℕ∞) ≤ G.chromaticNumber → ¬G.CliqueFree 3}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1011.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1011.lean-52-/--
+FormalConjectures/ErdosProblems/1011.lean-53-**Erdős Problem 1011** [Er71] — Simonovits asymptotic:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-35-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/23.lean-36-theorem erdos_23_n1 :
+FormalConjectures/ErdosProblems/23.lean:37:    ∀ (G : SimpleGraph (Fin 5)), G.CliqueFree 3 → ∃ (H : SimpleGraph (Fin 5)),
+FormalConjectures/ErdosProblems/23.lean-38-        H ≤ G ∧ H.IsBipartite ∧ (G.edgeFinset \ H.edgeFinset).card ≤ 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-39-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-44--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-45-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/23.lean-46-theorem erdos_23_n1_tight :
+FormalConjectures/ErdosProblems/23.lean:47:    ∃ (G : SimpleGraph (Fin 5)), G.CliqueFree 3 ∧ ∀ (H : SimpleGraph (Fin 5)),
+FormalConjectures/ErdosProblems/23.lean-48-        H ≤ G → H.IsBipartite → 1 ≤ (G.edgeFinset \ H.edgeFinset).card := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-49-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-73-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/23.lean-74-theorem erdos_23 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/23.lean-75-    ∀ (n : ℕ) (V : Type) [Fintype V], Fintype.card V = 5 * n →
+FormalConjectures/ErdosProblems/23.lean:76:      ∀ (G : SimpleGraph V), G.CliqueFree 3 →
+FormalConjectures/ErdosProblems/23.lean-77-        ∃ (H : SimpleGraph V),
+FormalConjectures/ErdosProblems/23.lean-78-          H ≤ G ∧ H.IsBipartite ∧ (G.edgeFinset \ H.edgeFinset).card ≤ n^2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-79-  sorry
+--
+FormalConjectures/ErdosProblems/128.lean-34-theorem erdos_128 :
+FormalConjectures/ErdosProblems/128.lean-35-    answer(sorry) ↔ (∀ V' : Set V,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/128.lean-36-      2 * V'.ncard + 1 ≥ Fintype.card V →
+FormalConjectures/ErdosProblems/128.lean:37:        50 * (G.induce V').edgeSet.ncard > Fintype.card V ^ 2) → ¬ G.CliqueFree 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/128.lean-38-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/128.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/128.lean-40-end Erdos128
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-35-vertices contains either a $k$-clique or an independent set of size $l$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-36-(equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1014.lean-37-noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1014.lean:38:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-40-/--
+FormalConjectures/ErdosProblems/1014.lean-41-Erdős Problem 1014 [Er71, p.99]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean-34-/-- $h_3(k)$ is the minimum number of vertices $n$ such that there exists a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean-35-triangle-free graph on $n$ vertices with chromatic number exactly $k$. -/
+FormalConjectures/ErdosProblems/1013.lean-36-noncomputable def h3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1013.lean:37:  sInf {n : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = (k : ℕ∞)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean-39-/--
+FormalConjectures/ErdosProblems/1013.lean-40-Erdős Problem 1013 [Er71]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean-54--/
+FormalConjectures/ErdosProblems/581.lean-55-noncomputable def f (m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/581.lean-56-  sInf {k : ℕ | ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
+FormalConjectures/ErdosProblems/581.lean:57:    G.CliqueFree 3 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean-58-    G.edgeSet.ncard = m ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean-59-    maxBipartiteEdges G = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-74-@[category research open, AMS 3 5]
+FormalConjectures/ErdosProblems/597.lean-75-theorem erdos_597 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/597.lean-76-    ∀ (V : Type*) (G : SimpleGraph V),
+FormalConjectures/ErdosProblems/597.lean:77:      #V ≤ aleph 1 → G.CliqueFree 4 → ¬ContainsBiclique G (aleph 0) →
+FormalConjectures/ErdosProblems/597.lean-78-      OrdGraphPartition ((aleph 1).ord ^ 2) ((aleph 1).ord * (aleph 0).ord) G := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-79-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-80-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-51-with chromatic number $\kappa$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-53-Here `HasChromaticNumber G κ` means $\kappa$ is the minimum cardinality of a color set
+FormalConjectures/ErdosProblems/1175.lean:54:admitting a proper coloring of $G$. Triangle-free means `G.CliqueFree 3` (no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-55-3-clique, i.e., no triangle). The subgraph relation $H \leq G$ holds when every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-56-edge of $H$ is also an edge of $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-57-
+--
+FormalConjectures/ErdosProblems/1175.lean-62-    ∀ κ : Cardinal.{0}, aleph 1 ≤ κ →
+FormalConjectures/ErdosProblems/1175.lean-63-    ∃ mu : Cardinal.{0},
+FormalConjectures/ErdosProblems/1175.lean-64-      ∀ (V : Type) (G : SimpleGraph V), HasChromaticNumber G mu →
+FormalConjectures/ErdosProblems/1175.lean:65:        ∃ H : SimpleGraph V, H ≤ G ∧ H.CliqueFree 3 ∧ HasChromaticNumber H κ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-66-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-67-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-68-end Erdos1175
+--
+FormalConjectures/ErdosProblems/802.lean-50-    ∀ (r : ℕ), r ≥ 3 →
+FormalConjectures/ErdosProblems/802.lean-51-    ∃ c : ℝ, c > 0 ∧
+FormalConjectures/ErdosProblems/802.lean-52-    ∀ (n : ℕ) (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
+FormalConjectures/ErdosProblems/802.lean:53:    G.CliqueFree r →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/802.lean-54-    avgDegree G ≥ 2 →
+FormalConjectures/ErdosProblems/802.lean-55-    ∃ S : Finset (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/802.lean-56-      (∀ u ∈ S, ∀ v ∈ S, u ≠ v → ¬G.Adj u v) ∧
+--
+FormalConjectures/ErdosProblems/778.lean-59-/-- The clique number of a simple graph on $\operatorname{Fin} n$: the size of the largest
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/778.lean-60-    clique. -/
+FormalConjectures/ErdosProblems/778.lean-61-noncomputable def cliqueNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/778.lean:62:  sSup {k : ℕ | ¬G.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/778.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/778.lean-64-/--
+FormalConjectures/ErdosProblems/778.lean-65-Erdős Problem 778, Part 1 [Gu83]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean-39-exists (the set is empty and `sInf` defaults to $0$). -/
+FormalConjectures/ErdosProblems/619.lean-40-noncomputable def triangleFreeDiamCompletion {n : ℕ} (r : ℕ) (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/619.lean-41-  sInf {k : ℕ | ∃ H : SimpleGraph (Fin n), G ≤ H ∧
+FormalConjectures/ErdosProblems/619.lean:42:    H.CliqueFree 3 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean-43-    H.Connected ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean-44-    H.diam ≤ r ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean-45-    (H.edgeFinset \ G.edgeFinset).card = k}
+--
+FormalConjectures/ErdosProblems/619.lean-58-theorem erdos_619 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/619.lean-59-    ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/619.lean-60-    ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/619.lean:61:      G.CliqueFree 3 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean-62-      G.Connected →
+FormalConjectures/ErdosProblems/619.lean-63-      (triangleFreeDiamCompletion 4 G : ℝ) < (1 - c) * (n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean-64-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean-35-diameter at most $2$ and remains triangle-free. -/
+FormalConjectures/ErdosProblems/618.lean-36-noncomputable def triangleFreeDiam2Completion {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/618.lean-37-  sInf {k : ℕ | ∃ H : SimpleGraph (Fin n), G ≤ H ∧
+FormalConjectures/ErdosProblems/618.lean:38:    H.CliqueFree 3 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean-39-    H.Connected ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean-40-    H.diam ≤ 2 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean-41-    (H.edgeFinset \ G.edgeFinset).card = k}
+--
+FormalConjectures/ErdosProblems/618.lean-58-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/618.lean-59-    ∃ δ : ℝ, δ > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/618.lean-60-    ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/618.lean:61:      G.CliqueFree 3 →
+FormalConjectures/ErdosProblems/618.lean-62-      (∀ v : Fin n, (G.degree v : ℝ) ≤ δ * (n : ℝ) ^ ((1 : ℝ) / 2)) →
+FormalConjectures/ErdosProblems/618.lean-63-      (triangleFreeDiam2Completion G : ℝ) ≤ ε * (n : ℝ) ^ 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean-64-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean-46-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/595.lean-47-theorem erdos_595 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/595.lean-48-    ∃ (V : Type) (_ : Infinite V) (G : SimpleGraph V),
+FormalConjectures/ErdosProblems/595.lean:49:      G.CliqueFree 4 ∧
+FormalConjectures/ErdosProblems/595.lean-50-        ¬∃ (H : ℕ → SimpleGraph V),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean-51-          (∀ i, H i ≤ G) ∧
+FormalConjectures/ErdosProblems/595.lean:52:          (∀ i, (H i).CliqueFree 3) ∧
+FormalConjectures/ErdosProblems/595.lean-53-          (∀ u v, G.Adj u v → ∃ i, (H i).Adj u v) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean-54-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean-55-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-43-
+FormalConjectures/ErdosProblems/627.lean-44-/-- The clique number of a simple graph on `Fin n`: the maximum size of a clique. -/
+FormalConjectures/ErdosProblems/627.lean-45-noncomputable def cliqueNumber627 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/627.lean:46:  sSup {k : ℕ | ¬G.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-48-/-- $f_{627}(n)$ is the maximum of $\chi(G)/\omega(G)$ over all simple graphs $G$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-49-on $n$ vertices. -/
+--
+FormalConjectures/ErdosProblems/924.lean-44-theorem erdos_924 : answer(True) ↔
+FormalConjectures/ErdosProblems/924.lean-45-    ∀ (k : ℕ) (l : ℕ), k ≥ 2 → l ≥ 3 →
+FormalConjectures/ErdosProblems/924.lean-46-      ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
+FormalConjectures/ErdosProblems/924.lean:47:        G.CliqueFree (l + 1) ∧
+FormalConjectures/ErdosProblems/924.lean-48-          ∀ (c : Fin n → Fin n → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/924.lean-49-            (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/924.lean-50-            ∃ (a : Fin k) (S : Finset (Fin n)),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/134.lean-60-    answer(True) ↔
+FormalConjectures/ErdosProblems/134.lean-61-    ∀ ε δ : ℝ, 0 < ε → 0 < δ → ∀ᶠ n : ℕ in atTop,
+FormalConjectures/ErdosProblems/134.lean-62-      ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/134.lean:63:        G.CliqueFree 3 →
+FormalConjectures/ErdosProblems/134.lean-64-        (∀ v : Fin n, (G.degree v : ℝ) < (n : ℝ) ^ ((1 : ℝ) / 2 - ε)) →
+FormalConjectures/ErdosProblems/134.lean-65-        ∃ H : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/134.lean:66:          G ≤ H ∧ H.CliqueFree 3 ∧ HasDiameterAtMostTwo H ∧
+FormalConjectures/ErdosProblems/134.lean-67-          (H.edgeFinset.card : ℝ) - (G.edgeFinset.card : ℝ) ≤ δ * (n : ℝ) ^ 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/134.lean-68-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/134.lean-69-
+--
+FormalConjectures/ErdosProblems/134.lean-79-theorem erdos_134.variants.alon_strong_form :
+FormalConjectures/ErdosProblems/134.lean-80-    ∀ ε : ℝ, 0 < ε → ∃ C : ℝ, 0 < C ∧ ∀ᶠ n : ℕ in atTop,
+FormalConjectures/ErdosProblems/134.lean-81-      ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/134.lean:82:        G.CliqueFree 3 →
+FormalConjectures/ErdosProblems/134.lean-83-        (∀ v : Fin n, (G.degree v : ℝ) < (n : ℝ) ^ ((1 : ℝ) / 2 - ε)) →
+FormalConjectures/ErdosProblems/134.lean-84-        ∃ H : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/134.lean:85:          G ≤ H ∧ H.CliqueFree 3 ∧ HasDiameterAtMostTwo H ∧
+FormalConjectures/ErdosProblems/134.lean-86-          (H.edgeFinset.card : ℝ) - (G.edgeFinset.card : ℝ) ≤ C * (n : ℝ) ^ (2 - ε) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/134.lean-87-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/134.lean-88-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1091.lean-60--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1091.lean-61-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/1091.lean-62-theorem erdos_1091 (n : ℕ) (G : SimpleGraph (Fin n))
+FormalConjectures/ErdosProblems/1091.lean:63:    (hK4 : G.CliqueFree 4) (hχ : G.chromaticNumber = (4 : ℕ∞)) :
+FormalConjectures/ErdosProblems/1091.lean-64-    HasOddCycleWithDiagonals G 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1091.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1091.lean-66-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-58-on $N$ vertices contains either a triangle ($3$-clique) or an independent
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-59-set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/165.lean-60-noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/165.lean:61:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-63-/--
+FormalConjectures/ErdosProblems/165.lean-64-Erdős Conjecture (Problem 165) [Er61, Er71, Er90b, Er93, Er97c]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean-43-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/738.lean-44-theorem erdos_738 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/738.lean-45-    ∀ (V : Type*) (G : SimpleGraph V),
+FormalConjectures/ErdosProblems/738.lean:46:    HasInfiniteChromaticNumber G → G.CliqueFree 3 →
+FormalConjectures/ErdosProblems/738.lean-47-    ∀ (m : ℕ) (T : SimpleGraph (Fin m)), T.IsTree →
+FormalConjectures/ErdosProblems/738.lean-48-      Nonempty (T ↪g G) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean-49-  sorry
+--
+FormalConjectures/ErdosProblems/533.lean-48-        ∃ N : ℕ,
+FormalConjectures/ErdosProblems/533.lean-49-          ∀ n : ℕ, N ≤ n →
+FormalConjectures/ErdosProblems/533.lean-50-            ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/533.lean:51:              G.CliqueFree 5 →
+FormalConjectures/ErdosProblems/533.lean-52-              δ * (n : ℝ) ^ 2 ≤ (G.edgeSet.ncard : ℝ) →
+FormalConjectures/ErdosProblems/533.lean-53-                ∃ S : Finset (Fin n),
+FormalConjectures/ErdosProblems/533.lean-54-                  c * (n : ℝ) ≤ (S.card : ℝ) ∧
+FormalConjectures/ErdosProblems/533.lean:55:                  (G.induce (S : Set (Fin n))).CliqueFree 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/533.lean-56-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/533.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/533.lean-58-end Erdos533
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-36-
+FormalConjectures/ErdosProblems/719.lean-37-/-- An $r$-uniform hypergraph is $K_{r+1}^r$-free: no $(r+1)$-element vertex set has
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-38-all its $r$-element subsets as edges. -/
+FormalConjectures/ErdosProblems/719.lean:39:def IsHypergraphCliqueFree (r : ℕ) {n : ℕ} (H : Finset (Finset (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/719.lean-40-  ¬∃ S : Finset (Fin n), S.card = r + 1 ∧ Finset.powersetCard r S ⊆ H
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-41-
+FormalConjectures/ErdosProblems/719.lean-42-/-- The Turán number $\mathrm{ex}_r(n; K_{r+1}^r)$: the maximum number of edges in an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-43-$r$-uniform $K_{r+1}^r$-free hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/719.lean-44-noncomputable def turanHypergraphNumber (n r : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/719.lean-45-  sSup {k : ℕ | ∃ H : Finset (Finset (Fin n)),
+FormalConjectures/ErdosProblems/719.lean:46:    IsRUniformHypergraph n r H ∧ H.card = k ∧ IsHypergraphCliqueFree r H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-47-
+FormalConjectures/ErdosProblems/719.lean-48-/-- The edges of a decomposition piece: if $S$ has $r$ elements (a $K_r^r$ copy),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-49-it contributes the single edge $\{S\}$; if $S$ has $r+1$ elements (a $K_{r+1}^r$ copy),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/920.lean-38-which contains no $K_k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/920.lean-39--/
+FormalConjectures/ErdosProblems/920.lean-40-noncomputable def f (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/920.lean:41:  sSup {(G.chromaticNumber) | (G : SimpleGraph (Fin n)) (_ : G.CliqueFree k)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/920.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/920.lean-43-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/920.lean-44-Is it true that, for $k\geq 4$, $f_k(n) \gg \frac{n^{1-\frac{1}{k-1}}}{(\log n)^{c_k}}$ for some
+--
+FormalConjectures/ErdosProblems/78.lean-56-    ∃ C : ℝ, C > 1 ∧ ∀ k : ℕ, k ≥ 2 →
+FormalConjectures/ErdosProblems/78.lean-57-      ∃ n : ℕ, (C ^ k : ℝ) ≤ ↑n ∧
+FormalConjectures/ErdosProblems/78.lean-58-        ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/78.lean:59:          G.CliqueFree k ∧ Gᶜ.CliqueFree k := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-60-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-62-end Erdos78
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-42-simple graph on $N$ vertices contains either an $n$-clique or an independent
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-43-set of size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/812.lean-44-noncomputable def diagonalRamsey (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/812.lean:45:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree n ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-47-/--
+FormalConjectures/ErdosProblems/812.lean-48-**Erdős Problem 812, Part 1** [Er91]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-64-an independent set of size $H(n)$; equivalently, $H(n)$ is the minimum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-65-independence number over all triangle-free graphs on $n$ vertices. -/
+FormalConjectures/ErdosProblems/151.lean-66-noncomputable def H (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/151.lean:67:  sInf { k : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ independenceNumber G = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-68-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-69-/--
+FormalConjectures/ErdosProblems/151.lean-70-Erdős Problem 151 [Er88, p.82] [EGT92, p.280] (problem of Erdős and Gallai):
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-58-on $N$ vertices contains either a $k$-clique or an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-59-size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/986.lean-60-noncomputable def ramseyR (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/986.lean:61:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-63-/--
+FormalConjectures/ErdosProblems/986.lean-64-Erdős Conjecture (Problem #986) [Er90b]:
+--
+FormalConjectures/ErdosProblems/762.lean-69-theorem erdos_762 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-70-    answer(False) ↔
+FormalConjectures/ErdosProblems/762.lean-71-      ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
+FormalConjectures/ErdosProblems/762.lean:72:        G.CliqueFree 5 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-73-          cochromaticNumber G ≥ 4 →
+FormalConjectures/ErdosProblems/762.lean-74-            G.chromaticNumber ≤ cochromaticNumber G + 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-75-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1111.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1111.lean-51-Two disjoint vertex sets $A$, $B$ are anticomplete if there are no edges between them.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1111.lean-52-$\chi$ denotes the chromatic number and $\omega$ the clique number. The condition
+FormalConjectures/ErdosProblems/1111.lean:53:$\omega(G) < t$ is expressed as `G.CliqueFree t` (no clique of size $t$ exists).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1111.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1111.lean-55-El Zahar and Erdős show it suffices to consider $t \leq c$. Let $d(t,c)$ be the minimal
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1111.lean-56-such $d$. Known bounds include $d(t,2) \leq \binom{t}{2}+1$ (via Wagon [Wa80b]) and
+--
+FormalConjectures/ErdosProblems/1111.lean-61-    ∃ d : ℕ, 1 ≤ d ∧
+FormalConjectures/ErdosProblems/1111.lean-62-      ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
+FormalConjectures/ErdosProblems/1111.lean-63-        (d : ℕ∞) ≤ G.chromaticNumber →
+FormalConjectures/ErdosProblems/1111.lean:64:        G.CliqueFree t →
+FormalConjectures/ErdosProblems/1111.lean-65-        ∃ (A B : Set (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1111.lean-66-          Anticomplete G A B ∧
+FormalConjectures/ErdosProblems/1111.lean-67-          (c : ℕ∞) ≤ (G.induce A).chromaticNumber ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/628.lean-40-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/628.lean-41-theorem erdos_628 {V : Type*} (G : SimpleGraph V)
+FormalConjectures/ErdosProblems/628.lean-42-    (k : ℕ) (hk : G.chromaticNumber = k)
+FormalConjectures/ErdosProblems/628.lean:43:    (hclique : G.CliqueFree k)
+FormalConjectures/ErdosProblems/628.lean-44-    (a b : ℕ) (ha : a ≥ 2) (hb : b ≥ 2) (hab : a + b = k + 1) :
+FormalConjectures/ErdosProblems/628.lean-45-    ∃ (S T : Set V), Disjoint S T ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/628.lean-46-      (G.induce S).chromaticNumber ≥ a ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-67-      T.card ≤ k) →
+FormalConjectures/ErdosProblems/167.lean-68-    ∃ (H : SimpleGraph V),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-69-      H ≤ G ∧
+FormalConjectures/ErdosProblems/167.lean:70:      H.CliqueFree 3 ∧
+FormalConjectures/ErdosProblems/167.lean-71-      (G.edgeSet \ H.edgeSet).ncard ≤ 2 * k := by sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/167.lean-73-end Erdos167
+--
+FormalConjectures/ErdosProblems/1031.lean-49-    ∃ c : ℝ, c > 0 ∧
+FormalConjectures/ErdosProblems/1031.lean-50-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/1031.lean-51-    ∀ G : SimpleGraph (Fin n), ∀ _ : DecidableRel G.Adj,
+FormalConjectures/ErdosProblems/1031.lean:52:      G.CliqueFree ⌈10 * Real.log (↑n)⌉₊ →
+FormalConjectures/ErdosProblems/1031.lean:53:      Gᶜ.CliqueFree ⌈10 * Real.log (↑n)⌉₊ →
+FormalConjectures/ErdosProblems/1031.lean-54-      ∃ S : Finset (Fin n),
+FormalConjectures/ErdosProblems/1031.lean-55-        (S.card : ℝ) ≥ c * Real.log (↑n) ∧
+FormalConjectures/ErdosProblems/1031.lean-56-        ∃ d : ℕ, d ≥ 1 ∧ d + 1 < S.card ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-67-    $\geq \ell$. Returns $0$ if no such graph exists. -/
+FormalConjectures/ErdosProblems/615.lean-68-noncomputable def ramseyTuranNumber (n k ℓ : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/615.lean-69-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/615.lean:70:    G.edgeFinset.card = m ∧ G.CliqueFree k ∧
+FormalConjectures/ErdosProblems/615.lean-71-    ∀ S : Finset (Fin n), IsIndependentSet G S → S.card < ℓ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-73-/--
+--
+FormalConjectures/ErdosProblems/615.lean-84-    ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/615.lean-85-      ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/615.lean-86-        (G.edgeFinset.card : ℝ) ≥ (1 / 8 - c) * (n : ℝ) ^ 2 →
+FormalConjectures/ErdosProblems/615.lean:87:        (¬G.CliqueFree 4) ∨
+FormalConjectures/ErdosProblems/615.lean-88-        ∃ S : Finset (Fin n), (S.card : ℝ) ≥ (n : ℝ) / Real.log (n : ℝ) ∧
+FormalConjectures/ErdosProblems/615.lean-89-          IsIndependentSet G S := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-90-  sorry
+--
+FormalConjectures/ErdosProblems/615.lean-99-theorem erdos_615.variants.EHSS (ε : ℝ) (hε : ε > 0) :
+FormalConjectures/ErdosProblems/615.lean-100-    ∀ δ : ℝ, δ > 0 → ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/615.lean-101-      ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/615.lean:102:        G.CliqueFree 4 →
+FormalConjectures/ErdosProblems/615.lean-103-        (∀ S : Finset (Fin n), IsIndependentSet G S → (S.card : ℝ) < ε * (n : ℝ)) →
+FormalConjectures/ErdosProblems/615.lean-104-        (G.edgeFinset.card : ℝ) ≤ (1 / 8 + δ) * (n : ℝ) ^ 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-105-  sorry
+--
+FormalConjectures/ErdosProblems/88.lean-54-      ∃ δ : ℝ, δ > 0 ∧
+FormalConjectures/ErdosProblems/88.lean-55-        ∀ (n : ℕ) (G : SimpleGraph (Fin n)) (h : DecidableRel G.Adj),
+FormalConjectures/ErdosProblems/88.lean-56-          haveI := h
+FormalConjectures/ErdosProblems/88.lean:57:          G.CliqueFree ⌈ε * Real.log n⌉₊ →
+FormalConjectures/ErdosProblems/88.lean:58:          Gᶜ.CliqueFree ⌈ε * Real.log n⌉₊ →
+FormalConjectures/ErdosProblems/88.lean-59-          ∀ m : ℕ, (m : ℝ) ≤ δ * (n : ℝ) ^ 2 →
+FormalConjectures/ErdosProblems/88.lean-60-            ∃ S : Finset (Fin n), inducedEdgeCount G S = m := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/88.lean-61-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1104.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1104.lean-29-/-- Maximum chromatic number of a triangle-free graph on `n` vertices. -/
+FormalConjectures/ErdosProblems/1104.lean-30-noncomputable def triangleFreeMaxChromatic (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1104.lean:31:  sSup {χ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = χ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1104.lean-32-
+FormalConjectures/ErdosProblems/1104.lean-33--- TODO: Add erdos_1104.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1104.lean-34-
+--
+FormalConjectures/ErdosProblems/620.lean-64-theorem erdos_620 :
+FormalConjectures/ErdosProblems/620.lean-65-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/620.lean-66-    ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+FormalConjectures/ErdosProblems/620.lean:67:    ∀ (G : SimpleGraph (Fin n)), G.CliqueFree 4 →
+FormalConjectures/ErdosProblems/620.lean-68-    ∃ (S : Finset (Fin n)),
+FormalConjectures/ErdosProblems/620.lean:69:      (G.induce (↑S : Set (Fin n))).CliqueFree 3 ∧
+FormalConjectures/ErdosProblems/620.lean-70-      (S.card : ℝ) ≥ (n : ℝ) ^ ((1 : ℝ) / 2 - ε) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/620.lean-71-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/620.lean-72-
+--
+FormalConjectures/ErdosProblems/620.lean-83-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/620.lean-84-    ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+FormalConjectures/ErdosProblems/620.lean-85-    ∃ (G : SimpleGraph (Fin n)),
+FormalConjectures/ErdosProblems/620.lean:86:      G.CliqueFree 4 ∧
+FormalConjectures/ErdosProblems/620.lean-87-      ∀ (S : Finset (Fin n)),
+FormalConjectures/ErdosProblems/620.lean:88:        (G.induce (↑S : Set (Fin n))).CliqueFree 3 →
+FormalConjectures/ErdosProblems/620.lean-89-        (S.card : ℝ) ≤ (n : ℝ) ^ ((1 : ℝ) / 2 + ε) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/620.lean-90-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/620.lean-91-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/582.lean-46-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/582.lean-47-theorem erdos_582 : answer(True) ↔
+FormalConjectures/ErdosProblems/582.lean-48-    ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
+FormalConjectures/ErdosProblems/582.lean:49:      G.CliqueFree 4 ∧
+FormalConjectures/ErdosProblems/582.lean-50-        ∀ (H : SimpleGraph (Fin n)), H ≤ G →
+FormalConjectures/ErdosProblems/582.lean:51:          ¬H.CliqueFree 3 ∨ ¬(G \ H).CliqueFree 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/582.lean-52-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/582.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/582.lean-54-end Erdos582
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-53-on $N$ vertices contains either a $4$-clique or an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-54-size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/166.lean-55-noncomputable def ramseyR4 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/166.lean:56:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-58-/--
+FormalConjectures/ErdosProblems/166.lean-59-Erdős Problem 166 [Er90b, Er91, Er93, Er97c]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-39-on $N$ vertices contains either a triangle ($3$-clique) or an independent
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-40-set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/544.lean-41-noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/544.lean:42:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-44-/--
+FormalConjectures/ErdosProblems/544.lean-45-Erdős Problem 544 (Part 1) [Er81c][Er93, p. 339]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-48-2-colouring of its edges with no monochromatic triangle. Equivalently,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-49-there is a subgraph $H \leq G$ such that both $H$ and $G \setminus H$ are triangle-free. -/
+FormalConjectures/ErdosProblems/925.lean-50-def IsNotRamseyForTriangle {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/925.lean:51:  ∃ H : SimpleGraph (Fin n), H ≤ G ∧ H.CliqueFree 3 ∧ (G \ H).CliqueFree 3
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-53-/--
+FormalConjectures/ErdosProblems/925.lean-54-Erdős Problem 925 [Er69b] (DISPROVED by Alon-Rödl [AlRo05]):

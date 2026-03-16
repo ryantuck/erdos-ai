@@ -1,0 +1,345 @@
+FormalConjectures/GreensOpenProblems/85.lean:29:- [Mu02] Mubayi, Dhruv. "Some exact results and new asymptotics for hypergraph Turán numbers." Combinatorics, Probability and Computing 11.3 (2002): 299-309 Conjecture 1.4.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:23:This file defines the `r`-uniform hypergraph Ramsey number `R_r(n)`.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:29:The `r`-uniform hypergraph Ramsey number `R_r(n)`.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:33:noncomputable def hypergraphRamsey (r n : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:38:/-- `n ≤ hypergraphRamsey r n` when the set is nonempty. -/
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:39:theorem le_hypergraphRamsey (r n : ℕ) (hne : { m | ∀ (c : Finset (Fin m) → Bool),
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:42:    n ≤ hypergraphRamsey r n := by
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:51:/-- `hypergraphRamsey r r = r` for any `r`. -/
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:52:theorem hypergraphRamsey_self (r : ℕ) : hypergraphRamsey r r = r := by
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:62:  exact le_antisymm (Nat.sInf_le h_mem) (le_hypergraphRamsey r r ⟨r, h_mem⟩)
+ai-review/553.md:16:Additionally, `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey r n` for uniform hypergraph Ramsey numbers with 2-coloring. For `r = 2`, `hypergraphRamsey 2 n` is the diagonal Ramsey number `R(n, n)`, which is not directly what's needed here (the off-diagonal `R(3, n)`), but the general approach of defining Ramsey numbers via `sInf` is consistent.
+ai-review/544.md:16:All three files independently define R(3,k) with identical logic. These should be unified into a shared definition — either in `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` (which already exists but defines hypergraph Ramsey numbers) or a new shared Ramsey utility module — and imported by all three problems.
+ai-review/565.md:9:- **`hypergraphRamsey`** (FormalConjecturesForMathlib/Combinatorics/Ramsey.lean): The uniform hypergraph Ramsey number. A different concept entirely.
+ai-review/181.md:38:Note: `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` for hypergraph Ramsey numbers, which is not directly applicable here (Problem 181 concerns graph Ramsey numbers, not hypergraph Ramsey numbers).
+ai-review/558.md:7:The existing `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` (the 2-color uniform hypergraph Ramsey number), which is a different concept. The existing `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` defines the size Ramsey number, also different. Neither is directly reusable for this problem.
+ai-review/616.md:7:- **`ErdosProblems/834.lean`** defines a general `Hypergraph (V : Type*)` with `IsUniform`, `IsTransversal`, `degree`, `vertices`, `eraseEdge`, and `eraseVertex`. This is the most general and reusable hypergraph structure in the codebase.
+ai-review/616.md:9:- **`ErdosProblems/1024.lean`**, **`1076.lean`**, **`716.lean`** define `Fin n`-based hypergraph structures similar to 616.lean's approach.
+ai-review/616.md:11:There is no shared hypergraph library in `FormalConjectures/Util/` or `FormalConjecturesForMathlib/`. Each problem file rolls its own definitions. While 834.lean's `Hypergraph` structure is more general (type-polymorphic rather than `Fin n`-indexed), the current approach of local definitions within namespaces is the established pattern in this codebase. No immediate refactoring is needed, but a shared hypergraph module could reduce duplication across ~10 files.
+ai-review/616.md:42:- Logical ordering: structure → transversal → covering number → induced subhypergraph → local property → theorems.
+ai-review/616.md:47:- The `coveringNumber` definition uses `sInf` over `{k : ℕ | ∃ S, S.card = k ∧ IsTransversal G S}`. This is mathematically clean but note that `sInf ∅ = 0` for `ℕ`, so if a hypergraph has no transversal (impossible for finite hypergraphs on `Fin n`, but worth noting), the covering number would silently be 0. This is fine in practice since `Fin n` is finite and the empty set is trivially a transversal of a hypergraph with no edges.
+ai-review/616.md:55:- "r-uniform hypergraph" — well-defined ✅
+ai-review/616.md:61:- **(a)** The induced subhypergraph on a vertex set $W$ with $|W| \leq 3r-3$ (edges of $G$ contained in $W$) — this is what the formalization implements.
+ai-review/616.md:62:- **(b)** Any subhypergraph whose vertex set has size $\leq 3r-3$.
+ai-review/616.md:76:The upper bound theorem states: for all $r \geq 3$, for all $r$-uniform hypergraphs $G$ with the local covering property, $\tau(G) \leq \frac{1}{5}r$. This matches the result of [EHT91]. ✅
+ai-review/616.md:79:The lower bound states: for all $r \geq 3$, there exists a hypergraph $G$ with the local covering property and $\tau(G) \geq \frac{3}{16}r + \frac{7}{8}$. This matches [EHT91]. ✅
+ai-review/616.md:85:The structure fixes the vertex set to `Fin n` for a specific `n`. This means the lower bound existentially quantifies over `n` (the number of vertices), which is correct — one must exhibit a concrete hypergraph. The upper bound universally quantifies over `n`, which is also correct. ✅
+ai-review/616.md:88:For a hypergraph with no edges, every set (including ∅) is a transversal, so the infimum set contains 0, and `coveringNumber = 0`. This is the standard convention. ✅
+ai-review/83.md:9:- **Problem 836** (`ErdosProblems/836.lean`): Defines `Hypergraph.IsIntersecting` and `Hypergraph.IsUniform` for hypergraphs.
+ai-review/184.md:116:**No ambiguity in the statement.** Unlike some Erdős problems where "graph" might mean multigraph or hypergraph, the context (edge-disjoint cycle decomposition of simple graphs) is completely standard. The terms "cycle" and "edge" are unambiguous in graph theory. The asymptotic "O(n)" bound is captured precisely by the existential constant C.
+ai-review/716.md:7:- `UniformHypergraph r n` — an r-uniform hypergraph on n vertices (generalizes `Hypergraph3`)
+ai-review/716.md:20:Problem 794 also defines `ContainsSubhypergraph` using the same `(H.filter (· ⊆ S)).card` pattern, further confirming this is a recurring idiom that could be centralized.
+ai-review/716.md:52:- **Docstring on `isFree`**: The comment says "every 6-element subset of vertices contains at most 2 edges." This is correct and clear, but could explicitly note the equivalence: "Equivalently, H contains no member of F as a subhypergraph."
+ai-review/716.md:59:The statement "ex₃(n, F) = o(n²)" is a standard asymptotic claim that translates directly into the ε-N₀ formulation used. The family F (all 3-uniform hypergraphs on 6 vertices with 3 edges) is a well-defined finite combinatorial object. The notion of F-freeness (no 6-vertex subset spans 3+ edges) is a clean finitary condition.
+ai-review/716.md:69:1. **F-freeness equivalence**: The formalization defines F-free as "every 6-element vertex subset spans at most 2 edges." This is equivalent to the standard definition "H contains no subhypergraph isomorphic to any F ∈ F" (where F is the family of 3-uniform hypergraphs on 6 vertices with 3 edges).
+ai-review/716.md:73:2. **o(n²) formulation**: The theorem states: for all ε > 0, there exists N₀ such that for all n ≥ N₀, every F-free 3-uniform hypergraph on n vertices has ≤ εn² edges. This is the standard definition of ex₃(n, F) = o(n²), correctly formalized without needing to explicitly define the extremal number.
+ai-review/716.md:77:4. **Edge representation**: Edges as `Finset (Finset (Fin n))` correctly models simple 3-uniform hypergraphs (no repeated edges, edges are unordered). The `uniform` field ensures all edges have cardinality 3.
+ai-review/775.md:7:[Omitted long matching line]
+ai-review/775.md:11:- **Multiple other files** (616, 832, 833, 834, 836, 837, 1024, 1075, 1076, 1157) define their own hypergraph structures. There is no shared hypergraph library in `FormalConjecturesForMathlib/`. A shared `UniformHypergraph` definition with clique/completeness notions would significantly reduce duplication across the codebase.
+ai-review/775.md:13:- The `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` file imports Mathlib's `SimpleGraph.Clique` but this is for ordinary graphs, not hypergraphs, so it is not directly applicable.
+ai-review/775.md:24:| [Ga25] | Gao's disproof for hypergraphs |
+ai-review/775.md:28:- Erdos constructed a 3-uniform hypergraph with cliques of at least $n - \log^* n$ different sizes.
+ai-review/775.md:36:The docstring describes the general result for $k \geq 3$: every $k$-uniform hypergraph on $n$ vertices has at most $n - f_k(n)$ distinct clique sizes where $f_k(n) \to \infty$. **This general statement is not formalized as a separate theorem.** It should be added as a variant, e.g.:
+ai-review/775.md:40:distinct clique sizes in any k-uniform hypergraph on n vertices is at most
+ai-review/775.md:62:- A `See also [927]` cross-reference would help readers navigate between the graph and hypergraph versions.
+ai-review/775.md:68:The problem asks whether a constant $C$ exists such that for all $n$, a 3-uniform hypergraph on $n$ vertices achieves at least $n - C$ distinct maximal clique sizes. The concepts involved (k-uniform hypergraph, complete subhypergraph, maximal clique, cardinality) are all standard and admit precise definitions. The "n - O(1)" phrasing is the only potential source of ambiguity, and it is correctly rendered as $\exists C, \forall n, \ldots \geq n - C$.
+ai-review/775.md:80:- **Uniformity**: The condition `∀ e ∈ H, e.card = 3` correctly constrains $H$ to be a 3-uniform hypergraph (all edges have exactly 3 vertices). Note this does not require $H$ to contain *all* 3-element subsets — it's a set of 3-element edges, which is the correct definition.
+ai-review/775.md:82:- **Completeness definition**: `IsCompleteInHypergraph H k S` requires every $k$-element subset of $S$ to be in $H$. This is the standard notion of a complete sub-hypergraph.
+ai-review/775.md:84:- **Clique (maximality)**: `IsHypergraphClique H k S` requires $S$ to be complete and no strict superset to be complete. This is the correct definition of a maximal complete sub-hypergraph, matching the problem's "cliques (maximal complete subgraphs)".
+ai-review/775.md:86:- **Small cliques**: Sets of size $< k$ (e.g., singletons or pairs for $k = 3$) are vacuously complete. They are cliques iff no superset is complete. This is mathematically valid — in the hypergraph literature, maximal cliques can have size less than $k$. The problem statement does not restrict clique sizes, so this is correct.
+ai-review/556.md:7:These should be factored into a shared utility file under `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/` — neither `cycleGraph` nor `multicolorRamseyNumber` currently exists there. The `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` file defines `hypergraphRamsey` (for uniform hypergraph Ramsey numbers with 2-coloring of r-subsets), which is a different concept from the graph Ramsey number `multicolorRamseyNumber` used here.
+ai-review/167.md:40:The website does not mention any additional variants (e.g., fractional relaxations, weighted versions, or hypergraph generalizations). The known partial results (trivial 3k bound, Haxell's improvement, Kahn–Park for random graphs) are mentioned in the docstring commentary but are not separately formalized, which is appropriate since they are partial results rather than distinct conjectures.
+ai-review/555.md:10:[Omitted long matching line]
+ai-review/713.md:25:- **Hypergraph counterexample:** Frankl and Füredi (1987) showed the analogous statement fails for hypergraphs. Füredi and Gerbner (2021) extended these counterexamples. These are not mentioned.
+ai-review/713.md:28:**Recommendation:** Add a brief note about the historical context (the disproved 1967 conjecture) and the known hypergraph counterexamples to provide fuller context.
+ai-review/713.md:93:| Citations | **Minor gaps** — historical context and hypergraph counterexamples from website not mentioned |
+ai-review/166.md:22:**Recommendation:** Extract a shared `ramseyR` definition into `FormalConjecturesForMathlib/Combinatorics/` (alongside the existing `Ramsey.lean` which defines the hypergraph variant). All of Problems 165, 166, 986, 1014, and 1030 could then import and use this shared definition. A bridging lemma `hypergraphRamsey 2 n = ramseyR n n` connecting the existing `hypergraphRamsey` to the graph Ramsey number would further unify the codebase.
+ai-review/568.md:9:- **`ramseyNum` vs existing Ramsey infrastructure**: `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` for uniform hypergraphs, but the graph Ramsey number (2-uniform case) is not directly provided. The local `ramseyNum` is reasonable as a standalone definition, though it could potentially be related to `hypergraphRamsey 2` with appropriate encoding.
+ai-review/174.md:9:- **Coloring patterns:** `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` for combinatorial Ramsey numbers, and `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean` has coloring infrastructure. These are for graph/hypergraph Ramsey theory rather than Euclidean Ramsey theory, so direct reuse is limited, but the coloring-as-function-to-`Fin k` pattern is shared.
+ai-review/183.md:19:**Additionally**, `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey r n` for 2-colorings of r-uniform hypergraphs. While this is the 2-color case and uses a different representation (coloring hyperedges rather than graph edges), it shows the project has infrastructure for Ramsey numbers.
+ai-review/714.md:26:The website also lists related problems **#147**, **#768** (K_{2,2} = C₄), and **#1158** (hypergraph generalization). The formalization does not mention these. It would be helpful to note them in the module docstring, as 713 does with problem 571.
+ai-review/570.md:20:- `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` — defines `hypergraphRamsey` (hypergraph-level, not directly usable here)
+ai-review/551.md:16:The `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` file defines `hypergraphRamsey` (r-uniform hypergraph Ramsey numbers), which is a different concept and not directly reusable here.
+ai-review/474.md:23:- **[Er95d, p.64]** — Erdős, *Problems and results on graphs and hypergraphs: similarities and differences* (1995). ✅ Cited in the docstring.
+ai-review/712.md:35:The website describes a single problem: determine the Turán density for the complete r-uniform hypergraph K_k^r, for all k > r > 2. The formalization captures this fully via the universal quantification `∀ k r : ℕ, 2 < r → r < k → ...`.
+ai-review/712.md:54:- The docstring for `IsKkrFree` could note that the first condition enforces r-uniformity and the second enforces K_k^r-freeness, to help readers unfamiliar with hypergraph Turán theory.
+ai-review/712.md:67:This bundling is appropriate. The problem as stated on the website is precise and unambiguous: the definitions of r-uniform hypergraph, complete r-uniform hypergraph K_k^r, and the extremal number ex_r(n, K_k^r) are completely standard in extremal combinatorics.
+ai-review/712.md:80:- Second conjunct: correctly states that no k-vertex set has all C(k, r) of its r-element subsets present in H. This is the standard definition of K_k^r-freeness for r-uniform hypergraphs. ✓
+ai-review/712.md:88:- Takes the supremum over cardinalities of K_k^r-free r-uniform hypergraphs on Fin n. ✓
+ai-review/712.md:89:- The set is nonempty: the empty hypergraph satisfies `IsKkrFree r k ∅` (vacuously r-uniform, and no r-subset of any k-set is in ∅), giving m = 0. ✓
+ai-review/712.md:94:- If k > n: no k-element subset of Fin n exists, so the K_k^r-freeness condition is vacuous. Then `exrKkr r k n = C(n, r)`. This is mathematically correct (every r-uniform hypergraph is vacuously K_k^r-free when k > n).
+ai-review/712.md:95:- If r > n: no r-element subset of Fin n exists, so only the empty hypergraph is r-uniform. Then `exrKkr r k n = 0`. Correct.
+ai-review/712.md:107:- The existence of the Turán density (i.e., that this limit exists) is known for all r-uniform forbidden hypergraphs by Katona–Nemetz–Simonovits averaging arguments. So the `∃ L, Tendsto ...` part is a known result, while the `L = answer(sorry)` part captures the open determination. ✓
+ai-review/712.md:116:**Overall correctness: Sound.** No mathematical errors identified. The formalization faithfully captures Erdős Problem 712 as stated on the website — the determination of hypergraph Turán densities for complete r-uniform hypergraphs with k > r > 2.
+ai-review/161.md:9:**Ramsey.lean** in `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` using a very similar `sInf` + `Finset (Fin m) → Bool` pattern. The balanced colouring threshold is a quantitative refinement of hypergraph Ramsey numbers, and both share the same colouring representation.
+ai-review/161.md:16:- **[Er90b]** — "Erdős, P., _Problems and results on graphs and hypergraphs: similarities and differences_. Mathematics of Ramsey theory, Algorithms Combin. 5 (1990), 12-28." This matches the website's source ("Er90b, p. 21"). **Correct.**
+ai-review/161.md:19:[Omitted long matching line]
+ai-review/161.md:42:- **Minor:** The coloring function type `c : Finset (Fin n) → Bool` colors *all* subsets, but is only evaluated on `t`-element subsets. This is the standard convention in this codebase (matching `hypergraphRamsey`) and is acceptable, though a dependent type like `{S : Finset (Fin n) // S.card = t} → Bool` would be more precise. The current approach is the pragmatic choice.
+ai-review/161.md:66:  - `∀ t : ℕ, 2 ≤ t` — correct, the problem is for `t`-uniform hypergraphs with `t ≥ 2`. ✓
+ai-review/77.md:16:Additionally, `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey r n`, the r-uniform hypergraph Ramsey number. The classical diagonal Ramsey number R(k) is `hypergraphRamsey 2 k` (the 2-uniform, i.e. graph, case). This shared library definition could also be leveraged.
+ai-review/77.md:18:**Recommendation:** Replace `Erdos77.diagonalRamseyNumber` with either `Erdos87.diagRamsey` (most directly equivalent) or show the relationship to `Combinatorics.hypergraphRamsey 2 k`. This would reduce duplication and improve consistency across the codebase.
+ai-review/77.md:126:| Code reuse | Needs improvement | Should use `diagRamsey` from Problem 87 or `hypergraphRamsey` from library |
+ai-review/78.md:18:| `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` | `hypergraphRamsey r n` | Finset-based r-uniform coloring |
+ai-review/78.md:22:[Omitted long matching line]
+ai-review/643.md:5:Several other Erdős problem files define similar hypergraph structures that could potentially be unified:
+ai-review/500.md:10:The codebase also contains several other hypergraph Turán-type definitions (Problems 719, 1076, 1157) that use the same `sSup`/`powersetCard` patterns. Problem 500 could import and specialize Problem 712's definitions to avoid duplication, though maintaining standalone definitions for this historically prominent special case is defensible for clarity.
+ai-review/500.md:44:The problem as stated on the website — "What is ex₃(n, K₄³)?" — is precise and unambiguous. The definitions of 3-uniform hypergraph, K₄³, and the extremal number are completely standard in combinatorics. The conjecture that the Turán density is 5/9 is a well-known, precisely stated open problem (Turán's hypergraph conjecture).
+ai-review/500.md:55:- `sSup {m : ℕ | ∃ H : Finset (Finset (Fin n)), IsK43Free H ∧ H.card = m}`: Takes the supremum over cardinalities of K₄³-free 3-uniform hypergraphs on `Fin n`. ✓
+ai-review/500.md:56:- The set is non-empty (the empty hypergraph satisfies the conditions with m = 0) and bounded above (by C(n,3)), so `sSup` on `ℕ` (with `ConditionallyCompleteLattice`) correctly computes the maximum. ✓
+ai-review/500.md:63:- The existence of the Turán density (i.e., that this limit exists) is a known result for all r-uniform hypergraphs, following from averaging/compactness arguments (Katona–Nemetz–Simonovits type reasoning). So asserting convergence is mathematically sound. ✓
+ai-review/500.md:70:**Overall correctness: Sound.** No mathematical errors identified. The formalization faithfully captures Turán's hypergraph conjecture for the (3,4) case.
+ai-review/207.md:14:[Omitted long matching line]
+ai-review/207.md:16:No other definitions in the codebase (girth, high-girth hypergraphs) are directly reusable for this problem.
+ai-review/207.md:57:- "Steiner triple system" has an unambiguous definition (3-uniform hypergraph where every pair is in exactly one edge).
+ai-review/207.md:62:There is no meaningful ambiguity in the statement. The only potential source of confusion (different definitions of "girth" for hypergraphs in the literature) is resolved by the explicit vertex-count formulation, which matches the definition used by Kwan–Sah–Sawhney–Simkin.
+ai-review/747.md:15:which is a Mathlib primitive (`Finset.powersetCard`) and would be more idiomatic. Similarly, `hypergraphsWithEdges` filters by card from `powerset` and could use `powersetCard m` on `threeEdges N`.
+ai-review/747.md:17:**No matching Mathlib hypergraph library exists.** Mathlib has `SimpleGraph.Matching` for 2-uniform graphs but nothing for general hypergraphs, so the custom definitions here are necessary. However, Problem 1020 already provides the relevant abstractions (`IsRUniform`, `HasMatching`) and should be reused.
+ai-review/747.md:29:**Only the r = 3 case is formalized.** The original problem is specifically about 3-uniform hypergraphs, so this is faithful to Shamir's problem. However, Kahn's result [Ka23] establishes the sharp threshold for general r-uniform hypergraphs (r ≥ 2). A variant for general r would capture the full generality of the solved result, though it is not strictly required by the problem statement.
+ai-review/747.md:38:- **`hypergraphsWithEdges`**: Same improvement applies — use `(threeEdges N).powersetCard m` instead of `(threeEdges N).powerset.filter (fun H => H.card = m)`.
+ai-review/747.md:39:- **Naming**: `hypergraphMatchingFraction` is descriptive. The theorem name `erdos_747` follows the project convention.
+ai-review/747.md:46:The formalization chooses to express "almost surely" via counting fractions of hypergraphs in the uniform model (fixed number of edges chosen uniformly at random). This is a standard and valid approach. An alternative would be the binomial model (each potential edge included independently with probability p), but the two models are asymptotically equivalent in this regime, and the uniform model is arguably cleaner for formalization.
+ai-review/747.md:55:- **Vertex count**: 3n vertices for a perfect matching of n edges in a 3-uniform hypergraph. ✅
+ai-review/747.md:58:- **Division by zero**: When `hypergraphsWithEdges` is empty, division returns 0. This cannot occur for valid m in [1, C(3n,3)] since C(C(3n,3), m) > 0. ✅
+ai-review/747.md:61:**One subtle issue:** The `HasMatching` definition does not explicitly enforce that edges in M are 3-element subsets. However, since M ⊆ H and H is drawn from `hypergraphsWithEdges (3*n) m`, all edges in H are elements of `threeEdges (3*n)`, so all edges have cardinality 3. This is correct but relies on the context of how `HasMatching` is used within `hypergraphMatchingFraction`, not on the definition itself.
+ai-review/545.md:10:**Recommendation:** Extract `ContainsSubgraphCopy` and `ramseyNumber` into a shared utility in `FormalConjecturesForMathlib`. The existing `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` only covers *hypergraph* Ramsey numbers (`hypergraphRamsey`), so a companion file for graph Ramsey numbers would be appropriate. Problem 87's `graphRamseyNumber` is arguably the cleanest version since it is type-polymorphic rather than restricted to `Fin k`.
+ai-review/596.md:8:- **`FormalConjecturesForMathlib/Combinatorics/Ramsey.lean`** — Defines `hypergraphRamsey` for 2-colored uniform hypergraph Ramsey numbers. This is structurally related but operates in a different setting (hypergraphs, 2 colors).
+ai-review/563.md:9:[Omitted long matching line]
+ai-review/563.md:13:- **`hypergraphRamsey` (FormalConjecturesForMathlib):** The Ramsey number definition is conceptually related (α = 0 case) but structurally different enough that direct reuse is impractical.
+ai-review/563.md:20:> [Er90b] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and differences*. Mathematics of Ramsey theory, Algorithms Combin. 5 (1990), 12-28.
+ai-review/563.md:23:> [Er90b] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and differences* (1990), p.21.
+ai-review/563.md:34:3. Problem 161 generalizes this to t-uniform hypergraphs.
+ai-review/162.md:5:**Problem 161 (`FormalConjectures/ErdosProblems/161.lean`) is nearly identical in structure.** Problem 162 is the special case t = 2 of Problem 161's t-uniform hypergraph setting. Specifically:
+ai-review/162.md:25:> [Er90b] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and differences*. Mathematics of Ramsey theory, Algorithms and Combinatorics, 5 (1990), Springer, Berlin, 12-28.
+ai-review/162.md:35:- **Relationship to Problem 161:** Problem 161 is the natural generalization to t-uniform hypergraphs. The formalization does not cross-reference this. A note in the module docstring linking to Problem 161 as the hypergraph generalization would be valuable.
+ai-review/112.md:9:- **`FormalConjecturesForMathlib/Combinatorics/Ramsey.lean`** defines `hypergraphRamsey` using a similar `sInf` pattern. Not directly applicable.
+ai-review/593.md:5:The codebase contains several other hypergraph definitions across Problems 832, 833, 836, 616, 716, and 1075. However, **Problem 593's `Hypergraph3` structure is appropriately distinct** from all of these:
+ai-review/593.md:7:- **Problems 832, 833, 836** define `UniformHypergraph`/`Hypergraph` with `Finset (Finset V)` (finite edge sets) and `[DecidableEq V]`. Problem 593 correctly uses `Set (Finset V)` (potentially infinite edge sets) because the ambient hypergraph H may have uncountably many vertices and edges — essential for discussing uncountable chromatic number.
+ai-review/593.md:8:- **Problems 616, 1075** work on `Fin n` vertices, restricting to finite hypergraphs, which is unsuitable here.
+ai-review/593.md:9:- **FormalConjecturesForMathlib** provides `SimpleGraph.Coloring` and `chromaticNumber`/`chromaticCardinal` infrastructure, but these are for 2-uniform graphs, not 3-uniform hypergraphs. No existing Mathlib hypergraph coloring API exists that could be reused.
+ai-review/593.md:25:The website states the problem as: *"Characterize those finite 3-uniform hypergraphs which appear in every 3-uniform hypergraph of chromatic number > ℵ₀."*
+ai-review/593.md:27:The formalization captures this as a single biconditional conjecture: the obligatory hypergraphs are exactly the 2-colorable ones, by analogy with the known graph result. This is a reasonable formalization of the "characterize" question — it proposes a concrete answer and asserts it as an iff.
+ai-review/593.md:37:- The namespace `Erdos593` prevents name collisions with the many other hypergraph definitions in the codebase.
+ai-review/593.md:41:**Minor suggestion:** The `ContainsCopy` definition could clarify in its docstring that this is a *non-induced* subhypergraph embedding (only edges of F must map to edges of H; non-edges of F are unconstrained). This is the correct notion for the problem but could be made explicit.
+ai-review/593.md:50:- **Proper coloring** = no monochromatic edge (∃ two vertices in each edge with different colors). This is the standard hypergraph coloring convention.
+ai-review/593.md:52:- **"Appears in"** = injective vertex map sending edges to edges. This is the standard subhypergraph containment notion.
+ai-review/593.md:62:1. **`Hypergraph3`**: Uses `Set (Finset V)` for edges with a uniformity constraint. This allows infinite edge sets on arbitrary vertex types, which is necessary for hypergraphs with uncountable chromatic number. ✓
+ai-review/593.md:68:4. **`ContainsCopy`**: `∃ f : W ↪ V, ∀ e ∈ F.edges, e.map f ∈ H.edges` — uses an injective map (embedding) that sends each edge of F to an edge of H. `Finset.map` with an embedding preserves cardinality, so the image of a 3-element edge is a 3-element set. This correctly captures subhypergraph containment. ✓
+ai-review/593.md:82:This says: a finite 3-uniform hypergraph F is contained in every 3-uniform hypergraph of uncountable chromatic number **if and only if** F is 2-colorable. This correctly captures both directions:
+ai-review/593.md:86:The `[Fintype W]` constraint ensures F is finite (finitely many vertices, and hence finitely many possible 3-element edges). The universally quantified `V : Type*` allows the ambient hypergraph to live in any universe, which is appropriate.
+ai-review/593.md:92:The `edges` field of `Hypergraph3 W` for the finite hypergraph F is a `Set (Finset W)`, which in principle could be any set of 3-element subsets (including a non-computable one). Since W is `Fintype`, there are only finitely many 3-element subsets of W, so any such set is automatically finite. This is technically correct but means F's edge set is not explicitly required to be finite — it is implicitly finite by the `Fintype` constraint on vertices. This is fine mathematically.
+ai-review/129.md:15:- `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:33–36` defines `hypergraphRamsey` for 2-colorings of r-uniform hypergraphs. This is structurally similar to `multicolorRamseyNum` but restricted to 2 colors and formulated via hypergraph subsets rather than edge colorings, so it cannot directly replace the Problem 129 definitions.
+ai-review/557.md:7:Note that `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` already defines `Combinatorics.hypergraphRamsey` (for uniform hypergraph Ramsey numbers with 2 colors), and `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` defines `SimpleGraph.sizeRamsey`. The multicolor graph Ramsey number is a natural companion to these and belongs alongside them.
+ai-review/602.md:8:- **901** (`Erdos901.HasPropertyB`): `Finset (Finset ℕ) → Prop` — finite hypergraphs over `ℕ`.
+ai-review/602.md:9:- **1022** (`Erdos1022.HasPropertyB`): `{n : ℕ} → Finset (Finset (Fin n)) → Prop` — finite hypergraphs over `Fin n`.
+ai-review/602.md:13:No existing definition in `FormalConjecturesForMathlib` currently captures Property B. Related code exists in `Combinatorics/SimpleGraph/Coloring.lean` (chromatic numbers, proper colorings) and `Combinatorics/Ramsey.lean` (2-colorings for Ramsey theory), but these target graph/hypergraph coloring in different frameworks and are not directly applicable.
+ai-review/719.md:5:**Several opportunities for reuse exist with other hypergraph Turán problems in the codebase.**
+ai-review/719.md:29:The website states a single variant of the problem. The formalization captures this faithfully: decompose any r-uniform hypergraph into edge-disjoint copies of K_r^r and K_{r+1}^r, with at most ex_r(n; K_{r+1}^r) many pieces.
+ai-review/719.md:49:The website's phrasing — "Is every r-hypergraph G on n vertices expressible as a union of at most ex_r(n; K_{r+1}^r) many copies of K_r^r and K_{r+1}^r, where no two copies share a K_r^r?" — requires interpretation in several places:
+ai-review/719.md:51:- **"Copies of K_r^r and K_{r+1}^r"**: K_r^r is a single r-edge (trivially a complete r-uniform hypergraph on r vertices), and K_{r+1}^r is the complete r-uniform hypergraph on r+1 vertices (i.e., all (r+1 choose r) = r+1 edges). The formalization correctly models these via `pieceEdges`.
+ai-review/719.md:66:- The Turán number `turanHypergraphNumber` correctly models ex_r(n; K_{r+1}^r) via `sSup` over r-uniform K_{r+1}^r-free hypergraphs. The set is nonempty (contains the empty hypergraph with 0 edges) and bounded above (by C(n,r)), so `sSup` is well-defined.
+ai-review/719.md:73:- **r = 0**: A 0-uniform hypergraph has edges of size 0 (only ∅). The Turán number ex_0(n; K_1^0) = 0 for n ≥ 1 (since any edge ∅ ⊆ every 1-element set). The conjecture would require decomposing {∅} into ≤ 0 pieces, which is impossible. So the conjecture is **false** for r = 0.
+ai-review/719.md:74:- **r = 1**: ex_1(n; K_2^1) = 1 for n ≥ 2 (at most one singleton edge allowed). A 1-uniform hypergraph with 3 or more edges cannot be decomposed into ≤ 1 piece. So the conjecture is **false** for r = 1 as well.
+ai-review/87.md:24:[Omitted long matching line]
+ai-review/547.md:9:Similarly, the `ramseyNumber` definition for graphs (diagonal Ramsey number) is duplicated across multiple files and would benefit from a shared definition in `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean`, which currently only defines `hypergraphRamsey` for uniform hypergraphs.
+ai-review/191.md:7:[Omitted long matching line]
+FormalConjectures/ErdosProblems/562.lean:30:Let $R_r(n)$ denote the $r$-uniform hypergraph Ramsey number: the minimal $m$ such that if we
+FormalConjectures/ErdosProblems/562.lean:31:$2$-colour all edges of the complete $r$-uniform hypergraph on $m$ vertices then there must be some
+FormalConjectures/ErdosProblems/562.lean:32:monochromatic copy of the complete $r$-uniform hypergraph on $n$ vertices.
+FormalConjectures/ErdosProblems/562.lean:40:    ∀ r ≥ 3, (fun n ↦ log^[r - 1] (hypergraphRamsey r n)) ~[atTop] (fun n ↦ (n : ℝ)) := by
+FormalConjectures/ErdosProblems/616.lean:24:Let $r \geq 3$. For an $r$-uniform hypergraph $G$ let $\tau(G)$ denote the covering number
+FormalConjectures/ErdosProblems/616.lean:28:Determine the best possible $t$ such that, if $G$ is an $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/616.lean:40:/-- An $r$-uniform hypergraph on vertex set `Fin n`. -/
+FormalConjectures/ErdosProblems/616.lean:45:/-- A set $S$ of vertices is a transversal of hypergraph $G$ if it meets every edge. -/
+FormalConjectures/ErdosProblems/616.lean:53:/-- The subhypergraph of $G$ induced on vertex set $W$: edges of $G$ contained in $W$. -/
+FormalConjectures/ErdosProblems/616.lean:59:/-- The local covering property: every induced subhypergraph on at most
+FormalConjectures/ErdosProblems/616.lean:66:If $G$ is an $r$-uniform hypergraph ($r \geq 3$) where every subhypergraph on at most
+FormalConjectures/ErdosProblems/616.lean:79:For every $r \geq 3$, there exists an $r$-uniform hypergraph $G$ satisfying the local
+FormalConjectures/ErdosProblems/1177.lean:24:Let $G$ be a finite $3$-uniform hypergraph, and let $F_G(\kappa)$ denote the collection of
+FormalConjectures/ErdosProblems/1177.lean:25:$3$-uniform hypergraphs with chromatic number $\kappa$ not containing $G$.
+FormalConjectures/ErdosProblems/1177.lean:36:/-- A proper coloring of a $3$-uniform hypergraph with vertex type $V$ using colors from $\alpha$
+FormalConjectures/ErdosProblems/1177.lean:37:    is a function $c : V \to \alpha$ such that no hyperedge is monochromatic: for every edge $e$
+FormalConjectures/ErdosProblems/1177.lean:42:/-- A $3$-uniform hypergraph (on vertex type $V$, with edge set `edges`) has cardinal chromatic
+FormalConjectures/ErdosProblems/1177.lean:51:    edge of $H$ (i.e., $G$ does not embed as a sub-hypergraph of $H$). Each edge of $G$ maps to
+FormalConjectures/ErdosProblems/1177.lean:61:Let $G$ be a finite $3$-uniform hypergraph. If $F_G(\aleph_1)$ is non-empty (i.e., there exists
+FormalConjectures/ErdosProblems/1177.lean:62:a $G$-free $3$-uniform hypergraph with chromatic number $\aleph_1$), then there exists
+FormalConjectures/ErdosProblems/1177.lean:85:Let $G$ and $H$ be finite $3$-uniform hypergraphs. If $F_G(\aleph_1)$ and $F_H(\aleph_1)$ are both
+FormalConjectures/ErdosProblems/1177.lean:87:hypergraph with chromatic number $\aleph_1$ that contains neither $G$ nor $H$ as a
+FormalConjectures/ErdosProblems/1177.lean:88:sub-hypergraph.
+FormalConjectures/ErdosProblems/1177.lean:115:Let $G$ be a finite $3$-uniform hypergraph. If $\kappa$ and $\mu$ are uncountable cardinals
+FormalConjectures/ErdosProblems/1177.lean:117:of a $G$-free $3$-uniform hypergraph with chromatic number $\kappa$ implies the existence of one
+FormalConjectures/ErdosProblems/1020.lean:22:Conjecture on the maximum number of edges in an $r$-uniform hypergraph on $n$ vertices
+FormalConjectures/ErdosProblems/1020.lean:38:/-- An $r$-uniform hypergraph on vertex set `Fin n`: every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/1020.lean:42:/-- A matching of size $k$ in a hypergraph: $k$ pairwise vertex-disjoint edges. -/
+FormalConjectures/ErdosProblems/1020.lean:47:/-- `maxEdgesNoMatching n r k` is the maximum number of edges in an $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/1020.lean:56:For all $r \geq 3$, the maximum number of edges in an $r$-uniform hypergraph on $n$ vertices
+FormalConjectures/ErdosProblems/836.lean:24:Let $r \geq 2$ and $G$ be an $r$-uniform hypergraph with chromatic number 3
+FormalConjectures/ErdosProblems/836.lean:34:$r$-uniform 3-chromatic hypergraph with $\sim 4^r / \sqrt{r}$ vertices.
+FormalConjectures/ErdosProblems/836.lean:44:/-- A hypergraph on vertex type $V$. -/
+FormalConjectures/ErdosProblems/836.lean:48:/-- A hypergraph is $r$-uniform if every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/836.lean:52:/-- The vertices of a hypergraph (the union of all edges). -/
+FormalConjectures/ErdosProblems/836.lean:56:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/836.lean:61:/-- A hypergraph has chromatic number 3: it is 3-colorable but not 2-colorable. -/
+FormalConjectures/ErdosProblems/836.lean:66:/-- A hypergraph is intersecting if any two edges share at least one vertex. -/
+FormalConjectures/ErdosProblems/836.lean:73:For every $r$-uniform intersecting hypergraph with chromatic number 3,
+FormalConjectures/ErdosProblems/836.lean:77:such hypergraph, there exist two distinct edges whose intersection has
+FormalConjectures/ErdosProblems/719.lean:33:/-- An $r$-uniform hypergraph on `Fin n`: a family of $r$-element subsets. -/
+FormalConjectures/ErdosProblems/719.lean:37:/-- An $r$-uniform hypergraph is $K_{r+1}^r$-free: no $(r+1)$-element vertex set has
+FormalConjectures/ErdosProblems/719.lean:43:$r$-uniform $K_{r+1}^r$-free hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/719.lean:59:Is every $r$-uniform hypergraph $G$ on $n$ vertices the union of at most
+FormalConjectures/ErdosProblems/716.lean:24:Let $\mathcal{F}$ be the family of all 3-uniform hypergraphs on 6 vertices with 3 edges.
+FormalConjectures/ErdosProblems/716.lean:37:/-- A 3-uniform hypergraph on `Fin n`: a family of 3-element subsets. -/
+FormalConjectures/ErdosProblems/716.lean:42:/-- A 3-uniform hypergraph is $\mathcal{F}$-free (where $\mathcal{F}$ is the family of all
+FormalConjectures/ErdosProblems/716.lean:43:3-uniform hypergraphs on 6 vertices with 3 edges) if every 6-element subset of
+FormalConjectures/ErdosProblems/716.lean:51:every sufficiently large $\mathcal{F}$-free 3-uniform hypergraph on $n$ vertices has at most
+FormalConjectures/ErdosProblems/563.lean:28:[Er90b] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/500.lean:49:[Ra10] Razborov, A., _On 3-hypergraphs with forbidden 4-vertex configurations_ (2010).
+FormalConjectures/ErdosProblems/500.lean:56:/-- A $3$-uniform hypergraph on `Fin n` is $K_4^3$-free if every edge has exactly $3$
+FormalConjectures/ErdosProblems/161.lean:22:Erdős conjectured that for $t$-uniform hypergraph 2-colourings, the balanced-colouring threshold
+FormalConjectures/ErdosProblems/161.lean:28:[Er90b] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/643.lean:24:Let $f(n;t)$ be minimal such that if a $t$-uniform hypergraph on $n$ vertices
+FormalConjectures/ErdosProblems/643.lean:59:/-- A $t$-uniform hypergraph on `Fin n`: a family of $t$-element subsets. -/
+FormalConjectures/ErdosProblems/643.lean:63:/-- A hypergraph contains the "complementary pairs" configuration:
+FormalConjectures/ErdosProblems/643.lean:77:for all $n \geq N$, every $t$-uniform hypergraph on $n$ vertices with more than
+FormalConjectures/ErdosProblems/21.lean:28:[ErLo75] Erdős, P. and Lovász, L., _Problems and results on 3-chromatic hypergraphs and some
+FormalConjectures/ErdosProblems/1178.lean:40:/-- An $r$-uniform hypergraph on vertex type $V$ is a set of $r$-element subsets of $V$. -/
+FormalConjectures/ErdosProblems/1178.lean:44:/-- An $r$-uniform hypergraph on $n$ vertices contains a sub-hypergraph on $d$ vertices
+FormalConjectures/ErdosProblems/1178.lean:45:with $e$ edges: there exist $d$ vertices in $\operatorname{Fin} n$ such that the hypergraph has
+FormalConjectures/ErdosProblems/1178.lean:47:contains all $r$-uniform hypergraphs on $d$ vertices with $e$ edges, avoiding $F$ means
+FormalConjectures/ErdosProblems/1178.lean:53:$r$-uniform hypergraph on $n$ vertices that contains no $r$-uniform sub-hypergraph
+FormalConjectures/ErdosProblems/1178.lean:69:$\operatorname{ex}_r(n, F) = o(n^2)$ (where $F$ is the family of all $r$-uniform hypergraphs
+FormalConjectures/ErdosProblems/1178.lean:72:Here `turanNumber r n d e` is the maximum number of edges in an $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/1158.lean:22:Erdős asks whether the extremal number for complete $t$-partite $t$-uniform hypergraphs satisfies
+FormalConjectures/ErdosProblems/1158.lean:35:/-- A $t$-uniform hypergraph on $\operatorname{Fin}(n)$: every edge has exactly $t$ vertices. -/
+FormalConjectures/ErdosProblems/1158.lean:39:/-- A $t$-uniform hypergraph $E$ on $\operatorname{Fin}(n)$ contains a copy of the complete
+FormalConjectures/ErdosProblems/1158.lean:40:$t$-partite $t$-uniform hypergraph $K_t(r)$ if there exist $t$ pairwise disjoint vertex classes,
+FormalConjectures/ErdosProblems/1158.lean:52:Let $K_t(r)$ be the complete $t$-partite $t$-uniform hypergraph with $r$ vertices in
+FormalConjectures/ErdosProblems/1158.lean:60:there exists a $t$-uniform hypergraph on $n$ vertices with no $K_t(r)$ copy and at least
+FormalConjectures/ErdosProblems/747.lean:25:$3$-uniform hypergraph on $3n$ vertices with $\ell(n)$ edges must contain $n$ vertex-disjoint
+FormalConjectures/ErdosProblems/747.lean:39:/-- The set of all $3$-element subsets of $\operatorname{Fin} N$ (potential hyperedges). -/
+FormalConjectures/ErdosProblems/747.lean:43:/-- The set of all $3$-uniform hypergraphs on $\operatorname{Fin} N$ with exactly $m$ edges. -/
+FormalConjectures/ErdosProblems/747.lean:44:def hypergraphsWithEdges (N m : ℕ) : Finset (Finset (Finset (Fin N))) :=
+FormalConjectures/ErdosProblems/747.lean:47:/-- A $3$-uniform hypergraph $H$ contains a matching of size $k$: there exist
+FormalConjectures/ErdosProblems/747.lean:53:/-- The fraction of $3$-uniform hypergraphs on $\operatorname{Fin} N$ with $m$ edges that
+FormalConjectures/ErdosProblems/747.lean:54:    contain a matching of size $k$. Returns $0$ if no such hypergraphs exist. -/
+FormalConjectures/ErdosProblems/747.lean:55:noncomputable def hypergraphMatchingFraction (N m k : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/747.lean:56:  ((hypergraphsWithEdges N m).filter (fun H => HasMatching H k)).card /
+FormalConjectures/ErdosProblems/747.lean:57:  ((hypergraphsWithEdges N m).card : ℝ)
+FormalConjectures/ErdosProblems/747.lean:62:For every $\varepsilon > 0$, almost surely a random $3$-uniform hypergraph on $3n$ vertices
+FormalConjectures/ErdosProblems/747.lean:67:the fraction of $3$-uniform hypergraphs on $3n$ vertices with $m$ edges containing a perfect
+FormalConjectures/ErdosProblems/747.lean:79:        hypergraphMatchingFraction (3 * n) m n ≥ 1 - δ := by
+FormalConjectures/ErdosProblems/712.lean:42:/-- An $r$-uniform hypergraph on `Fin n` is $K_k^r$-free if every edge has exactly $r$
+FormalConjectures/ErdosProblems/162.lean:28:[Er90b] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and differences_.
+FormalConjectures/ErdosProblems/593.lean:24:Characterize those finite $3$-uniform hypergraphs which appear in every
+FormalConjectures/ErdosProblems/593.lean:25:$3$-uniform hypergraph of chromatic number $> \aleph_0$.
+FormalConjectures/ErdosProblems/593.lean:32:We define a finite $3$-uniform hypergraph $F$ to be *obligatory* if it appears
+FormalConjectures/ErdosProblems/593.lean:33:in every $3$-uniform hypergraph of uncountable chromatic number. By analogy
+FormalConjectures/ErdosProblems/593.lean:35:hypergraphs are exactly the $2$-colorable ones.
+FormalConjectures/ErdosProblems/593.lean:44:/-- A $3$-uniform hypergraph on vertex type $V$: a collection of $3$-element
+FormalConjectures/ErdosProblems/593.lean:50:/-- A proper coloring of a $3$-uniform hypergraph: no edge is monochromatic
+FormalConjectures/ErdosProblems/593.lean:56:/-- A $3$-uniform hypergraph has uncountable chromatic number: it admits no
+FormalConjectures/ErdosProblems/593.lean:62:/-- A finite $3$-uniform hypergraph $F$ on $W$ embeds into $H$ on $V$: there is an
+FormalConjectures/ErdosProblems/593.lean:68:/-- A $3$-uniform hypergraph is $2$-colorable: it admits a proper coloring with
+FormalConjectures/ErdosProblems/593.lean:76:A finite $3$-uniform hypergraph appears in every $3$-uniform hypergraph of
+FormalConjectures/ErdosProblems/833.lean:23:every $r$-uniform hypergraph with chromatic number $3$ has a vertex contained
+FormalConjectures/ErdosProblems/833.lean:28:[ErLo75] Erdős, P. and Lovász, L., *Problems and results on 3-chromatic hypergraphs and some
+FormalConjectures/ErdosProblems/833.lean:37:/-- A hypergraph on vertex type $V$, represented as a finset of edges,
+FormalConjectures/ErdosProblems/833.lean:42:/-- A hypergraph is $r$-uniform if every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/833.lean:46:/-- A proper coloring of a hypergraph: no edge with $\geq 2$ vertices is monochromatic. -/
+FormalConjectures/ErdosProblems/833.lean:51:/-- A hypergraph has chromatic number exactly $k$ if it can be properly colored
+FormalConjectures/ErdosProblems/833.lean:58:/-- The degree of a vertex $v$ in a hypergraph is the number of edges containing $v$. -/
+FormalConjectures/ErdosProblems/833.lean:64:in any $r$-uniform hypergraph with chromatic number $3$ there is a vertex
+FormalConjectures/ErdosProblems/775.lean:24:Is there a 3-uniform hypergraph on $n$ vertices which contains at least
+FormalConjectures/ErdosProblems/775.lean:28:$k \geq 3$, every $k$-uniform hypergraph on $n$ vertices contains at most
+FormalConjectures/ErdosProblems/775.lean:34:/-- A subset $S$ of vertices is complete in a $k$-uniform hypergraph $H$ if every
+FormalConjectures/ErdosProblems/775.lean:40:/-- A clique in a $k$-uniform hypergraph is a maximal complete subhypergraph:
+FormalConjectures/ErdosProblems/775.lean:47:/-- The set of distinct clique sizes in a $k$-uniform hypergraph. -/
+FormalConjectures/ErdosProblems/775.lean:54:There is no 3-uniform hypergraph on $n$ vertices which contains at least $n - O(1)$
+FormalConjectures/ErdosProblems/775.lean:56:there exists a 3-uniform hypergraph on $n$ vertices with at least $n - C$ distinct
+FormalConjectures/ErdosProblems/775.lean:60:$k$-uniform hypergraph on $n$ vertices is at most $n - f_k(n)$ where $f_k(n) \to \infty$.
+FormalConjectures/ErdosProblems/1157.lean:24:Let $r \geq 2$. Let $F$ be the family of all $r$-uniform hypergraphs with $k$ vertices
+FormalConjectures/ErdosProblems/1157.lean:28:hypergraph on $n$ vertices such that no $k$ vertices span $s$ or more edges.
+FormalConjectures/ErdosProblems/1157.lean:51:/-- An $r$-uniform hypergraph on $n$ vertices: a family of $r$-element subsets of
+FormalConjectures/ErdosProblems/1157.lean:66:hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/780.lean:24:Suppose $n \geq kr + (t-1)(k-1)$ and the edges of the complete $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/780.lean:38:hypergraphs_. Trans. Amer. Math. Soc. **298** (1986), 359--370.
+FormalConjectures/ErdosProblems/780.lean:46:If $n \geq kr + (t-1)(k-1)$ and the edges of the complete $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/780.lean:50:Here an "edge" of the complete $r$-uniform hypergraph on $\text{Fin}\; n$ is an
+FormalConjectures/ErdosProblems/1022.lean:24:[Er71] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/1022.lean:28:$r$-uniform hypergraphs with chromatic number 3.
+FormalConjectures/ErdosProblems/1022.lean:46:$t$ and every finite hypergraph $\mathcal{F}$ on $n$ vertices, if all edges
+FormalConjectures/ErdosProblems/207.lean:26:a $3$-uniform hypergraph where every pair of vertices is in exactly one edge, and
+FormalConjectures/ErdosProblems/207.lean:38:/-- A set of hyperedges forms a Steiner triple system: each edge has exactly $3$
+FormalConjectures/ErdosProblems/207.lean:51:The girth condition forbids short "cycles" in the hypergraph: any collection of
+FormalConjectures/ErdosProblems/901.lean:22:Let $m(n)$ denote the minimum number of edges in an $n$-uniform hypergraph that does not have
+FormalConjectures/ErdosProblems/901.lean:34:An $n$-uniform hypergraph is a finite collection of edges where each edge
+FormalConjectures/ErdosProblems/901.lean:41:A hypergraph has Property B (is $2$-colorable) if there exists a $2$-coloring
+FormalConjectures/ErdosProblems/901.lean:50:Let $m(n)$ be minimal such that there is an $n$-uniform hypergraph with $m(n)$ edges
+FormalConjectures/ErdosProblems/901.lean:55:every $n$-uniform hypergraph without Property B has at least $c \cdot n \cdot 2^n$ edges.
+FormalConjectures/ErdosProblems/901.lean:68:an $n$-uniform hypergraph without Property B with at most $c \cdot n \cdot 2^n$ edges.
+FormalConjectures/ErdosProblems/1024.lean:24:Let $f(n)$ be such that every $3$-uniform linear hypergraph on $n$ vertices contains
+FormalConjectures/ErdosProblems/1024.lean:27:A hypergraph is linear if $|A \cap B| \leq 1$ for all edges $A$ and $B$. An independent
+FormalConjectures/ErdosProblems/1024.lean:28:set of vertices is one which contains no edges. A $3$-uniform linear hypergraph
+FormalConjectures/ErdosProblems/1024.lean:42:/-- A $3$-uniform hypergraph on `Fin n`: a family of $3$-element subsets. -/
+FormalConjectures/ErdosProblems/1024.lean:47:/-- A $3$-uniform hypergraph is *linear* if any two distinct edges share
+FormalConjectures/ErdosProblems/1024.lean:64:    $3$-uniform linear hypergraphs on $n$ vertices, i.e. the largest $f$ such
+FormalConjectures/ErdosProblems/1024.lean:65:    that every such hypergraph has an independent set of size at least $f$. -/
+FormalConjectures/ErdosProblems/1024.lean:74:all $3$-uniform linear hypergraphs on $n$ vertices.
+FormalConjectures/ErdosProblems/837.lean:26:hypergraphs with
+FormalConjectures/ErdosProblems/837.lean:37:[Er74d] Erdős, P. and Simonovits, M., problem on hypergraph density jumps.
+FormalConjectures/ErdosProblems/837.lean:44:/-- A $k$-uniform hypergraph on $n$ vertices: a collection of $k$-element subsets
+FormalConjectures/ErdosProblems/837.lean:50:/-- The edge density of a $k$-uniform hypergraph: $|E| / \binom{n}{k}$. -/
+FormalConjectures/ErdosProblems/837.lean:56:/-- $H$ is a sub-hypergraph of $G$ via an injective vertex map $f$,
+FormalConjectures/ErdosProblems/837.lean:62:/-- The density jump set $A_k$ for $k$-uniform hypergraphs.
+FormalConjectures/ErdosProblems/837.lean:64:    (a) any sequence of $k$-uniform hypergraphs with $\liminf$ density $> \alpha$
+FormalConjectures/ErdosProblems/837.lean:101:Determine the density jump set $A_3$ for $3$-uniform hypergraphs.
+FormalConjectures/ErdosProblems/474.lean:27:[Er95d] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/1075.lean:23:sufficiently large, any $r$-uniform hypergraph on $n$ vertices with at least
+FormalConjectures/ErdosProblems/1075.lean:34:/-- An $r$-uniform hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/1075.lean:39:/-- The subhypergraph of $H$ induced by a vertex set $S$: all edges entirely within $S$. -/
+FormalConjectures/ErdosProblems/1075.lean:49:for any target size $M$, for all sufficiently large $n$, any $r$-uniform hypergraph
+FormalConjectures/ErdosProblems/794.lean:22:Is it true that every 3-uniform hypergraph on $3n$ vertices with at least $n^3 + 1$ edges must
+FormalConjectures/ErdosProblems/794.lean:31:/-- A 3-uniform hypergraph $H$ contains a $(k, m)$-subhypergraph if there exist $k$
+FormalConjectures/ErdosProblems/794.lean:33:def ContainsSubhypergraph {N : ℕ} (H : Finset (Finset (Fin N))) (k m : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/794.lean:39:Is it true that every 3-uniform hypergraph on $3n$ vertices with at least $n^3 + 1$
+FormalConjectures/ErdosProblems/794.lean:43:Balogh observed that every 3-uniform hypergraph on 5 vertices with 7
+FormalConjectures/ErdosProblems/794.lean:44:edges contains a sub-hypergraph on 4 vertices with 3 edges, so the second
+FormalConjectures/ErdosProblems/794.lean:46:statement: the 3-uniform hypergraph on $\{1, \ldots, 9\}$ with 28 edges, formed by taking
+FormalConjectures/ErdosProblems/794.lean:54:    ContainsSubhypergraph H 4 3 ∨ ContainsSubhypergraph H 5 7 := by
+FormalConjectures/ErdosProblems/812.lean:34:[Er91] Erdős, P., _Problems and results on graphs and hypergraphs_, 1991.
+FormalConjectures/ErdosProblems/564.lean:29:Let $R_3(n)$ be the minimal $m$ such that if the edges of the $3$-uniform hypergraph on $m$
+FormalConjectures/ErdosProblems/564.lean:31:hypergraph on $n$ vertices.
+FormalConjectures/ErdosProblems/564.lean:38:    ∃ c > 0, ∀ᶠ n in atTop, (2 : ℝ)^(2 : ℝ)^(c * n) ≤ hypergraphRamsey 3 n := by
+FormalConjectures/ErdosProblems/1076.lean:24:Let $k \geq 5$ and let $\mathcal{F}_k$ be the family of all 3-uniform hypergraphs with $k$
+FormalConjectures/ErdosProblems/1076.lean:44:/-- A 3-uniform hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/1076.lean:49:/-- A 3-uniform hypergraph $G$ on $k$ vertices is a subhypergraph of $H$ on $n$ vertices
+FormalConjectures/ErdosProblems/1076.lean:52:def IsSubhypergraph {k n : ℕ} (G : Hypergraph3 k) (H : Hypergraph3 n) : Prop :=
+FormalConjectures/ErdosProblems/1076.lean:56:/-- $\mathcal{F}_k$: the family of all 3-uniform hypergraphs with $k$ vertices and exactly
+FormalConjectures/ErdosProblems/1076.lean:61:/-- $H$ is $\mathcal{F}_k$-free if it contains no subhypergraph from $\mathcal{F}_k$. -/
+FormalConjectures/ErdosProblems/1076.lean:63:  ∀ G : Hypergraph3 k, G ∈ familyF k → ¬IsSubhypergraph G H
+FormalConjectures/ErdosProblems/1076.lean:66:$\mathcal{F}_k$-free 3-uniform hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/834.lean:24:Does there exist a $3$-critical $3$-uniform hypergraph in which every vertex
+FormalConjectures/ErdosProblems/834.lean:30:   size $3$, and for every edge $e$ the hypergraph $H \setminus \{e\}$ has a transversal
+FormalConjectures/ErdosProblems/834.lean:37:- In the transversal formulation, every $3$-critical $3$-uniform hypergraph
+FormalConjectures/ErdosProblems/834.lean:40:  hypergraph on $9$ vertices with minimum degree $7$ (answer: YES).
+FormalConjectures/ErdosProblems/834.lean:51:/-- A hypergraph on vertex type $V$, represented as a finset of edges,
+FormalConjectures/ErdosProblems/834.lean:56:/-- A hypergraph is $r$-uniform if every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/834.lean:60:/-- The degree of a vertex $v$ in a hypergraph is the number of edges containing $v$. -/
+FormalConjectures/ErdosProblems/834.lean:64:/-- The vertices of a hypergraph (the union of all edges). -/
+FormalConjectures/ErdosProblems/834.lean:68:/-- The hypergraph obtained by removing an edge. -/
+FormalConjectures/ErdosProblems/834.lean:73:/-- The hypergraph obtained by removing a vertex (and all edges containing it). -/
+FormalConjectures/ErdosProblems/834.lean:78:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/834.lean:88:/-- A hypergraph is $3$-transversal-critical if the minimum transversal has
+FormalConjectures/ErdosProblems/834.lean:96:/-- A hypergraph is $3$-chromatic-critical if its chromatic number is $3$ and
+FormalConjectures/ErdosProblems/834.lean:108:Does there exist a $3$-transversal-critical $3$-uniform hypergraph in which every vertex
+FormalConjectures/ErdosProblems/834.lean:109:has degree $\geq 7$? Li showed the answer is NO: every such hypergraph has a vertex
+FormalConjectures/ErdosProblems/834.lean:121:Does there exist a $3$-chromatic-critical $3$-uniform hypergraph in which every vertex
+FormalConjectures/ErdosProblems/834.lean:122:has degree $\geq 7$? Li showed the answer is YES, constructing such a hypergraph
+FormalConjectures/ErdosProblems/813.lean:27:[Er91] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/1006.lean:33:hypergraphs without short cycles*, 1978.
+FormalConjectures/ErdosProblems/832.lean:25:$r$-uniform hypergraph with chromatic number $k$ has at least $\binom{(r-1)(k-1)+1}{r}$
+FormalConjectures/ErdosProblems/832.lean:34:[Er74d] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
+FormalConjectures/ErdosProblems/832.lean:42:/-- An $r$-uniform hypergraph on a finite vertex set $V$: a collection of
+FormalConjectures/ErdosProblems/832.lean:48:/-- A proper $k$-coloring of a hypergraph: a vertex coloring such that no edge
+FormalConjectures/ErdosProblems/832.lean:54:/-- The chromatic number of a uniform hypergraph: the minimum number of colors
+FormalConjectures/ErdosProblems/832.lean:64:$r$-uniform hypergraph with chromatic number $k$ has at least
+FormalConjectures/ErdosProblems/832.lean:80:For $k$ sufficiently large, does every $3$-uniform hypergraph with chromatic number $k$

@@ -1,0 +1,357 @@
+FormalConjectures/ErdosProblems/122.lean-51-/-- The natural density of a set $A \subseteq \mathbb{N}$ is zero: the proportion of elements
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-52-in $\{0, \ldots, N-1\}$ belonging to $A$ tends to $0$ as $N \to \infty$. -/
+FormalConjectures/ErdosProblems/122.lean:53:def HasNaturalDensityZero (A : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-54-  Tendsto
+FormalConjectures/ErdosProblems/122.lean-55-    (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-38-/-- The natural (asymptotic) density of a set $A \subseteq \mathbb{N}$ is zero if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-39-$|A \cap \{0, \ldots, n\}| / (n+1) \to 0$ as $n \to \infty$. -/
+FormalConjectures/ErdosProblems/1123.lean:40:def HasNaturalDensityZero (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1123.lean-41-  Tendsto (fun n : ℕ =>
+FormalConjectures/ErdosProblems/1123.lean-42-    ((Finset.filter (· ∈ A) (Finset.range (n + 1))).card : ℝ) / ((n : ℝ) + 1))
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-46-$(1/\log n) \cdot \sum_{\substack{k \in A \\ 1 \leq k \leq n}} 1/k \to 0$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-47-as $n \to \infty$. -/
+FormalConjectures/ErdosProblems/1123.lean:48:def HasLogDensityZero (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1123.lean-49-  Tendsto (fun n : ℕ =>
+FormalConjectures/ErdosProblems/1123.lean-50-    (∑ k ∈ Finset.filter (· ∈ A) (Finset.Icc 1 n), (1 : ℝ) / (k : ℝ)) /
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-54-/-- Two sets of naturals are equivalent mod natural-density-$0$ sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-55-iff their symmetric difference has natural density zero. -/
+FormalConjectures/ErdosProblems/1123.lean:56:def NatDensityEquiv (A B : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-57-  HasNaturalDensityZero (symmDiff A B)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-59-/-- Two sets of naturals are equivalent mod log-density-$0$ sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-60-iff their symmetric difference has logarithmic density zero. -/
+FormalConjectures/ErdosProblems/1123.lean:61:def LogDensityEquiv (A B : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-62-  HasLogDensityZero (symmDiff A B)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-63-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-70-/-- The equivalence relation on $\operatorname{Set} \mathbb{N}$ given by natural density zero. -/
+FormalConjectures/ErdosProblems/1123.lean:71:def natDensitySetoid : Setoid (Set ℕ) where
+FormalConjectures/ErdosProblems/1123.lean-72-  r := NatDensityEquiv
+FormalConjectures/ErdosProblems/1123.lean-73-  iseqv := natDensityEquiv_equivalence
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-75-/-- The equivalence relation on $\operatorname{Set} \mathbb{N}$ given by logarithmic density zero. -/
+FormalConjectures/ErdosProblems/1123.lean:76:def logDensitySetoid : Setoid (Set ℕ) where
+FormalConjectures/ErdosProblems/1123.lean-77-  r := LogDensityEquiv
+FormalConjectures/ErdosProblems/1123.lean-78-  iseqv := logDensityEquiv_equivalence
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-79-
+FormalConjectures/ErdosProblems/1123.lean-80-/-- $B_1$: the Boolean algebra of sets of integers modulo sets of natural density $0$. -/
+FormalConjectures/ErdosProblems/1123.lean:81:def BoolAlgModNatDensity : Type := Quotient natDensitySetoid
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-82-
+FormalConjectures/ErdosProblems/1123.lean-83-/-- $B_2$: the Boolean algebra of sets of integers modulo sets of logarithmic density $0$. -/
+FormalConjectures/ErdosProblems/1123.lean:84:def BoolAlgModLogDensity : Type := Quotient logDensitySetoid
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-86-/-- The quotient of sets of integers by natural density zero sets forms a Boolean algebra. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-36-$$d_s(A) = \inf_{n \geq 1} \frac{|A \cap \{1,\ldots,n\}|}{n}$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-37--/
+FormalConjectures/ErdosProblems/37.lean:38:noncomputable def schnirelmannDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/37.lean-39-  ⨅ n : ℕ+, (((Finset.Icc 1 (n : ℕ)).filter (· ∈ A)).card : ℝ) / ((n : ℕ) : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-42-The sumset $A + B = \{a + b \mid a \in A, b \in B\}$ for sets of natural numbers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-43--/
+FormalConjectures/ErdosProblems/37.lean:44:def sumset (A B : Set ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-45-  {n | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-46-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-60-/-- A sequence of naturals $(a_i)$ is _Behrend_ if almost all integers are a multiple of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-61-some $a_i$. In other words, if the set of multiples has natural density $1$. -/
+FormalConjectures/ErdosProblems/26.lean:62:def IsBehrend {ι : Type*} (A : ι → ℕ) : Prop := (MultiplesOf A).HasDensity 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-64-/-- A sequence of naturals $(a_i)$ is _weakly Behrend_ with respect to $\varepsilon \in \mathbb{R}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-65-if at least $1 - \varepsilon$ density of all numbers are a multiple of $A$. -/
+FormalConjectures/ErdosProblems/26.lean:66:def IsWeaklyBehrend {ι : Type*} (A : ι → ℕ) (ε : ℝ) : Prop := 1 - ε ≤ (MultiplesOf A).lowerDensity
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-67-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/26.lean-68-@[category test, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean-30-The density ratio of set $A$ up to $n$ relative to the prime counting function $\pi(n)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean-31--/
+FormalConjectures/ErdosProblems/428.lean:32:noncomputable def primeDensityRatio (A : Set ℕ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean-33-  (A ∩ Icc 1 n).ncard / (primeCounting n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-41-/-- No sum of two elements of $A$ is a perfect square. -/
+FormalConjectures/ErdosProblems/438.lean:42:def SumsetAvoidSquares (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-43-  ∀ a ∈ A, ∀ b ∈ A, ¬IsSquare (a + b)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-44-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-37-$$d_s(A) = \inf_{n \geq 1} \frac{|A \cap \{1,\ldots,n\}|}{n}.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-38--/
+FormalConjectures/ErdosProblems/1146.lean:39:noncomputable def schnirelmannDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/1146.lean-40-  ⨅ n : ℕ+, (((Finset.Icc 1 (n : ℕ)).filter (· ∈ A)).card : ℝ) / ((n : ℕ) : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-41-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-43-The sumset $A + B = \{a + b \mid a \in A, b \in B\}$ for sets of natural numbers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-44--/
+FormalConjectures/ErdosProblems/1146.lean:45:def sumset (A B : Set ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-46-  {n | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-31-This measures how close the set comes to the optimal density for Sidon sets.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-32--/
+FormalConjectures/ErdosProblems/329.lean:33:noncomputable def sqrtPartialDensity (A : Set ℕ) (N : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/329.lean-34-  (A ∩ Set.Icc 1 N).ncard / (N : ℝ).sqrt
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-36-/-- The upper density of a Sidon set `A`, normalized by `√N`. -/
+FormalConjectures/ErdosProblems/329.lean:37:noncomputable def sidonUpperDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-38-  limsup (fun N => sqrtPartialDensity A N) atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-39-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-32-/-- The set of all sums of exactly $k$ elements from $A$ (with repetition allowed). -/
+FormalConjectures/ErdosProblems/338.lean:33:def exactSumset (A : Set ℕ) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/338.lean-34-  {n : ℕ | ∃ (f : Fin k → ℕ), (∀ i, f i ∈ A) ∧ n = ∑ i, f i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/338.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-34-
+FormalConjectures/ErdosProblems/35.lean-35-/-- The sumset $A + B$: the set of all $a + b$ with $a \in A$, $b \in B$. -/
+FormalConjectures/ErdosProblems/35.lean:36:def sumset (A B : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-37-
+FormalConjectures/ErdosProblems/35.lean-38-/-- Schnirelmann density of a set $A \subseteq \mathbb{N}$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-39-$$d_s(A) = \inf_{N \geq 1} \frac{|A \cap \{1, \ldots, N\}|}{N}$$ -/
+FormalConjectures/ErdosProblems/35.lean:40:noncomputable def schnirelmannDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/35.lean-41-  sInf {x : ℝ | ∃ N : ℕ, N ≥ 1 ∧ x = ((Icc 1 N).filter (· ∈ A)).card / (N : ℝ)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-42-
+--
+FormalConjectures/ErdosProblems/929.lean-41-/-- A set $S \subseteq \mathbb{N}$ has positive upper density: there exists $\delta > 0$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/929.lean-42-$|S \cap [1, N]| / N \geq \delta$ for infinitely many $N$. -/
+FormalConjectures/ErdosProblems/929.lean:43:noncomputable def HasPositiveUpperDensity (S : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/929.lean-44-  ∃ δ : ℝ, δ > 0 ∧ ∀ N₀ : ℕ, ∃ N : ℕ, N ≥ N₀ ∧
+FormalConjectures/ErdosProblems/929.lean-45-    ((S ∩ {i | 1 ≤ i ∧ i ≤ N}).ncard : ℝ) / (N : ℝ) ≥ δ
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-35-
+FormalConjectures/ErdosProblems/808.lean-36-/-- The graph-restricted sumset $\{f(i) + f(j) : (i, j) \in E(G)\}$. -/
+FormalConjectures/ErdosProblems/808.lean:37:def graphSumset {n : ℕ} (f : Fin n → ℕ) (G : SimpleGraph (Fin n))
+FormalConjectures/ErdosProblems/808.lean-38-    [DecidableRel G.Adj] : Finset ℕ :=
+FormalConjectures/ErdosProblems/808.lean-39-  (Finset.univ.filter (fun p : Fin n × Fin n => G.Adj p.1 p.2)).image
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-38-/-- The set of all sums of exactly $k$ elements from $A$ (with repetition allowed). -/
+FormalConjectures/ErdosProblems/339.lean:39:def exactSumset (A : Set ℕ) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/339.lean-40-  {n : ℕ | ∃ (f : Fin k → ℕ), (∀ i, f i ∈ A) ∧ n = ∑ i, f i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-41-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-47-/-- The set of integers representable as the sum of exactly $r$ distinct elements from $A$. -/
+FormalConjectures/ErdosProblems/339.lean:48:def distinctExactSumset (A : Set ℕ) (r : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/339.lean-49-  {n : ℕ | ∃ (s : Finset ℕ), ↑s ⊆ A ∧ s.card = r ∧ s.sum id = n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-50-
+FormalConjectures/ErdosProblems/339.lean-51-/-- The lower density of $A \subseteq \mathbb{N}$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-52-$$d_*(A) = \liminf_{N\to\infty} \frac{|A \cap \{0, 1, \ldots, N-1\}|}{N}$$ -/
+FormalConjectures/ErdosProblems/339.lean:53:noncomputable def lowerDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/339.lean-54-  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/339.lean-55-    Filter.atTop
+--
+FormalConjectures/ErdosProblems/342.lean-54-/-- The upper density of $A \subseteq \mathbb{N}$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/342.lean-55-$d^*(A) = \limsup_{N \to \infty} |A \cap \{0, 1, \ldots, N-1\}| / N$ -/
+FormalConjectures/ErdosProblems/342.lean:56:noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/342.lean-57-  limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/342.lean-58-    atTop
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-30-
+FormalConjectures/ErdosProblems/869.lean-31-/-- The sumset $A + A$: the set of all $a + b$ with $a, b \in A$. -/
+FormalConjectures/ErdosProblems/869.lean:32:def sumset (A : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ A, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-34-/-- A set $A \subseteq \mathbb{N}$ is an additive basis of order $2$ if every sufficiently large
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/72.lean-41-sufficiently large $n$, $|A \cap \{0, \ldots, n\}| \leq \varepsilon \cdot n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/72.lean-42--/
+FormalConjectures/ErdosProblems/72.lean:43:def HasDensityZero (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/72.lean-44-  ∀ ε : ℝ, ε > 0 → ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+FormalConjectures/ErdosProblems/72.lean-45-    (Set.ncard (A ∩ Set.Iic n) : ℝ) ≤ ε * (n : ℝ)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/50.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/50.lean-32-/-- Count of natural numbers $n$ in $\{1, \ldots, N\}$ with $\varphi(n) < c \cdot n$. -/
+FormalConjectures/ErdosProblems/50.lean:33:noncomputable def totientDensityCount (c : ℝ) (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/50.lean-34-  ((Finset.range (N + 1)).filter (fun n => 0 < n ∧ (Nat.totient n : ℝ) < c * ↑n)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/50.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-48-/-- The sumset $A + A = \{a + b \mid a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/154.lean:49:def sumset (A : Finset ℕ) : Finset ℕ := Finset.image₂ (· + ·) A A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-51-/-- The fraction of elements in a finite set of naturals that are congruent to $r$ modulo $m$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/27.lean-54-all moduli.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/27.lean-55--/
+FormalConjectures/ErdosProblems/27.lean:56:noncomputable def uncoveredDensity (S : Finset (ℤ × ℕ)) : ℝ :=
+FormalConjectures/ErdosProblems/27.lean-57-  let L := systemLcm S
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/27.lean-58-  ((Finset.range L).filter (fun x =>
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/487.lean-42-for arbitrarily large $N$, $|A \cap \{1, \ldots, N\}| / N \geq \delta$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/487.lean-43--/
+FormalConjectures/ErdosProblems/487.lean:44:noncomputable def HasPositiveUpperDensity487 (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/487.lean-45-  ∃ δ : ℝ, 0 < δ ∧ ∀ N₀ : ℕ, ∃ N : ℕ, N₀ ≤ N ∧
+FormalConjectures/ErdosProblems/487.lean-46-    ((A ∩ {i | 1 ≤ i ∧ i ≤ N}).ncard : ℝ) ≥ δ * (N : ℝ)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-38-/-- The upper density of $A \subseteq \mathbb{N}$. -/
+FormalConjectures/ErdosProblems/378.lean:39:noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/378.lean-40-  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-41-    Filter.atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-43-/-- The lower density of $A \subseteq \mathbb{N}$. -/
+FormalConjectures/ErdosProblems/378.lean:44:noncomputable def lowerDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/378.lean-45-  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-46-    Filter.atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-48-/-- A set of natural numbers has natural density $d$. -/
+FormalConjectures/ErdosProblems/378.lean:49:def HasNaturalDensity (A : Set ℕ) (d : ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-50-  upperDensity A = d ∧ lowerDensity A = d
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean-49-
+FormalConjectures/ErdosProblems/837.lean-50-/-- The edge density of a $k$-uniform hypergraph: $|E| / \binom{n}{k}$. -/
+FormalConjectures/ErdosProblems/837.lean:51:noncomputable def UniformHypergraph.density {n k : ℕ}
+FormalConjectures/ErdosProblems/837.lean-52-    (G : UniformHypergraph n k) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean-53-  if Nat.choose n k = 0 then 0
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean-65-        contains growing subgraphs with $\liminf$ density $> \beta$;
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean-66-    (b) this does NOT hold when the hypothesis is weakened to $\liminf$ density $\geq \alpha$. -/
+FormalConjectures/ErdosProblems/837.lean:67:def densityJumpSet (k : ℕ) : Set ℝ :=
+FormalConjectures/ErdosProblems/837.lean-68-  {α : ℝ | 0 ≤ α ∧ α ≤ 1 ∧
+FormalConjectures/ErdosProblems/837.lean-69-    ∃ β : ℝ, β > α ∧
+--
+FormalConjectures/ErdosProblems/232.lean-22-*Reference:* [erdosproblems.com/232](https://www.erdosproblems.com/232)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-23-
+FormalConjectures/ErdosProblems/232.lean:24:For $A \subseteq \mathbb{R}^2$ we define the upper density as
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-25-$$\bar{\delta}(A) = \limsup_{R\to\infty} \frac{\lambda(A \cap B_R)}{\lambda(B_R)},$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-26-where $\lambda$ is the Lebesgue measure and $B_R$ is the ball of radius $R$.
+--
+FormalConjectures/ErdosProblems/1112.lean-35-with each $s_i \in S$. Defined recursively: $0S = \{0\}$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-36-$(k+1)S = \{a + b \mid a \in S,\, b \in kS\}$. -/
+FormalConjectures/ErdosProblems/1112.lean:37:def kFoldSumset : ℕ → Set ℕ → Set ℕ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-38-  | 0, _ => {0}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-39-  | k + 1, S => {n | ∃ a ∈ S, ∃ b ∈ kFoldSumset k S, n = a + b}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/656.lean-37-/-- The upper density of a set $A \subseteq \mathbb{N}$, defined as
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/656.lean-38-$\limsup_{N \to \infty} |A \cap \{0, \ldots, N-1\}| / N$. -/
+FormalConjectures/ErdosProblems/656.lean:39:noncomputable def Nat.upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/656.lean-40-  Filter.limsup (fun N : ℕ =>
+FormalConjectures/ErdosProblems/656.lean-41-    ((@Finset.filter _ (· ∈ A) (Classical.decPred (· ∈ A)) (Finset.range N)).card : ℝ) / N) atTop
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-38-pairwise sums of distinct elements from $A$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-39--/
+FormalConjectures/ErdosProblems/476.lean:40:def restrictedSumset {p : ℕ} (A : Finset (ZMod p)) : Finset (ZMod p) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-41-  A.biUnion (fun a => (A.erase a).image (fun b => a + b))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-51-$|S \cap \{1, \ldots, N\}| / N \to 0$ as $N \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-52--/
+FormalConjectures/ErdosProblems/16.lean:53:def HasNaturalDensityZero (S : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/16.lean-54-  Tendsto (fun N : ℕ => (Set.ncard (S ∩ Set.Icc 1 N) : ℝ) / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean-55-    atTop (nhds 0)
+--
+FormalConjectures/ErdosProblems/278.lean-51-$|\{m \in \{0,\ldots,L-1\} :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/278.lean-52-\exists n \in \text{moduli},\, n \mid (m - \text{offsets}(n))\}| / L$. -/
+FormalConjectures/ErdosProblems/278.lean:53:noncomputable def coveringDensity (moduli : Finset ℕ) (offsets : ℕ → ℤ) : ℚ :=
+FormalConjectures/ErdosProblems/278.lean-54-  let L := moduli.lcm id
+FormalConjectures/ErdosProblems/278.lean-55-  let covered := (Finset.range L).filter fun (m : ℕ) =>
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/278.lean-60-$\sum_{\emptyset \neq S \subseteq \text{moduli}} (-1)^{|S|+1} / \operatorname{lcm}(S)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/278.lean-61-This equals the covering density when all offsets are equal. -/
+FormalConjectures/ErdosProblems/278.lean:62:noncomputable def inclusionExclusionDensity (moduli : Finset ℕ) : ℚ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/278.lean-63-  ((moduli.powerset.filter fun S => S.Nonempty).sum fun S =>
+FormalConjectures/ErdosProblems/278.lean-64-    (-1 : ℚ) ^ (S.card + 1) / ((S.lcm id : ℕ) : ℚ))
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-44-
+FormalConjectures/ErdosProblems/337.lean-45-/-- The sumset $A + A = \{a + b : a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/337.lean:46:def sumset (A : Set ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/337.lean-47-  {n : ℕ | ∃ a ∈ A, ∃ b ∈ A, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-49-/-- The set of all sums of exactly $k$ elements from $A$ (with repetition). -/
+FormalConjectures/ErdosProblems/337.lean:50:def exactSumset (A : Set ℕ) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/337.lean-51-  {n : ℕ | ∃ (f : Fin k → ℕ), (∀ i, f i ∈ A) ∧ n = ∑ i, f i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-52-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-39-
+FormalConjectures/ErdosProblems/871.lean-40-/-- The sumset $A + A = \{a + b : a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/871.lean:41:def sumset (A : Set ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/871.lean-42-  {n : ℕ | ∃ a ∈ A, ∃ b ∈ A, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-40-there exists $N$ such that for all $x \geq N$, the proportion of elements of $A$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/955.lean-41-below $x$ is less than $\varepsilon$. -/
+FormalConjectures/ErdosProblems/955.lean:42:def HasNaturalDensityZero (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/955.lean-43-  ∀ ε : ℝ, ε > 0 → ∃ N : ℕ, ∀ x : ℕ, x ≥ N →
+FormalConjectures/ErdosProblems/955.lean-44-    ((Finset.filter (· ∈ A) (Finset.range x)).card : ℝ) / (x : ℝ) < ε
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/667.lean-46-/-- A graph on $n$ vertices has the $(p, q)$-density property if every $p$-element
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/667.lean-47-subset spans at least $q$ edges. -/
+FormalConjectures/ErdosProblems/667.lean:48:def HasDensityProperty {n : ℕ} (G : SimpleGraph (Fin n)) (p q : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/667.lean-49-  ∀ S : Finset (Fin n), S.card = p → edgesInSubset G S ≥ q
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/667.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-66-/-- The natural density of a set $S \subseteq \mathbb{N}$ exists and equals $d$. -/
+FormalConjectures/ErdosProblems/928.lean:67:def HasNaturalDensity (S : Set ℕ) (d : ℝ) : Prop :=
+FormalConjectures/ErdosProblems/928.lean-68-  Filter.Tendsto (fun N : ℕ => ((S ∩ {i | 1 ≤ i ∧ i ≤ N}).ncard : ℝ) / N)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-69-    atTop (nhds d)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-37-$$d^*(A) = \limsup_{N \to \infty} \frac{|A \cap \{0, 1, \ldots, N-1\}|}{N}$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-38--/
+FormalConjectures/ErdosProblems/432.lean:39:noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/432.lean-40-  limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-41-    atTop
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-33-
+FormalConjectures/ErdosProblems/31.lean-34-/-- The sumset $A + B$: the set of all $a + b$ with $a \in A$, $b \in B$. -/
+FormalConjectures/ErdosProblems/31.lean:35:def sumset (A B : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-37-/-- A set $B \subseteq \mathbb{N}$ has natural density zero if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-38-    $|B \cap \{0, \ldots, N-1\}| / N \to 0$ as $N \to \infty$. -/
+FormalConjectures/ErdosProblems/31.lean:39:def HasNaturalDensityZero (B : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/31.lean-40-  ∀ ε : ℝ, ε > 0 → ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/31.lean-41-    (((Finset.range N).filter (· ∈ B)).card : ℝ) / (N : ℝ) < ε
+--
+FormalConjectures/ErdosProblems/335.lean-36-/-- The upper density of $A \subseteq \mathbb{N}$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-37-$\overline{d}(A) = \limsup_{N\to\infty} |A \cap \{0, 1, \ldots, N-1\}| / N$ -/
+FormalConjectures/ErdosProblems/335.lean:38:noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/335.lean-39-  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-40-    Filter.atTop
+--
+FormalConjectures/ErdosProblems/335.lean-42-/-- The lower density of $A \subseteq \mathbb{N}$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-43-$\underline{d}(A) = \liminf_{N\to\infty} |A \cap \{0, 1, \ldots, N-1\}| / N$ -/
+FormalConjectures/ErdosProblems/335.lean:44:noncomputable def lowerDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/335.lean-45-  Filter.liminf (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-46-    Filter.atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-48-/-- A set has natural density $d$ if its upper and lower densities both equal $d$. -/
+FormalConjectures/ErdosProblems/335.lean:49:def HasNaturalDensity (A : Set ℕ) (d : ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-50-  upperDensity A = d ∧ lowerDensity A = d
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-38-/-- The set of all sums of exactly $k$ elements from $A$ (with repetition allowed). -/
+FormalConjectures/ErdosProblems/336.lean:39:def exactSumset (A : Set ℕ) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/336.lean-40-  {n : ℕ | ∃ (f : Fin k → ℕ), (∀ i, f i ∈ A) ∧ n = ∑ i, f i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean-41-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-36-$$\overline{d}(A) = \limsup_{N \to \infty} |A \cap \{0, 1, \ldots, N-1\}| / N$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-37--/
+FormalConjectures/ErdosProblems/333.lean:38:noncomputable def upperDensity333 (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/333.lean-39-  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-40-    Filter.atTop
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-60-/-- The natural density of a set $A \subseteq \mathbb{N}$ is zero. -/
+FormalConjectures/ErdosProblems/673.lean:61:def HasNaturalDensityZero (A : Set ℕ) [DecidablePred (· ∈ A)] : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/673.lean-62-  Tendsto
+FormalConjectures/ErdosProblems/673.lean-63-    (fun N : ℕ => (((Finset.range N).filter (· ∈ A)).card : ℝ) / (N : ℝ))
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/697.lean-40-/-- For each $m$ and $\alpha$, $\delta (m, \alpha)$ is the density of the set of integers which are
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/697.lean-41-divisible by some $d \equiv 1 \pmod{m}$ with $1 < d < exp (m ^ \alpha)$ exists. -/
+FormalConjectures/ErdosProblems/697.lean:42:noncomputable def δ (m : ℕ) (α : ℝ) : ℝ := (density_exists m α).choose
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/697.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/697.lean-44-/-- $\delta < \frac{m ^ \alpha + 1}{m}`. This shows that
+--
+FormalConjectures/ErdosProblems/692.lean-45-/-- The natural density $\delta_1(n, m)$ exists and equals $d$:
+FormalConjectures/ErdosProblems/692.lean-46-the limit of $|\{k \leq N : k \text{ has exactly one divisor in } (n, m)\}| / N$ equals $d$. -/
+FormalConjectures/ErdosProblems/692.lean:47:def HasDelta1Density (n m : ℕ) (d : ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean-48-  Filter.Tendsto (fun N => delta1Approx n m N) Filter.atTop (nhds d)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean-49-

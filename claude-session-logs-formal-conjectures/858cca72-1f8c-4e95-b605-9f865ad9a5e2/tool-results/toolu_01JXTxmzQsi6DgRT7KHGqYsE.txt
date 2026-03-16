@@ -1,0 +1,1247 @@
+/home/ryan/formal-conjectures/ai-review/1165.md-19-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1165.md-20-
+ai-review/1165.md:21:**Inconsistent author attribution for [Va99].** The three sibling files give three different authors for the same `[Va99]` reference:
+ai-review/1165.md:22:- **1164.lean**: `[Va99] Vershik, A., *Random walks on random and changing graphs*, 1999, Problem 6.76.`
+ai-review/1165.md:23:- **1165.lean**: `[Va99] Vize, R., *Open problems on random walks* (1999), §6.77.`
+ai-review/1165.md:24:- **1166.lean**: `[Va99] Varga, L., *Problems and results on random walks*, 1999.`
+/home/ryan/formal-conjectures/ai-review/1165.md-25-
+ai-review/1165.md:26:The erdosproblems.com website only gives the shorthand `[Va99, 6.77]` without expanding the author or title. The three files invented different expansions. This should be investigated and corrected to a single consistent, accurate citation. (The reference likely refers to a single source, possibly a problem collection.)
+/home/ryan/formal-conjectures/ai-review/1165.md-27-
+/home/ryan/formal-conjectures/ai-review/1165.md-28-The references `[To01]` (Tóth) and `[HLOZ24]` (Hao, Li, Okada, Zheng) are consistent with the website, which credits Tóth for proving the r ≥ 4 case and Hao–Li–Okada–Zheng for the r = 3 case.
+--
+/home/ryan/formal-conjectures/ai-review/1165.md-50-- The `open` declarations are appropriate and standard.
+/home/ryan/formal-conjectures/ai-review/1165.md-51-
+ai-review/1165.md:52:**Minor suggestion:** The module docstring could note the section number more precisely — `§6.77` in the docstring vs `[Va99, 6.77]` in the theorem docstring — these are consistent but the module docstring could be clearer that 6.77 is a problem number, not a section.
+/home/ryan/formal-conjectures/ai-review/1165.md-53-
+/home/ryan/formal-conjectures/ai-review/1165.md-54-Overall readability is good.
+--
+ai-review/1165.md-92-**The formalization is mathematically correct and complete.** No flaws identified. The only issues are:
+/home/ryan/formal-conjectures/ai-review/1165.md-93-1. The style inconsistency with the `answer(True)` pattern (minor, and possibly intentional).
+ai-review/1165.md:94:2. The `[Va99]` citation is fabricated/inconsistent across sibling files (documentation issue, not a correctness issue).
+/home/ryan/formal-conjectures/ai-review/1165.md-95-3. The duplicated definitions should be refactored into a shared module (code quality issue).
+--
+/home/ryan/formal-conjectures/ai-review/548.md-43-- **`[Er78, p.30]`** ✗ — missing
+/home/ryan/formal-conjectures/ai-review/548.md-44-- `[Er93, p.345]` ✓
+ai-review/548.md:45:- **`[Va99, 3.55]`** ✗ — missing
+/home/ryan/formal-conjectures/ai-review/548.md-46-
+ai-review/548.md:47:**Recommendation:** Add the two missing references `[Er78]` and `[Va99]` to the docstring.
+/home/ryan/formal-conjectures/ai-review/548.md-48-
+/home/ryan/formal-conjectures/ai-review/548.md-49----
+--
+ai-review/973.md-15-The website (erdosproblems.com/973, last edited 23 January 2026) lists additional references:
+/home/ryan/formal-conjectures/ai-review/973.md-16-- **[Ha74]** — Halász (the problem is described as "Problem 7.3 of [Ha74]" on the website)
+ai-review/973.md:17:- **[Va99]** — (not expanded on the website)
+/home/ryan/formal-conjectures/ai-review/973.md-18-- **[Tu84b]** — (not expanded on the website)
+/home/ryan/formal-conjectures/ai-review/973.md-19-- **[Er92f]** — (not expanded on the website)
+--
+/home/ryan/formal-conjectures/ai-review/973.md-21-The website also attributes the original source to Erdős via Halász's formulation. The formalization's citation of `[Er65b, p.213]` is consistent with the website but the additional references are omitted.
+/home/ryan/formal-conjectures/ai-review/973.md-22-
+ai-review/973.md:23:**Suggestion:** Consider adding the additional references `[Ha74]`, `[Va99]`, `[Tu84b]`, `[Er92f]` to the module docstring for completeness, particularly `[Ha74]` since the website identifies it as the proximate source.
+/home/ryan/formal-conjectures/ai-review/973.md-24-
+/home/ryan/formal-conjectures/ai-review/973.md-25-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/973.md-83-|----------|------------|
+/home/ryan/formal-conjectures/ai-review/973.md-84-| Code Reuse | No reuse opportunities |
+ai-review/973.md:85:| Citations | Missing [Ha74], [Va99], [Tu84b], [Er92f] from website |
+/home/ryan/formal-conjectures/ai-review/973.md-86-| Variants | Complete |
+/home/ryan/formal-conjectures/ai-review/973.md-87-| Readability | Excellent |
+--
+ai-review/1156.md-36-**Formalization citations:**
+/home/ryan/formal-conjectures/ai-review/1156.md-37-- [AlSp92] — correctly referenced ✓
+ai-review/1156.md:38:- [Vu99] — referenced as `[Vu99]` but the website lists it as `[Va99]` (likely a typo on one side; the actual paper is Vu, V.H., 1999, so `[Vu99]` seems more accurate than `[Va99]`)
+/home/ryan/formal-conjectures/ai-review/1156.md-39-- The docstring mentions "Heckel and Riordan proved concentration cannot be within n^c for c < 1/2" — this corresponds to [HeRi23] but is not cited by tag in the Lean file.
+/home/ryan/formal-conjectures/ai-review/1156.md-40-
+--
+/home/ryan/formal-conjectures/ai-review/1156.md-42-- The docstring references to Bollobás, Shamir & Spencer, and Heckel & Riordan are informal prose without citation tags. Consider adding [Bo88], [ShSp87], [HeRi23] explicitly.
+/home/ryan/formal-conjectures/ai-review/1156.md-43-- The website lists additional references [AlSp16], [Sc17], [He21] that are not mentioned at all.
+ai-review/1156.md:44:- Part 2 cites `[Vu99]` — verify whether this should be `[Va99]` per the website, or whether the website has the typo.
+/home/ryan/formal-conjectures/ai-review/1156.md-45-
+/home/ryan/formal-conjectures/ai-review/1156.md-46-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/70.md-22-
+/home/ryan/formal-conjectures/ai-review/70.md-23-- **[Er87]** — present ✓
+ai-review/70.md:24:- **[Va99, 7.83]** — **missing** from the code
+/home/ryan/formal-conjectures/ai-review/70.md-25-
+ai-review/70.md:26:The reference **[Va99]** should be added. Additionally, the known partial result by Erdős and Rado—that $\mathfrak{c} \to (\omega + n, 4)^3_2$ for all $2 \leq n < \omega$—is mentioned on the website but absent from the code's documentation.
+/home/ryan/formal-conjectures/ai-review/70.md-27-
+ai-review/70.md:28:**Recommendation:** Add `[Va99, 7.83]` to the citation list and mention the Erdős–Rado partial result in the docstring.
+/home/ryan/formal-conjectures/ai-review/70.md-29-
+/home/ryan/formal-conjectures/ai-review/70.md-30-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/70.md-82-|-----------|--------|
+/home/ryan/formal-conjectures/ai-review/70.md-83-| Code reuse | Could adopt subtype/StrictMono idiom from sibling files |
+ai-review/70.md:84:| Citations | Missing [Va99, 7.83]; missing Erdős–Rado partial result |
+/home/ryan/formal-conjectures/ai-review/70.md-85-| Variants | Complete |
+/home/ryan/formal-conjectures/ai-review/70.md-86-| Readability | Below standard compared to sibling partition problems |
+--
+/home/ryan/formal-conjectures/ai-review/1147.md-22-
+ai-review/1147.md-23-The website (last edited 27 January 2026) lists:
+ai-review/1147.md:24:- **[Va99]**: Vaughan, R.C., *The Hardy-Littlewood method*, 2nd edition, Cambridge University Press, 1997. — Section 1.21.
+ai-review/1147.md-25-- **[Ko16b]**: Konieczny, J., 2016.
+/home/ryan/formal-conjectures/ai-review/1147.md-26-
+--
+/home/ryan/formal-conjectures/ai-review/790.md-22-| [Er65, p.188] | **No** |
+/home/ryan/formal-conjectures/ai-review/790.md-23-| [Er73, p.130] | **No** |
+ai-review/790.md:24:| [Va99, 1.22] | **No** |
+ai-review/790.md-25-| See also: Problem 876 | **No** |
+/home/ryan/formal-conjectures/ai-review/790.md-26-
+--
+/home/ryan/formal-conjectures/ai-review/790.md-130-|----------|------------|
+/home/ryan/formal-conjectures/ai-review/790.md-131-| Code reuse | No reuse opportunity; local definition is appropriate |
+ai-review/790.md:132:| Citations | [CKS75] is complete; minor references [Er65], [Er73], [Va99] and "See also: 876" are missing |
+/home/ryan/formal-conjectures/ai-review/790.md-133-| Variants | All key variants captured; historical bounds reasonably omitted |
+/home/ryan/formal-conjectures/ai-review/790.md-134-| Readability | Good; well-structured with clear docstrings |
+--
+/home/ryan/formal-conjectures/ai-review/1171.md-12-
+ai-review/1171.md-13-**Website (erdosproblems.com/1171):**
+ai-review/1171.md:14:- [Va99,7.84] — cited as the source of the problem
+/home/ryan/formal-conjectures/ai-review/1171.md-15-- Baumgartner [Ba89b] — "proved that, assuming a form of Martin's axiom, that ω₁ω → (ω₁ω, 3)²"
+/home/ryan/formal-conjectures/ai-review/1171.md-16-
+ai-review/1171.md-17-**Formalization docstring:**
+ai-review/1171.md:18:- "[Va99] Section 7.84." — matches the website
+/home/ryan/formal-conjectures/ai-review/1171.md-19-- "[Ba89b] Baumgartner." — matches the website
+/home/ryan/formal-conjectures/ai-review/1171.md-20-
+ai-review/1171.md:21:The citations are consistent with the website. Neither the website nor the formalization provides full bibliographic details for [Va99] or [Ba89b]. The website identifies [Va99] with "Hajnal, A. and Larson, J., *Partition relations*. Handbook of Set Theory (2010)" in problem 1172, but not in 1171. The formalization could optionally expand these references for completeness, but as-is they match the website's level of detail.
+/home/ryan/formal-conjectures/ai-review/1171.md-22-
+/home/ryan/formal-conjectures/ai-review/1171.md-23-## 3. Variants
+--
+ai-review/1166.md-15-The docstring references:
+/home/ryan/formal-conjectures/ai-review/1166.md-16-
+ai-review/1166.md:17:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/1166.md-18-
+ai-review/1166.md-19-- **[ErTa60]**: Listed as `Erdős, P. and Taylor, S. J., *Some problems concerning the structure of random walk paths*, Acta Math. Acad. Sci. Hungar. 11, 137–162, 1960.` This is a well-known paper and the citation appears correct and complete.
+/home/ryan/formal-conjectures/ai-review/1166.md-20-
+ai-review/1166.md:21:The website does not list additional references beyond [Va99] and the connection to Problem 1165 / [ErTa60]. No citations are missing.
+/home/ryan/formal-conjectures/ai-review/1166.md-22-
+/home/ryan/formal-conjectures/ai-review/1166.md-23-## 3. Variants
+--
+ai-review/164.md-31-**Comparison with [erdosproblems.com/164](https://www.erdosproblems.com/164):**
+/home/ryan/formal-conjectures/ai-review/164.md-32-
+ai-review/164.md:33:The website lists references: [Er35], [Er76g], [Er86], [Li23], and [Va99].
+/home/ryan/formal-conjectures/ai-review/164.md-34-
+/home/ryan/formal-conjectures/ai-review/164.md-35-| Citation | In formalization | On website | Assessment |
+--
+/home/ryan/formal-conjectures/ai-review/164.md-39-| Erdős 1986 [Er86] | `[Er86]` — title given | [Er86] | **OK.** Matches. |
+/home/ryan/formal-conjectures/ai-review/164.md-40-| Lichtman 2023 [Li23] | `[Li23]` — title and journal given | [Li23] | **OK.** Matches. |
+ai-review/164.md:41:| Varadharajan 1999 [Va99] | Not cited | [Va99, §1.12] | **Missing.** The website lists this reference (section 1.12). |
+/home/ryan/formal-conjectures/ai-review/164.md-42-
+ai-review/164.md-43-**Additional issues:**
+--
+/home/ryan/formal-conjectures/ai-review/164.md-131-This constraint is written as a hypothesis rather than baked into the definition of `IsPrimitive`. This is a sound design choice — it separates the algebraic property (antichain) from the domain restriction, and matches how the theorem is stated in the literature.
+/home/ryan/formal-conjectures/ai-review/164.md-132-
+ai-review/164.md:133:**Verdict: Correct. The formalization faithfully captures Lichtman's theorem (the Erdős primitive set conjecture). No mathematical errors detected. The only actionable improvements are (1) replacing the local `IsPrimitive` with Mathlib's `IsAntichain (· ∣ ·)` and (2) adding the missing [Va99] citation.**
+--
+ai-review/1140.md-9-**Issue: Missing citation.** The [erdosproblems.com/1140](https://www.erdosproblems.com/1140) page references three works:
+/home/ryan/formal-conjectures/ai-review/1140.md-10-
+ai-review/1140.md:11:- **[Va99, 1.5]** — Vaughan, R. C., *The Hardy-Littlewood Method*, 2nd ed., 1997. ✅ Present in the formalization.
+/home/ryan/formal-conjectures/ai-review/1140.md-12-- **[EpGi10]** — Epure, R. and Gica, A., 2010. ✅ Present in the formalization.
+/home/ryan/formal-conjectures/ai-review/1140.md-13-- **[MoWi89]** — Mollin, R. A. and Williams, H. C., 1989. ❌ **Missing.** The website notes that the result for $n \equiv 3 \pmod{4}$ relies on combining [EpGi10] with [MoWi89]. The docstring mentions "with at most one exception" for the $n \equiv 3 \pmod{4}$ case but does not cite Mollin and Williams.
+--
+/home/ryan/formal-conjectures/ai-review/59.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/59.md-16-
+ai-review/59.md:17:The docstring references `[Er90, Er93, Er97c, Va99]` for the conjecture and `[EFR86]`, `[MoSa16]` for results. Comparing to [erdosproblems.com/59](https://www.erdosproblems.com/59):
+/home/ryan/formal-conjectures/ai-review/59.md-18-
+/home/ryan/formal-conjectures/ai-review/59.md-19-- The website cites **[Er93, p.335]** — the page number is missing from the formalization's docstring.
+ai-review/59.md:20:- The website cites **[Va99, 3.56]** — the section number is missing from the formalization's docstring.
+ai-review/59.md-21-- All other citations match: [Er90], [Er97c], [EFR86], [MoSa16].
+/home/ryan/formal-conjectures/ai-review/59.md-22-
+ai-review/59.md:23:**Recommendation**: Update the docstring to use `[Er93, p.335]` and `[Va99, 3.56]` for precision.
+/home/ryan/formal-conjectures/ai-review/59.md-24-
+/home/ryan/formal-conjectures/ai-review/59.md-25-## 3. Variants
+--
+ai-review/59.md-29-1. **Morris–Saxton weaker conjecture**: Morris and Saxton conjecture that the weaker bound `2^{O(ex(n;G))}` holds for *all* graphs G (i.e., there exists a constant C depending on G such that the count is at most `2^{C · ex(n;G)}`). This is a natural follow-up now that the original conjecture is disproved and could be formalized as a separate theorem/conjecture.
+/home/ryan/formal-conjectures/ai-review/59.md-30-
+ai-review/59.md:31:2. **The C₄ case**: The website notes that the specific case G = C₄ is separately posed in [Va99]. This could be stated as a variant (it remains open whether the original bound holds for C₄, even though it fails for C₆).
+/home/ryan/formal-conjectures/ai-review/59.md-32-
+/home/ryan/formal-conjectures/ai-review/59.md-33-## 4. Readability
+--
+/home/ryan/formal-conjectures/ai-review/59.md-72-|----------|-----------|
+/home/ryan/formal-conjectures/ai-review/59.md-73-| Code reuse | Custom definitions could be replaced by Mathlib's `IsContained`/`Free`/`extremalNumber` |
+ai-review/59.md:74:| Citations | Missing page/section numbers: should be `[Er93, p.335]` and `[Va99, 3.56]` |
+/home/ryan/formal-conjectures/ai-review/59.md-75-| Variants | Missing Morris–Saxton weaker conjecture (`2^{O(ex(n;G))}` for all G) and C₄ special case |
+/home/ryan/formal-conjectures/ai-review/59.md-76-| Readability | Good overall; minor naming inconsistency (`countGFreeGraphs` vs parameter `H`) |
+--
+/home/ryan/formal-conjectures/ai-review/1173.md-22-
+/home/ryan/formal-conjectures/ai-review/1173.md-23-- `[Ko25b] Koepke, P., Problem 35.`
+ai-review/1173.md:24:- `[Va99] Vaughan, J.E., 7.88.`
+/home/ryan/formal-conjectures/ai-review/1173.md-25-
+ai-review/1173.md:26:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/1173.md-27-
+/home/ryan/formal-conjectures/ai-review/1173.md-28-The docstring correctly identifies this as "A problem of Erdős and Hajnal," matching the website.
+--
+/home/ryan/formal-conjectures/ai-review/1138.md-30-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1138.md-31-
+ai-review/1138.md:32:**Correct.** The formalization cites `[Va99, 1.3]` in the docstring (line 42). The website lists the reference as `[Va99, 1.3]` — specifically Vardi, I., Section 1.3. The module-level docstring (line 28) also references `[Va99]` as "Vardi, I., 1.3."
+/home/ryan/formal-conjectures/ai-review/1138.md-33-
+ai-review/1138.md:34:The full reference appears to be: Vardi, Ilan. *Computational Recreations in Mathematica* (1991), though on the website it is listed as `[Va99]`. The formalization matches the website's citation format.
+/home/ryan/formal-conjectures/ai-review/1138.md-35-
+/home/ryan/formal-conjectures/ai-review/1138.md-36-## 3. Variants
+--
+ai-review/1155.md-15-The formalization's docstring includes:
+/home/ryan/formal-conjectures/ai-review/1155.md-16-- **[Bo98]** Bollobás, B., _Modern Graph Theory_, Graduate Texts in Mathematics 184, Springer (1998). ✓
+ai-review/1155.md:17:- **[Va99]** Vu, V. H. (1999), 3.61. ✓
+/home/ryan/formal-conjectures/ai-review/1155.md-18-- **[BFL15]** Bohman, Frieze, and Lubetzky, _Random triangle removal_, Advances in Mathematics 280 (2015), 379–438. ✓
+/home/ryan/formal-conjectures/ai-review/1155.md-19-
+--
+ai-review/1151.md-27-- **[Er43]** — mentioned without a full citation. Should be expanded, e.g.:
+/home/ryan/formal-conjectures/ai-review/1151.md-28-  *Erdős, P., "On some convergence properties of the interpolation polynomials", Annals of Mathematics (1943).*
+ai-review/1151.md:29:- **[Va99]** — Varga, R.S., *Scientific Computation on Mathematical Problems and Conjectures*, 1999. The specific reference is **[Va99, 2.41]** (Problem 2.41 in Varga's book). The docstring includes the `[Va99, 2.41]` tag on the theorem but provides the Varga citation only in the module docstring. This is adequate.
+/home/ryan/formal-conjectures/ai-review/1151.md-30-
+ai-review/1151.md:31:The website lists the same references. The formalization should include full citations for [Er41] and [Er43] in the module docstring to match the level of detail provided for [Va99].
+/home/ryan/formal-conjectures/ai-review/1151.md-32-
+/home/ryan/formal-conjectures/ai-review/1151.md-33-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1160.md-7-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1160.md-8-
+ai-review/1160.md:9:The formalization references **[Va99, 5.71]** (Vaughan, 1999) and **[BNV07]** (Blackburn, Neumann, Venkataraman, 2007, Question 22.16). These match the website.
+/home/ryan/formal-conjectures/ai-review/1160.md-10-
+ai-review/1160.md-11-**Missing from the formalization:**
+--
+ai-review/1149.md-9-The formalization cites:
+/home/ryan/formal-conjectures/ai-review/1149.md-10-
+ai-review/1149.md:11:- **[Va99]** Vardi, I., *Computational Recreations in Mathematica* (1999), Problem 1.34.
+/home/ryan/formal-conjectures/ai-review/1149.md-12-- **[BeRi17]** Bergelson, V. and Richter, F. K., *Dynamical generalizations of the prime number theorem and disjointness of additive and multiplicative semigroup actions* (2017).
+/home/ryan/formal-conjectures/ai-review/1149.md-13-
+ai-review/1149.md:14:The website (erdosproblems.com/1149) lists the reference as `[Va99, 1.34]` and notes the problem was proved by Bergelson and Richter `[BeRi17]`. Both citations match. No discrepancies.
+/home/ryan/formal-conjectures/ai-review/1149.md-15-
+/home/ryan/formal-conjectures/ai-review/1149.md-16-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1161.md-14-
+ai-review/1161.md-15-The website lists:
+ai-review/1161.md:16:- **Primary source:** [Va99, 5.72] (presumably Vardi 1999 or a similar reference compendium)
+ai-review/1161.md-17-- **Resolution:** Beker [Be25d]
+/home/ryan/formal-conjectures/ai-review/1161.md-18-
+ai-review/1161.md:19:The formalization's module docstring references only **Beker [Be25d]**. The primary source **[Va99, 5.72]** is not mentioned. It should be added to align with the website, e.g.:
+/home/ryan/formal-conjectures/ai-review/1161.md-20-
+/home/ryan/formal-conjectures/ai-review/1161.md-21-```
+ai-review/1161.md:22:*Reference:* [Va99, 5.72], [erdosproblems.com/1161](https://www.erdosproblems.com/1161)
+/home/ryan/formal-conjectures/ai-review/1161.md-23-```
+/home/ryan/formal-conjectures/ai-review/1161.md-24-
+ai-review/1161.md:25:**Recommendation:** Add the [Va99, 5.72] citation to the module docstring.
+/home/ryan/formal-conjectures/ai-review/1161.md-26-
+/home/ryan/formal-conjectures/ai-review/1161.md-27-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1161.md-94-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/1161.md-95-| Code reuse | No issues; no reuse opportunities |
+ai-review/1161.md:96:| Citations | **Missing [Va99, 5.72]** primary source reference |
+/home/ryan/formal-conjectures/ai-review/1161.md-97-| Variants | **Missing characterization theorem** (Beker's result 3) |
+/home/ryan/formal-conjectures/ai-review/1161.md-98-| Readability | Good |
+--
+ai-review/1164.md-18-**Website (erdosproblems.com/1164) states:**
+/home/ryan/formal-conjectures/ai-review/1164.md-19-- Problem attributed to Erdős and Taylor.
+ai-review/1164.md:20:- Reference: [Va99, 6.76]
+ai-review/1164.md-21-- Status: PROVED
+/home/ryan/formal-conjectures/ai-review/1164.md-22-- Solved by Révész and Kesten (independently).
+--
+/home/ryan/formal-conjectures/ai-review/1164.md-24-
+ai-review/1164.md-25-**Formalization docstring states:**
+ai-review/1164.md:26:- `[Va99] Vershik, A., *Random walks on random and changing graphs*, 1999, Problem 6.76.`
+/home/ryan/formal-conjectures/ai-review/1164.md-27-- `[Re90] Révész, P., *Random Walk in Random and Non-Random Environments*, World Scientific, 1990.`
+/home/ryan/formal-conjectures/ai-review/1164.md-28-- `[DPRZ04] Dembo, A., Peres, Y., Rosen, J. and Zeitouni, O., *Cover times for Brownian motion and random walks in two dimensions*, Annals of Mathematics, 2004.`
+/home/ryan/formal-conjectures/ai-review/1164.md-29-
+ai-review/1164.md:30:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/1164.md-31-
+ai-review/1164.md:32:**Verdict:** ⚠️ Pass with caveat. The citations are reasonable and match the website's reference keys. The varying author attributions for [Va99] across 1164/1165/1166 should be reconciled.
+/home/ryan/formal-conjectures/ai-review/1164.md-33-
+/home/ryan/formal-conjectures/ai-review/1164.md-34-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1164.md-115-|-----------|--------|-------|
+/home/ryan/formal-conjectures/ai-review/1164.md-116-| Code Reuse | ⚠️ Action needed | `IsUniformStep` and `walkPosition` duplicated across 1164/1165/1166 |
+ai-review/1164.md:117:| Citations | ⚠️ Minor issue | [Va99] author attribution inconsistent across the 1164–1166 series |
+/home/ryan/formal-conjectures/ai-review/1164.md-118-| Variants | ⚠️ Partial | DPRZ04 stronger distributional result documented but not formalized |
+/home/ryan/formal-conjectures/ai-review/1164.md-119-| Readability | ✅ Pass | Clean, well-documented code |
+--
+/home/ryan/formal-conjectures/ai-review/1132.md-22-
+/home/ryan/formal-conjectures/ai-review/1132.md-23-- **[Er67,p.68]** — Original source (Erdős, 1967)
+ai-review/1132.md:24:- **[Va99,2.43]** — Varma (1999)
+/home/ryan/formal-conjectures/ai-review/1132.md-25-- **[Be31]** — Bernstein (1931), proved the dense set result
+/home/ryan/formal-conjectures/ai-review/1132.md-26-- **[Er61c]** — Erdős (1961), proved max_{x∈[-1,1]} L_n(x) > (2/π) log n − O(1) for any fixed nodes
+/home/ryan/formal-conjectures/ai-review/1132.md-27-
+ai-review/1132.md:28:The formalization's module docstring mentions **[Be31]** by shorthand only, with no author name, title, or journal. The references **[Er67,p.68]**, **[Va99,2.43]**, and **[Er61c]** are entirely absent.
+/home/ryan/formal-conjectures/ai-review/1132.md-29-
+/home/ryan/formal-conjectures/ai-review/1132.md-30-The known result by Erdős [Er61c] — that for any *fixed* nodes, max L_n(x) > (2/π) log n − O(1) — is important context. It shows that the (2/π) log n threshold is already established for the maximum over x; the conjecture asks whether this holds *pointwise* for some fixed x across infinitely many n (Part 1) or for a.e. x in a limsup sense (Part 2).
+--
+/home/ryan/formal-conjectures/ai-review/1132.md-149-|-----------|--------|-------|
+/home/ryan/formal-conjectures/ai-review/1132.md-150-| Code reuse | ⚠️ Needs improvement | `lagrangeBasis`, `lebesgueFunction` duplicated across 5+ files |
+ai-review/1132.md:151:| Citations | ⚠️ Incomplete | Only [Be31] mentioned (by shorthand); [Er67,p.68], [Va99,2.43], [Er61c] missing |
+/home/ryan/formal-conjectures/ai-review/1132.md-152-| Variants | ✅ Complete | Both parts of the problem are formalized |
+ai-review/1132.md-153-| Readability | ✅ Good | Minor: prefer `open scoped BigOperators`, self-referential docstring |
+--
+/home/ryan/formal-conjectures/ai-review/76.md-23-- **[Er95]** — not cited in the formalization
+/home/ryan/formal-conjectures/ai-review/76.md-24-- **[Er97d]** — not cited in the formalization
+ai-review/76.md:25:- **[Va99, 3.54]** — not cited in the formalization
+/home/ryan/formal-conjectures/ai-review/76.md-26-- **[GrLe20]** — cited ✓
+/home/ryan/formal-conjectures/ai-review/76.md-27-
+ai-review/76.md:28:**Missing citations**: The formalization omits [Er95], [Er97d], and [Va99]. These are the original sources where Erdős (with Faudree and Ordman) stated the conjecture. The docstring says "Conjectured by Erdős, Faudree, and Ordman" without a citation tag for the original conjecture. At minimum, [Er97d] should be cited as the source where Erdős explicitly asked this question, and [Va99] as the survey reference.
+/home/ryan/formal-conjectures/ai-review/76.md-29-
+ai-review/76.md-30-**Note**: The website also mentions a related OEIS sequence A060407, which could be noted in the docstring for additional context.
+--
+/home/ryan/formal-conjectures/ai-review/76.md-124-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/76.md-125-| Code reuse | `EdgeTwoColoring` and edge-disjoint triangle concepts exist in Problems 639 and 1009 with different encodings; no shared utility exists yet |
+ai-review/76.md:126:| Citations | [GrLe20] is cited; [Er95], [Er97d], and [Va99] from the website are missing |
+/home/ryan/formal-conjectures/ai-review/76.md-127-| Variants | The single-color variant from [Er97d] (≥ cn² for c > 1/24) is not captured |
+/home/ryan/formal-conjectures/ai-review/76.md-128-| Readability | Good — clean definitions, clear docstrings, well-structured theorem statement |
+--
+/home/ryan/formal-conjectures/ai-review/77.md-33-
+ai-review/77.md-34-**Missing references.** The website lists the following references not included in the docstring:
+ai-review/77.md:35:- [Er61], [Er69b], [Er71], [Er81], [Er88], [Er90b], [Er93], [Er95], [Er97c], [Er97d], [Va99]
+/home/ryan/formal-conjectures/ai-review/77.md-36-- [BBCGHMST24] Balister, Bollobás, Campos, Griffiths, Hurley, Morris, Sahasrabudhe, Tiba — simplified proof of the 4 − c bound.
+/home/ryan/formal-conjectures/ai-review/77.md-37-
+--
+ai-review/1172.md-17-The module docstring states:
+/home/ryan/formal-conjectures/ai-review/1172.md-18-
+ai-review/1172.md:19:> [Va99] Hajnal, A. and Larson, J., *Partition relations*. Handbook of Set Theory (2010).
+/home/ryan/formal-conjectures/ai-review/1172.md-20-
+ai-review/1172.md:21:This conflates two distinct references. Comparing with `ErdosProblems/1173.lean`, which cites "[Va99] Vaughan, J.E., 7.88", the tag **[Va99]** almost certainly refers to a 1999 survey or problem collection by **Vaughan**, not the Hajnal–Larson chapter. The Hajnal–Larson chapter in the Handbook of Set Theory (2010) is the *underlying source* for the partition relation problems, but it has a different citation key.
+/home/ryan/formal-conjectures/ai-review/1172.md-22-
+ai-review/1172.md-23-**Recommendation:** Separate the citations. For example:
+ai-review/1172.md:24:- `[Va99]` Vaughan, J.E. (1999), section 7.87.
+/home/ryan/formal-conjectures/ai-review/1172.md-25-- The underlying reference is Hajnal, A. and Larson, J., *Partition relations*, Handbook of Set Theory (2010).
+/home/ryan/formal-conjectures/ai-review/1172.md-26-
+ai-review/1172.md:27:The website itself only shows `[Va99, 7.87]` and notes "A problem of Erdős and Hajnal." The individual theorem docstrings correctly reference `[Va99, 7.87]`.
+/home/ryan/formal-conjectures/ai-review/1172.md-28-
+/home/ryan/formal-conjectures/ai-review/1172.md-29-## 3. Variants
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-26-$n!$ that are orders of subgroups of $S_n$ tends to $0$ as $n \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-27-
+FormalConjectures/ErdosProblems/1163.lean:28:[Va99] Vardi, I., *Computational Recreations in Mathematica* (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-40-/--
+FormalConjectures/ErdosProblems/1163.lean:41:Erdős Problem 1163 (Erdős and Turán) [Va99, 5.74]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-42-Describe (by statistical means) the arithmetic structure of the orders of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-43-subgroups of $S_n$.
+--
+/home/ryan/formal-conjectures/ai-review/117.md-23-- **[Er97f]** — Matches the website.
+/home/ryan/formal-conjectures/ai-review/117.md-24-- **[Py87]** — Matches the website.
+ai-review/117.md:25:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/117.md-26-
+/home/ryan/formal-conjectures/ai-review/117.md-27-## 3. Variants
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-41-and geometry_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-42-
+FormalConjectures/ErdosProblems/76.lean:43:[Va99, 3.54] See erdosproblems.com/76.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-45-[GrLe20] Gruslys, V. and Letzter, S., _Minimising the number of triangles in a
+--
+ai-review/1154.md-19-The website (erdosproblems.com/1154) lists **two** source citations:
+/home/ryan/formal-conjectures/ai-review/1154.md-20-- **[Er79h, p.119]** — present in the formalization ✓
+ai-review/1154.md:21:- **[Va99, 2.48]** — referring to Varga, R.S., *Scientific Computation on Mathematical Problems and Conjectures* (1999), problem 2.48. **Missing from the formalization.**
+/home/ryan/formal-conjectures/ai-review/1154.md-22-
+ai-review/1154.md:23:The docstring mentions results by Erdős–Volkmann, Falconer, Edgar–Miller, and Mauldin, which are consistent with the website's description. However, the specific papers are not cited by reference tag. This is acceptable for contextual remarks (as opposed to the primary source citation), but adding `[Va99, 2.48]` to the module docstring would improve traceability.
+/home/ryan/formal-conjectures/ai-review/1154.md-24-
+ai-review/1154.md:25:**Recommendation:** Add `[Va99, 2.48]` to the module-level docstring reference list.
+/home/ryan/formal-conjectures/ai-review/1154.md-26-
+/home/ryan/formal-conjectures/ai-review/1154.md-27-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1154.md-99-|-----------|--------|-------|
+/home/ryan/formal-conjectures/ai-review/1154.md-100-| Code reuse | **Good** | No reuse opportunities; appropriately uses Mathlib primitives |
+ai-review/1154.md:101:| Citations | **Needs improvement** | Missing `[Va99, 2.48]` reference from website |
+/home/ryan/formal-conjectures/ai-review/1154.md-102-| Variants | **Adequate** | Subring version captured; subfield variant and proved subgroup analogue could be added |
+/home/ryan/formal-conjectures/ai-review/1154.md-103-| Readability | **Excellent** | Clean, concise, well-documented |
+--
+ai-review/963.md-27-The website additionally references:
+/home/ryan/formal-conjectures/ai-review/963.md-28-
+ai-review/963.md:29:> [Va99, 1.22]
+/home/ryan/formal-conjectures/ai-review/963.md-30-
+ai-review/963.md:31:This likely refers to Vu, Van H., *"New bounds on nearly perfect matchings in hypergraphs: higher codegrees do help"* (1999), or another work indexed as Va99 in the Erdős problems database. **This citation is missing from the formalization's docstring** and should be added for completeness.
+/home/ryan/formal-conjectures/ai-review/963.md-32-
+/home/ryan/formal-conjectures/ai-review/963.md-33-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/963.md-90-|---|---|
+/home/ryan/formal-conjectures/ai-review/963.md-91-| Code reuse | Opportunity to unify with Erdős 774's `Dissociated` via a shared generic definition |
+ai-review/963.md:92:| Citations | Missing [Va99, 1.22] from the website |
+/home/ryan/formal-conjectures/ai-review/963.md-93-| Variants | Complete |
+/home/ryan/formal-conjectures/ai-review/963.md-94-| Readability | Good |
+--
+ai-review/202.md-28-**Present but incomplete:**
+ai-review/202.md-29-- [BFV13] is cited but without the full paper title: *"On a problem of Erdős and Graham"* or similar.
+ai-review/202.md:30:- The bulk citation `[Er61, Er65, Er65b, Er73, Er77c, ErGr80, Va99]` is listed but defers to the website for full references. This is acceptable given the large number of references, but individual full citations would be more rigorous.
+/home/ryan/formal-conjectures/ai-review/202.md-31-
+ai-review/202.md-32-**Website also notes:**
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-32-[ESS83] Erdős, P., Silverman, R., and Stein, A.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-33-
+FormalConjectures/ErdosProblems/1159.lean:34:[Va99] Vardy, A.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-35--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-36-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-41-/--
+FormalConjectures/ErdosProblems/1159.lean:42:Erdős Problem 1159 [Va99, 4.70]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-44-Does there exist an absolute constant $C > 1$ such that every finite projective plane
+--
+/home/ryan/formal-conjectures/ai-review/1142.md-10-
+/home/ryan/formal-conjectures/ai-review/1142.md-11-- **[Va73]** — Vaughan (1973), who proved an asymptotic upper bound on the count of qualifying $n \leq N$. ❌ **Missing from the formalization.** This is an important result mentioned on the website.
+ai-review/1142.md:12:- **[Va99, 1.7]** — Various, *Some of Paul's favorite problems*, booklet produced for the conference "Paul Erdős and his mathematics", Budapest, July 1999. ✅ Present (listed as `[Va99]`).
+/home/ryan/formal-conjectures/ai-review/1142.md-13-- **[MiWe69]** — Mientka, W. E. and Weitzenkamp, R. C., *On f-plentiful numbers*, J. Combin. Theory 7(4), 1969, pp. 374–377. ✅ Present.
+/home/ryan/formal-conjectures/ai-review/1142.md-14-- **[Gu04]** — Guy, R. K. ❌ **Missing.** Referenced on the website but not in the formalization.
+--
+/home/ryan/formal-conjectures/ai-review/1144.md-18-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1144.md-19-
+ai-review/1144.md:20:**[Va99] attribution is incomplete.** The formalization cites:
+ai-review/1144.md-21-> Vaughan, R.C., *Multiplicative Number Theory I: Classical Theory*. Cambridge Tracts in Advanced Mathematics, 1999.
+/home/ryan/formal-conjectures/ai-review/1144.md-22-
+--
+ai-review/1144.md-24-> Montgomery, H.L. and Vaughan, R.C., *Multiplicative Number Theory I: Classical Theory*. Cambridge Studies in Advanced Mathematics, Cambridge University Press, 2007.
+/home/ryan/formal-conjectures/ai-review/1144.md-25-
+ai-review/1144.md:26:Note also: the series name is "Cambridge Studies in Advanced Mathematics" (not "Tracts"), and the publication year is typically given as 2007 (the first edition), not 1999. The website reference key `[Va99, 1.11]` may refer to a different source or preprint.
+/home/ryan/formal-conjectures/ai-review/1144.md-27-
+ai-review/1144.md-28-**[At25] appears consistent** with the website: "Atherfold, A., *Almost sure upper bounds for random multiplicative functions*, 2025."
+--
+/home/ryan/formal-conjectures/ai-review/1144.md-75-
+/home/ryan/formal-conjectures/ai-review/1144.md-76-### Summary
+ai-review/1144.md:77:The formalization correctly captures the mathematical content of Erdős Problem 1144. The only substantive issues are (a) the [Va99] citation should credit Montgomery and Vaughan jointly, and (b) the duplicated `IsRademacher` definition should be consolidated. The independence-at-all-indices vs. independence-at-primes distinction is a stylistic choice that does not affect mathematical correctness.
+--
+ai-review/78.md-30-The website lists the following references:
+/home/ryan/formal-conjectures/ai-review/78.md-31-- Er69b, Er71, Er88, Er93 (p. 337), Er95, Er97c
+ai-review/78.md:32:- Va99 (3.49)
+/home/ryan/formal-conjectures/ai-review/78.md-33-- Co15 (Cohen, 2015)
+/home/ryan/formal-conjectures/ai-review/78.md-34-- Li23b (Li, 2023)
+--
+/home/ryan/formal-conjectures/ai-review/1162.md-12-
+ai-review/1162.md-13-The website ([erdosproblems.com/1162](https://www.erdosproblems.com/1162)) lists the following references:
+ai-review/1162.md:14:- **[Va99, 5.73]** — Vardi, *Computational Recreations in Mathematica* (1999), Problem 5.73
+/home/ryan/formal-conjectures/ai-review/1162.md-15-- **[Py93]** — Pyber (1993)
+ai-review/1162.md-16-- **[RoTr25]** — Roney-Dougal and Tracey (2025), arxiv:2503.05416
+/home/ryan/formal-conjectures/ai-review/1162.md-17-
+ai-review/1162.md:18:The formalization's docstring cites `[Py93]` and `[RoTr25]` but **omits the source reference [Va99, 5.73]**. The sister problem 1163 does cite `[Va99]` (as problem 5.74). The docstring for 1162 should include the Vardi reference for consistency with the website and with the adjacent problems.
+/home/ryan/formal-conjectures/ai-review/1162.md-19-
+ai-review/1162.md:20:**Recommendation:** Add `[Va99, 5.73]` to the module docstring as the source reference.
+/home/ryan/formal-conjectures/ai-review/1162.md-21-
+/home/ryan/formal-conjectures/ai-review/1162.md-22-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1162.md-84-|---|---|
+/home/ryan/formal-conjectures/ai-review/1162.md-85-| Code reuse | No opportunities |
+ai-review/1162.md:86:| Citations | Missing [Va99, 5.73] source reference |
+/home/ryan/formal-conjectures/ai-review/1162.md-87-| Variants | Second part of problem not formalized here (but see Problem 1163) |
+/home/ryan/formal-conjectures/ai-review/1162.md-88-| Readability | Good |
+--
+/home/ryan/formal-conjectures/ai-review/1153.md-21-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1153.md-22-
+ai-review/1153.md:23:The website lists the citation as **[Va99, 2.44]**, referring to:
+/home/ryan/formal-conjectures/ai-review/1153.md-24-> Varga, R.S., *Scientific Computation on Mathematical Problems and Conjectures*, 1999.
+/home/ryan/formal-conjectures/ai-review/1153.md-25-
+ai-review/1153.md:26:The formalization's docstring does **not** include any citation shorthand at all — it only references the URL. The historical results mentioned in the docstring (Bernstein's result, Erdős's improvement, Chebyshev optimality) are consistent with the website, but the specific citation `[Va99, 2.44]` should be added to the module docstring for traceability, as is done in problems 1129 (`[Ki77]`, `[dBPi78]`), 1130 (`[dBPi78]`), 1131, and 1132 (`[Be31]`).
+/home/ryan/formal-conjectures/ai-review/1153.md-27-
+/home/ryan/formal-conjectures/ai-review/1153.md-28-The website also notes **related problems #1129 and #1132**, which are not cross-referenced in the 1153 docstring.
+/home/ryan/formal-conjectures/ai-review/1153.md-29-
+ai-review/1153.md:30:**Recommendation:** Add `[Va99, 2.44]` citation and cross-references to related problems 1129 and 1132.
+/home/ryan/formal-conjectures/ai-review/1153.md-31-
+/home/ryan/formal-conjectures/ai-review/1153.md-32-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1153.md-95-|-----------|--------|-------|
+/home/ryan/formal-conjectures/ai-review/1153.md-96-| Code reuse | **Needs improvement** | `lagrangeBasis`/`lebesgueFunction` duplicated across 6+ files; should be extracted to shared utility |
+ai-review/1153.md:97:| Citations | **Needs improvement** | Missing `[Va99, 2.44]` citation and cross-references to #1129, #1132 |
+/home/ryan/formal-conjectures/ai-review/1153.md-98-| Variants | **Good** | All website variants captured |
+/home/ryan/formal-conjectures/ai-review/1153.md-99-| Readability | **Good** | Clear docstrings and natural quantifier structure |
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-48-**164** (1997), 81–85.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-49-
+FormalConjectures/ErdosProblems/78.lean:50:[Va99] Vaughan, R. C., _On the number of monochromatic complete subgraphs_. (1999), 3.49.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-52-[Co15] Cohen, D., _Two-source dispersers for polylogarithmic entropy and improved Ramsey
+--
+/home/ryan/formal-conjectures/ai-review/1170.md-19-| Citation | On Website | In Formalization | Status |
+/home/ryan/formal-conjectures/ai-review/1170.md-20-|----------|-----------|-----------------|--------|
+ai-review/1170.md:21:| **[Va99]** (Section 7.86) | Yes — listed as a source reference | **Missing** from both the module and theorem docstrings | **Missing** |
+/home/ryan/formal-conjectures/ai-review/1170.md-22-| **[La82]** (Laver) | Yes | Yes | OK |
+/home/ryan/formal-conjectures/ai-review/1170.md-23-| **[FoHa03]** (Foreman–Hajnal) | Yes | Yes | OK |
+/home/ryan/formal-conjectures/ai-review/1170.md-24-
+ai-review/1170.md:25:**Issue:** The `[Va99]` reference (which appears to be Hajnal–Larson, *Partition Relations*, Handbook of Set Theory) is missing from 1170's docstrings, even though it is cited in the sibling problems 1171 and 1172. It should be added, ideally with the section number (7.86) as given on the website.
+/home/ryan/formal-conjectures/ai-review/1170.md-26-
+/home/ryan/formal-conjectures/ai-review/1170.md-27-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1170.md-86-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/1170.md-87-| Code reuse | `OrdinalPartition` is equivalent to `OrdinalPartitionPair _ α α`; `omega2` duplicated across files |
+ai-review/1170.md:88:| Citations | Missing [Va99] reference (Section 7.86) |
+/home/ryan/formal-conjectures/ai-review/1170.md-89-| Variants | Complete — single problem, no missing variants |
+/home/ryan/formal-conjectures/ai-review/1170.md-90-| Readability | Good; minor redundancy in docstrings |
+--
+/home/ryan/formal-conjectures/ai-review/57.md-42-
+/home/ryan/formal-conjectures/ai-review/57.md-43-- **[Er69b], [Er74d], [Er81], [Er90], [Er93], [Er94b], [Er95], [Er95d], [Er96], [Er97b]** — Various Erdős papers where the problem and its variants were discussed over the decades.
+ai-review/57.md:44:- **[Va99]** — Likely Vardi or similar; listed on the website without full detail.
+/home/ryan/formal-conjectures/ai-review/57.md-45-
+ai-review/57.md-46-The [LiMo20] citation in the formalization gives the year as 2020; the published version appeared in _J. Amer. Math. Soc._ **36** (2023), 1191–1234. The arXiv preprint is from 2020. Consider noting the journal publication:
+--
+/home/ryan/formal-conjectures/ai-review/1177.md-21-
+ai-review/1177.md-22-- **Attribution**: A problem of Erdős, Galvin, and Hajnal.
+ai-review/1177.md:23:- **Reference**: [Va99, 7.94]
+ai-review/1177.md-24-- **Status**: Open
+/home/ryan/formal-conjectures/ai-review/1177.md-25-
+--
+/home/ryan/formal-conjectures/ai-review/1177.md-27-
+/home/ryan/formal-conjectures/ai-review/1177.md-28-> A problem of Erdős, Galvin, and Hajnal.
+ai-review/1177.md:29:> [Va99] is the source reference for all parts (Section 7.94).
+/home/ryan/formal-conjectures/ai-review/1177.md-30-
+ai-review/1177.md:31:This matches the website. The reference "Va99" is not expanded to a full bibliographic entry on the website itself, so the shorthand is consistent with the source. No discrepancy found.
+/home/ryan/formal-conjectures/ai-review/1177.md-32-
+/home/ryan/formal-conjectures/ai-review/1177.md-33-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1177.md-131-|---|---|
+/home/ryan/formal-conjectures/ai-review/1177.md-132-| Code reuse | Multiple similar definitions exist across problems; shared hypergraph coloring library would help, but the cardinal-valued setting here is unique |
+ai-review/1177.md:133:| Citations | Consistent with website; [Va99, 7.94] matches |
+/home/ryan/formal-conjectures/ai-review/1177.md-134-| Variants | All 3 parts captured |
+/home/ryan/formal-conjectures/ai-review/1177.md-135-| Readability | Good overall; naming of `IsProperColoring3` / `HasChromaticNumber3` could be clearer |
+--
+ai-review/1159.md-11-The formalization lists:
+/home/ryan/formal-conjectures/ai-review/1159.md-12-- `[ESS83] Erdős, P., Silverman, R., and Stein, A.` — **Incomplete.** No paper title or publication venue is provided.
+ai-review/1159.md:13:- `[Va99] Vardy, A.` — **Incomplete.** No paper title or publication venue. The docstring references "[Va99, 4.70]" which appears to be a specific problem number from Vardy's work, but no further detail is given.
+/home/ryan/formal-conjectures/ai-review/1159.md-14-
+ai-review/1159.md-15-The website ([erdosproblems.com/1159](https://www.erdosproblems.com/1159)) additionally references:
+--
+/home/ryan/formal-conjectures/ai-review/1159.md-74-|---|---|
+/home/ryan/formal-conjectures/ai-review/1159.md-75-| Code reuse | No opportunities missed |
+ai-review/1159.md:76:| Citations | Incomplete — [ESS83] and [Va99] lack full details; [Er81] missing |
+/home/ryan/formal-conjectures/ai-review/1159.md-77-| Variants | Block design generalization ([Er81]) not captured; ESS log bound not formalized |
+/home/ryan/formal-conjectures/ai-review/1159.md-78-| Readability | Good; minor repetition could be cleaned up |
+--
+ai-review/1146.md-17-The formalization cites:
+/home/ryan/formal-conjectures/ai-review/1146.md-18-
+ai-review/1146.md:19:> [Va99] Ruzsa, I. Z., *Sumsets and structure*, Combinatorial Number Theory and Additive Group Theory (1999).
+/home/ryan/formal-conjectures/ai-review/1146.md-20-
+ai-review/1146.md-21-The erdosproblems.com page for Problem 1146 lists:
+ai-review/1146.md:22:- **[Va99, 1.19]** as the primary reference tag
+/home/ryan/formal-conjectures/ai-review/1146.md-23-- The page also references **[Ru99]** for Ruzsa's discussion and links to **Problem #37** as a related problem.
+/home/ryan/formal-conjectures/ai-review/1146.md-24-
+ai-review/1146.md-25-**Issues:**
+ai-review/1146.md:26:- The citation `[Va99]` is labeled as Ruzsa's work, but the code `Va99` likely refers to the *volume* ("Varia" or similar collection) rather than Ruzsa as author. The erdosproblems.com page uses the tag `[Va99, 1.19]` which the formalization correctly reproduces.
+/home/ryan/formal-conjectures/ai-review/1146.md-27-- The docstring should mention the connection to Problem 37, which the website explicitly lists as a related problem. Problem 37 (proved by Ruzsa [Ru87]) shows that lacunary sets cannot be essential components — 3-smooth numbers are *not* lacunary (they grow too densely), which is precisely why they are the "simplest set with a chance."
+/home/ryan/formal-conjectures/ai-review/1146.md-28-
+--
+ai-review/287.md-23-**Website (erdosproblems.com/287) lists:**
+/home/ryan/formal-conjectures/ai-review/287.md-24-- `[ErGr80, p.33]`
+ai-review/287.md:25:- `[Va99, 1.15]`
+/home/ryan/formal-conjectures/ai-review/287.md-26-- `[Er32]`
+/home/ryan/formal-conjectures/ai-review/287.md-27-
+ai-review/287.md:28:**Discrepancy:** The reference `[Va99, 1.15]` is present on the website but **missing from the formalization**. This likely refers to a 1999 survey or book (possibly Vaughan or Vardi) at section 1.15. The full bibliographic details are not given on the website itself, but the citation tag should still be included for traceability.
+/home/ryan/formal-conjectures/ai-review/287.md-29-
+ai-review/287.md:30:**Recommendation:** Add a reference line for `[Va99]` to the module docstring, even if the full bibliographic details require further investigation.
+/home/ryan/formal-conjectures/ai-review/287.md-31-
+/home/ryan/formal-conjectures/ai-review/287.md-32-## 3. Variants
+--
+ai-review/1174.md-18-The formalization cites:
+/home/ryan/formal-conjectures/ai-review/1174.md-19-
+ai-review/1174.md:20:> [Va99] Vardi, I. (ed.), *Problems from the Erdős problem collection*, §7.91 (1999).
+/home/ryan/formal-conjectures/ai-review/1174.md-21-
+ai-review/1174.md:22:The website (erdosproblems.com/1174) lists the source as **[Va99, 7.91]**. The citation in the formalization correctly expands this to the full reference. The attribution to Erdős and Hajnal and the note about Shelah's consistency result are both present on the website and in the docstrings. Citations are accurate.
+/home/ryan/formal-conjectures/ai-review/1174.md-23-
+/home/ryan/formal-conjectures/ai-review/1174.md-24-## 3. Variants
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-53-_On non-intersecting arithmetic progressions_. Acta Arithmetica **157** (2013), 381–392.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-54-
+FormalConjectures/ErdosProblems/202.lean:55:[Er61, Er65, Er65b, Er73, Er77c, ErGr80, Va99] — see
+FormalConjectures/ErdosProblems/202.lean-56-[erdosproblems.com/202](https://www.erdosproblems.com/202) for full references.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-57--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-73-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-74-Erdős Problem 202 (de la Bretèche–Ford–Vandehey conjecture) — OPEN.
+FormalConjectures/ErdosProblems/202.lean:75:[Er61, Er65, Er65b, Er73, Er77c, ErGr80, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-77-The maximum number $f(N)$ of pairwise disjoint congruence classes with distinct
+--
+/home/ryan/formal-conjectures/ai-review/1168.md-26-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1168.md-27-
+ai-review/1168.md:28:**Correct.** The formalization cites `[Va99, 7.80]` and identifies the full reference as:
+/home/ryan/formal-conjectures/ai-review/1168.md-29-
+/home/ryan/formal-conjectures/ai-review/1168.md-30-> Vaughan, J., *Small uncountable cardinals and topology*. Open Problems in Topology (1999).
+/home/ryan/formal-conjectures/ai-review/1168.md-31-
+ai-review/1168.md:32:The website (erdosproblems.com/1168) confirms the citation is `[Va99, 7.80]` and attributes the problem to Erdős, Hajnal, and Rado. Both match.
+/home/ryan/formal-conjectures/ai-review/1168.md-33-
+/home/ryan/formal-conjectures/ai-review/1168.md-34-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1032.md-25-- [To72] — ✓ Matches website
+/home/ryan/formal-conjectures/ai-review/1032.md-26-
+ai-review/1032.md:27:**Missing:** The website lists **[Va99, 3.60]** as an additional reference. This likely refers to a 1999 survey or problem collection. The formalization omits this citation entirely.
+/home/ryan/formal-conjectures/ai-review/1032.md-28-
+ai-review/1032.md-29-**Citation format:** The docstring uses shorthand references (e.g., `[Er93]`, `[Si72]`) without full bibliographic details (journal names, page ranges, etc.). The website provides `[Er93, p.341]` with the page number — the formalization includes this page number, which is good. However, `[Si72]` and `[To72]` lack full publication details (only `Simonovits, M., 1972` and `Toft, B., 1972` — no titles or journals). These should be fleshed out if discoverable.
+--
+/home/ryan/formal-conjectures/ai-review/1032.md-94-|----------|------------|
+/home/ryan/formal-conjectures/ai-review/1032.md-95-| Code reuse | `IsCritical` duplicated with Problem 917; could use library's `IsCriticalEdge` |
+ai-review/1032.md:96:| Citations | Missing [Va99, 3.60]; [Si72] and [To72] lack full bibliographic details |
+/home/ryan/formal-conjectures/ai-review/1032.md-97-| Variants | 5-chromatic variant mentioned but not formalized; Toft's conjecture not captured |
+/home/ryan/formal-conjectures/ai-review/1032.md-98-| Readability | Clean and clear |
+--
+/home/ryan/formal-conjectures/ai-review/787.md-23-- **[Er65, p.187]** Erdős, P. — "Extremal problems in number theory." *Proc. Sympos. Pure Math.*, Vol. VIII, pp. 181–189, AMS, 1965. (Original source.)
+/home/ryan/formal-conjectures/ai-review/787.md-24-- **[Er73, p.130]** — Another original Erdős source.
+ai-review/787.md:25:- **[Va99, 1.22]** — Additional reference listed on the website.
+/home/ryan/formal-conjectures/ai-review/787.md-26-
+ai-review/787.md-27-**Citation quality:** The existing references lack full bibliographic detail:
+--
+ai-review/597.md-17-The formalization references:
+ai-review/597.md-18-- **[Er87]** — Listed as: Erdős, P., *Some problems on finite and infinite graphs*, 1987.
+ai-review/597.md:19:- **[Va99]** — Listed as: Todorcevic, S., *Partition Problems in Topology*, 1999, Problem 7.84.
+/home/ryan/formal-conjectures/ai-review/597.md-20-
+ai-review/597.md:21:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/597.md-22-
+ai-review/597.md:23:The website (erdosproblems.com/597) lists references "Er87" and "Va99,7.84" without further bibliographic detail, so the formalization's expansion of these is a best-effort interpretation. The Er87 reference appears consistent with the standard Erdős reference.
+/home/ryan/formal-conjectures/ai-review/597.md-24-
+/home/ryan/formal-conjectures/ai-review/597.md-25-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/671.md-20-- **[Er82e]** — Erdős (attributed problem source)
+/home/ryan/formal-conjectures/ai-review/671.md-21-- **[Er97f]** — Erdős (1997)
+ai-review/671.md:22:- **[Va99, 2.40]** — Vértesi, *Classical (unweighted) and weighted interpolation* (1999), Problem 2.40
+/home/ryan/formal-conjectures/ai-review/671.md-23-- **[Be31]** — Bernstein (1931), who proved that for any choice of nodes there exists a point where the Lebesgue function has infinite limsup
+/home/ryan/formal-conjectures/ai-review/671.md-24-- **[ErVe80]** — Erdős & Vértesi (1980), who proved that for any node sequence there exists a continuous function where interpolation diverges at almost all points
+/home/ryan/formal-conjectures/ai-review/671.md-25-
+ai-review/671.md:26:The formalization does not include any of these reference keys. By comparison, the closely related Problem 1152 includes `[Va99, 2.42]` and `[EKS89]` in its docstring. Problem 671 should similarly cite at least **[Va99, 2.40]** (the specific Vértesi catalog entry) and the original problem source.
+/home/ryan/formal-conjectures/ai-review/671.md-27-
+ai-review/671.md:28:**Verdict:** Citations are incomplete. The docstring should include reference keys from the website, particularly [Va99, 2.40] and [Er82e].
+/home/ryan/formal-conjectures/ai-review/671.md-29-
+/home/ryan/formal-conjectures/ai-review/671.md-30-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/671.md-123-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/671.md-124-| Code reuse | No reusable code; local definitions are appropriate |
+ai-review/671.md:125:| Citations | **Incomplete** — should include [Va99, 2.40], [Er82e], and other reference keys from the website |
+/home/ryan/formal-conjectures/ai-review/671.md-126-| Variants | Both parts captured correctly |
+/home/ryan/formal-conjectures/ai-review/671.md-127-| Readability | Good; clean code with clear documentation |
+--
+/home/ryan/formal-conjectures/ai-review/1175.md-21-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1175.md-22-
+ai-review/1175.md:23:The docstring references `[Va99]` as "the source for this problem (Problem 7.92)." The website at erdosproblems.com/1175 confirms this reference. However, the citation is not expanded to a full bibliographic entry. Based on the problem number range and the "Va99" tag, this likely refers to:
+/home/ryan/formal-conjectures/ai-review/1175.md-24-
+/home/ryan/formal-conjectures/ai-review/1175.md-25-> Väth, M., or more likely **Vaugn** (1999) — the erdosproblems.com site associates this reference with the problem.
+--
+ai-review/1143.md-19-The formalization cites:
+/home/ryan/formal-conjectures/ai-review/1143.md-20-
+ai-review/1143.md:21:> [Va99] Vaughan, R.C., *On a problem of Erdős, Straus, and Schinzel*, Combinatorica 19 (1999), 111–115.
+/home/ryan/formal-conjectures/ai-review/1143.md-22-
+ai-review/1143.md:23:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/1143.md-24-
+ai-review/1143.md:25:**Recommendation:** Clarify `[Va99, §1.8]` to avoid ambiguity; add a note about the related problem 970 (Jacobsthal's function).
+/home/ryan/formal-conjectures/ai-review/1143.md-26-
+/home/ryan/formal-conjectures/ai-review/1143.md-27-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1143.md-112-|-----------|--------|-------|
+/home/ryan/formal-conjectures/ai-review/1143.md-113-| Code Reuse | **Opportunity** | `countDivisible` duplicates patterns in 278, 489, 783; could share |
+ai-review/1143.md:114:| Citations | **Minor issue** | `[Va99, §1.8]` is ambiguous; missing Problem 970 cross-ref |
+/home/ryan/formal-conjectures/ai-review/1143.md-115-| Variants | **Incomplete** | Missing F_k definition, Erdős–Selfridge exact result, α > 3 variant |
+/home/ryan/formal-conjectures/ai-review/1143.md-116-| Readability | **Good** | Minor improvements possible in `countDivisible` definition |
+--
+/home/ryan/formal-conjectures/ai-review/1158.md-17-
+ai-review/1158.md-18-- **[Er64f]**: Expanded as "Erdős, P., *On extremal problems of graphs and generalized graphs*. Israel J. Math. 2 (1964), 183-190." — This matches the standard reference for Erdős's seminal paper on hypergraph extremal problems.
+ai-review/1158.md:19:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/1158.md-20-
+ai-review/1158.md:21:**Assessment:** The citations match what the website documents. The [Va99] key/author mismatch is worth flagging but appears to originate from the website itself rather than being an error introduced by the formalization.
+/home/ryan/formal-conjectures/ai-review/1158.md-22-
+/home/ryan/formal-conjectures/ai-review/1158.md-23-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1158.md-84-|---|---|---|
+/home/ryan/formal-conjectures/ai-review/1158.md-85-| Code Reuse | ✅ Good | No significant reuse opportunities missed |
+ai-review/1158.md:86:| Citations | ⚠️ Minor | [Va99] key/author mismatch (likely from source) |
+/home/ryan/formal-conjectures/ai-review/1158.md-87-| Variants | ✅ Good | All variants captured |
+/home/ryan/formal-conjectures/ai-review/1158.md-88-| Readability | ✅ Good | Clear definitions and docstrings |
+--
+/home/ryan/formal-conjectures/ai-review/1169.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1169.md-16-
+ai-review/1169.md:17:The website ([erdosproblems.com/1169](https://www.erdosproblems.com/1169)) references **[Va99, 7.85]**, which refers to:
+/home/ryan/formal-conjectures/ai-review/1169.md-18-
+/home/ryan/formal-conjectures/ai-review/1169.md-19-> Hajnal, A. and Larson, J.A., *Partition relations*, Handbook of Set Theory, Springer, 2010.
+/home/ryan/formal-conjectures/ai-review/1169.md-20-
+ai-review/1169.md:21:(The "Va99" tag likely refers to a preliminary version; the published version is 2010.)
+/home/ryan/formal-conjectures/ai-review/1169.md-22-
+ai-review/1169.md:23:The formalization's docstring does not cite this reference. Problem 1172 does cite it as `[Va99]` with a full bibliographic entry. Problem 1169 should include a matching citation:
+/home/ryan/formal-conjectures/ai-review/1169.md-24-
+/home/ryan/formal-conjectures/ai-review/1169.md-25-```
+ai-review/1169.md:26:[Va99] Hajnal, A. and Larson, J.A., *Partition relations*, Handbook of Set Theory, Springer, 2010.
+/home/ryan/formal-conjectures/ai-review/1169.md-27-```
+/home/ryan/formal-conjectures/ai-review/1169.md-28-
+--
+/home/ryan/formal-conjectures/ai-review/1169.md-86-|---|---|
+/home/ryan/formal-conjectures/ai-review/1169.md-87-| Code reuse | `OrdinalPartitionPair` and `omega1` duplicated verbatim from Problem 1172; should be shared |
+ai-review/1169.md:88:| Citations | Missing `[Va99, 7.85]` reference present on the website |
+/home/ryan/formal-conjectures/ai-review/1169.md-89-| Variants | All variants captured (general `k` subsumes `k = 3`) |
+/home/ryan/formal-conjectures/ai-review/1169.md-90-| Readability | Good; minor improvements possible (cross-references, clarify "not disprovable") |
+--
+/home/ryan/formal-conjectures/ai-review/62.md-18-- **[Er90]** — Erdős, P. (1990) — not cited in formalization
+/home/ryan/formal-conjectures/ai-review/62.md-19-- **[Er95d]** — Erdős, P. (1995) — not cited in formalization
+ai-review/62.md:20:- **[Va99, 7.89]** — appears in Vaidya's work — not cited in formalization
+/home/ryan/formal-conjectures/ai-review/62.md-21-
+ai-review/62.md-22-The [Er87] citation in the formalization is incomplete: it says only `*Some problems on finite and infinite graphs*` without journal/volume information. The [EHS74] citation is more complete but should be verified against the actual publication data.
+--
+/home/ryan/formal-conjectures/ai-review/62.md-77-|-----------|--------|-------|
+/home/ryan/formal-conjectures/ai-review/62.md-78-| Code reuse | ⚠️ Improvement needed | Should use `chromaticCardinal`; `ContainsSubgraph` should be in shared library |
+ai-review/62.md:79:| Citations | ⚠️ Incomplete | Missing [Er90], [Er95d], [Va99] |
+/home/ryan/formal-conjectures/ai-review/62.md-80-| Variants | ⚠️ Partially complete | Finite collection variant mentioned but not formalized |
+/home/ryan/formal-conjectures/ai-review/62.md-81-| Readability | ✅ Good | Clear, well-documented |
+--
+ai-review/1163.md-18-- Problem statement: "Describe (by statistical means) the arithmetic structure of the orders of subgroups of $S_n$."
+ai-review/1163.md-19-- Attribution: Erdős and Turán
+ai-review/1163.md:20:- Reference: [Va99, 5.74]
+ai-review/1163.md-21-- Status: OPEN
+ai-review/1163.md-22-- The website maintainer explicitly notes: "I am not entirely sure what it is asking for."
+--
+/home/ryan/formal-conjectures/ai-review/1163.md-24-
+ai-review/1163.md-25-**Formalization docstring states:**
+ai-review/1163.md:26:- `[Va99] Vardi, I., *Computational Recreations in Mathematica* (1999).`
+/home/ryan/formal-conjectures/ai-review/1163.md-27-
+ai-review/1163.md:28:**Assessment:** The citation is consistent with the website's [Va99, 5.74] tag. Minor note: Vardi's *Computational Recreations in Mathematica* was originally published by Addison-Wesley in 1991; a "[Va99]" tag may refer to a later reprint or the website's internal labeling convention. This is not a formalization error — the code faithfully reproduces the website's reference key. The attribution to Erdős and Turán is correctly noted in the docstring.
+/home/ryan/formal-conjectures/ai-review/1163.md-29-
+/home/ryan/formal-conjectures/ai-review/1163.md-30-## 3. Variants
+--
+ai-review/1167.md-5-The file defines `CardinalPartitionRel`, a general cardinal partition relation. Several other files in the codebase define closely related partition relation concepts:
+/home/ryan/formal-conjectures/ai-review/1167.md-6-
+ai-review/1167.md:7:- **1168.lean** defines an inline negative cardinal partition relation for the same [Va99] reference series, but does not reuse `CardinalPartitionRel`.
+/home/ryan/formal-conjectures/ai-review/1167.md-8-- **1169.lean**, **1170.lean**, **1171.lean**, **1172.lean** define ordinal partition variants (`OrdinalPartition`, `OrdinalPartitionPair`, `OrdinalPartitionMulticolor`).
+/home/ryan/formal-conjectures/ai-review/1167.md-9-- **FormalConjecturesForMathlib/Combinatorics/Ramsey.lean** defines `hypergraphRamsey` for finite Ramsey numbers.
+--
+/home/ryan/formal-conjectures/ai-review/1167.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1167.md-16-
+ai-review/1167.md:17:**Issue found.** The website ([erdosproblems.com/1167](https://www.erdosproblems.com/1167)) cites **[Va99, 7.79]**, referring to:
+/home/ryan/formal-conjectures/ai-review/1167.md-18-
+/home/ryan/formal-conjectures/ai-review/1167.md-19-> Vaughan, J., *Small uncountable cardinals and topology*. Open Problems in Topology (1999).
+/home/ryan/formal-conjectures/ai-review/1167.md-20-
+ai-review/1167.md:21:The formalization's docstring only says "A problem of Erdos, Hajnal, and Rado on cardinal partition relations" and does not include this citation. For comparison, the sibling problem 1168.lean correctly includes both the citation tag `[Va99, 7.80]` and the full bibliographic reference.
+/home/ryan/formal-conjectures/ai-review/1167.md-22-
+ai-review/1167.md-23-**Recommendation:** Add the citation in both the module docstring and the theorem docstring, matching the style of 1168.lean:
+/home/ryan/formal-conjectures/ai-review/1167.md-24-
+/home/ryan/formal-conjectures/ai-review/1167.md-25-```
+ai-review/1167.md:26:[Va99] Vaughan, J., *Small uncountable cardinals and topology*. Open Problems in Topology (1999).
+/home/ryan/formal-conjectures/ai-review/1167.md-27-```
+/home/ryan/formal-conjectures/ai-review/1167.md-28-
+ai-review/1167.md:29:And reference `[Va99, 7.79]` in the theorem docstring.
+/home/ryan/formal-conjectures/ai-review/1167.md-30-
+/home/ryan/formal-conjectures/ai-review/1167.md-31-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/1167.md-83-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/1167.md-84-| Code reuse | Minor opportunity to share `CardinalPartitionRel` with 1168; low priority |
+ai-review/1167.md:85:| Citations | **Missing [Va99, 7.79] citation and bibliographic reference** |
+/home/ryan/formal-conjectures/ai-review/1167.md-86-| Variants | Complete — no missing variants |
+/home/ryan/formal-conjectures/ai-review/1167.md-87-| Readability | Good; minor improvements possible in module docstring |
+--
+/home/ryan/formal-conjectures/ai-review/1157.md-26-
+ai-review/1157.md-27-- **[BES73]** — Provided as: *Brown, W.G., Erdős, P., and Sós, V.T., "Some extremal problems on r-graphs", New Directions in the Theory of Graphs (1973).* This matches the website's citation of [BES73].
+ai-review/1157.md:28:- **[Va99]** — Provided as: *"See erdosproblems.com/1157."* The website references this as "[Va99,3.64]" but no full bibliographic data is available on the erdosproblems.com page either. The formalization's approach of directing readers to the website is a reasonable fallback, but the reference format is inconsistent with [BES73]. If the full citation can be identified (possibly Vatter 1999, or another author), it should be expanded.
+/home/ryan/formal-conjectures/ai-review/1157.md-29-
+ai-review/1157.md-30-**Issue:** The cross-references to problems [1178], [716], and [1076] in the docstring are helpful but are rendered as plain text rather than as links or formal cross-references.
+--
+/home/ryan/formal-conjectures/ai-review/1131.md-23-- **ESVV94** — Erdős, Szabados, Varma, Vértesi (1994)
+/home/ryan/formal-conjectures/ai-review/1131.md-24-- **Er95e** — Erdős (1995)
+ai-review/1131.md:25:- **Va99** — Varma (1999)
+/home/ryan/formal-conjectures/ai-review/1131.md-26-
+ai-review/1131.md-27-The formalization's docstring only cites **[ESVV94]** with author names but no title or journal. The module docstring mentions the bounds from ESVV94 but omits historical context available on the website:
+--
+ai-review/1152.md-19-The formalization references:
+/home/ryan/formal-conjectures/ai-review/1152.md-20-- `[EKS89] Erdős, P., Kroó, A., and Szabados, J., *On convergent interpolatory polynomials* (1989).`
+ai-review/1152.md:21:- `[Va99] Vértesi, P., *Classical (unweighted) and weighted interpolation* (1999).`
+/home/ryan/formal-conjectures/ai-review/1152.md-22-
+ai-review/1152.md-23-The website (erdosproblems.com/1152) lists:
+ai-review/1152.md:24:- The problem is attributed to **[Va99, 2.42]** (matching the formalization's theorem docstring).
+/home/ryan/formal-conjectures/ai-review/1152.md-25-- The contrasting result by Erdős, Kroó, and Szabados [EKS89] is mentioned (matching).
+/home/ryan/formal-conjectures/ai-review/1152.md-26-
+ai-review/1152.md:27:**Issue**: The formalization attributes [Va99] to "Vértesi, P." while the website's "How to cite" credits "T. F. Bloom" as the page author. These are not in conflict — Bloom curates the website, while Vértesi is the author of the referenced paper [Va99] from which problem 2.42 is drawn. The citation appears correct.
+/home/ryan/formal-conjectures/ai-review/1152.md-28-
+ai-review/1152.md-29-**Verdict**: Citations are consistent with the website. No issues found.
+--
+/home/ryan/formal-conjectures/ai-review/1152.md-84-
+/home/ryan/formal-conjectures/ai-review/1152.md-85-### Overall correctness assessment
+ai-review/1152.md:86:The formalization is **correct and complete**. The mathematical content faithfully represents the Erdős problem as stated on the website and in [Va99, 2.42]. No flaws identified.
+/home/ryan/formal-conjectures/ai-review/1152.md-87-
+ai-review/1152.md-88-**Verdict**: Correct. No issues found.
+--
+/home/ryan/formal-conjectures/ai-review/260.md-44-- **[Er88c]** (p.103) — Erdős, P., *Problems and results on combinatorial number theory*.
+/home/ryan/formal-conjectures/ai-review/260.md-45-- **[ErGr80]** Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number theory*.
+ai-review/260.md:46:- **[Va99]** (1.33) — likely Vajda or Vaaler, 1999.
+/home/ryan/formal-conjectures/ai-review/260.md-47-
+/home/ryan/formal-conjectures/ai-review/260.md-48-The neighboring problem 261 includes full citation formatting for several of these same references (Er74b, ErGr80, Er88c). The docstring for 260 should be expanded to include at least the primary references, especially **[ErGr80]** and **[Er74b]** which are the canonical sources.
+--
+/home/ryan/formal-conjectures/ai-review/474.md-22-
+ai-review/474.md-23-- **[Er95d, p.64]** — Erdős, *Problems and results on graphs and hypergraphs: similarities and differences* (1995). ✅ Cited in the docstring.
+ai-review/474.md:24:- **[Va99, 7.81]** — Väänänen, *Problems from the Erdős notebook* (1999). ✅ Cited in the docstring.
+/home/ryan/formal-conjectures/ai-review/474.md-25-- **[Sh88]** — Shelah, *Was Sierpiński right? I* (1988). ✅ Cited in the docstring.
+/home/ryan/formal-conjectures/ai-review/474.md-26-- **$100 prize** — Erdős offered $100 for deciding the answer without CH. ❌ Not mentioned in the docstring.
+--
+ai-review/474.md-37-This encompasses:
+ai-review/474.md-38-1. **CH case (c = ℵ₁):** Erdős proved the negative relation holds. Not separately formalized, but mentioned in the docstring. Could be a separate theorem.
+ai-review/474.md:39:2. **c = ℵ₂ case:** The specific open question formalized here (from [Va99]).
+ai-review/474.md-40-3. **Shelah's consistency result:** The positive relation 2^ℵ₀ → [ℵ₁]^2_3 is consistent (with c very large). Mentioned in the docstring but not formalized.
+ai-review/474.md-41-4. **2-color base case:** Sierpiński–Kurepa proved 2^ℵ₀ ↛ [ℵ₁]^2_2 in ZFC. Mentioned in the docstring but not formalized. This would be a nice companion theorem since it's provable outright (no axiom assumptions).
+--
+/home/ryan/formal-conjectures/ai-review/474.md-107-|---|---|
+/home/ryan/formal-conjectures/ai-review/474.md-108-| Code reuse | No reuse opportunities; new definition is justified |
+ai-review/474.md:109:| Citations | Complete (Er95d, Va99, Sh88 all present); $100 prize not mentioned |
+/home/ryan/formal-conjectures/ai-review/474.md-110-| Variants | Captures the specific c = ℵ₂ open question; Sierpiński–Kurepa 2-color ZFC theorem could be a companion |
+/home/ryan/formal-conjectures/ai-review/474.md-111-| Readability | Good; clear docstring with historical context |
+--
+/home/ryan/formal-conjectures/ai-review/300.md-19-- **[LiSa24]** — Liu, J. and Sawhney, M., *On a conjecture of Erdős and Graham about Egyptian fractions* (2024). ✓ Matches website.
+/home/ryan/formal-conjectures/ai-review/300.md-20-
+ai-review/300.md:21:**Missing citation:** The website also lists **[Va99, 1.14]** (Vardi, 1999) as a reference. This is absent from the formalization's docstring. It should be added for completeness.
+/home/ryan/formal-conjectures/ai-review/300.md-22-
+/home/ryan/formal-conjectures/ai-review/300.md-23-## 3. Variants
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-25-Shelah proved that a graph with either property can consistently exist.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-26-
+FormalConjectures/ErdosProblems/1174.lean:27:[Va99] Vardi, I. (ed.), *Problems from the Erdős problem collection*, §7.91 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-34-/--
+FormalConjectures/ErdosProblems/1174.lean:35:Erdős Problem 1174, Part 1 [Va99, §7.91]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-37-Does there exist a graph $G$ with no $K_4$ (no 4-clique) such that for every
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-53-/--
+FormalConjectures/ErdosProblems/1174.lean:54:Erdős Problem 1174, Part 2 [Va99, §7.91]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-56-Does there exist a graph $G$ with no $K_{\aleph_1}$ (no clique of cardinality
+--
+FormalConjectures/ErdosProblems/1143.lean-26-*Reference:* [erdosproblems.com/1143](https://www.erdosproblems.com/1143)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-27-
+FormalConjectures/ErdosProblems/1143.lean:28:[Va99] Vaughan, R.C., *On a problem of Erdős, Straus, and Schinzel*, Combinatorica 19 (1999),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-29-111–115.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-30--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-41-/--
+FormalConjectures/ErdosProblems/1143.lean:42:Erdős Problem 1143 [Va99, §1.8]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-44-Let $p_1 < \cdots < p_u$ be primes and $k \geq 1$. Define $F_k(p_1, \ldots, p_u)$ to be the
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-27-A problem of Erdős, Galvin, and Hajnal.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-28-
+FormalConjectures/ErdosProblems/1177.lean:29:[Va99] is the source reference for all parts (Section 7.94).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-58-/--
+FormalConjectures/ErdosProblems/1177.lean:59:Erdős Problem 1177, Part 1 [Va99, 7.94]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-61-Let $G$ be a finite $3$-uniform hypergraph. If $F_G(\aleph_1)$ is non-empty (i.e., there exists
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-81-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-82-/--
+FormalConjectures/ErdosProblems/1177.lean:83:Erdős Problem 1177, Part 2 [Va99, 7.94]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-84-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-85-Let $G$ and $H$ be finite $3$-uniform hypergraphs. If $F_G(\aleph_1)$ and $F_H(\aleph_1)$ are both
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-111-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-112-/--
+FormalConjectures/ErdosProblems/1177.lean:113:Erdős Problem 1177, Part 3 [Va99, 7.94]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-114-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-115-Let $G$ be a finite $3$-uniform hypergraph. If $\kappa$ and $\mu$ are uncountable cardinals
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-35-[Er97c] Erdős, P. (1997).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-36-
+FormalConjectures/ErdosProblems/59.lean:37:[Va99, 3.56] Vaughan, R.C. (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-39-[EFR86] Erdős, P., Frankl, P., Rödl, V. (1986).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-52-/--
+FormalConjectures/ErdosProblems/59.lean:53:Erdős Problem 59 [Er90, Er93, p.335, Er97c, Va99, 3.56]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-55-Is it true that, for every graph $G$, the number of labeled graphs on $n$ vertices that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-87-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-88-/--
+FormalConjectures/ErdosProblems/59.lean:89:The $C_4$ case of Erdős Problem 59 [Va99, 3.56]: does the original bound
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-90-$2^{(1+o(1)) \cdot \operatorname{ex}(n; C_4)}$ hold for the number of labeled $C_4$-free
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-91-graphs on $n$ vertices? This remains open even though the general conjecture was
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-26-origin in its first $n$ steps. Is it true that $\log R_n \asymp \sqrt{\log n}$ almost surely?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-27-
+FormalConjectures/ErdosProblems/1164.lean:28:[Va99] Vershik, A., *Random walks on random and changing graphs*, 1999, Problem 6.76.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-30-[Re90] Révész, P., *Random Walk in Random and Non-Random Environments*, World Scientific, 1990.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-62-/--
+FormalConjectures/ErdosProblems/1164.lean:63:Erdős Problem 1164 (Erdős–Taylor) [Va99, 6.76]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-65-Let $R_n$ be the maximal integer such that almost every random walk from the origin
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-27-$\omega_1 \cdot \omega$ for the first color or a monochromatic triple for some other color.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-28-
+FormalConjectures/ErdosProblems/1171.lean:29:- [Va99] Section 7.84.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-30-- [Ba89b] Baumgartner.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-31--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-55-/--
+FormalConjectures/ErdosProblems/1171.lean:56:Erdős Problem 1171 [Va99, 7.84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-58-Is it true that, for all finite $k < \omega$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-27-almost surely, for all but finitely many $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-28-
+FormalConjectures/ErdosProblems/1166.lean:29:[Va99] Varga, L., *Problems and results on random walks*, 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-31-[ErTa60] Erdős, P. and Taylor, S. J., *Some problems concerning the structure of random walk
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-79-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-80-/--
+FormalConjectures/ErdosProblems/1166.lean:81:Erdős Problem 1166 (Erdős–Révész) [Va99, 6.78]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-82-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-83-Given a random walk $s_0, s_1, \ldots$ in $\mathbb{Z}^2$, starting at the origin, let $f_k(x)$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-24-[Ko25b] Koepke, P., Problem 35.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-25-
+FormalConjectures/ErdosProblems/1173.lean:26:[Va99] Vaughan, J.E., 7.88.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-28-A problem of Erdős and Hajnal.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-49-/--
+FormalConjectures/ErdosProblems/1173.lean:50:Erdős Problem 1173 [Ko25b, Problem 35] [Va99, 7.88]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-52-Assuming the Generalised Continuum Hypothesis, let
+--
+FormalConjectures/ErdosProblems/114.lean-39-[Ha74] Hayman, W. K., _Research problems in function theory: new problems_, (1974), 155–180.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-40-
+FormalConjectures/ErdosProblems/114.lean:41:[Va99] _Some of Paul's favorite problems_, Booklet, Conference "Paul Erdős and his
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-42-mathematics", Budapest, July 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-43--/
+--
+FormalConjectures/ErdosProblems/114.lean-73-- Borwein (1995): $f(n) \ll n$.
+FormalConjectures/ErdosProblems/114.lean-74-- Eremenko–Hayman (1999): $f(n) \leq 9.173n$; full conjecture holds for $n = 2$.
+FormalConjectures/ErdosProblems/114.lean:75:- Vayman (1999) [Va99]: asked whether $f(n) \leq 2n + O(1)$.
+FormalConjectures/ErdosProblems/114.lean-76-- Danchenko (2007): $f(n) \leq 2\pi n$.
+FormalConjectures/ErdosProblems/114.lean-77-- Fryntov–Nazarov (2009): $f(n) \leq 2n + O(n^{7/8})$; $z^n - 1$ is a local maximiser.
+--
+FormalConjectures/ErdosProblems/README.md-44-*References:*
+FormalConjectures/ErdosProblems/README.md-45-- [erdosproblems.com/{N}](https://www.erdosproblems.com/{N})
+FormalConjectures/ErdosProblems/README.md:46:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/README.md-47-  and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/README.md-48-```
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-27-[Er87] Erdős, P., _Some problems on finite and infinite graphs_, 1987.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-28-
+FormalConjectures/ErdosProblems/597.lean:29:[Va99] Todorcevic, S., _Partition Problems in Topology_, 1999, Problem 7.84.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-63-/--
+FormalConjectures/ErdosProblems/597.lean:64:Erdős Problem 597 [Er87] [Va99, 7.84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-66-If $G$ is a graph on at most $\aleph_1$ vertices containing no $K_4$ and no
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-25-chromatic number λ contains a triangle-free subgraph with chromatic number κ?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-26-
+FormalConjectures/ErdosProblems/1175.lean:27:[Va99] is referenced as the source for this problem (Problem 7.92).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-46-/--
+FormalConjectures/ErdosProblems/1175.lean:47:Erdős Problem 1175 [Va99, 7.92]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-49-Let $\kappa$ be an uncountable cardinal. Must there exist a cardinal $\lambda$ such that
+--
+FormalConjectures/ErdosProblems/1146.lean-25-*Reference:* [erdosproblems.com/1146](https://www.erdosproblems.com/1146)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-26-
+FormalConjectures/ErdosProblems/1146.lean:27:[Va99] Ruzsa, I. Z., *Sumsets and structure*, Combinatorial Number Theory and Additive
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-28-Group Theory (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-29--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-62-/--
+FormalConjectures/ErdosProblems/1146.lean:63:Erdős Problem 1146 [Va99, 1.19]:
+FormalConjectures/ErdosProblems/1146.lean-64-Is the set $B = \{2^m \cdot 3^n : m, n \geq 0\}$ an essential component?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-65-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-29-[Er87] Erdős, P., *On some of my favourite unsolved problems* (1987).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-30-
+FormalConjectures/ErdosProblems/70.lean:31:[Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-32-and his mathematics", Budapest, July 1999 (1999), 7.83.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-33--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-26-without assuming the generalised continuum hypothesis.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-27-
+FormalConjectures/ErdosProblems/1168.lean:28:[Va99] Vaughan, J., *Small uncountable cardinals and topology*. Open Problems in Topology (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-35-/--
+FormalConjectures/ErdosProblems/1168.lean:36:Erdős Problem 1168 [Va99, 7.80]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-38-The negative partition relation
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-27-occurs infinitely often almost surely.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-28-
+FormalConjectures/ErdosProblems/1165.lean:29:[Va99] Vize, R., *Open problems on random walks* (1999), §6.77.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-31-[To01] Tóth, B., proved that $\mathbb{P}(|F(n)| = r \text{ i.o.}) = 0$ for all $r \ge 4$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-73-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-74-/--
+FormalConjectures/ErdosProblems/1165.lean:75:Erdős Problem 1165 (Erdős–Révész) [Va99, 6.77]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-77-Given a random walk $s_0, s_1, \ldots$ in $\mathbb{Z}^2$, starting at the origin, let $f_n(x)$
+--
+FormalConjectures/ErdosProblems/1140.lean-24-*Reference:* [erdosproblems.com/1140](https://www.erdosproblems.com/1140)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-25-
+FormalConjectures/ErdosProblems/1140.lean:26:[Va99] Vaughan, R. C., *The Hardy-Littlewood Method*, 2nd ed., 1997.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-28-[EpGi10] Epure, R. and Gica, A., 2010.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-37-/--
+FormalConjectures/ErdosProblems/1140.lean:38:Erdős Problem #1140 [Va99, 1.5] (Disproved):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-40-Do there exist infinitely many $n$ such that $n - 2x^2$ is prime for all $x$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-32-(Cambridge, 1993) (1997), 1-10.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-33-
+FormalConjectures/ErdosProblems/117.lean:34:[Va99,5.75] Varopoulos, N. (1999), Problem 5.75.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-36-[Py87] Pyber, L., *The number of pairwise noncommuting elements and the index of the centre in
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-64-/--
+FormalConjectures/ErdosProblems/117.lean:65:Erdős Problem 117 [Er90, Er97f, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-67-Let $h(n)$ be minimal such that any group $G$ satisfying the property that every
+--
+FormalConjectures/ErdosProblems/1142.lean-23-- [erdosproblems.com/1142](https://www.erdosproblems.com/1142)
+FormalConjectures/ErdosProblems/1142.lean-24-- [A039669](https://oeis.org/A039669)
+FormalConjectures/ErdosProblems/1142.lean:25:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1142.lean-26-  and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1142.lean-27-- [MiWe69] Mientka, W. E. and Weitzenkamp, R. C., On f-plentiful numbers, Journal of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-36-[Er95d] Erdős, P., _Problems and results in discrete mathematics_, Discrete Math., 1995.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-37-
+FormalConjectures/ErdosProblems/62.lean:38:[Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-39-and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-40--/
+--
+FormalConjectures/ErdosProblems/1141.lean-23-- [erdosproblems.com/1141](https://www.erdosproblems.com/1141)
+FormalConjectures/ErdosProblems/1141.lean-24-- [A214583](https://oeis.org/A214583)
+FormalConjectures/ErdosProblems/1141.lean:25:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-26-  and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-27--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-47-Are there infinitely many $n$ such that $n-k^2$ is prime for all $k$ with $(n,k)=1$ and $k^2 < n$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-48-
+FormalConjectures/ErdosProblems/1141.lean:49:In [Va99] it is asked whether $968$ is the largest integer with this property, but this is an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-50-error, since for example $968-9=7\cdot 137$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-28-differences* (1995), p.64.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-29-
+FormalConjectures/ErdosProblems/474.lean:30:[Va99] Väänänen, J., *Problems from the Erdős notebook* (1999), 7.81.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-32-[Sh88] Shelah, S., *Was Sierpiński right? I* (1988).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-52-/--
+FormalConjectures/ErdosProblems/474.lean:53:Erdős Problem 474 (1954) [Er95d, p.64] [Va99, 7.81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-55-Does the negative square-bracket partition relation $2^{\aleph_0} \nrightarrow [\aleph_1]_3^2$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-67-$2^{\aleph_0} \to [\aleph_1]_3^2$ holds, but with $\mathfrak{c}$ very large.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-68-
+FormalConjectures/ErdosProblems/474.lean:69:The specific remaining open question (asked in [Va99]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-70-Assuming $\mathfrak{c} = \aleph_2$, does $2^{\aleph_0} \nrightarrow [\aleph_1]_3^2$ hold?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-71--/
+--
+FormalConjectures/ErdosProblems/1147.lean-25-*Reference:* [erdosproblems.com/1147](https://www.erdosproblems.com/1147)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-26-
+FormalConjectures/ErdosProblems/1147.lean:27:[Va99] Vaughan, R.C., *The Hardy-Littlewood method*, 2nd edition, Cambridge University Press,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-28-1997.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-50-/--
+FormalConjectures/ErdosProblems/1147.lean:51:Erdős Problem 1147 [Va99, 1.21]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-53-Let $\alpha > 0$ be an irrational number. Is the set
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-25-Hypothesis or the Continuum Hypothesis. A problem of Erdős and Hajnal.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-26-
+FormalConjectures/ErdosProblems/1172.lean:27:[Va99] Hajnal, A. and Larson, J., *Partition relations*. Handbook of Set Theory (2010).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-67-/--
+FormalConjectures/ErdosProblems/1172.lean:68:Erdős Problem 1172, Part 1 [Va99, 7.87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-70-Assuming the Generalized Continuum Hypothesis, establish whether
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-73-This is an open problem of Erdős and Hajnal. The right-hand side may have
+FormalConjectures/ErdosProblems/1172.lean:74:been filled in incorrectly due to a truncated photocopy of the source [Va99].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-75--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-76-@[category research open, AMS 3 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-80-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-81-/--
+FormalConjectures/ErdosProblems/1172.lean:82:Erdős Problem 1172, Part 2 [Va99, 7.87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-83-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-84-Assuming the Generalized Continuum Hypothesis, establish whether
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-93-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-94-/--
+FormalConjectures/ErdosProblems/1172.lean:95:Erdős Problem 1172, Part 3 [Va99, 7.87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-96-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-97-Assuming the Generalized Continuum Hypothesis, establish whether
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-99-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-100-This is an open problem of Erdős and Hajnal. The right-hand side may have
+FormalConjectures/ErdosProblems/1172.lean:101:been filled in incorrectly due to a truncated photocopy of the source [Va99].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-102--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-103-@[category research open, AMS 3 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-107-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-108-/--
+FormalConjectures/ErdosProblems/1172.lean:109:Erdős Problem 1172, Part 4 [Va99, 7.87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-110-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-111-Assuming the Continuum Hypothesis, establish whether
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-26-is $\pi(y + Cd) - \pi(y) \sim Cd / \log y$, where $d$ is the maximal prime gap below $x$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-27-
+FormalConjectures/ErdosProblems/1138.lean:28:[Va99] Vardi, I., 1.3.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-41-/--
+FormalConjectures/ErdosProblems/1138.lean:42:Erdős Problem 1138 [Va99, 1.3]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-44-Let $x/2 < y < x$ and $C > 1$. If $d = \max_{p_n < x} (p_{n+1} - p_n)$ is the maximal
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-42-[Er88c] Erdős, P., *Problems and results on combinatorial number theory*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-43-
+FormalConjectures/ErdosProblems/260.lean:44:[Va99] *Some of Paul's favorite problems*. Booklet for the conference "Paul Erdős and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-45-his mathematics," Budapest (1999), §1.33.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-46--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-52-/--
+FormalConjectures/ErdosProblems/260.lean:53:Erdős Problem 260 [Er74b, ErGr80, Er81h, Er81l, Er88c, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-54-Let $a_1 < a_2 < \cdots$ be a strictly increasing sequence of natural numbers such
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-55-that $a_n / n \to \infty$ (i.e., having Fabry gaps). Is $\sum_n a_n / 2^{a_n}$ irrational?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-30-as the limit set.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-31-
+FormalConjectures/ErdosProblems/1151.lean:32:[Va99] Varga, R.S., _Scientific Computation on Mathematical Problems and Conjectures_, 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-33--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-59-/--
+FormalConjectures/ErdosProblems/1151.lean:60:Erdős Problem 1151 [Va99, 2.41]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-61-For any $x \in [-1,1]$ and any closed $A \subseteq [-1,1]$, there exists a continuous
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-62-function $f$ such that $A$ is the set of limit points of the Lagrange interpolation
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-38-(1989).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-39-
+FormalConjectures/ErdosProblems/1152.lean:40:[Va99] Vértesi, P., _Classical (unweighted) and weighted interpolation_ (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-41--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-47-/--
+FormalConjectures/ErdosProblems/1152.lean:48:Erdős Problem 1152 [Va99, 2.42]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-50-For any triangular array of distinct interpolation nodes in $[-1,1]$ and any function
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-69-and geometry_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-70-
+FormalConjectures/ErdosProblems/77.lean:71:[Va99] Vaughan, R. C., _On the number of monochromatic complete subgraphs_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-73-[CGMS23] Campos, M., Griffiths, S., Morris, R., and Sahasrabudhe, J.,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-30-theory_. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-31-
+FormalConjectures/ErdosProblems/287.lean:32:[Va99] §1.15.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-33--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-34-
+--
+FormalConjectures/ErdosProblems/1148.lean-22-*References:*
+FormalConjectures/ErdosProblems/1148.lean-23-- [erdosproblems.com/1148](https://www.erdosproblems.com/1148)
+FormalConjectures/ErdosProblems/1148.lean:24:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-25-  and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-26--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-62-/--
+FormalConjectures/ErdosProblems/1148.lean:63:[Va99] reports this is 'obvious' if we replace $\leq n$ with $\leq n+2\sqrt{n}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-64--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-65-@[category research solved, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-28-(1964), 183-190.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-29-
+FormalConjectures/ErdosProblems/1158.lean:30:[Va99] Vu, V. H., _Extremal set systems_. Handbook of Combinatorics (1999), 3.65.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-31--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-49-/--
+FormalConjectures/ErdosProblems/1158.lean:50:**Erdős Problem 1158** [Va99, 3.65]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-52-Let $K_t(r)$ be the complete $t$-partite $t$-uniform hypergraph with $r$ vertices in
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-42-New Directions in the Theory of Graphs (1973).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-43-
+FormalConjectures/ErdosProblems/1157.lean:44:[Va99] See erdosproblems.com/1157.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-45--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-46-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-70-/--
+FormalConjectures/ErdosProblems/1157.lean:71:Erdős Problem #1157 — Brown–Erdős–Sós Conjecture (general form) [BES73, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-73-For all $r > t \geq 2$, $s \geq 3$, and $k \geq (r - t) \cdot s + t + 1$, we have
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-24-If $g(n)$ denotes the number of groups of order $n$, then $g(n) \le g(2^m)$ for all $n \le 2^m$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-25-
+FormalConjectures/ErdosProblems/1160.lean:26:[Va99] Vaughan, R.C., _Problems in combinatorial number theory_, 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-28-[BNV07] Blackburn, S.R., Neumann, P.M. and Venkataraman, G., _Enumeration of finite groups_,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-58-/--
+FormalConjectures/ErdosProblems/1160.lean:59:Erdős Problem 1160 [Va99, 5.71]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-61-Let $g(n)$ denote the number of groups of order $n$. If $n \le 2^m$ then $g(n) \le g(2^m)$.
+--
+FormalConjectures/ErdosProblems/164.lean-32-arXiv:2202.02384 (2023).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/164.lean-33-
+FormalConjectures/ErdosProblems/164.lean:34:[Va99] §1.12.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/164.lean-35--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/164.lean-36-
+--
+FormalConjectures/ErdosProblems/1149.lean-22-*Reference:* [erdosproblems.com/1149](https://www.erdosproblems.com/1149)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-23-
+FormalConjectures/ErdosProblems/1149.lean:24:[Va99] Vardi, I., *Computational Recreations in Mathematica* (1999), Problem 1.34.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-25-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-26-[BeRi17] Bergelson, V. and Richter, F. K., *Dynamical generalizations of the prime
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-36-/--
+FormalConjectures/ErdosProblems/1149.lean:37:Erdős Problem 1149 [Va99, 1.34]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-39-Let $\alpha > 0$ be a real number, not an integer. The natural density of integers
+--
+FormalConjectures/ErdosProblems/1144.lean-26-*Reference:* [erdosproblems.com/1144](https://www.erdosproblems.com/1144)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-27-
+FormalConjectures/ErdosProblems/1144.lean:28:[Va99] Vaughan, R.C., *Multiplicative Number Theory I: Classical Theory*. Cambridge Tracts in
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-29-Advanced Mathematics, 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-54-/--
+FormalConjectures/ErdosProblems/1144.lean:55:Erdős Problem 1144 [Va99, 1.11]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-57-Let $f$ be a random completely multiplicative function, where for each prime $p$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-28-almost surely?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-29-
+FormalConjectures/ErdosProblems/1155.lean:30:A problem of Bollobás and Erdős [Bo98, p.231][Va99, 3.61].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-32-Bohman, Frieze, and Lubetzky [BFL15] proved that $f(n) = n^{3/2 + o(1)}$ a.s.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-34-[Bo98] Bollobás, B., _Modern Graph Theory_, Graduate Texts in Mathematics 184, Springer (1998).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-35-
+FormalConjectures/ErdosProblems/1155.lean:36:[Va99] Vu, V. H. (1999), 3.61.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-38-[BFL15] Bohman, T., Frieze, A., and Lubetzky, E., _Random triangle removal_,

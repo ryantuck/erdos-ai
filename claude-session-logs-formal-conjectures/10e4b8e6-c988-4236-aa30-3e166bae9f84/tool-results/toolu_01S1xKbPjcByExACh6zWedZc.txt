@@ -1,0 +1,1775 @@
+/home/ryan/formal-conjectures/ai-review/157.md-4-
+ai-review/157.md-5-**Significant reuse opportunities exist.** Both local definitions in `157.lean` can be replaced by existing definitions in `FormalConjecturesForMathlib`:
+/home/ryan/formal-conjectures/ai-review/157.md-6-
+ai-review/157.md:7:- **`IsInfiniteSidonSet`** duplicates `IsSidon` from `FormalConjecturesForMathlib/Combinatorics/Basic.lean:38`. The existing `IsSidon` is generic over any `Set α` and has the same Sidon property. The formalization could replace `IsInfiniteSidonSet A` with `Set.Infinite A ∧ IsSidon A`.
+/home/ryan/formal-conjectures/ai-review/157.md-8-
+/home/ryan/formal-conjectures/ai-review/157.md-9-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/157.md-10-
+ai-review/157.md:11:Additionally, the `IsSidon` definition already has supporting infrastructure: `IsSidon.subset`, `IsSidon.insert`, and `IsSidon.avoids_isAPOfLength_three`.
+/home/ryan/formal-conjectures/ai-review/157.md-12-
+ai-review/157.md-13-**Recommendation:** Replace both local definitions with the library versions to benefit from the existing API.
+/home/ryan/formal-conjectures/ai-review/157.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/157.md-16-
+ai-review/157.md-17-The formalization includes three references:
+/home/ryan/formal-conjectures/ai-review/157.md-18-
+ai-review/157.md:19:- **[ESS94]**: `Erdős, P., Sárközy, A. and Sós, V. T., *On sum sets of Sidon sets*. J. Number Theory (1994).` — Matches the website's [ESS94] tag. Appears correct.
+ai-review/157.md-20-- **[Er94b]**: `Erdős, P., *Some of my favourite problems in various branches of combinatorics*. Matematiche (Catania) (1994).` — Matches the website's [Er94b] tag. Appears correct.
+ai-review/157.md:21:- **[Pi23]**: `Pilatte, C., *Sidon sets are asymptotic bases of order 3*. (2023).` — Matches the website's citation for the solution. Appears correct.
+/home/ryan/formal-conjectures/ai-review/157.md-22-
+ai-review/157.md-23-The website confirms the problem is **proved** by Pilatte, which the docstring documents. The recommended citation format from the website is: `T. F. Bloom, Erdős Problem #157, https://www.erdosproblems.com/157`.
+/home/ryan/formal-conjectures/ai-review/157.md-24-
+--
+/home/ryan/formal-conjectures/ai-review/157.md-26-
+/home/ryan/formal-conjectures/ai-review/157.md-27-## 3. Variants
+/home/ryan/formal-conjectures/ai-review/157.md-28-
+ai-review/157.md:29:The problem as stated on [erdosproblems.com/157](https://www.erdosproblems.com/157) is a single yes/no question: "Does there exist an infinite Sidon set which is an asymptotic basis of order 3?" The website does not list additional variants or sub-problems.
+/home/ryan/formal-conjectures/ai-review/157.md-30-
+/home/ryan/formal-conjectures/ai-review/157.md-31-**All variants are captured.** The formalization faithfully represents the single question.
+/home/ryan/formal-conjectures/ai-review/157.md-32-
+--
+/home/ryan/formal-conjectures/ai-review/157.md-41-
+/home/ryan/formal-conjectures/ai-review/157.md-42-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/157.md-43-
+ai-review/157.md:44:The problem is **unambiguously formalizable**. All constituent concepts (Sidon set, asymptotic basis of order k, infinite set) have standard, well-established mathematical definitions. The question is a simple existence question with a known affirmative answer. There is no ambiguity in the statement.
+/home/ryan/formal-conjectures/ai-review/157.md-45-
+ai-review/157.md-46-**Assessment: No ambiguity.**
+/home/ryan/formal-conjectures/ai-review/157.md-47-
+--
+/home/ryan/formal-conjectures/ai-review/157.md-51-
+ai-review/157.md-52-Detailed analysis:
+/home/ryan/formal-conjectures/ai-review/157.md-53-
+ai-review/157.md:54:- **Sidon set definition**: The condition `a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)` correctly captures that all pairwise sums are distinct up to commutativity. This correctly handles the case `a = b` (i.e., sums of the form `2a`). This is the standard definition.
+/home/ryan/formal-conjectures/ai-review/157.md-55-
+ai-review/157.md-56-- **Asymptotic basis of order 3**: The condition `∀ᶠ n : ℕ in atTop, ∃ a ∈ A, ∃ b ∈ A, ∃ c ∈ A, n = a + b + c` correctly states that every sufficiently large natural number is a sum of three (not necessarily distinct) elements of A. Allowing repetition is standard and correct for the notion of asymptotic basis.
+/home/ryan/formal-conjectures/ai-review/157.md-57-
+ai-review/157.md:58:- **Theorem statement**: `answer(True) ↔ ∃ A : Set ℕ, IsInfiniteSidonSet A ∧ IsAsymptoticBasisOrder3 A` correctly encodes the affirmative answer (proved by Pilatte). The `answer(True)` on the left side and the existential on the right correctly model a "yes" to the existence question.
+/home/ryan/formal-conjectures/ai-review/157.md-59-
+ai-review/157.md-60-- **Domain**: Working over `Set ℕ` is appropriate since the original problem concerns subsets of the natural numbers.
+/home/ryan/formal-conjectures/ai-review/157.md-61-
+--
+/home/ryan/formal-conjectures/ai-review/157.md-65-
+/home/ryan/formal-conjectures/ai-review/157.md-66-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/157.md-67-|---|---|
+ai-review/157.md:68:| Code reuse | Two definitions should be replaced by existing library versions (`IsSidon`, `IsAsymptoticAdditiveBasisOfOrder`) |
+/home/ryan/formal-conjectures/ai-review/157.md-69-| Citations | Correct and complete |
+/home/ryan/formal-conjectures/ai-review/157.md-70-| Variants | All captured |
+/home/ryan/formal-conjectures/ai-review/157.md-71-| Readability | Good |
+--
+/home/ryan/formal-conjectures/ai-review/186.md-7-- **Problem 131** (`ErdosProblems/131.lean`) is the most closely related — it defines `IsNonDividing` and `erdos131F` using an almost identical structure. Pham–Zakharov [PhZa24] use non-averaging sets to bound non-dividing sets, establishing a deep mathematical connection. Problem 131 already cross-references Problem 186 in its review; the reverse cross-reference would also be valuable.
+/home/ryan/formal-conjectures/ai-review/186.md-8-- **Problem 882** (`ErdosProblems/882.lean`) defines `IsPrimitive` and `maxPrimitiveSubsetSumSize` with the same pattern.
+/home/ryan/formal-conjectures/ai-review/186.md-9-- **Problem 790** (`ErdosProblems/790.lean`) defines `IsSumFree` and `maxSumFreeSize` similarly.
+ai-review/186.md:10:- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides `IsSumFree`, `IsSidon`, and `Finset.maxSidonSubsetCard` — related additive combinatorics definitions, but none directly reusable for `IsNonAveraging`.
+/home/ryan/formal-conjectures/ai-review/186.md-11-- **`FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean`** provides `Set.IsAPOfLengthFree.maxCard` using the same `sSup` over `Finset.Icc` pattern. Non-averaging is a strictly stronger condition than 3-AP-free (every non-averaging set is 3-AP-free, but not vice versa), so these are distinct concepts.
+/home/ryan/formal-conjectures/ai-review/186.md-12-
+/home/ryan/formal-conjectures/ai-review/186.md-13-No existing definition can replace `IsNonAveraging` — the condition that no element equals the arithmetic mean of two or more other elements is unique to this problem. The code follows codebase conventions. No code reuse issue.
+--
+/home/ryan/formal-conjectures/ai-review/47.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/47.md-16-
+ai-review/47.md-17-The formalization cites only:
+ai-review/47.md:18:- **[Bl21]** Bloom, T., *On a result of Schur and Sidon*. Preprint (2021).
+/home/ryan/formal-conjectures/ai-review/47.md-19-
+ai-review/47.md-20-The website ([erdosproblems.com/47](https://www.erdosproblems.com/47)) lists additional information:
+/home/ryan/formal-conjectures/ai-review/47.md-21-
+--
+ai-review/47.md-25-- **Related problems**: 46 and 298 are listed as related.
+ai-review/47.md-26-- **Prize**: \$100
+/home/ryan/formal-conjectures/ai-review/47.md-27-
+ai-review/47.md:28:**Recommendation**: The Bloom citation title appears incorrect. The paper *On a result of Schur and Sidon* is not the relevant Bloom paper. The correct reference is likely:
+ai-review/47.md-29-> Bloom, T. F., *On a density conjecture about unit fractions*. arXiv:2112.03726 (2021).
+/home/ryan/formal-conjectures/ai-review/47.md-30-
+/home/ryan/formal-conjectures/ai-review/47.md-31-This is the citation used in Problem 298's formalization. The Liu & Sawhney result should also be mentioned since it represents the current state of the art.
+--
+/home/ryan/formal-conjectures/ai-review/47.md-76-
+/home/ryan/formal-conjectures/ai-review/47.md-77-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/47.md-78-
+ai-review/47.md:79:2. **Bloom citation is likely incorrect**: As noted above, the cited paper title "*On a result of Schur and Sidon*" does not match the standard reference for this result. The correct paper is "*On a density conjecture about unit fractions*" (arXiv:2112.03726). This same paper is correctly cited in Problem 298.
+/home/ryan/formal-conjectures/ai-review/47.md-80-
+ai-review/47.md-81-3. **Trivial case when 1 ∈ A**: If `1 ∈ A`, then `S = {1}` trivially satisfies the conclusion. The formalization is correct — this is just a trivial case of a correct statement. The original problem on the website also includes 1 in the range, so this is faithful to the source.
+/home/ryan/formal-conjectures/ai-review/47.md-82-
+--
+/home/ryan/formal-conjectures/ai-review/52.md-9-**No significant code reuse issues.** The formalization is self-contained, relying only on Mathlib's `Finset` pointwise operations (`A + A`, `A * A`) via `open scoped Pointwise`. These are standard Mathlib definitions from `Mathlib.Algebra.Group.Pointwise.Set.Basic`, where `A + A = image2 (· + ·) A A` (and similarly for `*`).
+/home/ryan/formal-conjectures/ai-review/52.md-10-
+ai-review/52.md-11-The `FormalConjecturesForMathlib` library contains related additive combinatorics infrastructure:
+ai-review/52.md:12:- `Combinatorics/Basic.lean` defines `IsSumFree`, `IsSidon` — not directly relevant here.
+/home/ryan/formal-conjectures/ai-review/52.md-13-- `Combinatorics/Additive/Convolution.lean` defines `sumConv` and `sumRep` — relevant to counting representations but not to this statement.
+/home/ryan/formal-conjectures/ai-review/52.md-14-- `Combinatorics/Additive/Basis.lean` defines additive/multiplicative bases — not applicable.
+/home/ryan/formal-conjectures/ai-review/52.md-15-
+--
+/home/ryan/formal-conjectures/ai-review/241.md-6-
+/home/ryan/formal-conjectures/ai-review/241.md-7-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/241.md-8-
+ai-review/241.md:9:The codebase has substantial Sidon set (B₂ set) infrastructure in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`:
+/home/ryan/formal-conjectures/ai-review/241.md-10-
+ai-review/241.md:11:- `IsSidon` — the standard pairwise-sum-distinctness predicate
+ai-review/241.md:12:- `maxSidonSubsetCard` — maximum cardinality of a Sidon subset of a given finset
+/home/ryan/formal-conjectures/ai-review/241.md-13-- Related lemmas for insertion, subset closure, decidability, etc.
+/home/ryan/formal-conjectures/ai-review/241.md-14-
+ai-review/241.md:15:Problem 30 (`ErdosProblems/30.lean`) defines `h(N) := Finset.maxSidonSubsetCard (Finset.Icc 1 N)` and directly reuses this infrastructure.
+/home/ryan/formal-conjectures/ai-review/241.md-16-
+ai-review/241.md:17:**Problem 241 does not reuse any of this.** It defines its own `f` function from scratch using a multiset-based filter on `(Icc 1 N).powerset`. While this is justified for general `r` (since no B_h infrastructure exists for h > 2), the variant `erdos_241.variants.r_eq_2` asserts `BoseChowlaConjecture 2`, which is mathematically equivalent to a statement about `maxSidonSubsetCard`. It would be cleaner to either:
+/home/ryan/formal-conjectures/ai-review/241.md-18-
+/home/ryan/formal-conjectures/ai-review/241.md-19-- State `r_eq_2` in terms of `Erdos30.h`, or
+ai-review/241.md:20:- Add a bridging lemma showing `f N 2 = Erdos30.h N` (i.e., that the multiset definition at r=2 coincides with `maxSidonSubsetCard`).
+/home/ryan/formal-conjectures/ai-review/241.md-21-
+ai-review/241.md:22:This would connect the two formalizations and avoid silently duplicating the Sidon concept under a different definition.
+/home/ryan/formal-conjectures/ai-review/241.md-23-
+ai-review/241.md:24:**Recommendation:** Add a lemma or comment connecting `f N 2` to `maxSidonSubsetCard (Icc 1 N)`.
+/home/ryan/formal-conjectures/ai-review/241.md-25-
+/home/ryan/formal-conjectures/ai-review/241.md-26----
+/home/ryan/formal-conjectures/ai-review/241.md-27-
+--
+/home/ryan/formal-conjectures/ai-review/241.md-122-
+/home/ryan/formal-conjectures/ai-review/241.md-123-### `r_eq_2` variant
+/home/ryan/formal-conjectures/ai-review/241.md-124-
+ai-review/241.md:125:Claims `BoseChowlaConjecture 2`, i.e., `f N 2 ~ N^{1/2}`. This is the classical Sidon set result and is correctly marked as solved. However, as noted in §1, there is no formal connection to the `IsSidon`/`maxSidonSubsetCard` infrastructure used in Problem 30. The two definitions are mathematically equivalent but this equivalence is not established in the code. This is **not an error**, but is a missed opportunity for coherence. ✅ (correct but isolated)
+/home/ryan/formal-conjectures/ai-review/241.md-126-
+/home/ryan/formal-conjectures/ai-review/241.md-127-### Overall correctness verdict
+/home/ryan/formal-conjectures/ai-review/241.md-128-
+--
+/home/ryan/formal-conjectures/ai-review/241.md-134-
+/home/ryan/formal-conjectures/ai-review/241.md-135-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/241.md-136-|-----------|------------|
+ai-review/241.md:137:| Code reuse | Could connect `f N 2` to existing `IsSidon`/`maxSidonSubsetCard` |
+ai-review/241.md-138-| Citations | Complete; minor: OEIS A387704 not mentioned |
+/home/ryan/formal-conjectures/ai-review/241.md-139-| Variants | All website variants captured |
+/home/ryan/formal-conjectures/ai-review/241.md-140-| Readability | Good; could extract B_h predicate for clarity |
+--
+ai-review/296.md-31-The formalization cites:
+/home/ryan/formal-conjectures/ai-review/296.md-32-
+/home/ryan/formal-conjectures/ai-review/296.md-33-- **[ErGr80]** — Matches the website. ✅
+ai-review/296.md:34:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/296.md-35-
+ai-review/296.md-36-**Recommendation:** No changes needed. Citations are accurate and well-formatted.
+/home/ryan/formal-conjectures/ai-review/296.md-37-
+--
+/home/ryan/formal-conjectures/ai-review/327.md-8-
+ai-review/327.md-9-- **Density infrastructure** (`FormalConjecturesForMathlib/Data/Set/Density.lean`): Contains `partialDensity`, `upperDensity`, `lowerDensity`, and `HasDensity` definitions, plus `Nat.hasDensity_even` proving even numbers have density 1/2. This is directly useful for the lower bound variant (odd numbers have density 1/2).
+/home/ryan/formal-conjectures/ai-review/327.md-10-
+ai-review/327.md:11:- **Combinatorics pair-free structures** (`FormalConjecturesForMathlib/Combinatorics/Basic.lean`): Contains `IsSumFree`, `IsSidon`, and extension lemmas. The `UnitFractionPairFree` property is structurally analogous to these pair-exclusion predicates.
+/home/ryan/formal-conjectures/ai-review/327.md-12-
+ai-review/327.md-13-- **Divisibility lemmas** (`FormalConjecturesForMathlib/Data/Nat/Init.lean`): Extensive `Nat.dvd_*` lemmas for divisibility with additions and multiplications, directly applicable to the `(a + b) ∣ ab` condition.
+/home/ryan/formal-conjectures/ai-review/327.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/156.md-2-
+/home/ryan/formal-conjectures/ai-review/156.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/156.md-4-
+ai-review/156.md:5:**Significant duplication found.** Problem 156 defines local `IsSidonSet` and `IsMaximalSidonSet` that duplicate existing library definitions in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`:
+/home/ryan/formal-conjectures/ai-review/156.md-6-
+/home/ryan/formal-conjectures/ai-review/156.md-7-| Local (156.lean) | Library (Combinatorics/Basic.lean) |
+/home/ryan/formal-conjectures/ai-review/156.md-8-|---|---|
+ai-review/156.md:9:| `Erdos156.IsSidonSet : Finset ℕ → Prop` | `IsSidon : Set α → Prop` (line 38) |
+ai-review/156.md:10:| `Erdos156.IsMaximalSidonSet : ℕ → Finset ℕ → Prop` | `Set.IsMaximalSidonSetIn : Set ℕ → ℕ → Prop` (line 104) |
+/home/ryan/formal-conjectures/ai-review/156.md-11-
+ai-review/156.md:12:The local `IsSidonSet` is mathematically identical to `IsSidon` restricted to finsets (both require all pairwise sums to be distinct up to commutativity). The library version is more general (works over any `AddCommMonoid`, uses `Set α`), and already has a `Decidable` instance for finsets (line 127), a subset closure lemma, an insertion characterization, and other supporting infrastructure.
+/home/ryan/formal-conjectures/ai-review/156.md-13-
+ai-review/156.md:14:The local `IsMaximalSidonSet` differs from `IsMaximalSidonSetIn` in two ways:
+ai-review/156.md-15-- **Range convention**: Local uses `Finset.range N` (i.e., `{0, ..., N-1}`); library uses `Set.Icc 1 N` (i.e., `{1, ..., N}`).
+ai-review/156.md-16-- **Type**: Local operates on `Finset ℕ`; library operates on `Set ℕ`.
+/home/ryan/formal-conjectures/ai-review/156.md-17-
+ai-review/156.md:18:Both conventions are mathematically equivalent for the asymptotic question (translating by 1 preserves cardinality and the Sidon property). Problem 340 already uses the library `IsSidon` definition successfully.
+/home/ryan/formal-conjectures/ai-review/156.md-19-
+ai-review/156.md:20:**Recommendation:** Replace local definitions with the library versions. If the `Finset`/`{0,...,N-1}` convention is preferred, consider adding a `Finset`-based maximal Sidon set definition to the library, or simply coerce.
+/home/ryan/formal-conjectures/ai-review/156.md-21-
+/home/ryan/formal-conjectures/ai-review/156.md-22-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/156.md-23-
+--
+ai-review/156.md-27-- **[Ru98b]**: Listed as "Ruzsa" — again, the website does not provide a full citation. The docstring matches.
+/home/ryan/formal-conjectures/ai-review/156.md-28-
+ai-review/156.md-29-The docstring references are consistent with what the website provides. The website also mentions:
+ai-review/156.md:30:- **Related problem:** Problem 340 (greedy Sidon sequence growth rate). This cross-reference is **not mentioned** in the 156 docstring and could be added.
+ai-review/156.md-31-- **OEIS:** A382397. Not mentioned in the docstring.
+/home/ryan/formal-conjectures/ai-review/156.md-32-
+ai-review/156.md-33-**Recommendation:** Add a note referencing Problem 340 as related. Optionally mention the OEIS sequence.
+/home/ryan/formal-conjectures/ai-review/156.md-34-
+/home/ryan/formal-conjectures/ai-review/156.md-35-## 3. Variants
+/home/ryan/formal-conjectures/ai-review/156.md-36-
+ai-review/156.md:37:The problem as stated on the website is a single yes/no question: does there exist a maximal Sidon set of size O(N^{1/3})? The formalization captures this as an `answer(sorry) ↔ ∃ C ...` statement, which is appropriate since the answer is unknown.
+/home/ryan/formal-conjectures/ai-review/156.md-38-
+ai-review/156.md-39-**Missing variants to consider:**
+ai-review/156.md:40:- **Lower bound variant**: The greedy algorithm produces a maximal Sidon set of size Ω(N^{1/3}). This is stated as known in the docstring but not formalized as a separate theorem. Problem 340 does formalize the Ω(N^{1/3}) lower bound for the *greedy* Sidon set (see `erdos_340.variants.third`), but not for *arbitrary* maximal Sidon sets. A variant asserting that every maximal Sidon set has size Ω(N^{1/3}) (which is a known result) would be a natural companion.
+ai-review/156.md-41-- **Ruzsa's upper bound**: The docstring mentions Ruzsa's construction achieving O((N log N)^{1/3}). This could be formalized as a solved variant.
+ai-review/156.md:42:- **Relationship to Problem 340**: The greedy Sidon sequence is a specific maximal Sidon set. The connection between 156 (arbitrary maximal Sidon sets) and 340 (the greedy one specifically) could be made explicit.
+/home/ryan/formal-conjectures/ai-review/156.md-43-
+/home/ryan/formal-conjectures/ai-review/156.md-44-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/156.md-45-
+ai-review/156.md-46-The code is reasonably readable. Minor observations:
+/home/ryan/formal-conjectures/ai-review/156.md-47-
+/home/ryan/formal-conjectures/ai-review/156.md-48-- The docstrings are clear and informative, correctly explaining the mathematical context.
+ai-review/156.md:49:- The naming `IsSidonSet` vs the library's `IsSidon` could cause confusion; using the library name would improve consistency.
+ai-review/156.md-50-- The `(1 : ℝ) / 3` exponent is clear but could alternatively be written as `(1 / 3 : ℝ)` for slight brevity.
+ai-review/156.md:51:- The argument order in `IsMaximalSidonSet N A` (N first) is natural for partial application on a fixed N.
+/home/ryan/formal-conjectures/ai-review/156.md-52-
+/home/ryan/formal-conjectures/ai-review/156.md-53-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/156.md-54-
+ai-review/156.md-55-**High formalizability.** The problem is precise and unambiguous:
+ai-review/156.md:56:- "Maximal Sidon set" has a standard, well-defined meaning.
+/home/ryan/formal-conjectures/ai-review/156.md-57-- "Size O(N^{1/3})" is a standard asymptotic notion.
+/home/ryan/formal-conjectures/ai-review/156.md-58-- The only minor ambiguity is whether the ambient set is `{1, ..., N}` or `{0, ..., N-1}`, which is inconsequential for the asymptotic statement.
+/home/ryan/formal-conjectures/ai-review/156.md-59-
+--
+ai-review/156.md-64-**The formalization is mathematically correct** with one minor convention discrepancy:
+/home/ryan/formal-conjectures/ai-review/156.md-65-
+ai-review/156.md-66-### Correct aspects:
+ai-review/156.md:67:- **Sidon set definition**: The local `IsSidonSet` correctly captures the B₂ property: all pairwise sums a + b (with a, b ∈ A, allowing a = b) are distinct, meaning a + b = c + d implies {a, b} = {c, d} as multisets. This matches the standard definition.
+ai-review/156.md:68:- **Maximality**: `IsMaximalSidonSet N A` correctly requires A ⊆ Finset.range N, A is Sidon, and no element of Finset.range N \ A can be added while preserving the Sidon property.
+ai-review/156.md:69:- **Asymptotic statement**: The `∃ C > 0, ∀ᶠ N in atTop, ∃ A, ...` formulation correctly captures "for all sufficiently large N, there exists a maximal Sidon set of size ≤ C · N^{1/3}".
+ai-review/156.md-70-- **answer(sorry)**: Correctly used since the problem is open.
+/home/ryan/formal-conjectures/ai-review/156.md-71-
+ai-review/156.md-72-### Convention note:
+/home/ryan/formal-conjectures/ai-review/156.md-73-- The docstring says "A ⊂ {1, ..., N}" but the code uses `Finset.range N = {0, ..., N-1}`. This is a cosmetic inconsistency in the documentation but is mathematically harmless for the asymptotic question. The library convention (`Set.Icc 1 N`) matches the docstring's `{1, ..., N}`.
+/home/ryan/formal-conjectures/ai-review/156.md-74-
+/home/ryan/formal-conjectures/ai-review/156.md-75-### No mathematical flaws detected.
+ai-review/156.md:76:An experienced mathematician would recognize this as a faithful formalization of the Erdős–Sárközy–Sós problem. The existential quantification over C, the "eventually" quantifier, and the Sidon/maximality definitions are all standard and correct.
+/home/ryan/formal-conjectures/ai-review/156.md-77-
+/home/ryan/formal-conjectures/ai-review/156.md-78-## Summary
+/home/ryan/formal-conjectures/ai-review/156.md-79-
+/home/ryan/formal-conjectures/ai-review/156.md-80-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/156.md-81-|---|---|
+ai-review/156.md:82:| Code reuse | **Needs improvement** — should use library `IsSidon` and `IsMaximalSidonSetIn` |
+/home/ryan/formal-conjectures/ai-review/156.md-83-| Citations | **Acceptable** — matches website; could add Problem 340 cross-reference |
+/home/ryan/formal-conjectures/ai-review/156.md-84-| Variants | **Partially complete** — main conjecture captured; Ruzsa bound and lower bound variants missing |
+/home/ryan/formal-conjectures/ai-review/156.md-85-| Readability | **Good** |
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/39.lean-27-open Filter
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/39.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/39.lean-29-/--
+FormalConjectures/ErdosProblems/39.lean:30:Is there an infinite Sidon set $A\subset \mathbb{N}$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/39.lean-31-$\lvert A\cap \{1\ldots,N\}\rvert \gg_\epsilon N^{1/2-\epsilon}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/39.lean-32-for all $\varepsilon > 0$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/39.lean-33--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/39.lean-34-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/39.lean:35:theorem erdos_39 : answer(sorry) ↔ ∃ (A : Set ℕ), A.Infinite ∧ IsSidon A ∧
+FormalConjectures/ErdosProblems/39.lean-36-    ∀ᵉ  (ε  > (0 : ℝ)),
+FormalConjectures/ErdosProblems/39.lean-37-    (· ^ (1 / 2 - ε) : ℕ → ℝ) =O[atTop] fun N => (((Set.Icc 1 N) ∩ A).ncard : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/39.lean-38-  sorry
+--
+/home/ryan/formal-conjectures/ai-review/154.md-6-
+/home/ryan/formal-conjectures/ai-review/154.md-7-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/154.md-8-
+ai-review/154.md:9:**Issue: `IsSidonSet` duplicates the existing `IsSidon` definition.**
+/home/ryan/formal-conjectures/ai-review/154.md-10-
+ai-review/154.md:11:The file defines its own `IsSidonSet : Finset ℕ → Prop` (line 44), but an equivalent and more general `IsSidon : Set α → Prop` already exists in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` (line 38). The two definitions are logically equivalent when applied to a `Finset ℕ` (cast to a `Set ℕ`). Neighboring problems already use the shared definition:
+/home/ryan/formal-conjectures/ai-review/154.md-12-
+ai-review/154.md:13:- `FormalConjectures/ErdosProblems/152.lean` uses `IsSidon (A : Set ℕ)` directly (line 38).
+ai-review/154.md:14:- `FormalConjectures/ErdosProblems/153.lean` uses `IsSidon (A : Set ℕ)` directly (line 37).
+/home/ryan/formal-conjectures/ai-review/154.md-15-
+ai-review/154.md:16:**Recommendation:** Replace `IsSidonSet` with `IsSidon ↑(A n)` (coercing the `Finset` to a `Set`) to use the shared definition and maintain consistency with Problems 152 and 153.
+/home/ryan/formal-conjectures/ai-review/154.md-17-
+ai-review/154.md-18-**Issue: `sumset` duplicates Mathlib's pointwise addition on `Finset`.**
+/home/ryan/formal-conjectures/ai-review/154.md-19-
+--
+/home/ryan/formal-conjectures/ai-review/154.md-37-
+ai-review/154.md-38-**Recommendation:** Expand the citations to full bibliographic entries. Problems 152 and 153 provide a model: they include full author names, paper title, journal name, year, and page range. For example, [ESS94] should be:
+/home/ryan/formal-conjectures/ai-review/154.md-39-
+ai-review/154.md:40:> [ESS94] Erdős, P. and Sárközy, A. and Sós, V. T., On Sum Sets of Sidon Sets, I. Journal of Number Theory (1994), 329–347.
+/home/ryan/formal-conjectures/ai-review/154.md-41-
+ai-review/154.md-42-The [Li98] and [Ko99] references should similarly include full titles and publication venues. The website mentions Lindström showed the result for A itself and Kolountzakis subsequently strengthened it, but does not provide full bibliographic details either. Full citations would be:
+/home/ryan/formal-conjectures/ai-review/154.md-43-
+ai-review/154.md:44:> [Li98] Lindström, B., Well distribution of Sidon sets in residue classes, J. Number Theory 69 (1998), 197–200.
+/home/ryan/formal-conjectures/ai-review/154.md-45-
+/home/ryan/formal-conjectures/ai-review/154.md-46-> [Ko99] Kolountzakis, M., The density of Bh[g] sequences and the minimum of dense cosine sums, J. Number Theory 56 (1999), 4–11.
+/home/ryan/formal-conjectures/ai-review/154.md-47-
+--
+/home/ryan/formal-conjectures/ai-review/154.md-57-   ```lean
+ai-review/154.md-58-   theorem erdos_154_lindstrom :
+ai-review/154.md-59-       ∀ (A : ℕ → Finset ℕ),
+ai-review/154.md:60:         (∀ n, IsSidon ↑(A n)) →
+/home/ryan/formal-conjectures/ai-review/154.md-61-         (∀ n, (A n) ⊆ Finset.range (n + 1)) →
+ai-review/154.md-62-         Tendsto (fun n => ((A n).card : ℝ) / Real.sqrt n) atTop (𝓝 1) →
+ai-review/154.md-63-         ∀ (m : ℕ), 1 ≤ m →
+--
+/home/ryan/formal-conjectures/ai-review/154.md-77-
+ai-review/154.md-78-- **Namespace:** `Erdos154` follows project conventions.
+ai-review/154.md-79-- **Docstrings:** Both the module-level and theorem-level docstrings are informative. The theorem docstring provides a clear proof sketch explaining why the result follows from Lindström's work. The "Formalized as" paragraph in the docstring is an excellent practice — it makes the mathematical-to-formal translation explicit.
+ai-review/154.md:80:- **Definition layering:** `IsSidonSet → sumset → modFraction → erdos_154` is a logical progression.
+ai-review/154.md-81-- **Opens:** `open Filter` and `open scoped Topology Real` are appropriate.
+/home/ryan/formal-conjectures/ai-review/154.md-82-
+ai-review/154.md-83-**Suggestions:**
+/home/ryan/formal-conjectures/ai-review/154.md-84-
+ai-review/154.md:85:- If the local `IsSidonSet` and `sumset` are kept, their docstrings are good. But since they duplicate existing infrastructure, removing them would improve readability by reducing cognitive overhead for readers who know the codebase.
+/home/ryan/formal-conjectures/ai-review/154.md-86-- The `∀ r < m` syntax is slightly unusual — it uses Lean's anonymous constructor syntax for `r < m`. This is fine and idiomatic Lean 4.
+/home/ryan/formal-conjectures/ai-review/154.md-87-
+/home/ryan/formal-conjectures/ai-review/154.md-88-Overall readability is good.
+--
+/home/ryan/formal-conjectures/ai-review/154.md-107-
+/home/ryan/formal-conjectures/ai-review/154.md-108-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/154.md-109-
+ai-review/154.md:110:### Definition: `IsSidonSet`
+/home/ryan/formal-conjectures/ai-review/154.md-111-```lean
+ai-review/154.md:112:def IsSidonSet (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/ai-review/154.md-113-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/ai-review/154.md-114-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/ai-review/154.md-115-```
+/home/ryan/formal-conjectures/ai-review/154.md-116-
+ai-review/154.md:117:**Correct.** This is the standard Sidon set (B₂ set) characterization: all pairwise sums are distinct up to commutativity. It is logically equivalent to the existing `IsSidon` definition on `Set α` when restricted to `Finset ℕ` coerced to `Set ℕ`.
+/home/ryan/formal-conjectures/ai-review/154.md-118-
+ai-review/154.md-119-### Definition: `sumset`
+/home/ryan/formal-conjectures/ai-review/154.md-120-```lean
+--
+ai-review/154.md-129-  ((S.filter (fun n => n % m = r)).card : ℝ) / (S.card : ℝ)
+/home/ryan/formal-conjectures/ai-review/154.md-130-```
+/home/ryan/formal-conjectures/ai-review/154.md-131-
+ai-review/154.md:132:**Correct with a caveat.** When `S` is empty, `modFraction m r S = 0 / 0 = 0` (by Lean's convention for real division by zero). For the `Tendsto` statement in the theorem, this is harmless: for any Sidon set A with |A| ≥ 1, `sumset A` is nonempty, so `(sumset (A n)).card > 0` for all n where `(A n).card ≥ 1`. Since `(A n).card / √n → 1` implies `(A n).card → ∞`, the denominator is eventually positive and the 0/0 case only arises for finitely many n, which does not affect the limit.
+/home/ryan/formal-conjectures/ai-review/154.md-133-
+ai-review/154.md-134-**Edge case when m = 0:** The hypothesis `1 ≤ m` excludes this, so `n % m` is well-defined (in ℕ, `n % 0 = n`, but this case is excluded).
+/home/ryan/formal-conjectures/ai-review/154.md-135-
+--
+/home/ryan/formal-conjectures/ai-review/154.md-137-```lean
+ai-review/154.md-138-theorem erdos_154 : answer(True) ↔
+ai-review/154.md-139-    ∀ (A : ℕ → Finset ℕ),
+ai-review/154.md:140:      (∀ n, IsSidonSet (A n)) →
+/home/ryan/formal-conjectures/ai-review/154.md-141-      (∀ n, (A n) ⊆ Finset.range (n + 1)) →
+ai-review/154.md-142-      Tendsto (fun n => ((A n).card : ℝ) / Real.sqrt n) atTop (𝓝 1) →
+ai-review/154.md-143-      ∀ (m : ℕ), 1 ≤ m →
+--
+/home/ryan/formal-conjectures/ai-review/154.md-160-
+ai-review/154.md-161-6. **`Tendsto (fun n => modFraction m r (sumset (A n))) atTop (𝓝 (1 / (m : ℝ)))`**: Asserts that the fraction of A(n)+A(n) in residue class r mod m tends to 1/m. **Correct.**
+/home/ryan/formal-conjectures/ai-review/154.md-162-
+ai-review/154.md:163:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/154.md-164-
+ai-review/154.md:165:**Potential concern — strength of the size condition:** The condition |A(n)|/√n → 1 requires A(n) to be an asymptotically maximal Sidon set (since the maximum size of a Sidon set in {1,...,N} is ~√N). It's possible that the equidistribution result holds under weaker assumptions (e.g., |A(n)| ≥ c√n for some constant c > 0). However, the formalization matches the original problem statement, which uses |A| ~ N^{1/2}, so this is not a bug.
+/home/ryan/formal-conjectures/ai-review/154.md-166-
+ai-review/154.md:167:**Verdict: The theorem statement is mathematically correct.** The formalization faithfully captures the content of Erdős Problem 154. The main issues are stylistic: the local `IsSidonSet` and `sumset` definitions should be replaced with existing shared definitions for consistency with the rest of the codebase. The citations should be expanded to full bibliographic entries.
+--
+/home/ryan/formal-conjectures/ai-review/43.md-6-
+/home/ryan/formal-conjectures/ai-review/43.md-7-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/43.md-8-
+ai-review/43.md:9:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/43.md-10-
+/home/ryan/formal-conjectures/ai-review/43.md-11-Similarly, `DisjointDifferences` is a standalone local definition. While there is no direct library equivalent for this specific predicate, defining it locally is reasonable since it is problem-specific.
+/home/ryan/formal-conjectures/ai-review/43.md-12-
+ai-review/43.md:13:**Recommendation:** Replace `Erdos43.IsSidonSet` with the existing `IsSidon` from `FormalConjecturesForMathlib/Combinatorics/Basic.lean`, applied to the `Finset` coerced to a `Set`. This avoids definitional duplication and ensures consistency across the codebase.
+/home/ryan/formal-conjectures/ai-review/43.md-14-
+/home/ryan/formal-conjectures/ai-review/43.md-15----
+/home/ryan/formal-conjectures/ai-review/43.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/43.md-49-
+/home/ryan/formal-conjectures/ai-review/43.md-50-- The docstrings are clear and well-written, with good mathematical notation.
+/home/ryan/formal-conjectures/ai-review/43.md-51-- The constraint `∀ a ∈ A, 1 ≤ a ∧ a ≤ N` appears three times (for A, B, S) and could be abstracted into a predicate like `SubsetIcc A 1 N`, but this is a matter of taste and the current form is arguably more explicit.
+ai-review/43.md:52:- The maximality condition for S (`∀ T : Finset ℕ, IsSidonSet T → (∀ t ∈ T, 1 ≤ t ∧ t ≤ N) → T.card ≤ S.card`) is clear but verbose. The library provides `Set.IsMaximalSidonSetIn` (Basic.lean, line 104) which captures a related but different concept (inclusion-maximality, not cardinality-maximality). The formalization correctly uses cardinality-maximality, which is the right notion here.
+/home/ryan/formal-conjectures/ai-review/43.md-53-
+ai-review/43.md-54-**Overall:** Good readability. No major issues.
+/home/ryan/formal-conjectures/ai-review/43.md-55-
+--
+/home/ryan/formal-conjectures/ai-review/43.md-61-
+/home/ryan/formal-conjectures/ai-review/43.md-62-The problem asks a yes/no question ("is it true that..."), which is appropriately captured by the `answer(sorry) ↔ ...` pattern.
+/home/ryan/formal-conjectures/ai-review/43.md-63-
+ai-review/43.md:64:One subtlety: the problem as stated on the website is unambiguous in its primary formulation. The Sidon set condition, the disjoint differences condition, and the binomial coefficient inequality are all precisely defined. The only interpretive step is the $O(1)$ term, which is standard.
+/home/ryan/formal-conjectures/ai-review/43.md-65-
+ai-review/43.md-66-**Assessment:** Low ambiguity. The formalization is a faithful interpretation of the problem statement.
+/home/ryan/formal-conjectures/ai-review/43.md-67-
+--
+/home/ryan/formal-conjectures/ai-review/43.md-69-
+/home/ryan/formal-conjectures/ai-review/43.md-70-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/43.md-71-
+ai-review/43.md:72:**6a. IsSidonSet definition (line 39–41):**
+ai-review/43.md:73:The definition states: for all a, b, c, d ∈ A, if a + b = c + d then (a = c ∧ b = d) ∨ (a = d ∧ b = c). This is the standard definition of a Sidon (B₂) set. ✓
+/home/ryan/formal-conjectures/ai-review/43.md-74-
+ai-review/43.md-75-**6b. DisjointDifferences definition (line 46–48):**
+ai-review/43.md-76-The definition states: for all a₁, a₂ ∈ A and b₁, b₂ ∈ B, if a₁ - a₂ = b₁ - b₂ (over ℤ) then a₁ = a₂ and b₁ = b₂. This correctly captures $(A - A) \cap (B - B) = \{0\}$: the only common difference is 0, which forces both sides to be trivial. The cast to ℤ is necessary since subtraction on ℕ is truncated. ✓
+--
+ai-review/43.md-78-**6c. Theorem statement (lines 61–69):**
+/home/ryan/formal-conjectures/ai-review/43.md-79-
+ai-review/43.md-80-- `∃ C : ℕ` — C is a universal constant (quantified before N). Using ℕ rather than ℤ is fine since the constant is an upper bound additive term (non-negative). ✓
+ai-review/43.md:81:- `∀ N A B S` — The universal quantification over S as any maximum-cardinality Sidon set in {1,...,N} correctly captures f(N) without needing to define f explicitly. ✓
+/home/ryan/formal-conjectures/ai-review/43.md-82-- The maximality condition (line 67) ensures |S| = f(N). ✓
+/home/ryan/formal-conjectures/ai-review/43.md-83-- The conclusion `Nat.choose A.card 2 + Nat.choose B.card 2 ≤ Nat.choose S.card 2 + C` correctly formalizes $\binom{|A|}{2} + \binom{|B|}{2} \leq \binom{f(N)}{2} + O(1)$. ✓
+/home/ryan/formal-conjectures/ai-review/43.md-84-- The `answer(sorry)` wrapper correctly indicates this is an open problem whose truth value is unknown. ✓
+--
+/home/ryan/formal-conjectures/ai-review/43.md-93-
+/home/ryan/formal-conjectures/ai-review/43.md-94-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/43.md-95-|---|---|
+ai-review/43.md:96:| Code reuse | `IsSidonSet` duplicates existing `IsSidon`; should reuse library definition |
+/home/ryan/formal-conjectures/ai-review/43.md-97-| Citations | Primary citation correct; minor supplementary references could be added |
+/home/ryan/formal-conjectures/ai-review/43.md-98-| Variants | Secondary question (equal-sized sets) is missing |
+/home/ryan/formal-conjectures/ai-review/43.md-99-| Readability | Good |
+--
+FormalConjectures/GreensOpenProblems/35.lean-30-- [Gr01](https://people.maths.ox.ac.uk/greenbj/papers/number-of-squares-and-Bh%5Bg%5D.pdf)
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/35.lean-31-  B. J. Green, *The number of squares and $B_h[g]$-sets*, Acta Arith. 100 (2001), no. 4, 365-390.
+FormalConjectures/GreensOpenProblems/35.lean-32-- [CS17](https://arxiv.org/abs/1403.7988)
+FormalConjectures/GreensOpenProblems/35.lean:33:  A. Cloninger and S. Steinerberger, *On suprema of autoconvolutions with an application to Sidon
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/35.lean-34-  sets*, Proc. Amer. Math. Soc. 145 (2017), no. 8, 3191-3200.
+FormalConjectures/GreensOpenProblems/35.lean-35-- [MV10](https://arxiv.org/abs/0907.1379)
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/35.lean-36-  M. Matolcsi and C. Vinuesa, *Improved bounds on the supremum of autoconvolutions*,
+--
+/home/ryan/formal-conjectures/ai-review/29.md-31-
+ai-review/29.md-32-The formalization's docstring mentions:
+/home/ryan/formal-conjectures/ai-review/29.md-33-- Erdos's probabilistic proof (no specific citation key)
+ai-review/29.md:34:- Sidon's 1932 question (no specific citation)
+/home/ryan/formal-conjectures/ai-review/29.md-35-- Jain, Pham, Sawhney, and Zakharov (2024)
+/home/ryan/formal-conjectures/ai-review/29.md-36-
+ai-review/29.md-37-**Issues:**
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-29-- [Ch71] S. L. G. Choi. On a combinatorial problem in number theory. Proc. London Math. Soc. (3),
+FormalConjectures/GreensOpenProblems/2.lean-30-  23:629–642, 1971. doi:10.1112/plms/s3-23.4.629.
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-31-- [BSS00] A. Baltz, T. Schoen, and A. Srivastav. Probabilistic construction of small strongly
+FormalConjectures/GreensOpenProblems/2.lean:32:  sum-free sets via large Sidon sets. Colloq. Math., 86(2):171–176, 2000.
+FormalConjectures/GreensOpenProblems/2.lean-33-  doi:10.4064/cm-86-2-171-176.
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-35-
+--
+/home/ryan/formal-conjectures/ai-review/333.md-10-
+/home/ryan/formal-conjectures/ai-review/333.md-11-- Problem 335 (`ErdosProblems/335.lean`) similarly defines its own `upperDensity` and `lowerDensity` duplicates. Problem 337 defines its own `countInRange` and `sumset`. All of these are candidates for consolidation.
+/home/ryan/formal-conjectures/ai-review/333.md-12-
+ai-review/333.md:13:- The sumset `Set.image2 (· + ·) B B` is expressed inline, which is fine, but `FormalConjecturesForMathlib/Combinatorics/Basic.lean` and `Combinatorics/Additive/Basis.lean` contain related definitions (`IsSidon`, `IsAdditiveBasis`, etc.) that provide broader context. The sumset definition in Problem 337 (`Erdos337.sumset`) is also equivalent.
+/home/ryan/formal-conjectures/ai-review/333.md-14-
+ai-review/333.md-15-**Recommendation:** Replace `upperDensity333` with `Set.upperDensity` from `Data/Set/Density.lean` (applied to `Set.univ`), or at minimum import and reference the shared definition. This would also allow leveraging existing lemmas like `hasDensity_zero_of_finite` and `HasDensity.mono`.
+/home/ryan/formal-conjectures/ai-review/333.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/271.md-8-
+ai-review/271.md-9-- **`IsAPFree`** (`FormalConjectures/ErdosProblems/169.lean:34`): A finset-based AP-free definition. Not directly applicable since `IsStanleySeq` works with infinite sequences.
+/home/ryan/formal-conjectures/ai-review/271.md-10-
+ai-review/271.md:11:- **Greedy sequence patterns**: Problems 340 (greedy Sidon), 282 (greedy denominators), 460, and 430 all define greedy sequences. Problem 340's `greedySidon` is the closest analogue — a greedy sequence avoiding a combinatorial property. However, each greedy construction is specialized enough that sharing definitions would be artificial.
+/home/ryan/formal-conjectures/ai-review/271.md-12-
+ai-review/271.md-13-- **Asymptotic notation**: Problem 340 uses Mathlib's `=O[atTop]` and `=Θ[atTop]` notation. Problem 271 instead uses explicit sandwich bounds with constants `C₁, C₂`. The explicit formulation is equivalent to Θ-notation but more verbose. Using `=Θ[atTop]` (as in Problem 340) would be more concise and idiomatic.
+/home/ryan/formal-conjectures/ai-review/271.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/131.md-8-- **Problem 882** (`ErdosProblems/882.lean`) defines `IsPrimitive` (no element divides another) and `maxPrimitiveSubsetSumSize` using the same `sSup` extremal function pattern.
+/home/ryan/formal-conjectures/ai-review/131.md-9-- **Problem 790** (`ErdosProblems/790.lean`) defines `IsSumFree` and `maxSumFreeSize` with the same structural pattern.
+/home/ryan/formal-conjectures/ai-review/131.md-10-- **Problem 874** (`ErdosProblems/874.lean`) uses `rSubsetSums` with `.sum id` and a similar extremal function.
+ai-review/131.md:11:- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides foundational `IsSumFree` and `IsSidon` definitions, but nothing directly reusable for `IsNonDividing`.
+/home/ryan/formal-conjectures/ai-review/131.md-12-
+/home/ryan/formal-conjectures/ai-review/131.md-13-No existing definition can replace `IsNonDividing` — the divisibility-of-subset-sum condition is unique to this problem. The code correctly follows the codebase conventions. No code reuse issue.
+/home/ryan/formal-conjectures/ai-review/131.md-14-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-33-that $A ∩ [n, n + 1, ..., n + p]$ is nonempty for all $n$. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-34-def IsSyndetic (A : Set ℕ) : Prop := ∃ p, ∀ n, (A ∩ .Icc n (n + p)).Nonempty
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-35-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:36:/-- A Sidon set is a set, such that such that all pairwise sums of elements are distinct apart from
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-37-coincidences forced by the commutativity of addition. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:38:def IsSidon (A : Set α) : Prop := ∀ᵉ (i₁ ∈ A) (j₁ ∈ A) (i₂ ∈ A) (j₂ ∈ A),
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-39-  i₁ + i₂ = j₁ + j₂ → (i₁ = j₁ ∧ i₂ = j₂) ∨ (i₁ = j₂ ∧ i₂ = j₁)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-40-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-41-namespace Set
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-42-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:43:lemma IsSidon.avoids_isAPOfLength_three {A : Set ℕ} (hA : IsSidon A)
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-44-    {Y : Set ℕ} (hY : Y.IsAPOfLength 3) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-45-    (A ∩ Y).ncard ≤ 2 := by
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-46-  simp [IsAPOfLength, IsAPOfLengthWith] at hY
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-58-  simp [hY, this.1, setOf_and] at hY_card
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-59-  linarith [ncard_singleton _ ▸ ncard_inter_le_ncard_right {a | ∃ x, x < 3} {a}]
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-60-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:61:theorem IsSidon.subset {A B : Set α} (hB : IsSidon B) (hAB : A ⊆ B) : IsSidon A :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-62-  fun _ _ _ _ _ _ _ _ _ ↦ hB _ (hAB ‹_›) _ (hAB ‹_›) _ (hAB ‹_›) _ (hAB ‹_›) ‹_›
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-63-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:64:theorem IsSidon.insert {A : Set α} {m : α} [IsRightCancelAdd α] [IsLeftCancelAdd α]
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:65:    (hA : IsSidon A) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:66:    IsSidon (A ∪ {m}) ↔ (m ∈ A ∨ ∀ᵉ (a ∈ A) (b ∈ A), m + m ≠ a + b ∧ ∀ c ∈ A, m + a ≠ b + c) := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-67-  by_cases h_mem : m ∈ A
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-68-  · exact ⟨fun _ ↦ .inl h_mem, fun _ ↦ by rwa [union_singleton, insert_eq_of_mem h_mem]⟩
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-69-  refine ⟨fun h ↦ .inr fun a ha b hb ↦ ⟨fun hc ↦ ?_, fun c hc h_contr ↦ ?_⟩, fun hm ↦ ?_⟩
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-93-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-94-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-95-/-!
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:96:Maximal Sidon sets in an interval.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-97-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:98:We follow the convention that `IsMaximalSidonSetIn A N` means `A ⊆ {1, …, N}` is Sidon and
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:99:is inclusion-maximal among subsets of `Set.Icc 1 N` with the Sidon property.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-100--/
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-101-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:102:/-- `IsMaximalSidonSetIn A N` means `A ⊆ {1, …, N}` is Sidon and cannot be extended within
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:103:`{1, …, N}` while remaining Sidon. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:104:def IsMaximalSidonSetIn (A : Set ℕ) (N : ℕ) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:105:  A ⊆ Set.Icc 1 N ∧ IsSidon A ∧
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:106:    ∀ ⦃x : ℕ⦄, x ∈ Set.Icc 1 N → x ∉ A → ¬ IsSidon (A ∪ {x})
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-107-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:108:namespace IsMaximalSidonSetIn
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-109-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:110:/-- If `A` is a maximal Sidon set in `{1, …, N}`, then `A ⊆ {1, …, N}`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:111:theorem subset {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-112-    A ⊆ Set.Icc 1 N := hA.1
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-113-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:114:/-- If `A` is a maximal Sidon set in `{1, …, N}`, then `A` is Sidon. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:115:theorem isSidon {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) : IsSidon A := hA.2.1
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-116-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-117-/-- Maximality condition unpacked. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:118:theorem maximal {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) {x : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:119:    (hx : x ∈ Set.Icc 1 N) (hxA : x ∉ A) : ¬ IsSidon (A ∪ {x}) := hA.2.2 hx hxA
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-120-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:121:end IsMaximalSidonSetIn
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-122-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-123-end Set
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-124-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-125-namespace Finset
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-126-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:127:instance (A : Finset α) [DecidableEq α] : Decidable (IsSidon (A : Set α)) :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-128-  decidable_of_iff (∀ᵉ (i₁ ∈ A) (j₁ ∈ A) (i₂ ∈ A) (j₂ ∈ A), _) <| by rfl
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-129-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:130:/-- The maximum size of a Sidon set in the supplied `Finset`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:131:def maxSidonSubsetCard (A : Finset α) [DecidableEq α] : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:132:  (A.powerset.filter fun B : Finset α ↦ IsSidon (B : Set α)).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-133-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:134:/-- If `A` is finite Sidon, then `A ∪ {s}` is also Sidon provided `s ≥ A.max + 1`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:135:theorem IsSidon.insert_ge_max' {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) {s : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-136-    (hs : 2 * A.max' h + 1 ≤ s) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:137:    IsSidon (A ∪ {s}) := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-138-  have h₁ {a b c : ℕ} (ha : a ∈ A) (hb : b ∈ A) (hc : c ∈ A) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-139-        a + b < 2 * A.max' h + 1 + c := by linarith [A.le_max' _ ha, A.le_max' _ hb]
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-140-  have : s ∉ A := by
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-141-    exact mt (A.le_max' _) <| not_le.2 <| Finset.max'_lt_iff _ ‹_› |>.2 fun a ha ↦ by
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-142-      linarith [A.le_max' _ ha]
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:143:  exact (IsSidon.insert hA).2 <| by simpa [this] using fun a ha b hb ↦
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-144-    ⟨by linarith [A.le_max' _ ha, A.le_max' _ hb], fun c hc ↦ by linarith [h₁ hc hb ha]⟩
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-145-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:146:theorem IsSidon.exists_insert {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:147:    ∃ m ∉ A, IsSidon (A ∪ {m}) := by
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-148-  refine ⟨2 * A.max' h + 1, ?_, insert_ge_max' h hA le_rfl⟩
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-149-  exact mt (A.le_max' _) <| not_le.2 <| Finset.max'_lt_iff _ ‹_› |>.2 fun a ha ↦ by
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-150-    linarith [A.le_max' _ ha]
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-151-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:152:theorem IsSidon.exists_insert_ge {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) (s : ℕ) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:153:    ∃ m ≥ s, m ∉ A ∧ IsSidon (A ∪ {m}) := by
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-154-  refine ⟨if s ≥ 2 * A.max' h + 1 then s else 2 * A.max' h + 1, ?_, ?_, ?_⟩
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-155-  · split_ifs <;> linarith
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-156-  · split_ifs <;>
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-21-
+FormalConjectures/ErdosProblems/862.lean-22-*Reference:* [erdosproblems.com/862](https://www.erdosproblems.com/862)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-23-
+FormalConjectures/ErdosProblems/862.lean:24:Let $A_1(N)$ be the number of maximal Sidon subsets of $\{1,\ldots,N\}$. Is it true that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-25-$A_1(N) < 2^{o(N^{1/2})}$? Is it true that $A_1(N) > 2^{N^c}$ for some constant $c > 0$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-27-A problem of Cameron and Erdős [Er92c, p.39].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-28-
+FormalConjectures/ErdosProblems/862.lean-29-**Status**: Both questions are resolved by results of Saxton and Thomason [SaTh15].
+FormalConjectures/ErdosProblems/862.lean:30:They prove that the number of Sidon sets in $\{1,\ldots,N\}$ is at least
+FormalConjectures/ErdosProblems/862.lean:31:$2^{(1.16+o(1))N^{1/2}}$. Since each Sidon set is contained in a maximal Sidon set, and each
+FormalConjectures/ErdosProblems/862.lean:32:maximal Sidon set contains at most $2^{(1+o(1))N^{1/2}}$ Sidon subsets, it follows that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-33-$A_1(N) \geq 2^{(0.16+o(1))N^{1/2}}$. This shows the first conjecture is false and the second
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-34-is true.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-36-[Er92c] Erdős, P., *Some of my favourite problems in various branches of combinatorics*,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-37-Matematiche (Catania) 47 (1992), no. 2, 231–240.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-38-
+FormalConjectures/ErdosProblems/862.lean:39:[SaTh15] Saxton, D. and Thomason, A., *The number of Sidon sets and the maximum size
+FormalConjectures/ErdosProblems/862.lean:40:of Sidon sets contained in a sparse random set of integers*, Random Structures & Algorithms
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-41-46 (2015), no. 1, 1–25.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-42--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-46-namespace Erdos862
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-47-
+FormalConjectures/ErdosProblems/862.lean:48:/-- A finite set of natural numbers is a Sidon set if all pairwise sums are distinct. -/
+FormalConjectures/ErdosProblems/862.lean:49:def IsSidonSet (S : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-50-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-51-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-52-
+FormalConjectures/ErdosProblems/862.lean:53:/-- A Sidon subset of $\{1,\ldots,N\}$ is maximal if no element of $\{1,\ldots,N\}$ can be added
+FormalConjectures/ErdosProblems/862.lean:54:while keeping it Sidon. -/
+FormalConjectures/ErdosProblems/862.lean:55:def IsMaximalSidonIn (S : Finset ℕ) (N : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/862.lean:56:  S ⊆ Icc 1 N ∧ IsSidonSet S ∧
+FormalConjectures/ErdosProblems/862.lean:57:    ∀ x ∈ Icc 1 N, x ∉ S → ¬IsSidonSet (S ∪ {x})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-58-
+FormalConjectures/ErdosProblems/862.lean:59:/-- $A_1(N)$ is the number of maximal Sidon subsets of $\{1,\ldots,N\}$. -/
+FormalConjectures/ErdosProblems/862.lean:60:noncomputable def countMaximalSidon (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/862.lean:61:  ((Icc 1 N).powerset.filter (fun S => IsMaximalSidonIn S N)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-63-/--
+FormalConjectures/ErdosProblems/862.lean-64-Erdős Problem 862, first question (Cameron–Erdős [Er92c], disproved by Saxton–Thomason [SaTh15]):
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-69-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/862.lean-70-theorem erdos_862 :
+FormalConjectures/ErdosProblems/862.lean-71-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/862.lean:72:      (countMaximalSidon N : ℝ) ≥ (2 : ℝ) ^ ((0.16 : ℝ) * (N : ℝ) ^ ((1 : ℝ) / 2)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-73-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-75-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-80-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/862.lean-81-theorem erdos_862.variants.second_question :
+FormalConjectures/ErdosProblems/862.lean-82-    ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/862.lean:83:      (countMaximalSidon N : ℝ) > (2 : ℝ) ^ ((N : ℝ) ^ c) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-84-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-86-end Erdos862
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-28-namespace Erdos340
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-29-
+FormalConjectures/ErdosProblems/340.lean:30:/-- Given a finite Sidon set `A` and a lower bound `m`, `go` finds the smallest number `m' ≥ m`
+FormalConjectures/ErdosProblems/340.lean:31:such that `A ∪ {m'}` is Sidon. If `A` is empty then this returns the value `m`. Note that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-32-the lower bound is required to avoid `0` being a contender in some cases. -/
+FormalConjectures/ErdosProblems/340.lean:33:private def greedySidon.go (A : Finset ℕ) (hA : IsSidon (A : Set ℕ)) (m : ℕ) :
+FormalConjectures/ErdosProblems/340.lean:34:    {m' : ℕ // m' ≥ m ∧ m' ∉ A ∧ IsSidon (↑(A ∪ {m'}) : Set ℕ)} :=
+FormalConjectures/ErdosProblems/340.lean-35-  if h : A.Nonempty then
+FormalConjectures/ErdosProblems/340.lean:36:    haveI : ∃ m', m' ≥ m ∧ m' ∉ A ∧ IsSidon (↑(A ∪ {m'}) : Set ℕ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-37-      simpa [and_assoc] using hA.exists_insert_ge h m
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-38-    ⟨Nat.find this, Nat.find_spec this⟩
+FormalConjectures/ErdosProblems/340.lean:39:  else ⟨m, by simp_all [IsSidon]⟩
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-41-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean:42:theorem greedySidon_go_singleton_two : (greedySidon.go {1} (by simp [IsSidon]) 2).val = 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-43-  decide +native
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-45-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean:46:theorem greedySidon_go_pair_three : (greedySidon.go {1, 2} (by simp [IsSidon]) 3).val = 4 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-47-  decide +native
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-48-
+FormalConjectures/ErdosProblems/340.lean:49:/-- Main search loop for generating the greedy Sidon sequence. The return value for step `n` is the
+FormalConjectures/ErdosProblems/340.lean:50:finite set of numbers generated so far, a proof that it is Sidon, and the greatest element of
+FormalConjectures/ErdosProblems/340.lean:51:the finite set at that point. This is initialised at `{1}`, then `greedySidon.go` is
+FormalConjectures/ErdosProblems/340.lean:52:called iteratively using the lower bound `max + 1` to find the next smallest Sidon preserving
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-53-number. -/
+FormalConjectures/ErdosProblems/340.lean:54:private def greedySidon.aux (n : ℕ) : ({A : Finset ℕ // IsSidon (A : Set ℕ)} × ℕ) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-55-  match n with
+FormalConjectures/ErdosProblems/340.lean:56:  | 0 => (⟨{1}, by simp [IsSidon]⟩, 1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-57-  | k + 1 =>
+FormalConjectures/ErdosProblems/340.lean:58:    let (A, s) := greedySidon.aux k
+FormalConjectures/ErdosProblems/340.lean-59-    let s := if h : A.1.Nonempty then A.1.max' h + 1 else s
+FormalConjectures/ErdosProblems/340.lean:60:    let s' := greedySidon.go A.1 A.2 s
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-61-    (⟨A ∪ {s'.1}, s'.2.2.2⟩, s')
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-62-
+FormalConjectures/ErdosProblems/340.lean:63:/-- `greedySidon` is the sequence obtained by the initial set $\{1\}$ and iteratively obtaining
+FormalConjectures/ErdosProblems/340.lean:64:then next smallest integer that preserves the Sidon property of the set. This gives the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-65-sequence `1, 2, 4, 8, 13, 21, 31, ...`. -/
+FormalConjectures/ErdosProblems/340.lean:66:def greedySidon (n : ℕ) : ℕ := greedySidon.aux n |>.2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-67-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-68-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean:69:theorem greedySidon_zero : greedySidon 0 = 1 := rfl
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-71-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean:72:theorem greedySidon_one : greedySidon 1 = 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-73-  decide +native
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-75-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean:76:theorem greedySidon_two : greedySidon 2 = 4 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-77-  decide +native
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-78-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-79-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean:80:theorem greedySidon_three : greedySidon 3 = 8 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-81-  decide +native
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-82-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean:83:theorem greedySidon_four : greedySidon 4 = 13 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-84-  decide +native
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-86-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean:87:theorem greedySidon_five : greedySidon 5 = 21 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-88-  decide +native
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-89-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-90-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean:91:theorem greedySidon_ten : greedySidon 10 = 97 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-92-  decide +native
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-93-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-94-/--
+FormalConjectures/ErdosProblems/340.lean:95:Let $A = \{1, 2, 4, 8, 13, 21, 31, 45, 66, 81, 97, \ldots\}$ be the greedy Sidon sequence:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-96-we begin with $1$ and iteratively include the next smallest integer that preserves the
+FormalConjectures/ErdosProblems/340.lean:97:Sidon property (i.e. there are no non-trivial solutions to $a + b = c + d$). What is the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-98-order of growth of $A$? Is it true that $|A \cap \{1, \ldots, N\}| \gg N^{1/2 - \varepsilon}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-99-for all $\varepsilon > 0$ and large $N$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-100--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-101-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/340.lean-102-theorem erdos_340 (ε : ℝ) (hε : ε > 0) :
+FormalConjectures/ErdosProblems/340.lean-103-    (fun n : ℕ ↦ √n / n ^ ε) =O[atTop]
+FormalConjectures/ErdosProblems/340.lean:104:      fun n : ℕ ↦ ((Set.range greedySidon ∩ Set.Icc 1 n).ncard : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-105-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-106-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-107-/--
+FormalConjectures/ErdosProblems/340.lean:108:Let $A = \{1, 2, 4, 8, 13, 21, 31, 45, 66, 81, 97, \ldots\}$ be the greedy Sidon sequence:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-109-we begin with $1$ and iteratively include the next smallest integer that preserves the
+FormalConjectures/ErdosProblems/340.lean:110:Sidon property (i.e. there are no non-trivial solutions to $a + b = c + d$). What is the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-111-order of growth of $A$? Is it true that $|A \cap \{1, \ldots, N\}| \gg N^{1/2 - \varepsilon}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-112-for all $\varepsilon > 0$ and large $N$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-113--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-114-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/340.lean-115-theorem erdos_340.variants.isTheta (ε : ℝ) (hε : ε > 0) :
+FormalConjectures/ErdosProblems/340.lean:116:    (fun n : ℕ ↦ ((Set.range greedySidon ∩ Set.Icc 1 n).ncard : ℝ)) =Θ[atTop]
+FormalConjectures/ErdosProblems/340.lean-117-      (answer(sorry) : ℕ → ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-118-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-119-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-123-@[category undergraduate, AMS 5]
+FormalConjectures/ErdosProblems/340.lean-124-theorem erdos_340.variants.third (ε : ℝ) (hε : ε > 0) :
+FormalConjectures/ErdosProblems/340.lean-125-    (fun n : ℕ ↦ (n : ℝ) ^ ((1 : ℝ) / 3)) =O[atTop]
+FormalConjectures/ErdosProblems/340.lean:126:      fun n : ℕ ↦ ((Set.range greedySidon ∩ Set.Icc 1 n).ncard : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-127-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-128-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-129-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-135--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-136-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/340.lean-137-theorem erdos_340.variants.sub_hasPosDensity :
+FormalConjectures/ErdosProblems/340.lean:138:    Set.HasPosDensity (Set.range greedySidon - Set.range greedySidon) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-139-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-140-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-141-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-147--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-148-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/340.lean-149-theorem erdos_340.variants._22_mem_sub :
+FormalConjectures/ErdosProblems/340.lean:150:    22 ∈ Set.range greedySidon - Set.range greedySidon := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-151-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-152-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-153-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-155- -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-156-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/340.lean-157-theorem erdos_340.variants._33_mem_sub : answer(sorry) ↔
+FormalConjectures/ErdosProblems/340.lean:158:    33 ∈ Set.range greedySidon - Set.range greedySidon := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-159-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-160-
+FormalConjectures/ErdosProblems/340.lean-161--- Formalisation note: there is some slight ambiguity in the meaning of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-167--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-168-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/340.lean-169-theorem erdos_340.variants.cofinite_sub : answer(sorry) ↔
+FormalConjectures/ErdosProblems/340.lean:170:    ∀ᶠ n in cofinite, n ∈ Set.range greedySidon - Set.range greedySidon := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-171-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-172-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-173-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-175--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-176-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/340.lean-177-theorem erdos_340.variants.co_density_zero_sub : answer(sorry) ↔
+FormalConjectures/ErdosProblems/340.lean:178:    ∃ S : Set ℕ, S.HasDensity 0 ∧ ∀ n ∈ Sᶜ, n ∈ Set.range greedySidon - Set.range greedySidon := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-179-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-180-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-181-end Erdos340
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/155.lean-27-namespace Erdos155
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/155.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/155.lean-29-/--
+FormalConjectures/ErdosProblems/155.lean:30:Let $F(N)$ be the size of the largest Sidon subset of $\{1, \dots, N\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/155.lean-31--/
+FormalConjectures/ErdosProblems/155.lean:32:noncomputable abbrev F (N : ℕ) : ℕ := Finset.maxSidonSubsetCard (Finset.Icc 1 N)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/155.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/155.lean-34-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/155.lean-35-Is it true that for every $k \geq 1$ we have
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-21-
+FormalConjectures/ErdosProblems/156.lean-22-*Reference:* [erdosproblems.com/156](https://www.erdosproblems.com/156)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-23-
+FormalConjectures/ErdosProblems/156.lean:24:A question of Erdős, Sárközy, and Sós [ESS94]. Ruzsa [Ru98b] constructed a maximal Sidon set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-25-of size $\ll (N \log N)^{1/3}$, but whether $O(N^{1/3})$ is achievable remains open.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-27-[ESS94] Erdős, P., Sárközy, A., and Sós, V. T.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-36-namespace Erdos156
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-37-
+FormalConjectures/ErdosProblems/156.lean:38:/-- A finite set of natural numbers is a Sidon set (also called a $B_2$ set) if all
+FormalConjectures/ErdosProblems/156.lean-39-pairwise sums $a + b$ (allowing $a = b$) are distinct: whenever $a + b = c + d$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-40-with $a, b, c, d \in A$, we have $\{a, b\} = \{c, d\}$ as multisets. -/
+FormalConjectures/ErdosProblems/156.lean:41:def IsSidonSet (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-42-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-43-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-44-
+FormalConjectures/ErdosProblems/156.lean:45:/-- A Sidon set $A \subseteq \{0, \ldots, N-1\}$ is maximal (in $\{0, \ldots, N-1\}$) if no
+FormalConjectures/ErdosProblems/156.lean:46:element of $\{0, \ldots, N-1\} \setminus A$ can be added to $A$ while preserving the Sidon
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-47-property. -/
+FormalConjectures/ErdosProblems/156.lean:48:def IsMaximalSidonSet (N : ℕ) (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-49-  A ⊆ Finset.range N ∧
+FormalConjectures/ErdosProblems/156.lean:50:  IsSidonSet A ∧
+FormalConjectures/ErdosProblems/156.lean:51:  ∀ n ∈ Finset.range N, n ∉ A → ¬IsSidonSet (insert n A)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-53-/--
+FormalConjectures/ErdosProblems/156.lean-54-Erdős–Sárközy–Sós Conjecture (Problem 156) [ESS94]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-55-
+FormalConjectures/ErdosProblems/156.lean:56:Does there exist a maximal Sidon set $A \subset \{1, \ldots, N\}$ of size $O(N^{1/3})$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-57-
+FormalConjectures/ErdosProblems/156.lean:58:The greedy algorithm produces a maximal Sidon set of size $\gg N^{1/3}$ (this is known).
+FormalConjectures/ErdosProblems/156.lean:59:Ruzsa [Ru98b] constructed a maximal Sidon set of size $\ll (N \log N)^{1/3}$, which is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-60-close but does not reach $O(N^{1/3})$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-61-
+FormalConjectures/ErdosProblems/156.lean-62-Formalized as: there exists a constant $C > 0$ such that for all sufficiently large $N$,
+FormalConjectures/ErdosProblems/156.lean:63:there exists a maximal Sidon set $A \subseteq \{0, \ldots, N-1\}$ with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-64-$|A| \leq C \cdot N^{1/3}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-65--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-66-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/156.lean-67-theorem erdos_156 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/156.lean-68-    ∃ C : ℝ, 0 < C ∧
+FormalConjectures/ErdosProblems/156.lean-69-      ∀ᶠ N : ℕ in atTop,
+FormalConjectures/ErdosProblems/156.lean:70:        ∃ A : Finset ℕ, IsMaximalSidonSet N A ∧
+FormalConjectures/ErdosProblems/156.lean-71-          (A.card : ℝ) ≤ C * (N : ℝ) ^ ((1 : ℝ) / 3) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-72-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-73-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-17-import FormalConjectures.Util.ProblemImports
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-18-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-19-/-!
+FormalConjectures/ErdosProblems/329.lean:20:# Erdős Problem 329: Maximum Density of Sidon Sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-21-
+FormalConjectures/ErdosProblems/329.lean-22-*Reference:* [erdosproblems.com/329](https://www.erdosproblems.com/329)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-23--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-27-namespace Erdos329
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-29-/--
+FormalConjectures/ErdosProblems/329.lean:30:The partial density of a Sidon set `A` up to `N`, normalized by dividing by `√N` instead of `N`.
+FormalConjectures/ErdosProblems/329.lean:31:This measures how close the set comes to the optimal density for Sidon sets.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-32--/
+FormalConjectures/ErdosProblems/329.lean-33-noncomputable def sqrtPartialDensity (A : Set ℕ) (N : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/329.lean-34-  (A ∩ Set.Icc 1 N).ncard / (N : ℝ).sqrt
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-35-
+FormalConjectures/ErdosProblems/329.lean:36:/-- The upper density of a Sidon set `A`, normalized by `√N`. -/
+FormalConjectures/ErdosProblems/329.lean:37:noncomputable def sidonUpperDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-38-  limsup (fun N => sqrtPartialDensity A N) atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-40-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-41-**Erdős Problem 329.**
+FormalConjectures/ErdosProblems/329.lean:42:Let `A ⊆ ℕ` be a Sidon set. How large can
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-43-`lim sup_{N → ∞} |A ∩ {1,…,N}| / N^{1/2}`
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-44-be?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-45--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-46-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/329.lean:47:theorem erdos_329 : sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} =
+FormalConjectures/ErdosProblems/329.lean-48-    answer(sorry) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-49-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-51-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-52-Erdős proved that upper density `1 / 2` can be attained; in particular,
+FormalConjectures/ErdosProblems/329.lean:53:there exists a Sidon set whose upper density is *at least* `1 / 2`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-54--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-55-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/329.lean:56:theorem erdos_329.lower_bound : ∃ (A : Set ℕ), IsSidon A ∧ sidonUpperDensity A ≥ 1/2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-57-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-59-/--
+FormalConjectures/ErdosProblems/329.lean:60:Krückeberg ([Kr61]) exhibited an infinite Sidon set `A` with
+FormalConjectures/ErdosProblems/329.lean:61:`sidonUpperDensity A = 1 / Real.sqrt 2`, improving Erdős’ earlier
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-62-`1 / 2` lower bound.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-64-[Kr61] Krückeberg, Fritz, $B\sb{2}$-Folgen und verwandte Zahlenfolgen. J. Reine Angew. Math. (1961), 53-60.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-65--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-66-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/329.lean:67:theorem kruckeberg_1961 : ∃ (A : Set ℕ), IsSidon A ∧
+FormalConjectures/ErdosProblems/329.lean:68:    sidonUpperDensity A = 1 / Real.sqrt 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-69-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-71-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-72-Erdős and Turán [ErTu41] proved the upper bound of 1.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-73-
+FormalConjectures/ErdosProblems/329.lean:74:[ErTu41] Erdős, P. and Turán, P., On a problem of Sidon in additive number theory, and on some related problems. J. London Math. Soc. (1941), 212-215.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-75--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-76-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/329.lean:77:theorem erdos_turan_1941 : ∀ (A : Set ℕ), IsSidon A → sidonUpperDensity A ≤ 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-78-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-79-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-80-/--
+FormalConjectures/ErdosProblems/329.lean:81:If any finite Sidon set can be embedded in a perfect difference set,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-82-then the maximum density would be 1.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-83--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-84-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/329.lean-85-theorem erdos_329.of_sub_perfectDifferenceSet :
+FormalConjectures/ErdosProblems/329.lean:86:    (∀ (A : Finset ℕ), IsSidon (A : Set ℕ) → ∃ (D : Set ℕ) (n : ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-87-      ↑A ⊆ D ∧ IsPerfectDifferenceSet D n) →
+FormalConjectures/ErdosProblems/329.lean:88:    sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} = 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-89-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-90-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-91-/--
+FormalConjectures/ErdosProblems/329.lean:92:The converse: if the maximum density is 1, then any finite Sidon set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-93-can be embedded in a perfect difference set.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-94--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-95-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/329.lean-96-theorem erdos_329.converse_implication :
+FormalConjectures/ErdosProblems/329.lean:97:    (sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} = 1) →
+FormalConjectures/ErdosProblems/329.lean:98:    (∀ (A : Finset ℕ), IsSidon (A : Set ℕ) → ∃ (D : Set ℕ) (n : ℕ),
+FormalConjectures/ErdosProblems/329.lean-99-      ↑A ⊆ D ∧ IsPerfectDifferenceSet D n) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-100-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-101-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-102-/-! ## Related results and examples -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-103-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-104-/--
+FormalConjectures/ErdosProblems/329.lean:105:It is possible to construct a Sidon set with positive density.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-106--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-107-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/329.lean:108:theorem exists_sidon_pos_density : ∃ (A : Set ℕ), IsSidon A ∧ 0 < sidonUpperDensity A := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-109-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-110-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-111-end Erdos329
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean-31-namespace Erdos757
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean-33-/-- We say that `c` is admissible if for any finit set `A` such that for any subset `B` of size `4`,
+FormalConjectures/ErdosProblems/757.lean:34:`(B - B).card = 11`, there exists a Sidon subset `S` of size at least `c * A.ncard`. -/
+FormalConjectures/ErdosProblems/757.lean-35-def IsAdmissible (c : ℝ) : Prop := ∀ {A : Set ℝ}, A.Finite → (∀ B ⊆ A,
+FormalConjectures/ErdosProblems/757.lean:36:  B.ncard = 4 → (B - B).ncard = 11) → ∃ S ⊆ A, IsSidon S ∧ c * A.ncard ≤ (S.ncard : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean-38-/-- What is the supremum of the set of admissible numbers? -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean-39-@[category research open, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-32-This is a weaker form of Problem 840.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-33-
+FormalConjectures/ErdosProblems/864.lean:34:[ErFr91] Erdős, P. and Freud, R., *On Sidon-sequences and related problems*, 1991.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-35--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-37-open Finset Classical
+--
+FormalConjectures/ErdosProblems/864.lean-42-def sumRepCount (A : Finset ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-43-  (A.filter (fun a => 2 * a ≤ n ∧ (n - a) ∈ A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-44-
+FormalConjectures/ErdosProblems/864.lean:45:/-- A set $A$ is *almost Sidon* if at most one integer $n$ has more than one
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-46-    representation as $n = a + b$ with $a \le b \in A$. -/
+FormalConjectures/ErdosProblems/864.lean:47:def IsAlmostSidon (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/864.lean-48-  ∃ S : Finset ℕ, S.card ≤ 1 ∧
+FormalConjectures/ErdosProblems/864.lean-49-    ∀ n : ℕ, n ∉ S → sumRepCount A n ≤ 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-50-
+FormalConjectures/ErdosProblems/864.lean:51:/-- The maximum size of an almost Sidon subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/864.lean:52:noncomputable def maxAlmostSidonCard (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/864.lean:53:  ((Finset.Icc 1 N).powerset.filter IsAlmostSidon).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-55-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-56-**Erdős Problem 864** [ErFr91] — Is it true that for every $\varepsilon > 0$,
+--
+FormalConjectures/ErdosProblems/864.lean-61-theorem erdos_864 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/864.lean-62-    (∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/864.lean-63-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/864.lean:64:    (maxAlmostSidonCard N : ℝ) ≤ (2 / Real.sqrt 3 + ε) * Real.sqrt (N : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-67-/--
+--
+FormalConjectures/ErdosProblems/864.lean-74-theorem erdos_864.variants.lower_bound :
+FormalConjectures/ErdosProblems/864.lean-75-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/864.lean-76-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/864.lean:77:    (maxAlmostSidonCard N : ℝ) ≥ (2 / Real.sqrt 3 - ε) * Real.sqrt (N : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-78-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-79-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-80-end Erdos864
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-60-choose $a_1$ to be the minimal element of $P_1\cap \mathbb{N}$, and in general choose $a_n$ to be an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-61-element of $P_n\cap \mathbb{N}$ such that $a_n>2a_{n-1}$. By construction $A=\{a_1 < a_2 < \cdots\}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-62-contains at least one element from every infinite arithmetic progression, and is a lacunary set, so
+FormalConjectures/ErdosProblems/198.lean:63:is certainly Sidon.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-64-
+FormalConjectures/ErdosProblems/198.lean-65-AlphaProof has found the following explicit construction: $A = \{ (n+1)!+n : n\geq 0\}$. This is a
+FormalConjectures/ErdosProblems/198.lean:66:Sidon set, and intersects every arithmetic progression, since for any $a,d\in \mathbb{N}$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-67-$(a+d+1)!+(a+d)\in A$, and $d$ divides $(a+d+1)!+d$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-68-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-69-This was formalized in Lean by Alexeev using Aristotle.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-70--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-71-@[category research formally solved using lean4 at
+FormalConjectures/ErdosProblems/198.lean-72-"https://github.com/plby/lean-proofs/blob/main/src/v4.24.0/ErdosProblems/Erdos198.lean", AMS 5 11]
+FormalConjectures/ErdosProblems/198.lean:73:theorem erdos_198 : (∀ A : Set ℕ, IsSidon A → (∃ Y, IsAPOfLength Y ⊤ ∧ Y ⊆ Aᶜ)) ↔
+FormalConjectures/ErdosProblems/198.lean-74-    answer(False) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-76-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-79--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-80-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/198.lean-81-theorem erdos_198.variants.concrete :  ∃ (A : Set ℕ), A = {n ! + n | n} ∧
+FormalConjectures/ErdosProblems/198.lean:82:    IsSidon A ∧ (∀ Y, IsAPOfLength Y ⊤ → (A ∩ Y).Nonempty) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-83-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-84-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/198.lean-85-end Erdos198
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-47-   $r_A(n) = o(n^\varepsilon)$ for every $\varepsilon > 0$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-49-The existence of such a set was first proved by Erdős using probabilistic methods
+FormalConjectures/ErdosProblems/29.lean:50:(answering a question of Sidon from 1932). An explicit construction was given by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-51-Jain, Pham, Sawhney, and Zakharov (2024).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-52--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/29.lean-53-@[category research solved, AMS 5 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-21-
+FormalConjectures/ErdosProblems/861.lean-22-*Reference:* [erdosproblems.com/861](https://www.erdosproblems.com/861)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-23-
+FormalConjectures/ErdosProblems/861.lean:24:Let $f(N)$ be the size of the largest Sidon subset of $\{1,\ldots,N\}$ and $A(N)$ be
+FormalConjectures/ErdosProblems/861.lean:25:the number of Sidon subsets of $\{1,\ldots,N\}$. Is it true that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-26-$$A(N)/2^{f(N)}\to \infty?$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-27-Is it true that $A(N) = 2^{(1+o(1))f(N)}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-28-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-35-[Er92c] Erdős, P., *Some of my favourite problems in number theory, combinatorics, and geometry*,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-36-Resenhas (1995).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-37-
+FormalConjectures/ErdosProblems/861.lean:38:[SaTh15] Saxton, D. and Thomason, A., *The number of Sidon sets and the maximum size of Sidon
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-39-sets contained in a sparse random set of integers* (2015).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-40-
+FormalConjectures/ErdosProblems/861.lean:41:[KLRS15] Kohayakawa, Y., Lee, S. J., Rödl, V., and Samotij, W., *The number of Sidon sets and
+FormalConjectures/ErdosProblems/861.lean:42:the maximum size of Sidon sets contained in a sparse random set of integers* (2015).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-43--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-45-open scoped Classical
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-49-namespace Erdos861
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-50-
+FormalConjectures/ErdosProblems/861.lean:51:/-- A finite set of natural numbers is a Sidon set if all pairwise sums are distinct. -/
+FormalConjectures/ErdosProblems/861.lean:52:def IsSidonSet (S : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-53-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-54-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-55-
+FormalConjectures/ErdosProblems/861.lean:56:/-- $f(N)$, the cardinality of the largest Sidon subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/861.lean:57:noncomputable def maxSidonSize (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/861.lean:58:  ((Icc 1 N).powerset.filter IsSidonSet).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-59-
+FormalConjectures/ErdosProblems/861.lean:60:/-- $A(N)$, the number of Sidon subsets of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/861.lean:61:noncomputable def countSidonSubsets (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/861.lean:62:  ((Icc 1 N).powerset.filter IsSidonSet).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-64-/--
+FormalConjectures/ErdosProblems/861.lean-65-Erdős Problem 861, first question (Cameron–Erdős [Er92c], proved):
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-68--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-69-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/861.lean-70-theorem erdos_861 : answer(True) ↔
+FormalConjectures/ErdosProblems/861.lean:71:    Tendsto (fun N => (countSidonSubsets N : ℝ) / (2 : ℝ) ^ (maxSidonSize N))
+FormalConjectures/ErdosProblems/861.lean-72-      atTop atTop := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-73-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-74-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-81-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/861.lean-82-theorem erdos_861.variants.lower :
+FormalConjectures/ErdosProblems/861.lean-83-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/861.lean:84:      (countSidonSubsets N : ℝ) ≥ (2 : ℝ) ^ ((1.16 : ℝ) * (maxSidonSize N : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-85-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-86-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-87-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-93-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/861.lean-94-theorem erdos_861.variants.upper :
+FormalConjectures/ErdosProblems/861.lean-95-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/861.lean:96:      (countSidonSubsets N : ℝ) ≤ (2 : ℝ) ^ ((6.442 : ℝ) * (maxSidonSize N : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-97-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-98-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-99-end Erdos861
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-21-
+FormalConjectures/ErdosProblems/43.lean-22-*Reference:* [erdosproblems.com/43](https://www.erdosproblems.com/43)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-23-
+FormalConjectures/ErdosProblems/43.lean:24:If $A, B \subseteq \{1, \ldots, N\}$ are Sidon sets with $(A-A) \cap (B-B) = \{0\}$, is it true
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-25-that $\binom{|A|}{2} + \binom{|B|}{2} \leq \binom{f(N)}{2} + O(1)$, where $f(N)$ is the maximum
+FormalConjectures/ErdosProblems/43.lean:26:size of a Sidon set in $\{1, \ldots, N\}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-28-[Er95] Erdős, P., _Some of my favourite problems in various branches of combinatorics_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-29-Combinatorics, Paul Erdős is Eighty, Vol. 2 (1996), 1–25.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-34-namespace Erdos43
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-35-
+FormalConjectures/ErdosProblems/43.lean:36:/-- A finite set of natural numbers is a Sidon set (also called a $B_2$ set) if all
+FormalConjectures/ErdosProblems/43.lean-37-    pairwise sums $a + b$ (allowing $a = b$) are distinct: whenever $a + b = c + d$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-38-    with $a, b, c, d \in A$, we have $\{a, b\} = \{c, d\}$ as multisets. -/
+FormalConjectures/ErdosProblems/43.lean:39:def IsSidonSet (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-40-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-41-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-47-  ∀ a₁ ∈ A, ∀ a₂ ∈ A, ∀ b₁ ∈ B, ∀ b₂ ∈ B,
+FormalConjectures/ErdosProblems/43.lean-48-    (a₁ : ℤ) - (a₂ : ℤ) = (b₁ : ℤ) - (b₂ : ℤ) → a₁ = a₂ ∧ b₁ = b₂
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-49-
+FormalConjectures/ErdosProblems/43.lean:50:/-- If $A, B \subseteq \{1, \ldots, N\}$ are two Sidon sets such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-51-    $(A - A) \cap (B - B) = \{0\}$, is it true that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-52-    $$\binom{|A|}{2} + \binom{|B|}{2} \leq \binom{f(N)}{2} + O(1),$$
+FormalConjectures/ErdosProblems/43.lean:53:    where $f(N)$ is the maximum possible size of a Sidon set in $\{1, \ldots, N\}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-54-
+FormalConjectures/ErdosProblems/43.lean:55:    Here $S$ represents a maximum-size Sidon set in $\{1, \ldots, N\}$, so $|S| = f(N)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-56-    The $O(1)$ term is captured by the absolute constant $C$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-57-
+FormalConjectures/ErdosProblems/43.lean-58-    *Reference:* [Er95]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-59--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-60-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/43.lean-61-theorem erdos_43 : answer(sorry) ↔ ∃ C : ℕ, ∀ (N : ℕ) (A B S : Finset ℕ),
+FormalConjectures/ErdosProblems/43.lean:62:    IsSidonSet A → IsSidonSet B → IsSidonSet S →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-63-    (∀ a ∈ A, 1 ≤ a ∧ a ≤ N) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-64-    (∀ b ∈ B, 1 ≤ b ∧ b ≤ N) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-65-    (∀ s ∈ S, 1 ≤ s ∧ s ≤ N) →
+FormalConjectures/ErdosProblems/43.lean:66:    (∀ T : Finset ℕ, IsSidonSet T → (∀ t ∈ T, 1 ≤ t ∧ t ≤ N) → T.card ≤ S.card) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-67-    DisjointDifferences A B →
+FormalConjectures/ErdosProblems/43.lean-68-    Nat.choose A.card 2 + Nat.choose B.card 2 ≤ Nat.choose S.card 2 + C := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-69-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-18-/-!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-19-# Erdős Problem 153
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-20-
+FormalConjectures/ErdosProblems/153.lean:21:#TODO: Formalize the corresponding conjecture for infinite Sidon sets.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-22-
+FormalConjectures/ErdosProblems/153.lean-23-*References:*
+FormalConjectures/ErdosProblems/153.lean-24- - [erdosproblems.com/153](https://www.erdosproblems.com/153)
+FormalConjectures/ErdosProblems/153.lean:25: - [ESS94] Erdős, P. and Sárközy, A. and Sós, T., On Sum Sets of Sidon Sets, I. Journal of Number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-26-    Theory (1994), 329-347.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-27--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-28-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-32-namespace Erdos153
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-34-/-- Define `f n` to be the minimum of
+FormalConjectures/ErdosProblems/153.lean:35:`∑ (i : Set.Ico 1 ((A + A).card), (s i - s (i - 1)) ^ 2 / n` as `A` ranges over all Sidon sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-36-of size `n`, where `s` is an order embedding from `Fin n` into `A`. -/
+FormalConjectures/ErdosProblems/153.lean:37:noncomputable def f (n : ℕ) : ℝ := ⨅ A : {A : Finset ℕ | A.card = n ∧ IsSidon (A : Set ℕ)},
+FormalConjectures/ErdosProblems/153.lean-38-  let s := (A.1 + A).orderIsoOfFin rfl
+FormalConjectures/ErdosProblems/153.lean-39-  ∑ i : Set.Ico 1 ((A.1 + A).card), (s ⟨i, i.2.2⟩ - s ⟨i - 1, by grind⟩) ^ 2 / (n : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-18-/-!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-19-# Erdős Problem 152
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-20-
+FormalConjectures/ErdosProblems/152.lean:21:#TODO: Formalize the corresponding conjecture for infinite Sidon sets.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-22-
+FormalConjectures/ErdosProblems/152.lean-23-*References:*
+FormalConjectures/ErdosProblems/152.lean-24- - [erdosproblems.com/152](https://www.erdosproblems.com/152)
+FormalConjectures/ErdosProblems/152.lean:25: - [ESS94] Erdős, P. and Sárközy, A. and Sós, T., On Sum Sets of Sidon Sets, I. Journal of Number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-26-    Theory (1994), 329-347.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-27--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-28-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-32-namespace Erdos152
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-34-/-- Define `f n` to be the minimum of `|{s | s - 1 ∉ A + A, s ∈ A + A, s + 1 ∉ A + A}|` as `A`
+FormalConjectures/ErdosProblems/152.lean:35:ranges over all Sidon sets of size `n`. -/
+FormalConjectures/ErdosProblems/152.lean-36-noncomputable def f (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/152.lean:37:  ⨅ A : {A : Set ℕ | A.ncard = n ∧ IsSidon A},
+FormalConjectures/ErdosProblems/152.lean-38-  {s : ℕ | s - 1 ∉ A.1 + A.1 ∧ s ∈ A.1 + A.1 ∧ s + 1 ∉ A.1 + A.1}.ncard
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/152.lean-40-/-- Must `lim f n = ∞`? -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-26-by Landau) the density of the sums of two squares decays like $(\log N)^{-1/2}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-27-The lower bound was improved to $|A| \gg N^{2/3}$ by Lefmann and Thiele [LeTh95].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-28-
+FormalConjectures/ErdosProblems/773.lean:29:[AlEr85] Alon, N. and Erdős, P., *On the size of the largest Sidon subset of a random set of integers*, 1985.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-31-[LeTh95] Lefmann, H. and Thiele, T., *Point sets with distinct distances*, 1995.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-32--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-34-namespace Erdos773
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-35-
+FormalConjectures/ErdosProblems/773.lean:36:/-- A finite set of natural numbers is a Sidon set if all pairwise sums are distinct. -/
+FormalConjectures/ErdosProblems/773.lean:37:def IsSidonSet (S : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-38-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-39-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-43-  (Finset.range N).image (fun i => (i + 1) ^ 2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-45-/--
+FormalConjectures/ErdosProblems/773.lean:46:Is the size of the largest Sidon subset of $\{1^2, 2^2, \ldots, N^2\}$ equal to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-47-$N^{1-o(1)}$? That is, for every $\varepsilon > 0$, for all sufficiently large $N$,
+FormalConjectures/ErdosProblems/773.lean:48:there exists a Sidon subset of $\{1^2, 2^2, \ldots, N^2\}$ of size at least
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-49-$N^{1-\varepsilon}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-50-
+FormalConjectures/ErdosProblems/773.lean-51-Known bounds:
+--
+FormalConjectures/ErdosProblems/773.lean-56-theorem erdos_773 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/773.lean-57-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/773.lean-58-      ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/773.lean:59:        ∃ A : Finset ℕ, A ⊆ squaresUpTo N ∧ IsSidonSet A ∧
+FormalConjectures/ErdosProblems/773.lean-60-          (A.card : ℝ) ≥ (N : ℝ) ^ (1 - ε) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-61-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-62-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-24-Let $k \geq 1$ and $H_k(n)$ be the maximal $r$ such that if $A \subset \mathbb{N}$ has
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-25-$|A| = n$ and $\|1_A \ast 1_A\|_\infty \leq k$ (the additive representation function is
+FormalConjectures/ErdosProblems/772.lean:26:bounded by $k$) then $A$ contains a Sidon set of size at least $r$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-28-Is it true that $H_k(n)/n^{1/2} \to \infty$? Or even $H_k(n) > n^{1/2+c}$ for some
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-29-constant $c > 0$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-38-namespace Erdos772
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-39-
+FormalConjectures/ErdosProblems/772.lean:40:/-- A finite set of natural numbers is a Sidon set ($B_2$ set) if all pairwise
+FormalConjectures/ErdosProblems/772.lean-41-sums are distinct: for $a, b, c, d \in S$ with $a + b = c + d$, we have
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-42-$\{a, b\} = \{c, d\}$ as multisets. -/
+FormalConjectures/ErdosProblems/772.lean:43:def IsSidonSet (S : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-44-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-45-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-46-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-55-
+FormalConjectures/ErdosProblems/772.lean-56-Is it true that $H_k(n)/n^{1/2} \to \infty$? The answer is yes: for every $k \geq 1$ and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-57-every $C > 0$, eventually every $n$-element set with additive representation bounded by $k$
+FormalConjectures/ErdosProblems/772.lean:58:contains a Sidon subset of size at least $C \cdot n^{1/2}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-59--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-60-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/772.lean-61-theorem erdos_772 : answer(True) ↔
+--
+FormalConjectures/ErdosProblems/772.lean-64-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/772.lean-65-      ∀ A : Finset ℕ, A.card = n →
+FormalConjectures/ErdosProblems/772.lean-66-        (∀ m : ℕ, addRepCount A m ≤ k) →
+FormalConjectures/ErdosProblems/772.lean:67:        ∃ S : Finset ℕ, S ⊆ A ∧ IsSidonSet S ∧
+FormalConjectures/ErdosProblems/772.lean-68-          (S.card : ℝ) ≥ C * (n : ℝ) ^ ((1 : ℝ) / 2) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-69-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-70-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-73-
+FormalConjectures/ErdosProblems/772.lean-74-In fact $H_k(n) \gg_k n^{2/3}$: for each $k \geq 1$ there exist $C > 0$ and $N_0$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-75-for all $n \geq N_0$, every $n$-element set with additive representation bounded by $k$
+FormalConjectures/ErdosProblems/772.lean:76:contains a Sidon subset of size at least $C \cdot n^{2/3}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-77--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-78-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/772.lean-79-theorem erdos_772.variants.alon_erdos_bound :
+--
+FormalConjectures/ErdosProblems/772.lean-81-    ∃ C : ℝ, C > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/772.lean-82-      ∀ A : Finset ℕ, A.card = n →
+FormalConjectures/ErdosProblems/772.lean-83-        (∀ m : ℕ, addRepCount A m ≤ k) →
+FormalConjectures/ErdosProblems/772.lean:84:        ∃ S : Finset ℕ, S ⊆ A ∧ IsSidonSet S ∧
+FormalConjectures/ErdosProblems/772.lean-85-          (S.card : ℝ) ≥ C * (n : ℝ) ^ ((2 : ℝ) / 3) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-86-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-87-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-17-import FormalConjectures.Util.ProblemImports
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-18-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-19-/-!
+FormalConjectures/ErdosProblems/44.lean:20:# Erdős Problem 44: Extending Sidon Sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-21-
+FormalConjectures/ErdosProblems/44.lean-22-*Reference:* [erdosproblems.com/44](https://www.erdosproblems.com/44)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-23--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-27-namespace Erdos44
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-28-
+FormalConjectures/ErdosProblems/44.lean-29--- Reference: https://arxiv.org/pdf/2103.15850
+FormalConjectures/ErdosProblems/44.lean:30:/-- The maximum size of a Sidon set in `{1, ..., N}` is less than or equal to `2 * √N`. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-31-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:32:theorem maxSidonSubsetCard_icc_bound (N : ℕ) (hN : 1 ≤ N) :
+FormalConjectures/ErdosProblems/44.lean:33:    maxSidonSubsetCard (Icc 1 N) ≤ 2 * Real.sqrt N := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-34-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-36-/--
+FormalConjectures/ErdosProblems/44.lean:37:**Erdős Problem 44:** Let N ≥ 1 and `A ⊆ {1,…,N}` be a Sidon set. Is it true that, for any ε > 0,
+FormalConjectures/ErdosProblems/44.lean:38:there exist M = M(ε) and `B ⊆ {N+1,…,M}` such that `A ∪ B ⊆ {1,…,M}` is a Sidon set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-39-of size at least `(1−ε)M^{1/2}`?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-40-
+FormalConjectures/ErdosProblems/44.lean:41:This problem asks whether any Sidon set can be extended to achieve a density
+FormalConjectures/ErdosProblems/44.lean:42:arbitrarily close to the optimal density for Sidon sets.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-43--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-44-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:45:theorem erdos_44 : answer(sorry) ↔ ∀ᵉ (N ≥ (1 : ℕ)) (A ⊆ Finset.Icc 1 N), IsSidon (A : Set ℕ) →
+FormalConjectures/ErdosProblems/44.lean-46-    ∀ᵉ (ε > (0 : ℝ)), ∃ᵉ (M > N) (B ⊆ Finset.Icc (N + 1) M),
+FormalConjectures/ErdosProblems/44.lean:47:      IsSidon (A ∪ B : Set ℕ) ∧ (1 - ε) * Real.sqrt M ≤ (A ∪ B).card := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-48-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-50-/--
+FormalConjectures/ErdosProblems/44.lean:51:The case where we start with an empty set (constructing large Sidon sets).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-52--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-53-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean-54-theorem erdos_44.empty_start : answer(sorry) ↔ ∀ᵉ (ε > (0 : ℝ)), ∀ᶠ (M : ℕ) in Filter.atTop,
+FormalConjectures/ErdosProblems/44.lean:55:    ∃ᵉ (A ⊆ Finset.Icc 1 M), IsSidon (A : Set ℕ) ∧ (1 - ε) * Real.sqrt M ≤ A.card := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-56-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-58-/-! ## Related results and examples -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-60-/--
+FormalConjectures/ErdosProblems/44.lean:61:The set `{1, 2, 4, 8, 13}` is a Sidon set in `{1, ..., 13}`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-62--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-63-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:64:theorem example_sidon_set : IsSidon ({1, 2, 4, 8, 13} : Set ℕ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-67-/--
+FormalConjectures/ErdosProblems/44.lean:68:For any `N`, there exists a Sidon set of size at least `√N/2`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-69--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-70-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:71:theorem sidon_set_lower_bound (N : ℕ) (hN : 1 ≤ N) :
+FormalConjectures/ErdosProblems/44.lean:72:    ∃ᵉ (A ⊆ Finset.Icc 1 N), IsSidon (A : Set ℕ) ∧ N.sqrt / 2 ≤ A.card := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-73-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-75-/--
+FormalConjectures/ErdosProblems/44.lean:76:The greedy construction gives a Sidon set of size approximately `√N`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-77--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-78-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/44.lean:79:theorem greedy_sidon_construction (N : ℕ) (hN : 1 ≤ N) :
+FormalConjectures/ErdosProblems/44.lean:80:    ∃ᵉ (A ⊆ Finset.Icc 1 N), IsSidon (A : Set ℕ) ∧ A.card ≥ N.sqrt := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-81-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-82-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/44.lean-83-end Erdos44
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/819.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/819.lean-27-Erdős and Freud [ErFr91] proved
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/819.lean-28-$(3/8-o(1))N \leq f(N) \leq (1/2+o(1))N$,
+FormalConjectures/ErdosProblems/819.lean:29:and note that it is closely connected to the size of the largest quasi-Sidon set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/819.lean-30-(see [840]).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/819.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/819.lean-32-[ErFr91] Erdős, P. and Freud, R.
+--
+FormalConjectures/ErdosProblems/949.lean-38-    ∀ S : Set ℝ, (∀ a ∈ S, ∀ b ∈ S, a + b ∉ S) → ∃ A ⊆ Sᶜ, #A = 𝔠 ∧ A + A ⊆ Sᶜ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-39-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-40-
+FormalConjectures/ErdosProblems/949.lean:41:/-- Let $S\sub \mathbb{R}$ be a Sidon set. Must there be a set $A\sub \mathbb{R}∖S$ of cardinality
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-42-continuum such that $A + A \sub \mathbb{R}∖S$? -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-43-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/949.lean:44:theorem erdos_949.variants.sidon : answer(True) ↔
+FormalConjectures/ErdosProblems/949.lean:45:    ∀ S : Set ℝ, IsSidon S → ∃ A ⊆ Sᶜ, #A = 𝔠 ∧ A + A ⊆ Sᶜ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-46-  simp only [true_iff, Set.add_subset_iff]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-47-  rintro S hS
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-48-  -- We case on whether `S` has cardinality the continuum or strictly less.
+--
+FormalConjectures/ErdosProblems/949.lean-94-  have hSinf : S.Infinite := by simpa using aleph0_le_continuum.trans_eq hS𝔠.symm
+FormalConjectures/ErdosProblems/949.lean-95-  obtain ⟨a, ha, ha₀⟩ : ∃ a ∈ S, a ≠ 0 := (hSinf.diff <| Set.finite_singleton 0).nonempty
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-96-  refine ⟨(· - a / 2) '' (S \ {a}) \ S, Set.diff_subset_compl .., ?_, ?_⟩
+FormalConjectures/ErdosProblems/949.lean:97:  -- Since `S` is Sidon and `a ≠ 0`, `(S - a / 2) ∩ S ⊇ (S \ {a} - a / 2) ∩ S` has at most one
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-98-  -- element. In particular, `#A = #(S \ {a} - a / 2) = #S = 𝔠` as wanted.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-99-  · rw [mk_diff_eq_left_of_finite' ((hSinf.diff <| Set.finite_singleton _).image
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-100-      sub_left_injective.injOn)]
+--
+FormalConjectures/ErdosProblems/949.lean-104-      obtain rfl : x = y := by
+FormalConjectures/ErdosProblems/949.lean-105-        simpa [ha₀, eq_comm (b := x - _)] using hS _ hya _ hxa _ hx _ hy (by ring)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-106-      rfl
+FormalConjectures/ErdosProblems/949.lean:107:  -- Since `S` is Sidon, `S \ {a} + S \ {a} - a ⊇ A + A` is disjoint from `S`, as wanted.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-108-  · rintro _ ⟨⟨x, ⟨hx, hxa⟩, rfl⟩, -⟩ _ ⟨⟨y, ⟨hy, hya⟩, rfl⟩, -⟩ hxy
+FormalConjectures/ErdosProblems/949.lean-109-    have := hS _ hx _ ha _ hy _ hxy (by ring)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/949.lean-110-    simp_all
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-21-
+FormalConjectures/ErdosProblems/154.lean-22-*Reference:* [erdosproblems.com/154](https://www.erdosproblems.com/154)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-23-
+FormalConjectures/ErdosProblems/154.lean:24:Let $A \subset \{1, \ldots, N\}$ be a Sidon set with $|A| \sim N^{1/2}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-25-Must the sumset $A + A$ be well-distributed over all small moduli?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-27-[ESS94] Erdős, P., Sárközy, A., and Sós, V. T., 1994.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-38-namespace Erdos154
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-39-
+FormalConjectures/ErdosProblems/154.lean:40:/-- A finite set of natural numbers is a Sidon set (also called a $B_2$ set) if all
+FormalConjectures/ErdosProblems/154.lean-41-pairwise sums $a + b$ (allowing $a = b$) are distinct: whenever $a + b = c + d$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-42-with $a, b, c, d \in A$, we have $\{a, b\} = \{c, d\}$ as multisets. Equivalently,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-43-all differences $a - b$ with $a \neq b$ and $a, b \in A$ are distinct. -/
+FormalConjectures/ErdosProblems/154.lean:44:def IsSidonSet (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-45-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-46-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-55-/--
+FormalConjectures/ErdosProblems/154.lean-56-Erdős Problem \#154 [ESS94]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-57-
+FormalConjectures/ErdosProblems/154.lean:58:Let $A \subset \{1, \ldots, N\}$ be a Sidon set with $|A| \sim N^{1/2}$. Must $A + A$ be
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-59-well-distributed over all small moduli? In particular, must about half
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-60-the elements of $A + A$ be even and half odd?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-62-Proved in the affirmative. Lindström [Li98] showed that $A$ itself is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-63-well-distributed modulo small integers (e.g. $|A \cap \{\text{evens}\}| \approx |A|/2$),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-64-subsequently strengthened by Kolountzakis [Ko99]. The extension to $A + A$
+FormalConjectures/ErdosProblems/154.lean:65:follows immediately from the Sidon property: if $A$ has $e$ even and $o$ odd
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-66-elements, then $A + A$ has exactly $e(e+1)/2 + o(o+1)/2$ even elements
+FormalConjectures/ErdosProblems/154.lean:67:and $eo$ odd elements (all distinct by the Sidon property), and the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-68-distribution is approximately $1/2$ each when $e \approx o \approx |A|/2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-69-
+FormalConjectures/ErdosProblems/154.lean:70:Formalized as: for any sequence $(A_n)_n$ of Sidon sets $A_n \subset \{0, \ldots, n\}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-71-with $|A_n| / \sqrt{n} \to 1$ as $n \to \infty$, and any fixed modulus $m \geq 1$ and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-72-residue $0 \leq r < m$, the fraction of elements of $A_n + A_n$ in residue
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-73-class $r \bmod m$ tends to $1/m$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-75-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/154.lean-76-theorem erdos_154 : answer(True) ↔
+FormalConjectures/ErdosProblems/154.lean-77-    ∀ (A : ℕ → Finset ℕ),
+FormalConjectures/ErdosProblems/154.lean:78:      (∀ n, IsSidonSet (A n)) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-79-      (∀ n, (A n) ⊆ Finset.range (n + 1)) →
+FormalConjectures/ErdosProblems/154.lean-80-      Tendsto (fun n => ((A n).card : ℝ) / Real.sqrt n) atTop (𝓝 1) →
+FormalConjectures/ErdosProblems/154.lean-81-      ∀ (m : ℕ), 1 ≤ m →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-17-import FormalConjectures.Util.ProblemImports
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-18-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-19-/-!
+FormalConjectures/ErdosProblems/707.lean:20:# Erdős Problem 707: Embedding Sidon Sets in Perfect Difference Sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-21-
+FormalConjectures/ErdosProblems/707.lean-22-*References:*
+FormalConjectures/ErdosProblems/707.lean-23-- [erdosproblems.com/707](https://www.erdosproblems.com/707)
+FormalConjectures/ErdosProblems/707.lean-24-- [arxiv/2510.19804](https://arxiv.org/abs/2510.19804) Boris Alexeev and Dustin G. Mixon, Forbidden
+FormalConjectures/ErdosProblems/707.lean:25:  Sidon subsets of perfect difference sets, featuring a human-assisted proof (2025)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-26-- [Ha47] Marshall Hall, Jr., Cyclic projective planes, Duke Math. J. 14 (1947), 1079–1090.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-27-
+FormalConjectures/ErdosProblems/707.lean:28:Let `A ⊆ ℕ` be a finite Sidon set. Is there some set `B` with `A ⊆ B` which is a perfect
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-29-difference set modulo `p^2 + p + 1` for some prime power `p`?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-30-
+FormalConjectures/ErdosProblems/707.lean:31:This problem is related to Erdős Problem 329 about the maximum density of Sidon sets.
+FormalConjectures/ErdosProblems/707.lean:32:If this conjecture is true, it would imply that the maximum density of Sidon sets is 1.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-33--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-35-open Function Set
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-40-/--
+FormalConjectures/ErdosProblems/707.lean:41:**Erdős Problem 707**: It is false that any finite Sidon set can be embedded in a perfect
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-42-different set modulo some $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-44-As described in [arxiv/2510.19804], a counterexample is provided in [Ha47], see below.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-48--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-49-@[category research formally solved using lean4 at
+FormalConjectures/ErdosProblems/707.lean-50-"https://github.com/plby/lean-proofs/blob/main/src/v4.24.0/ErdosProblems/Erdos707.lean", AMS 5 11]
+FormalConjectures/ErdosProblems/707.lean:51:theorem erdos_707 : (∀ (A : Set ℕ) (h : A.Finite), IsSidon A →
+FormalConjectures/ErdosProblems/707.lean-52-    ∃ᵉ (B : Set ℕ) (n > 0), A ⊆ B ∧ IsPerfectDifferenceSet B n) ↔ False := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-53-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-56-/--
+FormalConjectures/ErdosProblems/707.lean:57:It is false that any finite Sidon set can be embedded in a perfect
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-58-difference set modulo `p^2 + p + 1` for some prime power `p`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-60-As described in [arxiv/2510.19804], a counterexample is provided in [Ha47], see below.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-61-The proof of this has been formalized.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-62---/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-63-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/707.lean:64:theorem erdos_707.variants.prime_power : (∀ (A : Set ℕ) (h : A.Finite), IsSidon A →
+FormalConjectures/ErdosProblems/707.lean-65-    ∃ (B : Set ℕ) (p : ℕ), IsPrimePow p ∧ A ⊆ B ∧
+FormalConjectures/ErdosProblems/707.lean-66-    IsPerfectDifferenceSet B (p^2 + p + 1)) ↔ False := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-67-  simp
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-68-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-70-/--
+FormalConjectures/ErdosProblems/707.lean:71:It is false that any finite Sidon set can be embedded in a perfect
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-72-difference set modulo `p^2 + p + 1` for some prime `p`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-73-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-74-As described in [arxiv/2510.19804], a counterexample is provided in [Ha47], see below.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-75-The proof of this has been formalized.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-76--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-77-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/707.lean:78:theorem erdos_707.variants.prime : (∀ (A : Set ℕ) (h : A.Finite), IsSidon A →
+FormalConjectures/ErdosProblems/707.lean-79-    ∃ᵉ (B : Set ℕ) (p : ℕ), p.Prime ∧ A ⊆ B ∧ IsPerfectDifferenceSet B (p^2 + p + 1)) ↔ False := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-80-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-81-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-87--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-88-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/707.lean-89-theorem erdos_707.counterexample_prime (A : Set ℕ) (hA : A = {1, 2, 4, 8}) :
+FormalConjectures/ErdosProblems/707.lean:90:   Finite A ∧ IsSidon A ∧
+FormalConjectures/ErdosProblems/707.lean-91-   ∀ (B : Set ℕ) (p : ℕ),
+FormalConjectures/ErdosProblems/707.lean-92-    Prime p → A ⊆ B → ¬IsPerfectDifferenceSet B (p ^ 2 + p + 1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-93-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-99--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-100-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/707.lean-101-theorem erdos_707.counterexample_mian_chowla (A : Set ℕ) (hA : A = {1, 2, 4, 8, 13}) :
+FormalConjectures/ErdosProblems/707.lean:102:   Finite A ∧ IsSidon A ∧
+FormalConjectures/ErdosProblems/707.lean-103-   ∀ (B : Set ℕ) (n : ℕ), A ⊆ B → ¬IsPerfectDifferenceSet B n := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-104-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-105-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-112--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-113-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/707.lean-114-theorem erdos_707.counterexample_hall (A : Set ℕ) (hA : A = {1, 3, 9, 10, 13}) :
+FormalConjectures/ErdosProblems/707.lean:115:   Finite A ∧ IsSidon A ∧
+FormalConjectures/ErdosProblems/707.lean-116-   ∀ (B : Set ℕ) (n : ℕ), A ⊆ B → ¬IsPerfectDifferenceSet B n := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-117-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-118-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-139-/-! ## Examples and special cases -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-140-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-141-/--
+FormalConjectures/ErdosProblems/707.lean:142:The set `{1, 2, 4}` is a Sidon set.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-143--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-144-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/707.lean:145:theorem erdos_707.variants.example_sidon_set : IsSidon ({1, 2, 4} : Set ℕ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-146-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-147-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-148-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-154-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-155-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-156-/--
+FormalConjectures/ErdosProblems/707.lean:157:For small Sidon sets, we can check the conjecture directly.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-158--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-159-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/707.lean:160:theorem erdos_707.variants.small_sidon_sets (A : Set ℕ) (hA : A.Finite) (h : A.ncard ≤ 3)
+FormalConjectures/ErdosProblems/707.lean:161:    (hSidon : IsSidon A) : ∃ (B : Set ℕ) (p : ℕ), IsPrimePow p ∧ A ⊆ B ∧
+FormalConjectures/ErdosProblems/707.lean-162-    IsPerfectDifferenceSet B (p^2 + p + 1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-163-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/707.lean-164-
+--
+FormalConjectures/ErdosProblems/530.lean-22-*Reference:* [erdosproblems.com/530](https://www.erdosproblems.com/530)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-24-Let $\ell(N)$ be maximal such that in any finite set $A \subset \mathbb{R}$ of size $N$ there
+FormalConjectures/ErdosProblems/530.lean:25:exists a Sidon subset $S$ of size $\ell(N)$ (i.e. the only solutions to $a + b = c + d$ in $S$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-26-are the trivial ones). Is it true that $\ell(N) \sim N^{1/2}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-28-Originally asked by Riddell [Ri69]. Erdős noted the bounds
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-43-namespace Erdos530
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-44-
+FormalConjectures/ErdosProblems/530.lean:45:/-- A `Finset` of real numbers is a *Sidon set* if for all $a, b, c, d$ in the set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-46-with $a + b = c + d$, we have $\{a, b\} = \{c, d\}$ (i.e., all pairwise sums
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-47-are distinct). -/
+FormalConjectures/ErdosProblems/530.lean:48:def IsSidonSet (S : Finset ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-49-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-50-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-51-
+FormalConjectures/ErdosProblems/530.lean:52:/-- The maximum size of a Sidon subset of $A$. -/
+FormalConjectures/ErdosProblems/530.lean:53:noncomputable def maxSidonSubsetSize (A : Finset ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/530.lean:54:  sSup {k : ℕ | ∃ S : Finset ℝ, S ⊆ A ∧ IsSidonSet S ∧ S.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-55-
+FormalConjectures/ErdosProblems/530.lean-56-/-- $\ell(N)$: the largest $k$ such that every $N$-element subset of $\mathbb{R}$ contains
+FormalConjectures/ErdosProblems/530.lean:57:a Sidon subset of size at least $k$. Equivalently, the minimum of `maxSidonSubsetSize A`
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-58-over all $N$-element sets $A \subset \mathbb{R}$. -/
+FormalConjectures/ErdosProblems/530.lean:59:noncomputable def sidonSubsetNumber (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/530.lean:60:  sInf {m : ℕ | ∃ A : Finset ℝ, A.card = N ∧ maxSidonSubsetSize A = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-62-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-63-Is it true that $\ell(N) \sim N^{1/2}$, i.e. the ratio $\ell(N) / \sqrt{N}$ tends to $1$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-70-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/530.lean-71-theorem erdos_530 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-72-    answer(sorry) ↔
+FormalConjectures/ErdosProblems/530.lean:73:    Tendsto (fun N : ℕ => (sidonSubsetNumber N : ℝ) / Real.sqrt (N : ℝ))
+FormalConjectures/ErdosProblems/530.lean-74-      atTop (nhds 1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-76-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-19-/-!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-20-# Erdős Problem 425
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-21-
+FormalConjectures/ErdosProblems/425.lean:22:Let $F(n)$ be the maximum size of a multiplicative Sidon subset of $\{1, \ldots, n\}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-23-(where all pairwise products are distinct). The problem asks whether the error term
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-24-$F(n) - \pi(n)$ has a precise asymptotic of the form $c \cdot n^{3/4} (\log n)^{-3/2}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-25-for some constant $c > 0$, and poses a generalization to $r$-fold products.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-34-namespace Erdos425
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-36-/--
+FormalConjectures/ErdosProblems/425.lean:37:A finite set $A \subseteq \mathbb{N}$ is a *multiplicative $B_2$ set* (or multiplicative Sidon set)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-38-if whenever $ab = cd$ for $a, b, c, d \in A$ with $a < b$ and $c < d$, then $a = c$ and $b = d$.
+FormalConjectures/ErdosProblems/425.lean-39-Equivalently, the pairwise products $\{ab : a, b \in A, a < b\}$ are all distinct.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-40--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-43-    a < b → c < d → a * b = c * d → a = c ∧ b = d
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-45-/--
+FormalConjectures/ErdosProblems/425.lean:46:A finite set $A \subseteq \mathbb{N}$ is an *$r$-multiplicative Sidon set* if any two $r$-element
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-47-subsets of $A$ with equal products must be the same subset.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-48--/
+FormalConjectures/ErdosProblems/425.lean-49-def IsMultBr (r : ℕ) (A : Finset ℕ) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-84-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-85-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-86-If $A \subseteq \{1, \ldots, n\}$ is such that all products $a_1 \cdots a_r$ are distinct for
+FormalConjectures/ErdosProblems/425.lean:87:$a_1 < \cdots < a_r$ (i.e., $A$ is an $r$-multiplicative Sidon set), then
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-88-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-89-  |A| \leq \pi(n) + O(n^{(r+1)/(2r)}).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-90-$$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/484.lean-25-
+FormalConjectures/ErdosProblems/484.lean-26-*Reference:* [erdosproblems.com/484](https://www.erdosproblems.com/484)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/484.lean-27-
+FormalConjectures/ErdosProblems/484.lean:28:[ESS89] Erdős, P., Sárközy, A., and Sós, V. T., *On sum sets of Sidon sets*,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/484.lean-29-Journal of Number Theory (1989).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/484.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/484.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-21-
+FormalConjectures/ErdosProblems/840.lean-22-*Reference:* [erdosproblems.com/840](https://www.erdosproblems.com/840)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-23-
+FormalConjectures/ErdosProblems/840.lean:24:Let $f(N)$ be the size of the largest quasi-Sidon subset $A \subset \{1, \ldots, N\}$,
+FormalConjectures/ErdosProblems/840.lean:25:where we say that $A$ is quasi-Sidon if $|A + A| = (1 + o(1))\binom{|A|}{2}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-26-How does $f(N)$ grow?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-28-Erdős and Freud [ErFr91] proved
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-43-namespace Erdos840
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-44-
+FormalConjectures/ErdosProblems/840.lean:45:/-- A finite set of natural numbers is $\delta$-quasi-Sidon if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-46-$|A + A| \geq (1 - \delta) \cdot \binom{|A|}{2}$.
+FormalConjectures/ErdosProblems/840.lean:47:A sequence of sets is quasi-Sidon iff for every $\delta > 0$ it is eventually
+FormalConjectures/ErdosProblems/840.lean:48:$\delta$-quasi-Sidon. -/
+FormalConjectures/ErdosProblems/840.lean:49:def IsQuasiSidon (δ : ℝ) (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/840.lean-50-  ((A + A).card : ℝ) ≥ (1 - δ) * (Nat.choose A.card 2 : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-51-
+FormalConjectures/ErdosProblems/840.lean:52:/-- The maximum size of a $\delta$-quasi-Sidon subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/840.lean:53:noncomputable def maxQuasiSidonCard (δ : ℝ) (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/840.lean:54:  ((Finset.Icc 1 N).powerset.filter (fun A => IsQuasiSidon δ A)).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-56-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-57-**Erdős Problem 840** — How does $f(N)$ grow?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-59-The problem asks for the asymptotic constant $c$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-60-$f_\delta(N) \sim c \cdot \sqrt{N}$ as $N \to \infty$, where $f(N)$ is the size of
+FormalConjectures/ErdosProblems/840.lean:61:the largest quasi-Sidon subset of $\{1, \ldots, N\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-62-It is known that $2/\sqrt{3} \leq c \leq (1/4 + 1/(\pi+2)^2)^{-1/2} \approx 1.863$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-63--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-64-@[category research open, AMS 5 11]
+--
+FormalConjectures/ErdosProblems/840.lean-66-    ∀ δ : ℝ, δ > 0 →
+FormalConjectures/ErdosProblems/840.lean-67-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/840.lean-68-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/840.lean:69:    |(maxQuasiSidonCard δ N : ℝ) - answer(sorry) * Real.sqrt (N : ℝ)| ≤
+FormalConjectures/ErdosProblems/840.lean-70-      ε * Real.sqrt (N : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-71-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-72-
+--
+FormalConjectures/ErdosProblems/840.lean-81-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/840.lean-82-    ∀ δ : ℝ, δ > 0 →
+FormalConjectures/ErdosProblems/840.lean-83-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/840.lean:84:    (maxQuasiSidonCard δ N : ℝ) ≥ (2 / Real.sqrt 3 - ε) * Real.sqrt (N : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-85-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-86-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-87-/--
+--
+FormalConjectures/ErdosProblems/840.lean-97-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/840.lean-98-    ∀ δ : ℝ, δ > 0 →
+FormalConjectures/ErdosProblems/840.lean-99-    ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
+FormalConjectures/ErdosProblems/840.lean:100:    (maxQuasiSidonCard δ N : ℝ) ≤
+FormalConjectures/ErdosProblems/840.lean-101-      (Real.sqrt ((1 / 4 + 1 / (Real.pi + 2) ^ 2)⁻¹) + ε) * Real.sqrt (N : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-102-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-103-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-20-
+FormalConjectures/ErdosProblems/158.lean-21-*References:*
+FormalConjectures/ErdosProblems/158.lean-22- - [erdosproblems.com/158](https://www.erdosproblems.com/158)
+FormalConjectures/ErdosProblems/158.lean:23: - [ESS94] Erdős, P. and Sárközy, A. and Sós, T., On Sum Sets of Sidon Sets, I. Journal of Number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-24-    Theory (1994), 329-347.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-25--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-26-
+--
+FormalConjectures/ErdosProblems/158.lean-31-def B2 (g : ℕ) (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/158.lean-32-  ∀ n, {x : ℕ × ℕ | x.1 + x.2 = n ∧ x.1 ≤ x.2 ∧ x.1 ∈ A ∧ x.2 ∈ A}.encard ≤ g
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-33-
+FormalConjectures/ErdosProblems/158.lean:34:/-- A set is `B₂[1]` iff it is Sidon. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-35-@[category API, AMS 5, simp]
+FormalConjectures/ErdosProblems/158.lean:36:lemma b2_one {A : Set ℕ} : B2 1 A ↔ IsSidon A where
+FormalConjectures/ErdosProblems/158.lean-37-  mp hA a₁ ha₁ a₂ ha₂ b₁ hb₁ b₂ hb₂ h := by
+FormalConjectures/ErdosProblems/158.lean-38-    wlog h₁ : a₁ ≤ b₁
+FormalConjectures/ErdosProblems/158.lean-39-    · have := this hA _ hb₁ _ ha₂ _ ha₁ _ hb₂
+--
+FormalConjectures/ErdosProblems/158.lean-57-    liminf (fun N : ℕ => (A ∩ .Iio N).ncard * (N : ℝ) ^ (- 1 / 2 : ℝ)) atTop = 0 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-58-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-59-
+FormalConjectures/ErdosProblems/158.lean:60:/-- Let `A` be an infinite Sidon set. Then
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-61-`liminf |A ∩ {1, ..., N}| * N ^ (- 1 / 2) * (log N) ^ (1 / 2) < ∞`. This is proved in [ESS94]. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-62-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/158.lean:63:theorem erdos_158.variants.isSidon' {A : Set ℕ} (hAinf : A.Infinite) (hAsid : IsSidon A) :
+FormalConjectures/ErdosProblems/158.lean-64-    liminf (fun N ↦ ENNReal.ofReal ((A ∩ .Iio N).ncard * N ^ (- 1 / 2 : ℝ) * log N ^ (1 / 2 : ℝ)))
+FormalConjectures/ErdosProblems/158.lean-65-      atTop < ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-66-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-67-
+FormalConjectures/ErdosProblems/158.lean:68:/-- As a corollary of `erdos_158.isSidon'`, we can prove that
+FormalConjectures/ErdosProblems/158.lean:69:`liminf |A ∩ {1, ..., N}| * N ^ (- 1 / 2) = 0` for any infinite Sidon set `A`. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-70-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/158.lean:71:theorem erdos_158.variants.isSidon {A : Set ℕ} (hAinf : A.Infinite) (hAsid : IsSidon A) :
+FormalConjectures/ErdosProblems/158.lean-72-    liminf (fun N : ℕ => (A ∩ .Iio N).ncard * (N : ℝ) ^ (- 1 / 2 : ℝ)) atTop = 0 := by
+FormalConjectures/ErdosProblems/158.lean:73:  have := erdos_158.variants.isSidon' hAinf hAsid
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-74-  contrapose! this with h
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-75-  rw [Tendsto.liminf_eq]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean-76-  refine ENNReal.tendsto_ofReal_atTop.comp ?_
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-17-import FormalConjectures.Util.ProblemImports
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-18-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-19-/-!
+FormalConjectures/ErdosProblems/42.lean:20:# Erdős Problem 42: Maximal Sidon Sets and Disjoint Difference Sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-21-
+FormalConjectures/ErdosProblems/42.lean-22-*Reference:* [erdosproblems.com/42](https://www.erdosproblems.com/42)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-23-
+FormalConjectures/ErdosProblems/42.lean:24:This problem asks whether maximal Sidon sets can coexist with other Sidon sets that have
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-25-disjoint difference sets (apart from 0).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-26--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-33-/--
+FormalConjectures/ErdosProblems/42.lean-34-**Erdős Problem 42**: Let M ≥ 1 and N be sufficiently large in terms of M. Is it true that for every
+FormalConjectures/ErdosProblems/42.lean:35:maximal Sidon set `A ⊆ {1,…,N}` there is another Sidon set `B ⊆ {1,…,N}` of size M such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-36-`(A - A) ∩ (B - B) = {0}`?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-37--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-38-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/42.lean-39-theorem erdos_42 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/42.lean:40:    ∀ M ≥ 1, ∀ᶠ N in atTop, ∀ (A : Set ℕ) (_ : IsMaximalSidonSetIn A N),
+FormalConjectures/ErdosProblems/42.lean:41:    ∃ᵉ (B : Set ℕ), B ⊆ Set.Icc 1 N ∧ IsSidon B ∧ B.ncard = M ∧
+FormalConjectures/ErdosProblems/42.lean-42-    ((A - A) ∩ (B - B)) = {0} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-43-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-44-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-46-A variant asking for explicit bounds on how large N needs to be in terms of M.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-48-This version provides a constructive function f such that for all M ≥ 1 and N ≥ f(M),
+FormalConjectures/ErdosProblems/42.lean:49:every maximal Sidon set A ⊆ {1,…,N} has another Sidon set B ⊆ {1,…,N} of size M with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-50-disjoint difference sets (apart from 0).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-51--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-52-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/42.lean-53-theorem erdos_42.constructive : answer(sorry) ↔
+FormalConjectures/ErdosProblems/42.lean-54-    ∃ (f : ℕ → ℕ), ∀ (M N : ℕ) (_ : 1 ≤ M) (_ : f M ≤ N),
+FormalConjectures/ErdosProblems/42.lean:55:    ∀ (A : Set ℕ) (_ : IsMaximalSidonSetIn A N), ∃ᵉ (B : Set ℕ),
+FormalConjectures/ErdosProblems/42.lean:56:      B ⊆ Set.Icc 1 N ∧ IsSidon B ∧ B.ncard = M ∧
+FormalConjectures/ErdosProblems/42.lean-57-      ((A - A) ∩ (B - B)) = {0} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-58-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-59-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-61-/-! ## Related results and examples -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-63-/--
+FormalConjectures/ErdosProblems/42.lean:64:The set `{1, 2, 4}` is a maximal Sidon set in `{1, ..., 4}`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-65--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-66-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/42.lean:67:theorem example_maximal_sidon : IsMaximalSidonSetIn {1, 2, 4} 4 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-68-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-70-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-77-/--
+FormalConjectures/ErdosProblems/42.lean:78:For any maximal Sidon set, the difference set contains 0.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-79--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-80-@[category undergraduate, AMS 5 11]
+FormalConjectures/ErdosProblems/42.lean:81:theorem maximal_sidon_contains_zero (A : Set ℕ) (N : ℕ) (hN : 1 ≤ N)
+FormalConjectures/ErdosProblems/42.lean:82:    (hA : IsMaximalSidonSetIn A N) : 0 ∈ A - A := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-83-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-84-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/42.lean-85-end Erdos42
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-21-
+FormalConjectures/ErdosProblems/157.lean-22-*Reference:* [erdosproblems.com/157](https://www.erdosproblems.com/157)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-23-
+FormalConjectures/ErdosProblems/157.lean:24:Erdős, Sárközy, and Sós asked whether there exists an infinite Sidon set that is also an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-25-asymptotic basis of order 3. This was answered affirmatively by Pilatte.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-26-
+FormalConjectures/ErdosProblems/157.lean:27:[ESS94] Erdős, P., Sárközy, A. and Sós, V. T., *On sum sets of Sidon sets*. J. Number Theory
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-28-(1994).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-30-[Er94b] Erdős, P., *Some of my favourite problems in various branches of combinatorics*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-31-Matematiche (Catania) (1994).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-32-
+FormalConjectures/ErdosProblems/157.lean:33:[Pi23] Pilatte, C., *Sidon sets are asymptotic bases of order 3*. (2023).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-36-open Filter Set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-38-namespace Erdos157
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-39-
+FormalConjectures/ErdosProblems/157.lean:40:/-- An infinite set $A \subseteq \mathbb{N}$ is a Sidon set ($B_2$ set) if all pairwise sums
+FormalConjectures/ErdosProblems/157.lean-41-are distinct: whenever $a + b = c + d$ with $a, b, c, d \in A$, we have
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-42-$\{a, b\} = \{c, d\}$ as multisets (i.e. either $a = c$ and $b = d$, or
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-43-$a = d$ and $b = c$). -/
+FormalConjectures/ErdosProblems/157.lean:44:def IsInfiniteSidonSet (A : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-45-  Set.Infinite A ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-46-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-47-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-55-/--
+FormalConjectures/ErdosProblems/157.lean-56-Erdős Problem 157 [ESS94, Er94b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-57-
+FormalConjectures/ErdosProblems/157.lean:58:Does there exist an infinite Sidon set which is an asymptotic basis of order $3$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-59-
+FormalConjectures/ErdosProblems/157.lean:60:A set $A \subseteq \mathbb{N}$ is a Sidon set if all pairwise sums $a + b$ ($a, b \in A$)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-61-are distinct. A set $A$ is an asymptotic basis of order $3$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-62-integer is the sum of $3$ elements from $A$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-63-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-65--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-66-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/157.lean-67-theorem erdos_157 :
+FormalConjectures/ErdosProblems/157.lean:68:    answer(True) ↔ ∃ A : Set ℕ, IsInfiniteSidonSet A ∧ IsAsymptoticBasisOrder3 A := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-69-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-71-end Erdos157
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-28-$\sum \frac{1}{n} \gg \frac{\log \log \log N}{\log \log N} \cdot \log N$ suffices,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-29-which implies the conjecture below.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-30-
+FormalConjectures/ErdosProblems/47.lean:31:[Bl21] Bloom, T., _On a result of Schur and Sidon_. Preprint (2021).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-32--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/47.lean-34-open scoped BigOperators
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-24-A problem of Erdős [Er92c], first formulated in conversation with Berend, and later
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-25-independently reformulated with Freud. It is known that $c_1 = c_1' = 1$ (the classical
+FormalConjectures/ErdosProblems/863.lean:26:bound on Sidon sets).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-28-[Er92c] Erdős, P.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/863.lean-29--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/30.lean-25-namespace Erdos30
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/30.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/30.lean-27-/--
+FormalConjectures/ErdosProblems/30.lean:28:Let $h(N)$ be the maximum size of a Sidon set in $\{1, \dots, N\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/30.lean-29--/
+FormalConjectures/ErdosProblems/30.lean:30:noncomputable abbrev h (N : ℕ) : ℕ := Finset.maxSidonSubsetCard (Finset.Icc 1 N)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/30.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/30.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/30.lean-33-open Filter

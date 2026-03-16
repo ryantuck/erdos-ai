@@ -1,0 +1,186 @@
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:29:* There is a red clique which is order-isomorphic to `β`.
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:30:* There is a blue clique of cardinality `c`.
+FormalConjectures/Wikipedia/Conway99Graph.lean:40:lemma completeGraph_cliqueSet :
+FormalConjectures/Wikipedia/Conway99Graph.lean:41:    (⊤ : SimpleGraph V).cliqueSet (Fintype.card V) = {Set.univ.toFinset} := by
+FormalConjectures/Wikipedia/Conway99Graph.lean:42:  simp only [cliqueSet, isNClique_iff ⊤, completeGraphIsClique, true_and,
+FormalConjectures/Wikipedia/Conway99Graph.lean:77:      have := @completeGraph_cliqueSet (Fin 3) _
+FormalConjectures/Wikipedia/Conway99Graph.lean:114:lemma completeGraph_boxProd_completeGraph_cliqueSet :
+FormalConjectures/Wikipedia/Conway99Graph.lean:115:    ((completeGraph (Fin 3)) □ (completeGraph (Fin 3))).cliqueSet 3 =
+FormalConjectures/Wikipedia/Conway99Graph.lean:126:    simp only [Conway9, completeGraph_boxProd_completeGraph_cliqueSet] at hx hy
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:115:/-- Infinite graphs: definitions for max degree and clique number so that the maximum
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:116:degree (resp. clique number) of a graph with unbounded degree (resp. clique size) is
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:126:def ecliqueNum {V : Type} (G : SimpleGraph V) : ℕ∞ := ⨆ (s : Finset V) (_ : G.IsClique s), #s
+FormalConjectures/ErdosProblems/636.lean:58:graph on $n$ vertices with clique number at most $C \cdot \log_2(n)$ and independence number
+FormalConjectures/ErdosProblems/1174.lean:24:A problem of Erdős and Hajnal on graph colourings and cliques.
+FormalConjectures/ErdosProblems/1174.lean:37:Does there exist a graph $G$ with no $K_4$ (no 4-clique) such that for every
+FormalConjectures/ErdosProblems/1174.lean:39:(a 3-clique whose three edges all receive the same colour) exists in $G$?
+FormalConjectures/ErdosProblems/1174.lean:56:Does there exist a graph $G$ with no $K_{\aleph_1}$ (no clique of cardinality
+FormalConjectures/ErdosProblems/1174.lean:58:($\mathbb{N}$), some monochromatic $K_{\aleph_0}$ exists — that is, a clique of cardinality
+FormalConjectures/ErdosProblems/1174.lean:65:theorem erdos_1174.variants.infinite_clique : answer(sorry) ↔
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:35:largest clique subgraph, and $\chi(G)$ to be the chromatic number. Reed's omega, delta, and chi
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:42:    let ω := G.ecliqueNum
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:49:size of the largest clique subgraph, and $\chi(G)$ to be the chromatic number. Reed's omega,
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:56:    let ω := G.cliqueNum
+FormalConjectures/Paper/ReedOmegaDeltaChi.lean:66:  ∀ {V : Type} (G : SimpleGraph V), G.emaxDegree = 6 ∧ G.cliqueNum = 2 → G.chromaticNumber ≤ 5 := by
+FormalConjectures/ErdosProblems/191.lean:25:non-edges = colour 2). A monochromatic set is a clique in either $G$ or its
+FormalConjectures/ErdosProblems/719.lean:61:(complete $(r+1)$-cliques)?
+FormalConjectures/ErdosProblems/78.lean:45:vertices which does not contain any clique or independent set of size
+FormalConjectures/ErdosProblems/78.lean:50:clique or independent set of size $k$ (an independent set of size $k$ in $G$
+FormalConjectures/ErdosProblems/78.lean:51:is a clique of size $k$ in $G^c$). The "constructive" requirement pertains
+FormalConjectures/ErdosProblems/81.lean:25:$n^2/6 + O(n)$ cliques?
+FormalConjectures/ErdosProblems/81.lean:58:many cliques?
+FormalConjectures/ErdosProblems/81.lean:64:chordal graphs $G$ on $n$ vertices, there exists a collection $P$ of cliques
+FormalConjectures/ErdosProblems/81.lean:74:        -- Each set in P is a clique in G
+FormalConjectures/ErdosProblems/81.lean:76:        -- Every edge of G is covered by some clique in P
+FormalConjectures/ErdosProblems/81.lean:78:        -- No edge belongs to two distinct cliques (partition, not just cover)
+FormalConjectures/ErdosProblems/81.lean:81:        -- The number of cliques is at most n²/6 + C·n
+FormalConjectures/ErdosProblems/1009.lean:43:Each triangle is an injective map from three indices to vertices whose image is a clique,
+FormalConjectures/ErdosProblems/1037.lean:68:      -- G contains a clique or independent set of size > C · log n
+FormalConjectures/ErdosProblems/610.lean:25:least one from each maximal clique of $G$ (the clique transversal number).
+FormalConjectures/ErdosProblems/610.lean:34:[EGT92] Erdős, P., Gallai, T., and Tuza, Zs., *Covering the cliques of a graph with
+FormalConjectures/ErdosProblems/610.lean:48:/-- $S$ is a maximal clique of $G$ (as a `Finset`): it is a clique and no vertex
+FormalConjectures/ErdosProblems/610.lean:49:outside $S$ can be added while preserving the clique property. -/
+FormalConjectures/ErdosProblems/610.lean:54:/-- $T$ is a clique transversal of $G$ if $T$ meets every maximal clique of $G$
+FormalConjectures/ErdosProblems/610.lean:59:/-- The clique transversal number $\tau(G)$: the minimum cardinality of a clique
+FormalConjectures/ErdosProblems/610.lean:61:noncomputable def cliqueTransversalNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/610.lean:76:          (cliqueTransversalNum G : ℝ) ≤ (n : ℝ) - ω n * Real.sqrt (n : ℝ) := by
+FormalConjectures/ErdosProblems/610.lean:90:          (cliqueTransversalNum G : ℝ) ≤
+FormalConjectures/ErdosProblems/610.lean:104:        (cliqueTransversalNum G : ℝ) ≤ (n : ℝ) - Real.sqrt (2 * (n : ℝ)) + C := by
+FormalConjectures/ErdosProblems/758.lean:39:$c : V \to \text{Fin}(k)$ such that each color class is either a clique (all pairs
+FormalConjectures/ErdosProblems/553.lean:41:vertices contains a $3$-clique or its complement contains an $n$-clique. -/
+FormalConjectures/ErdosProblems/1030.lean:40:    vertices contains either a $k$-clique or an independent set of size $l$
+FormalConjectures/ErdosProblems/1030.lean:41:    (equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/19.lean:44:exist $n$ cliques (vertex sets), each of size $n$, such that
+FormalConjectures/ErdosProblems/19.lean:45:- each clique is a complete subgraph of $G$ (an $n$-clique),
+FormalConjectures/ErdosProblems/19.lean:46:- any two distinct cliques share at most one vertex (equivalently, they are
+FormalConjectures/ErdosProblems/19.lean:48:- every edge of $G$ lies in some clique.
+FormalConjectures/ErdosProblems/19.lean:56:    (cliques : Fin n → Finset V)
+FormalConjectures/ErdosProblems/19.lean:57:    -- Each clique is a copy of $K_n$ in $G$
+FormalConjectures/ErdosProblems/19.lean:58:    (hclique : ∀ i : Fin n, G.IsNClique n (cliques i))
+FormalConjectures/ErdosProblems/19.lean:59:    -- Any two distinct cliques share at most one vertex (edge-disjointness)
+FormalConjectures/ErdosProblems/19.lean:60:    (hpairwise : ∀ i j : Fin n, i ≠ j → ((cliques i) ∩ (cliques j)).card ≤ 1)
+FormalConjectures/ErdosProblems/19.lean:61:    -- Every edge of $G$ lies in some clique
+FormalConjectures/ErdosProblems/19.lean:62:    (hcover : ∀ u v : V, G.Adj u v → ∃ i : Fin n, u ∈ cliques i ∧ v ∈ cliques i) :
+FormalConjectures/ErdosProblems/167.lean:53:Two triangles (3-cliques) are edge-disjoint iff their vertex sets share at most
+FormalConjectures/ErdosProblems/1011.lean:47:with at least $m$ edges and chromatic number $\geq r$ contains a triangle ($3$-clique). -/
+FormalConjectures/ErdosProblems/597.lean:42:def ContainsBiclique {V : Type*} (G : SimpleGraph V) (κ : Cardinal) : Prop :=
+FormalConjectures/ErdosProblems/597.lean:77:      #V ≤ aleph 1 → G.CliqueFree 4 → ¬ContainsBiclique G (aleph 0) →
+FormalConjectures/ErdosProblems/1014.lean:35:vertices contains either a $k$-clique or an independent set of size $l$
+FormalConjectures/ErdosProblems/1014.lean:36:(equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1175.lean:55:3-clique, i.e., no triangle). The subgraph relation $H \leq G$ holds when every
+FormalConjectures/ErdosProblems/1010.lean:36:/-- The number of triangles (3-cliques) in a simple graph on `Fin n`. -/
+FormalConjectures/ErdosProblems/927.lean:24:Let $g(n)$ be the maximum number of different sizes of cliques (maximal complete
+FormalConjectures/ErdosProblems/927.lean:37:[Sp71] Spencer, J., *The number of distinct clique sizes of a graph*.
+FormalConjectures/ErdosProblems/927.lean:42:/-- A set of vertices forms a clique (complete subgraph) in $G$ if every pair
+FormalConjectures/ErdosProblems/927.lean:47:/-- A maximal clique: a clique not properly contained in any other clique. -/
+FormalConjectures/ErdosProblems/927.lean:52:/-- The set of distinct sizes of maximal cliques in a simple graph. -/
+FormalConjectures/ErdosProblems/927.lean:76:maximal clique sizes.
+FormalConjectures/ErdosProblems/611.lean:25:clique of a graph $G$. Erdős, Gallai, and Tuza conjectured that if every maximal clique
+FormalConjectures/ErdosProblems/611.lean:29:[EGT92] Erdős, P., Gallai, T., and Tuza, Z., _Covering the cliques of a graph with vertices_.
+FormalConjectures/ErdosProblems/611.lean:43:/-- $S$ is a maximal clique of $G$ (as a `Finset`): it is a clique and no vertex
+FormalConjectures/ErdosProblems/611.lean:44:    outside $S$ can be added while preserving the clique property. -/
+FormalConjectures/ErdosProblems/611.lean:49:/-- $T$ is a clique transversal of $G$ if $T$ meets every maximal clique of $G$
+FormalConjectures/ErdosProblems/611.lean:54:/-- The clique transversal number $\tau(G)$: the minimum cardinality of a clique
+FormalConjectures/ErdosProblems/611.lean:56:noncomputable def cliqueTransversalNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/611.lean:59:/-- Every maximal clique of $G$ with at least $2$ vertices has at least $m$ vertices. -/
+FormalConjectures/ErdosProblems/611.lean:66:If all maximal cliques in $G$ have at least $cn$ vertices then $\tau(G) = o_c(n)$.
+FormalConjectures/ErdosProblems/611.lean:69:$n \ge N_0$, every graph $G$ on $n$ vertices in which every maximal clique has at
+FormalConjectures/ErdosProblems/611.lean:78:        (cliqueTransversalNum G : ℝ) ≤ ε * (n : ℝ) := by
+FormalConjectures/ErdosProblems/611.lean:84:If every maximal clique of $G$ on $n$ vertices has at least $k$ vertices then
+FormalConjectures/ErdosProblems/611.lean:90:    (hclique : AllMaxCliquesAtLeast G k) :
+FormalConjectures/ErdosProblems/611.lean:91:    (cliqueTransversalNum G : ℝ) ≤ (n : ℝ) - Real.sqrt ((k : ℝ) * (n : ℝ)) := by
+FormalConjectures/ErdosProblems/611.lean:97:If every maximal clique of $G$ on $n$ vertices has at least $n + 3 - 2\sqrt{n}$ vertices
+FormalConjectures/ErdosProblems/611.lean:104:    cliqueTransversalNum G ≤ 1 := by
+FormalConjectures/ErdosProblems/778.lean:26:the largest red clique is larger than any of the blue cliques.
+FormalConjectures/ErdosProblems/778.lean:59:/-- The clique number of a simple graph on $\operatorname{Fin} n$: the size of the largest
+FormalConjectures/ErdosProblems/778.lean:60:    clique. -/
+FormalConjectures/ErdosProblems/778.lean:61:noncomputable def cliqueNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/778.lean:69:blue clique is at least as large as Alice's largest red clique?
+FormalConjectures/ErdosProblems/778.lean:77:        cliqueNumber (fromEdgeSet (final.blue : Set (Sym2 (Fin n)))) ≥
+FormalConjectures/ErdosProblems/778.lean:78:        cliqueNumber (fromEdgeSet (final.red : Set (Sym2 (Fin n)))) := by
+FormalConjectures/ErdosProblems/778.lean:86:largest blue clique is strictly larger than Alice's largest red clique?
+FormalConjectures/ErdosProblems/778.lean:94:        cliqueNumber (fromEdgeSet (final.blue : Set (Sym2 (Fin n)))) >
+FormalConjectures/ErdosProblems/778.lean:95:        cliqueNumber (fromEdgeSet (final.red : Set (Sym2 (Fin n)))) := by
+FormalConjectures/ErdosProblems/627.lean:24:Let $\omega(G)$ denote the clique number of $G$ and $\chi(G)$ the chromatic number. If $f(n)$ is the
+FormalConjectures/ErdosProblems/627.lean:44:/-- The clique number of a simple graph on `Fin n`: the maximum size of a clique. -/
+FormalConjectures/ErdosProblems/627.lean:45:noncomputable def cliqueNumber627 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/627.lean:52:    cliqueNumber627 G > 0 ∧
+FormalConjectures/ErdosProblems/627.lean:53:    r = (chromaticNumber627 G : ℝ) / (cliqueNumber627 G : ℝ)}
+FormalConjectures/ErdosProblems/807.lean:42:A biclique cover of a simple graph $G$ of size $k$ consists of $k$ complete bipartite
+FormalConjectures/ErdosProblems/807.lean:46:def IsBicliqueCover {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/807.lean:61:  sInf {k : ℕ | ∃ (A B : Fin k → Set V), IsBicliqueCover G k A B}
+FormalConjectures/ErdosProblems/22.lean:50:- $G$ contains no $K_4$ (no clique of size 4),
+FormalConjectures/ErdosProblems/165.lean:27:on $N$ vertices contains either a triangle ($3$-clique) or an independent set
+FormalConjectures/ErdosProblems/165.lean:28:of size $k$ (equivalently, a $k$-clique in the complement).
+FormalConjectures/ErdosProblems/165.lean:58:on $N$ vertices contains either a triangle ($3$-clique) or an independent
+FormalConjectures/ErdosProblems/165.lean:59:set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/166.lean:27:on $N$ vertices contains either a $4$-clique or an independent set of size $k$
+FormalConjectures/ErdosProblems/166.lean:28:(equivalently, a $k$-clique in the complement).
+FormalConjectures/ErdosProblems/166.lean:53:on $N$ vertices contains either a $4$-clique or an independent set of
+FormalConjectures/ErdosProblems/166.lean:54:size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/717.lean:35:[FLS13] Fox, J., Lee, C., and Sudakov, B., _Chromatic number, clique subdivisions, and the
+FormalConjectures/ErdosProblems/61.lean:34:has a clique or independent set of size $\ge f(n)$ for sufficiently large $n$.
+FormalConjectures/ErdosProblems/61.lean:39:    (¬∃ g : α ↪ Fin n, H = G.comap g) → G.indepNum ≥ f n ∨ G.cliqueNum ≥ f n
+FormalConjectures/ErdosProblems/775.lean:25:$n - O(1)$ different sizes of cliques (maximal complete subgraphs)?
+FormalConjectures/ErdosProblems/775.lean:29:$n - f_k(n)$ different sizes of cliques, where $f_k(n) \to \infty$ as $n \to \infty$.
+FormalConjectures/ErdosProblems/775.lean:40:/-- A clique in a $k$-uniform hypergraph is a maximal complete subhypergraph:
+FormalConjectures/ErdosProblems/775.lean:47:/-- The set of distinct clique sizes in a $k$-uniform hypergraph. -/
+FormalConjectures/ErdosProblems/775.lean:48:def cliqueSizeSet {n : ℕ} (H : Finset (Finset (Fin n))) (k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/775.lean:55:different sizes of cliques. That is, there is no constant $C$ such that for all $n$,
+FormalConjectures/ErdosProblems/775.lean:57:clique sizes.
+FormalConjectures/ErdosProblems/775.lean:59:More generally, for any $k \geq 3$, the number of distinct clique sizes in any
+FormalConjectures/ErdosProblems/775.lean:66:      (cliqueSizeSet H 3).ncard ≥ n - C) := by
+FormalConjectures/ErdosProblems/544.lean:39:on $N$ vertices contains either a triangle ($3$-clique) or an independent
+FormalConjectures/ErdosProblems/544.lean:40:set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1036.lean:41:graph on $n$ vertices with no clique and no independent set of size greater than
+FormalConjectures/ErdosProblems/1036.lean:44:Here "trivial graph" means empty (independent set) or complete (clique), and
+FormalConjectures/ErdosProblems/1078.lean:44:/-- A transversal clique in an $r$-partite graph: a choice of one vertex from each
+FormalConjectures/ErdosProblems/1078.lean:55:$\geq (r - 3/2 - \varepsilon) \cdot n$ contains a transversal clique $K_r$.
+FormalConjectures/ErdosProblems/88.lean:25:has no clique or independent set of size $\geq \varepsilon \log n$, then it contains an induced
+FormalConjectures/ErdosProblems/88.lean:46:graph on $n$ vertices with no independent set or clique of size $\geq \varepsilon \log n$ then $G$
+FormalConjectures/ErdosProblems/812.lean:28:every simple graph on $N$ vertices contains either a clique of size $n$ or an
+FormalConjectures/ErdosProblems/812.lean:42:simple graph on $N$ vertices contains either an $n$-clique or an independent
+FormalConjectures/ErdosProblems/812.lean:43:set of size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/130.lean:81:Note: The clique number is always finite. The Anning–Erdős theorem [AnEr45]
+FormalConjectures/ErdosProblems/151.lean:22:Erdős and Gallai conjectured that the clique transversal number of any graph on $n$ vertices
+FormalConjectures/ErdosProblems/151.lean:31:[EGT92] Erdős, P., Gallai, T. and Tuza, Zs., _Covering the cliques of a graph with vertices_,
+FormalConjectures/ErdosProblems/151.lean:39:/-- $S$ is a maximal clique of $G$ (represented as a `Finset`): it is a clique and
+FormalConjectures/ErdosProblems/151.lean:40:no vertex outside $S$ can be added while preserving the clique property. -/
+FormalConjectures/ErdosProblems/151.lean:45:/-- $T$ is a clique transversal of $G$ if $T$ has non-empty intersection with every
+FormalConjectures/ErdosProblems/151.lean:46:maximal clique of $G$ that has at least $2$ vertices. -/
+FormalConjectures/ErdosProblems/151.lean:50:/-- The clique transversal number $\tau(G)$: the minimum cardinality of a clique
+FormalConjectures/ErdosProblems/151.lean:52:noncomputable def cliqueTransversalNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/151.lean:72:where $\tau(G)$ is the clique transversal number of $G$ and $H(n)$ is the maximum $k$
+FormalConjectures/ErdosProblems/151.lean:79:      cliqueTransversalNumber G ≤ n - H n := by
+FormalConjectures/ErdosProblems/986.lean:58:on $N$ vertices contains either a $k$-clique or an independent set of
+FormalConjectures/ErdosProblems/986.lean:59:size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/762.lean:29:$n > 2$ there exists some $f(n)$ such that if $G$ contains no clique on $n$ vertices
+FormalConjectures/ErdosProblems/762.lean:36:number in graphs with bounded clique number_, European J. Combin. 11 (1990), 235–240.
+FormalConjectures/ErdosProblems/1017.lean:28:The function $f(n,k)$ is sometimes called the clique partition number.
+FormalConjectures/ErdosProblems/1017.lean:49:Erdős asks whether the clique partition number $f(n,k)$ can be improved
+FormalConjectures/ErdosProblems/718.lean:30:[KoSz96] Komlós, J. and Szemerédi, E., _Topological cliques in graphs II_. Combinatorics,
+FormalConjectures/ErdosProblems/1029.lean:47:clique of size $k$ in some colour. -/
+FormalConjectures/ErdosProblems/77.lean:50:clique of size $k$ in some colour. -/
+FormalConjectures/ErdosProblems/1015.lean:49:/-- A set $S$ of vertices in `Fin n` is a monochromatic clique of colour $b$
+FormalConjectures/ErdosProblems/1015.lean:62:    ∃ (cliques : Finset (Finset (Fin n))),
+FormalConjectures/ErdosProblems/1015.lean:63:      (∀ S ∈ cliques, S.card = t) ∧
+FormalConjectures/ErdosProblems/1015.lean:64:      (∀ S ∈ cliques, ∃ b : Bool, IsMonoClique n c S b) ∧
+FormalConjectures/ErdosProblems/1015.lean:65:      (∀ S₁ ∈ cliques, ∀ S₂ ∈ cliques, S₁ ≠ S₂ → Disjoint S₁ S₂) ∧
+FormalConjectures/ErdosProblems/1015.lean:66:      (Finset.univ \ cliques.biUnion id).card ≤ r}
+FormalConjectures/ErdosProblems/1015.lean:70:clique of size $s$ in one colour or of size $t$ in the other. -/
+FormalConjectures/ErdosProblems/628.lean:43:    (hclique : G.CliqueFree k)
+FormalConjectures/ErdosProblems/813.lean:30:[BuSu23] Bucić, M. and Sudakov, B., _Tight Ramsey-type results for cliques vs large
+FormalConjectures/ErdosProblems/813.lean:46:/-- The clique number of a graph on $n$ vertices: the supremum of sizes of cliques. -/
+FormalConjectures/ErdosProblems/813.lean:50:/-- $h(n)$ is the minimum clique number over all graphs on $n$ vertices in which
+FormalConjectures/ErdosProblems/58.lean:44:clique subgraph.
+FormalConjectures/ErdosProblems/805.lean:25:in which every induced subgraph on $g(n)$ vertices contains a clique of size $\geq \log n$
+FormalConjectures/ErdosProblems/805.lean:41:/-- A clique in a simple graph: a finset of vertices where every two distinct
+FormalConjectures/ErdosProblems/805.lean:52:    the property that every induced subgraph on $m$ vertices contains both a clique and an
+FormalConjectures/ErdosProblems/805.lean:61:induced subgraph on $\lfloor (\log n)^3 \rfloor$ vertices contains both a clique and an
+FormalConjectures/ErdosProblems/1111.lean:25:number at least $d$ and clique number less than $t$ contains two anticomplete vertex sets
+FormalConjectures/ErdosProblems/1111.lean:52:$\chi$ denotes the chromatic number and $\omega$ the clique number. The condition
+FormalConjectures/ErdosProblems/1111.lean:53:$\omega(G) < t$ is expressed as `G.CliqueFree t` (no clique of size $t$ exists).
+FormalConjectures/ErdosProblems/667.lean:52:$(p, q)$-density property must contain a clique of size $m$. -/
+FormalConjectures/ErdosProblems/615.lean:66:    on $n$ vertices that contains no $k$-clique and has no independent set of size
+FormalConjectures/ErdosProblems/637.lean:65:$n \geq N_0$, if $G$ is a graph on $n$ vertices with clique number at most
+FormalConjectures/ErdosProblems/1031.lean:39:If $G$ is a graph on $n$ vertices with no clique and no independent set of size

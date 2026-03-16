@@ -1,0 +1,501 @@
+FormalConjectures/ErdosProblems/100.lean:open scoped EuclideanGeometry
+FormalConjectures/ErdosProblems/1007.lean:Euclidean distance exactly $1$, and non-adjacent vertices are not). This notion
+FormalConjectures/ErdosProblems/1007.lean:from vertices to Euclidean $n$-space such that adjacency is equivalent to
+FormalConjectures/ErdosProblems/1007.lean:    (f : V → EuclideanSpace ℝ (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/1007.lean:  ∃ f : V → EuclideanSpace ℝ (Fin n), IsUnitDistRep G n f
+FormalConjectures/ErdosProblems/101.lean:def NoFiveCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/101.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/101.lean:    S ⊆ P → S.card = 5 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/101.lean:noncomputable def fourRichLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/101.lean:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/101.lean:    4 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+FormalConjectures/ErdosProblems/101.lean:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/102.lean:noncomputable def fourPlusRichLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/102.lean:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/102.lean:    4 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+FormalConjectures/ErdosProblems/102.lean:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/102.lean:          ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/102.lean:            M ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L} := by
+FormalConjectures/ErdosProblems/1023.lean:      (fun n : ℕ => (unionFreeMax n : ℝ) * Real.sqrt (↑n) / (c * (2 : ℝ) ^ n))
+FormalConjectures/ErdosProblems/1024.lean:      C₁ * Real.sqrt (↑n * Real.log ↑n) ≤ ↑(linearHypergraphIndNum n) ∧
+FormalConjectures/ErdosProblems/1024.lean:      ↑(linearHypergraphIndNum n) ≤ C₂ * Real.sqrt (↑n * Real.log ↑n) := by
+FormalConjectures/ErdosProblems/1025.lean:      (S.card : ℝ) ≥ C * Real.sqrt n := by
+FormalConjectures/ErdosProblems/1025.lean:      (S.card : ℝ) ≤ C * Real.sqrt n := by
+FormalConjectures/ErdosProblems/103.lean:def IsUnitSeparated (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/103.lean:noncomputable def finiteDiameter (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℝ :=
+FormalConjectures/ErdosProblems/103.lean:def IsMinimalDiameter (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/103.lean:  ∀ B : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/103.lean:def AreCongruent (A B : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/103.lean:  ∃ f : EuclideanSpace ℝ (Fin 2) ≃ᵢ EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/103.lean:    A.image (f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2)) = B
+FormalConjectures/ErdosProblems/103.lean:  let minimizers : Set (Finset (EuclideanSpace ℝ (Fin 2))) :=
+FormalConjectures/ErdosProblems/103.lean:  Set.ncard {C : Set (Finset (EuclideanSpace ℝ (Fin 2))) |
+FormalConjectures/ErdosProblems/1033.lean:          (2 * (Real.sqrt 3 - 1) - ε) * (n : ℝ) := by
+FormalConjectures/ErdosProblems/104.lean:noncomputable def threeRichUnitCircleCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/104.lean:  Set.ncard {c : EuclideanSpace ℝ (Fin 2) |
+FormalConjectures/ErdosProblems/104.lean:    3 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ dist p c = 1}}
+FormalConjectures/ErdosProblems/104.lean:      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/105.lean:    ∀ A B : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/105.lean:      ¬ Collinear ℝ (A : Set (EuclideanSpace ℝ (Fin 2))) →
+FormalConjectures/ErdosProblems/105.lean:      ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/105.lean:        2 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (A : Set _) ∧ p ∈ L} ∧
+FormalConjectures/ErdosProblems/105.lean:        ∀ p : EuclideanSpace ℝ (Fin 2), p ∈ (B : Set _) → p ∉ L := by
+FormalConjectures/ErdosProblems/1066.lean:[Sw02] Swanepoel, K., *Unit distances and diameters in Euclidean spaces*.
+FormalConjectures/ErdosProblems/1066.lean:    (f : Fin n → EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/1066.lean:      ∃ f : Fin n → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/107.lean:open EuclideanGeometry
+FormalConjectures/ErdosProblems/107.lean:    ∃ r : ℕ → ℝ, r =O[atTop] (fun n => Real.sqrt (n * Real.log n)) ∧
+FormalConjectures/ErdosProblems/1070.lean:    ∀ (n : ℕ), n ≥ 1 → ∀ (f : Fin n → EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/1070.lean:    (f : Fin n → EuclideanSpace ℝ (Fin 2)) :
+FormalConjectures/ErdosProblems/1070.lean:      ∃ f : Fin n → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/1071.lean:open Set Metric EuclideanGeometry Order
+FormalConjectures/ErdosProblems/1081.lean:      (countA x : ℝ) * Real.sqrt (Real.log (x : ℝ)) / (x : ℝ))
+FormalConjectures/ErdosProblems/1082.lean:open EuclideanGeometry
+FormalConjectures/ErdosProblems/1083.lean:noncomputable def distinctDistanceCountInDim (d : ℕ) (P : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+FormalConjectures/ErdosProblems/1083.lean:  sInf {m : ℕ | ∃ (P : Finset (EuclideanSpace ℝ (Fin d))),
+FormalConjectures/ErdosProblems/1084.lean:open scoped EuclideanGeometry
+FormalConjectures/ErdosProblems/1085.lean:open scoped EuclideanGeometry Topology
+FormalConjectures/ErdosProblems/1087.lean:def HasRepeatedDistance (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/1087.lean:noncomputable def degenerateQuadrupleCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/1087.lean:      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/1088.lean:  sInf {m : ℕ | ∀ (S : Finset (EuclideanSpace ℝ (Fin d))),
+FormalConjectures/ErdosProblems/1088.lean:    ∃ T : Finset (EuclideanSpace ℝ (Fin d)),
+FormalConjectures/ErdosProblems/1089.lean:in $d$-dimensional Euclidean space. -/
+FormalConjectures/ErdosProblems/1089.lean:noncomputable def distinctDistances {d : ℕ} (S : Finset (EuclideanSpace ℝ (Fin d))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/1089.lean:noncomputable def distinctDistanceCount {d : ℕ} (S : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+FormalConjectures/ErdosProblems/1089.lean:  sInf {m : ℕ | ∀ (S : Finset (EuclideanSpace ℝ (Fin d))), S.card ≥ m →
+FormalConjectures/ErdosProblems/1090.lean:    ∃ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/1090.lean:      ∀ c : EuclideanSpace ℝ (Fin 2) → Fin 2,
+FormalConjectures/ErdosProblems/1090.lean:        ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/1090.lean:          k ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (A : Set _) ∧ p ∈ L} ∧
+FormalConjectures/ErdosProblems/1104.lean:        c₁ * Real.sqrt (n : ℝ) / Real.sqrt (Real.log (n : ℝ))
+FormalConjectures/ErdosProblems/1104.lean:          ≤ c₂ * Real.sqrt (n : ℝ) / Real.sqrt (Real.log (n : ℝ))) := by
+FormalConjectures/ErdosProblems/1121.lean:    (center : Fin n → EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/1121.lean:    (hns : ∀ (v : EuclideanSpace ℝ (Fin 2)) (d : ℝ),
+FormalConjectures/ErdosProblems/1121.lean:    ∃ p : EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/1124.lean:noncomputable def unitSquare : Set (EuclideanSpace ℝ (Fin 2)) :=
+FormalConjectures/ErdosProblems/1124.lean:    ∃ (pieces_sq pieces_disk : Fin n → Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/1124.lean:        Metric.closedBall (0 : EuclideanSpace ℝ (Fin 2)) (1 / Real.sqrt Real.pi) ∧
+FormalConjectures/ErdosProblems/1124.lean:      (∀ i, ∃ f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/1127.lean:[Ku87] Kunen, K., *Partitioning Euclidean space*, Math. Proc. Cambridge Philos. Soc. 102 (1987),
+FormalConjectures/ErdosProblems/1127.lean:    ∀ n : ℕ, ∃ f : EuclideanSpace ℝ (Fin n) → ℕ,
+FormalConjectures/ErdosProblems/1127.lean:      ∀ a b c d : EuclideanSpace ℝ (Fin n),
+FormalConjectures/ErdosProblems/1127.lean:        ({a, b} : Set (EuclideanSpace ℝ (Fin n))) = {c, d} := by
+FormalConjectures/ErdosProblems/1144.lean:          partialSum ε ω N > C * Real.sqrt (N : ℝ)) := by
+FormalConjectures/ErdosProblems/1148.lean:    (x ^ 2 : ℝ) ≤ n + 2 * Real.sqrt n ∧
+FormalConjectures/ErdosProblems/1148.lean:    (y ^ 2 : ℝ) ≤ n + 2 * Real.sqrt n ∧
+FormalConjectures/ErdosProblems/1148.lean:    (z ^ 2 : ℝ) ≤ n + 2 * Real.sqrt n
+FormalConjectures/ErdosProblems/1150.lean:        ⨆ z : Metric.sphere (0 : ℂ) 1, ‖P.eval (z : ℂ)‖ > (1 + c) * Real.sqrt n := by
+FormalConjectures/ErdosProblems/1150.lean:    ⨆ z : Metric.sphere (0 : ℂ) 1, ‖P.eval (z : ℂ)‖ ≥ Real.sqrt (n + 1) := by
+FormalConjectures/ErdosProblems/1164.lean:            c₁ * Real.sqrt (Real.log (n : ℝ)) ≤ Real.log (coveringRadius X ω n : ℝ) ∧
+FormalConjectures/ErdosProblems/1164.lean:            Real.log (coveringRadius X ω n : ℝ) ≤ c₂ * Real.sqrt (Real.log (n : ℝ)) := by
+FormalConjectures/ErdosProblems/127.lean:  (m : ℝ) / 2 + (Real.sqrt (8 * (m : ℝ) + 1) - 1) / 8
+FormalConjectures/ErdosProblems/129.lean:        ∀ n : ℕ, (multicolorRamseyNum n 3 r : ℝ) < C ^ Real.sqrt (n : ℝ) := by
+FormalConjectures/ErdosProblems/130.lean:def Concyclic (a b c d : EuclideanSpace ℝ (Fin 2)) : Prop :=
+FormalConjectures/ErdosProblems/130.lean:  ∃ (center : EuclideanSpace ℝ (Fin 2)) (radius : ℝ),
+FormalConjectures/ErdosProblems/130.lean:def ErdosGeneralPosition (A : Set (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/130.lean:  (∀ p q r : EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/130.lean:    ¬Collinear ℝ ({p, q, r} : Set (EuclideanSpace ℝ (Fin 2)))) ∧
+FormalConjectures/ErdosProblems/130.lean:  (∀ p q r s : EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/130.lean:of $A$, and two distinct points are adjacent if and only if their Euclidean distance
+FormalConjectures/ErdosProblems/130.lean:noncomputable def intDistGraph (A : Set (EuclideanSpace ℝ (Fin 2))) :
+FormalConjectures/ErdosProblems/130.lean:  Adj p q := (p : EuclideanSpace ℝ (Fin 2)) ≠ q ∧
+FormalConjectures/ErdosProblems/130.lean:    ∃ n : ℕ, 0 < n ∧ dist (p : EuclideanSpace ℝ (Fin 2)) (q : EuclideanSpace ℝ (Fin 2)) = n
+FormalConjectures/ErdosProblems/130.lean:are adjacent if and only if their Euclidean distance is a positive integer.
+FormalConjectures/ErdosProblems/130.lean:    ∃ (A : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/132.lean:Euclidean distance $d$. -/
+FormalConjectures/ErdosProblems/132.lean:noncomputable def pairCount (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/132.lean:def IsLimitedOccurrence (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : Prop :=
+FormalConjectures/ErdosProblems/132.lean:noncomputable def limitedOccurrences (A : Finset (EuclideanSpace ℝ (Fin 2))) : Set ℝ :=
+FormalConjectures/ErdosProblems/132.lean:      ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), 5 ≤ A.card →
+FormalConjectures/ErdosProblems/132.lean:      ∀ k : ℕ, ∃ N : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 2)), N ≤ A.card →
+FormalConjectures/ErdosProblems/133.lean:    Tendsto (fun n : ℕ => (erdos133_f n : ℝ) / Real.sqrt n) atTop atTop := by
+FormalConjectures/ErdosProblems/133.lean:      (erdos133_f n : ℝ) ≤ (Real.sqrt 2 + ε) * Real.sqrt n := by
+FormalConjectures/ErdosProblems/133.lean:      (erdos133_f n : ℝ) ≤ (2 / Real.sqrt 3 + ε) * Real.sqrt n := by
+FormalConjectures/ErdosProblems/133.lean:      (erdos133_f n : ℝ) ≤ C * Real.sqrt n := by
+FormalConjectures/ErdosProblems/133.lean:    Tendsto (fun n : ℕ => (erdos133_f n : ℝ) / Real.sqrt n) atTop (nhds 1) := by
+FormalConjectures/ErdosProblems/135.lean:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/135.lean:def FourPointFiveDist (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/135.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/135.lean:        ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/14.lean:  Real.sqrt N
+FormalConjectures/ErdosProblems/154.lean:      Tendsto (fun n => ((A n).card : ℝ) / Real.sqrt n) atTop (𝓝 1) →
+FormalConjectures/ErdosProblems/173.lean:/-- Squared Euclidean distance between two points in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/174.lean:Straus, E. G., _Euclidean Ramsey theorems_, J. Combin. Theory Ser. A, 1973.
+FormalConjectures/ErdosProblems/174.lean:[FrRo90] Frankl, P. and Rödl, V., _A partition property of simplices in Euclidean space_,
+FormalConjectures/ErdosProblems/174.lean:[Kr91] Kříž, I., _Permutation groups in Euclidean Ramsey theory_, Proc. Amer. Math. Soc., 1991.
+FormalConjectures/ErdosProblems/174.lean:/-- A finite subset $A$ of $\mathbb{R}^n$ is Euclidean Ramsey if for every $k \geq 1$, there
+FormalConjectures/ErdosProblems/174.lean:def IsEuclideanRamsey (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/174.lean:    ∃ d : ℕ, ∀ f : EuclideanSpace ℝ (Fin d) → Fin k,
+FormalConjectures/ErdosProblems/174.lean:      ∃ φ : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin d),
+FormalConjectures/ErdosProblems/174.lean:def IsSpherical (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/174.lean:  ∃ (center : EuclideanSpace ℝ (Fin n)) (r : ℝ),
+FormalConjectures/ErdosProblems/174.lean:    ∀ n : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin n)),
+FormalConjectures/ErdosProblems/174.lean:      IsEuclideanRamsey n A ↔ IsSpherical n A := by
+FormalConjectures/ErdosProblems/176.lean:    ∀ k : ℕ, (discrepancyAPNumber k (Real.sqrt ↑k) : ℝ) ≤ C ^ k := by
+FormalConjectures/ErdosProblems/177.lean:      c * Real.sqrt (↑d) ≤ |(↑(∑ i ∈ range k, f (a + i * d)) : ℝ)| := by
+FormalConjectures/ErdosProblems/188.lean:  and Straus, E. G., Euclidean {R}amsey theorems. {II}. (1975), 529--557.
+FormalConjectures/ErdosProblems/189.lean:open Affine EuclideanGeometry
+FormalConjectures/ErdosProblems/202.lean:      Real.exp ((1 - ε) * Real.sqrt (Real.log (N : ℝ) * Real.log (Real.log (N : ℝ)))) := by
+FormalConjectures/ErdosProblems/209.lean:/-- Points in the Euclidean plane $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/209.lean:abbrev Point2 := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/210.lean:/-- Points in the Euclidean plane $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/210.lean:abbrev Point2 := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/211.lean:/-- Points in the Euclidean plane $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/211.lean:abbrev Point2 := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/213.lean:open EuclideanGeometry
+FormalConjectures/ErdosProblems/213.lean:    (∀ Q : Set ℝ², Q ⊆ S ∧ Q.ncard = 4 → ¬ EuclideanGeometry.Cospherical Q) ∧
+FormalConjectures/ErdosProblems/214.lean:def IsUnitSquare (a b c d : EuclideanSpace ℝ (Fin 2)) : Prop :=
+FormalConjectures/ErdosProblems/214.lean:  dist a c = Real.sqrt 2 ∧ dist b d = Real.sqrt 2
+FormalConjectures/ErdosProblems/214.lean:    ∀ (S : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/214.lean:      ∃ a b c d : EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/215.lean:def IntLattice : Set (EuclideanSpace ℝ (Fin 2)) :=
+FormalConjectures/ErdosProblems/215.lean:    ∃ (S : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/215.lean:      ∀ (f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/216.lean:/-- A point in the Euclidean plane $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/216.lean:abbrev Point := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/217.lean:def Collinear3 (p q r : EuclideanSpace ℝ (Fin 2)) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:def NoThreeCollinear (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:def Concyclic4 (p₁ p₂ p₃ p₄ : EuclideanSpace ℝ (Fin 2)) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:  ∃ (c : EuclideanSpace ℝ (Fin 2)) (r : ℝ),
+FormalConjectures/ErdosProblems/217.lean:def NoFourConcyclic (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:def HasDistanceMultiplicityProperty (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/217.lean:    ∃ N₀ : ℕ, ∀ (S : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/223.lean:noncomputable def unitDistPairs {d : ℕ} (A : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+FormalConjectures/ErdosProblems/223.lean:    ∃ N₀ : ℕ, ∀ (A : Finset (EuclideanSpace ℝ (Fin d))),
+FormalConjectures/ErdosProblems/223.lean:      ∃ A : Finset (EuclideanSpace ℝ (Fin d)),
+FormalConjectures/ErdosProblems/223.lean:theorem erdos_223.variants.d2_upper (A : Finset (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/223.lean:    ∃ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/223.lean:theorem erdos_223.variants.d3_upper (A : Finset (EuclideanSpace ℝ (Fin 3)))
+FormalConjectures/ErdosProblems/223.lean:    ∃ A : Finset (EuclideanSpace ℝ (Fin 3)),
+FormalConjectures/ErdosProblems/224.lean:theorem erdos_224 (d : ℕ) (A : Finset (EuclideanSpace ℝ (Fin d)))
+FormalConjectures/ErdosProblems/230.lean:      (1 + c) * Real.sqrt ↑n ≤ ‖∑ k : Fin n, a k * z ^ (k.val + 1)‖ := by
+FormalConjectures/ErdosProblems/232.lean:    ∀ (A : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/232.lean:          (volume (A ∩ Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal /
+FormalConjectures/ErdosProblems/232.lean:          (volume (Metric.ball (0 : EuclideanSpace ℝ (Fin 2)) R)).toReal ≤ 1 / 4 + ε := by
+FormalConjectures/ErdosProblems/304.lean:      (fun b => Real.sqrt (Real.log b)) := by
+FormalConjectures/ErdosProblems/329.lean:`sidonUpperDensity A = 1 / Real.sqrt 2`, improving Erdős’ earlier
+FormalConjectures/ErdosProblems/329.lean:    sidonUpperDensity A = 1 / Real.sqrt 2 := by
+FormalConjectures/ErdosProblems/344.lean:      c * Real.sqrt (N : ℝ) ≤ (((Finset.Icc 1 N).filter (· ∈ A)).card : ℝ)) :
+FormalConjectures/ErdosProblems/352.lean:open scoped EuclideanGeometry
+FormalConjectures/ErdosProblems/352.lean:           EuclideanGeometry.triangle_area (t.points 0) (t.points 1) (t.points 2) = 1) := by
+FormalConjectures/ErdosProblems/353.lean:/-- Squared Euclidean distance between two points in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/395.lean:        ‖signedSum z ε‖ ≤ Real.sqrt 2)).card : ℝ) := by
+FormalConjectures/ErdosProblems/40.lean:  · rw [funext Real.sqrt_eq_rpow]
+FormalConjectures/ErdosProblems/44.lean:    maxSidonSubsetCard (Icc 1 N) ≤ 2 * Real.sqrt N := by
+FormalConjectures/ErdosProblems/44.lean:      IsSidon (A ∪ B : Set ℕ) ∧ (1 - ε) * Real.sqrt M ≤ (A ∪ B).card := by
+FormalConjectures/ErdosProblems/44.lean:    ∃ᵉ (A ⊆ Finset.Icc 1 M), IsSidon (A : Set ℕ) ∧ (1 - ε) * Real.sqrt M ≤ A.card := by
+FormalConjectures/ErdosProblems/440.lean:    (lcmPairCount a x : ℝ) ≤ C * Real.sqrt (x : ℝ) := by
+FormalConjectures/ErdosProblems/440.lean:      liminf (fun x => (lcmPairCount a x : ℝ) / Real.sqrt (x : ℝ)) atTop = L}
+FormalConjectures/ErdosProblems/441.lean:    (A.card : ℝ) ≤ (1 + ε) * Real.sqrt (9 * N / 8) := by
+FormalConjectures/ErdosProblems/441.lean:    (1 - ε) * Real.sqrt (9 * N / 8) ≤ (A.card : ℝ) := by
+FormalConjectures/ErdosProblems/462.lean:        (x + ⌊C * Real.sqrt (x : ℝ) * (Real.log (x : ℝ)) ^ 2⌋₊)).filter
+FormalConjectures/ErdosProblems/462.lean:        (Real.sqrt (x : ℝ) / (Real.log (x : ℝ)) ^ 2))
+FormalConjectures/ErdosProblems/465.lean:    ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/465.lean:    ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/465.lean:      (A.card : ℝ) ≤ C * Real.sqrt X := by
+FormalConjectures/ErdosProblems/466.lean:    ∃ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/482.lean:  | n + 2 => ⌊Real.sqrt 2 * ((grahamPollakSeq (n + 1) : ℝ) + 1 / 2)⌋
+FormalConjectures/ErdosProblems/482.lean:        binaryDigit (Real.sqrt 2) n := by
+FormalConjectures/ErdosProblems/502.lean:$s$-distance subset in real Euclidean space II*, Combinatorica (1983).
+FormalConjectures/ErdosProblems/502.lean:noncomputable def IsTwoDistanceSet {n : ℕ} (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/502.lean:    (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n)))
+FormalConjectures/ErdosProblems/503.lean:open scoped EuclideanGeometry
+FormalConjectures/ErdosProblems/504.lean:noncomputable def angleAt (x y z : EuclideanSpace ℝ (Fin 2)) : ℝ :=
+FormalConjectures/ErdosProblems/504.lean:    ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/505.lean:    ∀ n : ℕ, ∀ S : Set (EuclideanSpace ℝ (Fin n)),
+FormalConjectures/ErdosProblems/505.lean:      ∃ F : Fin (n + 1) → Set (EuclideanSpace ℝ (Fin n)),
+FormalConjectures/ErdosProblems/506.lean:noncomputable def AllOnCircle (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/506.lean:  ∃ c : EuclideanSpace ℝ (Fin 2), ∃ r : ℝ, 0 < r ∧ ∀ p ∈ S, dist p c = r
+FormalConjectures/ErdosProblems/506.lean:noncomputable def AllCollinear (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/506.lean:  ∃ a b : EuclideanSpace ℝ (Fin 2), a ≠ b ∧
+FormalConjectures/ErdosProblems/506.lean:noncomputable def numDeterminedCircles (S : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/506.lean:  Set.ncard {p : EuclideanSpace ℝ (Fin 2) × ℝ |
+FormalConjectures/ErdosProblems/506.lean:    0 < p.2 ∧ 3 ≤ Set.ncard {q ∈ (↑S : Set (EuclideanSpace ℝ (Fin 2))) | dist q p.1 = p.2}}
+FormalConjectures/ErdosProblems/506.lean:  sInf (numDeterminedCircles '' {S : Finset (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/507.lean:open scoped EuclideanGeometry
+FormalConjectures/ErdosProblems/507.lean:  sInf {EuclideanGeometry.triangle_area (t.points 0) (t.points 1) (t.points 2) |
+FormalConjectures/ErdosProblems/508.lean:import Mathlib.Analysis.InnerProductSpace.EuclideanDist
+FormalConjectures/ErdosProblems/508.lean:open scoped EuclideanGeometry
+FormalConjectures/ErdosProblems/508.lean:  le_chromaticNumber_of_pairwise_adj (by simp) ![!₂[0, 0], !₂[1, 0], !₂[0.5, Real.sqrt 3 / 2]] <| by
+FormalConjectures/ErdosProblems/523.lean:          Real.sqrt ((n : ℝ) * Real.log (n : ℝ)))
+FormalConjectures/ErdosProblems/527.lean:    Tendsto (fun n => |a n| * Real.sqrt (↑n : ℝ)) atTop (nhds 0) →
+FormalConjectures/ErdosProblems/529.lean:Let $d_k(n)$ denote the expected Euclidean distance from the origin of the endpoint of a
+FormalConjectures/ErdosProblems/529.lean:/-- The Euclidean distance of a point in $\mathbb{Z}^k$ from the origin. -/
+FormalConjectures/ErdosProblems/529.lean:noncomputable def euclidDistFromOrigin {k : ℕ} (x : Fin k → ℤ) : ℝ :=
+FormalConjectures/ErdosProblems/529.lean:  Real.sqrt (∑ i : Fin k, ((x i : ℝ)) ^ 2)
+FormalConjectures/ErdosProblems/529.lean:/-- The expected Euclidean distance from the origin of the endpoint of a uniformly
+FormalConjectures/ErdosProblems/529.lean:    (h.toFinset.sum (fun w => euclidDistFromOrigin (w ⟨n, by omega⟩))) /
+FormalConjectures/ErdosProblems/530.lean:    Tendsto (fun N : ℕ => (sidonSubsetNumber N : ℝ) / Real.sqrt (N : ℝ))
+FormalConjectures/ErdosProblems/540.lean:      (A.card : ℝ) ≥ C * Real.sqrt (N : ℝ) →
+FormalConjectures/ErdosProblems/546.lean:      (ramseyNumber G : ℝ) ≤ (2 : ℝ) ^ (C * Real.sqrt (G.edgeSet.ncard : ℝ)) := by
+FormalConjectures/ErdosProblems/552.lean:        ↑n + Real.sqrt ↑n - c := by
+FormalConjectures/ErdosProblems/588.lean:def NoKPlusOneCollinear (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/588.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/588.lean:    S ⊆ P → S.card = k + 1 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/588.lean:noncomputable def kRichLineCount (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/588.lean:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/588.lean:    k ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+FormalConjectures/ErdosProblems/588.lean:          ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/589.lean:      (erdos589_g n : ℝ) ≥ C * Real.sqrt (↑n) * Real.log (↑n) := by
+FormalConjectures/ErdosProblems/604.lean:noncomputable def pinnedDistances (x : EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/604.lean:    (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/604.lean:      ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/604.lean:          C * (n : ℝ) / Real.sqrt (Real.log (n : ℝ)) := by
+FormalConjectures/ErdosProblems/605.lean:/-- The number of ordered pairs of distinct points from $A$ at Euclidean distance $d$. -/
+FormalConjectures/ErdosProblems/605.lean:    (A : Finset (EuclideanSpace ℝ (Fin 3))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/605.lean:        ∃ (R : ℝ) (A : Finset (EuclideanSpace ℝ (Fin 3))),
+FormalConjectures/ErdosProblems/606.lean:    (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/606.lean:  Set.ncard {l : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/606.lean:    ∃ a ∈ A, ∃ b ∈ A, a ≠ b ∧ l = affineSpan ℝ ({a, b} : Set (EuclideanSpace ℝ (Fin 2)))}
+FormalConjectures/ErdosProblems/606.lean:  {k | ∃ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/606.lean:    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/607.lean:      ((achievableSpectra607 n).ncard : ℝ) ≤ Real.exp (C * Real.sqrt (n : ℝ)) := by
+FormalConjectures/ErdosProblems/609.lean:          (k : ℝ) ≥ (2 : ℝ) ^ (c * Real.sqrt (Real.log (n : ℝ))) := by
+FormalConjectures/ErdosProblems/610.lean:          (cliqueTransversalNum G : ℝ) ≤ (n : ℝ) - ω n * Real.sqrt (n : ℝ) := by
+FormalConjectures/ErdosProblems/610.lean:            (n : ℝ) - c * Real.sqrt ((n : ℝ) * Real.log (n : ℝ)) := by
+FormalConjectures/ErdosProblems/610.lean:        (cliqueTransversalNum G : ℝ) ≤ (n : ℝ) - Real.sqrt (2 * (n : ℝ)) + C := by
+FormalConjectures/ErdosProblems/611.lean:    (cliqueTransversalNum G : ℝ) ≤ (n : ℝ) - Real.sqrt ((k : ℝ) * (n : ℝ)) := by
+FormalConjectures/ErdosProblems/633.lean:/-- Squared Euclidean distance between two points in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/633.lean:/-- Euclidean distance (side length) between two points. -/
+FormalConjectures/ErdosProblems/633.lean:  Real.sqrt (sqDist p q)
+FormalConjectures/ErdosProblems/634.lean:/-- Squared Euclidean distance between two points in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/648.lean:      c₁ * Real.sqrt ((n : ℝ) / Real.log (n : ℝ)) ≤ (g n : ℝ) ∧
+FormalConjectures/ErdosProblems/648.lean:      (g n : ℝ) ≤ c₂ * Real.sqrt ((n : ℝ) / Real.log (n : ℝ)) := by
+FormalConjectures/ErdosProblems/650.lean:      (erdos650F m : ℝ) ≤ C * Real.sqrt (m : ℝ) := by
+FormalConjectures/ErdosProblems/651.lean:def InGeneralPositionRk (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin k))) : Prop :=
+FormalConjectures/ErdosProblems/651.lean:  ∀ f : Fin (k + 1) → EuclideanSpace ℝ (Fin k),
+FormalConjectures/ErdosProblems/651.lean:def InConvexPositionRk (k : ℕ) (S : Finset (EuclideanSpace ℝ (Fin k))) : Prop :=
+FormalConjectures/ErdosProblems/651.lean:  ∀ p ∈ S, p ∉ convexHull ℝ (↑(S.erase p) : Set (EuclideanSpace ℝ (Fin k)))
+FormalConjectures/ErdosProblems/651.lean:  sInf {m : ℕ | ∀ P : Finset (EuclideanSpace ℝ (Fin k)),
+FormalConjectures/ErdosProblems/651.lean:    ∃ Q : Finset (EuclideanSpace ℝ (Fin k)),
+FormalConjectures/ErdosProblems/652.lean:noncomputable def numDistinctDistances (p : EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/652.lean:    (S : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/652.lean:            ∀ S : Finset (EuclideanSpace ℝ (Fin 2)), S.card = n →
+FormalConjectures/ErdosProblems/652.lean:                (numDistinctDistances p S : ℝ) < C * Real.sqrt (↑n))).card < k := by
+FormalConjectures/ErdosProblems/653.lean:For a configuration of $n$ points in the Euclidean plane, $R(x_i)$ counts the number
+FormalConjectures/ErdosProblems/653.lean:noncomputable def distinctDistances (n : ℕ) (x : Fin n → EuclideanSpace ℝ (Fin 2))
+FormalConjectures/ErdosProblems/653.lean:For a configuration of $n$ points in the Euclidean plane, the number of distinct
+FormalConjectures/ErdosProblems/653.lean:noncomputable def numDistinctR (n : ℕ) (x : Fin n → EuclideanSpace ℝ (Fin 2)) : ℕ :=
+FormalConjectures/ErdosProblems/653.lean:          ∃ x : Fin n → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/654.lean:/-- Squared Euclidean distance between two points in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/654.lean:noncomputable def sqEuclideanDist (p q : ℝ × ℝ) : ℝ :=
+FormalConjectures/ErdosProblems/654.lean:    sqEuclideanDist p₁ c = r_sq ∧ sqEuclideanDist p₂ c = r_sq ∧
+FormalConjectures/ErdosProblems/654.lean:    sqEuclideanDist p₃ c = r_sq ∧ sqEuclideanDist p₄ c = r_sq
+FormalConjectures/ErdosProblems/654.lean:  ((univ.filter (· ≠ i)).image (fun j => sqEuclideanDist (pts i) (pts j))).card
+FormalConjectures/ErdosProblems/655.lean:def NoThreeEquidistantFromCenter (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/655.lean:noncomputable def distinctDistanceCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/655.lean:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/657.lean:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/657.lean:def NoIsoscelesTriangles (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/657.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/657.lean:      ∃ N₀ : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/659.lean:open EuclideanGeometry Finset Real
+FormalConjectures/ErdosProblems/660.lean:def InConvexPosition3d (P : Finset (EuclideanSpace ℝ (Fin 3))) : Prop :=
+FormalConjectures/ErdosProblems/660.lean:  ∀ p ∈ P, p ∉ convexHull ℝ (↑(P.erase p) : Set (EuclideanSpace ℝ (Fin 3)))
+FormalConjectures/ErdosProblems/660.lean:noncomputable def distinctDistanceCount3d (P : Finset (EuclideanSpace ℝ (Fin 3))) : ℕ :=
+FormalConjectures/ErdosProblems/660.lean:        ∀ P : Finset (EuclideanSpace ℝ (Fin 3)),
+FormalConjectures/ErdosProblems/661.lean:    (X Y : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/661.lean:        ∃ X Y : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/661.lean:            ε * (n : ℝ) / Real.sqrt (Real.log (n : ℝ)) := by
+FormalConjectures/ErdosProblems/662.lean:    (P : Finset (EuclideanSpace ℝ (Fin 2))) (t : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/662.lean:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/664.lean:      (∀ i, (↑(A i).card : ℝ) > c * Real.sqrt ↑n) →
+FormalConjectures/ErdosProblems/665.lean:      ∀ B ∈ blocks, (↑B.card : ℝ) > Real.sqrt ↑n - C := by
+FormalConjectures/ErdosProblems/668.lean:    (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/668.lean:  sSup {k : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/668.lean:    (P Q : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/668.lean:  ∃ f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/668.lean:    f '' (↑P : Set (EuclideanSpace ℝ (Fin 2))) = ↑Q
+FormalConjectures/ErdosProblems/668.lean:      ∃ (Ps : Fin M → Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/668.lean:    ∃ (P Q : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/669.lean:    (P : Finset (EuclideanSpace ℝ (Fin 2))) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/669.lean:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/669.lean:    k ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L}}
+FormalConjectures/ErdosProblems/669.lean:    (P : Finset (EuclideanSpace ℝ (Fin 2))) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/669.lean:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) |
+FormalConjectures/ErdosProblems/669.lean:    Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L} = k}
+FormalConjectures/ErdosProblems/669.lean:  sSup {m : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/669.lean:  sSup {m : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/670.lean:          ∀ A : Finset (EuclideanSpace ℝ (Fin d)),
+FormalConjectures/ErdosProblems/670.lean:              Metric.diam (A : Set (EuclideanSpace ℝ (Fin d))) := by
+FormalConjectures/ErdosProblems/704.lean:if and only if the Euclidean distance between them is $1$.
+FormalConjectures/ErdosProblems/704.lean:Euclidean space_. Mathematika 19 (1972), 1–24.
+FormalConjectures/ErdosProblems/704.lean:Euclidean distance is exactly $1$. -/
+FormalConjectures/ErdosProblems/704.lean:noncomputable def unitDistanceGraph (n : ℕ) : SimpleGraph (EuclideanSpace ℝ (Fin n)) where
+FormalConjectures/ErdosProblems/705.lean:open scoped EuclideanGeometry
+FormalConjectures/ErdosProblems/706.lean:are adjacent iff their Euclidean distance belongs to $A$. -/
+FormalConjectures/ErdosProblems/706.lean:noncomputable def multiDistanceGraph (A : Set ℝ) : SimpleGraph (EuclideanSpace ℝ (Fin 2)) where
+FormalConjectures/ErdosProblems/717.lean:            C * Real.sqrt (n : ℝ) / Real.log (n : ℝ) *
+FormalConjectures/ErdosProblems/724.lean:    (maxMOLS n : ℝ) ≥ C * Real.sqrt (n : ℝ) := by
+FormalConjectures/ErdosProblems/725.lean:    Tendsto (fun n => (k n : ℝ) / Real.sqrt ↑n) atTop (nhds 0) →
+FormalConjectures/ErdosProblems/732.lean:      (S.card : ℝ) ≥ Real.exp (c * Real.sqrt (n : ℝ) * Real.log (n : ℝ)) := by
+FormalConjectures/ErdosProblems/733.lean:        Real.exp (C * Real.sqrt (n : ℝ)) := by
+FormalConjectures/ErdosProblems/735.lean:/-- The Euclidean plane. -/
+FormalConjectures/ErdosProblems/735.lean:abbrev R2 := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/753.lean:          C * Real.sqrt (n * Real.log n) := by
+FormalConjectures/ErdosProblems/754.lean:    ∃ C : ℝ, ∀ n : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 4)),
+FormalConjectures/ErdosProblems/755.lean:equilateral triangles determined by point sets in Euclidean space_.
+FormalConjectures/ErdosProblems/755.lean:in $d$-dimensional Euclidean space: the number of $3$-element subsets where
+FormalConjectures/ErdosProblems/755.lean:    (A : Finset (EuclideanSpace ℝ (Fin d))) : ℕ :=
+FormalConjectures/ErdosProblems/755.lean:  Set.ncard {T : Finset (EuclideanSpace ℝ (Fin d)) |
+FormalConjectures/ErdosProblems/755.lean:        ∀ A : Finset (EuclideanSpace ℝ (Fin 6)),
+FormalConjectures/ErdosProblems/756.lean:Euclidean distance $d$. -/
+FormalConjectures/ErdosProblems/756.lean:noncomputable def pairCount (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/756.lean:noncomputable def highMultiplicityDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Set ℝ :=
+FormalConjectures/ErdosProblems/756.lean:      ∃ A : Finset (EuclideanSpace ℝ (Fin 2)), A.card = n ∧
+FormalConjectures/ErdosProblems/759.lean:        C * Real.sqrt (n : ℝ) / Real.log (n : ℝ) := by
+FormalConjectures/ErdosProblems/759.lean:        C * Real.sqrt (n : ℝ) / Real.log (n : ℝ) := by
+FormalConjectures/ErdosProblems/768.lean:          (Real.sqrt (Real.log (N : ℝ)) * Real.log (Real.log (N : ℝ))))
+FormalConjectures/ErdosProblems/787.lean:      (g n : ℝ) ≤ C * Real.exp (Real.sqrt (Real.log (n : ℝ))) := by
+FormalConjectures/ErdosProblems/806.lean:    ∀ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a ≤ n) → (A.card : ℝ) ≤ Real.sqrt n →
+FormalConjectures/ErdosProblems/806.lean:    ∃ B : Finset ℤ, (B.card : ℝ) ≤ ε * Real.sqrt n ∧
+FormalConjectures/ErdosProblems/82.lean:    (fun n => (F n : ℝ)) =O[atTop] (fun n => Real.sqrt n * (Real.log n) ^ (3 / 4 : ℝ)) := by
+FormalConjectures/ErdosProblems/827.lean:def InGeneralPosition (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/827.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/827.lean:    S ⊆ P → S.card = 3 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/827.lean:noncomputable def circumradius (p₁ p₂ p₃ : EuclideanSpace ℝ (Fin 2)) : ℝ :=
+FormalConjectures/ErdosProblems/827.lean:    (a * b * c) / (4 * Real.sqrt area_sq)
+FormalConjectures/ErdosProblems/827.lean:def AllDistinctCircumradii (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/827.lean:    ∃ n : ℕ, ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/827.lean:      ∃ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/831.lean:def NoThreeCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/831.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/831.lean:    S ⊆ P → S.card = 3 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/831.lean:def FourPointsConcyclic (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/831.lean:  ∃ c : EuclideanSpace ℝ (Fin 2), ∃ r : ℝ, r > 0 ∧ ∀ p ∈ S, dist p c = r
+FormalConjectures/ErdosProblems/831.lean:def NoFourConcyclic (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/831.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/831.lean:noncomputable def distinctCircumradiiCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/831.lean:    ∃ o : EuclideanSpace ℝ (Fin 2), dist a o = r ∧ dist b o = r ∧ dist c o = r}
+FormalConjectures/ErdosProblems/831.lean:      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/838.lean:def InGeneralPosition (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/838.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/838.lean:    S ⊆ P → S.card = 3 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/838.lean:def InConvexPosition (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/838.lean:  ∀ p ∈ S, p ∉ convexHull ℝ (↑(S.erase p) : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/838.lean:noncomputable def numConvexSubsets (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/838.lean:  sInf {k : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/840.lean:    |(maxQuasiSidonCard δ N : ℝ) - answer(sorry) * Real.sqrt (N : ℝ)| ≤
+FormalConjectures/ErdosProblems/840.lean:      ε * Real.sqrt (N : ℝ) := by
+FormalConjectures/ErdosProblems/840.lean:    (maxQuasiSidonCard δ N : ℝ) ≥ (2 / Real.sqrt 3 - ε) * Real.sqrt (N : ℝ) := by
+FormalConjectures/ErdosProblems/840.lean:      (Real.sqrt ((1 / 4 + 1 / (Real.pi + 2) ^ 2)⁻¹) + ε) * Real.sqrt (N : ℝ) := by
+FormalConjectures/ErdosProblems/841.lean:    (hP : (largestPrimeFactor n : ℝ) > Real.sqrt (2 * (n : ℝ)) + 1) :
+FormalConjectures/ErdosProblems/841.lean:    (largestPrimeFactor n : ℝ) ≤ Real.sqrt (2 * (n : ℝ)) + 1 →
+FormalConjectures/ErdosProblems/841.lean:    (erdos841T n : ℝ) ≤ C * Real.sqrt (n : ℝ) := by
+FormalConjectures/ErdosProblems/846.lean:open EuclideanGeometry
+FormalConjectures/ErdosProblems/858.lean:        Real.sqrt (Real.log (Real.log (N : ℝ)))) := by
+FormalConjectures/ErdosProblems/863.lean:    Tendsto (fun N => (maxB2rSize r N : ℝ) / Real.sqrt (N : ℝ)) atTop (nhds c) →
+FormalConjectures/ErdosProblems/863.lean:    Tendsto (fun N => (maxDiffBoundedSize r N : ℝ) / Real.sqrt (N : ℝ)) atTop (nhds c') →
+FormalConjectures/ErdosProblems/863.lean:    Tendsto (fun N => (maxB2rSize r N : ℝ) / Real.sqrt (N : ℝ)) atTop (nhds c) →
+FormalConjectures/ErdosProblems/863.lean:    Tendsto (fun N => (maxDiffBoundedSize r N : ℝ) / Real.sqrt (N : ℝ)) atTop (nhds c') →
+FormalConjectures/ErdosProblems/864.lean:    (maxAlmostSidonCard N : ℝ) ≤ (2 / Real.sqrt 3 + ε) * Real.sqrt (N : ℝ)) := by
+FormalConjectures/ErdosProblems/864.lean:    (maxAlmostSidonCard N : ℝ) ≥ (2 / Real.sqrt 3 - ε) * Real.sqrt (N : ℝ) := by
+FormalConjectures/ErdosProblems/89.lean:open EuclideanGeometry
+FormalConjectures/ErdosProblems/89.lean:  · simp_rw [Function.comp, div_mul, ← Real.sqrt_eq_rpow, Real.div_sqrt]
+FormalConjectures/ErdosProblems/898.lean:/-- Squared Euclidean distance between two points in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/898.lean:/-- Euclidean distance between two points in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/898.lean:  Real.sqrt (sqDist898 p q)
+FormalConjectures/ErdosProblems/90.lean:open scoped EuclideanGeometry
+FormalConjectures/ErdosProblems/91.lean:noncomputable def numDistinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/91.lean:def AreSimilar (A B : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/91.lean:  ∃ (f : EuclideanSpace ℝ (Fin 2) → EuclideanSpace ℝ (Fin 2)) (r : ℝ),
+FormalConjectures/ErdosProblems/91.lean:    (∀ x y : EuclideanSpace ℝ (Fin 2), dist (f x) (f y) = r * dist x y) ∧
+FormalConjectures/ErdosProblems/91.lean:    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/91.lean:      (∀ B : Finset (EuclideanSpace ℝ (Fin 2)), B.card = n →
+FormalConjectures/ErdosProblems/91.lean:      ∃ A' : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/91.lean:        (∀ B : Finset (EuclideanSpace ℝ (Fin 2)), B.card = n →
+FormalConjectures/ErdosProblems/910.lean:    ∀ (S : Set (EuclideanSpace ℝ (Fin n))),
+FormalConjectures/ErdosProblems/910.lean:    ∃ (T : Set (EuclideanSpace ℝ (Fin n))),
+FormalConjectures/ErdosProblems/910.lean:    ∀ (S : Set (EuclideanSpace ℝ (Fin n))),
+FormalConjectures/ErdosProblems/910.lean:    Cardinal.continuum < #{T : Set (EuclideanSpace ℝ (Fin n)) // T ⊆ S ∧ IsConnected T} := by
+FormalConjectures/ErdosProblems/92.lean:open scoped EuclideanGeometry
+FormalConjectures/ErdosProblems/93.lean:def InConvexPosition (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/93.lean:  ∀ p ∈ A, p ∉ convexHull ℝ ((↑A : Set (EuclideanSpace ℝ (Fin 2))) \ {p})
+FormalConjectures/ErdosProblems/93.lean:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/93.lean:    (A : Finset (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/94.lean:def ConvexPosition (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/94.lean:  ∀ p ∈ A, p ∉ convexHull ℝ ((A : Set (EuclideanSpace ℝ (Fin 2))) \ {p})
+FormalConjectures/ErdosProblems/94.lean:noncomputable def distSqSum (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/94.lean:  let E := EuclideanSpace ℝ (Fin 2)
+FormalConjectures/ErdosProblems/94.lean:    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/95.lean:noncomputable def distinctDistances (P : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/95.lean:noncomputable def distMultiplicity (P : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/95.lean:        ∀ (P : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/953.lean:/-- Euclidean distance between two points in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/953.lean:  Real.sqrt ((p.1 - q.1) ^ 2 + (p.2 - q.2) ^ 2)
+FormalConjectures/ErdosProblems/953.lean:$a, b$ in the set, the Euclidean distance $|a - b|$ is not an integer. -/
+FormalConjectures/ErdosProblems/956.lean:      ∃ (C : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:      ∃ (X : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:      ∃ (P : Finset (EuclideanSpace ℝ (Fin 2) × EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:    ∀ (C : Set (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:    ∀ (X : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/956.lean:    ∀ (P : Finset (EuclideanSpace ℝ (Fin 2) × EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/957.lean:/-- The number of unordered pairs of distinct points in $A$ at Euclidean
+FormalConjectures/ErdosProblems/957.lean:noncomputable def distFrequency (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/957.lean:    ∃ N₀ : ℕ, ∀ (A : Finset (EuclideanSpace ℝ (Fin 2))), N₀ ≤ A.card →
+FormalConjectures/ErdosProblems/957.lean:    (∃ p q : EuclideanSpace ℝ (Fin 2), p ∈ A ∧ q ∈ A ∧ p ≠ q ∧ dist p q = d₁) →
+FormalConjectures/ErdosProblems/957.lean:    (∀ p q : EuclideanSpace ℝ (Fin 2), p ∈ A → q ∈ A → p ≠ q → d₁ ≤ dist p q) →
+FormalConjectures/ErdosProblems/957.lean:    (∃ p q : EuclideanSpace ℝ (Fin 2), p ∈ A ∧ q ∈ A ∧ p ≠ q ∧ dist p q = dk) →
+FormalConjectures/ErdosProblems/957.lean:    (∀ p q : EuclideanSpace ℝ (Fin 2), p ∈ A → q ∈ A → dist p q ≤ dk) →
+FormalConjectures/ErdosProblems/958.lean:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/958.lean:noncomputable def distMultiplicity (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/958.lean:def HasDistanceMultiplicityProperty (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/958.lean:def IsEquidistantCollinear (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/958.lean:  ∃ (p v : EuclideanSpace ℝ (Fin 2)), v ≠ 0 ∧
+FormalConjectures/ErdosProblems/958.lean:equal Euclidean distance. -/
+FormalConjectures/ErdosProblems/958.lean:def IsEquidistantCircular (A : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/958.lean:  ∃ (c : EuclideanSpace ℝ (Fin 2)) (r : ℝ), r > 0 ∧
+FormalConjectures/ErdosProblems/958.lean:    ∃ (σ : ℕ → EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/958.lean:    (∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/959.lean:noncomputable def distinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : Finset ℝ :=
+FormalConjectures/ErdosProblems/959.lean:noncomputable def distMultiplicity (A : Finset (EuclideanSpace ℝ (Fin 2))) (d : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/959.lean:      ∃ (A : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/96.lean:def ConvexPosition (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/96.lean:  ∀ p ∈ P, p ∉ convexHull ℝ (↑(P.erase p) : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/96.lean:noncomputable def unitDistancePairCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/96.lean:    ∀ (P : Finset (EuclideanSpace ℝ (Fin 2))),
+FormalConjectures/ErdosProblems/960.lean:def NoKCollinear (k : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/960.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/960.lean:    S ⊆ P → S.card = k → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/960.lean:def IsOrdinaryLine (P : Finset (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/960.lean:    (L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/960.lean:  Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (P : Set _) ∧ p ∈ L} = 2
+FormalConjectures/ErdosProblems/960.lean:noncomputable def ordinaryLineCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/960.lean:  Set.ncard {L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) | IsOrdinaryLine P L}
+FormalConjectures/ErdosProblems/960.lean:noncomputable def lineThrough (p q : EuclideanSpace ℝ (Fin 2)) :
+FormalConjectures/ErdosProblems/960.lean:    AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)) :=
+FormalConjectures/ErdosProblems/960.lean:def AllPairsOrdinary (A : Finset (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/960.lean:    (A' : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/960.lean:  sInf {m : ℕ | ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/960.lean:    ∃ A' : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/97.lean:open EuclideanGeometry
+FormalConjectures/ErdosProblems/98.lean:def NoThreeCollinear (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/98.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/98.lean:    S ⊆ P → S.card = 3 → ¬Collinear ℝ (S : Set (EuclideanSpace ℝ (Fin 2)))
+FormalConjectures/ErdosProblems/98.lean:def FourPointsConcyclic (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/98.lean:  ∃ c : EuclideanSpace ℝ (Fin 2), ∃ r : ℝ, r > 0 ∧ ∀ p ∈ S, dist p c = r
+FormalConjectures/ErdosProblems/98.lean:def NoFourConcyclic (P : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+FormalConjectures/ErdosProblems/98.lean:  ∀ S : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/98.lean:noncomputable def distinctDistanceCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/98.lean:        ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+FormalConjectures/ErdosProblems/982.lean:open EuclideanGeometry
+FormalConjectures/ErdosProblems/982.lean:    (hp' : EuclideanGeometry.IsConvexPolygon p) :
+FormalConjectures/ErdosProblems/988.lean:    ∃ N₀ : ℕ, ∀ (P : Finset (EuclideanSpace ℝ (Fin 3))),
+FormalConjectures/ErdosProblems/988.lean:      ∃ (v : EuclideanSpace ℝ (Fin 3)) (t : ℝ),
+FormalConjectures/ErdosProblems/989.lean:/-- Euclidean distance in $\mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/989.lean:  Real.sqrt ((p.1 - q.1) ^ 2 + (p.2 - q.2) ^ 2)
+FormalConjectures/ErdosProblems/989.lean:      discrepancy A r ≥ C * Real.sqrt r := by
+FormalConjectures/ErdosProblems/989.lean:      discrepancy A r ≤ C * Real.sqrt (r * Real.log r) := by
+FormalConjectures/ErdosProblems/99.lean:open Set Metric EuclideanGeometry
+FormalConjectures/ErdosProblems/990.lean:    Real.sqrt (‖f.coeff 0‖ * ‖f.leadingCoeff‖)
+FormalConjectures/ErdosProblems/990.lean:          C * Real.sqrt (↑f.support.card * Real.log (erdosTuranMeasure f)) := by
+FormalConjectures/ErdosProblems/991.lean:noncomputable def pairwiseDistProd (P : Finset (EuclideanSpace ℝ (Fin 3))) : ℝ :=
+FormalConjectures/ErdosProblems/991.lean:def IsMaxPairwiseDist (P : Finset (EuclideanSpace ℝ (Fin 3))) : Prop :=
+FormalConjectures/ErdosProblems/991.lean:  ∀ (Q : Finset (EuclideanSpace ℝ (Fin 3))),
+FormalConjectures/ErdosProblems/991.lean:    ∃ N₀ : ℕ, ∀ (P : Finset (EuclideanSpace ℝ (Fin 3))),
+FormalConjectures/ErdosProblems/991.lean:      ∀ (v : EuclideanSpace ℝ (Fin 3)) (t : ℝ),
+FormalConjectures/ErdosProblems/992.lean:              C * Real.sqrt (N : ℝ) * (Real.log (N : ℝ)) ^ ε := by
+FormalConjectures/ErdosProblems/992.lean:            C * Real.sqrt (N : ℝ) *
+FormalConjectures/ErdosProblems/992.lean:            c * Real.sqrt ((N : ℝ) * Real.log (N : ℝ)) := by
+FormalConjectures/ErdosProblems/995.lean:          ε * (N : ℝ) * Real.sqrt (Real.log (Real.log (N : ℝ))) := by

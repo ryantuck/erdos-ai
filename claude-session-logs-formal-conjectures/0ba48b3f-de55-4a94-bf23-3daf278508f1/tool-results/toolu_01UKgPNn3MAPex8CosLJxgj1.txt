@@ -1,0 +1,341 @@
+FormalConjectures/Mathoverflow/75792.lean:185:theorem complexity_five_pow : answer(False) ↔ ∀ n : ℕ, 0 < n → complexity (5 ^ n) = 5 * n := by
+FormalConjectures/Mathoverflow/75792.lean:194:theorem complexity_three_pow : answer(True) ↔ ∀ n : ℕ, 0 < n → complexity (3 ^ n) = 3 * n := by
+FormalConjectures/Wikipedia/NoetherProblem.lean:66:theorem noether_problem : answer(False) ↔ ∀ (K L ι G : Type)
+FormalConjectures/GreensOpenProblems/23.lean:37:  answer(True) ↔
+FormalConjectures/ErdosProblems/751.lean:51:theorem erdos_751 : answer(False) ↔
+FormalConjectures/ErdosProblems/636.lean:66:    answer(True) ↔
+FormalConjectures/ErdosProblems/846.lean:54:theorem erdos_846 : answer(False) ↔ ∀ᵉ (A : Set ℝ²) (ε > 0), A.Infinite → NonTrilinearFor A ε →
+FormalConjectures/ErdosProblems/994.lean:58:theorem erdos_994 : answer(False) ↔
+FormalConjectures/ErdosProblems/825.lean:39:    answer(True) ↔ ∃ (C : ℝ) (_ : C > 0),
+FormalConjectures/ErdosProblems/868.lean:62:    answer(True) ↔ ∀ (A : Set ℕ), A.IsAsymptoticAddBasisOfOrder 2 →
+FormalConjectures/ErdosProblems/674.lean:44:theorem erdos_674 : answer(True) ↔
+FormalConjectures/ErdosProblems/1050.lean:54:theorem erdos_1050 : answer(True) ↔
+FormalConjectures/ErdosProblems/760.lean:69:    answer(True) ↔
+FormalConjectures/ErdosProblems/199.lean:61:theorem erdos_199 : answer(False) ↔ ∀ A : Set ℝ, ¬HasThreeTermAP A → HasInfiniteAP Aᶜ := by
+FormalConjectures/ErdosProblems/1105.lean:49:theorem erdos_1105.parts.i : answer(True) ↔
+FormalConjectures/ErdosProblems/1105.lean:65:theorem erdos_1105.parts.ii : answer(True) ↔
+FormalConjectures/ErdosProblems/543.lean:81:    answer(False) ↔
+FormalConjectures/ErdosProblems/1045.lean:62:theorem erdos_1045 : answer(False) ↔
+FormalConjectures/ErdosProblems/353.lean:99:theorem erdos_353 : answer(True) ↔
+FormalConjectures/ErdosProblems/353.lean:116:theorem erdos_353.variants.isosceles_triangle : answer(True) ↔
+FormalConjectures/ErdosProblems/353.lean:133:theorem erdos_353.variants.right_triangle : answer(True) ↔
+FormalConjectures/ErdosProblems/353.lean:150:theorem erdos_353.variants.cyclic_quadrilateral : answer(True) ↔
+FormalConjectures/ErdosProblems/381.lean:64:    answer(False) ↔
+FormalConjectures/ErdosProblems/958.lean:90:theorem erdos_958 : answer(False) ↔
+FormalConjectures/ErdosProblems/895.lean:48:theorem erdos_895 : answer(True) ↔
+FormalConjectures/ErdosProblems/716.lean:54:theorem erdos_716 : answer(True) ↔
+FormalConjectures/ErdosProblems/957.lean:57:theorem erdos_957 : answer(True) ↔
+FormalConjectures/ErdosProblems/651.lean:71:theorem erdos_651 : answer(False) ↔
+FormalConjectures/ErdosProblems/59.lean:65:theorem erdos_59 : answer(False) ↔
+FormalConjectures/ErdosProblems/1164.lean:78:theorem erdos_1164 : answer(True) ↔
+FormalConjectures/ErdosProblems/777.lean:50:theorem erdos_777 : answer(True) ↔
+FormalConjectures/ErdosProblems/777.lean:65:theorem erdos_777.variants.q2 : answer(False) ↔
+FormalConjectures/ErdosProblems/777.lean:81:theorem erdos_777.variants.q3 : answer(True) ↔
+FormalConjectures/ErdosProblems/764.lean:54:theorem erdos_764 : answer(False) ↔
+FormalConjectures/ErdosProblems/255.lean:54:theorem erdos_255 : answer(True) ↔
+FormalConjectures/ErdosProblems/399.lean:54:theorem erdos_399 : answer(False) ↔
+FormalConjectures/ErdosProblems/799.lean:82:theorem erdos_799 : answer(True) ↔
+FormalConjectures/ErdosProblems/220.lean:58:    answer(True) ↔
+FormalConjectures/ErdosProblems/429.lean:49:    answer(False) ↔
+FormalConjectures/ErdosProblems/492.lean:74:theorem erdos_492 : answer(False) ↔
+FormalConjectures/ErdosProblems/1079.lean:73:theorem erdos_1079 : answer(True) ↔
+FormalConjectures/ErdosProblems/532.lean:48:theorem erdos_532 : answer(True) ↔
+FormalConjectures/ErdosProblems/977.lean:50:    answer(True) ↔
+FormalConjectures/ErdosProblems/1081.lean:62:theorem erdos_1081 : answer(False) ↔
+FormalConjectures/ErdosProblems/546.lean:67:theorem erdos_546 : answer(True) ↔
+FormalConjectures/ErdosProblems/229.lean:46:    answer(True) ↔ ∀ (S : ℕ → Set ℂ), (∀ n, derivedSet (S n) = ∅) →
+FormalConjectures/ErdosProblems/121.lean:65:theorem erdos_121 : answer(False) ↔
+FormalConjectures/ErdosProblems/591.lean:40:theorem erdos_591 : answer(True) ↔ OrdinalCardinalRamsey (ω ^ ω ^ 2) (ω ^ ω ^ 2) 3 := by
+FormalConjectures/ErdosProblems/984.lean:53:theorem erdos_984 : answer(True) ↔
+FormalConjectures/ErdosProblems/48.lean:34:    answer(True) ↔ {(n, m) : ℕ × ℕ | n.totient = σ 1 m}.Infinite := by
+FormalConjectures/ErdosProblems/756.lean:61:theorem erdos_756 : answer(True) ↔
+FormalConjectures/ErdosProblems/652.lean:61:    answer(True) ↔
+FormalConjectures/ErdosProblems/1166.lean:95:theorem erdos_1166 : answer(True) ↔
+FormalConjectures/ErdosProblems/641.lean:48:theorem erdos_641 : answer(False) ↔
+FormalConjectures/ErdosProblems/26.lean:96:theorem erdos_26 : answer(False) ↔ ∀ A : ℕ → ℕ, StrictMono A → IsThick A →
+FormalConjectures/ErdosProblems/1043.lean:53:    answer(False) ↔ ∀ (f : ℂ[X]), f.Monic → f.degree ≥ 1 →
+FormalConjectures/ErdosProblems/285.lean:47:    answer(True) ↔ ∀ᵉ (f : ℕ → ℕ)
+FormalConjectures/ErdosProblems/440.lean:56:theorem erdos_440 : answer(True) ↔
+FormalConjectures/ErdosProblems/518.lean:53:theorem erdos_518 : answer(True) ↔
+FormalConjectures/ErdosProblems/678.lean:77:theorem erdos_678 : answer(True) ↔
+FormalConjectures/ErdosProblems/230.lean:63:theorem erdos_230 : answer(False) ↔
+FormalConjectures/ErdosProblems/147.lean:68:theorem erdos_147 : answer(False) ↔
+FormalConjectures/ErdosProblems/185.lean:64:    answer(True) ↔
+FormalConjectures/ErdosProblems/21.lean:73:theorem erdos_21 : answer(True) ↔
+FormalConjectures/ErdosProblems/746.lean:70:theorem erdos_746 : answer(True) ↔
+FormalConjectures/ErdosProblems/937.lean:49:    answer(True) ↔
+FormalConjectures/ErdosProblems/1136.lean:59:theorem erdos_1136 : answer(True) ↔
+FormalConjectures/ErdosProblems/823.lean:54:theorem erdos_823 : answer(True) ↔
+FormalConjectures/ErdosProblems/722.lean:72:theorem erdos_722 : answer(True) ↔
+FormalConjectures/ErdosProblems/1128.lean:45:theorem erdos_1128 : answer(False) ↔
+FormalConjectures/ErdosProblems/79.lean:70:theorem erdos_79 : answer(True) ↔
+FormalConjectures/ErdosProblems/442.lean:80:theorem erdos_442 : answer(False) ↔ ∀ (A : Set ℕ),
+FormalConjectures/ErdosProblems/448.lean:51:theorem erdos_448 : answer(False) ↔
+FormalConjectures/ErdosProblems/559.lean:72:    answer(False) ↔ (∀ d : ℕ, d ≥ 1 →
+FormalConjectures/ErdosProblems/501.lean:75:    answer(True) ↔
+FormalConjectures/ErdosProblems/8.lean:68:theorem erdos_8 : answer(False) ↔
+FormalConjectures/ErdosProblems/1153.lean:63:theorem erdos_1153 : answer(True) ↔
+FormalConjectures/ErdosProblems/29.lean:55:    answer(True) ↔
+FormalConjectures/ErdosProblems/845.lean:37:    answer(False) ↔
+FormalConjectures/ErdosProblems/178.lean:61:    answer(True) ↔
+FormalConjectures/ErdosProblems/605.lean:60:theorem erdos_605 : answer(True) ↔
+FormalConjectures/ErdosProblems/666.lean:84:theorem erdos_666 : answer(False) ↔
+FormalConjectures/ErdosProblems/966.lean:44:theorem erdos_966 : answer(True) ↔
+FormalConjectures/ErdosProblems/908.lean:48:theorem erdos_908 : answer(True) ↔
+FormalConjectures/ErdosProblems/1004.lean:51:    answer(True) ↔ ∃ (c : ℝ) (hc : c > 0),
+FormalConjectures/ErdosProblems/742.lean:41:theorem erdos_742 : answer(True) ↔
+FormalConjectures/ErdosProblems/998.lean:54:theorem erdos_998 : answer(True) ↔
+FormalConjectures/ErdosProblems/63.lean:45:theorem erdos_63 : answer(True) ↔
+FormalConjectures/ErdosProblems/1130.lean:87:theorem erdos_1130 : answer(True) ↔
+FormalConjectures/ErdosProblems/316.lean:43:theorem erdos_316 : answer(False) ↔ ∀ A : Finset ℕ, 0 ∉ A → 1 ∉ A →
+FormalConjectures/ErdosProblems/658.lean:51:theorem erdos_658 : answer(True) ↔
+FormalConjectures/ErdosProblems/586.lean:45:theorem erdos_586 : answer(False) ↔
+FormalConjectures/ErdosProblems/118.lean:95:theorem erdos_118 : answer(False) ↔ ∀ (α : Ordinal), OrdPartition α α 3 →
+FormalConjectures/ErdosProblems/270.lean:46:theorem erdos_270 : answer(False) ↔
+FormalConjectures/ErdosProblems/505.lean:44:theorem erdos_505 : answer(False) ↔
+FormalConjectures/ErdosProblems/437.lean:59:theorem erdos_437 : answer(True) ↔ ∀ (ε : ℝ), 0 < ε →
+FormalConjectures/ErdosProblems/807.lean:90:theorem erdos_807 : answer(False) ↔
+FormalConjectures/ErdosProblems/290.lean:57:theorem erdos_290 : answer(True) ↔
+FormalConjectures/ErdosProblems/1077.lean:39:    answer(False) ↔ ∀ ε > (0 : ℝ), ε < 1 → ∀ α > (0 : ℝ), α < 1 → ∀ᶠ D in atTop, ∀ᶠ n in atTop,
+FormalConjectures/ErdosProblems/1048.lean:52:theorem erdos_1048 : answer(False) ↔
+FormalConjectures/ErdosProblems/899.lean:45:theorem erdos_899 : answer(True) ↔ ∀ (A : Set ℕ), A.Infinite →
+FormalConjectures/ErdosProblems/1140.lean:50:    answer(False) ↔ Set.Infinite {n : ℕ | AllShiftsArePrime n} := by
+FormalConjectures/ErdosProblems/965.lean:44:    answer(False) ↔ ∀ f : ℝ → Fin 2, ∃ A : Set ℝ, ¬ A.Countable ∧
+FormalConjectures/ErdosProblems/965.lean:52:theorem erdos_965.generalization : answer(False) ↔
+FormalConjectures/ErdosProblems/833.lean:72:    answer(True) ↔
+FormalConjectures/ErdosProblems/209.lean:68:theorem erdos_209 : answer(False) ↔
+FormalConjectures/ErdosProblems/471.lean:55:theorem erdos_471 : answer(True) ↔
+FormalConjectures/ErdosProblems/523.lean:57:theorem erdos_523 : answer(True) ↔
+FormalConjectures/ErdosProblems/1134.lean:66:theorem erdos_1134 : answer(False) ↔
+FormalConjectures/ErdosProblems/729.lean:49:theorem erdos_729 : answer(True) ↔
+FormalConjectures/ErdosProblems/767.lean:66:theorem erdos_767 : answer(True) ↔
+FormalConjectures/ErdosProblems/194.lean:38:  answer(False) ↔ ∀ k ≥ 3, ∀ r : ℝ → ℝ → Prop, IsStrictTotalOrder ℝ r →
+FormalConjectures/ErdosProblems/134.lean:60:    answer(True) ↔
+FormalConjectures/ErdosProblems/880.lean:60:theorem erdos_880 : answer(False) ↔
+FormalConjectures/ErdosProblems/150.lean:78:theorem erdos_150 : answer(True) ↔
+FormalConjectures/ErdosProblems/179.lean:64:    answer(True) ↔
+FormalConjectures/ErdosProblems/231.lean:55:theorem erdos_231 : answer(False) ↔
+FormalConjectures/ErdosProblems/924.lean:44:theorem erdos_924 : answer(True) ↔
+FormalConjectures/ErdosProblems/646.lean:44:theorem erdos_646 : answer(True) ↔
+FormalConjectures/ErdosProblems/818.lean:51:    answer(True) ↔
+FormalConjectures/ErdosProblems/308.lean:58:theorem erdos_308 : answer(True) ↔ ∀ N : ℕ, 1 ≤ N →
+FormalConjectures/ErdosProblems/798.lean:65:    answer(True) ↔
+FormalConjectures/ErdosProblems/397.lean:48:    answer(False) ↔
+FormalConjectures/ErdosProblems/917.lean:68:    answer(True) ↔ ∀ k : ℕ, k ≥ 4 →
+FormalConjectures/ErdosProblems/917.lean:98:    answer(False) ↔ ∀ k : ℕ, k ≥ 6 →
+FormalConjectures/ErdosProblems/453.lean:47:theorem erdos_453 : answer(False) ↔
+FormalConjectures/ErdosProblems/119.lean:54:    answer(True) ↔ ∀ (z : ℕ → ℂ) (hz : ∀ i : ℕ, ‖z i‖ = 1),
+FormalConjectures/ErdosProblems/119.lean:68:    answer(True) ↔ ∀ (z : ℕ → ℂ) (hz : ∀ i : ℕ, ‖z i‖ = 1),
+FormalConjectures/ErdosProblems/439.lean:50:theorem erdos_439 : answer(True) ↔
+FormalConjectures/ErdosProblems/439.lean:61:theorem erdos_439.variants.kth_powers : answer(True) ↔
+FormalConjectures/ErdosProblems/339.lean:67:    answer(True) ↔ ∀ (A : Set ℕ) (r : ℕ),
+FormalConjectures/ErdosProblems/509.lean:96:theorem erdos_509.variants.Cartan_bound : answer(True) ↔ ∀ (f : ℂ[X]), f.Monic → f.natDegree ≠ 0 →
+FormalConjectures/ErdosProblems/509.lean:106:theorem erdos_509.variants.Pommerenke_bound : answer(True) ↔ ∀ (f : ℂ[X]), f.Monic → f.natDegree ≠ 0 →
+FormalConjectures/ErdosProblems/509.lean:117:theorem erdos_509.variants.Pommerenke_connected : answer(True) ↔ ∀ (f : ℂ[X]), f.Monic → f.natDegree ≠ 0 →
+FormalConjectures/ErdosProblems/127.lean:91:theorem erdos_127 : answer(True) ↔
+FormalConjectures/ErdosProblems/664.lean:55:theorem erdos_664 : answer(False) ↔
+FormalConjectures/ErdosProblems/4.lean:40:theorem erdos_4 : answer(True) ↔ (∀ C > 0, Erdos4For C) := by
+FormalConjectures/ErdosProblems/1099.lean:67:theorem erdos_1099 : answer(True) ↔
+FormalConjectures/ErdosProblems/480.lean:36:theorem erdos_480 : answer(True) ↔ ∀ (x : ℕ → ℝ), (∀ n, x n ∈ Set.Icc 0 1) →
+FormalConjectures/ErdosProblems/1080.lean:59:    answer(False) ↔
+FormalConjectures/ErdosProblems/315.lean:67:theorem erdos_315 : answer(True) ↔
+FormalConjectures/ErdosProblems/1021.lean:78:theorem erdos_1021 : answer(True) ↔
+FormalConjectures/ErdosProblems/1051.lean:68:    answer(True) ↔ ∀ (a : ℕ → ℤ), StrictMono a → GrowthCondition a →
+FormalConjectures/ErdosProblems/748.lean:74:theorem erdos_748 : answer(True) ↔
+FormalConjectures/ErdosProblems/331.lean:46:    answer(False) ↔
+FormalConjectures/ErdosProblems/1027.lean:48:    answer(True) ↔
+FormalConjectures/ErdosProblems/649.lean:46:theorem erdos_649 : answer(False) ↔ ∀ p q : ℕ, Nat.Prime p → Nat.Prime q →
+FormalConjectures/ErdosProblems/910.lean:46:theorem erdos_910 : answer(False) ↔
+FormalConjectures/ErdosProblems/910.lean:62:theorem erdos_910.variants.part2 : answer(False) ↔
+FormalConjectures/ErdosProblems/485.lean:50:theorem erdos_485 : answer(True) ↔
+FormalConjectures/ErdosProblems/815.lean:55:theorem erdos_815 : answer(False) ↔
+FormalConjectures/ErdosProblems/493.lean:41:theorem erdos_493 : answer(True) ↔
+FormalConjectures/ErdosProblems/635.lean:81:theorem erdos_635 : answer(True) ↔
+FormalConjectures/ErdosProblems/772.lean:61:theorem erdos_772 : answer(True) ↔
+FormalConjectures/ErdosProblems/286.lean:49:    answer(True) ↔
+FormalConjectures/ErdosProblems/533.lean:45:theorem erdos_533 : answer(False) ↔
+FormalConjectures/ErdosProblems/73.lean:54:theorem erdos_73 : answer(True) ↔
+FormalConjectures/ErdosProblems/1090.lean:43:theorem erdos_1090 : answer(True) ↔ ∀ (k : ℕ), k ≥ 3 →
+FormalConjectures/ErdosProblems/129.lean:69:theorem erdos_129 : answer(False) ↔
+FormalConjectures/ErdosProblems/154.lean:76:theorem erdos_154 : answer(True) ↔
+FormalConjectures/ErdosProblems/907.lean:42:theorem erdos_907 : answer(True) ↔ ∀ (f : ℝ → ℝ),
+FormalConjectures/ErdosProblems/659.lean:52:theorem erdos_659 : answer(True) ↔ ∃ A : ℕ → Finset ℝ²,
+FormalConjectures/ErdosProblems/284.lean:59:    answer(True) ↔
+FormalConjectures/ErdosProblems/343.lean:67:    answer(True) ↔
+FormalConjectures/ErdosProblems/1082.lean:66:theorem erdos_1082.parts.ii : answer(False) ↔
+FormalConjectures/ErdosProblems/72.lean:55:theorem erdos_72 : answer(True) ↔
+FormalConjectures/ErdosProblems/527.lean:60:theorem erdos_527 : answer(True) ↔
+FormalConjectures/ErdosProblems/302.lean:68:theorem erdos_302 : answer(False) ↔
+FormalConjectures/ErdosProblems/76.lean:70:theorem erdos_76 : answer(True) ↔
+FormalConjectures/ErdosProblems/273.lean:38:theorem erdos_273.variants.three : answer(True) ↔ ∃ c : StrictCoveringSystem ℕ, ∀ i, ∃ p, p.Prime ∧ 3 ≤ p ∧
+FormalConjectures/ErdosProblems/771.lean:61:theorem erdos_771 : answer(True) ↔
+FormalConjectures/ErdosProblems/277.lean:40:   answer(True) ↔ ∀ c : ℝ, ∃ n : ℕ, (sigma 1 n : ℝ) > c * n ∧
+FormalConjectures/ErdosProblems/806.lean:47:theorem erdos_806 : answer(True) ↔
+FormalConjectures/ErdosProblems/347.lean:46:    answer(True) ↔ ∃ a : ℕ → ℕ, (Monotone a) ∧
+FormalConjectures/ErdosProblems/204.lean:42:theorem erdos_204 : answer(False) ↔ ∃ (n : ℕ) (a : ℕ → ℤ),
+FormalConjectures/ErdosProblems/1036.lean:49:    answer(True) ↔
+FormalConjectures/ErdosProblems/407.lean:52:theorem erdos_407 : answer(True) ↔
+FormalConjectures/ErdosProblems/232.lean:70:theorem erdos_232 : answer(True) ↔
+FormalConjectures/ErdosProblems/307.lean:59:theorem erdos_307_coprime : answer(True) ↔ ∃ P Q : Finset ℕ, 0 ∉ P ∩ Q ∧ 1 < #P ∧ 1 < #Q ∧
+FormalConjectures/ErdosProblems/487.lean:59:theorem erdos_487 : answer(True) ↔
+FormalConjectures/ErdosProblems/191.lean:58:    answer(True) ↔
+FormalConjectures/ErdosProblems/1147.lean:62:theorem erdos_1147 : answer(False) ↔
+FormalConjectures/ErdosProblems/941.lean:46:theorem erdos_941 : answer(True) ↔ ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/491.lean:48:theorem erdos_491 : answer(True) ↔
+FormalConjectures/ErdosProblems/50.lean:44:theorem erdos_50 : answer(True) ↔
+FormalConjectures/ErdosProblems/877.lean:72:    answer(True) ↔
+FormalConjectures/ErdosProblems/427.lean:48:theorem erdos_427 : answer(True) ↔ erdos427 := by
+FormalConjectures/ErdosProblems/1071.lean:44:    answer(True) ↔ ∃ S : Finset (ℝ² × ℝ²),
+FormalConjectures/ErdosProblems/27.lean:70:    answer(False) ↔
+FormalConjectures/ErdosProblems/909.lean:57:theorem erdos_909 : answer(True) ↔
+FormalConjectures/ErdosProblems/228.lean:38:    answer(True) ↔ ∃ (c₁ : ℝ) (c₂ : ℝ), ∀ᶠ n : ℕ in Filter.atTop,
+FormalConjectures/ErdosProblems/698.lean:45:theorem erdos_698 : answer(True) ↔
+FormalConjectures/ErdosProblems/926.lean:101:theorem erdos_926 : answer(True) ↔
+FormalConjectures/ErdosProblems/763.lean:59:theorem erdos_763 : answer(False) ↔
+FormalConjectures/ErdosProblems/705.lean:41:  answer(False) ↔ ∃ k, ∀ V : Set ℝ², V.Finite →
+FormalConjectures/ErdosProblems/16.lean:74:theorem erdos_16 : answer(False) ↔
+FormalConjectures/ErdosProblems/656.lean:53:theorem erdos_656 : answer(True) ↔
+FormalConjectures/ErdosProblems/418.lean:55:theorem erdos_418 : answer(True) ↔ { (n - n.totient : ℕ) | n }ᶜ.Infinite := by
+FormalConjectures/ErdosProblems/832.lean:70:theorem erdos_832 : answer(False) ↔
+FormalConjectures/ErdosProblems/46.lean:42:theorem erdos_46 : answer(True) ↔
+FormalConjectures/ErdosProblems/1089.lean:66:    answer(True) ↔
+FormalConjectures/ErdosProblems/356.lean:55:    answer(True) ↔
+FormalConjectures/ErdosProblems/476.lean:54:theorem erdos_476 : answer(True) ↔
+FormalConjectures/ErdosProblems/1001.lean:73:theorem erdos_1001 : answer(True) ↔
+FormalConjectures/ErdosProblems/314.lean:74:theorem erdos_314 : answer(True) ↔
+FormalConjectures/ErdosProblems/988.lean:56:    answer(True) ↔
+FormalConjectures/ErdosProblems/867.lean:59:theorem erdos_867 : answer(False) ↔
+FormalConjectures/ErdosProblems/762.lean:70:    answer(False) ↔
+FormalConjectures/ErdosProblems/298.lean:39:theorem erdos_298 : answer(True) ↔ (∀ (A : Set ℕ), 0 ∉ A → A.HasPosDensity →
+FormalConjectures/ErdosProblems/298.lean:47:theorem erdos_298.variants.upper_density : answer(True) ↔ (∀ (A : Set ℕ), 0 ∉ A → 0 < A.upperDensity →
+FormalConjectures/ErdosProblems/239.lean:43:    answer(True) ↔ ∀ f : ℕ → ℝ,
+FormalConjectures/ErdosProblems/1067.lean:59:    answer(False) ↔ ∀ (V : Type) (G : SimpleGraph V), G.chromaticCardinal = ℵ_ 1 →
+FormalConjectures/ErdosProblems/1067.lean:69:    answer(False) ↔ ∀ (V : Type) (G : SimpleGraph V), G.chromaticCardinal = ℵ_ 1 →
+FormalConjectures/ErdosProblems/814.lean:57:    answer(True) ↔
+FormalConjectures/ErdosProblems/622.lean:65:    answer(True) ↔
+FormalConjectures/ErdosProblems/727.lean:55:    answer(True) ↔ Set.Infinite {n : ℕ | (n + k)! ^ 2 ∣ (2 * n)!} := by
+FormalConjectures/ErdosProblems/847.lean:51:theorem erdos_847 : answer(False) ↔ ∀ (A : Set ℕ), Infinite A → HasFew3APs A →
+FormalConjectures/ErdosProblems/834.lean:113:theorem erdos_834 : answer(False) ↔
+FormalConjectures/ErdosProblems/834.lean:126:theorem erdos_834.variants.chromatic : answer(True) ↔
+FormalConjectures/ErdosProblems/795.lean:62:    answer(True) ↔
+FormalConjectures/ErdosProblems/219.lean:77:theorem erdos_219 : answer(True) ↔ ∀ N : ℕ, ∃ l ∈ primeArithmeticProgressions, N ≤ ENat.card l := by
+FormalConjectures/ErdosProblems/1009.lean:63:theorem erdos_1009 : answer(True) ↔
+FormalConjectures/ErdosProblems/449.lean:48:theorem erdos_449 : answer(False) ↔
+FormalConjectures/ErdosProblems/753.lean:61:    answer(False) ↔
+FormalConjectures/ErdosProblems/861.lean:70:theorem erdos_861 : answer(True) ↔
+FormalConjectures/ErdosProblems/405.lean:55:theorem erdos_405 : answer(True) ↔
+FormalConjectures/ErdosProblems/1034.lean:54:theorem erdos_1034 : answer(False) ↔
+FormalConjectures/ErdosProblems/1037.lean:55:    answer(False) ↔
+FormalConjectures/ErdosProblems/227.lean:63:theorem erdos_227 : answer(False) ↔
+FormalConjectures/ErdosProblems/34.lean:56:theorem erdos_34 : answer(False) ↔
+FormalConjectures/ErdosProblems/133.lean:68:theorem erdos_133 : answer(False) ↔
+FormalConjectures/ErdosProblems/511.lean:45:theorem erdos_511 : answer(False) ↔
+FormalConjectures/ErdosProblems/157.lean:68:    answer(True) ↔ ∃ A : Set ℕ, IsInfiniteSidonSet A ∧ IsAsymptoticBasisOrder3 A := by
+FormalConjectures/ErdosProblems/632.lean:53:theorem erdos_632 : answer(False) ↔ ∀ (V : Type*) (G : SimpleGraph V) (a b m : ℕ),
+FormalConjectures/ErdosProblems/278.lean:76:theorem erdos_278 : answer(True) ↔
+FormalConjectures/ErdosProblems/124.lean:44:lemma erdos124.zero : answer(True) ↔
+FormalConjectures/ErdosProblems/337.lean:75:theorem erdos_337 : answer(False) ↔
+FormalConjectures/ErdosProblems/613.lean:46:theorem erdos_613 : answer(False) ↔ ∀ (n : ℕ), n ≥ 3 →
+FormalConjectures/ErdosProblems/1000.lean:61:theorem erdos_1000 : answer(True) ↔
+FormalConjectures/ErdosProblems/355.lean:44:    answer(True) ↔ ∃ A : ℕ → ℕ, IsLacunary A ∧ ∃ u v : ℝ, u < v ∧ ∀ q : ℚ, ↑q ∈ Set.Ioo u v →
+FormalConjectures/ErdosProblems/991.lean:75:    answer(True) ↔
+FormalConjectures/ErdosProblems/1047.lean:52:theorem erdos_1047 : answer(False) ↔
+FormalConjectures/ErdosProblems/816.lean:47:theorem erdos_816 : answer(True) ↔
+FormalConjectures/ErdosProblems/299.lean:43:theorem erdos_299 : answer(False) ↔ (∃ (a : ℕ → ℕ),
+FormalConjectures/ErdosProblems/292.lean:59:theorem erdos_292 : answer(True) ↔
+FormalConjectures/ErdosProblems/105.lean:44:theorem erdos_105 : answer(False) ↔
+FormalConjectures/ErdosProblems/784.lean:51:    answer(False) ↔
+FormalConjectures/ErdosProblems/842.lean:70:theorem erdos_842 : answer(True) ↔
+FormalConjectures/ErdosProblems/980.lean:64:theorem erdos_980 : answer(True) ↔
+FormalConjectures/ErdosProblems/737.lean:70:theorem erdos_737 : answer(True) ↔
+FormalConjectures/ErdosProblems/1046.lean:49:theorem erdos_1046 : answer(True) ↔
+FormalConjectures/ErdosProblems/189.lean:55:    answer(False) ↔ Erdos189For
+FormalConjectures/ErdosProblems/1006.lean:80:theorem erdos_1006 : answer(False) ↔
+FormalConjectures/ErdosProblems/921.lean:57:theorem erdos_921 : answer(True) ↔
+FormalConjectures/ErdosProblems/744.lean:71:theorem erdos_744 : answer(False) ↔
+FormalConjectures/ErdosProblems/964.lean:48:theorem erdos_964 : answer(True) ↔
+FormalConjectures/ErdosProblems/1019.lean:50:    answer(True) ↔
+FormalConjectures/ErdosProblems/541.lean:46:theorem erdos_541 : answer(True) ↔ (∀ p, Fact p.Prime → ∀ (a : Fin p → ZMod p),
+FormalConjectures/ErdosProblems/328.lean:55:theorem erdos_328 : answer(False) ↔
+FormalConjectures/ErdosProblems/848.lean:63:theorem erdos_848 : answer(True) ↔ ∀ N, Erdos848For N := by
+FormalConjectures/ErdosProblems/883.lean:104:theorem erdos_883.variants.tripartite : answer(True) ↔
+FormalConjectures/ErdosProblems/1124.lean:53:theorem erdos_1124 : answer(True) ↔
+FormalConjectures/ErdosProblems/258.lean:45:theorem erdos_258.variants.Monotone : answer(True) ↔
+FormalConjectures/ErdosProblems/258.lean:58:theorem erdos_258.variants.Constant : answer(True) ↔ ∀ t ≥ (2 : ℕ),
+FormalConjectures/ErdosProblems/871.lean:71:theorem erdos_871 : answer(False) ↔
+FormalConjectures/ErdosProblems/894.lean:52:theorem erdos_894 : answer(True) ↔
+FormalConjectures/ErdosProblems/216.lean:91:theorem erdos_216 : answer(False) ↔
+FormalConjectures/ErdosProblems/754.lean:56:    answer(True) ↔
+FormalConjectures/ErdosProblems/226.lean:51:theorem erdos_226 : answer(True) ↔
+FormalConjectures/ErdosProblems/256.lean:70:theorem erdos_256 : answer(False) ↔
+FormalConjectures/ErdosProblems/1076.lean:80:theorem erdos_1076 : answer(True) ↔
+FormalConjectures/ErdosProblems/135.lean:63:    answer(False) ↔
+FormalConjectures/ErdosProblems/822.lean:36:    answer(True) ↔ (Set.range fun n => n + Nat.totient n).HasPosDensity := by
+FormalConjectures/ErdosProblems/499.lean:39:    answer(True) ↔ (∀ n, ∀ M ∈ doublyStochastic ℝ (Fin n), ∃ σ : Equiv.Perm (Fin n),
+FormalConjectures/ErdosProblems/499.lean:70:    answer(True) ↔ ∀ n > 0, ∀ M ∈ doublyStochastic ℝ (Fin n), ∃ σ : Equiv.Perm (Fin n),
+FormalConjectures/ErdosProblems/303.lean:41:    answer(True) ↔
+FormalConjectures/ErdosProblems/116.lean:79:theorem erdos_116 : answer(True) ↔
+FormalConjectures/ErdosProblems/785.lean:57:theorem erdos_785 : answer(True) ↔
+FormalConjectures/ErdosProblems/281.lean:62:theorem erdos_281 : answer(True) ↔
+FormalConjectures/ErdosProblems/473.lean:41:    answer(True) ↔
+FormalConjectures/ErdosProblems/333.lean:57:theorem erdos_333 : answer(False) ↔
+FormalConjectures/ErdosProblems/594.lean:71:theorem erdos_594 : answer(True) ↔
+FormalConjectures/ErdosProblems/794.lean:51:theorem erdos_794 : answer(False) ↔ ∀ n : ℕ, ∀ H : Finset (Finset (Fin (3 * n))),
+FormalConjectures/ErdosProblems/715.lean:62:theorem erdos_715 : answer(True) ↔
+FormalConjectures/ErdosProblems/715.lean:79:theorem erdos_715.variants.r_geq_5 : answer(True) ↔
+FormalConjectures/ErdosProblems/1116.lean:56:theorem erdos_1116 : answer(True) ↔
+FormalConjectures/ErdosProblems/915.lean:66:theorem erdos_915 : answer(False) ↔
+FormalConjectures/ErdosProblems/615.lean:83:theorem erdos_615 : answer(False) ↔
+FormalConjectures/ErdosProblems/1115.lean:82:theorem erdos_1115 : answer(False) ↔
+FormalConjectures/ErdosProblems/758.lean:67:theorem erdos_758 : answer(True) ↔ maxCochromaticNumber 12 = 4 := by
+FormalConjectures/ErdosProblems/180.lean:69:theorem erdos_180 : answer(False) ↔
+FormalConjectures/ErdosProblems/519.lean:49:theorem erdos_519 : answer(True) ↔
+FormalConjectures/ErdosProblems/916.lean:57:theorem erdos_916 : answer(True) ↔
+FormalConjectures/ErdosProblems/401.lean:48:    answer(True) ↔
+FormalConjectures/ErdosProblems/1058.lean:55:    answer(True) ↔
+FormalConjectures/ErdosProblems/949.lean:44:theorem erdos_949.variants.sidon : answer(True) ↔
+FormalConjectures/ErdosProblems/728.lean:50:    answer(True) ↔
+FormalConjectures/ErdosProblems/125.lean:38:    answer(False) ↔ ({ x : ℕ | (digits 3 x).toFinset ⊆ {0, 1} } +
+FormalConjectures/ErdosProblems/803.lean:58:    answer(False) ↔
+FormalConjectures/ErdosProblems/240.lean:61:    answer(True) ↔
+FormalConjectures/ErdosProblems/1022.lean:53:theorem erdos_1022 : answer(False) ↔
+FormalConjectures/ErdosProblems/363.lean:48:theorem erdos_363 : answer(False) ↔
+FormalConjectures/ErdosProblems/752.lean:49:theorem erdos_752 : answer(True) ↔
+FormalConjectures/ErdosProblems/370.lean:37:theorem erdos_370 : answer(True) ↔
+FormalConjectures/ErdosProblems/992.lean:63:theorem erdos_992 : answer(False) ↔
+FormalConjectures/ErdosProblems/992.lean:81:theorem erdos_992.variants.stronger : answer(False) ↔
+FormalConjectures/ErdosProblems/922.lean:45:theorem erdos_922 : answer(True) ↔
+FormalConjectures/ErdosProblems/53.lean:61:theorem erdos_53 : answer(True) ↔
+FormalConjectures/ErdosProblems/433.lean:68:theorem erdos_433 : answer(True) ↔
+FormalConjectures/ErdosProblems/549.lean:69:theorem erdos_549 : answer(False) ↔
+FormalConjectures/ErdosProblems/570.lean:65:theorem erdos_570 : answer(True) ↔ ∀ (k : ℕ) (hk : k ≥ 3),
+FormalConjectures/ErdosProblems/631.lean:73:theorem erdos_631 : answer(True) ↔
+FormalConjectures/ErdosProblems/631.lean:84:theorem erdos_631.variants.tight : answer(True) ↔
+FormalConjectures/ErdosProblems/690.lean:67:theorem erdos_690 : answer(False) ↔
+FormalConjectures/ErdosProblems/599.lean:53:theorem erdos_599 : answer(True) ↔
+FormalConjectures/ErdosProblems/732.lean:64:theorem erdos_732 : answer(True) ↔ ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/22.lean:54:theorem erdos_22 : answer(True) ↔
+FormalConjectures/ErdosProblems/515.lean:58:theorem erdos_515 : answer(True) ↔
+FormalConjectures/ErdosProblems/205.lean:46:theorem erdos_205 : answer(False) ↔
+FormalConjectures/ErdosProblems/525.lean:69:    answer(True) ↔
+FormalConjectures/ErdosProblems/221.lean:43:    answer(True) ↔
+FormalConjectures/ErdosProblems/927.lean:67:theorem erdos_927 : answer(False) ↔
+FormalConjectures/ErdosProblems/540.lean:52:theorem erdos_540 : answer(True) ↔
+FormalConjectures/ErdosProblems/923.lean:44:    answer(True) ↔
+FormalConjectures/ErdosProblems/110.lean:61:theorem erdos_110 : answer(False) ↔
+FormalConjectures/ErdosProblems/582.lean:47:theorem erdos_582 : answer(True) ↔
+FormalConjectures/ErdosProblems/245.lean:44:    answer(True) ↔ ∀ (A : Set ℕ), A.Infinite →
+FormalConjectures/ErdosProblems/717.lean:76:theorem erdos_717 : answer(True) ↔
+FormalConjectures/ErdosProblems/113.lean:74:theorem erdos_113 : answer(False) ↔
+FormalConjectures/ErdosProblems/537.lean:45:theorem erdos_537 : answer(False) ↔
+FormalConjectures/ErdosProblems/692.lean:68:theorem erdos_692 : answer(False) ↔
+FormalConjectures/ErdosProblems/237.lean:64:theorem erdos_237 : answer(True) ↔
+FormalConjectures/ErdosProblems/967.lean:52:    answer(False) ↔
+FormalConjectures/ErdosProblems/775.lean:63:theorem erdos_775 : answer(False) ↔
+FormalConjectures/ErdosProblems/843.lean:51:    answer(True) ↔ IsRamseyComplete {n : ℕ | ∃ m : ℕ, m ≥ 1 ∧ n = m ^ 2} 2 := by
+FormalConjectures/ErdosProblems/263.lean:57:theorem erdos_263.parts.ii : answer(False) ↔
+FormalConjectures/ErdosProblems/673.lean:74:    answer(True) ↔ ∀ M : ℝ, HasNaturalDensityZero {n : ℕ | erdosG n ≤ M} := by
+FormalConjectures/ErdosProblems/844.lean:52:    answer(True) ↔ ∀ (N : ℕ) (A : Finset ℕ),
+FormalConjectures/ErdosProblems/215.lean:50:theorem erdos_215 : answer(True) ↔
+FormalConjectures/ErdosProblems/608.lean:66:theorem erdos_608 : answer(False) ↔
+FormalConjectures/ErdosProblems/925.lean:61:theorem erdos_925 : answer(False) ↔

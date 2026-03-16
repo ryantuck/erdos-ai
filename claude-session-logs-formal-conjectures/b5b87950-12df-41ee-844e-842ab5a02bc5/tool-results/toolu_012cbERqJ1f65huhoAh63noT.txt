@@ -1,0 +1,274 @@
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-33-that $A ∩ [n, n + 1, ..., n + p]$ is nonempty for all $n$. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-34-def IsSyndetic (A : Set ℕ) : Prop := ∃ p, ∀ n, (A ∩ .Icc n (n + p)).Nonempty
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-35-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-36-/-- A Sidon set is a set, such that such that all pairwise sums of elements are distinct apart from
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-37-coincidences forced by the commutativity of addition. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:38:def IsSidon (A : Set α) : Prop := ∀ᵉ (i₁ ∈ A) (j₁ ∈ A) (i₂ ∈ A) (j₂ ∈ A),
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-39-  i₁ + i₂ = j₁ + j₂ → (i₁ = j₁ ∧ i₂ = j₂) ∨ (i₁ = j₂ ∧ i₂ = j₁)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-40-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-41-namespace Set
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-42-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-43-lemma IsSidon.avoids_isAPOfLength_three {A : Set ℕ} (hA : IsSidon A)
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-99-is inclusion-maximal among subsets of `Set.Icc 1 N` with the Sidon property.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-100--/
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-101-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-102-/-- `IsMaximalSidonSetIn A N` means `A ⊆ {1, …, N}` is Sidon and cannot be extended within
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-103-`{1, …, N}` while remaining Sidon. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:104:def IsMaximalSidonSetIn (A : Set ℕ) (N : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-105-  A ⊆ Set.Icc 1 N ∧ IsSidon A ∧
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-106-    ∀ ⦃x : ℕ⦄, x ∈ Set.Icc 1 N → x ∉ A → ¬ IsSidon (A ∪ {x})
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-107-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-108-namespace IsMaximalSidonSetIn
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-109-
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-126-
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-127-instance (A : Finset α) [DecidableEq α] : Decidable (IsSidon (A : Set α)) :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-128-  decidable_of_iff (∀ᵉ (i₁ ∈ A) (j₁ ∈ A) (i₂ ∈ A) (j₂ ∈ A), _) <| by rfl
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-129-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-130-/-- The maximum size of a Sidon set in the supplied `Finset`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:131:def maxSidonSubsetCard (A : Finset α) [DecidableEq α] : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-132-  (A.powerset.filter fun B : Finset α ↦ IsSidon (B : Set α)).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-133-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-134-/-- If `A` is finite Sidon, then `A ∪ {s}` is also Sidon provided `s ≥ A.max + 1`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-135-theorem IsSidon.insert_ge_max' {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) {s : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Basic.lean-136-    (hs : 2 * A.max' h + 1 ≤ s) :
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-28-namespace Erdos340
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-30-/-- Given a finite Sidon set `A` and a lower bound `m`, `go` finds the smallest number `m' ≥ m`
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-31-such that `A ∪ {m'}` is Sidon. If `A` is empty then this returns the value `m`. Note that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-32-the lower bound is required to avoid `0` being a contender in some cases. -/
+FormalConjectures/ErdosProblems/340.lean:33:private def greedySidon.go (A : Finset ℕ) (hA : IsSidon (A : Set ℕ)) (m : ℕ) :
+FormalConjectures/ErdosProblems/340.lean-34-    {m' : ℕ // m' ≥ m ∧ m' ∉ A ∧ IsSidon (↑(A ∪ {m'}) : Set ℕ)} :=
+FormalConjectures/ErdosProblems/340.lean-35-  if h : A.Nonempty then
+FormalConjectures/ErdosProblems/340.lean-36-    haveI : ∃ m', m' ≥ m ∧ m' ∉ A ∧ IsSidon (↑(A ∪ {m'}) : Set ℕ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-37-      simpa [and_assoc] using hA.exists_insert_ge h m
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-38-    ⟨Nat.find this, Nat.find_spec this⟩
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-49-/-- Main search loop for generating the greedy Sidon sequence. The return value for step `n` is the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-50-finite set of numbers generated so far, a proof that it is Sidon, and the greatest element of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-51-the finite set at that point. This is initialised at `{1}`, then `greedySidon.go` is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-52-called iteratively using the lower bound `max + 1` to find the next smallest Sidon preserving
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-53-number. -/
+FormalConjectures/ErdosProblems/340.lean:54:private def greedySidon.aux (n : ℕ) : ({A : Finset ℕ // IsSidon (A : Set ℕ)} × ℕ) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-55-  match n with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-56-  | 0 => (⟨{1}, by simp [IsSidon]⟩, 1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-57-  | k + 1 =>
+FormalConjectures/ErdosProblems/340.lean-58-    let (A, s) := greedySidon.aux k
+FormalConjectures/ErdosProblems/340.lean-59-    let s := if h : A.1.Nonempty then A.1.max' h + 1 else s
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-61-    (⟨A ∪ {s'.1}, s'.2.2.2⟩, s')
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-63-/-- `greedySidon` is the sequence obtained by the initial set $\{1\}$ and iteratively obtaining
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-64-then next smallest integer that preserves the Sidon property of the set. This gives the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-65-sequence `1, 2, 4, 8, 13, 21, 31, ...`. -/
+FormalConjectures/ErdosProblems/340.lean:66:def greedySidon (n : ℕ) : ℕ := greedySidon.aux n |>.2
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-67-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-68-@[category test, AMS 5]
+FormalConjectures/ErdosProblems/340.lean-69-theorem greedySidon_zero : greedySidon 0 = 1 := rfl
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/340.lean-71-@[category test, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-32--/
+FormalConjectures/ErdosProblems/329.lean-33-noncomputable def sqrtPartialDensity (A : Set ℕ) (N : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/329.lean-34-  (A ∩ Set.Icc 1 N).ncard / (N : ℝ).sqrt
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-36-/-- The upper density of a Sidon set `A`, normalized by `√N`. -/
+FormalConjectures/ErdosProblems/329.lean:37:noncomputable def sidonUpperDensity (A : Set ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-38-  limsup (fun N => sqrtPartialDensity A N) atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-40-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-41-**Erdős Problem 329.**
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-42-Let `A ⊆ ℕ` be a Sidon set. How large can
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-32-namespace Erdos153
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-34-/-- Define `f n` to be the minimum of
+FormalConjectures/ErdosProblems/153.lean-35-`∑ (i : Set.Ico 1 ((A + A).card), (s i - s (i - 1)) ^ 2 / n` as `A` ranges over all Sidon sets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-36-of size `n`, where `s` is an order embedding from `Fin n` into `A`. -/
+FormalConjectures/ErdosProblems/153.lean:37:noncomputable def f (n : ℕ) : ℝ := ⨅ A : {A : Finset ℕ | A.card = n ∧ IsSidon (A : Set ℕ)},
+FormalConjectures/ErdosProblems/153.lean-38-  let s := (A.1 + A).orderIsoOfFin rfl
+FormalConjectures/ErdosProblems/153.lean-39-  ∑ i : Set.Ico 1 ((A.1 + A).card), (s ⟨i, i.2.2⟩ - s ⟨i - 1, by grind⟩) ^ 2 / (n : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-41-/-- Must `lim f n = ∞`? -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/153.lean-42-@[category research open, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-34-namespace Erdos43
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-36-/-- A finite set of natural numbers is a Sidon set (also called a $B_2$ set) if all
+FormalConjectures/ErdosProblems/43.lean-37-    pairwise sums $a + b$ (allowing $a = b$) are distinct: whenever $a + b = c + d$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-38-    with $a, b, c, d \in A$, we have $\{a, b\} = \{c, d\}$ as multisets. -/
+FormalConjectures/ErdosProblems/43.lean:39:def IsSidonSet (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-40-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-41-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-42-
+FormalConjectures/ErdosProblems/43.lean-43-/-- Two sets $A$, $B$ have disjoint difference sets (intersecting only at $0$):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/43.lean-44-    $(A - A) \cap (B - B) = \{0\}$. Equivalently, if $a_1 - a_2 = b_1 - b_2$ for
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-40-/-- A finite set of natural numbers is a Sidon set (also called a $B_2$ set) if all
+FormalConjectures/ErdosProblems/154.lean-41-pairwise sums $a + b$ (allowing $a = b$) are distinct: whenever $a + b = c + d$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-42-with $a, b, c, d \in A$, we have $\{a, b\} = \{c, d\}$ as multisets. Equivalently,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-43-all differences $a - b$ with $a \neq b$ and $a, b \in A$ are distinct. -/
+FormalConjectures/ErdosProblems/154.lean:44:def IsSidonSet (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-45-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-46-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-48-/-- The sumset $A + A = \{a + b \mid a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/154.lean-49-def sumset (A : Finset ℕ) : Finset ℕ := Finset.image₂ (· + ·) A A
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-38-namespace Erdos772
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-40-/-- A finite set of natural numbers is a Sidon set ($B_2$ set) if all pairwise
+FormalConjectures/ErdosProblems/772.lean-41-sums are distinct: for $a, b, c, d \in S$ with $a + b = c + d$, we have
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-42-$\{a, b\} = \{c, d\}$ as multisets. -/
+FormalConjectures/ErdosProblems/772.lean:43:def IsSidonSet (S : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-44-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-45-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-46-
+FormalConjectures/ErdosProblems/772.lean-47-/-- The additive representation count: the number of ordered pairs $(a, b) \in A \times A$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/772.lean-48-with $a + b = m$. The condition $\|1_A \ast 1_A\|_\infty \leq k$ is equivalent to
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-43-namespace Erdos530
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-45-/-- A `Finset` of real numbers is a *Sidon set* if for all $a, b, c, d$ in the set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-46-with $a + b = c + d$, we have $\{a, b\} = \{c, d\}$ (i.e., all pairwise sums
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-47-are distinct). -/
+FormalConjectures/ErdosProblems/530.lean:48:def IsSidonSet (S : Finset ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-49-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-50-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-52-/-- The maximum size of a Sidon subset of $A$. -/
+FormalConjectures/ErdosProblems/530.lean:53:noncomputable def maxSidonSubsetSize (A : Finset ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/530.lean-54-  sSup {k : ℕ | ∃ S : Finset ℝ, S ⊆ A ∧ IsSidonSet S ∧ S.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-55-
+FormalConjectures/ErdosProblems/530.lean-56-/-- $\ell(N)$: the largest $k$ such that every $N$-element subset of $\mathbb{R}$ contains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-57-a Sidon subset of size at least $k$. Equivalently, the minimum of `maxSidonSubsetSize A`
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-58-over all $N$-element sets $A \subset \mathbb{R}$. -/
+FormalConjectures/ErdosProblems/530.lean:59:noncomputable def sidonSubsetNumber (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/530.lean-60-  sInf {m : ℕ | ∃ A : Finset ℝ, A.card = N ∧ maxSidonSubsetSize A = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-62-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-63-Is it true that $\ell(N) \sim N^{1/2}$, i.e. the ratio $\ell(N) / \sqrt{N}$ tends to $1$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-64-as $N \to \infty$? [Er73] [Er75f] [Er80e]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-45-/-- A finite set of natural numbers is $\delta$-quasi-Sidon if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-46-$|A + A| \geq (1 - \delta) \cdot \binom{|A|}{2}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-47-A sequence of sets is quasi-Sidon iff for every $\delta > 0$ it is eventually
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-48-$\delta$-quasi-Sidon. -/
+FormalConjectures/ErdosProblems/840.lean:49:def IsQuasiSidon (δ : ℝ) (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/840.lean-50-  ((A + A).card : ℝ) ≥ (1 - δ) * (Nat.choose A.card 2 : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-52-/-- The maximum size of a $\delta$-quasi-Sidon subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/840.lean:53:noncomputable def maxQuasiSidonCard (δ : ℝ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-54-  ((Finset.Icc 1 N).powerset.filter (fun A => IsQuasiSidon δ A)).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-56-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-57-**Erdős Problem 840** — How does $f(N)$ grow?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/840.lean-58-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-44-open Finset Classical
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-46-namespace Erdos862
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-48-/-- A finite set of natural numbers is a Sidon set if all pairwise sums are distinct. -/
+FormalConjectures/ErdosProblems/862.lean:49:def IsSidonSet (S : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-50-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-51-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-53-/-- A Sidon subset of $\{1,\ldots,N\}$ is maximal if no element of $\{1,\ldots,N\}$ can be added
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-54-while keeping it Sidon. -/
+FormalConjectures/ErdosProblems/862.lean:55:def IsMaximalSidonIn (S : Finset ℕ) (N : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-56-  S ⊆ Icc 1 N ∧ IsSidonSet S ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-57-    ∀ x ∈ Icc 1 N, x ∉ S → ¬IsSidonSet (S ∪ {x})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-59-/-- $A_1(N)$ is the number of maximal Sidon subsets of $\{1,\ldots,N\}$. -/
+FormalConjectures/ErdosProblems/862.lean:60:noncomputable def countMaximalSidon (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-61-  ((Icc 1 N).powerset.filter (fun S => IsMaximalSidonIn S N)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-63-/--
+FormalConjectures/ErdosProblems/862.lean-64-Erdős Problem 862, first question (Cameron–Erdős [Er92c], disproved by Saxton–Thomason [SaTh15]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-65-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-40-/-- An infinite set $A \subseteq \mathbb{N}$ is a Sidon set ($B_2$ set) if all pairwise sums
+FormalConjectures/ErdosProblems/157.lean-41-are distinct: whenever $a + b = c + d$ with $a, b, c, d \in A$, we have
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-42-$\{a, b\} = \{c, d\}$ as multisets (i.e. either $a = c$ and $b = d$, or
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-43-$a = d$ and $b = c$). -/
+FormalConjectures/ErdosProblems/157.lean:44:def IsInfiniteSidonSet (A : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-45-  Set.Infinite A ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-46-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-47-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean-49-/-- A set $A \subseteq \mathbb{N}$ is an asymptotic basis of order $3$ if every sufficiently
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-36-namespace Erdos156
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-38-/-- A finite set of natural numbers is a Sidon set (also called a $B_2$ set) if all
+FormalConjectures/ErdosProblems/156.lean-39-pairwise sums $a + b$ (allowing $a = b$) are distinct: whenever $a + b = c + d$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-40-with $a, b, c, d \in A$, we have $\{a, b\} = \{c, d\}$ as multisets. -/
+FormalConjectures/ErdosProblems/156.lean:41:def IsSidonSet (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-42-  ∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, ∀ d ∈ A,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-43-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-45-/-- A Sidon set $A \subseteq \{0, \ldots, N-1\}$ is maximal (in $\{0, \ldots, N-1\}$) if no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-46-element of $\{0, \ldots, N-1\} \setminus A$ can be added to $A$ while preserving the Sidon
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-47-property. -/
+FormalConjectures/ErdosProblems/156.lean:48:def IsMaximalSidonSet (N : ℕ) (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-49-  A ⊆ Finset.range N ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-50-  IsSidonSet A ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-51-  ∀ n ∈ Finset.range N, n ∉ A → ¬IsSidonSet (insert n A)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/156.lean-53-/--
+--
+FormalConjectures/ErdosProblems/864.lean-42-def sumRepCount (A : Finset ℕ) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-43-  (A.filter (fun a => 2 * a ≤ n ∧ (n - a) ∈ A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-45-/-- A set $A$ is *almost Sidon* if at most one integer $n$ has more than one
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-46-    representation as $n = a + b$ with $a \le b \in A$. -/
+FormalConjectures/ErdosProblems/864.lean:47:def IsAlmostSidon (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/864.lean-48-  ∃ S : Finset ℕ, S.card ≤ 1 ∧
+FormalConjectures/ErdosProblems/864.lean-49-    ∀ n : ℕ, n ∉ S → sumRepCount A n ≤ 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-51-/-- The maximum size of an almost Sidon subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/864.lean:52:noncomputable def maxAlmostSidonCard (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-53-  ((Finset.Icc 1 N).powerset.filter IsAlmostSidon).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-55-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-56-**Erdős Problem 864** [ErFr91] — Is it true that for every $\varepsilon > 0$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/864.lean-57-for sufficiently large $N$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-47-open Finset Filter
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-49-namespace Erdos861
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-51-/-- A finite set of natural numbers is a Sidon set if all pairwise sums are distinct. -/
+FormalConjectures/ErdosProblems/861.lean:52:def IsSidonSet (S : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-53-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-54-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-56-/-- $f(N)$, the cardinality of the largest Sidon subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/861.lean:57:noncomputable def maxSidonSize (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-58-  ((Icc 1 N).powerset.filter IsSidonSet).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-60-/-- $A(N)$, the number of Sidon subsets of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/861.lean:61:noncomputable def countSidonSubsets (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-62-  ((Icc 1 N).powerset.filter IsSidonSet).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-64-/--
+FormalConjectures/ErdosProblems/861.lean-65-Erdős Problem 861, first question (Cameron–Erdős [Er92c], proved):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-66-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-32--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-34-namespace Erdos773
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-36-/-- A finite set of natural numbers is a Sidon set if all pairwise sums are distinct. -/
+FormalConjectures/ErdosProblems/773.lean:37:def IsSidonSet (S : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-38-  ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-39-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/773.lean-41-/-- The set of perfect squares $\{1^2, 2^2, \ldots, N^2\}$. -/
+FormalConjectures/ErdosProblems/773.lean-42-def squaresUpTo (N : ℕ) : Finset ℕ :=

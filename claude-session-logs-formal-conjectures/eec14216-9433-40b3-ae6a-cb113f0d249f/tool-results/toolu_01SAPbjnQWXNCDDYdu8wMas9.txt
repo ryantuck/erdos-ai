@@ -1,0 +1,622 @@
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture6.lean-25-
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture6.lean-26-For a connected graph `G` we have
+FormalConjectures/WrittenOnTheWallII/GraphConjecture6.lean:27:`Ls(G) ≥ 1 + n(G) - m(G) - a(G)` where `a(G)` is defined via independent sets.
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture6.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture6.lean-29-@[category research solved, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-57-/-- `ConvexIndep S` means that `S` consists of extremal points of its convex hull,
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-58-i.e., the point set encloses a convex shape.
+FormalConjecturesForMathlib/Geometry/2d.lean:59:Also known as a "convex-independent set". -/
+FormalConjecturesForMathlib/Geometry/2d.lean-60-def ConvexIndep (S : Set ℝ²) : Prop :=
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Geometry/2d.lean-61-  ∀ a ∈ S, a ∉ convexHull ℝ (S \ {a})
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-43-  sSup (Set.image (fun M => (M.edgeSet.toFinset.card : ℝ)) matchings)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-44-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:45:/-- The maximum cardinality among all independent sets `s`
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-46-    that maximize the quantity `|s| - |N(s)|`, where `N(s)`
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-47-    is the neighborhood of the set `s`. -/
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-137-  sInf {κ : Cardinal | ∃ (C : Type u) (_ : Cardinal.mk C = κ), Nonempty (G.Coloring C)}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-138-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:139:/-- The maximum size of the union of k finite independent sets. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-140-noncomputable def indepNumK (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-141-  sSup {n | ∃ f : Fin k → Set V, (∀ i, G.IsIndepSet (f i)) ∧ (⋃ i, f i).ncard = n}
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-144-by natural numbers such that for all `k > 0`, the number of
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-145-vertices with color `< k` equals the maximum size of
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:146:the union of `k` independent sets. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-147-def CDSColorable [Fintype α] {G : SimpleGraph α} : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-148-    ∃ (C : G.Coloring Nat), ∀ k : Nat,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean-45-
+FormalConjectures/ErdosProblems/760.lean-46-/-- A colouring $c : V \to \operatorname{Fin} k$ is a cochromatic colouring of $G$ if every
+FormalConjectures/ErdosProblems/760.lean:47:colour class induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/760.lean-48-def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/760.lean-49-    (c : V → Fin k) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/895.lean-21-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/895.lean-22-Is it true that, for all sufficiently large $n$, if $G$ is a triangle-free graph
+FormalConjectures/ErdosProblems/895.lean:23:on $\{1, \ldots, n\}$ then there must exist an independent set $\{a, b, a+b\}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/895.lean-24-
+FormalConjectures/ErdosProblems/895.lean-25-*Reference:* [erdosproblems.com/895](https://www.erdosproblems.com/895)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/895.lean-37-Is it true that, for all sufficiently large $n$, if $G$ is a triangle-free graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/895.lean-38-on $\{1, \ldots, n\}$ then there exist distinct $a, b$ with $a + b$ also in the vertex set
+FormalConjectures/ErdosProblems/895.lean:39:such that $\{a, b, a+b\}$ is an independent set in $G$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/895.lean-40-
+FormalConjectures/ErdosProblems/895.lean-41-Proved by Barber using a SAT solver: this is true for all $n \geq 18$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-22-Erdős, Hajnal, Sós, and Szemerédi conjectured that for any δ > 0, if n is sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-23-and G is a K_{2,2,2}-free graph on n vertices with at least δn² edges, then G contains an
+FormalConjectures/ErdosProblems/579.lean:24:independent set of size linear in n.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-25-
+FormalConjectures/ErdosProblems/579.lean-26-*Reference:* [erdosproblems.com/579](https://www.erdosproblems.com/579)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-50-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-51-Let $\delta > 0$. If $n$ is sufficiently large and $G$ is a graph on $n$ vertices with no
+FormalConjectures/ErdosProblems/579.lean:52:$K_{2,2,2}$ and at least $\delta n^2$ edges then $G$ contains an independent set of size
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-53-$\gg_\delta n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-24-Does there exist, for every function $f$ with $f(m) \to \infty$, a graph with infinite chromatic
+FormalConjectures/ErdosProblems/750.lean:25:number such that every finite set of $m$ vertices contains an independent set of size at least
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-26-$m/2 - f(m)$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-27-
+--
+FormalConjectures/ErdosProblems/750.lean-52-Does there exist, for every function $f : \mathbb{N} \to \mathbb{N}$ with $f(m) \to \infty$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-53-as $m \to \infty$, a graph $G$ with infinite chromatic number such that every finite set of
+FormalConjectures/ErdosProblems/750.lean:54:$m$ vertices in $G$ contains an independent set of size at least $m/2 - f(m)$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-56-In [Er69b] Erdős conjectures this for $f(m) = \varepsilon m$ for any fixed $\varepsilon > 0$.
+--
+FormalConjectures/ErdosProblems/625.lean-54-/-- The cochromatic number of a simple graph on `Fin n`: the minimum number of parts $k$
+FormalConjectures/ErdosProblems/625.lean-55-in a coloring $f : \operatorname{Fin} n \to \operatorname{Fin} k$ such that each color class
+FormalConjectures/ErdosProblems/625.lean:56:induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/625.lean-57-noncomputable def cochromaticNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/625.lean-58-  sInf {k : ℕ | ∃ f : Fin n → Fin k,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-51-/--
+FormalConjectures/ErdosProblems/23.lean:52:The blow-up of the 5-cycle $C_5$: replace each vertex of $C_5$ with an independent set of $n$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-53-vertices, and connect two vertices iff their corresponding vertices in $C_5$ are adjacent.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/23.lean-54-The vertex set is $\mathbb{Z}/5\mathbb{Z} \times \{0, \ldots, n-1\}$, where $(i, a)$ and $(j, b)$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-33-
+FormalConjectures/ErdosProblems/1014.lean-34-/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
+FormalConjectures/ErdosProblems/1014.lean:35:vertices contains either a $k$-clique or an independent set of size $l$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-36-(equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1014.lean-37-noncomputable def ramseyR (k l : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/75.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/75.lean-24-Does there exist a graph on $\aleph_1$ vertices with chromatic number $\aleph_1$ such that
+FormalConjectures/ErdosProblems/75.lean:25:every set of $n$ vertices contains an independent set of size $> n^{1-\varepsilon}$ for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/75.lean-26-$\varepsilon > 0$ and large $n$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/75.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/75.lean-43-There exists a graph $G$ on $\aleph_1$ vertices with chromatic number $\aleph_1$ such that for
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/75.lean-44-all $\varepsilon > 0$, if $n$ is sufficiently large and $S$ is any set of $n$ vertices, then
+FormalConjectures/ErdosProblems/75.lean:45:$S$ contains an independent set of size $> n^{1-\varepsilon}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/75.lean-46--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/75.lean-47-@[category research open, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-23-
+FormalConjectures/ErdosProblems/112.lean-24-A problem of Erdős and Rado on directed Ramsey numbers $k(n,m)$: the minimal $k$ such that
+FormalConjectures/ErdosProblems/112.lean:25:any directed graph on $k$ vertices must contain either an independent set of size $n$ or a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-26-transitive tournament of size $m$. Determine $k(n,m)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-27-
+--
+FormalConjectures/ErdosProblems/112.lean-40-  loopless : ∀ v, ¬ adj v v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-41-
+FormalConjectures/ErdosProblems/112.lean:42:/-- An independent set in a directed graph: a set $S$ of vertices with no directed
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-43-edges between any two of its members (in either direction). -/
+FormalConjectures/ErdosProblems/112.lean-44-def Digraph.IsIndepSet {V : Type*} (G : Digraph V) (S : Finset V) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-54-
+FormalConjectures/ErdosProblems/112.lean-55-/-- The directed Ramsey number $k(n,m)$: the minimal $k$ such that every directed graph
+FormalConjectures/ErdosProblems/112.lean:56:on $k$ vertices contains either an independent set of size $n$ or a transitive
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-57-tournament of size $m$. -/
+FormalConjectures/ErdosProblems/112.lean-58-noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-38-
+FormalConjectures/ErdosProblems/1030.lean-39-/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
+FormalConjectures/ErdosProblems/1030.lean:40:    vertices contains either a $k$-clique or an independent set of size $l$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-41-    (equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1030.lean-42-noncomputable def ramseyR (k l : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean-61-
+FormalConjectures/ErdosProblems/761.lean-62-/-- A cochromatic colouring: each colour class induces either a complete
+FormalConjectures/ErdosProblems/761.lean:63:subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/761.lean-64-def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/761.lean-65-    (c : V → Fin k) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-24-For every $x \in \mathbb{R}$, let $A_x \subset \mathbb{R}$ be a bounded set with outer measure
+FormalConjectures/ErdosProblems/501.lean:25:$< 1$. Must there exist an infinite independent set, that is, some infinite $X \subseteq \mathbb{R}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-26-such that $x \notin A_y$ for all $x \neq y \in X$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-28-If the sets $A_x$ are closed and have measure $< 1$, then must there exist an
+FormalConjectures/ErdosProblems/501.lean:29:independent set of size $3$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-31-Erdős and Hajnal proved the existence of arbitrarily large finite independent
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-33-to the first question is no, assuming the continuum hypothesis. Newelski,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-34-Pawlikowski, and Seredyński proved that if all the $A_x$ are closed with
+FormalConjectures/ErdosProblems/501.lean:35:measure $< 1$ then there is an infinite independent set.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-37-[Er61] Erdős, P., _Problems in combinatorics_ (1961).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-44-namespace Erdos501
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-45-
+FormalConjectures/ErdosProblems/501.lean:46:/-- A set $X$ is independent with respect to a family of sets $A$ if for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-47-distinct $x, y \in X$, we have $x \notin A(y)$. -/
+FormalConjectures/ErdosProblems/501.lean-48-def IndependentFamily (A : ℝ → Set ℝ) (X : Set ℝ) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-51-/--
+FormalConjectures/ErdosProblems/501.lean-52-Erdős Problem 501 [Er61][ErHa71]: If each $A_x$ is bounded with outer measure $< 1$, must
+FormalConjectures/ErdosProblems/501.lean:53:there exist an infinite independent set?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-55-Hechler showed the answer is no assuming the continuum hypothesis. The full
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-66-/--
+FormalConjectures/ErdosProblems/501.lean-67-Erdős Problem 501, closed variant [Er61][ErHa71]: If each $A_x$ is closed with
+FormalConjectures/ErdosProblems/501.lean:68:measure $< 1$, must there exist an independent set of size $3$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-70-Newelski, Pawlikowski, and Seredyński proved that under these hypotheses there
+FormalConjectures/ErdosProblems/501.lean:71:is in fact an infinite independent set.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-72--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean-73-@[category research solved, AMS 3 28]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-34-/-- A set $S$ of edges of $G$ is strongly independent if for any two distinct edges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-35-$e_1, e_2 \in S$, every endpoint $u$ of $e_1$ and every endpoint $v$ of $e_2$ satisfy
+FormalConjectures/ErdosProblems/149.lean:36:$u \neq v$ and $\neg G.\text{Adj}\; u\; v$. Equivalently, $S$ is an independent set in $L(G)^2$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-37-(the square of the line graph of $G$). -/
+FormalConjectures/ErdosProblems/149.lean-38-def IsStronglyIndepEdgeSet {V : Type*} (G : SimpleGraph V)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-43-
+FormalConjectures/ErdosProblems/149.lean-44-/-- The strong chromatic index $\chi'_s(G)$: the minimum number of strongly
+FormalConjectures/ErdosProblems/149.lean:45:independent edge sets needed to partition the edges of $G$. Equivalently,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-46-this is the chromatic number of $L(G)^2$, the square of the line graph. -/
+FormalConjectures/ErdosProblems/149.lean-47-noncomputable def strongChromaticIndex {V : Type*} (G : SimpleGraph V) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-56-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-57-i.e. the edge set of $G$ can be partitioned into at most $\frac{5}{4}\Delta^2$ strongly
+FormalConjectures/ErdosProblems/149.lean:58:independent edge sets. This bound is sharp: a blowup of $C_5$ with $\Delta = 2k$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-59-requires exactly $5k^2 = \frac{5}{4}\Delta^2$ strong colors. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean-60-@[category research open, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1025.lean-26-independent if whenever $x,y \in X$ we have $f(x,y) \notin X$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1025.lean-27-
+FormalConjectures/ErdosProblems/1025.lean:28:Let $g(n)$ be such that, in every function $f$, there is an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1025.lean-29-size at least $g(n)$. Estimate $g(n)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1025.lean-30-
+--
+FormalConjectures/ErdosProblems/1025.lean-60-Erdős Problem 1025, lower bound (Spencer [Sp72]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1025.lean-61-
+FormalConjectures/ErdosProblems/1025.lean:62:For every valid pair function $f$ on $\operatorname{Fin} n$, there exists an independent set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1025.lean-63-of size at least $C \cdot \sqrt{n}$, for some absolute constant $C > 0$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1025.lean-64--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/Paper/LatinTableau.lean-26-coloring of the vertices of the graph such that for all k > 0, the
+/home/ryan/formal-conjectures/FormalConjectures/Paper/LatinTableau.lean-27-number of vertices with color < k equals the maximum size of
+FormalConjectures/Paper/LatinTableau.lean:28:the union of k independent sets of the graph.
+/home/ryan/formal-conjectures/FormalConjectures/Paper/LatinTableau.lean-29-
+FormalConjectures/Paper/LatinTableau.lean-30-*References:*
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean-47-
+FormalConjectures/ErdosProblems/759.lean-48-/-- A colouring $c : V \to \operatorname{Fin}(k)$ is a cochromatic colouring of $G$ if every colour
+FormalConjectures/ErdosProblems/759.lean:49:class induces either a complete subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/759.lean-50-def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/759.lean-51-    (c : V → Fin k) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/802.lean-44-For every $r \geq 3$, there exists a constant $c > 0$ (depending on $r$) such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/802.lean-45-every $K_r$-free graph $G$ on $n$ vertices with average degree $t \geq 2$ contains an
+FormalConjectures/ErdosProblems/802.lean:46:independent set of size at least $c \cdot (\log t / t) \cdot n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/802.lean-47--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/802.lean-48-@[category research open, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-44-Equivalently, this asks for an explicit construction of a graph on $n$
+FormalConjectures/ErdosProblems/78.lean:45:vertices which does not contain any clique or independent set of size
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-46-$\geq c \cdot \log(n)$ for some constant $c > 0$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-47-
+FormalConjectures/ErdosProblems/78.lean-48-We formalize the core mathematical content: there exists $C > 1$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-49-for all $k \geq 2$, there exists a graph on at least $C^k$ vertices with no
+FormalConjectures/ErdosProblems/78.lean:50:clique or independent set of size $k$ (an independent set of size $k$ in $G$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-51-is a clique of size $k$ in $G^c$). The "constructive" requirement pertains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-52-to the nature of the proof, not the formal statement itself.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-63-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-64-The independence number $\alpha(G)$ of a finite graph is the maximum cardinality of
+FormalConjectures/ErdosProblems/807.lean:65:an independent set (a set of vertices with no edges between them).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-66--/
+FormalConjectures/ErdosProblems/807.lean-67-noncomputable def independenceNumber {V : Type*} [Fintype V] (G : SimpleGraph V) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-77-The bipartition number $\tau(G)$ is the smallest number of pairwise edge-disjoint
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-78-complete bipartite graphs whose union is $G$. The independence number $\alpha(G)$ is
+FormalConjectures/ErdosProblems/807.lean:79:the size of the largest independent set in $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-80-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-81-In the $G(n, 1/2)$ model every labeled graph on $n$ vertices is equally likely, so
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-25-
+FormalConjectures/ErdosProblems/165.lean-26-$R(3,k)$ is the Ramsey number: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/165.lean:27:on $N$ vertices contains either a triangle ($3$-clique) or an independent set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-28-of size $k$ (equivalently, a $k$-clique in the complement).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-29-
+--
+FormalConjectures/ErdosProblems/1037.lean-66-        (Finset.univ.filter (fun w => G.Adj v w)).card)).card : ℝ) >
+FormalConjectures/ErdosProblems/1037.lean-67-        (1 / 2 + ε) * (n : ℝ) →
+FormalConjectures/ErdosProblems/1037.lean:68:      -- G contains a clique or independent set of size > C · log n
+FormalConjectures/ErdosProblems/1037.lean-69-      (∃ S : Finset (Fin n), G.IsClique (↑S : Set (Fin n)) ∧
+FormalConjectures/ErdosProblems/1037.lean-70-        (S.card : ℝ) > C * Real.log n) ∨
+--
+FormalConjectures/ErdosProblems/801.lean-22-*Reference:* [erdosproblems.com/801](https://www.erdosproblems.com/801)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean-23-
+FormalConjectures/ErdosProblems/801.lean:24:If a graph on $n$ vertices has no independent set of size $> \sqrt{n}$, then there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean-25-exists a set of $\leq \sqrt{n}$ vertices containing $\gg \sqrt{n} \log n$ edges.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean-26-
+--
+FormalConjectures/ErdosProblems/801.lean-44-Erdős Problem 801 [Er79g]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean-45-
+FormalConjectures/ErdosProblems/801.lean:46:If $G$ is a graph on $n$ vertices with no independent set of size $> \sqrt{n}$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean-47-then there exists a set of $\leq \sqrt{n}$ vertices containing
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean-48-$\gg \sqrt{n} \log n$ edges.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean-49-
+FormalConjectures/ErdosProblems/801.lean-50-Formally: there exists a constant $C > 0$ such that for all sufficiently large $n$,
+FormalConjectures/ErdosProblems/801.lean:51:for every graph $G$ on $n$ vertices, if $G$ has no independent set of size
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean-52-$> \lfloor\sqrt{n}\rfloor$, then there exists a subset $S$ with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/801.lean-53-$|S| \leq \lfloor\sqrt{n}\rfloor$ and the number of edges in $G[S]$ is at least
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/61.lean-32-For a graph $H$, consider all graphs $G$ that do not contain $H$ as an induced subgraph.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/61.lean-33-We would like to find a lower bound $f(n)$ such that every such $G$ on $n$ vertices
+FormalConjectures/ErdosProblems/61.lean:34:has a clique or independent set of size $\ge f(n)$ for sufficiently large $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/61.lean-35--/
+FormalConjectures/ErdosProblems/61.lean-36-def IsErdosHajnalLowerBound {α : Type*} [Fintype α] [DecidableEq α]
+--
+FormalConjectures/ErdosProblems/159.lean-52-/-- The graph Ramsey number $R(C_4, K_n)$: the minimum $N$ such that every simple
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-53-    graph $G$ on $N$ vertices either contains a copy of $C_4$ as a subgraph, or the
+FormalConjectures/ErdosProblems/159.lean:54:    complement $G^c$ contains a copy of $K_n$ (i.e., $G$ has an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-55-    size $n$). -/
+FormalConjectures/ErdosProblems/159.lean-56-noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-24-Let $f(m,n)$ be maximal such that any graph on $n$ vertices in which every induced
+FormalConjectures/ErdosProblems/804.lean:25:subgraph on $m$ vertices has an independent set of size at least $\log n$ must
+FormalConjectures/ErdosProblems/804.lean:26:contain an independent set of size at least $f(m,n)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-28-Estimate $f(n)$. In particular, is it true that $f((\log n)^2, n) \geq n^{1/2 - o(1)}$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-40-namespace Erdos804
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-41-
+FormalConjectures/ErdosProblems/804.lean:42:/-- An independent set in a simple graph: a finset of vertices with no edges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-43-    between any two of its members. -/
+FormalConjectures/ErdosProblems/804.lean-44-def IsIndepSet {V : Type*} (G : SimpleGraph V) (S : Finset V) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-46-
+FormalConjectures/ErdosProblems/804.lean-47-/-- The independence number of a graph on $n$ vertices: the maximum cardinality
+FormalConjectures/ErdosProblems/804.lean:48:    of an independent set. -/
+FormalConjectures/ErdosProblems/804.lean-49-noncomputable def independenceNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/804.lean-50-  ((univ : Finset (Fin n)).powerset.filter (IsIndepSet G)).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-52-/-- $f(m, n)$ is the largest $k$ such that every graph on $n$ vertices
+FormalConjectures/ErdosProblems/804.lean:53:    in which every induced subgraph on $m$ vertices has an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-54-    size $\geq \lceil \log n \rceil$ must have independence number $\geq k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-55-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-24-For which limit ordinals $\alpha$ is it true that if $G$ is a graph with vertex set $\alpha$
+FormalConjectures/ErdosProblems/601.lean:25:then $G$ must have either an infinite path or an independent set on a set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-26-vertices with order type $\alpha$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-27-
+--
+FormalConjectures/ErdosProblems/601.lean-56-  ∃ f : ℕ → V, Function.Injective f ∧ ∀ n : ℕ, G.Adj (f n) (f (n + 1))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-57-
+FormalConjectures/ErdosProblems/601.lean:58:/-- A graph on `OrdinalSet α` has an independent set of order type $\alpha$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-59-there is an order embedding from `OrdinalSet α` into itself whose
+FormalConjectures/ErdosProblems/601.lean:60:image is an independent set. -/
+FormalConjectures/ErdosProblems/601.lean-61-def HasIndepSetOfOrderType {α : Ordinal}
+FormalConjectures/ErdosProblems/601.lean-62-    (G : SimpleGraph (OrdinalSet α)) : Prop :=
+--
+FormalConjectures/ErdosProblems/601.lean-66-/-- The Erdős-Hajnal-Milner property for an ordinal $\alpha$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-67-every graph on vertex set $\alpha$ has either an infinite path or
+FormalConjectures/ErdosProblems/601.lean:68:an independent set of order type $\alpha$. -/
+FormalConjectures/ErdosProblems/601.lean-69-def EHMProperty (α : Ordinal) : Prop :=
+FormalConjectures/ErdosProblems/601.lean-70-  ∀ G : SimpleGraph (OrdinalSet α),
+--
+FormalConjectures/ErdosProblems/601.lean-76-Every limit ordinal has the Erdős-Hajnal-Milner property: if $G$ is a graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-77-with vertex set $\alpha$ (a limit ordinal), then $G$ must have either an infinite path
+FormalConjectures/ErdosProblems/601.lean:78:or an independent set of vertices with order type $\alpha$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-79-
+FormalConjectures/ErdosProblems/601.lean-80-Known results:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-56-
+FormalConjectures/ErdosProblems/986.lean-57-/-- The Ramsey number $R(k,n)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/986.lean:58:on $N$ vertices contains either a $k$-clique or an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-59-size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/986.lean-60-noncomputable def ramseyR (k n : ℕ) : ℕ :=
+--
+FormalConjectures/ErdosProblems/993.lean-22-*Reference:* [erdosproblems.com/993](https://www.erdosproblems.com/993)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-23-
+FormalConjectures/ErdosProblems/993.lean:24:A question of Alavi, Malde, Schwenk, and Erdős [AMSE87], who showed that the independent set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-25-sequence is not constrained for general graphs (in fact every possible pattern of inequalities
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-26-is achieved by some graph).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-34-namespace Erdos993
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-35-
+FormalConjectures/ErdosProblems/993.lean:36:/-- The number of independent sets of size $k$ in a simple graph $G$.
+FormalConjectures/ErdosProblems/993.lean:37:An independent set is a set of vertices that are pairwise non-adjacent. -/
+FormalConjectures/ErdosProblems/993.lean-38-def numIndepSets {V : Type*} [Fintype V] [DecidableEq V]
+FormalConjectures/ErdosProblems/993.lean-39-    (G : SimpleGraph V) [DecidableRel G.Adj] (k : ℕ) : ℕ :=
+--
+FormalConjectures/ErdosProblems/993.lean-44-Erdős Problem 993 [AMSE87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-45-
+FormalConjectures/ErdosProblems/993.lean:46:The independent set sequence of any tree or forest is unimodal. That is, if
+FormalConjectures/ErdosProblems/993.lean:47:$i_k(T)$ counts the number of independent sets of vertices of size $k$ in a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-48-forest $T$, then there exists $m \geq 0$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-49-$$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/621.lean-28-structures_, Discrete Mathematics 150 (1996), 89-101.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/621.lean-29-
+FormalConjectures/ErdosProblems/621.lean:30:[NoSu16] Norin, S. and Sun, Y., _Triangle-independent sets vs. triangle-transversals_,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/621.lean-31-European Journal of Combinatorics 56 (2016), 95-104.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/621.lean-32--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/621.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/621.lean-41-/--
+FormalConjectures/ErdosProblems/621.lean:42:A set of edges $S$ is triangle-independent in $G$ if $S \subseteq E(G)$ and every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/621.lean-43-triangle in $G$ contains at most one edge from $S$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/621.lean-44--/
+--
+FormalConjectures/ErdosProblems/151.lean-53-  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal G T ∧ T.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-54-
+FormalConjectures/ErdosProblems/151.lean:55:/-- $S$ is an independent set in $G$: no two distinct vertices of $S$ are adjacent. -/
+FormalConjectures/ErdosProblems/151.lean-56-def IsIndependentSet {n : ℕ} (G : SimpleGraph (Fin n)) (S : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/151.lean-57-  ∀ u v : Fin n, u ∈ S → v ∈ S → u ≠ v → ¬G.Adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-58-
+FormalConjectures/ErdosProblems/151.lean:59:/-- The independence number $\alpha(G)$: the maximum cardinality of an independent set. -/
+FormalConjectures/ErdosProblems/151.lean-60-noncomputable def independenceNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/151.lean-61-  sSup { k : ℕ | ∃ S : Finset (Fin n), IsIndependentSet G S ∧ S.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-63-/-- $H(n)$ is maximal such that every triangle-free graph on $n$ vertices contains
+FormalConjectures/ErdosProblems/151.lean:64:an independent set of size $H(n)$; equivalently, $H(n)$ is the minimum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-65-independence number over all triangle-free graphs on $n$ vertices. -/
+FormalConjectures/ErdosProblems/151.lean-66-noncomputable def H (n : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-71-If $G$ is a graph on $n$ vertices then $\tau(G) \leq n - H(n)$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-72-where $\tau(G)$ is the clique transversal number of $G$ and $H(n)$ is the maximum $k$
+FormalConjectures/ErdosProblems/151.lean:73:such that every triangle-free graph on $n$ vertices contains an independent set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-74-of size $k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-75--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/623.lean-31-Let $X$ be a set of cardinality $\aleph_\omega$ and $f$ be a function from the finite subsets of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/623.lean-32-$X$ to $X$ such that $f(A)\not\in A$ for all $A$. Must there exist an infinite $Y\subseteq X$
+FormalConjectures/ErdosProblems/623.lean:33:that is independent - that is, for all finite $B\subset Y$ we have $f(B)\not\in Y$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/623.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/623.lean-35-@[category research open, AMS 3]
+--
+FormalConjectures/ErdosProblems/73.lean-22-*Reference:* [erdosproblems.com/73](https://www.erdosproblems.com/73)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-23-
+FormalConjectures/ErdosProblems/73.lean:24:If every induced subgraph of $G$ on $n$ vertices has an independent set of size
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-25-$\geq (n - k)/2$, then removing $O_k(1)$ vertices makes $G$ bipartite.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-26-Proved by Reed [Re99].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-31-/--
+FormalConjectures/ErdosProblems/73.lean:32:An independent set of a simple graph within a vertex subset $S$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-33-a subset $I \subseteq S$ such that no two vertices in $I$ are adjacent in $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-34--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-41-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-42-Let $k \geq 0$. If $G$ is a finite graph such that every induced subgraph $H$ on $n$
+FormalConjectures/ErdosProblems/73.lean:43:vertices contains an independent set of size $\geq (n - k) / 2$, then there exists
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-44-a set $S$ of $O_k(1)$ vertices whose removal makes $G$ bipartite.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-45-
+FormalConjectures/ErdosProblems/73.lean-46-Equivalently: for every $k$, there exists a constant $C$ (depending only on $k$)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-47-such that for any finite graph $G$ on $n$ vertices, if every vertex subset $S$
+FormalConjectures/ErdosProblems/73.lean:48:contains an independent set of size at least $(|S| - k) / 2$, then $G$ can be
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-49-made bipartite by removing at most $C$ vertices.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/73.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-40-For every $c > 0$, there exist $\delta > 0$ and $N_0$ such that for all $n \geq N_0$, if $G$ is a
+FormalConjectures/ErdosProblems/1036.lean:41:graph on $n$ vertices with no clique and no independent set of size greater than
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-42-$c \cdot \log n$, then $G$ has at least $2^{\delta n}$ pairwise non-isomorphic induced subgraphs.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-43-
+FormalConjectures/ErdosProblems/1036.lean:44:Here "trivial graph" means empty (independent set) or complete (clique), and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-45-$\log$ denotes the natural logarithm.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1036.lean-46--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-24-The cochromatic number of $G$, denoted $\zeta(G)$, is the minimum number of colours
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-25-needed to colour the vertices of $G$ such that each colour class induces either
+FormalConjectures/ErdosProblems/758.lean:26:a complete graph or an empty graph (independent set). Let $z(n)$ be the maximum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-27-value of $\zeta(G)$ over all graphs $G$ with $n$ vertices.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-28-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-38-/-- A cochromatic coloring of a simple graph $G$ with $k$ colors is a function
+FormalConjectures/ErdosProblems/758.lean-39-$c : V \to \text{Fin}(k)$ such that each color class is either a clique (all pairs
+FormalConjectures/ErdosProblems/758.lean:40:adjacent) or an independent set (no pairs adjacent). -/
+FormalConjectures/ErdosProblems/758.lean-41-def IsCochromaticColoring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/758.lean-42-    (c : V → Fin k) : Prop :=
+--
+FormalConjectures/ErdosProblems/812.lean-27-Here $R(n)$ denotes the diagonal Ramsey number $R(n,n)$: the minimum $N$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-28-every simple graph on $N$ vertices contains either a clique of size $n$ or an
+FormalConjectures/ErdosProblems/812.lean:29:independent set of size $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-31-[BEFS89] Burr, S.A., Erdős, P., Faudree, R.J., and Schelp, R.H., proved that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean-44-
+FormalConjectures/ErdosProblems/762.lean-45-/-- A cochromatic colouring: each colour class induces either a complete
+FormalConjectures/ErdosProblems/762.lean:46:    subgraph or an independent set. -/
+FormalConjectures/ErdosProblems/762.lean-47-def IsCochromaticColouring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/762.lean-48-    (c : V → Fin k) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-26-distance $1$ apart.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-27-
+FormalConjectures/ErdosProblems/1066.lean:28:Let $g(n)$ be maximal such that any such graph always has an independent set on
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-29-at least $g(n)$ vertices. Estimate $g(n)$, or perhaps $\lim g(n)/n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-48-For every $n \geq 1$ and every injective placement of $n$ points in $\mathbb{R}^2$ with all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-49-pairwise distances $\geq 1$, there exists a set of at least $\frac{8}{31}n$ points with
+FormalConjectures/ErdosProblems/1066.lean:50:no two at distance exactly $1$ (an independent set in the unit distance graph).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-51--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-52-@[category research solved, AMS 5 52]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-65-For all sufficiently large $n$, there exists an injective placement of $n$ points
+FormalConjectures/ErdosProblems/1066.lean:66:in $\mathbb{R}^2$ with all pairwise distances $\geq 1$ such that every independent set in the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-67-unit distance graph has size at most $\frac{5}{16}n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1066.lean-68--/
+--
+FormalConjectures/ErdosProblems/1031.lean-37-**Erdős Problem 1031** [Er93, p.340]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1031.lean-38-
+FormalConjectures/ErdosProblems/1031.lean:39:If $G$ is a graph on $n$ vertices with no clique and no independent set of size
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1031.lean-40-$\geq 10 \log n$, then $G$ contains an induced regular subgraph on $\geq c \log n$ vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1031.lean-41-(for some absolute constant $c > 0$) that is neither empty nor complete.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-24-For which functions $g(n)$ with $n > g(n) \geq (\log n)^2$ is there a graph on $n$ vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-25-in which every induced subgraph on $g(n)$ vertices contains a clique of size $\geq \log n$
+FormalConjectures/ErdosProblems/805.lean:26:and an independent set of size $\geq \log n$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-28-In particular, is there such a graph for $g(n) = (\log n)^3$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-44-  ∀ u ∈ S, ∀ v ∈ S, u ≠ v → G.Adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-45-
+FormalConjectures/ErdosProblems/805.lean:46:/-- An independent set in a simple graph: a finset of vertices with no edges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-47-    between any two of its members. -/
+FormalConjectures/ErdosProblems/805.lean-48-def IsIndepSet {V : Type*} (G : SimpleGraph V) (S : Finset V) : Prop :=
+--
+FormalConjectures/ErdosProblems/805.lean-51-/-- The Erdős–Hajnal property for Problem 805: a graph $G$ on $\operatorname{Fin}(n)$ has
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-52-    the property that every induced subgraph on $m$ vertices contains both a clique and an
+FormalConjectures/ErdosProblems/805.lean:53:    independent set of size at least $k$. -/
+FormalConjectures/ErdosProblems/805.lean-54-def ErdosHajnalProperty {n : ℕ} (G : SimpleGraph (Fin n)) (m k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/805.lean-55-  ∀ S : Finset (Fin n), S.card = m →
+--
+FormalConjectures/ErdosProblems/805.lean-60-Erdős–Hajnal conjecture [Er91]: is there a graph on $n$ vertices such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-61-induced subgraph on $\lfloor (\log n)^3 \rfloor$ vertices contains both a clique and an
+FormalConjectures/ErdosProblems/805.lean:62:independent set of size $\geq \lceil \log n \rceil$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-64-Erdős and Hajnal conjectured that the answer is no.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-24-Let $\varepsilon > 0$ and $n$ be sufficiently large depending on $\varepsilon$. Is there a graph on
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-25-$n$ vertices with $\geq n^2/8$ many edges which contains no $K_4$ such that the largest
+FormalConjectures/ErdosProblems/22.lean:26:independent set has size at most $\varepsilon n$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-27-
+FormalConjectures/ErdosProblems/22.lean-28-Equivalently: $\mathrm{rt}(n; 4, \varepsilon n) \geq n^2/8$ for sufficiently large $n$, where
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-49-- $G$ has at least $n^2/8$ edges,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-50-- $G$ contains no $K_4$ (no clique of size 4),
+FormalConjectures/ErdosProblems/22.lean:51:- every independent set in $G$ has size at most $\varepsilon \cdot n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-52--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-53-@[category research solved, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-47-Is it true that for every $n \geq 1$ and every placement of $n$ points in $\mathbb{R}^2$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-48-there exists a subset of at least $n/4$ points with no two at distance exactly $1$
+FormalConjectures/ErdosProblems/1070.lean:49:(an independent set in the unit distance graph)?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-50--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-51-@[category research open, AMS 5 52]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-75-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-76-For all sufficiently large $n$, there exists a placement of $n$ points in $\mathbb{R}^2$
+FormalConjectures/ErdosProblems/1070.lean:77:such that every independent set in the unit distance graph has size at most
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-78-$(2/7)n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-79--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-24-Does there exist some constant $c > 0$ such that if $G$ is a graph with $n$ vertices
+FormalConjectures/ErdosProblems/615.lean:25:and $\geq (1/8 - c)n^2$ edges then $G$ must contain either a $K_4$ or an independent set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-26-on at least $n / \log n$ vertices?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-58-namespace Erdos615
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-59-
+FormalConjectures/ErdosProblems/615.lean:60:/-- A set of vertices is independent in $G$ if no two distinct vertices in the set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-61-    are adjacent. -/
+FormalConjectures/ErdosProblems/615.lean-62-def IsIndependentSet {V : Type*} (G : SimpleGraph V) (S : Finset V) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-64-
+FormalConjectures/ErdosProblems/615.lean-65-/-- The Ramsey-Turán number $\mathrm{rt}(n; k, \ell)$: the maximum number of edges in a graph
+FormalConjectures/ErdosProblems/615.lean:66:    on $n$ vertices that contains no $k$-clique and has no independent set of size
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-67-    $\geq \ell$. Returns $0$ if no such graph exists. -/
+FormalConjectures/ErdosProblems/615.lean-68-noncomputable def ramseyTuranNumber (n k ℓ : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-76-Does there exist $c > 0$ such that for all sufficiently large $n$, every graph $G$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-77-on $n$ vertices with at least $(1/8 - c)n^2$ edges contains either a $K_4$ or an
+FormalConjectures/ErdosProblems/615.lean:78:independent set of size at least $n / \log n$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-79-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-80-Disproved by Fox, Loh, and Zhao [FLZ15].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-25-
+FormalConjectures/ErdosProblems/166.lean-26-$R(4,k)$ is the Ramsey number: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/166.lean:27:on $N$ vertices contains either a $4$-clique or an independent set of size $k$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-28-(equivalently, a $k$-clique in the complement).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-51-
+FormalConjectures/ErdosProblems/166.lean-52-/-- The Ramsey number $R(4,k)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/166.lean:53:on $N$ vertices contains either a $4$-clique or an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-54-size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/166.lean-55-noncomputable def ramseyR4 (k : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-24-Sometimes known as the Erdős-Menger conjecture. Let $G$ be a (possibly infinite)
+FormalConjectures/ErdosProblems/599.lean:25:graph and $A$, $B$ be disjoint independent sets of vertices. Must there exist a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-26-family $P$ of disjoint paths between $A$ and $B$ and a set $S$ which contains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-27-exactly one vertex from each path in $P$, and such that every path between $A$
+--
+FormalConjectures/ErdosProblems/599.lean-46-Erdős Problem 599 (Erdős-Menger Conjecture) [Er81][Er87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-47-
+FormalConjectures/ErdosProblems/599.lean:48:For any graph $G$ and disjoint independent sets $A$, $B$, there exists a family of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-49-pairwise vertex-disjoint $A$-$B$ paths and a set $S$ containing exactly one vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-50-from each path, such that $S$ separates $A$ from $B$ (every $A$-$B$ walk meets $S$).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-24-Is there a constant $\delta > 0$ such that, for all large $n$, if $G$ is a graph on $n$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-25-vertices which is not Ramsey for $K_3$ (i.e. there exists a 2-colouring of the
+FormalConjectures/ErdosProblems/925.lean:26:edges of $G$ with no monochromatic triangle) then $G$ contains an independent set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-27-of size $\gg n^{1/3+\delta}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-28-
+FormalConjectures/ErdosProblems/925.lean:29:It is easy to show that there exists an independent set of size $\gg n^{1/3}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-31-Equivalently, this asks whether $R(3,3,m) \ll m^{3-c}$ for some $c > 0$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-56-There exists $\delta > 0$ and $C > 0$ such that for all sufficiently large $n$, every
+FormalConjectures/ErdosProblems/925.lean:57:graph $G$ on $n$ vertices which is not Ramsey for $K_3$ contains an independent set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-58-of size at least $C \cdot n^{1/3 + \delta}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-59--/
+--
+FormalConjectures/ErdosProblems/922.lean-37-Erdős Problem 922 [ErHa67b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/922.lean-38-
+FormalConjectures/ErdosProblems/922.lean:39:If every induced subgraph of $G$ on $n$ vertices has an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/922.lean-40-size at least $(n - k) / 2$, then $G$ is $(k + 2)$-colorable.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/922.lean-41-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/88.lean-23-
+FormalConjectures/ErdosProblems/88.lean-24-Erdős–McKay conjecture (proved by Kwan–Sah–Sauermann–Sawhney): if a graph on $n$ vertices
+FormalConjectures/ErdosProblems/88.lean:25:has no clique or independent set of size $\geq \varepsilon \log n$, then it contains an induced
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/88.lean-26-subgraph with exactly $m$ edges for every $m \leq \delta n^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/88.lean-27-
+--
+FormalConjectures/ErdosProblems/88.lean-44-Erdős Problem 88 [KSSS22]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/88.lean-45-For any $\varepsilon > 0$ there exists $\delta = \delta(\varepsilon) > 0$ such that if $G$ is a
+FormalConjectures/ErdosProblems/88.lean:46:graph on $n$ vertices with no independent set or clique of size $\geq \varepsilon \log n$ then $G$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/88.lean-47-contains an induced subgraph with exactly $m$ edges for all $m \leq \delta n^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/88.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-24-Let $f(n)$ be such that every $3$-uniform linear hypergraph on $n$ vertices contains
+FormalConjectures/ErdosProblems/1024.lean:25:an independent set on $f(n)$ vertices.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-27-A hypergraph is linear if $|A \cap B| \leq 1$ for all edges $A$ and $B$. An independent
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-56-  ∀ e ∈ H.edges, ¬(e ⊆ S)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-57-
+FormalConjectures/ErdosProblems/1024.lean:58:/-- The independence number of $H$: the maximum size of an independent set. -/
+FormalConjectures/ErdosProblems/1024.lean-59-noncomputable def Hypergraph3Uniform.independenceNumber {n : ℕ}
+FormalConjectures/ErdosProblems/1024.lean-60-    (H : Hypergraph3Uniform n) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-63-/-- `linearHypergraphIndNum n` is the minimum independence number over all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-64-    $3$-uniform linear hypergraphs on $n$ vertices, i.e. the largest $f$ such
+FormalConjectures/ErdosProblems/1024.lean:65:    that every such hypergraph has an independent set of size at least $f$. -/
+FormalConjectures/ErdosProblems/1024.lean-66-noncomputable def linearHypergraphIndNum (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1024.lean-67-  sInf {k : ℕ | ∃ H : Hypergraph3Uniform n, H.IsLinear ∧

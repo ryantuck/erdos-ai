@@ -1,0 +1,459 @@
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-144-  limitRecOn_succ ..
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-145-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-146-theorem derivFamily_limit (f : ι → Ordinal → Ordinal) {o} :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean:147:    IsSuccLimit o → derivFamily f o = ⨆ b : Set.Iio o, derivFamily f b :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-148-  limitRecOn_limit _ _ _ _
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-149-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-150-theorem isNormal_derivFamily [Small.{u} ι] (f : ι → Ordinal.{u} → Ordinal.{u}) :
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-343-theorem deriv_succ (f o) : deriv f (succ o) = nfp f (succ (deriv f o)) :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-344-  derivFamily_succ _ _
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-345-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean:346:theorem deriv_limit (f) {o} : IsSuccLimit o → deriv f o = ⨆ a : {a // a < o}, deriv f a :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-347-  derivFamily_limit _
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-348-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/FixedPoint.lean-349-theorem isNormal_deriv (f) : IsNormal (deriv f) :=
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-89-    exact ho hao hn
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-90-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-91-theorem op_eq_self_of_principal (hao : a < o) (H : IsNormal (op a))
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean:92:    (ho : Principal op o) (ho' : IsSuccLimit o) : op a o = o := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-93-  apply H.strictMono.le_apply.antisymm'
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-94-  rw [H.apply_of_isSuccLimit ho', Ordinal.iSup_le_iff]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-95-  exact fun ⟨b, hbo⟩ ↦ (ho hao hbo).le
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-153-  · exact principal_zero
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-154-  · exact principal_add_one
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-155-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean:156:theorem isSuccLimit_of_principal_add (ho₁ : 1 < o) (ho : Principal (· + ·) o) : IsSuccLimit o := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-157-  rw [isSuccLimit_iff, isSuccPrelimit_iff_succ_lt]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-158-  exact ⟨ho₁.ne_bot, fun _ ha ↦ ho ha ho₁⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-159-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-297-    rw [← one_add_one_eq_two, mul_add, mul_one]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-298-    exact add_le_add (le_max_left a b) (le_max_right a b)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-299-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean:300:theorem isSuccLimit_of_principal_mul (ho₂ : 2 < o) (ho : Principal (· * ·) o) : IsSuccLimit o :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-301-  isSuccLimit_of_principal_add ((lt_succ 1).trans (succ_one ▸ ho₂))
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-302-    (principal_add_of_principal_mul ho (ne_of_gt ho₂))
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Principal.lean-303-
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-196-    a < iSup f ↔ ∃ i, a < f i :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-197-  lt_ciSup_iff' (bddAbove_of_small _)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-198-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean:199:-- TODO: state in terms of `IsSuccLimit`.
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-200-theorem succ_lt_iSup_of_ne_iSup {ι} {f : ι → Ordinal.{u}} [Small.{u} ι]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-201-    (hf : ∀ i, f i ≠ iSup f) {a} (hao : a < iSup f) : succ a < iSup f := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-202-  by_contra! hoa
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-267-set_option linter.deprecated false in
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-268-@[deprecated Order.IsNormal.apply_of_isSuccLimit (since := "2025-12-25")]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-269-theorem IsNormal.apply_of_isSuccLimit {f : Ordinal.{u} → Ordinal.{v}} (H : Ordinal.IsNormal f)
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean:270:    {o : Ordinal} (ho : IsSuccLimit o) : f o = ⨆ a : Iio o, f a :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-271-  Order.IsNormal.apply_of_isSuccLimit H ho
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-272-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-273-theorem sSup_ord (s : Set Cardinal) : (sSup s).ord = sSup (ord '' s) := by
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-703-    rw [h]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-704-    apply lt_blsub, fun h => le_antisymm (bsup_le_blsub f) (blsub_le h)⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-705-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean:706:theorem bsup_eq_blsub_of_lt_succ_limit {o : Ordinal.{u}} (ho : IsSuccLimit o)
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-707-    {f : ∀ a < o, Ordinal.{max u v}} (hf : ∀ a ha, f a ha < f (succ a) (ho.succ_lt ha)) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-708-    bsup.{_, v} o f = blsub.{_, v} o f := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-709-  rw [bsup_eq_blsub_iff_lt_bsup]
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-780-    (fun {_ _} _ _ h => succ_le_succ_iff.2 (hf _ _ h)) g hg
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-781-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-782-theorem IsNormal.bsup_eq {f : Ordinal.{u} → Ordinal.{max u v}} (H : IsNormal f) {o : Ordinal.{u}}
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean:783:    (h : IsSuccLimit o) : (Ordinal.bsup.{_, v} o fun x _ => f x) = f o := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-784-  rw [← IsNormal.bsup.{u, u, v} H (fun x _ => x) h.ne_bot, bsup_id_limit fun _ ↦ h.succ_lt]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-785-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-786-theorem IsNormal.blsub_eq {f : Ordinal.{u} → Ordinal.{max u v}} (H : IsNormal f) {o : Ordinal.{u}}
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean:787:    (h : IsSuccLimit o) : (blsub.{_, v} o fun x _ => f x) = f o := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-788-  rw [← IsNormal.bsup_eq.{u, v} H h, bsup_eq_blsub_of_lt_succ_limit h]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-789-  exact fun a _ => H.strictMono (lt_succ a)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-790-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-791-theorem isNormal_iff_lt_succ_and_bsup_eq {f : Ordinal.{u} → Ordinal.{max u v}} :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-792-    IsNormal f ↔ (∀ a, f a < f (succ a)) ∧
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean:793:      ∀ o, IsSuccLimit o → (bsup.{_, v} o fun x _ => f x) = f o :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-794-  ⟨fun h => ⟨fun a ↦ h.strictMono (lt_succ a), @IsNormal.bsup_eq f h⟩, fun ⟨h₁, h₂⟩ =>
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-795-    .of_succ_lt h₁ fun ho ↦ by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-796-      rw [← h₂ _ ho]
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-798-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-799-theorem isNormal_iff_lt_succ_and_blsub_eq {f : Ordinal.{u} → Ordinal.{max u v}} :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-800-    IsNormal f ↔ (∀ a, f a < f (succ a)) ∧
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean:801:      ∀ o, IsSuccLimit o → (blsub.{_, v} o fun x _ => f x) = f o := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-802-  rw [isNormal_iff_lt_succ_and_bsup_eq.{u, v}, and_congr_right_iff]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-803-  intro h
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Family.lean-804-  constructor <;> intro H o ho <;> have := H o ho <;>
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-61-  · rw [zero_opow (succ_ne_zero b), mul_zero]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-62-  · rw [opow_of_ne_zero h, opow_of_ne_zero h, limitRecOn_succ]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-63-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean:64:theorem opow_limit {a b : Ordinal} (ha : a ≠ 0) (hb : IsSuccLimit b) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-65-    a ^ b = ⨆ x : Iio b, a ^ x.1 := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-66-  simp_rw [opow_of_ne_zero ha, limitRecOn_limit _ _ _ _ hb]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-67-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean:68:theorem opow_le_of_isSuccLimit {a b c : Ordinal} (a0 : a ≠ 0) (h : IsSuccLimit b) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-69-    a ^ b ≤ c ↔ ∀ b' < b, a ^ b' ≤ c := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-70-  rw [opow_limit a0 h, Ordinal.iSup_le_iff, Subtype.forall]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-71-  rfl
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-72-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean:73:theorem lt_opow_of_isSuccLimit {a b c : Ordinal} (b0 : b ≠ 0) (h : IsSuccLimit c) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-74-    a < b ^ c ↔ ∃ c' < c, a < b ^ c' := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-75-  simpa using (opow_le_of_isSuccLimit b0 h).not
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-76-
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-131-theorem opow_right_inj {a b c : Ordinal} (a1 : 1 < a) : a ^ b = a ^ c ↔ b = c :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-132-  (isNormal_opow a1).strictMono.injective.eq_iff
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-133-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean:134:theorem isSuccLimit_opow {a b : Ordinal} (a1 : 1 < a) : IsSuccLimit b → IsSuccLimit (a ^ b) :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-135-  (isNormal_opow a1).map_isSuccLimit
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-136-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean:137:theorem isSuccLimit_opow_left {a b : Ordinal} (l : IsSuccLimit a) (hb : b ≠ 0) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean:138:    IsSuccLimit (a ^ b) := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-139-  rcases zero_or_succ_or_isSuccLimit b with (e | ⟨b, rfl⟩ | l')
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-140-  · exact absurd e hb
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean-141-  · rw [opow_succ]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-38-Note that some basic functions and properties of ordinals have been generalized to other orders:
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-39-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-40-* `Order.succ o = o + 1` is the successor of `o`.
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:41:* `Order.IsSuccLimit o`: an ordinal is a limit ordinal if it is neither `0` nor a successor.
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-42-* `Order.IsNormal`: a function `f : Ordinal → Ordinal` is normal if it is strictly increasing and
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-43-  order-continuous, i.e., the image `f o` of a limit ordinal `o` is the supremum of `f a`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-44-  for `a < o`.
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-127-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-128-/-! ### Limit ordinals -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-129-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:130:theorem isSuccLimit_iff {o : Ordinal} : IsSuccLimit o ↔ o ≠ 0 ∧ IsSuccPrelimit o := by
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:131:  simp [IsSuccLimit]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-132-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-133-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-134-theorem isSuccPrelimit_zero : IsSuccPrelimit (0 : Ordinal) := isSuccPrelimit_bot
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-135-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-136-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:137:theorem not_isSuccLimit_zero : ¬ IsSuccLimit (0 : Ordinal) := not_isSuccLimit_bot
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-138-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-139-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-140-theorem isSuccPrelimit_lift {o : Ordinal} : IsSuccPrelimit (lift.{u, v} o) ↔ IsSuccPrelimit o :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-141-  liftInitialSeg.isSuccPrelimit_apply_iff
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-142-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-143-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:144:theorem isSuccLimit_lift {o : Ordinal} : IsSuccLimit (lift.{u, v} o) ↔ IsSuccLimit o :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-145-  liftInitialSeg.isSuccLimit_apply_iff
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-146-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:147:theorem natCast_lt_of_isSuccLimit {o : Ordinal} (h : IsSuccLimit o) (n : ℕ) : n < o := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-148-  simpa using h.add_natCast_lt h.bot_lt n
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-149-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:150:theorem one_lt_of_isSuccLimit {o : Ordinal} (h : IsSuccLimit o) : 1 < o :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-151-  mod_cast natCast_lt_of_isSuccLimit h 1
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-152-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:153:theorem zero_or_succ_or_isSuccLimit (o : Ordinal) : o = 0 ∨ o ∈ range succ ∨ IsSuccLimit o := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-154-  simpa using isMin_or_mem_range_succ_or_isSuccLimit o
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-155-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-156-/-- Main induction principle of ordinals: if one can prove a property by
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-158-@[elab_as_elim]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-159-def limitRecOn {motive : Ordinal → Sort*} (o : Ordinal)
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-160-    (zero : motive 0) (succ : ∀ o, motive o → motive (succ o))
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:161:    (limit : ∀ o, IsSuccLimit o → (∀ o' < o, motive o') → motive o) : motive o :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-162-  SuccOrder.limitRecOn o (fun _a ha ↦ ha.eq_bot ▸ zero) (fun a _ ↦ succ a) limit
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-163-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-164-@[simp]
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-178-/-- Bounded recursion on ordinals. Similar to `limitRecOn`, with the assumption `o < l`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-179-  added to all cases. The final term's domain is the ordinals below `l`. -/
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-180-@[deprecated limitRecOn (since := "2025-12-26"), elab_as_elim]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:181:def boundedLimitRecOn {l : Ordinal} (lLim : IsSuccLimit l) {motive : Iio l → Sort*} (o : Iio l)
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-182-    (zero : motive ⟨0, lLim.bot_lt⟩)
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-183-    (succ : (o : Iio l) → motive o → motive ⟨succ o, lLim.succ_lt o.2⟩)
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:184:    (limit : (o : Iio l) → IsSuccLimit o.1 → (Π o' < o, motive o') → motive o) : motive o := by
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-185-  obtain ⟨o, ho⟩ := o
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-186-  induction o using limitRecOn with
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-187-  | zero => exact zero
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-192-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-193-set_option linter.deprecated false in
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-194-@[deprecated limitRecOn_zero (since := "2025-12-26")]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:195:theorem boundedLimitRec_zero {l} (lLim : IsSuccLimit l) {motive} (H₁ H₂ H₃) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-196-    @boundedLimitRecOn l lLim motive ⟨0, lLim.bot_lt⟩ H₁ H₂ H₃ = H₁ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-197-  rw [boundedLimitRecOn]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-198-  dsimp
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-200-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-201-set_option linter.deprecated false in
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-202-@[deprecated limitRecOn_succ (since := "2025-12-26")]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:203:theorem boundedLimitRec_succ {l} (lLim : IsSuccLimit l) {motive} (o H₁ H₂ H₃) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-204-    @boundedLimitRecOn l lLim motive ⟨succ o.1, lLim.succ_lt o.2⟩ H₁ H₂ H₃ = H₂ o
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-205-    (@boundedLimitRecOn l lLim motive o H₁ H₂ H₃) := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-206-  rw [boundedLimitRecOn]
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-210-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-211-set_option linter.deprecated false in
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-212-@[deprecated limitRecOn_limit (since := "2025-12-26")]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:213:theorem boundedLimitRec_limit {l} (lLim : IsSuccLimit l) {motive} (o H₁ H₂ H₃ oLim) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-214-    @boundedLimitRecOn l lLim motive o H₁ H₂ H₃ = H₃ o oLim (fun x _ ↦
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-215-    @boundedLimitRecOn l lLim motive x H₁ H₂ H₃) := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-216-  rw [boundedLimitRecOn]
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-235-theorem toType_noMax_of_succ_lt {o : Ordinal} (ho : ∀ a < o, succ a < o) : NoMaxOrder o.ToType :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-236-  ⟨has_succ_of_type_succ_lt (type_toType _ ▸ ho)⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-237-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:238:theorem bounded_singleton {r : α → α → Prop} [IsWellOrder α r] (hr : IsSuccLimit (type r)) (x) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-239-    Bounded r {x} := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-240-  refine ⟨enum r ⟨succ (typein r x), hr.succ_lt (typein_lt_type r x)⟩, ?_⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-241-  intro b hb
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-271-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-272-alias _root_.Order.IsSuccPrelimit.ordinalPred_eq := pred_eq_of_isSuccPrelimit
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-273-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:274:theorem _root_.Order.IsSuccLimit.ordinalPred_eq {o} (ho : IsSuccLimit o) : pred o = o :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-275-  ho.isSuccPrelimit.ordinalPred_eq
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-276-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-277-@[simp]
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-329-set_option linter.deprecated false in
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-330-@[deprecated IsNormal.le_iff_forall_le (since := "2025-12-25")]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-331-theorem IsNormal.limit_le {f} (H : Ordinal.IsNormal f) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:332:    ∀ {o}, IsSuccLimit o → ∀ {a}, f o ≤ a ↔ ∀ b < o, f b ≤ a :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-333-  H.le_iff_forall_le
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-334-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-335-set_option linter.deprecated false in
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-336-@[deprecated IsNormal.lt_iff_exists_lt (since := "2025-12-25")]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:337:theorem IsNormal.limit_lt {f} (H : Ordinal.IsNormal f) {o} (h : IsSuccLimit o) {a} :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-338-    a < f o ↔ ∃ b < o, a < f b :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-339-  H.lt_iff_exists_lt h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-340-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-351-set_option linter.deprecated false in
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-352-@[deprecated isNormal_iff (since := "2025-12-25")]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-353-theorem isNormal_iff_strictMono_limit (f : Ordinal → Ordinal) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:354:    Ordinal.IsNormal f ↔ StrictMono f ∧ ∀ o, IsSuccLimit o → ∀ a, (∀ b < o, f b ≤ a) → f o ≤ a :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-355-  isNormal_iff
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-356-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-357-set_option linter.deprecated false in
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-412-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-413-set_option linter.deprecated false in
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-414-@[deprecated IsNormal.map_isSuccLimit (since := "2025-12-25")]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:415:theorem IsNormal.isSuccLimit {f} (H : Ordinal.IsNormal f) {o} (ho : IsSuccLimit o) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:416:    IsSuccLimit (f o) :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-417-  H.map_isSuccLimit ho
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-418-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-419-/-! ### Subtraction on ordinals -/
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-498-theorem add_le_iff {a b c : Ordinal} (hb : b ≠ 0) : a + b ≤ c ↔ ∀ d < b, a + d < c := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-499-  simpa using (lt_add_iff hb).not
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-500-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:501:theorem lt_add_iff_of_isSuccLimit {a b c : Ordinal} (hc : IsSuccLimit c) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-502-    a < b + c ↔ ∃ d < c, a < b + d := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-503-  rw [lt_add_iff hc.ne_bot]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-504-  constructor <;> rintro ⟨d, hd, ha⟩
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-506-    rwa [add_succ, lt_succ_iff]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-507-  · exact ⟨d, hd, ha.le⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-508-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:509:theorem add_le_iff_of_isSuccLimit {a b c : Ordinal} (hb : IsSuccLimit b) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-510-    a + b ≤ c ↔ ∀ d < b, a + d ≤ c := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-511-  simpa using (lt_add_iff_of_isSuccLimit hb).not
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-512-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-514-  rw [isNormal_iff]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-515-  exact ⟨add_right_strictMono, fun _ l _ ↦ (add_le_iff_of_isSuccLimit l).2⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-516-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:517:theorem isSuccLimit_add (a : Ordinal) {b : Ordinal} : IsSuccLimit b → IsSuccLimit (a + b) :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-518-  (isNormal_add_right a).map_isSuccLimit
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-519-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:520:theorem isSuccLimit_sub {a b : Ordinal} (ha : IsSuccLimit a) (h : b < a) : IsSuccLimit (a - b) := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-521-  rw [isSuccLimit_iff, Ordinal.sub_ne_zero_iff_lt, isSuccPrelimit_iff_succ_lt]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-522-  refine ⟨h, fun c hc ↦ ?_⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-523-  rw [lt_sub] at hc ⊢
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-633-  rw [one_mul a]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-634-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-635-private theorem mul_le_of_limit_aux {α β r s} [IsWellOrder α r] [IsWellOrder β s] {c}
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:636:    (h : IsSuccLimit (type s)) (H : ∀ b' < type s, type r * b' ≤ c) (l : c < type r * type s) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-637-    False := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-638-  suffices ∀ a b, Prod.Lex s r (b, a) (enum _ ⟨_, l⟩) by
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-639-    obtain ⟨b, a⟩ := enum _ ⟨_, l⟩
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-670-    · simpa only [dif_neg e₁, dif_neg e₂, Prod.lex_def, subrel_val, Subtype.mk_eq_mk,
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-671-        Sum.lex_inl_inl] using h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-672-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:673:theorem mul_le_iff_of_isSuccLimit {a b c : Ordinal} (h : IsSuccLimit b) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-674-    a * b ≤ c ↔ ∀ b' < b, a * b' ≤ c :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-675-  ⟨fun h _ l => (mul_le_mul_right l.le _).trans h, fun H =>
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-676-    -- We use the `induction` tactic in order to change `h`/`H` too.
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-687-  · simpa [IsLUB, IsLeast, upperBounds, lowerBounds, mul_le_iff_of_isSuccLimit hb] using
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-688-      fun c hc ↦ mul_le_mul_right hc.le a
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-689-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:690:theorem lt_mul_iff_of_isSuccLimit {a b c : Ordinal} (h : IsSuccLimit c) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-691-    a < b * c ↔ ∃ c' < c, a < b * c' := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-692-  simpa using (mul_le_iff_of_isSuccLimit h).not
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-693-
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-722-theorem mul_right_inj {a b c : Ordinal} (a0 : 0 < a) : a * b = a * c ↔ b = c :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-723-  mul_left_cancel_iff_of_pos a0
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-724-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:725:theorem isSuccLimit_mul {a b : Ordinal} (a0 : 0 < a) : IsSuccLimit b → IsSuccLimit (a * b) :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-726-  (isNormal_mul_right a0).map_isSuccLimit
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-727-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:728:theorem isSuccLimit_mul_left {a b : Ordinal} (l : IsSuccLimit a) (b0 : 0 < b) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:729:    IsSuccLimit (a * b) := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-730-  rcases zero_or_succ_or_isSuccLimit b with (rfl | ⟨b, rfl⟩ | lb)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-731-  · exact b0.false.elim
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-732-  · rw [mul_succ]
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-737-  | 0, a => by rw [zero_nsmul, Nat.cast_zero, mul_zero]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-738-  | n + 1, a => by rw [succ_nsmul, Nat.cast_add, mul_add, Nat.cast_one, mul_one, smul_eq_mul n]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-739-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:740:private theorem add_mul_limit_aux {a b c : Ordinal} (ba : b + a = a) (l : IsSuccLimit c)
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-741-    (IH : ∀ c' < c, (a + b) * succ c' = a * succ c' + b) : (a + b) * c = a * c :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-742-  le_antisymm
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-743-    ((mul_le_iff_of_isSuccLimit l).2 fun c' h => by
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-752-  | limit c l IH =>
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-753-    rw [mul_succ, add_mul_limit_aux ba l IH, mul_succ, add_assoc]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-754-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:755:theorem add_mul_of_isSuccLimit {a b c : Ordinal} (ba : b + a = a) (l : IsSuccLimit c) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-756-    (a + b) * c = a * c :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-757-  add_mul_limit_aux ba l fun c' _ => add_mul_succ c' ba
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-758-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-796-  | succ _ _ => rw [succ_le_iff, lt_div c0]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-797-  | limit _ h₁ h₂ =>
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-798-    revert h₁ h₂
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:799:    simp +contextual only [mul_le_iff_of_isSuccLimit, IsSuccLimit.le_iff_forall_le, forall_true_iff]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-800-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-801-theorem div_lt {a b c : Ordinal} (b0 : b ≠ 0) : a / b < c ↔ a < b * c :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-802-  lt_iff_lt_of_le_iff_le <| le_div b0
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-870-    eq_of_forall_ge_iff fun d => by rw [sub_le, ← le_div a0, sub_le, ← le_div a0, mul_add_div _ a0]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-871-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-872-theorem isSuccLimit_add_iff {a b : Ordinal} :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:873:    IsSuccLimit (a + b) ↔ IsSuccLimit b ∨ b = 0 ∧ IsSuccLimit a := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-874-  constructor <;> intro h
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-875-  · by_cases h' : b = 0
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-876-    · rw [h', add_zero] at h
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-885-  · exact isSuccLimit_add a h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-886-  · simpa only [add_zero]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-887-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:888:theorem isSuccLimit_add_iff_of_isSuccLimit {a b : Ordinal} (h : IsSuccLimit a) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:889:    IsSuccLimit (a + b) ↔ IsSuccPrelimit b := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-890-  rw [isSuccLimit_add_iff]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-891-  obtain rfl | hb := eq_or_ne b 0
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-892-  · simpa
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1074-@[simp]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1075-theorem one_lt_omega0 : 1 < ω := by simpa only [Nat.cast_one] using nat_lt_omega0 1
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1076-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:1077:theorem isSuccLimit_omega0 : IsSuccLimit ω := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1078-  rw [isSuccLimit_iff, isSuccPrelimit_iff_succ_lt]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1079-  refine ⟨omega0_ne_zero, fun o h => ?_⟩
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1080-  obtain ⟨n, rfl⟩ := lt_omega0.1 h
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1086-      let ⟨n, e⟩ := lt_omega0.1 h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1087-      rw [e, ← succ_le_iff]; exact H (n + 1)⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1088-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:1089:theorem omega0_le_of_isSuccLimit {o} (h : IsSuccLimit o) : ω ≤ o :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1090-  omega0_le.2 fun n => le_of_lt <| natCast_lt_of_isSuccLimit h n
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1091-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1092-theorem natCast_add_omega0 (n : ℕ) : n + ω = ω := by
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1114-open Ordinal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1115-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1116--- TODO: prove `IsSuccPrelimit a ↔ ω ∣ a`.
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:1117:theorem isSuccLimit_iff_omega0_dvd {a : Ordinal} : IsSuccLimit a ↔ a ≠ 0 ∧ ω ∣ a := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1118-  refine ⟨fun l => ⟨l.ne_bot, ⟨a / ω, le_antisymm ?_ (mul_div_le _ _)⟩⟩, fun h => ?_⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1119-  · refine l.le_iff_forall_le.2 fun x hx => le_of_lt ?_
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1120-    rw [← div_lt omega0_ne_zero, ← succ_le_iff, le_div omega0_ne_zero, mul_succ,
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1143-  rw [add_comm, ← card_ord c, ← card_one, ← card_add, one_add_of_omega0_le]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1144-  rwa [← ord_aleph0, ord_le_ord]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1145-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:1146:theorem isSuccLimit_ord {c} (co : ℵ₀ ≤ c) : IsSuccLimit (ord c) := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1147-  rw [isSuccLimit_iff, isSuccPrelimit_iff_succ_lt]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1148-  refine ⟨fun h => aleph0_ne_zero ?_, fun a => lt_imp_lt_of_le_imp_le fun h => ?_⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1149-  · rw [← nonpos_iff_eq_zero, ord_le] at h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1150-    simpa only [card_zero, nonpos_iff_eq_zero] using co.trans h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1151-  · rw [ord_le] at h ⊢
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1152-    rwa [← @add_one_of_aleph0_le (card a), ← card_succ]
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean:1153:    rw [← ord_le, ← IsSuccLimit.le_succ_iff, ord_le]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1154-    · exact co.trans h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1155-    · rw [ord_aleph0]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Arithmetic.lean-1156-      exact Ordinal.isSuccLimit_omega0
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-42-instance : OrderTopology Ordinal.{u} := ⟨rfl⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-43-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-44--- todo: generalize to other well-orders
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean:45:theorem isOpen_singleton_iff : IsOpen ({a} : Set Ordinal) ↔ ¬ IsSuccLimit a := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-46-  refine ⟨fun h ha => ?_, fun ha => ?_⟩
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-47-  · obtain ⟨b, c, hbc, hbc'⟩ :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-48-      (mem_nhds_iff_exists_Ioo_subset' ⟨0, ha.bot_lt⟩ ⟨_, lt_succ a⟩).1
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-57-    · exact (ha ha').elim
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-58-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-59--- todo: generalize to a `SuccOrder`
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean:60:theorem nhds_eq_pure : 𝓝 a = pure a ↔ ¬ IsSuccLimit a :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-61-  (isOpen_singleton_iff_nhds_eq_pure _).symm.trans isOpen_singleton_iff
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-62-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-63--- todo: generalize this lemma to a `SuccOrder`
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean:64:theorem isOpen_iff : IsOpen s ↔ ∀ o ∈ s, IsSuccLimit o → ∃ a < o, Set.Ioo a o ⊆ s := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-65-  refine isOpen_iff_mem_nhds.trans <| forall₂_congr fun o ho => ?_
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean:66:  by_cases ho' : IsSuccLimit o
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-67-  · simp only [(SuccOrder.hasBasis_nhds_Ioc_of_exists_lt ⟨0, ho'.bot_lt⟩).mem_iff, ho',
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-68-      true_implies]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-69-    refine exists_congr fun a => and_congr_right fun ha => ?_
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-155-    exact fun i hi => hf _
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-156-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-157--- todo: generalize to other well-orders
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean:158:theorem isSuccLimit_of_mem_frontier (ha : a ∈ frontier s) : IsSuccLimit a := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-159-  simp only [frontier_eq_closure_inter_closure, Set.mem_inter_iff, mem_closure_iff] at ha
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-160-  by_contra h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-161-  rw [← isOpen_singleton_iff] at h
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-238-theorem IsAcc.pos {o : Ordinal} {S : Set Ordinal} (h : o.IsAcc S) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-239-    0 < o := pos_iff_ne_zero.mpr ((isAcc_iff _ _).mp h).1
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-240-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean:241:theorem IsAcc.isSuccLimit {o : Ordinal} {S : Set Ordinal} (h : o.IsAcc S) : IsSuccLimit o := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-242-  rw [isAcc_iff] at h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-243-  rw [isSuccLimit_iff]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-244-  refine ⟨h.1, isSuccPrelimit_of_succ_ne fun x hx ↦ ?_⟩
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-276-        specialize h (Iio ⟨1, ho⟩) (Iio_mem_nhds (Subtype.mk_lt_mk.mpr zero_lt_one))
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-277-        obtain ⟨_, h⟩ := h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-278-        exact h.2 <| Subtype.mk_eq_mk.mpr (lt_one_iff_zero.mp h.1.1)
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean:279:      have plim : IsSuccLimit p := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-280-        contrapose! h
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-281-        obtain ⟨q, hq⟩ := ((zero_or_succ_or_isSuccLimit p).resolve_left ppos).resolve_right h
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Topology.lean-282-        use (Ioo ⟨q, ((hq ▸ lt_succ q).trans hpo)⟩ ⟨p + 1, ho⟩)
+--
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-949-  obtain ⟨i, rfl⟩ := lt_omega0.1 hi
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-950-  exact ⟨i, h'.trans_le le_self_add⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-951-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean:952:private theorem exists_lt_omega0_opow' {α} {o b : Ordinal} (hb : 1 < b) (ho : IsSuccLimit o)
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-953-    {f : α → Ordinal} (H : ∀ ⦃a⦄, a < o → ∃ i, a < f i) ⦃a⦄ (h : a < b ^ o) :
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-954-        ∃ i, a < b ^ f i := by
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-955-  obtain ⟨d, hd, h'⟩ := (lt_opow_of_isSuccLimit (zero_lt_one.trans hb).ne' ho).1 h
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-965-  | Sum.inl none => o = 0
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-966-  | Sum.inl (some a) => o.repr = succ a.repr ∧ (o.NF → a.NF)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-967-  | Sum.inr f =>
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean:968:    IsSuccLimit o.repr ∧
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-969-      (∀ i, f i < f (i + 1) ∧ f i < o ∧ (o.NF → (f i).NF)) ∧ ∀ a, a < o.repr → ∃ i, a < (f i).repr
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-970-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-971-theorem fundamentalSequenceProp_inl_none (o) :
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-978-
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-979-theorem fundamentalSequenceProp_inr (o f) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-980-    FundamentalSequenceProp o (Sum.inr f) ↔
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean:981:      IsSuccLimit o.repr ∧
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-982-        (∀ i, f i < f (i + 1) ∧ f i < o ∧ (o.NF → (f i).NF)) ∧
+.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-983-        ∀ a, a < o.repr → ∃ i, a < (f i).repr :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Notation.lean-984-  Iff.rfl

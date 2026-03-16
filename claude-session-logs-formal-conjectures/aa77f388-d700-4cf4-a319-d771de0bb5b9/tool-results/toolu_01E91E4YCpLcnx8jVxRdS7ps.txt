@@ -1,0 +1,238 @@
+FormalConjectures/GreensOpenProblems/18.lean:24:- [Au16] Austin, Tim. "Ajtai–Szemerédi theorems over quasirandom groups." Recent trends in
+FormalConjectures/GreensOpenProblems/18.lean:28:- [Go01] Gowers, William T. "A new proof of Szemerédi's theorem." Geometric & Functional Analysis
+ai-review/75.md:18:- `[EHS82]` Erdős, P., Hajnal, A., and Szemerédi, E., *On almost bipartite large chromatic graphs*, Annals of Discrete Mathematics 12 (1982), 117-123.
+ai-review/93.md:37:2. **Problem 1082 (Szemerédi's variant, open):** Replace "convex position" with "no three collinear." This is formalized in `ErdosProblems/1082.lean` — correctly handled as a separate problem.
+ai-review/190.md:52:- The docstring for `H` could mention that nonemptiness of the defining set (and hence well-definedness of `H`) follows from Szemerédi's theorem, as stated in the module docstring. Currently this context is only in the module-level `/-! ... -/` block.
+ai-review/190.md:56:**The problem is clearly formalizable.** The question "Is it true that H(k)^{1/k}/k → ∞?" is a precise yes/no question about the asymptotic behavior of a well-defined function. The only prerequisite—that H(k) is finite for all k—follows from Szemerédi's theorem, a known (though deep) result.
+ai-review/190.md:92:**Potential concern:** `sInf` on `ℕ` returns `0` for the empty set. If the defining set were empty (i.e., no such N exists), then `H k = 0` for all `k`, and the main theorem would be trivially false. Mathematically the set is nonempty by Szemerédi's theorem, but this is not formalized. The current approach is acceptable for a conjecture file—the `answer(sorry)` framework accommodates this—but a separate lemma asserting nonemptiness would strengthen the formalization:
+ai-review/343.md:19:- Solved by Szemerédi and Vu [SzVu06]
+ai-review/343.md:34:- **Folkman's weaker result:** Folkman proved the statement holds under the stronger condition `|A ∩ {1,…,N}| ≫ N^{1+ε}`. This is essentially captured by Erdős Problem 344 (`344.lean`), which formalizes the `√N` threshold version (also proved by Szemerédi–Vu). The two problems together cover the main variants.
+ai-review/343.md:86:[Omitted long matching line]
+ai-review/343.md:114:The theorem is wrapped as `answer(True) ↔ ∀ mult, ...`, asserting the answer is "yes." This matches the website: the problem was proved affirmatively by Szemerédi and Vu. ✅
+ai-review/211.md:42:- **[SzTr83]** Szemerédi & Trotter (solvers)
+ai-review/211.md:83:3. **The Szemerédi–Trotter incidence theorem itself:** The Szemerédi–Trotter theorem (the number of incidences between n points and m lines in ℝ² is O(n^{2/3}m^{2/3} + n + m)) is the main tool used to prove Problem 211. It is a more fundamental result and could be formalized separately, with Problem 211 derived as a consequence.
+ai-review/211.md:179:**Verdict: Correct and complete.** The formalization accurately captures the Beck/Szemerédi–Trotter theorem as stated in the Erdős problem. The definitions are mathematically sound, the hypotheses match the problem conditions, and the conclusion correctly formalizes the asymptotic lower bound. There are no mathematical flaws.
+ai-review/166.md:35:| Ajtai, Komlós, Szemerédi (1980) | ✓ | ✓ [AKS80] | OK |
+ai-review/166.md:63:2. **Upper bound (AKS80):** The docstring mentions the upper bound $R(4,k) \ll k^3 / (\log k)^2$ due to Ajtai–Komlós–Szemerédi. This is a known result and could be formalized:
+ai-review/111.md:44:[Omitted long matching line]
+ai-review/111.md:63:2. **The n^{3/2} known bound (EHS82):** The docstring mentions that Erdős–Hajnal–Szemerédi proved the existence of G with χ = ℵ₁ satisfying h(G,n) ≪ n^{3/2}. This known result could be formalized as a theorem (not a conjecture) to provide context.
+ai-review/182.md:51:| Pyber, Rodl & Szemeredi 1995 | `[PRS95]` | Yes | OK |
+ai-review/182.md:86:2. **Lower bound (Pyber–Rodl–Szemeredi):** The matching lower bound: for every k ≥ 3, there exist graphs on n vertices with Ω(n · log log n) edges containing no k-regular subgraph. This would demonstrate the tightness of the upper bound:
+ai-review/182.md:98:3. **Connected variant (Szemeredi):** The website mentions Szemerédi's question requiring the k-regular subgraph to be *connected*. Let F(n,k) be the minimum number of edges guaranteeing a connected k-regular subgraph. Erdős [Er75] proved F(n,3) ≪ n^(5/3). This is a distinct and interesting variant not captured by the formalization.
+ai-review/182.md:177:**Verdict: Correct and complete for the main statement.** No mathematical flaws. The formalization faithfully captures the Janzer–Sudakov resolution of the Erdős–Sauer conjecture. The main deficiencies are: (1) missing the quantitative refinement by Chakraborti et al., (2) missing the matching lower bound by Pyber–Rodl–Szemeredi, and (3) missing the connected variant due to Szemerédi. These are omissions of variants, not errors in the existing formalization.
+ai-review/440.md:17:The website lists references **[ErGr80, p.87]** (Erdős & Graham) and **[ErSz80]** (Erdős & Szemerédi). The Lean file's docstring only cites **[ErSz80]**. The reference **[ErGr80, p.87]** is missing.
+ai-review/440.md:21:The [ErSz80] citation in the docstring lacks a full bibliographic entry — only `Erdős, P. and Szemerédi, E.` is given without a title, journal, or year. By contrast, Problem 441 provides complete citations. A fuller entry would be appropriate.
+ai-review/440.md:33:- **Sharp constant (van Doorn / Erdős–Szemerédi)**: $A(x) \leq (c + o(1))\sqrt{x}$ where $c = \sum_{n \geq 1} \frac{1}{n^{1/2}(n+1)} \approx 1.86$, and this constant is best possible.
+ai-review/447.md:34:The website also notes that the weaker bound o(2^n) was proved by Sárkőzy and Szemerédi (unpublished) and has implications for sets of positive density (connecting to Problem 487). This context is not captured in the formalization but is informational rather than a missing variant.
+ai-review/201.md:44:- References to Riddell (1969) as first investigator, and Erdős (1973, 1975), Erdős–Graham (1979, 1980), Komlós–Sulyok–Szemerédi (1975)
+ai-review/201.md:54:| Komlós–Sulyok–Szemerédi 1975 | `[KSS75]` with full title | Yes | OK |
+ai-review/201.md:79:2. **Komlós–Sulyok–Szemerédi result:** The docstring mentions that $R_k(N) \ll_k G_k(N)$ was proved in [KSS75]. This is a known result and could be stated as a `solved` variant:
+ai-review/438.md:17:The formalization references **[KLS02]** (Khalfalah, Lodha, Szemerédi, 2002). The website lists several additional references:
+ai-review/438.md:25:| **[KLS02]** — Khalfalah, Lodha, Szemerédi (2002) | **Present.** Proved the tight asymptotic bound. |
+ai-review/600.md:24:- **[RuSz78]** — Full citation: Ruzsa, I.Z. and Szemerédi, E., *Triple systems with no six points carrying three triangles*. Combinatorics (Proc. Fifth Hungarian Colloq., Keszthely, 1976), Vol. II, Colloq. Math. Soc. János Bolyai 18, North-Holland, 1978, pp. 939–945.
+ai-review/600.md:27:These match what is available on erdosproblems.com/600. The website does not provide a more detailed citation for [Er87], so the terse reference is acceptable. The docstring also correctly mentions the Ruzsa–Szemerédi result that `e(n, r) = o(n²)` for fixed `r`, consistent with the website.
+ai-review/105.md:24:- **[Be83]** Beck, J. and **[SzTr83]** Szemerédi, E. and Trotter, W.T. — proved the related result that the conjecture holds when $|B| = cn$ for a constant $c > 0$ (this is Erdős Problem 211).
+ai-review/105.md:27:- Problem #211 — Beck and Szemerédi–Trotter's result on $\gg kn$ lines, which is directly related to the variants mentioned in the docstring.
+ai-review/105.md:33:**Recommendation:** Add full citation entries for [ErPu95] and note the connection to Problem 211 (Beck/Szemerédi–Trotter). The reference to "Xichuan" should ideally include the full name or a citation if available on the website.
+ai-review/105.md:46:Beck [Be83] and Szemerédi–Trotter [SzTr83] proved that with $|B| = cn$ (constant fraction), the conclusion holds. This is a natural quantitative strengthening that bridges the gap between the disproved $n - 3$ case and the known-to-hold $cn$ case. A variant theorem referencing Problem 211 would provide useful context.
+ai-review/88.md:37:> Erdős' original formulation included the additional condition that G has ≫ n² edges, but this follows from the other conditions by an earlier Erdős–Szemerédi result.
+ai-review/610.md:29:- The website notes that a positive answer to the strong form would follow from resolving **Problem 151**, via the Ajtai–Komlós–Szemerédi result that $H(n) \gg \sqrt{n \log n}$. The docstring does not mention this connection.
+ai-review/610.md:33:**Recommendation:** Add a note in the module docstring mentioning the connection to Problems 151 and 611, e.g.: "A positive answer to the strong form would follow from Problem 151 (Erdős–Gallai conjecture on $\tau(G) \leq n - H(n)$), since Ajtai, Komlós, and Szemerédi proved $H(n) \gg \sqrt{n \log n}$."
+ai-review/533.md:17:- The problem was originally posed by **Erdős, Hajnal, Simonovits, Sós, and Szemerédi**, who established the upper bound δ₃(5) ≤ 1/12 and proved δ₃(4) = 0.
+ai-review/533.md:22:**Issue:** The formalization's docstring mentions "The correct value is δ₃(5) = 1/12" but does not cite [LRSS21], which is the paper that established this. The original proposers (Erdős, Hajnal, Simonovits, Sós, Szemerédi) and original source references [Er91] and [EHSSS94] are also not cited. The [BaLe13] citation format is acceptable (short author abbreviation with year) but could include the journal or arXiv identifier for completeness.
+ai-review/577.md:11:[Omitted long matching line]
+ai-review/577.md:81:- **Relationship to Hajnal-Szemerédi (Problem 914):** Setting r=4 in 914 gives: a graph on 4m vertices with min degree ≥ 3m has m vertex-disjoint K4. Problem 577 requires only min degree ≥ 2k (weaker) but asks for C4s (weaker than K4). These are related but independent results — 577 is not a special case of 914.
+ai-review/165.md:29:- Upper bound: Shearer (1983), improving Ajtai–Komlós–Szemerédi (1980)
+ai-review/579.md:19:- **[EHSS83]** — Erdős, Hajnal, Sós, Szemerédi (1983), the original paper posing the conjecture and proving the δ > 1/8 case.
+ai-review/579.md:30:1. **The proved case δ > 1/8.** The docstring notes that Erdős, Hajnal, Sós, and Szemerédi proved the conjecture for δ > 1/8, but this is not formalized as a separate theorem. A natural companion statement would be:
+ai-review/362.md:12:- `[SaSz]` — Sárközy, A. and Szemerédi, E.
+ai-review/362.md:62:- **Main theorem**: The bound `C * 2^N / N^{3/2}` for the number of subsets of an N-element set with a given sum is exactly the Sárközy–Szemerédi result. ✓
+FormalConjectures/ErdosProblems/579.lean:22:Erdős, Hajnal, Sós, and Szemerédi conjectured that for any δ > 0, if n is sufficiently large
+FormalConjectures/ErdosProblems/579.lean:55:A problem of Erdős, Hajnal, Sós, and Szemerédi, who proved this for $\delta > 1/8$.
+ai-review/539.md:16:The formalization's docstring mentions "Erdős and Szemerédi" and "Freiman and Lev" by name but does not provide full citation details (journal, year, title) for any reference. The website also credits **Vjekoslav Kovac** under "Special Thanks."
+ai-review/539.md:24:1. **Lower bound** (Erdős-Szemerédi): h(n) ≫ n^{1/2} — formalized as `erdos_539`.
+ai-review/539.md:29:- The **original Erdős-Szemerédi upper bound** h(n) ≪ n^{1-c} is mentioned in the docstring but not separately formalized. This is acceptable since the Freiman-Lev bound n^{2/3} strictly improves it (2/3 < 1-c for any fixed c > 0 and large n), so there is no mathematical loss.
+ai-review/539.md:63:- States ∃ C > 0 such that ∀ A (with positive elements), C · |A|^{1/2} ≤ |gcdQuotientSet(A)|. This is a correct formalization of the Erdős-Szemerédi lower bound h(n) ≫ n^{1/2}.
+ai-review/539.md:71:- Both theorems are tagged `category research solved`, which is correct — these are established results (Erdős-Szemerédi and Freiman-Lev respectively). The overall problem of closing the gap is open, but the formalized statements themselves are proven results.
+FormalConjectures/ErdosProblems/343.lean:24:Proved by Szemerédi and Vu.
+FormalConjectures/ErdosProblems/343.lean:31:[SzVu06] Szemerédi, E. and Vu, V.H., *Finite and infinite arithmetic progressions in sumsets*.
+FormalConjectures/ErdosProblems/343.lean:63:A problem of Folkman. Proved by Szemerédi and Vu [SzVu06].
+ai-review/344.md:26:- **[SzVu06]**: Szemerédi, E. and Vu, V.H., *Finite and infinite arithmetic progressions in sumsets*. Annals of Mathematics (2006). — **Matches the website.**
+ai-review/344.md:30:The docstring correctly notes both the Szemerédi–Vu proof and Folkman's earlier partial result.
+ai-review/344.md:36:[Omitted long matching line]
+ai-review/344.md:55:- The docstring clearly explains the problem, the growth condition, the conclusion, and historical context (Folkman's earlier result and Szemerédi–Vu's proof). This is good.
+ai-review/344.md:85:- **Solved status**: The `@[category research solved, AMS 5 11]` tag correctly reflects that this was proved by Szemerédi and Vu in 2006.
+FormalConjectures/ErdosProblems/600.lean:32:Ruzsa and Szemerédi [RuSz78] proved that $e(n, r) = o(n^2)$ for any fixed $r$.
+FormalConjectures/ErdosProblems/600.lean:36:[RuSz78] Ruzsa, I.Z. and Szemerédi, E., _Triple systems with no six points carrying
+ai-review/615.md:46:**Included:** The EHSS theorem (`erdos_615.variants.EHSS`) correctly formalizes the Erdős–Hajnal–Sós–Szemerédi result that rt(n; 4, εn) < (1/8 + o(1))n² for fixed ε > 0.
+ai-review/110.md:35:- [EHS82] — listed as "Erdos, P., Hajnal, A., and Szemeredi, E. — original conjecture." The full citation would be: Erdos, P., Hajnal, A., and Szemeredi, E., *On almost bipartite large chromatic graphs*, Annals of Discrete Mathematics, 12 (1982), 117-123. (This is the same paper cited in Problem 111.)
+ai-review/580.md:22:[AKS95] Ajtai, M., Komlós, J., and Szemerédi, E.
+ai-review/580.md:29:- [AKS95] Ajtai, Komlós, and Szemerédi (1995) — proved an asymptotic version: if at least $(1+\epsilon)n/2$ vertices have degree at least $(1+\epsilon)n/2$, the conclusion holds for sufficiently large $n$ (depending on $\epsilon$).
+ai-review/607.md:20:- **[SzTr83]** as the proof by Szemerédi and Trotter.
+ai-review/607.md:24:- `[SzTr83] Szemerédi, E. and Trotter, W. T., *Extremal problems in discrete geometry* (1983).` — matches the website.
+ai-review/607.md:36:This lower bound variant is **not captured** in the formalization. Only the upper bound (proved by Szemerédi–Trotter) is formalized. A complete treatment could include a second conjecture or theorem for the lower bound, confirming tightness of the exponential order.
+ai-review/52.md:18:**Neighboring problem:** Erdős Problem 53 (`ErdosProblems/53.lean`) is thematically related (also by Erdős–Szemerédi, same citation [ErSz83]) but concerns *subset* sums/products rather than *pairwise* sumsets/product sets, so its definitions (`subsetSums`, `subsetProducts`) are not applicable here.
+ai-review/52.md:30:| Erdős–Szemerédi (1983) | `[ErSz83]` — full bibliographic entry | Referenced | **Correct.** |
+ai-review/52.md:66:**3. The Erdős–Szemerédi upper bound:**
+ai-review/52.md:77:- **Module docstring:** Clear, includes the conjecture statement in LaTeX, credits Erdős–Szemerédi, notes the best known bound, and provides full bibliographic references.
+ai-review/52.md:91:The Erdős–Szemerédi sum-product conjecture is precisely stated in the literature. The key concepts are all well-defined:
+ai-review/52.md:138:**Verdict: Correct and complete.** The formalization faithfully captures the Erdős–Szemerédi sum-product conjecture over $\mathbb{Z}$. No mathematical flaws are present. The only notable omission relative to the website is the higher-fold generalization (see §3), which is a variant rather than the core conjecture.
+ai-review/65.md:19:- **[GKS84]** — Gyárfás, Komlós, Szemerédi, 1984 — ✅ Matches the website.
+ai-review/439.md:21:- **Khalfalah and Szemerédi** proved the general result. ✓
+ai-review/439.md:22:- The reference **[KhSz06]** is cited: Khalfalah, A. and Szemerédi, E., *On the number of monochromatic solutions of $x + y = z^2$*. Combinatorics, Probability and Computing (2006), 15(1-2), 213-227. ✓
+ai-review/439.md:34:**Missing variant — General polynomial case:** The module docstring describes the Khalfalah-Szemerédi result for arbitrary non-constant polynomials $f(z) \in \mathbb{Z}[z]$ satisfying $2 \mid f(z)$ for some $z \in \mathbb{Z}$. This stronger result is mentioned but not formalized as a theorem. Adding a polynomial variant would provide a more complete formalization:
+ai-review/439.md:63:The only design choice is the domain: the website says "integers" ($\mathbb{Z}$), but the formalization uses natural numbers ($\mathbb{N}$). This is a **strengthening** — the $\mathbb{N}$ result implies the $\mathbb{Z}$ result (any finite coloring of $\mathbb{Z}$ restricts to a finite coloring of $\mathbb{N}$), but not vice versa. The Khalfalah-Szemerédi proof works over $\mathbb{N}$ (positive integers), so the formalization captures the strongest proven result.
+ai-review/439.md:81:- **`answer(True)`:** Correct — this follows from the Khalfalah-Szemerédi result since $z^k$ with $z$ even gives an even value, satisfying the divisibility condition.
+ai-review/439.md:99:**Overall:** High-quality formalization. The only substantive suggestion is to consider adding the polynomial generalization as a formal variant, since it is the main result of Khalfalah-Szemerédi and is already described in the docstring.
+ai-review/585.md:12:- **[PRS95]** is cited as `Pyber, L., Rödl, V., and Szemerédi, E., _Dense graphs without 3-regular subgraphs_ (1995)`. This matches the known reference.
+ai-review/559.md:45:| Rödl & Szemerédi 2000 | `[RoSz00]` — full citation provided | Yes | **OK.** Correct and complete citation. |
+ai-review/559.md:47:| Tikhomirov 2022 | Not cited | Yes (`[Ti22b]`) — improved the lower bound to n·exp(c√(log n)) | **Missing.** This is a significant improvement to the Rödl–Szemerédi counterexample and is worth documenting. |
+ai-review/559.md:53:- Kohayakawa, Rödl, Schacht & Szemerédi [KRSS11] — upper bound n^{5/3+o(1)} for d=3
+ai-review/559.md:67:1. **Rödl–Szemerédi lower bound (explicit).** The counterexample gives R̂(G) ≫ n(log n)^c for some c > 0 and specific graphs G with max degree 3. This could be formalized as:
+ai-review/559.md:73:2. **Tikhomirov's improved lower bound.** R̂(G) ≫ n·exp(c√(log n)) for d=3, which is strictly stronger than the Rödl–Szemerédi bound.
+ai-review/559.md:84:**Recommendation:** At minimum, add the explicit Rödl–Szemerédi lower bound as a variant. The open question about the correct exponent for d=3 is also worth formalizing.
+ai-review/559.md:107:The disproved status is also unambiguous: Rödl and Szemerédi explicitly constructed counterexample graphs.
+ai-review/80.md:37:  - Szemerédi: regularity lemma implies $f_c(n) \to \infty$
+ai-review/80.md:48:| Szemerédi lower bound | Mentioned | Same | **Correct.** |
+ai-review/540.md:22:| [Sz70] Szemerédi, Acta Arith. (1970) | Yes | Proved for all N / arbitrary abelian groups |
+ai-review/540.md:45:3. **General finite abelian groups**: Szemerédi's result applies to arbitrary finite abelian groups, not just cyclic ones. The formalization restricts to `ZMod N` (cyclic groups). A more general statement would quantify over arbitrary `AddCommGroup G` with `Fintype G`.
+ai-review/540.md:77:- **The `answer(True)` tag**: Correct. The result was proved by Olson (primes) and Szemerédi (general).
+ai-review/540.md:82:**One subtlety worth noting**: The formalization asks for a *single* constant C that works for *all* N simultaneously. This is indeed what Szemerédi proved (the Davenport constant of Z/NZ is O(√N)), so the formalization correctly reflects the known result. A weaker formulation with `∀ N, ∃ C_N` would be trivially true (take C_N = N) and would not capture the problem's intent.
+ai-review/202.md:26:- The docstring says Erdős and Szemerédi proved f(N) = o(N), citing [ErSz68], but does not include the full paper title or journal. The website gives more context: Erdős–Szemerédi established N/exp((log N)^{1/2+ε}) ≪ f(N) < N/(log N)^c.
+ai-review/202.md:44:3. ❌ The original Erdős–Stein conjecture f(N) = o(N) (proved by Erdős–Szemerédi) is not separately formalized, but this is reasonable since it is subsumed by the stronger BFV conjecture.
+ai-review/202.md:46:5. ❌ No variant capturing the original Erdős–Szemerédi quantitative bounds is provided.
+ai-review/530.md:18:- [KSS75] — Komlós, Sulyok, and Szemerédi
+ai-review/530.md:35:- The known bounds $N^{1/2} \ll \ell(N) \leq (1+o(1))N^{1/2}$ are documented in the docstring but not formalized as separate lemmas. Formalizing the upper and lower bounds as standalone results could be valuable, as the lower bound (Komlós–Sulyok–Szemerédi) is a proven theorem, not a conjecture.
+ai-review/490.md:32:> [Sz76] Szemerédi, E., *On the number of edges in products of sets of integers*. 1976.
+ai-review/490.md:34:**Issue:** The Szemerédi citation [Sz76] is appropriate as the solver, but the original Erdős source references listed on the website ([Er61], [Er69], [Er72], [Er73]) are not included. These should be added to document the problem's origins, not just the solution.
+ai-review/490.md:48:This asks whether the constant in the bound is sharp and whether the limit exists, going beyond the mere upper bound proved by Szemerédi. This is a natural and important variant that is **not captured** by the current formalization.
+ai-review/490.md:89:- The problem is correctly marked as `solved` and attributed to Szemerédi.
+ai-review/53.md:36:The website also mentions a companion upper bound result: Erdos and Szemeredi proved there exist arbitrarily large sets A where the count of representable integers is at most $\exp(c(\log|A|)^2 \log\log|A|)$. This is not captured in the formalization (see Variants below).
+ai-review/53.md:46:The **upper bound** result by Erdos-Szemeredi (that there exist sets where the count is at most $\exp(c(\log|A|)^2 \log\log|A|)$) is not formalized. This is a complementary result showing the growth rate cannot be exponential, and is a natural companion to Problem 53. It could be a separate theorem or a second conjecture statement, but its absence is not a flaw — it's a separate result.
+ai-review/53.md:72:Interpretation A is correct here. Under Interpretation B, the number of representable integers is at most $O(|A|^2)$, making the conjecture trivially false for $k \geq 3$. The original Erdos-Szemeredi paper defines $A[1]$ (simple sums) and $A\{1\}$ (simple products) as sums and products over subsets, confirming Interpretation A.
+ai-review/53.md:90:2. **Singleton inclusion:** The powerset includes singletons, so every element of $A$ appears as both a "subset sum" and a "subset product" of itself. This makes the $k = 0$ and $k = 1$ cases trivially true (the union contains at least $|A|$ elements). This is consistent with the Erdos-Szemeredi definition.
+ai-review/73.md:27:- [EHS82] Erdős, P., Hajnal, A., and Szemerédi, E., *On almost bipartite large chromatic graphs* (1982)
+FormalConjectures/ErdosProblems/182.lean:31:A construction due to Pyber, Rödl, and Szemerédi [PRS95] shows that this
+FormalConjectures/ErdosProblems/182.lean:43:[PRS95] Pyber, L., Rödl, V., and Szemerédi, E., _Dense graphs without 3-regular
+FormalConjectures/ErdosProblems/190.lean:31:of $H(k)$ follows from Szemerédi's theorem, and it is easy to show that
+FormalConjectures/ErdosProblems/65.lean:25:edges minimised by the complete bipartite graph? Gyárfás, Komlós, and Szemerédi [GKS84]
+FormalConjectures/ErdosProblems/65.lean:28:[GKS84] Gyárfás, A., Komlós, J., and Szemerédi, E., *On the distribution of cycle lengths in
+FormalConjectures/ErdosProblems/65.lean:55:The first question was proved by Gyárfás, Komlós, and Szemerédi [GKS84].
+FormalConjectures/ErdosProblems/716.lean:26:Ruzsa and Szemerédi [RuSz78].
+FormalConjectures/ErdosProblems/716.lean:31:[RuSz78] Ruzsa, I.Z. and Szemerédi, E., *Triple systems with no six points carrying three
+FormalConjectures/ErdosProblems/716.lean:49:/-- **Erdős Problem 716** (Brown-Erdős-Sós conjecture [BES73], proved by Ruzsa-Szemerédi
+FormalConjectures/ErdosProblems/750.lean:32:[EHS82] Erdős, P., Hajnal, A., and Szemerédi, E., _On almost bipartite large chromatic
+FormalConjectures/ErdosProblems/750.lean:57:This follows from a result of Erdős, Hajnal, and Szemerédi [EHS82].
+FormalConjectures/ErdosProblems/201.lean:29:It is trivial that $G_k(N) \leq R_k(N)$. Komlós, Sulyok, and Szemerédi
+FormalConjectures/ErdosProblems/201.lean:45:[KSS75] Komlós, J., Sulyok, M. and Szemerédi, E., *Linear problems in combinatorial number
+FormalConjectures/ErdosProblems/438.lean:30:Khalfalah, Lodha, and Szemerédi [KLS02] proved that the maximal such $A$ satisfies
+FormalConjectures/ErdosProblems/438.lean:33:[KLS02] Khalfalah, A., Lodha, S., and Szemerédi, E., _On the density of sumsets not
+FormalConjectures/ErdosProblems/438.lean:50:Proved by Khalfalah, Lodha, and Szemerédi [KLS02]. -/
+FormalConjectures/ErdosProblems/440.lean:31:Szemerédi [ErSz80] proved that it is always $\leq 1$.
+FormalConjectures/ErdosProblems/440.lean:35:This was already proved by Erdős and Szemerédi, who showed this constant
+FormalConjectures/ErdosProblems/440.lean:38:[ErSz80] Erdős, P. and Szemerédi, E.
+FormalConjectures/ErdosProblems/440.lean:54:Yes — proved by Tao; the sharp constant was determined by Erdős–Szemerédi [ErSz80]. -/
+FormalConjectures/ErdosProblems/440.lean:65:(Erdős–Szemerédi [ErSz80]) and $A = \mathbb{N}$ achieves equality. -/
+FormalConjectures/ErdosProblems/75.lean:28:[EHS82] Erdős, P., Hajnal, A., and Szemerédi, E., _On almost bipartite large chromatic graphs_,
+FormalConjectures/ErdosProblems/746.lean:25:for some large $C$, Korshunov [Ko77] improved the threshold, and Komlós and Szemerédi [KoSz83]
+FormalConjectures/ErdosProblems/746.lean:67:Proved by Komlós and Szemerédi [KoSz83].
+FormalConjectures/ErdosProblems/1069.lean:27:Conjectured by Erdős, Croft, and Purdy [Er87b]. Proved by Szemerédi and Trotter [SzTr83].
+FormalConjectures/ErdosProblems/1069.lean:32:[SzTr83] Szemerédi, E. and Trotter, W.T., _Extremal problems in discrete geometry_,
+FormalConjectures/ErdosProblems/1069.lean:51:Erdős Problem 1069 (Szemerédi–Trotter theorem) [Er87b], [SzTr83]:
+FormalConjectures/ErdosProblems/559.lean:31:This was disproved by Rödl and Szemerédi [RoSz00] for $d = 3$, who
+FormalConjectures/ErdosProblems/559.lean:35:[RoSz00] Rödl, V. and Szemerédi, E., _On size Ramsey numbers of graphs with bounded degree_. Combinatorica 20 (2000), 257-262.
+FormalConjectures/ErdosProblems/559.lean:68:This was disproved by Rödl and Szemerédi [RoSz00] for $d = 3$.
+FormalConjectures/ErdosProblems/790.lean:28:Choi, Komlós, and Szemerédi [CKS75] proved
+FormalConjectures/ErdosProblems/790.lean:34:[CKS75] Choi, S. L. G., Komlós, J., and Szemerédi, E., _On sum-free subsequences_,
+FormalConjectures/ErdosProblems/802.lean:24:A conjecture of Ajtai, Erdős, Komlós, and Szemerédi [AEKS81], who proved a
+FormalConjectures/ErdosProblems/802.lean:26:$\gg_r (\log t / (\log \log(t+1) \cdot t)) \cdot n$. Ajtai, Komlós, and Szemerédi [AKS80]
+FormalConjectures/ErdosProblems/858.lean:28:Alexander [Al66] and Erdős, Sárközi, and Szemerédi [ESS68] proved that this
+FormalConjectures/ErdosProblems/858.lean:38:[ESS68] Erdős, P., Sárközi, A., and Szemerédi, E., *On divisibility properties of
+FormalConjectures/ErdosProblems/507.lean:28:- [KPS82] Komlós, János, János Pintz, and Endre Szemerédi. "A lower bound for Heilbronn's problem."
+FormalConjectures/ErdosProblems/507.lean:30:- [KPS81] Komlós, János, János Pintz, and Endre Szemerédi. "On Heilbronn's triangle problem."
+FormalConjectures/ErdosProblems/733.lean:30:Proved by Szemerédi and Trotter [SzTr83].
+FormalConjectures/ErdosProblems/733.lean:34:[SzTr83] Szemerédi, E. and Trotter, W. T., _Extremal problems in discrete geometry_.
+FormalConjectures/ErdosProblems/733.lean:76:Proved by Szemerédi and Trotter [SzTr83].
+FormalConjectures/ErdosProblems/159.lean:72:where the upper bound is due to Szemerédi [EFRS78] and the lower bound
+FormalConjectures/ErdosProblems/362.lean:24:[SaSz] Sárközy, A. and Szemerédi, E., on the number of subsets whose sum is equal to a given
+FormalConjectures/ErdosProblems/362.lean:38:Proved by Sárközy and Szemerédi [SaSz], removing a log factor from the earlier
+FormalConjectures/ErdosProblems/202.lean:29:proved by Erdős and Szemerédi [ErSz68]. The exact asymptotics remain open.
+FormalConjectures/ErdosProblems/202.lean:37:[ErSz68] Erdős, P. and Szemerédi, E.
+FormalConjectures/ErdosProblems/74.lean:110:[EHS82] Erdős, P. and Hajnal, A. and Szemerédi, E.,
+FormalConjectures/ErdosProblems/439.lean:31:This was proved by Khalfalah and Szemerédi [KhSz06], who showed the general
+FormalConjectures/ErdosProblems/439.lean:37:[KhSz06] Khalfalah, A. and Szemerédi, E., _On the number of monochromatic
+FormalConjectures/ErdosProblems/439.lean:48:Proved by Khalfalah and Szemerédi [KhSz06]. -/
+FormalConjectures/ErdosProblems/439.lean:59:Also follows from the result of Khalfalah and Szemerédi [KhSz06]. -/
+FormalConjectures/ErdosProblems/165.lean:35:The upper bound is due to Shearer [Sh83], improving Ajtai–Komlós–Szemerédi
+FormalConjectures/ErdosProblems/165.lean:43:[AKS80] Ajtai, M., Komlós, J. and Szemerédi, E., _A note on Ramsey numbers_.
+FormalConjectures/ErdosProblems/585.lean:29:Pyber, Rödl, and Szemerédi [PRS95] constructed such a graph with
+FormalConjectures/ErdosProblems/585.lean:37:[PRS95] Pyber, L., Rödl, V., and Szemerédi, E., _Dense graphs without
+FormalConjectures/ErdosProblems/1078.lean:27:[BES75b] Bollobás, B., Erdős, P., and Szemerédi, E., proved that the threshold
+FormalConjectures/ErdosProblems/1078.lean:57:Bollobás, Erdős, and Szemerédi [BES75b] proved that $r - 3/2$ is best possible.
+FormalConjectures/ErdosProblems/785.lean:31:The answer is yes, proved by Sárközy and Szemerédi [SaSz94].
+FormalConjectures/ErdosProblems/785.lean:35:[SaSz94] Sárközy, A. and Szemerédi, E.
+FormalConjectures/ErdosProblems/785.lean:50:**Erdős Problem 785** (Sárközy and Szemerédi [SaSz94]):
+FormalConjectures/ErdosProblems/900.lean:28:[AKS81] Ajtai, M., Komlós, J. and Szemerédi, E., _The longest path in a random graph_,
+FormalConjectures/ErdosProblems/900.lean:53:Erdős Problem 900 (proved by Ajtai, Komlós, and Szemerédi [AKS81]):
+FormalConjectures/ErdosProblems/490.lean:27:[Sz76] Szemerédi, E., *On the number of edges in products of sets of integers*. 1976.
+FormalConjectures/ErdosProblems/490.lean:50:Proved by Szemerédi [Sz76].
+FormalConjectures/ErdosProblems/53.lean:27:[ErSz83] Erdős, P. and Szemerédi, E., _On sums and products of integers_. Studies in Pure
+FormalConjectures/ErdosProblems/53.lean:30:[Ch03] Chang, M.-C., _The Erdős-Szemerédi problem on sum set and product set_. Annals of
+FormalConjectures/ErdosProblems/892.lean:29:[ESS68] Erdős, P., Sárközy, A., and Szemerédi, E.
+FormalConjectures/ErdosProblems/986.lean:35:The upper bound was proved by Ajtai, Komlós, and Szemerédi [AKS80].
+FormalConjectures/ErdosProblems/986.lean:46:[AKS80] Ajtai, M., Komlós, J. and Szemerédi, E., _A note on Ramsey numbers_. J. Combin.
+FormalConjectures/ErdosProblems/607.lean:25:$n$-point configurations in $\mathbb{R}^2$. Szemerédi and Trotter proved it is at most
+FormalConjectures/ErdosProblems/607.lean:30:[SzTr83] Szemerédi, E. and Trotter, W. T., *Extremal problems in discrete geometry* (1983).
+FormalConjectures/ErdosProblems/607.lean:65:Proved by Szemerédi and Trotter [SzTr83].
+FormalConjectures/ErdosProblems/539.lean:26:has size at least $h(n)$. Erdős and Szemerédi proved that $n^{1/2} \ll h(n) \ll n^{1-c}$ for some
+FormalConjectures/ErdosProblems/539.lean:40:**Erdős Problem 539** (Lower bound, Erdős-Szemerédi):
+FormalConjectures/ErdosProblems/80.lean:32:$f_c(n) \ll_c n^{1/2}$. Szemerédi observed that his regularity lemma implies
+FormalConjectures/ErdosProblems/540.lean:29:[Sz70] Szemerédi, E., *On a conjecture of Erdős and Heilbronn*, Acta Arith. (1970).
+FormalConjectures/ErdosProblems/540.lean:46:Szemerédi [Sz70] (in fact for arbitrary finite abelian groups).
+FormalConjectures/ErdosProblems/138.lean:28:- [Go01] Gowers, W. T., A new proof of Szemerédi's theorem. Geom. Funct. Anal. (2001), 465-588.
+FormalConjectures/ErdosProblems/914.lean:28:Hajnal and Szemerédi proved this for all $r \geq 4$.
+FormalConjectures/ErdosProblems/914.lean:30:This is known as the Hajnal–Szemerédi theorem.
+FormalConjectures/ErdosProblems/914.lean:32:[HaSz70] Hajnal, A. and Szemerédi, E., _Proof of a conjecture of P. Erdős_. Combinatorial theory
+FormalConjectures/ErdosProblems/914.lean:41:Erdős Problem 914 (proved by Hajnal and Szemerédi [HaSz70]):
+FormalConjectures/ErdosProblems/1085.lean:46:/-- Spencer, Szemerédi, and Trotter showed $f_2(n) = O(n^{4/3})$. -/
+FormalConjectures/ErdosProblems/530.lean:31:Sulyok, and Szemerédi [KSS75]. The correct constant is unknown, but it is likely that the
+FormalConjectures/ErdosProblems/530.lean:38:[KSS75] Komlós, J., Sulyok, M. and Szemerédi, E.
+FormalConjectures/ErdosProblems/530.lean:67:$N^{1/2} \ll \ell(N)$ is due to Komlós, Sulyok, and Szemerédi [KSS75]. The upper bound
+FormalConjectures/ErdosProblems/52.lean:24:The Erdős–Szemerédi sum-product conjecture [ErSz83]: for every $\varepsilon > 0$ there exists
+FormalConjectures/ErdosProblems/52.lean:28:[ErSz83] Erdős, P. and Szemerédi, E., *On sums and products of integers*.
+FormalConjectures/ErdosProblems/52.lean:47:A problem of Erdős and Szemerédi [ErSz83]. The current best lower bound is
+FormalConjectures/ErdosProblems/865.lean:24:- [CES75] Choi, S. L. G. and Erdős, P. and Szemerédi, E., Some additive and multiplicative problems
+FormalConjectures/ErdosProblems/865.lean:37:A problem of Erdős and Sós (also earlier considered by Choi, Erdős, and Szemerédi [CES75], but Erdős
+FormalConjectures/ErdosProblems/865.lean:76:Choi, Erdős, and Szemerédi [CES75] have proved that, for all $k\geq 3$, there exists $\epsilon_k>0$
+FormalConjectures/ErdosProblems/111.lean:28:[EHS82] Erdős, P., Hajnal, A. and Szemerédi, E., _On almost bipartite large chromatic
+FormalConjectures/ErdosProblems/111.lean:77:- Erdős–Hajnal–Szemerédi [EHS82] proved there exists $G$ with chromatic number
+FormalConjectures/ErdosProblems/110.lean:28:[EHS82] Erdős, P., Hajnal, A., and Szemerédi, E. — original conjecture.
+FormalConjectures/ErdosProblems/110.lean:50:Erdős-Hajnal-Szemerédi Conjecture (Problem #110):
+FormalConjectures/ErdosProblems/110.lean:55:Conjectured by Erdős, Hajnal, and Szemerédi [EHS82].
+FormalConjectures/ErdosProblems/166.lean:30:Ajtai, Komlós, and Szemerédi [AKS80] proved the upper bound
+FormalConjectures/ErdosProblems/166.lean:36:[AKS80] Ajtai, M., Komlós, J., and Szemerédi, E., *A note on Ramsey numbers*,
+FormalConjectures/ErdosProblems/744.lean:31:[EHS82] Erdős, P., Hajnal, A., and Szemerédi, E.
+FormalConjectures/ErdosProblems/1157.lean:39:(proved by Ruzsa–Szemerédi). The case $r = 3$ and $k = s + 2$ is problem [1076].
+FormalConjectures/ErdosProblems/541.lean:24:- [ErSz76] Erdős, E. and Szemerédi, E., On a problem of Graham. Publ. Math. Debrecen (1976),
+FormalConjectures/ErdosProblems/541.lean:58:/-- This was proved by Erdős and Szemerédi [ErSz76] for p sufficiently large. -/
+FormalConjectures/ErdosProblems/344.lean:27:[SzVu06] Szemerédi, E. and Vu, V.H., *Finite and infinite arithmetic progressions in sumsets*.
+FormalConjectures/ErdosProblems/344.lean:53:This was proved by Szemerédi and Vu [SzVu06]. Folkman had previously proved this under the
+FormalConjectures/ErdosProblems/580.lean:29:[AKS95] Ajtai, M., Komlós, J., and Szemerédi, E.
+FormalConjectures/ErdosProblems/580.lean:49:Ajtai, Komlós, and Szemerédi [AKS95] proved an asymptotic version.
+FormalConjectures/ErdosProblems/718.lean:30:[KoSz96] Komlós, J. and Szemerédi, E., _Topological cliques in graphs II_. Combinatorics,
+FormalConjectures/ErdosProblems/718.lean:57:**Erdős Problem 718** (Komlós–Szemerédi [KoSz96], Bollobás–Thomason [BoTh96]):
+FormalConjectures/ErdosProblems/615.lean:33:A problem of Erdős, Hajnal, Simonovits, Sós, and Szemerédi [EHSSS93].
+FormalConjectures/ErdosProblems/615.lean:35:Erdős, Hajnal, Sós, and Szemerédi [EHSS83] proved that for any fixed $\varepsilon > 0$,
+FormalConjectures/ErdosProblems/615.lean:47:[EHSSS93] Erdős, P., Hajnal, A., Simonovits, M., Sós, V. T., and Szemerédi, E. (1993).
+FormalConjectures/ErdosProblems/615.lean:49:[EHSS83] Erdős, P., Hajnal, A., Sós, V. T., and Szemerédi, E. (1983).
+FormalConjectures/ErdosProblems/615.lean:93:**Erdős-Hajnal-Sós-Szemerédi** [EHSS83]:
+FormalConjectures/ErdosProblems/745.lean:28:$\ll \log n$. This is true, as proved by Komlós, Sulyok, and Szemerédi.
+FormalConjectures/ErdosProblems/745.lean:33:[KSS80] Komlós, J., Sulyok, M., and Szemerédi, E., _Linear problems in
+FormalConjectures/ErdosProblems/745.lean:92:Proved by Komlós, Sulyok, and Szemerédi [KSS80].
+FormalConjectures/ErdosProblems/211.lean:27:Proved by Beck [Be83] and Szemerédi–Trotter [SzTr83].
+FormalConjectures/ErdosProblems/211.lean:35:[SzTr83] Szemerédi, E. and Trotter, W.T., _Extremal problems in discrete geometry_.
+FormalConjectures/ErdosProblems/211.lean:64:Erdős Problem 211 (Proved by Beck [Be83] and Szemerédi–Trotter [SzTr83]):
+FormalConjectures/ErdosProblems/866.lean:36:[CES75] Choi, S. L. G., Erdős, P., and Szemerédi, E., _Some additive and multiplicative
+FormalConjectures/ErdosProblems/921.lean:31:This was proved for all $k \geq 4$ by Kierstead, Szemerédi, and Trotter [KST84].
+FormalConjectures/ErdosProblems/921.lean:35:[KST84] Kierstead, H., Szemerédi, E., and Trotter, W., *On coloring graphs with locally
+FormalConjectures/ErdosProblems/921.lean:54:This was proved by Kierstead, Szemerédi, and Trotter.

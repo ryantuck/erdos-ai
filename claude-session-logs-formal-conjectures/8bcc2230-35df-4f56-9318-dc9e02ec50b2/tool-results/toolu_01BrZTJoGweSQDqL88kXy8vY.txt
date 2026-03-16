@@ -1,0 +1,451 @@
+FormalConjectures/WrittenOnTheWallII/Test.lean:26:4. `C6`: The cycle graph on 6 vertices.
+FormalConjectures/WrittenOnTheWallII/Test.lean:64:abbrev C6 : SimpleGraph (Fin 6) := cycleGraph 6
+FormalConjectures/Wikipedia/Conway99Graph.lean:58:one of the two diagonals of a unique 4-cycle.
+FormalConjectures/Wikipedia/Mandelbrot.lean:23:- the *density of hyperbolicity* conjecture, stating that parameters with attracting cycles are
+FormalConjectures/Wikipedia/Mandelbrot.lean:118:/-- We say that `z : ℂ` is part of an attracting cycle of period `n` of `f : ℂ → ℂ` if it is an
+FormalConjectures/Wikipedia/Mandelbrot.lean:124:/-- For example, `0` is part of an attracting `2`-cycle of `z ↦ z ^ 2 - 1`. -/
+FormalConjectures/Wikipedia/Mandelbrot.lean:129:/-- On the other hand, while `2` is part of a `1`-cycle of `z ↦ z ^ 2 - 2`, that cycle is not
+FormalConjectures/Wikipedia/Mandelbrot.lean:135:/-- No function has an attracting cycle of period `0`. This is important in that it means we don't
+FormalConjectures/Wikipedia/Mandelbrot.lean:142:`fun z ↦ z ^ 2 + c` has an attracting cycle is dense in the Mandelbrot set. -/
+FormalConjectures/Wikipedia/Mandelbrot.lean:149:parameters `c` for which `fun z ↦ z ^ n + c` has an attracting cycle is dense in `multibrotSet n`.
+ai-review/552.md:17:### `cycleGraph` (lines 51–60)
+ai-review/552.md:18:Mathlib provides `SimpleGraph.cycleGraph : (n : ℕ) → SimpleGraph (Fin n)` in `Mathlib.Combinatorics.SimpleGraph.Circulant`, defined via `circulantGraph {1}`. This is a cleaner, more general definition with proven properties. The hand-rolled version in 552.lean (and identically in 551.lean, 555.lean, 556.lean) uses modular arithmetic and takes an unnecessary proof obligation `hk : k ≥ 3`.
+ai-review/552.md:20:**Recommendation:** Replace with Mathlib's `SimpleGraph.cycleGraph 4`. The Mathlib version handles all `n` (returning `⊥` for `n = 0` and degeneracies for small `n`), so no proof obligation is needed.
+ai-review/552.md:57:- Proof of `loopless` for both `cycleGraph` and `starGraph` is clean and short.
+ai-review/552.md:63:- Using Mathlib's `SimpleGraph.cycleGraph` would remove the `(by omega)` proof term on line 89, making the theorem statement cleaner.
+ai-review/552.md:90:2. **`cycleGraph` correctness (lines 51–60):** The adjacency relation `(i.val + 1) % k = j.val ∨ (j.val + 1) % k = i.val` correctly defines the cycle C_k for k ≥ 3. The `loopless` proof correctly handles the edge cases. This is equivalent to Mathlib's `cycleGraph` (via circulant graphs with jump set {1}) for k ≥ 3.
+ai-review/552.md:104:| Code reuse | `ContainsSubgraphCopy`, `offDiagRamseyNumber`, and `cycleGraph` should use Mathlib equivalents or be shared |
+ai-review/552.md:107:| Readability | Good; would improve slightly with Mathlib's `cycleGraph` |
+ai-review/111.md:55:1. **The h(G,n)/n → ∞ question:** The website frames an aspect of the problem as asking whether h_G(n)/n → ∞ for every graph G with chromatic number ℵ₁. The known lower bound is h_G(n) ≥ cn (linear), established by the existence of vertex-disjoint odd cycles. The question of whether this is always superlinear is a natural companion to the formalized upper-bound conjecture. This could be formalized as:
+ai-review/86.md:7:**Significant duplication found.** Both `hypercubeGraph` and `cycleGraph` are defined identically (or near-identically) across multiple files:
+ai-review/86.md:12:| `cycleGraph` | 86.lean, 666.lean, 765.lean, 556.lean |
+ai-review/86.md:20:  ∀ i j, (cycleGraph 4 (by omega)).Adj i j → H.Adj (f i) (f j)
+ai-review/86.md:30:The conclusion could be rewritten as `ContainsSubgraph H (cycleGraph 4 (by omega))`, which would also match the pattern used in Problems 87, 765, and 576. Problem 666 (the C₆ analogue) has the same inline expansion and would benefit from the same refactor.
+ai-review/86.md:64:The website mentions that "similar questions [are] posed for other even cycles" — the C₆ case is Problem 666 (answered negatively). The formalization captures the core C₄ conjecture correctly. There is no obvious further variant on the website that is not covered.
+ai-review/86.md:91:All objects involved (hypercube graph, cycle graph, subgraph, edge count) have standard unambiguous definitions. There is no room for differing mathematical interpretations.
+ai-review/86.md:101:**`cycleGraph` (line 62):** Adjacency on `Fin m` via `i ≠ j ∧ (j = i+1 mod m ∨ i = j+1 mod m)`. This correctly defines the cycle graph C_m for m ≥ 3. The irreflexivity condition `i ≠ j` is necessary to exclude self-loops when m divides 1 (impossible for m ≥ 3, but needed for the `loopless` proof to go through cleanly). For m = 4, this gives edges 0–1, 1–2, 2–3, 3–0, which is C₄.
+ai-review/86.md:109:3. **C₄ containment:** The conclusion asserts the existence of an injective graph homomorphism from C₄ into H. This is the standard encoding of "H contains a C₄ as a subgraph." Injectivity ensures the four cycle vertices are distinct; adjacency preservation ensures the cycle edges are present.
+ai-review/86.md:121:| Code reuse | ⚠️ Needs work | `hypercubeGraph`, `cycleGraph` duplicated across 5+ files; inline C₄ check should use `ContainsSubgraph` |
+ai-review/24.md:14:- **Problem 608** (`FormalConjectures/ErdosProblems/608.lean`, line 49) defines `numEdgesInC5` — a different counting problem (edges in C₅ vs. copies of C₅), but the `Finset.filter` + adjacency pattern is structurally very similar to Problem 24's cycle enumeration.
+ai-review/24.md:15:- **Problem 567** (`FormalConjectures/ErdosProblems/567.lean`) uses `SimpleGraph.cycleGraph 5` from Mathlib. One could consider defining the "labeled C₅ count" as a standalone utility (since both Problems 24 and 608 need variants of cycle counting), but given the different counting targets, this is not essential.
+ai-review/24.md:19:**Recommendation:** No changes needed. The formalization is self-contained and the cycle-counting approach is specific enough that extracting a shared definition would add complexity without clear benefit.
+ai-review/24.md:38:| Citation Gr12 | Full: Grzesik, A., _On the maximum number of five-cycles in a triangle-free graph_. JCTB (2012), 1061–1066. | Same | **Correct.** |
+ai-review/24.md:49:**One notable variant is missing: the generalization to odd cycles of arbitrary length.**
+ai-review/24.md:53:> For odd r ≥ 5, if a graph has rn vertices and odd girth at least r (i.e., the shortest odd cycle has length ≥ r), then it contains at most nʳ copies of Cᵣ.
+ai-review/24.md:55:For r = 5, "odd girth at least 5" is equivalent to "triangle-free" (no odd cycles of length 3), so Problem 24 is the r = 5 case. The general conjecture could be formalized as:
+ai-review/24.md:72:Note: The odd girth condition would more precisely be expressed using cycle-freeness rather than clique-freeness. The condition "no odd cycle of length k" is not the same as `CliqueFree k`; it would require a dedicated `OddGirth` or cycle-freeness predicate. For r = 5, triangle-freeness (`CliqueFree 3`) suffices since the only odd cycle shorter than 5 is the triangle. For r ≥ 7, one would also need to exclude C₅, C₇, etc., which is not directly captured by `CliqueFree`.
+ai-review/24.md:88:**Minor suggestion:** The docstring refers to "labeled 5-cycles" but could additionally note that the extremal graph achieving the bound is the balanced blow-up of C₅ (linking to Problem 23's `blowupC5`).
+ai-review/24.md:105:**Key observation for triangle-free graphs:** In a triangle-free graph, any 5-cycle is necessarily an *induced* 5-cycle (adding any chord to a C₅ creates a triangle). This means there is no ambiguity between "copies of C₅" and "induced copies of C₅" for this particular problem. The formalization's approach of checking only the 5 cycle edges (without verifying absence of chords) is therefore correct.
+ai-review/24.md:141:This is confirmed by Mathlib's `Fin.val_add_eq_ite` lemma, which establishes that `Fin n` addition is `(a + b) % n`. The five adjacency conditions therefore capture exactly the five edges of a 5-cycle: `f(0)–f(1)–f(2)–f(3)–f(4)–f(0)`. ✓
+ai-review/24.md:143:### Injectivity ensures a proper cycle
+ai-review/24.md:145:`Function.Injective f` guarantees that the 5 vertices `f(0), ..., f(4)` are pairwise distinct, so the labeled mapping describes a genuine cycle (not a closed walk with repeated vertices). ✓
+ai-review/24.md:149:Each unordered C₅ on vertices {a, b, c, d, e} with cycle a–b–c–d–e–a contributes exactly 10 injective functions satisfying the adjacency condition:
+ai-review/24.md:158:The balanced blow-up of C₅ (defined as `blowupC5 n` in Problem 23) has 5n vertices, is triangle-free, and contains exactly n⁵ unordered C₅ cycles (one for each choice of one vertex from each of the 5 parts in cyclic order). This gives 10 · n⁵ labeled copies, showing the bound is tight. The formalization does not assert tightness, which is appropriate — it only states the upper bound.
+ai-review/24.md:164:**Verdict: Correct and complete.** The formalization faithfully captures Erdős Problem 24. The labeled-counting approach with the 10× adjustment is mathematically sound, the `Fin 5` modular arithmetic correctly encodes cycle adjacency, and the bound is tight (as witnessed by the blow-up of C₅). No mathematical flaws are present. The only omission is the general odd-cycle variant (§3), which is a separate conjecture.
+ai-review/181.md:180:- **$n = 2$:** $Q_2 = C_4$ (4-cycle). $R(C_4) = 6$. The bound requires $6 \leq 4C$, i.e., $C \geq 3/2$. Fine.
+ai-review/58.md:5:The `oddCycleLengths` definition in this file is essentially a filtered version of the `cycleLengths` / `cycleSpectrum` pattern that already appears in at least three other Erdős problem files:
+ai-review/58.md:7:- `FormalConjectures/ErdosProblems/751.lean` — `cycleLengths`
+ai-review/58.md:8:- `FormalConjectures/ErdosProblems/752.lean` — `cycleLengths`
+ai-review/58.md:9:- `FormalConjectures/ErdosProblems/84.lean` — `cycleSpectrum`
+ai-review/58.md:11:All use the identical idiom `{n | ∃ (v : V) (p : G.Walk v v), p.IsCycle ∧ p.length = n}`. Problem 58's `oddCycleLengths` adds only `Odd n` to the predicate. A shared definition of `cycleLengths` in `FormalConjecturesForMathlib` would allow `oddCycleLengths` to be expressed as a filter:
+ai-review/58.md:14:def oddCycleLengths G := cycleLengths G ∩ {n | Odd n}
+ai-review/58.md:28:- **[GaHuMa21]** — Gao, Huo, and Ma (2021) established the stronger result that if χ(G) ≥ 2k+3 then G contains cycles of k+1 consecutive odd lengths. This is an important extension worth mentioning.
+ai-review/58.md:36:1. **Gyárfás's stronger structural result:** If G is 2-connected and has odd cycles of ≤ k different lengths, then G is either K_{2k+2} or contains a vertex of degree ≤ 2k. This is mentioned in the docstring but not formalized. It is a strictly stronger result that implies the chromatic number bound.
+ai-review/58.md:38:2. **Gao–Huo–Ma (2021):** If χ(G) ≥ 2k+3, then G contains cycles of k+1 *consecutive* odd lengths. This is a strengthening/extension not mentioned at all.
+ai-review/58.md:56:> "If G is a graph which contains odd cycles of ≤ k different lengths then χ(G) ≤ 2k+2, with equality if and only if G contains K_{2k+2}."
+ai-review/58.md:58:This is directly and obviously formalizable. There is no ambiguity in any of the terms: "odd cycles," "different lengths," chromatic number, and complete graph are all standard graph-theoretic notions with well-established formal counterparts.
+ai-review/58.md:66:- The `oddCycleLengths` definition correctly captures the set of lengths of odd cycles via `Walk.IsCycle` and `Odd n`.
+ai-review/58.md:74:`Set.ncard` returns 0 for infinite sets. If `oddCycleLengths G` were infinite, then `ncard = 0 ≤ k` for all k, which would make the hypothesis vacuously true for all k — claiming χ(G) ≤ 2 for any graph with infinitely many odd cycle lengths, which is false.
+ai-review/58.md:76:**However, this is not actually a bug** because the `[Fintype V]` constraint ensures the vertex set is finite, which means there are finitely many cycles, hence finitely many cycle lengths, so `oddCycleLengths G` is always a finite set. The `ncard` correctly counts elements of finite sets.
+ai-review/58.md:80:The formalization requires `[Fintype V]`, restricting to finite graphs. The original Gyárfás theorem holds for **all** graphs (finite and infinite). For an infinite graph with odd cycles of at most k different lengths, the chromatic number is still ≤ 2k+2. Dropping the `[Fintype V]` would require either:
+ai-review/184.md:11:Problem 583 (`FormalConjectures/ErdosProblems/583.lean`) uses a nearly identical structure for decomposing a graph's edges into edge-disjoint substructures (paths instead of cycles/edges). Both problems follow the same template:
+ai-review/184.md:17:Similarly, Problem 641 (`FormalConjectures/ErdosProblems/641.lean`) uses edge-disjoint cycle decomposition with the same disjointness pattern on `edges.toFinset`.
+ai-review/184.md:42:- **Relaxed variant:** Erdős (1971) suggested n−1 cycles and edges suffice without requiring edge-disjointness.
+ai-review/184.md:66:1. **High minimum degree case (proven, [CFS14]):** For every ε > 0, there exists C_ε such that every graph on n vertices with minimum degree ≥ εn can be decomposed into at most C_ε · n cycles and edges:
+ai-review/184.md:77:2. **Best known upper bound (proven, [BM22]):** O(n log* n) cycles and edges suffice:
+ai-review/184.md:87:4. **Non-edge-disjoint relaxation ([Er71]):** Erdős suggested only n−1 cycles and edges suffice if one does not require edge-disjointness (i.e., edges may appear in multiple cycles).
+ai-review/184.md:98:- **Variable naming:** `parts` for the partition components and `k` for the number of parts are natural. `w` for the cycle walk and `u` for the base vertex are reasonable. ✓
+ai-review/184.md:113:- "Decomposed into edge-disjoint cycles and edges" → partition of `edgeFinset` into parts, each a single edge or cycle edge set. ✓
+ai-review/184.md:116:**No ambiguity in the statement.** Unlike some Erdős problems where "graph" might mean multigraph or hypergraph, the context (edge-disjoint cycle decomposition of simple graphs) is completely standard. The terms "cycle" and "edge" are unambiguous in graph theory. The asymptotic "O(n)" bound is captured precisely by the existential constant C.
+ai-review/184.md:150:4. **Part classification — cycle case:** `∃ (u : Fin n) (w : G.Walk u u), w.IsCycle ∧ w.edges.toFinset = parts i`:
+ai-review/184.md:152:   - `w.IsCycle` requires `IsCircuit` (nonempty trail) and `support_nodup` (no repeated interior vertices). In a simple graph, this forces cycle length ≥ 3, which is the standard definition of a graph cycle. ✓
+ai-review/184.md:153:   - `w.edges.toFinset = parts i`: Since `IsCycle` implies `IsTrail` (which has `edges_nodup`), converting the edge list to a finset loses no information — all edges of the cycle are faithfully captured. ✓
+ai-review/184.md:155:5. **Parts are implicitly nonempty:** A single-edge part `{e}` is nonempty. A cycle part `w.edges.toFinset` is nonempty because `IsCycle` implies `w ≠ nil`, so the walk has at least one edge. This means there are no "phantom" empty parts inflating k. ✓
+ai-review/184.md:157:6. **Mutual exclusivity of cases:** In a simple graph, a cycle has ≥ 3 edges, so no single edge forms a cycle. The two cases in the disjunction are mutually exclusive, though this is not required for correctness (the statement only needs each part to satisfy at least one case). ✓
+ai-review/184.md:168:**Correct and mathematically sound.** The formalization faithfully captures the Erdős-Gallai cycle decomposition conjecture. No mathematical flaws are present. The edge partition is correctly enforced, the cycle/edge classification is precise, and degenerate cases are handled properly.
+ai-review/556.md:5:**Significant duplication exists.** The definitions `cycleGraph` and `multicolorRamseyNumber` in `Erdos556` are copy-pasted verbatim across many files. The identical `cycleGraph` definition appears in at least 15 files (555, 556, 569, 570, 572, 594, 666, 720, 737, 765, 86, 554, etc.), and `multicolorRamseyNumber` appears in at least 4 files (554, 555, 556, 557, 558).
+ai-review/556.md:7:These should be factored into a shared utility file under `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/` — neither `cycleGraph` nor `multicolorRamseyNumber` currently exists there. The `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` file defines `hypergraphRamsey` (for uniform hypergraph Ramsey numbers with 2-coloring of r-subsets), which is a different concept from the graph Ramsey number `multicolorRamseyNumber` used here.
+ai-review/556.md:9:Note: Problem 551 defines a slightly different `cycleGraph` (without the `i ≠ j` guard, instead proving irreflexivity from modular arithmetic). The version in 556 uses `i ≠ j ∧ (...)` while 551 uses just the disjunction. These are logically equivalent for `m ≥ 3`, but the implementations differ, which further motivates a single canonical definition.
+ai-review/556.md:33:- The even-cycle exact value $R_3(C_{2n}) = 2n$ (for large $n$).
+ai-review/556.md:49:- The cycle graph $C_n$.
+ai-review/556.md:59:- **The `cycleGraph` definition is correct:** It correctly defines $C_m$ as the graph on $\text{Fin}\;m$ where $i \sim j$ iff $i \neq j$ and $j \equiv i+1 \pmod{m}$ or $i \equiv j+1 \pmod{m}$. The symmetry and irreflexivity proofs are correct.
+ai-review/60.md:15:| `cycleGraph60` | `SimpleGraph.cycleGraph` | `Mathlib/Combinatorics/SimpleGraph/Circulant.lean:62` |
+ai-review/60.md:22:1. **`cycleGraph60`** manually constructs the cycle via modular arithmetic. Mathlib's `SimpleGraph.cycleGraph n` defines it as `circulantGraph {1}` on `Fin n`, which is cleaner and comes with lemmas. Note: Mathlib's version is defined for all `n : ℕ` (returning `⊥` for `n = 0`) rather than requiring `m ≥ 3`.
+ai-review/60.md:28:4. **`labeledC4Count`** counts injective maps `Fin 4 → Fin n` preserving cycle adjacency via `Finset.univ.filter`. Mathlib's `SimpleGraph.labelledCopyCount G H` counts `Fintype.card (Copy H G)`, which generalizes this to any pair of finite graphs.
+ai-review/60.md:30:**Also duplicated across the project:** Identical `cycleGraph`, `ContainsSubgraph`, and `extremalNumber` definitions appear in Problems 765, 572, 551, 556, 86, 594, 181, 736, and many others, each with a different numeric suffix. This is a significant project-wide code reuse opportunity now that Mathlib provides canonical versions.
+ai-review/60.md:32:**Recommendation:** Rewrite the theorem statement in terms of Mathlib's `SimpleGraph.extremalNumber`, `SimpleGraph.cycleGraph`, and `SimpleGraph.labelledCopyCount`. This would eliminate all four local definitions.
+ai-review/60.md:72:      G.edgeSet.ncard > extremalNumber60 (cycleGraph60 4 (by omega)) n →
+ai-review/60.md:86:      G.edgeSet.ncard > extremalNumber60 (cycleGraph60 4 (by omega)) n →
+ai-review/60.md:99:- **Numeric suffixes:** All definitions have a `60` suffix (`cycleGraph60`, `ContainsSubgraph60`, `extremalNumber60`) to avoid namespace clashes. This is a project-wide pattern but makes the code less readable than using the `Erdos60` namespace for disambiguation (which is already present). Since the definitions are scoped to `namespace Erdos60`, the suffixes are strictly redundant.
+ai-review/60.md:100:- **`labeledC4Count` vs `labelledCopyCount`:** The definition hardcodes the C₄ pattern rather than composing with `cycleGraph60`. While pragmatic, it obscures the relationship to the general cycle graph and makes it less obvious that the definition is counting C₄ copies specifically. The inline encoding is equivalent but a reader must verify this manually.
+ai-review/60.md:130:### Definition: `cycleGraph60`
+ai-review/60.md:132:The adjacency relation `i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)` correctly encodes the cycle $C_m$: vertex $i$ is adjacent to $i \pm 1 \pmod{m}$. The symmetry and irreflexivity proofs are correct. For $m = 4$, this produces the 4-cycle with edges $\{0,1\}, \{1,2\}, \{2,3\}, \{3,0\}$.
+ai-review/60.md:154:Note that `labeledC4Count` does not reference `cycleGraph60` — it independently encodes the same adjacency pattern. This is a missed opportunity for composition but does not affect correctness.
+ai-review/60.md:163:      G.edgeSet.ncard > extremalNumber60 (cycleGraph60 4 (by omega)) n →
+ai-review/555.md:5:**Significant duplication found.** Both `cycleGraph` and `multicolorRamseyNumber` are defined identically (or near-identically) in multiple files:
+ai-review/555.md:7:- **`cycleGraph`**: duplicated in 554.lean, 555.lean, 556.lean, 765.lean, 86.lean (identical), and similar variants in 551.lean, 552.lean.
+ai-review/555.md:38:    multicolorRamseyNumber (cycleGraph 4 (by omega)) k > k ^ 2 - k + 1 := by
+ai-review/555.md:49:- The `cycleGraph` adjacency condition `j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m` is correct but could benefit from a brief inline comment noting this encodes "vertices at distance 1 on the cycle."
+ai-review/555.md:50:- The proof obligation `(by omega)` for `m ≥ 3` in `cycleGraph (2 * n) (by omega)` is clean, though it relies on the fact that `n ≥ 2` implies `2 * n ≥ 3` (actually `2 * n ≥ 4 ≥ 3`), which is correct.
+ai-review/561.md:29:Also, the full title of [BEFRS78] on the website is associated with *Ramsey numbers for the pair sparse graph–path or cycle*, Trans. Amer. Math. Soc. The formalization includes this citation, which matches.
+ai-review/84.md:7:**Issue found.** The definition `cycleSpectrum` in this file is *identical* to `cycleLengths` defined independently in both `ErdosProblems/751.lean:40` and `ErdosProblems/752.lean:38`:
+ai-review/84.md:10:-- Erdos 84 (cycleSpectrum)
+ai-review/84.md:13:-- Erdos 751 and 752 (cycleLengths)
+ai-review/84.md:17:These are definitionally equal (up to the binder name `ℓ` vs `n`). All three files define this concept locally within their own namespace. This should be consolidated into a single shared definition — either in `FormalConjecturesForMathlib` or a shared utility — and reused across Problems 84, 751, and 752. The name `cycleLengths` (used in 751/752) is arguably more standard terminology than `cycleSpectrum`, though "cycle spectrum" also appears in the literature.
+ai-review/84.md:49:    ∃ L : ℝ, Filter.Tendsto (fun n => (cycleSetCount n : ℝ) ^ ((1 : ℝ) / n))
+ai-review/84.md:61:- The definition `cycleSetCount` uses `Set.ncard` on a set of sets. This is appropriate since the set `{A : Set ℕ | ∃ G : SimpleGraph (Fin n), cycleSpectrum G = A}` is not naturally a `Finset`, and `Set.ncard` handles this gracefully (returning 0 for infinite sets, which can't happen here). This is consistent with codebase conventions.
+ai-review/84.md:67:The original problem is stated precisely: define cycle sets of graphs on n vertices, count them, and prove asymptotic bounds. The two conjectured asymptotics — f(n) = o(2^n) and f(n)/2^{n/2} → ∞ — have unambiguous mathematical meanings that translate directly to ε-N and B-N statements.
+ai-review/84.md:69:[Omitted long matching line]
+ai-review/84.md:75:**`cycleSpectrum` (line 50):** Correctly captures the set of all cycle lengths in a simple graph. Uses `Walk v v` (closed walk) with `IsCycle` (which in Mathlib requires the walk to be a closed trail with distinct internal vertices, i.e., a proper cycle). This matches the standard graph-theoretic definition.
+ai-review/84.md:77:**Implicit constraint A ⊆ {3,...,n}:** The original problem states cycle sets are subsets of {3,...,n}. This is automatically satisfied:
+ai-review/84.md:78:- Lower bound: In a simple graph, any cycle has length ≥ 3 (no self-loops, no multi-edges, and `IsCycle` requires length ≥ 3).
+ai-review/84.md:79:- Upper bound: A graph on n vertices cannot contain a cycle of length > n (a cycle visits distinct vertices).
+ai-review/84.md:83:**`cycleSetCount` (line 54):** Correctly counts the number of distinct realizable cycle spectra by taking `Set.ncard` of the image. Note that this counts the *distinct sets A* (not the number of graphs), which is the right quantity.
+ai-review/84.md:109:| Code reuse | ⚠️ Needs work | `cycleSpectrum` duplicates `cycleLengths` from Problems 751, 752 |
+ai-review/159.md:13:[Omitted long matching line]
+ai-review/159.md:17:**Recommendation:** Replace `ContainsSubgraph` with `SimpleGraph.IsContained`, replace `C4` with `SimpleGraph.cycleGraph 4`, and consider extracting `ramseyC4Kn` into a general off-diagonal Ramsey number utility.
+ai-review/159.md:31:  - `[EFRS78]` should be: Erdős, P., Faudree, R.J., Rousseau, C.C., and Schelp, R.H., *On cycle-complete graph Ramsey numbers*, J. Graph Theory **2** (1978), 53–64.
+ai-review/159.md:50:- The `C4` definition is intuitive but slightly non-standard — it uses raw modular arithmetic rather than the algebraic `ZMod` / circulant structure. Using Mathlib's `cycleGraph 4` would be more idiomatic.
+ai-review/159.md:92:3. **The `C4` definition is correct.** Verified: on `Fin 4`, `(i + 1) % 4 = j ∨ (j + 1) % 4 = i` correctly encodes the edges 0–1, 1–2, 2–3, 3–0 and is symmetric. The `loopless` proof is discharged by `decide`. The definition is extensionally equivalent to `cycleGraph 4`.
+ai-review/73.md:43:**The website does not list explicit variants** for this problem. Reed's note that the k = 0 case is trivial (a non-bipartite graph contains an odd cycle, violating the hypothesis) could be formalized as a variant:
+ai-review/71.md:7:- **Cycle lengths**: Both `Erdos84.cycleSpectrum` (`84.lean:50`) and `Erdos752.cycleLengths` (`752.lean:38`) define the identical set `{n | ∃ v, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = n}`. Problem 71 inlines this pattern in its conclusion rather than referencing a shared definition. A shared `cycleLengths` definition (or the existing ones) could be extracted and reused across problems 58, 65, 71, 72, 84, 751, and 752.
+ai-review/71.md:11:- **Problem 72** (`72.lean`) has nearly identical structure — average degree threshold implying cycle existence — and could share infrastructure with Problem 71.
+ai-review/71.md:27:The website also notes **"See also Problem 72"**, which is closely related (density-zero cycle sets with average degree conditions). This cross-reference is absent from the formalization.
+ai-review/71.md:35:- **Relationship to Problem 72**: Problem 72 asks whether a density-zero set $A$ exists with the same average-degree-implies-cycle property. Since every infinite AP has positive density, Problem 71 is in some sense a special case of the broader theme. This relationship is worth noting but does not constitute a missing variant per se.
+ai-review/71.md:55:> "Is it true that for every infinite arithmetic progression $P$ which contains even numbers there is some constant $c = c(P)$ such that every graph with average degree at least $c$ contains a cycle whose length is in $P$?"
+ai-review/71.md:73:- **Even element condition**: `∃ k : ℕ, Even (a + k * d)` is equivalent to "$P$ contains even numbers." This is the correct necessary condition — without it, one could take $P = \{1, 3, 5, \ldots\}$ and complete bipartite graphs $K_{n,n}$ (which are bipartite, hence have no odd cycles) would be counterexamples with arbitrarily large average degree.
+ai-review/71.md:77:- **Cycle existence**: The conclusion `∃ m, (∃ k, m = a + k * d) ∧ ∃ v, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = m` correctly asserts a cycle whose length belongs to the AP. Mathlib's `Walk.IsCycle` enforces length $\geq 3$ (a cycle must visit at least 3 distinct vertices), so degenerate cases (e.g., $m = 0, 1, 2$) are automatically excluded.
+ai-review/57.md:39:| [LiMo20] | Liu, H. and Montgomery, R., _A solution to Erdős and Hajnal's odd cycle problem_, 2020 | ✓ Listed |
+ai-review/57.md:48:> [LiMo20] Liu, H. and Montgomery, R., _A solution to Erdős and Hajnal's odd cycle problem_, J. Amer. Math. Soc. 36 (2023), 1191–1234.
+ai-review/57.md:58:**(a) Positive upper density (Erdős [Er81]).** Erdős later asked whether the odd cycle lengths $\{a_i\}$ of a graph with infinite chromatic number must have positive upper density among the odd numbers. This is a strictly stronger statement than the reciprocal divergence (positive upper density implies reciprocal divergence, but not conversely). This could be formalized as:
+ai-review/57.md:61:-- Variant: must the odd cycle lengths have positive upper density?
+ai-review/57.md:67:**(b) Upper density ≥ 1/2 ([Er95d], [Er96]).** Erdős speculated that the upper density (or upper logarithmic density) of the odd cycle lengths must be at least 1/2. This is an even stronger claim.
+ai-review/57.md:69:**(c) Lower density can be 0 (noted on website).** The website observes that the lower density of odd cycle lengths can be 0, since there exist graphs of arbitrarily large chromatic number and girth. This could be formalized as a counterexample statement.
+ai-review/57.md:71:**(d) Relationship to Problem 65.** Problem 65 concerns the sum of reciprocals of *all* distinct cycle lengths (not just odd ones) in finite graphs with $kn$ edges. The [LiMo20] paper that proved Problem 57 also resolved the sharp bound in Problem 65. A cross-reference note would be appropriate.
+ai-review/57.md:95:- "Lengths of its odd cycles" — the set of natural numbers $n$ such that $G$ contains a cycle of length $n$ and $n$ is odd. Well-defined.
+ai-review/57.md:116:- `∃ v : V, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = n` — n is the length of some cycle in G. By `IsCycle.three_le_length`, any cycle has length ≥ 3, so all elements of T are odd numbers ≥ 3. ✓
+ai-review/57.md:118:The elements of T are drawn from `oddCycleLengths G` (in the sense of Problem 58). T is not required to be the *full* set of odd cycle lengths — it is a finite subset. This is correct: divergence of a series over a set S is equivalent to saying that for any bound, some finite subset of S has partial sum exceeding that bound. ✓
+ai-review/57.md:126:The original conjecture (proved by Liu-Montgomery): "If G has infinite chromatic number and $a_1 < a_2 < \cdots$ are the lengths of its odd cycles, then $\sum 1/a_i = \infty$."
+ai-review/57.md:128:The formalization encodes exactly this: given infinite chromatic number, the reciprocals of odd cycle lengths form a divergent series. The ordering $a_1 < a_2 < \cdots$ in the original statement is just an enumeration convention and does not add mathematical content; the formalization correctly works with the *set* of odd cycle lengths rather than a specific enumeration. ✓
+ai-review/57.md:134:**6f. Edge case — no odd cycles:**
+ai-review/57.md:136:If `G` has infinite chromatic number but (hypothetically) no odd cycles, then no `T` with odd cycle lengths exists except `∅`, which sums to 0. This would make the theorem false for `B > 0`. But this cannot happen: by the Erdős-Hajnal result (and indeed by the weaker classical fact that bipartite graphs have chromatic number ≤ 2), a graph with infinite chromatic number must contain odd cycles. The theorem as stated is consistent. ✓
+ai-review/63.md:7:- `SimpleGraph.Walk` / `Walk.IsCycle` / `Walk.length` for cycle containment
+ai-review/63.md:9:The cycle-existence pattern `∃ v : V, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = ...` is the established idiom across the codebase (problems 57, 58, 64, 71, etc.). The infinite chromatic number encoding `G.chromaticNumber = ⊤` matches problems 57 and 62. No refactoring opportunities here.
+ai-review/63.md:15:- `[LiMo20]` — Liu, H. and Montgomery, R., *A solution to Erdős and Hajnal's odd cycle problem*, 2020.
+ai-review/63.md:41:**Cross-reference:** The website says "See also Problem #64" (finite graphs with min degree ≥ 3 containing a cycle of length $2^k$). This cross-reference is not mentioned in the docstring. Consider adding a note.
+ai-review/63.md:62:| "contains a cycle of length $2^n$" | `∃ v : V, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = 2 ^ n` |
+ai-review/63.md:73:[Omitted long matching line]
+ai-review/551.md:5:There is significant code duplication. The definitions `ContainsSubgraphCopy`, `offDiagRamseyNumber`, and `cycleGraph` are copy-pasted verbatim across problems 549, 550, 551, and 552. These should be extracted into a shared utility file.
+ai-review/551.md:14:The `cycleGraph` definition is also duplicated (with slight variations) in problems 552, 554, 555, and 720. A single shared definition would be appropriate.
+ai-review/551.md:48:- The `cycleGraph` definition and its `loopless` proof are clear and well-structured.
+ai-review/551.md:58:- The definition of the cycle graph $C_k$.
+ai-review/551.md:77:- `cycleGraph k`: Adjacency is `(i+1) mod k = j ∨ (j+1) mod k = i`, which correctly captures the cycle $C_k$. The `loopless` and `symm` proofs are correct. ✓
+ai-review/81.md:5:[Omitted long matching line]
+ai-review/81.md:83:- The consecutiveness condition `(i.val + 1) % k = j.val ∨ (j.val + 1) % k = i.val` correctly captures the edge set of the cycle graph C_k.
+ai-review/81.md:84:- The biconditional (↔) ensures this is an *induced* cycle: vertices are adjacent in G **exactly** when they are adjacent in C_k. This correctly excludes chords.
+ai-review/81.md:85:- Injectivity of `f` is required to ensure distinct cycle vertices map to distinct graph vertices.
+ai-review/81.md:90:- `k = 3`: Correctly captures triangles (induced 3-cycles).
+ai-review/81.md:91:- `k ≥ 4`: Correctly captures induced cycles of the relevant lengths.
+ai-review/81.md:97:`∀ k : ℕ, 4 ≤ k → ¬HasInducedCycle G k` — a graph is chordal iff it has no induced cycle of length ≥ 4. This is the standard definition. ✅
+ai-review/554.md:5:The definitions `cycleGraph` and `multicolorRamseyNumber` in `554.lean` are **duplicated verbatim** across at least four files:
+ai-review/554.md:47:- The docstring for `cycleGraph` is clear and correctly describes the adjacency relation.
+ai-review/554.md:81:- **`cycleGraph`:** The adjacency `j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m` correctly captures that $i$ and $j$ are adjacent iff they differ by 1 mod $m$. The `i ≠ j` guard prevents self-loops. For $m \geq 3$ this produces exactly the cycle $C_m$. **Correct.**
+ai-review/554.md:83:[Omitted long matching line]
+ai-review/65.md:7:- **`cycleLengths` (Problem 751, line 40–41)** and **`cycleSpectrum` (Problem 84, line 50–51)** both define the set of cycle lengths in a graph identically:
+ai-review/65.md:11:  The formalization of Problem 65 rebuilds this concept inline via universally quantified `T_G` and `T_K` Finsets constrained to equal the cycle-length set. Extracting a shared `cycleLengths` definition (or promoting one of the existing ones) would reduce redundancy across at least three problems.
+ai-review/65.md:41:- **Inline cycle-length sets are verbose.** The `T_G` construction takes 3 lines of hypotheses (lines 67–69) to say "T_G is the set of cycle lengths of G." Similarly for `T_K` (lines 71–74). Using a named definition like `cycleLengths` would reduce this to a single line each.
+ai-review/65.md:43:- **Existential quantification of `T_K` is unnecessary.** Since $K_{a,b}$ is fixed once $a$ and $b$ are given, `T_K` is determined — it's the cycle lengths of `completeBipartiteGraph65 a b`. The existential `∃ (T_K : Finset ℕ), ...` makes it look like there is a choice, when in fact the constraints uniquely determine `T_K`. It would be clearer to define `T_K` directly (e.g., as a `let` binding or a separate definition).
+ai-review/65.md:80:| Code Reuse | Opportunities exist (`cycleLengths`, Mathlib's `completeBipartiteGraph`) |
+ai-review/65.md:83:| Readability | Verbose inline cycle-length sets; unnecessary existential for T_K |
+ai-review/559.md:51:- Haxell, Kohayakawa & Luczak [HKL95] — proved linearity for cycles
+ai-review/559.md:52:- Javadi, Khoeini, Omidi & Pokrovskiy [JKOP19] — alternative proof for cycles
+ai-review/72.md:74:**3. Even cycle lengths:**
+ai-review/72.md:89:[Omitted long matching line]
+ai-review/72.md:101:The problem statement from the website — "Is there a set A ⊂ ℕ of density 0 and a constant c > 0 such that every graph on sufficiently many vertices with average degree ≥ c contains a cycle whose length is in A?" — is precise. All key concepts are standard:
+ai-review/72.md:105:- **"Cycle whose length is in A"**: A cycle is a closed walk with no repeated vertices (except the endpoints). Its length is the number of edges. Standard.
+ai-review/72.md:131:The conclusion `∃ k ∈ A, ∃ v : Fin n, ∃ p : G.Walk v v, p.IsCycle ∧ p.length = k` correctly requires a cycle of length k where k ∈ A. Mathlib's `Walk.IsCycle` requires the walk to be a trail (no repeated edges), have no repeated internal vertices, and have length ≥ 3. This matches the standard graph-theoretic definition of a cycle.
+ai-review/72.md:147:1. **The set A may contain 0, 1, or 2.** No cycle has length < 3, so these elements are vacuously irrelevant. This is harmless but slightly inelegant — one could add `∀ a ∈ A, 3 ≤ a` without loss of generality, though it's unnecessary.
+FormalConjectures/ErdosProblems/765.lean:43:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). -/
+FormalConjectures/ErdosProblems/765.lean:44:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/765.lean:72:      |(↑(extremalNumber (cycleGraph 4 (by omega)) n) / (n : ℝ) ^ ((3 : ℝ) / 2) - 1 / 2)| < ε := by
+FormalConjectures/ErdosProblems/765.lean:89:      |(↑(extremalNumber (cycleGraph 4 (by omega)) n) - (n : ℝ) ^ ((3 : ℝ) / 2) / 2)| ≤
+FormalConjectures/ErdosProblems/751.lean:25:lengths of the cycles in $G$, can $\min(m_{i+1} - m_i)$ be arbitrarily large?
+FormalConjectures/ErdosProblems/751.lean:28:at least $3$ has two cycles whose lengths differ by at most $2$, and hence the same is
+FormalConjectures/ErdosProblems/751.lean:39:/-- The set of cycle lengths occurring in a simple graph. -/
+FormalConjectures/ErdosProblems/751.lean:40:def cycleLengths {V : Type*} (G : SimpleGraph V) : Set ℕ :=
+FormalConjectures/ErdosProblems/751.lean:44:are the cycle lengths of $G$, the minimum gap $\min(m_{i+1} - m_i)$ cannot be made
+FormalConjectures/ErdosProblems/751.lean:46:at least $3$ has two cycles whose lengths differ by at most $2$, which implies the
+FormalConjectures/ErdosProblems/751.lean:54:        ∀ m₁ ∈ cycleLengths G, ∀ m₂ ∈ cycleLengths G,
+FormalConjectures/ErdosProblems/751.lean:59:cycles whose lengths differ by at most $2$. This is the stronger result that resolves
+FormalConjectures/ErdosProblems/751.lean:67:    ∃ m₁ ∈ cycleLengths G, ∃ m₂ ∈ cycleLengths G,
+FormalConjectures/ErdosProblems/1105.lean:25:- [MoNe05] Montellano-Ballesteros, J. J. and Neumann-Lara, V., An anti-{R}amsey theorem on cycles.
+FormalConjectures/ErdosProblems/1105.lean:41:Let $C_k$ be the cycle on $k$ vertices. Is it true that
+FormalConjectures/ErdosProblems/1105.lean:51:    ((fun n => (antiRamseyNum (cycleGraph k) n : ℝ) - ((k - 2 : ℝ) / 2 + 1 / (k - 1)) * n)
+FormalConjectures/ErdosProblems/24.lean:28:[Gr12] Grzesik, A., _On the maximum number of five-cycles in a triangle-free graph_.
+FormalConjectures/ErdosProblems/24.lean:43:We count labeled $5$-cycles: injective functions $f : \text{Fin}\,5 \to \text{Fin}(5n)$ such
+FormalConjectures/ErdosProblems/24.lean:45:$10$ labeled $5$-cycles ($5$ rotations $\times$ $2$ reflections), so the labeled count bound
+FormalConjectures/ErdosProblems/556.lean:35:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/556.lean:37:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/556.lean:58:For all $n \geq 3$, the 3-colour Ramsey number of the cycle $C_n$ satisfies
+FormalConjectures/ErdosProblems/556.lean:63:    multicolorRamseyNumber (cycleGraph n hn) 3 ≤ 4 * n - 3 := by
+FormalConjectures/ErdosProblems/810.lean:32:    exists an edge coloring using $n$ colors such that every 4-cycle in the
+FormalConjectures/ErdosProblems/573.lean:42:/-- A simple graph is $C_4$-free if it contains no 4-cycle.
+FormalConjectures/ErdosProblems/573.lean:50:simple graph on $n$ vertices containing neither a triangle nor a 4-cycle. -/
+FormalConjectures/ErdosProblems/573.lean:59:on $n$ vertices that contains no triangle ($C_3$) and no 4-cycle ($C_4$).
+FormalConjectures/ErdosProblems/573.lean:66:together with any odd cycle is $\sim (n/2)^{3/2}$. This problem asks whether
+FormalConjectures/ErdosProblems/65.lean:24:Is the sum of reciprocals of distinct cycle lengths in a graph on $n$ vertices with $kn$
+FormalConjectures/ErdosProblems/65.lean:28:[GKS84] Gyárfás, A., Komlós, J., and Szemerédi, E., *On the distribution of cycle lengths in
+FormalConjectures/ErdosProblems/65.lean:31:[LiMo20] Liu, H. and Montgomery, R., *A solution to Erdős and Hajnal's odd cycle problem*,
+FormalConjectures/ErdosProblems/65.lean:52:distinct lengths of cycles in $G$. Is it true that $\sum 1/a_i \gg \log k$? Is the sum
+FormalConjectures/ErdosProblems/65.lean:60:count equals $a \cdot b$ for some partition $a + b = n$, the sum of reciprocals of distinct cycle
+FormalConjectures/ErdosProblems/57.lean:25:of its odd cycles, then $\sum 1/a_i = \infty$. Conjectured by Erdős and Hajnal [ErHa66],
+FormalConjectures/ErdosProblems/57.lean:30:[LiMo20] Liu, H. and Montgomery, R., _A solution to Erdős and Hajnal's odd cycle problem_, 2020.
+FormalConjectures/ErdosProblems/57.lean:40:the odd cycles of $G$, then $\sum 1/a_i = \infty$.
+FormalConjectures/ErdosProblems/57.lean:43:of odd natural numbers, each of which is the length of some cycle in $G$, whose reciprocals
+FormalConjectures/ErdosProblems/1016.lean:25:edges which contains a cycle on $k$ vertices, for all $3 \leq k \leq n$. Such graphs
+FormalConjectures/ErdosProblems/1016.lean:43:/-- A simple graph on `Fin n` contains a cycle of length $k$ (for $k \geq 3$)
+FormalConjectures/ErdosProblems/1016.lean:45:    consecutive vertices in the cycle map to adjacent vertices. -/
+FormalConjectures/ErdosProblems/1016.lean:50:/-- A graph on `Fin n` is pancyclic if it contains cycles of every length
+FormalConjectures/ErdosProblems/641.lean:24:A problem of Erdős and Hajnal on chromatic number and edge-disjoint cycles.
+FormalConjectures/ErdosProblems/641.lean:41:chromatic number $\geq f(k)$ then $G$ has $k$ edge-disjoint cycles on the same set
+FormalConjectures/ErdosProblems/641.lean:53:          ∃ (cycles : Fin k → Σ (v : Fin n), G.Walk v v),
+FormalConjectures/ErdosProblems/641.lean:54:            (∀ i, (cycles i).2.IsCycle) ∧
+FormalConjectures/ErdosProblems/641.lean:55:            (∀ i j, (cycles i).2.support.toFinset = (cycles j).2.support.toFinset) ∧
+FormalConjectures/ErdosProblems/641.lean:57:              Disjoint (cycles i).2.edges.toFinset (cycles j).2.edges.toFinset) := by
+FormalConjectures/ErdosProblems/641.lean:65:cycles on any common vertex set. In fact $k = 2$ already fails.
+FormalConjectures/ErdosProblems/641.lean:73:          ¬∃ (cycles : Fin k → Σ (v : Fin n), G.Walk v v),
+FormalConjectures/ErdosProblems/641.lean:74:            (∀ i, (cycles i).2.IsCycle) ∧
+FormalConjectures/ErdosProblems/641.lean:75:            (∀ i j, (cycles i).2.support.toFinset = (cycles j).2.support.toFinset) ∧
+FormalConjectures/ErdosProblems/641.lean:77:              Disjoint (cycles i).2.edges.toFinset (cycles j).2.edges.toFinset) := by
+FormalConjectures/ErdosProblems/59.lean:59:This was DISPROVED: the answer is no for $G = C_6$ (the 6-cycle).
+FormalConjectures/ErdosProblems/1008.lean:34:/-- A simple graph contains a 4-cycle ($C_4$) if there exist four distinct vertices
+FormalConjectures/ErdosProblems/1008.lean:35:    $a, b, c, d$ forming the cycle $a$-$b$-$c$-$d$-$a$. -/
+FormalConjectures/ErdosProblems/1008.lean:40:/-- A simple graph is $C_4$-free if it contains no 4-cycle as a subgraph. -/
+FormalConjectures/ErdosProblems/64.lean:29:contain a cycle of length $2^k$ for some $k \geq 2$?
+FormalConjectures/ErdosProblems/740.lean:28:$\mathfrak{m}$ which does not contain any odd cycle of length $\leq r$?
+FormalConjectures/ErdosProblems/740.lean:36:$\mathfrak{m}$ with no odd cycle of length $\leq r$.
+FormalConjectures/ErdosProblems/740.lean:56:no odd cycle of length $\leq r$.
+FormalConjectures/ErdosProblems/626.lean:61:/-- A graph on $\text{Fin}(n)$ has girth greater than $m$ if every cycle has length
+FormalConjectures/ErdosProblems/811.lean:49:/-- The cycle graph on $m$ vertices (for $m \ge 3$): vertex $i$ is adjacent
+FormalConjectures/ErdosProblems/811.lean:51:def cycleGraph811 (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/811.lean:89:        HasRainbowCopy (cycleGraph811 6 (by omega)) c := by
+FormalConjectures/ErdosProblems/63.lean:24:Does every graph with infinite chromatic number contain a cycle of length $2^n$ for
+FormalConjectures/ErdosProblems/63.lean:29:[LiMo20] Liu, H. and Montgomery, R., _A solution to Erdős and Hajnal's odd cycle problem_, 2020.
+FormalConjectures/ErdosProblems/63.lean:38:Does every graph with infinite chromatic number contain a cycle of length $2^n$ for
+FormalConjectures/ErdosProblems/63.lean:42:there exists $n \geq N$ such that $G$ contains a cycle of length $2^n$.
+FormalConjectures/ErdosProblems/567.lean:52:  .cycleGraph 5 ⊔ .edge 0 2 ⊔ .edge 1 3
+FormalConjectures/ErdosProblems/23.lean:52:The blow-up of the 5-cycle $C_5$: replace each vertex of $C_5$ with an independent set of $n$
+FormalConjectures/ErdosProblems/84.lean:24:The cycle set of a graph $G$ on $n$ vertices is the set $A \subseteq \{3, \ldots, n\}$ of all cycle
+FormalConjectures/ErdosProblems/84.lean:41:[Ve04] Verstraëte, J., _On arithmetic progressions of cycle lengths in graphs_.
+FormalConjectures/ErdosProblems/84.lean:49:/-- The cycle spectrum of a simple graph: the set of all cycle lengths present in $G$. -/
+FormalConjectures/ErdosProblems/84.lean:50:def cycleSpectrum {V : Type*} (G : SimpleGraph V) : Set ℕ :=
+FormalConjectures/ErdosProblems/84.lean:53:/-- The number of distinct cycle spectra realizable by simple graphs on $\operatorname{Fin}(n)$. -/
+FormalConjectures/ErdosProblems/84.lean:54:noncomputable def cycleSetCount (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/84.lean:55:  Set.ncard {A : Set ℕ | ∃ G : SimpleGraph (Fin n), cycleSpectrum G = A}
+FormalConjectures/ErdosProblems/84.lean:66:      (cycleSetCount n : ℝ) ≥ B * (2 : ℝ) ^ ((n : ℝ) / 2) := by
+FormalConjectures/ErdosProblems/84.lean:82:      (cycleSetCount n : ℝ) ≤ ε * (2 : ℝ) ^ n := by
+FormalConjectures/ErdosProblems/85.lean:34:  sInf {k : ℕ | ∀ (G : SimpleGraph (Fin n)), G.minDegree ≥ k → (cycleGraph 4) ⊑ G}
+FormalConjectures/ErdosProblems/574.lean:35:/-- A simple graph $G$ contains a cycle of length $m$ ($m \geq 3$) if there exist $m$
+FormalConjectures/ErdosProblems/574.lean:43:in a simple graph on $n$ vertices containing no cycle of length $2k-1$ or $2k$. -/
+FormalConjectures/ErdosProblems/574.lean:56:a graph on $n$ vertices that contains no cycle of length $2k-1$ and no cycle of length $2k$.
+FormalConjectures/ErdosProblems/666.lean:41:[Ch92] Chung, F., *Subgraphs of a hypercube containing no small even cycles*. J. Graph
+FormalConjectures/ErdosProblems/666.lean:67:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/666.lean:69:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/666.lean:91:          ∀ i j, (cycleGraph 6 (by omega)).Adj i j → H.Adj (f i) (f j)) := by
+FormalConjectures/ErdosProblems/1080.lean:24:- [DeSz92] de Caen, D. and Székely, L. A., The maximum size of {$4$}- and {$6$}-cycle free bipartite
+FormalConjectures/ErdosProblems/1080.lean:29:  on {$m,n$} vertices with many edges and without small cycles. J. Combin. Theory Ser. B (1994),
+FormalConjectures/ErdosProblems/1091.lean:24:[La79] Larson — proved that $K_4$-free graphs with chromatic number $4$ contain an odd cycle
+FormalConjectures/ErdosProblems/1091.lean:36:/-- A graph $G$ contains an odd cycle with at least $d$ diagonals.
+FormalConjectures/ErdosProblems/1091.lean:38:An odd cycle of length $2m+3$ ($\geq 3$) is given by an injective map $f : \text{Fin}(2m+3) \to V$
+FormalConjectures/ErdosProblems/1091.lean:40:of $G$ between two cycle vertices that are not consecutive in the cycle. -/
+FormalConjectures/ErdosProblems/1091.lean:55:Let $G$ be a $K_4$-free graph with chromatic number $4$. Then $G$ contains an odd cycle
+FormalConjectures/ErdosProblems/1091.lean:72:chromatic number $\leq 3$, contains an odd cycle with at least $f(r)$ diagonals?
+FormalConjectures/ErdosProblems/551.lean:26:Here $R(C_k, K_n)$ is the off-diagonal Ramsey number, $C_k$ is the cycle graph on
+FormalConjectures/ErdosProblems/551.lean:35:*On cycle-complete graph Ramsey numbers*, J. Graph Theory 2 (1978), 53–64.
+FormalConjectures/ErdosProblems/551.lean:37:[BoEr73] Bondy, J. A. and Erdős, P., *Ramsey numbers for cycles in graphs*,
+FormalConjectures/ErdosProblems/551.lean:40:[Ni05] Nikiforov, V., *The cycle-complete graph Ramsey numbers*,
+FormalConjectures/ErdosProblems/551.lean:64:/-- The cycle graph on $k$ vertices ($k \geq 3$): vertex $i$ is adjacent to vertex $j$ iff
+FormalConjectures/ErdosProblems/551.lean:66:def cycleGraph (k : ℕ) (hk : k ≥ 3) : SimpleGraph (Fin k) where
+FormalConjectures/ErdosProblems/551.lean:82:Here $C_k$ is the cycle graph on $k$ vertices and $K_n$ is the complete graph on $n$
+FormalConjectures/ErdosProblems/551.lean:87:    offDiagRamseyNumber (cycleGraph k (by omega)) (⊤ : SimpleGraph (Fin n)) =
+FormalConjectures/ErdosProblems/585.lean:25:does not contain two edge-disjoint cycles with the same vertex set?
+FormalConjectures/ErdosProblems/585.lean:47:/-- A graph has no two edge-disjoint cycles with the same vertex set. -/
+FormalConjectures/ErdosProblems/585.lean:55:edge-disjoint cycles sharing the same vertex set. -/
+FormalConjectures/ErdosProblems/585.lean:64:does not contain two edge-disjoint cycles with the same vertex set?
+FormalConjectures/ErdosProblems/585.lean:76:cycles on the same vertex set is at least $c \cdot n \cdot \log(\log(n))$.
+FormalConjectures/ErdosProblems/585.lean:91:cycles on the same vertex set is at most $n \cdot (\log n)^C$.
+FormalConjectures/ErdosProblems/767.lean:25:which does not contain a cycle with $k$ chords incident to a vertex on the cycle.
+FormalConjectures/ErdosProblems/767.lean:31:[Ji04] Jiang, T., _On the Turán number of cycles with $k$ chords_, 2004.
+FormalConjectures/ErdosProblems/767.lean:38:/-- A graph $G$ contains a cycle with at least $k$ chords incident to a single vertex.
+FormalConjectures/ErdosProblems/767.lean:39:That is, there exists a simple cycle (given by an injective map $f : \operatorname{Fin} m \to V$
+FormalConjectures/ErdosProblems/767.lean:40:tracing consecutive adjacent vertices) and a vertex $f(i_0)$ on the cycle that
+FormalConjectures/ErdosProblems/767.lean:41:is adjacent to at least $k$ other cycle vertices which are not its two
+FormalConjectures/ErdosProblems/767.lean:42:cycle-neighbors. -/
+FormalConjectures/ErdosProblems/767.lean:55:does not contain a cycle with $k$ chords incident to a vertex. -/
+FormalConjectures/ErdosProblems/86.lean:60:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/86.lean:62:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/86.lean:81:        ∀ i j, (cycleGraph 4 (by omega)).Adj i j → H.Adj (f i) (f j) := by
+FormalConjectures/ErdosProblems/642.lean:25:all cycles have more vertices than chords. Is it true that $f(n) \ll n$?
+FormalConjectures/ErdosProblems/642.lean:27:A chord is an edge between two vertices of the cycle which are not consecutive
+FormalConjectures/ErdosProblems/642.lean:28:in the cycle. A problem of Hamburger and Szegedy.
+FormalConjectures/ErdosProblems/642.lean:34:Bollobás on nested cycles_. J. Combin. Theory Ser. B (1996).
+FormalConjectures/ErdosProblems/642.lean:61:vertices in which every cycle has strictly more vertices than chords has at
+FormalConjectures/ErdosProblems/815.lean:30:large such graphs with no cycle of length $23$.
+FormalConjectures/ErdosProblems/815.lean:34:[NPS17] Narins, L., Pokrovskiy, A. and Szabó, T., _Graphs without long cycles_, 2017.
+FormalConjectures/ErdosProblems/815.lean:52:critical graph contains a cycle of length $k$? The answer is **no**.
+FormalConjectures/ErdosProblems/207.lean:51:The girth condition forbids short "cycles" in the hypergraph: any collection of
+FormalConjectures/ErdosProblems/62.lean:76:cycles (chromatic number $3$), proved by Erdős, Hajnal, and Shelah [EHS74].
+FormalConjectures/ErdosProblems/72.lean:25:average degree at least $c$ contains a cycle whose length is in $A$. Proved by
+FormalConjectures/ErdosProblems/72.lean:28:[Ve05] Verstraëte, J., *A note on vertex-disjoint cycles*, Combinatorics, Probability and
+FormalConjectures/ErdosProblems/72.lean:31:[LiMo20] Liu, H. and Montgomery, R., *A solution to Erdős and Hajnal's odd cycle problem*,
+FormalConjectures/ErdosProblems/72.lean:49:sufficiently many vertices with average degree $\geq c$ contains a cycle whose length is in $A$?
+FormalConjectures/ErdosProblems/184.lean:24:Any graph on $n$ vertices can be decomposed into $O(n)$ many edge-disjoint cycles
+FormalConjectures/ErdosProblems/184.lean:27:Conjectured by Erdős and Gallai [EGP66], who proved that $O(n \log n)$ many cycles
+FormalConjectures/ErdosProblems/184.lean:34:[BM22] Bucić, M. and Montgomery, R., _Towards the Erdős-Gallai cycle decomposition
+FormalConjectures/ErdosProblems/184.lean:47:each part is either a single edge or the edge set of a cycle in $G$.
+FormalConjectures/ErdosProblems/640.lean:38:at least $f(k)$ contains an odd cycle whose vertices span an induced subgraph
+FormalConjectures/ErdosProblems/640.lean:41:This is trivial when $k = 3$, since any non-bipartite graph contains an odd cycle,
+FormalConjectures/ErdosProblems/640.lean:42:and all odd cycles have chromatic number $3$.
+FormalConjectures/ErdosProblems/552.lean:49:/-- The cycle graph on $k$ vertices ($k \geq 3$): vertex $i$ is adjacent to vertex $j$ iff
+FormalConjectures/ErdosProblems/552.lean:51:def cycleGraph (k : ℕ) (hk : k ≥ 3) : SimpleGraph (Fin k) where
+FormalConjectures/ErdosProblems/552.lean:76:Here $C_4$ is the cycle on $4$ vertices and $S_n = K_{1,n}$ is the star on $n + 1$
+FormalConjectures/ErdosProblems/552.lean:89:      (offDiagRamseyNumber (cycleGraph 4 (by omega)) (starGraph n) : ℝ) ≤
+FormalConjectures/ErdosProblems/737.lean:25:edge $e$ such that, for all large $n$, $G$ contains a cycle of length $n$
+FormalConjectures/ErdosProblems/737.lean:29:contain all sufficiently large cycles (see [594]).
+FormalConjectures/ErdosProblems/737.lean:43:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/737.lean:45:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/737.lean:50:/-- $G$ contains a copy of the cycle graph $C_m$ passing through edge $\{u, v\}$:
+FormalConjectures/ErdosProblems/737.lean:52:    the cycle to the edge $\{u, v\}$. -/
+FormalConjectures/ErdosProblems/737.lean:56:    (∀ a b : Fin m, (cycleGraph m hm).Adj a b → G.Adj (f a) (f b)) ∧
+FormalConjectures/ErdosProblems/737.lean:57:    ∃ a b : Fin m, (cycleGraph m hm).Adj a b ∧
+FormalConjectures/ErdosProblems/737.lean:65:$G$ contains a cycle of length $n$ passing through $\{u, v\}$.
+FormalConjectures/ErdosProblems/58.lean:28:[Gy92] Gyárfás, A., *Graphs with $k$ odd cycle lengths*, Discrete Mathematics 103 (1992), 41–48.
+FormalConjectures/ErdosProblems/58.lean:35:/-- The set of lengths of odd cycles in a graph $G$. -/
+FormalConjectures/ErdosProblems/58.lean:42:If $G$ is a finite graph containing odd cycles of at most $k$ different lengths,
+FormalConjectures/ErdosProblems/111.lean:76:  contain $\aleph_1$ many vertex-disjoint odd cycles of some fixed length $2r+1$.
+FormalConjectures/ErdosProblems/554.lean:34:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/554.lean:36:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/554.lean:67:      (multicolorRamseyNumber (cycleGraph (2 * n + 1) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/720.lean:55:/-- The cycle graph $C_n$ on $n$ vertices ($n \geq 3$). Vertex $i$ is adjacent to
+FormalConjectures/ErdosProblems/720.lean:57:def cycleGraph (n : ℕ) (_ : n ≥ 3) : SimpleGraph (Fin n) where
+FormalConjectures/ErdosProblems/720.lean:96:Erdős Problem 720, Part 2 (Beck's theorem for cycles) [Be83b]:
+FormalConjectures/ErdosProblems/720.lean:98:The size Ramsey number of the cycle $C_n$ is at most linear in $n$.
+FormalConjectures/ErdosProblems/720.lean:104:theorem erdos_720.variants.cycles :
+FormalConjectures/ErdosProblems/720.lean:106:      sizeRamseyNumber (cycleGraph n hn) ≤ C * n := by
+FormalConjectures/ErdosProblems/1006.lean:33:hypergraphs without short cycles*, 1978.
+FormalConjectures/ErdosProblems/1006.lean:52:is irreflexive (equivalently, there are no directed cycles). -/
+FormalConjectures/ErdosProblems/1006.lean:71:Let $G$ be a graph with girth $> 4$ (i.e., $G$ contains no cycles of length $3$ or $4$).
+FormalConjectures/ErdosProblems/1006.lean:72:Can the edges of $G$ always be directed such that there is no directed cycle, and
+FormalConjectures/ErdosProblems/1006.lean:73:reversing the direction of any edge also creates no directed cycle?
+FormalConjectures/ErdosProblems/1006.lean:77:contains a directed cycle or contains a cycle obtained by reversing one edge.
+FormalConjectures/ErdosProblems/809.lean:38:$r$-edge-coloring such that every cycle of length $2k+1$ is rainbow
+FormalConjectures/ErdosProblems/60.lean:40:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). -/
+FormalConjectures/ErdosProblems/60.lean:41:def cycleGraph60 (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/60.lean:78:      G.edgeSet.ncard > extremalNumber60 (cycleGraph60 4 (by omega)) n →
+FormalConjectures/ErdosProblems/921.lean:25:vertices with chromatic number $k$ in which every odd cycle has length $> m$.
+FormalConjectures/ErdosProblems/921.lean:44:    number $k$ in which every odd cycle has length $> m$. -/
+FormalConjectures/ErdosProblems/572.lean:28:an $n$-vertex graph that does not contain the even cycle $C_{2k}$ as a subgraph.
+FormalConjectures/ErdosProblems/572.lean:56:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/572.lean:58:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/572.lean:84:      c * (n : ℝ) ^ (1 + 1 / (k : ℝ)) ≤ (extremalNumber (cycleGraph (2 * k) (by omega)) n : ℝ) := by
+FormalConjectures/ErdosProblems/883.lean:27:contains all odd cycles of length at most $n/3 + 1$, and also whether $G(A)$ must contain
+FormalConjectures/ErdosProblems/883.lean:31:[ErSa97] Erdős, P. and Sárközy, A., on cycles in the coprime graph of integers.
+FormalConjectures/ErdosProblems/883.lean:50:A graph contains a cycle of length $k$: there exist $k$ distinct vertices
+FormalConjectures/ErdosProblems/883.lean:68:contains all odd cycles of length at most $n/3 + 1$.
+FormalConjectures/ErdosProblems/883.lean:70:A problem of Erdős and Sárközy [ErSa97], who proved this for cycles of
+FormalConjectures/ErdosProblems/570.lean:26:$R$ denotes the two-colour Ramsey number and $C_k$ the cycle on $k$ vertices?
+FormalConjectures/ErdosProblems/570.lean:48:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/570.lean:50:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/570.lean:61:Here $C_k$ is the cycle on $k$ vertices and $R(G, H)$ is the two-colour
+FormalConjectures/ErdosProblems/570.lean:69:      ramseyNum (cycleGraph k hk) H ≤ 2 * H.edgeSet.ncard + (k - 1) / 2 := by
+FormalConjectures/ErdosProblems/555.lean:39:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/555.lean:41:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/555.lean:68:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≥
+FormalConjectures/ErdosProblems/555.lean:81:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/555.lean:90:    multicolorRamseyNumber (cycleGraph 4 (by omega)) k ≤ k ^ 2 + k + 1 := by
+FormalConjectures/ErdosProblems/608.lean:45:/-- The number of edges of $G$ contained in some $5$-cycle. An edge $\{u, v\}$ is
+FormalConjectures/ErdosProblems/608.lean:47:such that $u$-$w_1$-$w_2$-$w_3$-$v$-$u$ is a $5$-cycle in $G$. Edges are counted as
+FormalConjectures/ErdosProblems/593.lean:30:contain any fixed odd cycle.
+FormalConjectures/ErdosProblems/593.lean:81:contain any fixed odd cycle [EGH75].
+FormalConjectures/ErdosProblems/561.lean:30:_Ramsey numbers for the pair sparse graph-path or cycle_, Trans. Amer. Math. Soc. (1978).
+FormalConjectures/ErdosProblems/923.lean:40:Triangle-free is formalized here as girth $\geq 4$ (no cycles of length 3).
+FormalConjectures/ErdosProblems/594.lean:25:$\geq \aleph_1$ contain all sufficiently large odd cycles? Proved by
+FormalConjectures/ErdosProblems/594.lean:48:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/594.lean:50:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/594.lean:64:$\geq \aleph_1$) contains all sufficiently large odd cycles. That is, there exists
+FormalConjectures/ErdosProblems/594.lean:75:        ContainsCopy G (cycleGraph n hn) := by
+FormalConjectures/ErdosProblems/752.lean:25:girth $> 2s$. Must there be $\gg k^s$ many distinct cycle lengths in $G$?
+FormalConjectures/ErdosProblems/752.lean:37:/-- The set of cycle lengths occurring in a simple graph. -/
+FormalConjectures/ErdosProblems/752.lean:38:def cycleLengths {V : Type*} (G : SimpleGraph V) : Set ℕ :=
+FormalConjectures/ErdosProblems/752.lean:46:distinct cycle lengths in $G$ is at least $c \cdot k^s$.
+FormalConjectures/ErdosProblems/752.lean:56:      c * (k : ℝ) ^ s ≤ ((cycleLengths G).ncard : ℝ) := by
+FormalConjectures/ErdosProblems/916.lean:24:Does every graph with $n$ vertices and $2n-2$ edges contain a cycle and another
+FormalConjectures/ErdosProblems/916.lean:25:vertex adjacent to three vertices on the cycle?
+FormalConjectures/ErdosProblems/916.lean:49:Every simple graph with $n$ vertices and at least $2n-2$ edges contains a cycle $C$
+FormalConjectures/ErdosProblems/916.lean:52:A cycle of length $m$ ($m \geq 3$) is represented as an injective map
+FormalConjectures/ErdosProblems/916.lean:53:`cycle : Fin m → Fin n` where consecutive vertices (including wrap-around)
+FormalConjectures/ErdosProblems/916.lean:61:    ∃ (k : ℕ) (cycle : Fin (k + 3) → Fin n),
+FormalConjectures/ErdosProblems/916.lean:62:      Function.Injective cycle ∧
+FormalConjectures/ErdosProblems/916.lean:63:      (∀ i : Fin (k + 3), G.Adj (cycle i)
+FormalConjectures/ErdosProblems/916.lean:64:        (cycle ⟨(i.val + 1) % (k + 3), Nat.mod_lt _ (by omega)⟩)) ∧
+FormalConjectures/ErdosProblems/916.lean:65:      ∃ v : Fin n, v ∉ Set.range cycle ∧
+FormalConjectures/ErdosProblems/916.lean:67:          G.Adj v (cycle i) ∧ G.Adj v (cycle j) ∧ G.Adj v (cycle l) := by
+FormalConjectures/ErdosProblems/842.lean:25:and adding a Hamiltonian cycle (with all new edges) between these vertices.
+FormalConjectures/ErdosProblems/842.lean:48:/-- A permutation $\sigma$ on `Fin m` is a single $m$-cycle (Hamiltonian cycle): applying $\sigma$
+FormalConjectures/ErdosProblems/842.lean:53:/-- The cycle graph induced by a permutation $\sigma$: vertices $u$ and $v$ are adjacent
+FormalConjectures/ErdosProblems/842.lean:55:def cycleGraphOfPerm {m : ℕ} (σ : Equiv.Perm (Fin m)) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/842.lean:64:and adding a Hamiltonian cycle (with all new edges). Then $G$ has chromatic
+FormalConjectures/ErdosProblems/842.lean:75:      (cycleGraphOfPerm σ).Adj u v → ¬(triangleGraph n).Adj u v) →
+FormalConjectures/ErdosProblems/842.lean:76:    (triangleGraph n ⊔ cycleGraphOfPerm σ).chromaticNumber ≤ 3 := by
+FormalConjectures/ErdosProblems/577.lean:37:/-- Four vertices form a $4$-cycle in $G$: they are pairwise distinct and
+FormalConjectures/ErdosProblems/577.lean:51:contains $k$ vertex-disjoint $4$-cycles.
+FormalConjectures/ErdosProblems/577.lean:61:      ∃ cycles : Fin k → Fin (4 * k) × Fin (4 * k) × Fin (4 * k) × Fin (4 * k),
+FormalConjectures/ErdosProblems/577.lean:62:        (∀ i, let (a, b, c, d) := cycles i; IsFourCycle G a b c d) ∧
+FormalConjectures/ErdosProblems/577.lean:64:          Disjoint (fourCycleVertices (cycles i)) (fourCycleVertices (cycles j))) := by
+FormalConjectures/ErdosProblems/584.lean:35:/-- Two edges of a graph lie on a common cycle of length at most $k$. -/
+FormalConjectures/ErdosProblems/584.lean:48:with $\gg \delta^3 n^2$ edges such that every two edges of $H_1$ lie on a common cycle of
+FormalConjectures/ErdosProblems/584.lean:50:cycle of length $4$.
+FormalConjectures/ErdosProblems/584.lean:73:with $\gg \delta^2 n^2$ edges such that every two edges of $H_2$ lie on a common cycle of
+FormalConjectures/ErdosProblems/159.lean:45:/-- The 4-cycle $C_4$: vertices $\operatorname{Fin} 4$, with $i$ adjacent to $j$ iff they are
+FormalConjectures/ErdosProblems/1012.lean:25:vertices with at least $\binom{n-k-1}{2} + \binom{k+2}{2} + 1$ edges contains a cycle
+FormalConjectures/ErdosProblems/1012.lean:30:$\binom{n-1}{2} + 2$ edges contains a Hamiltonian cycle).
+FormalConjectures/ErdosProblems/1012.lean:34:$\binom{n-k-1}{2} + \binom{k+2}{2} + 1$ edges contains a cycle of length $\ell$ for all
+FormalConjectures/ErdosProblems/1012.lean:42:/-- A simple graph $G$ contains a cycle of length $m$ ($m \geq 3$) if there exist $m$
+FormalConjectures/ErdosProblems/1012.lean:53:$\binom{n-k-1}{2} + \binom{k+2}{2} + 1$ edges contains a cycle of length $\ell$ for every
+FormalConjectures/ErdosProblems/622.lean:25:subsets that are spanned by a cycle?
+FormalConjectures/ErdosProblems/622.lean:28:there are at least $(1/2 + o(1))2^{2n}$ sets that are NOT on a cycle.
+FormalConjectures/ErdosProblems/622.lean:36:which are spanned by a cycle.
+FormalConjectures/ErdosProblems/622.lean:44:/-- A subset $S$ of vertices is *spanned by a cycle* in $G$ if there exists
+FormalConjectures/ErdosProblems/622.lean:45:    a cycle in $G$ whose vertex set is exactly $S$. -/
+FormalConjectures/ErdosProblems/622.lean:49:/-- The number of subsets of vertices spanned by a cycle in a graph on $2n$ vertices. -/
+FormalConjectures/ErdosProblems/622.lean:59:spanned by a cycle.
+FormalConjectures/ErdosProblems/81.lean:36:An induced cycle of length $k$ in a simple graph $G$: an injective map
+FormalConjectures/ErdosProblems/81.lean:39:cycle with no chords.
+FormalConjectures/ErdosProblems/81.lean:47:A graph is chordal if it contains no induced cycle of length $\geq 4$.
+FormalConjectures/ErdosProblems/81.lean:48:Equivalently, every cycle of length $\geq 4$ has a chord.
+FormalConjectures/ErdosProblems/81.lean:56:Let $G$ be a chordal graph on $n$ vertices — that is, $G$ has no induced cycles of
+FormalConjectures/ErdosProblems/569.lean:47:/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+FormalConjectures/ErdosProblems/569.lean:49:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/569.lean:60:Here $C_{2k+1}$ is the odd cycle on $2k+1$ vertices.
+FormalConjectures/ErdosProblems/569.lean:66:      ramseyNum (cycleGraph (2 * k + 1) (by omega)) H ≤ c * H.edgeSet.ncard := by
+FormalConjectures/ErdosProblems/609.lean:25:with $n$ colours then there must be a monochromatic odd cycle of length at most $m$.
+FormalConjectures/ErdosProblems/609.lean:29:$n$-coloured to avoid monochromatic odd cycles entirely (partition vertices by
+FormalConjectures/ErdosProblems/609.lean:43:/-- There exists a monochromatic cycle of length $k$ in an edge coloring of $K_N$.
+FormalConjectures/ErdosProblems/609.lean:44:A cycle is an injective sequence of $k \geq 3$ vertices $v_0, \ldots, v_{k-1}$ where all
+FormalConjectures/ErdosProblems/609.lean:57:contains a monochromatic odd cycle. (This establishes that $f(n)$ is finite.)
+FormalConjectures/ErdosProblems/609.lean:71:symmetric $n$-coloring of $K_{2^n+1}$ with no monochromatic odd cycle of length
+FormalConjectures/ErdosProblems/609.lean:87:$n$-coloring of $K_{2^n+1}$ contains a monochromatic odd cycle of length at most
+FormalConjectures/ErdosProblems/71.lean:25:such that every graph with average degree at least $c$ contains a cycle whose length
+FormalConjectures/ErdosProblems/71.lean:39:finite graph with average degree at least $c$ contains a cycle whose length belongs to $P$.
+FormalConjectures/ErdosProblems/761.lean:29:are no monochromatic oriented cycles.
+FormalConjectures/ErdosProblems/761.lean:48:if there is no monochromatic directed cycle: no vertex can reach itself

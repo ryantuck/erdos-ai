@@ -1,0 +1,413 @@
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/Test.lean-61-  }
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/Test.lean-62-
+FormalConjectures/WrittenOnTheWallII/Test.lean-63-/-- C6: Cycle graph on 6 vertices. -/
+FormalConjectures/WrittenOnTheWallII/Test.lean:64:abbrev C6 : SimpleGraph (Fin 6) := cycleGraph 6
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/Test.lean-65-
+FormalConjectures/WrittenOnTheWallII/Test.lean-66-/-- Star5: Star graph with center 0 and 5 leaves. -/
+FormalConjectures/WrittenOnTheWallII/Test.lean-67-def Star5 : SimpleGraph (Fin 1 ⊕ Fin 5) := completeBipartiteGraph (Fin 1) (Fin 5)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-41-namespace Erdos765
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-43-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). -/
+FormalConjectures/ErdosProblems/765.lean:44:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/765.lean-45-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/765.lean-46-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/765.lean-47-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/765.lean-69-theorem erdos_765 :
+FormalConjectures/ErdosProblems/765.lean-70-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/765.lean-71-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/765.lean:72:      |(↑(extremalNumber (cycleGraph 4 (by omega)) n) / (n : ℝ) ^ ((3 : ℝ) / 2) - 1 / 2)| < ε := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-73-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-75-/--
+--
+FormalConjectures/ErdosProblems/765.lean-86-theorem erdos_765.variants.refined :
+FormalConjectures/ErdosProblems/765.lean-87-    ∃ C : ℝ, 0 < C ∧
+FormalConjectures/ErdosProblems/765.lean-88-    ∀ n : ℕ, 1 ≤ n →
+FormalConjectures/ErdosProblems/765.lean:89:      |(↑(extremalNumber (cycleGraph 4 (by omega)) n) - (n : ℝ) ^ ((3 : ℝ) / 2) / 2)| ≤
+FormalConjectures/ErdosProblems/765.lean-90-        C * (n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-91-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-92-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1105.lean-48-@[category research solved, AMS 05]
+FormalConjectures/ErdosProblems/1105.lean-49-theorem erdos_1105.parts.i : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1105.lean-50-    ∀ k, 3 ≤ k →
+FormalConjectures/ErdosProblems/1105.lean:51:    ((fun n => (antiRamseyNum (cycleGraph k) n : ℝ) - ((k - 2 : ℝ) / 2 + 1 / (k - 1)) * n)
+FormalConjectures/ErdosProblems/1105.lean-52-      =O[atTop] (fun _ => (1 : ℝ))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1105.lean-53-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1105.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-35-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-36-$i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/556.lean:37:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/556.lean-38-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/556.lean-39-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/556.lean-40-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/556.lean-45-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/556.lean-46-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-47-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/556.lean:48:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/556.lean-49-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/556.lean-50-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-51-    (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-60--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-61-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/556.lean-62-theorem erdos_556 (n : ℕ) (hn : n ≥ 3) :
+FormalConjectures/ErdosProblems/556.lean:63:    multicolorRamseyNumber (cycleGraph n hn) 3 ≤ 4 * n - 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-64-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-66-end Erdos556
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean-49-/-- $H_5$ is $C_5$ with two vertex-disjoint chords (5 vertices, 7 edges).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean-50-Also known as $K_4^*$ (the graph obtained from $K_4$ by subdividing one edge). -/
+FormalConjectures/ErdosProblems/567.lean-51-def H5 : SimpleGraph (Fin 5) :=
+FormalConjectures/ErdosProblems/567.lean:52:  .cycleGraph 5 ⊔ .edge 0 2 ⊔ .edge 1 3
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean-54-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean-55-**Erdős Problem 567 (Q3)**
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-48-
+FormalConjectures/ErdosProblems/811.lean-49-/-- The cycle graph on $m$ vertices (for $m \ge 3$): vertex $i$ is adjacent
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-50-    to vertices $(i+1) \bmod m$ and $(i-1) \bmod m$. -/
+FormalConjectures/ErdosProblems/811.lean:51:def cycleGraph811 (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/811.lean-52-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/811.lean-53-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/811.lean-54-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/811.lean-86-    ∃ N : ℕ, ∀ n : ℕ, n ≥ N → n % 6 = 1 →
+FormalConjectures/ErdosProblems/811.lean-87-      ∀ c : Sym2 (Fin n) → Fin 6,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-88-        IsBalancedColoring n 6 c →
+FormalConjectures/ErdosProblems/811.lean:89:        HasRainbowCopy (cycleGraph811 6 (by omega)) c := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-90-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-91-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-92-end Erdos811
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-67-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-68-$i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/666.lean:69:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/666.lean-70-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/666.lean-71-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/666.lean-72-  loopless _ := fun ⟨h, _⟩ => h rfl
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-88-        (∀ u v, H.Adj u v → (hypercubeGraph n).Adj u v) →
+FormalConjectures/ErdosProblems/666.lean-89-        (↑(H.edgeFinset.card) : ℝ) ≥ ε * ↑n * (2 : ℝ) ^ (n - 1 : ℕ) →
+FormalConjectures/ErdosProblems/666.lean-90-        ∃ f : Fin 6 → (Fin n → Bool), Function.Injective f ∧
+FormalConjectures/ErdosProblems/666.lean:91:          ∀ i j, (cycleGraph 6 (by omega)).Adj i j → H.Adj (f i) (f j)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-92-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-93-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-94-end Erdos666
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean-31-f(n)$ contains a $C_4$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean-32--/
+FormalConjectures/ErdosProblems/85.lean-33-noncomputable def f (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/85.lean:34:  sInf {k : ℕ | ∀ (G : SimpleGraph (Fin n)), G.minDegree ≥ k → (cycleGraph 4) ⊑ G}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean-36-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean-37-Is it true that, for all large $n$, $f(n + 1) \ge f(n)$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-60-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-61-$i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/86.lean:62:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/86.lean-63-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/86.lean-64-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/86.lean-65-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/86.lean-78-      (∀ u v : Fin n → Bool, H.Adj u v → (hypercubeGraph n).Adj u v) →
+FormalConjectures/ErdosProblems/86.lean-79-      (↑(H.edgeFinset.card) : ℝ) ≥ (1 / 2 + ε) * ↑n * (2 : ℝ) ^ (n - 1 : ℕ) →
+FormalConjectures/ErdosProblems/86.lean-80-      ∃ f : Fin 4 → (Fin n → Bool), Function.Injective f ∧
+FormalConjectures/ErdosProblems/86.lean:81:        ∀ i j, (cycleGraph 4 (by omega)).Adj i j → H.Adj (f i) (f j) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-82-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-83-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-84-end Erdos86
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-63-
+FormalConjectures/ErdosProblems/551.lean-64-/-- The cycle graph on $k$ vertices ($k \geq 3$): vertex $i$ is adjacent to vertex $j$ iff
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-65-they differ by exactly $1$ modulo $k$. -/
+FormalConjectures/ErdosProblems/551.lean:66:def cycleGraph (k : ℕ) (hk : k ≥ 3) : SimpleGraph (Fin k) where
+FormalConjectures/ErdosProblems/551.lean-67-  Adj i j := (i.val + 1) % k = j.val ∨ (j.val + 1) % k = i.val
+FormalConjectures/ErdosProblems/551.lean-68-  symm _ _ h := h.elim Or.inr Or.inl
+FormalConjectures/ErdosProblems/551.lean-69-  loopless v h := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-84--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-85-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/551.lean-86-theorem erdos_551 (k n : ℕ) (hk : k ≥ n) (hn : n ≥ 3) (hne : ¬(k = 3 ∧ n = 3)) :
+FormalConjectures/ErdosProblems/551.lean:87:    offDiagRamseyNumber (cycleGraph k (by omega)) (⊤ : SimpleGraph (Fin n)) =
+FormalConjectures/ErdosProblems/551.lean-88-      (k - 1) * (n - 1) + 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-89-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-90-
+--
+FormalConjectures/ErdosProblems/558.lean-41-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/558.lean-42-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-43-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/558.lean:44:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/558.lean-45-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/558.lean-46-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-47-    (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-55-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/558.lean-56-theorem erdos_558 :
+FormalConjectures/ErdosProblems/558.lean-57-    ∀ s t : ℕ, s ≥ 1 → t ≥ 1 → ∀ k : ℕ,
+FormalConjectures/ErdosProblems/558.lean:58:    multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k = answer((sorry : ℕ → ℕ → ℕ → ℕ) s t k) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-59-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-61-/--
+--
+FormalConjectures/ErdosProblems/558.lean-72-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/558.lean-73-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/558.lean-74-      (1 - ε) * (k : ℝ) ^ 2 ≤
+FormalConjectures/ErdosProblems/558.lean:75:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:76:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean-77-        (1 + ε) * (k : ℝ) ^ 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-78-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-79-
+--
+FormalConjectures/ErdosProblems/558.lean-91-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/558.lean-92-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/558.lean-93-      (1 - ε) * (k : ℝ) ^ 3 ≤
+FormalConjectures/ErdosProblems/558.lean:94:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:95:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean-96-        (1 + ε) * (k : ℝ) ^ 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-97-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-98-
+--
+FormalConjectures/ErdosProblems/558.lean-111-    ∃ C₁ : ℝ, C₁ > 0 ∧ ∃ C₂ : ℝ, C₂ > 0 ∧
+FormalConjectures/ErdosProblems/558.lean-112-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/558.lean-113-      C₁ * (k : ℝ) ^ t ≤
+FormalConjectures/ErdosProblems/558.lean:114:        (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:115:      (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean-116-        C₂ * (k : ℝ) ^ t := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-117-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-118-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-48-
+FormalConjectures/ErdosProblems/552.lean-49-/-- The cycle graph on $k$ vertices ($k \geq 3$): vertex $i$ is adjacent to vertex $j$ iff
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-50-they differ by exactly $1$ modulo $k$. -/
+FormalConjectures/ErdosProblems/552.lean:51:def cycleGraph (k : ℕ) (hk : k ≥ 3) : SimpleGraph (Fin k) where
+FormalConjectures/ErdosProblems/552.lean-52-  Adj i j := (i.val + 1) % k = j.val ∨ (j.val + 1) % k = i.val
+FormalConjectures/ErdosProblems/552.lean-53-  symm _ _ h := h.elim Or.inr Or.inl
+FormalConjectures/ErdosProblems/552.lean-54-  loopless v h := by
+--
+FormalConjectures/ErdosProblems/552.lean-86-theorem erdos_552 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/552.lean-87-    ∀ c : ℝ, c > 0 →
+FormalConjectures/ErdosProblems/552.lean-88-    ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧
+FormalConjectures/ErdosProblems/552.lean:89:      (offDiagRamseyNumber (cycleGraph 4 (by omega)) (starGraph n) : ℝ) ≤
+FormalConjectures/ErdosProblems/552.lean-90-        ↑n + Real.sqrt ↑n - c := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-91-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-92-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-47-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-48-$i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/569.lean:49:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/569.lean-50-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/569.lean-51-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/569.lean-52-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/569.lean-63-theorem erdos_569 (k : ℕ) (hk : k ≥ 1) :
+FormalConjectures/ErdosProblems/569.lean-64-    ∃ c : ℕ, ∀ (n : ℕ) (H : SimpleGraph (Fin n)),
+FormalConjectures/ErdosProblems/569.lean-65-      (∀ v : Fin n, ∃ w, H.Adj v w) →
+FormalConjectures/ErdosProblems/569.lean:66:      ramseyNum (cycleGraph (2 * k + 1) (by omega)) H ≤ c * H.edgeSet.ncard := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-67-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-68-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-69-end Erdos569
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-55-/-- The cycle graph $C_n$ on $n$ vertices ($n \geq 3$). Vertex $i$ is adjacent to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-56-    vertex $(i+1) \bmod n$ and vertex $(i-1) \bmod n$. -/
+FormalConjectures/ErdosProblems/720.lean:57:def cycleGraph (n : ℕ) (_ : n ≥ 3) : SimpleGraph (Fin n) where
+FormalConjectures/ErdosProblems/720.lean-58-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % n ∨ i.val = (j.val + 1) % n)
+FormalConjectures/ErdosProblems/720.lean-59-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/720.lean-60-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-103-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/720.lean-104-theorem erdos_720.variants.cycles :
+FormalConjectures/ErdosProblems/720.lean-105-    ∃ C : ℕ, ∀ n : ℕ, (hn : n ≥ 3) →
+FormalConjectures/ErdosProblems/720.lean:106:      sizeRamseyNumber (cycleGraph n hn) ≤ C * n := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-107-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-108-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-109-end Erdos720
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/737.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/737.lean-43-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/737.lean-44-    $i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/737.lean:45:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/737.lean-46-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/737.lean-47-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/737.lean-48-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/737.lean-53-def ContainsCycleThroughEdge {V : Type*}
+FormalConjectures/ErdosProblems/737.lean-54-    (G : SimpleGraph V) (u v : V) (m : ℕ) (hm : m ≥ 3) : Prop :=
+FormalConjectures/ErdosProblems/737.lean-55-  ∃ f : Fin m → V, Function.Injective f ∧
+FormalConjectures/ErdosProblems/737.lean:56:    (∀ a b : Fin m, (cycleGraph m hm).Adj a b → G.Adj (f a) (f b)) ∧
+FormalConjectures/ErdosProblems/737.lean:57:    ∃ a b : Fin m, (cycleGraph m hm).Adj a b ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/737.lean-58-      ((f a = u ∧ f b = v) ∨ (f a = v ∧ f b = u))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/737.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/737.lean-60-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-34-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-35-$i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/554.lean:36:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/554.lean-37-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/554.lean-38-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/554.lean-39-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/554.lean-44-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-45-\operatorname{Fin} k$. A monochromatic copy of $G$ in colour $a$ is an injective map
+FormalConjectures/ErdosProblems/554.lean-46-$f : V \to \operatorname{Fin} N$ such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/554.lean:47:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/554.lean-48-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/554.lean-49-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-50-    (∀ i j, c i j = c j i) →
+--
+FormalConjectures/ErdosProblems/554.lean-64-theorem erdos_554 (n : ℕ) (hn : n ≥ 2) :
+FormalConjectures/ErdosProblems/554.lean-65-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/554.lean-66-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/554.lean:67:      (multicolorRamseyNumber (cycleGraph (2 * n + 1) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/554.lean:68:        ε * (multicolorRamseyNumber (⊤ : SimpleGraph (Fin 3)) k : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-69-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-71-end Erdos554
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-38-namespace Erdos60
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-40-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). -/
+FormalConjectures/ErdosProblems/60.lean:41:def cycleGraph60 (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/60.lean-42-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/60.lean-43-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/60.lean-44-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/60.lean-75-    ∃ (c : ℝ) (_ : c > 0) (N₀ : ℕ),
+FormalConjectures/ErdosProblems/60.lean-76-    ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/60.lean-77-    ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/60.lean:78:      G.edgeSet.ncard > extremalNumber60 (cycleGraph60 4 (by omega)) n →
+FormalConjectures/ErdosProblems/60.lean-79-      (labeledC4Count n G : ℝ) ≥ c * (n : ℝ) ^ ((1 : ℝ) / 2) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-80-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-81-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/842.lean-52-
+FormalConjectures/ErdosProblems/842.lean-53-/-- The cycle graph induced by a permutation $\sigma$: vertices $u$ and $v$ are adjacent
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/842.lean-54-    iff $\sigma(u) = v$ or $\sigma(v) = u$. -/
+FormalConjectures/ErdosProblems/842.lean:55:def cycleGraphOfPerm {m : ℕ} (σ : Equiv.Perm (Fin m)) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/842.lean-56-  Adj u v := u ≠ v ∧ (σ u = v ∨ σ v = u)
+FormalConjectures/ErdosProblems/842.lean-57-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/842.lean-58-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/842.lean-72-    ∀ (σ : Equiv.Perm (Fin (3 * n))),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/842.lean-73-    IsSingleCycle σ →
+FormalConjectures/ErdosProblems/842.lean-74-    (∀ u v : Fin (3 * n),
+FormalConjectures/ErdosProblems/842.lean:75:      (cycleGraphOfPerm σ).Adj u v → ¬(triangleGraph n).Adj u v) →
+FormalConjectures/ErdosProblems/842.lean:76:    (triangleGraph n ⊔ cycleGraphOfPerm σ).chromaticNumber ≤ 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/842.lean-77-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/842.lean-78-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/842.lean-79-end Erdos842
+--
+FormalConjectures/ErdosProblems/557.lean-38-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/557.lean-39-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-40-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/557.lean:41:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/557.lean-42-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/557.lean-43-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-44-    (∀ i j, c i j = c j i) →
+--
+FormalConjectures/ErdosProblems/557.lean-56-    ∃ C : ℕ, ∀ (n : ℕ) (hn : n ≥ 1) (T : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-57-      T.IsTree →
+FormalConjectures/ErdosProblems/557.lean-58-      ∀ k : ℕ, k ≥ 1 →
+FormalConjectures/ErdosProblems/557.lean:59:        multicolorRamseyNumber T k ≤ k * n + C := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-60-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-62-end Erdos557
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-48-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-49-$i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/594.lean:50:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/594.lean-51-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/594.lean-52-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/594.lean-53-  loopless := fun _ h => h.1 rfl
+--
+FormalConjectures/ErdosProblems/594.lean-72-    ∀ {V : Type*} (G : SimpleGraph V),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-73-      HasUncountableChromaticNumber G →
+FormalConjectures/ErdosProblems/594.lean-74-      ∃ N₀ : ℕ, ∀ (n : ℕ) (hn : n ≥ 3), Odd n → n ≥ N₀ →
+FormalConjectures/ErdosProblems/594.lean:75:        ContainsCopy G (cycleGraph n hn) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-76-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-77-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-78-end Erdos594
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-56-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-57-$i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/572.lean:58:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/572.lean-59-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/572.lean-60-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/572.lean-61-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/572.lean-81-theorem erdos_572 (k : ℕ) (hk : k ≥ 3) :
+FormalConjectures/ErdosProblems/572.lean-82-    ∃ c : ℝ, 0 < c ∧
+FormalConjectures/ErdosProblems/572.lean-83-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/572.lean:84:      c * (n : ℝ) ^ (1 + 1 / (k : ℝ)) ≤ (extremalNumber (cycleGraph (2 * k) (by omega)) n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-85-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-86-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-87-end Erdos572
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-48-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-49-$i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/570.lean:50:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/570.lean-51-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/570.lean-52-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/570.lean-53-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/570.lean-66-    ∃ M₀ : ℕ, ∀ (n : ℕ) (H : SimpleGraph (Fin n)),
+FormalConjectures/ErdosProblems/570.lean-67-      (∀ v : Fin n, ∃ w, H.Adj v w) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-68-      H.edgeSet.ncard ≥ M₀ →
+FormalConjectures/ErdosProblems/570.lean:69:      ramseyNum (cycleGraph k hk) H ≤ 2 * H.edgeSet.ncard + (k - 1) / 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-70-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-71-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-72-end Erdos570
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-39-/-- The cycle graph $C_m$ on $m$ vertices ($m \geq 3$). Vertex $i$ is adjacent to vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-40-$i + 1 \pmod{m}$ and vertex $i - 1 \pmod{m}$. -/
+FormalConjectures/ErdosProblems/555.lean:41:def cycleGraph (m : ℕ) (_ : m ≥ 3) : SimpleGraph (Fin m) where
+FormalConjectures/ErdosProblems/555.lean-42-  Adj i j := i ≠ j ∧ (j.val = (i.val + 1) % m ∨ i.val = (j.val + 1) % m)
+FormalConjectures/ErdosProblems/555.lean-43-  symm := fun _ _ ⟨hne, h⟩ => ⟨hne.symm, h.elim Or.inr Or.inl⟩
+FormalConjectures/ErdosProblems/555.lean-44-  loopless := fun _ ⟨h, _⟩ => h rfl
+--
+FormalConjectures/ErdosProblems/555.lean-49-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/555.lean-50-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-51-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/555.lean:52:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/555.lean-53-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/555.lean-54-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-55-    (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-65-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/555.lean-66-theorem erdos_555 (n : ℕ) (hn : n ≥ 2) :
+FormalConjectures/ErdosProblems/555.lean-67-    ∃ C : ℝ, C > 0 ∧ ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/555.lean:68:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≥
+FormalConjectures/ErdosProblems/555.lean-69-        C * (k : ℝ) ^ ((1 : ℝ) + 1 / (2 * (n : ℝ))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-70-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-71-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-78-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/555.lean-79-theorem erdos_555.variants.upper_bound (n : ℕ) (hn : n ≥ 2) :
+FormalConjectures/ErdosProblems/555.lean-80-    ∃ C : ℝ, C > 0 ∧ ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/555.lean:81:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/555.lean-82-        C * (k : ℝ) ^ ((1 : ℝ) + 1 / ((n : ℝ) - 1)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-83-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-84-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-87--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-88-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/555.lean-89-theorem erdos_555.variants.chung_graham_upper (k : ℕ) (hk : k ≥ 2) :
+FormalConjectures/ErdosProblems/555.lean:90:    multicolorRamseyNumber (cycleGraph 4 (by omega)) k ≤ k ^ 2 + k + 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-91-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-92-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-93-end Erdos555

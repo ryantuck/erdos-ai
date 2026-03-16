@@ -1,0 +1,647 @@
+FormalConjectures/ErdosProblems/1143.lean-26-*Reference:* [erdosproblems.com/1143](https://www.erdosproblems.com/1143)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-27-
+FormalConjectures/ErdosProblems/1143.lean:28:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-29-  "Paul Erdős and his mathematics", Budapest, July 1999 (1999), §1.8.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-47-/--
+FormalConjectures/ErdosProblems/1143.lean:48:Erdős Problem 1143 [Va99, 1.8]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-50-Let $p_1 < \cdots < p_u$ be primes and $k \geq 1$. Define $F_k(p_1, \ldots, p_u)$ to be the
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-25-Shelah proved that a graph with either property can consistently exist.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-26-
+FormalConjectures/ErdosProblems/1174.lean:27:[Va99] Vardi, I. (ed.), *Problems from the Erdős problem collection*, §7.91 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-34-/--
+FormalConjectures/ErdosProblems/1174.lean:35:Erdős Problem 1174, Part 1 [Va99, §7.91]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-37-Does there exist a graph $G$ with no $K_4$ (no 4-clique) such that for every
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-53-/--
+FormalConjectures/ErdosProblems/1174.lean:54:Erdős Problem 1174, Part 2 [Va99, §7.91]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1174.lean-56-Does there exist a graph $G$ with no $K_{\aleph_1}$ (no clique of cardinality
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-27-A problem of Erdős, Galvin, and Hajnal.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-28-
+FormalConjectures/ErdosProblems/1177.lean:29:[Va99] is the source reference for all parts (Section 7.94).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-58-/--
+FormalConjectures/ErdosProblems/1177.lean:59:Erdős Problem 1177, Part 1 [Va99, 7.94]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-61-Let $G$ be a finite $3$-uniform hypergraph. If $F_G(\aleph_1)$ is non-empty (i.e., there exists
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-81-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-82-/--
+FormalConjectures/ErdosProblems/1177.lean:83:Erdős Problem 1177, Part 2 [Va99, 7.94]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-84-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-85-Let $G$ and $H$ be finite $3$-uniform hypergraphs. If $F_G(\aleph_1)$ and $F_H(\aleph_1)$ are both
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-111-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-112-/--
+FormalConjectures/ErdosProblems/1177.lean:113:Erdős Problem 1177, Part 3 [Va99, 7.94]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-114-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-115-Let $G$ be a finite $3$-uniform hypergraph. If $\kappa$ and $\mu$ are uncountable cardinals
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-26-origin in its first $n$ steps. Is it true that $\log R_n \asymp \sqrt{\log n}$ almost surely?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-27-
+FormalConjectures/ErdosProblems/1164.lean:28:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-29-"Paul Erdős and his mathematics", Budapest, July 1999 (1999), §6.76.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-63-/--
+FormalConjectures/ErdosProblems/1164.lean:64:Erdős Problem 1164 (Erdős–Taylor) [Va99, 6.76]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean-66-Let $R_n$ be the maximal integer such that almost every random walk from the origin
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-27-$\omega_1 \cdot \omega$ for the first color or a monochromatic triple for some other color.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-28-
+FormalConjectures/ErdosProblems/1171.lean:29:- [Va99] Section 7.84.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-30-- [Ba89b] Baumgartner.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-31--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-55-/--
+FormalConjectures/ErdosProblems/1171.lean:56:Erdős Problem 1171 [Va99, 7.84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1171.lean-58-Is it true that, for all finite $k < \omega$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-35-[Er97c] Erdős, P. (1997).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-36-
+FormalConjectures/ErdosProblems/59.lean:37:[Va99, 3.56] Vaughan, R.C. (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-39-[EFR86] Erdős, P., Frankl, P., Rödl, V. (1986).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-52-/--
+FormalConjectures/ErdosProblems/59.lean:53:Erdős Problem 59 [Er90, Er93, p.335, Er97c, Va99, 3.56]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-55-Is it true that, for every graph $G$, the number of labeled graphs on $n$ vertices that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-87-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-88-/--
+FormalConjectures/ErdosProblems/59.lean:89:The $C_4$ case of Erdős Problem 59 [Va99, 3.56]: does the original bound
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-90-$2^{(1+o(1)) \cdot \operatorname{ex}(n; C_4)}$ hold for the number of labeled $C_4$-free
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-91-graphs on $n$ vertices? This remains open even though the general conjecture was
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-24-[Ko25b] Koepke, P., Problem 35.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-25-
+FormalConjectures/ErdosProblems/1173.lean:26:[Va99] Vaughan, J.E., 7.88.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-28-A problem of Erdős and Hajnal.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-49-/--
+FormalConjectures/ErdosProblems/1173.lean:50:Erdős Problem 1173 [Ko25b, Problem 35] [Va99, 7.88]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1173.lean-52-Assuming the Generalised Continuum Hypothesis, let
+--
+FormalConjectures/ErdosProblems/114.lean-39-[Ha74] Hayman, W. K., _Research problems in function theory: new problems_, (1974), 155–180.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-40-
+FormalConjectures/ErdosProblems/114.lean:41:[Va99] _Some of Paul's favorite problems_, Booklet, Conference "Paul Erdős and his
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-42-mathematics", Budapest, July 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-43--/
+--
+FormalConjectures/ErdosProblems/114.lean-73-- Borwein (1995): $f(n) \ll n$.
+FormalConjectures/ErdosProblems/114.lean-74-- Eremenko–Hayman (1999): $f(n) \leq 9.173n$; full conjecture holds for $n = 2$.
+FormalConjectures/ErdosProblems/114.lean:75:- Vayman (1999) [Va99]: asked whether $f(n) \leq 2n + O(1)$.
+FormalConjectures/ErdosProblems/114.lean-76-- Danchenko (2007): $f(n) \leq 2\pi n$.
+FormalConjectures/ErdosProblems/114.lean-77-- Fryntov–Nazarov (2009): $f(n) \leq 2n + O(n^{7/8})$; $z^n - 1$ is a local maximiser.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-27-almost surely, for all but finitely many $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-28-
+FormalConjectures/ErdosProblems/1166.lean:29:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-30-"Paul Erdős and his mathematics", Budapest, July 1999 (1999), §6.78.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-80-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-81-/--
+FormalConjectures/ErdosProblems/1166.lean:82:Erdős Problem 1166 (Erdős–Révész) [Va99, 6.78]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-83-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-84-Given a random walk $s_0, s_1, \ldots$ in $\mathbb{Z}^2$, starting at the origin, let $f_k(x)$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-35-  Quaestiones Mathematicae **16** (1993), 333–350.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-36-
+FormalConjectures/ErdosProblems/548.lean:37:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-38-  "Paul Erdős and his mathematics", Budapest, July 1999 (1999), §3.55.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-39--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-50-/--
+FormalConjectures/ErdosProblems/548.lean:51:Erdős Problem 548 [Er64c][Er74c, p.78][Er78, p.30][Er93, p.345][Va99, 3.55]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean-53-Let $n \geq k + 1$. Every graph on $n$ vertices with at least
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-26-$n!$ that are orders of subgroups of $S_n$ tends to $0$ as $n \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-27-
+FormalConjectures/ErdosProblems/1163.lean:28:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-29-conference "Paul Erdős and his mathematics", Budapest (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-30--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-41-/--
+FormalConjectures/ErdosProblems/1163.lean:42:Erdős Problem 1163 (Erdős and Turán) [Va99, 5.74]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-43-Describe (by statistical means) the arithmetic structure of the orders of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1163.lean-44-subgroups of $S_n$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-27-[Cr03] Croot, E., *On a coloring conjecture about unit fractions*. Annals of Mathematics (2003).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-28-
+FormalConjectures/ErdosProblems/300.lean:29:[Va99] Vardi, I., §1.14.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/300.lean-31-[LiSa24] Liu, J. and Sawhney, M., *On a conjecture of Erdős and Graham about Egyptian
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-41-and geometry_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-42-
+FormalConjectures/ErdosProblems/76.lean:43:[Va99, 3.54] See erdosproblems.com/76.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-45-[GrLe20] Gruslys, V. and Letzter, S., _Minimising the number of triangles in a
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-28-Contemp. Math. **65** (1987), 223–228.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-29-
+FormalConjectures/ErdosProblems/597.lean:30:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-31-"Paul Erdős and his mathematics", Budapest, July 1999, §7.84.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-32--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-67-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-68-/--
+FormalConjectures/ErdosProblems/597.lean:69:Erdős Problem 597 [Er87] [Va99, 7.84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean-71-If $G$ is a graph on at most $\aleph_1$ vertices containing no $K_4$ and no
+--
+FormalConjectures/ErdosProblems/1146.lean-30-*See also:* Problem 37.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-31-
+FormalConjectures/ErdosProblems/1146.lean:32:[Va99] Ruzsa, I. Z., *Sumsets and structure*, Combinatorial Number Theory and Additive
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-33-Group Theory (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-64-/--
+FormalConjectures/ErdosProblems/1146.lean:65:Erdős Problem 1146 [Va99, 1.19]:
+FormalConjectures/ErdosProblems/1146.lean-66-Is the set $B = \{2^m \cdot 3^n : m, n \geq 0\}$ an essential component?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-67-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-39-containing sets of nearly the same size_, Ars Combinatoria (1983), 247–259.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-40-
+FormalConjectures/ErdosProblems/1159.lean:41:[Va99] Vardy, A.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-42--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-48-/--
+FormalConjectures/ErdosProblems/1159.lean:49:Erdős Problem 1159 [Va99, 4.70]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1159.lean-51-Does there exist an absolute constant $C > 1$ such that every finite projective plane
+--
+FormalConjectures/ErdosProblems/README.md-44-*References:*
+FormalConjectures/ErdosProblems/README.md-45-- [erdosproblems.com/{N}](https://www.erdosproblems.com/{N})
+FormalConjectures/ErdosProblems/README.md:46:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/README.md-47-  and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/README.md-48-```
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-25-chromatic number λ contains a triangle-free subgraph with chromatic number κ?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-26-
+FormalConjectures/ErdosProblems/1175.lean:27:[Va99] is referenced as the source for this problem (Problem 7.92).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-46-/--
+FormalConjectures/ErdosProblems/1175.lean:47:Erdős Problem 1175 [Va99, 7.92]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-49-Let $\kappa$ be an uncountable cardinal. Must there exist a cardinal $\lambda$ such that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-48-**164** (1997), 81–85.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-49-
+FormalConjectures/ErdosProblems/78.lean:50:[Va99] Vaughan, R. C., _On the number of monochromatic complete subgraphs_. (1999), 3.49.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-52-[Co15] Cohen, D., _Two-source dispersers for polylogarithmic entropy and improved Ramsey
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/963.lean-24-[Er65] Erdős, P., _Extremal problems in number theory_, 1965.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/963.lean-25-
+FormalConjectures/ErdosProblems/963.lean:26:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/963.lean-27-  "Paul Erdős and his mathematics", Budapest, July 1999 (1999), §1.22.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/963.lean-28--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1153.lean-49-  1025–1050.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1153.lean-50-
+FormalConjectures/ErdosProblems/1153.lean:51:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1153.lean-52-  "Paul Erdős and his mathematics", Budapest, July 1999 (1999), §2.44.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1153.lean-53--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-41-Trans. Amer. Math. Soc. 212 (1975), 307–313.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-42-
+FormalConjectures/ErdosProblems/790.lean:43:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-44-and his mathematics", Budapest, July 1999 (1999), §1.22.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-45-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-53-_On non-intersecting arithmetic progressions_. Acta Arithmetica **157** (2013), 381–392.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-54-
+FormalConjectures/ErdosProblems/202.lean:55:[Er61, Er65, Er65b, Er73, Er77c, ErGr80, Va99] — see
+FormalConjectures/ErdosProblems/202.lean-56-[erdosproblems.com/202](https://www.erdosproblems.com/202) for full references.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-57--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-73-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-74-Erdős Problem 202 (de la Bretèche–Ford–Vandehey conjecture) — OPEN.
+FormalConjectures/ErdosProblems/202.lean:75:[Er61, Er65, Er65b, Er73, Er77c, ErGr80, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-77-The maximum number $f(N)$ of pairwise disjoint congruence classes with distinct
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-26-without assuming the generalised continuum hypothesis.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-27-
+FormalConjectures/ErdosProblems/1168.lean:28:[Va99] Vaughan, J., *Small uncountable cardinals and topology*. Open Problems in Topology (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-35-/--
+FormalConjectures/ErdosProblems/1168.lean:36:Erdős Problem 1168 [Va99, 7.80]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-38-The negative partition relation
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-25-Is there a statistical theorem on their order?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-26-
+FormalConjectures/ErdosProblems/1162.lean:27:A problem of Erdős and Turán [Va99, 5.73].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-29-Let $f(n)$ count the number of subgroups of $S_n$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-33-See also Erdős Problem 1163 for a formalization of the "statistical theorem on subgroup orders" aspect.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-34-
+FormalConjectures/ErdosProblems/1162.lean:35:[Va99] Vardi, I., *Computational Recreations in Mathematica* (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-36-[Py93] Pyber, L., _Asymptotic results for permutation groups_ (1993), 197–219.
+FormalConjectures/ErdosProblems/1162.lean-37-[RoTr25] Roney-Dougal, C., Tracey, G., _Subgroups of symmetric groups: enumeration and asymptotic properties_. arXiv:2503.05416 (2025).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-29-[Er87] Erdős, P., *On some of my favourite unsolved problems* (1987).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-30-
+FormalConjectures/ErdosProblems/70.lean:31:[Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-32-and his mathematics", Budapest, July 1999 (1999), 7.83.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-33--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1032.lean-31-- [To72] Toft, B., _Two theorems on critical 4-chromatic graphs_. Studia Scientiarum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1032.lean-32-  Mathematicarum Hungarica (1972), 83–89.
+FormalConjectures/ErdosProblems/1032.lean:33:- [Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1032.lean-34-  "Paul Erdős and his mathematics", Budapest, July 1999 (1999), §3.60.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1032.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-27-occurs infinitely often almost surely.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-28-
+FormalConjectures/ErdosProblems/1165.lean:29:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-30-"Paul Erdős and his mathematics", Budapest, July 1999 (1999), §6.77.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-77-/--
+FormalConjectures/ErdosProblems/1165.lean:78:Erdős Problem 1165 (Erdős–Révész) [Va99, 6.77]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-79-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-80-Given a random walk $s_0, s_1, \ldots$ in $\mathbb{Z}^2$, starting at the origin, let $f_n(x)$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-28-(1964), 183-190.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-29-
+FormalConjectures/ErdosProblems/1158.lean:30:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-31-"Paul Erdős and his mathematics", Budapest, July 1999 (1999), §3.65.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-32--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-50-/--
+FormalConjectures/ErdosProblems/1158.lean:51:**Erdős Problem 1158** [Va99, 3.65]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-53-Let $K_t(r)$ be the complete $t$-partite $t$-uniform hypergraph with $r$ vertices in
+--
+FormalConjectures/ErdosProblems/1140.lean-24-*Reference:* [erdosproblems.com/1140](https://www.erdosproblems.com/1140)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-25-
+FormalConjectures/ErdosProblems/1140.lean:26:[Va99] Vaughan, R. C., *The Hardy-Littlewood Method*, 2nd ed., 1997.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-28-[EpGi10] Epure, R. and Gica, A., _Principal quadratic real fields in connection with some
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-41-/--
+FormalConjectures/ErdosProblems/1140.lean:42:Erdős Problem #1140 [Va99, 1.5] (Disproved):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1140.lean-44-Do there exist infinitely many $n$ such that $n - 2x^2$ is prime for all $x$
+--
+FormalConjectures/ErdosProblems/164.lean-32-arXiv:2202.02384 (2023).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/164.lean-33-
+FormalConjectures/ErdosProblems/164.lean:34:[Va99] §1.12.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/164.lean-35--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/164.lean-36-
+--
+FormalConjectures/ErdosProblems/1149.lean-22-*Reference:* [erdosproblems.com/1149](https://www.erdosproblems.com/1149)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-23-
+FormalConjectures/ErdosProblems/1149.lean:24:[Va99] Vardi, I., *Computational Recreations in Mathematica* (1999), Problem 1.34.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-25-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-26-[BeRi17] Bergelson, V. and Richter, F. K., *Dynamical generalizations of the prime
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-36-/--
+FormalConjectures/ErdosProblems/1149.lean:37:Erdős Problem 1149 [Va99, 1.34]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1149.lean-39-Let $\alpha > 0$ be a real number, not an integer. The natural density of integers
+--
+FormalConjectures/ErdosProblems/1144.lean-26-*Reference:* [erdosproblems.com/1144](https://www.erdosproblems.com/1144)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-27-
+FormalConjectures/ErdosProblems/1144.lean:28:[Va99] Montgomery, H.L. and Vaughan, R.C., *Multiplicative Number Theory I: Classical Theory*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-29-Cambridge Studies in Advanced Mathematics, Cambridge University Press, 2007.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-56-/--
+FormalConjectures/ErdosProblems/1144.lean:57:Erdős Problem 1144 [Va99, 1.11]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-59-Let $f$ be a random completely multiplicative function, where for each prime $p$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1154.lean-26-[Er79h] Erdős, P., _Some unconventional problems in number theory_. Math. Mag. 52 (1979), p. 119.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1154.lean-27-
+FormalConjectures/ErdosProblems/1154.lean:28:[Va99] Varga, R.S., _Scientific Computation on Mathematical Problems and Conjectures_, 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1154.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1154.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-28-almost surely?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-29-
+FormalConjectures/ErdosProblems/1155.lean:30:A problem of Bollobás and Erdős [Bo98, p.231][Va99, 3.61].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-32-Bohman, Frieze, and Lubetzky [BFL15] proved that $f(n) = n^{3/2 + o(1)}$ a.s.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-34-[Bo98] Bollobás, B., _Modern Graph Theory_, Graduate Texts in Mathematics 184, Springer (1998).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-35-
+FormalConjectures/ErdosProblems/1155.lean:36:[Va99] Vu, V. H. (1999), 3.61.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1155.lean-38-[Gr97] Grable, D. A., _On random greedy triangle packing_, Electronic Journal of
+--
+FormalConjectures/ErdosProblems/1142.lean-23-- [erdosproblems.com/1142](https://www.erdosproblems.com/1142)
+FormalConjectures/ErdosProblems/1142.lean-24-- [A039669](https://oeis.org/A039669)
+FormalConjectures/ErdosProblems/1142.lean:25:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1142.lean-26-  and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1142.lean-27-- [MiWe69] Mientka, W. E. and Weitzenkamp, R. C., _On f-plentiful numbers_, Journal of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-42-New Directions in the Theory of Graphs (1973), 53–63.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-43-
+FormalConjectures/ErdosProblems/1157.lean:44:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-45-"Paul Erdős and his mathematics", Budapest, July 1999 (1999), §3.64.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-46--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-71-/--
+FormalConjectures/ErdosProblems/1157.lean:72:Erdős Problem #1157 — Brown–Erdős–Sós Conjecture (general form) [BES73, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-73-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-74-For all $r > t \geq 2$, $s \geq 3$, and $k \geq (r - t) \cdot s + t + 1$, we have
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-24-If $g(n)$ denotes the number of groups of order $n$, then $g(n) \le g(2^m)$ for all $n \le 2^m$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-25-
+FormalConjectures/ErdosProblems/1160.lean:26:[Va99] Vaughan, R.C., _Problems in combinatorial number theory_, 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-28-[BNV07] Blackburn, S.R., Neumann, P.M. and Venkataraman, G., _Enumeration of finite groups_,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-61-/--
+FormalConjectures/ErdosProblems/1160.lean:62:Erdős Problem 1160 [Va99, 5.71]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-64-Let $g(n)$ denote the number of groups of order $n$. If $n \le 2^m$ then $g(n) \le g(2^m)$.
+--
+FormalConjectures/ErdosProblems/1148.lean-22-*References:*
+FormalConjectures/ErdosProblems/1148.lean-23-- [erdosproblems.com/1148](https://www.erdosproblems.com/1148)
+FormalConjectures/ErdosProblems/1148.lean:24:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-25-  and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-26--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-62-/--
+FormalConjectures/ErdosProblems/1148.lean:63:[Va99] reports this is 'obvious' if we replace $\leq n$ with $\leq n+2\sqrt{n}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-64--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1148.lean-65-@[category research solved, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-20-# Erdős Problem 1161
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-21-
+FormalConjectures/ErdosProblems/1161.lean:22:*Reference:* [Va99, 5.72], [erdosproblems.com/1161](https://www.erdosproblems.com/1161)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-24-Let $f_k(n)$ count the number of elements of $S_n$ (the symmetric group) of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-31-$\operatorname{lcm}(1,\ldots,n-k) \mid k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-32-
+FormalConjectures/ErdosProblems/1161.lean:33:[Va99] Vardi, I., *Computational Recreations in Mathematica* (1999).
+FormalConjectures/ErdosProblems/1161.lean-34-[Be25d] Beker, A., _The most probable order of a random permutation_. arXiv:2510.11698 (2025).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-35--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-32-(Cambridge, 1993) (1997), 1-10.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-33-
+FormalConjectures/ErdosProblems/117.lean:34:[Va99,5.75] Varopoulos, N. (1999), Problem 5.75.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-36-[Py87] Pyber, L., *The number of pairwise noncommuting elements and the index of the centre in
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-64-/--
+FormalConjectures/ErdosProblems/117.lean:65:Erdős Problem 117 [Er90, Er97f, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean-67-Let $h(n)$ be minimal such that any group $G$ satisfying the property that every
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-38-(1989).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-39-
+FormalConjectures/ErdosProblems/1152.lean:40:[Va99] Vértesi, P., _Classical (unweighted) and weighted interpolation_ (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-41--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-47-/--
+FormalConjectures/ErdosProblems/1152.lean:48:Erdős Problem 1152 [Va99, 2.42]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1152.lean-50-For any triangular array of distinct interpolation nodes in $[-1,1]$ and any function
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-69-and geometry_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-70-
+FormalConjectures/ErdosProblems/77.lean:71:[Va99] Vaughan, R. C., _On the number of monochromatic complete subgraphs_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-73-[CGMS23] Campos, M., Griffiths, S., Morris, R., and Sahasrabudhe, J.,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-30-theory_. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-31-
+FormalConjectures/ErdosProblems/287.lean:32:[Va99] §1.15.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-33--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/287.lean-34-
+--
+FormalConjectures/ErdosProblems/1141.lean-23-- [erdosproblems.com/1141](https://www.erdosproblems.com/1141)
+FormalConjectures/ErdosProblems/1141.lean-24-- [A214583](https://oeis.org/A214583)
+FormalConjectures/ErdosProblems/1141.lean:25:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-26-  and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-27--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-47-Are there infinitely many $n$ such that $n-k^2$ is prime for all $k$ with $(n,k)=1$ and $k^2 < n$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-48-
+FormalConjectures/ErdosProblems/1141.lean:49:In [Va99] it is asked whether $968$ is the largest integer with this property, but this is an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-50-error, since for example $968-9=7\cdot 137$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1141.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-27-for $r \geq 2$ and $\lambda$ infinite?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-28-
+FormalConjectures/ErdosProblems/1167.lean:29:[Va99] Vaughan, J., *Small uncountable cardinals and topology*. Open Problems in Topology (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-31-
+--
+FormalConjectures/ErdosProblems/1167.lean-44-      ∀ s : Finset S, s.card = r → (↑s : Set S) ⊆ H → c s = i
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-45-
+FormalConjectures/ErdosProblems/1167.lean:46:/-- **Erdős Problem 1167** [Va99, 7.79] (Erdős–Hajnal–Rado):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-47-    For $r \geq 2$ and $\lambda$ infinite, does
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-48-    $2^\lambda \to (\kappa_\alpha + 1)^{r+1}$ imply $\lambda \to (\kappa_\alpha)^r$? -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-42-[Er88c] Erdős, P., *Problems and results on combinatorial number theory*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-43-
+FormalConjectures/ErdosProblems/260.lean:44:[Va99] *Some of Paul's favorite problems*. Booklet for the conference "Paul Erdős and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-45-his mathematics," Budapest (1999), §1.33.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-46--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-52-/--
+FormalConjectures/ErdosProblems/260.lean:53:Erdős Problem 260 [Er74b, ErGr80, Er81h, Er81l, Er88c, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-54-Let $a_1 < a_2 < \cdots$ be a strictly increasing sequence of natural numbers such
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/260.lean-55-that $a_n / n \to \infty$ (i.e., having Fabry gaps). Is $\sum_n a_n / 2^{a_n}$ irrational?
+--
+FormalConjectures/ErdosProblems/1147.lean-26-*Reference:* [erdosproblems.com/1147](https://www.erdosproblems.com/1147)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-27-
+FormalConjectures/ErdosProblems/1147.lean:28:[Va99] Vaughan, R.C., *The Hardy-Littlewood method*, 2nd edition, Cambridge University Press,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-29-1997.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-52-/--
+FormalConjectures/ErdosProblems/1147.lean:53:Erdős Problem 1147 [Va99, 1.21]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1147.lean-55-Let $\alpha > 0$ be an irrational number. Is the set
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-28-differences* (1995), p.64.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-29-
+FormalConjectures/ErdosProblems/474.lean:30:[Va99] Väänänen, J., *Problems from the Erdős notebook* (1999), 7.81.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-32-[Sh88] Shelah, S., *Was Sierpiński right? I*. Israel Journal of Mathematics (1988), 355–380.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-54-/--
+FormalConjectures/ErdosProblems/474.lean:55:Erdős Problem 474 (1954) [Er95d, p.64] [Va99, 7.81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-57-Does the negative square-bracket partition relation $2^{\aleph_0} \nrightarrow [\aleph_1]_3^2$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-69-$2^{\aleph_0} \to [\aleph_1]_3^2$ holds, but with $\mathfrak{c}$ very large.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-70-
+FormalConjectures/ErdosProblems/474.lean:71:The specific remaining open question (asked in [Va99]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-72-Assuming $\mathfrak{c} = \aleph_2$, does $2^{\aleph_0} \nrightarrow [\aleph_1]_3^2$ hold?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-73--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/973.lean-36-[Tu84b] Turán, P., _On a new method of analysis and its applications_ (1984), xvi+584.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/973.lean-37-
+FormalConjectures/ErdosProblems/973.lean:38:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/973.lean-39-"Paul Erdős and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/973.lean-40--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/973.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/973.lean-50-A problem of Erdős [Er65b, p.213]. This is Problem 7.3 in [Ha74]. See also [Tu84b], [Er92f],
+FormalConjectures/ErdosProblems/973.lean:51:[Va99], and [519].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/973.lean-52--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/973.lean-53-@[category research open, AMS 30]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-47-graphs $G_{n,p}$_. Combinatorica (1987), 121–129.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-48-
+FormalConjectures/ErdosProblems/1156.lean:49:[Va99] Vu, V. H. (1999), 3.64.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-50--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-80-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-81-/--
+FormalConjectures/ErdosProblems/1156.lean:82:Erdős Problem 1156, Part 2 [AlSp92] [Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1156.lean-83-
+FormalConjectures/ErdosProblems/1156.lean-84-There exists a function $\omega : \mathbb{N} \to \mathbb{R}$ with $\omega(n) \to \infty$ such that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-45-[Er97f] Erdős, P., _Some of my new and almost new problems and results in combinatorial
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-46-geometry_. (1997)
+FormalConjectures/ErdosProblems/671.lean:47:[Va99] Vértesi, P., _Classical (unweighted) and weighted interpolation_ (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-48-[Be31] Bernstein, S., _Sur la limitation des valeurs d'un polynome de degré n sur tout un
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-49-segment par ses valeurs en (n+1) points du segment_. Izv. Akad. Nauk. SSSR (1931),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-36-Series (1943), 82–85.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-37-
+FormalConjectures/ErdosProblems/1151.lean:38:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-39-"Paul Erdős and his mathematics," Budapest, July 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-40--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-62-/--
+FormalConjectures/ErdosProblems/1151.lean:63:Erdős Problem 1151 [Va99, 2.41]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-64-For any $x \in [-1,1]$ and any closed $A \subseteq [-1,1]$, there exists a continuous
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-65-function $f$ such that $A$ is the set of cluster points of the Lagrange interpolation
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-27-is $\pi(y + Cd) - \pi(y) \sim Cd / \log y$, where $d$ is the maximal prime gap below $x$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-28-
+FormalConjectures/ErdosProblems/1138.lean:29:[Va99] Vardi, I., 1.3.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-41-/--
+FormalConjectures/ErdosProblems/1138.lean:42:Erdős Problem 1138 [Va99, 1.3]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-44-Let $x/2 < y < x$ and $C > 1$. If $d = \max_{p_n < x} (p_{n+1} - p_n)$ is the maximal
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-39-Combinatorial Theory (1973), 117–138.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-40-
+FormalConjectures/ErdosProblems/787.lean:41:[Va99, 1.22] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-42-"Paul Erdős and his mathematics", Budapest, July 1999.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-25-Hypothesis or the Continuum Hypothesis. A problem of Erdős and Hajnal.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-26-
+FormalConjectures/ErdosProblems/1172.lean:27:[Va99] Hajnal, A. and Larson, J., *Partition relations*. Handbook of Set Theory (2010).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-28--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-67-/--
+FormalConjectures/ErdosProblems/1172.lean:68:Erdős Problem 1172, Part 1 [Va99, 7.87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-70-Assuming the Generalized Continuum Hypothesis, establish whether
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-73-This is an open problem of Erdős and Hajnal. The right-hand side may have
+FormalConjectures/ErdosProblems/1172.lean:74:been filled in incorrectly due to a truncated photocopy of the source [Va99].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-75--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-76-@[category research open, AMS 3 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-80-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-81-/--
+FormalConjectures/ErdosProblems/1172.lean:82:Erdős Problem 1172, Part 2 [Va99, 7.87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-83-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-84-Assuming the Generalized Continuum Hypothesis, establish whether
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-93-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-94-/--
+FormalConjectures/ErdosProblems/1172.lean:95:Erdős Problem 1172, Part 3 [Va99, 7.87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-96-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-97-Assuming the Generalized Continuum Hypothesis, establish whether
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-99-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-100-This is an open problem of Erdős and Hajnal. The right-hand side may have
+FormalConjectures/ErdosProblems/1172.lean:101:been filled in incorrectly due to a truncated photocopy of the source [Va99].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-102--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-103-@[category research open, AMS 3 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-107-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-108-/--
+FormalConjectures/ErdosProblems/1172.lean:109:Erdős Problem 1172, Part 4 [Va99, 7.87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-110-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1172.lean-111-Assuming the Continuum Hypothesis, establish whether
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-48-  1025–1050.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-49-
+FormalConjectures/ErdosProblems/1132.lean:50:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-51-  "Paul Erdős and his mathematics", Budapest, July 1999 (1999), §2.43.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-52--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-36-[Er95d] Erdős, P., _Problems and results in discrete mathematics_, Discrete Math., 1995.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-37-
+FormalConjectures/ErdosProblems/62.lean:38:[Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-39-and his mathematics", Budapest, July 1999 (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-40--/

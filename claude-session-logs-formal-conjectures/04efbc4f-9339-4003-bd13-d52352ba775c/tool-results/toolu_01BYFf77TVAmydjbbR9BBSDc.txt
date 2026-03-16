@@ -1,0 +1,323 @@
+/home/ryan/formal-conjectures/ai-review/654.md-16-
+ai-review/654.md:17:The docstring references `[Er87b][ErPa90][Er97e]` and mentions a disproof by "Aletheia [Fe26]."
+/home/ryan/formal-conjectures/ai-review/654.md-18-
+ai-review/654.md-19-Cross-referencing with [erdosproblems.com/654](https://www.erdosproblems.com/654):
+ai-review/654.md:20:- **[Er87b]**, **[ErPa90]**, **[Er97e]** — All present on the website. These are correct.
+/home/ryan/formal-conjectures/ai-review/654.md-21-- **[Fe26]** — Referenced on the website as a recent result by Aletheia disproving the stronger conjecture `f(n) > (1-o(1))n`. This matches the docstring.
+--
+/home/ryan/formal-conjectures/ai-review/654.md-25-- `[ErPa90]` — Erdős & Pach, 1990
+ai-review/654.md:26:- `[Er97e]` — Erdős, *Some of my favourite problems which recently have been solved*, 1997
+/home/ryan/formal-conjectures/ai-review/654.md-27-
+--
+/home/ryan/formal-conjectures/ai-review/654.md-36-| Conditional conjecture (no three collinear + at most 2 on a circle per point ⟹ `f(n) > (1-o(1))n`) | **No** — not formalized. Mentioned on the website under [Er87b, ErPa90]. |
+ai-review/654.md:37:| Erdős's remark [Er97e] that the trivial bound "can be significantly improved" | **Partially** — the trivial bound `f(n) ≥ (n-1)/3` is mentioned in the docstring but not formalized. |
+/home/ryan/formal-conjectures/ai-review/654.md-38-
+--
+/home/ryan/formal-conjectures/ai-review/658.md-10-
+ai-review/658.md:11:- **[Er97e]** — the original Erdős reference where the problem appears.
+/home/ryan/formal-conjectures/ai-review/658.md-12-- **[FuKa91]** — Furstenberg and Katznelson, who proved the qualitative statement via the density Hales–Jewett theorem.
+--
+/home/ryan/formal-conjectures/ai-review/658.md-14-
+ai-review/658.md:15:The formalization's docstring mentions Furstenberg–Katznelson and Solymosi by name but does not include the specific citation keys [Er97e], [FuKa91], [So04]. It also does not mention that the original problem citation is [Er97e]. The docstring should ideally include these specific references for traceability.
+/home/ryan/formal-conjectures/ai-review/658.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/658.md-20-
+ai-review/658.md:21:> "A problem of Graham, if the square is restricted to be axis-aligned. It is unclear whether in [Er97e] Erdős had this restriction in mind."
+/home/ryan/formal-conjectures/ai-review/658.md-22-
+--
+/home/ryan/formal-conjectures/ai-review/658.md-39-
+ai-review/658.md:40:**Ambiguity in the original problem:** The main source of ambiguity is whether "square" means axis-aligned or arbitrary orientation. The website explicitly flags this: "It is unclear whether in [Er97e] Erdős had this restriction in mind." The formalization resolves this ambiguity by choosing the axis-aligned interpretation, which is the version attributed to Graham and proved via density Hales–Jewett. This is a reasonable choice but should be more explicitly documented.
+/home/ryan/formal-conjectures/ai-review/658.md-41-
+--
+/home/ryan/formal-conjectures/ai-review/658.md-68-| Code reuse | No reusable code found; bespoke definition is appropriate |
+ai-review/658.md:69:| Citations | Missing specific citation keys [Er97e], [FuKa91], [So04] |
+/home/ryan/formal-conjectures/ai-review/658.md-70-| Variants | Only axis-aligned variant captured; general square variant missing |
+--
+/home/ryan/formal-conjectures/ai-review/216.md-21-
+ai-review/216.md:22:**Missing from the formalization:** The [erdosproblems.com/216](https://www.erdosproblems.com/216) page also lists several Erdős source references: **Er78c, Er81, Er82e, Er83c, Er97e**. None of these appear in the Lean file's docstring. While they are shorthand references to Erdős's own papers where he posed or discussed the problem, they should be included for completeness.
+/home/ryan/formal-conjectures/ai-review/216.md-23-
+--
+/home/ryan/formal-conjectures/ai-review/122.md-23-
+ai-review/122.md:24:The formalization references three citations: `[Er97]`, `[Er97e]`, and `[EPS97]`. Comparing against [erdosproblems.com/122](https://www.erdosproblems.com/122):
+/home/ryan/formal-conjectures/ai-review/122.md-25-
+/home/ryan/formal-conjectures/ai-review/122.md-26-- **[Er97]** — Erdős, P., *Some of my new and almost new problems and results in combinatorial number theory* (1997). **Matches** the website's `[Er97]`.
+ai-review/122.md:27:- **[Er97e]** — Erdős, P., *Some problems and results on combinatorial number theory* (1997). **Matches** the website's `[Er97e]`.
+/home/ryan/formal-conjectures/ai-review/122.md-28-- **[EPS97]** — Erdős, P., Pomerance, C., and Sárközy, A., *On locally repeated values of certain arithmetic functions, III* (1997). **Matches** the website's `[EPS97]`.
+--
+/home/ryan/formal-conjectures/ai-review/655.md-21-
+ai-review/655.md:22:The website attributes the problem to **Erdős and Pach**, citing **[Er97e]**. The docstring does mention "Erdős–Pach" in the theorem comment, which is good. However:
+/home/ryan/formal-conjectures/ai-review/655.md-23-
+ai-review/655.md:24:- The specific citation **[Er97e]** should be included for traceability. Problem 654's docstring lists `[Er87b][ErPa90][Er97e]` — Problem 655 should similarly include the relevant subset of these references.
+/home/ryan/formal-conjectures/ai-review/655.md-25-- The website also credits **Zach Hunter** for providing a counterexample (see Correctness below), which is not mentioned anywhere in the formalization.
+--
+/home/ryan/formal-conjectures/ai-review/655.md-70-| Code reuse | Moderate opportunity — shared distance/geometry utilities with Problem 654 |
+ai-review/655.md:71:| Citations | Missing [Er97e] reference and Zach Hunter counterexample credit |
+/home/ryan/formal-conjectures/ai-review/655.md-72-| Variants | Only literal (false) statement captured; intended general-position variant missing |
+--
+/home/ryan/formal-conjectures/ai-review/53.md-30-- [Er97]
+ai-review/53.md:31:- [Er97e]
+/home/ryan/formal-conjectures/ai-review/53.md-32-- [Ch03]
+/home/ryan/formal-conjectures/ai-review/53.md-33-
+ai-review/53.md:34:The formalization cites only **[ErSz83]** and **[Ch03]**, which are the two most important references (the original paper posing the problem and Chang's solution). The other five references ([Er77c], [ErGr80], [Er91], [Er97], [Er97e]) are additional Erdos papers that discuss the problem but are not essential for understanding the formalization.
+/home/ryan/formal-conjectures/ai-review/53.md-35-
+--
+/home/ryan/formal-conjectures/ai-review/217.md-26-- **[Er87b, p.167]**
+ai-review/217.md:27:- **[Er97e]**
+/home/ryan/formal-conjectures/ai-review/217.md-28-
+ai-review/217.md:29:The formalization's docstring (line 33) has `[Er83c] [Er87b] [Er97e]`, and the theorem docstring (line 71) has `[Er83c, Er87b, Er97e]`. The page number **p.167** for [Er87b] is missing from both locations. This should be corrected to `[Er87b, p.167]`.
+/home/ryan/formal-conjectures/ai-review/217.md-30-
+--
+/home/ryan/formal-conjectures/ai-review/652.md-17-
+ai-review/652.md:18:**Missing:** The original source `[Er97e]` (Erdős, P., *Some of my favourite problems which recently have been solved*) is listed on [erdosproblems.com/652](https://www.erdosproblems.com/652) but is not cited in the formalization. Problem 653, which comes from the same Erdős paper, does cite `[Er97e]`. This should be added for consistency.
+/home/ryan/formal-conjectures/ai-review/652.md-19-
+--
+/home/ryan/formal-conjectures/ai-review/586.md-16-- **ErGr80** — Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number theory*, Monographies de L'Enseignement Mathematique (1980)
+ai-review/586.md:17:- **Er96b**, **Er97**, **Er97c**, **Er97e** — various Erdős publications
+/home/ryan/formal-conjectures/ai-review/586.md-18-
+--
+ai-review/660.md-13-The formalization references:
+ai-review/660.md:14:- `[Er97e]` Erdős 1997 — **Correct and matches the website.**
+/home/ryan/formal-conjectures/ai-review/660.md-15-- `[Al63]` Altman 1963 — **Correct and matches the website.**
+--
+/home/ryan/formal-conjectures/ai-review/93.md-20-
+ai-review/93.md:21:**Website sources:** The [erdosproblems.com/93](https://www.erdosproblems.com/93) page lists the following original Erdős sources: [Er46b], [Er57], [Er61], [Er75f, p.100], [Er82e], [Er87b, p.175], [Er90], [Er92e], [Er95], [Er97e], [Er97f].
+/home/ryan/formal-conjectures/ai-review/93.md-22-
+--
+/home/ryan/formal-conjectures/ai-review/135.md-23-- **[Er97b]** — matches website ("Er97b"). Website specifies **p. 231**; the formalization omits the page number.
+ai-review/135.md:24:- **[Er97e]** — matches website ("Er97e"). Website specifies **p. 531**; the formalization omits the page number.
+/home/ryan/formal-conjectures/ai-review/135.md-25-- **[Ta24c]** — matches website. Tao's 2024 counterexample.
+--
+/home/ryan/formal-conjectures/ai-review/135.md-30-
+ai-review/135.md:31:**Recommendation:** Add page numbers to [Er97b] and [Er97e] (p.231 and p.531 respectively). Consider noting the prize.
+/home/ryan/formal-conjectures/ai-review/135.md-32-
+--
+/home/ryan/formal-conjectures/ai-review/135.md-90-| Code reuse | `numDistances` is duplicated; shared `distinctDistances` from `2d.lean` could be used |
+ai-review/135.md:91:| Citations | Page numbers missing for [Er97b] (p.231) and [Er97e] (p.531); prize not noted |
+/home/ryan/formal-conjectures/ai-review/135.md-92-| Variants | Stronger conjecture (≫n points with all distances distinct) not captured |
+--
+/home/ryan/formal-conjectures/ai-review/15.md-21-- **[Er97, p.158]**
+ai-review/15.md:22:- **[Er97e, p.535]**
+/home/ryan/formal-conjectures/ai-review/15.md-23-- **[Er98]**
+--
+/home/ryan/formal-conjectures/ai-review/15.md-32-
+ai-review/15.md:33:**Recommendation:** The docstring should include the full reference keys as they appear on the website, particularly [Er97], [Er97e], [Er98], and [Ta23], rather than only an informal mention of Tao.
+/home/ryan/formal-conjectures/ai-review/15.md-34-
+--
+/home/ryan/formal-conjectures/ai-review/15.md-99-| Code reuse | No issues; no reuse opportunities |
+ai-review/15.md:100:| Citations | **Incomplete** — missing [Er97], [Er97e], [Er98], [Ta23], [Zh14] reference keys and contributor attributions |
+/home/ryan/formal-conjectures/ai-review/15.md-101-| Variants | **Missing** — 3 companion conjectures from the website are not formalized |
+--
+ai-review/653.md-19-**Website ([erdosproblems.com/653](https://www.erdosproblems.com/653)) states:**
+ai-review/653.md:20:- Original source: [Er97e]
+ai-review/653.md-21-- Recommended citation: T. F. Bloom, Erdős Problem #653, https://www.erdosproblems.com/653
+--
+ai-review/653.md-24-**Formalization states:**
+ai-review/653.md:25:- `[Er97e] Erdős, P., *Some of my favourite problems which recently have been solved*.`
+/home/ryan/formal-conjectures/ai-review/653.md-26-
+ai-review/653.md:27:**Assessment:** The citation [Er97e] matches the website's listed source. The full bibliographic entry in the docstring is reasonable. No discrepancies.
+/home/ryan/formal-conjectures/ai-review/653.md-28-
+--
+/home/ryan/formal-conjectures/ai-review/91.md-18-- [Er90] — Erdős, P. (1990)
+ai-review/91.md:19:- [Er97e] — Erdős, P. (1997)
+/home/ryan/formal-conjectures/ai-review/91.md-20-- [Ko24c] — Kovács (2024)
+--
+/home/ryan/formal-conjectures/ai-review/91.md-24-- [Er90] ✓
+ai-review/91.md:25:- [Er97e] ✓
+/home/ryan/formal-conjectures/ai-review/91.md-26-- [Ko24c] with "Kovács, (2024)" ✓
+--
+ai-review/651.md-24-The formalization includes two citations:
+ai-review/651.md:25:- **[Er97e]**: `Erdős, P., *Some of my favourite problems which recently have been solved*, 1997.`
+ai-review/651.md-26-- **[PoZa22]**: `Pohoata, C. and Zakharov, D., *Convex polytopes from fewer points*, 2022.`
+/home/ryan/formal-conjectures/ai-review/651.md-27-
+ai-review/651.md:28:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/651.md-29-
+--
+/home/ryan/formal-conjectures/ai-review/98.md-30-- **[Er94b]**
+ai-review/98.md:31:- **[Er97e]**
+/home/ryan/formal-conjectures/ai-review/98.md-32-
+ai-review/98.md:33:The docstring should include at least the primary references (e.g., `[Er75f], [Er83c], [Er87b], [EFPR93]`) to match the conventions used in other problems (cf. `217.lean:33` which lists `[Er83c] [Er87b] [Er97e]`).
+/home/ryan/formal-conjectures/ai-review/98.md-34-
+--
+ai-review/8.md-28-- **Tags:** Number theory, Covering systems.
+ai-review/8.md:29:- **References:** ErGr80 (p.25), Er96b, Er97, Er97e, Ho15.
+ai-review/8.md-30-- **Related discussion:** Erdős and Graham also posed a density-type version, asking whether ∑_{a ∈ A, a > N} 1/a ≫ log N suffices for A to contain moduli of a covering system. Both versions were answered negatively by Hough.
+--
+/home/ryan/formal-conjectures/ai-review/8.md-34-| Erdős–Graham 1980 | Not cited | [ErGr80, p.25] | **Missing.** The original source of the conjecture is not cited. |
+ai-review/8.md:35:| Erdős 1996b, 1997, 1997e | Not cited | [Er96b], [Er97], [Er97e] | **Missing.** Three Erdős references from the website are absent. |
+/home/ryan/formal-conjectures/ai-review/8.md-36-| Hough 2015 | `[Ho15]` — full citation | [Ho15] | **OK.** Matches website. Citation is fully spelled out with volume/issue. |
+--
+/home/ryan/formal-conjectures/ai-review/657.md-33-
+ai-review/657.md:34:The formalization lists: `[Er73]`, `[Er75f]`, `[ErPa90]`, `[Er97e]`.
+/home/ryan/formal-conjectures/ai-review/657.md-35-
+--
+/home/ryan/formal-conjectures/ai-review/657.md-40-
+ai-review/657.md:41:The docstring references `[Er73]`, `[Er75f]`, `[ErPa90]`, `[Er97e]` without expanding the full citation details (journal, year, pages). Other files in the codebase (e.g., 135.lean, 503.lean) provide fuller citation information. The references should be expanded to include full titles at minimum, matching the convention used elsewhere. The progress results (Dumitrescu, Hunter et al.) are not mentioned in the docstring; while not strictly necessary, noting them would provide useful context.
+/home/ryan/formal-conjectures/ai-review/657.md-42-
+--
+ai-review/132.md-27-- **Missing [Er97b]**: Erdős, P., *Some of my favourite problems which recently have been solved*, Proceedings of the International Conference on Discrete Mathematics (ICDM) (1997). This reference appears on the website and is already cited in the related Problem 756. Should be added for completeness.
+ai-review/132.md:28:- **Missing [Er97e]**: This reference is listed on the website and is notable because it mentions the **\$100 reward** offered by Erdős "for any nontrivial result." This is significant context and should be included.
+ai-review/132.md-29-- **[HoPa34] typo**: The formalization writes "Pannwitz" but the docstring header writes "Pannowitz" (line 33). The correct spelling is **Pannwitz** (as used in the reference on line 46). The docstring narrative at line 33 should be corrected from "Pannowitz" to "Pannwitz."
+--
+/home/ryan/formal-conjectures/ai-review/132.md-31-
+ai-review/132.md:32:**Recommendation**: Add [Er97b] and [Er97e] (with the \$100 bounty note); fix the "Pannowitz" → "Pannwitz" typo; add cross-references to Problems 223, 756, and 957.
+/home/ryan/formal-conjectures/ai-review/132.md-33-
+--
+/home/ryan/formal-conjectures/ai-review/132.md-141-| Code Reuse | ⚠️ Duplication | `pairCount` duplicated verbatim in 756.lean; should be shared |
+ai-review/132.md:142:| Citations | ⚠️ Minor gaps | Missing [Er97b], [Er97e] (\$100 bounty); "Pannowitz" typo; no cross-refs to 223/756/957 |
+/home/ryan/formal-conjectures/ai-review/132.md-143-| Variants | ⚠️ Partial | Missing convex-position variant (CDL25 proved it); small-case results; $n=4$ counterexample |
+--
+ai-review/662.md-17-**Website ([erdosproblems.com/662](https://www.erdosproblems.com/662)):**
+ai-review/662.md:18:- Reference: **[Er97e, p.532]**
+ai-review/662.md-19-- Attribution: "A problem of Erdős, Lovász, and Vesztergombi."
+--
+ai-review/662.md-21-**Formalization (662.lean):**
+ai-review/662.md:22:- Docstring reference: `[Er97e, p.532]` — matches website.
+ai-review/662.md-23-- Attribution: "A problem of Erdős, Lovász, and Vesztergombi." — matches website.
+--
+/home/ryan/formal-conjectures/ai-review/646.md-21-| [ErGr80, p. 77] | ✅ Listed | ❌ Missing |
+ai-review/646.md:22:| [Er97e] | ✅ Listed | ❌ Missing |
+/home/ryan/formal-conjectures/ai-review/646.md-23-| [Be97] | ✅ Listed | ✅ Present (with full bibliographic data) |
+/home/ryan/formal-conjectures/ai-review/646.md-24-
+ai-review/646.md:25:**Issue:** The docstring omits the original Erdős–Graham reference **[ErGr80]** (Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number theory*, Monographies de L'Enseignement Mathématique, 1980, p. 77) and **[Er97e]**. The [ErGr80] reference is the original source of the problem and should be cited. The Berend [Be97] citation is correct and complete.
+/home/ryan/formal-conjectures/ai-review/646.md-26-
+ai-review/646.md:27:**Recommendation:** Add [ErGr80, p. 77] to the module docstring. Optionally add [Er97e] if the full reference can be identified (it appears to be one of Erdős's 1997 problem collection papers).
+/home/ryan/formal-conjectures/ai-review/646.md-28-
+--
+/home/ryan/formal-conjectures/ai-review/646.md-89-| Code reuse | No opportunities — appropriate |
+ai-review/646.md:90:| Citations | **Missing [ErGr80, p. 77] and [Er97e]** |
+/home/ryan/formal-conjectures/ai-review/646.md-91-| Variants | **Bounded-gaps variant not formalized** |
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-30-
+FormalConjectures/ErdosProblems/135.lean:31:[Er97e] Erdős, P., _Some old and new problems in combinatorial geometry_ (1997).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-48-/--
+FormalConjectures/ErdosProblems/135.lean:49:Erdős–Gyárfás Conjecture (Problem 135) [Er97b, Er97e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-50-Let $A \subseteq \mathbb{R}^2$ be a set of $n$ points such that any $4$ points determine at least
+--
+/home/ryan/formal-conjectures/ai-review/663.md-14-- `[BEGL96] Balog, A., Erdős, P., Graham, R. L., and Leep, D.`
+ai-review/663.md:15:- `[Er97e] Erdős, P.`
+/home/ryan/formal-conjectures/ai-review/663.md-16-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-30-
+FormalConjectures/ErdosProblems/122.lean:31:[Er97e] Erdős, P., *Some problems and results on combinatorial number theory* (1997).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-71-/--
+FormalConjectures/ErdosProblems/122.lean:72:Erdős Problem #122 [Er97, Er97e, EPS97]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-73-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean-31-
+FormalConjectures/ErdosProblems/661.lean:32:[Er97e] Erdős, P. (1997)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean-33-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean-48-/--
+FormalConjectures/ErdosProblems/661.lean:49:**Erdős Problem 661** [ErPa90, Er92e, Er97e, Er97f]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/661.lean-50-
+--
+/home/ryan/formal-conjectures/ai-review/604.md-21-
+ai-review/604.md:22:> [Er57], [Er61], [Er75f, p.99], [Er83c], [Er85], [Er87b, p.169], [Er90], [Er95], [Er97b], [Er97c], [Er97e], [Er97f]
+/home/ryan/formal-conjectures/ai-review/604.md-23-
+--
+ai-review/121.md-13-The formalization includes:
+ai-review/121.md:14:- [Er94b], [Er97], [Er97e], [Er98] — present on website
+/home/ryan/formal-conjectures/ai-review/121.md-15-- [ESS95] — present on website
+--
+/home/ryan/formal-conjectures/ai-review/661.md-25-- [Er92e] Erdős, P. (1992)
+ai-review/661.md:26:- [Er97e] Erdős, P. (1997)
+/home/ryan/formal-conjectures/ai-review/661.md-27-- [Er97f] Erdős, P. (1997)
+/home/ryan/formal-conjectures/ai-review/661.md-28-
+ai-review/661.md:29:The website (erdosproblems.com/661) lists: [ErPa90], [Er92e], [Er97e], [Er97f].
+/home/ryan/formal-conjectures/ai-review/661.md-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-30-- [ErPa90] Erdős, P. and Pach, J., *Variations on the theme of repeated distances*.
+FormalConjectures/ErdosProblems/657.lean:31:- [Er97e] Erdős, P., *Some of my favourite problems which recently have been solved*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-32--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-46-/--
+FormalConjectures/ErdosProblems/657.lean:47:**Erdős Problem 657** [Er73, Er75f, ErPa90, Er97e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-29-
+FormalConjectures/ErdosProblems/651.lean:30:[Er97e] Erdős, P., *Some of my favourite problems which recently have been solved*, 1997.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-59-/--
+FormalConjectures/ErdosProblems/651.lean:60:Erdős Problem 651 [Er97e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean-61-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean-27-
+FormalConjectures/ErdosProblems/663.lean:28:A problem of Erdős and Pomerance [BEGL96][Er97e].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean-36-
+FormalConjectures/ErdosProblems/663.lean:37:[Er97e] Erdős, P.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean-38--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean-50-/--
+FormalConjectures/ErdosProblems/663.lean:51:Erdős Problem 663 [BEGL96][Er97e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean-52-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean-28-
+FormalConjectures/ErdosProblems/121.lean:29:[Er94b] [Er97] [Er97e] [Er98] Erdős, P., various problems papers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean-55-/--
+FormalConjectures/ErdosProblems/121.lean:56:Erdős Problem #121 [Er94b, Er97, Er97e, Er98] — DISPROVED
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean-57-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-30-
+FormalConjectures/ErdosProblems/91.lean:31:[Er97e] Erdős, P., (1997).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-58-/--
+FormalConjectures/ErdosProblems/91.lean:59:Erdős Problem 91 [Er87b, Er90, Er97e]: For sufficiently large $n$, if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-60-$A \subset \mathbb{R}^2$ has $|A| = n$ and minimises the number of distinct distances, then there
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-27-
+FormalConjectures/ErdosProblems/653.lean:28:[Er97e] Erdős, P., *Some of my favourite problems which recently have been solved*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-29--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-53-$R(x_1) \leq \cdots \leq R(x_n)$. Let $g(n)$ be the maximum number of distinct
+FormalConjectures/ErdosProblems/653.lean:54:values the $R(x_i)$ can take. Is it true that $g(n) \geq (1 - o(1))n$? [Er97e]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-55--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/8.lean-46-
+FormalConjectures/ErdosProblems/8.lean:47:[Er97e] Erdős, P., _Some problems and results on combinatorial number theory_ (1997).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/8.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-29-
+FormalConjectures/ErdosProblems/660.lean:30:[Er97e] Erdős, P., _Some of my favourite problems which recently have been solved_,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-31-Proc. Int. Conf. on Discrete Math. (1997), 527–533.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-48-/--
+FormalConjectures/ErdosProblems/660.lean:49:**Erdős Problem 660** [Er97e, p.531]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/660.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/15.lean-39-
+FormalConjectures/ErdosProblems/15.lean:40:[Er97e] Erdős, P., _Some problems and results on combinatorial number theory_ (1997).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/15.lean-41-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-32-
+FormalConjectures/ErdosProblems/217.lean:33:[Er83c] [Er87b] [Er97e]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-34--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-70-/--
+FormalConjectures/ErdosProblems/217.lean:71:Erdős Conjecture (Problem 217) [Er83c, Er87b, Er97e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-72-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-30-
+FormalConjectures/ErdosProblems/654.lean:31:A problem of Erdős and Pach [Er87b][ErPa90][Er97e].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-32--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-62-/--
+FormalConjectures/ErdosProblems/654.lean:63:Erdős Problem 654 [Er87b][ErPa90][Er97e]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-64-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/662.lean-32-
+FormalConjectures/ErdosProblems/662.lean:33:Note: The original problem statement in [Er97e] contains apparent typos and is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/662.lean-34-acknowledged as ambiguous. This formalization captures what appears to be the
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/662.lean-59-/--
+FormalConjectures/ErdosProblems/662.lean:60:**Erdős Problem 662** [Er97e, p.532]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/662.lean-61-

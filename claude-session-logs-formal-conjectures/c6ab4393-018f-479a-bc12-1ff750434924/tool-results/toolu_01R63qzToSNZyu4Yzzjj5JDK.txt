@@ -1,0 +1,282 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-44-contains a monochromatic copy of $H$). -/
+FormalConjectures/ErdosProblems/87.lean:45:noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean-46-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+--
+FormalConjectures/ErdosProblems/87.lean-49-/-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
+FormalConjectures/ErdosProblems/87.lean:50:noncomputable def diagRamsey (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean:51:  graphRamseyNumber (⊤ : SimpleGraph (Fin k))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-52-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-65-      G.chromaticNumber = k →
+FormalConjectures/ErdosProblems/87.lean:66:      (diagRamsey k : ℝ) * (1 - ε) ^ k < (graphRamseyNumber G : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-67-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-81-      G.chromaticNumber = k →
+FormalConjectures/ErdosProblems/87.lean:82:      c * (diagRamsey k : ℝ) < (graphRamseyNumber G : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-83-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-47-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/556.lean:48:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/556.lean-49-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-41-vertices contains a $3$-clique or its complement contains an $n$-clique. -/
+FormalConjectures/ErdosProblems/553.lean:42:noncomputable def ramseyR3 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean-43-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree n}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-50-two colour classes); the third colour class is the complement $(G_1 \sqcup G_2)^c$. -/
+FormalConjectures/ErdosProblems/553.lean:51:noncomputable def ramseyR33 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean-52-  sInf {N : ℕ | ∀ (G₁ G₂ : SimpleGraph (Fin N)),
+--
+FormalConjectures/ErdosProblems/553.lean-69-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/553.lean:70:      C * (ramseyR3 n : ℝ) ≤ (ramseyR33 n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-71-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-36-(equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1014.lean:37:noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1014.lean-38-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+--
+FormalConjectures/ErdosProblems/1014.lean-53-    ∃ L₀ : ℕ, ∀ l : ℕ, l ≥ L₀ →
+FormalConjectures/ErdosProblems/1014.lean:54:      |(ramseyR k (l + 1) : ℝ) / (ramseyR k l : ℝ) - 1| ≤ ε := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-55-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-49-contains a copy of $G$. -/
+FormalConjectures/ErdosProblems/546.lean:50:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/546.lean-51-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+--
+FormalConjectures/ErdosProblems/546.lean-70-      (∀ v : Fin k, ∃ w : Fin k, G.Adj v w) →
+FormalConjectures/ErdosProblems/546.lean:71:      (ramseyNumber G : ℝ) ≤ (2 : ℝ) ^ (C * Real.sqrt (G.edgeSet.ncard : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-72-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-41-    (equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1030.lean:42:noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1030.lean-43-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+--
+FormalConjectures/ErdosProblems/1030.lean-59-    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
+FormalConjectures/ErdosProblems/1030.lean:60:      (ramseyR (k + 1) k : ℝ) / (ramseyR k k : ℝ) ≥ 1 + c := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-61-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-57-tournament of size $m$. -/
+FormalConjectures/ErdosProblems/112.lean:58:noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/112.lean-59-  sInf {k : ℕ | ∀ (V : Type) [Fintype V], Fintype.card V = k →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-46-    other is $S^c$ (the complement). -/
+FormalConjectures/ErdosProblems/79.lean:47:def RamseyProp {p q : ℕ} (G : SimpleGraph (Fin p)) (H : SimpleGraph (Fin q))
+FormalConjectures/ErdosProblems/79.lean-48-    (n : ℕ) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-57-    $n \leq C \cdot |E(H)|$. -/
+FormalConjectures/ErdosProblems/79.lean:58:def IsRamseySizeLinear {p : ℕ} (G : SimpleGraph (Fin p)) : Prop :=
+FormalConjectures/ErdosProblems/79.lean-59-  ∃ C : ℝ, C > 0 ∧ ∀ (q : ℕ) (H : SimpleGraph (Fin q)) [DecidableRel H.Adj],
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-46-$\text{Fin}(N)$, either $G$ embeds into $H$ or $G$ embeds into $H^c$ as a subgraph. -/
+FormalConjectures/ErdosProblems/800.lean:47:noncomputable def graphRamseyNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/800.lean-48-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)), HasSubgraphCopy G H ∨ HasSubgraphCopy G Hᶜ}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-67-        (∀ u v, G.Adj u v → G.degree u < 3 ∨ G.degree v < 3) →
+FormalConjectures/ErdosProblems/800.lean:68:        (graphRamseyNumber G : ℝ) ≤ C * (n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-69-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean-49-    edges to the same color. -/
+FormalConjectures/ErdosProblems/559.lean:50:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/559.lean-51-    (G : SimpleGraph V) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean-43-$\{f(u), f(v)\}$ with colour $b$. -/
+FormalConjectures/ErdosProblems/565.lean:44:noncomputable def inducedRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/565.lean-45-    (G : SimpleGraph V) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-58-copy of $G_2$. -/
+FormalConjectures/ErdosProblems/551.lean:59:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/551.lean-60-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-41-of $F$. -/
+FormalConjectures/ErdosProblems/569.lean:42:noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/569.lean-43-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+--
+FormalConjectures/ErdosProblems/569.lean-65-      (∀ v : Fin n, ∃ w, H.Adj v w) →
+FormalConjectures/ErdosProblems/569.lean:66:      ramseyNum (cycleGraph (2 * k + 1) (by omega)) H ≤ c * H.edgeSet.ncard := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-67-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-39-whose three edges all receive the same colour. -/
+FormalConjectures/ErdosProblems/183.lean:40:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/183.lean-41-  sInf {n : ℕ | ∀ (c : Fin n → Fin n → Fin k),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean-64-edges to the same color. -/
+FormalConjectures/ErdosProblems/560.lean:65:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/560.lean-66-    (G : SimpleGraph V) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean-52-isometric copy of $A$ (i.e., a copy obtained by a distance-preserving map). -/
+FormalConjectures/ErdosProblems/174.lean:53:def IsEuclideanRamsey (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/174.lean-54-  ∀ k : ℕ, 1 ≤ k →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-59-set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/165.lean:60:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/165.lean-61-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+--
+FormalConjectures/ErdosProblems/165.lean-77-    ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
+FormalConjectures/ErdosProblems/165.lean:78:      (c - ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) ≤ (ramseyR3 k : ℝ) ∧
+FormalConjectures/ErdosProblems/165.lean:79:      (ramseyR3 k : ℝ) ≤ (c + ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-80-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-53-a color $c$ such that the set is $K_k$-free in color $c$. -/
+FormalConjectures/ErdosProblems/129.lean:54:noncomputable def multicolorRamseyNum (n k r : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/129.lean-55-  sInf {N : ℕ | ∀ (χ : EdgeColoring N r),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-45-a copy of $G$. -/
+FormalConjectures/ErdosProblems/547.lean:46:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/547.lean-47-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+--
+FormalConjectures/ErdosProblems/547.lean-57-    (T : SimpleGraph (Fin n)) (hT : T.IsTree) :
+FormalConjectures/ErdosProblems/547.lean:58:    ramseyNumber T ≤ 2 * n - 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-59-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean-43-    same color. -/
+FormalConjectures/ErdosProblems/911.lean:44:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/911.lean-45-    (G : SimpleGraph V) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean-38-complement of $F$. -/
+FormalConjectures/ErdosProblems/568.lean:39:noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/568.lean-40-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+--
+FormalConjectures/ErdosProblems/568.lean-70-    (∃ C₁ : ℕ, ∀ (n : ℕ) (T : SimpleGraph (Fin n)),
+FormalConjectures/ErdosProblems/568.lean:71:      IsTreeGraph T → ramseyNum G T ≤ C₁ * n) →
+FormalConjectures/ErdosProblems/568.lean-72-    (∃ C₂ : ℕ, ∀ (n : ℕ),
+FormalConjectures/ErdosProblems/568.lean:73:      ramseyNum G (⊤ : SimpleGraph (Fin n)) ≤ C₂ * n ^ 2) →
+FormalConjectures/ErdosProblems/568.lean-74-    ∃ C : ℕ, ∀ (k : ℕ) (H : SimpleGraph (Fin k)),
+FormalConjectures/ErdosProblems/568.lean-75-      (∀ v : Fin k, ∃ w, H.Adj v w) →
+FormalConjectures/ErdosProblems/568.lean:76:      ramseyNum G H ≤ C * H.edgeSet.ncard := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean-77-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-56-graph $G$ on $\operatorname{Fin} N$, either $G$ or $G^c$ contains a copy of $H$. -/
+FormalConjectures/ErdosProblems/181.lean:57:noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/181.lean-58-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-43-set of size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/812.lean:44:noncomputable def diagonalRamsey (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/812.lean-45-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree n ∨ ¬Gᶜ.CliqueFree n}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-55-    size $n$). -/
+FormalConjectures/ErdosProblems/159.lean:56:noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/159.lean-57-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-43-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/558.lean:44:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/558.lean-45-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-59-size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/986.lean:60:noncomputable def ramseyR (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/986.lean-61-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree n}
+--
+FormalConjectures/ErdosProblems/986.lean-77-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/986.lean:78:      C * ((n : ℝ) ^ (k - 1) / (Real.log (n : ℝ)) ^ c) ≤ (ramseyR k n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-79-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-51-copy of $G_2$. -/
+FormalConjectures/ErdosProblems/550.lean:52:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/550.lean-53-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-43-copy of $G_2$. -/
+FormalConjectures/ErdosProblems/552.lean:44:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/552.lean-45-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-47-clique of size $k$ in some colour. -/
+FormalConjectures/ErdosProblems/1029.lean:48:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1029.lean-49-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-56-    graph $G$ on $\operatorname{Fin} N$, either $G$ or $G^c$ contains a copy of $H$. -/
+FormalConjectures/ErdosProblems/163.lean:57:noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/163.lean-58-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-68-    edges to the same color. -/
+FormalConjectures/ErdosProblems/720.lean:69:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/720.lean-70-    (G : SimpleGraph V) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-70-clique of size $s$ in one colour or of size $t$ in the other. -/
+FormalConjectures/ErdosProblems/1015.lean:71:noncomputable def ramseyNumber₂ (s t : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1015.lean-72-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-92-      minLeftover t n =
+FormalConjectures/ErdosProblems/1015.lean:93:        ramseyNumber₂ t (t - 1) + (n + 1 - ramseyNumber₂ t (t - 1)) % t := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-94-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean-40--/
+FormalConjectures/ErdosProblems/54.lean:41:def IsRamsey2Complete (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/54.lean-42-  ∀ (χ : ℕ → Fin 2),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean-41--/
+FormalConjectures/ErdosProblems/55.lean:42:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/55.lean-43-  ∀ (χ : ℕ → Fin r),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-52-a copy of $G$. -/
+FormalConjectures/ErdosProblems/549.lean:53:noncomputable def ramseyNumber {m : ℕ} (G : SimpleGraph (Fin m)) : ℕ :=
+FormalConjectures/ErdosProblems/549.lean-54-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-75-      (Finset.univ.filter (fun v => c v = 1)).card = 2 * k) →
+FormalConjectures/ErdosProblems/549.lean:76:    ramseyNumber T = 4 * k - 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-77-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-67-    $\geq \ell$. Returns $0$ if no such graph exists. -/
+FormalConjectures/ErdosProblems/615.lean:68:noncomputable def ramseyTuranNumber (n k ℓ : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/615.lean-69-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-49-contains a copy of $G_1$ or color 2 contains a copy of $G_2$. -/
+FormalConjectures/ErdosProblems/561.lean:50:noncomputable def twoColorSizeRamseyNumber {V₁ V₂ : Type*} [Fintype V₁] [Fintype V₂]
+FormalConjectures/ErdosProblems/561.lean-51-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-47-contains a copy of $G$. -/
+FormalConjectures/ErdosProblems/545.lean:48:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/545.lean-49-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+--
+FormalConjectures/ErdosProblems/545.lean-79-    (∀ v : Fin k, ∃ w : Fin k, G.Adj v w) →
+FormalConjectures/ErdosProblems/545.lean:80:    ramseyNumber G ≤ ramseyNumber (asCompleteAsPossible n t) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-81-  sorry
+--
+FormalConjectures/ErdosProblems/554.lean-46-$f : V \to \operatorname{Fin} N$ such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/554.lean:47:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/554.lean-48-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-50-clique of size $k$ in some colour. -/
+FormalConjectures/ErdosProblems/77.lean:51:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/77.lean-52-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/843.lean-33-distinct monochromatic elements of $A$. -/
+FormalConjectures/ErdosProblems/843.lean:34:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/843.lean-35-  ∀ c : ℕ → Fin r, ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-40-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/557.lean:41:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/557.lean-42-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-42-on $\operatorname{Fin} N$, either $G$ embeds in $F$ or $H$ embeds in the complement of $F$. -/
+FormalConjectures/ErdosProblems/570.lean:43:noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/570.lean-44-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-68-      H.edgeSet.ncard ≥ M₀ →
+FormalConjectures/ErdosProblems/570.lean:69:      ramseyNum (cycleGraph k hk) H ≤ 2 * H.edgeSet.ncard + (k - 1) / 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-70-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-40-set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/544.lean:41:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/544.lean-42-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+--
+FormalConjectures/ErdosProblems/544.lean-53-theorem erdos_544 :
+FormalConjectures/ErdosProblems/544.lean:54:    Tendsto (fun k : ℕ => (ramseyR3 (k + 1) : ℤ) - (ramseyR3 k : ℤ))
+FormalConjectures/ErdosProblems/544.lean-55-      atTop atTop := by
+--
+FormalConjectures/ErdosProblems/544.lean-65-theorem erdos_544.variants.little_o : answer(sorry) ↔
+FormalConjectures/ErdosProblems/544.lean:66:    Tendsto (fun k : ℕ => ((ramseyR3 (k + 1) : ℝ) - (ramseyR3 k : ℝ)) / (k : ℝ))
+FormalConjectures/ErdosProblems/544.lean-67-      atTop (nhds 0) := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-49-there is a subgraph $H \leq G$ such that both $H$ and $G \setminus H$ are triangle-free. -/
+FormalConjectures/ErdosProblems/925.lean:50:def IsNotRamseyForTriangle {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/925.lean-51-  ∃ H : SimpleGraph (Fin n), H ≤ G ∧ H.CliqueFree 3 ∧ (G \ H).CliqueFree 3
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-51-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/555.lean:52:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/555.lean-53-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-54-size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/166.lean:55:noncomputable def ramseyR4 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/166.lean-56-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}
+--
+FormalConjectures/ErdosProblems/166.lean-75-    ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
+FormalConjectures/ErdosProblems/166.lean:76:      C * ((k : ℝ) ^ 3 / (Real.log (k : ℝ)) ^ α) ≤ (ramseyR4 k : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-77-  sorry

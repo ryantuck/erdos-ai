@@ -1,0 +1,543 @@
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-123-def emaxDegree {V : Type*} (G : SimpleGraph V) : ℕ∞ := ⨆ v, G.edegree v
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-124-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-125-noncomputable
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:126:def ecliqueNum {V : Type} (G : SimpleGraph V) : ℕ∞ := ⨆ (s : Finset V) (_ : G.IsClique s), #s
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-127-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-128-end SimpleGraph
+--
+ai-review/667.md-11-- **`edgesInSubset`**: Counts edges within a vertex subset by filtering `S ×ˢ S` for ordered adjacent pairs. There is no exact Mathlib equivalent for counting edges induced on a `Finset` of vertices of a `SimpleGraph`. Mathlib's `SimpleGraph.edgeFinset` gives all edges of a graph, but filtering to a vertex-induced subgraph would require similar manual work. The custom definition is reasonable.
+ai-review/667.md-12-- **`erdosH` / `sSup` pattern**: The `sSup {m : ℕ | ∀ G ...}` pattern is used consistently across many Erdős problems (765, 573, 500, 59, 146, 1079, etc.). No shared utility exists for this; each problem defines its own. This is acceptable since the quantifier structure varies per problem.
+ai-review/667.md-13-- **`erdosC` / `Filter.liminf` pattern**: Similar liminf-over-atTop patterns appear in other problems (e.g., 671). The `Set.lowerDensity` in `FormalConjecturesForMathlib/Data/Set/Density.lean` uses `Filter.liminf` as well, but for a different purpose (natural density of integer sets). No reuse opportunity.
+ai-review/667.md:14:- **`IsNClique`**: Correctly uses the standard Mathlib definition `SimpleGraph.IsNClique`, which is widely used across the codebase (problems 924, 58, 22, 19, 167, 1174, 1010, 1011, 1013, etc.).
+/home/ryan/formal-conjectures/ai-review/667.md-15-
+ai-review/667.md-16-**Verdict:** No significant reuse opportunities missed. The custom definitions are appropriate.
+/home/ryan/formal-conjectures/ai-review/667.md-17-
+--
+/home/ryan/formal-conjectures/ai-review/573.md-8-
+/home/ryan/formal-conjectures/ai-review/573.md-9-**`C4Free` vs `CycleFourFree` from Problem 1008.** Problem 1008 (`FormalConjectures/ErdosProblems/1008.lean`) defines `ContainsCycleFour` and `CycleFourFree` with a more explicit all-distinct-vertices formulation. Problem 573's `C4Free` is a third, distinct encoding of the same property.
+/home/ryan/formal-conjectures/ai-review/573.md-10-
+ai-review/573.md:11:**Recommendation:** Ideally, Problem 573 would reuse `exConsecutiveCycles` from 574 (or vice versa, with a shared definition). At minimum, consider using Mathlib's `CliqueFree 3` for triangle-freeness, and aligning the C4-free definition with one of the existing formulations (574's `ContainsCycleOfLength` or 1008's `ContainsCycleFour`).
+/home/ryan/formal-conjectures/ai-review/573.md-12-
+/home/ryan/formal-conjectures/ai-review/573.md-13-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/573.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/812.md-13-
+/home/ryan/formal-conjectures/ai-review/812.md-14-Additionally, `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey r n`, the r-uniform hypergraph Ramsey number. For `r = 2`, this is the standard graph Ramsey number, though it uses a different formulation (2-colorings of r-subsets via `Finset`).
+/home/ryan/formal-conjectures/ai-review/812.md-15-
+ai-review/812.md:16:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/812.md-17-
+/home/ryan/formal-conjectures/ai-review/812.md-18-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/812.md-19-
+--
+ai-review/812.md-51-- **Good:** The module docstring clearly states both parts of the problem with LaTeX notation, explains the notation R(n), and provides references.
+ai-review/812.md-52-- **Good:** The `diagonalRamsey` definition has a clear docstring explaining its meaning.
+ai-review/812.md-53-- **Good:** The two theorems have clear docstrings distinguishing Part 1 (ratio) and Part 2 (difference).
+ai-review/812.md:54:- **Minor:** The definition `diagonalRamsey` uses the condition `¬G.CliqueFree n ∨ ¬Gᶜ.CliqueFree n`. While mathematically correct (an n-clique in the complement is exactly an independent set of size n), it might be slightly more readable to use an `IsNClique` or independent set formulation for the complement side. However, the symmetry of the current formulation (`CliqueFree` in both G and Gᶜ) is elegant and arguably preferable.
+ai-review/812.md-55-- **Minor:** The namespace `Erdos812` and definition names are clear and follow conventions.
+/home/ryan/formal-conjectures/ai-review/812.md-56-
+ai-review/812.md-57-Overall readability: **Very good.**
+--
+/home/ryan/formal-conjectures/ai-review/544.md-80-
+ai-review/544.md-81-Detailed verification:
+/home/ryan/formal-conjectures/ai-review/544.md-82-
+ai-review/544.md:83:- **`ramseyR3` definition:** Correctly captures R(3,k) as the minimum N such that every simple graph on N vertices contains a triangle (¬CliqueFree 3) or an independent set of size k (¬Gᶜ.CliqueFree k). The use of `sInf` is appropriate — Ramsey's theorem guarantees the defining set is nonempty (for finite k), so the infimum is well-defined and equals the minimum.
+/home/ryan/formal-conjectures/ai-review/544.md-84-
+/home/ryan/formal-conjectures/ai-review/544.md-85-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/544.md-86-
+--
+/home/ryan/formal-conjectures/ai-review/544.md-88-
+ai-review/544.md-89-- **Edge cases:**
+ai-review/544.md-90-  - For k = 0: ramseyR3(1) − ramseyR3(0), divided by 0 in Part 2, gives 0/0 which Lean evaluates to 0. This doesn't affect the limit statement since `atTop` only cares about sufficiently large k.
+ai-review/544.md:91:  - The `sInf` of an empty set in ℕ is 0 by convention. For k = 0, the defining set `{N | ∀ G, ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree 0}` requires every graph to have a 0-clique in the complement, which is vacuously true (the empty set is a 0-clique). So `sInf` is 0, which is fine. For k ≥ 1, the Ramsey property is non-vacuous and sInf yields the true Ramsey number.
+/home/ryan/formal-conjectures/ai-review/544.md-92-
+ai-review/544.md-93-- **Relationship between parts:** If Part 1 is true (differences → ∞) and Part 2 is also true (differences = o(k)), this would mean the differences grow, but slower than linearly. This is consistent — for example, if R(3,k) ~ c·k²/log k (the conjecture in Problem 165), then R(3,k+1) − R(3,k) ~ 2ck/log k, which does tend to ∞ but is o(k). So both parts being simultaneously true is plausible and the formalization does not introduce any inconsistency.
+/home/ryan/formal-conjectures/ai-review/544.md-94-
+--
+/home/ryan/formal-conjectures/ai-review/610.md-2-
+/home/ryan/formal-conjectures/ai-review/610.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/610.md-4-
+ai-review/610.md:5:**Major duplication detected.** The definitions `IsMaximalCliqueFS`, `IsCliqueTransversal`, and `cliqueTransversalNum`/`cliqueTransversalNumber` are copy-pasted identically (modulo minor naming) across three files:
+/home/ryan/formal-conjectures/ai-review/610.md-6-
+/home/ryan/formal-conjectures/ai-review/610.md-7-- `FormalConjectures/ErdosProblems/610.lean` (namespace `Erdos610`)
+/home/ryan/formal-conjectures/ai-review/610.md-8-- `FormalConjectures/ErdosProblems/611.lean` (namespace `Erdos611`)
+--
+ai-review/610.md-13-Additionally, Mathlib already provides:
+/home/ryan/formal-conjectures/ai-review/610.md-14-
+/home/ryan/formal-conjectures/ai-review/610.md-15-- `SimpleGraph.IsClique` — used correctly by the formalization.
+ai-review/610.md:16:- `Maximal G.IsClique s` (in `Mathlib.Combinatorics.SimpleGraph.Clique`) — equivalent to the custom `IsMaximalCliqueFS` but defined on `Set α`. The custom definition `∀ v ∉ S, ¬G.IsClique ↑(insert v S)` is logically equivalent to the `Maximal` predicate for finite sets (since any proper superset must contain at least one new element), but using `Maximal` directly would be more idiomatic and would avoid reinventing existing infrastructure.
+/home/ryan/formal-conjectures/ai-review/610.md-17-- `SimpleGraph.indepNum` and `SimpleGraph.IsIndepSet` — Problem 151 redefines `IsIndependentSet` and `independenceNumber` instead of using these.
+/home/ryan/formal-conjectures/ai-review/610.md-18-
+ai-review/610.md:19:**Recommendation:** Extract the shared definitions into a common file. Consider building `IsMaximalCliqueFS` as a wrapper around `Maximal G.IsClique ↑S` to leverage existing Mathlib lemmas about maximal elements.
+/home/ryan/formal-conjectures/ai-review/610.md-20-
+/home/ryan/formal-conjectures/ai-review/610.md-21-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/610.md-22-
+--
+/home/ryan/formal-conjectures/ai-review/615.md-82-
+ai-review/615.md-83-The formalization states: for any ε > 0 and δ > 0, for sufficiently large n, any K₄-free graph on n vertices with independence number < εn has ≤ (1/8 + δ)n² edges. This correctly captures rt(n; 4, εn) < (1/8 + o(1))n². The use of ≤ rather than < for the edge bound is inconsequential for the asymptotic statement.
+/home/ryan/formal-conjectures/ai-review/615.md-84-
+ai-review/615.md:85:**One subtle point:** In the main theorem, `¬G.CliqueFree 4` means "G contains a 4-clique" (i.e., G is not K₄-free). This is the correct encoding of "G contains a K₄."
+/home/ryan/formal-conjectures/ai-review/615.md-86-
+ai-review/615.md-87-**`ramseyTuranNumber` definition: Mathematically sound but with edge cases.**
+/home/ryan/formal-conjectures/ai-review/615.md-88-
+--
+/home/ryan/formal-conjectures/ai-review/1013.md-2-
+/home/ryan/formal-conjectures/ai-review/1013.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/1013.md-4-
+ai-review/1013.md:5:The definition of `h3` in this file uses `sInf {n : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = (k : ℕ∞)}`, which is a common pattern across the codebase:
+/home/ryan/formal-conjectures/ai-review/1013.md-6-
+ai-review/1013.md:7:- **Problem 1104** (`1104.lean`) defines the dual quantity `triangleFreeMaxChromatic` as `sSup {χ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = χ}`. These two functions are inverses: `h3(k) = min {n | triangleFreeMaxChromatic(n) ≥ k}`. A shared utility or a remark documenting this duality could be valuable.
+/home/ryan/formal-conjectures/ai-review/1013.md-8-- **Problem 920** (`920.lean`) defines `f k n` (max chromatic number of a `K_k`-free graph on `n` vertices), which generalizes `triangleFreeMaxChromatic` to arbitrary clique sizes. Note that `Erdos920.f 3 n` and `Erdos1104.triangleFreeMaxChromatic n` compute the same quantity but are defined separately.
+/home/ryan/formal-conjectures/ai-review/1013.md-9-- **Problem 1011** (`1011.lean`) uses a similar `sInf` + `CliqueFree 3` + `chromaticNumber` pattern for `minTriangleEdges`.
+/home/ryan/formal-conjectures/ai-review/1013.md-10-- **`DegreeSequencesTriangleFree.lean`** defines `F n` using nearly the same `sInf` pattern but with an additional `degreeSequenceMultiplicity` constraint.
+--
+/home/ryan/formal-conjectures/ai-review/801.md-4-
+/home/ryan/formal-conjectures/ai-review/801.md-5-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/801.md-6-
+ai-review/801.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/801.md-8-
+/home/ryan/formal-conjectures/ai-review/801.md-9-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/801.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/1010.md-13-
+ai-review/1010.md-14-- **`IsNClique`**: Already imported from Mathlib via `ProblemImports`. Used correctly here.
+ai-review/1010.md-15-- **`edgeFinset`**: Standard Mathlib API, used consistently across many Erdős problems (667, 801, 1009, 1079, etc.).
+ai-review/1010.md:16:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/1010.md-17-
+/home/ryan/formal-conjectures/ai-review/1010.md-18-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1010.md-19-
+--
+/home/ryan/formal-conjectures/ai-review/775.md-4-
+ai-review/775.md-5-Several opportunities for code reuse exist:
+/home/ryan/formal-conjectures/ai-review/775.md-6-
+ai-review/775.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/775.md-8-
+/home/ryan/formal-conjectures/ai-review/775.md-9-- **Problem 719** (`719.lean`) defines `IsRUniformHypergraph n r H` as `∀ e ∈ H, e.card = r`, which is exactly the uniformity check done inline in 775's theorem statement (`∀ e ∈ H, e.card = 3`). This could be reused.
+/home/ryan/formal-conjectures/ai-review/775.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/775.md-53-
+ai-review/775.md-54-The code is generally well-structured and readable:
+/home/ryan/formal-conjectures/ai-review/775.md-55-
+ai-review/775.md:56:- The three definitions (`IsCompleteInHypergraph`, `IsHypergraphClique`, `cliqueSizeSet`) build naturally on each other.
+/home/ryan/formal-conjectures/ai-review/775.md-57-- The docstrings clearly explain each definition with mathematical notation.
+/home/ryan/formal-conjectures/ai-review/775.md-58-- The namespace `Erdos775` keeps definitions scoped.
+/home/ryan/formal-conjectures/ai-review/775.md-59-
+--
+/home/ryan/formal-conjectures/ai-review/750.md-4-
+/home/ryan/formal-conjectures/ai-review/750.md-5-**Issue found.** The custom `IsIndepSet` definition (lines 44-47) duplicates functionality already available in Mathlib.
+/home/ryan/formal-conjectures/ai-review/750.md-6-
+ai-review/750.md:7:- **Mathlib provides** `SimpleGraph.IsIndepSet : Set V → Prop` (defined via `Set.Pairwise`) in `Mathlib.Combinatorics.SimpleGraph.Clique`.
+ai-review/750.md-8-- **Problem 22** (`ErdosProblems/22.lean:60`) already correctly uses `G.IsIndepSet ↑s` with a `Finset` coerced to `Set`.
+/home/ryan/formal-conjectures/ai-review/750.md-9-- The same custom definition is duplicated across problems 615, 151, and 804 with minor naming variations (`IsIndependentSet` vs `IsIndepSet`).
+/home/ryan/formal-conjectures/ai-review/750.md-10-- **Wrapper utilities** exist in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` providing `α(G)` notation for `indepNum` and related lemmas.
+--
+/home/ryan/formal-conjectures/ai-review/133.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/133.md-4-
+/home/ryan/formal-conjectures/ai-review/133.md-5-**`HasTriangle` — should use Mathlib's `CliqueFree`.**
+ai-review/133.md:6:Mathlib provides `SimpleGraph.CliqueFree 3`, which is the standard way to express "triangle-free." Problem 134 already uses `G.CliqueFree 3` directly (line 63), while Problem 133 defines a custom `HasTriangle` and negates it (`¬HasTriangle G`). The custom definition is semantically equivalent but non-standard. Replacing `¬HasTriangle G` with `G.CliqueFree 3` would improve consistency with the rest of the codebase and Mathlib conventions.
+/home/ryan/formal-conjectures/ai-review/133.md-7-
+/home/ryan/formal-conjectures/ai-review/133.md-8-**`HasDiameterAtMostTwo` — duplicated with Problem 134.**
+/home/ryan/formal-conjectures/ai-review/133.md-9-[Omitted long context line]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-36-
+FormalConjectures/ErdosProblems/719.lean-37-/-- An $r$-uniform hypergraph is $K_{r+1}^r$-free: no $(r+1)$-element vertex set has
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-38-all its $r$-element subsets as edges. -/
+FormalConjectures/ErdosProblems/719.lean:39:def IsHypergraphCliqueFree (r : ℕ) {n : ℕ} (H : Finset (Finset (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/719.lean-40-  ¬∃ S : Finset (Fin n), S.card = r + 1 ∧ Finset.powersetCard r S ⊆ H
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-41-
+FormalConjectures/ErdosProblems/719.lean-42-/-- The Turán number $\mathrm{ex}_r(n; K_{r+1}^r)$: the maximum number of edges in an
+--
+/home/ryan/formal-conjectures/ai-review/166.md-8-
+ai-review/166.md-9-**Issue: `ramseyR4` is a specialization of a generic Ramsey number defined independently in multiple files.**
+/home/ryan/formal-conjectures/ai-review/166.md-10-
+ai-review/166.md:11:The definition `ramseyR4 (k : ℕ) : ℕ := sInf {N | ∀ G : SimpleGraph (Fin N), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}` is exactly `ramseyR 4 k` where `ramseyR` is the generic two-parameter Ramsey number already defined in:
+/home/ryan/formal-conjectures/ai-review/166.md-12-
+/home/ryan/formal-conjectures/ai-review/166.md-13-| File | Definition | Namespace |
+/home/ryan/formal-conjectures/ai-review/166.md-14-|------|-----------|-----------|
+--
+/home/ryan/formal-conjectures/ai-review/166.md-137-
+/home/ryan/formal-conjectures/ai-review/166.md-138-### Definition correctness
+/home/ryan/formal-conjectures/ai-review/166.md-139-
+ai-review/166.md:140:The definition `ramseyR4 (k : ℕ) : ℕ := sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}` is the standard definition of $R(4,k)$ as the minimum $N$ such that every graph on $N$ vertices contains a 4-clique or a $k$-independent set. The use of `sInf` on `ℕ` is correct — if the set is empty, `sInf ∅ = 0` in `ℕ`, but by Ramsey's theorem the set is always nonempty for finite parameters, so this degeneracy does not arise in practice.
+/home/ryan/formal-conjectures/ai-review/166.md-141-
+/home/ryan/formal-conjectures/ai-review/166.md-142-### Category tag
+/home/ryan/formal-conjectures/ai-review/166.md-143-
+--
+/home/ryan/formal-conjectures/ai-review/1091.md-76-
+/home/ryan/formal-conjectures/ai-review/1091.md-77-This correctly excludes the cycle edges and counts only diagonals. The use of `p.1.val < p.2.val` rather than `p.1 < p.2` or `p.1 ≠ p.2` is correct for avoiding double-counting (and self-pairs are excluded since `<` is strict).
+/home/ryan/formal-conjectures/ai-review/1091.md-78-
+ai-review/1091.md:79:**Hypothesis adequacy:** The theorem requires `G : SimpleGraph (Fin n)` (finite graph), `CliqueFree 4` (K₄-free), and `chromaticNumber = (4 : ℕ∞)` (χ = 4). This matches Voss's theorem.
+/home/ryan/formal-conjectures/ai-review/1091.md-80-
+/home/ryan/formal-conjectures/ai-review/1091.md-81-### Open variant (`erdos_1091.variants.unbounded_diagonals`)
+/home/ryan/formal-conjectures/ai-review/1091.md-82-
+--
+ai-review/619.md-5-The formalization defines a custom `triangleFreeDiamCompletion` function. No existing definition in `FormalConjecturesForMathlib` captures this concept. The relevant utility files are:
+/home/ryan/formal-conjectures/ai-review/619.md-6-
+/home/ryan/formal-conjectures/ai-review/619.md-7-- `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/DiamExtra.lean` — provides `diam`, `ediam`, `eccent`, `radius` for `SimpleGraph`, but nothing for edge-addition completions.
+ai-review/619.md:8:- `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` — provides `indepNum` and clique-related definitions, but `CliqueFree 3` is already from Mathlib.
+/home/ryan/formal-conjectures/ai-review/619.md-9-
+/home/ryan/formal-conjectures/ai-review/619.md-10-The custom definition is necessary and appropriate. No obvious reuse opportunity exists.
+/home/ryan/formal-conjectures/ai-review/619.md-11-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/856.lean-39-/-- A finite set of natural numbers has no $k$-element subset where all pairwise
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/856.lean-40-LCMs are equal. That is, there is no $S \subseteq A$ with $|S| = k$ and a value $L$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/856.lean-41-such that $\operatorname{lcm}(a, b) = L$ for all distinct $a, b \in S$. -/
+FormalConjectures/ErdosProblems/856.lean:42:def NoPairwiseLcmClique (A : Finset ℕ) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/856.lean-43-  ∀ S : Finset ℕ, S ⊆ A → S.card = k →
+FormalConjectures/ErdosProblems/856.lean-44-    ¬∃ L : ℕ, ∀ a ∈ S, ∀ b ∈ S, a ≠ b → Nat.lcm a b = L
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/856.lean-45-
+--
+/home/ryan/formal-conjectures/ai-review/1030.md-61-
+ai-review/1030.md-62-**The formalization is mathematically correct**, with the following observations:
+/home/ryan/formal-conjectures/ai-review/1030.md-63-
+ai-review/1030.md:64:**(a) Definition of `ramseyR`:** The definition via `sInf` is correct. For k, l ≥ 1, the set is nonempty by Ramsey's theorem, so `sInf` returns the true minimum. For degenerate cases (k = 0 or l = 0), `CliqueFree 0` is always false in Mathlib (the empty set is always a 0-clique), so `¬G.CliqueFree 0` is always true, giving `ramseyR 0 l = 0` and `ramseyR k 0 = 0`. This matches the convention R(0,l) = R(k,0) = 0.
+/home/ryan/formal-conjectures/ai-review/1030.md-65-
+ai-review/1030.md-66-**(b) Division by zero:** When `ramseyR k k = 0` (which occurs for k = 0), the ratio `(ramseyR (k+1) k : ℝ) / (ramseyR k k : ℝ)` would involve division by zero (which in Lean/Mathlib evaluates to 0 for reals). This is not a real issue because the ∃ K₀ quantifier allows avoiding small k, but it is worth noting that the statement is vacuously satisfiable for small k only because of the threshold K₀.
+/home/ryan/formal-conjectures/ai-review/1030.md-67-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean-47-
+FormalConjectures/ErdosProblems/610.lean-48-/-- $S$ is a maximal clique of $G$ (as a `Finset`): it is a clique and no vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean-49-outside $S$ can be added while preserving the clique property. -/
+FormalConjectures/ErdosProblems/610.lean:50:def IsMaximalCliqueFS {n : ℕ} (G : SimpleGraph (Fin n)) (S : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/610.lean-51-  G.IsClique (S : Set (Fin n)) ∧
+FormalConjectures/ErdosProblems/610.lean-52-  ∀ v : Fin n, v ∉ S → ¬G.IsClique (↑(insert v S) : Set (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean-54-/-- $T$ is a clique transversal of $G$ if $T$ meets every maximal clique of $G$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean-55-that has at least $2$ vertices. -/
+FormalConjectures/ErdosProblems/610.lean:56:def IsCliqueTransversal {n : ℕ} (G : SimpleGraph (Fin n)) (T : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/610.lean-57-  ∀ S : Finset (Fin n), IsMaximalCliqueFS G S → 2 ≤ S.card → (T ∩ S).Nonempty
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean-58-
+FormalConjectures/ErdosProblems/610.lean-59-/-- The clique transversal number $\tau(G)$: the minimum cardinality of a clique
+--
+/home/ryan/formal-conjectures/ai-review/927.md-4-
+ai-review/927.md-5-**Significant opportunity missed.** Mathlib already provides comprehensive clique infrastructure in `Mathlib.Combinatorics.SimpleGraph.Clique`:
+/home/ryan/formal-conjectures/ai-review/927.md-6-
+ai-review/927.md:7:- `SimpleGraph.IsClique (s : Set α)` — defined as `s.Pairwise G.Adj`, semantically equivalent to the custom `IsCliqueSet`.
+/home/ryan/formal-conjectures/ai-review/927.md-8-- `Maximal G.IsClique s` — maximal clique predicate, equivalent to `IsMaxCliqueSet`.
+/home/ryan/formal-conjectures/ai-review/927.md-9-- `SimpleGraph.IsNClique n s` — clique with specified size.
+/home/ryan/formal-conjectures/ai-review/927.md-10-- `SimpleGraph.cliqueSet n` — the set of all n-cliques.
+/home/ryan/formal-conjectures/ai-review/927.md-11-
+ai-review/927.md:12:The formalization defines three custom predicates (`IsCliqueSet`, `IsMaxCliqueSet`, `graphCliqueSizes`) that duplicate Mathlib functionality. Recommended refactoring:
+/home/ryan/formal-conjectures/ai-review/927.md-13-
+/home/ryan/formal-conjectures/ai-review/927.md-14-```lean
+ai-review/927.md-15--- Instead of custom IsCliqueSet:
+--
+/home/ryan/formal-conjectures/ai-review/927.md-55-**Good overall, minor suggestions.**
+/home/ryan/formal-conjectures/ai-review/927.md-56-
+/home/ryan/formal-conjectures/ai-review/927.md-57-- The docstring clearly explains the disproof and the formalization strategy (capturing a necessary consequence of the conjecture rather than the exact asymptotic statement). This is well-motivated.
+ai-review/927.md:58:- The helper definitions (`IsCliqueSet`, `IsMaxCliqueSet`, `graphCliqueSizes`) have clear docstrings.
+/home/ryan/formal-conjectures/ai-review/927.md-59-- The namespace `Erdos927` is appropriate.
+ai-review/927.md-60-- Minor: the main theorem's RHS universally quantifies over all graphs (`∀ G`), which implicitly captures g(n) since g(n) = max over G. The docstring explains this, but a brief inline comment in the Lean code could help.
+/home/ryan/formal-conjectures/ai-review/927.md-61-- If refactored to use Mathlib's clique definitions, the file would be shorter and more idiomatic.
+--
+ai-review/542.md-7-The formalization is self-contained and short, which is appropriate. However, some observations:
+/home/ryan/formal-conjectures/ai-review/542.md-8-
+/home/ryan/formal-conjectures/ai-review/542.md-9-- **Problem 441** (`ErdosProblems/441.lean`) defines a reusable `LcmBounded` predicate for the dual condition (lcm ≤ N). A symmetric `LcmExceeds` or `PairwiseLcmLarge` predicate could be extracted and shared between 542 and 441, but the current inline approach is fine for a single theorem.
+ai-review/542.md:10:- **Problem 856** (`ErdosProblems/856.lean`) defines `NoPairwiseLcmClique` and `fk`, which use the same `∑ n ∈ A, (1 : ℝ) / (n : ℝ)` sum pattern. No direct reuse opportunity, but the pattern is consistent.
+/home/ryan/formal-conjectures/ai-review/542.md-11-- **Problem 783** (`ErdosProblems/783.lean`) has a nearly identical structure (pairwise condition on a finset, bounded reciprocal sum). The coding style is consistent across these files.
+/home/ryan/formal-conjectures/ai-review/542.md-12-- **`FormalConjecturesForMathlib/NumberTheory/Primitive.lean`** defines `Set.IsPrimitive`, which relates to the concept of primitive sets (sets where no element divides another). Sets with pairwise lcm > n are a strengthening of primitive sets, but the existing `IsPrimitive` API operates on `Set ℕ` rather than `Finset ℕ` and isn't directly usable here.
+/home/ryan/formal-conjectures/ai-review/542.md-13-
+--
+ai-review/22.md-12-Problem 22 could be restated directly in terms of `ramseyTuranNumber`:
+ai-review/22.md-13-the conjecture is equivalent to `∀ ε > 0, ∃ N, ∀ n ≥ N, (n² / 8 : ℝ) ≤ ramseyTuranNumber n 4 ⌈ε * n⌉`.
+/home/ryan/formal-conjectures/ai-review/22.md-14-
+ai-review/22.md:15:Additionally, Problem 615 uses `G.CliqueFree 4` (Mathlib's `SimpleGraph.CliqueFree`) for K₄-freeness, whereas Problem 22 manually inlines the definition as `∀ s : Finset (Fin n), ¬G.IsNClique 4 s`. These are definitionally equivalent (since `CliqueFree n` is defined as `∀ t, ¬G.IsNClique n t`), but using `CliqueFree` would improve consistency across the codebase and readability.
+/home/ryan/formal-conjectures/ai-review/22.md-16-
+/home/ryan/formal-conjectures/ai-review/22.md-17-Problem 615 also uses `G.edgeFinset.card` for edge counting, while Problem 22 uses `G.edgeSet.ncard`. For `SimpleGraph (Fin n)` (a finite type), both give the same result, but `edgeFinset.card` is more idiomatic and consistent with Problem 615 and other files in the codebase.
+/home/ryan/formal-conjectures/ai-review/22.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/1017.md-9-- **Problem 1009** (`ErdosProblems/1009.lean`) defines `HasEdgeDisjointTriangles` with yet another encoding.
+/home/ryan/formal-conjectures/ai-review/1017.md-10-- **`IsPathCover`** in `GraphConjectures/Invariants.lean` handles vertex-disjoint path decompositions.
+/home/ryan/formal-conjectures/ai-review/1017.md-11-
+ai-review/1017.md:12:A shared definition such as `CliquePartitionNumber` (akin to `pathCoverNumber` or `edgeCoverNumber` already in the codebase) could unify Problems 81, 1017, and potentially 1009. As-is, each problem reinvents the clique partition concept with subtly different encodings (vertex-set vs. edge-set, `Finset` of `Finset` vs. indexed family). This is a meaningful opportunity for abstraction.
+/home/ryan/formal-conjectures/ai-review/1017.md-13-
+/home/ryan/formal-conjectures/ai-review/1017.md-14-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1017.md-15-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean-42-/-- A set of vertices forms a clique (complete subgraph) in $G$ if every pair
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean-43-    of distinct vertices in the set is adjacent. -/
+FormalConjectures/ErdosProblems/927.lean:44:def IsCliqueSet {n : ℕ} (G : SimpleGraph (Fin n)) (S : Finset (Fin n)) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean-45-  ∀ u ∈ S, ∀ v ∈ S, u ≠ v → G.Adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean-46-
+FormalConjectures/ErdosProblems/927.lean-47-/-- A maximal clique: a clique not properly contained in any other clique. -/
+FormalConjectures/ErdosProblems/927.lean:48:def IsMaxCliqueSet {n : ℕ} (G : SimpleGraph (Fin n))
+FormalConjectures/ErdosProblems/927.lean-49-    (S : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/927.lean-50-  IsCliqueSet G S ∧ ∀ T : Finset (Fin n), S ⊂ T → ¬IsCliqueSet G T
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean-52-/-- The set of distinct sizes of maximal cliques in a simple graph. -/
+FormalConjectures/ErdosProblems/927.lean:53:def graphCliqueSizes {n : ℕ} (G : SimpleGraph (Fin n)) : Set ℕ :=
+FormalConjectures/ErdosProblems/927.lean-54-  {m : ℕ | ∃ S : Finset (Fin n), IsMaxCliqueSet G S ∧ S.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/927.lean-56-/--
+--
+/home/ryan/formal-conjectures/ai-review/925.md-4-
+/home/ryan/formal-conjectures/ai-review/925.md-5-**Several opportunities for reuse exist.**
+/home/ryan/formal-conjectures/ai-review/925.md-6-
+ai-review/925.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/925.md-8-
+ai-review/925.md:9:- **`IsNotRamseyForTriangle`**: This definition (`∃ H ≤ G, H.CliqueFree 3 ∧ (G \ H).CliqueFree 3`) uses the same 2-coloring-via-subgraph pattern as Problem 582 (Folkman numbers). Problem 582 inlines the same pattern rather than factoring it out. If both problems used a shared predicate, cross-referencing would be cleaner. However, this is a minor point since the definition is short.
+/home/ryan/formal-conjectures/ai-review/925.md-10-
+/home/ryan/formal-conjectures/ai-review/925.md-11-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/925.md-12-
+--
+ai-review/922.md-7-(↑T : Set V).Pairwise (fun u v => ¬G.Adj u v)
+/home/ryan/formal-conjectures/ai-review/922.md-8-```
+/home/ryan/formal-conjectures/ai-review/922.md-9-
+ai-review/922.md:10:Mathlib already defines `SimpleGraph.IsIndepSet` (in `Mathlib.Combinatorics.SimpleGraph.Clique`, line ~788) as:
+/home/ryan/formal-conjectures/ai-review/922.md-11-```lean
+ai-review/922.md-12-abbrev IsIndepSet (s : Set α) : Prop :=
+/home/ryan/formal-conjectures/ai-review/922.md-13-  s.Pairwise (fun v w ↦ ¬G.Adj v w)
+--
+/home/ryan/formal-conjectures/ai-review/637.md-6-
+/home/ryan/formal-conjectures/ai-review/637.md-7-**`inducedDegree` vs Mathlib.** The custom `inducedDegree` definition computes `(S.filter fun w => G.Adj v w).card`. An equivalent Mathlib-based expression would be `(G.neighborFinset v ∩ S).card` or `(G.induce ↑S).degree ⟨v, hv⟩` (for `v ∈ S`). The custom definition is arguably clearer for this self-contained problem and avoids subtype coercion overhead, so the choice is reasonable.
+/home/ryan/formal-conjectures/ai-review/637.md-8-
+ai-review/637.md:9:**`graphCliqueNumber` in Problem 813.** Problem 813 defines a standalone `graphCliqueNumber` function. Mathlib also provides `SimpleGraph.cliqueNum`. However, Problem 637 does not use a clique number definition at all — it instead inlines the bound as a universal quantification over cliques (∀ S, IsClique S → |S| ≤ C·log n). This inline approach is actually more direct and avoids needing to reason about `sSup`, so the current choice is sound.
+/home/ryan/formal-conjectures/ai-review/637.md-10-
+/home/ryan/formal-conjectures/ai-review/637.md-11-**`α(G)` notation in FormalConjecturesForMathlib.** The file `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` provides `α(G)` notation for `indepNum G`. This is not used in 637, which instead encodes independence number constraints via `Gᶜ.IsClique`. Again, the inline approach is preferable here for the same reasons.
+/home/ryan/formal-conjectures/ai-review/637.md-12-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/775.lean-39-
+FormalConjectures/ErdosProblems/775.lean-40-/-- A clique in a $k$-uniform hypergraph is a maximal complete subhypergraph:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/775.lean-41-$S$ is complete and no strict superset of $S$ is complete. -/
+FormalConjectures/ErdosProblems/775.lean:42:def IsHypergraphClique {n : ℕ} (H : Finset (Finset (Fin n))) (k : ℕ)
+FormalConjectures/ErdosProblems/775.lean-43-    (S : Finset (Fin n)) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/775.lean-44-  IsCompleteInHypergraph H k S ∧
+FormalConjectures/ErdosProblems/775.lean-45-  ∀ T : Finset (Fin n), S ⊂ T → ¬IsCompleteInHypergraph H k T
+--
+/home/ryan/formal-conjectures/ai-review/78.md-8-
+ai-review/78.md-9-**Issue: Multiple independent definitions of diagonal Ramsey numbers across the codebase.**
+/home/ryan/formal-conjectures/ai-review/78.md-10-
+ai-review/78.md:11:The formalization in Problem 78 does *not* define a named Ramsey number; instead, it directly inlines the Ramsey property as `∃ G : SimpleGraph (Fin n), G.CliqueFree k ∧ Gᶜ.CliqueFree k`. Several other files define closely related diagonal Ramsey numbers:
+/home/ryan/formal-conjectures/ai-review/78.md-12-
+/home/ryan/formal-conjectures/ai-review/78.md-13-| File | Definition | Style |
+/home/ryan/formal-conjectures/ai-review/78.md-14-|------|-----------|-------|
+--
+/home/ryan/formal-conjectures/ai-review/78.md-19-
+/home/ryan/formal-conjectures/ai-review/78.md-20-Problem 78's inlined approach is equivalent to the `SimpleGraph`-based definitions (165, 163) for the diagonal case, and is mathematically equivalent to Problem 1029's edge-coloring formulation.
+/home/ryan/formal-conjectures/ai-review/78.md-21-
+ai-review/78.md:22:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/78.md-23-
+/home/ryan/formal-conjectures/ai-review/78.md-24----
+/home/ryan/formal-conjectures/ai-review/78.md-25-
+--
+/home/ryan/formal-conjectures/ai-review/778.md-61-
+/home/ryan/formal-conjectures/ai-review/778.md-62-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/778.md-63-
+ai-review/778.md:64:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/778.md-65-
+/home/ryan/formal-conjectures/ai-review/778.md-66-**(c) `fromEdgeSet` creates a graph with `Adj v w ↔ s(v,w) ∈ S ∧ v ≠ w`.** This correctly excludes self-loops, which is appropriate for `SimpleGraph`. No issue here.
+/home/ryan/formal-conjectures/ai-review/778.md-67-
+--
+/home/ryan/formal-conjectures/ai-review/1037.md-71-
+ai-review/1037.md-72-- **Distinct degree count:** The image-based counting `(Finset.univ.image (fun v => ...)).card` correctly computes the number of distinct degrees.
+/home/ryan/formal-conjectures/ai-review/1037.md-73-
+ai-review/1037.md:74:- **Trivial subgraph definition:** Using `G.IsClique` for cliques and `Gᶜ.IsClique` for independent sets is standard and correct. Note that `IsClique` in Mathlib is defined as pairwise adjacency on the set, which includes the empty set and singletons as cliques. This is fine since the interesting content is the size bound.
+/home/ryan/formal-conjectures/ai-review/1037.md-75-
+ai-review/1037.md-76-- **Logarithm:** `Real.log n` is the natural logarithm, which is the standard convention in combinatorics for Ramsey-type bounds. This is consistent with Problem 1036.
+/home/ryan/formal-conjectures/ai-review/1037.md-77-
+--
+/home/ryan/formal-conjectures/ai-review/151.md-2-
+/home/ryan/formal-conjectures/ai-review/151.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/151.md-4-
+ai-review/151.md:5:**Significant duplication exists.** The definitions `IsMaximalCliqueFS`, `IsCliqueTransversal`, and the clique transversal number are duplicated nearly verbatim across three files:
+/home/ryan/formal-conjectures/ai-review/151.md-6-
+/home/ryan/formal-conjectures/ai-review/151.md-7-- `FormalConjectures/ErdosProblems/151.lean` (`Erdos151.IsMaximalCliqueFS`, `Erdos151.IsCliqueTransversal`, `Erdos151.cliqueTransversalNumber`)
+/home/ryan/formal-conjectures/ai-review/151.md-8-- `FormalConjectures/ErdosProblems/610.lean` (`Erdos610.IsMaximalCliqueFS`, `Erdos610.IsCliqueTransversal`, `Erdos610.cliqueTransversalNum`)
+--
+ai-review/151.md-62-**The formalization is mathematically correct, with minor technical caveats:**
+/home/ryan/formal-conjectures/ai-review/151.md-63-
+ai-review/151.md-64-### Correct aspects:
+ai-review/151.md:65:- The definition of `IsMaximalCliqueFS` correctly captures inclusion-maximal cliques.
+/home/ryan/formal-conjectures/ai-review/151.md-66-- The `2 ≤ S.card` guard in `IsCliqueTransversal` correctly excludes isolated vertices (singleton maximal cliques), matching the problem statement.
+ai-review/151.md-67-- The definition of `H(n)` using `sInf` over independence numbers of triangle-free graphs is correct: for all n ≥ 0, the set is nonempty (the edgeless graph on n vertices is triangle-free with independence number n), so `sInf` returns the true minimum.
+/home/ryan/formal-conjectures/ai-review/151.md-68-- The overall conjecture statement `cliqueTransversalNumber G ≤ n - H n` faithfully represents the mathematical claim.
+--
+/home/ryan/formal-conjectures/ai-review/611.md-2-
+/home/ryan/formal-conjectures/ai-review/611.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/611.md-4-
+ai-review/611.md:5:**Significant duplication with Problem 610.** The definitions `IsMaximalCliqueFS`, `IsCliqueTransversal`, and `cliqueTransversalNum` are identically defined in both `Erdos610` and `Erdos611` namespaces (compare `610.lean:50–62` with `611.lean:45–57`). These should be extracted into a shared module under `FormalConjecturesForMathlib` (or a common `ErdosProblems/CliqueTransversal.lean` utility file) and imported by both problems.
+/home/ryan/formal-conjectures/ai-review/611.md-6-
+/home/ryan/formal-conjectures/ai-review/611.md-7-Additionally, `AllMaxCliquesAtLeast` from 611 could be useful for other clique-related problems and is a natural candidate for shared infrastructure.
+/home/ryan/formal-conjectures/ai-review/611.md-8-
+ai-review/611.md:9:No existing definitions in `FormalConjecturesForMathlib` cover maximal clique transversals. Mathlib provides `SimpleGraph.IsClique` and `SimpleGraph.IsNClique` but has no built-in notion of maximal clique or clique transversal number. The custom definitions here are necessary, but should be centralized.
+/home/ryan/formal-conjectures/ai-review/611.md-10-
+/home/ryan/formal-conjectures/ai-review/611.md-11-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/611.md-12-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-40-
+FormalConjectures/ErdosProblems/805.lean-41-/-- A clique in a simple graph: a finset of vertices where every two distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-42-    members are adjacent. -/
+FormalConjectures/ErdosProblems/805.lean:43:def IsFinsetClique {V : Type*} (G : SimpleGraph V) (S : Finset V) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-44-  ∀ u ∈ S, ∀ v ∈ S, u ≠ v → G.Adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-45-
+FormalConjectures/ErdosProblems/805.lean-46-/-- An independent set in a simple graph: a finset of vertices with no edges
+--
+/home/ryan/formal-conjectures/ai-review/1031.md-57-
+/home/ryan/formal-conjectures/ai-review/1031.md-58-- The constant 10 in "10 log n" is explicitly given. The problem works for any constant, so the specific value is not critical.
+ai-review/1031.md-59-- The log base is unspecified on the website. The formalization uses `Real.log` (natural logarithm). Since the problem involves asymptotic statements where the base only affects constants, and the existentially quantified constant `c` absorbs any base change, this is a valid and standard choice. **Ambiguity: minimal.**
+ai-review/1031.md:60:- "Trivial subgraph" (empty or complete) is well-defined. The formalization correctly splits this into: no clique of the given size (`G.CliqueFree`) and no independent set of the given size (`Gᶜ.CliqueFree`).
+/home/ryan/formal-conjectures/ai-review/1031.md-61-- "Induced regular subgraph" is standard graph-theoretic terminology with a precise meaning.
+/home/ryan/formal-conjectures/ai-review/1031.md-62-
+/home/ryan/formal-conjectures/ai-review/1031.md-63-## 6. Correctness
+--
+/home/ryan/formal-conjectures/ai-review/627.md-4-
+ai-review/627.md-5-**Several opportunities for reuse exist:**
+/home/ryan/formal-conjectures/ai-review/627.md-6-
+ai-review/627.md:7:- **`cliqueNumber627`** is identical to `Erdos778.cliqueNumber` in `FormalConjectures/ErdosProblems/778.lean:61–62`. Both define `sSup {k : ℕ | ¬G.CliqueFree k}`. These should be unified into a shared utility.
+/home/ryan/formal-conjectures/ai-review/627.md-8-
+ai-review/627.md:9:- **Mathlib's `SimpleGraph.cliqueNum`** (in `Mathlib.Combinatorics.SimpleGraph.Clique`) is defined as `sSup {n | ∃ s, G.IsNClique n s}`, which is mathematically equivalent since `¬G.CliqueFree k ↔ ∃ s, G.IsNClique k s` by definition of `CliqueFree`. This is a direct drop-in replacement.
+/home/ryan/formal-conjectures/ai-review/627.md-10-
+/home/ryan/formal-conjectures/ai-review/627.md-11-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/627.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/805.md-2-
+/home/ryan/formal-conjectures/ai-review/805.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/805.md-4-
+ai-review/805.md:5:**Significant duplication with Mathlib.** The file defines custom `IsFinsetClique` and `IsIndepSet` that closely duplicate existing Mathlib definitions in `Mathlib.Combinatorics.SimpleGraph.Clique`:
+/home/ryan/formal-conjectures/ai-review/805.md-6-
+/home/ryan/formal-conjectures/ai-review/805.md-7-| Custom (805.lean) | Mathlib equivalent |
+/home/ryan/formal-conjectures/ai-review/805.md-8-|-|-|
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-44-      G.Adj a b ∧ G.Adj a c ∧ G.Adj b c
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-45-
+FormalConjectures/ErdosProblems/813.lean-46-/-- The clique number of a graph on $n$ vertices: the supremum of sizes of cliques. -/
+FormalConjectures/ErdosProblems/813.lean:47:noncomputable def graphCliqueNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/813.lean-48-  sSup {k : ℕ | ∃ S : Finset (Fin n), S.card = k ∧ G.IsClique (↑S : Set (Fin n))}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-50-/-- $h(n)$ is the minimum clique number over all graphs on $n$ vertices in which
+--
+/home/ryan/formal-conjectures/ai-review/813.md-2-
+/home/ryan/formal-conjectures/ai-review/813.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/813.md-4-
+ai-review/813.md:5:**Issue found.** The custom `graphCliqueNumber` definition (line 47) is mathematically equivalent to Mathlib's built-in `SimpleGraph.cliqueNum`, which is defined as `sSup {n | ∃ s, G.IsNClique n s}`. Problem 61 (`ErdosProblems/61.lean`) already uses `G.cliqueNum` directly from Mathlib. The custom definition should be replaced with `G.cliqueNum` for consistency and to avoid redundancy.
+/home/ryan/formal-conjectures/ai-review/813.md-6-
+/home/ryan/formal-conjectures/ai-review/813.md-7-Similarly, `EverySevenSetHasTriangle` could potentially be expressed using Mathlib's `IsNClique 3` predicate for the triangle condition, though the current explicit formulation is arguably more readable.
+/home/ryan/formal-conjectures/ai-review/813.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/813.md-32-- The main theorem statement is readable and well-documented.
+/home/ryan/formal-conjectures/ai-review/813.md-33-
+ai-review/813.md-34-**Minor suggestions:**
+ai-review/813.md:35:- The `EverySevenSetHasTriangle` definition manually encodes distinctness (`a ≠ b ∧ a ≠ c ∧ b ≠ c`) and membership. Using Mathlib's `IsClique` or `IsNClique 3` for the triangle sub-condition on the subset would be more idiomatic, e.g., expressing it as the existence of a 3-element sub-finset `T ⊆ S` with `G.IsClique ↑T`.
+/home/ryan/formal-conjectures/ai-review/813.md-36-
+/home/ryan/formal-conjectures/ai-review/813.md-37-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/813.md-38-
+--
+/home/ryan/formal-conjectures/ai-review/813.md-49-
+ai-review/813.md-50-- **Triangle condition:** Correctly captures "every 7-element subset contains a triangle" using explicit distinctness and adjacency. Checking only sets of exactly 7 elements is sufficient (any larger set contains a 7-element subset, inheriting the property). The number 7 matches the problem statement on the website.
+/home/ryan/formal-conjectures/ai-review/813.md-51-
+ai-review/813.md:52:- **Clique number definition:** `graphCliqueNumber` using `sSup` over `{k | ∃ S, S.card = k ∧ G.IsClique ↑S}` is correct for finite graphs on `Fin n`. The set is non-empty (the empty set is a clique of size 0) and bounded above (by $n$), so `sSup` is well-behaved.
+/home/ryan/formal-conjectures/ai-review/813.md-53-
+ai-review/813.md:54:- **$h(n)$ definition:** `erdos813H` using `sInf` on the image of `graphCliqueNumber` over qualifying graphs is correct. For any $n$, the set of qualifying graphs is non-empty (the complete graph satisfies the 7-vertex triangle property vacuously or by Ramsey), so `sInf` is well-defined.
+/home/ryan/formal-conjectures/ai-review/813.md-55-
+ai-review/813.md-56-- **Main theorem:** The quantifier structure $\exists c_1 > 0, c_2 > 0, C_1 > 0, C_2 > 0, N_0, \forall n \ge N_0, \ldots$ correctly formalizes the asymptotic statement. Both the lower bound $C_1 \cdot n^{1/3 + c_1} \le h(n)$ and upper bound $h(n) \le C_2 \cdot n^{1/2 - c_2}$ are conjoined, which is the intended reading.
+/home/ryan/formal-conjectures/ai-review/813.md-57-
+--
+/home/ryan/formal-conjectures/ai-review/165.md-74-
+ai-review/165.md-75-Detailed verification:
+/home/ryan/formal-conjectures/ai-review/165.md-76-
+ai-review/165.md:77:- **`ramseyR3` definition:** Correctly captures R(3,k) as the minimum N such that every simple graph on N vertices contains a triangle (¬CliqueFree 3) or an independent set of size k (¬Gᶜ.CliqueFree k, i.e., the complement has a k-clique). The use of `sInf` is valid since the Ramsey property set is upward-closed (if every graph on N vertices satisfies it, so does every graph on N+m vertices, by restricting to an N-vertex subgraph).
+/home/ryan/formal-conjectures/ai-review/165.md-78-
+ai-review/165.md-79-- **Asymptotic statement:** The (c ± ε) · k²/log k sandwich correctly formalizes f ~ c·g. For any fixed ε > 0, requiring (c-ε)·g(k) ≤ f(k) ≤ (c+ε)·g(k) for large k is equivalent to f(k)/g(k) → c (when g(k) > 0, which holds for k ≥ 2 since Real.log k > 0).
+/home/ryan/formal-conjectures/ai-review/165.md-80-
+--
+/home/ryan/formal-conjectures/ai-review/191.md-4-
+/home/ryan/formal-conjectures/ai-review/191.md-5-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/191.md-6-
+ai-review/191.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/191.md-8-
+/home/ryan/formal-conjectures/ai-review/191.md-9-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/191.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/804.md-2-
+/home/ryan/formal-conjectures/ai-review/804.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/804.md-4-
+ai-review/804.md:5:**Significant duplication with Mathlib.** The file defines its own `IsIndepSet` and `independenceNum` (lines 44–50), but Mathlib already provides a complete API in `Mathlib.Combinatorics.SimpleGraph.Clique`:
+/home/ryan/formal-conjectures/ai-review/804.md-6-
+/home/ryan/formal-conjectures/ai-review/804.md-7-- `SimpleGraph.IsIndepSet` — defined as `s.Pairwise (fun v w ↦ ¬G.Adj v w)` (on `Set α`). The custom definition is equivalent (the extra `u = v` case is vacuous by `SimpleGraph.loopless`), but uses `Finset` membership rather than `Set.Pairwise`.
+/home/ryan/formal-conjectures/ai-review/804.md-8-- `SimpleGraph.indepNum` — `sSup {n | ∃ s, G.IsNIndepSet n s}`. This is the standard independence number and replaces the custom `independenceNum`.
+--
+/home/ryan/formal-conjectures/ai-review/719.md-4-
+/home/ryan/formal-conjectures/ai-review/719.md-5-**Several opportunities for reuse exist with other hypergraph Turán problems in the codebase.**
+/home/ryan/formal-conjectures/ai-review/719.md-6-
+ai-review/719.md:7:- **Problem 712** (`ErdosProblems/712.lean`) defines `exrKkr r k n`, a general r-uniform Turán number ex_r(n, K_k^r). Setting `k = r + 1` yields exactly `turanHypergraphNumber n r` from Problem 719. Similarly, `IsKkrFree r (r+1) H` is equivalent to the conjunction `IsRUniformHypergraph n r H ∧ IsHypergraphCliqueFree r H`. These definitions could be unified: Problem 719 could import and specialize Problem 712's definitions rather than re-deriving them.
+/home/ryan/formal-conjectures/ai-review/719.md-8-
+/home/ryan/formal-conjectures/ai-review/719.md-9-- **Problem 500** (`ErdosProblems/500.lean`) defines `IsK43Free` and `ex3K43`, which are the specialization of the same concepts to r=3, k=4. All three problems (500, 712, 719) independently define r-uniform Turán numbers using the same `sSup` pattern.
+/home/ryan/formal-conjectures/ai-review/719.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/719.md-34-
+ai-review/719.md-35-The code is well-structured and readable:
+/home/ryan/formal-conjectures/ai-review/719.md-36-
+ai-review/719.md:37:- Each definition (`IsRUniformHypergraph`, `IsHypergraphCliqueFree`, `turanHypergraphNumber`, `pieceEdges`) has a clear docstring with LaTeX notation.
+/home/ryan/formal-conjectures/ai-review/719.md-38-- The main theorem statement is broken into five clearly separated conjuncts.
+/home/ryan/formal-conjectures/ai-review/719.md-39-- The `pieceEdges` helper is a clean way to unify the edge sets of K_r^r and K_{r+1}^r copies.
+/home/ryan/formal-conjectures/ai-review/719.md-40-
+--
+ai-review/1015.md-5-**Multiple redundant Ramsey number definitions exist across the codebase.** The `ramseyNumber₂` defined at line 71 of `ErdosProblems/1015.lean` is yet another bespoke Ramsey number definition using `Fin n → Fin n → Bool` colorings. At least 18 other Erdos problem files define their own Ramsey number variants (e.g., `ramseyR` in 1014, 1030, 986; `ramseyR3` in 544, 553, 165; `ramseyNumber` in 545–549; `ramseyNum` in 568–570; etc.). Additionally:
+/home/ryan/formal-conjectures/ai-review/1015.md-6-
+/home/ryan/formal-conjectures/ai-review/1015.md-7-- `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `Combinatorics.hypergraphRamsey` for r-uniform hypergraph Ramsey numbers. Specializing to r = 2 would give the graph Ramsey number, though the interface differs (it uses `Finset (Fin m) → Bool` for hyperedge coloring rather than `Fin n → Fin n → Bool` for edge coloring).
+ai-review/1015.md:8:- `ErdosProblems/1014.lean` defines `ramseyR` using `SimpleGraph` and `CliqueFree`, which is arguably more idiomatic Lean/Mathlib style.
+/home/ryan/formal-conjectures/ai-review/1015.md-9-
+ai-review/1015.md:10:A shared Ramsey number definition (ideally using Mathlib's `SimpleGraph` API) would eliminate substantial duplication. The `IsMonoClique` definition at line 52 is also ad hoc and could be replaced by Mathlib's `SimpleGraph.IsNClique` or similar.
+/home/ryan/formal-conjectures/ai-review/1015.md-11-
+/home/ryan/formal-conjectures/ai-review/1015.md-12-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1015.md-13-
+--
+/home/ryan/formal-conjectures/ai-review/807.md-2-
+/home/ryan/formal-conjectures/ai-review/807.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/807.md-4-
+ai-review/807.md:5:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/807.md-6-
+ai-review/807.md-7-**Duplicate definitions in codebase:** `independenceNumber` and `IsIndependentSet` are also defined locally in `ErdosProblems/151.lean` (line 56) and `ErdosProblems/615.lean` (line 62). These are all independent re-definitions of the same concept. A shared definition (ideally Mathlib's `indepNum`) should be used.
+/home/ryan/formal-conjectures/ai-review/807.md-8-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-49-/-- A set $S$ of vertices in `Fin n` is a monochromatic clique of colour $b$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-50-under the edge-colouring $c$ if every pair of distinct vertices in $S$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-51-has colour $b$. -/
+FormalConjectures/ErdosProblems/1015.lean:52:def IsMonoClique (n : ℕ) (c : Fin n → Fin n → Bool) (S : Finset (Fin n))
+FormalConjectures/ErdosProblems/1015.lean-53-    (b : Bool) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-54-  ∀ i ∈ S, ∀ j ∈ S, i ≠ j → c i j = b
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-55-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-42-
+FormalConjectures/ErdosProblems/611.lean-43-/-- $S$ is a maximal clique of $G$ (as a `Finset`): it is a clique and no vertex
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-44-    outside $S$ can be added while preserving the clique property. -/
+FormalConjectures/ErdosProblems/611.lean:45:def IsMaximalCliqueFS {n : ℕ} (G : SimpleGraph (Fin n)) (S : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/611.lean-46-  G.IsClique (S : Set (Fin n)) ∧
+FormalConjectures/ErdosProblems/611.lean-47-  ∀ v : Fin n, v ∉ S → ¬G.IsClique (↑(insert v S) : Set (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-49-/-- $T$ is a clique transversal of $G$ if $T$ meets every maximal clique of $G$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-50-    that has at least $2$ vertices. -/
+FormalConjectures/ErdosProblems/611.lean:51:def IsCliqueTransversal {n : ℕ} (G : SimpleGraph (Fin n)) (T : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/611.lean-52-  ∀ S : Finset (Fin n), IsMaximalCliqueFS G S → 2 ≤ S.card → (T ∩ S).Nonempty
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-53-
+FormalConjectures/ErdosProblems/611.lean-54-/-- The clique transversal number $\tau(G)$: the minimum cardinality of a clique
+--
+FormalConjectures/ErdosProblems/611.lean-57-  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal G T ∧ T.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-59-/-- Every maximal clique of $G$ with at least $2$ vertices has at least $m$ vertices. -/
+FormalConjectures/ErdosProblems/611.lean:60:def AllMaxCliquesAtLeast {n : ℕ} (G : SimpleGraph (Fin n)) (m : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/611.lean-61-  ∀ S : Finset (Fin n), IsMaximalCliqueFS G S → 2 ≤ S.card → m ≤ S.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean-63-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-38-
+FormalConjectures/ErdosProblems/151.lean-39-/-- $S$ is a maximal clique of $G$ (represented as a `Finset`): it is a clique and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-40-no vertex outside $S$ can be added while preserving the clique property. -/
+FormalConjectures/ErdosProblems/151.lean:41:def IsMaximalCliqueFS {n : ℕ} (G : SimpleGraph (Fin n)) (S : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/151.lean-42-  G.IsClique (S : Set (Fin n)) ∧
+FormalConjectures/ErdosProblems/151.lean-43-  ∀ v : Fin n, v ∉ S → ¬G.IsClique (↑(insert v S) : Set (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-45-/-- $T$ is a clique transversal of $G$ if $T$ has non-empty intersection with every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-46-maximal clique of $G$ that has at least $2$ vertices. -/
+FormalConjectures/ErdosProblems/151.lean:47:def IsCliqueTransversal {n : ℕ} (G : SimpleGraph (Fin n)) (T : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/151.lean-48-  ∀ S : Finset (Fin n), IsMaximalCliqueFS G S → 2 ≤ S.card → (T ∩ S).Nonempty
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-49-
+FormalConjectures/ErdosProblems/151.lean-50-/-- The clique transversal number $\tau(G)$: the minimum cardinality of a clique
+--
+FormalConjectures/ErdosProblems/1078.lean-44-/-- A transversal clique in an $r$-partite graph: a choice of one vertex from each
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1078.lean-45-part such that all chosen vertices are pairwise adjacent. This corresponds
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1078.lean-46-to a copy of $K_r$ in an $r$-partite graph. -/
+FormalConjectures/ErdosProblems/1078.lean:47:def HasTransversalClique {r n : ℕ} (G : SimpleGraph (Fin r × Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/1078.lean-48-  ∃ f : Fin r → Fin n, ∀ i j : Fin r, i ≠ j → G.Adj (i, f i) (j, f j)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1078.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1078.lean-50-/--

@@ -1,0 +1,828 @@
+FormalConjecturesForMathlib.lean:36:import FormalConjecturesForMathlib.Combinatorics.Ramsey
+FormalConjecturesForMathlib.lean:46:import FormalConjecturesForMathlib.Combinatorics.SimpleGraph.SizeRamsey
+FormalConjectures/ErdosProblems/638.lean:23:finite induced subgraph of $G$ belongs to a given family $S$ with the Ramsey property, and
+FormalConjectures/ErdosProblems/638.lean:55:Let $S$ be a family of finite graphs (indexed by vertex count) with the Ramsey
+FormalConjectures/ErdosProblems/636.lean:39:of Ramsey graphs_ (2021).
+ai-review/552.md:8:[Omitted long matching line]
+ai-review/552.md:12:### `offDiagRamseyNumber` (lines 44–47)
+ai-review/552.md:15:**Recommendation:** Extract `offDiagRamseyNumber` into a shared file (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Ramsey.lean` or a new utility), parameterized over Mathlib's `IsContained`.
+ai-review/552.md:38:- Expand `[BEFRS89]` to its full form, e.g.: `Burr, S. A., Erdős, P., Faudree, R. J., Rousseau, C. C., and Schelp, R. H., *Ramsey numbers for stars-versus-connected graphs*, ...`
+ai-review/552.md:39:- Expand `[Pa75]` to its full form: `Parsons, T. D., *Ramsey graphs and block designs*, J. Combin. Theory Ser. A 20 (1976), 12–19.` (Note: commonly cited as 1975 but published 1976.)
+ai-review/552.md:62:- The cast `(offDiagRamseyNumber ... : ℝ)` on line 89 is necessary for the real-valued inequality but slightly obscures the statement. This is unavoidable given the use of `Real.sqrt`.
+ai-review/552.md:73:- R(G₁, G₂) is the standard off-diagonal Ramsey number.
+ai-review/552.md:88:[Omitted long matching line]
+ai-review/552.md:104:| Code reuse | `ContainsSubgraphCopy`, `offDiagRamseyNumber`, and `cycleGraph` should use Mathlib equivalents or be shared |
+FormalConjectures/ErdosProblems/1105.lean:29:- [Yu21] L.-T. Yuan, The anti-Ramsey number for paths. arXiv:2102.00807 (2021).
+FormalConjectures/ErdosProblems/1105.lean:37:The anti-Ramsey number $\mathrm{AR}(n,G)$ is the maximum possible number of colours in which the
+FormalConjectures/ErdosProblems/1105.lean:51:    ((fun n => (antiRamseyNum (cycleGraph k) n : ℝ) - ((k - 2 : ℝ) / 2 + 1 / (k - 1)) * n)
+FormalConjectures/ErdosProblems/1105.lean:69:    antiRamseyNum (pathGraph k) n = max ((k - 2).choose 2 + 1) ((ℓ - 1).choose 2 +
+ai-review/546.md:5:**Major issue.** The definitions `ContainsSubgraphCopy` and `ramseyNumber` are duplicated verbatim across at least five files: 545, 546, 547, 548, and 549. These should be factored into a shared utility.
+ai-review/546.md:11:The `ramseyNumber` definition could be rewritten using `G ⊑ H ∨ G ⊑ Hᶜ` (where `⊑` is `IsContained`), eliminating the need for the custom `ContainsSubgraphCopy`.
+ai-review/546.md:13:Additionally, `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` already uses `IsContained` for a related Ramsey concept (`sizeRamsey`). The no-isolated-vertices condition there uses `∀ v, 0 < H.degree v`, which is cleaner than the existential formulation `∀ v, ∃ w, G.Adj v w` used here (though they are equivalent for `DecidableRel`).
+ai-review/546.md:40:- The no-isolated-vertices condition `∀ v : Fin k, ∃ w : Fin k, G.Adj v w` is clear but could alternatively use `∀ v, 0 < G.degree v` (as in `SizeRamsey.lean`) if `DecidableRel G.Adj` were available, which would more directly express "minimum degree ≥ 1."
+ai-review/546.md:48:The only minor source of ambiguity is what "R(G)" means — the diagonal graph Ramsey number (every 2-coloring of K_N contains a monochromatic copy of G). The formalization's definition matches this standard interpretation exactly.
+ai-review/546.md:58:2. **`ramseyNumber` (line 50–52):** Defines R(G) as `sInf {N | ∀ H : SimpleGraph (Fin N), ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}`. This correctly captures the diagonal Ramsey number: the minimum N such that every graph on N vertices contains G or its complement contains G. By the classical Ramsey theorem (since any graph G on k vertices satisfies R(G) ≤ R(k,k)), the set is non-empty for any finite G, so `sInf` is well-defined and returns the correct minimum.
+ai-review/546.md:62:4. **Main statement (lines 67–72):** The theorem states `answer(True) ↔ ∃ C : ℝ, C > 0 ∧ ∀ k G, (no isolated vertices) → (ramseyNumber G : ℝ) ≤ 2 ^ (C * √(ncard(edgeSet G)))`. This correctly formalizes R(G) ≤ 2^{C√m}. The cast to `ℝ` is necessary for the exponentiation, and `Real.sqrt` on the cast of `ncard` is appropriate.
+ai-review/483.md:13:Several other problems define similar monochromatic predicates (Problems 8, 596, 781) and multicolor Ramsey infrastructure (Problems 129, 183, 554–558), but none are directly reusable for arithmetic Schur triples. No code reuse opportunities are missed.
+ai-review/483.md:30:The website also notes a related problem: **Problem 183** (multicolor Ramsey numbers for triangles, formalized in `ErdosProblems/183.lean`). This cross-reference is not mentioned in the docstring and could be added for completeness.
+ai-review/553.md:5:**Issue found: Duplicate definition of `ramseyR3`.**
+ai-review/553.md:7:The definition `ramseyR3` in `Erdos553` (line 42–43) is *identical* to `Erdos544.ramseyR3` in `FormalConjectures/ErdosProblems/544.lean` (line 41–42):
+ai-review/553.md:10:noncomputable def ramseyR3 (n : ℕ) : ℕ :=
+ai-review/553.md:14:This definition should be factored into a shared utility (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Ramsey.lean` or similar) and imported by both 544 and 553.
+ai-review/553.md:16:Additionally, `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey r n` for uniform hypergraph Ramsey numbers with 2-coloring. For `r = 2`, `hypergraphRamsey 2 n` is the diagonal Ramsey number `R(n, n)`, which is not directly what's needed here (the off-diagonal `R(3, n)`), but the general approach of defining Ramsey numbers via `sInf` is consistent.
+ai-review/553.md:18:The `ramseyR33` definition for the 3-colour asymmetric Ramsey number is unique to this problem and does not appear elsewhere in the codebase.
+ai-review/553.md:48:**Minor suggestion:** The docstring for `ramseyR33` says "the complement (G₁ ⊔ G₂)ᶜ" — this is correct but could note that `⊔` is the lattice join (edge union), which makes (G₁ ⊔ G₂)ᶜ the set of edges in neither colour class, i.e., the third colour. This is already implicit but could aid a reader unfamiliar with the lattice structure on `SimpleGraph`.
+ai-review/553.md:55:- R(3, n) and R(3, 3, n) are standard, well-defined Ramsey-theoretic quantities.
+ai-review/553.md:67:- `ramseyR3 n`: Correctly captures R(3, n) as the minimum N such that every graph on N vertices has either a 3-clique or its complement has an n-clique. This is the standard graph-theoretic formulation of the off-diagonal Ramsey number R(3, n). ✓
+ai-review/553.md:69:- `ramseyR33 n`: Correctly models R(3, 3, n). A 3-colouring of K_N is represented by two edge-disjoint graphs G₁, G₂ (the first two colour classes); the third colour class consists of all remaining edges, i.e., (G₁ ⊔ G₂)ᶜ. The definition requires that either G₁ has a triangle, G₂ has a triangle, or (G₁ ⊔ G₂)ᶜ has an n-clique. The `Disjoint G₁ G₂` precondition correctly ensures the colouring is well-defined (no edge gets two colours). ✓
+ai-review/553.md:73:[Omitted long matching line]
+ai-review/553.md:77:The statement `∀ C : ℝ, C > 0 → ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ → C * (ramseyR3 n : ℝ) ≤ (ramseyR33 n : ℝ)` correctly formalizes R(3,3,n)/R(3,n) → ∞. This is the standard ε-N formulation: the ratio exceeds any positive constant C for sufficiently large n. ✓
+ai-review/553.md:87:| Code reuse | `ramseyR3` is duplicated in 544.lean — should be shared |
+ai-review/214.md:32:| Juhász 1979 | `[Ju79]` — cited as "Juhász, R., _Ramsey type theorems in the plane_, 1979." | Yes | **Incomplete.** The website and standard bibliographic practice would include the publication venue. The full citation is: Juhász, R., "Ramsey type theorems in the plane," _Journal of Combinatorial Theory, Series A_ **27** (1979), no. 2, 152–160. The formalization only gives author, title, and year. |
+ai-review/544.md:5:**Issue: `ramseyR3` is defined identically in three files.**
+ai-review/544.md:9:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+ai-review/544.md:13:- `165.lean:60–61` (`Erdos165.ramseyR3`)
+ai-review/544.md:14:- `553.lean:42–43` (`Erdos553.ramseyR3`)
+ai-review/544.md:16:All three files independently define R(3,k) with identical logic. These should be unified into a shared definition — either in `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` (which already exists but defines hypergraph Ramsey numbers) or a new shared Ramsey utility module — and imported by all three problems.
+ai-review/544.md:18:Furthermore, `1014.lean:37–38` defines a general `ramseyR(k, l)`, and `ramseyR3 k` is exactly `ramseyR 3 k` under that definition. Problem 544 could import and specialize the general definition rather than duplicating the specialized one.
+ai-review/544.md:24:- Fields: Graph Theory, Ramsey Theory
+ai-review/544.md:29:- Listed as #8 in the UCSD Ramsey Theory problem collection
+ai-review/544.md:59:- The `ramseyR3` definition has a clear docstring explaining the Ramsey number.
+ai-review/544.md:83:- **`ramseyR3` definition:** Correctly captures R(3,k) as the minimum N such that every simple graph on N vertices contains a triangle (¬CliqueFree 3) or an independent set of size k (¬Gᶜ.CliqueFree k). The use of `sInf` is appropriate — Ramsey's theorem guarantees the defining set is nonempty (for finite k), so the infimum is well-defined and equals the minimum.
+ai-review/544.md:85:[Omitted long matching line]
+ai-review/544.md:87:- **Part 2 (`erdos_544.variants.little_o`):** Uses `Tendsto (fun k => ((ramseyR3 (k+1) : ℝ) - (ramseyR3 k : ℝ)) / (k : ℝ)) atTop (nhds 0)`. This correctly formalizes (R(3,k+1) − R(3,k)) / k → 0 as k → ∞, which is the standard definition of R(3,k+1) − R(3,k) = o(k). The cast to ℝ is appropriate for division.
+ai-review/544.md:90:  - For k = 0: ramseyR3(1) − ramseyR3(0), divided by 0 in Part 2, gives 0/0 which Lean evaluates to 0. This doesn't affect the limit statement since `atTop` only cares about sufficiently large k.
+ai-review/544.md:91:  - The `sInf` of an empty set in ℕ is 0 by convention. For k = 0, the defining set `{N | ∀ G, ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree 0}` requires every graph to have a 0-clique in the complement, which is vacuously true (the empty set is a 0-clique). So `sInf` is 0, which is fine. For k ≥ 1, the Ramsey property is non-vacuous and sInf yields the true Ramsey number.
+ai-review/565.md:5:The codebase contains several Ramsey-related definitions that are worth comparing:
+ai-review/565.md:7:- **`graphRamseyNumber`** (ErdosProblems/87.lean): The classical graph Ramsey number using `ContainsSubgraph` (non-induced copy via injective homomorphism). Not suitable here because the induced Ramsey number requires a biconditional (preserving both edges *and* non-edges relative to a color class), not just edge-preservation.
+ai-review/565.md:8:- **`sizeRamsey`** (FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean): Minimizes the number of *edges* in the host graph (not vertex count), and uses `IsContained` for non-induced copies. Not applicable.
+ai-review/565.md:9:- **`hypergraphRamsey`** (FormalConjecturesForMathlib/Combinatorics/Ramsey.lean): The uniform hypergraph Ramsey number. A different concept entirely.
+ai-review/565.md:12:**Verdict:** The `inducedRamseyNumber` definition is fundamentally distinct from all existing Ramsey definitions in the codebase because it uniquely requires the biconditional characterization of induced monochromatic copies. The local definition is appropriate. However, since `sizeRamsey` was promoted to `FormalConjecturesForMathlib`, one could argue `inducedRamseyNumber` deserves the same treatment if other problems reference it.
+ai-review/565.md:43:- The docstring on `inducedRamseyNumber` clearly explains the mathematical meaning and spells out the biconditional condition. This is good.
+ai-review/565.md:45:- The use of `sInf` is standard for "minimum m" definitions, consistent with other Ramsey number definitions in the codebase.
+ai-review/565.md:54:- "Let R*(G) be the induced Ramsey number" — well-defined concept.
+ai-review/565.md:66:### Definition: `inducedRamseyNumber`
+ai-review/565.md:69:noncomputable def inducedRamseyNumber {V : Type*} [Fintype V]
+ai-review/565.md:93:**`sInf` on potentially empty set:** If the set is empty, `sInf ∅ = 0` for ℕ. However, the induced Ramsey theorem guarantees the set is nonempty for every finite graph G, so this is not an issue for the theorem statement. The definition is still well-typed regardless.
+ai-review/565.md:100:      inducedRamseyNumber G ≤ 2 ^ (C * n) := by
+ai-review/565.md:109:- n = 0: `Fin 0` is empty, so G is the empty graph. `inducedRamseyNumber G` should be 0 or 1 (an empty host graph trivially satisfies the condition vacuously, or a single-vertex graph works). `2^(C*0) = 1`. The inequality holds.
+ai-review/565.md:112:**Verdict: The formalization is mathematically correct.** The definition of `inducedRamseyNumber` faithfully captures the standard notion of induced Ramsey number, and the theorem statement correctly formalizes the exponential upper bound. No flaws identified.
+ai-review/163.md:7:[Omitted long matching line]
+ai-review/163.md:9:- **`ramseyDiag`** (line 57): Identical to `Erdos181.ramseyDiag` in `FormalConjectures/ErdosProblems/181.lean:57`. Both could be refactored into a shared definition in `FormalConjecturesForMathlib/`.
+ai-review/163.md:13:**Recommendation:** Extract `containsCopy`/`ramseyDiag`/`IsDDegenerate` into shared library files, or use the existing Mathlib `IsContained`.
+ai-review/163.md:21:[Omitted long matching line]
+ai-review/163.md:23:- **[Le17]**: Present on the website. Lee, C., *Ramsey numbers of degenerate graphs*, Ann. of Math. (2017). This is correct.
+ai-review/163.md:57:There is **no ambiguity** in the statement. All terms (d-degenerate, Ramsey number, linear bound) have standard precise definitions. The only minor interpretive choice is whether "R(H)" means the diagonal Ramsey number R(H,H) (as formalized) versus a more general off-diagonal version — but the standard reading of the Burr-Erdős conjecture is indeed the diagonal case. **Assessment: unambiguous, fully formalizable.**
+ai-review/163.md:67:- **`ramseyDiag`**: Correctly defines the diagonal Ramsey number as sInf of {N | every SimpleGraph on Fin N has G or G^c containing H}. A SimpleGraph G and its complement G^c partition the edge set of K_N, so this is equivalent to the standard 2-coloring formulation. Using `sInf` is safe: for any graph with at least one edge, the finite Ramsey theorem guarantees the set is nonempty, so sInf gives the correct minimum. For the empty set case, sInf ∅ = 0 in ℕ, and 0 ≤ C · n holds trivially.
+ai-review/163.md:71:- **Main theorem quantification**: ∀ d ≥ 1, ∃ C > 0, ∀ n, ∀ H on Fin n, IsDDegenerate H d → ramseyDiag H ≤ C · n. The constant C depends on d but not on H or n. This is the correct formulation.
+FormalConjectures/ErdosProblems/556.lean:42:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/556.lean:48:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/556.lean:58:For all $n \geq 3$, the 3-colour Ramsey number of the cycle $C_n$ satisfies
+FormalConjectures/ErdosProblems/556.lean:63:    multicolorRamseyNumber (cycleGraph n hn) 3 ≤ 4 * n - 3 := by
+ai-review/560.md:5:**Issue found.** There is an existing `SimpleGraph.sizeRamsey` definition in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` (lines 41–46) that defines the off-diagonal size Ramsey number r̂(G, H). The diagonal size Ramsey number r̂(G) used in Problem 560 is simply `sizeRamsey G G`. The local `sizeRamseyNumber` definition in 560.lean (lines 65–74) is a bespoke re-implementation that duplicates this concept.
+ai-review/560.md:7:Furthermore, the identical `sizeRamseyNumber` definition is copy-pasted in `FormalConjectures/ErdosProblems/559.lean` (lines 50–59). Both should ideally be consolidated.
+ai-review/560.md:13:These are mathematically equivalent, but the ForMathlib version is more idiomatic and leverages Mathlib's `IsContained` API. Consider replacing the local definition with `SimpleGraph.sizeRamsey G G` to reduce duplication and improve maintainability.
+ai-review/560.md:21:| ErRo93 (lower bound) | Erdős & Rousseau | Erdős, P. and Rousseau, C.C., *The size Ramsey number of a complete bipartite graph*, Discrete Mathematics, 1993 | Yes |
+ai-review/560.md:22:| EFRS78b (upper bound) | Erdős, Faudree, Rousseau & Schelp | Erdős, P., Faudree, R.J., Rousseau, C.C., and Schelp, R.H., *The size Ramsey number*, Periodica Mathematica Hungarica, 1978 | Yes |
+ai-review/560.md:23:| NeRo78 (upper bound) | Nešetřil & Rödl | Nešetřil, J. and Rödl, V., *The Ramsey property for graphs with forbidden complete subgraphs*, Journal of Combinatorial Theory, Series B, 1978 | Yes |
+ai-review/560.md:24:| CFW23 (conjecture) | Conlon, Fox & Wigderson | Conlon, D., Fox, J., and Wigderson, Y., *Ramsey numbers of books and quasirandomness*, Combinatorica, 2023 | Yes |
+ai-review/560.md:46:- The `sizeRamseyNumber` definition's docstring is clear about the encoding choice (symmetric boolean function for 2-coloring).
+ai-review/560.md:63:The size Ramsey number itself has a standard definition in the literature and is precisely formalizable.
+ai-review/560.md:69:### Definition of `sizeRamseyNumber`
+ai-review/560.md:71:The definition correctly captures the size Ramsey number. The key components are:
+ai-review/560.md:101:| Code reuse | Could use `SimpleGraph.sizeRamsey G G` from ForMathlib; duplicated with 559.lean |
+ai-review/134.md:17:**[Al94] — partially matches.** The formalization references `[Al94] Alon, N., Explicit Ramsey graphs and orthonormal labelings (1994)`. The website describes Alon's result as a "Princeton note" without specifying the exact title. The citation in the formalization appears to be the correct published version. This is acceptable.
+ai-review/54.md:9:**Issue: `IsRamsey2Complete` is a special case of `IsRamseyComplete` already defined in Problems 55 and 843.**
+ai-review/54.md:13:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+ai-review/54.md:21:Problem 54's `IsRamsey2Complete A` is definitionally equal to `Erdos55.IsRamseyComplete A 2`. The two definitions are structurally identical with `Fin 2` replacing `Fin r`. Problem 843 (`FormalConjectures/ErdosProblems/843.lean`, lines 34–39) defines yet another `IsRamseyComplete` that is logically equivalent but syntactically different (reorders the existentials).
+ai-review/54.md:23:Three files define the same concept independently. This should be consolidated into a single shared definition (e.g., in `FormalConjecturesForMathlib` or a shared Ramsey utility file), with `IsRamsey2Complete` either removed or defined as an abbreviation:
+ai-review/54.md:25:abbrev IsRamsey2Complete (A : Set ℕ) : Prop := IsRamseyComplete A 2
+ai-review/54.md:28:[Omitted long matching line]
+ai-review/54.md:30:**Recommendation:** Promote `IsRamseyComplete` (parameterized by `r`) to a shared definition used by Problems 54, 55, and 843.
+ai-review/54.md:40:- **Tags:** Number theory, Ramsey theory
+ai-review/54.md:47:| AMS classification | `AMS 5` | Number theory / Ramsey theory | **Acceptable**, though adding `AMS 11` (Number theory) would better match Problem 55 which uses `AMS 5 11`. |
+ai-review/54.md:59:**Paper title discrepancy:** The formalization cites [CFP21] as *"Subset sums, completeness and colorings"* while Problem 55 cites the same authors/year as *"The upper bound for Ramsey complete sequences."* These may be different papers or different versions of the same work. This should be verified and made consistent.
+ai-review/54.md:67:1. **Lower bound** (Burr–Erdős): There exists $c > 0$ such that no Ramsey 2-complete set $A$ satisfies $|A \cap \{1,\ldots,N\}| \leq c(\log N)^2$ for all large $N$.
+ai-review/54.md:68:2. **Upper bound** (Burr–Erdős): There exists a Ramsey 2-complete $A$ with $|A \cap \{1,\ldots,N\}| < (2\log_2 N)^3$ for all large $N$.
+ai-review/54.md:73:Problem 55 includes this as `erdos_55.variants.lower_bound` (lines 71–79), which states that for some $c > 0$, any set with density $\leq c \cdot r \cdot (\log N)^2$ cannot be Ramsey $r$-complete. A corresponding 2-coloring variant should appear in Problem 54:
+ai-review/54.md:81:        ¬ IsRamsey2Complete A := by
+ai-review/54.md:99:- **Definition docstring:** Clear and accurate description of Ramsey 2-completeness.
+ai-review/54.md:116:- **Ramsey 2-completeness:** The definition is standard in additive combinatorics. The formalization correctly captures it.
+ai-review/54.md:130:### Definition: `IsRamsey2Complete`
+ai-review/54.md:133:def IsRamsey2Complete (A : Set ℕ) : Prop :=
+ai-review/54.md:153:      IsRamsey2Complete A ∧
+ai-review/54.md:160:- **Existential structure:** Correct. We claim there exists a set A that is both Ramsey 2-complete and sparse (density bounded by $c(\log N)^2$).
+ai-review/54.md:171:[Omitted long matching line]
+ai-review/54.md:175:**Verdict: Correct but incomplete.** The formalization faithfully captures the Conlon–Fox–Pham resolution of the upper bound. The `IsRamsey2Complete` definition is mathematically sound and equivalent to the standard notion. The missing lower bound variant and two missing citations are the main gaps.
+ai-review/423.md:5:No reusable code was found in the existing codebase. Problem 423 is a number theory / integer sequence problem concerning the Hofstadter–Ulam self-generating sequence. The codebase's combinatorial infrastructure (chromatic numbers, Ramsey theory, graph coloring, sunflowers, set families) is not relevant here. The problem is self-contained and the definitions (`IsConsecutiveBlockSum`, `IsHofstadterSeq`) are appropriately bespoke.
+FormalConjectures/ErdosProblems/190.lean:30:This type of problem belongs to 'canonical' Ramsey theory. The existence
+ai-review/556.md:5:**Significant duplication exists.** The definitions `cycleGraph` and `multicolorRamseyNumber` in `Erdos556` are copy-pasted verbatim across many files. The identical `cycleGraph` definition appears in at least 15 files (555, 556, 569, 570, 572, 594, 666, 720, 737, 765, 86, 554, etc.), and `multicolorRamseyNumber` appears in at least 4 files (554, 555, 556, 557, 558).
+ai-review/556.md:7:These should be factored into a shared utility file under `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/` — neither `cycleGraph` nor `multicolorRamseyNumber` currently exists there. The `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` file defines `hypergraphRamsey` (for uniform hypergraph Ramsey numbers with 2-coloring of r-subsets), which is a different concept from the graph Ramsey number `multicolorRamseyNumber` used here.
+ai-review/556.md:42:- The `multicolorRamseyNumber` definition's docstring is well-written and clearly explains the meaning of the parameters.
+ai-review/556.md:48:- The definition of $R_3(G)$ (3-color Ramsey number for graphs).
+ai-review/556.md:60:- **The `multicolorRamseyNumber` definition is correct:** It correctly captures the $k$-color Ramsey number via `sInf` over natural numbers $N$ such that every symmetric $k$-coloring of pairs from $\text{Fin}\;N$ contains a monochromatic copy (injective homomorphism) of $G$.
+ai-review/556.md:61:- **Edge case for `sInf`:** If the set is empty (i.e., no finite $N$ suffices), then `sInf ∅ = 0` in `ℕ`, which would make the inequality trivially true (since `0 ≤ 4n - 3` for `n ≥ 3`). However, Ramsey's theorem guarantees the set is nonempty for finite graphs and finite $k$, so this is not a real issue — just a definitional subtlety.
+ai-review/555.md:5:**Significant duplication found.** Both `cycleGraph` and `multicolorRamseyNumber` are defined identically (or near-identically) in multiple files:
+ai-review/555.md:8:- **`multicolorRamseyNumber`**: duplicated in 554.lean, 555.lean, 556.lean, 557.lean, 558.lean (identical).
+ai-review/555.md:10:[Omitted long matching line]
+ai-review/555.md:38:    multicolorRamseyNumber (cycleGraph 4 (by omega)) k > k ^ 2 - k + 1 := by
+ai-review/555.md:48:- The docstring for `multicolorRamseyNumber` uses $\operatorname{Fin}$ notation which mixes LaTeX and Lean conventions. Consider using more standard math notation in the docstring (e.g., "$[N]$" or "$\{1, \ldots, N\}$") and reserving `Fin` for the Lean code itself.
+ai-review/555.md:74:[Omitted long matching line]
+ai-review/439.md:12:- **Ramsey coloring pattern from Problem 843/984**: Problems 843 and 984 use similar finite-coloring patterns (`ℕ → Fin c` or `ℕ → Fin r`). The pattern used in 439 is consistent with codebase conventions.
+ai-review/181.md:32:**Issue: Duplicated `ramseyDiag` definition.**
+ai-review/181.md:34:The `ramseyDiag` definition (lines 57–59) also appears in Problem 163 (lines 57–59). Problems 546 and 545 define a `ramseyNumber` with a similar but slightly different type signature (requiring `Fin k` vertices).
+ai-review/181.md:36:**Recommendation:** Factor the shared definitions (`hypercubeGraph`, `ContainsCopy`/`ContainsSubgraph`, `ramseyDiag`) into shared utility files. This would eliminate widespread duplication across at least 15+ problem files. The naming should be unified — `ContainsSubgraph` appears to be the most common convention.
+ai-review/181.md:38:Note: `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` for hypergraph Ramsey numbers, which is not directly applicable here (Problem 181 concerns graph Ramsey numbers, not hypergraph Ramsey numbers).
+ai-review/181.md:48:- **Tags:** Graph theory, Ramsey theory.
+ai-review/181.md:77:         (ramseyDiag (hypercubeGraph n) : ℝ) ≤ C * (2 : ℝ) ^ ((2 - c) * n) := by
+ai-review/181.md:81:2. **Trivial upper bound:** $R(Q_n) \leq R(K_{2^n})$. This is an elementary observation relating graph Ramsey numbers to classical Ramsey numbers and could serve as a sanity check.
+ai-review/181.md:87:       Filter.Tendsto (fun n => (ramseyDiag (hypercubeGraph n) : ℝ) / 2 ^ n)
+ai-review/181.md:99:- **Structure:** The file is well-organized: hypercube definition → containment definition → Ramsey number definition → theorem. This logical progression aids understanding.
+ai-review/181.md:102:- **Naming:** `hypercubeGraph`, `ContainsCopy`, `ramseyDiag` are all descriptive and appropriate.
+ai-review/181.md:103:- **Minor suggestion:** The `ContainsCopy` docstring says "not necessarily induced" which is a helpful clarification. The `ramseyDiag` docstring correctly specifies the diagonal (single-graph) nature of the Ramsey number.
+ai-review/181.md:113:The conjecture $R(Q_n) \ll 2^n$ is entirely precise once the definitions of hypercube graph and diagonal Ramsey number are fixed. There is no ambiguity in:
+ai-review/181.md:115:- The diagonal Ramsey number $R(H)$ for a graph $H$ (minimum $N$ such that every 2-coloring of $K_N$ contains a monochromatic copy of $H$).
+ai-review/181.md:118:The only subtlety is whether "copy" means subgraph (injective homomorphism) or induced subgraph (injective homomorphism preserving both edges and non-edges). The standard convention in Ramsey theory for graphs is **subgraph** (non-induced), and the formalization correctly uses this convention.
+ai-review/181.md:147:- This defines a (non-induced) subgraph embedding: an injective map preserving adjacency. This is the correct notion for Ramsey theory — a monochromatic "copy" of $H$ in a 2-coloring of $K_N$ means a subgraph isomorphic to $H$, not necessarily an induced copy.
+ai-review/181.md:150:### Definition: `ramseyDiag`
+ai-review/181.md:152:noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+ai-review/181.md:157:- **Semantics:** The infimum of all $N$ such that every graph on $\operatorname{Fin} N$ contains a copy of $H$ or its complement contains a copy of $H$. This is precisely the diagonal Ramsey number $R(H) = R(H, H)$.
+ai-review/181.md:159:- **Use of `sInf`:** If the set is empty (i.e., no such $N$ exists), `sInf` returns 0 by convention in Lean/Mathlib. However, the Ramsey theorem guarantees that for any finite graph $H$, the set is nonempty (in fact, $R(K_{|V(H)|})$ is always in the set). So the `sInf` is well-founded for all graphs with finitely many vertices.
+ai-review/181.md:160:[Omitted long matching line]
+ai-review/181.md:167:      (ramseyDiag (hypercubeGraph n) : ℝ) ≤ C * (2 ^ n : ℝ) := by
+ai-review/181.md:174:- **Cast to `ℝ`:** The coercion `(ramseyDiag (hypercubeGraph n) : ℝ)` is needed because `C` is real-valued. This is standard practice.
+ai-review/181.md:182:**Verdict: Correct and complete.** The formalization faithfully captures Erdős Problem 181. The definitions of hypercube graph, graph containment, and diagonal Ramsey number are all mathematically sound. The theorem statement precisely encodes the conjecture $R(Q_n) \ll 2^n$. No mathematical flaws identified. Minor improvements: adding `[Fintype U]` to `ramseyDiag`, and citing [Er93] and [Ti22].
+ai-review/159.md:15:[Omitted long matching line]
+ai-review/159.md:17:**Recommendation:** Replace `ContainsSubgraph` with `SimpleGraph.IsContained`, replace `C4` with `SimpleGraph.cycleGraph 4`, and consider extracting `ramseyC4Kn` into a general off-diagonal Ramsey number utility.
+ai-review/159.md:31:  - `[EFRS78]` should be: Erdős, P., Faudree, R.J., Rousseau, C.C., and Schelp, R.H., *On cycle-complete graph Ramsey numbers*, J. Graph Theory **2** (1978), 53–64.
+ai-review/159.md:32:  - `[Sp77]` should be: Spencer, J., *Asymptotic lower bounds for Ramsey functions*, Discrete Math. **20** (1977), 69–76.
+ai-review/159.md:49:- The docstrings are clear and informative, correctly explaining the Ramsey-theoretic context and known bounds.
+ai-review/159.md:53:- Minor: The docstring on `ramseyC4Kn` says "the complement G^c contains a copy of K_n (i.e., G has an independent set of size n)" — this parenthetical is a helpful clarification.
+ai-review/159.md:65:This is precise and unambiguous. The Ramsey number R(C₄, Kₙ) is a well-defined classical quantity, and the asymptotic bound O(n^{2−c}) is standard.
+ai-review/159.md:67:**Ambiguity assessment:** **Low ambiguity.** The only subtlety is the exact definition of R(C₄, Kₙ) — specifically, whether the C₄ containment is as a subgraph (injective homomorphism) or as an induced subgraph. The standard Ramsey-theoretic convention is subgraph containment, which is what the formalization uses. This is correct.
+ai-review/159.md:78:  (ramseyC4Kn n : ℝ) ≤ C * (n : ℝ) ^ (2 - c)
+ai-review/159.md:88:[Omitted long matching line]
+FormalConjectures/ErdosProblems/87.lean:41:/-- The (diagonal) graph Ramsey number $R(H)$: the minimum $N$ such that every simple
+FormalConjectures/ErdosProblems/87.lean:45:noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean:49:/-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
+FormalConjectures/ErdosProblems/87.lean:50:noncomputable def diagRamsey (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean:51:  graphRamseyNumber (⊤ : SimpleGraph (Fin k))
+FormalConjectures/ErdosProblems/87.lean:66:      (diagRamsey k : ℝ) * (1 - ε) ^ k < (graphRamseyNumber G : ℝ) := by
+FormalConjectures/ErdosProblems/87.lean:82:      c * (diagRamsey k : ℝ) < (graphRamseyNumber G : ℝ) := by
+ai-review/79.md:10:| `Erdos79.RamseyProp G H n` | (implicit via `SimpleGraph.sizeRamsey`) | `FormalConjecturesForMathlib/.../SizeRamsey.lean` |
+ai-review/79.md:12:| `Erdos79.IsRamseySizeLinear G` | `SimpleGraph.IsRamseySizeLinear G` | `FormalConjecturesForMathlib/.../SizeRamsey.lean` |
+ai-review/79.md:14:Problem 567 (a closely related problem about specific Ramsey-size-linear graphs) already uses the library's `SimpleGraph.IsRamseySizeLinear` directly via `ProblemImports`. Problem 79 should do the same.
+ai-review/79.md:18:**Recommendation:** Delete all four local definitions and rewrite the theorem using `SimpleGraph.IsRamseySizeLinear` and `SimpleGraph.IsContained` from the library.
+ai-review/79.md:32:- **[EFRS93] lacks full bibliographic details.** Compare with problem 567 which cites it as: `Erdős, Faudree, Rousseau and Schelp, _Ramsey size linear graphs_. Combin. Probab. Comput. (1993), 389-399.` Problem 79 only gives `Erdős, P., Faudree, R., Rousseau, C., and Schelp, R., 1993.`
+ai-review/79.md:41:> Are there infinitely many graphs G which are not Ramsey size linear but such that all of their proper subgraphs are?
+ai-review/79.md:45:However, the docstring mentions that "$K_4$ is the only explicitly known example" — this could potentially be formalized as a separate statement (e.g., asserting that $K_4$ is not Ramsey size linear but all its proper subgraphs are), which would serve as a concrete sanity check and would be more directly verifiable. This is optional but would add value.
+ai-review/79.md:51:1. **Redundant definitions hurt readability.** Having local definitions for `IsSubgraphOf`, `RamseyProp`, `NoIsolatedVertices`, and `IsRamseySizeLinear` when library versions exist forces the reader to mentally verify equivalence. Using library definitions would make the statement immediately recognizable.
+ai-review/79.md:53:[Omitted long matching line]
+ai-review/79.md:63:The problem statement is precise and well-defined. The key concepts — Ramsey size linearity, proper subgraphs, and "infinitely many" — all have clear formal meanings.
+ai-review/79.md:65:[Omitted long matching line]
+ai-review/79.md:74:- The notion of "Ramsey size linear" is correctly captured: ∃ C > 0 such that for all H with no isolated vertices, the Ramsey number is ≤ C · |E(H)|.
+ai-review/79.md:78:### Structural flaw — conceptual mismatch between `RamseyProp` and `IsRamseySizeLinear`:
+ai-review/79.md:80:The local `IsRamseySizeLinear` is defined using `RamseyProp`, which concerns the *Ramsey number* $R(G,H)$ (vertex Ramsey on complete graphs). However, the standard definition of "Ramsey size linear" concerns the *size Ramsey number* $\hat{r}(G,H)$ (edge count of a minimal graph whose 2-colorings force a copy). These are **different quantities**.
+ai-review/79.md:82:The local definition says: there exists $n ≤ C · |E(H)|$ such that every 2-coloring of $K_n$ contains $G$ or $H^c$. This bounds the classical Ramsey number $R(G,H)$ linearly in $|E(H)|$.
+ai-review/79.md:86:**These are not equivalent.** The size Ramsey number $\hat{r}(G,H)$ can be much smaller than $\binom{R(G,H)}{2}$ (the edge count of $K_{R(G,H)}$). The library's `SimpleGraph.IsRamseySizeLinear` uses the correct *size* Ramsey number formulation via `sizeRamsey`. The local definition in problem 79 uses the classical *vertex* Ramsey number formulation.
+ai-review/79.md:88:The problem name "Ramsey size linear" specifically refers to the *size* Ramsey number being linear, so the library definition is correct and the local definition is wrong.
+ai-review/79.md:101:| Correctness | **Incorrect** — uses classical Ramsey number instead of size Ramsey number; should use `SimpleGraph.IsRamseySizeLinear` from the library |
+FormalConjectures/ErdosProblems/146.lean:32:graphs and related Ramsey-type questions*, Combinatorics, Probability and
+ai-review/174.md:7:- **Distance-preserving maps:** Problem 668 (`FormalConjectures/ErdosProblems/668.lean:53-57`) defines `AreCongruent` using exactly the same `∀ x y, dist (f x) (f y) = dist x y` pattern used in `IsEuclideanRamsey`. This is a good candidate for a shared `IsIsometry`-style predicate, or better yet, using Mathlib's `Isometry` typeclass (already used in problems 215 and 1124).
+ai-review/174.md:8:- **Mathlib `Isometry`:** Problems 215 (`215.lean:53`) and 1124 (`1124.lean:65`) use `Isometry f` from Mathlib rather than manually spelling out the distance-preservation condition. The definition of `IsEuclideanRamsey` could use `Isometry φ` instead of `∀ x y, dist (φ x) (φ y) = dist x y` for better integration with Mathlib lemmas. However, the manual formulation is mathematically equivalent and arguably more self-contained.
+ai-review/174.md:9:- **Coloring patterns:** `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` for combinatorial Ramsey numbers, and `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean` has coloring infrastructure. These are for graph/hypergraph Ramsey theory rather than Euclidean Ramsey theory, so direct reuse is limited, but the coloring-as-function-to-`Fin k` pattern is shared.
+ai-review/174.md:33:The formalization captures the main conjecture (Graham's conjecture: Ramsey ↔ spherical). However:
+ai-review/174.md:35:**Missing variant — Leader-Russell-Walters conjecture:** The erdosproblems.com page mentions a competing conjecture by Leader, Russell, and Walters [LRW12] that a set is Ramsey if and only if it is **"subtransitive"** — embeddable in a higher-dimensional set with a transitive rotational symmetry group action. This is a strictly stronger condition than being spherical, and if true, would mean Graham's conjecture is *false*. This is a significant variant that is not captured.
+ai-review/174.md:37:**Partial results as separate theorems:** The forward direction (Ramsey → spherical) from [EGMRSS73] is a proven theorem. It could be stated as a separate, provable theorem rather than only being part of the biconditional. This would allow formalizers to work on the known result independently of the open conjecture.
+ai-review/174.md:39:**Known Ramsey sets:** The docstring mentions several classes of known Ramsey sets (rectangles, simplices, trapezoids, regular polygons/polyhedra). These could be formalized as separate (proved) theorems, which would strengthen the overall formalization.
+ai-review/174.md:46:- `IsEuclideanRamsey` and `IsSpherical` are clearly named and well-documented.
+ai-review/174.md:51:- The condition `1 ≤ k` in `IsEuclideanRamsey` could be `0 < k` for Lean idiom consistency (though both are equivalent and clear).
+ai-review/174.md:58:The problem as stated on erdosproblems.com says: *"Characterise the Ramsey sets in ℝⁿ."* This is inherently an **open-ended** question — it asks for a characterization, not a specific yes/no statement.
+ai-review/174.md:60:The formalization resolves this ambiguity by adopting **Graham's conjecture** as the specific characterization: Ramsey ↔ spherical. This is a reasonable and well-motivated choice, as it is the most prominent proposed characterization.
+ai-review/174.md:64:The individual definitions (`IsEuclideanRamsey`, `IsSpherical`) are precise and unambiguous.
+ai-review/174.md:68:**Definition of `IsEuclideanRamsey`:** Mathematically correct. It properly captures:
+ai-review/174.md:77:**Definition of `IsSpherical`:** Mathematically correct. A set is spherical iff all points are equidistant from some center, which is exactly the condition for lying on a sphere. Note that `r` is not required to be positive, so the empty set and singletons are vacuously spherical (with r = 0 for singletons). This is fine since these are trivially Ramsey as well.
+ai-review/558.md:5:**Duplicate definition found.** The `multicolorRamseyNumber` definition at lines 44–49 of `558.lean` is identical to the one in `FormalConjectures/ErdosProblems/555.lean` (lines 52–57). Both are scoped inside separate namespaces (`Erdos558` and `Erdos555`), so they do not conflict, but this is a clear candidate for extraction into a shared utility file (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Ramsey.lean` or a shared definitions file).
+ai-review/558.md:7:The existing `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` (the 2-color uniform hypergraph Ramsey number), which is a different concept. The existing `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` defines the size Ramsey number, also different. Neither is directly reusable for this problem.
+ai-review/558.md:9:**Recommendation:** Extract `multicolorRamseyNumber` into a shared location and import it in both 555.lean and 558.lean. Problem 560 also defines its own `sizeRamseyNumber` in a similar pattern—there may be an opportunity to consolidate all Ramsey-type definitions.
+ai-review/558.md:14:- **[ChGr75]** Chung, F.R.K. and Graham, R.L., *On multicolor Ramsey numbers for complete bipartite graphs*, J. Combin. Theory Ser. B 18 (1975), 164–169.
+ai-review/558.md:46:- The `multicolorRamseyNumber` definition has a clear docstring explaining the encoding.
+ai-review/558.md:49:- The docstring for `multicolorRamseyNumber` could note that diagonal entries `c i i` are irrelevant (since `G.Adj` is irreflexive), which is a subtlety a reader might wonder about.
+ai-review/558.md:66:### Definition of `multicolorRamseyNumber`
+ai-review/558.md:68:The definition correctly captures the standard multicolor Ramsey number:
+ai-review/558.md:71:- **Use of `sInf`:** Returns 0 if the set is empty (which cannot happen for finite graphs and k ≥ 1 by the finite Ramsey theorem). This is a sound convention.
+ai-review/558.md:81:The constraints `s ≥ 1` and `t ≥ 1` are appropriate—K_{0,t} is edgeless, making the Ramsey number degenerate. The formalization correctly parameterizes over all k (including k = 0, 1, though these are trivial cases).
+ai-review/558.md:93:The condition `s ≥ Nat.factorial (t - 1) + 1` correctly encodes s ≥ (t-1)! + 1. Note that when t = 1, `Nat.factorial (1 - 1) + 1 = 0! + 1 = 2`, so s ≥ 2 is required. However, K_{s,1} is a star graph, and its multicolor Ramsey number is known to be s(k-1)+1 by a simple pigeonhole argument—the ARS result gives R_k(K_{s,1}) = Θ(k), which is correct (linear in k, i.e., k^1 = k^t where t=1).
+ai-review/558.md:103:| Code reuse | ⚠️ Duplicate `multicolorRamseyNumber` definition (also in 555.lean); should be extracted |
+ai-review/80.md:33:- **Tags:** Graph theory, Ramsey theory
+FormalConjectures/ErdosProblems/553.lean:38:/-- The Ramsey number $R(3,n)$: the minimum $N$ such that every $2$-colouring of
+FormalConjectures/ErdosProblems/553.lean:42:noncomputable def ramseyR3 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean:45:/-- The Ramsey number $R(3,3,n)$: the minimum $N$ such that every $3$-colouring of
+FormalConjectures/ErdosProblems/553.lean:51:noncomputable def ramseyR33 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean:70:      C * (ramseyR3 n : ℝ) ≤ (ramseyR33 n : ℝ) := by
+ai-review/73.md:70:- "Every subgraph H" — does this mean every *induced* subgraph, or every subgraph? The website says "every subgraph H contains an independent set of size ≥ (n-k)/2." In graph theory, the standard reading for this type of Ramsey-theoretic statement is *induced* subgraph (equivalently, every vertex subset). The formalization correctly uses arbitrary `S : Finset (Fin n)` and tests independent sets within `S`, which corresponds to induced subgraphs. This is the standard interpretation.
+FormalConjectures/ErdosProblems/591.lean:40:theorem erdos_591 : answer(True) ↔ OrdinalCardinalRamsey (ω ^ ω ^ 2) (ω ^ ω ^ 2) 3 := by
+ai-review/474.md:11:- **`FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:32`** defines `OrdinalCardinalRamsey` for the mixed relation α → (β, c)². Also structurally different.
+ai-review/55.md:9:**Problem 54 defines a redundant `IsRamsey2Complete`.** The definition `Erdos54.IsRamsey2Complete A` (in `54.lean`) is exactly `Erdos55.IsRamseyComplete A 2`. These two definitions should be unified. Problem 54 could import and reuse `IsRamseyComplete` from Problem 55 (or both could use a shared definition in `FormalConjecturesForMathlib`).
+ai-review/55.md:13:No existing utility in `FormalConjecturesForMathlib` directly captures the "Ramsey complete" concept, though `Combinatorics/Additive/Basis.lean` provides the related notion of `IsAsymptoticAddBasisOfOrder`, which captures "all sufficiently large elements are representable as sums" — the non-colored analogue. The Ramsey complete concept adds a coloring constraint on top of this.
+ai-review/55.md:19:> [CFP21] Conlon, D., Fox, J., and Pham, H. T., _The upper bound for Ramsey complete sequences_, 2021.
+ai-review/55.md:25:[Omitted long matching line]
+ai-review/55.md:27:The website also mentions the historical result by **Burr and Erdős (1985)** establishing bounds for the r=2 case and **Burr's** result that k-th power sequences are Ramsey r-complete for all r, k ≥ 1. These are not cited in the formalization, which is acceptable since they are historical context rather than the solving reference.
+ai-review/55.md:34:- **Upper bound** (`erdos_55`): Existence of an r-Ramsey complete set with the stated density bound.
+ai-review/55.md:35:- **Lower bound** (`erdos_55.variants.lower_bound`): Optimality of the bound — if the counting function is too small, the set cannot be Ramsey complete.
+ai-review/55.md:40:- Burr's result that k-th power sequences {1^k, 2^k, 3^k, ...} are Ramsey r-complete for all r, k ≥ 1 is mentioned on the website but not formalized. This is a natural companion result.
+ai-review/55.md:55:- (a) The growth rate r(log N)² cannot be improved (i.e., no r-Ramsey complete set can have counting function o(r(log N)²)), or
+ai-review/55.md:64:### Definition `IsRamseyComplete`
+ai-review/55.md:78:∀ r, 2 ≤ r → ∃ A, IsRamseyComplete A r ∧ ∃ C > 0, ∃ N₀, ∀ N ≥ N₀, ... ≤ C * r * (log N)²
+ai-review/55.md:84:∃ C > 0, ∀ r, 2 ≤ r → ∃ A, IsRamseyComplete A r ∧ ∃ N₀, ∀ N ≥ N₀, ... ≤ C * r * (log N)²
+ai-review/55.md:91:The lower bound states: there exists c > 0 such that if |A ∩ {1,...,N}| ≤ c·r·(log N)² for all large N, then A is not r-Ramsey complete.
+ai-review/55.md:93:Taking the contrapositive: if A is r-Ramsey complete, then for all N₀, there exists N ≥ N₀ with |A ∩ {1,...,N}| > c·r·(log N)². This gives a lower bound that holds **infinitely often**, not **eventually always**.
+ai-review/55.md:95:A stronger (and likely true) statement would be: any r-Ramsey complete set satisfies |A ∩ {1,...,N}| > c·r·(log N)² for all sufficiently large N. However, since |A ∩ {1,...,N}| is non-decreasing in N while c·r·(log N)² is increasing, the "infinitely often" version does not trivially imply the "eventually always" version. The formalized version may be slightly weaker than what was actually proved, but it is not *incorrect* — it is a valid consequence of the actual theorem.
+ai-review/55.md:111:| Code reuse opportunity | `IsRamsey2Complete` in Problem 54 should be unified with `IsRamseyComplete` |
+ai-review/550.md:5:**Significant duplication detected.** The definitions `ContainsSubgraphCopy` and `offDiagRamseyNumber` are copied verbatim across at least three files:
+ai-review/550.md:11:These should be factored into a shared utility, e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Ramsey.lean` or a new shared file.
+ai-review/550.md:13:Additionally, Mathlib provides `SimpleGraph.IsContained` (used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:46`), which appears to capture the same notion as `ContainsSubgraphCopy`. Investigating whether `IsContained` is a drop-in replacement would be worthwhile.
+ai-review/550.md:21:- **[EFRS85]** Erdős, P., Faudree, R., Rousseau, C., and Schelp, R., *Multipartite graph—sparse graph Ramsey numbers*, Combinatorica **5** (1985), 311–318.
+ai-review/550.md:22:- **[Ch77]** Chvátal, V., *Tree-complete graph Ramsey numbers*, J. Graph Theory **1** (1977), 93.
+ai-review/550.md:50:- The Ramsey number inequality with explicit bound
+ai-review/550.md:64:- **Natural number subtraction:** The expression `offDiagRamseyNumber T (...) - 1` uses ℕ subtraction. Since any Ramsey number R(G₁, G₂) for non-empty graphs G₁, G₂ is ≥ 1 (and trees on n ≥ N₀ vertices are non-empty), this does not underflow in practice. Similarly, `k - 1` is safe since k ≥ 2.
+ai-review/550.md:66:- **sInf well-definedness:** The `offDiagRamseyNumber` uses `sInf`, which returns 0 for the empty set in ℕ. For finite graphs, the classical Ramsey theorem guarantees the defining set is nonempty, so sInf returns the true minimum. This is mathematically sound for the intended use.
+ai-review/550.md:76:| Code reuse | Duplication of `ContainsSubgraphCopy` and `offDiagRamseyNumber` across 549/550/551; should be shared |
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:25:This proposition asserts the ordinal Ramsey property `α → (β, c)²`.
+FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean:32:def OrdinalCardinalRamsey (α β : Ordinal.{u}) (c : Cardinal.{u}) : Prop :=
+FormalConjectures/ErdosProblems/546.lean:34:[Su11] Sudakov, B., _A conjecture of Erdős on graph Ramsey numbers_. Advances in
+FormalConjectures/ErdosProblems/546.lean:47:/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin} k$: the minimum
+FormalConjectures/ErdosProblems/546.lean:50:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/546.lean:71:      (ramseyNumber G : ℝ) ≤ (2 : ℝ) ^ (C * Real.sqrt (G.edgeSet.ncard : ℝ)) := by
+ai-review/136.md:9:- **`Sym2`-based alternative**: Multiple other edge-coloring problems (810, 811, 809, 76, 778) use `Sym2 (Fin n) → Color`, which is the mathematically cleaner representation for undirected edge colorings. The `antiRamseyNum` in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:159` also uses `Sym2 (Fin n) → Fin k`. Adopting `Sym2` would eliminate the symmetry correctness issue discussed below.
+ai-review/136.md:11:- **`IsRainbow` / `antiRamseyNum`**: The problem is related to anti-Ramsey theory (requiring many colors on substructures). While not directly applicable (the problem asks for ≥5 colors on K₄ edges rather than a full rainbow), the `Sym2`-based infrastructure used by `antiRamseyNum` could serve as a model for the edge representation.
+ai-review/136.md:17:- **[Er97b]**: Listed as Erdős, P. and Gyárfás, A., *A variant of the classical Ramsey problem* (1997). The website does not provide journal details, but the full reference is: *Combinatorica* **17** (1997), 459–467. Problem 129 in this same codebase includes the full journal citation for the same paper; Problem 136 should match.
+ai-review/559.md:9:**Issue: Duplicated `sizeRamseyNumber` definition.**
+ai-review/559.md:11:The file defines a local `Erdos559.sizeRamseyNumber` that is duplicated verbatim in at least three other files:
+ai-review/559.md:12:- `FormalConjectures/ErdosProblems/560.lean` (`Erdos560.sizeRamseyNumber`)
+ai-review/559.md:13:- `FormalConjectures/ErdosProblems/720.lean` (`Erdos720.sizeRamseyNumber`)
+ai-review/559.md:16:All four copies define the same concept — the diagonal size Ramsey number R̂(G) — using the same `Bool`-valued coloring formulation.
+ai-review/559.md:18:Moreover, `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` already provides a shared definition:
+ai-review/559.md:21:noncomputable def sizeRamsey {α β : Type*} [Fintype α] [Fintype β]
+ai-review/559.md:29:This is the asymmetric version r̂(G, H). The diagonal case `sizeRamsey G G` is mathematically equivalent to the local `sizeRamseyNumber G`: the shared definition quantifies over subgraphs R ≤ F (partitioning edges into "red" R and "blue" F \ R), while the local definition uses a symmetric `Bool`-valued coloring function. These are equivalent representations of 2-edge-colorings.
+ai-review/559.md:31:**Recommendation:** Replace all local `sizeRamseyNumber G` definitions with `SimpleGraph.sizeRamsey G G` from the shared library. This eliminates quadruplicate code and ensures consistency. The equivalence between the two formulations (subgraph-based vs. Bool-coloring) would need a small lemma, but it is straightforward.
+ai-review/559.md:70:     (∀ v, degree v ≤ 3) ∧ sizeRamseyNumber G ≥ n * (log n)^c
+ai-review/559.md:93:- **Definition docstring:** The `sizeRamseyNumber` definition has a detailed docstring explaining the coloring model. This is good, though it would be unnecessary if the shared `sizeRamsey` were used instead.
+ai-review/559.md:105:The original conjecture is precise: for every d ≥ 1, there exists C_d such that every graph G on n vertices with maximum degree ≤ d satisfies R̂(G) ≤ C_d · n. All constituent concepts (size Ramsey number, maximum degree, graph on n vertices) have standard, unambiguous definitions.
+ai-review/559.md:117:### Definition: `sizeRamseyNumber`
+ai-review/559.md:137:            sizeRamseyNumber G ≤ C * n)
+ai-review/559.md:142:- **C : ℕ vs C : ℝ:** The constant C is a natural number. Since `sizeRamseyNumber G` and `n` are both natural numbers, and the inequality is `≤`, using ℕ for C is fine — if a real constant c works, then ⌈c⌉ also works. ✓
+ai-review/559.md:144:- **n ≥ 1 guard:** Avoids the degenerate case of `Fin 0` (empty graph). For n = 0, `SimpleGraph (Fin 0)` has no vertices, so `sizeRamseyNumber G = 0 ≤ C * 0` is trivially true. The guard is not strictly necessary but is harmless. ✓
+ai-review/559.md:149:If the set `{m | ...}` in `sizeRamseyNumber` is empty (i.e., no finite graph is Ramsey for G), then `sInf ∅ = 0` in ℕ. This would make `sizeRamseyNumber G = 0`, which could be vacuously ≤ C * n. However, for any finite graph G, the complete graph on sufficiently many vertices is Ramsey for G (by the finite Ramsey theorem), so the set is always nonempty for finite G. Thus this edge case does not arise in practice.
+ai-review/559.md:151:**Verdict: Correct and complete for the main statement.** The formalization faithfully captures the disproved conjecture. The primary deficiency is the lack of variants (explicit lower bounds, the open question about the correct growth rate for d = 3) and the duplicated `sizeRamseyNumber` definition.
+ai-review/302.md:8:- **Problem 303** (`ErdosProblems/303.lean`): Uses the same equation 1/a = 1/b + 1/c but in a coloring/Ramsey context rather than a density context. No shared predicate is possible since 303 operates over `ℤ` (with a coloring function) rather than `Finset ℕ`.
+ai-review/46.md:61:The problem is a clean Ramsey-theoretic statement with no quantitative bounds to interpret, making it ideal for formalization.
+ai-review/220.md:5:No reusable code from `FormalConjecturesForMathlib` or elsewhere in the repository applies to this problem. The definitions `sumSquaredGaps` and `sortedTotatives` are number-theoretic and specific to this problem. The codebase has extensive graph coloring, Ramsey theory, and combinatorial infrastructure, but nothing relevant to totient gap sums. The definitions are appropriately self-contained.
+FormalConjectures/ErdosProblems/1030.lean:24:If $R(k,l)$ is the Ramsey number then prove the existence of some $c > 0$ such that
+FormalConjectures/ErdosProblems/1030.lean:39:/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
+FormalConjectures/ErdosProblems/1030.lean:42:noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1030.lean:60:      (ramseyR (k + 1) k : ℝ) / (ramseyR k k : ℝ) ≥ 1 + c := by
+ai-review/176.md:60:- Using `sInf` on `ℕ` with `sInf ∅ = 0` is the standard pattern in this codebase for defining combinatorial extremal numbers (cf. Ramsey numbers, size Ramsey numbers).
+ai-review/150.md:21:The `sSup`-based pattern for `c(n)` follows the established project convention (cf. `maxBipartiteSubgraphSize` in 127.lean, `antiRamseyNum` in Coloring.lean, `largestInducedForestSize` in Definitions.lean).
+FormalConjectures/ErdosProblems/1014.lean:22:Erdős conjectured that for fixed $k \geq 3$, the ratio of consecutive Ramsey numbers
+FormalConjectures/ErdosProblems/1014.lean:34:/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
+FormalConjectures/ErdosProblems/1014.lean:37:noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1014.lean:45:where $R(k, l)$ is the Ramsey number.
+FormalConjectures/ErdosProblems/1014.lean:54:      |(ramseyR k (l + 1) : ℝ) / (ramseyR k l : ℝ) - 1| ≤ ε := by
+ai-review/173.md:33:- **Tags:** Geometry, Ramsey Theory.
+ai-review/173.md:42:| `[Sh76]` Shader, L. | ✅ Listed | ✅ Listed | OK but no title provided. The paper is "All right triangles are Ramsey in ℝ²" or similar — title would improve traceability. |
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:23:# Size Ramsey Number
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:25:This file defines the size Ramsey number for simple graphs.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:29:The size Ramsey number `r̂(G, H)` is the minimum number of edges in a graph `F`
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:36:The size Ramsey number `r̂(G, H)` is the minimum number of edges in a graph `F`
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:41:noncomputable def sizeRamsey {α β : Type*} [Fintype α] [Fintype β]
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:49:A graph `G` is **Ramsey size linear** if there exists a constant `c > 0` such that
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:52:def IsRamseySizeLinear {α : Type*} [Fintype α] (G : SimpleGraph α) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:55:    (sizeRamsey G H : ℝ) ≤ c * H.edgeSet.ncard
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:157:The anti-Ramsey number $\mathrm{AR}(n, H)$: maximum colors to edge-color $K_n$ without rainbow $H$.
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:159:noncomputable def antiRamseyNum {α : Type*} [Fintype α] (H : SimpleGraph α) (n : ℕ) : ℕ :=
+ai-review/518.md:46:**Formalizability assessment: Low ambiguity.** The statement is standard and well-understood in the Ramsey theory / graph partitioning literature.
+ai-review/87.md:24:[Omitted long matching line]
+ai-review/87.md:33:| AMS classification | `AMS 5` | Graph theory / Ramsey theory | ✓ |
+ai-review/87.md:40:> [FaMc93] Faudree, R. J. and McKay, B. D., *A conjecture of Erdős and the Ramsey number r(W)*, J. Combin. Math. Combin. Comput. **13** (1993), 23–31.
+ai-review/87.md:62:- Good separation of helper definitions (`ContainsSubgraph`, `graphRamseyNumber`, `diagRamsey`) with their own docstrings.
+ai-review/87.md:66:- The docstring for `graphRamseyNumber` (line 41–44) says "the minimum N such that every simple graph G on N vertices either contains a copy of H as a subgraph or whose complement contains a copy of H." The phrase "or whose complement" is grammatically awkward; consider "or its complement contains a copy of H."
+ai-review/87.md:67:- The definitions are clean and self-contained. If `IsContained` from Mathlib is adopted, the `⊑` notation would improve readability of `graphRamseyNumber`.
+ai-review/87.md:71:The problem is **precisely formalizable with no ambiguity**. Both the weak and strong forms are unambiguous inequalities relating the graph Ramsey number R(G) to the diagonal Ramsey number R(k), parameterized by the chromatic number χ(G) = k. The quantifier structure (∀ε, ∃K, ∀k≥K, ∀G with χ(G)=k) is standard and maps directly to Lean.
+ai-review/87.md:73:The only mild design choice is the restriction `ε < 1` in the weak form (line 62). This is mathematically harmless: for ε ≥ 1, we have (1−ε)^k ≤ 0 for large k (alternating sign or zero), so the inequality is trivially satisfied since Ramsey numbers are positive. However, adding `ε < 1` avoids potential confusion with negative/oscillating factors and makes the mathematical intent clearer. This is a reasonable choice.
+ai-review/87.md:81:**`ContainsSubgraph` (line 38):** Correctly captures "H is isomorphic to a subgraph of G" via an injective adjacency-preserving map. This is *not-necessarily-induced* subgraph containment (adjacency is preserved in one direction only: `H.Adj u v → G.Adj (f u) (f v)`), which is the standard meaning in the Ramsey theory context. ✓
+ai-review/87.md:83:**`graphRamseyNumber` (line 45–47):** Defined as `sInf {N | ∀ G : SimpleGraph (Fin N), ContainsSubgraph G H ∨ ContainsSubgraph Gᶜ H}`. This correctly formalizes the graph Ramsey number R(H): the minimum N such that every 2-coloring of K_N contains a monochromatic copy of H. The equivalence between "every graph on N vertices or its complement contains H" and "every 2-coloring of K_N has a monochromatic H" is standard. ✓
+ai-review/87.md:85:**Edge case:** If the infimum set is empty (which cannot happen for finite H by Ramsey's theorem, but Lean's `sInf` on ℕ returns 0 for empty sets), the value would be 0. This is not an issue in practice since the theorem only applies to finite graphs via `[Fintype V]`, but a `Nonempty` hypothesis on the set or a `[Fintype U]` constraint on `graphRamseyNumber` would make the definition more robust. This is a minor concern.
+ai-review/87.md:87:**`diagRamsey` (line 50–51):** `graphRamseyNumber (⊤ : SimpleGraph (Fin k))` correctly gives R(K_k), the diagonal Ramsey number R(k, k). ✓
+ai-review/87.md:98:  (diagRamsey k : ℝ) * (1 - ε) ^ k < (graphRamseyNumber G : ℝ)
+ai-review/87.md:112:  c * (diagRamsey k : ℝ) < (graphRamseyNumber G : ℝ)
+ai-review/87.md:125:| Code reuse | `ContainsSubgraph`, `graphRamseyNumber`, `diagRamsey` should be consolidated; Mathlib's `IsContained` is available |
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:21:# Hypergraph Ramsey Numbers
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:23:This file defines the `r`-uniform hypergraph Ramsey number `R_r(n)`.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:29:The `r`-uniform hypergraph Ramsey number `R_r(n)`.
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:33:noncomputable def hypergraphRamsey (r n : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:38:/-- `n ≤ hypergraphRamsey r n` when the set is nonempty. -/
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:39:theorem le_hypergraphRamsey (r n : ℕ) (hne : { m | ∀ (c : Finset (Fin m) → Bool),
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:42:    n ≤ hypergraphRamsey r n := by
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:51:/-- `hypergraphRamsey r r = r` for any `r`. -/
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:52:theorem hypergraphRamsey_self (r : ℕ) : hypergraphRamsey r r = r := by
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:62:  exact le_antisymm (Nat.sInf_le h_mem) (le_hypergraphRamsey r r ⟨r, h_mem⟩)
+FormalConjectures/ErdosProblems/592.lean:37:    OrdinalCardinalRamsey (ω ^ β) (ω ^ β) 3 ↔ (answer(sorry) : Ordinal.{u} → Prop) β := by
+ai-review/547.md:5:**Significant duplication identified.** Both `ContainsSubgraphCopy` and `ramseyNumber` are defined identically (modulo namespace) in at least six files: `545.lean`, `546.lean`, `547.lean`, `548.lean`, `549.lean`, and `550.lean`. Additional near-duplicates (`Embeds`, `ramseyNum`) appear in `568.lean`, `569.lean`, and `570.lean`.
+ai-review/547.md:7:[Omitted long matching line]
+ai-review/547.md:9:Similarly, the `ramseyNumber` definition for graphs (diagonal Ramsey number) is duplicated across multiple files and would benefit from a shared definition in `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean`, which currently only defines `hypergraphRamsey` for uniform hypergraphs.
+ai-review/547.md:44:The code is clean and readable. The docstrings on both `ContainsSubgraphCopy` and `ramseyNumber` provide clear mathematical descriptions. The main theorem statement is concise and directly maps to the informal statement. The namespace `Erdos547` keeps definitions appropriately scoped.
+ai-review/547.md:52:- R(T) is the standard diagonal Ramsey number for graphs, well-defined for any finite graph.
+ai-review/547.md:55:There is essentially no ambiguity in the statement. The only minor subtlety is whether R(T) refers to the diagonal graph Ramsey number (as formalized) or the classical integer Ramsey number R(n, n); here the graph version is clearly intended by the problem statement, and the formalization is correct.
+ai-review/547.md:63:- **`ContainsSubgraphCopy`**: Correctly defines subgraph isomorphism (injective homomorphism). This is the standard notion for Ramsey theory on graphs.
+ai-review/547.md:65:- **`ramseyNumber`**: Defined as `sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)), ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}`. This is the standard diagonal graph Ramsey number. The use of `sInf` on `ℕ` returns 0 for an empty set, but by the classical Ramsey theorem for graphs, the set is always non-empty, so `sInf` yields the true minimum. This is mathematically sound.
+ai-review/547.md:81:| Code reuse | Significant duplication of `ContainsSubgraphCopy` and `ramseyNumber` across ~6 files; Mathlib's `IsContained` may be usable |
+ai-review/165.md:5:**Issue: `ramseyR3` is defined identically in three files.**
+ai-review/165.md:9:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+ai-review/165.md:13:- `544.lean:41–42` (Erdős 544, `Erdos544.ramseyR3`)
+ai-review/165.md:14:- `553.lean:42–43` (Erdős 553, `Erdos553.ramseyR3`)
+ai-review/165.md:16:All three files independently define R(3,k) with identical logic. These should be unified into a shared definition (e.g., in a utility module or a common Ramsey namespace) and imported by all three problems.
+ai-review/165.md:18:Additionally, `1015.lean:71–74` defines a general two-parameter Ramsey number `ramseyNumber₂(s,t)` using explicit edge-coloring functions rather than `SimpleGraph`/complement. This is a different formalization approach; `ramseyR3 k` could in principle be expressed as `ramseyNumber₂ 3 k`, but the definitions are not currently compatible due to the different underlying representations (SimpleGraph vs. Bool-valued edge functions).
+ai-review/165.md:51:      (1/2 - ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) ≤ (ramseyR3 k : ℝ) ∧
+ai-review/165.md:52:      (ramseyR3 k : ℝ) ≤ (1/2 + ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ))
+ai-review/165.md:59:The code is well-organized and readable. The module docstring provides excellent context: it states the problem, explains the Ramsey number, gives known bounds with citations, and states the conjectured value. The definition of `ramseyR3` has a clear docstring. No readability issues.
+ai-review/165.md:77:- **`ramseyR3` definition:** Correctly captures R(3,k) as the minimum N such that every simple graph on N vertices contains a triangle (¬CliqueFree 3) or an independent set of size k (¬Gᶜ.CliqueFree k, i.e., the complement has a k-clique). The use of `sInf` is valid since the Ramsey property set is upward-closed (if every graph on N vertices satisfies it, so does every graph on N+m vertices, by restricting to an N-vertex subgraph).
+ai-review/165.md:83:- **Logarithm base:** `Real.log` in Mathlib is the natural logarithm. The formalization is self-consistent: the constant c absorbs any base-conversion factor. The conjectured value c = 1/2 in the docstring assumes natural log, which aligns with the standard Ramsey theory literature convention for this problem (Shearer's upper bound is (1+o(1)) · k²/ln k; the conjectured truth is (1/2+o(1)) · k²/ln k).
+ai-review/191.md:7:[Omitted long matching line]
+FormalConjectures/ErdosProblems/567.lean:26:In other words, is $G$ Ramsey size linear? A special case of Problem 566.
+FormalConjectures/ErdosProblems/567.lean:30:[EFRS93] Erdős, Faudree, Rousseau and Schelp, _Ramsey size linear graphs_.
+FormalConjectures/ErdosProblems/567.lean:57:Is $Q_3$ (the 3-dimensional hypercube) Ramsey size linear?
+FormalConjectures/ErdosProblems/567.lean:60:theorem erdos_567_Q3 : answer(sorry) ↔ IsRamseySizeLinear Q3 := by
+FormalConjectures/ErdosProblems/567.lean:66:Is $K_{3,3}$ Ramsey size linear?
+FormalConjectures/ErdosProblems/567.lean:69:theorem erdos_567_K33 : answer(sorry) ↔ IsRamseySizeLinear K33 := by
+FormalConjectures/ErdosProblems/567.lean:75:Is $H_5$ ($C_5$ with two vertex-disjoint chords) Ramsey size linear?
+FormalConjectures/ErdosProblems/567.lean:78:theorem erdos_567_H5 : answer(sorry) ↔ IsRamseySizeLinear H5 := by
+FormalConjectures/ErdosProblems/112.lean:24:A problem of Erdős and Rado on directed Ramsey numbers $k(n,m)$: the minimal $k$ such that
+FormalConjectures/ErdosProblems/112.lean:55:/-- The directed Ramsey number $k(n,m)$: the minimal $k$ such that every directed graph
+FormalConjectures/ErdosProblems/112.lean:58:noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/112.lean:65:Erdős Problem 112: Determine the directed Ramsey number $k(n,m)$.
+FormalConjectures/ErdosProblems/112.lean:71:      dirRamseyNum n m = answer(sorry) := by
+FormalConjectures/ErdosProblems/112.lean:81:      dirRamseyNum n m ≤ (2 ^ (m - 1) * (n - 1) ^ m + n - 2) / (2 * n - 3) := by
+FormalConjectures/ErdosProblems/112.lean:90:      dirRamseyNum n 3 ≤ n ^ 2 := by
+ai-review/531.md:13:- **`FormalConjecturesForMathlib/Combinatorics/Ramsey.lean`**: Uses the same `sInf` pattern for defining Ramsey-type numbers, consistent with `folkmanNumber`.
+ai-review/362.md:5:No directly reusable code exists in `FormalConjecturesForMathlib/` for this problem. The problem concerns counting subsets with a given sum, which is distinct from the combinatorics utilities available (arithmetic progressions, Ramsey theory, Sidon sets, sum-free sets, etc.).
+ai-review/459.md:19:No other definitions from `FormalConjecturesForMathlib` appear directly applicable—the problem is about prime factorization structure rather than arithmetic progressions, Ramsey theory, or additive combinatorics.
+ai-review/563.md:13:- **`hypergraphRamsey` (FormalConjecturesForMathlib):** The Ramsey number definition is conceptually related (α = 0 case) but structurally different enough that direct reuse is impractical.
+ai-review/563.md:20:> [Er90b] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and differences*. Mathematics of Ramsey theory, Algorithms Combin. 5 (1990), 12-28.
+ai-review/563.md:25:[Omitted long matching line]
+ai-review/563.md:32:1. The case α = 0 reduces to classical Ramsey numbers (asking for 2-colourings with no monochromatic clique of size m).
+ai-review/563.md:38:**Assessment:** The formalization correctly restricts to the core conjecture. The α = 0 / Ramsey connection is a remark rather than a variant. The F(n, α) ≍ log n result (known via the probabilistic method) could be stated as a separate solved theorem, since it is a known partial result. Problem 161 already exists as a separate formalization. No critical variants are missing.
+ai-review/563.md:84:**However**, this interpretation is somewhat unusual. Typically in Ramsey theory, one asks about colourings adversarially (∀ colourings). Let me re-read the website carefully:
+ai-review/162.md:25:> [Er90b] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and differences*. Mathematics of Ramsey theory, Algorithms and Combinatorics, 5 (1990), Springer, Berlin, 12-28.
+FormalConjectures/ErdosProblems/569.lean:39:/-- The Ramsey number $R(G, H)$: the minimum $N$ such that for any graph $F$
+FormalConjectures/ErdosProblems/569.lean:42:noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/569.lean:66:      ramseyNum (cycleGraph (2 * k + 1) (by omega)) H ≤ c * H.edgeSet.ncard := by
+ai-review/112.md:8:- **Problem 568** (`FormalConjectures/ErdosProblems/568.lean`) defines `ramseyNum` for undirected `SimpleGraph`s, which is structurally analogous but not reusable for directed Ramsey numbers.
+ai-review/112.md:9:- **`FormalConjecturesForMathlib/Combinatorics/Ramsey.lean`** defines `hypergraphRamsey` using a similar `sInf` pattern. Not directly applicable.
+ai-review/112.md:12:**Verdict:** No direct code reuse opportunities. The custom `Digraph`, `IsIndepSet`, `IsTransTournament`, and `dirRamseyNum` definitions are appropriate for this problem. However, if `Digraph` gains an antisymmetry field (see §6), it may become worth unifying with `Tournament` from Problem 902 (a `Tournament` would then be a `Digraph` that is additionally complete).
+ai-review/112.md:23:- **Zach Hunter's observation**: $R(n,m) \leq k(n,m) \leq R(n,m,m)$ (where $R$ is the classical Ramsey number and $R(n,m,m)$ is the 3-color Ramsey number). This is not cited in the formalization.
+ai-review/112.md:37:1. **Ramsey number sandwich**: $R(n,m) \leq k(n,m) \leq R(n,m,m)$ (Hunter's observation). This connects directed Ramsey numbers to classical ones and could be a useful variant.
+ai-review/112.md:58:The definitions of independent set and transitive tournament are precise and unambiguous. The directed Ramsey number `dirRamseyNum` is well-defined as an `sInf`.
+ai-review/112.md:78:**This causes `dirRamseyNum n m = 0` for all `n ≥ 2`, `m ≥ 2`**, making the formalization mathematically vacuous. Here is why:
+ai-review/112.md:84:Since this counterexample graph exists for every finite vertex set, the defining set for `sInf` is **empty**, and `sInf ∅ = 0` in `ℕ`. Thus `dirRamseyNum n m = 0` trivially, and all three theorems become vacuously true or trivially true statements about 0.
+ai-review/112.md:94:This makes `Digraph` an *oriented graph* (each pair of vertices has at most one directed edge), which is the standard meaning in this problem's context. The bound $k(n,m) \leq R(n,m,m)$ (3-color Ramsey, corresponding to the three options: no edge, forward edge, backward edge) confirms this interpretation.
+ai-review/112.md:100:dirRamseyNum n m ≤ (2 ^ (m - 1) * (n - 1) ^ m + n - 2) / (2 * n - 3)
+ai-review/112.md:106:- Lean's `ℕ` division is floor division. Since `dirRamseyNum` is a natural number, the floor-division form `k ≤ ⌊a/b⌋` is correct and is actually the strongest way to state the bound.
+ai-review/112.md:108:**Verdict on arithmetic:** No issues, assuming the antisymmetry fix is applied and `dirRamseyNum` returns a meaningful value.
+ai-review/112.md:123:| `Digraph` definition | **BUG** — missing antisymmetry makes `dirRamseyNum` trivially 0 |
+ai-review/112.md:126:| `dirRamseyNum` definition | ✅ Correct structure, but depends on `Digraph` fix |
+FormalConjectures/ErdosProblems/800.lean:30:[BuEr75] Burr, S. A. and Erdős, P., _On the magnitude of generalized Ramsey numbers for graphs_,
+FormalConjectures/ErdosProblems/800.lean:33:[Al94] Alon, N., _Subdivided graphs have linear Ramsey numbers_, 1994.
+FormalConjectures/ErdosProblems/800.lean:45:/-- The graph Ramsey number $R(G)$: the minimum $N$ such that for every graph $H$ on
+FormalConjectures/ErdosProblems/800.lean:47:noncomputable def graphRamseyNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/800.lean:58:the graph Ramsey number $R(G) \leq C \cdot n$.
+FormalConjectures/ErdosProblems/800.lean:68:        (graphRamseyNumber G : ℝ) ≤ C * (n : ℝ) := by
+ai-review/129.md:15:- `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:33–36` defines `hypergraphRamsey` for 2-colorings of r-uniform hypergraphs. This is structurally similar to `multicolorRamseyNum` but restricted to 2 colors and formulated via hypergraph subsets rather than edge colorings, so it cannot directly replace the Problem 129 definitions.
+ai-review/129.md:17:- Problems 555–558 define `multicolorRamseyNumber` using `SimpleGraph`, a different representation.
+ai-review/129.md:19:**Recommendation:** Extract `EdgeColoring` into a shared file to be used by both Problem 129 and Problem 136 (and potentially other Erdős–Gyárfás problems). The remaining definitions (`IsMonoKkFree`, `multicolorRamseyNum`) are specific enough to remain local.
+ai-review/129.md:25:> [Er97b] Erdős, P. and Gyárfás, A., *A variant of the classical Ramsey problem*, Combinatorica **17** (1997), 459–467.
+ai-review/129.md:39:This generalized conjecture is **not captured** in the formalization, which only addresses k = 3. Since the `multicolorRamseyNum` definition already supports arbitrary k, adding this variant would be straightforward:
+ai-review/129.md:46:          < (multicolorRamseyNum n k r : ℝ)
+ai-review/129.md:47:        ∧ (multicolorRamseyNum n k r : ℝ)
+ai-review/129.md:78:**The `EdgeColoring` definition colors ordered pairs (directed edges) rather than unordered edges.** The standard Ramsey-theoretic setting concerns undirected complete graphs, where χ({x, y}) is well-defined regardless of ordering. The formalization does not enforce χ x y = χ y x.
+ai-review/129.md:80:Consequently, `multicolorRamseyNum` as defined quantifies over ALL functions Fin N → Fin N → Fin r, including non-symmetric ones. This means R_ordered ≥ R_undirected (more adversarial colorings require at least as large an N).
+ai-review/129.md:90:### 6.3 `multicolorRamseyNum` Definition
+FormalConjectures/ErdosProblems/559.lean:24:Let $\hat{R}(G)$ denote the size Ramsey number, the minimal number of edges $m$ such
+FormalConjectures/ErdosProblems/559.lean:25:that there is a graph $H$ with $m$ edges that is Ramsey for $G$ (every 2-coloring
+FormalConjectures/ErdosProblems/559.lean:35:[RoSz00] Rödl, V. and Szemerédi, E., _On size Ramsey numbers of graphs with bounded degree_. Combinatorica 20 (2000), 257-262.
+FormalConjectures/ErdosProblems/559.lean:42:/-- The size Ramsey number $\hat{R}(G)$: the minimum number of edges in a graph $H$
+FormalConjectures/ErdosProblems/559.lean:43:    that is Ramsey for $G$.
+FormalConjectures/ErdosProblems/559.lean:45:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/559.lean:50:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/559.lean:66:with maximum degree at most $d$, the size Ramsey number satisfies $\hat{R}(G) \leq C \cdot n$.
+FormalConjectures/ErdosProblems/559.lean:76:            sizeRamseyNumber G ≤ C * n) := by
+ai-review/557.md:5:The `multicolorRamseyNumber` definition is **duplicated verbatim** across at least 5 files: `554.lean`, `555.lean`, `556.lean`, `557.lean`, and `558.lean`. This definition should be extracted to a shared ForMathlib file (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/MulticolorRamsey.lean`) and imported by all consumers.
+ai-review/557.md:7:Note that `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` already defines `Combinatorics.hypergraphRamsey` (for uniform hypergraph Ramsey numbers with 2 colors), and `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` defines `SimpleGraph.sizeRamsey`. The multicolor graph Ramsey number is a natural companion to these and belongs alongside them.
+ai-review/557.md:9:Similarly, Problem 547 and 548 each define their own `ContainsSubgraphCopy`, which is essentially the "monochromatic copy" concept used inside `multicolorRamseyNumber`. Unifying these would improve consistency.
+ai-review/557.md:30:The code is clean and readable. The docstring on `multicolorRamseyNumber` clearly explains the mathematical meaning of the definition, including what constitutes a $k$-colouring and a monochromatic copy. The theorem statement `erdos_557` is concise and well-structured.
+ai-review/557.md:38:The problem is **highly formalizable**. It asks a precise yes/no question: does there exist an absolute constant $C$ such that $R_k(T) \leq kn + C$ for all $k \geq 1$, all $n \geq 1$, and all trees $T$ on $n$ vertices? There is no ambiguity in the statement — the multicolor Ramsey number $R_k(T)$ is a well-defined quantity, trees are well-defined, and the bound $kn + C$ is a concrete arithmetic expression.
+ai-review/557.md:48:**Definition of `multicolorRamseyNumber`:** Takes the infimum over all $N$ such that every symmetric $k$-coloring of pairs from $\text{Fin}(N)$ yields a monochromatic injective copy of $G$. This correctly captures $R_k(G)$.
+ai-review/557.md:51:- Using `sInf` on `ℕ` means `sInf ∅ = 0`. However, for any finite graph $G$ and $k \geq 1$, the classical Ramsey theorem guarantees the defining set is nonempty, so this is not an issue. (The formalization need not prove this separately since the conjecture would be trivially true in that degenerate case anyway.)
+ai-review/533.md:5:The formalization follows the same structural pattern as **Problem 579** (`FormalConjectures/ErdosProblems/579.lean`), which is essentially the same type of Ramsey-Turán question but for K_{2,2,2}-free graphs instead of K₅-free graphs. Both problems share identical quantifier structure: `∀ δ > 0, ∃ c > 0, ∃ N, ∀ n ≥ N, ∀ G on Fin n ...`. Problem 620 also uses the same `CliqueFree`/`induce` constructs for K₄-free graphs with triangle-free induced subgraphs.
+ai-review/533.md:7:No existing utility in `FormalConjecturesForMathlib` directly applies. There is no Ramsey-Turán density definition in the codebase. If such a definition were introduced (e.g., a general `RamseyTuranDensity r s` definition), it could unify Problems 533, 579, and potentially others in this family. However, for a single problem formalization, the current direct statement is appropriate and avoids unnecessary abstraction.
+ai-review/533.md:14:- **[BaLe13]** Balogh, J. and Lenz, J., *Some exact Ramsey-Turán numbers*, 2013.
+ai-review/533.md:32:- **The general Ramsey-Turán density framework.** The problem is naturally part of a family parameterized by (r, s) asking for δ_r(s). The case δ₃(4) = 0 (proved by the original authors) and δ₃(7) ≥ 1/4 (via a construction of Erdős and Rogers) are mentioned on the website but not formalized here.
+ai-review/533.md:60:**Ambiguity assessment: None.** The Ramsey-Turán formulation is a well-established framework with unambiguous definitions.
+FormalConjectures/ErdosProblems/562.lean:30:Let $R_r(n)$ denote the $r$-uniform hypergraph Ramsey number: the minimal $m$ such that if we
+FormalConjectures/ErdosProblems/562.lean:40:    ∀ r ≥ 3, (fun n ↦ log^[r - 1] (hypergraphRamsey r n)) ~[atTop] (fun n ↦ (n : ℝ)) := by
+ai-review/180.md:9:- **Mathlib's `SimpleGraph.IsContained`** (`Mathlib.Combinatorics.SimpleGraph.Copy`): Already used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean`. This captures the same notion as the local `ContainsSubgraph` (injective graph homomorphism). Switching to the Mathlib predicate would reduce duplication and align with the upstream API, but would require verifying definitional equivalence and may affect readability.
+ai-review/78.md:9:**Issue: Multiple independent definitions of diagonal Ramsey numbers across the codebase.**
+ai-review/78.md:11:The formalization in Problem 78 does *not* define a named Ramsey number; instead, it directly inlines the Ramsey property as `∃ G : SimpleGraph (Fin n), G.CliqueFree k ∧ Gᶜ.CliqueFree k`. Several other files define closely related diagonal Ramsey numbers:
+ai-review/78.md:15:| `ErdosProblems/1029.lean` | `diagonalRamseyNumber k` | Edge-coloring (`Fin N → Fin N → Bool`) |
+ai-review/78.md:16:| `ErdosProblems/163.lean` | `ramseyDiag H` | `SimpleGraph` + `containsCopy` |
+ai-review/78.md:17:| `ErdosProblems/165.lean` | `ramseyR3 k` | `SimpleGraph` + `CliqueFree` + complement |
+ai-review/78.md:18:| `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` | `hypergraphRamsey r n` | Finset-based r-uniform coloring |
+ai-review/78.md:22:[Omitted long matching line]
+ai-review/78.md:44:- The OEIS sequence A059442 (diagonal Ramsey numbers) is not mentioned.
+ai-review/78.md:127:- **The bound direction is correct:** The statement asks for a graph on $n \geq C^k$ vertices with no $k$-clique or $k$-independent set. This is the correct direction — it says $R(k) \geq n \geq C^k$, establishing an exponential lower bound on the Ramsey number.
+ai-review/78.md:128:- **Use of `CliqueFree k ∧ Gᶜ.CliqueFree k`:** Correct. By `SimpleGraph.isClique_compl`, a clique in $G^c$ is an independent set in $G$, so this simultaneously forbids $k$-cliques and $k$-independent sets, which is exactly the Ramsey condition.
+FormalConjectures/ErdosProblems/560.lean:24:Let $\hat{R}(G)$ denote the size Ramsey number, the minimal number of edges $m$ such
+FormalConjectures/ErdosProblems/560.lean:40:[ErRo93] Erdős, P. and Rousseau, C.C., *The size Ramsey number of a complete bipartite
+FormalConjectures/ErdosProblems/560.lean:43:[EFRS78b] Erdős, P., Faudree, R.J., Rousseau, C.C., and Schelp, R.H., *The size Ramsey
+FormalConjectures/ErdosProblems/560.lean:46:[NeRo78] Nešetřil, J. and Rödl, V., *The Ramsey property for graphs with forbidden complete
+FormalConjectures/ErdosProblems/560.lean:49:[CFW23] Conlon, D., Fox, J., and Wigderson, Y., *Ramsey numbers of books and
+FormalConjectures/ErdosProblems/560.lean:57:/-- The size Ramsey number $\hat{R}(G)$: the minimum number of edges in a graph $H$
+FormalConjectures/ErdosProblems/560.lean:58:that is Ramsey for $G$.
+FormalConjectures/ErdosProblems/560.lean:60:A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/560.lean:65:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/560.lean:84:      (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) >
+FormalConjectures/ErdosProblems/560.lean:96:      (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) <
+FormalConjectures/ErdosProblems/560.lean:112:        (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) ∧
+FormalConjectures/ErdosProblems/560.lean:113:      (sizeRamseyNumber (completeBipartiteGraph (Fin n) (Fin n)) : ℝ) ≤
+ai-review/554.md:5:The definitions `cycleGraph` and `multicolorRamseyNumber` in `554.lean` are **duplicated verbatim** across at least four files:
+ai-review/554.md:12:All definitions are textually identical (same `Adj`, `symm`, `loopless` proofs; same `sInf` formulation). These should be factored into a shared utility file (e.g., `FormalConjectures/Util/RamseyGraph.lean` or similar) and imported by each problem file. Each file currently places these in its own namespace (`Erdos554`, `Erdos555`, etc.), which prevents any cross-problem lemma reuse.
+ai-review/554.md:48:- The docstring for `multicolorRamseyNumber` is well-written and provides good mathematical context.
+ai-review/554.md:61:- $R_k(G)$ is a well-defined finite quantity (by the finite Ramsey theorem for graphs).
+ai-review/554.md:83:[Omitted long matching line]
+ai-review/554.md:91:The `multicolorRamseyNumber` definition uses `sInf` on natural numbers. If the set is empty (e.g., if $k = 0$), `sInf ∅ = 0` in `ℕ`. For $k \geq 1$ and any non-empty graph $G$, the Ramsey number is well-defined and finite, so the set is non-empty. For $k = 0$, `Fin 0` is empty, so the condition is vacuously true for $N = 0$, meaning `sInf` returns 0. This edge case does not affect the theorem since $K_0$ can be chosen large enough to avoid it.
+FormalConjectures/ErdosProblems/174.lean:24:A finite set $A \subset \mathbb{R}^n$ is called Ramsey if, for any $k \geq 1$, there exists some
+FormalConjectures/ErdosProblems/174.lean:26:copy of $A$. Characterise the Ramsey sets in $\mathbb{R}^n$.
+FormalConjectures/ErdosProblems/174.lean:29:that every Ramsey set is 'spherical': it lies on the surface of some sphere.
+FormalConjectures/ErdosProblems/174.lean:30:Graham has conjectured that every spherical set is Ramsey, which would give a
+FormalConjectures/ErdosProblems/174.lean:33:Known Ramsey sets include vertices of $k$-dimensional rectangles [EGMRSS73],
+FormalConjectures/ErdosProblems/174.lean:38:Straus, E. G., _Euclidean Ramsey theorems_, J. Combin. Theory Ser. A, 1973.
+FormalConjectures/ErdosProblems/174.lean:43:[Kr91] Kříž, I., _Permutation groups in Euclidean Ramsey theory_, Proc. Amer. Math. Soc., 1991.
+FormalConjectures/ErdosProblems/174.lean:45:[Kr92] Kříž, I., _All trapezoids are Ramsey_, Discrete Math., 1992.
+FormalConjectures/ErdosProblems/174.lean:50:/-- A finite subset $A$ of $\mathbb{R}^n$ is Euclidean Ramsey if for every $k \geq 1$, there
+FormalConjectures/ErdosProblems/174.lean:53:def IsEuclideanRamsey (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/174.lean:68:A finite set $A \subset \mathbb{R}^n$ is Ramsey if and only if it is spherical.
+FormalConjectures/ErdosProblems/174.lean:70:The forward direction (Ramsey $\to$ spherical) was proved by Erdős, Graham,
+FormalConjectures/ErdosProblems/174.lean:73:The reverse direction (spherical $\to$ Ramsey) is Graham's open conjecture.
+FormalConjectures/ErdosProblems/174.lean:78:      IsEuclideanRamsey n A ↔ IsSpherical n A := by
+ai-review/187.md:45:- **Tags:** Additive combinatorics, Ramsey theory, Arithmetic progressions.
+ai-review/151.md:33:4. **Connection to Problem 610:** The website notes the relationship to Problem 610. The stronger bounds conjectured in 610 (τ(G) ≤ n − ω(n)√n or τ(G) ≤ n − c√(n log n)) would, if true, imply this conjecture since H(n) ~ c√(n log n) by Ramsey-theoretic bounds.
+FormalConjectures/ErdosProblems/565.lean:24:Let $R^*(G)$ be the induced Ramsey number: the minimal $m$ such that there is a
+FormalConjectures/ErdosProblems/565.lean:36:/-- The induced Ramsey number $R^*(G)$: the minimum $m$ such that there exists a
+FormalConjectures/ErdosProblems/565.lean:44:noncomputable def inducedRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/565.lean:54:$n$ vertices, the induced Ramsey number $R^*(G) \leq 2^{Cn}$.
+FormalConjectures/ErdosProblems/565.lean:62:      inducedRamseyNumber G ≤ 2 ^ (C * n) := by
+ai-review/118.md:9:- **`FormalConjecturesForMathlib/SetTheory/Cardinal/SimpleGraph.lean`** defines `OrdinalCardinalRamsey` — a graph-theoretic formulation of the same partition relation, used by problems 590, 591, and 592.
+ai-review/118.md:11:[Omitted long matching line]
+ai-review/545.md:8:- **`ramseyNumber`** — Duplicated verbatim in `546.lean`. Problem `87.lean` defines the equivalent `graphRamseyNumber` on a type-polymorphic graph (rather than `Fin k`). Problem `79.lean` defines `RamseyProp` (an asymmetric two-graph version).
+ai-review/545.md:10:**Recommendation:** Extract `ContainsSubgraphCopy` and `ramseyNumber` into a shared utility in `FormalConjecturesForMathlib`. The existing `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` only covers *hypergraph* Ramsey numbers (`hypergraphRamsey`), so a companion file for graph Ramsey numbers would be appropriate. Problem 87's `graphRamseyNumber` is arguably the cleanest version since it is type-polymorphic rather than restricted to `Fin k`.
+ai-review/545.md:21:The website also mentions **[Su11]** (Sudakov, B., *A conjecture of Erdős on graph Ramsey numbers*, Advances in Mathematics 227 (2011), 601–609) in connection with the weaker Problem 546. While [Su11] is not directly about Problem 545, it is relevant context that the weaker bound R(G) ≤ 2^{O(√m)} was proved by Sudakov.
+ai-review/545.md:66:- **Ramsey number definition:** Using `sInf` on the set of N where every 2-coloring of K_N contains a monochromatic copy of G is standard. For finite graphs, this set is nonempty by Ramsey's theorem, so `sInf` returns the correct value.
+ai-review/545.md:67:- **Subgraph (not induced subgraph) embedding:** The definition correctly requires only that adjacency is preserved (not non-adjacency), matching the standard notion of graph Ramsey numbers.
+ai-review/545.md:73:- **`sInf ∅ = 0` edge case:** If the Ramsey number set is empty (which shouldn't happen for finite graphs by Ramsey's theorem, but isn't proven here), `sInf` would return 0. This is a standard caveat for `noncomputable` Ramsey number definitions in this codebase and is acceptable.
+FormalConjectures/ErdosProblems/85.lean:43:-- TODO: add connection to Ramsey number, weaker version and implied bounds from additional material.
+ai-review/166.md:9:**Issue: `ramseyR4` is a specialization of a generic Ramsey number defined independently in multiple files.**
+ai-review/166.md:11:The definition `ramseyR4 (k : ℕ) : ℕ := sInf {N | ∀ G : SimpleGraph (Fin N), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}` is exactly `ramseyR 4 k` where `ramseyR` is the generic two-parameter Ramsey number already defined in:
+ai-review/166.md:15:| `ErdosProblems/1030.lean` | `ramseyR (k l : ℕ)` | `Erdos1030` |
+ai-review/166.md:16:| `ErdosProblems/1014.lean` | `ramseyR (k l : ℕ)` | `Erdos1014` |
+ai-review/166.md:17:| `ErdosProblems/986.lean` | `ramseyR (k n : ℕ)` | `Erdos986` |
+ai-review/166.md:18:| `ErdosProblems/165.lean` | `ramseyR3 (k : ℕ)` | `Erdos165` |
+ai-review/166.md:22:**Recommendation:** Extract a shared `ramseyR` definition into `FormalConjecturesForMathlib/Combinatorics/` (alongside the existing `Ramsey.lean` which defines the hypergraph variant). All of Problems 165, 166, 986, 1014, and 1030 could then import and use this shared definition. A bridging lemma `hypergraphRamsey 2 n = ramseyR n n` connecting the existing `hypergraphRamsey` to the graph Ramsey number would further unify the codebase.
+ai-review/166.md:59:         C * ((k : ℝ) ^ 3 / (Real.log (k : ℝ)) ^ 4) ≤ (ramseyR4 k : ℝ) := by
+ai-review/166.md:69:         (ramseyR4 k : ℝ) ≤ C * ((k : ℝ) ^ 3 / (Real.log (k : ℝ)) ^ 2) := by
+ai-review/166.md:91:- The definition `ramseyR4` hardcodes `4` in the name. If a shared `ramseyR` were available, the definition could be `def ramseyR4 (k : ℕ) := ramseyR 4 k` or simply eliminated in favor of `ramseyR 4 k` directly.
+ai-review/166.md:103:- $R(4,k)$ is the standard graph Ramsey number, well-defined as an infimum.
+ai-review/166.md:124:      C * ((k : ℝ) ^ 3 / (Real.log (k : ℝ)) ^ α) ≤ (ramseyR4 k : ℝ)
+ai-review/166.md:135:- **$k = 0$:** `ramseyR4 0 = sInf {N | ∀ G, ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree 0}`. Since `CliqueFree 0` is false for all graphs (the empty set is a 0-clique), `¬Gᶜ.CliqueFree 0` is always true, so `ramseyR4 0 = 0`. Meanwhile, `Real.log 0 = 0`, so `k^3 / (log k)^α = 0/0 = 0` (Lean's division by zero convention), and `C * 0 = 0 ≤ 0`. No issue — handled by the `N₀` threshold regardless.
+ai-review/166.md:136:- **$k = 1$:** `ramseyR4 1 = 1` (need at least one vertex so the complement has a 1-clique, but any graph on 1 vertex works since `CliqueFree 4` holds trivially). `Real.log 1 = 0`, so again `k^3 / (log k)^α = 1/0 = 0` for $\alpha \geq 1$. The bound becomes `C * 0 ≤ 1`, which holds. For $\alpha = 0$ it becomes `C * 1 ≤ 1`, which only holds if `C ≤ 1`. This is fine since the `N₀` threshold can exclude small $k$.
+ai-review/166.md:140:The definition `ramseyR4 (k : ℕ) : ℕ := sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}` is the standard definition of $R(4,k)$ as the minimum $N$ such that every graph on $N$ vertices contains a 4-clique or a $k$-independent set. The use of `sInf` on `ℕ` is correct — if the set is empty, `sInf ∅ = 0` in `ℕ`, but by Ramsey's theorem the set is always nonempty for finite parameters, so this degeneracy does not arise in practice.
+FormalConjectures/ErdosProblems/78.lean:25:diagonal Ramsey number. Erdős's probabilistic proof that $R(k) \gg k \cdot 2^{k/2}$ is
+FormalConjectures/ErdosProblems/78.lean:36:Let $R(k)$ be the Ramsey number for $K_k$, the minimal $n$ such that every
+ai-review/71.md:45:- **Docstring naming**: The docstring labels this the "Erdős-Burr conjecture." This name is more commonly associated with a different conjecture (about Ramsey numbers of bounded-degree graphs). The website does not use this name — it simply says the problem is "credited to Erdős and Burr." Consider removing or qualifying the name to avoid confusion.
+ai-review/71.md:81:**Cosmetic concern**: The docstring calls this the "Erdős-Burr conjecture," which typically refers to a conjecture about Ramsey numbers (proved by Lee in 2017). This could confuse readers familiar with that more famous conjecture. The website attributes it to Erdős and Burr but does not use the compound name.
+ai-review/568.md:7:- **`Embeds` vs `SimpleGraph.IsContained`**: The file defines its own `Embeds` (injective adjacency-preserving map), which is essentially equivalent to Mathlib's `SimpleGraph.IsContained` (used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean`). The local `Embeds` could be replaced with `IsContained`.
+ai-review/568.md:9:- **`ramseyNum` vs existing Ramsey infrastructure**: `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` for uniform hypergraphs, but the graph Ramsey number (2-uniform case) is not directly provided. The local `ramseyNum` is reasonable as a standalone definition, though it could potentially be related to `hypergraphRamsey 2` with appropriate encoding.
+ai-review/568.md:11:- **`IsRamseySizeLinear`**: `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` defines `IsRamseySizeLinear`, which captures the *size Ramsey* version of the linear property. Problem 568 asks about the standard Ramsey number (not the size Ramsey number), so `IsRamseySizeLinear` is not directly applicable, but the pattern is similar.
+ai-review/568.md:23:The website (erdosproblems.com/568) attributes the problem to **[EFRS93]** and notes it appears as problem #33 in the Ramsey Theory section. The formalization's citation is incomplete — it lists the authors but omits the paper title, journal, and year. A more complete citation would be:
+ai-review/568.md:25:> [EFRS93] Erdős, P., Faudree, R., Rousseau, C., and Schelp, R. (1993). *Ramsey size linear graphs.*
+ai-review/568.md:31:The website presents a single statement with no listed variants. The formalization captures the problem as stated: given a graph G satisfying the two Ramsey conditions (linear for trees, quadratic for complete graphs), is G Ramsey size linear?
+ai-review/568.md:51:**Ambiguity assessment: Low.** The concepts involved (Ramsey numbers, trees, complete graphs, edge counts, isolated vertices) are all precisely defined. The only mild ambiguity is in the asymptotic notation `<<`, which universally means O(·) in this context and is correctly captured.
+ai-review/568.md:59:- **Ramsey number definition**: `ramseyNum` correctly defines R(G, H) as the minimum N such that every graph F on Fin N either contains G as a subgraph or its complement contains H as a subgraph. The use of `sInf` with the convention `sInf ∅ = 0` in ℕ is safe since Ramsey's theorem guarantees the set is nonempty for finite G, H.
+ai-review/568.md:63:- **Hypothesis (1)**: `∃ C₁, ∀ n, ∀ T on Fin n, IsTreeGraph T → ramseyNum G T ≤ C₁ * n` — correctly captures R(G, T_n) = O(n) uniformly over all trees. The constant C₁ is universal over all n and all trees, which is the right interpretation.
+ai-review/568.md:65:- **Hypothesis (2)**: `∃ C₂, ∀ n, ramseyNum G (⊤ : SimpleGraph (Fin n)) ≤ C₂ * n²` — correctly captures R(G, K_n) = O(n²).
+ai-review/568.md:67:- **Conclusion**: `∃ C, ∀ k, ∀ H on Fin k, (no isolated vertices) → ramseyNum G H ≤ C * |E(H)|` — correctly captures R(G, H) = O(m) where m = |E(H)|.
+ai-review/568.md:69:- **Scope of constants**: C₁, C₂ are in the hypotheses; C is in the conclusion. All are quantified inside the scope of the universal over G, so they may depend on G. This is correct — the question asks whether *every* G satisfying the hypotheses is Ramsey size linear (with a G-dependent constant).
+ai-review/568.md:71:- **Edge cases**: The empty graph (Fin 0) is handled correctly: the "no isolated vertices" condition is vacuously true, and the Ramsey number is 0, satisfying 0 ≤ C * 0.
+ai-review/568.md:73:- **Use of ℕ for constants**: Using natural number constants instead of real-valued constants is fine for upper bounds of this form, since the Ramsey number is a natural number and O(·) bounds can always be stated with integer constants (by rounding up).
+FormalConjectures/ErdosProblems/911.lean:35:/-- The size Ramsey number $\hat{R}(G)$: the minimum number of edges in a graph $H$
+FormalConjectures/ErdosProblems/911.lean:36:    that is Ramsey for $G$.
+FormalConjectures/ErdosProblems/911.lean:38:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/911.lean:44:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/911.lean:73:          sizeRamseyNumber G > f C * Nat.card G.edgeSet := by
+FormalConjectures/ErdosProblems/568.lean:36:/-- The Ramsey number $R(G, H)$: the minimum $N$ such that for any graph $F$
+FormalConjectures/ErdosProblems/568.lean:39:noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/568.lean:63:In other words, is $G$ Ramsey size linear?
+FormalConjectures/ErdosProblems/568.lean:71:      IsTreeGraph T → ramseyNum G T ≤ C₁ * n) →
+FormalConjectures/ErdosProblems/568.lean:73:      ramseyNum G (⊤ : SimpleGraph (Fin n)) ≤ C₂ * n ^ 2) →
+FormalConjectures/ErdosProblems/568.lean:76:      ramseyNum G H ≤ C * H.edgeSet.ncard := by
+ai-review/551.md:5:There is significant code duplication. The definitions `ContainsSubgraphCopy`, `offDiagRamseyNumber`, and `cycleGraph` are copy-pasted verbatim across problems 549, 550, 551, and 552. These should be extracted into a shared utility file.
+ai-review/551.md:12:The custom `ContainsSubgraphCopy` could be replaced by `SimpleGraph.IsContained`, and `offDiagRamseyNumber` could be refactored to use it. A shared definition of `offDiagRamseyNumber` using Mathlib's `IsContained` should live in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/`.
+ai-review/551.md:16:The `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` file defines `hypergraphRamsey` (r-uniform hypergraph Ramsey numbers), which is a different concept and not directly reusable here.
+ai-review/551.md:50:- The `offDiagRamseyNumber` definition using `sInf` is clean, though it could benefit from a note that the set is nonempty (which follows from Ramsey's theorem) to ensure the `sInf` is meaningful and doesn't degenerate to `0`.
+ai-review/551.md:60:- The off-diagonal Ramsey number $R(G_1, G_2)$.
+ai-review/551.md:63:The only potential source of ambiguity is whether "contains a copy" means as a subgraph (non-induced) or as an induced subgraph. The formalization correctly uses non-induced containment (injective homomorphism), which is the standard convention in Ramsey theory.
+ai-review/551.md:76:- `offDiagRamseyNumber`: Defined as $\inf\{N \mid \forall H \text{ on } \operatorname{Fin} N,\; G_1 \subseteq H \lor G_2 \subseteq H^c\}$. This is the standard definition. ✓
+ai-review/551.md:81:**Potential concern with `sInf`:** If the defining set for `offDiagRamseyNumber` were empty, `sInf` would return `0`, which would be mathematically incorrect. However, by Ramsey's theorem the set is always nonempty for finite graphs, so this is not an actual issue — but the definition does not prove this inline. A more robust definition might use `Nat.find` with a proof of existence, though for a `sorry`-based conjecture statement the current approach is acceptable.
+FormalConjectures/ErdosProblems/161.lean:29:differences_. Mathematics of Ramsey theory, Algorithms Combin. 5 (1990), 12-28.
+ai-review/548.md:55:The website also notes that the conjecture **implies** problems 547 and 557. Problem 547 (tree Ramsey numbers) is formalized separately, which is appropriate.
+ai-review/22.md:7:Problem 615 (`FormalConjectures/ErdosProblems/615.lean`) formalizes a closely related Ramsey–Turán problem (it is listed as a related problem on erdosproblems.com/22). It defines:
+ai-review/22.md:10:- `Erdos615.ramseyTuranNumber` (line 68): the Ramsey–Turán number rt(n; k, ℓ).
+ai-review/22.md:12:Problem 22 could be restated directly in terms of `ramseyTuranNumber`:
+ai-review/22.md:13:the conjecture is equivalent to `∀ ε > 0, ∃ N, ∀ n ≥ N, (n² / 8 : ℝ) ≤ ramseyTuranNumber n 4 ⌈ε * n⌉`.
+ai-review/22.md:19:**Recommendation:** Replace the inlined K₄-free condition with `G.CliqueFree 4`, consider using `edgeFinset.card` for consistency, and optionally restate in terms of `ramseyTuranNumber`.
+ai-review/22.md:42:3. **The Ramsey–Turán reformulation:** The docstring mentions the equivalent formulation rt(n; 4, εn) ≥ n²/8, but this is not formalized as a separate statement. Since `ramseyTuranNumber` already exists in Problem 615, an equivalent restatement using it would be natural.
+ai-review/22.md:91:| Code reuse | Could use `CliqueFree 4` (Mathlib), `edgeFinset.card`, and `ramseyTuranNumber` from Problem 615 |
+ai-review/561.md:7:[Omitted long matching line]
+ai-review/561.md:11:- **`Erdos560.sizeRamseyNumber`** in `FormalConjectures/ErdosProblems/560.lean:65-74` defines a single-graph size Ramsey number using the same Bool-coloring approach as 561. This is yet another duplicate. There are now three independent definitions of essentially the same concept across the codebase (library `sizeRamsey`, Erdos560's `sizeRamseyNumber`, and Erdos561's `twoColorSizeRamseyNumber`).
+ai-review/561.md:15:**Recommendation**: Replace `twoColorSizeRamseyNumber` with the library's `SimpleGraph.sizeRamsey`, or at minimum prove they are equal and add a comment explaining the relationship.
+ai-review/561.md:29:Also, the full title of [BEFRS78] on the website is associated with *Ramsey numbers for the pair sparse graph–path or cycle*, Trans. Amer. Math. Soc. The formalization includes this citation, which matches.
+ai-review/561.md:59:- The `twoColorSizeRamseyNumber` definition (lines 50–59) is long and could benefit from factoring out the "monochromatic copy" condition, especially if it were reusing library definitions.
+ai-review/561.md:65:The conjecture gives an exact formula for $\hat{R}(F_1, F_2)$ in terms of the degree sequences. All objects (stars, disjoint unions, size Ramsey numbers, the $\ell_k$ function) have standard unambiguous definitions in combinatorics.
+ai-review/561.md:67:The only potential source of ambiguity is the definition of the size Ramsey number itself: some authors define $\hat{R}(G_1, G_2)$ requiring that $H$ be a complete graph on some vertex set (the "classical" Ramsey setting), while others allow $H$ to be any graph. The formalization uses the latter (any graph $H$), which is the standard definition of the *size* Ramsey number (as opposed to the *vertex* Ramsey number). This is correct.
+ai-review/561.md:86:### `twoColorSizeRamseyNumber` correctness
+ai-review/561.md:87:The definition correctly encodes the two-color size Ramsey number:
+ai-review/561.md:99:The formalization is **mathematically correct and complete** for the main conjecture as stated on the website. The primary gap is the absence of variant theorems for the known partial results and the missed opportunity to reuse the library's `sizeRamsey` definition.
+ai-review/161.md:9:**Ramsey.lean** in `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` using a very similar `sInf` + `Finset (Fin m) → Bool` pattern. The balanced colouring threshold is a quantitative refinement of hypergraph Ramsey numbers, and both share the same colouring representation.
+ai-review/161.md:16:- **[Er90b]** — "Erdős, P., _Problems and results on graphs and hypergraphs: similarities and differences_. Mathematics of Ramsey theory, Algorithms Combin. 5 (1990), 12-28." This matches the website's source ("Er90b, p. 21"). **Correct.**
+ai-review/161.md:42:- **Minor:** The coloring function type `c : Finset (Fin n) → Bool` colors *all* subsets, but is only evaluated on `t`-element subsets. This is the standard convention in this codebase (matching `hypergraphRamsey`) and is acceptable, though a dependent type like `{S : Finset (Fin n) // S.card = t} → Bool` would be more precise. The current approach is the pragmatic choice.
+ai-review/77.md:5:**Issue: Duplicate diagonal Ramsey number definition.**
+ai-review/77.md:7:Problem 77 defines its own `diagonalRamseyNumber` from scratch using a raw coloring function `c : Fin N → Fin N → Bool`. However, Problem 87 (`FormalConjectures/ErdosProblems/87.lean:50-51`) already defines `diagRamsey` via the more idiomatic `SimpleGraph`-based approach:
+ai-review/77.md:10:noncomputable def diagRamsey (k : ℕ) : ℕ :=
+ai-review/77.md:11:  graphRamseyNumber (⊤ : SimpleGraph (Fin k))
+ai-review/77.md:14:This is built on top of `graphRamseyNumber` (line 45) and `ContainsSubgraph` (line 38), which work with Mathlib's `SimpleGraph` infrastructure. This definition is cleaner, more composable, and consistent with the rest of the Erdős problem formalizations (Problems 87, 546, 547, 549, 800 all use `SimpleGraph`-based Ramsey definitions).
+ai-review/77.md:16:Additionally, `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey r n`, the r-uniform hypergraph Ramsey number. The classical diagonal Ramsey number R(k) is `hypergraphRamsey 2 k` (the 2-uniform, i.e. graph, case). This shared library definition could also be leveraged.
+ai-review/77.md:18:**Recommendation:** Replace `Erdos77.diagonalRamseyNumber` with either `Erdos87.diagRamsey` (most directly equivalent) or show the relationship to `Combinatorics.hypergraphRamsey 2 k`. This would reduce duplication and improve consistency across the codebase.
+ai-review/77.md:59:      (diagonalRamseyNumber k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+ai-review/77.md:65:      (diagonalRamseyNumber k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+ai-review/77.md:82:- The definition `diagonalRamseyNumber` is well-documented but uses a low-level representation (raw `Bool`-valued function) rather than the `SimpleGraph` formalism used elsewhere in the codebase. Using `SimpleGraph` would make the connection to standard Ramsey theory more transparent.
+ai-review/77.md:92:The problem statement "find the value of lim_{k→∞} R(k)^{1/k}" is mathematically precise once R(k) is defined. The diagonal Ramsey number R(k) has a universally agreed-upon definition. The only subtlety is whether the limit is assumed to exist:
+ai-review/77.md:105:**Definition correctness:** The definition of `diagonalRamseyNumber` correctly captures R(k):
+ai-review/77.md:110:- Using `sInf` is correct; if the defining set is empty, `sInf ∅ = 0` in ℕ, but by the Ramsey theorem the set is always nonempty for the relevant cases.
+ai-review/77.md:126:| Code reuse | Needs improvement | Should use `diagRamsey` from Problem 87 or `hypergraphRamsey` from library |
+ai-review/183.md:9:**Issue: Duplicated multicolor Ramsey definition.**
+ai-review/183.md:11:Problem 556 (`FormalConjectures/ErdosProblems/556.lean`) already defines a general `multicolorRamseyNumber` that computes the k-colour Ramsey number R_k(G) for an arbitrary graph G. The `multicolorRamseyTriangle` defined here is mathematically identical to `multicolorRamseyNumber (completeGraph (Fin 3)) k` — a monochromatic triangle in a k-coloring of K_n is exactly a monochromatic copy of K₃.
+ai-review/183.md:19:**Additionally**, `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey r n` for 2-colorings of r-uniform hypergraphs. While this is the 2-color case and uses a different representation (coloring hyperedges rather than graph edges), it shows the project has infrastructure for Ramsey numbers.
+ai-review/183.md:22:- (a) Redefine `multicolorRamseyTriangle k` as `multicolorRamseyNumber (completeGraph (Fin 3)) k` (importing from 556), or
+ai-review/183.md:23:- (b) Factor the general `multicolorRamseyNumber` into a shared utility file (e.g., `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` or a new file) and have both Problems 183 and 556 import from it. This would be the preferred approach since it centralizes the definition.
+ai-review/183.md:38:- **Tags:** Ramsey Theory.
+ai-review/183.md:71:   theorem multicolorRamseyTriangle_upper (k : ℕ) :
+ai-review/183.md:72:       multicolorRamseyTriangle k ≤ ⌈Real.exp 1 * ↑(Nat.factorial k)⌉₊ := by sorry
+ai-review/183.md:80:       Tendsto (fun k => (multicolorRamseyTriangle k : ℝ) ^ ((1:ℝ)/(k:ℝ))) atTop atTop
+ai-review/183.md:91:- **Definition docstring:** The docstring for `multicolorRamseyTriangle` clearly explains the mathematical meaning. The LaTeX-style description of k-colourings and monochromatic triangles is helpful.
+ai-review/183.md:123:### Definition: `multicolorRamseyTriangle`
+ai-review/183.md:126:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+ai-review/183.md:141:[Omitted long matching line]
+ai-review/183.md:150:      Tendsto (fun k : ℕ => (multicolorRamseyTriangle k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+ai-review/183.md:161:3. **Cast correctness:** `(multicolorRamseyTriangle k : ℝ)` coerces ℕ to ℝ, which is the standard approach. ✓
+ai-review/183.md:169:The main deficiency is the absence of formalizations of known proven results (upper/lower bounds) as variants, and the opportunity to reuse the more general `multicolorRamseyNumber` definition from Problem 556.
+ai-review/146.md:23:- **[AKS03]** Alon, N., Krivelevich, M., and Sudakov, B., *Turán numbers of bipartite graphs and related Ramsey-type questions*, Combinatorics, Probability and Computing 12 (2003), no. 5-6, 477-494.
+ai-review/549.md:5:**Major issue.** Both `ContainsSubgraphCopy` and `ramseyNumber` are duplicated verbatim across problems 545, 546, 547, and 549 — each within its own namespace. These should be refactored into a shared utility file.
+ai-review/549.md:7:Additionally, Mathlib already provides `SimpleGraph.IsContained` (from `Mathlib.Combinatorics.SimpleGraph.Copy`), which is used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean`. The custom `ContainsSubgraphCopy` is essentially equivalent to `IsContained` (an injective adjacency-preserving map). Problem 549 should use the Mathlib definition instead of rolling its own.
+ai-review/549.md:9:Similarly, `ramseyNumber` could be defined once in a shared module (alongside the related `sizeRamsey` in `SizeRamsey.lean`) and imported by all the Erdős problems that need it (545–549).
+ai-review/549.md:43:The original conjecture is unambiguous: it asserts an exact value for R(T) for a well-defined class of trees. The key concepts — tree, bipartition, Ramsey number — are all standard and have clear formal definitions.
+ai-review/549.md:59:- **`sInf` for Ramsey number.** The definition uses `sInf` over natural numbers. If the defining set were empty, `sInf` would return 0 by convention. This cannot happen for finite graphs by the classical Ramsey theorem, but this well-definedness is not proved within the formalization. This is a pre-existing issue shared with problems 545–547 and is not specific to 549.
+ai-review/190.md:63:In the canonical Ramsey theory literature, the standard formulation uses 3-term rainbow APs. This is the weakest rainbow condition (a rainbow k-AP for k ≥ 3 implies a rainbow 3-AP via restriction to any three consecutive terms), so it gives the smallest possible H(k). The choice of 3 is mathematically standard and correct.
+ai-review/193.md:42:| Gerver & Ramsey 1979 | `[GeRa79]` — incomplete (no title/journal) | `[GeRa79]` | **Incomplete citation.** The full reference should include the paper title and journal. The paper is: Gerver, J. and Ramsey, L. T., "Sets of lattice points which contain a maximal number of edges," *Discrete Math.* **28** (1979), 255–262. |
+ai-review/193.md:56:1. **ℤ² case (resolved):** Gerver and Ramsey proved the answer is "yes" for ℤ². This is a natural companion theorem:
+ai-review/193.md:67:3. **Bounded collinearity in ℤ³:** Gerver and Ramsey showed that the maximum number of collinear points in any infinite S-walk in ℤ³ can be bounded (as a function of S). This is a weaker but proven result:
+FormalConjectures/ErdosProblems/566.lean:24:- [EFRS93] Erdős, Faudree, Rousseau and Schelp, _Ramsey size linear graphs_.
+FormalConjectures/ErdosProblems/566.lean:37:is $G$ Ramsey size linear?
+FormalConjectures/ErdosProblems/566.lean:44:      -- Then G is Ramsey size linear
+FormalConjectures/ErdosProblems/566.lean:49:        (sizeRamsey G H : ℝ) ≤ c * H.edgeSet.ncard := by
+FormalConjectures/ErdosProblems/79.lean:24:We say $G$ is *Ramsey size linear* if $R(G,H) \ll m$ for all graphs $H$ with $m$ edges
+FormalConjectures/ErdosProblems/79.lean:27:Are there infinitely many graphs $G$ which are not Ramsey size linear but such
+FormalConjectures/ErdosProblems/79.lean:44:/-- The Ramsey property: every 2-coloring of $K_n$ contains $G$ in one color or $H$ in the
+FormalConjectures/ErdosProblems/79.lean:47:def RamseyProp {p q : ℕ} (G : SimpleGraph (Fin p)) (H : SimpleGraph (Fin q))
+FormalConjectures/ErdosProblems/79.lean:55:/-- A graph $G$ is Ramsey size linear if there exists $C > 0$ such that for every graph $H$
+FormalConjectures/ErdosProblems/79.lean:56:    with no isolated vertices, the Ramsey property $R(G,H)$ holds at some
+FormalConjectures/ErdosProblems/79.lean:58:def IsRamseySizeLinear {p : ℕ} (G : SimpleGraph (Fin p)) : Prop :=
+FormalConjectures/ErdosProblems/79.lean:61:    ∃ n : ℕ, (n : ℝ) ≤ C * (H.edgeFinset.card : ℝ) ∧ RamseyProp G H n
+FormalConjectures/ErdosProblems/79.lean:63:/-- **Erdős Problem 79**: Are there infinitely many graphs which are not Ramsey
+FormalConjectures/ErdosProblems/79.lean:73:      ¬ IsRamseySizeLinear G ∧
+FormalConjectures/ErdosProblems/79.lean:77:        IsRamseySizeLinear H := by
+FormalConjectures/ErdosProblems/159.lean:52:/-- The graph Ramsey number $R(C_4, K_n)$: the minimum $N$ such that every simple
+FormalConjectures/ErdosProblems/159.lean:56:noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/159.lean:66:The Ramsey number $R(C_4, K_n)$ is the minimum $N$ such that every 2-colouring
+FormalConjectures/ErdosProblems/159.lean:81:      (ramseyC4Kn n : ℝ) ≤ C * (n : ℝ) ^ (2 - c) := by
+FormalConjectures/ErdosProblems/965.lean:30:- [SWCol] Sokoup Dániel and Weiss, William, Sums and Anti-Ramsey Colourings of ℝ. https://danieltsoukup.github.io/academic/finset_colouring.pdf
+FormalConjectures/ErdosProblems/613.lean:28:[Pi01] Pikhurko, O., _Size Ramsey numbers of stars versus 3-chromatic graphs_,
+FormalConjectures/ErdosProblems/595.lean:34:[NeRo75] Nešetřil, J. and Rödl, V., _The Ramsey property for graphs with
+FormalConjectures/ErdosProblems/183.lean:22:Erdős asked whether the limit of R(3;k)^{1/k} exists, where R(3;k) is the multicolor Ramsey
+FormalConjectures/ErdosProblems/183.lean:35:/-- The multicolor Ramsey number $R(3;k)$: the minimum $n$ such that every
+FormalConjectures/ErdosProblems/183.lean:40:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/183.lean:60:      Tendsto (fun k : ℕ => (multicolorRamseyTriangle k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+FormalConjectures/ErdosProblems/551.lean:26:Here $R(C_k, K_n)$ is the off-diagonal Ramsey number, $C_k$ is the cycle graph on
+FormalConjectures/ErdosProblems/551.lean:35:*On cycle-complete graph Ramsey numbers*, J. Graph Theory 2 (1978), 53–64.
+FormalConjectures/ErdosProblems/551.lean:37:[BoEr73] Bondy, J. A. and Erdős, P., *Ramsey numbers for cycles in graphs*,
+FormalConjectures/ErdosProblems/551.lean:40:[Ni05] Nikiforov, V., *The cycle-complete graph Ramsey numbers*,
+FormalConjectures/ErdosProblems/551.lean:44:*Cycle-complete graph Ramsey numbers*, Trans. Amer. Math. Soc. 374 (2021), 5469–5481.
+FormalConjectures/ErdosProblems/551.lean:56:/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/551.lean:59:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/551.lean:87:    offDiagRamseyNumber (cycleGraph k (by omega)) (⊤ : SimpleGraph (Fin n)) =
+FormalConjectures/ErdosProblems/134.lean:37:[Al94] Alon, N., _Explicit Ramsey graphs and orthonormal labelings_ (1994).
+FormalConjectures/ErdosProblems/165.lean:26:$R(3,k)$ is the Ramsey number: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/165.lean:43:[AKS80] Ajtai, M., Komlós, J. and Szemerédi, E., _A note on Ramsey numbers_.
+FormalConjectures/ErdosProblems/165.lean:46:[HHKP25] Hefty, L., Horn, P., King, R. and Pfender, F., _On the Ramsey number
+FormalConjectures/ErdosProblems/165.lean:57:/-- The Ramsey number $R(3,k)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/165.lean:60:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/165.lean:78:      (c - ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) ≤ (ramseyR3 k : ℝ) ∧
+FormalConjectures/ErdosProblems/165.lean:79:      (ramseyR3 k : ℝ) ≤ (c + ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) := by
+FormalConjectures/ErdosProblems/547.lean:43:/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin}(k)$: the minimum $N$
+FormalConjectures/ErdosProblems/547.lean:46:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/547.lean:58:    ramseyNumber T ≤ 2 * n - 2 := by
+FormalConjectures/ErdosProblems/549.lean:33:[EFRS82] Erdős, P., Faudree, R.J., Rousseau, C.C., and Schelp, R.H., *The size Ramsey
+FormalConjectures/ErdosProblems/549.lean:36:[Bu74] Burr, S.A., *Ramsey numbers of trees*, 1974.
+FormalConjectures/ErdosProblems/549.lean:38:[NSZ16] Norin, S., Sun, H., and Zhao, Y., *The Ramsey number of a triple star*, 2016.
+FormalConjectures/ErdosProblems/549.lean:50:/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin}(m)$: the minimum $N$
+FormalConjectures/ErdosProblems/549.lean:53:noncomputable def ramseyNumber {m : ℕ} (G : SimpleGraph (Fin m)) : ℕ :=
+FormalConjectures/ErdosProblems/549.lean:76:    ramseyNumber T = 4 * k - 1 := by
+FormalConjectures/ErdosProblems/61.lean:55:[ErHa89] Erdős, P. and Hajnal, A., Ramsey-type theorems. Discrete Appl. Math. (1989), 37-52.
+FormalConjectures/ErdosProblems/214.lean:27:[Ju79] Juhász, R., _Ramsey type theorems in the plane_, 1979.
+FormalConjectures/ErdosProblems/561.lean:24:Determine the two-color size Ramsey number for disjoint unions of stars. If
+FormalConjectures/ErdosProblems/561.lean:30:_Ramsey numbers for the pair sparse graph-path or cycle_, Trans. Amer. Math. Soc. (1978).
+FormalConjectures/ErdosProblems/561.lean:47:/-- The two-color size Ramsey number $\hat{R}(G_1, G_2)$: the minimum number of edges in
+FormalConjectures/ErdosProblems/561.lean:50:noncomputable def twoColorSizeRamseyNumber {V₁ V₂ : Type*} [Fintype V₁] [Fintype V₂]
+FormalConjectures/ErdosProblems/561.lean:70:Let $\hat{R}(F_1, F_2)$ denote the two-color size Ramsey number. Let $F_1$ and $F_2$ be
+FormalConjectures/ErdosProblems/561.lean:86:    twoColorSizeRamseyNumber
+FormalConjectures/ErdosProblems/533.lean:28:[BaLe13] Balogh, J. and Lenz, J., _Some exact Ramsey-Turán numbers_, 2013.
+FormalConjectures/ErdosProblems/533.lean:41:Ramsey-Turán density. This was disproved by Balogh and Lenz [BaLe13], who
+FormalConjectures/ErdosProblems/920.lean:27:- [GrYa68] Graver, Jack E. and Yackel, James, Some graph theoretic results associated with Ramsey's
+FormalConjectures/ErdosProblems/129.lean:33:[Er97b] Erdős, P. and Gyárfás, A., *A variant of the classical Ramsey problem*,
+FormalConjectures/ErdosProblems/129.lean:51:/-- The generalized Ramsey number $R(n; k, r)$: the smallest $N$ such that for
+FormalConjectures/ErdosProblems/129.lean:54:noncomputable def multicolorRamseyNum (n k r : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/129.lean:72:        ∀ n : ℕ, (multicolorRamseyNum n 3 r : ℝ) < C ^ Real.sqrt (n : ℝ) := by
+FormalConjectures/ErdosProblems/162.lean:29:Mathematics of Ramsey theory, Algorithms and Combinatorics, 5 (1990), Springer, Berlin, 12-28.
+FormalConjectures/ErdosProblems/812.lean:27:Here $R(n)$ denotes the diagonal Ramsey number $R(n,n)$: the minimum $N$ such that
+FormalConjectures/ErdosProblems/812.lean:41:/-- The diagonal Ramsey number $R(n) = R(n,n)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/812.lean:44:noncomputable def diagonalRamsey (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/812.lean:51:sufficiently large $n$? That is, do the diagonal Ramsey numbers grow at least
+FormalConjectures/ErdosProblems/812.lean:58:      (diagonalRamsey (n + 1) : ℝ) / (diagonalRamsey n : ℝ) ≥ 1 + c := by
+FormalConjectures/ErdosProblems/812.lean:71:      (diagonalRamsey (n + 1) : ℝ) - (diagonalRamsey n : ℝ) ≥ c * (n : ℝ) ^ 2 := by
+FormalConjectures/ErdosProblems/181.lean:22:Burr and Erdős conjectured that the Ramsey number of the $n$-dimensional hypercube
+FormalConjectures/ErdosProblems/181.lean:27:[BuEr75] Burr, S. A. and Erdős, P., *On the magnitude of generalized Ramsey numbers for graphs*.
+FormalConjectures/ErdosProblems/181.lean:55:/-- The diagonal Ramsey number $R(H)$: the minimum $N$ such that for every simple
+FormalConjectures/ErdosProblems/181.lean:57:noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/181.lean:72:      (ramseyDiag (hypercubeGraph n) : ℝ) ≤ C * (2 ^ n : ℝ) := by
+FormalConjectures/ErdosProblems/843.lean:25:who showed that the set of $k$-th powers contains a sparse Ramsey $r$-complete
+FormalConjectures/ErdosProblems/843.lean:31:/-- A set $A \subseteq \mathbb{N}$ is Ramsey $r$-complete if for every $r$-colouring of $A$,
+FormalConjectures/ErdosProblems/843.lean:34:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/843.lean:43:The set of perfect squares is Ramsey $2$-complete. That is, for any
+FormalConjectures/ErdosProblems/843.lean:51:    answer(True) ↔ IsRamseyComplete {n : ℕ | ∃ m : ℕ, m ≥ 1 ∧ n = m ^ 2} 2 := by
+FormalConjectures/ErdosProblems/558.lean:29:[ChGr75] Chung, F.R.K. and Graham, R.L., *On multicolor Ramsey numbers for complete
+FormalConjectures/ErdosProblems/558.lean:38:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/558.lean:44:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/558.lean:52:Erdős Problem 558: Determine $R_k(K_{s,t})$, the $k$-colour Ramsey number of the
+FormalConjectures/ErdosProblems/558.lean:58:    multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k = answer((sorry : ℕ → ℕ → ℕ → ℕ) s t k) := by
+FormalConjectures/ErdosProblems/558.lean:75:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:76:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 2) (Fin 2)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean:94:        (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:95:      (multicolorRamseyNumber (completeBipartiteGraph (Fin 3) (Fin 3)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/558.lean:114:        (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ∧
+FormalConjectures/ErdosProblems/558.lean:115:      (multicolorRamseyNumber (completeBipartiteGraph (Fin s) (Fin t)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/22.lean:29:$\mathrm{rt}(n; k, \ell)$ is the Ramsey–Turán number.
+FormalConjectures/ErdosProblems/22.lean:36:[BoEr76] Bollobás, B. and Erdős, P., _On a Ramsey–Turán type problem_, J. Combin. Theory Ser. B, 1976.
+FormalConjectures/ErdosProblems/22.lean:38:[FLZ15] Fox, J., Loh, P.-S., and Zhao, Y., _The critical window for the classical Ramsey–Turán problem_, Combinatorica, 2015.
+FormalConjectures/ErdosProblems/22.lean:44:**Erdős Problem 22** (Bollobás–Erdős Conjecture on Ramsey–Turán numbers,
+FormalConjectures/ErdosProblems/986.lean:24:Erdős conjectured that for any fixed $k \geq 3$, the Ramsey number $R(k,n)$ satisfies
+FormalConjectures/ErdosProblems/986.lean:37:[Sp77] Spencer, J., _Asymptotic lower bounds for Ramsey functions_. Discrete Math. 20 (1977),
+FormalConjectures/ErdosProblems/986.lean:46:[AKS80] Ajtai, M., Komlós, J. and Szemerédi, E., _A note on Ramsey numbers_. J. Combin.
+FormalConjectures/ErdosProblems/986.lean:57:/-- The Ramsey number $R(k,n)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/986.lean:60:noncomputable def ramseyR (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/986.lean:78:      C * ((n : ℝ) ^ (k - 1) / (Real.log (n : ℝ)) ^ c) ≤ (ramseyR k n : ℝ) := by
+FormalConjectures/ErdosProblems/832.lean:35:differences_. Mathematics of Ramsey Theory (1974).
+FormalConjectures/ErdosProblems/166.lean:26:$R(4,k)$ is the Ramsey number: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/166.lean:36:[AKS80] Ajtai, M., Komlós, J., and Szemerédi, E., *A note on Ramsey numbers*,
+FormalConjectures/ErdosProblems/166.lean:39:[Sp77] Spencer, J., *Asymptotic lower bounds for Ramsey functions*, Discrete Math.
+FormalConjectures/ErdosProblems/166.lean:52:/-- The Ramsey number $R(4,k)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/166.lean:55:noncomputable def ramseyR4 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/166.lean:76:      C * ((k : ℝ) ^ 3 / (Real.log (k : ℝ)) ^ α) ≤ (ramseyR4 k : ℝ) := by
+FormalConjectures/ErdosProblems/136.lean:32:[Er97b] Erdős, P. and Gyárfás, A., *A variant of the classical Ramsey problem* (1997).
+FormalConjectures/ErdosProblems/564.lean:38:    ∃ c > 0, ∀ᶠ n in atTop, (2 : ℝ)^(2 : ℝ)^(c * n) ≤ hypergraphRamsey 3 n := by
+FormalConjectures/ErdosProblems/163.lean:30:[BuEr75] Burr, S.A. and Erdős, P., *On the Ramsey multiplicity of graphs — problems
+FormalConjectures/ErdosProblems/163.lean:36:[Le17] Lee, C., *Ramsey numbers of degenerate graphs*. Ann. of Math. (2017).
+FormalConjectures/ErdosProblems/163.lean:55:/-- The diagonal Ramsey number $R(H)$: the minimum $N$ such that for every simple
+FormalConjectures/ErdosProblems/163.lean:57:noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/163.lean:77:      (ramseyDiag H : ℝ) ≤ C * (n : ℝ) := by
+FormalConjectures/ErdosProblems/555.lean:46:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/555.lean:52:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/555.lean:68:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≥
+FormalConjectures/ErdosProblems/555.lean:81:      (multicolorRamseyNumber (cycleGraph (2 * n) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/555.lean:90:    multicolorRamseyNumber (cycleGraph 4 (by omega)) k ≤ k ^ 2 + k + 1 := by
+FormalConjectures/ErdosProblems/550.lean:34:*Multipartite graph—sparse graph Ramsey numbers*, Combinatorica **5** (1985), 311–318.
+FormalConjectures/ErdosProblems/550.lean:36:[Ch77] Chvátal, V., *Tree-complete graph Ramsey numbers*,
+FormalConjectures/ErdosProblems/550.lean:49:/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/550.lean:52:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/550.lean:90:      offDiagRamseyNumber T (completeMultipartiteGraph sizes) ≤
+FormalConjectures/ErdosProblems/550.lean:91:        (k - 1) * (offDiagRamseyNumber T
+FormalConjectures/ErdosProblems/720.lean:24:Let $\hat{R}(G)$ denote the size Ramsey number, the minimal number of edges $m$ such
+FormalConjectures/ErdosProblems/720.lean:34:$\hat{R}(P_n) \ll n$ and $\hat{R}(C_n) \ll n$ (i.e., the size Ramsey numbers are linear).
+FormalConjectures/ErdosProblems/720.lean:40:[Be83b] Beck, J., _On size Ramsey number of paths, trees, and circuits I_.
+FormalConjectures/ErdosProblems/720.lean:62:/-- The size Ramsey number $\hat{R}(G)$: the minimum number of edges in a graph $H$
+FormalConjectures/ErdosProblems/720.lean:63:    that is Ramsey for $G$.
+FormalConjectures/ErdosProblems/720.lean:65:    A graph $H$ on $N$ vertices is Ramsey for $G$ if every 2-coloring of the edges
+FormalConjectures/ErdosProblems/720.lean:69:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/720.lean:83:The size Ramsey number of the path $P_n$ is at most linear in $n$.
+FormalConjectures/ErdosProblems/720.lean:92:      sizeRamseyNumber (pathGraph n) ≤ C * (n + 1) := by
+FormalConjectures/ErdosProblems/720.lean:98:The size Ramsey number of the cycle $C_n$ is at most linear in $n$.
+FormalConjectures/ErdosProblems/720.lean:106:      sizeRamseyNumber (cycleGraph n hn) ≤ C * n := by
+FormalConjectures/ErdosProblems/544.lean:38:/-- The Ramsey number $R(3,k)$: the minimum $N$ such that every simple graph
+FormalConjectures/ErdosProblems/544.lean:41:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/544.lean:49:That is, the consecutive differences of the Ramsey numbers $R(3,k)$
+FormalConjectures/ErdosProblems/544.lean:54:    Tendsto (fun k : ℕ => (ramseyR3 (k + 1) : ℤ) - (ramseyR3 k : ℤ))
+FormalConjectures/ErdosProblems/544.lean:66:    Tendsto (fun k : ℕ => ((ramseyR3 (k + 1) : ℝ) - (ramseyR3 k : ℝ)) / (k : ℝ))
+FormalConjectures/ErdosProblems/552.lean:24:Determine the Ramsey number $R(C_4, S_n)$, where $S_n = K_{1,n}$ is the star on
+FormalConjectures/ErdosProblems/552.lean:41:/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/552.lean:44:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/552.lean:89:      (offDiagRamseyNumber (cycleGraph 4 (by omega)) (starGraph n) : ℝ) ≤
+FormalConjectures/ErdosProblems/925.lean:25:vertices which is not Ramsey for $K_3$ (i.e. there exists a 2-colouring of the
+FormalConjectures/ErdosProblems/925.lean:39:[AlRo05] Alon, N. and Rödl, V., _Sharp bounds for some multicolor Ramsey numbers_,
+FormalConjectures/ErdosProblems/925.lean:47:/-- A graph $G$ on $n$ vertices is "not Ramsey for $K_3$" if there exists a
+FormalConjectures/ErdosProblems/925.lean:50:def IsNotRamseyForTriangle {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/925.lean:57:graph $G$ on $n$ vertices which is not Ramsey for $K_3$ contains an independent set
+FormalConjectures/ErdosProblems/925.lean:63:      ∀ G : SimpleGraph (Fin n), IsNotRamseyForTriangle G →
+FormalConjectures/ErdosProblems/1015.lean:29:Erdős notes that $f(t) \ll 4^t$, by comparing to the Ramsey number $R(t)$.
+FormalConjectures/ErdosProblems/1015.lean:68:/-- The 2-colour Ramsey number $R(s, t)$: the minimum $N$ such that every
+FormalConjectures/ErdosProblems/1015.lean:71:noncomputable def ramseyNumber₂ (s t : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1015.lean:93:        ramseyNumber₂ t (t - 1) + (n + 1 - ramseyNumber₂ t (t - 1)) % t := by
+FormalConjectures/ErdosProblems/596.lean:30:and $G_2 = C_6$ is an example (Nešetřil–Rödl for the finite Ramsey property, Erdős–Hajnal
+FormalConjectures/ErdosProblems/596.lean:55:The known example is $G_1 = C_4$, $G_2 = C_6$ (Nešetřil–Rödl for the finite Ramsey
+FormalConjectures/ErdosProblems/596.lean:62:      -- (a) Finite Ramsey property: for every n ≥ 1, there exists a G₁-free graph
+FormalConjectures/ErdosProblems/88.lean:29:_Anticoncentration in Ramsey graphs and a proof of the Erdős–McKay conjecture_,
+FormalConjectures/ErdosProblems/1029.lean:24:If $R(k)$ is the diagonal Ramsey number for $K_k$, the minimal $n$ such that every
+FormalConjectures/ErdosProblems/1029.lean:36:[Sp75] Spencer, J., *Ramsey's theorem — a new lower bound*, J. Combin. Theory Ser. A 18 (1975), 108–115.
+FormalConjectures/ErdosProblems/1029.lean:45:/-- The diagonal Ramsey number $R(k)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/1029.lean:48:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1029.lean:65:      (diagonalRamseyNumber k : ℝ) ≥ C * (k : ℝ) * (2 : ℝ) ^ ((k : ℝ) / 2) := by
+FormalConjectures/ErdosProblems/55.lean:24:For every $r \geq 2$, there exists an $r$-Ramsey complete set $A$ with
+FormalConjectures/ErdosProblems/55.lean:28:[CFP21] Conlon, D., Fox, J., and Pham, H. T., _The upper bound for Ramsey complete
+FormalConjectures/ErdosProblems/55.lean:38:A set $A$ of natural numbers is Ramsey $r$-complete if for every $r$-coloring of $\mathbb{N}$,
+FormalConjectures/ErdosProblems/55.lean:42:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/55.lean:51:For every $r \geq 2$, there exists an $r$-Ramsey complete set $A$ such that
+FormalConjectures/ErdosProblems/55.lean:58:        IsRamseyComplete A r ∧
+FormalConjectures/ErdosProblems/55.lean:68:cannot be $r$-Ramsey complete, showing the upper bound is best possible [CFP21].
+FormalConjectures/ErdosProblems/55.lean:78:          ¬ IsRamseyComplete A r := by
+FormalConjectures/ErdosProblems/193.lean:28:Originally conjectured by Gerver and Ramsey [GeRa79], who showed that the answer is yes for
+FormalConjectures/ErdosProblems/193.lean:31:[GeRa79] Gerver, J. and Ramsey, L. T., 1979.
+FormalConjectures/ErdosProblems/570.lean:26:$R$ denotes the two-colour Ramsey number and $C_k$ the cycle on $k$ vertices?
+FormalConjectures/ErdosProblems/570.lean:29:graph Ramsey numbers_ (1993).
+FormalConjectures/ErdosProblems/570.lean:41:/-- The Ramsey number $R(G, H)$: the minimum $N$ such that for any graph $F$
+FormalConjectures/ErdosProblems/570.lean:43:noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/570.lean:62:Ramsey number.
+FormalConjectures/ErdosProblems/570.lean:69:      ramseyNum (cycleGraph k hk) H ≤ 2 * H.edgeSet.ncard + (k - 1) / 2 := by
+FormalConjectures/ErdosProblems/54.lean:24:There exists a Ramsey 2-complete set $A$ (every large integer is a monochromatic subset sum
+FormalConjectures/ErdosProblems/54.lean:37:A set $A$ of natural numbers is Ramsey 2-complete if for every 2-coloring of $\mathbb{N}$,
+FormalConjectures/ErdosProblems/54.lean:41:def IsRamsey2Complete (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/54.lean:50:There exists a Ramsey 2-complete set $A$ of positive integers and a constant $c > 0$
+FormalConjectures/ErdosProblems/54.lean:59:      IsRamsey2Complete A ∧
+FormalConjectures/ErdosProblems/813.lean:28:differences_. Mathematics of Ramsey theory, Algorithms Combin., 5 (1990), 12-28.
+FormalConjectures/ErdosProblems/813.lean:30:[BuSu23] Bucić, M. and Sudakov, B., _Tight Ramsey-type results for cliques vs large
+FormalConjectures/ErdosProblems/554.lean:41:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/554.lean:47:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/554.lean:67:      (multicolorRamseyNumber (cycleGraph (2 * n + 1) (by omega)) k : ℝ) ≤
+FormalConjectures/ErdosProblems/554.lean:68:        ε * (multicolorRamseyNumber (⊤ : SimpleGraph (Fin 3)) k : ℝ) := by
+FormalConjectures/ErdosProblems/545.lean:24:Let $G$ be a graph with $m$ edges and no isolated vertices. Is the Ramsey number $R(G)$
+FormalConjectures/ErdosProblems/545.lean:45:/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin}(k)$: the minimum
+FormalConjectures/ErdosProblems/545.lean:48:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/545.lean:70:Let $G$ be a graph with $m$ edges and no isolated vertices. Is the Ramsey number
+FormalConjectures/ErdosProblems/545.lean:80:    ramseyNumber G ≤ ramseyNumber (asCompleteAsPossible n t) := by
+FormalConjectures/ErdosProblems/637.lean:39:[BuSu07] Bukh, B. and Sudakov, B., _Induced subgraphs of Ramsey graphs with
+FormalConjectures/ErdosProblems/77.lean:24:If $R(k)$ is the diagonal Ramsey number, the minimal $n$ such that every 2-colouring
+FormalConjectures/ErdosProblems/77.lean:36:_An exponential improvement for diagonal Ramsey_. (2023).
+FormalConjectures/ErdosProblems/77.lean:39:_An improved upper bound for diagonal Ramsey numbers_. (2024).
+FormalConjectures/ErdosProblems/77.lean:48:/-- The diagonal Ramsey number $R(k)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/77.lean:51:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/77.lean:60:Ramsey number.
+FormalConjectures/ErdosProblems/77.lean:65:      (diagonalRamseyNumber k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
+FormalConjectures/ErdosProblems/557.lean:24:A problem of Erdős and Graham on multicolour Ramsey numbers for trees.
+FormalConjectures/ErdosProblems/557.lean:35:/-- The $k$-colour Ramsey number $R_k(G)$: the minimum $N$ such that for every
+FormalConjectures/ErdosProblems/557.lean:41:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/557.lean:59:        multicolorRamseyNumber T k ≤ k * n + C := by
+FormalConjectures/ErdosProblems/1031.lean:29:[PrRo99] Prömel, H.J. and Rödl, V., _Non-canonical Ramsey-type theorems_. To appear.
+FormalConjectures/ErdosProblems/615.lean:28:Equivalently, if $\mathrm{rt}(n; k, \ell)$ denotes the Ramsey-Turán number (maximum number of
+FormalConjectures/ErdosProblems/615.lean:65:/-- The Ramsey-Turán number $\mathrm{rt}(n; k, \ell)$: the maximum number of edges in a graph
+FormalConjectures/ErdosProblems/615.lean:68:noncomputable def ramseyTuranNumber (n k ℓ : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/590.lean:40:theorem erdos_590 : OrdinalCardinalRamsey (ω ^ ω) (ω ^ ω) 3 := by
+FormalConjectures/ErdosProblems/590.lean:48:theorem erdos_590.variants.two : OrdinalCardinalRamsey (ω ^ 2) (ω ^ 2) 3 := by
+FormalConjectures/ErdosProblems/590.lean:57:    ¬ OrdinalCardinalRamsey (ω ^ n) (ω ^ n) 3 := by
+FormalConjectures/ErdosProblems/590.lean:66:theorem erdos_590.variants.finite_cardinal (m : ℕ) : OrdinalCardinalRamsey (ω ^ ω) (ω ^ ω) m := by
+FormalConjectures/ErdosProblems/805.lean:32:[AlSu07] Alon, N. and Sudakov, B., _Ramsey-type properties of graphs_.
+FormalConjectures/ErdosProblems/805.lean:34:[ABS21] Alon, N., Bucić, M. and Sudakov, B., _Induced subgraphs of Ramsey graphs_.

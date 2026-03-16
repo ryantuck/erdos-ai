@@ -1,0 +1,346 @@
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-27-A set $A$ is said to be sum-free if the sumset $A + A$ is disjoint from $A$, i.e.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-28-if the equation $a + b = c$ has no solution with $a, b, c \in A$.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-29--/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:30:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-31-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-32-/-- A set $A$ of natural numbers is said to have bounded gaps if there exists an integer $p$ such
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean-33-that $A ∩ [n, n + 1, ..., n + p]$ is nonempty for all $n$. -/
+--
+/home/ryan/formal-conjectures/ai-review/790.md-2-
+/home/ryan/formal-conjectures/ai-review/790.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/790.md-4-
+ai-review/790.md:5:The formalization defines `Erdos790.IsSumFree` locally. Several related "sum-free" definitions exist in the codebase:
+/home/ryan/formal-conjectures/ai-review/790.md-6-
+ai-review/790.md:7:- **`IsSumFree` in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`**: Defined as `Disjoint (A + A) A` — the classical sum-free notion (no `a + b = c` with `a, b, c ∈ A`). This is a *different* concept from 790's notion.
+ai-review/790.md:8:- **`Erdos876.IsSumFreeErdos`** (`ErdosProblems/876.lean`): No element equals the sum of finitely many distinct *smaller* elements. Works over `Set ℕ` and allows singleton sums. Similar in spirit but differs in domain (ℕ vs ℤ), container type (Set vs Finset), and the "smaller" constraint.
+ai-review/790.md:9:- **`Erdos792.IsSumFreeSet`** (`ErdosProblems/792.lean`): Classical sum-free (no `a + b = c`), over `Finset ℤ`.
+/home/ryan/formal-conjectures/ai-review/790.md-10-
+ai-review/790.md-11-**Verdict**: Problem 790's "sum-free" notion — no element equals the sum of two or more *other distinct* elements — is genuinely distinct from all existing definitions. The local definition is justified. No reuse opportunity exists.
+/home/ryan/formal-conjectures/ai-review/790.md-12-
+ai-review/790.md:13:**Note**: The name `IsSumFree` shadows the definition in `Basic.lean`, though the `Erdos790` namespace prevents actual conflicts. A more descriptive name like `IsDistinctSumFree` could reduce confusion, but this is minor.
+/home/ryan/formal-conjectures/ai-review/790.md-14-
+/home/ryan/formal-conjectures/ai-review/790.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/790.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/790.md-60-- Consistent naming scheme (`erdos_790.variants.*`)
+/home/ryan/formal-conjectures/ai-review/790.md-61-
+ai-review/790.md-62-Minor suggestions:
+ai-review/790.md:63:- The `IsSumFree` docstring says "sum of two or more other distinct elements" — this is accurate and clear.
+ai-review/790.md-64-- The `(1 : ℝ) / 2` exponent could be written as `(1 / 2 : ℝ)` for marginally improved readability, though this is stylistic.
+/home/ryan/formal-conjectures/ai-review/790.md-65-
+/home/ryan/formal-conjectures/ai-review/790.md-66-## 5. Formalizability
+--
+/home/ryan/formal-conjectures/ai-review/790.md-75-
+/home/ryan/formal-conjectures/ai-review/790.md-76-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/790.md-77-
+ai-review/790.md:78:### Definition `IsSumFree`
+/home/ryan/formal-conjectures/ai-review/790.md-79-
+/home/ryan/formal-conjectures/ai-review/790.md-80-```lean
+ai-review/790.md:81:def IsSumFree (B : Finset ℤ) : Prop :=
+ai-review/790.md-82-  ∀ b ∈ B, ∀ S : Finset ℤ, S ⊆ B.erase b → S.card ≥ 2 → b ≠ S.sum id
+/home/ryan/formal-conjectures/ai-review/790.md-83-```
+/home/ryan/formal-conjectures/ai-review/790.md-84-
+--
+/home/ryan/formal-conjectures/ai-review/790.md-88-
+/home/ryan/formal-conjectures/ai-review/790.md-89-```lean
+ai-review/790.md-90-noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+ai-review/790.md:91:  sSup {l : ℕ | ∀ (A : Finset ℤ), A.card = n → ∃ B : Finset ℤ, B ⊆ A ∧ l ≤ B.card ∧ IsSumFree B}
+/home/ryan/formal-conjectures/ai-review/790.md-92-```
+/home/ryan/formal-conjectures/ai-review/790.md-93-
+/home/ryan/formal-conjectures/ai-review/790.md-94-**Correct.** The set `{l | ...}` is nonempty (contains 0, since the empty set is sum-free) and bounded above (by $n$, since $B \subseteq A$ and $|A| = n$). For `ℕ` with its `ConditionallyCompleteLattice`, `sSup` of a nonempty bounded set returns the maximum. The set is also downward-closed, so the supremum equals the maximum value of $l$ satisfying the property, matching the mathematical definition of $l(n)$.
+--
+/home/ryan/formal-conjectures/ai-review/483.md-2-
+/home/ryan/formal-conjectures/ai-review/483.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/483.md-4-
+ai-review/483.md:5:The definition `HasMonochromaticSchurTriple` is self-contained in `483.lean`. There is a closely related definition `IsSumFree` in `FormalConjecturesForMathlib/Combinatorics/Basic.lean:30`:
+/home/ryan/formal-conjectures/ai-review/483.md-6-
+/home/ryan/formal-conjectures/ai-review/483.md-7-```lean
+ai-review/483.md:8:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/ai-review/483.md-9-```
+/home/ryan/formal-conjectures/ai-review/483.md-10-
+ai-review/483.md:11:A k-coloring of {1,...,N} avoids monochromatic Schur triples if and only if each color class is sum-free. This connection is mathematically fundamental but does not affect the correctness of the current formalization—the two notions operate at different levels (colorings vs. sets), and using `IsSumFree` here would make the statement less direct.
+/home/ryan/formal-conjectures/ai-review/483.md-12-
+/home/ryan/formal-conjectures/ai-review/483.md-13-Several other problems define similar monochromatic predicates (Problems 8, 596, 781) and multicolor Ramsey infrastructure (Problems 129, 183, 554–558), but none are directly reusable for arithmetic Schur triples. No code reuse opportunities are missed.
+/home/ryan/formal-conjectures/ai-review/483.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/131.md-6-
+/home/ryan/formal-conjectures/ai-review/131.md-7-- **Problem 186** (`ErdosProblems/186.lean`) is the most closely related — it defines `IsNonAveraging` and `nonAvgMax` using an almost identical structure. Problem 186 is directly connected to Problem 131 via the Pham–Zakharov paper [PhZa24], which uses non-averaging sets to establish the upper bound for non-dividing sets. A cross-reference between the two files would be valuable.
+/home/ryan/formal-conjectures/ai-review/131.md-8-- **Problem 882** (`ErdosProblems/882.lean`) defines `IsPrimitive` (no element divides another) and `maxPrimitiveSubsetSumSize` using the same `sSup` extremal function pattern.
+ai-review/131.md:9:- **Problem 790** (`ErdosProblems/790.lean`) defines `IsSumFree` and `maxSumFreeSize` with the same structural pattern.
+/home/ryan/formal-conjectures/ai-review/131.md-10-- **Problem 874** (`ErdosProblems/874.lean`) uses `rSubsetSums` with `.sum id` and a similar extremal function.
+ai-review/131.md:11:- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides foundational `IsSumFree` and `IsSidon` definitions, but nothing directly reusable for `IsNonDividing`.
+/home/ryan/formal-conjectures/ai-review/131.md-12-
+/home/ryan/formal-conjectures/ai-review/131.md-13-No existing definition can replace `IsNonDividing` — the divisibility-of-subset-sum condition is unique to this problem. The code correctly follows the codebase conventions. No code reuse issue.
+/home/ryan/formal-conjectures/ai-review/131.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/360.md-4-
+ai-review/360.md-5-The formalization defines a custom `SumFreeColoring` predicate and `minSumFreeClasses` function. These are **appropriately specialized** and do not duplicate existing codebase definitions:
+/home/ryan/formal-conjectures/ai-review/360.md-6-
+ai-review/360.md:7:- `IsSumFree` in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` captures `Disjoint (A + A) A` — a different notion (no `a + b = c` with all three in `A`). Problem 360 instead asks whether a *target number* `n` can be represented as a sum of distinct elements from a color class, which is a fundamentally different condition.
+ai-review/360.md:8:- `IsSumFreeErdos` in `ErdosProblems/876.lean` captures "no element is the sum of distinct smaller elements of the set" — again a different self-referential condition.
+ai-review/360.md:9:- Problem 360's notion is: for a *fixed external target* `n`, no subset of any color class sums to `n`. This is correctly captured by the custom definition and cannot be replaced by either existing `IsSumFree` variant.
+/home/ryan/formal-conjectures/ai-review/360.md-10-
+ai-review/360.md-11-The asymptotic bound structure (`∃ C₁ C₂ : ℝ, 0 < C₁ ∧ 0 < C₂ ∧ ∃ N₀ ...`) follows a well-established pattern used in Problems 790, 748, 792, and others. No shared utility for this pattern exists, but none is necessary — the pattern is simple and clear inline.
+/home/ryan/formal-conjectures/ai-review/360.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/793.md-4-
+/home/ryan/formal-conjectures/ai-review/793.md-5-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/793.md-6-
+ai-review/793.md:7:No reuse opportunity exists in `FormalConjecturesForMathlib/`: the existing `IsSidon` (additive), `IsSumFree`, and AP-free infrastructure are all for additive combinatorics and do not apply here.
+/home/ryan/formal-conjectures/ai-review/793.md-8-
+ai-review/793.md-9-**Verdict:** No actionable reuse. The local definitions are appropriate.
+/home/ryan/formal-conjectures/ai-review/793.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/301.md-6-
+ai-review/301.md-7-- **Problem 300** (`Egyptian1Free` in `ErdosProblems/300.lean`): Defines sets where no nonempty subset has reciprocal sum equal to 1. Structurally related but semantically different — Problem 301's `UnitFractionSumFree` forbids any element's reciprocal from equaling a sum of reciprocals of *other* elements, which is a distinct property.
+ai-review/301.md-8-- **Problem 296** (`reciprocalSum` in `ErdosProblems/296.lean`): A helper `reciprocalSum (A : Finset ℕ) : ℚ := ∑ n ∈ A, (1 : ℚ) / (n : ℚ)`. This computes over `ℚ` rather than `ℝ`, but could in principle be adapted. However, since Problem 301 only uses the sum inline in a single predicate, introducing a separate helper would add complexity without clear benefit.
+ai-review/301.md:9:- **Problem 876** (`IsSumFreeErdos` in `ErdosProblems/876.lean`): Structurally very similar — "no element is the sum of finitely many distinct smaller elements" — but operates on additive sums rather than reciprocal sums. The parallel is worth noting but doesn't enable code sharing.
+/home/ryan/formal-conjectures/ai-review/301.md-10-
+/home/ryan/formal-conjectures/ai-review/301.md-11-No centralized reciprocal-sum utility exists in `Util/` or `ForMathlib/`. The current self-contained definition is appropriate.
+/home/ryan/formal-conjectures/ai-review/301.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/186.md-6-
+/home/ryan/formal-conjectures/ai-review/186.md-7-- **Problem 131** (`ErdosProblems/131.lean`) is the most closely related — it defines `IsNonDividing` and `erdos131F` using an almost identical structure. Pham–Zakharov [PhZa24] use non-averaging sets to bound non-dividing sets, establishing a deep mathematical connection. Problem 131 already cross-references Problem 186 in its review; the reverse cross-reference would also be valuable.
+/home/ryan/formal-conjectures/ai-review/186.md-8-- **Problem 882** (`ErdosProblems/882.lean`) defines `IsPrimitive` and `maxPrimitiveSubsetSumSize` with the same pattern.
+ai-review/186.md:9:- **Problem 790** (`ErdosProblems/790.lean`) defines `IsSumFree` and `maxSumFreeSize` similarly.
+ai-review/186.md:10:- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides `IsSumFree`, `IsSidon`, and `Finset.maxSidonSubsetCard` — related additive combinatorics definitions, but none directly reusable for `IsNonAveraging`.
+/home/ryan/formal-conjectures/ai-review/186.md-11-- **`FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean`** provides `Set.IsAPOfLengthFree.maxCard` using the same `sSup` over `Finset.Icc` pattern. Non-averaging is a strictly stronger condition than 3-AP-free (every non-averaging set is 3-AP-free, but not vice versa), so these are distinct concepts.
+/home/ryan/formal-conjectures/ai-review/186.md-12-
+/home/ryan/formal-conjectures/ai-review/186.md-13-No existing definition can replace `IsNonAveraging` — the condition that no element equals the arithmetic mean of two or more other elements is unique to this problem. The code follows codebase conventions. No code reuse issue.
+--
+/home/ryan/formal-conjectures/ai-review/867.md-4-
+/home/ryan/formal-conjectures/ai-review/867.md-5-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/867.md-6-
+ai-review/867.md:7:No existing definition in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` covers the "consecutive-sum-free" property. The `IsSumFree` definition there concerns the standard sum-free condition (no `a + b = c` with `a, b, c ∈ A`), which is a different concept.
+/home/ryan/formal-conjectures/ai-review/867.md-8-
+/home/ryan/formal-conjectures/ai-review/867.md-9-The `Finset.sort` + `List.getD` pattern appears in several other problems (690, 854, 220, 235) and is a well-established idiom in the codebase.
+/home/ryan/formal-conjectures/ai-review/867.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/748.md-2-
+/home/ryan/formal-conjectures/ai-review/748.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/748.md-4-
+ai-review/748.md:5:The file defines its own `Erdos748.IsSumFree` for `Finset ℕ`:
+/home/ryan/formal-conjectures/ai-review/748.md-6-
+/home/ryan/formal-conjectures/ai-review/748.md-7-```lean
+ai-review/748.md:8:def IsSumFree (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/ai-review/748.md-9-  ∀ b ∈ A, ∀ c ∈ A, b + c ∉ A
+/home/ryan/formal-conjectures/ai-review/748.md-10-```
+/home/ryan/formal-conjectures/ai-review/748.md-11-
+ai-review/748.md:12:An identical definition exists in `FormalConjectures/ErdosProblems/877.lean` (line 43) as `Erdos877.IsSumFree`, and a near-identical one in `FormalConjectures/ErdosProblems/792.lean` (line 45) as `Erdos792.IsSumFreeSet` (over `Finset ℤ`).
+/home/ryan/formal-conjectures/ai-review/748.md-13-
+ai-review/748.md-14-There is also a generic definition in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` (line 30):
+/home/ryan/formal-conjectures/ai-review/748.md-15-
+/home/ryan/formal-conjectures/ai-review/748.md-16-```lean
+ai-review/748.md:17:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/ai-review/748.md-18-```
+/home/ryan/formal-conjectures/ai-review/748.md-19-
+/home/ryan/formal-conjectures/ai-review/748.md-20-This generic definition operates on `Set α` rather than `Finset ℕ`, and uses the pointwise sumset formulation. It is semantically equivalent (for subsets of ℕ), but bridging it to the `Finset` context would require coercion lemmas. The local definition is reasonable for a self-contained formalization, though a shared `Finset`-level definition used across problems 748, 877, and 792 would reduce duplication.
+/home/ryan/formal-conjectures/ai-review/748.md-21-
+ai-review/748.md:22:**Verdict:** Mild duplication. A shared `IsSumFree` definition for `Finset ℕ` (or a bridge lemma to the generic `Set`-level one) could serve problems 748, 877, and 792 simultaneously.
+/home/ryan/formal-conjectures/ai-review/748.md-23-
+/home/ryan/formal-conjectures/ai-review/748.md-24-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/748.md-25-
+--
+ai-review/748.md-56-The code is clean and well-structured:
+/home/ryan/formal-conjectures/ai-review/748.md-57-
+/home/ryan/formal-conjectures/ai-review/748.md-58-- The module docstring clearly explains the problem, its history, and resolution.
+ai-review/748.md:59:- The `IsSumFree` definition has a helpful docstring noting that $b, c$ need not be distinct.
+/home/ryan/formal-conjectures/ai-review/748.md-60-- The `sumFreeSubsetCount` definition is clear.
+/home/ryan/formal-conjectures/ai-review/748.md-61-- The theorem statement's docstring restates the result in both symbolic and epsilon-delta form.
+/home/ryan/formal-conjectures/ai-review/748.md-62-- Namespacing under `Erdos748` avoids clashes with other problems' identically-named definitions.
+--
+/home/ryan/formal-conjectures/ai-review/748.md-81-
+/home/ryan/formal-conjectures/ai-review/748.md-82-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/748.md-83-
+ai-review/748.md:84:**Definition of `IsSumFree`:** Correct. The condition `∀ b ∈ A, ∀ c ∈ A, b + c ∉ A` is the standard definition. Since the set is contained in $\{1, \ldots, n\} \subseteq \mathbb{N}$, there are no issues with $0$ (it's excluded from the range). Allowing $b = c$ is correct — sum-free sets forbid $2a \in A$ when $a \in A$.
+/home/ryan/formal-conjectures/ai-review/748.md-85-
+ai-review/748.md:86:**Definition of `sumFreeSubsetCount`:** Correct. It counts `|{A ∈ 𝒫({1,...,n}) : IsSumFree(A)}|`, which is exactly $f(n)$.
+/home/ryan/formal-conjectures/ai-review/748.md-87-
+ai-review/748.md-88-**Theorem statement:** The formalization states:
+/home/ryan/formal-conjectures/ai-review/748.md-89-
+--
+/home/ryan/formal-conjectures/ai-review/52.md-9-**No significant code reuse issues.** The formalization is self-contained, relying only on Mathlib's `Finset` pointwise operations (`A + A`, `A * A`) via `open scoped Pointwise`. These are standard Mathlib definitions from `Mathlib.Algebra.Group.Pointwise.Set.Basic`, where `A + A = image2 (· + ·) A A` (and similarly for `*`).
+/home/ryan/formal-conjectures/ai-review/52.md-10-
+ai-review/52.md-11-The `FormalConjecturesForMathlib` library contains related additive combinatorics infrastructure:
+ai-review/52.md:12:- `Combinatorics/Basic.lean` defines `IsSumFree`, `IsSidon` — not directly relevant here.
+/home/ryan/formal-conjectures/ai-review/52.md-13-- `Combinatorics/Additive/Convolution.lean` defines `sumConv` and `sumRep` — relevant to counting representations but not to this statement.
+/home/ryan/formal-conjectures/ai-review/52.md-14-- `Combinatorics/Additive/Basis.lean` defines additive/multiplicative bases — not applicable.
+/home/ryan/formal-conjectures/ai-review/52.md-15-
+--
+/home/ryan/formal-conjectures/ai-review/792.md-4-
+/home/ryan/formal-conjectures/ai-review/792.md-5-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/792.md-6-
+ai-review/792.md:7:**Issue identified.** The file defines its own `IsSumFreeSet (B : Finset ℤ)` as `∀ a ∈ B, ∀ b ∈ B, a + b ∉ B`. A library-level definition already exists in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`:
+/home/ryan/formal-conjectures/ai-review/792.md-8-
+/home/ryan/formal-conjectures/ai-review/792.md-9-```lean
+ai-review/792.md:10:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/ai-review/792.md-11-```
+/home/ryan/formal-conjectures/ai-review/792.md-12-
+ai-review/792.md:13:This general definition works over any `AddCommMonoid` and uses pointwise set addition. The local `IsSumFreeSet` is mathematically equivalent (for `Finset ℤ` coerced to `Set ℤ`) but uses explicit quantifiers instead of the `Disjoint`/pointwise formulation. The file could potentially use the library definition applied to `(B : Set ℤ)`, or at minimum document the equivalence.
+/home/ryan/formal-conjectures/ai-review/792.md-14-
+ai-review/792.md:15:Additionally, at least three other Erdős problems (748, 877, 790) define their own local `IsSumFree` predicates with slight type variations (`Finset ℕ` vs `Finset ℤ`). There is an opportunity to consolidate these definitions or have them reference the library version. Problem 748 even provides a `DecidablePred` instance that could be useful.
+/home/ryan/formal-conjectures/ai-review/792.md-16-
+/home/ryan/formal-conjectures/ai-review/792.md-17-The `maxSumFreeSize` definition uses the same `sSup`-based pattern as Problem 790, which is a reasonable convention.
+/home/ryan/formal-conjectures/ai-review/792.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/792.md-46-
+ai-review/792.md-47-**Good overall.** The code is well-structured with clear docstrings explaining each theorem. Minor observations:
+/home/ryan/formal-conjectures/ai-review/792.md-48-
+ai-review/792.md:49:- The name `IsSumFreeSet` is slightly inconsistent with the convention `IsSumFree` used in every other problem file (748, 877, 790, 876) and the library definition. Renaming to `IsSumFree` would improve consistency.
+/home/ryan/formal-conjectures/ai-review/792.md-50-- The docstring for `maxSumFreeSize` clearly explains the mathematical meaning.
+/home/ryan/formal-conjectures/ai-review/792.md-51-- The namespace `Erdos792` cleanly scopes all definitions.
+/home/ryan/formal-conjectures/ai-review/792.md-52-
+--
+/home/ryan/formal-conjectures/ai-review/792.md-56-
+/home/ryan/formal-conjectures/ai-review/792.md-57-The definition of "sum-free" (no a + b = c with a, b, c ∈ B, where a, b are not required to be distinct) is standard and unambiguous.
+/home/ryan/formal-conjectures/ai-review/792.md-58-
+ai-review/792.md:59:**Minor formalizability note:** The `sSup` on `ℕ` requires the set to be bounded above and nonempty for the value to be meaningful. The set `{k | ∀ A, A.card = n → ∃ B ⊆ A, IsSumFreeSet B ∧ k ≤ B.card}` always contains 0 (the empty set is sum-free) and is bounded above by n, so `sSup` is well-defined. However, this well-definedness is not proved or documented, which could make downstream proofs slightly harder.
+/home/ryan/formal-conjectures/ai-review/792.md-60-
+/home/ryan/formal-conjectures/ai-review/792.md-61-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/792.md-62-
+/home/ryan/formal-conjectures/ai-review/792.md-63-**Mathematically correct with minor observations.**
+/home/ryan/formal-conjectures/ai-review/792.md-64-
+ai-review/792.md:65:- **`IsSumFreeSet` definition:** `∀ a ∈ B, ∀ b ∈ B, a + b ∉ B` is the standard definition of a sum-free set. This correctly allows a = b (so 2a ∉ B for any a ∈ B), matching the convention that a sum-free set has `(B + B) ∩ B = ∅`.
+/home/ryan/formal-conjectures/ai-review/792.md-66-
+ai-review/792.md-67-- **`maxSumFreeSize` definition:** Correctly captures the function f(n) as described in the problem. The use of `sSup` over `{k | ∀ A ...}` computes the maximum guaranteed sum-free subset size across all n-element subsets of ℤ.
+/home/ryan/formal-conjectures/ai-review/792.md-68-
+--
+/home/ryan/formal-conjectures/ai-review/792.md-80-
+/home/ryan/formal-conjectures/ai-review/792.md-81-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/792.md-82-|-----------|-----------|
+ai-review/792.md:83:| Code reuse | Could use library `IsSumFree`; name inconsistency with other files |
+/home/ryan/formal-conjectures/ai-review/792.md-84-| Citations | Missing Alon–Kleitman and Bourgain references from website |
+/home/ryan/formal-conjectures/ai-review/792.md-85-| Variants | Missing two intermediate lower bounds |
+/home/ryan/formal-conjectures/ai-review/792.md-86-| Readability | Good; minor naming inconsistency |
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-28-A set $A \subseteq \mathbb{N}$ is sum-free in the sense of Erdős if no element of $A$ can be
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-29-expressed as the sum of finitely many distinct smaller elements of $A$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-30--/
+FormalConjectures/ErdosProblems/876.lean:31:def IsSumFreeErdos (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/876.lean-32-  ∀ a ∈ A, ∀ S : Finset ℕ, S.Nonempty → (∀ x ∈ S, x ∈ A) → (∀ x ∈ S, x < a) → S.sum id ≠ a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-34-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-42-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/876.lean-43-theorem erdos_876 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/876.lean-44-    ∃ a : ℕ → ℕ, StrictMono a ∧
+FormalConjectures/ErdosProblems/876.lean:45:      IsSumFreeErdos (Set.range a) ∧
+FormalConjectures/ErdosProblems/876.lean-46-      ∃ N, ∀ n ≥ N, a (n + 1) - a n < n + 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-47-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-48-
+--
+/home/ryan/formal-conjectures/ai-review/788.md-7-∀ c₁ ∈ C, ∀ c₂ ∈ C, c₁ ≠ c₂ → c₁ + c₂ ∉ B
+/home/ryan/formal-conjectures/ai-review/788.md-8-```
+/home/ryan/formal-conjectures/ai-review/788.md-9-
+ai-review/788.md:10:There is an existing `IsSumFree` definition in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`:
+/home/ryan/formal-conjectures/ai-review/788.md-11-```lean
+ai-review/788.md:12:def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+/home/ryan/formal-conjectures/ai-review/788.md-13-```
+/home/ryan/formal-conjectures/ai-review/788.md-14-
+ai-review/788.md:15:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/788.md-16-
+/home/ryan/formal-conjectures/ai-review/788.md-17-The `sSup`-based extremal function pattern and the `Finset.Ioo` interval usage are consistent with other problems (e.g., 874, 882) and do not need further abstraction.
+/home/ryan/formal-conjectures/ai-review/788.md-18-
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/1.lean-33-@[category research open, AMS 5 11]
+FormalConjectures/GreensOpenProblems/1.lean-34-theorem green_1 : answer(sorry) ↔ ∃ Ω : ℕ → ℝ, atTop.Tendsto Ω atTop ∧
+FormalConjectures/GreensOpenProblems/1.lean-35-     ∀ n, ∀ (A : Finset ℕ), (∀ a ∈ A, 0 < a) → A.card = n →
+FormalConjectures/GreensOpenProblems/1.lean:36:     ∃ (S : Finset ℕ), S ⊆ A ∧ IsSumFree (S : Set ℕ) ∧ ((n : ℝ) / 3) + Ω n ≤ S.card := by
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/1.lean-37-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/1.lean-38-
+FormalConjectures/GreensOpenProblems/1.lean-39--- TODO(firsching): add known/related results here.
+--
+/home/ryan/formal-conjectures/ai-review/327.md-8-
+ai-review/327.md-9-- **Density infrastructure** (`FormalConjecturesForMathlib/Data/Set/Density.lean`): Contains `partialDensity`, `upperDensity`, `lowerDensity`, and `HasDensity` definitions, plus `Nat.hasDensity_even` proving even numbers have density 1/2. This is directly useful for the lower bound variant (odd numbers have density 1/2).
+/home/ryan/formal-conjectures/ai-review/327.md-10-
+ai-review/327.md:11:- **Combinatorics pair-free structures** (`FormalConjecturesForMathlib/Combinatorics/Basic.lean`): Contains `IsSumFree`, `IsSidon`, and extension lemmas. The `UnitFractionPairFree` property is structurally analogous to these pair-exclusion predicates.
+/home/ryan/formal-conjectures/ai-review/327.md-12-
+ai-review/327.md-13-- **Divisibility lemmas** (`FormalConjecturesForMathlib/Data/Nat/Init.lean`): Extensive `Nat.dvd_*` lemmas for divisibility with additions and multiplications, directly applicable to the `(a + b) ∣ ab` condition.
+/home/ryan/formal-conjectures/ai-review/327.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/484.md-6-
+ai-review/484.md-7-- **Problem 476** (`476.lean`) defines `restrictedSumset` for `Finset (ZMod p)`, computing `A ⊕ A = {a + b : a, b ∈ A, a ≠ b}`. This is the exact same combinatorial operation (restricted/distinct-element sumset) that Problem 484 needs, but it is specialized to `ZMod p`. A generalized version (over any `AddCommMonoid` with `DecidableEq`) factored into `FormalConjecturesForMathlib` would serve both problems.
+ai-review/484.md-8-- **Problem 483** (`483.lean`) defines `HasMonochromaticSchurTriple` using the same coloring pattern `f : ℕ → Fin k` over `{1,…,N}`. The coloring infrastructure is identical; a shared "monochromatic pair" predicate (two elements in the same color class) could be extracted.
+ai-review/484.md:9:- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides `IsSidon`, `IsSumFree`, and related additive combinatorics definitions. While `IsSidon` is thematically connected (Sidon sets have all pairwise sums distinct, so their restricted sumsets are large), it is not directly applicable to the statement.
+/home/ryan/formal-conjectures/ai-review/484.md-10-
+ai-review/484.md-11-**Recommendation:** The most actionable reuse opportunity is generalizing `restrictedSumset` from Problem 476 and placing it in a shared utility. However, since Problem 484 inlines the sum condition (`∃ a … ∃ b … a ≠ b ∧ χ a = χ b ∧ a + b = n`) rather than using a named restricted sumset, this is a minor style concern rather than a correctness issue. The current self-contained approach is acceptable.
+/home/ryan/formal-conjectures/ai-review/484.md-12-
+--
+ai-review/787.md-10-These two formalizations should ideally share infrastructure. In particular:
+/home/ryan/formal-conjectures/ai-review/787.md-11-
+/home/ryan/formal-conjectures/ai-review/787.md-12-- `IsSumAvoidingIn A B` in 787 is equivalent to `B ⊆ A ∧ Disjoint (restrictedSumset B) A` from Green2. The Green2 definition using `offDiag` and `Disjoint` is arguably more idiomatic and leverages Mathlib's pointwise set operations.
+ai-review/787.md:13:- The `IsSumFree` definition in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` (`Disjoint (A + A) A`) is the unrestricted version (includes a + a), so it is a **different** concept and should NOT be substituted here. The distinction is mathematically important.
+/home/ryan/formal-conjectures/ai-review/787.md-14-
+ai-review/787.md-15-**Recommendation:** Consider refactoring `IsSumAvoidingIn` to use `restrictedSumset` from Green2, or better yet, extract a shared definition into a utility file parameterized over the ambient type. The Choi reduction (any real set can be reduced to integers) means the ℝ and ℤ versions are equivalent, so a unified treatment is natural.
+/home/ryan/formal-conjectures/ai-review/787.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/872.md-8-- `ErdosProblems/164.lean` (line 40) — `Set ℕ`
+/home/ryan/formal-conjectures/ai-review/872.md-9-- `ErdosProblems/892.lean` (line 37) — sequence variant `IsPrimitiveSeq`
+/home/ryan/formal-conjectures/ai-review/872.md-10-
+ai-review/872.md:11:A shared definition in a utility file (e.g., `FormalConjecturesForMathlib/Combinatorics/Basic.lean`, which already hosts `IsSumFree` and `IsSidon`) would reduce duplication. The `Set ℕ` version (164) and `Finset ℕ` version (872, 882) could coexist with a coercion bridge.
+/home/ryan/formal-conjectures/ai-review/872.md-12-
+ai-review/872.md-13-Alternatively, Mathlib's `IsAntichain (· ∣ ·) (↑A : Set ℕ)` captures the same concept. This is logically the contrapositive of `IsPrimitive`: `∀ a ∈ A, ∀ b ∈ A, a ≠ b → ¬(a ∣ b)` vs. `∀ a ∈ A, ∀ b ∈ A, a ∣ b → a = b`. Using the Mathlib definition would provide access to existing antichain lemmas. However, the custom definition is reasonable for clarity and self-containedness.
+/home/ryan/formal-conjectures/ai-review/872.md-14-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-40-/-- A finset $B \subseteq \mathbb{Z}$ is "sum-free" in the sense of Erdős Problem 790 if no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-41-element of $B$ equals the sum of two or more other distinct elements of $B$. -/
+FormalConjectures/ErdosProblems/790.lean:42:def IsSumFree (B : Finset ℤ) : Prop :=
+FormalConjectures/ErdosProblems/790.lean-43-  ∀ b ∈ B, ∀ S : Finset ℤ, S ⊆ B.erase b → S.card ≥ 2 → b ≠ S.sum id
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-44-
+FormalConjectures/ErdosProblems/790.lean-45-/-- $l(n)$: the largest $l$ such that every $n$-element subset $A$ of $\mathbb{Z}$ contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-46-sum-free subset $B$ with $|B| \geq l$. -/
+FormalConjectures/ErdosProblems/790.lean-47-noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/790.lean-48-  sSup {l : ℕ | ∀ (A : Finset ℤ), A.card = n →
+FormalConjectures/ErdosProblems/790.lean:49:    ∃ B : Finset ℤ, B ⊆ A ∧ l ≤ B.card ∧ IsSumFree B}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-51-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean-52-**Erdős Problem 790** — Is it true that $l(n) n^{-1/2} \to \infty$? That is, for every $C > 0$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-43-/-- A finset of integers is sum-free if for all $a, b$ in the set, $a + b$ is not
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-44-in the set. -/
+FormalConjectures/ErdosProblems/792.lean:45:def IsSumFreeSet (B : Finset ℤ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-46-  ∀ a ∈ B, ∀ b ∈ B, a + b ∉ B
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-48-/-- $f(n)$ is the largest $k$ such that every $n$-element subset of $\mathbb{Z}$ contains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-49-a sum-free subset of size at least $k$. -/
+FormalConjectures/ErdosProblems/792.lean-50-noncomputable def maxSumFreeSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/792.lean-51-  sSup {k : ℕ | ∀ (A : Finset ℤ), A.card = n →
+FormalConjectures/ErdosProblems/792.lean:52:    ∃ B : Finset ℤ, B ⊆ A ∧ IsSumFreeSet B ∧ k ≤ B.card}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean-54-/--
+FormalConjectures/ErdosProblems/792.lean-55-Erdős Problem 792, Erdős's lower bound [Er65]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-49-/-- A finite set of natural numbers is *sum-free* if it contains no three
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-50-    elements $a$, $b$, $c$ (not necessarily distinct) with $b + c = a$. Equivalently,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-51-    for all $b, c \in A$, we have $b + c \notin A$. -/
+FormalConjectures/ErdosProblems/748.lean:52:def IsSumFree (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-53-  ∀ b ∈ A, ∀ c ∈ A, b + c ∉ A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-54-
+FormalConjectures/ErdosProblems/748.lean:55:instance : DecidablePred IsSumFree :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-56-  fun A => decidable_of_iff (∀ b ∈ A, ∀ c ∈ A, b + c ∉ A) Iff.rfl
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-58-/-- The number of sum-free subsets of $\{1, \ldots, n\}$. -/
+FormalConjectures/ErdosProblems/748.lean-59-noncomputable def sumFreeSubsetCount (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/748.lean:60:  ((Finset.Icc 1 n).powerset.filter (fun A => IsSumFree A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/748.lean-62-/--
+FormalConjectures/ErdosProblems/748.lean-63-Erdős Problem 748 (Cameron-Erdős Conjecture) [CaEr90][Er94b][Er98]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-41-/-- A finite set of natural numbers is *sum-free* if for all $b, c \in A$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-42-we have $b + c \notin A$. -/
+FormalConjectures/ErdosProblems/877.lean:43:def IsSumFree (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-44-  ∀ b ∈ A, ∀ c ∈ A, b + c ∉ A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-46-/-- A subset $A$ of $\{1, \ldots, n\}$ is a *maximal sum-free subset* if it is sum-free
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-48-sum-freeness. -/
+FormalConjectures/ErdosProblems/877.lean-49-def IsMaximalSumFree (A : Finset ℕ) (n : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-50-  A ⊆ Finset.Icc 1 n ∧
+FormalConjectures/ErdosProblems/877.lean:51:  IsSumFree A ∧
+FormalConjectures/ErdosProblems/877.lean:52:  ∀ x ∈ Finset.Icc 1 n, x ∉ A → ¬ IsSumFree (insert x A)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/877.lean-54-/-- The number of maximal sum-free subsets of $\{1, \ldots, n\}$. -/
+FormalConjectures/ErdosProblems/877.lean-55-noncomputable def maximalSumFreeCount (n : ℕ) : ℕ :=

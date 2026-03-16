@@ -1,0 +1,280 @@
+/home/ryan/formal-conjectures/ai-review/626.md-30-- `[Er62b]` Erdős, P., *On circuits and subgraphs of chromatic graphs*, Mathematika, 1962.
+ai-review/626.md:31:- `[Er69b]` Erdős, P., *Problems and results in chromatic graph theory*, 1969.
+/home/ryan/formal-conjectures/ai-review/626.md-32-- `[Ko88]` Kostochka, A.V., *The minimum Hadwiger number for graphs with a given mean degree of vertices*, Metody Diskret. Analiz., 1988.
+/home/ryan/formal-conjectures/ai-review/626.md-33-
+ai-review/626.md:34:The website [erdosproblems.com/626](https://www.erdosproblems.com/626) lists the same four citation keys: `[Er59b]`, `[Er62b]`, `[Er69b]`, `[Ko88]`. The website does not provide full bibliographic details beyond the keys, so the expanded bibliographic information in the formalization's docstring is a welcome addition and appears accurate. **Citations match.**
+/home/ryan/formal-conjectures/ai-review/626.md-35-
+--
+/home/ryan/formal-conjectures/ai-review/924.md-17-
+ai-review/924.md:18:The docstring references `[Er69b][Er75b]` and `[NeRo76]` and the module docstring also mentions `[Fo70]`. The [erdosproblems.com/924](https://www.erdosproblems.com/924) page lists the same references: Er69b, Er75b for the original question (Erdős and Hajnal), NeRo76 for the general solution (Nešetřil and Rödl), and Fo70 for the k=2 case (Folkman).
+/home/ryan/formal-conjectures/ai-review/924.md-19-
+--
+/home/ryan/formal-conjectures/ai-review/924.md-21-
+ai-review/924.md:22:- **[Er69b]** Erdős, P., *Problems and results in chromatic graph theory*, in Proof Techniques in Graph Theory (ed. F. Harary), Academic Press (1969), 27–35.
+/home/ryan/formal-conjectures/ai-review/924.md-23-- **[Er75b]** Erdős, P., *Problems and results on finite and infinite graphs*, in Recent Advances in Graph Theory (ed. M. Fiedler), Academia Prague (1975), 183–192.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-32-
+FormalConjectures/ErdosProblems/78.lean:33:[Er69b] Erdős, P., _Some applications of Ramsey's theorem to additive number theory_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-34-European J. Combin. (1969).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-92-/--
+FormalConjectures/ErdosProblems/78.lean:93:Erdős Problem 78 — $o(\sqrt{n})$ variant [Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/78.lean-94-
+--
+ai-review/923.md-13-The website [erdosproblems.com/923](https://www.erdosproblems.com/923) lists:
+ai-review/923.md:14:- **Original source:** [Er69b] Erdős, P., *Problems and results in chromatic graph theory*, Proof Techniques in Graph Theory (Proc. Second Ann Arbor Graph Theory Conf., Ann Arbor, Mich., 1968) (1969), 27–35.
+ai-review/923.md-15-- **Solution:** [Ro77] Rödl, V., *On the chromatic number of subgraphs of a given graph*, Proc. Amer. Math. Soc. 64 (1977), 370–371.
+/home/ryan/formal-conjectures/ai-review/923.md-16-
+ai-review/923.md:17:The formalization cites only [Ro77]. **The original source [Er69b] is missing** and should be added for completeness. The [Ro77] citation format matches the website.
+/home/ryan/formal-conjectures/ai-review/923.md-18-
+--
+ai-review/750.md-16-The formalization includes the following references:
+ai-review/750.md:17:- [Er69b], [ErHa67b], [EHS82], [Er94b], [Er95d]
+/home/ryan/formal-conjectures/ai-review/750.md-18-
+--
+ai-review/750.md-25-The docstring mentions two known partial results:
+ai-review/750.md:26:1. **f(m) = εm for fixed ε > 0** (conjectured in [Er69b], follows from [EHS82]).
+/home/ryan/formal-conjectures/ai-review/750.md-27-2. **f(m) ≥ cm for c > 1/4** (proved in [ErHa67b]).
+--
+/home/ryan/formal-conjectures/ai-review/927.md-35-| [Er71, p.101] | **Missing** — original Erdős source |
+ai-review/927.md:36:| [Er69b] | **Missing** — original Erdős source |
+/home/ryan/formal-conjectures/ai-review/927.md-37-| Moon & Moser [MoMo65] | **Missing** — established the initial bounds n − log₂ n − 2 log log n < g(n) ≤ n − ⌊log₂ n⌋ |
+--
+/home/ryan/formal-conjectures/ai-review/927.md-102-| Code reuse | Mathlib's `SimpleGraph.IsClique` / `Maximal` should replace custom definitions |
+ai-review/927.md:103:| Citations | Missing [Er66b], [Er71], [Er69b], [MoMo65] |
+/home/ryan/formal-conjectures/ai-review/927.md-104-| Variants | Spencer's bound ✅; Moon–Moser upper bound missing |
+--
+/home/ryan/formal-conjectures/ai-review/925.md-14-
+ai-review/925.md:15:- **[Er69b]**: The code lists only `Erdős, P.` with no title, journal, or year. The website also gives only `[Er69b]` with no further bibliographic detail, so this appears to be a limitation of the source rather than an omission by the formalizer. Acceptable as-is.
+ai-review/925.md-16-- **[AlRo05]**: Correctly cited as `Alon, N. and Rödl, V., Sharp bounds for some multicolor Ramsey numbers, Combinatorica 25 (2005), 125-141.` This matches standard bibliographic data.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-33-
+FormalConjectures/ErdosProblems/594.lean:34:[Er69b] Erdős, P., *Problems and results in combinatorial analysis and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-35-graph theory*, Proof Techniques in Graph Theory (1969), 27–35.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-46-/--
+FormalConjectures/ErdosProblems/594.lean:47:Erdős Problem 594 [ErHa66] [Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean-48-
+--
+/home/ryan/formal-conjectures/ai-review/740.md-29-
+ai-review/740.md:30:**Module docstring** (line 24): `[Er69b][Er71, p.100][Er81][Er95d]` — matches the website.
+/home/ryan/formal-conjectures/ai-review/740.md-31-
+ai-review/740.md:32:**Theorem docstring** (line 52): `[Er69b][Er71][Er81][Er95d]` — **missing the page reference `p.100`** for [Er71]. Should be `[Er69b][Er71, p.100][Er81][Er95d]` to match the website.
+/home/ryan/formal-conjectures/ai-review/740.md-33-
+--
+/home/ryan/formal-conjectures/ai-review/922.md-25-- [ErHa67b] — Erdős and Hajnal (origin of the question)
+ai-review/922.md:26:- [Er69b] — additional Erdős reference
+/home/ryan/formal-conjectures/ai-review/922.md-27-- [Fo70b] — Folkman (proved the result)
+--
+/home/ryan/formal-conjectures/ai-review/922.md-32-
+ai-review/922.md:33:**Gap:** The reference [Er69b] listed on the website is not mentioned in the formalization. It should be added to the module docstring for completeness.
+/home/ryan/formal-conjectures/ai-review/922.md-34-
+--
+ai-review/78.md-30-The website lists the following references:
+ai-review/78.md:31:- Er69b, Er71, Er88, Er93 (p. 337), Er95, Er97c
+/home/ryan/formal-conjectures/ai-review/78.md-32-- Va99 (3.49)
+--
+ai-review/78.md-36-The formalization's docstring mentions:
+ai-review/78.md:37:- Erdős's probabilistic proof that $R(k) \gg k \cdot 2^{k/2}$ (this is the classical result, referenced in Er69b and others)
+/home/ryan/formal-conjectures/ai-review/78.md-38-- The $100 prize
+--
+ai-review/78.md-42-- **Li (2023) [Li23b]:** Improved to no clique or independent set of size $\geq (\log n)^C$. This is the current best result and should be mentioned.
+ai-review/78.md:43:- None of the Erdős references (Er69b, Er71, Er88, Er93, Er95, Er97c) are individually cited. Adding at least a couple of the primary references would be valuable.
+/home/ryan/formal-conjectures/ai-review/78.md-44-- The OEIS sequence A059442 (diagonal Ramsey numbers) is not mentioned.
+--
+/home/ryan/formal-conjectures/ai-review/78.md-55-
+ai-review/78.md:56:1. **The $o(n^{1/2})$ variant (Er69b):** Erdős also asked for a construction where the largest clique or independent set has size $o(n^{1/2})$. The website notes this is now known. This is a distinct (weaker) request than the full exponential lower bound and could be stated:
+/home/ryan/formal-conjectures/ai-review/78.md-57-   ```
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-36-
+FormalConjectures/ErdosProblems/925.lean:37:[Er69b] Erdős, P.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-38-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-53-/--
+FormalConjectures/ErdosProblems/925.lean:54:Erdős Problem 925 [Er69b] (DISPROVED by Alon-Rödl [AlRo05]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-55-
+--
+ai-review/926.md-17-**Website citations** (from [erdosproblems.com/926](https://www.erdosproblems.com/926)):
+ai-review/926.md:18:- [Er69b] Erdős, P., 1969.
+/home/ryan/formal-conjectures/ai-review/926.md-19-- [Er71] Erdős, P., 1971. (p.103)
+--
+/home/ryan/formal-conjectures/ai-review/926.md-24-
+ai-review/926.md:25:**Formalization citations** (lines 29–38): List [Er69b], [Er71], [Er74c], [Er93], [Fu91], [AKS03].
+/home/ryan/formal-conjectures/ai-review/926.md-26-
+--
+/home/ryan/formal-conjectures/ai-review/921.md-8-
+ai-review/921.md:9:The website (erdosproblems.com/921) lists three references: **[Er69b]**, **[Ga63]**, and **[KST84]**.
+/home/ryan/formal-conjectures/ai-review/921.md-10-
+ai-review/921.md:11:The formalization's module docstring cites [Er69b] and [KST84] but **omits [Ga63]** (Gallai's contribution). The docstring narrative mentions "Gallai proved that $f_4(n) \gg n^{1/2}$" without a bracketed citation. For consistency with the website, a citation line should be added:
+/home/ryan/formal-conjectures/ai-review/921.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/921.md-14-
+ai-review/921.md:15:Additionally, the `@[category]` tags on the variant theorems cite `[Er69b] [KST84]`, but Gallai's result is specifically the content of the lower bound for k = 4, so `[Ga63]` could also be cited on the lower bound variant.
+/home/ryan/formal-conjectures/ai-review/921.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/57.md-42-
+ai-review/57.md:43:- **[Er69b], [Er74d], [Er81], [Er90], [Er93], [Er94b], [Er95], [Er95d], [Er96], [Er97b]** — Various Erdős papers where the problem and its variants were discussed over the decades.
+/home/ryan/formal-conjectures/ai-review/57.md-44-- **[Va99]** — Likely Vardi or similar; listed on the website without full detail.
+--
+/home/ryan/formal-conjectures/ai-review/917.md-17-
+ai-review/917.md:18:The formalization's docstring includes: **[Er69b]**, **[Er93]**, **[To70]**, **[St87]**.
+/home/ryan/formal-conjectures/ai-review/917.md-19-
+--
+/home/ryan/formal-conjectures/ai-review/917.md-24-| Dirac [Di52] | ✅ | ❌ **Missing** | Constructed a 6-critical graph showing $f_6(4n+2) \geq 4n^2+8n+3$ using two disjoint odd cycles. Relevant historical context for Part 2. |
+ai-review/917.md:25:| Erdős [Er69b] | ✅ | ✅ | |
+/home/ryan/formal-conjectures/ai-review/917.md-26-| Erdős [Er93] | ✅ | ✅ | |
+--
+/home/ryan/formal-conjectures/ai-review/919.md-20-
+ai-review/919.md:21:> [Er69b] Erdős, P., *Problems and results in chromatic number theory*.
+/home/ryan/formal-conjectures/ai-review/919.md-22-
+--
+/home/ryan/formal-conjectures/ai-review/919.md-24-
+ai-review/919.md:25:> [Er69b] Erdős, P., Problems and results in chromatic **graph** theory. Proof Techniques in Graph Theory (Proc. Second Ann Arbor Graph Theory Conf., Ann Arbor, Mich., 1968) (1969), 27-35.
+/home/ryan/formal-conjectures/ai-review/919.md-26-
+--
+/home/ryan/formal-conjectures/ai-review/919.md-28-
+ai-review/919.md:29:The website lists the reference as `[Er69b]` with tags "graph theory, chromatic number", which is consistent.
+/home/ryan/formal-conjectures/ai-review/919.md-30-
+--
+ai-review/627.md-22-- **[Er67c]** — Erdős (1967): Established f(n) ≍ n/(log₂ n)² and the limit, if it exists, lies in [1/4, 4].
+ai-review/627.md:23:- **[Er69b]** — Erdős (1969).
+ai-review/627.md-24-- **[Zy52]** — Zykov (1952): Independently proved (with Tutte) that for every k, there exists a graph with ω(G)=2 and χ(G)=k.
+--
+/home/ryan/formal-conjectures/ai-review/627.md-26-
+ai-review/627.md:27:The formalization's theorem docstring cites `[Er61d][Er67c][Er69b]`, which matches the core Erdős references. The module docstring mentions only `[Er67c]`. Missing from the formalization are **[Zy52]** and the recent **[AFM25]** result. While [Zy52] provides historical context, the [AFM25] result is notable as a recent advance on the problem and could be mentioned in the module docstring.
+/home/ryan/formal-conjectures/ai-review/627.md-28-
+--
+ai-review/594.md-24-- Status: Proved (solved in the affirmative)
+ai-review/594.md:25:- References: ErHa66, Er69b, EHS74
+ai-review/594.md-26-- Related problems: 593, 737
+--
+/home/ryan/formal-conjectures/ai-review/594.md-30-- [ErHa66] Erdős, P. and Hajnal, A., *On chromatic number of graphs and set-systems*, Acta Math. Acad. Sci. Hung. **17** (1966), 61–99. ✓
+ai-review/594.md:31:- [Er69b] Erdős, P., *Problems and results in combinatorial analysis and graph theory*, Proof Techniques in Graph Theory (1969), 27–35. ✓
+/home/ryan/formal-conjectures/ai-review/594.md-32-- [EHS74] Erdős, P., Hajnal, A., and Shelah, S., *On some general properties of chromatic numbers*, Topics in Topology, Colloq. Math. Soc. Janos Bolyai **8** (1974), 243–255. ✓
+/home/ryan/formal-conjectures/ai-review/594.md-33-
+ai-review/594.md:34:**Assessment:** All three references are documented with full bibliographic details. The website uses the same shorthand codes (ErHa66, Er69b, EHS74), so the formalization is consistent. The website notes that Problems 593 and 737 are related; the docstring mentions Problem 594's connection via [EHS74] but does not cross-reference 593 or 737 explicitly. This is acceptable since the formalization focuses on its own statement.
+/home/ryan/formal-conjectures/ai-review/594.md-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-44-
+FormalConjectures/ErdosProblems/77.lean:45:[Er69b] Erdős, P., _Some applications of Ramsey's theorem to additive number theory_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-46-European J. Combin. (1969).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-27-
+FormalConjectures/ErdosProblems/921.lean:28:A question of Erdős and Gallai [Er69b]. Gallai [Ga63] proved that $f_4(n) \gg n^{1/2}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-29-and Erdős (unpublished) proved $f_4(n) \ll n^{1/2}$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-32-
+FormalConjectures/ErdosProblems/921.lean:33:[Er69b] Erdős, P., *Problems and results in graph theory and combinatorics*, 1969.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-53-/--
+FormalConjectures/ErdosProblems/921.lean:54:Erdős Problem 921 [Er69b] [KST84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-55-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-68-/--
+FormalConjectures/ErdosProblems/921.lean:69:Erdős Problem 921, lower bound [Er69b] [KST84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-70-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-80-/--
+FormalConjectures/ErdosProblems/921.lean:81:Erdős Problem 921, upper bound [Er69b] [KST84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean-82-
+--
+ai-review/77.md-34-**Missing references.** The website lists the following references not included in the docstring:
+ai-review/77.md:35:- [Er61], [Er69b], [Er71], [Er81], [Er88], [Er90b], [Er93], [Er95], [Er97c], [Er97d], [Va99]
+/home/ryan/formal-conjectures/ai-review/77.md-36-- [BBCGHMST24] Balister, Bollobás, Campos, Griffiths, Hurley, Morris, Sahasrabudhe, Tiba — simplified proof of the 4 − c bound.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/918.lean-24-- [ErHa68b] Erdős, P. and Hajnal, A., On chromatic number of infinite graphs. (1968), 83--98.
+FormalConjectures/ErdosProblems/918.lean:25:- [Er69b] Erdős, P., Problems and results in chromatic graph theory. Proof Techniques in Graph Theory (Proc. Second Ann Arbor Graph Theory Conf., Ann Arbor, Mich., 1968) (1969), 27-35.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/918.lean-26--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-27-
+FormalConjectures/ErdosProblems/926.lean:28:[Er69b] Erdős, P., 1969.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-90-/--
+FormalConjectures/ErdosProblems/926.lean:91:Erdős Problem 926 [Er69b, Er71, Er74c, Er93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean-92-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-29-
+FormalConjectures/ErdosProblems/750.lean:30:[Er69b] Erdős, P., _Problems and results in chromatic graph theory_. Proof Techniques in Graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-31-Theory (1969), 27-35.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-53-
+FormalConjectures/ErdosProblems/750.lean:54:In [Er69b] Erdős conjectures this for $f(m) = \varepsilon m$ for any fixed $\varepsilon > 0$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-55-This follows from a result of Erdős, Hajnal, and Szemerédi [EHS82].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-75-
+FormalConjectures/ErdosProblems/750.lean:76:This was conjectured by Erdős [Er69b] and follows from a result of Erdős, Hajnal, and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/750.lean-77-Szemerédi [EHS82].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-37-
+FormalConjectures/ErdosProblems/917.lean:38:[Er69b] Erdős, P., _Problems and results in chromatic graph theory_. Proof Techniques in Graph Theory (1969), 27–35.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-39-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-62-/--
+FormalConjectures/ErdosProblems/917.lean:63:Erdős Problem 917, Part 1 [Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-64-For $k \geq 4$, $f_k(n) \gg_k n^2$. There exists a constant $c > 0$ such that for all
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-78-/--
+FormalConjectures/ErdosProblems/917.lean:79:Erdős Problem 917, Part 2 [Er69b][Er93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-80-$f_6(n) \sim n^2/4$. For all $\varepsilon > 0$ and sufficiently large $n$, the maximum number of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-95-/--
+FormalConjectures/ErdosProblems/917.lean:96:Erdős Problem 917, Part 3 [Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/917.lean-97-For $k \geq 6$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean-24-
+FormalConjectures/ErdosProblems/740.lean:25:A question of Erdős and Hajnal [Er69b][Er71, p.100][Er81][Er95d].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean-26-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean-46-/--
+FormalConjectures/ErdosProblems/740.lean:47:Erdős Problem 740 [Er69b][Er71, p.100][Er81][Er95d]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/767.lean-33-
+FormalConjectures/ErdosProblems/767.lean:34:In [Er69b], Erdős mentions that Lewin disproved the conjecture for general $k$ (oral
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/767.lean-35-communication), though it is unclear whether this applied only to small $n$ or was incorrect,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/767.lean-37-
+FormalConjectures/ErdosProblems/767.lean:38:[Er69b] Erdős, P., _Problems and results in chromatic graph theory_. Proof Techniques in Graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/767.lean-39-  Theory (1969), 27-35.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean-42-
+FormalConjectures/ErdosProblems/626.lean:43:[Er69b] Erdős, P., _Problems and results in chromatic graph theory_, 1969.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean-44-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean-65-/--
+FormalConjectures/ErdosProblems/626.lean:66:**Erdős Problem 626, Part 1** [Er59b][Er62b][Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean-67-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean-82-/--
+FormalConjectures/ErdosProblems/626.lean:83:**Erdős Problem 626, Part 2** [Er59b][Er62b][Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean-84-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/924.lean-26-
+FormalConjectures/ErdosProblems/924.lean:27:A question of Erdős and Hajnal [Er69b][Er75b]. Folkman [Fo70] proved this
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/924.lean-28-when $k = 2$. The case for general $k$ was proved by Nešetřil and Rödl [NeRo76].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/924.lean-35-/--
+FormalConjectures/ErdosProblems/924.lean:36:Erdős Problem #924 [Er69b][Er75b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/924.lean-37-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-38-
+FormalConjectures/ErdosProblems/627.lean:39:[Er69b] Erdős, P., _Problems and results in chromatic graph theory_, 1969.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-61-/--
+FormalConjectures/ErdosProblems/627.lean:62:**Erdős Problem 627** [Er61d][Er67c][Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean-63-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/919.lean-34-
+FormalConjectures/ErdosProblems/919.lean:35:[Er69b] Erdős, P., _Problems and results in chromatic graph theory_. Proof Techniques in Graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/919.lean-36-Theory (Proc. Second Ann Arbor Graph Theory Conf., Ann Arbor, Mich., 1968) (1969), 27-35.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/919.lean-44-/--
+FormalConjectures/ErdosProblems/919.lean:45:Erdős Problem 919 [Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/919.lean-46-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/919.lean-64-/--
+FormalConjectures/ErdosProblems/919.lean:65:Erdős Problem 919, variant [Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/919.lean-66-

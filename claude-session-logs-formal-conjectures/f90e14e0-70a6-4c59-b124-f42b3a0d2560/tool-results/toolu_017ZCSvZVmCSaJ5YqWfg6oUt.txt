@@ -1,0 +1,390 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-41-/--
+FormalConjectures/ErdosProblems/37.lean:42:The sumset $A + B = \{a + b \mid a \in A, b \in B\}$ for sets of natural numbers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-43--/
+FormalConjectures/ErdosProblems/37.lean:44:def sumset (A B : Set ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-45-  {n | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-47-/--
+FormalConjectures/ErdosProblems/37.lean:48:A set $A \subseteq \mathbb{N}$ is an *essential component* if $d_s(A + B) > d_s(B)$ for every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-49-$B \subseteq \mathbb{N}$ with $0 < d_s(B) < 1$, where $d_s$ is the Schnirelmann density.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-50--/
+FormalConjectures/ErdosProblems/37.lean-51-def IsEssentialComponent (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/37.lean-52-  ∀ (B : Set ℕ), 0 < schnirelmannDensity B → schnirelmannDensity B < 1 →
+FormalConjectures/ErdosProblems/37.lean:53:    schnirelmannDensity (sumset A B) > schnirelmannDensity B
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/37.lean-55-/--
+--
+FormalConjectures/ErdosProblems/431.lean-22-*Reference:* [erdosproblems.com/431](https://www.erdosproblems.com/431)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-23-
+FormalConjectures/ErdosProblems/431.lean:24:Are there two infinite sets $A$ and $B$ of natural numbers such that the sumset
+FormalConjectures/ErdosProblems/431.lean:25:$A + B = \{a + b \mid a \in A, b \in B\}$ agrees with the set of prime numbers up to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-26-finitely many exceptions?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-36-Elsholtz [El01] proved there are no sets $A$, $B$, $C$ (all of size at least 2) such that
+FormalConjectures/ErdosProblems/431.lean:37:$A + B + C$ agrees with the primes up to finitely many exceptions.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-39-[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-50-/--
+FormalConjectures/ErdosProblems/431.lean-51-Erdős Problem 431 [ErGr80]: Are there two infinite sets $A$ and $B$ of natural
+FormalConjectures/ErdosProblems/431.lean:52:numbers such that the sumset $A + B = \{a + b \mid a \in A, b \in B\}$ agrees with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-53-the set of prime numbers up to finitely many exceptions?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-54--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-31-$|A| \leq (11/32 + o(1))N$, showing that $11/32$ is sharp.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-32-
+FormalConjectures/ErdosProblems/438.lean:33:[KLS02] Khalfalah, A., Lodha, S., and Szemerédi, E., _On the density of sumsets not
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-34-containing a square_, 2002.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/438.lean-35--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-42-/--
+FormalConjectures/ErdosProblems/1146.lean:43:The sumset $A + B = \{a + b \mid a \in A, b \in B\}$ for sets of natural numbers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-44--/
+FormalConjectures/ErdosProblems/1146.lean:45:def sumset (A B : Set ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-46-  {n | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-48-/--
+FormalConjectures/ErdosProblems/1146.lean:49:A set $A \subseteq \mathbb{N}$ is an essential component if $d_s(A + B) > d_s(B)$ for every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-50-$B \subseteq \mathbb{N}$ with $0 < d_s(B) < 1$, where $d_s$ is the Schnirelmann density.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-51--/
+FormalConjectures/ErdosProblems/1146.lean-52-def IsEssentialComponent (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1146.lean-53-  ∀ (B : Set ℕ), 0 < schnirelmannDensity B → schnirelmannDensity B < 1 →
+FormalConjectures/ErdosProblems/1146.lean:54:    schnirelmannDensity (sumset A B) > schnirelmannDensity B
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-56-/--
+--
+FormalConjectures/ErdosProblems/1146.lean-64-Is the set $B = \{2^m \cdot 3^n : m, n \geq 0\}$ an essential component?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-65-
+FormalConjectures/ErdosProblems/1146.lean:66:A set $A \subseteq \mathbb{N}$ is an essential component if $d_s(A + B) > d_s(B)$ for every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-67-$B \subseteq \mathbb{N}$ with $0 < d_s(B) < 1$, where $d_s$ is the Schnirelmann density.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1146.lean-68-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-24-Erdős conjectured that for any set $A \subset \mathbb{N}$ with $|A| = n$ and any graph $G$ on $A$
+FormalConjectures/ErdosProblems/808.lean:25:with at least $n^{1+c}$ edges, the graph-restricted sumset or product set must satisfy
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-26-$\max(|A +_G A|, |A \cdot_G A|) \geq n^{1+c-\varepsilon}$. Disproved by Alon, Ruzsa, and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-27-Solymosi [ARS20].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-34-namespace Erdos808
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-35-
+FormalConjectures/ErdosProblems/808.lean:36:/-- The graph-restricted sumset $\{f(i) + f(j) : (i, j) \in E(G)\}$. -/
+FormalConjectures/ErdosProblems/808.lean-37-def graphSumset {n : ℕ} (f : Fin n → ℕ) (G : SimpleGraph (Fin n))
+FormalConjectures/ErdosProblems/808.lean-38-    [DecidableRel G.Adj] : Finset ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-24-If $B$ is an additive basis of order $k$ and $A$ has Schnirelmann density $\alpha$, then
+FormalConjectures/ErdosProblems/35.lean:25:$d_s(A + B) \geq \alpha + \alpha(1-\alpha)/k$. Proved by Plünnecke [Pl70].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-27-[Pl70] Plünnecke, H., _Eine zahlentheoretische Anwendung der Graphentheorie_. J. Reine Angew.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-33-namespace Erdos35
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-34-
+FormalConjectures/ErdosProblems/35.lean:35:/-- The sumset $A + B$: the set of all $a + b$ with $a \in A$, $b \in B$. -/
+FormalConjectures/ErdosProblems/35.lean:36:def sumset (A B : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-37-
+FormalConjectures/ErdosProblems/35.lean-38-/-- Schnirelmann density of a set $A \subseteq \mathbb{N}$:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-50-Let $B \subseteq \mathbb{N}$ be an additive basis of order $k$ with $0 \in B$, and let
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-51-$\alpha = d_s(A)$ be the Schnirelmann density of $A \subseteq \mathbb{N}$. Then
+FormalConjectures/ErdosProblems/35.lean:52:$$d_s(A + B) \geq \alpha + \frac{\alpha(1 - \alpha)}{k}.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-54-This was proved by Plünnecke [Pl70], who showed the stronger inequality
+FormalConjectures/ErdosProblems/35.lean:55:$d_s(A + B) \geq \alpha^{1-1/k}$, as observed by Ruzsa.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-56--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-57-@[category research solved, AMS 11]
+--
+FormalConjectures/ErdosProblems/35.lean-60-    (hB : IsAdditiveBasis B k) (h0 : (0 : ℕ) ∈ B) :
+FormalConjectures/ErdosProblems/35.lean-61-    let α := schnirelmannDensity A
+FormalConjectures/ErdosProblems/35.lean:62:    schnirelmannDensity (sumset A B) ≥ α + α * (1 - α) / (k : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-63-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean-64-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-31-[Er91] Erdős, P., _Some of my favourite problems in number theory, combinatorics, and geometry_. Resenhas do Instituto de Matemática e Estatística da Universidade de São Paulo (1991).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-32-
+FormalConjectures/ErdosProblems/818.lean:33:[So09d] Solymosi, J., _Bounding multiplicative energy by the sumset_. Advances in Mathematics (2009).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-24-Let $A \subset \{1, \ldots, N\}$ be a Sidon set with $|A| \sim N^{1/2}$.
+FormalConjectures/ErdosProblems/154.lean:25:Must the sumset $A + A$ be well-distributed over all small moduli?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-27-[ESS94] Erdős, P., Sárközy, A., and Sós, V. T., 1994.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-46-    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-47-
+FormalConjectures/ErdosProblems/154.lean:48:/-- The sumset $A + A = \{a + b \mid a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/154.lean:49:def sumset (A : Finset ℕ) : Finset ℕ := Finset.image₂ (· + ·) A A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-51-/-- The fraction of elements in a finite set of naturals that are congruent to $r$ modulo $m$. -/
+--
+FormalConjectures/ErdosProblems/154.lean-81-      ∀ (m : ℕ), 1 ≤ m →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-82-        ∀ r < m,
+FormalConjectures/ErdosProblems/154.lean:83:          Tendsto (fun n => modFraction m r (sumset (A n))) atTop (𝓝 (1 / (m : ℝ))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-84-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/154.lean-85-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-24-Define $r_k(d_1, d_2)$ to be the smallest integer $r$ such that for any lacunary sequence $B$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-25-with ratio $\geq r$, there exists a sequence $A$ with consecutive gaps in $[d_1, d_2]$ whose
+FormalConjectures/ErdosProblems/1112.lean:26:$k$-fold sumset avoids $B$. The problem asks whether $r_k(d_1, d_2)$ exists for $k \geq 3$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-28-[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-32-namespace Erdos1112
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-33-
+FormalConjectures/ErdosProblems/1112.lean:34:/-- The $k$-fold sumset of a set $S$ of natural numbers: all sums $s_1 + \cdots + s_k$
+FormalConjectures/ErdosProblems/1112.lean-35-with each $s_i \in S$. Defined recursively: $0S = \{0\}$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-36-$(k+1)S = \{a + b \mid a \in S,\, b \in kS\}$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-46-$b_{i+1} \geq r \cdot b_i$, there exists a sequence $A = \{a_1 < a_2 < \cdots\}$ of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-47-positive integers with $d_1 \leq a_{i+1} - a_i \leq d_2$ for all $i$, and
+FormalConjectures/ErdosProblems/1112.lean:48:$(kA) \cap B = \emptyset$, where $kA$ is the $k$-fold sumset.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1112.lean-49-
+FormalConjectures/ErdosProblems/1112.lean-50-Known results:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1103.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1103.lean-24-Let $A = \{a_0 < a_1 < a_2 < \cdots\}$ be an infinite sequence of positive integers such that
+FormalConjectures/ErdosProblems/1103.lean:25:every element of the sumset $A + A$ is squarefree. How fast must $A$ grow?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1103.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1103.lean-27-Erdős notes there exists such a sequence which grows exponentially, but does not
+--
+FormalConjectures/ErdosProblems/1103.lean-50-    (a : ℕ → ℕ)
+FormalConjectures/ErdosProblems/1103.lean-51-    (ha_strict_mono : StrictMono a)
+FormalConjectures/ErdosProblems/1103.lean:52:    (ha_sumset_sqfree : ∀ i j : ℕ, Squarefree (a i + a j)) :
+FormalConjectures/ErdosProblems/1103.lean-53-    ∀ C : ℝ, C > 0 →
+FormalConjectures/ErdosProblems/1103.lean-54-      ∃ N : ℕ, ∀ j : ℕ, j ≥ N →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1109.lean-37-
+FormalConjectures/ErdosProblems/1109.lean-38-Formalized as: there exist constants $C > 0$ and $k > 0$ such that for all
+FormalConjectures/ErdosProblems/1109.lean:39:sufficiently large $N$, every subset $A \subseteq \{1, \ldots, N\}$ whose sumset $A + A$ is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1109.lean-40-entirely squarefree satisfies $|A| \leq C \cdot (\log N)^k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1109.lean-41-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-29-theory*. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-30-
+FormalConjectures/ErdosProblems/343.lean:31:[SzVu06] Szemerédi, E. and Vu, V.H., *Finite and infinite arithmetic progressions in sumsets*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-32-Annals of Mathematics (2006).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-33--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-29-namespace Erdos869
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-30-
+FormalConjectures/ErdosProblems/869.lean:31:/-- The sumset $A + A$: the set of all $a + b$ with $a, b \in A$. -/
+FormalConjectures/ErdosProblems/869.lean:32:def sumset (A : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ A, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-34-/-- A set $A \subseteq \mathbb{N}$ is an additive basis of order $2$ if every sufficiently large
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-35-    natural number can be written as $a + b$ with $a, b \in A$. -/
+FormalConjectures/ErdosProblems/869.lean-36-def IsAdditiveBasis2 (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/869.lean:37:  ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ → n ∈ sumset A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-39-/-- A set $B \subseteq \mathbb{N}$ is a minimal additive basis of order $2$ if it is an additive
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-40-    basis of order $2$ and for every element $x \in B$, the set of natural numbers
+FormalConjectures/ErdosProblems/869.lean:41:    not in the sumset of $B \setminus \{x\}$ is infinite. -/
+FormalConjectures/ErdosProblems/869.lean-42-def IsMinimalAdditiveBasis2 (B : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-43-  IsAdditiveBasis2 B ∧
+FormalConjectures/ErdosProblems/869.lean:44:    ∀ x ∈ B, Set.Infinite {n : ℕ | n ∉ sumset (B \ {x})}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/869.lean-46-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-43-namespace Erdos337
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-44-
+FormalConjectures/ErdosProblems/337.lean:45:/-- The sumset $A + A = \{a + b : a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/337.lean:46:def sumset (A : Set ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/337.lean-47-  {n : ℕ | ∃ a ∈ A, ∃ b ∈ A, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-70-The answer is no. A counterexample was provided by Turjányi [Tu84].
+FormalConjectures/ErdosProblems/337.lean:71:This was generalised (replacing $A+A$ by the $h$-fold sumset $hA$ for any
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-72-$h \geq 2$) by Ruzsa and Turjányi [RT85].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-73--/
+--
+FormalConjectures/ErdosProblems/337.lean-77-      (∃ r : ℕ, IsAdditiveBasis A r) →
+FormalConjectures/ErdosProblems/337.lean-78-      Tendsto (fun N => (countInRange A N : ℝ) / (N : ℝ)) atTop (nhds 0) →
+FormalConjectures/ErdosProblems/337.lean:79:      Tendsto (fun N => (countInRange (sumset A) N : ℝ) /
+FormalConjectures/ErdosProblems/337.lean-80-          (countInRange A N : ℝ)) atTop atTop := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-81-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-24-Given any infinite set $A \subset \mathbb{N}$, there exists a set $B$ of natural density zero
+FormalConjectures/ErdosProblems/31.lean:25:such that $A + B$ contains all except finitely many natural numbers. Proved by Lorentz [Lo54].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-27-[Lo54] Lorentz, G. G., _On a problem of additive number theory_. Proc. Amer. Math. Soc. 5 (1954), 838–840.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-32-namespace Erdos31
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-33-
+FormalConjectures/ErdosProblems/31.lean:34:/-- The sumset $A + B$: the set of all $a + b$ with $a \in A$, $b \in B$. -/
+FormalConjectures/ErdosProblems/31.lean:35:def sumset (A B : Set ℕ) : Set ℕ := {n : ℕ | ∃ a ∈ A, ∃ b ∈ B, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-37-/-- A set $B \subseteq \mathbb{N}$ has natural density zero if
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-46-Given any infinite set $A \subset \mathbb{N}$, there exists a set $B \subseteq \mathbb{N}$
+FormalConjectures/ErdosProblems/31.lean:47:of natural density $0$ such that $A + B$ contains all except finitely many natural numbers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-48--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-49-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/31.lean-50-theorem erdos_31 (A : Set ℕ) (hA : A.Infinite) :
+FormalConjectures/ErdosProblems/31.lean-51-    ∃ B : Set ℕ, HasNaturalDensityZero B ∧
+FormalConjectures/ErdosProblems/31.lean:52:      Set.Finite {n : ℕ | n ∉ sumset A B} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-53-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/31.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-38-namespace Erdos871
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-39-
+FormalConjectures/ErdosProblems/871.lean:40:/-- The sumset $A + A = \{a + b : a, b \in A\}$. -/
+FormalConjectures/ErdosProblems/871.lean:41:def sumset (A : Set ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/871.lean-42-  {n : ℕ | ∃ a ∈ A, ∃ b ∈ A, n = a + b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-45-natural number can be written as the sum of two elements of $A$. -/
+FormalConjectures/ErdosProblems/871.lean-46-def IsAdditiveBasis2 (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/871.lean:47:  ∃ N₀ : ℕ, ∀ n ≥ N₀, n ∈ sumset A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/871.lean-48-
+FormalConjectures/ErdosProblems/871.lean-49-/-- The representation function $r_A(n) = |\{a \in \{0, \ldots, n\} : a \in A \land n - a \in A\}|$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-21-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-22-Characterise those $A, B \subseteq \mathbb{N}$ with positive natural density such that
+FormalConjectures/ErdosProblems/335.lean:23:$d(A + B) = d(A) + d(B)$. The conjecture is that such sets must arise from measurable subsets
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-24-of a compact abelian group via a group rotation with the corresponding measure additivity property.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-25-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-55-Let $d(A)$ denote the natural density of $A \subseteq \mathbb{N}$. Characterise those
+FormalConjectures/ErdosProblems/335.lean:56:$A, B \subseteq \mathbb{N}$ with positive density such that $d(A + B) = d(A) + d(B)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-58-One way this can happen is if there exists $\theta > 0$ such that
+--
+FormalConjectures/ErdosProblems/432.lean-44-Erdős Problem 432 [ErGr80, p.85]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-45-
+FormalConjectures/ErdosProblems/432.lean:46:Let $A, B \subseteq \mathbb{N}$ be two infinite sets. If all elements of the sumset
+FormalConjectures/ErdosProblems/432.lean:47:$A + B = \{a + b \mid a \in A, b \in B\}$ are pairwise coprime, then $A + B$ has
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-48-zero upper density.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-49--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-20-# Erdős Problem 476
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-21-
+FormalConjectures/ErdosProblems/476.lean:22:For a prime $p$ and $A \subseteq \mathbb{F}_p$, the restricted sumset
+FormalConjectures/ErdosProblems/476.lean-23-$A \hat{+} A = \{a + b : a, b \in A, a \neq b\}$ satisfies
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-24-$|A \hat{+} A| \geq \min(2|A| - 3, p)$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-36-/--
+FormalConjectures/ErdosProblems/476.lean:37:The restricted sumset $A \hat{+} A = \{a + b : a, b \in A, a \neq b\}$, consisting of all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-38-pairwise sums of distinct elements from $A$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-39--/
+--
+FormalConjectures/ErdosProblems/476.lean-44-Erdős-Heilbronn Conjecture (Problem 476):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-45-
+FormalConjectures/ErdosProblems/476.lean:46:Let $p$ be a prime and let $A \subseteq \mathbb{F}_p$. Define the restricted sumset
+FormalConjectures/ErdosProblems/476.lean-47-$$A \hat{+} A = \{a + b : a, b \in A, a \neq b\}.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/476.lean-48-Is it true that $|A \hat{+} A| \geq \min(2|A| - 3, p)$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-25-theory*. Monographies de L'Enseignement Mathématique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-26-
+FormalConjectures/ErdosProblems/344.lean:27:[SzVu06] Szemerédi, E. and Vu, V.H., *Finite and infinite arithmetic progressions in sumsets*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-28-Annals of Mathematics (2006).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean-29--/
+--
+FormalConjectures/ErdosProblems/125.lean-31-have only the digits $0, 1$ when written base 3, and $B = {∑ ε_{k} 4^{k} : ε_{k} ∈ {0,1}}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean-32-be the set of integers which have only the digits $0, 1$ when written base 4.
+FormalConjectures/ErdosProblems/125.lean:33:Does $A + B$ have positive density?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean-35-
+--
+FormalConjectures/ErdosProblems/125.lean-44-have only the digits $0, 1$ when written base 3, and $B = {∑ ε_{k} 4^{k} : ε_{k} ∈ {0,1}}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean-45-be the set of integers which have only the digits $0, 1$ when written base 4.
+FormalConjectures/ErdosProblems/125.lean:46:Does $A + B$ have positive lower density?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean-47--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean-48-@[category research open, AMS 11]
+--
+FormalConjectures/ErdosProblems/125.lean-56-have only the digits $0, 1$ when written base 3, and $B = {∑ ε_{k} 4^{k} : ε_{k} ∈ {0,1}}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean-57-be the set of integers which have only the digits $0, 1$ when written base 4.
+FormalConjectures/ErdosProblems/125.lean:58:Does $A + B$ have positive upper density?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean-59--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/125.lean-60-@[category research open, AMS 11]
+--
+FormalConjectures/ErdosProblems/109.lean-22-*References:*
+FormalConjectures/ErdosProblems/109.lean-23-- [erdosproblems.com/109](https://www.erdosproblems.com/109)
+FormalConjectures/ErdosProblems/109.lean:24:- [MRR19] J. Moreira, F.K. Richter, and D. Robertson, A proof of a sumset conjecture of Erdős,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean-25-  Annals of Math. 189 (2019), 605-652.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean-26--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean-32-/--
+FormalConjectures/ErdosProblems/109.lean:33:Any $A\subseteq \mathbb{N}$ of positive upper density contains a sumset $B+C$ where both $B$ and $C$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean-34-are infinite.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean-35-
+FormalConjectures/ErdosProblems/109.lean:36:The Erdős sumset conjecture. Proved by Moreira, Richter, and Robertson [MRR19].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean-37--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/109.lean-38-@[category research solved, AMS 5]
+--
+FormalConjectures/ErdosProblems/1145.lean-39-Formalization note: There's some discussion in the comments of [erdosproblems.com/28] and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-40-[erdosproblems.com/1145] about whether or not $0$ should be included in $A$ or $B$ and has been
+FormalConjectures/ErdosProblems/1145.lean:41:left purposely ambiguous. Problem 1145 was originally written as $A + B = \mathbb{N}$, which
+FormalConjectures/ErdosProblems/1145.lean:42:would imply that $0$ would need to exist in $A$ or $B$ to include $1$ in $A + B$. However, it's been
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-43-made more general and rewritten as "sufficiently large positive integers". The formalization below
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-44-is the version that includes $0$.
+--
+FormalConjectures/ErdosProblems/1145.lean-47-  ∀ ⦃A B : Set ℕ⦄ (_ : A.Infinite) (_ : B.Infinite),
+FormalConjectures/ErdosProblems/1145.lean-48-    Tendsto (fun n ↦ (Nat.nth (· ∈ A) n : ℝ) / (Nat.nth (· ∈ B) n : ℝ)) atTop (𝓝 1) →
+FormalConjectures/ErdosProblems/1145.lean:49:    (∀ᶠ n in atTop, n ∈ A + B) →
+FormalConjectures/ErdosProblems/1145.lean-50-    limsup (fun n => ↑(((𝟙_A ∗ 𝟙_B) : ℕ → ℕ) n)) atTop = (⊤ : ℕ∞)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-35-open Filter Set Asymptotics
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-36-
+FormalConjectures/ErdosProblems/32.lean:37:/-- A set $A \subseteq \mathbb{N}$ is an _additive complement to the primes_ if every sufficiently
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-38-large natural number can be written as $p + a$ for some prime $p$ and $a \in A$. -/
+FormalConjectures/ErdosProblems/32.lean-39-def IsAdditiveComplementToPrimes (A : Set ℕ) : Prop :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-42-/--
+FormalConjectures/ErdosProblems/32.lean:43:Erdős proved in [Erd54] that there exists an additive complement $A$ to the primes with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-44-$|A \cap \{1, \ldots, N\}| = O((\log N)^2)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-45--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-53-/--
+FormalConjectures/ErdosProblems/32.lean:54:Must every additive complement $A$ to the primes satisfy
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-55-$\liminf_{N \to \infty} \frac{|A \cap \{1, \ldots, N\}|}{\log N} > 1$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-56--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-75-/--
+FormalConjectures/ErdosProblems/32.lean:76:Can the bound $O(\log N)$ be achieved for an additive complement to the primes? [Guy04] writes
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-77-that Erdős offered \$50 for the solution.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-78--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-86-/--
+FormalConjectures/ErdosProblems/32.lean:87:Ruzsa proved that any additive complement $A$ to the primes must satisfy
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-88-$\liminf_{N \to \infty} \frac{|A \cap \{1, \ldots, N\}|}{\log N} \geq e^\gamma$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/32.lean-89-where $\gamma$ is the Euler-Mascheroni constant.
+--
+FormalConjectures/ErdosProblems/785.lean-22-*Reference:* [erdosproblems.com/785](https://www.erdosproblems.com/785)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-23-
+FormalConjectures/ErdosProblems/785.lean:24:Let $A, B \subseteq \mathbb{N}$ be infinite sets such that $A + B$ contains all large integers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-25-Let $A(x) = |A \cap [1, x]|$ and similarly for $B(x)$. Is it true that if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-26-$A(x)B(x) \sim x$ then $A(x)B(x) - x \to \infty$ as $x \to \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-27-
+FormalConjectures/ErdosProblems/785.lean:28:Such sets $A$ and $B$ (with all large integers in $A + B$ and $A(x)B(x) \sim x$) are
+FormalConjectures/ErdosProblems/785.lean:29:called exact additive complements. Danzer proved that exact additive complements exist.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-31-The answer is yes, proved by Sárközy and Szemerédi [SaSz94].
+--
+FormalConjectures/ErdosProblems/785.lean-50-**Erdős Problem 785** (Sárközy and Szemerédi [SaSz94]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-51-
+FormalConjectures/ErdosProblems/785.lean:52:Let $A, B \subseteq \mathbb{N}$ be infinite sets such that $A + B$ contains all sufficiently
+FormalConjectures/ErdosProblems/785.lean:53:large integers (i.e., $A$ and $B$ are additive complements). If $A(x)B(x) \sim x$
+FormalConjectures/ErdosProblems/785.lean:54:(exact additive complements), then $A(x)B(x) - x \to \infty$ as $x \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-55--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-56-@[category research solved, AMS 5 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-47-$|B \cap \{1, \ldots, N\}| = o(N^{1/2})$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-48-
+FormalConjectures/ErdosProblems/333.lean:49:Here $B + B = \{b_1 + b_2 \mid b_1, b_2 \in B\}$ is the sumset of $B$ with itself, and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-50-$o(N^{1/2})$ means that $|B \cap \{1, \ldots, N\}| / N^{1/2} \to 0$ as $N \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-51-

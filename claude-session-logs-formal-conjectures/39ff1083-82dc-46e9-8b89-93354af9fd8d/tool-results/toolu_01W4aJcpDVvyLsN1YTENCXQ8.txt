@@ -1,0 +1,514 @@
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-47-      match att with
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-48-      | `(attrInstance | AMS $nums*) => return some nums
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-49-      | _ => return none
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-50-  | _ => return #[]
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-51-
+FormalConjectures/Util/Linters/AMSLinter.lean:52:def mkAMSSyntax (nums : TSyntaxArray `num) : CommandElabM <| TSyntax ``attrInstance := do
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-53-  return ← `(attrInstance | AMS $nums*)
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-55-set_option linter.dupNamespace false in
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-56-/-- The problem category linter checks that every theorem/lemma/example
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-57-has been given an `AMS` attribute. -/
+--
+FormalConjectures/Util/Linters/NamespaceLinter.lean-39-  defValue := true
+FormalConjectures/Util/Linters/NamespaceLinter.lean-40-  descr := "enable the namespace linter"
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/NamespaceLinter.lean-41-}
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/NamespaceLinter.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/NamespaceLinter.lean-43-/-- The namespace linter checks that every declaration is inside a namespace. -/
+FormalConjectures/Util/Linters/NamespaceLinter.lean:44:def namespaceLinter : Linter where run := withSetOptionIn fun stx ↦ do
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/NamespaceLinter.lean-45-  if getLinterValue linter.style.namespace (← getLinterOptions) then
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/NamespaceLinter.lean-46-    for id in (← Mathlib.Linter.getNamesFrom (stx.getPos?.getD default)) do
+FormalConjectures/Util/Linters/NamespaceLinter.lean-47-      let declName := id.getId
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/NamespaceLinter.lean-48-      if declName.hasMacroScopes then continue
+FormalConjectures/Util/Linters/NamespaceLinter.lean-49-      let nm := declName.components
+--
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-163-  | «94»
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-164-  /-- Mathematics education -/
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-165-  | «97»
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-166-  deriving Inhabited, BEq, Hashable, ToExpr
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-167-
+FormalConjectures/Util/Attributes/AMS.lean:168:def numToAMSName (n : Nat) : MetaM Name := do
+FormalConjectures/Util/Attributes/AMS.lean-169-  let nm : Name := Name.str ``AMS (ToString.toString n)
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-170-  unless !(← Lean.hasConst nm) do return nm
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-171-  throwError "Out of bounds"
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-172-
+FormalConjectures/Util/Attributes/AMS.lean-173-def AMS.getDesc (a : AMS) : CoreM String := do
+--
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-29-/--
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-30-Left factorial of n
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-31-$$!n = 0! + 1! + 2! + \dots + (n-1)!$$
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-32--/
+FormalConjectures/Paper/Kurepa.lean:33:def left_factorial (n : ℕ) := ∑ m ∈ Finset.range n, m !
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-35-local notation "!" n => left_factorial n
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-37-/--
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Kurepa.lean-38-## Kurepa's conjecture
+--
+/home/ryan/formal-conjectures/FormalConjectures/Paper/StrongSensitivityConjecture.lean-108-`nisanExample(x) = 1` iff the Hamming weight of `x` is either
+/home/ryan/formal-conjectures/FormalConjectures/Paper/StrongSensitivityConjecture.lean-109-`n/2` or `n/2 + 1`. We assume `n` is a multiple of 4.
+/home/ryan/formal-conjectures/FormalConjectures/Paper/StrongSensitivityConjecture.lean-110-The function is symmetric, so its value only depends on the Hamming weight
+/home/ryan/formal-conjectures/FormalConjectures/Paper/StrongSensitivityConjecture.lean-111-of the input. -/
+/home/ryan/formal-conjectures/FormalConjectures/Paper/StrongSensitivityConjecture.lean-112-@[category test, AMS 68]
+FormalConjectures/Paper/StrongSensitivityConjecture.lean:113:def nisanExample (n : ℕ) (x : Fin n → Bool) : Bool :=
+FormalConjectures/Paper/StrongSensitivityConjecture.lean-114-  let w := #{i | x i}
+FormalConjectures/Paper/StrongSensitivityConjecture.lean-115-  decide ((w : ℚ) ∈ ({(n / 2 : ℚ), (n / 2 : ℚ) + 1} : Finset ℚ))
+/home/ryan/formal-conjectures/FormalConjectures/Paper/StrongSensitivityConjecture.lean-116-
+/home/ryan/formal-conjectures/FormalConjectures/Paper/StrongSensitivityConjecture.lean-117-/-- Assuming `n` is a multiple of 4, the sensitivity of `nisanExample`
+/home/ryan/formal-conjectures/FormalConjectures/Paper/StrongSensitivityConjecture.lean-118-is `n/2`, achieved by any `x` with Hamming weight `n/2`. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-25-namespace VaughtConjecture
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-27-open FirstOrder.Language
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-29-/-- The number of countable models of some L-Theory T up to isomorphism -/
+FormalConjectures/Wikipedia/VaughtConjecture.lean:30:def numberOfCountableModels {L : FirstOrder.Language} (T : L.Theory) : Cardinal :=
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-31-  Cardinal.mk (Quotient (Setoid.comap
+FormalConjectures/Wikipedia/VaughtConjecture.lean-32-    (fun (model : {mt : T.ModelType // Countable mt.Carrier}) ↦
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-33-    CategoryTheory.Bundled.mk model.val.Carrier model.val.struc)
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-34-    equivSetoid))
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-35-
+--
+FormalConjectures/Wikipedia/EllipticCurveRank.lean-69-    convert mul_ne_zero (show (-16 : ℚ) ≠ 0 by norm_num) (Int.cast_ne_zero.mpr E.Δ_ne_zero)
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-70-    simp_rw [toWeierstrass, Δ, b₂, b₄, b₆, Int.cast_add, Int.cast_mul, Int.cast_pow]
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-71-    ring
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-73-/-- The naïve height of an elliptic curve over ℚ. -/
+FormalConjectures/Wikipedia/EllipticCurveRank.lean:74:def naiveHeight (E : RatEllipticCurve) : ℕ := max (4 * E.A.natAbs ^ 3) (27 * E.B.natAbs ^ 2)
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-75-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-76-/-- The set of elliptic curves over ℚ with naïve height less than or equal to a given height. -/
+FormalConjectures/Wikipedia/EllipticCurveRank.lean-77-def heightLE (H : ℕ) : Set RatEllipticCurve := {E : RatEllipticCurve | E.naiveHeight ≤ H}
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-78-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-79-open scoped Topology
+--
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-34-/--
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-35-Let $a = (a_1, a_2, a_3)$ and $b = (b_1, b_2, b_3)$ be two triples of integers.
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-36-Say that $a$ is $2$-less than $b$, or $a <_2 b$, if $a_i < b_i$ for at least
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-37-two co-ordinates $i$.
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-38--/
+FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean:39:def lt₂ {α : Type*} [LT α] (a b : Fin 3 → α) : Prop :=
+FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-40-  ∃ (i j : Fin 3), i ≠ j ∧ a i < b i ∧ a j < b j
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-41-
+FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-42-local infix:50 " <₂ " => lt₂
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean-44-@[simp, category API, AMS 5]
+--
+FormalConjectures/Wikipedia/ModularityConjecture.lean-76-  (∀ (p r : ℕ), p.Prime → 2 ≤ r → (N : ZMod p) ≠ 0 →
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/ModularityConjecture.lean-77-    a_[p ^ r]f = a_[p]f * a_[p ^ (r - 1)]f - p ^ (k - 1) * a_[p ^ (r - 2)]f) ∧
+FormalConjectures/Wikipedia/ModularityConjecture.lean-78-  ∀ (p r : ℕ), p.Prime → 2 ≤ r → (N : ZMod p) = 0 → a_[p ^ r]f = (a_[p]f) ^ r
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/ModularityConjecture.lean-79-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/ModularityConjecture.lean-80-/-- See theorem 8.8.1 of [diamondshurman2005]. -/
+FormalConjectures/Wikipedia/ModularityConjecture.lean:81:def modularityConjecture (E : WeierstrassCurve ℚ) [E.IsElliptic] : Prop :=
+FormalConjectures/Wikipedia/ModularityConjecture.lean-82-  ∃ (N : ℕ+) (f : CuspForm (Gamma0 N) 2), IsNormalisedEigenform f ∧
+FormalConjectures/Wikipedia/ModularityConjecture.lean-83-    ∀ (p : ℕ), p.Prime → (N : ZMod p) ≠ 0 → a_[p]f = E.ap p
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/ModularityConjecture.lean-84-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/ModularityConjecture.lean-85-@[category research solved, AMS 11]
+FormalConjectures/Wikipedia/ModularityConjecture.lean-86-theorem modularity_conjecture (E : WeierstrassCurve ℚ) [E.IsElliptic] : modularityConjecture E := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean-29-namespace Erdos868
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean-31-/-- The number of ways in which a natural `n` can be written as the sum of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean-32-`o` members of the set `A`. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean-33-noncomputable
+FormalConjectures/ErdosProblems/868.lean:34:def ncard_add_repr (A : Set ℕ) (o : ℕ) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/868.lean-35-  { a : Fin o → ℕ | Set.range a ⊆ A ∧ ∑ i, a i = n }.ncard
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean-37-/-- Let $A$ be an additive basis of order $2$, let $f(n)$ denote the number of ways in which
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean-38-$n$ can be written as the sum of two elements from $A$. If $f(n) \to \infty$ as $n \to \infty$, then
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/868.lean-39-must $A$ contain a minimal additive basis of order $2$? -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/6697.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/6697.lean-38-namespace OeisA6697
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/6697.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/6697.lean-40-/-- The morphism σ on {a, b} defined by a ↦ aab, b ↦ b, represented on Bool where
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/6697.lean-41-`false` = a and `true` = b. -/
+FormalConjectures/OEIS/6697.lean:42:def morphism : Bool → List Bool
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/6697.lean-43-  | false => [false, false, true]  -- a ↦ aab
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/6697.lean-44-  | true => [true]                -- b ↦ b
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/6697.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/6697.lean-46-/-- The n-th iterate of the morphism applied to [a]. -/
+FormalConjectures/OEIS/6697.lean-47-def finiteWord : ℕ → List Bool
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-36-namespace Mandelbrot
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-37-
+FormalConjectures/Wikipedia/Mandelbrot.lean-38-/-- The Multibrot set of power `n` is the set of all parameters `c : ℂ` for which `0` does not
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-39-escape to infinity under repeated application of `z ↦ z ^ n + c`. -/
+FormalConjectures/Wikipedia/Mandelbrot.lean:40:def multibrotSet (n : ℕ) : Set ℂ :=
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-41-  {c | ¬ Tendsto (fun k ↦ (fun z ↦ z ^ n + c)^[k] 0) atTop (cobounded ℂ)}
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-43-/-- The Mandelbrot set is the special case of the multibrot set for n = 2. In other words, it is the
+FormalConjectures/Wikipedia/Mandelbrot.lean-44-set of all parameters `c : ℂ` for which `0` does not escape to infinity under repeated application
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-45-of `z ↦ z ^ 2 + c`. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-39-namespace Erdos538
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-41-/-- The number of representations of $m$ as $p \cdot a$ where $p$ is prime and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-42-$a \in A$. Since $p$ is determined by $a$ (as $p = m / a$), this counts
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-43-elements $a \in A$ with $a \mid m$ and $m / a$ prime. -/
+FormalConjectures/ErdosProblems/538.lean:44:def numPrimeProductReps (A : Finset ℕ) (m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-45-  (A.filter (fun a => a ∣ m ∧ Nat.Prime (m / a))).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-47-/--
+FormalConjectures/ErdosProblems/538.lean-48-**Erdős Problem 538** (Sharpness conjecture):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-49-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-67-/-- Logarithmic density equivalence is an equivalence relation. -/
+FormalConjectures/ErdosProblems/1123.lean-68-axiom logDensityEquiv_equivalence : Equivalence LogDensityEquiv
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-70-/-- The equivalence relation on $\operatorname{Set} \mathbb{N}$ given by natural density zero. -/
+FormalConjectures/ErdosProblems/1123.lean:71:def natDensitySetoid : Setoid (Set ℕ) where
+FormalConjectures/ErdosProblems/1123.lean-72-  r := NatDensityEquiv
+FormalConjectures/ErdosProblems/1123.lean-73-  iseqv := natDensityEquiv_equivalence
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-75-/-- The equivalence relation on $\operatorname{Set} \mathbb{N}$ given by logarithmic density zero. -/
+FormalConjectures/ErdosProblems/1123.lean:76:def logDensitySetoid : Setoid (Set ℕ) where
+FormalConjectures/ErdosProblems/1123.lean-77-  r := LogDensityEquiv
+FormalConjectures/ErdosProblems/1123.lean-78-  iseqv := logDensityEquiv_equivalence
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1123.lean-79-
+FormalConjectures/ErdosProblems/1123.lean-80-/-- $B_1$: the Boolean algebra of sets of integers modulo sets of natural density $0$. -/
+FormalConjectures/ErdosProblems/1123.lean-81-def BoolAlgModNatDensity : Type := Quotient natDensitySetoid
+--
+FormalConjectures/ErdosProblems/1166.lean-53-def walkPosition (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (n : ℕ) : ℤ × ℤ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-54-  ∑ i ∈ Finset.range n, X i ω
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-55-
+FormalConjectures/ErdosProblems/1166.lean-56-/-- The local time (visit count) at site $x$ up to time $k$:
+FormalConjectures/ErdosProblems/1166.lean-57-    $f_k(x) = |\{l : 0 \le l \le k \mid S_l = x\}|$. -/
+FormalConjectures/ErdosProblems/1166.lean:58:def localTime (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (k : ℕ) (x : ℤ × ℤ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-59-  ((Finset.range (k + 1)).filter (fun l => walkPosition X ω l = x)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-61-/-- The set of sites visited by the walk up to time $k$. -/
+FormalConjectures/ErdosProblems/1166.lean-62-def visitedSites (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (k : ℕ) : Finset (ℤ × ℤ) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-63-  (Finset.range (k + 1)).image (fun l => walkPosition X ω l)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-64-
+FormalConjectures/ErdosProblems/1166.lean-65-/-- The maximum local time at time $k$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-66-    $\max_y f_k(y)$, the maximum number of visits to any single site. -/
+FormalConjectures/ErdosProblems/1166.lean:67:def maxLocalTime (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-68-  (visitedSites X ω k).sup (localTime X ω k)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1166.lean-69-
+FormalConjectures/ErdosProblems/1166.lean-70-/-- The set of favourite sites at time $k$:
+FormalConjectures/ErdosProblems/1166.lean-71-    $F(k) = \{x \in \text{visited sites} : f_k(x) = \max_y f_k(y)\}$. -/
+FormalConjectures/ErdosProblems/1166.lean-72-def favouriteSites (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (k : ℕ) : Finset (ℤ × ℤ) :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-36-namespace Erdos114
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-37-
+FormalConjectures/ErdosProblems/114.lean-38-/-- The unit level curve of a complex polynomial $p$: the set of $z \in \mathbb{C}$ with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-39-$|p(z)| = 1$. -/
+FormalConjectures/ErdosProblems/114.lean:40:def levelCurveUnit (p : Polynomial ℂ) : Set ℂ :=
+FormalConjectures/ErdosProblems/114.lean-41-  {z : ℂ | ‖p.eval z‖ = 1}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-43-/-- The arc length of a subset of $\mathbb{C}$, given by the 1-dimensional Hausdorff measure. -/
+FormalConjectures/ErdosProblems/114.lean-44-noncomputable def arcLength (S : Set ℂ) : ℝ≥0∞ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/114.lean-45-  Measure.hausdorffMeasure 1 S
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean-31-namespace Erdos1043
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean-33-open MeasureTheory Polynomial
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean-34-
+FormalConjectures/ErdosProblems/1043.lean-35-/-- The set $\{ z \in \mathbb{C} : \lvert f(z)\rvert\leq 1\}$ -/
+FormalConjectures/ErdosProblems/1043.lean:36:def levelSet (f : Polynomial ℂ) : Set ℂ :=
+FormalConjectures/ErdosProblems/1043.lean-37-  {z : ℂ | ‖f.eval z‖ ≤ 1}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean-39-/--
+FormalConjectures/ErdosProblems/1043.lean-40-**Erdős Problem 1043**:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean-41-Let $f\in \mathbb{C}[x]$ be a monic polynomial.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/115.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/115.lean-34-namespace Erdos115
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/115.lean-35-
+FormalConjectures/ErdosProblems/115.lean-36-/-- The lemniscate of a complex polynomial $p$: the sublevel set
+FormalConjectures/ErdosProblems/115.lean-37-$\{z \in \mathbb{C} : |p(z)| \leq 1\}$. -/
+FormalConjectures/ErdosProblems/115.lean:38:def lemniscate (p : Polynomial ℂ) : Set ℂ :=
+FormalConjectures/ErdosProblems/115.lean-39-  {z : ℂ | ‖p.eval z‖ ≤ 1}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/115.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/115.lean-41-/--
+FormalConjectures/ErdosProblems/115.lean-42-Erdős Conjecture (Problem #115) [Er61, Er90], proved by Eremenko–Lempert [ErLe94]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/115.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/440.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/440.lean-43-namespace Erdos440
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/440.lean-44-
+FormalConjectures/ErdosProblems/440.lean-45-/-- For a strictly increasing sequence $a : \mathbb{N} \to \mathbb{N}$ and a bound $x$, count the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/440.lean-46-number of indices $i$ such that $\mathrm{lcm}(a(i), a(i+1)) \leq x$. -/
+FormalConjectures/ErdosProblems/440.lean:47:def lcmPairCount (a : ℕ → ℕ) (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/440.lean-48-  ((Finset.range (x + 1)).filter (fun i => Nat.lcm (a i) (a (i + 1)) ≤ x)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/440.lean-49-
+FormalConjectures/ErdosProblems/440.lean-50-/-- Erdős Problem 440, part 1 (PROVED):
+FormalConjectures/ErdosProblems/440.lean-51-Is it true that for any strictly increasing sequence $a : \mathbb{N} \to \mathbb{N}$, the counting
+FormalConjectures/ErdosProblems/440.lean-52-function $A(x) = \#\{i : \mathrm{lcm}(a(i), a(i+1)) \leq x\}$ satisfies $A(x) = O(\sqrt{x})$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-51-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-53-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-54-Returns the least prime satisfying $k \le p$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-55--/
+FormalConjectures/ErdosProblems/930.lean:56:def nextPrime (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-57-  Nat.find (Nat.exists_infinite_primes k)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-59-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-60-Let $k$, $l$, $n$ be integers such that $k \ge 3$, $l \ge 2$ and $n + k \ge p^{(k)}$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/930.lean-61-where $p^{(k)}$ is the least prime satisfying $p^{(k)} \ge k$.
+--
+FormalConjectures/ErdosProblems/1165.lean-52-def walkPosition (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (n : ℕ) : ℤ × ℤ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-53-  ∑ i ∈ Finset.range n, X i ω
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-54-
+FormalConjectures/ErdosProblems/1165.lean-55-/-- The local time (visit count) at site $x$ up to time $n$:
+FormalConjectures/ErdosProblems/1165.lean-56-$f_n(x) = |\{k : 0 \le k \le n \mid S_k = x\}|$. -/
+FormalConjectures/ErdosProblems/1165.lean:57:def localTime (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (n : ℕ) (x : ℤ × ℤ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-58-  ((Finset.range (n + 1)).filter (fun k => walkPosition X ω k = x)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-60-/-- The set of sites visited by the walk up to time $n$. -/
+FormalConjectures/ErdosProblems/1165.lean-61-def visitedSites (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (n : ℕ) : Finset (ℤ × ℤ) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-62-  (Finset.range (n + 1)).image (fun k => walkPosition X ω k)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-63-
+FormalConjectures/ErdosProblems/1165.lean-64-/-- The maximum local time at time $n$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-65-$\max_y f_n(y)$, the maximum number of visits to any single site. -/
+FormalConjectures/ErdosProblems/1165.lean:66:def maxLocalTime (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-67-  (visitedSites X ω n).sup (localTime X ω n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1165.lean-68-
+FormalConjectures/ErdosProblems/1165.lean-69-/-- The set of favourite sites at time $n$:
+FormalConjectures/ErdosProblems/1165.lean-70-$F(n) = \{x \in \text{visited sites} : f_n(x) = \max_y f_n(y)\}$. -/
+FormalConjectures/ErdosProblems/1165.lean-71-def favouriteSites (X : ℕ → Ω → ℤ × ℤ) (ω : Ω) (n : ℕ) : Finset (ℤ × ℤ) :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-35-/--
+FormalConjectures/ErdosProblems/45.lean-36-The set of divisors of $n$ strictly between $1$ and $n$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-37-$$D(n) = \{ d \in \mathbb{N} \mid d \mid n,\; 1 < d < n \}$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-38--/
+FormalConjectures/ErdosProblems/45.lean:39:def middleDivisors (n : ℕ) : Finset ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-40-  n.divisors.filter (fun d => 1 < d ∧ d < n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/45.lean-42-/--
+FormalConjectures/ErdosProblems/45.lean-43-Proved by Croot [Cr03]: for every $k \geq 2$, there exists a positive integer $n$ such that
+FormalConjectures/ErdosProblems/45.lean-44-for any $k$-colouring of the set $D(n) = \{d : d \mid n,\, 1 < d < n\}$ of divisors of $n$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-44-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-45-The number of $k$-term arithmetic progressions in $A$, counted as pairs $(a, d)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-46-with $d \geq 1$ such that $a + i \cdot d \in A$ for all $0 \leq i < k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-47--/
+FormalConjectures/ErdosProblems/179.lean:48:def numAP (A : Finset ℕ) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/179.lean-49-  if h : A.Nonempty then
+FormalConjectures/ErdosProblems/179.lean-50-    let M := A.max' h
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-51-    ((Finset.Icc 0 M ×ˢ Finset.Icc 1 M).filter
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-52-      fun p => ∀ i ∈ Finset.range k, p.1 + i * p.2 ∈ A).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-53-  else 0
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1098.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1098.lean-34-namespace Erdos1098
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1098.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1098.lean-36-/-- The non-commuting graph of a group $G$ has vertices the elements of $G$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1098.lean-37-with an edge between $g$ and $h$ if and only if they do not commute ($gh \neq hg$). -/
+FormalConjectures/ErdosProblems/1098.lean:38:def nonCommutingGraph (G : Type*) [Group G] : SimpleGraph G where
+FormalConjectures/ErdosProblems/1098.lean-39-  Adj g h := g * h ≠ h * g
+FormalConjectures/ErdosProblems/1098.lean-40-  symm := by intro _ _ hab; exact Ne.symm hab
+FormalConjectures/ErdosProblems/1098.lean-41-  loopless := by intro a hab; exact hab rfl
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1098.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1098.lean-43-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean-37-open Finset BigOperators Classical
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean-39-namespace Erdos451
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean-41-/-- The product $(n-1)(n-2)\cdots(n-k)$ has no prime factor $p$ with $k < p < 2k$. -/
+FormalConjectures/ErdosProblems/451.lean:42:def noInteriorPrimeFactor (k n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/451.lean-43-  ∀ p : ℕ, Nat.Prime p → k < p → p < 2 * k →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean-44-    ¬(p ∣ ∏ i ∈ Finset.Icc 1 k, (n - i))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean-45-
+FormalConjectures/ErdosProblems/451.lean-46-/-- $n_k$: the smallest integer $> 2k$ such that the product $(n-1)(n-2)\cdots(n-k)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean-47-has no prime factor in $(k, 2k)$. Returns $0$ if no such integer exists. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-34-namespace Erdos993
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-36-/-- The number of independent sets of size $k$ in a simple graph $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-37-An independent set is a set of vertices that are pairwise non-adjacent. -/
+FormalConjectures/ErdosProblems/993.lean:38:def numIndepSets {V : Type*} [Fintype V] [DecidableEq V]
+FormalConjectures/ErdosProblems/993.lean-39-    (G : SimpleGraph V) [DecidableRel G.Adj] (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/993.lean-40-  (Finset.univ.powerset.filter (fun s : Finset V =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-41-    s.card = k ∧ ∀ ⦃u⦄, u ∈ s → ∀ ⦃v⦄, v ∈ s → u ≠ v → ¬G.Adj u v)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-43-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-39-
+FormalConjectures/GreensOpenProblems/18.lean-40-Note: the shortened formulation from [Gr26] does not mention $g \neq e$, but this is the original
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-41-statement from [Au16], which ensure non-trivial corners. Note however that [Au16] use more
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-42-generally compact groups and not just finite discrete groups.
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-43--/
+FormalConjectures/GreensOpenProblems/18.lean:44:def numNaiveCorners {G : Type*} [Group G] [Fintype G] [DecidableEq G] (A : Finset (G × G)) : ℕ :=
+FormalConjectures/GreensOpenProblems/18.lean-45-  ( (univ : Finset (G × G × G)).filter
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-46-    fun ⟨x, y, g⟩ => g ≠ 1 ∧ (x, y) ∈ A ∧ (g * x, y) ∈ A ∧ (x, g * y) ∈ A
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-47-  ).card
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-49-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-65-/--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-66-The number of triples $(x, y, g)$ in $G^3$ such that $g \neq e$, and $(x, y), (xg, y), (x, gy)$ are
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-67-all in $A$. These are called "BMZ corners" by [Au16].
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-68--/
+FormalConjectures/GreensOpenProblems/18.lean:69:def numBmzCorners {G : Type*} [Group G] [Fintype G] [DecidableEq G] (A : Finset (G × G)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-70-  (
+FormalConjectures/GreensOpenProblems/18.lean-71-    (univ : Finset (G × G × G)).filter
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-72-    fun ⟨x, y, g⟩ => g ≠ 1 ∧ (x, y) ∈ A ∧ (x * g, y) ∈ A ∧ (x, g * y) ∈ A
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-73-  ).card
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-74-
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-48-/--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-49-We define the construction from [Sa21, p1] as
+FormalConjectures/GreensOpenProblems/2.lean-50-$M(A) := \max \{|S| : S \subseteq A \text{ and } (S \hat{+} S) \cap A = \varnothing \}$.
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-51--/
+FormalConjectures/GreensOpenProblems/2.lean:52:def maxRestrictedSumAvoidingSubsetSize (A : Finset ℤ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-53-  (A.powerset.filter fun S => Disjoint (restrictedSumset S) A).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-55-/--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-56-Let $A \subset \mathbf{Z}$ be a set of $n$ integers. Is there a set $S \subset A$ of size
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/2.lean-57-$(\log n)^{100}$ such that the restricted sumset$S \hat{+} S$ is disjoint from $A$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-38-A number `N` belongs to this set if, for a given number of colors `r` and an arithmetic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-39-progression length `k`, any `r`-coloring of the integers `{1, ..., N}` must contain a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-40-monochromatic arithmetic progression of length `k`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-41--/
+FormalConjectures/ErdosProblems/138.lean:42:def monoAP_guarantee_set (r k : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/138.lean-43-  { N | ∀ coloring : Finset.Icc 1 N → Fin r, ContainsMonoAPofLength coloring k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-45-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-46-Asserts that for any number of colors `r` and any progression length `k`, there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-47-always exists some number `N` large enough to guarantee a monochromatic arithmetic progression.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-24-namespace Erdos458
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-25-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-26-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-27-The least common multiple of the integers in the set $\{1, \dots, n\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-28--/
+FormalConjectures/ErdosProblems/458.lean:29:def lcm_upto (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-30-  (Finset.Icc 1 n).lcm id
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-32-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-33-Let $\operatorname{lcm}(1, \dots, n)$ denote the least common multiple of $\{1, \dots, n\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/458.lean-34-Let $p_k$ be the $k$-th prime.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-36-namespace Erdos981
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-38-/-- The partial sum of Legendre symbols $(n/p)$ for $n = 1, \ldots, N$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-39-    We use the Jacobi symbol which coincides with the Legendre symbol for prime $p$. -/
+FormalConjectures/ErdosProblems/981.lean:40:def legendrePartialSum (p : ℕ) (N : ℕ) : ℤ :=
+FormalConjectures/ErdosProblems/981.lean-41-  (Finset.Icc 1 N).sum (fun n => jacobiSym (n : ℤ) p)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-42-
+FormalConjectures/ErdosProblems/981.lean-43-/-- $f_\varepsilon(p)$: the smallest positive integer $m$ such that for all $N \ge m$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean-44-    $\sum_{n \le N} (n/p) < \varepsilon \cdot N$. Returns $0$ if no such $m$ exists. -/
+FormalConjectures/ErdosProblems/981.lean-45-noncomputable def fEpsilon (ε : ℝ) (p : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-29-open Real
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-31-namespace Erdos683
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-33-/-- The largest prime factor of $n$, or $1$ if $n$ has no prime factors (convention). -/
+FormalConjectures/ErdosProblems/683.lean:34:def largestPrimeFactor (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-35-  n.primeFactorsList.foldl max 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-37-/--
+FormalConjectures/ErdosProblems/683.lean-38-Erdős Problem 683 [Er76d][Er79d]: Is it true that there exists a constant $c > 0$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/683.lean-39-for every $1 \leq k \leq n$, the largest prime factor of $\binom{n}{k}$ satisfies
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/116.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/116.lean-47-namespace Erdos116
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/116.lean-48-
+FormalConjectures/ErdosProblems/116.lean-49-/-- The lemniscate interior of a complex polynomial $p$:
+FormalConjectures/ErdosProblems/116.lean-50-    the open sublevel set $\{z \in \mathbb{C} : |p(z)| < 1\}$. -/
+FormalConjectures/ErdosProblems/116.lean:51:def lemniscateInterior (p : Polynomial ℂ) : Set ℂ :=
+FormalConjectures/ErdosProblems/116.lean-52-  {z : ℂ | ‖p.eval z‖ < 1}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/116.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/116.lean-54-/-- The 2D area of a subset of $\mathbb{C}$, given by the 2-dimensional Hausdorff measure. -/
+FormalConjectures/ErdosProblems/116.lean-55-noncomputable def area (S : Set ℂ) : ℝ≥0∞ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/116.lean-56-  Measure.hausdorffMeasure 2 S
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean-31-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean-32-Defines the set of new numbers generated from a set A by the operation
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean-33-$x y - 1$ for $x \neq y$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean-34--/
+FormalConjectures/ErdosProblems/424.lean:35:def nextGeneration (A : Set ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/424.lean-36-  { z : ℕ | ∃ x y, x ∈ A ∧ y ∈ A ∧ x ≠ y ∧ z = x * y - 1 }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean-38-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean-39-The sequence of sets $A_n$ where $A_0 = \{2, 3\}$ and $A_{n+1}$ is $A_n$ union all newly
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/424.lean-40-generated elements.
+--
+FormalConjectures/ErdosProblems/1151.lean-51-  ∑ i : Fin n, f (nodes i) * lagrangeBasis nodes i x
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-53-/-- The set of limit points (cluster points) of a sequence of reals.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-54-A real $y$ is a limit point of $a$ if for every $\varepsilon > 0$ and every $N$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-55-there exists $n \geq N$ with $|a(n) - y| < \varepsilon$. -/
+FormalConjectures/ErdosProblems/1151.lean:56:def limitPoints (a : ℕ → ℝ) : Set ℝ :=
+FormalConjectures/ErdosProblems/1151.lean-57-  {y : ℝ | ∀ ε > 0, ∀ N : ℕ, ∃ n, N ≤ n ∧ |a n - y| < ε}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-59-/--
+FormalConjectures/ErdosProblems/1151.lean-60-Erdős Problem 1151 [Va99, 2.41]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1151.lean-61-For any $x \in [-1,1]$ and any closed $A \subseteq [-1,1]$, there exists a continuous
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-46-/-- Point $r$ lies on the line through points $p$ and $q$. -/
+FormalConjectures/ErdosProblems/211.lean-47-def LiesOnLine (p q r : Point2) : Prop :=
+FormalConjectures/ErdosProblems/211.lean-48-  ∃ t : ℝ, r - p = t • (q - p)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-50-/-- The line through two points, as a set of points. -/
+FormalConjectures/ErdosProblems/211.lean:51:def lineThrough (p q : Point2) : Set Point2 :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-52-  {r | LiesOnLine p q r}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-54-/-- The number of points in $S$ on the line through $p$ and $q$. -/
+FormalConjectures/ErdosProblems/211.lean-55-noncomputable def pointsOnLine (S : Finset Point2) (p q : Point2) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/211.lean-56-  (S.filter (fun r => LiesOnLine p q r)).card
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/430.lean-41-
+FormalConjectures/ErdosProblems/430.lean-42-/-- The next term in the Erdős 430 sequence: the greatest $m$ in $[2, \text{prev})$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/430.lean-43-all prime factors of $m$ are $> n - m$. The condition "all prime factors $> n - m$"
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/430.lean-44-is equivalent to `Nat.minFac m > n - m`, i.e., $n < m + \operatorname{minFac}(m)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/430.lean-45-Returns $0$ if no such $m$ exists (sequence terminates). -/
+FormalConjectures/ErdosProblems/430.lean:46:def nextTerm (n prev : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/430.lean-47-  let S := (Ico 2 prev).filter (fun m => n < m + m.minFac)
+FormalConjectures/ErdosProblems/430.lean-48-  if h : S.Nonempty then S.max' h else 0
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/430.lean-49-
+FormalConjectures/ErdosProblems/430.lean-50-/-- The Erdős 430 sequence for a given $n$: $a(0) = n - 1$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/430.lean-51-$a(k+1) = \operatorname{nextTerm}(n, a(k))$. Terms become $0$ once the sequence terminates. -/
+--
+FormalConjectures/ErdosProblems/561.lean-58-      (∃ f : V₂ → Fin n, Function.Injective f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-59-        ∀ u v, G₂.Adj u v → H.Adj (f u) (f v) ∧ c (f u) (f v) = false)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-60-
+FormalConjectures/ErdosProblems/561.lean-61-/-- $\ell_k = \max\{n_i + m_j - 1 : i + j = k\}$ for $0$-indexed $i < s$, $j < t$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-62-Returns $0$ when no valid $(i, j)$ pair exists with $i + j = k$. -/
+FormalConjectures/ErdosProblems/561.lean:63:def lFun (s t : ℕ) (n : Fin s → ℕ) (m : Fin t → ℕ) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/561.lean-64-  (Finset.filter (fun p : Fin s × Fin t => p.1.val + p.2.val = k) Finset.univ).sup
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-65-    (fun p => n p.1 + m p.2 - 1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-67-/--
+FormalConjectures/ErdosProblems/561.lean-68-Erdős Problem 561 [BEFRS78]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-38-open Finset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-40-namespace Erdos291
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-42-/-- The least common multiple of $\{1, \ldots, n\}$. -/
+FormalConjectures/ErdosProblems/291.lean:43:def lcmUpTo (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-44-  (Finset.Icc 1 n).lcm id
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-46-/-- The numerator $a_n$ defined by $\sum_{k=1}^{n} \frac{1}{k} = \frac{a_n}{L_n}$, i.e.,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-47-$a_n = \sum_{k=1}^{n} \frac{L_n}{k}$. Since $L_n$ is divisible by every $k \leq n$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/291.lean-48-each summand is a natural number. -/
+--
+FormalConjectures/ErdosProblems/776.lean-39-def HasMinMultiplicity (F : Finset (Finset ℕ)) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/776.lean-40-  ∀ t : ℕ, (∃ A ∈ F, A.card = t) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-41-    r ≤ (F.filter (fun A => A.card = t)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-43-/-- The number of distinct sizes of sets in the family. -/
+FormalConjectures/ErdosProblems/776.lean:44:def numDistinctSizes (F : Finset (Finset ℕ)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-45-  (F.image Finset.card).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-47-/-- All sets in the family are subsets of $\{0, \ldots, n-1\}$. -/
+FormalConjectures/ErdosProblems/776.lean-48-def AllSubsetsOfRange (F : Finset (Finset ℕ)) (n : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-49-  ∀ A ∈ F, ∀ x ∈ A, x < n

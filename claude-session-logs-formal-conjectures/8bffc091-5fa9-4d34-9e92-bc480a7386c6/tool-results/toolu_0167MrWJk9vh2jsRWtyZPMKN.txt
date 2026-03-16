@@ -1,0 +1,324 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/182.lean-26-
+FormalConjectures/ErdosProblems/182.lean:27:Asked by Erdős and Sauer [Er75] [Er78] [Er81]. Resolved by Janzer and Sudakov [JaSu23], who
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/182.lean-28-proved that there exists some $C = C(k) > 0$ such that any graph on $n$ vertices with at
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/182.lean-44-
+FormalConjectures/ErdosProblems/182.lean:45:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/182.lean-46-  Combinatorica 1 (1981), 25–42.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/182.lean-71-/--
+FormalConjectures/ErdosProblems/182.lean:72:Erdős Problem 182 (Erdős–Sauer conjecture) [Er75] [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/182.lean-73-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean-46-
+FormalConjectures/ErdosProblems/500.lean:47:[Er81] Erdős, P., _Combinatorial problems and results_ (1981).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean-48-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean-67-/--
+FormalConjectures/ErdosProblems/500.lean:68:Erdős Problem 500 — Turán's Hypergraph Conjecture [Er61][Er71][Er74c][Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean-69-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-25-
+FormalConjectures/ErdosProblems/556.lean:26:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_ (1981).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-27-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-55-/--
+FormalConjectures/ErdosProblems/556.lean:56:Erdős Problem 556 [Er81][Er81c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-57-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-32-
+FormalConjectures/ErdosProblems/1083.lean:33:[Er75f] Erdős, P., _Problems and results in combinatorial geometry_, 1975.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean-34--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean-23-
+FormalConjectures/ErdosProblems/740.lean:24:A question of Erdős and Hajnal [Er69b][Er71, p.100][Er81][Er95d].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean-25-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean-51-/--
+FormalConjectures/ErdosProblems/740.lean:52:Erdős Problem 740 [Er69b][Er71][Er81][Er95d]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-28-
+FormalConjectures/ErdosProblems/57.lean:29:Erdős later asked ([Er81]) whether the odd cycle lengths must have positive upper density
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-30-among the odd numbers, a strictly stronger property. See also Problem 65 for a related
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-59-/--
+FormalConjectures/ErdosProblems/57.lean:60:Variant of Erdős Problem 57 (Erdős [Er81]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean-61-If $G$ has infinite chromatic number, must the set of odd cycle lengths have positive
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1084.lean-63-
+FormalConjectures/ErdosProblems/1084.lean:64:Note: in [Er75f] is read $9n^2 + 6n$, but this seems to be a typo.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1084.lean-65--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean-28-
+FormalConjectures/ErdosProblems/1088.lean:29:A problem of Erdős [Er75f]. It is easy to prove that $f_d(n) \leq n^{O_d(1)}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean-30-Erdős claimed that he and Straus proved $f_d(n) \leq c_n^d$ for some constant $c_n > 0$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean-55-/--
+FormalConjectures/ErdosProblems/1088.lean:56:Erdős Problem 1088 [Er75f]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean-57-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/742.lean-33-/--
+FormalConjectures/ErdosProblems/742.lean:34:**Erdős Problem 742** [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/742.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/743.lean-37-
+FormalConjectures/ErdosProblems/743.lean:38:[Er81] Erdős, P.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/743.lean-39--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/743.lean-45-/--
+FormalConjectures/ErdosProblems/743.lean:46:**Erdős Problem 743** [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/743.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-28-
+FormalConjectures/ErdosProblems/960.lean:29:[Er84] Erdős, P., _Some old and new problems on combinatorial geometry_, 1984.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-30--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-91-/--
+FormalConjectures/ErdosProblems/960.lean:92:Erdős Problem 960 [Er84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-93-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-108-/--
+FormalConjectures/ErdosProblems/960.lean:109:Erdős Problem 960, stronger form [Er84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean-110-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/739.lean-32-
+FormalConjectures/ErdosProblems/739.lean:33:[Er81] Erdős, P., 1981.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/739.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/739.lean-54-/--
+FormalConjectures/ErdosProblems/739.lean:55:Erdős Problem 739 [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/739.lean-56-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-27-
+FormalConjectures/ErdosProblems/1090.lean:28:[Er75f] Erdős, P., *Problems and results on combinatorial number theory III*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-29--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-37-
+FormalConjectures/ErdosProblems/1090.lean:38:The answer is yes. Erdős [Er75f] notes that Graham and Selfridge proved the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1090.lean-39-case $k = 3$. Hunter observed that for sufficiently large $n$, a generic projection
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/724.lean-34-
+FormalConjectures/ErdosProblems/724.lean:35:[Er81] Erdős, P., 1981.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/724.lean-36-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/724.lean-68-/--
+FormalConjectures/ErdosProblems/724.lean:69:Erdős Problem 724 [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/724.lean-70-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean-25-
+FormalConjectures/ErdosProblems/209.lean:26:Disproved by Füredi–Palásti [FuPa84] for $d$ not divisible by $9$, and by Escudero [Es16] for
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean-27-all $d \geq 4$. See also Problem 960.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean-30-
+FormalConjectures/ErdosProblems/209.lean:31:[Er84] Erdős, P., _Some old and new problems on combinatorial geometry_, 1984.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean-35-
+FormalConjectures/ErdosProblems/209.lean:36:[FuPa84] Füredi, Z. and Palásti, I., _Arrangements of lines with a large number of triangles_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/209.lean-37-Proc. Amer. Math. Soc. **92** (1984), 561–566.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean-41-
+FormalConjectures/ErdosProblems/174.lean:42:[Er75f] Erdős, P., _Problems and results in combinatorial geometry_, 1975, p. 108.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean-52-
+FormalConjectures/ErdosProblems/174.lean:53:[Er83c] Erdős, P., _Old and new problems in combinatorial analysis and graph theory_, 1983.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/664.lean-33-
+FormalConjectures/ErdosProblems/664.lean:34:[Er81] Erdős, P., _Combinatorial problems in geometry and number theory_ (1981).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/664.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/664.lean-44-/--
+FormalConjectures/ErdosProblems/664.lean:45:Erdős Problem 664 (Disproved) [Er81][Er97f]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/664.lean-46-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/733.lean-31-
+FormalConjectures/ErdosProblems/733.lean:32:[Er81] Erdős, P., 1981.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/733.lean-33-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/733.lean-69-/--
+FormalConjectures/ErdosProblems/733.lean:70:**Erdős Problem 733** [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/733.lean-71-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/191.lean-36-
+FormalConjectures/ErdosProblems/191.lean:37:[Er81] Erdős, P., 1981.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/191.lean-38-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-25-
+FormalConjectures/ErdosProblems/719.lean:26:[Er81] Erdős, P., *On the combinatorial problems which I would most like to see solved*, 1981.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-27--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-56-/--
+FormalConjectures/ErdosProblems/719.lean:57:Erdős Problem 719 (Erdős–Sauer conjecture) [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-58-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-39-
+FormalConjectures/ErdosProblems/101.lean:40:[BGS74] Burr, S. A., Grünbaum, B., and Sloane, N. J. A., _The orchard problem_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-41-Geometriae Dedicata (1974), 397–424.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-42-
+FormalConjectures/ErdosProblems/101.lean:43:[FuPa84] Füredi, Z. and Palásti, I., _Arrangements of lines with a large number of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-44-triangles_. Proc. Amer. Math. Soc. (1984), 561–566.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-51-
+FormalConjectures/ErdosProblems/101.lean:52:[Er84] Erdős, P., _Some old and new problems on combinatorial geometry_, 1984.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/101.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean-32-
+FormalConjectures/ErdosProblems/140.lean:33:[Er81] Erdős, P., *On the combinatorial problems which I would most like to see solved*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean-34-Combinatorica (1981), 25-42.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean-23-
+FormalConjectures/ErdosProblems/738.lean:24:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean-25-Combinatorica 1 (1981), 25-42.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean-37-/--
+FormalConjectures/ErdosProblems/738.lean:38:Erdős Problem 738 (Gyárfás conjecture) [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean-39-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-26-
+FormalConjectures/ErdosProblems/576.lean:27:References: [Er64c], [ErSi70,p.378], [Er74c,p.78], [Er75], [Er81], [Er93,p.334]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-28--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-61-/--
+FormalConjectures/ErdosProblems/576.lean:62:Erdős Conjecture (Problem 576) [Er64c], [ErSi70], [Er74c], [Er81], [Er93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean-63-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-29-
+FormalConjectures/ErdosProblems/159.lean:30:[Er81] Erdős, P., *On the combinatorial problems which I would most like to see solved*,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-31-Combinatorica 1 (1981), 25–42.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-32-
+FormalConjectures/ErdosProblems/217.lean:33:[Er83c] [Er87b] [Er97e]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/217.lean-34--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-35-
+FormalConjectures/ErdosProblems/601.lean:36:[Er81] Erdős, P., _Solved and unsolved problems in combinatorics and combinatorial
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-37-number theory_, Congr. Numer. 32 (1981), 49–62.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-73-/--
+FormalConjectures/ErdosProblems/601.lean:74:Erdős Problem 601 [EHM70] [Er81] [Er82e] [Er87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean-75-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/173.lean-30-
+FormalConjectures/ErdosProblems/173.lean:31:[Er75f] Erdős, P., _Problems and results in combinatorial geometry_, 1975, p. 108.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/173.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/173.lean-38-
+FormalConjectures/ErdosProblems/173.lean:39:[Er83c] Erdős, P., _Old and new problems in combinatorial analysis and graph theory_, 1983.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/173.lean-40-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/715.lean-36-
+FormalConjectures/ErdosProblems/715.lean:37:[Er81] Erdős, P. (1981).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/715.lean-38-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/715.lean-49-/--
+FormalConjectures/ErdosProblems/715.lean:50:**Erdős Problem 715** [Er75][Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/715.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-26-- [Er80] Erdős, Paul, A survey of problems in combinatorial number theory. Ann. Discrete Math. (1980), 89-115.
+FormalConjectures/ErdosProblems/138.lean:27:- [Er81] Erdős, P., On the combinatorial problems which I would most like to see solved. Combinatorica (1981), 25-42.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-28-- [Go01] Gowers, W. T., A new proof of Szemerédi's theorem. Geom. Funct. Anal. (2001), 465-588.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-100-/--
+FormalConjectures/ErdosProblems/138.lean:101:In [Er81] Erdős asks whether $\frac{W(k+1)}{W(k)} \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-102--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-108-/--
+FormalConjectures/ErdosProblems/138.lean:109:In [Er81] Erdős asks whether $W(k+1) - W(k) \to \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean-110--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean-32-
+FormalConjectures/ErdosProblems/1178.lean:33:[Er81] Erdős, P., *On the combinatorial problems which I would most like to see solved*, 1981.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean-34--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean-65-/--
+FormalConjectures/ErdosProblems/1178.lean:66:Erdős Problem 1178 [BES73] [Er75b] [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean-67-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-33-
+FormalConjectures/ErdosProblems/530.lean:34:[Er73] Erdős, P., p.120. [Er75f] Erdős, P., p.104. [Er80e] Erdős, P.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-63-Is it true that $\ell(N) \sim N^{1/2}$, i.e. the ratio $\ell(N) / \sqrt{N}$ tends to $1$
+FormalConjectures/ErdosProblems/530.lean:64:as $N \to \infty$? [Er73] [Er75f] [Er80e]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean-65-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/736.lean-52-/--
+FormalConjectures/ErdosProblems/736.lean:53:Erdős Problem 736 [Er81] [Er93, p. 343]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/736.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/732.lean-34-
+FormalConjectures/ErdosProblems/732.lean:35:[Er81] Erdős, P., 1981.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/732.lean-36--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/732.lean-56-/--
+FormalConjectures/ErdosProblems/732.lean:57:Erdős Problem 732 [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/732.lean-58-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/737.lean-60-/--
+FormalConjectures/ErdosProblems/737.lean:61:Erdős Problem 737 [EHS74] [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/737.lean-62-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-26-
+FormalConjectures/ErdosProblems/98.lean:27:[Er75f] Erdős, P., _Problems and results in combinatorial geometry_, 1975, p. 101.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-28-
+FormalConjectures/ErdosProblems/98.lean:29:[Er83c] Erdős, P., _Old and new problems in combinatorial analysis and graph theory_, 1983.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/98.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-28-- [Er73] Erdős, P., *Problems and results on combinatorial number theory*.
+FormalConjectures/ErdosProblems/657.lean:29:- [Er75f] Erdős, P., *Problems and results in combinatorial geometry*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-30-- [ErPa90] Erdős, P. and Pach, J., *Variations on the theme of repeated distances*.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-32-The problem with $k = 3$ is the classical 'Orchard problem' of Sylvester.
+FormalConjectures/ErdosProblems/669.lean:33:Burr, Grünbaum, and Sloane [BGS74] proved that $f_3(n) = n^2/6 - O(n)$ and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-34-$F_3(n) = n^2/6 - O(n)$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-43-
+FormalConjectures/ErdosProblems/669.lean:44:[BGS74] Burr, S. A., Grünbaum, B., and Sloane, N. J. A., _The orchard problem_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean-45-Geometriae Dedicata (1974).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean-28-
+FormalConjectures/ErdosProblems/744.lean:29:[Er81] Erdős, P.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-29-
+FormalConjectures/ErdosProblems/745.lean:30:[Er81] Erdős, P., _On the combinatorial problems which I would most like to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-31-see solved_. Combinatorica 1 (1981), 25-42.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-81-/--
+FormalConjectures/ErdosProblems/745.lean:82:Erdős Problem 745 [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean-83-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean-30-
+FormalConjectures/ErdosProblems/111.lean:31:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean-32-Combinatorica, 1 (1981), 25-42.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean-80-  $\aleph_1$ satisfying $h(G, n) \ll n^{3/2}$.
+FormalConjectures/ErdosProblems/111.lean:81:- Erdős [Er81] conjectured this upper bound can be improved: there should exist $G$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean-82-  with chromatic number $\aleph_1$ such that $h(G, n) \ll n^{1+\varepsilon}$ for
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/734.lean-36-
+FormalConjectures/ErdosProblems/734.lean:37:[Er81] Erdős, P., _Problems and results in graph theory and combinatorics_,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/734.lean-38-Proceedings of the Southeastern Conference on Combinatorics, Graph Theory,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/725.lean-34-
+FormalConjectures/ErdosProblems/725.lean:35:[Er81] Erdős, P. (1981).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/725.lean-36--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/725.lean-53-/--
+FormalConjectures/ErdosProblems/725.lean:54:Erdős Problem 725 [Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/725.lean-55-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-32-
+FormalConjectures/ErdosProblems/599.lean:33:[Er81] Erdős, P. (1981).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-45-/--
+FormalConjectures/ErdosProblems/599.lean:46:Erdős Problem 599 (Erdős-Menger Conjecture) [Er81][Er87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-49-
+FormalConjectures/ErdosProblems/77.lean:50:[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-51-Combinatorica **1** (1981), 25–42.

@@ -1,0 +1,142 @@
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:25:/-- The set of subset sums of a set `A ⊆ M`. -/
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:34:/-- The set of subset sums of a sequence `ℕ → M`, where repetition is allowed. -/
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:40:/-- A set `A ⊆ M` is complete if every sufficiently large element of `M` is a subset sum of `A`. -/
+FormalConjecturesForMathlib/NumberTheory/AdditivelyComplete.lean:50:/-- A set `A ⊆ M` is complete if every sufficiently large element of `M` is a subset sum of `A`. -/
+ai-review/658.md:5:[Omitted long matching line]
+ai-review/131.md:8:- **Problem 882** (`ErdosProblems/882.lean`) defines `IsPrimitive` (no element divides another) and `maxPrimitiveSubsetSumSize` using the same `sSup` extremal function pattern.
+ai-review/131.md:10:- **Problem 874** (`ErdosProblems/874.lean`) uses `rSubsetSums` with `.sum id` and a similar extremal function.
+ai-review/131.md:13:No existing definition can replace `IsNonDividing` — the divisibility-of-subset-sum condition is unique to this problem. The code correctly follows the codebase conventions. No code reuse issue.
+ai-review/246.md:86:- **Tags**: `@[category research solved, AMS 5 11]` — the problem is indeed solved (proved by Birch), so `solved` is correct. AMS classification 11 (Number Theory) is appropriate; AMS 5 (Combinatorics) is reasonable given the subset-sum flavor.
+ai-review/343.md:57:> If a multiset of positive integers has positive lower density, must its set of finite subset sums contain an infinite arithmetic progression?
+ai-review/343.md:86:[Omitted long matching line]
+ai-review/343.md:94:### 6c. The subset sums definition
+FormalConjectures/ErdosProblems/543.lean:25:of order $N$ is subset-sum complete with probability $\geq 1/2$. Erdős and Rényi proved
+FormalConjectures/ErdosProblems/543.lean:42:/-- A subset $A$ of an additive commutative group is subset-sum complete if every
+FormalConjectures/ErdosProblems/543.lean:44:def SubsetSumComplete {G : Type*} [AddCommGroup G]
+FormalConjectures/ErdosProblems/543.lean:48:/-- The number of $k$-element subsets of $\mathbb{Z}/n\mathbb{Z}$ that are subset-sum complete.
+FormalConjectures/ErdosProblems/543.lean:55:      (fun A => SubsetSumComplete A) |>.card
+FormalConjectures/ErdosProblems/543.lean:69:a uniformly random subset $A \subseteq G$ of size $k$ is subset-sum complete with
+ai-review/360.md:66:- All components — `Nat.totient`, `Real.log`, subset sums, Finset coloring — have direct Lean/Mathlib counterparts.
+ai-review/292.md:17:- Erdos 300: `Egyptian1Free A` (no subset sums to 1)
+ai-review/54.md:28:[Omitted long matching line]
+ai-review/54.md:117:- **"Sum of elements":** The website says "monochromatic sum of elements of $A$." The standard interpretation is a sum of *distinct* elements (subset sum), which the formalization enforces via `Finset`. This is correct.
+ai-review/54.md:122:**Ambiguity level: Very low.** The only minor ambiguity is whether "sum of elements" means allowing repetitions (multiset sum) or only distinct elements (subset sum). The standard convention is distinct elements, which the formalization follows.
+ai-review/356.md:26:2. **Consecutive integer extension**: Can at least cn consecutive integers greater than n be represented as subset sums? **Not captured**, though this may be closer to problem 357 or 358 territory.
+ai-review/320.md:5:Several closely related problems share the same unit-fraction subset-sum construction:
+ai-review/320.md:7:- **Problem 321** (`ErdosProblems/321.lean`): Defines `R(N)`, the largest subset of `{1,...,N}` with all unit-fraction subset sums distinct. Uses `Set.InjOn (fun (S : Finset ℕ) ↦ ∑ n ∈ S, (1 : ℚ) / n) A.powerset`. The underlying `(1 : ℚ) / n` summation is identical. Problem 321 also formalizes the same Bleicher–Erdős bounds ([BlEr75], [BlEr76b]) using iterated logarithm products `∏ i ∈ Finset.Icc 3 k, (log^[i] N)`.
+ai-review/320.md:11:- **Problem 874** (`ErdosProblems/874.lean`): Uses `powersetCard` with `.image (fun S => S.sum id)` for counting distinct subset sums — a parallel pattern.
+ai-review/297.md:69:**No ambiguity** exists in the problem statement itself. The only subtlety is that for $N = 0$, the count is 0 (empty powerset has no subset summing to 1 since the empty sum is 0), so $\log(0)$ arises. In Lean4/Mathlib, `Real.log 0 = 0`, so the ratio is $0 / 0 = 0$ for $N = 0$, which is harmless for an `atTop` limit. For $N \geq 1$, the subset $\{1\}$ always satisfies $1/1 = 1$, so the count is $\geq 1$ and the logarithm is well-defined and non-negative.
+FormalConjectures/ErdosProblems/532.lean:25:such that all finite subset sums $\sum_{n\in S}n$ (as $S$ ranges over all non-empty
+FormalConjectures/ErdosProblems/532.lean:45:$A$ of positive naturals such that all non-empty finite subset sums of elements
+ai-review/532.md:7:[Omitted long matching line]
+ai-review/532.md:9:- **Problem 531 (`HasMonoSubsetSumSet`)**: Problem 531 defines `HasMonoSubsetSumSet` for finite sets. The structure is closely parallel — both deal with monochromatic subset sums — but 531 uses `Finset` with bounded elements while 532 uses an infinite `Set ℕ`. No direct reuse is possible, but the pattern is consistent, which is good.
+ai-review/532.md:60:Hindman's theorem is a precisely stated, well-known result in combinatorics. The statement is completely unambiguous: for any finite coloring of ℕ, there exists an infinite set whose finite subset sums (the "IP set") are monochromatic. There is no ambiguity in the mathematical content.
+ai-review/532.md:64:- **Set version:** There exists an infinite set $A$ such that all non-empty finite subset sums are monochromatic.
+ai-review/532.md:77:- **`∃ c : Bool, ∀ S : Finset ℕ, S.Nonempty → (↑S : Set ℕ) ⊆ A → χ (∑ i ∈ S, i) = c`**: Correctly asserts monochromaticity of all non-empty finite subset sums. The coercion `(↑S : Set ℕ) ⊆ A` correctly requires S to be a subset of A.
+ai-review/771.md:5:The `IsSubsetSum` definition (lines 43–44) is local to the `Erdos771` namespace. Similar subset-sum and related concepts appear elsewhere in the codebase:
+ai-review/771.md:7:- **Problem 774** (`774.lean:34–37`): `Dissociated` — distinct subsets have distinct sums, closely related to subset-sum reasoning.
+ai-review/771.md:9:- **Problem 963** (`963.lean:35–36`): Dissociation on reals with subset sums.
+ai-review/771.md:11:No shared utility for `IsSubsetSum` exists. Given that multiple problems deal with subset sums over `Finset ℕ`, extracting `IsSubsetSum` into a shared utility (e.g., `Util/SubsetSum.lean`) could reduce duplication, though the definitions are each slightly different.
+ai-review/771.md:36:- The `IsSubsetSum` helper has a clear docstring.
+ai-review/771.md:48:- **Quantifier structure:** The definition `f(n) = sSup {k | ∀ m ≥ 1, ∃ S ⊆ [1,n], |S| = k ∧ ¬IsSubsetSum S m}` correctly allows `S` to depend on `m`, which is essential — the Erdős–Graham construction chooses $S = \{kp : 1 \leq k < n/p\}$ where $p$ depends on $m$.
+ai-review/771.md:49:- **Well-definedness of `sSup`:** The set is nonempty (contains 0, since the empty set avoids all positive integers as subset sums) and bounded above (by $n$, since $S \subseteq \{1, \ldots, n\}$). So `sSup` on `ℕ` yields the actual maximum. A formal proof would need to establish `BddAbove` and `Set.Nonempty` for the argument set.
+ai-review/771.md:59:**Definition of `f`:** The quantifier order `∀ m, ∃ S` (not `∃ S, ∀ m`) is mathematically essential and correctly implemented. The alternative (`∃ S, ∀ m`) would ask for a single set $S$ such that no positive integer is a subset sum — this is impossible for any nonempty $S$ (since each element $a \in S$ satisfies $a = \sum_{x \in \{a\}} x$), making $f(n) = 0$ trivially. The formalization correctly uses the interpretation where $S$ may depend on $m$.
+ai-review/771.md:61:**`IsSubsetSum`:** The definition `∃ A ⊆ S, A.sum id = m` correctly captures the subset-sum relation. Note that the empty subset $A = \emptyset$ gives sum 0, so $m = 0$ is always a subset sum. The condition `m ≥ 1` in the definition of `f` correctly excludes this trivial case.
+ai-review/53.md:18:Problem 52 (`ErdosProblems/52.lean`) formalizes the related pairwise sum-product conjecture using `Pointwise` operations `A + A` and `A * A`, which is a distinct problem from Problem 53's subset sums/products. No code reuse is possible between them.
+ai-review/53.md:69:- **Interpretation A (subset sums/products):** Pick any subset $S \subseteq A$, compute $\sum S$ or $\prod S$. This is the interpretation used in the formalization.
+ai-review/53.md:90:2. **Singleton inclusion:** The powerset includes singletons, so every element of $A$ appears as both a "subset sum" and a "subset product" of itself. This makes the $k = 0$ and $k = 1$ cases trivially true (the union contains at least $|A|$ elements). This is consistent with the Erdos-Szemeredi definition.
+ai-review/186.md:8:- **Problem 882** (`ErdosProblems/882.lean`) defines `IsPrimitive` and `maxPrimitiveSubsetSumSize` with the same pattern.
+ai-review/438.md:9:- **Problem 587** (`ErdosProblems/587.lean:32`) defines `MaxNotSqSum` for *subset sums* avoiding squares — related but distinct (subset sums vs. pairwise sums).
+ai-review/179.md:25:- **Possibly incorrect paper title.** The Fox–Pohoata result establishing $F_k(N,\ell) = N^{2-o(1)}$ is from their work on arithmetic progressions, not subset sums. The paper "Subset sums, completeness and colorings" (Advances in Mathematics, 2020) is a different paper by the same authors that deals with sumset completeness. The relevant paper for this problem may be a different Fox–Pohoata publication. This should be verified against the erdosproblems.com reference list.
+ai-review/540.md:7:[Omitted long matching line]
+ai-review/540.md:11:- **Problem 543 (`ErdosProblems/543.lean`)**: Defines `SubsetSumComplete` for complete coverage of all group elements by subset sums. Related thematically but a stronger condition than what 540 requires.
+FormalConjectures/ErdosProblems/874.lean:39:/-- The set of $r$-fold subset sums of $A$: all possible values of $a_1 + \cdots + a_r$
+FormalConjectures/ErdosProblems/874.lean:41:def rSubsetSums (A : Finset ℕ) (r : ℕ) : Finset ℕ :=
+FormalConjectures/ErdosProblems/874.lean:48:    Disjoint (rSubsetSums A r₁) (rSubsetSums A r₂)
+ai-review/47.md:7:- **`subsetSums` in `NumberTheory/AdditivelyComplete.lean`**: Defines the set of all subset sums `{n | ∃ B : Finset M, ↑B ⊆ A ∧ n = ∑ i ∈ B, i}`. While Problem 47 asks about reciprocal sums equalling 1, it could in principle be reframed using this — however, the formalization works over `ℝ` with `1/a` terms rather than sums of set elements, so direct reuse is unlikely to simplify the statement.
+ai-review/310.md:9:- **`Erdos300.Egyptian1Free`** (300.lean) handles the negation (no subset sums to 1), a different shape.
+ai-review/55.md:52:The problem is well-defined and the formalization is precise. The key concepts — r-coloring, monochromatic subset sum, counting function — all have unambiguous mathematical meanings that translate cleanly into Lean.
+FormalConjectures/ErdosProblems/948.lean:35:$a(n) < f(n)$ for infinitely many $n$, and the finite subset sums of the sequence do not achieve
+ai-review/345.md:55:- "Threshold of completeness" $T(A)$ is unambiguously defined as the least $m$ such that all $n \geq m$ lie in the set of finite subset sums.
+ai-review/531.md:7:- **Problem 532** (`ErdosProblems/532.lean`): The infinite analogue (Hindman's theorem). Problem 532 uses a structurally similar pattern — `∀ χ : ℕ → Bool, ∃ (A : Set ℕ), ... ∃ c : Bool, ∀ S : Finset ℕ, S.Nonempty → ... → χ (∑ i ∈ S, i) = c`. The `HasMonoSubsetSumSet` predicate in 531 is essentially the finite, bounded version of the same concept. These two problems could share a common predicate or at least reference each other more explicitly.
+ai-review/531.md:9:[Omitted long matching line]
+ai-review/531.md:11:- **Problem 948** (`ErdosProblems/948.lean`): Uses `Fin k`-valued colorings and finite subset sums of sequences — a generalization of the coloring framework. Not directly reusable but demonstrates the same structural pattern.
+ai-review/531.md:48:- The `HasMonoSubsetSumSet` predicate is clearly documented and its definition follows the mathematical statement closely.
+ai-review/531.md:53:- Line 50: The condition `∀ S ∈ A.powerset, S.Nonempty → ∑ i ∈ S, i ≤ N` ensures subset sums stay in `{1,...,N}`. This is correct but somewhat hidden among the other conditions. A brief inline comment could help.
+ai-review/531.md:60:The problem as stated on erdosproblems.com is: "Let $F(k)$ be the minimal $N$ such that if we two-colour $\{1,\ldots,N\}$ there is a set $A$ of size $k$ such that all subset sums $\sum_{a\in S}a$ (for $\emptyset\neq S\subseteq A$) are monochromatic. Estimate $F(k)$."
+ai-review/531.md:65:- "All subset sums are monochromatic" — all non-empty subset sums receive the same color.
+ai-review/531.md:68:The only minor ambiguity: do the subset sums need to lie in $\{1,\ldots,N\}$ for the coloring to apply, or is the coloring extended to all of $\mathbb{N}$? The formalization handles this by (a) using `χ : ℕ → Bool` (coloring all naturals) and (b) requiring `∑ i ∈ S, i ≤ N` explicitly. Both approaches are mathematically equivalent since any coloring of $\{1,\ldots,N\}$ can be extended arbitrarily, so this is not a real issue.
+ai-review/531.md:74:### `HasMonoSubsetSumSet`
+ai-review/531.md:79:3. `∀ S ∈ A.powerset, S.Nonempty → ∑ i ∈ S, i ≤ N` — subset sums bounded by $N$ ✅
+ai-review/531.md:82:[Omitted long matching line]
+ai-review/531.md:84:[Omitted long matching line]
+ai-review/531.md:86:[Omitted long matching line]
+ai-review/531.md:92:Defined as `sInf {N : ℕ | ∀ χ : ℕ → Bool, HasMonoSubsetSumSet χ k N}`. This correctly captures "the minimal $N$" via the natural number infimum. The use of `sInf` means that if the set is empty (i.e., no such $N$ exists), `folkmanNumber k = 0`, which is a harmless default since `folkman_theorem` establishes non-emptiness. ✅
+ai-review/531.md:96:Correctly states the existence of $F(k)$: for every $k$, there exists $N$ such that every 2-coloring has a monochromatic subset-sum $k$-set. ✅
+ai-review/531.md:108:The formalization is **mathematically correct** with one caveat: condition 3 in `HasMonoSubsetSumSet` (subset sums bounded by $N$) is a non-standard but defensible modeling choice that does not affect the correctness of the stated theorems for their intended purpose (asymptotic lower bounds). The formalization faithfully captures the spirit and content of Erdős Problem 531.
+FormalConjectures/ErdosProblems/963.lean:32:A finset of real numbers is *dissociated* if all subset sums are distinct:
+FormalConjectures/ErdosProblems/963.lean:42:dissociated subset $B \subseteq A$ of size $|B| \geq k$ (i.e., all subset sums of $B$ are
+ai-review/362.md:7:Several other Erdős problems deal with subset sums (Problems 343, 350, 532, 543, 948, 963), but none define shared infrastructure for *counting* subsets with a prescribed sum. The `powerset.filter` + `sum id` pattern is used ad hoc in each file. A shared definition like `Finset.subsetsWithSum (A : Finset ℕ) (t : ℕ) := A.powerset.filter (fun S => S.sum id = t)` could improve reuse across Problems 362, 350, 543, and others, but this is a minor stylistic point rather than a significant gap.
+ai-review/344.md:20:- **`IsAddComplete`** from AdditivelyComplete.lean captures "every sufficiently large integer is a subset sum," which is the concept of completeness. The notion of "subcompleteness" (subset sums contain an infinite AP) is weaker. These are related but distinct: completeness implies subcompleteness. The formalization correctly targets subcompleteness.
+ai-review/344.md:65:The original problem uses asymptotic notation (`≫`), which the formalization correctly unpacks into explicit quantifiers: `∃ N₀, ∀ N ≥ N₀, c√N ≤ |A ∩ [1,N]|`. The notions of "subset sums" and "infinite arithmetic progression" are standard and unambiguous.
+ai-review/475.md:16:- **Problem 540** (`FormalConjectures/ErdosProblems/540.lean`) deals with subset sums in `ZMod N`, demonstrating the standard `∑ n ∈ S, n` pattern. Not directly applicable since 475 requires *ordered* partial sums, not subset sums.
+ai-review/543.md:6:- `SubsetSumComplete` — checks if every group element is a subset sum of `A`
+ai-review/543.md:10:[Omitted long matching line]
+ai-review/543.md:12:No other files in `FormalConjecturesForMathlib` provide directly reusable components. Problem 18 (practical numbers) also deals with subset sums of divisors, but in a different algebraic setting.
+ai-review/543.md:37:- **Related Problem 1179** is listed on the website as a companion problem. It asks for a finer estimate of a related function `g_ε(N)` measuring approximate uniformity of subset-sum counts. The formalization of 543 does not cross-reference 1179; a docstring note linking to it would be valuable.
+ai-review/543.md:77:3. **`SubsetSumComplete` definition.** Uses `∃ S : Finset G, S ⊆ A ∧ ∑ x ∈ S, x = g`, which correctly captures "every element is a subset sum." The empty subset sums to 0, so the additive identity is always represented. This matches the standard definition.
+ai-review/543.md:91:| Code reuse | Minor opportunity: shared `SubsetSumComplete` with Problem 1179 |
+FormalConjectures/ErdosProblems/882.lean:25:non-empty subset sums $\{ \sum_{a \in S} a : \emptyset \neq S \subseteq A \}$ is primitive
+FormalConjectures/ErdosProblems/882.lean:38:arithmetic progressions, subset sums and divisibility_, 1999.
+FormalConjectures/ErdosProblems/882.lean:45:/-- The set of all non-empty subset sums of a finset $A$ of natural numbers. -/
+FormalConjectures/ErdosProblems/882.lean:54:/-- The maximum size of $A \subseteq \{1, \ldots, n\}$ whose non-empty subset sums form a
+FormalConjectures/ErdosProblems/882.lean:56:noncomputable def maxPrimitiveSubsetSumSize (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/882.lean:64:the maximum size of $A \subseteq \{1, \ldots, n\}$ whose non-empty subset sums are
+FormalConjectures/ErdosProblems/882.lean:70:      (maxPrimitiveSubsetSumSize n : ℝ) ≤ Real.log n / Real.log 2 + C := by
+FormalConjectures/ErdosProblems/882.lean:77:$|A| > \log_2 n - 1$ such that the non-empty subset sums of $A$ form a primitive set.
+FormalConjectures/ErdosProblems/882.lean:82:      (maxPrimitiveSubsetSumSize n : ℝ) > Real.log n / Real.log 2 - 1 := by
+FormalConjectures/ErdosProblems/531.lean:25:is a set $A$ of size $k$ such that all subset sums $\sum_{a\in S}a$
+FormalConjectures/ErdosProblems/531.lean:42:/-- A 2-coloring $\chi : \mathbb{N} \to \mathrm{Bool}$ admits a **monochromatic subset-sum
+FormalConjectures/ErdosProblems/531.lean:44:$A \subseteq \{1, \ldots, N\}$ whose non-empty subset sums all lie in
+FormalConjectures/ErdosProblems/531.lean:46:def HasMonoSubsetSumSet (χ : ℕ → Bool) (k N : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/531.lean:54:of $\{1, \ldots, N\}$ admits a $k$-element subset whose non-empty subset sums
+FormalConjectures/ErdosProblems/531.lean:57:  sInf {N : ℕ | ∀ χ : ℕ → Bool, HasMonoSubsetSumSet χ k N}
+FormalConjectures/ErdosProblems/531.lean:61:monochromatic subset-sum $k$-set. -/
+FormalConjectures/ErdosProblems/531.lean:64:    ∃ N : ℕ, ∀ χ : ℕ → Bool, HasMonoSubsetSumSet χ k N := by
+FormalConjectures/ErdosProblems/131.lean:39:arithmetic progressions, subset sums and divisibility*, 1999.
+FormalConjectures/ErdosProblems/771.lean:42:/-- $m$ is a subset sum of $S$: there exists $A \subseteq S$ with $\sum_{a \in A} a = m$. -/
+FormalConjectures/ErdosProblems/771.lean:43:def IsSubsetSum (S : Finset ℕ) (m : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/771.lean:47:a $k$-element subset $S \subseteq \{1, \ldots, n\}$ for which $m$ is not a subset sum
+FormalConjectures/ErdosProblems/771.lean:51:    ∃ S : Finset ℕ, S ⊆ Finset.Icc 1 n ∧ S.card = k ∧ ¬IsSubsetSum S m}
+FormalConjectures/ErdosProblems/320.lean:53:/-- The set of all unit-fraction subset sums from $\{1, \ldots, N\}$:
+FormalConjectures/ErdosProblems/1179.lean:55:$\varepsilon$-approximation-uniform if the subset-sum counts are uniformly close to their
+FormalConjectures/ErdosProblems/54.lean:24:There exists a Ramsey 2-complete set $A$ (every large integer is a monochromatic subset sum
+FormalConjectures/ErdosProblems/1.lean:39:If $A\subseteq\{1, ..., N\}$ with $|A| = n$ is such that the subset sums $\sum_{a\in S}a$ are
+FormalConjectures/ErdosProblems/1.lean:83:A finite set of real numbers is said to be sum-distinct if all the subset sums differ by
+FormalConjectures/ErdosProblems/774.lean:34:/-- A set $A \subseteq \mathbb{N}$ is *dissociated* if all finite subset sums are distinct:
+FormalConjectures/ErdosProblems/344.lean:35:/-- The subset sum set $P(A)$: the set of all sums $\sum_{n \in B} n$ for finite
+FormalConjectures/ErdosProblems/344.lean:51:$P(A)$ of all finite subset sums of $A$ contains an infinite arithmetic progression.
+FormalConjectures/ErdosProblems/875.lean:31:/-- The set of $r$-fold subset sums of a set $A \subseteq \mathbb{N}$: all sums
+FormalConjectures/ErdosProblems/875.lean:33:def rSubsetSumsInf (A : Set ℕ) (r : ℕ) : Set ℕ :=
+FormalConjectures/ErdosProblems/875.lean:36:/-- An infinite set $A \subseteq \mathbb{N}$ is *admissible* if the $r$-fold subset sums $S_r$ are
+FormalConjectures/ErdosProblems/875.lean:40:    Disjoint (rSubsetSumsInf A r₁) (rSubsetSumsInf A r₂)
+FormalConjectures/ErdosProblems/345.lean:23:representable as a finite subset sum) satisfies $T(n^k) > T(n^{k+1})$ for infinitely many $k$.
+FormalConjectures/ErdosProblems/345.lean:35:/-- The set of all finite subset sums of a set $A \subseteq \mathbb{N}$. That is,
+FormalConjectures/ErdosProblems/345.lean:41:all $n \ge m$ are in $P(A)$, the set of finite subset sums of $A$.
+FormalConjectures/ErdosProblems/53.lean:39:The set of all subset sums of a finite set of integers:
+FormalConjectures/ErdosProblems/350.lean:33:def DistinctSubsetSums {M : Type*} [AddCommMonoid M] (A : Set M) : Prop :=
+FormalConjectures/ErdosProblems/350.lean:37:def DecidableDistinctSubsetSums {M : Type*} [AddCommMonoid M] [DecidableEq M] (A : Finset M) : Prop :=
+FormalConjectures/ErdosProblems/350.lean:41:theorem decidableDistinctSubsetSums_1_2 : DecidableDistinctSubsetSums {1, 2} := by
+FormalConjectures/ErdosProblems/350.lean:42:  rw [DecidableDistinctSubsetSums] ; decide
+FormalConjectures/ErdosProblems/350.lean:45:theorem distinctSubsetSums_1_2 : DistinctSubsetSums ({1, 2} : Set ℕ) := by
+FormalConjectures/ErdosProblems/350.lean:46:  simp only [DistinctSubsetSums, Set.Pairwise, Set.mem_setOf_eq, ne_eq, id_eq]
+FormalConjectures/ErdosProblems/350.lean:54:theorem DistinctSubsetSums_iff_DecidableDistinctSubsetSums
+FormalConjectures/ErdosProblems/350.lean:56:    DistinctSubsetSums (A : Set M) ↔ DecidableDistinctSubsetSums A := by
+FormalConjectures/ErdosProblems/350.lean:57:  rw [DistinctSubsetSums, DecidableDistinctSubsetSums, Set.Pairwise] ; simp_all
+FormalConjectures/ErdosProblems/350.lean:60:If `A ⊂ ℕ` is a finite set of integers all of whose subset sums are distinct then `∑ n ∈ A, 1/n < 2`.
+FormalConjectures/ErdosProblems/350.lean:72:theorem erdos_350 (A : Finset ℕ) (hA : DecidableDistinctSubsetSums A) :
+FormalConjectures/ErdosProblems/350.lean:77:If `A ⊂ ℕ` is a finite set of integers all of whose subset sums are distinct then `∑ n ∈ A, 1/n^s < 1/(1 - 2^(-s))`, for any `s > 0`.
+FormalConjectures/ErdosProblems/350.lean:83:theorem erdos_350.variants.strengthening (A : Finset ℕ) (hA : DecidableDistinctSubsetSums A)
+FormalConjectures/ErdosProblems/343.lean:23:That is, must its set of finite subset sums contain an infinite arithmetic progression?
+FormalConjectures/ErdosProblems/343.lean:44:/-- The set of all finite subset sums $P(A)$ of a multiset.
+FormalConjectures/ErdosProblems/347.lean:30:The set of subset sums of a set `A ⊆ ℕ`.

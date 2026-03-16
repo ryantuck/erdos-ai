@@ -1,0 +1,315 @@
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/87719.lean-32-namespace OeisA87719
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/87719.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/87719.lean-34-/-- Count of numbers k in {1, ..., m} where k > (minFac k)^n. -/
+FormalConjectures/OEIS/87719.lean:35:def countExceeding (n m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/87719.lean-36-  (Finset.Icc 1 m).filter (fun k => k > k.minFac ^ n) |>.card
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/87719.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/87719.lean-38-/-- Count of numbers k in {1, ..., m} where k ≤ (minFac k)^n. -/
+FormalConjectures/OEIS/87719.lean:39:def countNotExceeding (n m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/87719.lean-40-  (Finset.Icc 1 m).filter (fun k => k ≤ k.minFac ^ n) |>.card
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/87719.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/OEIS/87719.lean-42-/-- There exists m such that countExceeding n m > countNotExceeding n m. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-34-namespace Erdos1143
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-36-/-- Count of integers in $\{n+1, \ldots, n+k\}$ divisible by at least one element of $S$. -/
+FormalConjectures/ErdosProblems/1143.lean:37:def countDivisible (S : Finset ℕ) (k n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-38-  ((Icc (n + 1) (n + k)).filter (fun m =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-39-    (S.filter (· ∣ m)).Nonempty)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1143.lean-40-
+--
+FormalConjectures/ErdosProblems/696.lean-48-  sSup {k | ∃ l : List ℕ, l.length = k ∧ IsModChain l ∧ ∀ d ∈ l, d ∣ n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean-50-/-- Count of integers $m \in \{1, \ldots, N\}$ satisfying predicate $P$. -/
+FormalConjectures/ErdosProblems/696.lean:51:noncomputable def countSat (P : ℕ → Prop) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean-52-  ((Finset.range N).filter (fun n => P (n + 1))).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean-54-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-44-    Fintype.card V = n ∧ ¬ContainsSubgraph F H ∧ F.edgeFinset.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-46-/-- The number of labeled simple graphs on $n$ vertices that do not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/59.lean:47:noncomputable def countGFreeGraphs {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/59.lean-48-  Nat.card {F : SimpleGraph (Fin n) // ¬ContainsSubgraph F H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-50-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1086.lean-45-/-- The number of ordered triples of distinct points from $S \subseteq \mathbb{R}^2$ that form
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1086.lean-46-a triangle with area exactly $A$. Each unordered triangle is counted $6$ times
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1086.lean-47-(once per ordering of its vertices). -/
+FormalConjectures/ErdosProblems/1086.lean:48:noncomputable def countTrianglesWithArea (S : Finset (ℝ × ℝ)) (A : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1086.lean-49-  ((S ×ˢ (S ×ˢ S)).filter (fun (p, q, r) =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1086.lean-50-    p ≠ q ∧ p ≠ r ∧ q ≠ r ∧ triangleArea p q r = A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1086.lean-51-
+--
+FormalConjectures/ErdosProblems/969.lean-41-  (squarefreeCount x : ℝ) - (6 / Real.pi ^ 2) * (x : ℝ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/969.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/969.lean-43-/--
+FormalConjectures/ErdosProblems/969.lean:44:Erdős Problem 969: The error term $E(x)$ in the squarefree counting function
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/969.lean-45-$Q(x) = (6/\pi^2)x + E(x)$ satisfies $E(x) = O(x^{1/4 + \varepsilon})$ for every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/969.lean-46-$\varepsilon > 0$. Combined with the known lower bound $E(x) = \Omega(x^{1/4})$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/969.lean-47-of Evelyn and Linfoot, this would establish that $x^{1/4}$ is the true order of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean-27-namespace Erdos428
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean-29-/--
+FormalConjectures/ErdosProblems/428.lean:30:The density ratio of set $A$ up to $n$ relative to the prime counting function $\pi(n)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean-31--/
+FormalConjectures/ErdosProblems/428.lean-32-noncomputable def primeDensityRatio (A : Set ℕ) (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/428.lean-33-  (A ∩ Icc 1 n).ncard / (primeCounting n)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean-47-
+FormalConjectures/ErdosProblems/1081.lean-48-/-- $A(x)$: the count of natural numbers $n$ in $[1, x]$ that are sums of two
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean-49-squarefull numbers. -/
+FormalConjectures/ErdosProblems/1081.lean:50:noncomputable def countA (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean-51-  ((Finset.Icc 1 x).filter (fun n => IsSumOfTwoSquarefull n)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1081.lean-53-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-93-$$
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-94-  \pi(x + y) \leq \pi(x) + \pi(y),
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-95-$$
+FormalConjectures/Wikipedia/HardyLittlewood.lean:96:where $\pi(z)$ denotes the prime-counting function, giving the number of primes up to
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-97-and including $z$.
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-98--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-99-@[category research open, AMS 11]
+--
+FormalConjectures/ErdosProblems/1136.lean-43-def PowerOfTwoSumFree (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1136.lean-44-  ∀ a b : ℕ, a ∈ A → b ∈ A → ∀ k : ℕ, a + b ≠ 2 ^ k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean-45-
+FormalConjectures/ErdosProblems/1136.lean:46:/-- The counting function $|A \cap [1, N]|$ for a set $A \subseteq \mathbb{N}$. -/
+FormalConjectures/ErdosProblems/1136.lean:47:noncomputable def countInInterval (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean-48-  ((Finset.Icc 1 N).filter (· ∈ A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1136.lean-50-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1057.lean-60-Is it true that $C(x) = x^{1-o(1)}$? That is, does $\log C(x) / \log x \to 1$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1057.lean-61-as $x \to \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1057.lean-62-
+FormalConjectures/ErdosProblems/1057.lean:63:This asks whether the Carmichael counting function grows almost as fast
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1057.lean-64-as $x$ itself, in the sense that the exponent approaches 1.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1057.lean-65--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1057.lean-66-@[category research open, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-46-Count of positive integers $m \le N$ having at least one divisor $d$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-47-in the open interval $(n, 2n)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-48--/
+FormalConjectures/ErdosProblems/446.lean:49:def countWithDivisor (n N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-50-  ((Finset.Icc 1 N).filter (fun m =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-51-    ((Finset.Ioo n (2 * n)).filter (fun d => d ∣ m)).Nonempty)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-52-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-54-Count of positive integers $m \le N$ having exactly $r$ divisors $d$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-55-in the open interval $(n, 2n)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-56--/
+FormalConjectures/ErdosProblems/446.lean:57:def countWithExactDivisors (r n N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-58-  ((Finset.Icc 1 N).filter (fun m =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-59-    ((Finset.Ioo n (2 * n)).filter (fun d => d ∣ m)).card = r)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/446.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/998.lean-37-The number of integers $m$ with $1 \leq m \leq n$ such that the fractional part of $\alpha \cdot m$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/998.lean-38-lies in $[u, v)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/998.lean-39--/
+FormalConjectures/ErdosProblems/998.lean:40:noncomputable def countFracInInterval (α : ℝ) (u v : ℝ) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/998.lean-41-  ((Finset.Icc 1 n).filter (fun m : ℕ =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/998.lean-42-    u ≤ Int.fract (α * ↑m) ∧ Int.fract (α * ↑m) < v)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/998.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-57-    ∀ x ∈ Icc 1 N, x ∉ S → ¬IsSidonSet (S ∪ {x})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-59-/-- $A_1(N)$ is the number of maximal Sidon subsets of $\{1,\ldots,N\}$. -/
+FormalConjectures/ErdosProblems/862.lean:60:noncomputable def countMaximalSidon (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-61-  ((Icc 1 N).powerset.filter (fun S => IsMaximalSidonIn S N)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/862.lean-63-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-37-namespace Erdos343
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-38-
+FormalConjectures/ErdosProblems/343.lean:39:/-- The counting function for a multiset represented by multiplicities:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-40-number of elements (with multiplicity) in $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/343.lean:41:def countUpTo (mult : ℕ → ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-42-  ∑ k ∈ Finset.range N, mult (k + 1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean-44-/-- The set of all finite subset sums $P(A)$ of a multiset.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-36-namespace Erdos1161
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-37-
+FormalConjectures/ErdosProblems/1161.lean-38-/-- $f_k(n)$: the number of permutations in $S_n$ whose order equals $k$. -/
+FormalConjectures/ErdosProblems/1161.lean:39:noncomputable def countPermsOfOrder (n k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1161.lean-40-  ((Finset.univ : Finset (Equiv.Perm (Fin n))).filter (fun σ => orderOf σ = k)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1161.lean-42-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/450.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/450.lean-47-/-- Count of integers in the open interval $(x, x + y)$ having at least one divisor
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/450.lean-48-in the open interval $(n, 2n)$. -/
+FormalConjectures/ErdosProblems/450.lean:49:noncomputable def countWithDivisorInRange (x y n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/450.lean-50-  ((Finset.Ioo x (x + y)).filter (fun m =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/450.lean-51-    ∃ d ∈ Finset.Ioo n (2 * n), d ∣ m)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/450.lean-52-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1134.lean-49-
+FormalConjectures/ErdosProblems/1134.lean-50-noncomputable instance : DecidablePred InSet := Classical.decPred _
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1134.lean-51-
+FormalConjectures/ErdosProblems/1134.lean:52:/-- The counting function: $|A \cap [1, N]|$ for the set $A$ from Problem 1134. -/
+FormalConjectures/ErdosProblems/1134.lean:53:noncomputable def count (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1134.lean-54-  ((Finset.Icc 1 N).filter (fun n => InSet n)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1134.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1134.lean-56-/--
+--
+FormalConjectures/ErdosProblems/989.lean-47-  ∀ (c : ℝ × ℝ) (r : ℝ), Set.Finite {i : ℕ | euclidDist (A i) c ≤ r}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/989.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/989.lean-49-/-- Number of terms of $A$ in the closed disk centered at $c$ with radius $r$. -/
+FormalConjectures/ErdosProblems/989.lean:50:noncomputable def countInDisk (A : ℕ → ℝ × ℝ) (c : ℝ × ℝ) (r : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/989.lean-51-  Set.ncard {i : ℕ | euclidDist (A i) c ≤ r}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/989.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/989.lean-53-/-- The discrepancy $f(r) = \sup_c \left| |A \cap \mathrm{disk}(c,r)| - \pi r^2 \right|$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean-46-  ((Finset.range n).filter (fun a => Nat.Coprime a n)).sort (· ≤ ·)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean-48-/-- Count consecutive gaps $\le$ threshold in a sorted list of naturals. -/
+FormalConjectures/ErdosProblems/235.lean:49:noncomputable def countSmallGaps : List ℕ → ℝ → ℕ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean-50-  | [], _ => 0
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/235.lean-51-  | [_], _ => 0
+FormalConjectures/ErdosProblems/235.lean-52-  | a :: b :: rest, threshold =>
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-58-  ((Icc 1 N).powerset.filter IsSidonSet).sup Finset.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-60-/-- $A(N)$, the number of Sidon subsets of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/861.lean:61:noncomputable def countSidonSubsets (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-62-  ((Icc 1 N).powerset.filter IsSidonSet).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/861.lean-64-/--
+--
+FormalConjectures/ErdosProblems/17.lean-39-theorem erdos_17 : answer(sorry) ↔ {p : ℕ | IsClusterPrime p}.Infinite := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/17.lean-40-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/17.lean-41-
+FormalConjectures/ErdosProblems/17.lean:42:/-- The counting function of cluster primes $\le n$. -/
+FormalConjectures/ErdosProblems/17.lean-43-noncomputable def clusterPrimeCount (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/17.lean-44-  Nat.card {p : ℕ | p ≤ n ∧ IsClusterPrime p}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/17.lean-45-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/893.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/893.lean-32-/--
+FormalConjectures/ErdosProblems/893.lean-33-Definition of function $f(n) := \sum_{1\leq k\leq n}\tau(2^k-1)$.
+FormalConjectures/ErdosProblems/893.lean:34:Here $\tau$ is the divisor counting function, which is `σ 0` in mathlib.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/893.lean-35--/
+FormalConjectures/ErdosProblems/893.lean-36-def f (n : ℕ) : ℕ :=  ∑ k ∈ Finset.Icc 1 n, σ 0 (2^k - 1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/893.lean-37-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/946.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/946.lean-42-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/946.lean-43-There are infinitely many $n$ such that $τ(n) = τ(n+1)$. Proved in [He84].
+FormalConjectures/ErdosProblems/946.lean:44:Here τ is the divisor counting function, which is `σ 0` in mathlib.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/946.lean-45--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/946.lean-46-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/946.lean-47-theorem erdos_946 : {n : ℕ | σ 0 n = σ 0 (n + 1)}.Infinite := by
+--
+FormalConjectures/ErdosProblems/768.lean-38-  ∀ p : ℕ, Nat.Prime p → p ∣ n → ∃ d : ℕ, d > 1 ∧ d ∣ n ∧ d % p = 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/768.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/768.lean-40-/-- Count of integers in $\{1, \ldots, N\}$ belonging to the set $A$. -/
+FormalConjectures/ErdosProblems/768.lean:41:noncomputable def countA (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/768.lean-42-  ((Finset.range N).filter (fun n => InSetA (n + 1))).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/768.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/768.lean-44-/--
+--
+FormalConjectures/ErdosProblems/795.lean-38-def HasDistinctSubsetProducts (A : Finset ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/795.lean-39-  ∀ S T, S ⊆ A → T ⊆ A → (∏ i ∈ S, i) = (∏ i ∈ T, i) → S = T
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/795.lean-40-
+FormalConjectures/ErdosProblems/795.lean:41:/-- The prime counting function $\pi(n)$: the number of primes $\leq n$. -/
+FormalConjectures/ErdosProblems/795.lean-42-def primeCounting (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/795.lean-43-  ((Finset.range (n + 1)).filter Nat.Prime).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/795.lean-44-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-43-namespace Erdos785
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-44-
+FormalConjectures/ErdosProblems/785.lean-45-/-- Counting function: $|A \cap \{1, \ldots, x\}|$ -/
+FormalConjectures/ErdosProblems/785.lean:46:noncomputable def countingFn (A : Set ℕ) (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-47-  ((Finset.Icc 1 x).filter (· ∈ A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/785.lean-49-/--
+--
+FormalConjectures/ErdosProblems/337.lean-56-  ∃ N₀ : ℕ, ∀ n ≥ N₀, ∃ k ≤ r, n ∈ exactSumset A k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-58-/-- Count of elements of $A$ in $\{0, 1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/337.lean:59:noncomputable def countInRange (A : Set ℕ) (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/337.lean-60-  haveI : DecidablePred (· ∈ A) := Classical.decPred _
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-61-  ((Finset.range (N + 1)).filter (· ∈ A)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/337.lean-62-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/983.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/983.lean-33-namespace Erdos983
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/983.lean-34-
+FormalConjectures/ErdosProblems/983.lean:35:/-- The prime counting function $\pi(n)$: the number of primes $\leq n$. -/
+FormalConjectures/ErdosProblems/983.lean-36-def primeCounting (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/983.lean-37-  ((Finset.range (n + 1)).filter Nat.Prime).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/983.lean-38-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean-45-/-- Count of positive integers in $\{1, \ldots, N\}$ whose $k$-th smallest prime
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean-46-factor is $p$. -/
+FormalConjectures/ErdosProblems/690.lean:47:noncomputable def countKthPrimeFactor (k p N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean-48-  ((Finset.range N).filter (fun n => kthSmallestPrimeFactor (n + 1) k = p)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/690.lean-50-/-- A function on primes is unimodal if there exists a prime $m$ such that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-36-namespace Erdos1116
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-37-
+FormalConjectures/ErdosProblems/1116.lean:38:/-- The counting function $n(r, a, f)$: the number of solutions to $f(z) = a$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-39-in the open disk $\{z \in \mathbb{C} \mid \|z\| < r\}$. Uses `Set.ncard` (natural cardinality). -/
+FormalConjectures/ErdosProblems/1116.lean-40-noncomputable def rootCount (f : ℂ → ℂ) (r : ℝ) (a : ℂ) : ℕ :=
+FormalConjectures/ErdosProblems/1116.lean-41-  Set.ncard {z : ℂ | f z = a ∧ ‖z‖ < r}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-39-/-- Sum of $\tau(f(n))$ from `0` to `⌊x⌋` for a polynomial $f \in \mathbb{Z}[X]$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-40-
+FormalConjectures/ErdosProblems/975.lean:41:Here $\tau$ is the divisor counting function, which is `σ 0` in mathlib.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-42-Also, for simplicity, we use `Nat.floor` to convert rational values to natural numbers, instead of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/975.lean-43-dealing with negative values. -/
+FormalConjectures/ErdosProblems/975.lean-44-noncomputable def Erdos975Sum (f : ℤ[X]) (x : ℝ) : ℝ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean-47-/-- The number of $\pm 1$-coefficient polynomials of degree $n$ that do NOT attain
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean-48-modulus less than $1$ anywhere on the unit circle. -/
+FormalConjectures/ErdosProblems/525.lean:49:noncomputable def countNoSmallValue (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/525.lean-50-  (Finset.univ.filter (fun ε : Fin (n + 1) → Bool =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean-51-    ¬hasSmallValueOnCircle n ε)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean-52-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-50-$F(N)$ counts the number of positive integers that can be represented as sums of distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-51-unit fractions with denominators from $\{1, \ldots, N\}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-52--/
+FormalConjectures/ErdosProblems/309.lean:53:noncomputable def countRepresentableIntegers (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-54-  ((Finset.range (N + 1)).filter (fun k => 0 < k ∧ IsRepresentableUnitFractionSum N k)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/309.lean-56-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-45-namespace Erdos237
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-47-/-- The number of representations of $n$ as $p + a$ where $p$ is prime and $a \in A$. -/
+FormalConjectures/ErdosProblems/237.lean:48:noncomputable def countRepresentations (A : Set ℕ) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/237.lean-49-  Set.ncard {p : ℕ | Nat.Prime p ∧ p ≤ n ∧ (n - p) ∈ A}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-50-
+FormalConjectures/ErdosProblems/237.lean:51:/-- The counting function $|A \cap \{1, \ldots, N\}|$. -/
+FormalConjectures/ErdosProblems/237.lean:52:noncomputable def countingFunction (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-53-  Set.ncard (A ∩ Set.Icc 1 N)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-55-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean-33-namespace Erdos692
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean-35-/-- The number of divisors of $k$ that lie strictly between $n$ and $m$. -/
+FormalConjectures/ErdosProblems/692.lean:36:def countDivisorsInOpenInterval (k n m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean-37-  ((Nat.divisors k).filter (fun d => n < d ∧ d < m)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/692.lean-39-/-- The proportion of positive integers up to $N$ having exactly one divisor
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-40-namespace Erdos691
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-42-/-- Count of integers $m \in \{1, \ldots, N\}$ such that some element of $A$ divides $m$. -/
+FormalConjectures/ErdosProblems/691.lean:43:noncomputable def countMultiples (A : Set ℕ) (N : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-44-  ((Finset.range N).filter (fun n => ∃ a ∈ A, a ∣ (n + 1))).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/691.lean-46-/-- A set $A \subseteq \mathbb{N}$ is a *Behrend sequence* if the set of multiples of $A$ has

@@ -1,0 +1,959 @@
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/24.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/24.lean-70-/-- The asymptotic constant $\gamma$ defined in [Aa19] p.579. -/
+FormalConjectures/GreensOpenProblems/24.lean-71-noncomputable def gamma : ℝ :=
+FormalConjectures/GreensOpenProblems/24.lean:72:  limsup (fun n : ℕ => (max013AffineTranslates n : ℝ) / ((n : ℝ)^2)) atTop
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/24.lean-73-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/24.lean-74-/-- Asymptotic upper bound (1.2) in [Aa19]. Named after Hardy and Littlewood [HaL28]. -/
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/24.lean-75-@[category research open, AMS 5 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-100-when elliptic curves over ℚ are ordered by height, their average rank is < .885. -/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-101-@[category research solved, AMS 11 14]
+FormalConjectures/Wikipedia/EllipticCurveRank.lean-102-theorem avg_rank_lt_0885 :
+FormalConjectures/Wikipedia/EllipticCurveRank.lean:103:    atTop.limsup (fun H ↦ ((∑ᶠ E : heightLE H, E.1.rank) / (heightLE H).ncard : ℝ)) < 0.885 := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-104-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/EllipticCurveRank.lean-105-
+FormalConjectures/Wikipedia/EllipticCurveRank.lean-106-/-- Theorem 4 of [BS2013]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mahler32.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mahler32.lean-27-/-- For a real number `α`, define `Ω(α)` as
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mahler32.lean-28-$$
+FormalConjectures/Wikipedia/Mahler32.lean:29:\Omega (\alpha )=\inf _{\theta > 0}\left({\limsup _{n\rightarrow \infty }\left\lbrace
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mahler32.lean-30-{\theta \alpha ^{n}}\right\rbrace -\liminf _{n\rightarrow \infty }\left\lbrace {\theta \alpha ^{n}}\right\rbrace }\right).
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mahler32.lean-31-$$
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mahler32.lean-32--/
+FormalConjectures/Wikipedia/Mahler32.lean-33-noncomputable def Ω (α : ℝ) : ℝ :=
+FormalConjectures/Wikipedia/Mahler32.lean:34:  sInf {Filter.atTop.limsup (fun n ↦ Int.fract (θ * α ^ n))
+FormalConjectures/Wikipedia/Mahler32.lean-35-    - Filter.atTop.liminf (fun n ↦ Int.fract (θ * α ^ n)) | (θ : ℝ) (_ : 0 < θ)}
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mahler32.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mahler32.lean-37-/-- A Z-number is a real number `x` such that the fractional parts of `x(3/2)^n` are less than
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-45-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-46-/--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-47-Given a set `S` in an order `β`, where all intervals bounded above are finite, we define the upper
+FormalConjecturesForMathlib/Data/Set/Density.lean:48:density of `S` (relative to a set `A`) to be the limsup of the partial densities of `S`
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-49-(relative to `A`) for `b → ∞`.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-50--/
+FormalConjecturesForMathlib/Data/Set/Density.lean-51-noncomputable def upperDensity {β : Type*} [Preorder β] [LocallyFiniteOrderBot β]
+FormalConjecturesForMathlib/Data/Set/Density.lean-52-    (S : Set β) (A : Set β := Set.univ) : ℝ :=
+FormalConjecturesForMathlib/Data/Set/Density.lean:53:  atTop.limsup fun (b : β) ↦ S.partialDensity A b
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-54-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-55-/--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean-56-Given a set `S` in an order `β`, where all intervals bounded above are finite, we define the lower
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/122.lean-63-
+FormalConjectures/ErdosProblems/122.lean-64-/-- The Erdős-122 property of $f$: for any positive $F$ with $f(n)/F(n) \to 0$
+FormalConjectures/ErdosProblems/122.lean-65-in natural density, the ratio $\#\{n \in \mathbb{N} : n+f(n) \in (x, x+F(x))\} / F(x)$
+FormalConjectures/ErdosProblems/122.lean:66:is unbounded as $x \to \infty$ (equivalently, its limsup equals $+\infty$). -/
+FormalConjectures/ErdosProblems/122.lean-67-def HasErdos122Property (f : ℕ → ℕ) : Prop :=
+FormalConjectures/ErdosProblems/122.lean-68-  ∀ F : ℕ → ℝ, (∀ n, 0 < F n) → AlmostAllRatioVanishes f F →
+FormalConjectures/ErdosProblems/122.lean-69-    ∀ C : ℝ, ∃ᶠ x : ℕ in atTop, C < (shiftCount f F x : ℝ) / F x
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-41-`lim sup n → ∞ |A ∩ {1, …, N}| / N^(1/2)`?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-42--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-43-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/33.lean:44:theorem erdos_33 : ⨅ A : {A : Set ℕ | AdditiveBasisCondition A}, Filter.atTop.limsup (fun N =>
+FormalConjectures/ErdosProblems/33.lean-45-    (A.1.interIcc 1 N).ncard / (√N : EReal)) = answer(sorry) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-46-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-50--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-51-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/33.lean-52-theorem erdos_33.variants.one_mem_lowerBounds : ∃ A, AdditiveBasisCondition A ∧
+FormalConjectures/ErdosProblems/33.lean:53:    1 < Filter.atTop.limsup (fun N => (A.interIcc 1 N).ncard / √N) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-54-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-56-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-60--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-61-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/33.lean-62-theorem erdos_33.variants.vanDoorn :
+FormalConjectures/ErdosProblems/33.lean:63:    ⨅ A : {A : Set ℕ | AdditiveBasisCondition A}, Filter.atTop.limsup (fun N =>
+FormalConjectures/ErdosProblems/33.lean-64-    (A.1.interIcc 1 N).ncard / (√N : EReal)) ≤ ↑(2 * (φ ^ ((5 : ℝ) / 2))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/33.lean-66-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/255.lean-45-Let $z_1, z_2, \ldots \in [0,1]$ be an infinite sequence. Define the discrepancy
+FormalConjectures/ErdosProblems/255.lean-46-$$D_N(I) = \#\{n \leq N : z_n \in I\} - N \cdot |I|.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/255.lean-47-Then there must exist some interval $I \subseteq [0,1]$ such that
+FormalConjectures/ErdosProblems/255.lean:48:$$\limsup_{N \to \infty} |D_N(I)| = \infty.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/255.lean-49-
+FormalConjectures/ErdosProblems/255.lean-50-Equivalently: for any sequence in $[0,1]$, there exists a sub-interval
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/255.lean-51-$[a,b] \subseteq [0,1]$ such that $|D_N([a,b])|$ is unbounded as $N \to \infty$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-83-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-84-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-85-When $A =\{a_1 < \cdots\}$ corresponds to the set of primes, it is conjectured that the
+FormalConjectures/ErdosProblems/358.lean:86:$\limsup$ of the number of representations \[n=\sum_{u\leq i\leq v}a_i\] is infinite.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-87--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-88-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/358.lean-89-theorem erdos_358.variants.prime_set :
+FormalConjectures/ErdosProblems/358.lean:90:    atTop.limsup (fun n ↦ (f (Nat.nth Nat.Prime) n : ℕ∞)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-91-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-92-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-93-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-27-that $k(N) \sim 2N^{1/2}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-29-Straus [St66] calls such sets admissible and showed
+FormalConjectures/ErdosProblems/874.lean:30:$\liminf k(N)/N^{1/2} \geq 2$ and $\limsup k(N)/N^{1/2} \leq 4/\sqrt{3}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-31-Erdős–Nicolas–Sárközy [ENS91] improved the upper bound to $(143/27)^{1/2}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-32-The conjecture was proved for all large $N$ by Deshouillers and Freiman [DeFr99].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean-33--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-29-- [BaCh47] Bambah, R. P. and Chowla, S. (1947), on the upper bound
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-30-  $n_{k+1} - n_k \ll n_k^{1/4}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-31-- [Ri82] Richards, I. (1982),
+FormalConjectures/ErdosProblems/222.lean:32:  $\limsup_{k \to \infty} (n_{k+1} - n_k) / \log n_k \geq 1/4$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-33-- [DEKKM22] Dietmann, R., Elsholtz, C., Kalmynin, A., Konyagin, S., and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-34-  Maynard, J. (2022), improved the constant to $0.868\ldots$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-35--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-66-for every $\delta > 0$, there are infinitely many $k$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-67-$n_{k+1} - n_k \geq (1/4 - \delta) \cdot \log n_k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-68-
+FormalConjectures/ErdosProblems/222.lean:69:This is equivalent to $\limsup_{k \to \infty} (n_{k+1} - n_k) / \log n_k \geq 1/4$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-70--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/222.lean-71-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/222.lean-72-theorem erdos_222.variants.lower_bound :
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-36-/-- The upper density of a Sidon set `A`, normalized by `√N`. -/
+FormalConjectures/ErdosProblems/329.lean-37-noncomputable def sidonUpperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/329.lean:38:  limsup (fun N => sqrtPartialDensity A N) atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-40-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean-41-**Erdős Problem 329.**
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-28-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-29-Let $f(n)$ be an additive function (so that $f(ab)=f(a)+f(b)$
+FormalConjectures/ErdosProblems/897.lean:30:if $(a,b)=1$ such that $\limsup_{p,k} f(p^k) \log(p^k) = ∞$.
+FormalConjectures/ErdosProblems/897.lean:31:Is it true that $\limsup_n (f(n+1)−f(n))/ \log n = ∞$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-32--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-33-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/897.lean-34-theorem erdos_897.parts.i : answer(sorry) ↔ ∀ (f : ℕ → ℝ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-35-    (∀ᵉ (a > 0) (b > 0), a.Coprime b → f (a * b) = f a + f b) →
+FormalConjectures/ErdosProblems/897.lean:36:    ((Filter.atTop ⊓ Filter.principal {(p, k) : ℕ × ℕ | p.Prime}).limsup
+FormalConjectures/ErdosProblems/897.lean-37-      (fun (p, k) => (f (p^k) / (p^k : ℝ).log : EReal)) = ⊤) →
+FormalConjectures/ErdosProblems/897.lean:38:    Filter.atTop.limsup (fun (n : ℕ) => ((f (n+1) - f n) / (n : ℝ).log : EReal)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-39-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-41-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-42-Let $f(n)$ be an additive function (so that $f(ab)=f(a)+f(b)$
+FormalConjectures/ErdosProblems/897.lean:43:if $(a,b)=1$) such that $\limsup_{p,k} f(p^k) \log(p^k) = ∞$.
+FormalConjectures/ErdosProblems/897.lean:44:Is it true that $\limsup_n f(n+1)/ f(n) = ∞$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-45--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-46-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/897.lean-47-theorem erdos_897.parts.ii : answer(sorry) ↔ ∀ (f : ℕ → ℝ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-48-    (∀ᵉ (a > 0) (b > 0), a.Coprime b → f (a * b) = f a + f b) →
+FormalConjectures/ErdosProblems/897.lean:49:    ((Filter.atTop ⊓ Filter.principal {(p, k) : ℕ × ℕ | p.Prime}).limsup
+FormalConjectures/ErdosProblems/897.lean-50-      (fun (p, k) => (f (p^k) / (p^k : ℝ).log : EReal)) = ⊤) →
+FormalConjectures/ErdosProblems/897.lean:51:    Filter.atTop.limsup (fun (n : ℕ) => (f (n+1) / f n : EReal)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-52-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-54-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-70-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-71-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-72-Let $f(n)$ be an additive function (so that $f(ab)=f(a)+f(b)$
+FormalConjectures/ErdosProblems/897.lean:73:if $(a,b)=1$) such that $\limsup_{p,k} f(p^k) \log(p^k) = ∞$ and $f(p^k) = f(p)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-74-or $f(p^k) = kf(p)$.
+FormalConjectures/ErdosProblems/897.lean:75:Is it true that $\limsup_n (f(n+1)−f(n))/ \log n = ∞$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-76--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-77-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/897.lean-78-theorem erdos_897.variants.parts.i : answer(sorry) ↔ ∀ (f : ℕ → ℝ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-79-    (∀ᵉ (a > 0) (b > 0), a.Coprime b → f (a * b) = f a + f b) →
+FormalConjectures/ErdosProblems/897.lean:80:    ((Filter.atTop ⊓ Filter.principal {(p, k) : ℕ × ℕ | p.Prime}).limsup
+FormalConjectures/ErdosProblems/897.lean-81-      (fun (p, k) => (f (p^k) / (p^k : ℝ).log : EReal)) = ⊤) →
+FormalConjectures/ErdosProblems/897.lean-82-    (∀ k p, p.Prime → f (p^k) = f p) ∨ (∀ (k p : ℕ), p.Prime → f (p^k) = k*f p) →
+FormalConjectures/ErdosProblems/897.lean:83:    Filter.atTop.limsup (fun (n : ℕ) => ((f (n+1) - f n) / (n : ℝ).log : EReal)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-84-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-86-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-87-Let $f(n)$ be an additive function (so that $f(ab)=f(a)+f(b)$
+FormalConjectures/ErdosProblems/897.lean:88:if $(a,b)=1$) such that $\limsup_{p,k} f(p^k) \log(p^k) = ∞$ and $f(p^k) = f(p)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-89-or $f(p^k) = kf(p)$.
+FormalConjectures/ErdosProblems/897.lean:90:Is it true that $\limsup_n f(n+1)/f(n) = ∞$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-91--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-92-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/897.lean-93-theorem erdos_897.variants.parts.ii : answer(sorry) ↔ ∀ (f : ℕ → ℝ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-94-    (∀ᵉ (a > 0) (b > 0), a.Coprime b → f (a * b) = f a + f b) →
+FormalConjectures/ErdosProblems/897.lean:95:    ((Filter.atTop ⊓ Filter.principal {(p, k) : ℕ × ℕ | p.Prime}).limsup
+FormalConjectures/ErdosProblems/897.lean-96-      (fun (p, k) => (f (p^k) / (p^k : ℝ).log : EReal)) = ⊤) →
+FormalConjectures/ErdosProblems/897.lean-97-    (∀ k p, p.Prime → f (p^k) = f p) ∨ (∀ (k p : ℕ), p.Prime → f (p^k) = k*f p) →
+FormalConjectures/ErdosProblems/897.lean:98:    Filter.atTop.limsup (fun (n : ℕ) => (f (n+1) / f n : EReal)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-99-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-100-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/897.lean-101-end Erdos897
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-47-Let $f$ be a Rademacher multiplicative function.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-48-Does there exist some constant $c > 0$ such that, almost surely,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-49-\[
+FormalConjectures/ErdosProblems/520.lean:50:  \limsup_{N \to \infty} \frac{\sum_{m \leq N} f(m)}{\sqrt{N \log \log N}} = c?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-51-\]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-52--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-53-@[category research open, AMS 11 60]
+FormalConjectures/ErdosProblems/520.lean-54-theorem erdos_520 :
+FormalConjectures/ErdosProblems/520.lean-55-    answer(sorry) ↔ ∃ c > 0, ∀ (f : ℕ → Ω → ℝ), IsRademacherMultiplicative f →
+FormalConjectures/ErdosProblems/520.lean:56:      ∀ᵐ ω, limsup (fun N ↦ ∑ m ≤ N, f m ω / sqrt (N * log (log N))) atTop = c := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-57-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean-59-end Erdos520
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean-26-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean-27-Is it true that $h(x) > x^{2-o(1)}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean-28-
+FormalConjectures/ErdosProblems/824.lean:29:Erdős [Er74b] proved that $\limsup h(x)/x = \infty$, and claimed a similar proof for
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean-30-this problem. A complete proof that $h(x)/x \to \infty$ was provided by Pollack and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean-31-Pomerance [PoPo16].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/824.lean-32-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/935.lean-57-/--
+FormalConjectures/ErdosProblems/935.lean-58-Erdős Problem 935, Part 2 (resolved):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/935.lean-59-
+FormalConjectures/ErdosProblems/935.lean:60:For every $\ell \geq 2$, $\limsup_{n \to \infty} Q_2(n(n+1)\cdots(n+\ell))/n^2 = \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/935.lean-61-This was proved via solutions to the Pell equation $x^2 - 8y^2 = 1$.
+FormalConjectures/ErdosProblems/935.lean-62-Formulated as: for every $M$ and $N$, there exists $n \geq N$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/935.lean-63-$Q_2(n(n+1)\cdots(n+\ell)) > M \cdot n^2$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/262.lean-52-a non-example is $a_n = n!$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/262.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/262.lean-54-Hančl [Ha91] proved that any irrationality sequence must satisfy
+FormalConjectures/ErdosProblems/262.lean:55:$$\limsup_{n \to \infty} \frac{\log_2 \log_2 a_n}{n} \geq 1,$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/262.lean-56-i.e., for all $c < 1$, $\log_2(\log_2(a_n)) > cn$ for infinitely many $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/262.lean-57--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/262.lean-58-@[category research solved, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-31-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-32-The predicate for a function $g\colon\mathbb{N} → \mathbb{R})$ that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-33-$$\lvert A\cap \{1,\ldots,N\}\rvert \gg \frac{N^{1/2}}{g(N)}$$
+FormalConjectures/ErdosProblems/40.lean:34:implies $\limsup 1_A\ast 1_A(n)=\infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-35--/
+FormalConjectures/ErdosProblems/40.lean-36-def Erdos40For (g : ℕ → ℝ) : Prop :=
+FormalConjectures/ErdosProblems/40.lean-37-  ∀ A : Set ℕ,
+FormalConjectures/ErdosProblems/40.lean-38-    (fun N : ℕ ↦ √N / g N) =O[atTop] (fun N ↦ ((A ∩ .Icc 1 N).ncard : ℝ)) →
+FormalConjectures/ErdosProblems/40.lean:39:    limsup (fun N ↦ (sumRep A N : ℕ∞)) atTop = ⊤
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-41-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-42-Given a set of functions $\mathbb{N} → \mathbb{R})$, we assert that for all $g$ in that set,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-43-if $g(N) → \infty$ then
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-44-$$\lvert A\cap \{1,\ldots,N\}\rvert \gg \frac{N^{1/2}}{g(N)}$$
+FormalConjectures/ErdosProblems/40.lean:45:implies $\limsup 1_A\ast 1_A(n)=\infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-46--/
+FormalConjectures/ErdosProblems/40.lean-47-def Erdos40ForSet (G : Set (ℕ → ℝ)) : Prop := ∀ g ∈ G, Tendsto g atTop atTop → Erdos40For g
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-49-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-50-For what functions $g(N) → \infty$ is it true that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-51-$$\lvert A\cap \{1,\ldots,N\}\rvert \gg \frac{N^{1/2}}{g(N)}$$
+FormalConjectures/ErdosProblems/40.lean:52:implies $\limsup 1_A\ast 1_A(n)=\infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-53--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/40.lean-54-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/40.lean-55-theorem erdos_40 : Erdos40ForSet answer(sorry) := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean-34-Let $A\subseteq\mathbb{N}$ be an infinite set such that $|A\cap \{1, ..., N\}| = o(N)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean-35-Is it true that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean-36-$$
+FormalConjectures/ErdosProblems/899.lean:37:\limsup_{N\to\infty}\frac{|(A - A)\cap \{1, ..., N\}|}{|A \cap \{1, ..., N\}|} = \infty?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean-38-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean-40-The answer is yes, proved by Ruzsa [Ru78].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean-44-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/899.lean-45-theorem erdos_899 : answer(True) ↔ ∀ (A : Set ℕ), A.Infinite →
+FormalConjectures/ErdosProblems/899.lean-46-    Tendsto (fun N => (A.interIcc 1 N |>.ncard : ℝ) / N) atTop (𝓝 0) →
+FormalConjectures/ErdosProblems/899.lean:47:    atTop.limsup (fun N => ((A - A : Set ℕ).interIcc 1 N |>.ncard : EReal) /
+FormalConjectures/ErdosProblems/899.lean-48-      (A.interIcc 1 N).ncard) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean-49-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/899.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/829.lean-27-Here $1_A * 1_A(n)$ counts the number of representations of $n$ as a sum of two
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/829.lean-28-positive cubes, i.e., the number of pairs $(a, b)$ with $a^3 + b^3 = n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/829.lean-29-
+FormalConjectures/ErdosProblems/829.lean:30:Mordell proved that $\limsup 1_A * 1_A(n) = \infty$. Mahler [Ma35b] proved
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/829.lean-31-$1_A * 1_A(n) \gg (\log n)^{1/4}$ for infinitely many $n$. Stewart [St08] improved
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/829.lean-32-this to $1_A * 1_A(n) \gg (\log n)^{11/13}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/829.lean-33--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1051.lean-54-This was solved in the affirmative by Aletheia [Fe26]. This was extended by Barreto, Kang, Kim,
+FormalConjectures/ErdosProblems/1051.lean-55-Kovač, and Zhang [BKKKZ26], who essentially give a complete answer: if $\phi=\frac{1+\sqrt{5}}{2}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1051.lean-56-is the golden ratio and $1\leq a_1 < a_2 < \cdots$ is a monotonically increasing sequence of
+FormalConjectures/ErdosProblems/1051.lean:57:integers such that $\limsup a_n^{1/\phi^{n}}=\infty$ then $\sum_{n=1}^\infty \frac{1}{a_na_{n+1}}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1051.lean-58-is irrational. Conversely, for any $1 < C < \infty$ there exists a sequence of integers
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1051.lean-59-$1\leq a_1<\cdots$ such that $\lim a_n^{1/\phi^{n}}=C$ where this infinite sum is a rational number.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1051.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/342.lean-52-    ∀ m, a (n - 1) < m → m < a n → ulamRepCount a n m ≠ 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/342.lean-53-
+FormalConjectures/ErdosProblems/342.lean-54-/-- The upper density of $A \subseteq \mathbb{N}$:
+FormalConjectures/ErdosProblems/342.lean:55:$d^*(A) = \limsup_{N \to \infty} |A \cap \{0, 1, \ldots, N-1\}| / N$ -/
+FormalConjectures/ErdosProblems/342.lean-56-noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/342.lean:57:  limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/342.lean-58-    atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/342.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/342.lean-60-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-143--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-144-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/36.lean-145-theorem minimum_overlap.variants.upper.erdos_1955 :
+FormalConjectures/ErdosProblems/36.lean:146:  atTop.limsup MinOverlapQuotient ≤ (1 : ℝ) / 2 := by sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-147-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-148-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-149-An upper bound of $\frac 2 5$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-153--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-154-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/36.lean-155-theorem minimum_overlap.variants.upper.MRS_1956 :
+FormalConjectures/ErdosProblems/36.lean:156:    atTop.limsup MinOverlapQuotient ≤ (2 : ℝ) / 5 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-157-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-158-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-159-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-163--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-164-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/36.lean-165-theorem minimum_overlap.variants.upper.haugland_1996 :
+FormalConjectures/ErdosProblems/36.lean:166:    atTop.limsup MinOverlapQuotient ≤ 0.38200298812318988 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-167-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-168-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-169-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-173--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-174-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/36.lean-175-theorem minimum_overlap.variants.upper.haugland_2022 :
+FormalConjectures/ErdosProblems/36.lean:176:    atTop.limsup MinOverlapQuotient ≤ 0.3809268534330870 := by sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-177-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-178-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-179-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-190--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-191-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/36.lean-192-theorem erdos_36.variants.upper :
+FormalConjectures/ErdosProblems/36.lean:193:    ∃ (c : ℝ), c < 0.380926853433087 ∧ atTop.limsup MinOverlapQuotient ≤ c ∧ c = answer(sorry) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-194-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-195-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean-196-
+--
+FormalConjectures/ErdosProblems/987.lean-22-*Reference:* [erdosproblems.com/987](https://www.erdosproblems.com/987)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-24-Let $x_1, x_2, \ldots \in (0,1)$ be an infinite sequence and define
+FormalConjectures/ErdosProblems/987.lean:25:$$A_k = \limsup_{n \to \infty} \left|\sum_{j \leq n} e(k \cdot x_j)\right|$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-26-where $e(x) = e^{2\pi ix}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-28-This is Problem 7.21 in Halberstam and Roth [Ha74], attributed to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-29-Erdős [Er64b][Er65b].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-31-Erdős remarks the analogous statement with $\sup_n$ in place of
+FormalConjectures/ErdosProblems/987.lean:32:$\limsup_n$ is 'easy to see'. Clunie [Cl67] proved $A_k \gg k^{1/2}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-33-infinitely often, and showed there exist sequences with $A_k \leq k$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-34-for all $k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-35-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-51-/--
+FormalConjectures/ErdosProblems/987.lean-52-Erdős Problem 987, Part 1 [Er64b][Er65b]:
+FormalConjectures/ErdosProblems/987.lean:53:For any sequence $x_1, x_2, \ldots \in (0,1)$, $\limsup_{k \to \infty} A_k = \infty$ where
+FormalConjectures/ErdosProblems/987.lean:54:$A_k = \limsup_{n \to \infty} \lVert\sum_{j < n} e^{2\pi i k x_j}\rVert$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-55-
+FormalConjectures/ErdosProblems/987.lean-56-Equivalently: for every $M$, there exists $k$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/987.lean-57-$\lVert\sum_{j < n} e^{2\pi i k x_j}\rVert \geq M$ for infinitely many $n$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-61-Is it possible for $\liminf_{r \to \infty} \nu(r) = \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-62-
+FormalConjectures/ErdosProblems/1117.lean:63:The analogous question for $\limsup$ was answered affirmatively by Herzog and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-64-Piranian [HePi68]. The $\liminf$ question remains open. An 'approximate'
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-65-affirmative answer is given by Glücksam and Pardo-Simón [GlPa24].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-66--/
+--
+FormalConjectures/ErdosProblems/454.lean-32-noncomputable def f (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/454.lean-33-  if n ≤ 1 then 0 else ⨅ i : {i : Fin n // 0 < (i : ℕ)}, (n + i).nth Prime + (n - i).nth Prime
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean-34-
+FormalConjectures/ErdosProblems/454.lean:35:/-- Is it true that `limsup (fun n => (f n - 2 * n.nth Prime : ℕ∞)) atTop = ⊤`? -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean-36-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/454.lean:37:theorem erdos_454 : answer(sorry) ↔ limsup (fun n => (f n - 2 * n.nth Prime : ℕ∞)) atTop = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean-38-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean-39-
+FormalConjectures/ErdosProblems/454.lean:40:/-- `limsup (fun n => (f n - 2 * n.nth Prime : ℕ∞)) atTop ≥ 2`, and this is proved in [Po79]. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean-41-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/454.lean:42:theorem erdos_454.two_le_limsup : 2 ≤ limsup (fun n => (f n - 2 * n.nth Prime : ℕ∞)) atTop := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean-43-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/454.lean-45-end Erdos454
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-38-/-- The upper density of $A \subseteq \mathbb{N}$. -/
+FormalConjectures/ErdosProblems/378.lean-39-noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/378.lean:40:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-41-    Filter.atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/378.lean-43-/-- The lower density of $A \subseteq \mathbb{N}$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1102.lean-74-theorem erdos_1102.upper_density_Q
+FormalConjectures/ErdosProblems/1102.lean-75-    (A : ℕ → ℕ) (h_inc : StrictMono A)
+FormalConjectures/ErdosProblems/1102.lean-76-    (hQ : HasPropertyQ (range A)) :
+FormalConjectures/ErdosProblems/1102.lean:77:    limsup (fun j : ℕ  ↦ (j / A j : ℝ)) atTop ≤ 6 / Real.pi^2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1102.lean-78-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1102.lean-79-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1102.lean-80-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-33-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-34-where each $\ell_k(x)$ is defined with respect to $x_1, \ldots, x_n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-35-
+FormalConjectures/ErdosProblems/1132.lean:36:[Be31] Bernstein proved that the set of $x \in (-1,1)$ for which the limsup
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-37-condition (Part 2) holds is everywhere dense.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-38--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-39-
+--
+FormalConjectures/ErdosProblems/1132.lean-80-Erdős Problem 1132 (Part 2):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-81-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-82-For any infinite sequence $x_1, x_2, \ldots \in [-1,1]$ of distinct points, is it true that
+FormalConjectures/ErdosProblems/1132.lean:83:$\limsup_{n \to \infty} L_n(x) / \log n \geq \frac{2}{\pi}$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-84-for almost all $x \in (-1,1)$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-85-
+FormalConjectures/ErdosProblems/1132.lean:86:Bernstein [Be31] proved that the set of $x \in (-1,1)$ for which the limsup
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-87-condition holds is everywhere dense.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-88--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-89-@[category research open, AMS 26 41]
+FormalConjectures/ErdosProblems/1132.lean-90-theorem erdos_1132.variants.part2 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/1132.lean-91-    ∀ (seq : ℕ → ℝ), ValidSeq seq →
+FormalConjectures/ErdosProblems/1132.lean-92-      ∀ᵐ x ∂(volume.restrict (Set.Ioo (-1 : ℝ) 1)),
+FormalConjectures/ErdosProblems/1132.lean:93:        Filter.limsup (fun n => L seq n x / Real.log (n : ℝ)) atTop ≥ 2 / Real.pi := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-94-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-95-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1132.lean-96-end Erdos1132
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-29-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-30-Let $n_1 < n_2 < \cdots$ be a sequence of integers such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-31-$$
+FormalConjectures/ErdosProblems/247.lean:32:  \limsup \frac{n_k}{k} = \infty.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-33-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-34-Is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-35-$$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-39--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-40-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/247.lean-41-theorem erdos_247 : answer(sorry) ↔ ∀ (n : ℕ → ℕ), (StrictMono n) →
+FormalConjectures/ErdosProblems/247.lean:42:    atTop.limsup (fun k => (n k / k.succ : EReal)) = ⊤ →
+FormalConjectures/ErdosProblems/247.lean-43-    Transcendental ℚ (∑' k, (1 : ℝ) / 2 ^ n k) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-44-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-46-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-47-Erdős proved the answer is yes under the stronger condition that
+FormalConjectures/ErdosProblems/247.lean:48:$\limsup \frac{n_k}{k^t} = \infty$ for all $t\geq 1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-50-[ErGr80] Erdős, P. and Graham, R.,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-51-_Old and new problems and results in combinatorial number theory_.
+--
+FormalConjectures/ErdosProblems/247.lean-55-theorem erdos_247.variants.strong_condition (n : ℕ → ℕ)
+FormalConjectures/ErdosProblems/247.lean-56-    (hn : StrictMono n)
+FormalConjectures/ErdosProblems/247.lean-57-    (h : ∀ t ≥ (1 : ℝ),
+FormalConjectures/ErdosProblems/247.lean:58:      atTop.limsup (fun k => n k / (k.succ : ℝ) ^ t |>.toEReal) = ⊤) :
+FormalConjectures/ErdosProblems/247.lean-59-    Transcendental ℚ (∑' k, (1 : ℝ) / 2 ^ n k) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-60-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/247.lean-61-
+--
+FormalConjectures/ErdosProblems/444.lean-22-*Reference:* [erdosproblems.com/444](https://www.erdosproblems.com/444)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-24-Let $A \subseteq \mathbb{N}$ be infinite and let $d_A(n)$ count the divisors of $n$ that belong
+FormalConjectures/ErdosProblems/444.lean:25:to $A$. Then for every $k$ the limsup of $\max_{n < x} d_A(n)$ divided by the $k$-th power of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-26-the partial reciprocal sum $\sum_{a \in A,\, a < x} 1/a$ is infinite.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-28-[ErSa80] Erdős, P. and Sárkőzy, A., *On the number of divisors of $n!$*, 1980.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-49-Let $A \subseteq \mathbb{N}$ be infinite and $d_A(n)$ count the number of $a \in A$ dividing $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-50-For every $k$,
+FormalConjectures/ErdosProblems/444.lean:51:$$\limsup_{x \to \infty} \frac{\max_{n < x} d_A(n)}{\left(\sum_{a \in A \cap [1,x)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-52-\frac{1}{a}\right)^k} = \infty.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/444.lean-54-Equivalently, for every $M > 0$, there are arbitrarily large $x$ and some $n < x$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean-43-
+FormalConjectures/ErdosProblems/119.lean-44-/-- Question 1:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean-45-
+FormalConjectures/ErdosProblems/119.lean:46:Is it true that $\limsup M_n = \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean-48-Wagner [Wa80] proved that there is some $c > 0$ with $M_n > (\log n)^c$ infintely often.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean-49-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean-52-@[category research solved, AMS 30]
+FormalConjectures/ErdosProblems/119.lean-53-theorem erdos_119.parts.i :
+FormalConjectures/ErdosProblems/119.lean-54-    answer(True) ↔ ∀ (z : ℕ → ℂ) (hz : ∀ i : ℕ, ‖z i‖ = 1),
+FormalConjectures/ErdosProblems/119.lean:55:      atTop.limsup (fun n => (M z n : EReal)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean-56-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean-57-
+FormalConjectures/ErdosProblems/119.lean-58-/-- Question 2:
+--
+FormalConjectures/ErdosProblems/232.lean-22-*Reference:* [erdosproblems.com/232](https://www.erdosproblems.com/232)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-24-For $A \subseteq \mathbb{R}^2$ we define the upper density as
+FormalConjectures/ErdosProblems/232.lean:25:$$\bar{\delta}(A) = \limsup_{R\to\infty} \frac{\lambda(A \cap B_R)}{\lambda(B_R)},$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-26-where $\lambda$ is the Lebesgue measure and $B_R$ is the ball of radius $R$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-28-Estimate $m_1 = \sup \bar{\delta}(A)$, where $A$ ranges over all measurable subsets of
+--
+FormalConjectures/ErdosProblems/232.lean-57-Erdős Problem 232 [Er85, p.4] (PROVED):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-59-For every measurable unit-distance-free set $A \subseteq \mathbb{R}^2$, the upper density
+FormalConjectures/ErdosProblems/232.lean:60:$$\limsup_{R\to\infty} \frac{\lambda(A \cap B_R)}{\lambda(B_R)} \le \frac{1}{4}.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-61-
+FormalConjectures/ErdosProblems/232.lean-62-Formalized as: for every $\varepsilon > 0$, for all sufficiently large $R$, the density
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-63-ratio $\lambda(A \cap B_R) / \lambda(B_R) \le 1/4 + \varepsilon$. This is equivalent to the
+FormalConjectures/ErdosProblems/232.lean:64:$\limsup$ being at most $1/4$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-66-Proved by Ambrus–Csiszárik–Matolcsi–Varga–Zsámboki [ACMVZ23] who showed
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/232.lean-67-the stronger bound $m_1 \le 0.247$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean-47-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean-49-/-- Let $f(n)$ be the minimal integer $m$ such that $n$ is the sum of the $k$ smallest divisors
+FormalConjectures/ErdosProblems/1054.lean:50:of $m$ for some $k\geq 1$. Is it true that $\limsup f(n)/n=\infty$? -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean-51-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/1054.lean-52-theorem erdos_1054.parts.iii : answer(sorry) ↔ ∃ (A : Set ℕ), A.HasDensity 1 ∧
+FormalConjectures/ErdosProblems/1054.lean:53:    atTop.limsup (fun n ↦ (f n : EReal) / n) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean-54-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1054.lean-56-/-- Let $f(n)$ be the minimal integer $m$ such that $n$ is the sum of the $k$ smallest divisors
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/28.lean-30-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/28.lean-31-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/28.lean-32-If $A ⊆ \mathbb{N}$ is such that $A + A$ contains all but finitely many integers then
+FormalConjectures/ErdosProblems/28.lean:33: $\limsup 1_A ∗ 1_A(n) = \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/28.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/28.lean-35-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/28.lean-36-theorem erdos_28 (A : Set ℕ) (h : (A + A)ᶜ.Finite) :
+FormalConjectures/ErdosProblems/28.lean:37:    limsup (fun (n : ℕ) => (sumRep A n : ℕ∞)) atTop = (⊤ : ℕ∞) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/28.lean-38-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/28.lean-39-
+FormalConjectures/ErdosProblems/28.lean-40--- TODO(firsching): add the theorems/conjectures for the comments on the page
+--
+FormalConjectures/ErdosProblems/839.lean-22-*Reference:* [erdosproblems.com/839](https://www.erdosproblems.com/839)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-24-Given a strictly increasing sequence of positive integers where no term equals the sum of
+FormalConjectures/ErdosProblems/839.lean:25:consecutive earlier terms, is it true that $\limsup a_n / n = \infty$? A stronger form asks
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-26-whether $(1/\log x) \sum_{a_n < x} 1/a_n \to 0$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-28-A problem of Erdős [Er78f][Er92c].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-50-Let $1 \leq a_1 < a_2 < \cdots$ be a strictly increasing sequence of positive integers
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-51-such that no $a_i$ is the sum of consecutive $a_j$ for $j < i$.
+FormalConjectures/ErdosProblems/839.lean:52:Is it true that $\limsup a_n / n = \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-53--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/839.lean-54-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/839.lean-55-theorem erdos_839 : answer(sorry) ↔
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-30-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-31-Let $k ≥ 2$, and let $f_k(n)$ count the number of solutions to $n = p_1^k + \dots + p_k^k$,
+FormalConjectures/ErdosProblems/979.lean:32:where the $p_i$ are prime numbers. Is it true that $\limsup f_k(n) = \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-33--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-34-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/979.lean-35-theorem erdos_979 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/979.lean:36:    ∀ k ≥ 2, Filter.limsup (fun n => (solutionSet n k).encard) Filter.atTop = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-37-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-39-/--
+FormalConjectures/ErdosProblems/979.lean:40:Erdős [Er37b] proved that if $f_2(n)$ counts the number of solutions to $n = p_1^2 + p_2^2$, where $p_1$ and $p_2$ are prime numbers, then $\limsup f_2(n) = \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-42-[Er37b] Erdős, Paul, On the Sum and Difference of Squares of Primes. J. London Math. Soc. (1937), 133--136.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-43--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-44-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/979.lean-45-theorem erdos_979_k2 :
+FormalConjectures/ErdosProblems/979.lean:46:    Filter.limsup (fun n => (solutionSet n 2).encard) Filter.atTop = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-47-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-49-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-51--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-52-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/979.lean-53-theorem erdos_979_k3 :
+FormalConjectures/ErdosProblems/979.lean:54:    Filter.limsup (fun n => (solutionSet n 3).encard) Filter.atTop = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-55-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/979.lean-57-end Erdos979
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-28-
+FormalConjectures/ErdosProblems/671.lean-29-Part 1: Is there a triangular array of nodes in $[-1,1]$ such that for every
+FormalConjectures/ErdosProblems/671.lean-30-continuous $f: [-1,1] \to \mathbb{R}$ there exists $x \in [-1,1]$ where the
+FormalConjectures/ErdosProblems/671.lean:31:Lebesgue function $\sum_i |p_i^n(x)|$ has infinite limsup yet
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-32-$\mathcal{L}^n f(x) \to f(x)$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-33-
+FormalConjectures/ErdosProblems/671.lean:34:Part 2: Is there such an array where the Lebesgue function has infinite limsup
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-35-for every $x \in [-1,1]$ and yet for every continuous $f$ there exists $x$ with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-36-$\mathcal{L}^n f(x) \to f(x)$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-37--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-59-/--
+FormalConjectures/ErdosProblems/671.lean-60-Erdős Problem 671 (Part 1): Is there a triangular array of distinct nodes
+FormalConjectures/ErdosProblems/671.lean-61-in $[-1,1]$ such that for every continuous $f : [-1,1] \to \mathbb{R}$, there exists
+FormalConjectures/ErdosProblems/671.lean:62:$x \in [-1,1]$ where the Lebesgue function has infinite limsup yet the Lagrange
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-63-interpolation converges to $f(x)$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-64--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-65-@[category research open, AMS 41]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-75-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-76-/--
+FormalConjectures/ErdosProblems/671.lean-77-Erdős Problem 671 (Part 2): Is there a triangular array of distinct nodes
+FormalConjectures/ErdosProblems/671.lean:78:in $[-1,1]$ such that the Lebesgue function has infinite limsup at every
+FormalConjectures/ErdosProblems/671.lean-79-$x \in [-1,1]$, and yet for every continuous $f : [-1,1] \to \mathbb{R}$ there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-80-exists $x \in [-1,1]$ where the Lagrange interpolation converges to $f(x)$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/671.lean-81--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-55-The upper bound part of the original conjecture $f(N) = (\frac{1}{2} + o(1))N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-56-has been disproved by Cambie's lower bound. The true asymptotic of $f(N)$ remains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-57-open, with
+FormalConjectures/ErdosProblems/302.lean:58:$\frac{5}{8} \leq \liminf \frac{f(N)}{N} \leq \limsup \frac{f(N)}{N} \leq \frac{9}{10}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-59-
+FormalConjectures/ErdosProblems/302.lean-60-We formalize the original conjecture as stated: for every $\varepsilon > 0$, for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/302.lean-61-sufficiently large $N$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-34-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-35-/--
+FormalConjectures/ErdosProblems/432.lean-36-The upper density of $A \subseteq \mathbb{N}$:
+FormalConjectures/ErdosProblems/432.lean:37:$$d^*(A) = \limsup_{N \to \infty} \frac{|A \cap \{0, 1, \ldots, N-1\}|}{N}$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-38--/
+FormalConjectures/ErdosProblems/432.lean-39-noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/432.lean:40:  limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-41-    atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/432.lean-43-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-25-of the edges of $K_n$ contains a monochromatic copy of $K_k$, then find the value of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-26-$$\lim_{k \to \infty} R(k)^{1/k}.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-27-
+FormalConjectures/ErdosProblems/77.lean:28:Erdős proved $\sqrt{2} \leq \liminf R(k)^{1/k} \leq \limsup R(k)^{1/k} \leq 4$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-29-The upper bound has been improved to $3.7992\ldots$ by Gupta, Ndiaye, Norin, and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-30-Wei [GNNW24], building on the breakthrough of Campos, Griffiths, Morris,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-31-and Sahasrabudhe [CGMS23] who first improved the upper bound below 4.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-34-namespace Erdos335
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-35-
+FormalConjectures/ErdosProblems/335.lean-36-/-- The upper density of $A \subseteq \mathbb{N}$:
+FormalConjectures/ErdosProblems/335.lean:37:$\overline{d}(A) = \limsup_{N\to\infty} |A \cap \{0, 1, \ldots, N-1\}| / N$ -/
+FormalConjectures/ErdosProblems/335.lean-38-noncomputable def upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/335.lean:39:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-40-    Filter.atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/335.lean-41-
+FormalConjectures/ErdosProblems/335.lean-42-/-- The lower density of $A \subseteq \mathbb{N}$:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/821.lean-25-for every $\varepsilon > 0$, there exist infinitely many $n$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/821.lean-26-$g(n) > n^{1 - \varepsilon}$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/821.lean-27-
+FormalConjectures/ErdosProblems/821.lean:28:Pillai proved that $\limsup g(n) = \infty$ and Erdős [Er35b] proved that there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/821.lean-29-exists some constant $c > 0$ such that $g(n) > n^c$ for infinitely many $n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/821.lean-30-The best known bound is $g(n) > n^{0.71568\ldots}$ for infinitely many $n$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/821.lean-31-obtained by Lichtman [Li22].
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-32-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-33-Let $S(n)$ denote the largest integer such that, for all $1 ≤ k < n$, the binomial coefficient
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-34-$\binom{n}{k}$ is divisible by $p^S(n)$ for some prime $p$ (depending on $k$).Then
+FormalConjectures/ErdosProblems/379.lean:35:$\limsup S(n) = \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-37-This was formalized in Lean by Tao.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-38--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-39-@[category research formally solved using lean4 at
+FormalConjectures/ErdosProblems/379.lean-40-"https://github.com/teorth/analysis/blob/main/analysis/Analysis/Misc/erdos_379.lean", AMS 11]
+FormalConjectures/ErdosProblems/379.lean:41:theorem erdos_379 : atTop.limsup (fun n => (S n : ℕ∞)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-42-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean-44-end Erdos379
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/168.lean-82-/-- Is the limit $F(N)/N$ as $N \to \infty$ irrational? -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/168.lean-83-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/168.lean-84-theorem erdos_168.parts.ii : answer(sorry) ↔
+FormalConjectures/ErdosProblems/168.lean:85:    Irrational (Filter.atTop.limsup (fun N => (F N / N : ℝ))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/168.lean-86-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/168.lean-87-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/168.lean-88-/-- The limit $F(N)/N$ as $N \to \infty$ exists. (proved by Graham, Spencer, and Witsenhausen) -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-24-For a meromorphic function $f$, let $n(r,a)$ count the number of roots of $f(z) = a$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-25-in the disc $|z| < r$. Does there exist a meromorphic (or entire) $f$ such that
+FormalConjectures/ErdosProblems/1116.lean:26:for every $a \neq b$, $\limsup_{r\to\infty} n(r,a)/n(r,b) = \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-27-Solved affirmatively by Gol'dberg [Go78] and Toppila [To76].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-29-[Go78] Gol'dberg, A. A., *On the deficiencies of meromorphic functions* (1978).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-46-For a meromorphic function $f$, let $n(r,a)$ count the number of roots of $f(z) = a$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-47-in the disc $|z| < r$. Does there exist a meromorphic (or entire) $f$ such that
+FormalConjectures/ErdosProblems/1116.lean:48:for every $a \neq b$, $\limsup_{r\to\infty} n(r,a)/n(r,b) = \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-50-Gol'dberg and Toppila independently constructed entire functions with this property.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-51-
+FormalConjectures/ErdosProblems/1116.lean:52:The $\limsup = \infty$ condition is expressed multiplicatively: for every $M$ and $R$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-53-there exists $r > R$ with $n(r,a) > M \cdot n(r,b)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-54--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1116.lean-55-@[category research solved, AMS 30]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/656.lean-35-namespace Erdos656
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/656.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/656.lean-37-/-- The upper density of a set $A \subseteq \mathbb{N}$, defined as
+FormalConjectures/ErdosProblems/656.lean:38:$\limsup_{N \to \infty} |A \cap \{0, \ldots, N-1\}| / N$. -/
+FormalConjectures/ErdosProblems/656.lean-39-noncomputable def Nat.upperDensity (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/656.lean:40:  Filter.limsup (fun N : ℕ =>
+FormalConjectures/ErdosProblems/656.lean-41-    ((@Finset.filter _ (· ∈ A) (Classical.decPred (· ∈ A)) (Finset.range N)).card : ℝ) / N) atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/656.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/656.lean-43-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-24-Let $A \subseteq \mathbb{N}$ be a set such that $|A \cap \{1, \ldots, N\}| \gg \log N$ for all large $N$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-25-Let $f(n)$ count the number of solutions to $n = p + a$ for $p$ prime and $a \in A$.
+FormalConjectures/ErdosProblems/237.lean:26:Is it true that $\limsup f(n) = \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-28-The answer is yes, as proved by Chen and Ding [ChDi22]. In fact, the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-29-assumption $|A \cap \{1, \ldots, N\}| \gg \log N$ can be replaced with just the assumption
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-58-Let $A \subseteq \mathbb{N}$ with $|A \cap \{1, \ldots, N\}| \geq c \cdot \log N$ for some $c > 0$ and all
+FormalConjectures/ErdosProblems/237.lean-59-sufficiently large $N$. Let $f(n) = \#\{p \text{ prime} : n - p \in A\}$ count the
+FormalConjectures/ErdosProblems/237.lean:60:representations of $n$ as prime + element of $A$. Then $\limsup f(n) = \infty$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-61-i.e., for every $M$ there exist arbitrarily large $n$ with $f(n) \geq M$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-62--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/237.lean-63-@[category research solved, AMS 11]
+--
+FormalConjectures/ErdosProblems/346.lean-71-theorem erdos_346.example : ∃ A : ℕ → ℕ, IsAddStronglyCompleteNatSeq A ∧
+FormalConjectures/ErdosProblems/346.lean-72-    (∀ B : Set ℕ, B ⊆ range A → B.Infinite → ¬ IsAddComplete (range A \ B)) ∧
+FormalConjectures/ErdosProblems/346.lean-73-    liminf (fun n => A (n + 1) / (2 : ℝ)) atTop = 1 ∧
+FormalConjectures/ErdosProblems/346.lean:74:    limsup (fun n => A (n + 1) / (A n : ENNReal)) atTop = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/346.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/346.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/346.lean-77-end Erdos346
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean-42-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean-44-/--
+FormalConjectures/ErdosProblems/942.lean:45:It is not hard to prove that $\limsup h(n) = \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean-46--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean-47-@[category graduate, AMS 11]
+FormalConjectures/ErdosProblems/942.lean:48:theorem erdos_942.variants.limsup :
+FormalConjectures/ErdosProblems/942.lean:49:    atTop.limsup (((fun (n : ℕ) ↦ (n : ℕ∞)) ∘ erdos_942.h)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean-50-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/942.lean-52-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-34-$a_n/b_n\to 1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-36-If $A+B$ contains all sufficiently large positive integers then is it true that
+FormalConjectures/ErdosProblems/1145.lean:37:$\limsup 1_A\ast 1_B(n)=\infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-38-
+FormalConjectures/ErdosProblems/1145.lean-39-Formalization note: There's some discussion in the comments of [erdosproblems.com/28] and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-40-[erdosproblems.com/1145] about whether or not $0$ should be included in $A$ or $B$ and has been
+--
+FormalConjectures/ErdosProblems/1145.lean-47-  ∀ ⦃A B : Set ℕ⦄ (_ : A.Infinite) (_ : B.Infinite),
+FormalConjectures/ErdosProblems/1145.lean-48-    Tendsto (fun n ↦ (Nat.nth (· ∈ A) n : ℝ) / (Nat.nth (· ∈ B) n : ℝ)) atTop (𝓝 1) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-49-    (∀ᶠ n in atTop, n ∈ A + B) →
+FormalConjectures/ErdosProblems/1145.lean:50:    limsup (fun n => ↑(((𝟙_A ∗ 𝟙_B) : ℕ → ℕ) n)) atTop = (⊤ : ℕ∞)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-52-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-53-Let $A=\{1\leq a_1 < a_2 < \cdots\}$ and $B=\{1\leq b_1 < b_2 < \cdots\}$ be sets of integers with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-54-$a_n/b_n\to 1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-56-If $A+B$ contains all sufficiently large positive integers then is it true that
+FormalConjectures/ErdosProblems/1145.lean:57:$\limsup 1_A\ast 1_B(n)=\infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-59-A conjecture of Erdős and Sárközy.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1145.lean-60--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean-29-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean-30-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean-31-Let $1\leq u_1 < u_2 < \cdots$ be the sequence of integers with at most $2$ prime factors.
+FormalConjectures/ErdosProblems/1139.lean:32:Is it true that $$\limsup_{k \to \infty} \frac{u_{k+1}-u_k}{\log k}=\infty?$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean-33--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean-34-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/1139.lean-35-theorem erdos_1139 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean-36-    answer(sorry) ↔
+FormalConjectures/ErdosProblems/1139.lean-37-      letI u := Nat.nth (fun n ↦ 0 < n ∧ Ω n ≤ 2)
+FormalConjectures/ErdosProblems/1139.lean:38:      atTop.limsup (fun k : ℕ ↦ (((u (k + 1) : ℝ) - (u k : ℝ)) / Real.log (↑k + 1) : EReal)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean-39-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1139.lean-41-end Erdos1139
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/436.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/436.lean-24-For prime $p$ and $k, m \geq 2$, let $r(k,m,p)$ be the minimal $r$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/436.lean-25-$r, r+1, \ldots, r+m-1$ are all $k$-th power residues modulo $p$.
+FormalConjectures/ErdosProblems/436.lean:26:Let $\Lambda(k,m) = \limsup_{p \to \infty} r(k,m,p)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/436.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/436.lean-28-Hildebrand [Hi91] proved that $\Lambda(k,2)$ is finite for all $k \geq 2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/436.lean-29-Graham [Gr64g] proved that $\Lambda(k,\ell) = \infty$ for all $k \geq 2$ and $\ell \geq 4$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-20-# Erdős Problem 1144
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-21-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-22-Let $f$ be a random completely multiplicative function, where for each prime $p$ we independently
+FormalConjectures/ErdosProblems/1144.lean:23:choose $f(p) \in \{-1, 1\}$ uniformly at random. Is it true that the limsup of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-24-$\sum_{m \leq N} f(m) / \sqrt{N}$ is infinite with probability 1?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-25-
+FormalConjectures/ErdosProblems/1144.lean-26-*Reference:* [erdosproblems.com/1144](https://www.erdosproblems.com/1144)
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-57-Let $f$ be a random completely multiplicative function, where for each prime $p$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-58-we independently choose $f(p) \in \{-1, 1\}$ uniformly at random. Is it true that
+FormalConjectures/ErdosProblems/1144.lean:59:$$\limsup_{N \to \infty} \frac{\sum_{m \leq N} f(m)}{\sqrt{N}} = \infty$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-60-with probability 1?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1144.lean-62-This model is sometimes called a Rademacher random multiplicative function.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-24-Let $f(n) = \sum_{p < n} \frac{1}{n - p}$, where the sum is over primes $p < n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-25-
+FormalConjectures/ErdosProblems/950.lean:26:Is it true that $\liminf f(n) = 1$ and $\limsup f(n) = \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-27-Is it true that $f(n) = o(\log \log n)$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-29-This function was considered by de Bruijn, Erdős, and Turán, who showed that
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-56-/--
+FormalConjectures/ErdosProblems/950.lean-57-**Erdős Problem 950** — Part 2 [Er77c]:
+FormalConjectures/ErdosProblems/950.lean:58:Is it true that $\limsup_{n \to \infty} f(n) = \infty$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-59-
+FormalConjectures/ErdosProblems/950.lean-60-Equivalently: for every $M$, there exist arbitrarily large $n$ with $f(n) > M$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-61--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-62-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/950.lean:63:theorem erdos_950.variants.limsup : answer(sorry) ↔
+FormalConjectures/ErdosProblems/950.lean-64-    ∀ M : ℝ, ∀ N₀ : ℕ, ∃ n : ℕ, n ≥ N₀ ∧ f n > M := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-66-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-33-This was disproved by Berkes and Philipp [BePh94], who constructed a sequence
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-34-of integers $x_1 < x_2 < \cdots$ such that, for almost all $\alpha \in [0,1]$,
+FormalConjectures/ErdosProblems/992.lean:35:$$\limsup_{N \to \infty} D(N) / (N \log N)^{1/2} > 0.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-36--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-38-open Filter MeasureTheory Finset
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-92-Berkes and Philipp [BePh94] disproved Erdős Problem 992 by constructing a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-93-strictly increasing sequence of positive integers such that for almost all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-94-$\alpha \in [0,1]$,
+FormalConjectures/ErdosProblems/992.lean:95:$$\limsup_{N \to \infty} D(N) / (N \log N)^{1/2} > 0.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-96--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean-97-@[category research solved, AMS 11 28]
+FormalConjectures/ErdosProblems/992.lean-98-theorem erdos_992.variants.berkes_philipp :
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-32-Let $A\subseteq\mathbb{N}$ be an infinite set such that $|A\cap \{1, ..., N\}| = o(N)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-33-Is it true that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-34-$$
+FormalConjectures/ErdosProblems/245.lean:35:\limsup_{N\to\infty}\frac{|(A + A)\cap \{1, ..., N\}|}{|A \cap \{1, ..., N\}|} \geq 3?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-36-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-38-The answer is yes, proved by Freiman [Fr73].
+--
+FormalConjectures/ErdosProblems/245.lean-43-theorem erdos_245 :
+FormalConjectures/ErdosProblems/245.lean-44-    answer(True) ↔ ∀ (A : Set ℕ), A.Infinite →
+FormalConjectures/ErdosProblems/245.lean-45-      atTop.Tendsto (fun N ↦ (A.interIcc 1 ⌊N⌋₊ |>.ncard : ℝ) / N) (𝓝 0) →
+FormalConjectures/ErdosProblems/245.lean:46:      3 ≤ atTop.limsup
+FormalConjectures/ErdosProblems/245.lean-47-        fun N : ℝ ↦ ((A + A).interIcc 1 ⌊N⌋₊ |>.ncard : EReal) / (A.interIcc 1 ⌊N⌋₊).ncard := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-48-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-49-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-51-Let $A\subseteq\mathbb{N}$ be an infinite set such that $|A\cap \{1, ..., N\}| = o(N)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-52-Then
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-53-$$
+FormalConjectures/ErdosProblems/245.lean:54:\limsup_{N\to\infty}\frac{|(A + A)\cap \{1, ..., N\}|}{|A \cap \{1, ..., N\}|} \geq 2.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-55-$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-56--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-57-@[category research solved, AMS 5 11]
+FormalConjectures/ErdosProblems/245.lean-58-theorem erdos_245.variants.two (A : Set ℕ) (h_inf : A.Infinite)
+FormalConjectures/ErdosProblems/245.lean-59-    (hf : atTop.Tendsto (fun N ↦ (A.interIcc 1 ⌊N⌋₊ |>.ncard : ℝ) / N) (𝓝 0)) :
+FormalConjectures/ErdosProblems/245.lean:60:    2 ≤ atTop.limsup
+FormalConjectures/ErdosProblems/245.lean-61-      fun N : ℝ ↦ ((A + A).interIcc 1 ⌊N⌋₊ |>.ncard : EReal) / (A.interIcc 1 ⌊N⌋₊).ncard := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-62-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/245.lean-63-
+--
+FormalConjectures/ErdosProblems/516.lean-41-  (⨅ z : {z : ℂ // ‖z‖ = r}, ‖f z‖).log / (⨆ z : {z : ℂ // ‖z‖ = r}, ‖f z‖).log
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-43-/-- Let `f = ∑ aₖzⁿₖ` be an entire function of finite order such that `nₖ / k → ∞`.
+FormalConjectures/ErdosProblems/516.lean:44:Then `limsup (fun r => ratio r f) atTop = 1`. This is proved in [Fu63]. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-45-@[category research solved, AMS 30]
+FormalConjectures/ErdosProblems/516.lean:46:theorem erdos_516.limsup_ratio_eq_one_of_hasFabryGaps_ofFiniteOrder {f : ℂ → ℂ} {n : ℕ → ℕ}
+FormalConjectures/ErdosProblems/516.lean-47-    (hn : HasFabryGaps n) {a : ℕ → ℂ} (ha : ∀ n, a n ≠ 0)
+FormalConjectures/ErdosProblems/516.lean-48-    (hfn : ∀ z, HasSum (fun k => a k * z ^ n k) (f z)) (hf : OfFiniteOrder f) :
+FormalConjectures/ErdosProblems/516.lean:49:    limsup (fun r => ratio r f) atTop = 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-50-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-52-/-- Let `f = ∑ aₖzⁿₖ` be an entire function such that `nₖ > k (log k) ^ (2 + c)`.
+FormalConjectures/ErdosProblems/516.lean:53:Then `limsup (fun r => ratio r f) atTop = 1`. This is proved in [Ko65]. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-54-@[category research solved, AMS 30]
+FormalConjectures/ErdosProblems/516.lean:55:theorem erdos_516.limsup_ratio_eq_one {f : ℂ → ℂ} {n : ℕ → ℕ}
+FormalConjectures/ErdosProblems/516.lean-56-    (hn : ∃ c > (0 : ℝ), ∀ k, n k > k * log k ^ (2 + c)) {a : ℕ → ℂ} (ha : ∀ n, a n ≠ 0)
+FormalConjectures/ErdosProblems/516.lean-57-    (hfn : ∀ z, HasSum (fun k => a k * z ^ n k) (f z)) :
+FormalConjectures/ErdosProblems/516.lean:58:    limsup (fun r => ratio r f) atTop = 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-59-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-61-/-- Is it true that for all entire functions `f = ∑ aₖzⁿₖ` such that `∑' 1 / nₖ < ∞`,
+FormalConjectures/ErdosProblems/516.lean:62:`limsup (fun r => ratio r f) atTop = 1`? -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-63-@[category research open, AMS 30]
+FormalConjectures/ErdosProblems/516.lean:64:theorem erdos_516.limsup_ratio_eq_one_of_hasFejerGaps : answer(sorry) ↔
+FormalConjectures/ErdosProblems/516.lean-65-    ∀ {f : ℂ → ℂ} {n : ℕ → ℕ} (hn : HasFejerGaps n) {a : ℕ → ℂ} (ha : ∀ n, a n ≠ 0)
+FormalConjectures/ErdosProblems/516.lean-66-    (hfn : ∀ z, HasSum (fun k => a k * z ^ n k) (f z)),
+FormalConjectures/ErdosProblems/516.lean:67:    limsup (fun r => ratio r f) atTop = 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-68-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean-70-end Erdos516
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/995.lean-23-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/995.lean-24-[Er49d] Erdős, P. (1949) — constructed a lacunary sequence and $f \in L^2([0,1])$ such that, for
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/995.lean-25-every $\varepsilon > 0$, for almost all $\alpha$,
+FormalConjectures/ErdosProblems/995.lean:26:$\limsup_{N \to \infty} \frac{1}{N(\log \log N)^{1/2 - \varepsilon}} \sum_{k \leq N}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/995.lean-27-f(\{\alpha n_k\}) = \infty$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/995.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/995.lean-29-[Er64b] Erdős, P. (1964) — thought that his lower bound was closer to the truth.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean-19-/-!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean-20-# Erdős Problem 933
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean-21-
+FormalConjectures/ErdosProblems/933.lean:22:Erdős asked whether the limsup of the ratio of the {2,3}-smooth part of n(n+1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean-23-to n·log(n) is infinite.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean-24-
+FormalConjectures/ErdosProblems/933.lean-25-*Reference:* [erdosproblems.com/933](https://www.erdosproblems.com/933)
+--
+FormalConjectures/ErdosProblems/933.lean-42-Erdős Problem 933 [Er76d]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean-44-If $n(n+1) = 2^k \cdot 3^l \cdot m$ where $\gcd(m, 6) = 1$, is it true that
+FormalConjectures/ErdosProblems/933.lean:45:$$\limsup_{n \to \infty} \frac{2^k \cdot 3^l}{n \log n} = \infty?$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean-46-
+FormalConjectures/ErdosProblems/933.lean-47-Equivalently: for every $C > 0$, there exist arbitrarily large $n$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/933.lean-48-the $\{2,3\}$-smooth part of $n(n+1)$ exceeds $C \cdot n \cdot \log n$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean-40-and conjectured the lower bound is sharp for $t \geq 4$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean-42-Pikhurko and Verstraëte proved
+FormalConjectures/ErdosProblems/643.lean:43:$1 \leq \limsup_{n\to\infty} f(n;t)/\binom{n}{t-1} \leq \min(7/4, 1+2/\sqrt{t})$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean-44-for all $t \geq 3$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean-46-[Er77b] Erdős, P., _Problems and results on combinatorial number theory III_.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-34-/--
+FormalConjectures/ErdosProblems/333.lean-35-The upper density of $A \subseteq \mathbb{N}$:
+FormalConjectures/ErdosProblems/333.lean:36:$$\overline{d}(A) = \limsup_{N \to \infty} |A \cap \{0, 1, \ldots, N-1\}| / N$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-37--/
+FormalConjectures/ErdosProblems/333.lean-38-noncomputable def upperDensity333 (A : Set ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/333.lean:39:  Filter.limsup (fun N : ℕ => ((Finset.range N).filter (· ∈ A)).card / (N : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-40-    Filter.atTop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/333.lean-42-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-42-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-43-Is it true that
+FormalConjectures/ErdosProblems/890.lean:44:$\limsup_{n\to \infty}\left(\sum_{0\leq i < k}\omega(n+i)\right) \frac{\log\log n}{\log n}=1?$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-45--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-46-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/890.lean-47-theorem erdos_890.parts.b :
+FormalConjectures/ErdosProblems/890.lean:48:    answer(sorry) ↔ ∀ k ≥ 1, limsup (fun n ↦ (∑ i ∈ range k, (ω (n + i) : EReal)) *
+FormalConjectures/ErdosProblems/890.lean-49-      (log (log n) / log n)) atTop = 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-50-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-51-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-62-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-64-/--
+FormalConjectures/ErdosProblems/890.lean:65:It is a classical fact that $\limsup_{n\to \infty}\omega(n)\frac{\log\log n}{\log n}=1.$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-66--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-67-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/890.lean:68:theorem erdos_890.variants.omega_limsup :
+FormalConjectures/ErdosProblems/890.lean:69:    limsup (fun n ↦ (ω n : EReal) * (log (log n) / log n)) atTop = 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-70-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-71-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/890.lean-72-end Erdos890

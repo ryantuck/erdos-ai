@@ -1,0 +1,429 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-42-graph $G$ on $N$ vertices either contains a copy of $H$ as a subgraph or whose
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-43-complement contains a copy of $H$ (equivalently, every 2-colouring of $K_N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-44-contains a monochromatic copy of $H$). -/
+FormalConjectures/ErdosProblems/87.lean:45:noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean-46-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-47-    ContainsSubgraph G H ∨ ContainsSubgraph Gᶜ H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-48-
+FormalConjectures/ErdosProblems/87.lean-49-/-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
+FormalConjectures/ErdosProblems/87.lean:50:noncomputable def diagRamsey (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean-51-  graphRamseyNumber (⊤ : SimpleGraph (Fin k))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-53-/--
+--
+FormalConjectures/ErdosProblems/569.lean-39-/-- The Ramsey number $R(G, H)$: the minimum $N$ such that for any graph $F$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-40-on $\operatorname{Fin} N$, either $G$ embeds in $F$ or $H$ embeds in the complement
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-41-of $F$. -/
+FormalConjectures/ErdosProblems/569.lean:42:noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/569.lean-43-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+FormalConjectures/ErdosProblems/569.lean-44-  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean-45-    Embeds G F ∨ Embeds H Fᶜ}
+--
+FormalConjectures/ErdosProblems/556.lean-45-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/556.lean-46-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-47-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/556.lean:48:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/556.lean-49-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/556.lean-50-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean-51-    (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean-62-contains a monochromatic copy of $G$, i.e., an injective map $f$ from the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean-63-vertices of $G$ into $\operatorname{Fin} N$ that preserves adjacency in $H$ and maps all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean-64-edges to the same color. -/
+FormalConjectures/ErdosProblems/560.lean:65:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/560.lean-66-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/560.lean-67-  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean-68-    Nat.card H.edgeSet = m ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean-50-/-- A finite subset $A$ of $\mathbb{R}^n$ is Euclidean Ramsey if for every $k \geq 1$, there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean-51-exists $d$ such that any $k$-coloring of $\mathbb{R}^d$ contains a monochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/174.lean-52-isometric copy of $A$ (i.e., a copy obtained by a distance-preserving map). -/
+FormalConjectures/ErdosProblems/174.lean:53:def IsEuclideanRamsey (n : ℕ) (A : Finset (EuclideanSpace ℝ (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/174.lean-54-  ∀ k : ℕ, 1 ≤ k →
+FormalConjectures/ErdosProblems/174.lean-55-    ∃ d : ℕ, ∀ f : EuclideanSpace ℝ (Fin d) → Fin k,
+FormalConjectures/ErdosProblems/174.lean-56-      ∃ φ : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin d),
+--
+FormalConjectures/ErdosProblems/546.lean-47-/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin} k$: the minimum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-48-$N$ such that every graph $H$ on $N$ vertices contains a copy of $G$ or its complement
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-49-contains a copy of $G$. -/
+FormalConjectures/ErdosProblems/546.lean:50:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/546.lean-51-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-52-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean-41-    $G$, i.e., an injective map $f$ from the vertices of $G$ into
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean-42-    $\operatorname{Fin} N$ that preserves adjacency in $H$ and maps all edges to the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean-43-    same color. -/
+FormalConjectures/ErdosProblems/911.lean:44:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/911.lean-45-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/911.lean-46-  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean-47-    Nat.card H.edgeSet = m ∧
+--
+FormalConjectures/ErdosProblems/568.lean-36-/-- The Ramsey number $R(G, H)$: the minimum $N$ such that for any graph $F$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean-37-on $\operatorname{Fin} N$, either $G$ embeds in $F$ or $H$ embeds in the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean-38-complement of $F$. -/
+FormalConjectures/ErdosProblems/568.lean:39:noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/568.lean-40-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+FormalConjectures/ErdosProblems/568.lean-41-  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean-42-    Embeds G F ∨ Embeds H Fᶜ}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-39-the edges of $K_N$ yields either a monochromatic triangle in colour $1$ or
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-40-a monochromatic $K_n$ in colour $2$. Equivalently, every simple graph on $N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-41-vertices contains a $3$-clique or its complement contains an $n$-clique. -/
+FormalConjectures/ErdosProblems/553.lean:42:noncomputable def ramseyR3 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean-43-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-44-
+FormalConjectures/ErdosProblems/553.lean-45-/-- The Ramsey number $R(3,3,n)$: the minimum $N$ such that every $3$-colouring of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-49-A $3$-colouring is modelled by two edge-disjoint graphs $G_1$, $G_2$ (the first
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-50-two colour classes); the third colour class is the complement $(G_1 \sqcup G_2)^c$. -/
+FormalConjectures/ErdosProblems/553.lean:51:noncomputable def ramseyR33 (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/553.lean-52-  sInf {N : ℕ | ∀ (G₁ G₂ : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-53-    Disjoint G₁ G₂ →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-54-    ¬G₁.CliqueFree 3 ∨ ¬G₂.CliqueFree 3 ∨ ¬(G₁ ⊔ G₂)ᶜ.CliqueFree n}
+--
+FormalConjectures/ErdosProblems/553.lean-67-theorem erdos_553 :
+FormalConjectures/ErdosProblems/553.lean-68-    ∀ C : ℝ, C > 0 →
+FormalConjectures/ErdosProblems/553.lean-69-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/553.lean:70:      C * (ramseyR3 n : ℝ) ≤ (ramseyR33 n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-71-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean-73-end Erdos553
+--
+FormalConjectures/ErdosProblems/112.lean-55-/-- The directed Ramsey number $k(n,m)$: the minimal $k$ such that every directed graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-56-on $k$ vertices contains either an independent set of size $n$ or a transitive
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-57-tournament of size $m$. -/
+FormalConjectures/ErdosProblems/112.lean:58:noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/112.lean-59-  sInf {k : ℕ | ∀ (V : Type) [Fintype V], Fintype.card V = k →
+FormalConjectures/ErdosProblems/112.lean-60-    ∀ G : Digraph V,
+FormalConjectures/ErdosProblems/112.lean-61-      (∃ S : Finset V, S.card = n ∧ G.IsIndepSet S) ∨
+--
+FormalConjectures/ErdosProblems/1030.lean-39-/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-40-    vertices contains either a $k$-clique or an independent set of size $l$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-41-    (equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1030.lean:42:noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1030.lean-43-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean-45-/--
+--
+FormalConjectures/ErdosProblems/1014.lean-34-/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-35-vertices contains either a $k$-clique or an independent set of size $l$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-36-(equivalently, an $l$-clique in the complement). -/
+FormalConjectures/ErdosProblems/1014.lean:37:noncomputable def ramseyR (k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1014.lean-38-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean-40-/--
+--
+FormalConjectures/ErdosProblems/79.lean-44-/-- The Ramsey property: every 2-coloring of $K_n$ contains $G$ in one color or $H$ in the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-45-    other. A 2-coloring of $K_n$ is a graph $S$ on `Fin n`; one color class is $S$ and the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-46-    other is $S^c$ (the complement). -/
+FormalConjectures/ErdosProblems/79.lean:47:def RamseyProp {p q : ℕ} (G : SimpleGraph (Fin p)) (H : SimpleGraph (Fin q))
+FormalConjectures/ErdosProblems/79.lean-48-    (n : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/79.lean-49-  ∀ S : SimpleGraph (Fin n), IsSubgraphOf G S ∨ IsSubgraphOf H Sᶜ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-50-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-55-/-- A graph $G$ is Ramsey size linear if there exists $C > 0$ such that for every graph $H$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-56-    with no isolated vertices, the Ramsey property $R(G,H)$ holds at some
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-57-    $n \leq C \cdot |E(H)|$. -/
+FormalConjectures/ErdosProblems/79.lean:58:def IsRamseySizeLinear {p : ℕ} (G : SimpleGraph (Fin p)) : Prop :=
+FormalConjectures/ErdosProblems/79.lean-59-  ∃ C : ℝ, C > 0 ∧ ∀ (q : ℕ) (H : SimpleGraph (Fin q)) [DecidableRel H.Adj],
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-60-    NoIsolatedVertices H →
+FormalConjectures/ErdosProblems/79.lean-61-    ∃ n : ℕ, (n : ℝ) ≤ C * (H.edgeFinset.card : ℝ) ∧ RamseyProp G H n
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-44-
+FormalConjectures/ErdosProblems/800.lean-45-/-- The graph Ramsey number $R(G)$: the minimum $N$ such that for every graph $H$ on
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-46-$\text{Fin}(N)$, either $G$ embeds into $H$ or $G$ embeds into $H^c$ as a subgraph. -/
+FormalConjectures/ErdosProblems/800.lean:47:noncomputable def graphRamseyNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/800.lean-48-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)), HasSubgraphCopy G H ∨ HasSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean-50-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean-47-    contains a monochromatic copy of $G$, i.e., an injective map $f$ from the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean-48-    vertices of $G$ into $\text{Fin}\ N$ that preserves adjacency in $H$ and maps all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean-49-    edges to the same color. -/
+FormalConjectures/ErdosProblems/559.lean:50:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/559.lean-51-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/559.lean-52-  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean-53-    Nat.card H.edgeSet = m ∧
+--
+FormalConjectures/ErdosProblems/565.lean-41-$f : V \hookrightarrow [m]$ and a colour $b \in \{0, 1\}$ such that for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean-42-distinct $u, v \in V$, $G$ has edge $\{u, v\}$ if and only if $H$ has edge
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean-43-$\{f(u), f(v)\}$ with colour $b$. -/
+FormalConjectures/ErdosProblems/565.lean:44:noncomputable def inducedRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/565.lean-45-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/565.lean-46-  sInf {m : ℕ | ∃ (H : SimpleGraph (Fin m)),
+FormalConjectures/ErdosProblems/565.lean-47-    ∀ (c : Fin m → Fin m → Bool),
+--
+FormalConjectures/ErdosProblems/183.lean-37-A $k$-colouring is a symmetric function $c : \operatorname{Fin} n \to \operatorname{Fin} n \to \operatorname{Fin} k$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-38-and a monochromatic triangle is three pairwise distinct vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-39-whose three edges all receive the same colour. -/
+FormalConjectures/ErdosProblems/183.lean:40:noncomputable def multicolorRamseyTriangle (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/183.lean-41-  sInf {n : ℕ | ∀ (c : Fin n → Fin n → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean-42-    (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/183.lean-43-    ∃ (a b d : Fin n), a ≠ b ∧ a ≠ d ∧ b ≠ d ∧
+--
+FormalConjectures/ErdosProblems/551.lean-56-/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-57-graph $H$ on $N$ vertices contains a copy of $G_1$ or its complement contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-58-copy of $G_2$. -/
+FormalConjectures/ErdosProblems/551.lean:59:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/551.lean-60-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/551.lean-61-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean-62-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+--
+FormalConjectures/ErdosProblems/165.lean-57-/-- The Ramsey number $R(3,k)$: the minimum $N$ such that every simple graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-58-on $N$ vertices contains either a triangle ($3$-clique) or an independent
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-59-set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/165.lean:60:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/165.lean-61-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-63-/--
+--
+FormalConjectures/ErdosProblems/165.lean-75-theorem erdos_165 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/165.lean-76-    ∃ c : ℝ, 0 < c ∧ ∀ ε : ℝ, 0 < ε →
+FormalConjectures/ErdosProblems/165.lean-77-    ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
+FormalConjectures/ErdosProblems/165.lean:78:      (c - ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) ≤ (ramseyR3 k : ℝ) ∧
+FormalConjectures/ErdosProblems/165.lean:79:      (ramseyR3 k : ℝ) ≤ (c + ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-80-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-81-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-82-end Erdos165
+--
+FormalConjectures/ErdosProblems/547.lean-43-/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin}(k)$: the minimum $N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-44-such that every graph $H$ on $N$ vertices contains a copy of $G$ or its complement contains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-45-a copy of $G$. -/
+FormalConjectures/ErdosProblems/547.lean:46:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/547.lean-47-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-48-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-49-
+--
+FormalConjectures/ErdosProblems/129.lean-51-/-- The generalized Ramsey number $R(n; k, r)$: the smallest $N$ such that for
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-52-every $r$-coloring of the edges of $K_N$, there exists a set of $n$ vertices and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-53-a color $c$ such that the set is $K_k$-free in color $c$. -/
+FormalConjectures/ErdosProblems/129.lean:54:noncomputable def multicolorRamseyNum (n k r : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/129.lean-55-  sInf {N : ℕ | ∀ (χ : EdgeColoring N r),
+FormalConjectures/ErdosProblems/129.lean-56-    ∃ (S : Finset (Fin N)) (c : Fin r),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-57-      S.card = n ∧ IsMonoKkFree χ c k S}
+--
+FormalConjectures/ErdosProblems/552.lean-41-/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-42-graph $H$ on $N$ vertices contains a copy of $G_1$ or its complement contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-43-copy of $G_2$. -/
+FormalConjectures/ErdosProblems/552.lean:44:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/552.lean-45-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/552.lean-46-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-47-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+--
+FormalConjectures/ErdosProblems/1029.lean-45-/-- The diagonal Ramsey number $R(k)$: the minimum $N$ such that for every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-46-symmetric 2-colouring of the edges of $K_N$, there is a monochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-47-clique of size $k$ in some colour. -/
+FormalConjectures/ErdosProblems/1029.lean:48:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1029.lean-49-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/1029.lean-50-    ∃ (b : Bool) (S : Finset (Fin N)), S.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean-51-      ∀ i ∈ S, ∀ j ∈ S, i ≠ j → c i j = b}
+--
+FormalConjectures/ErdosProblems/812.lean-41-/-- The diagonal Ramsey number $R(n) = R(n,n)$: the minimum $N$ such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-42-simple graph on $N$ vertices contains either an $n$-clique or an independent
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-43-set of size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/812.lean:44:noncomputable def diagonalRamsey (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/812.lean-45-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree n ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-47-/--
+--
+FormalConjectures/ErdosProblems/986.lean-57-/-- The Ramsey number $R(k,n)$: the minimum $N$ such that every simple graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-58-on $N$ vertices contains either a $k$-clique or an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-59-size $n$ (an $n$-clique in the complement). -/
+FormalConjectures/ErdosProblems/986.lean:60:noncomputable def ramseyR (k n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/986.lean-61-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean-63-/--
+--
+FormalConjectures/ErdosProblems/558.lean-41-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/558.lean-42-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-43-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/558.lean:44:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/558.lean-45-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/558.lean-46-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean-47-    (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-54-
+FormalConjectures/ErdosProblems/181.lean-55-/-- The diagonal Ramsey number $R(H)$: the minimum $N$ such that for every simple
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-56-graph $G$ on $\operatorname{Fin} N$, either $G$ or $G^c$ contains a copy of $H$. -/
+FormalConjectures/ErdosProblems/181.lean:57:noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/181.lean-58-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-59-    ContainsCopy G H ∨ ContainsCopy Gᶜ H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-54-
+FormalConjectures/ErdosProblems/163.lean-55-/-- The diagonal Ramsey number $R(H)$: the minimum $N$ such that for every simple
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-56-    graph $G$ on $\operatorname{Fin} N$, either $G$ or $G^c$ contains a copy of $H$. -/
+FormalConjectures/ErdosProblems/163.lean:57:noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/163.lean-58-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-59-    containsCopy G H ∨ containsCopy Gᶜ H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-53-    graph $G$ on $N$ vertices either contains a copy of $C_4$ as a subgraph, or the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-54-    complement $G^c$ contains a copy of $K_n$ (i.e., $G$ has an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-55-    size $n$). -/
+FormalConjectures/ErdosProblems/159.lean:56:noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/159.lean-57-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/159.lean-58-    ContainsSubgraph G C4 ∨ ContainsSubgraph Gᶜ (⊤ : SimpleGraph (Fin n))}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-59-
+--
+FormalConjectures/ErdosProblems/550.lean-49-/-- The off-diagonal Ramsey number $R(G_1, G_2)$: the minimum $N$ such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-50-graph $H$ on $N$ vertices contains a copy of $G_1$ or its complement contains a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-51-copy of $G_2$. -/
+FormalConjectures/ErdosProblems/550.lean:52:noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/550.lean-53-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/550.lean-54-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-55-    ContainsSubgraphCopy G₁ H ∨ ContainsSubgraphCopy G₂ Hᶜ}
+--
+FormalConjectures/ErdosProblems/1015.lean-68-/-- The 2-colour Ramsey number $R(s, t)$: the minimum $N$ such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-69-symmetric 2-colouring of the edges of $K_N$ contains a monochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean-70-clique of size $s$ in one colour or of size $t$ in the other. -/
+FormalConjectures/ErdosProblems/1015.lean:71:noncomputable def ramseyNumber₂ (s t : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1015.lean-72-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/1015.lean-73-    (∃ S : Finset (Fin N), S.card = s ∧ IsMonoClique N c S false) ∨
+FormalConjectures/ErdosProblems/1015.lean-74-    (∃ S : Finset (Fin N), S.card = t ∧ IsMonoClique N c S true)}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean-39-all sufficiently large natural numbers can be represented as a sum of distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean-40-elements of $A$ that all receive the same color.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean-41--/
+FormalConjectures/ErdosProblems/55.lean:42:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/55.lean-43-  ∀ (χ : ℕ → Fin r),
+FormalConjectures/ErdosProblems/55.lean-44-    ∃ N₀ : ℕ, ∀ n ≥ N₀,
+FormalConjectures/ErdosProblems/55.lean-45-      ∃ (S : Finset ℕ), (↑S : Set ℕ) ⊆ A ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean-38-all sufficiently large natural numbers can be represented as a sum of distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean-39-elements of $A$ that all receive the same color.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean-40--/
+FormalConjectures/ErdosProblems/54.lean:41:def IsRamsey2Complete (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/54.lean-42-  ∀ (χ : ℕ → Fin 2),
+FormalConjectures/ErdosProblems/54.lean-43-    ∃ N₀ : ℕ, ∀ n ≥ N₀,
+FormalConjectures/ErdosProblems/54.lean-44-      ∃ (S : Finset ℕ), (↑S : Set ℕ) ⊆ A ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-66-    of $H$ contains a monochromatic copy of $G$, i.e., an injective map $f$ from the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-67-    vertices of $G$ into $\operatorname{Fin} N$ that preserves adjacency in $H$ and maps all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-68-    edges to the same color. -/
+FormalConjectures/ErdosProblems/720.lean:69:noncomputable def sizeRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/720.lean-70-    (G : SimpleGraph V) : ℕ :=
+FormalConjectures/ErdosProblems/720.lean-71-  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean-72-    Nat.card H.edgeSet = m ∧
+--
+FormalConjectures/ErdosProblems/545.lean-45-/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin}(k)$: the minimum
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-46-$N$ such that every graph $H$ on $N$ vertices contains a copy of $G$ or its complement
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-47-contains a copy of $G$. -/
+FormalConjectures/ErdosProblems/545.lean:48:noncomputable def ramseyNumber {k : ℕ} (G : SimpleGraph (Fin k)) : ℕ :=
+FormalConjectures/ErdosProblems/545.lean-49-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-50-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean-51-
+--
+FormalConjectures/ErdosProblems/554.lean-44-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-45-\operatorname{Fin} k$. A monochromatic copy of $G$ in colour $a$ is an injective map
+FormalConjectures/ErdosProblems/554.lean-46-$f : V \to \operatorname{Fin} N$ such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/554.lean:47:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/554.lean-48-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/554.lean-49-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean-50-    (∀ i j, c i j = c j i) →
+--
+FormalConjectures/ErdosProblems/549.lean-50-/-- The diagonal Ramsey number $R(G)$ for a graph $G$ on $\operatorname{Fin}(m)$: the minimum $N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-51-such that every graph $H$ on $N$ vertices contains a copy of $G$ or its complement contains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-52-a copy of $G$. -/
+FormalConjectures/ErdosProblems/549.lean:53:noncomputable def ramseyNumber {m : ℕ} (G : SimpleGraph (Fin m)) : ℕ :=
+FormalConjectures/ErdosProblems/549.lean-54-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-55-    ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-56-
+--
+FormalConjectures/ErdosProblems/557.lean-38-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/557.lean-39-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-40-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/557.lean:41:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/557.lean-42-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/557.lean-43-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean-44-    (∀ i j, c i j = c j i) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-40-
+FormalConjectures/ErdosProblems/570.lean-41-/-- The Ramsey number $R(G, H)$: the minimum $N$ such that for any graph $F$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-42-on $\operatorname{Fin} N$, either $G$ embeds in $F$ or $H$ embeds in the complement of $F$. -/
+FormalConjectures/ErdosProblems/570.lean:43:noncomputable def ramseyNum {V W : Type*}
+FormalConjectures/ErdosProblems/570.lean-44-    (G : SimpleGraph V) (H : SimpleGraph W) : ℕ :=
+FormalConjectures/ErdosProblems/570.lean-45-  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean-46-    Embeds G F ∨ Embeds H Fᶜ}
+--
+FormalConjectures/ErdosProblems/561.lean-47-/-- The two-color size Ramsey number $\hat{R}(G_1, G_2)$: the minimum number of edges in
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-48-a graph $H$ such that for every 2-coloring of the edges of $H$, either color 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-49-contains a copy of $G_1$ or color 2 contains a copy of $G_2$. -/
+FormalConjectures/ErdosProblems/561.lean:50:noncomputable def twoColorSizeRamseyNumber {V₁ V₂ : Type*} [Fintype V₁] [Fintype V₂]
+FormalConjectures/ErdosProblems/561.lean-51-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/561.lean-52-  sInf {m : ℕ | ∃ (n : ℕ) (H : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean-53-    H.edgeSet.ncard = m ∧
+--
+FormalConjectures/ErdosProblems/544.lean-38-/-- The Ramsey number $R(3,k)$: the minimum $N$ such that every simple graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-39-on $N$ vertices contains either a triangle ($3$-clique) or an independent
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-40-set of size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/544.lean:41:noncomputable def ramseyR3 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/544.lean-42-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-44-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-51--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-52-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/544.lean-53-theorem erdos_544 :
+FormalConjectures/ErdosProblems/544.lean:54:    Tendsto (fun k : ℕ => (ramseyR3 (k + 1) : ℤ) - (ramseyR3 k : ℤ))
+FormalConjectures/ErdosProblems/544.lean-55-      atTop atTop := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-56-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-57-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-63--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-64-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/544.lean-65-theorem erdos_544.variants.little_o : answer(sorry) ↔
+FormalConjectures/ErdosProblems/544.lean:66:    Tendsto (fun k : ℕ => ((ramseyR3 (k + 1) : ℝ) - (ramseyR3 k : ℝ)) / (k : ℝ))
+FormalConjectures/ErdosProblems/544.lean-67-      atTop (nhds 0) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-68-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean-69-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-47-/-- A graph $G$ on $n$ vertices is "not Ramsey for $K_3$" if there exists a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-48-2-colouring of its edges with no monochromatic triangle. Equivalently,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-49-there is a subgraph $H \leq G$ such that both $H$ and $G \setminus H$ are triangle-free. -/
+FormalConjectures/ErdosProblems/925.lean:50:def IsNotRamseyForTriangle {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/925.lean-51-  ∃ H : SimpleGraph (Fin n), H ≤ G ∧ H.CliqueFree 3 ∧ (G \ H).CliqueFree 3
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/925.lean-53-/--
+--
+FormalConjectures/ErdosProblems/615.lean-65-/-- The Ramsey-Turán number $\mathrm{rt}(n; k, \ell)$: the maximum number of edges in a graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-66-    on $n$ vertices that contains no $k$-clique and has no independent set of size
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-67-    $\geq \ell$. Returns $0$ if no such graph exists. -/
+FormalConjectures/ErdosProblems/615.lean:68:noncomputable def ramseyTuranNumber (n k ℓ : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/615.lean-69-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-70-    G.edgeFinset.card = m ∧ G.CliqueFree k ∧
+FormalConjectures/ErdosProblems/615.lean-71-    ∀ S : Finset (Fin n), IsIndependentSet G S → S.card < ℓ}
+--
+FormalConjectures/ErdosProblems/77.lean-48-/-- The diagonal Ramsey number $R(k)$: the minimum $N$ such that for every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-49-symmetric 2-colouring of the edges of $K_N$, there is a monochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-50-clique of size $k$ in some colour. -/
+FormalConjectures/ErdosProblems/77.lean:51:noncomputable def diagonalRamseyNumber (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/77.lean-52-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+FormalConjectures/ErdosProblems/77.lean-53-    ∃ (b : Bool) (S : Finset (Fin N)), S.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean-54-      ∀ i ∈ S, ∀ j ∈ S, i ≠ j → c i j = b}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/843.lean-31-/-- A set $A \subseteq \mathbb{N}$ is Ramsey $r$-complete if for every $r$-colouring of $A$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/843.lean-32-every sufficiently large natural number can be written as a sum of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/843.lean-33-distinct monochromatic elements of $A$. -/
+FormalConjectures/ErdosProblems/843.lean:34:def IsRamseyComplete (A : Set ℕ) (r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/843.lean-35-  ∀ c : ℕ → Fin r, ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/843.lean-36-    ∃ (S : Finset ℕ) (a : Fin r),
+FormalConjectures/ErdosProblems/843.lean-37-      (↑S : Set ℕ) ⊆ A ∧
+--
+FormalConjectures/ErdosProblems/555.lean-49-A $k$-colouring is a symmetric function $c : \operatorname{Fin} N \to \operatorname{Fin} N \to \operatorname{Fin} k$.
+FormalConjectures/ErdosProblems/555.lean-50-A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-51-such that every edge of $G$ maps to an edge of colour $a$. -/
+FormalConjectures/ErdosProblems/555.lean:52:noncomputable def multicolorRamseyNumber {V : Type*} [Fintype V]
+FormalConjectures/ErdosProblems/555.lean-53-    (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/555.lean-54-  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean-55-    (∀ i j, c i j = c j i) →
+--
+FormalConjectures/ErdosProblems/166.lean-52-/-- The Ramsey number $R(4,k)$: the minimum $N$ such that every simple graph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-53-on $N$ vertices contains either a $4$-clique or an independent set of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-54-size $k$ (a $k$-clique in the complement). -/
+FormalConjectures/ErdosProblems/166.lean:55:noncomputable def ramseyR4 (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/166.lean-56-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-58-/--

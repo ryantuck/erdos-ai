@@ -1,0 +1,424 @@
+FormalConjectures/GreensOpenProblems/35.lean:33:  A. Cloninger and S. Steinerberger, *On suprema of autoconvolutions with an application to Sidon
+FormalConjectures/GreensOpenProblems/2.lean:32:  sum-free sets via large Sidon sets. Colloq. Math., 86(2):171–176, 2000.
+ai-review/131.md:11:- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides foundational `IsSumFree` and `IsSidon` definitions, but nothing directly reusable for `IsNonDividing`.
+ai-review/437.md:5:No directly reusable code was found in `FormalConjecturesForMathlib/`. The problem concerns multiplicative partial products and perfect squares, which is distinct from the additive combinatorics infrastructure (sum-free sets, Sidon sets, additive bases) that dominates the shared library. The `IsSquare` predicate comes from Mathlib. The custom definitions `partialProd` and `squareCount` are specific to this problem and appropriately self-contained.
+ai-review/425.md:9:**Additive Sidon sets:** `FormalConjecturesForMathlib/Combinatorics/Basic.lean` defines `IsSidon` for additive Sidon sets. Problem 425's `IsMultB2` is the multiplicative analogue. These are structurally different enough (additive vs. multiplicative, `Set` vs. `Finset`, commutativity handling) that reuse is not practical. Defining a local `IsMultB2` is appropriate.
+ai-review/425.md:17:**`IsMultBr` and Problem 786:** Problem 786 defines `Set.IsMulCardSet` which tests whether two finsets with equal `Finset.prod id` have equal cardinalities — a related but distinct concept. Problem 425's `IsMultBr` (equal products ⟹ equal subsets, for fixed-size subsets) is the correct definition for r-fold multiplicative Sidon sets and cannot be replaced by 786's definition.
+ai-review/425.md:39:2. **r-fold generalization** (`erdos_425.variants.part2`): Upper bound `|A| ≤ π(n) + O(n^{(r+1)/(2r)})` for r-multiplicative Sidon sets.
+ai-review/425.md:98:**Mathematical content is correct:** The bound `|A| ≤ π(n) + C · n^{(r+1)/(2r)}` for all r-multiplicative Sidon sets A ⊆ {1,…,n} is a faithful formalization of the O-notation bound.
+ai-review/772.md:7:[Omitted long matching line]
+ai-review/772.md:37:        ∀ S : Finset ℕ, S ⊆ A → IsSidonSet S → (S.card : ℝ) ≤ C * (n : ℝ) ^ ((2 : ℝ) / 3)
+ai-review/772.md:61:- The Sidon set property is a well-defined combinatorial condition.
+ai-review/772.md:71:- **`IsSidonSet`**: Correctly captures the B₂ property — all pairwise sums distinct, accounting for the commutativity of addition (the two disjuncts handle the case $\{a,b\} = \{c,d\}$ as multisets). ✓
+ai-review/772.md:75:- **`erdos_772`**: The statement "for all $k \geq 1$, for all $C > 0$, eventually every $n$-element set with rep bounded by $k$ contains a Sidon subset of size $\geq C \sqrt{n}$" is a correct formalization of "$H_k(n)/\sqrt{n} \to \infty$." The `answer(True) ↔` wrapper correctly reflects that the answer is affirmative. ✓
+ai-review/772.md:87:| Code reuse | `IsSidonSet` should use `IsSidon` from `FormalConjecturesForMathlib`; `addRepCount` is acceptable but related to `sumRep` |
+ai-review/476.md:19:No other reuse opportunities from `FormalConjecturesForMathlib` were identified — the existing additive combinatorics infrastructure (Sidon sets, sum-free sets, convolutions, bases) does not directly apply to this restricted sumset cardinality bound.
+ai-review/157.md:7:- **`IsInfiniteSidonSet`** duplicates `IsSidon` from `FormalConjecturesForMathlib/Combinatorics/Basic.lean:38`. The existing `IsSidon` is generic over any `Set α` and has the same Sidon property. The formalization could replace `IsInfiniteSidonSet A` with `Set.Infinite A ∧ IsSidon A`.
+ai-review/157.md:11:Additionally, the `IsSidon` definition already has supporting infrastructure: `IsSidon.subset`, `IsSidon.insert`, and `IsSidon.avoids_isAPOfLength_three`.
+ai-review/157.md:19:- **[ESS94]**: `Erdős, P., Sárközy, A. and Sós, V. T., *On sum sets of Sidon sets*. J. Number Theory (1994).` — Matches the website's [ESS94] tag. Appears correct.
+ai-review/157.md:21:- **[Pi23]**: `Pilatte, C., *Sidon sets are asymptotic bases of order 3*. (2023).` — Matches the website's citation for the solution. Appears correct.
+ai-review/157.md:29:The problem as stated on [erdosproblems.com/157](https://www.erdosproblems.com/157) is a single yes/no question: "Does there exist an infinite Sidon set which is an asymptotic basis of order 3?" The website does not list additional variants or sub-problems.
+ai-review/157.md:44:The problem is **unambiguously formalizable**. All constituent concepts (Sidon set, asymptotic basis of order k, infinite set) have standard, well-established mathematical definitions. The question is a simple existence question with a known affirmative answer. There is no ambiguity in the statement.
+ai-review/157.md:54:- **Sidon set definition**: The condition `a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)` correctly captures that all pairwise sums are distinct up to commutativity. This correctly handles the case `a = b` (i.e., sums of the form `2a`). This is the standard definition.
+ai-review/157.md:58:- **Theorem statement**: `answer(True) ↔ ∃ A : Set ℕ, IsInfiniteSidonSet A ∧ IsAsymptoticBasisOrder3 A` correctly encodes the affirmative answer (proved by Pilatte). The `answer(True)` on the left side and the existential on the right correctly model a "yes" to the existence question.
+ai-review/157.md:68:| Code reuse | Two definitions should be replaced by existing library versions (`IsSidon`, `IsAsymptoticAdditiveBasisOfOrder`) |
+ai-review/490.md:11:Problem 425 (`FormalConjectures/ErdosProblems/425.lean`) defines `IsMultB2`, which captures multiplicative Sidon sets — sets where all pairwise products `a * b` (with `a < b`) are distinct. The website for Problem 490 explicitly lists Problem 425 as related.
+ai-review/490.md:15:Additionally, the additive analog `IsSidon` is defined in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` (line 38). The existing `HasDistinctProducts` follows a similar 4-quantifier pattern to `IsSidon`, which is good for consistency.
+ai-review/490.md:17:**No immediate code that can be directly reused**, but cross-references to Problem 425 and `IsSidon` would be beneficial.
+ai-review/490.md:58:- **`HasDistinctProducts` definition:** The 4-quantifier style (`∀ a₁ ∈ A, ∀ b₁ ∈ B, ∀ a₂ ∈ A, ∀ b₂ ∈ B`) is clear and follows the pattern used by `IsSidon` and `IsMultB2` elsewhere. This is good.
+ai-review/530.md:7:[Omitted long matching line]
+ai-review/530.md:9:Similarly, `maxSidonSubsetSize` (lines 53–54) uses `sSup` over a set description, while `FormalConjecturesForMathlib/Combinatorics/Basic.lean` (lines 131–132) provides `Finset.maxSidonSubsetCard` using `sup` over the powerset — a computable, well-defined alternative. The 530.lean version could be replaced with this Mathlib-integrated version (after generalizing from `ℕ` to `ℝ`, or noting the Mathlib version is already generic in `α`).
+ai-review/530.md:21:- **[AlEr85]** — Alon and Erdős, who posed a stronger conjecture about decomposing any set into at most $(1+o(1))N^{1/2}$ Sidon sets.
+ai-review/530.md:33:- **Alon–Erdős stronger conjecture [AlEr85]:** Any set $A$ of size $N$ can be decomposed into at most $(1+o(1))N^{1/2}$ Sidon sets. This is a strictly stronger statement (decomposition into few Sidon sets implies a large Sidon subset, but not conversely). This could be formalized as a separate theorem or added as a variant.
+ai-review/530.md:41:- The definition names (`IsSidonSet`, `maxSidonSubsetSize`, `sidonSubsetNumber`) are descriptive and follow a logical progression from local property → extremal quantity → minimax quantity.
+ai-review/530.md:45:- The docstring on `IsSidonSet` says "all pairwise sums are distinct" in parentheses, which is a good informal gloss.
+ai-review/530.md:54:The definition of $\ell(N)$ is also unambiguous: it is the minimax quantity — the minimum over all $N$-element sets $A \subset \mathbb{R}$ of the maximum size of a Sidon subset of $A$. The Sidon property itself (all pairwise sums distinct) is completely precise.
+ai-review/530.md:56:[Omitted long matching line]
+ai-review/530.md:64:- **`IsSidonSet`** (lines 48–50): Correctly captures the Sidon property. For all $a, b, c, d \in S$ with $a + b = c + d$, we have $\{a, b\} = \{c, d\}$ (expressed as the disjunction of the two possible equalities). This is the standard definition.
+ai-review/530.md:66:- **`maxSidonSubsetSize`** (lines 53–54): Uses `sSup` on `ℕ`, which in Mathlib returns 0 for empty or unbounded sets. The set $\{k \mid \exists S \subseteq A, \text{IsSidonSet}(S) \wedge |S| = k\}$ is always non-empty (the empty set is vacuously Sidon, contributing $k = 0$) and bounded above by $|A|$. So `sSup` correctly returns the maximum. **Sound.**
+ai-review/530.md:68:- **`sidonSubsetNumber`** (lines 59–60): Uses `sInf` on `ℕ`, which in Mathlib returns 0 for empty sets and the minimum otherwise. The set $\{m \mid \exists A, |A| = N \wedge \text{maxSidonSubsetSize}(A) = m\}$ is non-empty for all $N$ (any $N$-element subset of $\mathbb{R}$ witnesses some value of $m$). So `sInf` correctly returns the minimum. **Sound.**
+ai-review/530.md:78:The composition of `sSup` (in `maxSidonSubsetSize`) and `sInf` (in `sidonSubsetNumber`) correctly produces the minimax quantity $\ell(N) = \min_{|A|=N} \max_{S \subseteq A, S \text{ Sidon}} |S|$. However, both rely on `ℕ`'s conditional completeness. In a proof, one would need to establish that these sets are non-empty and (for `sSup`) bounded above, which is straightforward but worth noting.
+ai-review/186.md:10:- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides `IsSumFree`, `IsSidon`, and `Finset.maxSidonSubsetCard` — related additive combinatorics definitions, but none directly reusable for `IsNonAveraging`.
+FormalConjectures/ErdosProblems/862.lean:24:Let $A_1(N)$ be the number of maximal Sidon subsets of $\{1,\ldots,N\}$. Is it true that
+FormalConjectures/ErdosProblems/862.lean:30:They prove that the number of Sidon sets in $\{1,\ldots,N\}$ is at least
+FormalConjectures/ErdosProblems/862.lean:31:$2^{(1.16+o(1))N^{1/2}}$. Since each Sidon set is contained in a maximal Sidon set, and each
+FormalConjectures/ErdosProblems/862.lean:32:maximal Sidon set contains at most $2^{(1+o(1))N^{1/2}}$ Sidon subsets, it follows that
+FormalConjectures/ErdosProblems/862.lean:39:[SaTh15] Saxton, D. and Thomason, A., *The number of Sidon sets and the maximum size
+FormalConjectures/ErdosProblems/862.lean:40:of Sidon sets contained in a sparse random set of integers*, Random Structures & Algorithms
+FormalConjectures/ErdosProblems/862.lean:48:/-- A finite set of natural numbers is a Sidon set if all pairwise sums are distinct. -/
+FormalConjectures/ErdosProblems/862.lean:49:def IsSidonSet (S : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/862.lean:53:/-- A Sidon subset of $\{1,\ldots,N\}$ is maximal if no element of $\{1,\ldots,N\}$ can be added
+FormalConjectures/ErdosProblems/862.lean:54:while keeping it Sidon. -/
+FormalConjectures/ErdosProblems/862.lean:55:def IsMaximalSidonIn (S : Finset ℕ) (N : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/862.lean:56:  S ⊆ Icc 1 N ∧ IsSidonSet S ∧
+FormalConjectures/ErdosProblems/862.lean:57:    ∀ x ∈ Icc 1 N, x ∉ S → ¬IsSidonSet (S ∪ {x})
+FormalConjectures/ErdosProblems/862.lean:59:/-- $A_1(N)$ is the number of maximal Sidon subsets of $\{1,\ldots,N\}$. -/
+FormalConjectures/ErdosProblems/862.lean:60:noncomputable def countMaximalSidon (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/862.lean:61:  ((Icc 1 N).powerset.filter (fun S => IsMaximalSidonIn S N)).card
+FormalConjectures/ErdosProblems/862.lean:72:      (countMaximalSidon N : ℝ) ≥ (2 : ℝ) ^ ((0.16 : ℝ) * (N : ℝ) ^ ((1 : ℝ) / 2)) := by
+FormalConjectures/ErdosProblems/862.lean:83:      (countMaximalSidon N : ℝ) > (2 : ℝ) ^ ((N : ℝ) ^ c) := by
+ai-review/519.md:5:No directly reusable code was found in `FormalConjecturesForMathlib`. Problem 519 concerns complex-analytic power sums, which is distinct from the additive combinatorics infrastructure (sum-free sets, Sidon sets, sumsets, Schur numbers, etc.) that constitutes the bulk of the existing codebase. The formalization is self-contained and appropriately so.
+ai-review/47.md:18:- **[Bl21]** Bloom, T., *On a result of Schur and Sidon*. Preprint (2021).
+ai-review/47.md:28:**Recommendation**: The Bloom citation title appears incorrect. The paper *On a result of Schur and Sidon* is not the relevant Bloom paper. The correct reference is likely:
+ai-review/47.md:79:2. **Bloom citation is likely incorrect**: As noted above, the cited paper title "*On a result of Schur and Sidon*" does not match the standard reference for this result. The correct paper is "*On a density conjecture about unit fractions*" (arXiv:2112.03726). This same paper is correctly cited in Problem 298.
+ai-review/52.md:12:- `Combinatorics/Basic.lean` defines `IsSumFree`, `IsSidon` — not directly relevant here.
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:36:/-- A Sidon set is a set, such that such that all pairwise sums of elements are distinct apart from
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:38:def IsSidon (A : Set α) : Prop := ∀ᵉ (i₁ ∈ A) (j₁ ∈ A) (i₂ ∈ A) (j₂ ∈ A),
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:43:lemma IsSidon.avoids_isAPOfLength_three {A : Set ℕ} (hA : IsSidon A)
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:61:theorem IsSidon.subset {A B : Set α} (hB : IsSidon B) (hAB : A ⊆ B) : IsSidon A :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:64:theorem IsSidon.insert {A : Set α} {m : α} [IsRightCancelAdd α] [IsLeftCancelAdd α]
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:65:    (hA : IsSidon A) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:66:    IsSidon (A ∪ {m}) ↔ (m ∈ A ∨ ∀ᵉ (a ∈ A) (b ∈ A), m + m ≠ a + b ∧ ∀ c ∈ A, m + a ≠ b + c) := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:96:Maximal Sidon sets in an interval.
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:98:We follow the convention that `IsMaximalSidonSetIn A N` means `A ⊆ {1, …, N}` is Sidon and
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:99:is inclusion-maximal among subsets of `Set.Icc 1 N` with the Sidon property.
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:102:/-- `IsMaximalSidonSetIn A N` means `A ⊆ {1, …, N}` is Sidon and cannot be extended within
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:103:`{1, …, N}` while remaining Sidon. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:104:def IsMaximalSidonSetIn (A : Set ℕ) (N : ℕ) : Prop :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:105:  A ⊆ Set.Icc 1 N ∧ IsSidon A ∧
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:106:    ∀ ⦃x : ℕ⦄, x ∈ Set.Icc 1 N → x ∉ A → ¬ IsSidon (A ∪ {x})
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:108:namespace IsMaximalSidonSetIn
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:110:/-- If `A` is a maximal Sidon set in `{1, …, N}`, then `A ⊆ {1, …, N}`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:111:theorem subset {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:114:/-- If `A` is a maximal Sidon set in `{1, …, N}`, then `A` is Sidon. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:115:theorem isSidon {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) : IsSidon A := hA.2.1
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:118:theorem maximal {A : Set ℕ} {N : ℕ} (hA : IsMaximalSidonSetIn A N) {x : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:119:    (hx : x ∈ Set.Icc 1 N) (hxA : x ∉ A) : ¬ IsSidon (A ∪ {x}) := hA.2.2 hx hxA
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:121:end IsMaximalSidonSetIn
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:127:instance (A : Finset α) [DecidableEq α] : Decidable (IsSidon (A : Set α)) :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:130:/-- The maximum size of a Sidon set in the supplied `Finset`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:131:def maxSidonSubsetCard (A : Finset α) [DecidableEq α] : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:132:  (A.powerset.filter fun B : Finset α ↦ IsSidon (B : Set α)).sup Finset.card
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:134:/-- If `A` is finite Sidon, then `A ∪ {s}` is also Sidon provided `s ≥ A.max + 1`. -/
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:135:theorem IsSidon.insert_ge_max' {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) {s : ℕ}
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:137:    IsSidon (A ∪ {s}) := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:143:  exact (IsSidon.insert hA).2 <| by simpa [this] using fun a ha b hb ↦
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:146:theorem IsSidon.exists_insert {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:147:    ∃ m ∉ A, IsSidon (A ∪ {m}) := by
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:152:theorem IsSidon.exists_insert_ge {A : Finset ℕ} (h : A.Nonempty) (hA : IsSidon (A : Set ℕ)) (s : ℕ) :
+FormalConjecturesForMathlib/Combinatorics/Basic.lean:153:    ∃ m ≥ s, m ∉ A ∧ IsSidon (A ∪ {m}) := by
+ai-review/690.md:5:No directly reusable code from `FormalConjecturesForMathlib/` was identified. The problem concerns natural densities of integers filtered by their k-th smallest prime factor, which is a specialized number-theoretic concept not covered by the existing additive combinatorics utilities (e.g., `sumConv`, `sumRep`, `IsSidon`, `IsAddComplete`). The custom definitions `sortedPrimeFactors`, `kthSmallestPrimeFactor`, `countKthPrimeFactor`, and `IsUnimodalOnPrimes` are appropriately purpose-built.
+ai-review/241.md:9:The codebase has substantial Sidon set (B₂ set) infrastructure in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`:
+ai-review/241.md:11:- `IsSidon` — the standard pairwise-sum-distinctness predicate
+ai-review/241.md:12:- `maxSidonSubsetCard` — maximum cardinality of a Sidon subset of a given finset
+ai-review/241.md:15:Problem 30 (`ErdosProblems/30.lean`) defines `h(N) := Finset.maxSidonSubsetCard (Finset.Icc 1 N)` and directly reuses this infrastructure.
+ai-review/241.md:17:**Problem 241 does not reuse any of this.** It defines its own `f` function from scratch using a multiset-based filter on `(Icc 1 N).powerset`. While this is justified for general `r` (since no B_h infrastructure exists for h > 2), the variant `erdos_241.variants.r_eq_2` asserts `BoseChowlaConjecture 2`, which is mathematically equivalent to a statement about `maxSidonSubsetCard`. It would be cleaner to either:
+ai-review/241.md:20:- Add a bridging lemma showing `f N 2 = Erdos30.h N` (i.e., that the multiset definition at r=2 coincides with `maxSidonSubsetCard`).
+ai-review/241.md:22:This would connect the two formalizations and avoid silently duplicating the Sidon concept under a different definition.
+ai-review/241.md:24:**Recommendation:** Add a lemma or comment connecting `f N 2` to `maxSidonSubsetCard (Icc 1 N)`.
+ai-review/241.md:125:Claims `BoseChowlaConjecture 2`, i.e., `f N 2 ~ N^{1/2}`. This is the classical Sidon set result and is correctly marked as solved. However, as noted in §1, there is no formal connection to the `IsSidon`/`maxSidonSubsetCard` infrastructure used in Problem 30. The two definitions are mathematically equivalent but this equivalence is not established in the code. This is **not an error**, but is a missed opportunity for coherence. ✅ (correct but isolated)
+ai-review/241.md:137:| Code reuse | Could connect `f N 2` to existing `IsSidon`/`maxSidonSubsetCard` |
+ai-review/296.md:34:[Omitted long matching line]
+FormalConjectures/ErdosProblems/156.lean:24:A question of Erdős, Sárközy, and Sós [ESS94]. Ruzsa [Ru98b] constructed a maximal Sidon set
+FormalConjectures/ErdosProblems/156.lean:38:/-- A finite set of natural numbers is a Sidon set (also called a $B_2$ set) if all
+FormalConjectures/ErdosProblems/156.lean:41:def IsSidonSet (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/156.lean:45:/-- A Sidon set $A \subseteq \{0, \ldots, N-1\}$ is maximal (in $\{0, \ldots, N-1\}$) if no
+FormalConjectures/ErdosProblems/156.lean:46:element of $\{0, \ldots, N-1\} \setminus A$ can be added to $A$ while preserving the Sidon
+FormalConjectures/ErdosProblems/156.lean:48:def IsMaximalSidonSet (N : ℕ) (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/156.lean:50:  IsSidonSet A ∧
+FormalConjectures/ErdosProblems/156.lean:51:  ∀ n ∈ Finset.range N, n ∉ A → ¬IsSidonSet (insert n A)
+FormalConjectures/ErdosProblems/156.lean:56:Does there exist a maximal Sidon set $A \subset \{1, \ldots, N\}$ of size $O(N^{1/3})$?
+FormalConjectures/ErdosProblems/156.lean:58:The greedy algorithm produces a maximal Sidon set of size $\gg N^{1/3}$ (this is known).
+FormalConjectures/ErdosProblems/156.lean:59:Ruzsa [Ru98b] constructed a maximal Sidon set of size $\ll (N \log N)^{1/3}$, which is
+FormalConjectures/ErdosProblems/156.lean:63:there exists a maximal Sidon set $A \subseteq \{0, \ldots, N-1\}$ with
+FormalConjectures/ErdosProblems/156.lean:70:        ∃ A : Finset ℕ, IsMaximalSidonSet N A ∧
+FormalConjectures/ErdosProblems/864.lean:34:[ErFr91] Erdős, P. and Freud, R., *On Sidon-sequences and related problems*, 1991.
+FormalConjectures/ErdosProblems/864.lean:45:/-- A set $A$ is *almost Sidon* if at most one integer $n$ has more than one
+FormalConjectures/ErdosProblems/864.lean:47:def IsAlmostSidon (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/864.lean:51:/-- The maximum size of an almost Sidon subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/864.lean:52:noncomputable def maxAlmostSidonCard (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/864.lean:53:  ((Finset.Icc 1 N).powerset.filter IsAlmostSidon).sup Finset.card
+FormalConjectures/ErdosProblems/864.lean:64:    (maxAlmostSidonCard N : ℝ) ≤ (2 / Real.sqrt 3 + ε) * Real.sqrt (N : ℝ)) := by
+FormalConjectures/ErdosProblems/864.lean:77:    (maxAlmostSidonCard N : ℝ) ≥ (2 / Real.sqrt 3 - ε) * Real.sqrt (N : ℝ) := by
+ai-review/327.md:11:- **Combinatorics pair-free structures** (`FormalConjecturesForMathlib/Combinatorics/Basic.lean`): Contains `IsSumFree`, `IsSidon`, and extension lemmas. The `UnitFractionPairFree` property is structurally analogous to these pair-exclusion predicates.
+FormalConjectures/ErdosProblems/861.lean:24:Let $f(N)$ be the size of the largest Sidon subset of $\{1,\ldots,N\}$ and $A(N)$ be
+FormalConjectures/ErdosProblems/861.lean:25:the number of Sidon subsets of $\{1,\ldots,N\}$. Is it true that
+FormalConjectures/ErdosProblems/861.lean:38:[SaTh15] Saxton, D. and Thomason, A., *The number of Sidon sets and the maximum size of Sidon
+FormalConjectures/ErdosProblems/861.lean:41:[KLRS15] Kohayakawa, Y., Lee, S. J., Rödl, V., and Samotij, W., *The number of Sidon sets and
+FormalConjectures/ErdosProblems/861.lean:42:the maximum size of Sidon sets contained in a sparse random set of integers* (2015).
+FormalConjectures/ErdosProblems/861.lean:51:/-- A finite set of natural numbers is a Sidon set if all pairwise sums are distinct. -/
+FormalConjectures/ErdosProblems/861.lean:52:def IsSidonSet (S : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/861.lean:56:/-- $f(N)$, the cardinality of the largest Sidon subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/861.lean:57:noncomputable def maxSidonSize (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/861.lean:58:  ((Icc 1 N).powerset.filter IsSidonSet).sup Finset.card
+FormalConjectures/ErdosProblems/861.lean:60:/-- $A(N)$, the number of Sidon subsets of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/861.lean:61:noncomputable def countSidonSubsets (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/861.lean:62:  ((Icc 1 N).powerset.filter IsSidonSet).card
+FormalConjectures/ErdosProblems/861.lean:71:    Tendsto (fun N => (countSidonSubsets N : ℝ) / (2 : ℝ) ^ (maxSidonSize N))
+FormalConjectures/ErdosProblems/861.lean:84:      (countSidonSubsets N : ℝ) ≥ (2 : ℝ) ^ ((1.16 : ℝ) * (maxSidonSize N : ℝ)) := by
+FormalConjectures/ErdosProblems/861.lean:96:      (countSidonSubsets N : ℝ) ≤ (2 : ℝ) ^ ((6.442 : ℝ) * (maxSidonSize N : ℝ)) := by
+ai-review/484.md:9:- **`FormalConjecturesForMathlib/Combinatorics/Basic.lean`** provides `IsSidon`, `IsSumFree`, and related additive combinatorics definitions. While `IsSidon` is thematically connected (Sidon sets have all pairwise sums distinct, so their restricted sumsets are large), it is not directly applicable to the statement.
+ai-review/484.md:21:- `[ESS89] Erdős, P., Sárközy, A., and Sós, V. T., *On sum sets of Sidon sets*, Journal of Number Theory (1989).`
+ai-review/156.md:5:**Significant duplication found.** Problem 156 defines local `IsSidonSet` and `IsMaximalSidonSet` that duplicate existing library definitions in `FormalConjecturesForMathlib/Combinatorics/Basic.lean`:
+ai-review/156.md:9:| `Erdos156.IsSidonSet : Finset ℕ → Prop` | `IsSidon : Set α → Prop` (line 38) |
+ai-review/156.md:10:| `Erdos156.IsMaximalSidonSet : ℕ → Finset ℕ → Prop` | `Set.IsMaximalSidonSetIn : Set ℕ → ℕ → Prop` (line 104) |
+ai-review/156.md:12:The local `IsSidonSet` is mathematically identical to `IsSidon` restricted to finsets (both require all pairwise sums to be distinct up to commutativity). The library version is more general (works over any `AddCommMonoid`, uses `Set α`), and already has a `Decidable` instance for finsets (line 127), a subset closure lemma, an insertion characterization, and other supporting infrastructure.
+ai-review/156.md:14:The local `IsMaximalSidonSet` differs from `IsMaximalSidonSetIn` in two ways:
+ai-review/156.md:18:Both conventions are mathematically equivalent for the asymptotic question (translating by 1 preserves cardinality and the Sidon property). Problem 340 already uses the library `IsSidon` definition successfully.
+ai-review/156.md:20:**Recommendation:** Replace local definitions with the library versions. If the `Finset`/`{0,...,N-1}` convention is preferred, consider adding a `Finset`-based maximal Sidon set definition to the library, or simply coerce.
+ai-review/156.md:30:- **Related problem:** Problem 340 (greedy Sidon sequence growth rate). This cross-reference is **not mentioned** in the 156 docstring and could be added.
+ai-review/156.md:37:The problem as stated on the website is a single yes/no question: does there exist a maximal Sidon set of size O(N^{1/3})? The formalization captures this as an `answer(sorry) ↔ ∃ C ...` statement, which is appropriate since the answer is unknown.
+ai-review/156.md:40:- **Lower bound variant**: The greedy algorithm produces a maximal Sidon set of size Ω(N^{1/3}). This is stated as known in the docstring but not formalized as a separate theorem. Problem 340 does formalize the Ω(N^{1/3}) lower bound for the *greedy* Sidon set (see `erdos_340.variants.third`), but not for *arbitrary* maximal Sidon sets. A variant asserting that every maximal Sidon set has size Ω(N^{1/3}) (which is a known result) would be a natural companion.
+ai-review/156.md:42:- **Relationship to Problem 340**: The greedy Sidon sequence is a specific maximal Sidon set. The connection between 156 (arbitrary maximal Sidon sets) and 340 (the greedy one specifically) could be made explicit.
+ai-review/156.md:49:- The naming `IsSidonSet` vs the library's `IsSidon` could cause confusion; using the library name would improve consistency.
+ai-review/156.md:51:- The argument order in `IsMaximalSidonSet N A` (N first) is natural for partial application on a fixed N.
+ai-review/156.md:56:- "Maximal Sidon set" has a standard, well-defined meaning.
+ai-review/156.md:67:- **Sidon set definition**: The local `IsSidonSet` correctly captures the B₂ property: all pairwise sums a + b (with a, b ∈ A, allowing a = b) are distinct, meaning a + b = c + d implies {a, b} = {c, d} as multisets. This matches the standard definition.
+ai-review/156.md:68:- **Maximality**: `IsMaximalSidonSet N A` correctly requires A ⊆ Finset.range N, A is Sidon, and no element of Finset.range N \ A can be added while preserving the Sidon property.
+ai-review/156.md:69:- **Asymptotic statement**: The `∃ C > 0, ∀ᶠ N in atTop, ∃ A, ...` formulation correctly captures "for all sufficiently large N, there exists a maximal Sidon set of size ≤ C · N^{1/3}".
+ai-review/156.md:76:An experienced mathematician would recognize this as a faithful formalization of the Erdős–Sárközy–Sós problem. The existential quantification over C, the "eventually" quantifier, and the Sidon/maximality definitions are all standard and correct.
+ai-review/156.md:82:| Code reuse | **Needs improvement** — should use library `IsSidon` and `IsMaximalSidonSetIn` |
+ai-review/745.md:5:[Omitted long matching line]
+FormalConjectures/ErdosProblems/773.lean:29:[AlEr85] Alon, N. and Erdős, P., *On the size of the largest Sidon subset of a random set of integers*, 1985.
+FormalConjectures/ErdosProblems/773.lean:36:/-- A finite set of natural numbers is a Sidon set if all pairwise sums are distinct. -/
+FormalConjectures/ErdosProblems/773.lean:37:def IsSidonSet (S : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/773.lean:46:Is the size of the largest Sidon subset of $\{1^2, 2^2, \ldots, N^2\}$ equal to
+FormalConjectures/ErdosProblems/773.lean:48:there exists a Sidon subset of $\{1^2, 2^2, \ldots, N^2\}$ of size at least
+FormalConjectures/ErdosProblems/773.lean:59:        ∃ A : Finset ℕ, A ⊆ squaresUpTo N ∧ IsSidonSet A ∧
+ai-review/333.md:13:- The sumset `Set.image2 (· + ·) B B` is expressed inline, which is fine, but `FormalConjecturesForMathlib/Combinatorics/Basic.lean` and `Combinatorics/Additive/Basis.lean` contain related definitions (`IsSidon`, `IsAdditiveBasis`, etc.) that provide broader context. The sumset definition in Problem 337 (`Erdos337.sumset`) is also equivalent.
+ai-review/773.md:5:**`IsSidonSet` is redefined locally and should use the shared definition.**
+ai-review/773.md:7:There is a shared, more general definition `IsSidon` in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` (line 38) that works over `Set α` for any `AddCommMonoid α`. The local `Erdos773.IsSidonSet` on `Finset ℕ` is semantically identical but duplicated. At minimum, `IsSidonSet` should be defined in terms of `IsSidon` (e.g., `IsSidon (↑S : Set ℕ)`), or the shared definition should be used directly.
+ai-review/773.md:9:This same duplication pattern exists across many Erdos problem files (43, 154, 156, 530, 772, 861, 862, 773) — each re-declares its own `IsSidonSet`. Ideally all of these would use the shared `IsSidon` from the combinatorics library.
+ai-review/773.md:22:[Omitted long matching line]
+ai-review/773.md:30:The problem as stated on the website asks: "What is the size of the largest Sidon subset of {1², 2², ..., N²}? Is it N^{1-o(1)}?"
+ai-review/773.md:34:1. **Known lower bound variant**: There exists C > 0 such that for all sufficiently large N, the largest Sidon subset of {1², ..., N²} has size ≥ C · N^{2/3}. (This is the Lefmann–Thiele result, which is proven.)
+ai-review/773.md:36:2. **Known upper bound variant**: There exists C > 0 such that for all sufficiently large N, the largest Sidon subset of {1², ..., N²} has size ≤ C · N / (log N)^{1/4}. (This is the Alon–Erdos upper bound, which is proven.)
+ai-review/773.md:38:3. **Negation variant**: The answer could be `False` — i.e., there exists ε > 0 such that for infinitely many N, no Sidon subset of {1², ..., N²} has size ≥ N^{1-ε}. The `answer(sorry)` wrapper handles this correctly in principle, but explicit formalization of the known bounds as separate theorems (as done in Problem 772) would be valuable.
+ai-review/773.md:52:The website states: "What is the size of the largest Sidon subset of {1², 2², ..., N²}? Is it N^{1-o(1)}?"
+ai-review/773.md:54:The formalization interprets "is it N^{1-o(1)}?" as: for every ε > 0, for sufficiently large N, there exists a Sidon subset of size ≥ N^{1-ε}. This is a standard and correct interpretation of the N^{1-o(1)} notation — it means the size grows faster than N^{1-ε} for every fixed ε > 0.
+ai-review/773.md:64:- **`IsSidonSet` definition (line 37-39)**: Correct. For a, b, c, d ∈ S with a + b = c + d, we must have {a,b} = {c,d} as multisets. This is the standard B₂ set / Sidon set definition. Note: using ℕ (not ℤ) is fine here since all elements are perfect squares (positive).
+ai-review/773.md:68:- **Main theorem (line 55-61)**: The statement correctly formalizes "is the largest Sidon subset of {1², ..., N²} of size N^{1-o(1)}?" The `answer(sorry)` wrapper correctly accounts for the possibility that the answer is no. The quantifier structure (∀ε > 0, ∃N₀, ∀N ≥ N₀, ∃A ⊆ squaresUpTo N, ...) is the standard way to express "for all sufficiently large N, the bound N^{1-ε} is achievable."
+ai-review/773.md:80:| Code reuse | `IsSidonSet` should use shared `IsSidon` from `FormalConjecturesForMathlib/Combinatorics/Basic.lean` |
+ai-review/271.md:11:- **Greedy sequence patterns**: Problems 340 (greedy Sidon), 282 (greedy denominators), 460, and 430 all define greedy sequences. Problem 340's `greedySidon` is the closest analogue — a greedy sequence avoiding a combinatorial property. However, each greedy construction is specialized enough that sharing definitions would be artificial.
+ai-review/154.md:9:**Issue: `IsSidonSet` duplicates the existing `IsSidon` definition.**
+ai-review/154.md:11:The file defines its own `IsSidonSet : Finset ℕ → Prop` (line 44), but an equivalent and more general `IsSidon : Set α → Prop` already exists in `FormalConjecturesForMathlib/Combinatorics/Basic.lean` (line 38). The two definitions are logically equivalent when applied to a `Finset ℕ` (cast to a `Set ℕ`). Neighboring problems already use the shared definition:
+ai-review/154.md:13:- `FormalConjectures/ErdosProblems/152.lean` uses `IsSidon (A : Set ℕ)` directly (line 38).
+ai-review/154.md:14:- `FormalConjectures/ErdosProblems/153.lean` uses `IsSidon (A : Set ℕ)` directly (line 37).
+ai-review/154.md:16:**Recommendation:** Replace `IsSidonSet` with `IsSidon ↑(A n)` (coercing the `Finset` to a `Set`) to use the shared definition and maintain consistency with Problems 152 and 153.
+ai-review/154.md:40:> [ESS94] Erdős, P. and Sárközy, A. and Sós, V. T., On Sum Sets of Sidon Sets, I. Journal of Number Theory (1994), 329–347.
+ai-review/154.md:44:> [Li98] Lindström, B., Well distribution of Sidon sets in residue classes, J. Number Theory 69 (1998), 197–200.
+ai-review/154.md:60:         (∀ n, IsSidon ↑(A n)) →
+ai-review/154.md:80:- **Definition layering:** `IsSidonSet → sumset → modFraction → erdos_154` is a logical progression.
+ai-review/154.md:85:- If the local `IsSidonSet` and `sumset` are kept, their docstrings are good. But since they duplicate existing infrastructure, removing them would improve readability by reducing cognitive overhead for readers who know the codebase.
+ai-review/154.md:110:### Definition: `IsSidonSet`
+ai-review/154.md:112:def IsSidonSet (A : Finset ℕ) : Prop :=
+ai-review/154.md:117:**Correct.** This is the standard Sidon set (B₂ set) characterization: all pairwise sums are distinct up to commutativity. It is logically equivalent to the existing `IsSidon` definition on `Set α` when restricted to `Finset ℕ` coerced to `Set ℕ`.
+ai-review/154.md:132:**Correct with a caveat.** When `S` is empty, `modFraction m r S = 0 / 0 = 0` (by Lean's convention for real division by zero). For the `Tendsto` statement in the theorem, this is harmless: for any Sidon set A with |A| ≥ 1, `sumset A` is nonempty, so `(sumset (A n)).card > 0` for all n where `(A n).card ≥ 1`. Since `(A n).card / √n → 1` implies `(A n).card → ∞`, the denominator is eventually positive and the 0/0 case only arises for finitely many n, which does not affect the limit.
+ai-review/154.md:140:      (∀ n, IsSidonSet (A n)) →
+ai-review/154.md:163:[Omitted long matching line]
+ai-review/154.md:165:**Potential concern — strength of the size condition:** The condition |A(n)|/√n → 1 requires A(n) to be an asymptotically maximal Sidon set (since the maximum size of a Sidon set in {1,...,N} is ~√N). It's possible that the equidistribution result holds under weaker assumptions (e.g., |A(n)| ≥ c√n for some constant c > 0). However, the formalization matches the original problem statement, which uses |A| ~ N^{1/2}, so this is not a bug.
+ai-review/154.md:167:**Verdict: The theorem statement is mathematically correct.** The formalization faithfully captures the content of Erdős Problem 154. The main issues are stylistic: the local `IsSidonSet` and `sumset` definitions should be replaced with existing shared definitions for consistency with the rest of the codebase. The citations should be expanded to full bibliographic entries.
+ai-review/43.md:9:[Omitted long matching line]
+ai-review/43.md:13:**Recommendation:** Replace `Erdos43.IsSidonSet` with the existing `IsSidon` from `FormalConjecturesForMathlib/Combinatorics/Basic.lean`, applied to the `Finset` coerced to a `Set`. This avoids definitional duplication and ensures consistency across the codebase.
+ai-review/43.md:52:- The maximality condition for S (`∀ T : Finset ℕ, IsSidonSet T → (∀ t ∈ T, 1 ≤ t ∧ t ≤ N) → T.card ≤ S.card`) is clear but verbose. The library provides `Set.IsMaximalSidonSetIn` (Basic.lean, line 104) which captures a related but different concept (inclusion-maximality, not cardinality-maximality). The formalization correctly uses cardinality-maximality, which is the right notion here.
+ai-review/43.md:64:One subtlety: the problem as stated on the website is unambiguous in its primary formulation. The Sidon set condition, the disjoint differences condition, and the binomial coefficient inequality are all precisely defined. The only interpretive step is the $O(1)$ term, which is standard.
+ai-review/43.md:72:**6a. IsSidonSet definition (line 39–41):**
+ai-review/43.md:73:The definition states: for all a, b, c, d ∈ A, if a + b = c + d then (a = c ∧ b = d) ∨ (a = d ∧ b = c). This is the standard definition of a Sidon (B₂) set. ✓
+ai-review/43.md:81:- `∀ N A B S` — The universal quantification over S as any maximum-cardinality Sidon set in {1,...,N} correctly captures f(N) without needing to define f explicitly. ✓
+ai-review/43.md:96:| Code reuse | `IsSidonSet` duplicates existing `IsSidon`; should reuse library definition |
+FormalConjectures/ErdosProblems/949.lean:41:/-- Let $S\sub \mathbb{R}$ be a Sidon set. Must there be a set $A\sub \mathbb{R}∖S$ of cardinality
+FormalConjectures/ErdosProblems/949.lean:45:    ∀ S : Set ℝ, IsSidon S → ∃ A ⊆ Sᶜ, #A = 𝔠 ∧ A + A ⊆ Sᶜ := by
+FormalConjectures/ErdosProblems/949.lean:97:  -- Since `S` is Sidon and `a ≠ 0`, `(S - a / 2) ∩ S ⊇ (S \ {a} - a / 2) ∩ S` has at most one
+FormalConjectures/ErdosProblems/949.lean:107:  -- Since `S` is Sidon, `S \ {a} + S \ {a} - a ⊇ A + A` is disjoint from `S`, as wanted.
+ai-review/362.md:5:No directly reusable code exists in `FormalConjecturesForMathlib/` for this problem. The problem concerns counting subsets with a given sum, which is distinct from the combinatorics utilities available (arithmetic progressions, Ramsey theory, Sidon sets, sum-free sets, etc.).
+ai-review/29.md:34:- Sidon's 1932 question (no specific citation)
+ai-review/664.md:5:No significant code from `FormalConjecturesForMathlib` is directly applicable. The formalization relies only on basic `Finset` operations (`card`, `∩`, `Nonempty`), `Fin n` as the universe type, and `Real.sqrt` — all from Mathlib. The existing library infrastructure (arithmetic progressions, Sidon sets, density, etc.) does not overlap with this problem's domain of transversals of near-sunflower families.
+ai-review/356.md:9:No other definitions in `FormalConjecturesForMathlib` (AP-free sets, density, Sidon sets, additive bases, etc.) are directly applicable.
+FormalConjectures/ErdosProblems/484.lean:28:[ESS89] Erdős, P., Sárközy, A., and Sós, V. T., *On sum sets of Sidon sets*,
+ai-review/674.md:5:No meaningful reuse opportunities. This problem concerns the Diophantine equation $x^x \cdot y^y = z^z$ over natural numbers, using only basic `ℕ` arithmetic (`^`, `*`, `>`). All needed operations are already in Mathlib core. The additive combinatorics infrastructure in `FormalConjecturesForMathlib/Combinatorics/` (sum-free sets, Sidon sets, AP-free sets, convolutions) is unrelated.
+FormalConjectures/ErdosProblems/47.lean:31:[Bl21] Bloom, T., _On a result of Schur and Sidon_. Preprint (2021).
+FormalConjectures/ErdosProblems/30.lean:28:Let $h(N)$ be the maximum size of a Sidon set in $\{1, \dots, N\}$.
+FormalConjectures/ErdosProblems/30.lean:30:noncomputable abbrev h (N : ℕ) : ℕ := Finset.maxSidonSubsetCard (Finset.Icc 1 N)
+FormalConjectures/ErdosProblems/39.lean:30:Is there an infinite Sidon set $A\subset \mathbb{N}$ such that
+FormalConjectures/ErdosProblems/39.lean:35:theorem erdos_39 : answer(sorry) ↔ ∃ (A : Set ℕ), A.Infinite ∧ IsSidon A ∧
+FormalConjectures/ErdosProblems/155.lean:30:Let $F(N)$ be the size of the largest Sidon subset of $\{1, \dots, N\}$.
+FormalConjectures/ErdosProblems/155.lean:32:noncomputable abbrev F (N : ℕ) : ℕ := Finset.maxSidonSubsetCard (Finset.Icc 1 N)
+FormalConjectures/ErdosProblems/29.lean:50:(answering a question of Sidon from 1932). An explicit construction was given by
+FormalConjectures/ErdosProblems/158.lean:23: - [ESS94] Erdős, P. and Sárközy, A. and Sós, T., On Sum Sets of Sidon Sets, I. Journal of Number
+FormalConjectures/ErdosProblems/158.lean:34:/-- A set is `B₂[1]` iff it is Sidon. -/
+FormalConjectures/ErdosProblems/158.lean:36:lemma b2_one {A : Set ℕ} : B2 1 A ↔ IsSidon A where
+FormalConjectures/ErdosProblems/158.lean:60:/-- Let `A` be an infinite Sidon set. Then
+FormalConjectures/ErdosProblems/158.lean:63:theorem erdos_158.variants.isSidon' {A : Set ℕ} (hAinf : A.Infinite) (hAsid : IsSidon A) :
+FormalConjectures/ErdosProblems/158.lean:68:/-- As a corollary of `erdos_158.isSidon'`, we can prove that
+FormalConjectures/ErdosProblems/158.lean:69:`liminf |A ∩ {1, ..., N}| * N ^ (- 1 / 2) = 0` for any infinite Sidon set `A`. -/
+FormalConjectures/ErdosProblems/158.lean:71:theorem erdos_158.variants.isSidon {A : Set ℕ} (hAinf : A.Infinite) (hAsid : IsSidon A) :
+FormalConjectures/ErdosProblems/158.lean:73:  have := erdos_158.variants.isSidon' hAinf hAsid
+FormalConjectures/ErdosProblems/157.lean:24:Erdős, Sárközy, and Sós asked whether there exists an infinite Sidon set that is also an
+FormalConjectures/ErdosProblems/157.lean:27:[ESS94] Erdős, P., Sárközy, A. and Sós, V. T., *On sum sets of Sidon sets*. J. Number Theory
+FormalConjectures/ErdosProblems/157.lean:33:[Pi23] Pilatte, C., *Sidon sets are asymptotic bases of order 3*. (2023).
+FormalConjectures/ErdosProblems/157.lean:40:/-- An infinite set $A \subseteq \mathbb{N}$ is a Sidon set ($B_2$ set) if all pairwise sums
+FormalConjectures/ErdosProblems/157.lean:44:def IsInfiniteSidonSet (A : Set ℕ) : Prop :=
+FormalConjectures/ErdosProblems/157.lean:58:Does there exist an infinite Sidon set which is an asymptotic basis of order $3$?
+FormalConjectures/ErdosProblems/157.lean:60:A set $A \subseteq \mathbb{N}$ is a Sidon set if all pairwise sums $a + b$ ($a, b \in A$)
+FormalConjectures/ErdosProblems/157.lean:68:    answer(True) ↔ ∃ A : Set ℕ, IsInfiniteSidonSet A ∧ IsAsymptoticBasisOrder3 A := by
+FormalConjectures/ErdosProblems/840.lean:24:Let $f(N)$ be the size of the largest quasi-Sidon subset $A \subset \{1, \ldots, N\}$,
+FormalConjectures/ErdosProblems/840.lean:25:where we say that $A$ is quasi-Sidon if $|A + A| = (1 + o(1))\binom{|A|}{2}$.
+FormalConjectures/ErdosProblems/840.lean:45:/-- A finite set of natural numbers is $\delta$-quasi-Sidon if
+FormalConjectures/ErdosProblems/840.lean:47:A sequence of sets is quasi-Sidon iff for every $\delta > 0$ it is eventually
+FormalConjectures/ErdosProblems/840.lean:48:$\delta$-quasi-Sidon. -/
+FormalConjectures/ErdosProblems/840.lean:49:def IsQuasiSidon (δ : ℝ) (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/840.lean:52:/-- The maximum size of a $\delta$-quasi-Sidon subset of $\{1, \ldots, N\}$. -/
+FormalConjectures/ErdosProblems/840.lean:53:noncomputable def maxQuasiSidonCard (δ : ℝ) (N : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/840.lean:54:  ((Finset.Icc 1 N).powerset.filter (fun A => IsQuasiSidon δ A)).sup Finset.card
+FormalConjectures/ErdosProblems/840.lean:61:the largest quasi-Sidon subset of $\{1, \ldots, N\}$.
+FormalConjectures/ErdosProblems/840.lean:69:    |(maxQuasiSidonCard δ N : ℝ) - answer(sorry) * Real.sqrt (N : ℝ)| ≤
+FormalConjectures/ErdosProblems/840.lean:84:    (maxQuasiSidonCard δ N : ℝ) ≥ (2 / Real.sqrt 3 - ε) * Real.sqrt (N : ℝ) := by
+FormalConjectures/ErdosProblems/840.lean:100:    (maxQuasiSidonCard δ N : ℝ) ≤
+FormalConjectures/ErdosProblems/329.lean:20:# Erdős Problem 329: Maximum Density of Sidon Sets
+FormalConjectures/ErdosProblems/329.lean:30:The partial density of a Sidon set `A` up to `N`, normalized by dividing by `√N` instead of `N`.
+FormalConjectures/ErdosProblems/329.lean:31:This measures how close the set comes to the optimal density for Sidon sets.
+FormalConjectures/ErdosProblems/329.lean:36:/-- The upper density of a Sidon set `A`, normalized by `√N`. -/
+FormalConjectures/ErdosProblems/329.lean:42:Let `A ⊆ ℕ` be a Sidon set. How large can
+FormalConjectures/ErdosProblems/329.lean:47:theorem erdos_329 : sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} =
+FormalConjectures/ErdosProblems/329.lean:53:there exists a Sidon set whose upper density is *at least* `1 / 2`.
+FormalConjectures/ErdosProblems/329.lean:56:theorem erdos_329.lower_bound : ∃ (A : Set ℕ), IsSidon A ∧ sidonUpperDensity A ≥ 1/2 := by
+FormalConjectures/ErdosProblems/329.lean:60:Krückeberg ([Kr61]) exhibited an infinite Sidon set `A` with
+FormalConjectures/ErdosProblems/329.lean:67:theorem kruckeberg_1961 : ∃ (A : Set ℕ), IsSidon A ∧
+FormalConjectures/ErdosProblems/329.lean:74:[ErTu41] Erdős, P. and Turán, P., On a problem of Sidon in additive number theory, and on some related problems. J. London Math. Soc. (1941), 212-215.
+FormalConjectures/ErdosProblems/329.lean:77:theorem erdos_turan_1941 : ∀ (A : Set ℕ), IsSidon A → sidonUpperDensity A ≤ 1 := by
+FormalConjectures/ErdosProblems/329.lean:81:If any finite Sidon set can be embedded in a perfect difference set,
+FormalConjectures/ErdosProblems/329.lean:86:    (∀ (A : Finset ℕ), IsSidon (A : Set ℕ) → ∃ (D : Set ℕ) (n : ℕ),
+FormalConjectures/ErdosProblems/329.lean:88:    sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} = 1 := by
+FormalConjectures/ErdosProblems/329.lean:92:The converse: if the maximum density is 1, then any finite Sidon set
+FormalConjectures/ErdosProblems/329.lean:97:    (sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} = 1) →
+FormalConjectures/ErdosProblems/329.lean:98:    (∀ (A : Finset ℕ), IsSidon (A : Set ℕ) → ∃ (D : Set ℕ) (n : ℕ),
+FormalConjectures/ErdosProblems/329.lean:105:It is possible to construct a Sidon set with positive density.
+FormalConjectures/ErdosProblems/329.lean:108:theorem exists_sidon_pos_density : ∃ (A : Set ℕ), IsSidon A ∧ 0 < sidonUpperDensity A := by
+FormalConjectures/ErdosProblems/42.lean:20:# Erdős Problem 42: Maximal Sidon Sets and Disjoint Difference Sets
+FormalConjectures/ErdosProblems/42.lean:24:This problem asks whether maximal Sidon sets can coexist with other Sidon sets that have
+FormalConjectures/ErdosProblems/42.lean:35:maximal Sidon set `A ⊆ {1,…,N}` there is another Sidon set `B ⊆ {1,…,N}` of size M such that
+FormalConjectures/ErdosProblems/42.lean:40:    ∀ M ≥ 1, ∀ᶠ N in atTop, ∀ (A : Set ℕ) (_ : IsMaximalSidonSetIn A N),
+FormalConjectures/ErdosProblems/42.lean:41:    ∃ᵉ (B : Set ℕ), B ⊆ Set.Icc 1 N ∧ IsSidon B ∧ B.ncard = M ∧
+FormalConjectures/ErdosProblems/42.lean:49:every maximal Sidon set A ⊆ {1,…,N} has another Sidon set B ⊆ {1,…,N} of size M with
+FormalConjectures/ErdosProblems/42.lean:55:    ∀ (A : Set ℕ) (_ : IsMaximalSidonSetIn A N), ∃ᵉ (B : Set ℕ),
+FormalConjectures/ErdosProblems/42.lean:56:      B ⊆ Set.Icc 1 N ∧ IsSidon B ∧ B.ncard = M ∧
+FormalConjectures/ErdosProblems/42.lean:64:The set `{1, 2, 4}` is a maximal Sidon set in `{1, ..., 4}`.
+FormalConjectures/ErdosProblems/42.lean:67:theorem example_maximal_sidon : IsMaximalSidonSetIn {1, 2, 4} 4 := by
+FormalConjectures/ErdosProblems/42.lean:78:For any maximal Sidon set, the difference set contains 0.
+FormalConjectures/ErdosProblems/42.lean:82:    (hA : IsMaximalSidonSetIn A N) : 0 ∈ A - A := by
+FormalConjectures/ErdosProblems/757.lean:34:`(B - B).card = 11`, there exists a Sidon subset `S` of size at least `c * A.ncard`. -/
+FormalConjectures/ErdosProblems/757.lean:36:  B.ncard = 4 → (B - B).ncard = 11) → ∃ S ⊆ A, IsSidon S ∧ c * A.ncard ≤ (S.ncard : ℝ)
+FormalConjectures/ErdosProblems/863.lean:26:bound on Sidon sets).
+FormalConjectures/ErdosProblems/198.lean:63:is certainly Sidon.
+FormalConjectures/ErdosProblems/198.lean:66:Sidon set, and intersects every arithmetic progression, since for any $a,d\in \mathbb{N}$,
+FormalConjectures/ErdosProblems/198.lean:73:theorem erdos_198 : (∀ A : Set ℕ, IsSidon A → (∃ Y, IsAPOfLength Y ⊤ ∧ Y ⊆ Aᶜ)) ↔
+FormalConjectures/ErdosProblems/198.lean:82:    IsSidon A ∧ (∀ Y, IsAPOfLength Y ⊤ → (A ∩ Y).Nonempty) := by
+FormalConjectures/ErdosProblems/153.lean:21:#TODO: Formalize the corresponding conjecture for infinite Sidon sets.
+FormalConjectures/ErdosProblems/153.lean:25: - [ESS94] Erdős, P. and Sárközy, A. and Sós, T., On Sum Sets of Sidon Sets, I. Journal of Number
+FormalConjectures/ErdosProblems/153.lean:35:`∑ (i : Set.Ico 1 ((A + A).card), (s i - s (i - 1)) ^ 2 / n` as `A` ranges over all Sidon sets
+FormalConjectures/ErdosProblems/153.lean:37:noncomputable def f (n : ℕ) : ℝ := ⨅ A : {A : Finset ℕ | A.card = n ∧ IsSidon (A : Set ℕ)},
+FormalConjectures/ErdosProblems/152.lean:21:#TODO: Formalize the corresponding conjecture for infinite Sidon sets.
+FormalConjectures/ErdosProblems/152.lean:25: - [ESS94] Erdős, P. and Sárközy, A. and Sós, T., On Sum Sets of Sidon Sets, I. Journal of Number
+FormalConjectures/ErdosProblems/152.lean:35:ranges over all Sidon sets of size `n`. -/
+FormalConjectures/ErdosProblems/152.lean:37:  ⨅ A : {A : Set ℕ | A.ncard = n ∧ IsSidon A},
+FormalConjectures/ErdosProblems/530.lean:25:exists a Sidon subset $S$ of size $\ell(N)$ (i.e. the only solutions to $a + b = c + d$ in $S$
+FormalConjectures/ErdosProblems/530.lean:45:/-- A `Finset` of real numbers is a *Sidon set* if for all $a, b, c, d$ in the set
+FormalConjectures/ErdosProblems/530.lean:48:def IsSidonSet (S : Finset ℝ) : Prop :=
+FormalConjectures/ErdosProblems/530.lean:52:/-- The maximum size of a Sidon subset of $A$. -/
+FormalConjectures/ErdosProblems/530.lean:53:noncomputable def maxSidonSubsetSize (A : Finset ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/530.lean:54:  sSup {k : ℕ | ∃ S : Finset ℝ, S ⊆ A ∧ IsSidonSet S ∧ S.card = k}
+FormalConjectures/ErdosProblems/530.lean:57:a Sidon subset of size at least $k$. Equivalently, the minimum of `maxSidonSubsetSize A`
+FormalConjectures/ErdosProblems/530.lean:60:  sInf {m : ℕ | ∃ A : Finset ℝ, A.card = N ∧ maxSidonSubsetSize A = m}
+FormalConjectures/ErdosProblems/43.lean:24:If $A, B \subseteq \{1, \ldots, N\}$ are Sidon sets with $(A-A) \cap (B-B) = \{0\}$, is it true
+FormalConjectures/ErdosProblems/43.lean:26:size of a Sidon set in $\{1, \ldots, N\}$?
+FormalConjectures/ErdosProblems/43.lean:36:/-- A finite set of natural numbers is a Sidon set (also called a $B_2$ set) if all
+FormalConjectures/ErdosProblems/43.lean:39:def IsSidonSet (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/43.lean:50:/-- If $A, B \subseteq \{1, \ldots, N\}$ are two Sidon sets such that
+FormalConjectures/ErdosProblems/43.lean:53:    where $f(N)$ is the maximum possible size of a Sidon set in $\{1, \ldots, N\}$?
+FormalConjectures/ErdosProblems/43.lean:55:    Here $S$ represents a maximum-size Sidon set in $\{1, \ldots, N\}$, so $|S| = f(N)$.
+FormalConjectures/ErdosProblems/43.lean:62:    IsSidonSet A → IsSidonSet B → IsSidonSet S →
+FormalConjectures/ErdosProblems/43.lean:66:    (∀ T : Finset ℕ, IsSidonSet T → (∀ t ∈ T, 1 ≤ t ∧ t ≤ N) → T.card ≤ S.card) →
+FormalConjectures/ErdosProblems/425.lean:22:Let $F(n)$ be the maximum size of a multiplicative Sidon subset of $\{1, \ldots, n\}$
+FormalConjectures/ErdosProblems/425.lean:37:A finite set $A \subseteq \mathbb{N}$ is a *multiplicative $B_2$ set* (or multiplicative Sidon set)
+FormalConjectures/ErdosProblems/425.lean:46:A finite set $A \subseteq \mathbb{N}$ is an *$r$-multiplicative Sidon set* if any two $r$-element
+FormalConjectures/ErdosProblems/425.lean:87:$a_1 < \cdots < a_r$ (i.e., $A$ is an $r$-multiplicative Sidon set), then
+FormalConjectures/ErdosProblems/44.lean:20:# Erdős Problem 44: Extending Sidon Sets
+FormalConjectures/ErdosProblems/44.lean:30:/-- The maximum size of a Sidon set in `{1, ..., N}` is less than or equal to `2 * √N`. -/
+FormalConjectures/ErdosProblems/44.lean:32:theorem maxSidonSubsetCard_icc_bound (N : ℕ) (hN : 1 ≤ N) :
+FormalConjectures/ErdosProblems/44.lean:33:    maxSidonSubsetCard (Icc 1 N) ≤ 2 * Real.sqrt N := by
+FormalConjectures/ErdosProblems/44.lean:37:**Erdős Problem 44:** Let N ≥ 1 and `A ⊆ {1,…,N}` be a Sidon set. Is it true that, for any ε > 0,
+FormalConjectures/ErdosProblems/44.lean:38:there exist M = M(ε) and `B ⊆ {N+1,…,M}` such that `A ∪ B ⊆ {1,…,M}` is a Sidon set
+FormalConjectures/ErdosProblems/44.lean:41:This problem asks whether any Sidon set can be extended to achieve a density
+FormalConjectures/ErdosProblems/44.lean:42:arbitrarily close to the optimal density for Sidon sets.
+FormalConjectures/ErdosProblems/44.lean:45:theorem erdos_44 : answer(sorry) ↔ ∀ᵉ (N ≥ (1 : ℕ)) (A ⊆ Finset.Icc 1 N), IsSidon (A : Set ℕ) →
+FormalConjectures/ErdosProblems/44.lean:47:      IsSidon (A ∪ B : Set ℕ) ∧ (1 - ε) * Real.sqrt M ≤ (A ∪ B).card := by
+FormalConjectures/ErdosProblems/44.lean:51:The case where we start with an empty set (constructing large Sidon sets).
+FormalConjectures/ErdosProblems/44.lean:55:    ∃ᵉ (A ⊆ Finset.Icc 1 M), IsSidon (A : Set ℕ) ∧ (1 - ε) * Real.sqrt M ≤ A.card := by
+FormalConjectures/ErdosProblems/44.lean:61:The set `{1, 2, 4, 8, 13}` is a Sidon set in `{1, ..., 13}`.
+FormalConjectures/ErdosProblems/44.lean:64:theorem example_sidon_set : IsSidon ({1, 2, 4, 8, 13} : Set ℕ) := by
+FormalConjectures/ErdosProblems/44.lean:68:For any `N`, there exists a Sidon set of size at least `√N/2`.
+FormalConjectures/ErdosProblems/44.lean:72:    ∃ᵉ (A ⊆ Finset.Icc 1 N), IsSidon (A : Set ℕ) ∧ N.sqrt / 2 ≤ A.card := by
+FormalConjectures/ErdosProblems/44.lean:76:The greedy construction gives a Sidon set of size approximately `√N`.
+FormalConjectures/ErdosProblems/44.lean:80:    ∃ᵉ (A ⊆ Finset.Icc 1 N), IsSidon (A : Set ℕ) ∧ A.card ≥ N.sqrt := by
+FormalConjectures/ErdosProblems/340.lean:30:/-- Given a finite Sidon set `A` and a lower bound `m`, `go` finds the smallest number `m' ≥ m`
+FormalConjectures/ErdosProblems/340.lean:31:such that `A ∪ {m'}` is Sidon. If `A` is empty then this returns the value `m`. Note that
+FormalConjectures/ErdosProblems/340.lean:33:private def greedySidon.go (A : Finset ℕ) (hA : IsSidon (A : Set ℕ)) (m : ℕ) :
+FormalConjectures/ErdosProblems/340.lean:34:    {m' : ℕ // m' ≥ m ∧ m' ∉ A ∧ IsSidon (↑(A ∪ {m'}) : Set ℕ)} :=
+FormalConjectures/ErdosProblems/340.lean:36:    haveI : ∃ m', m' ≥ m ∧ m' ∉ A ∧ IsSidon (↑(A ∪ {m'}) : Set ℕ) := by
+FormalConjectures/ErdosProblems/340.lean:39:  else ⟨m, by simp_all [IsSidon]⟩
+FormalConjectures/ErdosProblems/340.lean:42:theorem greedySidon_go_singleton_two : (greedySidon.go {1} (by simp [IsSidon]) 2).val = 2 := by
+FormalConjectures/ErdosProblems/340.lean:46:theorem greedySidon_go_pair_three : (greedySidon.go {1, 2} (by simp [IsSidon]) 3).val = 4 := by
+FormalConjectures/ErdosProblems/340.lean:49:/-- Main search loop for generating the greedy Sidon sequence. The return value for step `n` is the
+FormalConjectures/ErdosProblems/340.lean:50:finite set of numbers generated so far, a proof that it is Sidon, and the greatest element of
+FormalConjectures/ErdosProblems/340.lean:51:the finite set at that point. This is initialised at `{1}`, then `greedySidon.go` is
+FormalConjectures/ErdosProblems/340.lean:52:called iteratively using the lower bound `max + 1` to find the next smallest Sidon preserving
+FormalConjectures/ErdosProblems/340.lean:54:private def greedySidon.aux (n : ℕ) : ({A : Finset ℕ // IsSidon (A : Set ℕ)} × ℕ) :=
+FormalConjectures/ErdosProblems/340.lean:56:  | 0 => (⟨{1}, by simp [IsSidon]⟩, 1)
+FormalConjectures/ErdosProblems/340.lean:58:    let (A, s) := greedySidon.aux k
+FormalConjectures/ErdosProblems/340.lean:60:    let s' := greedySidon.go A.1 A.2 s
+FormalConjectures/ErdosProblems/340.lean:63:/-- `greedySidon` is the sequence obtained by the initial set $\{1\}$ and iteratively obtaining
+FormalConjectures/ErdosProblems/340.lean:64:then next smallest integer that preserves the Sidon property of the set. This gives the
+FormalConjectures/ErdosProblems/340.lean:66:def greedySidon (n : ℕ) : ℕ := greedySidon.aux n |>.2
+FormalConjectures/ErdosProblems/340.lean:69:theorem greedySidon_zero : greedySidon 0 = 1 := rfl
+FormalConjectures/ErdosProblems/340.lean:72:theorem greedySidon_one : greedySidon 1 = 2 := by
+FormalConjectures/ErdosProblems/340.lean:76:theorem greedySidon_two : greedySidon 2 = 4 := by
+FormalConjectures/ErdosProblems/340.lean:80:theorem greedySidon_three : greedySidon 3 = 8 := by
+FormalConjectures/ErdosProblems/340.lean:83:theorem greedySidon_four : greedySidon 4 = 13 := by
+FormalConjectures/ErdosProblems/340.lean:87:theorem greedySidon_five : greedySidon 5 = 21 := by
+FormalConjectures/ErdosProblems/340.lean:91:theorem greedySidon_ten : greedySidon 10 = 97 := by
+FormalConjectures/ErdosProblems/340.lean:95:Let $A = \{1, 2, 4, 8, 13, 21, 31, 45, 66, 81, 97, \ldots\}$ be the greedy Sidon sequence:
+FormalConjectures/ErdosProblems/340.lean:97:Sidon property (i.e. there are no non-trivial solutions to $a + b = c + d$). What is the
+FormalConjectures/ErdosProblems/340.lean:104:      fun n : ℕ ↦ ((Set.range greedySidon ∩ Set.Icc 1 n).ncard : ℝ) := by
+FormalConjectures/ErdosProblems/340.lean:108:Let $A = \{1, 2, 4, 8, 13, 21, 31, 45, 66, 81, 97, \ldots\}$ be the greedy Sidon sequence:
+FormalConjectures/ErdosProblems/340.lean:110:Sidon property (i.e. there are no non-trivial solutions to $a + b = c + d$). What is the
+FormalConjectures/ErdosProblems/340.lean:116:    (fun n : ℕ ↦ ((Set.range greedySidon ∩ Set.Icc 1 n).ncard : ℝ)) =Θ[atTop]
+FormalConjectures/ErdosProblems/340.lean:126:      fun n : ℕ ↦ ((Set.range greedySidon ∩ Set.Icc 1 n).ncard : ℝ) := by
+FormalConjectures/ErdosProblems/340.lean:138:    Set.HasPosDensity (Set.range greedySidon - Set.range greedySidon) := by
+FormalConjectures/ErdosProblems/340.lean:150:    22 ∈ Set.range greedySidon - Set.range greedySidon := by
+FormalConjectures/ErdosProblems/340.lean:158:    33 ∈ Set.range greedySidon - Set.range greedySidon := by
+FormalConjectures/ErdosProblems/340.lean:170:    ∀ᶠ n in cofinite, n ∈ Set.range greedySidon - Set.range greedySidon := by
+FormalConjectures/ErdosProblems/340.lean:178:    ∃ S : Set ℕ, S.HasDensity 0 ∧ ∀ n ∈ Sᶜ, n ∈ Set.range greedySidon - Set.range greedySidon := by
+FormalConjectures/ErdosProblems/154.lean:24:Let $A \subset \{1, \ldots, N\}$ be a Sidon set with $|A| \sim N^{1/2}$.
+FormalConjectures/ErdosProblems/154.lean:40:/-- A finite set of natural numbers is a Sidon set (also called a $B_2$ set) if all
+FormalConjectures/ErdosProblems/154.lean:44:def IsSidonSet (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/154.lean:58:Let $A \subset \{1, \ldots, N\}$ be a Sidon set with $|A| \sim N^{1/2}$. Must $A + A$ be
+FormalConjectures/ErdosProblems/154.lean:65:follows immediately from the Sidon property: if $A$ has $e$ even and $o$ odd
+FormalConjectures/ErdosProblems/154.lean:67:and $eo$ odd elements (all distinct by the Sidon property), and the
+FormalConjectures/ErdosProblems/154.lean:70:Formalized as: for any sequence $(A_n)_n$ of Sidon sets $A_n \subset \{0, \ldots, n\}$
+FormalConjectures/ErdosProblems/154.lean:78:      (∀ n, IsSidonSet (A n)) →
+FormalConjectures/ErdosProblems/772.lean:26:bounded by $k$) then $A$ contains a Sidon set of size at least $r$.
+FormalConjectures/ErdosProblems/772.lean:40:/-- A finite set of natural numbers is a Sidon set ($B_2$ set) if all pairwise
+FormalConjectures/ErdosProblems/772.lean:43:def IsSidonSet (S : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/772.lean:58:contains a Sidon subset of size at least $C \cdot n^{1/2}$.
+FormalConjectures/ErdosProblems/772.lean:67:        ∃ S : Finset ℕ, S ⊆ A ∧ IsSidonSet S ∧
+FormalConjectures/ErdosProblems/772.lean:76:contains a Sidon subset of size at least $C \cdot n^{2/3}$.
+FormalConjectures/ErdosProblems/772.lean:84:        ∃ S : Finset ℕ, S ⊆ A ∧ IsSidonSet S ∧
+FormalConjectures/ErdosProblems/707.lean:20:# Erdős Problem 707: Embedding Sidon Sets in Perfect Difference Sets
+FormalConjectures/ErdosProblems/707.lean:25:  Sidon subsets of perfect difference sets, featuring a human-assisted proof (2025)
+FormalConjectures/ErdosProblems/707.lean:28:Let `A ⊆ ℕ` be a finite Sidon set. Is there some set `B` with `A ⊆ B` which is a perfect
+FormalConjectures/ErdosProblems/707.lean:31:This problem is related to Erdős Problem 329 about the maximum density of Sidon sets.
+FormalConjectures/ErdosProblems/707.lean:32:If this conjecture is true, it would imply that the maximum density of Sidon sets is 1.
+FormalConjectures/ErdosProblems/707.lean:41:**Erdős Problem 707**: It is false that any finite Sidon set can be embedded in a perfect
+FormalConjectures/ErdosProblems/707.lean:51:theorem erdos_707 : (∀ (A : Set ℕ) (h : A.Finite), IsSidon A →
+FormalConjectures/ErdosProblems/707.lean:57:It is false that any finite Sidon set can be embedded in a perfect
+FormalConjectures/ErdosProblems/707.lean:64:theorem erdos_707.variants.prime_power : (∀ (A : Set ℕ) (h : A.Finite), IsSidon A →
+FormalConjectures/ErdosProblems/707.lean:71:It is false that any finite Sidon set can be embedded in a perfect
+FormalConjectures/ErdosProblems/707.lean:78:theorem erdos_707.variants.prime : (∀ (A : Set ℕ) (h : A.Finite), IsSidon A →
+FormalConjectures/ErdosProblems/707.lean:90:   Finite A ∧ IsSidon A ∧
+FormalConjectures/ErdosProblems/707.lean:102:   Finite A ∧ IsSidon A ∧
+FormalConjectures/ErdosProblems/707.lean:115:   Finite A ∧ IsSidon A ∧
+FormalConjectures/ErdosProblems/707.lean:142:The set `{1, 2, 4}` is a Sidon set.
+FormalConjectures/ErdosProblems/707.lean:145:theorem erdos_707.variants.example_sidon_set : IsSidon ({1, 2, 4} : Set ℕ) := by
+FormalConjectures/ErdosProblems/707.lean:157:For small Sidon sets, we can check the conjecture directly.
+FormalConjectures/ErdosProblems/707.lean:161:    (hSidon : IsSidon A) : ∃ (B : Set ℕ) (p : ℕ), IsPrimePow p ∧ A ⊆ B ∧
+FormalConjectures/ErdosProblems/819.lean:29:and note that it is closely connected to the size of the largest quasi-Sidon set

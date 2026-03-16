@@ -1,0 +1,318 @@
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture2.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture2.lean-29-For a simple connected graph `G`,
+FormalConjectures/WrittenOnTheWallII/GraphConjecture2.lean:30:`Ls(G) ≥ 2 · (l(G) - 1)` where `l(G)` is the average independence number of
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture2.lean-31-the neighbourhoods of the vertices of `G`.
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture2.lean-32--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture19.lean-31-satisfies
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture19.lean-32-`b(G) ≥ FLOOR((∑ ecc(v))/(|V|) + sSup (range (l G)))`, where `ecc(v)` denotes
+FormalConjectures/WrittenOnTheWallII/GraphConjecture19.lean:33:eccentricity and `l(G)` is the independence number of neighbourhoods.
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture19.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture19.lean-35-@[category research open, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/Test.lean-28-
+FormalConjectures/WrittenOnTheWallII/Test.lean-29-Tests cover:
+FormalConjectures/WrittenOnTheWallII/Test.lean:30:independence_number, dominationNumber, average_distance, diameter, radius,
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/Test.lean-31-girth, order, size, szeged_index, wiener_index, min_degree, max_degree,
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/Test.lean-32-average_degree, matching_number, residue, annihilation_number, cvetkovic.
+--
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture58.lean-28-For a connected graph `G`, the size `f(G)` of a largest induced forest satisfies
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture58.lean-29-`f(G) ≥ ceil( b(G) / average l(v) )` where `b(G)` is the largest induced
+FormalConjectures/WrittenOnTheWallII/GraphConjecture58.lean:30:bipartite subgraph and `l(v)` is the independence number of `G.neighborSet v`.
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture58.lean-31--/
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/GraphConjecture58.lean-32-@[category research open, AMS 5]
+--
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/README.md-26-   subgraph. Then
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/README.md-27-   `b(G) ≥ FLOOR( average ecc(v) + maximum l(v) )`, where `ecc(v)` is the
+FormalConjectures/WrittenOnTheWallII/README.md:28:   eccentricity and `l(v)` the independence number of the neighbourhood of `v`.
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/README.md-29-8. **Conjecture 34 (open).** For a connected graph `G`, let `path(G)` be the floor of
+/home/ryan/formal-conjectures/FormalConjectures/WrittenOnTheWallII/README.md-30-   the average distance. Then
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-31-variable {α : Type*} [Fintype α] [DecidableEq α]
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-32-
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean:33:/-- Abbreviation for the average independence number of the neighborhoods.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-34--/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Invariants.lean-35-noncomputable abbrev l (G : SimpleGraph α) : ℝ := averageIndepNeighbors G
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-138-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-139-/-- The maximum size of the union of k finite independent sets. -/
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:140:noncomputable def indepNumK (G : SimpleGraph V) (k : ℕ) : ℕ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-141-  sSup {n | ∃ f : Fin k → Set V, (∀ i, G.IsIndepSet (f i)) ∧ (⋃ i, f i).ncard = n}
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean-142-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-57-For every $C > 0$, there exist $c > 0$ and $N_0$ such that for all $n \geq N_0$, if $G$ is a
+FormalConjectures/ErdosProblems/636.lean:58:graph on $n$ vertices with clique number at most $C \cdot \log_2(n)$ and independence number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-59-at most $C \cdot \log_2(n)$, then $G$ has at least $c \cdot n^{5/2}$ distinct induced subgraph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/636.lean-60-signatures (pairs (vertex count, edge count) among all induced subgraphs of $G$).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/835.lean-96-  | n + 1, d, w + 1 => if 2 * (w + 1) < d then 1 else (n + 1) * johnsonBound n d w / (w + 1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/835.lean-97-
+FormalConjectures/ErdosProblems/835.lean:98:/-- Johnson's bound for the independence number of the Johnson graph. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/835.lean-99-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/835.lean-100-lemma indepNum_johnson_le_johnsonBound : α(J(n, k)) ≤ johnsonBound n 4 k := sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-45-  ∀ u ∈ S, ∀ v ∈ S, ¬G.Adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-46-
+FormalConjectures/ErdosProblems/804.lean:47:/-- The independence number of a graph on $n$ vertices: the maximum cardinality
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-48-    of an independent set. -/
+FormalConjectures/ErdosProblems/804.lean-49-noncomputable def independenceNum {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-52-/-- $f(m, n)$ is the largest $k$ such that every graph on $n$ vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-53-    in which every induced subgraph on $m$ vertices has an independent set of
+FormalConjectures/ErdosProblems/804.lean:54:    size $\geq \lceil \log n \rceil$ must have independence number $\geq k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-55-
+FormalConjectures/ErdosProblems/804.lean:56:    Equivalently, the infimum of independence numbers over all qualifying
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-57-    graphs. -/
+FormalConjectures/ErdosProblems/804.lean-58-noncomputable def erdos804_f (m n : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-25-$\tau(G) = n - \alpha(G)$ almost surely? Here $\tau(G)$ is the bipartition number (the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-26-smallest number of pairwise edge-disjoint complete bipartite graphs whose union is $G$)
+FormalConjectures/ErdosProblems/807.lean:27:and $\alpha(G)$ is the independence number. Disproved by Alon [Al15].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-29-[Al15] Alon, N., _Bipartite decomposition of random graphs_, J. Graph Theory, 2015.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-63-/--
+FormalConjectures/ErdosProblems/807.lean:64:The independence number $\alpha(G)$ of a finite graph is the maximum cardinality of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-65-an independent set (a set of vertices with no edges between them).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-66--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-77-The bipartition number $\tau(G)$ is the smallest number of pairwise edge-disjoint
+FormalConjectures/ErdosProblems/807.lean:78:complete bipartite graphs whose union is $G$. The independence number $\alpha(G)$ is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-79-the size of the largest independent set in $G$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean-80-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-38-$R(3,k) \sim \frac{1}{2} \frac{k^2}{\log k}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-39-
+FormalConjectures/ErdosProblems/165.lean:40:[Sh83] Shearer, J. B., _A note on the independence number of triangle-free
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-41-graphs_. Discrete Mathematics (1983).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean-42-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-32-$(1/8 + o(1))n^2$ many edges. Proved by Fox, Loh, and Zhao [FLZ15], who showed that for every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-33-$n \geq 1$ there exists a $K_4$-free graph on $n$ vertices with $\geq n^2/8$ edges and
+FormalConjectures/ErdosProblems/22.lean:34:independence number $\ll (\log \log n)^{3/2} / (\log n)^{1/2} \cdot n$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/22.lean-36-[BoEr76] Bollobás, B. and Erdős, P., _On a Ramsey–Turán type problem_, J. Combin. Theory Ser. B, 1976.
+--
+ai-review/802.md-17-- **[AEKS81]**: Ajtai, M., Erdős, P., Komlós, J. and Szemerédi, E., _A dense infinite Sidon sequence_, European J. Combin. **2** (1981), 1–11. *(Not expanded anywhere in codebase.)*
+ai-review/802.md-18-- **[AKS80]**: Ajtai, M., Komlós, J. and Szemerédi, E., _A note on Ramsey numbers_, J. Combin. Theory Ser. A **29** (1980), 354–360. *(Full citation found in `ErdosProblems/986.lean`, lines 46–47.)*
+ai-review/802.md:19:- **[Sh95]**: Shearer, J. B., _On the independence number of sparse graphs_, Random Structures & Algorithms **7** (1995), 269–271. *(Not expanded anywhere in codebase.)*
+ai-review/802.md-20-- **[Al96b]**: Alon, N., _Independence numbers of locally sparse graphs and a Ramsey type problem_, Random Structures & Algorithms **9** (1996), 271–278. *(Referenced in Problem 801 review.)*
+/home/ryan/formal-conjectures/ai-review/802.md-21-
+--
+/home/ryan/formal-conjectures/ai-review/615.md-13-Mathlib already provides `SimpleGraph.IsIndepSet` (on `Set V`), which is used in Problem 22's formalization via `G.IsIndepSet ↑s`. The two are mathematically equivalent (`Set.Pairwise s (fun u v => ¬G.Adj u v)` vs the explicit double quantification). Replacing the custom definition with Mathlib's would improve consistency with the rest of the codebase.
+/home/ryan/formal-conjectures/ai-review/615.md-14-
+ai-review/615.md:15:Additionally, `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` defines `indepNum` with notation `α(G)`, which could be used in the `ramseyTuranNumber` definition instead of the explicit independence-set-size condition.
+/home/ryan/formal-conjectures/ai-review/615.md-16-
+ai-review/615.md-17-**Issue: Inconsistent edge-counting API.**
+--
+ai-review/615.md-81-**EHSS variant (`erdos_615.variants.EHSS`): Correct.**
+/home/ryan/formal-conjectures/ai-review/615.md-82-
+ai-review/615.md:83:The formalization states: for any ε > 0 and δ > 0, for sufficiently large n, any K₄-free graph on n vertices with independence number < εn has ≤ (1/8 + δ)n² edges. This correctly captures rt(n; 4, εn) < (1/8 + o(1))n². The use of ≤ rather than < for the edge bound is inconsequential for the asymptotic statement.
+/home/ryan/formal-conjectures/ai-review/615.md-84-
+ai-review/615.md-85-**One subtle point:** In the main theorem, `¬G.CliqueFree 4` means "G contains a 4-clique" (i.e., G is not K₄-free). This is the correct encoding of "G contains a K₄."
+--
+ai-review/615.md-87-**`ramseyTuranNumber` definition: Mathematically sound but with edge cases.**
+/home/ryan/formal-conjectures/ai-review/615.md-88-
+ai-review/615.md:89:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/615.md-90-
+/home/ryan/formal-conjectures/ai-review/615.md-91-## Summary
+--
+/home/ryan/formal-conjectures/ai-review/801.md-5-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/801.md-6-
+ai-review/801.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/801.md-8-
+/home/ryan/formal-conjectures/ai-review/801.md-9-## 2. Citations
+--
+ai-review/133.md-33-**Missing variants from the website:**
+ai-review/133.md-34-- **Simonovits construction:** f(n) ≤ n^{0.7182...}, obtained from subsets of [3m−1] of size m where sets are adjacent iff disjoint. This was the first non-trivial upper bound.
+ai-review/133.md:35:- **Alon's intermediate result:** f(n) ≪ √(n log n), leveraging triangle-free graphs with small independence number. This improved on Simonovits before Hanson–Seyffarth.
+/home/ryan/formal-conjectures/ai-review/133.md-36-
+/home/ryan/formal-conjectures/ai-review/133.md-37-These are historically significant intermediate results but not strictly required for a complete formalization.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-21-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-22-Erdős and Gallai conjectured that the clique transversal number of any graph on $n$ vertices
+FormalConjectures/ErdosProblems/151.lean:23:is at most $n - H(n)$, where $H(n)$ is the minimum independence number over all triangle-free
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-24-graphs on $n$ vertices.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-25-
+--
+FormalConjectures/ErdosProblems/151.lean-57-  ∀ u v : Fin n, u ∈ S → v ∈ S → u ≠ v → ¬G.Adj u v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-58-
+FormalConjectures/ErdosProblems/151.lean:59:/-- The independence number $\alpha(G)$: the maximum cardinality of an independent set. -/
+FormalConjectures/ErdosProblems/151.lean-60-noncomputable def independenceNumber {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/151.lean-61-  sSup { k : ℕ | ∃ S : Finset (Fin n), IsIndependentSet G S ∧ S.card = k }
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-63-/-- $H(n)$ is maximal such that every triangle-free graph on $n$ vertices contains
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean-64-an independent set of size $H(n)$; equivalently, $H(n)$ is the minimum
+FormalConjectures/ErdosProblems/151.lean:65:independence number over all triangle-free graphs on $n$ vertices. -/
+FormalConjectures/ErdosProblems/151.lean-66-noncomputable def H (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/151.lean-67-  sInf { k : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ independenceNumber G = k }
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-56-  ∀ e ∈ H.edges, ¬(e ⊆ S)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-57-
+FormalConjectures/ErdosProblems/1024.lean:58:/-- The independence number of $H$: the maximum size of an independent set. -/
+FormalConjectures/ErdosProblems/1024.lean-59-noncomputable def Hypergraph3Uniform.independenceNumber {n : ℕ}
+FormalConjectures/ErdosProblems/1024.lean-60-    (H : Hypergraph3Uniform n) : ℕ :=
+FormalConjectures/ErdosProblems/1024.lean-61-  sSup {k : ℕ | ∃ S : Finset (Fin n), H.IsIndependent S ∧ S.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-62-
+FormalConjectures/ErdosProblems/1024.lean:63:/-- `linearHypergraphIndNum n` is the minimum independence number over all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-64-    $3$-uniform linear hypergraphs on $n$ vertices, i.e. the largest $f$ such
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-65-    that every such hypergraph has an independent set of size at least $f$. -/
+--
+FormalConjectures/ErdosProblems/1024.lean-71-Erdős Problem 1024 (solved by Phelps–Rödl [PhRo86]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-72-
+FormalConjectures/ErdosProblems/1024.lean:73:$f(n) \asymp (n \log n)^{1/2}$, where $f(n)$ is the minimum independence number over
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-74-all $3$-uniform linear hypergraphs on $n$ vertices.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-75-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-26-is it true that $f(n) \geq n/4$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-27-
+FormalConjectures/ErdosProblems/1070.lean:28:In other words, estimate the minimal independence number of a unit distance
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-29-graph with $n$ vertices.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1070.lean-30-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-27-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-28-Equivalently, if $\mathrm{rt}(n; k, \ell)$ denotes the Ramsey-Turán number (maximum number of
+FormalConjectures/ErdosProblems/615.lean:29:edges in a $K_k$-free graph on $n$ vertices with independence number $< \ell$), the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-30-question asks whether $\mathrm{rt}(n; 4, \lceil n / \log n \rceil) < (1/8 - c)n^2$ for some
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean-31-$c > 0$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/637.lean-64-For every $C > 0$, there exist $c_1 > 0$, $c_2 > 0$, and $N_0$ such that for all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/637.lean-65-$n \geq N_0$, if $G$ is a graph on $n$ vertices with clique number at most
+FormalConjectures/ErdosProblems/637.lean:66:$C \cdot \log_2(n)$ and independence number at most $C \cdot \log_2(n)$, then there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/637.lean-67-exists a subset $S$ of vertices with $|S| \geq c_1 \cdot n$ such that the induced
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/637.lean-68-subgraph $G[S]$ has at least $c_2 \cdot n^{1/2}$ distinct degrees.
+--
+ai-review/620.md-13-Nearby problems in the codebase define related but distinct concepts:
+ai-review/620.md-14-- **621.lean**: `IsTriangleIndependent`, `IsTriangleTransversal` — edge-set notions, not vertex-set induced subgraph notions. Not reusable here.
+ai-review/620.md:15:- **151.lean**: `IsCliqueTransversal`, `independenceNumber`, `H(n)` — vertex clique transversals and independence number for triangle-free graphs. The function `H(n)` (minimum independence number over triangle-free graphs on $n$ vertices) is conceptually related (it's Ramsey-type), but Problem 620 asks about the largest triangle-free *induced subgraph*, not the largest independent set within one. Not directly reusable.
+ai-review/620.md-16-- **610.lean / 611.lean**: Clique transversal numbers — different problem structure.
+/home/ryan/formal-conjectures/ai-review/620.md-17-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-80-For $\alpha, \beta \in (0,1)$, the natural density of integers $n$ with $P(n) < n^\alpha$ and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-81-$P(n+1) < (n+1)^\beta$ exists and equals $\rho(1/\alpha) \cdot \rho(1/\beta)$, where $\rho$ is
+FormalConjectures/ErdosProblems/928.lean:82:the Dickman function. This asserts independence of the smooth-number events for consecutive
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-83-integers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/928.lean-84--/
+--
+/home/ryan/formal-conjectures/ai-review/612.md-6-
+ai-review/612.md-7-- **`DiamExtra.lean`**: Defines `SimpleGraph.diam`, `SimpleGraph.ediam`, `SimpleGraph.eccent`, `SimpleGraph.radius`, and `SimpleGraph.center`. The formalization already uses `G.diam` from this file. Notable: `diam_ne_zero` and `dist_le_diam_of_mem_path` are still `proof_wanted`, so any proof attempt would need these filled in first.
+ai-review/612.md:8:- **`Clique.lean`**: Defines `SimpleGraph.indepNum` (independence number). Not directly used but could be relevant for connecting clique-freeness to structural properties.
+ai-review/612.md-9-- **`Coloring.lean`**: Defines `SimpleGraph.chromaticNumber` and includes `le_chromaticNumber_of_pairwise_adj` (clique size ≤ chromatic number) and `card_div_indepNum_le_chromaticNumber`. These would be essential for formalizing the known colorability-based results (3-colorable, 4-colorable cases) if those were added as variants.
+/home/ryan/formal-conjectures/ai-review/612.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/22.md-32-## 3. Variants
+/home/ryan/formal-conjectures/ai-review/22.md-33-
+ai-review/22.md:34:The formalization captures the **main conjecture** (existence of K₄-free graph on n vertices with ≥ n²/8 edges and independence number ≤ εn for sufficiently large n). This is the precise question asked by Bollobás and Erdős.
+/home/ryan/formal-conjectures/ai-review/22.md-35-
+ai-review/22.md-36-**Missing variants / related results that could be formalized:**
+--
+ai-review/22.md-38-1. **The Bollobás–Erdős (1/8 + o(1)) result [BoEr76]:** They proved the existence of such graphs with (1/8 + o(1))n² edges (i.e., the weaker asymptotic version). This is the predecessor result. Note that Problem 615 already contains the EHSS upper bound variant (`erdos_615.variants.EHSS`), which is the complementary direction.
+/home/ryan/formal-conjectures/ai-review/22.md-39-
+ai-review/22.md:40:2. **The quantitative Fox–Loh–Zhao bound:** The docstring mentions that [FLZ15] achieved independence number ≪ (log log n)^{3/2} / (log n)^{1/2} · n, which is much stronger than merely εn. This quantitative strengthening could be stated as a separate variant.
+/home/ryan/formal-conjectures/ai-review/22.md-41-
+ai-review/22.md-42-3. **The Ramsey–Turán reformulation:** The docstring mentions the equivalent formulation rt(n; 4, εn) ≥ n²/8, but this is not formalized as a separate statement. Since `ramseyTuranNumber` already exists in Problem 615, an equivalent restatement using it would be natural.
+--
+/home/ryan/formal-conjectures/ai-review/151.md-11-These are identical definitions placed in separate namespaces. They should be consolidated into a shared file (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean`, which already houses other graph invariants like `dominationNumber`, `ecliqueNum`, etc.).
+/home/ryan/formal-conjectures/ai-review/151.md-12-
+ai-review/151.md:13:Additionally, `IsIndependentSet` and `independenceNumber` in 151.lean duplicate Mathlib's existing `SimpleGraph.IsIndepSet` / `SimpleGraph.indepNum`. The file `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` already defines notation `α(G)` for `indepNum G` and proves basic lemmas (`indepNum_pos`, `indepNum_of_isEmpty`). The custom definitions in 151.lean should be replaced with these Mathlib equivalents.
+/home/ryan/formal-conjectures/ai-review/151.md-14-
+/home/ryan/formal-conjectures/ai-review/151.md-15-## 2. Citations
+--
+ai-review/151.md-51-The problem statement on the website is precise:
+/home/ryan/formal-conjectures/ai-review/151.md-52-- τ(G) is clearly defined as the minimum number of vertices hitting every maximal clique of size ≥ 2.
+ai-review/151.md:53:- H(n) is clearly defined as the minimum independence number over triangle-free graphs on n vertices.
+/home/ryan/formal-conjectures/ai-review/151.md-54-- The conjecture τ(G) ≤ n − H(n) is a clean inequality with no ambiguity.
+/home/ryan/formal-conjectures/ai-review/151.md-55-
+--
+/home/ryan/formal-conjectures/ai-review/151.md-65-- The definition of `IsMaximalCliqueFS` correctly captures inclusion-maximal cliques.
+/home/ryan/formal-conjectures/ai-review/151.md-66-- The `2 ≤ S.card` guard in `IsCliqueTransversal` correctly excludes isolated vertices (singleton maximal cliques), matching the problem statement.
+ai-review/151.md:67:- The definition of `H(n)` using `sInf` over independence numbers of triangle-free graphs is correct: for all n ≥ 0, the set is nonempty (the edgeless graph on n vertices is triangle-free with independence number n), so `sInf` returns the true minimum.
+/home/ryan/formal-conjectures/ai-review/151.md-68-- The overall conjecture statement `cliqueTransversalNumber G ≤ n - H n` faithfully represents the mathematical claim.
+/home/ryan/formal-conjectures/ai-review/151.md-69-
+ai-review/151.md-70-### Technical caveats:
+/home/ryan/formal-conjectures/ai-review/151.md-71-
+ai-review/151.md:72:1. **Natural number subtraction:** The expression `n - H n` uses natural number subtraction, which truncates to 0 if H(n) > n. Mathematically, H(n) ≤ n always holds (the independence number of any graph on n vertices is at most n), so this truncation never activates. However, proving theorems about this statement will require establishing H(n) ≤ n as a lemma, which adds proof burden.
+/home/ryan/formal-conjectures/ai-review/151.md-73-
+ai-review/151.md:74:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/151.md-75-
+ai-review/151.md-76-3. **`sInf` for `H`:** Similarly well-behaved: the set is nonempty (the edgeless graph provides a witness), so `sInf` returns the correct minimum. The `sInf` of the empty set on ℕ is 0, but this edge case doesn't arise.
+--
+ai-review/636.md-5-The `inducedSubgraphSignatures` helper is custom to this file. No existing definition in `FormalConjecturesForMathlib` serves the same purpose. However, the codebase offers related patterns:
+/home/ryan/formal-conjectures/ai-review/636.md-6-
+ai-review/636.md:7:- **Problem 637** (`637.lean`) uses a nearly identical structure: same clique/independence bounds via `∀ S, G.IsClique ... → S.card ≤ C * Real.logb 2 n`, same complement-graph pattern for independence. The two problems could share a common predicate for "Ramsey-like graph" (clique and independence number both ≤ C log₂ n), but this is a minor factoring opportunity, not a correctness issue.
+/home/ryan/formal-conjectures/ai-review/636.md-8-- **Mathlib's `SimpleGraph.cliqueNum` and `SimpleGraph.indepNum`** exist and could replace the inline universal quantification over cliques/independent sets. The current formulation (`∀ S, G.IsClique ↑S → S.card ≤ ...`) is logically equivalent to bounding `cliqueNum` and is consistent with Problem 637's style, so this is acceptable.
+/home/ryan/formal-conjectures/ai-review/636.md-9-- **`edgeSet.ncard`** is used rather than `edgeFinset.card`. Since the induced subgraph on a finite vertex set has finitely many edges, `ncard` returns the correct value. Using `Finset`-based `edgeFinset.card` would be slightly more canonical for decidable finite graphs but is not incorrect here.
+--
+ai-review/636.md-62-1. **Clique bound:** `∀ S : Finset (Fin n), G.IsClique (↑S) → S.card ≤ C * Real.logb 2 n` — correctly bounds the clique number.
+/home/ryan/formal-conjectures/ai-review/636.md-63-
+ai-review/636.md:64:2. **Independence bound:** `∀ S : Finset (Fin n), Gᶜ.IsClique (↑S) → S.card ≤ C * Real.logb 2 n` — correctly expresses the independence number bound as the clique number of the complement. This is standard and correct.
+/home/ryan/formal-conjectures/ai-review/636.md-65-
+ai-review/636.md-66-3. **Conclusion:** `(inducedSubgraphSignatures G).card ≥ c * n ^ (5/2)` — the `inducedSubgraphSignatures` definition computes the image of all vertex subsets under the map S ↦ (|S|, |E(G[S])|), collecting distinct pairs into a `Finset`. The cardinality of this image is exactly the number of distinct (vertex count, edge count) signatures, which is what the problem asks for.
+--
+/home/ryan/formal-conjectures/ai-review/191.md-5-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/191.md-6-
+ai-review/191.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/191.md-8-
+/home/ryan/formal-conjectures/ai-review/191.md-9-## 2. Citations
+--
+ai-review/628.md-22-The [erdosproblems.com/628](https://www.erdosproblems.com/628) page lists additional references:
+/home/ryan/formal-conjectures/ai-review/628.md-23-- **[BrJu69]** Brown and Jung (1969) — resolved the special case $a = b = 3$ by proving such graphs contain two vertex-disjoint odd cycles.
+ai-review/628.md:24:- **[BKPS09]** Balogh, Kostochka, Prince, and Stiebitz (2009) — proved the conjecture for quasi-line graphs and for graphs with independence number 2.
+/home/ryan/formal-conjectures/ai-review/628.md-25-- **[So22]** Song (2022) — provides a comprehensive survey of the problem.
+/home/ryan/formal-conjectures/ai-review/628.md-26-
+--
+ai-review/628.md-33-- **Special case $a = b = 3$ (i.e., $k = 5$):** This was the original question Erdős posed, resolved affirmatively by Brown and Jung (1969). It could be stated as a separate (solved) theorem.
+ai-review/628.md-34-- **Terminology:** The website uses the term *$(a,b)$-splittable*, which could be mentioned in the docstring for discoverability.
+ai-review/628.md:35:- **Partial results for restricted graph classes** (quasi-line graphs, independence number 2) from [BKPS09] could also be formalized as separate theorems.
+/home/ryan/formal-conjectures/ai-review/628.md-36-
+ai-review/628.md-37-**Recommendation:** Consider adding the Brown-Jung special case as a separate solved theorem, since it is a historically significant resolved instance.
+--
+/home/ryan/formal-conjectures/ai-review/637.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/637.md-4-
+ai-review/637.md:5:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/637.md-6-
+/home/ryan/formal-conjectures/ai-review/637.md-7-**`inducedDegree` vs Mathlib.** The custom `inducedDegree` definition computes `(S.filter fun w => G.Adj v w).card`. An equivalent Mathlib-based expression would be `(G.neighborFinset v ∩ S).card` or `(G.induce ↑S).degree ⟨v, hv⟩` (for `v ∈ S`). The custom definition is arguably clearer for this self-contained problem and avoids subtype coercion overhead, so the choice is reasonable.
+--
+/home/ryan/formal-conjectures/ai-review/637.md-9-**`graphCliqueNumber` in Problem 813.** Problem 813 defines a standalone `graphCliqueNumber` function. Mathlib also provides `SimpleGraph.cliqueNum`. However, Problem 637 does not use a clique number definition at all — it instead inlines the bound as a universal quantification over cliques (∀ S, IsClique S → |S| ≤ C·log n). This inline approach is actually more direct and avoids needing to reason about `sSup`, so the current choice is sound.
+/home/ryan/formal-conjectures/ai-review/637.md-10-
+ai-review/637.md:11:**`α(G)` notation in FormalConjecturesForMathlib.** The file `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` provides `α(G)` notation for `indepNum G`. This is not used in 637, which instead encodes independence number constraints via `Gᶜ.IsClique`. Again, the inline approach is preferable here for the same reasons.
+/home/ryan/formal-conjectures/ai-review/637.md-12-
+ai-review/637.md-13-**Verdict:** No significant code reuse opportunities missed. The current approach of self-contained helper definitions is appropriate.
+--
+ai-review/637.md-71-The original problem uses asymptotic notation ("≫ log n", "≫ n", "≫ n^{1/2}") which is inherently informal. The formalization must make explicit choices:
+/home/ryan/formal-conjectures/ai-review/637.md-72-
+ai-review/637.md:73:1. **"No complete graph or independent set on ≫ log n vertices"** → Formalized as: for all C > 0, if clique and independence numbers are ≤ C·log₂(n), then... The universal quantification over C correctly captures "O(log n)" — for any constant C, the conclusion holds (with c₁, c₂ depending on C).
+/home/ryan/formal-conjectures/ai-review/637.md-74-
+/home/ryan/formal-conjectures/ai-review/637.md-75-2. **"≫ n vertices"** → Formalized as ≥ c₁·n for some c₁ > 0 (i.e., Ω(n)).
+--
+/home/ryan/formal-conjectures/ai-review/804.md-6-
+/home/ryan/formal-conjectures/ai-review/804.md-7-- `SimpleGraph.IsIndepSet` — defined as `s.Pairwise (fun v w ↦ ¬G.Adj v w)` (on `Set α`). The custom definition is equivalent (the extra `u = v` case is vacuous by `SimpleGraph.loopless`), but uses `Finset` membership rather than `Set.Pairwise`.
+ai-review/804.md:8:- `SimpleGraph.indepNum` — `sSup {n | ∃ s, G.IsNIndepSet n s}`. This is the standard independence number and replaces the custom `independenceNum`.
+/home/ryan/formal-conjectures/ai-review/804.md-9-- `SimpleGraph.IsNIndepSet` — an independent set of exact cardinality `n`.
+/home/ryan/formal-conjectures/ai-review/804.md-10-
+/home/ryan/formal-conjectures/ai-review/804.md-11-The project-local file `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Clique.lean` also provides the notation `α(G)` for `indepNum G` and supporting lemmas like `indepNum_pos`.
+/home/ryan/formal-conjectures/ai-review/804.md-12-
+ai-review/804.md:13:**Recommendation:** Replace `Erdos804.IsIndepSet` and `Erdos804.independenceNum` with the Mathlib/ForMathlib equivalents. The `erdos804_f` definition and all four theorems would need minor adjustments to use `SimpleGraph.IsIndepSet` (on `Set` coerced from `Finset`) and `SimpleGraph.indepNum`.
+/home/ryan/formal-conjectures/ai-review/804.md-14-
+/home/ryan/formal-conjectures/ai-review/804.md-15-## 2. Citations
+--
+/home/ryan/formal-conjectures/ai-review/804.md-44-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/804.md-45-
+ai-review/804.md:46:- **Custom definitions clutter the namespace.** Using Mathlib's `IsIndepSet` and `indepNum` would make the code immediately recognizable to anyone familiar with the Mathlib API.
+ai-review/804.md:47:- **The `erdos804_f` definition (lines 58–63) is dense.** A brief inline comment explaining "infimum over qualifying graphs" would help readability, since the definition encodes "maximal k such that all qualifying graphs have independence number ≥ k" as an `sInf`.
+/home/ryan/formal-conjectures/ai-review/804.md-48-- **Theorem names are clear** and follow a sensible convention (`part1_lower`, `part2_upper`, etc.).
+ai-review/804.md-49-- **The docstring** (lines 19–36) is well-written, clearly stating both the original conjecture and the resolution. Minor nit: line 28 says "Estimate f(n)" which should be "Estimate f(m,n)" — though this matches the original problem statement on the website, so it may be intentionally faithful.
+--
+/home/ryan/formal-conjectures/ai-review/804.md-62-
+/home/ryan/formal-conjectures/ai-review/804.md-63-### Definition of `erdos804_f`
+ai-review/804.md:64:The encoding as `sInf { k | ∃ G, (condition on G) ∧ independenceNum G = k }` correctly captures "the minimum independence number over all qualifying graphs," which equals "the maximum k such that every qualifying graph has independence number ≥ k." **This is mathematically correct.**
+/home/ryan/formal-conjectures/ai-review/804.md-65-
+ai-review/804.md-66-However, there is an **edge-case concern**: when no graph on `Fin n` satisfies the local independence condition (e.g., when m > n, or for very small n), the set is empty and `sInf ∅ = 0` for `ℕ`. Mathematically, f(m,n) should be n (vacuously, all zero qualifying graphs satisfy any lower bound). This discrepancy is immaterial for the asymptotic theorems (which use "for all sufficiently large n") but makes the definition technically incorrect at small values.
+/home/ryan/formal-conjectures/ai-review/804.md-67-
+/home/ryan/formal-conjectures/ai-review/804.md-68-### Definition of `independenceNum`
+ai-review/804.md:69:The definition `((univ).powerset.filter (IsIndepSet G)).sup Finset.card` computes the maximum cardinality of an independent set by enumerating all subsets. This is correct for finite graphs (which `Fin n` ensures). It agrees with Mathlib's `indepNum` on finite types.
+/home/ryan/formal-conjectures/ai-review/804.md-70-
+/home/ryan/formal-conjectures/ai-review/804.md-71-### Induced subgraph condition

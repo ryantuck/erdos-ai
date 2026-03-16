@@ -1,0 +1,308 @@
+FormalConjecturesForMathlib/NumberTheory/PrimeGap.lean-21-The prime gap: the difference between the $n+1$-th and $n$-th prime.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/NumberTheory/PrimeGap.lean-22--/
+FormalConjecturesForMathlib/NumberTheory/PrimeGap.lean:23:noncomputable def primeGap (n : ℕ) : ℕ := (n + 1).nth Nat.Prime - n.nth Nat.Prime
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Gilbreath.lean-30--/
+FormalConjectures/Wikipedia/Gilbreath.lean-31-noncomputable def d : ℕ → (ℕ → ℕ)
+FormalConjectures/Wikipedia/Gilbreath.lean:32:  | 0 => fun n ↦ n.nth Nat.Prime
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Gilbreath.lean-33-  | k + 1 => fun n ↦ Int.natAbs (d k (n + 1) - d k n)
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Gilbreath.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Oppermann.lean-60-@[category high_school, AMS 11]
+FormalConjectures/Wikipedia/Oppermann.lean-61-theorem oppermann_implies_brocard (n : ℕ) (hn : 1 ≤ n) (P : type_of% oppermann_conjecture) :
+FormalConjectures/Wikipedia/Oppermann.lean:62:    letI prev := n.nth Nat.Prime
+FormalConjectures/Wikipedia/Oppermann.lean:63:    letI next := (n+1).nth Nat.Prime
+FormalConjectures/Wikipedia/Oppermann.lean-64-    4 ≤ ((Ioo (prev ^ 2) (next ^ 2)).filter Nat.Prime).card := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Oppermann.lean-65-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/BrocardConjecture.lean-36-@[category research open, AMS 11]
+FormalConjectures/Wikipedia/BrocardConjecture.lean-37-theorem brocard_conjecture (n : ℕ) (hn : 1 ≤ n) :
+FormalConjectures/Wikipedia/BrocardConjecture.lean:38:    letI prev := n.nth Nat.Prime;
+FormalConjectures/Wikipedia/BrocardConjecture.lean:39:    letI next := (n+1).nth Nat.Prime;
+FormalConjectures/Wikipedia/BrocardConjecture.lean-40-    4 ≤ ((Ioo (prev^2) (next^2)).filter Nat.Prime).card := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/BrocardConjecture.lean-41-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/BrocardConjecture.lean-46-@[category research solved, AMS 11]
+FormalConjectures/Wikipedia/BrocardConjecture.lean-47-theorem brocard_conjecture.ferreira_large_n : ∀ᶠ n in atTop,
+FormalConjectures/Wikipedia/BrocardConjecture.lean:48:    letI prev := n.nth Nat.Prime;
+FormalConjectures/Wikipedia/BrocardConjecture.lean:49:    letI next := (n+1).nth Nat.Prime;
+FormalConjectures/Wikipedia/BrocardConjecture.lean-50-    4 ≤ ((Ioo (prev^2) (next^2)).filter Nat.Prime).card := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/BrocardConjecture.lean-51-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Andrica.lean-35-@[category research open, AMS 11]
+FormalConjectures/Wikipedia/Andrica.lean-36-theorem andrica_conjecture (n : ℕ) :
+FormalConjectures/Wikipedia/Andrica.lean:37:    Real.sqrt ((n+1).nth Nat.Prime) - Real.sqrt (n.nth Nat.Prime) < 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Andrica.lean-38-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Andrica.lean-39-
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Andrica.lean-43-@[category research solved, AMS 11]
+FormalConjectures/Wikipedia/Andrica.lean-44-theorem andrica_conjecture.ferreira_large_n :
+FormalConjectures/Wikipedia/Andrica.lean:45:    ∀ᶠ n in atTop, Real.sqrt ((n+1).nth Nat.Prime) - Real.sqrt (n.nth Nat.Prime) < 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Andrica.lean-46-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Andrica.lean-47-
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-28-The n-th Euclid number is the product of the first n prime numbers plus one.
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-29--/
+FormalConjectures/Wikipedia/Euclid.lean:30:noncomputable def Euclid (n : ℕ) : ℕ := 1 + ∏ i ∈ Finset.range n, i.nth Nat.Prime
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-32-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LegendreConjecture.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LegendreConjecture.lean-40-/-- If there exists a constant `c > 0` such that
+FormalConjectures/Wikipedia/LegendreConjecture.lean:41:`(n + 1).nth Nat.Prime - n.nth Nat.Prime < (n.nth Nat.Prime) ^ (1 / 2 - c)` for all large `n`,
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LegendreConjecture.lean-42-then Legendre's conjecture is asymptotically true. -/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LegendreConjecture.lean-43-@[category research solved, AMS 11]
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LegendreConjecture.lean-44-theorem bounded_gap_legendre
+FormalConjectures/Wikipedia/LegendreConjecture.lean:45:    (H : ∃ c > 0, ∀ᶠ n in atTop, (n + 1).nth Nat.Prime - n.nth Nat.Prime <
+FormalConjectures/Wikipedia/LegendreConjecture.lean:46:      (n.nth Nat.Prime : ℝ) ^ (1 / (2 : ℝ) - c)) :
+FormalConjectures/Wikipedia/LegendreConjecture.lean-47-    ∀ᶠ n in atTop, ∃ p ∈ Set.Ioo (n ^ 2) ((n + 1) ^ 2), Nat.Prime p := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/LegendreConjecture.lean-48-  sorry
+--
+/home/ryan/formal-conjectures/ai-review/15.md-5-**No significant reuse opportunities identified.**
+/home/ryan/formal-conjectures/ai-review/15.md-6-
+ai-review/15.md:7:The formalization uses standard Mathlib primitives (`Finset.range`, `Tendsto`, `atTop`, `nhds`, `Nat.nth`) and does not define any custom helpers. This is consistent with 10+ other Erdős problems that use `Nat.nth Nat.Prime` for prime indexing (e.g., Problems 251, 358, 401, 427, 852).
+/home/ryan/formal-conjectures/ai-review/15.md-8-
+/home/ryan/formal-conjectures/ai-review/15.md-9-The `primeGap` function defined in `FormalConjecturesForMathlib/NumberTheory/PrimeGap.lean` is not needed for the main conjecture but *would* be relevant if the variant conjectures (see §3) were added, since they involve `p_{n+1} - p_n`.
+--
+/home/ryan/formal-conjectures/ai-review/15.md-85-| $n = 2$ | $n = 3$ | $(-1)^3 \cdot 3 / p_3 = -3/5$ | $(-1)^3 \cdot 3/p_3 = -3/5$ |
+/home/ryan/formal-conjectures/ai-review/15.md-86-
+ai-review/15.md:87:The 0-to-1 index shift is handled correctly: `(-1 : ℝ) ^ (n + 1) * ((n + 1 : ℝ) / (Nat.nth Nat.Prime n : ℝ))` faithfully encodes the $n$-th (1-indexed) term of the series when the Lean variable ranges over $\{0, 1, 2, \ldots\}$.
+/home/ryan/formal-conjectures/ai-review/15.md-88-
+ai-review/15.md:89:**Division safety:** `Nat.nth Nat.Prime n` is always a prime ≥ 2 (since `Nat.Prime` is infinite), so the cast to `ℝ` is always positive and division is well-defined. No division-by-zero issues.
+/home/ryan/formal-conjectures/ai-review/15.md-90-
+ai-review/15.md-91-**Convergence formulation:** `∃ L : ℝ, Tendsto (fun N => ∑ n ∈ Finset.range N, ...) atTop (nhds L)` is the standard definition of convergence of a series via partial sums. This is equivalent to `Summable` for the terms, but the partial-sum formulation is more appropriate here since the limit value is unknown and the series is not absolutely convergent.
+--
+/home/ryan/formal-conjectures/ai-review/235.md-96-
+ai-review/235.md-97-### Correct aspects:
+ai-review/235.md:98:- The `primorial` definition correctly computes the product of the first `k` primes using 0-indexed `Nat.nth Nat.Prime`.
+/home/ryan/formal-conjectures/ai-review/235.md-99-- The `gapFraction` correctly computes the fraction of small gaps among coprime residues.
+ai-review/235.md-100-- The theorem statement correctly formalizes the Erdős conjecture: existence of a continuous limiting distribution for the gap fractions.
+--
+ai-review/5.md-11-`FormalConjecturesForMathlib/NumberTheory/PrimeGap.lean` (line 23) defines:
+/home/ryan/formal-conjectures/ai-review/5.md-12-```lean
+ai-review/5.md:13:noncomputable def primeGap (n : ℕ) : ℕ := (n + 1).nth Nat.Prime - n.nth Nat.Prime
+/home/ryan/formal-conjectures/ai-review/5.md-14-```
+/home/ryan/formal-conjectures/ai-review/5.md-15-
+--
+ai-review/5.md-89-- **Opens:** `open Filter Nat Real` is minimal and appropriate for the `Tendsto`/`atTop`/`nhds`/`Real.log` usage.
+/home/ryan/formal-conjectures/ai-review/5.md-90-
+ai-review/5.md:91:**Minor suggestion:** The formalization uses `nth Nat.Prime` (from `Nat` namespace via `open Nat`) while the shared `primeGap` uses `Nat.nth Nat.Prime`. These are equivalent given the `open Nat`, but the difference in style is slightly jarring when comparing files.
+/home/ryan/formal-conjectures/ai-review/5.md-92-
+/home/ryan/formal-conjectures/ai-review/5.md-93-Overall readability is very good.
+--
+ai-review/401.md-11-- **Problem 728** (`ErdosProblems/728.lean`): A related problem about the existence of triples `(a, b, n)` with `a!b! ∣ n!(a+b-n)!` in the `n + O(log n)` regime. Uses a structurally different formalization but shares the same mathematical family.
+/home/ryan/formal-conjectures/ai-review/401.md-12-
+ai-review/401.md:13:- **`Nat.nth Nat.Prime`** wrappers: Problems 852 and 453 define `nthPrime` helpers, but since 401 only uses the expression once inside a product, the inline usage is appropriate.
+/home/ryan/formal-conjectures/ai-review/401.md-14-
+ai-review/401.md:15:- **Primorial**: Problem 854 defines a `primorial` function. The product `∏ i ∈ Finset.range r, (Nat.nth Nat.Prime i) ^ n` in Problem 401 is `primorial(r)^n`, but this factoring doesn't simplify the formalization.
+/home/ryan/formal-conjectures/ai-review/401.md-16-
+ai-review/401.md-17-**Verdict**: The formalization is self-contained and doesn't need external helpers. The main reuse opportunity is noting the mathematical equivalence with the `DenomPSmooth` predicate from Problem 729, which could be mentioned in a comment.
+--
+ai-review/401.md-55-- **Good**: The docstring restates the problem in standard mathematical notation.
+ai-review/401.md-56-- **Minor**: The cast `((a₁ + a₂ : ℕ) : ℝ)` is standard but slightly verbose. This is idiomatic Lean and unavoidable.
+ai-review/401.md:57:- **Suggestion**: The expression `∏ i ∈ Finset.range r, (Nat.nth Nat.Prime i) ^ n` is readable but could benefit from a one-line comment noting it equals `(primorial r)^n` for readers less familiar with the notation.
+ai-review/401.md-58-- **Overall**: Readability is good. No changes needed.
+/home/ryan/formal-conjectures/ai-review/401.md-59-
+--
+/home/ryan/formal-conjectures/ai-review/401.md-67-
+ai-review/401.md-68-All components are standard and well-supported in Mathlib:
+ai-review/401.md:69:- `Nat.factorial`, `Nat.nth Nat.Prime`, `Finset.range`, `∏`, `∣` — all well-developed.
+/home/ryan/formal-conjectures/ai-review/401.md-70-- `Filter.Tendsto`, `atTop` — standard filter library.
+/home/ryan/formal-conjectures/ai-review/401.md-71-- `Real.log` — standard real analysis.
+--
+ai-review/401.md-81-- **Answer tag**: `answer(True)` is correct — the problem is solved affirmatively per the website.
+ai-review/401.md-82-- **Category tag**: `@[category research solved, AMS 11]` is correct.
+ai-review/401.md:83:- **Prime enumeration**: `Nat.nth Nat.Prime i` for `i ∈ Finset.range r` correctly produces the first r primes (0-indexed: p₀ = 2, p₁ = 3, ..., p_{r-1}).
+ai-review/401.md:84:- **Divisibility**: `(a₁.factorial * a₂.factorial) ∣ (n.factorial * ∏ i ∈ Finset.range r, (Nat.nth Nat.Prime i) ^ n)` faithfully encodes `a₁!a₂! | n! · 2ⁿ · 3ⁿ ⋯ pᵣⁿ`.
+ai-review/401.md-85-- **Inequality**: `((a₁ + a₂ : ℕ) : ℝ) > (n : ℝ) + f r * Real.log (n : ℝ)` correctly encodes `a₁ + a₂ > n + f(r) log n`.
+ai-review/401.md-86-- **Tendsto**: `Tendsto f atTop atTop` correctly encodes `f(r) → ∞` as `r → ∞`.
+--
+FormalConjectures/ErdosProblems/854.lean-39-noncomputable def primorial : ℕ → ℕ
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean-40-  | 0 => 1
+FormalConjectures/ErdosProblems/854.lean:41:  | k + 1 => Nat.nth Nat.Prime k * primorial k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/854.lean-43-/-- The sorted list of integers in $\{1, \ldots, n-1\}$ coprime to $n$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/375.lean-49-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/375.lean-50-theorem erdos_375.bounded_gap : Erdos375Prop →
+FormalConjectures/ErdosProblems/375.lean:51:    ∃ c > 0, ∀ᶠ n in atTop, (n + 1).nth Nat.Prime - n.nth Nat.Prime
+FormalConjectures/ErdosProblems/375.lean:52:    < (n.nth Nat.Prime : ℝ) ^ (1 / (2 : ℝ) - c) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/375.lean-53-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/375.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/251.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/251.lean-30-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/251.lean:31:theorem erdos_251 : answer(sorry) ↔ Irrational (∑' n : ℕ, (Nat.nth Nat.Prime n) / (2 ^ n)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/251.lean-32-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/251.lean-33-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-88-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/358.lean-89-theorem erdos_358.variants.prime_set :
+FormalConjectures/ErdosProblems/358.lean:90:    atTop.limsup (fun n ↦ (f (Nat.nth Nat.Prime) n : ℕ∞)) = ⊤ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-91-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-92-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-97-@[category research open, AMS 5 11]
+FormalConjectures/ErdosProblems/358.lean-98-theorem erdos_358.variants.prime_set_density_representation :
+FormalConjectures/ErdosProblems/358.lean:99:    0 < {n : ℕ | intervalRepresentations (Nat.nth Nat.Prime) n |>.Nonempty}.upperDensity := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-100-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/358.lean-101-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/470.lean-72-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/470.lean-73-theorem erdos_470.variants.prime_gap_imp_inf_prim_weird :
+FormalConjectures/ErdosProblems/470.lean:74:    ∀ᶠ n in Filter.atTop, primeGap n < √ (n.nth Nat.Prime) / 10 →
+FormalConjectures/ErdosProblems/470.lean-75-      Set.Infinite PrimitiveWeird := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/470.lean-76-  sorry
+--
+FormalConjectures/ErdosProblems/997.lean-57-theorem erdos_997 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/997.lean-58-    answer(sorry) ↔
+FormalConjectures/ErdosProblems/997.lean:59:      ∀ α : ℝ, ¬ IsWellDistributed (fun n ↦ Int.fract (α * (n.nth Nat.Prime))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/997.lean-60-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/997.lean-61-
+--
+FormalConjectures/ErdosProblems/997.lean-80-theorem erdos_997.variants.irrational :
+FormalConjectures/ErdosProblems/997.lean-81-    ∃ α : ℝ, Irrational α ∧
+FormalConjectures/ErdosProblems/997.lean:82:      ¬ IsWellDistributed (fun n ↦ Int.fract (α * (n.nth Nat.Prime))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/997.lean-83-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/997.lean-84-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-32--/
+FormalConjectures/ErdosProblems/141.lean-33-def Set.IsPrimeProgressionOfLength (s : Set ℕ) (l : ℕ∞) : Prop :=
+FormalConjectures/ErdosProblems/141.lean:34:    ∃ a, ENat.card s = l ∧ s = {(a + n).nth Nat.Prime | (n : ℕ) (_ : n < l)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-36-open Nat Erdos141
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-45-  · aesop
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-46-  · norm_num [exists_lt_succ_right, or_assoc, eq_comm, Set.insert_def,
+FormalConjectures/ErdosProblems/141.lean:47:    show (2).nth Nat.Prime = 5 from nth_count prime_five,
+FormalConjectures/ErdosProblems/141.lean:48:    show (3).nth Nat.Prime = 7 from Nat.nth_count (by decide : (7).Prime)]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/141.lean-50-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/932.lean-31-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/932.lean-32-theorem erdos_932 :
+FormalConjectures/ErdosProblems/932.lean:33:    { r : ℕ | 2 ≤ (Finset.Ioo (r.nth Nat.Prime) (r.succ.nth Nat.Prime) |>.filter
+FormalConjectures/ErdosProblems/932.lean:34:      (fun m => m.maxPrimeFac < r.succ.nth Nat.Prime - r.nth Nat.Prime)).card }.Infinite := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/932.lean-35-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/932.lean-36-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/932.lean-40-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/932.lean-41-theorem erdos_932.variants.one_le :
+FormalConjectures/ErdosProblems/932.lean:42:    { r : ℕ | 1 ≤ (Finset.Ioo (r.nth Nat.Prime) (r.succ.nth Nat.Prime) |>.filter
+FormalConjectures/ErdosProblems/932.lean:43:      (fun m => m.maxPrimeFac < r.succ.nth Nat.Prime - r.nth Nat.Prime)).card }.HasDensity 0 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/932.lean-44-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/932.lean-45-
+--
+FormalConjectures/ErdosProblems/951.lean-65-    ∀ a : ℕ → ℝ, IsBeurlingPrimes a →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/951.lean-66-    ((fun x => (BeurlingInteger a ∩ .Iic x).ncard - x) =o[atTop] Real.log) →
+FormalConjectures/ErdosProblems/951.lean:67:    a = Nat.cast ∘ Nat.nth Nat.Prime := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/951.lean-68-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/951.lean-69-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/852.lean-34-
+FormalConjectures/ErdosProblems/852.lean-35-/-- The $n$-th prime (0-indexed): $p_0 = 2$, $p_1 = 3$, etc. -/
+FormalConjectures/ErdosProblems/852.lean:36:noncomputable def nthPrime (n : ℕ) : ℕ := Nat.nth Nat.Prime n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/852.lean-37-
+FormalConjectures/ErdosProblems/852.lean-38-/-- The $n$-th prime gap: $d_n = p_{n+1} - p_n$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/15.lean-45-converges to a real limit $L$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/15.lean-46-
+FormalConjectures/ErdosProblems/15.lean:47:Using 0-indexed `Nat.nth Nat.Prime`, the $n$-th term ($n : \mathbb{N}$, 0-indexed) is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/15.lean-48-$(-1)^{n+1} \cdot (n+1) / p_{n+1}$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/15.lean-49-which corresponds to the 1-indexed term $(-1)^{n+1} \cdot (n+1)/p_{n+1}$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/15.lean-53-    Tendsto
+FormalConjectures/ErdosProblems/15.lean-54-      (fun N : ℕ => ∑ n ∈ Finset.range N,
+FormalConjectures/ErdosProblems/15.lean:55:        (-1 : ℝ) ^ (n + 1) * ((n + 1 : ℝ) / (Nat.nth Nat.Prime n : ℝ)))
+FormalConjectures/ErdosProblems/15.lean-56-      atTop (nhds L) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/15.lean-57-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/453.lean-36-
+FormalConjectures/ErdosProblems/453.lean-37-/-- The $k$th prime (0-indexed): $p_0 = 2$, $p_1 = 3$, $p_2 = 5$, ... -/
+FormalConjectures/ErdosProblems/453.lean:38:noncomputable def nthPrime (k : ℕ) : ℕ := Nat.nth Nat.Prime k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/453.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/453.lean-40-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/4.lean-28-
+FormalConjectures/ErdosProblems/4.lean-29-def Erdos4For (C : ℝ) : Prop :=
+FormalConjectures/ErdosProblems/4.lean:30:  {n : ℕ | (n + 1).nth Nat.Prime - n.nth Nat.Prime >
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/4.lean-31-    C * log (log n) * log (log (log (log n))) / (log (log (log n))) ^ 2 * log n}.Infinite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/4.lean-32-
+--
+FormalConjectures/ErdosProblems/1138.lean-37-noncomputable def maxPrimeGap (x : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-38-  (Finset.range (Nat.primeCounting' x)).sup
+FormalConjectures/ErdosProblems/1138.lean:39:    (fun k => Nat.nth Nat.Prime (k + 1) - Nat.nth Nat.Prime k)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1138.lean-41-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean-82--/
+FormalConjectures/ErdosProblems/56.lean-83-noncomputable def FirstPrimesMultiples (N k : ℕ) : Finset ℕ :=
+FormalConjectures/ErdosProblems/56.lean:84:    (Finset.Icc 1 N).filter fun i => ∃ j < k, (j.nth Nat.Prime ∣ i)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean-86-@[category test, AMS 11]
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean-114--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean-115-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/56.lean:116:theorem erdos_56 : (∀ᵉ (k > 0) (N ≥ (k-1).nth Nat.Prime),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean-117-    (MaxWeaklyDivisible N k = (FirstPrimesMultiples N k).card)) ↔
+FormalConjectures/ErdosProblems/56.lean-118-    answer(False) := by
+--
+FormalConjectures/ErdosProblems/401.lean-50-      ∀ r : ℕ, {n : ℕ | ∃ a₁ a₂ : ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/401.lean-51-        (a₁.factorial * a₂.factorial) ∣
+FormalConjectures/ErdosProblems/401.lean:52:          (n.factorial * ∏ i ∈ Finset.range r, (Nat.nth Nat.Prime i) ^ n) ∧
+FormalConjectures/ErdosProblems/401.lean-53-        ((a₁ + a₂ : ℕ) : ℝ) > (n : ℝ) + f r * Real.log (n : ℝ)}.Infinite := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/401.lean-54-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean-39-    answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean-40-      ∀ k ≥ 2, ∀ᶠ n in atTop,
+FormalConjectures/ErdosProblems/891.lean:41:      ∃ m ∈ Ico n (n + ∏ i ∈ range k, i.nth Nat.Prime), k < ω m := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean-42-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean-43-
+--
+FormalConjectures/ErdosProblems/891.lean-49-theorem erdos_891.variants.schinzel :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean-50-    ∀ k ≥ 2, ∀ᶠ n in atTop,
+FormalConjectures/ErdosProblems/891.lean:51:      ∃ m ∈ Ico n (n + (∏ i ∈ range (k - 1), i.nth Nat.Prime) * k.nth Nat.Prime),
+FormalConjectures/ErdosProblems/891.lean-52-      k < ω m := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean-53-  sorry
+--
+FormalConjectures/ErdosProblems/891.lean-73-theorem erdos_891.variants.weisenberg (k : ℕ) (hk : k ≥ 2) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean-74-    ∃ᶠ n in atTop,
+FormalConjectures/ErdosProblems/891.lean:75:      ∀ m ∈ Ico n (n + (∏ i ∈ range k, i.nth Nat.Prime) - 1),
+FormalConjectures/ErdosProblems/891.lean-76-      ω m ≤ k := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/891.lean-77-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/238.lean-34-@[category research open, AMS 11]
+FormalConjectures/ErdosProblems/238.lean-35-theorem erdos_238 : answer(sorry) ↔ ∀ᵉ (c₁ > 0) (c₂ > 0), ∀ᶠ (x : ℝ) in atTop, ∃ (k : ℕ),
+FormalConjectures/ErdosProblems/238.lean:36:    c₁ * log x < k ∧ ∃ f : Fin k → ℕ, ∃ m, (∀ i, f i ≤ x ∧ f i = (m + i.1).nth Nat.Prime)
+FormalConjectures/ErdosProblems/238.lean-37-    ∧ ∀ i : Fin (k - 1), c₂ < primeGap (m + i.1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/238.lean-38-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/238.lean-43-@[category research solved, AMS 11]
+FormalConjectures/ErdosProblems/238.lean-44-theorem erdos_238.variant : ∀ c₂ > 0, ∀ᶠ c₁ in 𝓝[>] 0, ∀ᶠ (x : ℝ) in atTop, ∃ (k : ℕ),
+FormalConjectures/ErdosProblems/238.lean:45:    c₁ * log x < k ∧ ∃ f : Fin k → ℕ, ∃ m, (∀ i, f i ≤ x ∧ f i = (m + i.1).nth Nat.Prime)
+FormalConjectures/ErdosProblems/238.lean-46-    ∧ ∀ i : Fin (k - 1), c₂ < primeGap (m + i.1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/238.lean-47-  sorry
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean-40-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean-41-`u n` is the normalized `n`th prime, defined as `pₙ / (n+1)` where `pₙ` is the `n`th prime
+FormalConjectures/ErdosProblems/968.lean:42:(with `0.nth Nat.Prime = 2`).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean-43-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean-44-This corresponds to the classical sequence `(p₁/1, p₂/2, p₃/3, ...)` while using `Nat.nth Prime`'s
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean-46--/
+FormalConjectures/ErdosProblems/968.lean-47-noncomputable def u (n : ℕ) : ℝ :=
+FormalConjectures/ErdosProblems/968.lean:48:  (n.nth Nat.Prime : ℝ) / (n + 1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/968.lean-50-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/427.lean-36-    -- `d` needs to be `≠ 0` since the sum is never `0`!
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/427.lean-37-    d ≠ 0 → ∃ k, k ≠ 0 ∧
+FormalConjectures/ErdosProblems/427.lean:38:    d ∣ ∑ i ∈ Finset.Ico n (n + k), i.nth Nat.Prime
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/427.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/427.lean-40-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/427.lean-57--/
+FormalConjectures/ErdosProblems/427.lean-58-def ShiuTheorem : Prop := ∀ (k a q : ℕ), 1 ≤ k → 1 ≤ q → a.gcd q = 1 →
+FormalConjectures/ErdosProblems/427.lean:59:    { m : ℕ | ∀ p ∈ (Finset.Ico m (m + k)).image (Nat.nth Nat.Prime), p ≡ a [MOD q]}.Infinite
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/427.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/427.lean-61-

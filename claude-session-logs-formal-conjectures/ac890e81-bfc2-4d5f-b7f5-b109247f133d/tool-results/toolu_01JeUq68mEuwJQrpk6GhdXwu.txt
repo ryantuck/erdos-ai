@@ -1,0 +1,276 @@
+ai-review/237.md:26:| [Er73] Erdős, P., 1973. | ✓ Matches |
+FormalConjectures/ErdosProblems/1143.lean:28:[Va99] Vaughan, R.C., *On a problem of Erdős, Straus, and Schinzel*, Combinatorica 19 (1999),
+ai-review/790.md:132:| Citations | [CKS75] is complete; minor references [Er65], [Er73], [Va99] and "See also: 876" are missing |
+FormalConjectures/ErdosProblems/1174.lean:27:[Va99] Vardi, I. (ed.), *Problems from the Erdős problem collection*, §7.91 (1999).
+ai-review/860.md:15:- **[Er92c]** — Erdős follow-up work (missing from formalization)
+ai-review/860.md:82:- Missing references ([Er92c], [Gu04])
+ai-review/164.md:33:The website lists references: [Er35], [Er76g], [Er86], [Li23], and [Va99].
+ai-review/164.md:41:| Varadharajan 1999 [Va99] | Not cited | [Va99, §1.12] | **Missing.** The website lists this reference (section 1.12). |
+ai-review/164.md:133:**Verdict: Correct. The formalization faithfully captures Lichtman's theorem (the Erdős primitive set conjecture). No mathematical errors detected. The only actionable improvements are (1) replacing the local `IsPrimitive` with Mathlib's `IsAntichain (· ∣ ·)` and (2) adding the missing [Va99] citation.**
+ai-review/201.md:50:| Erdős 1973 | `[Er73]` with full title | Yes | OK |
+ai-review/425.md:29:- [Er68], [Er69], [Er70b], [Er73], [Er77c], [Er80], [ErGr80]
+ai-review/425.md:31:**Issue:** The formalization is missing six references. At minimum, [ErGr80] (Erdős–Graham, which likely contains the generalization to r-fold products) should be cited since the formalization includes the r-fold variant. The other references ([Er69], [Er70b], [Er73], [Er77c], [Er80]) represent the evolution of Erdős's work on this problem and should ideally be listed for completeness, even if only the shorthand codes are available from the website.
+ai-review/861.md:18:**Issue: Likely incorrect citation for [Er92c].**
+ai-review/861.md:21:> [Er92c] Erdős, P., *Some of my favourite problems in number theory, combinatorics, and geometry*, Resenhas (1995).
+ai-review/861.md:24:> [Er92c] Erdős, P., *Some of my favourite problems in various branches of combinatorics*, Matematiche (Catania) 47 (1992), no. 2, 231–240.
+ai-review/861.md:26:The code [Er92c] in the Erdős bibliography standardly refers to the 1992 Matematiche paper. The "Resenhas (1995)" paper is a different publication. The 861 docstring should be corrected to match 862's citation (and the standard bibliography).
+ai-review/861.md:101:| Citations | ⚠️ Needs correction | [Er92c] citation likely wrong; missing cross-ref to 862 |
+ai-review/59.md:31:2. **The C₄ case**: The website notes that the specific case G = C₄ is separately posed in [Va99]. This could be stated as a variant (it remains open whether the original bound holds for C₄, even though it fails for C₆).
+ai-review/185.md:20:- **[Er73]** — Erdős, P., *Problems and results on combinatorial number theory*. ✓ Matches website.
+ai-review/537.md:18:- **[Er73]** as the original source.
+ai-review/537.md:20:[Omitted long matching line]
+ai-review/537.md:71:| Citations | Minor issue | Should add explicit `[Er73]` citation per the website |
+ai-review/1149.md:11:- **[Va99]** Vardi, I., *Computational Recreations in Mathematica* (1999), Problem 1.34.
+FormalConjectures/ErdosProblems/1177.lean:29:[Va99] is the source reference for all parts (Section 7.94).
+FormalConjectures/ErdosProblems/37.lean:35:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+ai-review/76.md:28:**Missing citations**: The formalization omits [Er95], [Er97d], and [Va99]. These are the original sources where Erdős (with Faudree and Ordman) stated the conjecture. The docstring says "Conjectured by Erdős, Faudree, and Ordman" without a citation tag for the original conjecture. At minimum, [Er97d] should be cited as the source where Erdős explicitly asked this question, and [Va99] as the survey reference.
+ai-review/76.md:126:| Citations | [GrLe20] is cited; [Er95], [Er97d], and [Va99] from the website are missing |
+FormalConjectures/ErdosProblems/543.lean:31:[Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
+ai-review/177.md:16:The website (erdosproblems.com/177) lists references: **[Er66], [Er73], [ErGr79], [ErGr80], [Ro64], [Be17]**.
+ai-review/177.md:24:- **[Er73]** — Not cited. Erdős, P., *Problems and results on combinatorial number theory* (1973). (Note: this reference *is* cited in Problem 176's docstring.)
+ai-review/177.md:119:| Citations | Missing [Er66], [Er73], [ErGr79], [ErGr80] from website |
+ai-review/117.md:25:[Omitted long matching line]
+FormalConjectures/ErdosProblems/1164.lean:28:[Va99] Vershik, A., *Random walks on random and changing graphs*, 1999, Problem 6.76.
+FormalConjectures/ErdosProblems/1171.lean:29:- [Va99] Section 7.84.
+ai-review/710.md:18:**Missing citation:** The website also references **[Er92c]**, in which Erdős offered a prize of 2000 rupees (1992 value) for an asymptotic formula. This reference is not mentioned in the Lean file. While not strictly necessary for the mathematics, it provides useful historical context and should be included for completeness per the project's documentation standards.
+FormalConjectures/ErdosProblems/538.lean:38:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+FormalConjectures/ErdosProblems/532.lean:35:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+ai-review/490.md:34:**Issue:** The Szemerédi citation [Sz76] is appropriate as the solver, but the original Erdős source references listed on the website ([Er61], [Er69], [Er72], [Er73]) are not included. These should be added to document the problem's origins, not just the solution.
+ai-review/490.md:111:| Citations | Missing original Erdős references [Er61], [Er69], [Er72], [Er73] |
+ai-review/1144.md:20:**[Va99] attribution is incomplete.** The formalization cites:
+ai-review/1144.md:77:The formalization correctly captures the mathematical content of Erdős Problem 1144. The only substantive issues are (a) the [Va99] citation should credit Montgomery and Vaughan jointly, and (b) the duplicated `IsRademacher` definition should be consolidated. The independence-at-all-indices vs. independence-at-primes distinction is a stylistic choice that does not affect mathematical correctness.
+FormalConjectures/ErdosProblems/791.lean:29:A problem of Erdős [Er73], building on work of Rohrbach [Ro37].
+FormalConjectures/ErdosProblems/791.lean:89:Erdős Problem 791 — Main open question [Er73]:
+ai-review/863.md:26:A problem of Erdős [Er92c], first formulated in conversation with Berend, and later
+ai-review/863.md:30:[Er92c] Erdős, P.
+ai-review/863.md:33:[Omitted long matching line]
+FormalConjectures/ErdosProblems/201.lean:32:[Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
+ai-review/530.md:16:- [Er73], [Er75f], [Er80e] — Erdős
+ai-review/530.md:26:The existing citations are rendered in shorthand (e.g., `[Er73] Erdős, P., p.120`). The website uses the same shorthand format, so this is consistent.
+ai-review/57.md:44:- **[Va99]** — Likely Vardi or similar; listed on the website without full detail.
+ai-review/1159.md:13:- `[Va99] Vardy, A.` — **Incomplete.** No paper title or publication venue. The docstring references "[Va99, 4.70]" which appears to be a specific problem number from Vardy's work, but no further detail is given.
+ai-review/1159.md:76:| Citations | Incomplete — [ESS83] and [Va99] lack full details; [Er81] missing |
+FormalConjectures/ErdosProblems/1173.lean:26:[Va99] Vaughan, J.E., 7.88.
+FormalConjectures/ErdosProblems/114.lean:41:[Va99] _Some of Paul's favorite problems_, Booklet, Conference "Paul Erdős and his
+FormalConjectures/ErdosProblems/114.lean:75:- Vayman (1999) [Va99]: asked whether $f(n) \leq 2n + O(1)$.
+ai-review/186.md:17:The formalization includes: [Er73], [Er75b], [Er77c], [ErGr79], [ErGr80], [Bo89], [ErSa90], [CFP23], [PhZa24].
+ai-review/535.md:20:- [Er69], [Er70], [Er73] — additional Erdős references listed on erdosproblems.com/535.
+ai-review/535.md:84:| Citations | Partially complete — missing [Er69], [Er70], [Er73] and cross-ref to Problem 536 |
+FormalConjectures/ErdosProblems/1166.lean:29:[Va99] Varga, L., *Problems and results on random walks*, 1999.
+ai-review/867.md:16:- [Er92c] Erdős (1992) — ✅ Matches website
+ai-review/1152.md:21:- `[Va99] Vértesi, P., *Classical (unweighted) and weighted interpolation* (1999).`
+ai-review/1152.md:27:**Issue**: The formalization attributes [Va99] to "Vértesi, P." while the website's "How to cite" credits "T. F. Bloom" as the page author. These are not in conflict — Bloom curates the website, while Vértesi is the author of the referenced paper [Va99] from which problem 2.42 is drawn. The citation appears correct.
+ai-review/260.md:46:- **[Va99]** (1.33) — likely Vajda or Vaaler, 1999.
+FormalConjectures/ErdosProblems/548.lean:37:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+ai-review/540.md:27:| [Er73] Erdős (1973) | **No** | Additional discussion |
+ai-review/474.md:39:2. **c = ℵ₂ case:** The specific open question formalized here (from [Va99]).
+FormalConjectures/ErdosProblems/185.lean:32:[Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
+FormalConjectures/ErdosProblems/185.lean:55:Erdős Problem 185 (Density Hales-Jewett for $k=3$) [Er73]:
+ai-review/1167.md:7:- **1168.lean** defines an inline negative cardinal partition relation for the same [Va99] reference series, but does not reuse `CardinalPartitionRel`.
+ai-review/1167.md:26:[Va99] Vaughan, J., *Small uncountable cardinals and topology*. Open Problems in Topology (1999).
+FormalConjectures/ErdosProblems/300.lean:29:[Va99] Vardi, I., §1.14.
+ai-review/789.md:19:- **[Er73]** — Erdős (1973)
+ai-review/789.md:27:The formalization also omits [Er65] and [Er73] which appear on the website. The website also lists related problems **#186** and **#874**.
+ai-review/840.md:22:| [Er92c] | Erdős (1992) | — | **Missing** |
+ai-review/840.md:26:- [Er81h] and [Er92c] are not mentioned. These appear to be where Erdős originally posed the problem.
+ai-review/840.md:93:| Citations | Incomplete — missing [Er81h], [Er92c], and titles for [ErFr91], [Pi06] |
+FormalConjectures/ErdosProblems/542.lean:40:* [Er73] Erdős, P., _Problems and results on combinatorial number theory_.
+ai-review/1157.md:28:- **[Va99]** — Provided as: *"See erdosproblems.com/1157."* The website references this as "[Va99,3.64]" but no full bibliographic data is available on the erdosproblems.com page either. The formalization's approach of directing readers to the website is a reasonable fallback, but the reference format is inconsistent with [BES73]. If the full citation can be identified (possibly Vatter 1999, or another author), it should be expanded.
+FormalConjectures/ErdosProblems/597.lean:30:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference
+FormalConjectures/ErdosProblems/1146.lean:27:[Va99] Ruzsa, I. Z., *Sumsets and structure*, Combinatorial Number Theory and Additive
+ai-review/711.md:30:- The `[Er92c]` reference (1000 rupees offer) from the website is not mentioned. This is minor but could be included as historical context.
+FormalConjectures/ErdosProblems/README.md:46:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+FormalConjectures/ErdosProblems/1175.lean:27:[Va99] is referenced as the source for this problem (Problem 7.92).
+ai-review/46.md:24:- [Er92c] Erdős (1992)
+ai-review/441.md:18:- **[Er65], [Er73], [ErGr80], [Er98]** — additional Erdős papers on the problem
+ai-review/220.md:30:This generalization (which Erdős himself also posed in [Er73]) is **documented but not formalized**. Given that the generalization subsumes the γ = 2 case and was the actual result proved by Montgomery–Vaughan, it would be natural to formalize it as a separate theorem (e.g., `erdos_220_general`). This is a minor gap — the core problem (γ = 2) is captured.
+ai-review/1163.md:26:- `[Va99] Vardi, I., *Computational Recreations in Mathematica* (1999).`
+ai-review/1163.md:28:**Assessment:** The citation is consistent with the website's [Va99, 5.74] tag. Minor note: Vardi's *Computational Recreations in Mathematica* was originally published by Addison-Wesley in 1991; a "[Va99]" tag may refer to a later reprint or the website's internal labeling convention. This is not a formalization error — the code faithfully reproduces the website's reference key. The attribution to Erdős and Turán is correctly noted in the docstring.
+ai-review/176.md:19:> [Er65b], [Er73], [Er74b], [Er75b], [ErGr79], [Er80], [ErGr80,p.15], [Sp73], [Er63d]
+ai-review/176.md:21:The formalization includes only: **[Er65b], [Er73], [ErGr80]**.
+FormalConjectures/ErdosProblems/790.lean:37:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+FormalConjectures/ErdosProblems/790.lean:43:[Va99] Various, _Some of Paul's favorite problems_. Booklet produced for the conference "Paul Erdős
+ai-review/791.md:17:- [Er73] — Erdős (original problem)
+FormalConjectures/ErdosProblems/1168.lean:28:[Va99] Vaughan, J., *Small uncountable cardinals and topology*. Open Problems in Topology (1999).
+ai-review/539.md:13:- **[Er73]** — Original Erdős source (the formalization's module docstring does not expand this citation).
+ai-review/539.md:18:**Recommendation:** Add explicit citation entries for [Er73] and [GrRo99] in the module docstring, matching the convention used in Problem 535 which includes full `[Key] Author, *Title*, Journal Volume (Year), Pages.` entries.
+ai-review/539.md:80:| Citations | Missing full citation details for [Er73] and [GrRo99] |
+FormalConjectures/ErdosProblems/70.lean:31:[Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+ai-review/1158.md:19:[Omitted long matching line]
+ai-review/1158.md:21:**Assessment:** The citations match what the website documents. The [Va99] key/author mismatch is worth flagging but appears to originate from the website itself rather than being an error introduced by the formalization.
+ai-review/1158.md:86:| Citations | ⚠️ Minor | [Va99] key/author mismatch (likely from source) |
+ai-review/1169.md:23:The formalization's docstring does not cite this reference. Problem 1172 does cite it as `[Va99]` with a full bibliographic entry. Problem 1169 should include a matching citation:
+ai-review/1169.md:26:[Va99] Hajnal, A. and Larson, J.A., *Partition relations*, Handbook of Set Theory, Springer, 2010.
+ai-review/862.md:29:**Assessment:** The formalization's docstring includes [Er92c] and [SaTh15] with full bibliographic details matching the website. The related problem 861 and OEIS sequence A382395 are not mentioned but are not strictly required. The acknowledgment to Alex Grebennikov is omitted, which is acceptable for a formalization file. **Citations are adequate.**
+ai-review/62.md:79:| Citations | ⚠️ Incomplete | Missing [Er90], [Er95d], [Va99] |
+FormalConjectures/ErdosProblems/1165.lean:29:[Va99] Vize, R., *Open problems on random walks* (1999), §6.77.
+ai-review/869.md:25:- **`[Er92c]`** — This reference appears on the website but is absent from the formalization's docstring.
+ai-review/869.md:30:**Recommendation:** Add the `[Er92c]` reference and complete the journal details for `[ErNa88]`.
+ai-review/869.md:78:| Citations | Missing `[Er92c]` reference; `[ErNa88]` lacks journal details |
+FormalConjectures/ErdosProblems/1140.lean:26:[Va99] Vaughan, R. C., *The Hardy-Littlewood Method*, 2nd ed., 1997.
+ai-review/1143.md:21:> [Va99] Vaughan, R.C., *On a problem of Erdős, Straus, and Schinzel*, Combinatorica 19 (1999), 111–115.
+ai-review/872.md:21:> [Er92c] Erdős, P., *Some of my favourite problems in various branches of combinatorics*, Matematiche (Catania) 47 (1992), 231–240.
+ai-review/872.md:24:- **[Er92c]** as the primary reference (matching the formalization)
+ai-review/657.md:34:The formalization lists: `[Er73]`, `[Er75f]`, `[ErPa90]`, `[Er97e]`.
+ai-review/657.md:36:The website (erdosproblems.com/657) attributes the problem to Erdős and Davies via [Er73], and mentions subsequent work by Füredi, Ruzsa, and Pach. The website also references key results by:
+ai-review/657.md:41:The docstring references `[Er73]`, `[Er75f]`, `[ErPa90]`, `[Er97e]` without expanding the full citation details (journal, year, pages). Other files in the codebase (e.g., 135.lean, 503.lean) provide fuller citation information. The references should be expanded to include full titles at minimum, matching the convention used elsewhere. The progress results (Dumitrescu, Hunter et al.) are not mentioned in the docstring; while not strictly necessary, noting them would provide useful context.
+ai-review/1175.md:23:The docstring references `[Va99]` as "the source for this problem (Problem 7.92)." The website at erdosproblems.com/1175 confirms this reference. However, the citation is not expanded to a full bibliographic entry. Based on the problem number range and the "Va99" tag, this likely refers to:
+FormalConjectures/ErdosProblems/535.lean:44:[Er73] Erdős, P., *Problems and results on combinatorial number theory*.
+FormalConjectures/ErdosProblems/179.lean:30:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+ai-review/1179.md:24:The formalization's docstring mentions "Erdős and Rényi" and "Erdős and Hall" inline but does not include full citation entries with years, titles, or publication details. Problem 543, by comparison, includes `[Er73]` and `[ErHa78b]` with fuller bibliographic details.
+ai-review/1179.md:26:**Recommendation:** Add explicit citation blocks for [Er73], [ErRe65], and [ErHa76] to the module docstring, matching the style used in Problem 543.
+ai-review/1179.md:88:| Citations | Missing full bibliographic entries for [Er73], [ErRe65], [ErHa76] |
+ai-review/709.md:20:- **[Er92c]** — Erdős, P. (1992)
+ai-review/709.md:22:The formalization's module docstring only mentions `[ErSu59]`. The reference `[Er92c]` is missing and should be added. The full citation for [Er92c] should be included once the exact paper details are determined.
+ai-review/709.md:89:| Citations | **Missing [Er92c]** | Only [ErSu59] is cited; website lists [Er92c] too |
+FormalConjectures/ErdosProblems/176.lean:38:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. A survey of
+ai-review/543.md:27:  - [Er73]: Erdős, P., *Problems and results on combinatorial number theory*. A survey of combinatorial theory (Proc. Internat. Sympos., Colorado State Univ., Fort Collins, Colo., 1971) (1973), 117–138. — **This one is already present and adequate.**
+ai-review/531.md:20:- **[Er73]** — Erdős (original source, 1973)
+ai-review/531.md:28:**Issue**: The original reference **[Er73]** is not mentioned in the docstring. While not strictly necessary (it's the problem source rather than a bound), the website attributes the problem to this reference. Consider adding a line like: "Originally posed by Erdős [Er73]."
+FormalConjectures/ErdosProblems/531.lean:28:Originally posed by Erdős [Er73].
+FormalConjectures/ErdosProblems/531.lean:37:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+FormalConjectures/ErdosProblems/1142.lean:25:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+ai-review/362.md:15:The website (erdosproblems.com/362) lists the following references: **[Er65], [Er73], [ErGr80], [SaSz65], [St80], [Ha77]**.
+ai-review/362.md:21:- The original Erdős references [Er65], [Er73], [ErGr80] are not cited. The docstring mentions "the earlier bound of Erdős and Moser" without a citation key.
+ai-review/597.md:19:- **[Va99]** — Listed as: Todorcevic, S., *Partition Problems in Topology*, 1999, Problem 7.84.
+ai-review/597.md:21:[Omitted long matching line]
+FormalConjectures/ErdosProblems/62.lean:38:[Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+ai-review/864.md:21:- **[Er92c]** Erdős, P. (1992).
+ai-review/864.md:23:The formalization only cites **[ErFr91]** (lines 29, 34). The reference **[Er92c]** should be added. The website also references OEIS sequence **A389182**, which could optionally be mentioned.
+ai-review/864.md:90:| Citations | **[Er92c] missing**; [ErFr91] title could be expanded |
+FormalConjectures/ErdosProblems/862.lean:36:[Er92c] Erdős, P., *Some of my favourite problems in various branches of combinatorics*,
+FormalConjectures/ErdosProblems/862.lean:64:Erdős Problem 862, first question (Cameron–Erdős [Er92c], disproved by Saxton–Thomason [SaTh15]):
+FormalConjectures/ErdosProblems/862.lean:76:Erdős Problem 862, second question (Cameron–Erdős [Er92c], proved by Saxton–Thomason [SaTh15]):
+FormalConjectures/ErdosProblems/177.lean:40:[Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
+FormalConjectures/ErdosProblems/710.lean:34:Erdős [Er92c] offered a prize of 2000 rupees for an asymptotic formula.
+FormalConjectures/ErdosProblems/710.lean:41:[Er92c] Erdős, P., _Some of my forgotten problems in number theory_. Hardy-Ramanujan J. 15 (1992),
+ai-review/534.md:18:The formalization includes references `[Er73]` and `[AhKh96]`, which match the website:
+ai-review/534.md:20:- **[Er73]**: Erdős, P., *Problems and results on combinatorial number theory*. The formalization includes the full citation with conference details. ✓
+ai-review/534.md:26:- The website notes the original statement in [Er73] contained a **typo** (using coprimality `(a,b) = 1` instead of `gcd(a,b) > 1`), which is not mentioned.
+FormalConjectures/ErdosProblems/1163.lean:28:[Va99] Vardi, I., *Computational Recreations in Mathematica* (1999).
+ai-review/1174.md:20:> [Va99] Vardi, I. (ed.), *Problems from the Erdős problem collection*, §7.91 (1999).
+ai-review/287.md:30:**Recommendation:** Add a reference line for `[Va99]` to the module docstring, even if the full bibliographic details require further investigation.
+ai-review/866.md:22:**Recommendation:** Add `[Er92c]` to the docstring references. If the van Doorn bound were formalized as a variant, it should also be cited.
+FormalConjectures/ErdosProblems/187.lean:38:[Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
+FormalConjectures/ErdosProblems/1159.lean:34:[Va99] Vardy, A.
+ai-review/1142.md:12:- **[Va99, 1.7]** — Various, *Some of Paul's favorite problems*, booklet produced for the conference "Paul Erdős and his mathematics", Budapest, July 1999. ✅ Present (listed as `[Va99]`).
+FormalConjectures/ErdosProblems/1141.lean:25:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+FormalConjectures/ErdosProblems/1141.lean:49:In [Va99] it is asked whether $968$ is the largest integer with this property, but this is an
+ai-review/1162.md:18:The formalization's docstring cites `[Py93]` and `[RoTr25]` but **omits the source reference [Va99, 5.73]**. The sister problem 1163 does cite `[Va99]` (as problem 5.74). The docstring for 1162 should include the Vardi reference for consistency with the website and with the adjacent problems.
+FormalConjectures/ErdosProblems/78.lean:50:[Va99] Vaughan, R. C., _On the number of monochromatic complete subgraphs_. (1999), 3.49.
+FormalConjectures/ErdosProblems/867.lean:27:[Er92c] Erdős, P., _Some of my favourite problems which recently have been solved_. Proceedings
+FormalConjectures/ErdosProblems/867.lean:48:Erdős Problem 867 (disproved) [Er92c]:
+FormalConjectures/ErdosProblems/534.lean:27:A problem of Erdős and Graham [Er73]. They originally conjectured that the
+FormalConjectures/ErdosProblems/534.lean:41:[Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
+FormalConjectures/ErdosProblems/534.lean:61:Erdős Problem 534 [Er73], proved by Ahlswede–Khachatrian [AhKh96]:
+ai-review/187.md:47:- References: [Er73], [ErGr79], [ErGr80, p.17], [Be80].
+ai-review/187.md:51:| [Er73] Erdős 1973 | ✅ Full citation | ✅ | OK. |
+ai-review/1170.md:21:| **[Va99]** (Section 7.86) | Yes — listed as a source reference | **Missing** from both the module and theorem docstrings | **Missing** |
+ai-review/1170.md:25:**Issue:** The `[Va99]` reference (which appears to be Hajnal–Larson, *Partition Relations*, Handbook of Set Theory) is missing from 1170's docstrings, even though it is cited in the sibling problems 1171 and 1172. It should be added, ideally with the section number (7.86) as given on the website.
+ai-review/1170.md:88:| Citations | Missing [Va99] reference (Section 7.86) |
+ai-review/1177.md:29:> [Va99] is the source reference for all parts (Section 7.94).
+ai-review/1146.md:19:> [Va99] Ruzsa, I. Z., *Sumsets and structure*, Combinatorial Number Theory and Additive Group Theory (1999).
+ai-review/1146.md:26:- The citation `[Va99]` is labeled as Ruzsa's work, but the code `Va99` likely refers to the *volume* ("Varia" or similar collection) rather than Ruzsa as author. The erdosproblems.com page uses the tag `[Va99, 1.19]` which the formalization correctly reproduces.
+ai-review/1172.md:19:> [Va99] Hajnal, A. and Larson, J., *Partition relations*. Handbook of Set Theory (2010).
+ai-review/1172.md:21:This conflates two distinct references. Comparing with `ErdosProblems/1173.lean`, which cites "[Va99] Vaughan, J.E., 7.88", the tag **[Va99]** almost certainly refers to a 1999 survey or problem collection by **Vaughan**, not the Hajnal–Larson chapter. The Hajnal–Larson chapter in the Handbook of Set Theory (2010) is the *underlying source* for the partition relation problems, but it has a different citation key.
+ai-review/1172.md:24:- `[Va99]` Vaughan, J.E. (1999), section 7.87.
+FormalConjectures/ErdosProblems/1147.lean:27:[Va99] Vaughan, R.C., *The Hardy-Littlewood method*, 2nd edition, Cambridge University Press,
+FormalConjectures/ErdosProblems/709.lean:39:[Er92c] Erdős, P., _Some of my forgotten problems in number theory_, Hardy-Ramanujan J.
+FormalConjectures/ErdosProblems/861.lean:29:A problem of Cameron and Erdős [Er92c]. The first question is answered positively and the
+FormalConjectures/ErdosProblems/861.lean:35:[Er92c] Erdős, P., *Some of my favourite problems in number theory, combinatorics, and geometry*,
+FormalConjectures/ErdosProblems/861.lean:65:Erdős Problem 861, first question (Cameron–Erdős [Er92c], proved):
+ai-review/179.md:27:- **Missing original sources.** The website lists [Er73], [Er75b], [ErGr79], [ErGr80] as original sources for the problem. None are cited in the formalization.
+ai-review/179.md:101:| Citations | Paper title likely incorrect; missing original sources [Er73], [Er75b], [ErGr79], [ErGr80]; missing [LSS24] |
+ai-review/1164.md:26:- `[Va99] Vershik, A., *Random walks on random and changing graphs*, 1999, Problem 6.76.`
+ai-review/1164.md:30:[Omitted long matching line]
+ai-review/1164.md:32:**Verdict:** ⚠️ Pass with caveat. The citations are reasonable and match the website's reference keys. The varying author attributions for [Va99] across 1164/1165/1166 should be reconciled.
+ai-review/1164.md:117:| Citations | ⚠️ Minor issue | [Va99] author attribution inconsistent across the 1164–1166 series |
+FormalConjectures/ErdosProblems/362.lean:27:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. A survey of
+ai-review/788.md:30:- **[Er73]** — Original Erdos source (not mentioned in the formalization)
+ai-review/788.md:40:- The original Erdos reference `[Er73]` is missing entirely.
+ai-review/788.md:107:| Citations | Missing keys [Ch71], [BSS00], [Er73]; Hunter's bound omitted |
+FormalConjectures/ErdosProblems/784.lean:33:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+ai-review/77.md:35:- [Er61], [Er69b], [Er71], [Er81], [Er88], [Er90b], [Er93], [Er95], [Er97c], [Er97d], [Va99]
+FormalConjectures/ErdosProblems/186.lean:34:[Er73] Erdős, P., *Problems and results on combinatorial number theory*.
+ai-review/532.md:17:- [Er73]
+ai-review/532.md:22:The formalization only cites **[Hi74]** (Hindman 1974). The Erdos references [Er73], [Er75b], [Er77c] are omitted. Since these are the Erdos papers that originally posed or discussed the problem, they should ideally be mentioned in the docstring.
+ai-review/532.md:93:| Citations | Missing [Er73], [Er75b], [Er77c] references and Problem #948 |
+ai-review/1155.md:17:- **[Va99]** Vu, V. H. (1999), 3.61. ✓
+FormalConjectures/ErdosProblems/872.lean:38:[Er92c] Erdős, P., _Some of my favourite problems in various branches of combinatorics_,
+ai-review/1151.md:29:- **[Va99]** — Varga, R.S., *Scientific Computation on Mathematical Problems and Conjectures*, 1999. The specific reference is **[Va99, 2.41]** (Problem 2.41 in Varga's book). The docstring includes the `[Va99, 2.41]` tag on the theorem but provides the Varga citation only in the module docstring. This is adequate.
+ai-review/1151.md:31:The website lists the same references. The formalization should include full citations for [Er41] and [Er43] in the module docstring to match the level of detail provided for [Va99].
+ai-review/1171.md:18:- "[Va99] Section 7.84." — matches the website
+ai-review/1171.md:21:The citations are consistent with the website. Neither the website nor the formalization provides full bibliographic details for [Va99] or [Ba89b]. The website identifies [Va99] with "Hajnal, A. and Larson, J., *Partition relations*. Handbook of Set Theory (2010)" in problem 1172, but not in 1171. The formalization could optionally expand these references for completeness, but as-is they match the website's level of detail.
+ai-review/1166.md:17:[Omitted long matching line]
+ai-review/1166.md:21:The website does not list additional references beyond [Va99] and the connection to Problem 1165 / [ErTa60]. No citations are missing.
+FormalConjectures/ErdosProblems/1158.lean:30:[Va99] Vu, V. H., _Extremal set systems_. Handbook of Combinatorics (1999), 3.65.
+ai-review/1173.md:24:- `[Va99] Vaughan, J.E., 7.88.`
+ai-review/1173.md:26:[Omitted long matching line]
+ai-review/538.md:13:- **[Er73]** — Erdős, P. (1973), original source for this problem.
+ai-review/538.md:15:The formalization's module docstring does not cite [Er73] explicitly. It should include:
+ai-review/538.md:18:[Er73] Erdős, P., 1973.
+ai-review/1138.md:32:**Correct.** The formalization cites `[Va99, 1.3]` in the docstring (line 42). The website lists the reference as `[Va99, 1.3]` — specifically Vardi, I., Section 1.3. The module-level docstring (line 28) also references `[Va99]` as "Vardi, I., 1.3."
+ai-review/1138.md:34:The full reference appears to be: Vardi, Ilan. *Computational Recreations in Mathematica* (1991), though on the website it is listed as `[Va99]`. The formalization matches the website's citation format.
+FormalConjectures/ErdosProblems/164.lean:34:[Va99] §1.12.
+FormalConjectures/ErdosProblems/1149.lean:24:[Va99] Vardi, I., *Computational Recreations in Mathematica* (1999), Problem 1.34.
+FormalConjectures/ErdosProblems/539.lean:29:[Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
+ai-review/1147.md:24:- **[Va99]**: Vaughan, R.C., *The Hardy-Littlewood method*, 2nd edition, Cambridge University Press, 1997. — Section 1.21.
+FormalConjectures/ErdosProblems/530.lean:41:[Er73] Erdős, P., p.120. [Er75f] Erdős, P., p.104. [Er80e] Erdős, P.
+FormalConjectures/ErdosProblems/530.lean:67:as $N \to \infty$? [Er73] [Er75f] [Er80e]
+FormalConjectures/ErdosProblems/537.lean:24:[Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
+FormalConjectures/ErdosProblems/1144.lean:28:[Va99] Vaughan, R.C., *Multiplicative Number Theory I: Classical Theory*. Cambridge Tracts in
+FormalConjectures/ErdosProblems/425.lean:38:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+FormalConjectures/ErdosProblems/863.lean:24:A problem of Erdős [Er92c], first formulated in conversation with Berend, and later
+FormalConjectures/ErdosProblems/863.lean:28:[Er92c] Erdős, P.
+FormalConjectures/ErdosProblems/863.lean:65:Erdős Problem 863, weak form [Er92c]:
+FormalConjectures/ErdosProblems/863.lean:80:Erdős Problem 863, strong form [Er92c]:
+FormalConjectures/ErdosProblems/1155.lean:36:[Va99] Vu, V. H. (1999), 3.61.
+ai-review/548.md:47:**Recommendation:** Add the two missing references `[Er78]` and `[Va99]` to the docstring.
+ai-review/839.md:21:- **[Er92c]** Erdős, P., *Some of my favourite unsolved problems*, J. Combin. Theory Ser. A (1992).
+ai-review/839.md:24:The formalization includes [Er78f] and [Er92c] with full bibliographic details, which matches the website. However, **[Fr93] (Freud's construction) is not mentioned** in the formalization. While Freud's result concerns a related but distinct conjecture (upper density > 1/2), the website lists it as a key result and it would be worth noting in the docstring for completeness.
+FormalConjectures/ErdosProblems/237.lean:40:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+FormalConjectures/ErdosProblems/1157.lean:44:[Va99] See erdosproblems.com/1157.
+FormalConjectures/ErdosProblems/1160.lean:26:[Va99] Vaughan, R.C., _Problems in combinatorial number theory_, 1999.
+ai-review/70.md:26:The reference **[Va99]** should be added. Additionally, the known partial result by Erdős and Rado—that $\mathfrak{c} \to (\omega + n, 4)^3_2$ for all $2 \leq n < \omega$—is mentioned on the website but absent from the code's documentation.
+FormalConjectures/ErdosProblems/441.lean:43:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A
+FormalConjectures/ErdosProblems/839.lean:28:A problem of Erdős [Er78f][Er92c].
+FormalConjectures/ErdosProblems/839.lean:33:[Er92c] Erdős, P., *Some of my favourite unsolved problems*, J. Combin. Theory Ser. A (1992).
+FormalConjectures/ErdosProblems/839.lean:48:Erdős Problem 839 (Part 1) [Er78f][Er92c]:
+FormalConjectures/ErdosProblems/839.lean:61:Erdős Problem 839 (Part 2, stronger) [Er78f][Er92c]:
+FormalConjectures/ErdosProblems/711.lean:28:Erdős [Er92c] offered 1000 rupees for solutions to either part. See also [710].
+FormalConjectures/ErdosProblems/711.lean:33:[Er92c] Erdős, P., _Some of my forgotten problems in number theory_. Hardy-Ramanujan J. 15 (1992),
+FormalConjectures/ErdosProblems/789.lean:43:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+FormalConjectures/ErdosProblems/1148.lean:24:- [Va99] Various, Some of Paul's favorite problems. Booklet produced for the conference "Paul Erdős
+FormalConjectures/ErdosProblems/1148.lean:63:[Va99] reports this is 'obvious' if we replace $\leq n$ with $\leq n+2\sqrt{n}$.
+FormalConjectures/ErdosProblems/31.lean:35:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. A survey of
+ai-review/973.md:17:- **[Va99]** — (not expanded on the website)
+ai-review/973.md:23:**Suggestion:** Consider adding the additional references `[Ha74]`, `[Va99]`, `[Tu84b]`, `[Er92f]` to the module docstring for completeness, particularly `[Ha74]` since the website identifies it as the proximate source.
+ai-review/973.md:85:| Citations | Missing [Ha74], [Va99], [Tu84b], [Er92f] from website |
+ai-review/1156.md:38:- [Vu99] — referenced as `[Vu99]` but the website lists it as `[Va99]` (likely a typo on one side; the actual paper is Vu, V.H., 1999, so `[Vu99]` seems more accurate than `[Va99]`)
+ai-review/1156.md:44:- Part 2 cites `[Vu99]` — verify whether this should be `[Va99]` per the website, or whether the website has the typo.
+FormalConjectures/ErdosProblems/708.lean:36:[Er92c] Erdős, P., _Some of my forgotten problems in number theory_. Hardy-Ramanujan J.
+FormalConjectures/ErdosProblems/1138.lean:28:[Va99] Vardi, I., 1.3.
+FormalConjectures/ErdosProblems/783.lean:33:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+ai-review/784.md:18:- **[Er72], [Er73]** — the original Erdős sources posing the problem. These should be cited as the primary references.
+ai-review/784.md:23:**Recommendation:** Add `[Er72]` and `[Er73]` as the original problem sources, and `[ScSz59]` for the optimality example.
+ai-review/1165.md:21:**Inconsistent author attribution for [Va99].** The three sibling files give three different authors for the same `[Va99]` reference:
+ai-review/1165.md:22:- **1164.lean**: `[Va99] Vershik, A., *Random walks on random and changing graphs*, 1999, Problem 6.76.`
+ai-review/1165.md:23:- **1165.lean**: `[Va99] Vize, R., *Open problems on random walks* (1999), §6.77.`
+ai-review/1165.md:24:- **1166.lean**: `[Va99] Varga, L., *Problems and results on random walks*, 1999.`
+ai-review/1165.md:94:2. The `[Va99]` citation is fabricated/inconsistent across sibling files (documentation issue, not a correctness issue).
+FormalConjectures/ErdosProblems/1152.lean:40:[Va99] Vértesi, P., _Classical (unweighted) and weighted interpolation_ (1999).
+FormalConjectures/ErdosProblems/1172.lean:27:[Va99] Hajnal, A. and Larson, J., *Partition relations*. Handbook of Set Theory (2010).
+FormalConjectures/ErdosProblems/1172.lean:74:been filled in incorrectly due to a truncated photocopy of the source [Va99].
+FormalConjectures/ErdosProblems/1172.lean:101:been filled in incorrectly due to a truncated photocopy of the source [Va99].
+FormalConjectures/ErdosProblems/77.lean:71:[Va99] Vaughan, R. C., _On the number of monochromatic complete subgraphs_.
+FormalConjectures/ErdosProblems/287.lean:32:[Va99] §1.15.
+FormalConjectures/ErdosProblems/657.lean:29:- [Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
+FormalConjectures/ErdosProblems/1.lean:92:sums all differ by at least $1$ is proposed in [Er73] and [ErGr80].
+FormalConjectures/ErdosProblems/1.lean:94:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. A survey of combinatorial theory (Proc. Internat. Sympos., Colorado State Univ., Fort Collins, Colo., 1971) (1973), 117-138.
+FormalConjectures/ErdosProblems/671.lean:47:[Va99] Vértesi, P., _Classical (unweighted) and weighted interpolation_ (1999).
+FormalConjectures/ErdosProblems/1151.lean:32:[Va99] Varga, R.S., _Scientific Computation on Mathematical Problems and Conjectures_, 1999.
+FormalConjectures/ErdosProblems/260.lean:44:[Va99] *Some of Paul's favorite problems*. Booklet for the conference "Paul Erdős and
+FormalConjectures/ErdosProblems/788.lean:35:[Er73] Erdős, P., *Problems and results on combinatorial number theory*. A survey of
+FormalConjectures/ErdosProblems/474.lean:30:[Va99] Väänänen, J., *Problems from the Erdős notebook* (1999), 7.81.
+FormalConjectures/ErdosProblems/474.lean:71:The specific remaining open question (asked in [Va99]):
+FormalConjectures/ErdosProblems/490.lean:37:[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of

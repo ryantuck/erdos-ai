@@ -1,0 +1,253 @@
+FormalConjecturesForMathlib/Combinatorics/Ramsey.lean:31:contains a monochromatic subset of size `n`.
+ai-review/54.md:28:[Omitted long matching line]
+ai-review/54.md:117:- **"Sum of elements":** The website says "monochromatic sum of elements of $A$." The standard interpretation is a sum of *distinct* elements (subset sum), which the formalization enforces via `Finset`. This is correct.
+ai-review/54.md:146:- **Empty set edge case:** For S = ∅, the sum is 0, the subset condition holds trivially, and the monochromatic condition holds vacuously. This means n = 0 is always representable. Since the definition requires representation for all n ≥ N₀ with N₀ ≥ 1 in practice, this vacuous case doesn't affect the mathematical content. No issue.
+ai-review/76.md:36:> Erdős asks for a lower bound on edge-disjoint monochromatic triangles **in a single color** (maximized over both colors), conjecturing the answer is ≥ cn² for some constant c > 1/24.
+ai-review/76.md:38:This variant is **not captured** in the formalization. The current theorem considers edge-disjoint monochromatic triangles of *either* color collectively. The [Er97d] variant asks: in any 2-colouring, can one always find ≥ cn² edge-disjoint triangles that are all the *same* color (choosing the better color)?
+ai-review/76.md:40:This is a distinct and strictly stronger question (since monochromatic triangles of different colors can share edges only if their edges receive different colors, but restricting to a single color is still more constrained because you lose the triangles of the other color). The 1/24 threshold is notable — it is exactly half of 1/12, corresponding to the idea that one color should contribute at least half the triangles.
+ai-review/76.md:70:**Potential ambiguity**: The phrase "edge-disjoint monochromatic triangles" could in principle be read two ways:
+ai-review/76.md:71:1. A family of triangles, each monochromatic (possibly in different colors), that are pairwise edge-disjoint.
+ai-review/76.md:91:**Edge case**: For `T.card = 3`, `triangleEdges T` has exactly 3 elements (since the 3 vertices are distinct and all pairs are non-diagonal). The universal quantifier over these 3 edges correctly enforces monochromaticity. ✓
+ai-review/76.md:109:**Quantifier structure**: For all ε > 0, for sufficiently large n, for any 2-coloring, there exists a large edge-disjoint monochromatic family. This correctly captures "(1 + o(1)) n²/12" as a lower bound. ✓
+ai-review/439.md:22:- The reference **[KhSz06]** is cited: Khalfalah, A. and Szemerédi, E., *On the number of monochromatic solutions of $x + y = z^2$*. Combinatorics, Probability and Computing (2006), 15(1-2), 213-227. ✓
+ai-review/174.md:81:**Potential concern:** The `k = 0` case. The definition requires `1 ≤ k`, so it never considers 0-colorings. Since `Fin 0` is empty, a "0-coloring" would mean no coloring function exists (vacuously true), which could create a confusing edge case. The `1 ≤ k` guard correctly avoids this. However, `k = 1` is trivially satisfied (everything is monochromatic in a 1-coloring), so the meaningful content starts at k ≥ 2. This is standard and correct.
+ai-review/190.md:7:[Omitted long matching line]
+ai-review/190.md:69:The definition correctly captures a monochromatic k-term AP within {1,...,N}:
+ai-review/190.md:76:- k = 0: vacuously satisfied (any coloring has a "0-term monochromatic AP"), which is harmless.
+ai-review/474.md:13:None of these existing definitions capture the negative square-bracket partition relation. The square-bracket notation κ ↛ [μ]^r_k is semantically distinct: it asserts the existence of a coloring where every large subset sees *all* colors (rather than the round-bracket version which asks for monochromatic subsets). A new definition is justified.
+ai-review/55.md:52:The problem is well-defined and the formalization is precise. The key concepts — r-coloring, monochromatic subset sum, counting function — all have unambiguous mathematical meanings that translate cleanly into Lean.
+ai-review/55.md:69:- The monochromatic condition `∃ c : Fin r, ∀ x ∈ S, χ x = c` is standard.
+ai-review/181.md:115:- The diagonal Ramsey number $R(H)$ for a graph $H$ (minimum $N$ such that every 2-coloring of $K_N$ contains a monochromatic copy of $H$).
+ai-review/181.md:147:- This defines a (non-induced) subgraph embedding: an injective map preserving adjacency. This is the correct notion for Ramsey theory — a monochromatic "copy" of $H$ in a 2-coloring of $K_N$ means a subgraph isomorphic to $H$, not necessarily an induced copy.
+ai-review/181.md:158:- **Equivalence to 2-coloring:** Every graph $G$ on $\operatorname{Fin} N$ induces a 2-coloring of $K_N$ (edges of $G$ get color 1, non-edges get color 2). Requiring $G$ or $G^c$ to contain $H$ is equivalent to requiring a monochromatic copy of $H$. Correct.
+ai-review/46.md:12:**Problem 45 (`FormalConjectures/ErdosProblems/45.lean`).** Problem 45 is the most closely related formalization — it concerns monochromatic subsets of divisors with reciprocal sum 1, proved by the same Croot [Cr03] paper. Both problems share the monochromatic reciprocal-sum-equals-1 pattern but differ in the domain (divisors of n vs. all integers ≥ 2) and the coloring style (`Fin k` vs. polymorphic `α`). No shared helper definitions exist between them.
+ai-review/46.md:37:> The original sources (Erdős & Graham, 1980) posed a broader question: whether every finite coloring yields monochromatic representations of **any positive rational a/b** (not just 1). This follows from the unit case by considering induced colorings on {n/b : b | n}.
+ai-review/46.md:41:Additionally, Croot proved a stronger result than what is stated: there exist **infinitely many disjoint** monochromatic solutions. The formalization only asserts the existence of one such set.
+ai-review/46.md:55:The problem statement — "every finite colouring of the integers ≥ 2 has a monochromatic subset whose reciprocals sum to 1" — is entirely precise. There is no ambiguity in:
+ai-review/46.md:57:- What "monochromatic" means (all elements assigned the same color)
+ai-review/45.md:96:The problem statement is precise: for each k ≥ 2, find n such that every k-coloring of the proper-interior divisors of n admits a monochromatic subset with reciprocal sum 1. All constituent concepts are well-defined:
+ai-review/45.md:136:**Logical structure:** "For every k ≥ 2, there exists n such that for every k-coloring c of ℕ (by Fin k), there exists a nonempty monochromatic subset D' of middleDivisors n whose reciprocal sum is 1."
+ai-review/45.md:144:**k ≥ 2 hypothesis:** For k = 0, `Fin 0` is empty, so `c : ℕ → Fin 0` has no inhabitants, making the statement vacuously true. For k = 1, the coloring is trivially monochromatic, so the problem reduces to finding n with a subset of middleDivisors n whose reciprocal sum is 1 — this is easy (e.g., n = 6 gives middleDivisors 6 = {2, 3} with 1/2 + 1/3 = 5/6 ≠ 1, but n = 120 works). The k ≥ 2 hypothesis follows the website's statement and is the mathematically interesting case.
+ai-review/45.md:155:Problem 46 is logically implied by Problem 45: given a finite coloring `c : ℕ → α` with `|α| = k`, Problem 45 provides an n and a monochromatic subset D' ⊆ middleDivisors n. Since every element of middleDivisors n is ≥ 2, the set D' also satisfies `∀ d ∈ D', d ≥ 2`, fulfilling Problem 46's requirements. This logical dependency is not documented but is a natural consequence of the formalization.
+ai-review/173.md:54:1. **Shader's result for right-angled triangles [Sh76]:** The docstring states "Shader proved this is true for any single right-angled triangle." This is a proved, strictly weaker statement that could be formalized as a variant. It would assert that in any 2-colouring of ℝ², every non-degenerate right-angled triangle has a monochromatic congruent copy. A `IsRightTriangle` predicate already exists in Problem 353 (line 67) and could be reused:
+ai-review/173.md:90:- **Theorem structure:** The contrapositive formulation (two non-congruent triangles can't both lack monochromatic copies) is mathematically elegant and arguably cleaner for Lean than the direct "for all but at most one" formulation. This is a good design choice.
+ai-review/173.md:109:4. **"At most one"** — The formalization captures this via the contrapositive: if two triangles both fail to have monochromatic copies, they must be congruent. This is a clean and equivalent restatement. ✅
+ai-review/173.md:147:The statement reads: "For any 2-colouring `f` and any two non-degenerate triangles `(p₁,p₂,p₃)` and `(q₁,q₂,q₃)`, if neither has a monochromatic congruent copy under `f`, then they are congruent."
+ai-review/173.md:149:This is the correct contrapositive of: "For any 2-colouring, the set of congruence classes of triangles that lack a monochromatic copy has at most one element."
+ai-review/173.md:151:[Omitted long matching line]
+ai-review/173.md:157:**Potential concern — trivial colourings:** Consider the constant colouring `f _ = true`. Then every triple of points is monochromatic, so no triangle "fails to have a monochromatic copy." The hypotheses of the theorem are vacuously unsatisfiable, making the conclusion trivially true. This is logically correct — the conjecture says there is at most one excluded congruence class, and with 0 excluded classes, the conclusion holds vacuously. ✅
+ai-review/8.md:85:The problem as stated on the website — "For any finite colouring of the integers is there a covering system all of whose moduli are monochromatic?" — is precise. The key concepts are standard:
+ai-review/8.md:114:- `HasMonochromaticModuli χ S`: ✓ (both moduli are 2, so both have color `χ 2` — trivially monochromatic)
+ai-review/8.md:122:Without distinct moduli, any modulus `m ≥ 2` yields a trivial covering system `{(0,m), (1,m), ..., (m-1,m)}` with all-identical (hence monochromatic) moduli. This makes the conjecture vacuously true, which contradicts the intended `answer(False)`.
+ai-review/8.md:126:The current definition uses `0 < p.2` (moduli ≥ 1). Even with distinct moduli, a single congruence `{(0, 1)}` is a valid covering system (modulus 1 covers all integers). This system is trivially monochromatic, again making the conjecture true. The standard convention requires moduli ≥ 2.
+ai-review/118.md:55:- **The `OrdPartition` definition**: Uses order embeddings `↪o` to represent monochromatic subsets, which is the standard formalization. An order embedding from OrdinalSet β into OrdinalSet α correctly captures "a subset of order type β."
+ai-review/118.md:59:- **The coercion `↑n`**: The natural number n is coerced to an ordinal via `↑n`, which gives the finite ordinal n. This is correct — a monochromatic set of order type n (a finite ordinal) is exactly a monochromatic set of n elements, which for n = 3 is a monochromatic triangle K₃.
+ai-review/87.md:83:**`graphRamseyNumber` (line 45–47):** Defined as `sInf {N | ∀ G : SimpleGraph (Fin N), ContainsSubgraph G H ∨ ContainsSubgraph Gᶜ H}`. This correctly formalizes the graph Ramsey number R(H): the minimum N such that every 2-coloring of K_N contains a monochromatic copy of H. The equivalence between "every graph on N vertices or its complement contains H" and "every 2-coloring of K_N has a monochromatic H" is standard. ✓
+ai-review/191.md:7:[Omitted long matching line]
+ai-review/191.md:29:2. **Quantitative bound:** Conlon, Fox, and Sudakov proved that one can always find a monochromatic $X$ with $\sum 1/\log x \geq 2^{-8} \log\log\log n$, and Rödl showed this is tight up to the constant. The docstring mentions this qualitatively but does not formalize it.
+ai-review/191.md:45:The problem statement on erdosproblems.com is fully precise: it asks a yes/no question about the existence of monochromatic sets with a particular quantitative property in 2-colourings. All objects (the set $\{2,\ldots,n\}$, pairs, 2-colourings, monochromatic sets, the sum $\sum 1/\log x$) have standard mathematical definitions with no room for interpretation. The formalization directly captures the mathematical content.
+ai-review/191.md:55:- **Quantifier structure:** `∀ C > 0, ∃ N, ∀ n ≥ N, ∀ G, ∃ X, ...` correctly captures "for any $C > 0$, if $n$ is sufficiently large (depending on $C$), then in any 2-colouring there exists a monochromatic set $X$ with $\sum 1/\log x \geq C$."
+ai-review/191.md:61:- **Monochromatic condition:** `G.IsClique X ∨ Gᶜ.IsClique X` correctly captures "X is monochromatic" — either all pairs in X share colour 1 (clique in G) or all share colour 2 (clique in complement = independent set in G).
+ai-review/360.md:76:- `SumFreeColoring n k c`: Requires that for every color `j` and every `S ⊆ Icc 1 (n-1)` monochromatic in color `j`, `S.sum id ≠ n`. Since `S` is a `Finset`, elements are automatically distinct, correctly capturing "sum of distinct elements." ✅
+ai-review/360.md:83:- Uses `sInf` on `{k : ℕ | ∃ c, SumFreeColoring n k c}`. For the natural number `sInf`, if the set is empty, `sInf = 0`. However, the set is always nonempty: taking `k = n` and giving each element its own class ensures no monochromatic subset of size ≥ 2 exists (so the only sums from a single class are singletons, and no element of `{1,...,n-1}` equals `n`). ✅
+ai-review/169.md:46:3. **Trivial lower bound:** f(k)/log W(k) ≥ 1/2, which follows from {1, …, W(k)−1} minus a monochromatic AP-free set. This would be a nice companion lemma.
+ai-review/169.md:87:**`VDWProperty` correctness:** The definition requires `0 < d` (positive common difference) and `a + (k-1)*d < N` (all terms within range), and that `f(a + i*d) = f(a)` for all `i < k` (monochromaticity). This correctly captures the van der Waerden property. Note that this is a 2-coloring version (using `Bool`), which is the standard W(k) = W(k; 2).
+ai-review/169.md:91:[Omitted long matching line]
+ai-review/77.md:107:- It requires a monochromatic clique of size k (a set S with `S.card = k` where all distinct pairs agree in color).
+ai-review/77.md:108:- The `i ≠ j` guard correctly excludes self-loops from the monochromatic condition.
+ai-review/162.md:50:**Minor ambiguity in the source:** The original problem says "for a 2-colouring of the edges of K_n, let F(n, α) be the smallest m..." The phrase "for a 2-colouring" could be read as "for every" (∀) or "for some" (∃). The formalization uses ∃ (there exists a coloring), which is the correct interpretation: F(n, α) measures the best achievable threshold over all colorings. The ∀ interpretation would make F(n, α) infinite (a monochromatic coloring is never balanced for α > 0).
+ai-review/183.md:11:Problem 556 (`FormalConjectures/ErdosProblems/556.lean`) already defines a general `multicolorRamseyNumber` that computes the k-colour Ramsey number R_k(G) for an arbitrary graph G. The `multicolorRamseyTriangle` defined here is mathematically identical to `multicolorRamseyNumber (completeGraph (Fin 3)) k` — a monochromatic triangle in a k-coloring of K_n is exactly a monochromatic copy of K₃.
+ai-review/183.md:13:The two definitions use the same representation (symmetric function `c : Fin N → Fin N → Fin k`) and differ only in how the monochromatic substructure is specified:
+ai-review/183.md:91:- **Definition docstring:** The docstring for `multicolorRamseyTriangle` clearly explains the mathematical meaning. The LaTeX-style description of k-colourings and monochromatic triangles is helpful.
+ai-review/183.md:137:2. **Monochromatic triangle condition:** The condition `c a b = c a d ∧ c a b = c b d` asserts that all three edges of triangle {a,b,d} receive the same color. Combined with the three pairwise-distinctness conditions `a ≠ b ∧ a ≠ d ∧ b ≠ d`, this correctly captures a monochromatic triangle. ✓
+ai-review/129.md:88:The definition states: for every k-subset T ⊆ S, there exist distinct x, y ∈ T with χ x y ≠ c. This correctly captures "T does not contain a monochromatic K_k in color c." The existential quantifier (one non-c edge suffices to break monochromaticity) is the right logical form.
+FormalConjectures/ErdosProblems/603.lean:27:monochromatic. If instead we have $|A_i \cap A_j| \neq 1$ then Komjáth showed that this is
+FormalConjectures/ErdosProblems/603.lean:42:no $A_i$ is monochromatic.
+ai-review/187.md:19:- **`ContainsMonoAPofLength`** — Directly models monochromatic APs under a coloring. Its signature is:
+ai-review/187.md:62:The formalization captures only one direction of the problem: the lower bound conjecture (there exists `c > 0` such that for every 2-colouring, infinitely many `d` yield a monochromatic AP of length `≥ c log d`).
+ai-review/187.md:87:- **`HasMonoAP` definition:** Clean and readable. The docstring is excellent — it precisely explains the mathematical meaning. One minor suggestion: the name `HasMonoAP` is slightly ambiguous ("mono" could mean "monotone" rather than "monochromatic"). The name `HasMonochromaticAP` (as used in Problem 984's `IsMonochromaticAP`) would be clearer, though longer.
+ai-review/187.md:132:[Omitted long matching line]
+ai-review/187.md:145:- **Logical structure:** "There exists a positive constant c such that for every 2-colouring χ and every bound N, there exists d > N and k ≥ c·log(d) such that χ has a monochromatic AP of length k with common difference d." This correctly formalizes: "For every 2-colouring, there are infinitely many d such that the longest monochromatic AP with difference d has length Ω(log d)."
+ai-review/187.md:151:- **Potential subtlety — the relationship between k and d:** The formalization says there exist `d` and `k` such that `k ≥ c·log(d)` and the AP has length `k`. It does *not* require that `k` is the *longest* monochromatic AP with difference `d`. This is fine — the existence of a long-enough AP implies the longest is at least as long.
+ai-review/187.md:157:The formalization allows `k` and `d` to be chosen together for each `N`. One might worry whether this is equivalent to requiring a single `k(d)` that works for all large `d`. However, the existential formulation is correct: the conjecture is that for every colouring, for infinitely many `d`, there is a long monochromatic AP with that difference. The formalization captures exactly this.
+FormalConjectures/ErdosProblems/609.lean:25:with $n$ colours then there must be a monochromatic odd cycle of length at most $m$.
+FormalConjectures/ErdosProblems/609.lean:29:$n$-coloured to avoid monochromatic odd cycles entirely (partition vertices by
+FormalConjectures/ErdosProblems/609.lean:43:/-- There exists a monochromatic cycle of length $k$ in an edge coloring of $K_N$.
+FormalConjectures/ErdosProblems/609.lean:57:contains a monochromatic odd cycle. (This establishes that $f(n)$ is finite.)
+FormalConjectures/ErdosProblems/609.lean:71:symmetric $n$-coloring of $K_{2^n+1}$ with no monochromatic odd cycle of length
+FormalConjectures/ErdosProblems/609.lean:87:$n$-coloring of $K_{2^n+1}$ contains a monochromatic odd cycle of length at most
+FormalConjectures/ErdosProblems/556.lean:43:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/556.lean:46:A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+FormalConjectures/ErdosProblems/638.lean:24:every $\kappa$-colouring of the edges of $G$ contains a monochromatic triangle?
+FormalConjectures/ErdosProblems/638.lean:33:/-- A symmetric colouring of a simple graph has a **monochromatic triangle**
+FormalConjectures/ErdosProblems/638.lean:56:property: for every $n \geq 1$, some member of $S$ forces a monochromatic triangle
+FormalConjectures/ErdosProblems/638.lean:61:every $\kappa$-colouring of the edges of $G$ contains a monochromatic triangle?
+FormalConjectures/ErdosProblems/483.lean:33:/-- A coloring $f : \mathbb{N} \to \text{Fin}\ k$ has a *monochromatic Schur triple* in
+FormalConjectures/ErdosProblems/483.lean:43:monochromatic solution to $a + b = c$. The values $f(k)$ are known as Schur numbers.
+FormalConjectures/ErdosProblems/483.lean:55:every $k$-coloring of $\{1, \ldots, N\}$ with $N \geq c^k$ has a monochromatic Schur triple.
+FormalConjectures/ErdosProblems/1177.lean:37:    is a function $c : V \to \alpha$ such that no hyperedge is monochromatic: for every edge $e$
+FormalConjectures/ErdosProblems/761.lean:29:are no monochromatic oriented cycles.
+FormalConjectures/ErdosProblems/761.lean:48:if there is no monochromatic directed cycle: no vertex can reach itself
+FormalConjectures/ErdosProblems/836.lean:26:is monochromatic). Suppose any two edges of $G$ have a non-empty intersection.
+FormalConjectures/ErdosProblems/836.lean:56:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/562.lean:32:monochromatic copy of the complete $r$-uniform hypergraph on $n$ vertices.
+FormalConjectures/ErdosProblems/1174.lean:38:edge colouring of $G$ with countably many colours ($\mathbb{N}$), some monochromatic $K_3$
+FormalConjectures/ErdosProblems/1174.lean:58:($\mathbb{N}$), some monochromatic $K_{\aleph_0}$ exists — that is, a clique of cardinality
+FormalConjectures/ErdosProblems/560.lean:26:edges of $H$ there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/560.lean:62:contains a monochromatic copy of $G$, i.e., an injective map $f$ from the
+FormalConjectures/ErdosProblems/174.lean:25:$d = d(A,k)$ such that in any $k$-colouring of $\mathbb{R}^d$ there exists a monochromatic
+FormalConjectures/ErdosProblems/174.lean:51:exists $d$ such that any $k$-coloring of $\mathbb{R}^d$ contains a monochromatic
+FormalConjectures/ErdosProblems/76.lean:25:$(1 + o(1)) \, n^2/12$ many edge-disjoint monochromatic triangles.
+FormalConjectures/ErdosProblems/76.lean:30:between parts red and edges within parts blue — any edge-disjoint monochromatic
+FormalConjectures/ErdosProblems/76.lean:49:/-- A 3-vertex set $T \subseteq V(K_n)$ is a monochromatic triangle under colouring `col` if
+FormalConjectures/ErdosProblems/76.lean:63:edge-disjoint monochromatic triangles.
+FormalConjectures/ErdosProblems/76.lean:67:monochromatic triangles of size at least $(1 - \varepsilon) \cdot n^2 / 12$.
+FormalConjectures/ErdosProblems/191.lean:25:non-edges = colour 2). A monochromatic set is a clique in either $G$ or its
+FormalConjectures/ErdosProblems/191.lean:53:2-colouring of the pairs from $\{2, \ldots, n\}$, there exists a monochromatic
+FormalConjectures/ErdosProblems/190.lean:25:(into any number of colours) there is always either a monochromatic $k$-term
+FormalConjectures/ErdosProblems/190.lean:42:/-- A colouring $\chi : \mathbb{N} \to \mathbb{N}$ has a monochromatic $k$-term arithmetic
+FormalConjectures/ErdosProblems/190.lean:57:either a monochromatic $k$-term AP or a rainbow $3$-term AP. -/
+FormalConjectures/ErdosProblems/190.lean:65:such that any finite colouring of $\{1,\ldots,N\}$ always contains either a monochromatic
+FormalConjectures/ErdosProblems/78.lean:37:2-colouring of the edges of $K_n$ contains a monochromatic copy of $K_k$.
+FormalConjectures/ErdosProblems/1171.lean:27:$\omega_1 \cdot \omega$ for the first color or a monochromatic triple for some other color.
+FormalConjectures/ErdosProblems/1171.lean:63:there is a monochromatic triple for one of the remaining $k$ colors.
+FormalConjectures/ErdosProblems/911.lean:40:    \operatorname{Fin} N \to \operatorname{Bool}$) contains a monochromatic copy of
+FormalConjectures/ErdosProblems/87.lean:44:contains a monochromatic copy of $H$). -/
+FormalConjectures/ErdosProblems/532.lean:26:finite subsets of $A$) are monochromatic?
+FormalConjectures/ErdosProblems/532.lean:46:of $A$ are monochromatic. -/
+FormalConjectures/ErdosProblems/159.lean:67:of the edges of $K_N$ contains a monochromatic $C_4$ in one colour or a
+FormalConjectures/ErdosProblems/159.lean:68:monochromatic $K_n$ in the other colour.
+FormalConjectures/ErdosProblems/984.lean:25:monochromatic arithmetic progression then $k \ll_\varepsilon a^\varepsilon$ for all
+FormalConjectures/ErdosProblems/984.lean:40:/-- An arithmetic progression $\{a, a+d, \ldots, a+(k-1)d\}$ is monochromatic under
+FormalConjectures/ErdosProblems/984.lean:49:constant $C > 0$ such that every $k$-term monochromatic arithmetic progression
+FormalConjectures/ErdosProblems/894.lean:23:of $\mathbb{N}$ with no monochromatic pair whose difference lies in $A$?
+FormalConjectures/ErdosProblems/894.lean:41:Is it true that there must exist a finite colouring of $\mathbb{N}$ with no monochromatic
+FormalConjectures/ErdosProblems/303.lean:31:Is it true that in any finite colouring of the integers there exists a monochromatic solution
+FormalConjectures/ErdosProblems/553.lean:25:of $K_m$ then there is either a monochromatic triangle in one of the first two
+FormalConjectures/ErdosProblems/553.lean:26:colours or a monochromatic $K_n$ in the third colour. Define $R(3,n)$ similarly
+FormalConjectures/ErdosProblems/553.lean:39:the edges of $K_N$ yields either a monochromatic triangle in colour $1$ or
+FormalConjectures/ErdosProblems/553.lean:40:a monochromatic $K_n$ in colour $2$. Equivalently, every simple graph on $N$
+FormalConjectures/ErdosProblems/553.lean:46:the edges of $K_N$ yields either a monochromatic triangle in one of the
+FormalConjectures/ErdosProblems/553.lean:47:first two colours or a monochromatic $K_n$ in the third colour.
+FormalConjectures/ErdosProblems/518.lean:34:/-- A path is monochromatic of color $b$ under edge coloring $c$ if every
+FormalConjectures/ErdosProblems/518.lean:36:    of length $\leq 1$ is trivially monochromatic. -/
+FormalConjectures/ErdosProblems/518.lean:44:at most $\lceil\sqrt{n}\rceil$ monochromatic paths, all of the same colour,
+FormalConjectures/ErdosProblems/948.lean:24:Erdős initially asked whether this is possible with the set being monochromatic,
+FormalConjectures/ErdosProblems/597.lean:53:and monochromaticity means $f(e(i), e(j)) = 0$ for all $i < j$. A "copy of $G$"
+FormalConjectures/ErdosProblems/1128.lean:23:must contain a monochromatic countably infinite sub-product. This was disproved by Prikry and
+FormalConjectures/ErdosProblems/1128.lean:39:$A_1 \times B_1 \times C_1$ is monochromatic?
+FormalConjectures/ErdosProblems/169.lean:40:a monochromatic $k$-term arithmetic progression. -/
+FormalConjectures/ErdosProblems/169.lean:51:of $\{0, \ldots, N-1\}$ contains a monochromatic $k$-term AP. -/
+FormalConjectures/ErdosProblems/582.lean:25:of the edges produces a monochromatic $K_3$?
+FormalConjectures/ErdosProblems/582.lean:31:[Fo70] Folkman, J., *Graphs with monochromatic complete subgraphs in every edge coloring*.
+FormalConjectures/ErdosProblems/582.lean:39:there is a monochromatic $K_3$. Existence was proved by Folkman [Fo70].
+FormalConjectures/ErdosProblems/966.lean:26:must exist a monochromatic non-trivial arithmetic progression of length $k$?
+FormalConjectures/ErdosProblems/966.lean:39:a monochromatic $k$-term arithmetic progression.
+FormalConjectures/ErdosProblems/559.lean:26:of the edges of $H$ contains a monochromatic copy of $G$).
+FormalConjectures/ErdosProblems/559.lean:47:    contains a monochromatic copy of $G$, i.e., an injective map $f$ from the
+FormalConjectures/ErdosProblems/843.lean:33:distinct monochromatic elements of $A$. -/
+FormalConjectures/ErdosProblems/843.lean:45:can be written as a monochromatic sum of distinct squares.
+FormalConjectures/ErdosProblems/565.lean:26:an induced monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/565.lean:38:an induced monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/565.lean:40:An induced monochromatic copy of $G$ means: there is an injection
+FormalConjectures/ErdosProblems/8.lean:25:must there exist a covering system all of whose moduli are monochromatic?
+FormalConjectures/ErdosProblems/8.lean:32:monochromaticity impossible.
+FormalConjectures/ErdosProblems/8.lean:54:All moduli in a covering system are **monochromatic** under a colouring $\chi : \mathbb{N} \to \text{Fin}\, k$
+FormalConjectures/ErdosProblems/8.lean:62:must there exist a covering system all of whose moduli are monochromatic?
+FormalConjectures/ErdosProblems/484.lean:24:integers representable as a monochromatic sum $a + b$ with $a \neq b$.
+FormalConjectures/ErdosProblems/484.lean:41:integers in $\{1, \ldots, N\}$ representable as a monochromatic sum, i.e., as $a + b$
+FormalConjectures/ErdosProblems/639.lean:23:edges do not lie in a monochromatic triangle. This was proved by Keevash and Sudakov for $n \geq 7$.
+FormalConjectures/ErdosProblems/639.lean:30:[KeSu04] Keevash, P. and Sudakov, B., _On the number of edges not covered by monochromatic
+FormalConjectures/ErdosProblems/639.lean:43:/-- An edge $\{u, v\}$ lies in a monochromatic triangle under coloring $c$ if there
+FormalConjectures/ErdosProblems/639.lean:52:do not lie in any monochromatic triangle under coloring $c$. -/
+FormalConjectures/ErdosProblems/639.lean:59:which do not occur in a monochromatic triangle.
+FormalConjectures/ErdosProblems/118.lean:67:and monochromaticity means $f(e(i), e(j)) = c$ for all $i < j$. -/
+FormalConjectures/ErdosProblems/118.lean:81:a monochromatic copy of $\alpha$ in color $0$ (red) or a monochromatic triangle $K_3$ in
+FormalConjectures/ErdosProblems/593.lean:50:/-- A proper coloring of a $3$-uniform hypergraph: no edge is monochromatic
+FormalConjectures/ErdosProblems/593.lean:69:    two colors such that no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/1168.lean:42:- No set of cardinality $\aleph_{\omega+1}$ is monochromatic in color $0$
+FormalConjectures/ErdosProblems/1168.lean:43:- No triple is monochromatic in any color $n \geq 1$
+FormalConjectures/ErdosProblems/1168.lean:51:      -- No monochromatic set of cardinality ℵ_{ω+1} for color 0
+FormalConjectures/ErdosProblems/1168.lean:54:      -- No monochromatic triple for any color n ≥ 1
+FormalConjectures/ErdosProblems/555.lean:25:then there is a monochromatic copy of $G$. Determine the value of $R_k(C_{2n})$.
+FormalConjectures/ErdosProblems/555.lean:47:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/555.lean:50:A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+FormalConjectures/ErdosProblems/833.lean:46:/-- A proper coloring of a hypergraph: no edge with $\geq 2$ vertices is monochromatic. -/
+FormalConjectures/ErdosProblems/925.lean:26:edges of $G$ with no monochromatic triangle) then $G$ contains an independent set
+FormalConjectures/ErdosProblems/925.lean:48:2-colouring of its edges with no monochromatic triangle. Equivalently,
+FormalConjectures/ErdosProblems/781.lean:25:a monochromatic $k$-term descending wave: a sequence $x_1 < \cdots < x_k$ such that,
+FormalConjectures/ErdosProblems/781.lean:52:/-- A 2-colouring of $\{0, \ldots, n-1\}$ contains a monochromatic $k$-term
+FormalConjectures/ErdosProblems/781.lean:59:a monochromatic $k$-term descending wave. -/
+FormalConjectures/ErdosProblems/183.lean:24:monochromatic triangle.
+FormalConjectures/ErdosProblems/183.lean:36:$k$-colouring of the edges of $K_n$ contains a monochromatic triangle.
+FormalConjectures/ErdosProblems/183.lean:38:and a monochromatic triangle is three pairwise distinct vertices
+FormalConjectures/ErdosProblems/183.lean:50:$k$ colours then there must exist a monochromatic triangle. The limit
+FormalConjectures/ErdosProblems/924.lean:25:every $k$-colouring of the edges of $G$ contains a monochromatic copy of $K_l$?
+FormalConjectures/ErdosProblems/924.lean:39:$k$-colouring of the edges of $G$ contains a monochromatic $K_l$.
+FormalConjectures/ErdosProblems/45.lean:25:monochromatic subset whose reciprocals sum to $1$. Proved by Croot [Cr03].
+FormalConjectures/ErdosProblems/45.lean:45:(excluding $1$ and $n$ itself), there is a monochromatic subset $D' \subseteq D(n)$ whose
+FormalConjectures/ErdosProblems/531.lean:26:(for $\emptyset\neq S\subseteq A$) are monochromatic. Estimate $F(k)$.
+FormalConjectures/ErdosProblems/531.lean:42:/-- A 2-coloring $\chi : \mathbb{N} \to \mathrm{Bool}$ admits a **monochromatic subset-sum
+FormalConjectures/ErdosProblems/531.lean:55:are monochromatic. -/
+FormalConjectures/ErdosProblems/531.lean:61:monochromatic subset-sum $k$-set. -/
+FormalConjectures/ErdosProblems/721.lean:51:A 2-coloring $f : \mathbb{N} \to \text{Bool}$ of $\{0, \ldots, n-1\}$ has a monochromatic
+FormalConjectures/ErdosProblems/721.lean:59:either a monochromatic $j$-AP in one color or a monochromatic $k$-AP in
+FormalConjectures/ErdosProblems/595.lean:31:[Fo70] Folkman, J., _Graphs with monochromatic complete subgraphs in every edge
+FormalConjectures/ErdosProblems/439.lean:37:[KhSz06] Khalfalah, A. and Szemerédi, E., _On the number of monochromatic
+FormalConjectures/ErdosProblems/187.lean:53:/-- A 2-colouring $\chi : \mathbb{Z} \to \text{Bool}$ has a monochromatic arithmetic progression of
+FormalConjectures/ErdosProblems/187.lean:64:has a monochromatic arithmetic progression with common difference $d$ and
+FormalConjectures/ErdosProblems/187.lean:68:2-colouring such that the longest monochromatic AP with common difference
+FormalConjectures/ErdosProblems/1022.lean:36:    a 2-coloring of the ground set such that no edge is monochromatic:
+FormalConjectures/ErdosProblems/77.lean:25:of the edges of $K_n$ contains a monochromatic copy of $K_k$, then find the value of
+FormalConjectures/ErdosProblems/77.lean:49:symmetric 2-colouring of the edges of $K_N$, there is a monochromatic
+FormalConjectures/ErdosProblems/1167.lean:33:    there exists a color $i$ and a monochromatic subset of cardinality $\geq \text{targets}(i)$. -/
+FormalConjectures/ErdosProblems/557.lean:36:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/557.lean:39:A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+FormalConjectures/ErdosProblems/1169.lean:57:of ordinals below $\omega_1^2$ such that no subset of order type $\omega_1^2$ is monochromatic
+FormalConjectures/ErdosProblems/1169.lean:58:in the first color and no subset of order type $k$ is monochromatic in the
+FormalConjectures/ErdosProblems/901.lean:42:of the vertex set such that no edge is monochromatic, i.e., every edge
+FormalConjectures/ErdosProblems/129.lean:43:/-- A vertex set $S$ is monochromatic-$K_k$-free in color $c$ under coloring $\chi$ if
+FormalConjectures/ErdosProblems/558.lean:25:then there is a monochromatic copy of $G$. Determine $R_k(K_{s,t})$
+FormalConjectures/ErdosProblems/558.lean:39:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/558.lean:42:A monochromatic copy of $G$ in colour $a$ is an injective map $f : V \to \operatorname{Fin} N$
+FormalConjectures/ErdosProblems/138.lean:36:The set of natural numbers that guarantee a monochromatic arithmetic progression.
+FormalConjectures/ErdosProblems/138.lean:40:monochromatic arithmetic progression of length `k`.
+FormalConjectures/ErdosProblems/138.lean:47:always exists some number `N` large enough to guarantee a monochromatic arithmetic progression.
+FormalConjectures/ErdosProblems/138.lean:57:`{1, ..., N}` is guaranteed to contain a monochromatic arithmetic progression of
+FormalConjectures/ErdosProblems/138.lean:65:must contain a monochromatic arithmetic progression of length `k`.
+FormalConjectures/ErdosProblems/173.lean:25:there is a monochromatic congruent copy of $T$.
+FormalConjectures/ErdosProblems/173.lean:62:there is a monochromatic congruent copy of $T$.
+FormalConjectures/ErdosProblems/173.lean:64:Equivalently: if two non-degenerate triangles both fail to have any monochromatic
+FormalConjectures/ErdosProblems/602.lean:35:such that no set in the family is monochromatic (both colours appear). -/
+FormalConjectures/ErdosProblems/602.lean:45:monochromatic.
+FormalConjectures/ErdosProblems/1170.lean:42:pairs of ordinals below $\kappa$, there exists a monochromatic set of order type $\alpha$.
+FormalConjectures/ErdosProblems/1170.lean:55:2-coloring of pairs of ordinals below $\kappa$, there exists a monochromatic set of
+FormalConjectures/ErdosProblems/564.lean:30:vertices are $2$-coloured then there is a monochromatic copy of the complete $3$-uniform
+FormalConjectures/ErdosProblems/1029.lean:25:2-colouring of the edges of $K_n$ contains a monochromatic copy of $K_k$, then
+FormalConjectures/ErdosProblems/1029.lean:46:symmetric 2-colouring of the edges of $K_N$, there is a monochromatic
+FormalConjectures/ErdosProblems/834.lean:78:/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/832.lean:49:is monochromatic (for every edge, not all vertices receive the same color). -/
+FormalConjectures/ErdosProblems/832.lean:55:needed for a proper coloring (no monochromatic edge). -/
+FormalConjectures/ErdosProblems/46.lean:24:For every finite colouring of the integers $\geq 2$, there exists a monochromatic finite
+FormalConjectures/ErdosProblems/46.lean:36:monochromatic finite set $\{n_1, \ldots, n_k\}$ with $2 \le n_1 < \cdots < n_k$ whose
+FormalConjectures/ErdosProblems/645.lean:32:If ℕ is $2$-coloured then there must exist a monochromatic three-term arithmetic progression
+FormalConjectures/ErdosProblems/596.lean:25:graph $H$ such that every $n$-coloring of the edges of $H$ contains a monochromatic copy
+FormalConjectures/ErdosProblems/596.lean:27:edges of $H$ without a monochromatic $G_2$?
+FormalConjectures/ErdosProblems/596.lean:40:/-- A graph $H$ contains a monochromatic copy of $G$ under edge coloring $c$: there exists
+FormalConjectures/ErdosProblems/596.lean:51:    of $H$'s edges contains a monochromatic copy of $G_2$.
+FormalConjectures/ErdosProblems/596.lean:53:    with no monochromatic copy of $G_2$.
+FormalConjectures/ErdosProblems/596.lean:63:      -- whose edges cannot be n-colored without a monochromatic G₂
+FormalConjectures/ErdosProblems/596.lean:69:      -- without a monochromatic G₂
+FormalConjectures/ErdosProblems/813.lean:31:almost monochromatic subsets_. (2023).
+FormalConjectures/ErdosProblems/554.lean:42:$k$-colouring of the edges of $K_N$, there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/554.lean:45:\operatorname{Fin} k$. A monochromatic copy of $G$ in colour $a$ is an injective map
+FormalConjectures/ErdosProblems/1015.lean:25:the vertices can be covered by vertex-disjoint monochromatic copies of $K_t$
+FormalConjectures/ErdosProblems/1015.lean:49:/-- A set $S$ of vertices in `Fin n` is a monochromatic clique of colour $b$
+FormalConjectures/ErdosProblems/1015.lean:58:pairwise disjoint monochromatic $K_t$'s covering all but at most $r$
+FormalConjectures/ErdosProblems/1015.lean:69:symmetric 2-colouring of the edges of $K_N$ contains a monochromatic
+FormalConjectures/ErdosProblems/1015.lean:81:vertex-disjoint monochromatic $K_t$'s is exactly
+FormalConjectures/ErdosProblems/720.lean:26:edges of $H$ there is a monochromatic copy of $G$.
+FormalConjectures/ErdosProblems/720.lean:66:    of $H$ contains a monochromatic copy of $G$, i.e., an injective map $f$ from the
+FormalConjectures/ErdosProblems/189.lean:48:monochromatic region is Lebesgue measurable and has measure zero).
+FormalConjectures/ErdosProblems/1172.lean:115:a monochromatic homogeneous set of order type $\omega_1 + \omega$.
+FormalConjectures/ErdosProblems/54.lean:24:There exists a Ramsey 2-complete set $A$ (every large integer is a monochromatic subset sum

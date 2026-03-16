@@ -1,0 +1,615 @@
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-41-/-- Checks if a command has the `AMS` attribute. -/
+FormalConjectures/Util/Linters/AMSLinter.lean-42-def toAMS (stx : TSyntax ``Command.declModifiers) :
+FormalConjectures/Util/Linters/AMSLinter.lean:43:    CommandElabM (Array <| TSyntaxArray `num) := do
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-44-  match stx with
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-45-  | `(declModifiers| $(_)? @[$[$atts],*] $(_)? $(_)? $(_)? $(_)?) =>
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-46-    atts.filterMapM fun att ↦ do
+--
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-49-      | _ => return none
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-50-  | _ => return #[]
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-51-
+FormalConjectures/Util/Linters/AMSLinter.lean:52:def mkAMSSyntax (nums : TSyntaxArray `num) : CommandElabM <| TSyntax ``attrInstance := do
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-53-  return ← `(attrInstance | AMS $nums*)
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-55-set_option linter.dupNamespace false in
+--
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-66-        | `(declModifiers| $(_)? $atts $(_)? $(_)? $(_)? $(_)?) => atts.raw
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-67-        | _ => stx
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-68-        if ams.size > 1 then
+FormalConjectures/Util/Linters/AMSLinter.lean:69:          let numerals := ams.flatten
+FormalConjectures/Util/Linters/AMSLinter.lean-70-          let outCorrect := m!"{← mkAMSSyntax numerals}"
+FormalConjectures/Util/Linters/AMSLinter.lean-71-          let currentOut := m!", ".joinSep (← ams.mapM fun nums ↦ do return m!"{← mkAMSSyntax nums}").toList
+/home/ryan/formal-conjectures/FormalConjectures/Util/Linters/AMSLinter.lean-72-          logLintIf linter.style.ams_attribute outStx
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-74-if `c` is a capital letter (i.e. something between `A` and `Z`.). For example, `A` would output
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-75-the syntax `stateName.A` where `stateName` is the name of the type used to index sets.
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-76-This is used when parsing the "state" component of turing machine string representations. -/
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean:77:private def Char.toStateSyntax (c : Char) (stateName : Name) (numStates : Nat) : TermElabM Term := do
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-78-  unless c.isUpper do
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-79-    throwError m!"Invalid state character: {c} should be between A and Z"
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-80-  -- The convention is to non-state letters (i.e. any letter above the highest letter denoting a
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-93-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-94-/-- `String.toStmtSyntax s stateName` parses a component of a Turing machine string representation
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-95-and outputs the syntax of the corresponding `(state, statement) : State × Stmt` pair. -/
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean:96:private def String.toStmtSyntax (s : String) (stateName : Name) (numStates : Nat) : TermElabM Term := do
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-97-  let [c_symbol, c_dir, c_state] := s.toList |
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-98-    throwError m!"Invalid transition encoding: {s} should be 3 characters long."
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-99-  if c_symbol = '-' ∧ c_dir = '-' ∧ c_state = '-' then
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-176--/
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-177-def parseTuring (descr : String) : TermElabM Expr := do
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-178-  let moveListStr := descr.splitOn "_"
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean:179:  let numStates := moveListStr.length
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-180-  let entryLengths := moveListStr.map String.length |>.dedup
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-181-  unless entryLengths.length == 1 do
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-182-    throwError "All portions of the string separated by `_` should have the same length."
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-183-  unless 3 ∣ entryLengths[0]! do
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-184-    throwError "Each chunk of the string should consist of several groups of length 3."
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean:185:  let numSymbols := entryLengths[0]! / 3
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-186-  let stateName := numStates.toStateName
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-187-  mkStateType numStates stateName
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-188-  let .some stateType ← checkTypeQ (.const stateName []) q(Type)
+--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-190-  let funConstructors ← mkMachineMatchAltExpr moveListStr (numStates.toStateName) numSymbols numStates
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-191-  let tm ← `(term | fun a b => match a, b with $funConstructors:matchAlt*)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-192-  let _ ← synthInstanceQ q(Inhabited $stateType)
+FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean:193:  let numSymbolsQ : Q(Nat) := Lean.toExpr numSymbols
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-194-  elabTermEnsuringType tm q(Machine (Fin $numSymbolsQ) $stateType)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-195-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Computability/TuringMachine/Notation.lean-196-/-- `turing_machine% tmStringDescription` outputs a term of type `Machine Γ Λ`
+--
+FormalConjecturesForMathlib/Topology/Discrete.lean-19-def Homeomorph.OfDiscrete {X  Y : Type*} [TopologicalSpace X] [DiscreteTopology X]
+FormalConjecturesForMathlib/Topology/Discrete.lean-20-    [TopologicalSpace Y] [DiscreteTopology Y] (f : X ≃ Y) : X ≃ₜ Y where
+FormalConjecturesForMathlib/Topology/Discrete.lean-21-  toEquiv := f
+FormalConjecturesForMathlib/Topology/Discrete.lean:22:  continuous_toFun := continuous_of_discreteTopology
+FormalConjecturesForMathlib/Topology/Discrete.lean:23:  continuous_invFun := continuous_of_discreteTopology
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Topology/Discrete.lean-24-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Topology/Discrete.lean-25-/-- A bijection between discrete topoligical spaces is a homeomorpism. -/
+FormalConjecturesForMathlib/Topology/Discrete.lean-26-theorem IsHomeomorph.equiv_of_discreteTopology {X  Y : Type*} [TopologicalSpace X]
+--
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-31-noncomputable def Ls (G : SimpleGraph α) [DecidableRel G.Adj] : ℝ :=
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-32-  letI spanningTrees := { T : Subgraph G | T.IsSpanning ∧ IsTree T.coe }
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-33-  letI leaves (T : Subgraph G) := T.verts.toFinset.filter (fun v => T.degree v = 1)
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean:34:  letI num_leaves (T : Subgraph G) := (leaves T).card
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-35-  sSup (Set.image (fun T => (num_leaves T : ℝ)) spanningTrees)
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-36-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean-37-/-- `n G` is the number of vertices of `G` as a real number. -/
+--
+/home/ryan/formal-conjectures/ai-review/642.md-48-### 6.1 `numChords` definition (lines 53–55)
+/home/ryan/formal-conjectures/ai-review/642.md-49-
+/home/ryan/formal-conjectures/ai-review/642.md-50-```lean
+ai-review/642.md:51:noncomputable def numChords {u v : V} (p : G.Walk u v) : ℕ :=
+/home/ryan/formal-conjectures/ai-review/642.md-52-  (G.edgeFinset.filter (fun e =>
+/home/ryan/formal-conjectures/ai-review/642.md-53-    (∀ w, w ∈ e → w ∈ p.support.toFinset) ∧ e ∉ p.edges.toFinset)).card
+/home/ryan/formal-conjectures/ai-review/642.md-54-```
+--
+/home/ryan/formal-conjectures/docbuild/scripts/overwrite_index.lean-55-  for (subject, count) in sortedCounts do
+/home/ryan/formal-conjectures/docbuild/scripts/overwrite_index.lean-56-    if count > 0 then
+/home/ryan/formal-conjectures/docbuild/scripts/overwrite_index.lean-57-      let desc ← subject.getDesc
+docbuild/scripts/overwrite_index.lean:58:      let some num := subject.toNat? | throwError "subject not recognised"
+docbuild/scripts/overwrite_index.lean:59:      let numStr := (toString num).leftpad 2 '0';
+docbuild/scripts/overwrite_index.lean-60-      markdownTable := markdownTable.append s!"| {count} | {numStr} |{desc} |\n"
+/home/ryan/formal-conjectures/docbuild/scripts/overwrite_index.lean-61-  return markdownTable
+/home/ryan/formal-conjectures/docbuild/scripts/overwrite_index.lean-62-
+--
+/home/ryan/formal-conjectures/ai-review/177.md-7-**Significant overlap with Problem 176.** Problem 176 (`FormalConjectures/ErdosProblems/176.lean`) defines `discrepancyAPNumber` using the identical sum-over-AP pattern `∑ i ∈ range k, f (a + i * d)` and the identical ±1 coloring constraint `∀ n, f n = 1 ∨ f n = -1`. Problem 178 also uses the same coloring pattern.
+/home/ryan/formal-conjectures/ai-review/177.md-8-
+ai-review/177.md-9-Opportunities:
+ai-review/177.md:10:- A shared predicate for ±1 colorings (e.g., `IsPlusMinusOneColoring (f : ℕ → ℤ) := ∀ n, f n = 1 ∨ f n = -1`) could be factored out and reused across Problems 176, 177, and 178. This would improve consistency and reduce repetition.
+/home/ryan/formal-conjectures/ai-review/177.md-11-- The sum `∑ i ∈ range k, f (a + i * d)` appears identically in all three files. A shared definition for the discrepancy of a coloring along an AP would be beneficial.
+/home/ryan/formal-conjectures/ai-review/177.md-12-- `FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean` defines `Set.IsAPOfLengthWith` and related predicates, but these are set/list-based and not directly applicable to the sum-over-AP pattern used here. No immediate reuse opportunity from that file.
+/home/ryan/formal-conjectures/ai-review/177.md-13-
+--
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-165-  | «97»
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-166-  deriving Inhabited, BEq, Hashable, ToExpr
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-167-
+FormalConjectures/Util/Attributes/AMS.lean:168:def numToAMSName (n : Nat) : MetaM Name := do
+FormalConjectures/Util/Attributes/AMS.lean-169-  let nm : Name := Name.str ``AMS (ToString.toString n)
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-170-  unless !(← Lean.hasConst nm) do return nm
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-171-  throwError "Out of bounds"
+--
+FormalConjectures/Util/Attributes/AMS.lean-179-  let .const (.str _ m) [] := Lean.toExpr a | none
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-180-  m.toNat?
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-181-
+FormalConjectures/Util/Attributes/AMS.lean:182:unsafe def numToAMSSubjects (n : Nat) : MetaM AMS := do
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-183-  let nm ← numToAMSName n
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-184-  Meta.evalExpr AMS q(AMS) (.const nm [])
+/home/ryan/formal-conjectures/FormalConjectures/Util/Attributes/AMS.lean-185-
+--
+ai-review/657.md-5-**`numDistances` is duplicated.** The identical definition appears in both `657.lean:37-38` and `135.lean:39-40`:
+/home/ryan/formal-conjectures/ai-review/657.md-6-
+/home/ryan/formal-conjectures/ai-review/657.md-7-```lean
+ai-review/657.md:8:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/ai-review/657.md-9-  (((A ×ˢ A).filter (fun p => p.1 ≠ p.2)).image (fun p => dist p.1 p.2)).card
+/home/ryan/formal-conjectures/ai-review/657.md-10-```
+/home/ryan/formal-conjectures/ai-review/657.md-11-
+--
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/235893.lean-40--/
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/235893.lean-41-@[category test, AMS 54]
+FormalConjectures/Mathoverflow/235893.lean-42-theorem Continuous.isConnectedMap {X Y : Type*} [TopologicalSpace X] [TopologicalSpace Y]
+FormalConjectures/Mathoverflow/235893.lean:43:    {f : X → Y} (hf : Continuous f) : IsConnectedMap f :=
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/235893.lean-44-  fun _ h ↦ IsConnected.image h f (Continuous.continuousOn hf)
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/235893.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/Mathoverflow/235893.lean-46-/--
+--
+/home/ryan/formal-conjectures/ai-review/150.md-144-
+ai-review/150.md-145-### Definition: `numMinimalVertexCuts`
+/home/ryan/formal-conjectures/ai-review/150.md-146-```lean
+ai-review/150.md:147:noncomputable def numMinimalVertexCuts {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+ai-review/150.md-148-  Set.ncard { S : Finset (Fin n) | IsMinimalVertexCut G S }
+/home/ryan/formal-conjectures/ai-review/150.md-149-```
+/home/ryan/formal-conjectures/ai-review/150.md-150-
+--
+ai-review/993.md-17-with a `Decidable` instance for `Finset` coercions. The counting function could be rewritten as:
+/home/ryan/formal-conjectures/ai-review/993.md-18-
+/home/ryan/formal-conjectures/ai-review/993.md-19-```lean
+ai-review/993.md:20:def numIndepSets (G : SimpleGraph V) [DecidableRel G.Adj] (k : ℕ) : ℕ :=
+ai-review/993.md-21-  (Finset.univ.powerset.filter (fun s : Finset V => s.card = k ∧ G.IsIndepSet (s : Set V))).card
+/home/ryan/formal-conjectures/ai-review/993.md-22-```
+/home/ryan/formal-conjectures/ai-review/993.md-23-
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-27-open FirstOrder.Language
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-28-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-29-/-- The number of countable models of some L-Theory T up to isomorphism -/
+FormalConjectures/Wikipedia/VaughtConjecture.lean:30:def numberOfCountableModels {L : FirstOrder.Language} (T : L.Theory) : Cardinal :=
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-31-  Cardinal.mk (Quotient (Setoid.comap
+FormalConjectures/Wikipedia/VaughtConjecture.lean-32-    (fun (model : {mt : T.ModelType // Countable mt.Carrier}) ↦
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/VaughtConjecture.lean-33-    CategoryTheory.Bundled.mk model.val.Carrier model.val.struc)
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-123-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-124-/-- For example, `0` is part of an attracting `2`-cycle of `z ↦ z ^ 2 - 1`. -/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-125-@[category test, AMS 37]
+FormalConjectures/Wikipedia/Mandelbrot.lean:126:theorem isAttractingCycle_z_squared_minus_one : IsAttractingCycle (fun z ↦ z ^ 2 - 1) 2 0 :=
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-127-  ⟨by decide, by simp [IsPeriodicPt, IsFixedPt], by fun_prop, by simp [deriv_comp]⟩
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-128-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-129-/-- On the other hand, while `2` is part of a `1`-cycle of `z ↦ z ^ 2 - 2`, that cycle is not
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-130-attracting. -/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-131-@[category test, AMS 37]
+FormalConjectures/Wikipedia/Mandelbrot.lean:132:theorem not_isAttractingCycle_z_squared_minus_two : ¬ IsAttractingCycle (fun z ↦ z ^ 2 - 2) 1 2 := by
+FormalConjectures/Wikipedia/Mandelbrot.lean-133-  simp [IsAttractingCycle, show (1 : ℝ) ≤ 2 * 2 by norm_num]
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-134-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Mandelbrot.lean-135-/-- No function has an attracting cycle of period `0`. This is important in that it means we don't
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-33-It is not known whether there is an inifinite number of prime Euclid numbers.
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-34--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-35-@[category research open, AMS 11]
+FormalConjectures/Wikipedia/Euclid.lean:36:theorem infinite_prime_euclid_numbers : answer(sorry) ↔ {n | (Euclid n).Prime}.Infinite := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-37-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-38-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-39-/--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-40-It is not known whether every Euclid number is a square-free number.
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-41--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-42-@[category research open, AMS 11]
+FormalConjectures/Wikipedia/Euclid.lean:43:theorem euclid_numbers_are_square_free : answer(sorry) ↔ (∀ n, Squarefree (Euclid n)) := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-44-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Euclid.lean-46-end EuclidNumbers
+--
+FormalConjectures/Wikipedia/PerfectNumbers.lean-77-[Wikipedia](https://en.wikipedia.org/wiki/Perfect_number#Odd_perfect_numbers)
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-78--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-79-@[category research open, AMS 11]
+FormalConjectures/Wikipedia/PerfectNumbers.lean:80:theorem odd_perfect_number_conjecture (n : ℕ) (hn : Perfect n) : Even n := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-81-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-82-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/PerfectNumbers.lean-83-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-58--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-59-@[category API, AMS 11]
+FormalConjectures/Wikipedia/WolstenholmePrime.lean-60-theorem wolstenholme_bernoulli (p : ℕ) : IsWolstenholmePrime p ↔
+FormalConjectures/Wikipedia/WolstenholmePrime.lean:61:    (p > 7) ∧ Nat.Prime p ∧ ↑p ∣ (bernoulli' (p - 3)).num := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-62-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-64-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-67--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-68-@[category test, AMS 11]
+FormalConjectures/Wikipedia/WolstenholmePrime.lean-69-theorem wolstenholme_harmonic (p : ℕ) : IsWolstenholmePrime p ↔
+FormalConjectures/Wikipedia/WolstenholmePrime.lean:70:    (p > 7) ∧ Nat.Prime p ∧ ↑(p ^ 3) ∣ (harmonic (p - 1)).num := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-71-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/WolstenholmePrime.lean-73-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/0912.2382/CurlingNumberConjecture.lean-50-The sequence will eventually reach $1$.
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/0912.2382/CurlingNumberConjecture.lean-51--/
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/0912.2382/CurlingNumberConjecture.lean-52-@[category research open, AMS 11]
+FormalConjectures/Arxiv/0912.2382/CurlingNumberConjecture.lean:53:theorem curling_number_conjecture (S₀ : List ℤ) (h : S₀ ≠ []) : ∃ m, k (S S₀ m) = 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/0912.2382/CurlingNumberConjecture.lean-54-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/0912.2382/CurlingNumberConjecture.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/Arxiv/0912.2382/CurlingNumberConjecture.lean-56-end Arxiv.«0912.2382»
+--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-41-statement from [Au16], which ensure non-trivial corners. Note however that [Au16] use more
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-42-generally compact groups and not just finite discrete groups.
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-43--/
+FormalConjectures/GreensOpenProblems/18.lean:44:def numNaiveCorners {G : Type*} [Group G] [Fintype G] [DecidableEq G] (A : Finset (G × G)) : ℕ :=
+FormalConjectures/GreensOpenProblems/18.lean-45-  ( (univ : Finset (G × G × G)).filter
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-46-    fun ⟨x, y, g⟩ => g ≠ 1 ∧ (x, y) ∈ A ∧ (g * x, y) ∈ A ∧ (x, g * y) ∈ A
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-47-  ).card
+--
+FormalConjectures/GreensOpenProblems/18.lean-59-      ∀ (G : Type*) [Group G] [Fintype G] [DecidableEq G] (A : Finset (G × G)),
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-60-      Fintype.card G ≥ m₀ →
+FormalConjectures/GreensOpenProblems/18.lean-61-      (A.card : ℝ) ≥ α * (Fintype.card G) ^ 2 →
+FormalConjectures/GreensOpenProblems/18.lean:62:      (numNaiveCorners A : ℝ) ≥ c * (Fintype.card G) ^ 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-63-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-65-/--
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-66-The number of triples $(x, y, g)$ in $G^3$ such that $g \neq e$, and $(x, y), (xg, y), (x, gy)$ are
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-67-all in $A$. These are called "BMZ corners" by [Au16].
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-68--/
+FormalConjectures/GreensOpenProblems/18.lean:69:def numBmzCorners {G : Type*} [Group G] [Fintype G] [DecidableEq G] (A : Finset (G × G)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-70-  (
+FormalConjectures/GreensOpenProblems/18.lean-71-    (univ : Finset (G × G × G)).filter
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-72-    fun ⟨x, y, g⟩ => g ≠ 1 ∧ (x, y) ∈ A ∧ (x * g, y) ∈ A ∧ (x, g * y) ∈ A
+--
+FormalConjectures/GreensOpenProblems/18.lean-80-    ∀ (G : Type*) [Group G] [Fintype G] [DecidableEq G] (A : Finset (G × G)),
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-81-    Fintype.card G ≥ m₀ →
+FormalConjectures/GreensOpenProblems/18.lean-82-    (A.card : ℝ) ≥ α * (Fintype.card G) ^ 2 →
+FormalConjectures/GreensOpenProblems/18.lean:83:    (numBmzCorners A : ℝ) ≥ c * (Fintype.card G) ^ 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-84-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/GreensOpenProblems/18.lean-86-end Green18
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RegularPrimes.lean-60-first `p-3` Bernoulli numbers. Not in Mathlib. -/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RegularPrimes.lean-61-@[category graduate, AMS 11]
+FormalConjectures/Wikipedia/RegularPrimes.lean-62-theorem isRegularPrime_iff_Bernoulli (p : ℕ) [Fact p.Prime] :
+FormalConjectures/Wikipedia/RegularPrimes.lean:63:    IsRegularPrime p ↔ ∀ k ∈ Finset.Icc 2 (p - 3), ¬ (p : ℤ) ∣ (bernoulli' k).num := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RegularPrimes.lean-64-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RegularPrimes.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RegularPrimes.lean-66-/-- The set of irregular primes is infinite. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-47-/--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-48-The number of distinct residue classes amongst a tuple $(m_0, \dots, m_k)$ for a prime $q$.
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-49--/
+FormalConjectures/Wikipedia/HardyLittlewood.lean:50:noncomputable def Nat.numResidues (q : ℕ) {k : ℕ} (m : Fin k.succ → ℕ) : ℕ :=
+FormalConjectures/Wikipedia/HardyLittlewood.lean-51-  Set.range (fun i => (m i : ZMod q)) |>.ncard
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/HardyLittlewood.lean-53-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Fermat.lean-28-Are Fermat numbers composite for all `n > 4`?
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Fermat.lean-29--/
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Fermat.lean-30-@[category research open, AMS 11]
+FormalConjectures/Wikipedia/Fermat.lean:31:theorem fermat_number_are_composite : answer(sorry) ↔ ∀ n > 4, ¬Prime n.fermatNumber := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Fermat.lean-32-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Fermat.lean-33-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/Fermat.lean-34-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RamanujanTau.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RamanujanTau.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RamanujanTau.lean-59-@[category research solved, AMS 11]
+FormalConjectures/Wikipedia/RamanujanTau.lean:60:theorem ramanujan_petersson : ∀ p : ℕ, Prime p → abs (τ p) ≤ 2 * (p : ℝ) ^ ((11 : ℝ) / 2) := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RamanujanTau.lean-61-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RamanujanTau.lean-62-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RamanujanTau.lean-63-@[category research open, AMS 11]
+FormalConjectures/Wikipedia/RamanujanTau.lean:64:theorem lehmer_ramanujan_tau : ∀ n > 0, τ n ≠ 0 := by
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RamanujanTau.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RamanujanTau.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/Wikipedia/RamanujanTau.lean-67-end RamanujanTau
+--
+FormalConjectures/Paper/Homogenous.lean-66-theorem homogeneousSpace_exists_surjective :
+FormalConjectures/Paper/Homogenous.lean-67-    answer(sorry) ↔ ∀ (X : Type) (_ : TopologicalSpace X), CompactSpace X →
+FormalConjectures/Paper/Homogenous.lean-68-      ∃ (Y : Type) (_ : TopologicalSpace Y), CompactSpace Y ∧ HomogeneousSpace Y ∧
+FormalConjectures/Paper/Homogenous.lean:69:        ∃ f : Y → X, Continuous f ∧ f.Surjective := by
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Homogenous.lean-70-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Homogenous.lean-71-
+/home/ryan/formal-conjectures/FormalConjectures/Paper/Homogenous.lean-72-/-- A topological space is called ω-monolithic if
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean-55-/-- The number of edges of a simple graph on `Fin n`, counted as the number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean-56-    of pairs $(i, j)$ with $i < j$ that are adjacent. -/
+FormalConjectures/ErdosProblems/1016.lean:57:noncomputable def numEdges {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/1016.lean-58-  (Finset.univ.filter (fun p : Fin n × Fin n => p.1 < p.2 ∧ G.Adj p.1 p.2)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean-59-
+FormalConjectures/ErdosProblems/1016.lean-60-/-- The minimum excess edges $h(n)$ for a pancyclic graph: the smallest $h$ such
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-41-/-- The number of representations of $m$ as $p \cdot a$ where $p$ is prime and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-42-$a \in A$. Since $p$ is determined by $a$ (as $p = m / a$), this counts
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-43-elements $a \in A$ with $a \mid m$ and $m / a$ prime. -/
+FormalConjectures/ErdosProblems/538.lean:44:def numPrimeProductReps (A : Finset ℕ) (m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-45-  (A.filter (fun a => a ∣ m ∧ Nat.Prime (m / a))).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean-47-/--
+--
+FormalConjectures/ErdosProblems/87.lean-46-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-47-    ContainsSubgraph G H ∨ ContainsSubgraph Gᶜ H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-48-
+FormalConjectures/ErdosProblems/87.lean:49:/-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
+FormalConjectures/ErdosProblems/87.lean-50-noncomputable def diagRamsey (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean-51-  graphRamseyNumber (⊤ : SimpleGraph (Fin k))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-52-
+--
+FormalConjectures/ErdosProblems/652.lean-64-          ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧
+FormalConjectures/ErdosProblems/652.lean-65-            ∀ S : Finset (EuclideanSpace ℝ (Fin 2)), S.card = n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean-66-              (S.filter (fun p =>
+FormalConjectures/ErdosProblems/652.lean:67:                (numDistinctDistances p S : ℝ) < C * Real.sqrt (↑n))).card < k := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean-68-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/652.lean-70-end Erdos652
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-40-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-41-The number of distinct positive distances determined by a finite point set $A$ in $\mathbb{R}^2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-42--/
+FormalConjectures/ErdosProblems/91.lean:43:noncomputable def numDistinctDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-44-  ((A ×ˢ A).filter (fun pq => pq.1 ≠ pq.2)).image (fun pq => dist pq.1 pq.2) |>.card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-45-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/91.lean-46-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean-44-
+FormalConjectures/ErdosProblems/1069.lean-45-/-- The number of $k$-rich lines determined by a finite point set $S \subseteq \mathbb{R}^2$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean-46-lines containing at least $k$ points of $S$. -/
+FormalConjectures/ErdosProblems/1069.lean:47:noncomputable def numKRichLines (S : Finset (Fin 2 → ℝ)) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1069.lean-48-  Set.ncard {L : Set (Fin 2 → ℝ) | IsLine L ∧ k ≤ (S.filter (· ∈ L)).card}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean-50-/--
+--
+FormalConjectures/ErdosProblems/1069.lean-59-    ∃ C : ℝ, C > 0 ∧
+FormalConjectures/ErdosProblems/1069.lean-60-    ∀ (S : Finset (Fin 2 → ℝ)) (k : ℕ),
+FormalConjectures/ErdosProblems/1069.lean-61-      2 ≤ k → (k : ℝ) ^ 2 ≤ (S.card : ℝ) →
+FormalConjectures/ErdosProblems/1069.lean:62:      (numKRichLines S k : ℝ) ≤ C * (S.card : ℝ) ^ 2 / (k : ℝ) ^ 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean-63-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1069.lean-65-end Erdos1069
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-60-@[category research open, AMS 3 5]
+FormalConjectures/ErdosProblems/70.lean-61-theorem erdos_70 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/70.lean-62-    ∀ (β : Ordinal), β.card ≤ ℵ₀ → ∀ (n : ℕ), 2 ≤ n →
+FormalConjectures/ErdosProblems/70.lean:63:      OrdinalPartition3_2 (Cardinal.continuum.ord) β (↑n) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-64-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/70.lean-66-end Erdos70
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-44-For a configuration of $n$ points in the Euclidean plane, the number of distinct
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-45-values that $R(x_i)$ takes over all $i$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-46--/
+FormalConjectures/ErdosProblems/653.lean:47:noncomputable def numDistinctR (n : ℕ) (x : Fin n → EuclideanSpace ℝ (Fin 2)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-48-  (Finset.univ.image (fun i => distinctDistances n x i)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-50-/--
+--
+FormalConjectures/ErdosProblems/653.lean-59-      ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/653.lean-60-        ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+FormalConjectures/ErdosProblems/653.lean-61-          ∃ x : Fin n → EuclideanSpace ℝ (Fin 2),
+FormalConjectures/ErdosProblems/653.lean:62:            (numDistinctR n x : ℝ) ≥ (1 - ε) * n := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-63-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/653.lean-65-end Erdos653
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean-47-/-- The number of distinct circles determined by $S$. A circle is identified by its
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean-48-center and positive radius. It is "determined" by $S$ if at least $3$ points of $S$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean-49-lie on it. -/
+FormalConjectures/ErdosProblems/506.lean:50:noncomputable def numDeterminedCircles (S : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+FormalConjectures/ErdosProblems/506.lean-51-  Set.ncard {p : EuclideanSpace ℝ (Fin 2) × ℝ |
+FormalConjectures/ErdosProblems/506.lean-52-    0 < p.2 ∧ 3 ≤ Set.ncard {q ∈ (↑S : Set (EuclideanSpace ℝ (Fin 2))) | dist q p.1 = p.2}}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-45-The number of $k$-term arithmetic progressions in $A$, counted as pairs $(a, d)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-46-with $d \geq 1$ such that $a + i \cdot d \in A$ for all $0 \leq i < k$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-47--/
+FormalConjectures/ErdosProblems/179.lean:48:def numAP (A : Finset ℕ) (k : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/179.lean-49-  if h : A.Nonempty then
+FormalConjectures/ErdosProblems/179.lean-50-    let M := A.max' h
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/179.lean-51-    ((Finset.Icc 0 M ×ˢ Finset.Icc 1 M).filter
+--
+FormalConjectures/ErdosProblems/150.lean-54-  ∀ T : Finset (Fin n), T ⊂ S → ¬IsVertexSeparator G T
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/150.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/150.lean-56-/-- The number of minimal vertex cuts of $G$. -/
+FormalConjectures/ErdosProblems/150.lean:57:noncomputable def numMinimalVertexCuts {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/150.lean-58-  Set.ncard { S : Finset (Fin n) | IsMinimalVertexCut G S }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/150.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/150.lean-60-/-- $c(n)$ is the maximum number of minimal vertex cuts over all connected simple
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/642.lean-50-/-- The number of chords of a walk in a graph. A chord is an edge of $G$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/642.lean-51-connecting two vertices that appear in the walk's support but is not
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/642.lean-52-itself an edge traversed by the walk. -/
+FormalConjectures/ErdosProblems/642.lean:53:noncomputable def numChords {u v : V} (p : G.Walk u v) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/642.lean-54-  (G.edgeFinset.filter (fun e =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/642.lean-55-    (∀ w, w ∈ e → w ∈ p.support.toFinset) ∧ e ∉ p.edges.toFinset)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/642.lean-56-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean-38-  ∑ k ∈ range (n + 1), C (ε k) * X ^ k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean-40-/-- The number of distinct real roots of a real polynomial. -/
+FormalConjectures/ErdosProblems/521.lean:41:noncomputable def numRealRoots (p : Polynomial ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/521.lean-42-  Set.ncard {x : ℝ | p.IsRoot x}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean-43-
+FormalConjectures/ErdosProblems/521.lean-44-/-- A random variable is Rademacher distributed: it takes values in $\{-1, 1\}$
+--
+FormalConjectures/ErdosProblems/910.lean-63-    ∀ (n : ℕ), n ≥ 2 →
+FormalConjectures/ErdosProblems/910.lean-64-    ∀ (S : Set (EuclideanSpace ℝ (Fin n))),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/910.lean-65-    IsConnected S →
+FormalConjectures/ErdosProblems/910.lean:66:    Cardinal.continuum < #{T : Set (EuclideanSpace ℝ (Fin n)) // T ⊆ S ∧ IsConnected T} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/910.lean-67-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/910.lean-68-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/910.lean-69-end Erdos910
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-56-/-- The number of distinct distances from point $i$ to all other points in the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-57-    configuration. Uses squared distances since $d(p,q) = d(p',q')$ iff
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-58-    $d(p,q)^2 = d(p',q')^2$ for nonnegative distances. -/
+FormalConjectures/ErdosProblems/654.lean:59:noncomputable def numDistinctDistances (n : ℕ) (pts : Fin n → ℝ × ℝ) (i : Fin n) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-60-  ((univ.filter (· ≠ i)).image (fun j => sqEuclideanDist (pts i) (pts j))).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-62-/--
+--
+FormalConjectures/ErdosProblems/654.lean-71-    ∃ c : ℝ, c > 0 ∧ ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/654.lean-72-      ∀ pts : Fin n → ℝ × ℝ, Function.Injective pts →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-73-        NoFourConcyclic n pts →
+FormalConjectures/ErdosProblems/654.lean:74:        ∃ i : Fin n, (numDistinctDistances n pts i : ℝ) > (1 / 3 + c) * ↑n := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/654.lean-77-end Erdos654
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-49-/-- $\nu(r)$ counts the number of $z$ with $\|z\| = r$ achieving the maximum modulus
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-50-of $f$. This is finite when $f$ is entire and not a monomial. -/
+FormalConjectures/ErdosProblems/1117.lean:51:noncomputable def nu (f : ℂ → ℂ) (r : ℝ) : ℕ :=
+FormalConjectures/ErdosProblems/1117.lean-52-  Set.ncard {z : ℂ | ‖z‖ = r ∧ ‖f z‖ = maxModulus f r}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-54-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-67-@[category research open, AMS 30]
+FormalConjectures/ErdosProblems/1117.lean-68-theorem erdos_1117 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/1117.lean-69-    ∃ f : ℂ → ℂ, Differentiable ℂ f ∧ ¬IsMonomial f ∧
+FormalConjectures/ErdosProblems/1117.lean:70:      ∀ N : ℕ, ∃ R : ℝ, ∀ r : ℝ, R ≤ r → N ≤ nu f r := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-71-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean-73-end Erdos1117
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/426.lean-55-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/426.lean-56-The number of unique subgraphs of a graph $G$ on $n$ vertices.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/426.lean-57--/
+FormalConjectures/ErdosProblems/426.lean:58:noncomputable def numUniqueSubgraphs {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/426.lean-59-  Set.ncard {H : G.Subgraph | IsUniqueSubgraph H}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/426.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/426.lean-61-/--
+--
+FormalConjectures/ErdosProblems/993.lean-54-theorem erdos_993 {V : Type*} [Fintype V] [DecidableEq V]
+FormalConjectures/ErdosProblems/993.lean-55-    (T : SimpleGraph V) [DecidableRel T.Adj] (hT : T.IsAcyclic) :
+FormalConjectures/ErdosProblems/993.lean-56-    ∃ m : ℕ, (∀ i j : ℕ, i ≤ j → j ≤ m → numIndepSets T i ≤ numIndepSets T j) ∧
+FormalConjectures/ErdosProblems/993.lean:57:             (∀ i j : ℕ, m ≤ i → i ≤ j → numIndepSets T j ≤ numIndepSets T i) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-58-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/993.lean-60-end Erdos993
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-71--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-72-@[category research open, AMS 3 5]
+FormalConjectures/ErdosProblems/474.lean-73-theorem erdos_474 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/474.lean:74:    (continuum = aleph 2 → NegSqBracketPartition continuum (aleph 1) 3) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-77-end Erdos474
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-41-    r ≤ (F.filter (fun A => A.card = t)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-43-/-- The number of distinct sizes of sets in the family. -/
+FormalConjectures/ErdosProblems/776.lean:44:def numDistinctSizes (F : Finset (Finset ℕ)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-45-  (F.image Finset.card).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-47-/-- All sets in the family are subsets of $\{0, \ldots, n-1\}$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-64-          AllSubsetsOfRange F n ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-65-          IsAntichain F ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-66-          HasMinMultiplicity F r ∧
+FormalConjectures/ErdosProblems/776.lean:67:          numDistinctSizes F = n - 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-68-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-70-/--
+--
+FormalConjectures/ErdosProblems/776.lean-81-      (∀ F : Finset (Finset ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-82-        AllSubsetsOfRange F n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-83-        IsAntichain F →
+FormalConjectures/ErdosProblems/776.lean:84:        numDistinctSizes F ≤ n - 2) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-85-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-86-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-87-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-95-        AllSubsetsOfRange F n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-96-        IsAntichain F →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-97-        HasMinMultiplicity F r →
+FormalConjectures/ErdosProblems/776.lean:98:        numDistinctSizes F ≤ n - 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-99-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-100-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/776.lean-101-end Erdos776
+--
+FormalConjectures/ErdosProblems/622.lean-67-    ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+FormalConjectures/ErdosProblems/622.lean-68-    ∀ G : SimpleGraph (Fin (2 * n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/622.lean-69-      G.IsRegularOfDegree (n + 1) →
+FormalConjectures/ErdosProblems/622.lean:70:      (numCycleSpannedSubsets n G : ℝ) ≥ (1 / 2 - ε) * (2 : ℝ) ^ (2 * n) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/622.lean-71-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/622.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/622.lean-73-end Erdos622
+--
+FormalConjectures/ErdosProblems/606.lean-82-    ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-83-      A.card ≥ 2 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-84-      numLinesDetermined A > 1 →
+FormalConjectures/ErdosProblems/606.lean:85:      numLinesDetermined A ≥ A.card := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-86-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-87-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/606.lean-88-end Erdos606
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-34-namespace Erdos657
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-36-/-- The number of distinct pairwise distances in a finite point set $A \subseteq \mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/657.lean:37:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-38-  (((A ×ˢ A).filter (fun p => p.1 ≠ p.2)).image (fun p => dist p.1 p.2)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-40-/-- A finite point set $A \subseteq \mathbb{R}^2$ has no isosceles triangles if every $3$-element
+--
+FormalConjectures/ErdosProblems/657.lean-60-      ∃ N₀ : ℕ, ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-61-        NoIsoscelesTriangles A →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-62-        N₀ ≤ A.card →
+FormalConjectures/ErdosProblems/657.lean:63:        C * (A.card : ℝ) ≤ (numDistances A : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-64-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/657.lean-66-end Erdos657
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-36-namespace Erdos1162
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-38-/-- The number of subgroups of the symmetric group $S_n$. -/
+FormalConjectures/ErdosProblems/1162.lean:39:noncomputable def numSubgroups (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-40-  Nat.card (Subgroup (Equiv.Perm (Fin n)))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1162.lean-42-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-36-namespace Erdos135
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-38-/-- The number of distinct pairwise distances in a finite point set $A \subseteq \mathbb{R}^2$. -/
+FormalConjectures/ErdosProblems/135.lean:39:noncomputable def numDistances (A : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-40-  (((A ×ˢ A).filter (fun p => p.1 ≠ p.2)).image (fun p => dist p.1 p.2)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-42-/-- A finite point set $A \subseteq \mathbb{R}^2$ satisfies the "four-point, five-distance" property
+--
+FormalConjectures/ErdosProblems/135.lean-64-      ∃ c : ℝ, 0 < c ∧
+FormalConjectures/ErdosProblems/135.lean-65-        ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-66-          FourPointFiveDist A →
+FormalConjectures/ErdosProblems/135.lean:67:          c * (A.card : ℝ) ^ 2 ≤ (numDistances A : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-68-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/135.lean-70-end Erdos135
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-50-all elements are within a multiplicative factor $(1 + ε)$ of the minimum.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-51-Specifically, for a finite set $A$ and $ε > 0$, all $a ∈ A$ satisfy $a < (1 + ε) · min(A)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-52--/
+FormalConjectures/ErdosProblems/123.lean:53:def IsSnug (ε : ℝ) (A : Finset ℕ) : Prop :=
+FormalConjectures/ErdosProblems/123.lean-54-  ∃ hA : A.Nonempty, ∀ a ∈ A, a < (1 + ε) * A.min' hA
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/123.lean-56-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-51-/--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-52-The number of subsets of $P$ that are in convex position.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-53--/
+FormalConjectures/ErdosProblems/838.lean:54:noncomputable def numConvexSubsets (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-55-  (P.powerset.filter fun S => InConvexPosition S).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean-57-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/608.lean-46-in a $C_5$ if there exist vertices $w_1, w_2, w_3$ (all five pairwise distinct)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/608.lean-47-such that $u$-$w_1$-$w_2$-$w_3$-$v$-$u$ is a $5$-cycle in $G$. Edges are counted as
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/608.lean-48-ordered pairs $(u, v)$ with $u < v$ to avoid double-counting. -/
+FormalConjectures/ErdosProblems/608.lean:49:noncomputable def numEdgesInC5 {n : ℕ} (G : SimpleGraph (Fin n)) : ℕ :=
+FormalConjectures/ErdosProblems/608.lean-50-  (Finset.univ.filter fun p : Fin n × Fin n =>
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/608.lean-51-    p.1 < p.2 ∧ G.Adj p.1 p.2 ∧
+FormalConjectures/ErdosProblems/608.lean-52-    ∃ w₁ w₂ w₃ : Fin n,
+--
+FormalConjectures/ErdosProblems/608.lean-66-theorem erdos_608 : answer(False) ↔
+FormalConjectures/ErdosProblems/608.lean-67-    ∀ n : ℕ, ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/608.lean-68-      (G.edgeFinset.card : ℝ) > (n : ℝ) ^ 2 / 4 →
+FormalConjectures/ErdosProblems/608.lean:69:      (numEdgesInC5 G : ℝ) ≥ 2 / 9 * (n : ℝ) ^ 2 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/608.lean-70-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/608.lean-71-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/608.lean-72-end Erdos608
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-53-/-- The number of isomorphism classes of groups of order $n$ (OEIS A000001).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-54-Defined as the cardinality of group structures on $\operatorname{Fin}(n)$ modulo isomorphism. -/
+FormalConjectures/ErdosProblems/1160.lean:55:noncomputable def numGroupsOfOrder (n : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-56-  Nat.card (Quotient (groupStructSetoid n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-58-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-66--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-67-@[category research open, AMS 20]
+FormalConjectures/ErdosProblems/1160.lean-68-theorem erdos_1160 (n m : ℕ) (h : n ≤ 2 ^ m) :
+FormalConjectures/ErdosProblems/1160.lean:69:    numGroupsOfOrder n ≤ numGroupsOfOrder (2 ^ m) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-70-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-71-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1160.lean-72-end Erdos1160

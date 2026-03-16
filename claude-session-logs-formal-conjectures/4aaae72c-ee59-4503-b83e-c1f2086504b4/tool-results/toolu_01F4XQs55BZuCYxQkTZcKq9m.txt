@@ -1,0 +1,260 @@
+ai-review/425.md-28-The [erdosproblems.com/425](https://www.erdosproblems.com/425) page lists the following references:
+ai-review/425.md:29:- [Er68], [Er69], [Er70b], [Er73], [Er77c], [Er80], [ErGr80]
+/home/ryan/formal-conjectures/ai-review/425.md-30-
+ai-review/425.md:31:**Issue:** The formalization is missing six references. At minimum, [ErGr80] (Erdős–Graham, which likely contains the generalization to r-fold products) should be cited since the formalization includes the r-fold variant. The other references ([Er69], [Er70b], [Er73], [Er77c], [Er80]) represent the evolution of Erdős's work on this problem and should ideally be listed for completeness, even if only the shorthand codes are available from the website.
+/home/ryan/formal-conjectures/ai-review/425.md-32-
+--
+/home/ryan/formal-conjectures/ai-review/947.md-12-
+ai-review/947.md:13:The website (erdosproblems.com/947) lists the citation **[Er77c]**. The formalization's docstring mentions Mirsky-Newman and Davenport-Rado as the provers but does not include the [Er77c] reference, which likely refers to:
+/home/ryan/formal-conjectures/ai-review/947.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/947.md-16-
+ai-review/947.md:17:**Recommendation**: Add the [Er77c] citation to the module docstring for completeness, following the pattern used in other problems (e.g., Problem 2, Problem 7).
+/home/ryan/formal-conjectures/ai-review/947.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/947.md-64-| Code reuse | Acceptable (ad-hoc formulation justified by exactness requirement) |
+ai-review/947.md:65:| Citations | Missing [Er77c] reference from website |
+/home/ryan/formal-conjectures/ai-review/947.md-66-| Variants | Complete |
+--
+/home/ryan/formal-conjectures/ai-review/947.md-70-
+ai-review/947.md:71:**Overall**: The formalization is mathematically sound and captures the problem accurately. The main actionable item is adding the [Er77c] citation to match the website.
+--
+/home/ryan/formal-conjectures/ai-review/953.md-17-  - Koizumi and Kovac as the ones who observed the adaptation.
+ai-review/953.md:18:- The original problem attribution `[Er77c]` from the website is not mentioned anywhere in the formalization. The module docstring should note this is "originally from [Er77c]" per the website.
+/home/ryan/formal-conjectures/ai-review/953.md-19-- The website says this is "A problem of Erdős and Sárközy" — the formalization matches this in the module docstring but the lower bound theorem docstring has the garbled citation.
+--
+/home/ryan/formal-conjectures/ai-review/953.md-76-| Code reuse | Should use `EuclideanSpace ℝ (Fin 2)` for consistency with 465/466 |
+ai-review/953.md:77:| Citations | `[Sá??]` is broken; missing `[Er77c]` attribution |
+/home/ryan/formal-conjectures/ai-review/953.md-78-| Variants | Complete |
+--
+ai-review/202.md-29-- [BFV13] is cited but without the full paper title: *"On a problem of Erdős and Graham"* or similar.
+ai-review/202.md:30:- The bulk citation `[Er61, Er65, Er65b, Er73, Er77c, ErGr80, Va99]` is listed but defers to the website for full references. This is acceptable given the large number of references, but individual full citations would be more rigorous.
+/home/ryan/formal-conjectures/ai-review/202.md-31-
+--
+/home/ryan/formal-conjectures/ai-review/53.md-25-
+ai-review/53.md:26:- [Er77c]
+/home/ryan/formal-conjectures/ai-review/53.md-27-- [ErGr80]
+--
+/home/ryan/formal-conjectures/ai-review/53.md-33-
+ai-review/53.md:34:The formalization cites only **[ErSz83]** and **[Ch03]**, which are the two most important references (the original paper posing the problem and Chang's solution). The other five references ([Er77c], [ErGr80], [Er91], [Er97], [Er97e]) are additional Erdos papers that discuss the problem but are not essential for understanding the formalization.
+/home/ryan/formal-conjectures/ai-review/53.md-35-
+--
+/home/ryan/formal-conjectures/ai-review/453.md-20-
+ai-review/453.md:21:- [Er70b,p.140], [Er74b,p.203], [Er77c,p.65], [ErGr80,p.90] — various Erdős sources
+/home/ryan/formal-conjectures/ai-review/453.md-22-- [Po79] — Pomerance's 1979 proof
+--
+/home/ryan/formal-conjectures/ai-review/453.md-29-1. The citation title appears incorrect. Pomerance's 1979 paper relevant to this problem is likely *"The prime number graph"* (Journal of the London Mathematical Society, 1979), which uses convex hull arguments on the prime number graph. The title *"A note on the least prime in an arithmetic progression"* is a different Pomerance paper and does not match this problem's content.
+ai-review/453.md:30:2. The additional Erdős source references ([Er70b], [Er74b], [Er77c], [ErGr80]) and Guy's reference [Gu04] are not mentioned in the formalization. These are supplementary and their omission is acceptable, but flagged for completeness.
+/home/ryan/formal-conjectures/ai-review/453.md-31-
+--
+/home/ryan/formal-conjectures/ai-review/186.md-16-
+ai-review/186.md:17:The formalization includes: [Er73], [Er75b], [Er77c], [ErGr79], [ErGr80], [Bo89], [ErSa90], [CFP23], [PhZa24].
+/home/ryan/formal-conjectures/ai-review/186.md-18-
+--
+ai-review/34.md-41-The website lists:
+ai-review/34.md:42:- **References:** [Er77c, p.71], [ErGr80, p.58], Hegyvári [He86], Konieczny [Ko15]
+ai-review/34.md-43-- **Status:** Solved (disproved), Lean-verified.
+--
+/home/ryan/formal-conjectures/ai-review/34.md-48-|----------|-----------------|------------|------------|
+ai-review/34.md:49:| Erdős 1977 | Not cited | [Er77c, p.71] | **Missing.** Original source of the problem. |
+/home/ryan/formal-conjectures/ai-review/34.md-50-| Erdős–Graham 1980 | Not cited | [ErGr80, p.58] | **Missing.** Key reference restating the problem. |
+--
+/home/ryan/formal-conjectures/ai-review/34.md-53-
+ai-review/34.md:54:**Recommendation:** Add [Er77c] and [ErGr80] references to the module docstring. These are the original sources for the problem.
+/home/ryan/formal-conjectures/ai-review/34.md-55-
+--
+/home/ryan/formal-conjectures/ai-review/34.md-176-
+ai-review/34.md:177:**Verdict: Correct. No bugs identified.** The formalization is a faithful and complete rendering of the core problem. The main areas for improvement are adding missing citations ([Er77c], [ErGr80]) and potentially adding quantitative variant statements.
+--
+ai-review/46.md-21-The website (erdosproblems.com/46) lists the following additional references not mentioned in the formalization:
+ai-review/46.md:22:- [Er77c] Erdős (1977)
+/home/ryan/formal-conjectures/ai-review/46.md-23-- [ErGr80] Erdős & Graham (1980), p. 36
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-41-
+FormalConjectures/ErdosProblems/431.lean:42:[Er77c] Erdős, P., _Problems and results on combinatorial number theory. III._.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/431.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/9.lean-58-/--
+FormalConjectures/ErdosProblems/9.lean:59:The set is known to be infinite. In [Er77c] Erdős credits Schinzel with proving that there are
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/9.lean-60-infinitely many odd integers not of this form, but gives no reference.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/9.lean-61-
+FormalConjectures/ErdosProblems/9.lean:62:[Er77c] Erdős, P., _Problems and results on combinatorial number theory. III._.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/9.lean-63--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/532.lean-40-
+FormalConjectures/ErdosProblems/532.lean:41:[Er77c] Erdős, P., _Problems and results on combinatorial number theory. III._. Number Theory Day
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/532.lean-42-(Proc. Conf., Rockefeller Univ., New York, 1976) (1977), 43–72.
+--
+/home/ryan/formal-conjectures/ai-review/221.md-22-
+ai-review/221.md:23:- **Original references:** Er57, Er61, Er65b, Er73, Er77c, Er82e
+ai-review/221.md-24-- **Lorentz (1954):** Proved a weaker result with `|A ∩ {1,…,N}| ≪ N·(log log N)/(log N)`
+--
+/home/ryan/formal-conjectures/ai-review/808.md-16-
+ai-review/808.md:17:The formalization references: `[Er77c]`, `[ErSz83]`, `[Er91]`, `[Er97]`, `[ARS20]`.
+/home/ryan/formal-conjectures/ai-review/808.md-18-
+ai-review/808.md-19-The [erdosproblems.com/808](https://www.erdosproblems.com/808) page lists these same references:
+ai-review/808.md:20:- **[Er77c]** — Erdős (1977)
+/home/ryan/formal-conjectures/ai-review/808.md-21-- **[ErSz83]** — Erdős and Szemerédi (1983)
+--
+/home/ryan/formal-conjectures/ai-review/169.md-27-- [Ge77] Gerver, J. (1977)
+ai-review/169.md:28:- [Er77c], [Er80], [ErGr79], [ErGr80] — Erdős and Erdős–Graham papers
+/home/ryan/formal-conjectures/ai-review/169.md-29-- [Wr84] Wróblewski (2024, noted as [Wr84] but apparently a 2024 result)
+--
+ai-review/169.md-35-**Assessment:** The docstring should include at least the key references, particularly:
+ai-review/169.md:36:- Erdős's original formulations ([Er77c], [Er80], [ErGr80])
+/home/ryan/formal-conjectures/ai-review/169.md-37-- Berlekamp's lower bound [Be68] and Gerver's improvement [Ge77], which contextualize the problem
+--
+ai-review/431.md-16-The website (erdosproblems.com/431) lists the following additional sources not present in the formalization:
+ai-review/431.md:17:- **[Er61, p.225]** and **[Er77c]** as original sources.
+ai-review/431.md-18-- **Granville (1990):** Conditional on the prime k-tuples conjecture, infinite sets B and C exist where {(b+c)/2 : b ∈ B, c ∈ C} ⊂ primes.
+--
+/home/ryan/formal-conjectures/ai-review/431.md-22-
+ai-review/431.md:23:**Verdict:** Minor gaps. The `[ErGr80]` citation should include the page reference `p.85` for consistency with the website and with problem 432. The Granville (1990) and Tao–Ziegler (2023) results are notable omissions but are supplementary context rather than essential references. The original sources `[Er61]` and `[Er77c]` could be added for completeness.
+/home/ryan/formal-conjectures/ai-review/431.md-24-
+--
+ai-review/460.md-15-The formalization cites:
+ai-review/460.md:16:- [Er77c] Erdős, P., *Problems and results on combinatorial number theory III*, Number Theory Day (Proc. Conf., Rockefeller Univ., New York, 1976) (1977), 43–72.
+/home/ryan/formal-conjectures/ai-review/460.md-17-
+ai-review/460.md-18-The website (erdosproblems.com/460) lists **two** references:
+ai-review/460.md:19:- [Er77c] (as above)
+/home/ryan/formal-conjectures/ai-review/460.md-20-- **[ErGr80]** Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number theory*, Monographies de L'Enseignement Mathematique (1980), p.91.
+--
+/home/ryan/formal-conjectures/ai-review/460.md-59-
+ai-review/460.md:60:**Verdict**: The problem is formalizable despite the noted historical ambiguity. The formalization makes reasonable, defensible choices. The ambiguity level is **moderate** — different sources give slightly different formulations, but the chosen version is well-defined and consistent with the primary reference [Er77c].
+/home/ryan/formal-conjectures/ai-review/460.md-61-
+--
+/home/ryan/formal-conjectures/ai-review/950.md-15-
+ai-review/950.md:16:The formalization cites **[Er77c]** and attributes it to:
+/home/ryan/formal-conjectures/ai-review/950.md-17-> Erdős, P., *Problems and results on number theory and combinatorics*.
+/home/ryan/formal-conjectures/ai-review/950.md-18-
+ai-review/950.md:19:The [erdosproblems.com/950](https://www.erdosproblems.com/950) page confirms the citation is **[Er77c]**. The docstring also correctly attributes the background result (Σ_{n<x} f(n) ~ Σ_{n<x} f(n)² ~ x) to **de Bruijn, Erdős, and Turán**, consistent with the website.
+/home/ryan/formal-conjectures/ai-review/950.md-20-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-28-
+FormalConjectures/ErdosProblems/808.lean:29:[Er77c] Erdős, P., _Problems and results on combinatorial number theory. III._. Number Theory Day
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-30-(Proc. Conf., Rockefeller Univ., New York, 1976) (1977), 43–72.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-60-/--
+FormalConjectures/ErdosProblems/808.lean:61:Erdős Problem 808 (disproved) [Er77c], [ErSz83], [Er91], [Er97]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-62-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/954.lean-29-
+FormalConjectures/ErdosProblems/954.lean:30:[Er77c] Erdős, P., *Problems and results in combinatorial number theory*, p.71.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/954.lean-31--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/954.lean-66-/--
+FormalConjectures/ErdosProblems/954.lean:67:Erdős Problem 954 [Er77c, p.71]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/954.lean-68-
+--
+/home/ryan/formal-conjectures/ai-review/532.md-18-- [Er75b]
+ai-review/532.md:19:- [Er77c]
+/home/ryan/formal-conjectures/ai-review/532.md-20-- [Hi74]
+/home/ryan/formal-conjectures/ai-review/532.md-21-
+ai-review/532.md:22:The formalization only cites **[Hi74]** (Hindman 1974). The Erdos references [Er73], [Er75b], [Er77c] are omitted. Since these are the Erdos papers that originally posed or discussed the problem, they should ideally be mentioned in the docstring.
+/home/ryan/formal-conjectures/ai-review/532.md-23-
+--
+/home/ryan/formal-conjectures/ai-review/532.md-92-| Code reuse | No strong reuse opportunities; current approach is fine |
+ai-review/532.md:93:| Citations | Missing [Er73], [Er75b], [Er77c] references and Problem #948 |
+/home/ryan/formal-conjectures/ai-review/532.md-94-| Variants | **Missing general finite-coloring version** (most significant issue) |
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/34.lean-27-
+FormalConjectures/ErdosProblems/34.lean:28:[Er77c] Erdős, P., *Problems and results on combinatorial number theory III*,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/34.lean-29-Number Theory Day (Proc. Conf., Rockefeller Univ., New York, 1976) (1977), 43–72.
+--
+FormalConjectures/ErdosProblems/951.lean-23- - [erdosproblems.com/951](https://www.erdosproblems.com/951)
+FormalConjectures/ErdosProblems/951.lean:24: - [Er77c] Erdős, Paul, Problems and results on combinatorial number theory. III. Number theory day (Proc. Conf., Rockefeller Univ.,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/951.lean-25-    New York, 1976) (1977), 43-72.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-54-
+FormalConjectures/ErdosProblems/202.lean:55:[Er61, Er65, Er65b, Er73, Er77c, ErGr80, Va99] — see
+FormalConjectures/ErdosProblems/202.lean-56-[erdosproblems.com/202](https://www.erdosproblems.com/202) for full references.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-74-Erdős Problem 202 (de la Bretèche–Ford–Vandehey conjecture) — OPEN.
+FormalConjectures/ErdosProblems/202.lean:75:[Er61, Er65, Er65b, Er73, Er77c, ErGr80, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/202.lean-76-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean-37-
+FormalConjectures/ErdosProblems/186.lean:38:[Er77c] Erdős, P., *Problems and results on combinatorial number theory III*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean-39-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean-78-/--
+FormalConjectures/ErdosProblems/186.lean:79:Erdős Problem 186 [Er73, Er75b, Er77c, ErGr79, ErGr80]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean-80-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-25-
+FormalConjectures/ErdosProblems/460.lean:26:[Er77c] Erdős, P., *Problems and results on combinatorial number theory III*,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-27-Number Theory Day (Proc. Conf., Rockefeller Univ., New York, 1976) (1977), 43–72.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-52-/--
+FormalConjectures/ErdosProblems/460.lean:53:Erdős Problem 460 [Er77c] [ErGr80, p.91]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean-54-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-29-Erdős proved that sum-free sets have density zero [Er62c], and later asked about the maximum
+FormalConjectures/ErdosProblems/876.lean:30:value of $\sum_{n \in A} 1/n$ [Er75b] [Er77c]. Deshouillers, Erdős, and Melfi constructed a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-31-sum-free set with $a_n \sim n^{3+o(1)}$ [DEM99]. Łuczak and Schoen established bounds on the
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-40-
+FormalConjectures/ErdosProblems/876.lean:41:[Er77c] Erdős, P., *Problems and results on combinatorial number theory. III*,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/876.lean-42-Number theory day (1977), pp. 43–72.
+--
+/home/ryan/formal-conjectures/ai-review/948.md-8-
+ai-review/948.md:9:The website attributes the problem to source **[Er77c]**. The Lean file's docstring does not mention this citation. It should be added, e.g.:
+/home/ryan/formal-conjectures/ai-review/948.md-10-
+ai-review/948.md:11:> [Er77c] Erdős, P., *Problems and results on combinatorial number theory III*, 1977.
+/home/ryan/formal-conjectures/ai-review/948.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/948.md-14-
+ai-review/948.md:15:**Issue:** Missing citation [Er77c].
+/home/ryan/formal-conjectures/ai-review/948.md-16-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-31-
+FormalConjectures/ErdosProblems/950.lean:32:[Er77c] Erdős, P., *Problems and results on number theory and combinatorics*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-33--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-41-/--
+FormalConjectures/ErdosProblems/950.lean:42:**Erdős Problem 950** — Part 1 [Er77c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-43-Is it true that $\liminf_{n \to \infty} f(n) = 1$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-56-/--
+FormalConjectures/ErdosProblems/950.lean:57:**Erdős Problem 950** — Part 2 [Er77c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-58-Is it true that $\limsup_{n \to \infty} f(n) = \infty$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-67-/--
+FormalConjectures/ErdosProblems/950.lean:68:**Erdős Problem 950** — Part 3 [Er77c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/950.lean-69-Is it true that $f(n) = o(\log \log n)$, i.e., $f(n) / \log(\log n) \to 0$ as $n \to \infty$?
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-40-
+FormalConjectures/ErdosProblems/425.lean:41:[Er77c] Erdős, P., _Problems and results on combinatorial number theory. III._. Number Theory Day
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean-42-(Proc. Conf., Rockefeller Univ., New York, 1976) (1977), 43-72.
+--
+/home/ryan/formal-conjectures/ai-review/144.md-18-
+ai-review/144.md:19:The formalization lists: `[Er61, Er77c, Er79, Er79e, ErGr80, Er81h, Er82e, Er85e, Er97c, Er98]` and `[MaTe84]`.
+/home/ryan/formal-conjectures/ai-review/144.md-20-
+--
+/home/ryan/formal-conjectures/ai-review/954.md-15-
+ai-review/954.md:16:The formalization cites **[Er77c, p.71]**. The website (erdosproblems.com/954) attributes the problem to:
+/home/ryan/formal-conjectures/ai-review/954.md-17-
+ai-review/954.md:18:> **Er77c, p.71** — Erdős, P., *Problems and results in combinatorial number theory*.
+/home/ryan/formal-conjectures/ai-review/954.md-19-
+ai-review/954.md:20:The formalization's citation `[Er77c] Erdős, P., *Problems and results in combinatorial number theory*, p.71.` matches the website. The OEIS reference **A390642** mentioned in the docstring also matches the website. The attribution to Rosen (mentioned in the docstring as "Erdős and Rosen") is consistent with the website's statement that the sequence was constructed by Rosen.
+/home/ryan/formal-conjectures/ai-review/954.md-21-
+--
+ai-review/423.md-11-The formalization references:
+ai-review/423.md:12:- `[Er77c]` — Erdős, P., *Problems and results on combinatorial number theory*, 1977.
+/home/ryan/formal-conjectures/ai-review/423.md-13-- `[ErGr80]` — Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number theory*, Monographies de L'Enseignement Mathématique (1980).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/144.lean-24-
+FormalConjectures/ErdosProblems/144.lean:25:[Er61, Er77c, Er79, Er79e, ErGr80, Er81h, Er82e, Er85e, Er97c, Er98] Erdős, P., various papers.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/144.lean-26-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/144.lean-45-/--
+FormalConjectures/ErdosProblems/144.lean:46:Erdős Problem 144 [Er61, Er77c, Er79, Er79e, ErGr80, Er81h, Er82e, Er85e, Er97c, Er98]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/144.lean-47-The density of integers which have two divisors $d_1, d_2$ such that $d_1 < d_2 < 2d_1$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean-33-
+FormalConjectures/ErdosProblems/423.lean:34:[Er77c] Erdős, P., *Problems and results on combinatorial number theory. III*,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean-35-Number theory day (Proc. Conf., Rockefeller Univ., New York, 1976), 1977, pp. 43–72.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean-69-/--
+FormalConjectures/ErdosProblems/423.lean:70:Erdős Problem 423 [Er77c, p.71; ErGr80, p.83]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/423.lean-71-

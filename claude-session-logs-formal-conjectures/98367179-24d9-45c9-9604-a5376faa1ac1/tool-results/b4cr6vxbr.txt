@@ -1,0 +1,638 @@
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean:public import Mathlib.Analysis.Convex.Radon
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Analysis.Convex.Segment
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Analysis.Convex.Side
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Analysis.Convex.SimplicialComplex.Basic
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Analysis.Convex.Slope
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Analysis.Convex.SpecificFunctions.Basic
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean:public import Mathlib.Dynamics.Ergodic.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Dynamics.FixedPoints.Basic
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Dynamics.FixedPoints.Prufer
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Dynamics.FixedPoints.Topology
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Dynamics.Flow
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Dynamics.Minimal
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean:public import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.MeasureTheory.Measure.Dirac
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.MeasureTheory.Measure.DiracProba
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.MeasureTheory.Measure.Doubling
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.MeasureTheory.Measure.EverywherePos
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.MeasureTheory.Measure.FiniteMeasure
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean:public import Mathlib.MeasureTheory.VectorMeasure.Decomposition.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.MeasureTheory.VectorMeasure.WithDensity
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.ModelTheory.Algebra.Field.Basic
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.ModelTheory.Algebra.Field.CharP
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.ModelTheory.Algebra.Field.IsAlgClosed
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.ModelTheory.Algebra.Ring.Basic
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean:public import Mathlib.Probability.Kernel.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Probability.Kernel.SetIntegral
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Probability.Kernel.WithDensity
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Probability.Martingale.Basic
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Probability.Martingale.BorelCantelli
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib.lean-public import Mathlib.Probability.Martingale.Centering
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean:public import Mathlib.MeasureTheory.VectorMeasure.Decomposition.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-/-!
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-# Conditional expectation of real-valued functions
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean:  Radon-Nikodym derivative of `fμ` restricted on `m` with respect to `μ` restricted on `m`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-* `MeasureTheory.Integrable.uniformIntegrable_condExp`: the conditional expectation of a function
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-  form a uniformly integrable class.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-* `MeasureTheory.condExp_mul_of_stronglyMeasurable_left`: the pull-out property of the conditional
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-  expectation.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Real.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Tilted.lean:public import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Tilted.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Tilted.lean-/-!
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Tilted.lean-# Exponentially tilted measures
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Tilted.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Tilted.lean-The exponential tilting of a measure `μ` on `α` by a function `f : α → ℝ` is the measure with
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Regular.lean:* In locally compact topological spaces, there are two competing notions of Radon measures: the
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Regular.lean-  ones that are regular, and the ones that are inner regular. For any of these two notions, there is
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Regular.lean-  a Riesz representation theorem, and an existence and uniqueness statement for the Haar measure in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Regular.lean-  locally compact topological groups. The two notions coincide in sigma-compact spaces, but they
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Regular.lean-  differ in general, so it is worth having the two of them.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Regular.lean-* Both notions of Haar measure satisfy the weaker notion `InnerRegularCompactLTTop`, so it is worth
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/LogLikelihoodRatio.lean:The likelihood ratio between two measures `μ` and `ν` is their Radon-Nikodym derivative
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/LogLikelihoodRatio.lean-`μ.rnDeriv ν`. The logarithm of that function is often used instead: this is the log-likelihood
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/LogLikelihoodRatio.lean-ratio.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/LogLikelihoodRatio.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/LogLikelihoodRatio.lean-This file contains a definition of the log-likelihood ratio (llr) and its properties.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/LogLikelihoodRatio.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:The Lebesgue decomposition provides the Radon-Nikodym theorem readily.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-## Main definitions
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-* `MeasureTheory.Measure.HaveLebesgueDecomposition` : A pair of measures `μ` and `ν` is said
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  to `HaveLebesgueDecomposition` if there exist a measure `ξ` and a measurable function `f`,
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- The Radon-Nikodym derivative of a sigma-finite measure `μ` with respect to another
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-measure `ν` is `ν`-almost everywhere finite. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_lt_top (μ ν : Measure α) [SigmaFinite μ] : ∀ᵐ x ∂ν, μ.rnDeriv ν x < ∞ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  suffices ∀ n, ∀ᵐ x ∂ν, x ∈ spanningSets μ n → μ.rnDeriv ν x < ∞ by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    filter_upwards [ae_all_iff.2 this] with _ hx using hx _ (mem_spanningSetsIndex _ _)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  intro n
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- The Radon-Nikodym derivative of `f ν` with respect to `ν` is `f`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_withDensity₀ (ν : Measure α) [SigmaFinite ν] {f : α → ℝ≥0∞}
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (hf : AEMeasurable f ν) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (ν.withDensity f).rnDeriv ν =ᵐ[ν] f :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  have : ν.withDensity f = 0 + ν.withDensity f := by rw [zero_add]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  (eq_rnDeriv₀ hf MutuallySingular.zero_left this).symm
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- The Radon-Nikodym derivative of `f ν` with respect to `ν` is `f`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_withDensity (ν : Measure α) [SigmaFinite ν] {f : α → ℝ≥0∞} (hf : Measurable f) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (ν.withDensity f).rnDeriv ν =ᵐ[ν] f :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  rnDeriv_withDensity₀ ν hf.aemeasurable
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-lemma rnDeriv_restrict (μ ν : Measure α) [HaveLebesgueDecomposition μ ν] [SigmaFinite ν]
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- The Radon-Nikodym derivative of the restriction of a measure to a measurable set is the
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-indicator function of this set. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_restrict_self (ν : Measure α) [SigmaFinite ν] {s : Set α} (hs : MeasurableSet s) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (ν.restrict s).rnDeriv ν =ᵐ[ν] s.indicator 1 := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  rw [← withDensity_indicator_one hs]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  exact rnDeriv_withDensity _ (measurable_one.indicator hs)
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative of the scalar multiple of a measure.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_smul_left'`, which requires sigma-finite `ν` and `μ`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_smul_left (ν μ : Measure α) [IsFiniteMeasure ν]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    [ν.HaveLebesgueDecomposition μ] (r : ℝ≥0) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (r • ν).rnDeriv μ =ᵐ[μ] r • ν.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  rw [← withDensity_eq_iff]
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative of the scalar multiple of a measure.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_smul_left_of_ne_top'`, which requires sigma-finite `ν` and `μ`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_smul_left_of_ne_top (ν μ : Measure α) [IsFiniteMeasure ν]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    [ν.HaveLebesgueDecomposition μ] {r : ℝ≥0∞} (hr : r ≠ ∞) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (r • ν).rnDeriv μ =ᵐ[μ] r • ν.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  have h : (r.toNNReal • ν).rnDeriv μ =ᵐ[μ] r.toNNReal • ν.rnDeriv μ :=
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative with respect to the scalar multiple of a measure.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_smul_right'`, which requires sigma-finite `ν` and `μ`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_smul_right (ν μ : Measure α) [IsFiniteMeasure ν]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    [ν.HaveLebesgueDecomposition μ] {r : ℝ≥0} (hr : r ≠ 0) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    ν.rnDeriv (r • μ) =ᵐ[μ] r⁻¹ • ν.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  refine (absolutelyContinuous_smul <| ENNReal.coe_ne_zero.2 hr).ae_le
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative with respect to the scalar multiple of a measure.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_smul_right_of_ne_top'`, which requires sigma-finite `ν` and `μ`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_smul_right_of_ne_top (ν μ : Measure α) [IsFiniteMeasure ν]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    [ν.HaveLebesgueDecomposition μ] {r : ℝ≥0∞} (hr : r ≠ 0) (hr_ne_top : r ≠ ∞) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    ν.rnDeriv (r • μ) =ᵐ[μ] r⁻¹ • ν.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  have h : ν.rnDeriv (r.toNNReal • μ) =ᵐ[μ] r.toNNReal⁻¹ • ν.rnDeriv μ := by
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative of a sum of two measures.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_add'`, which requires sigma-finite `ν₁`, `ν₂` and `μ`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-lemma rnDeriv_add (ν₁ ν₂ μ : Measure α) [IsFiniteMeasure ν₁] [IsFiniteMeasure ν₂]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    [ν₁.HaveLebesgueDecomposition μ] [ν₂.HaveLebesgueDecomposition μ]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    [(ν₁ + ν₂).HaveLebesgueDecomposition μ] :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (ν₁ + ν₂).rnDeriv μ =ᵐ[μ] ν₁.rnDeriv μ + ν₂.rnDeriv μ := by
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:  -- Let `ξ n` and `f n` be the singular part and the Radon-Nikodym derivative
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  -- of these restrictions.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  set ξ : ℕ → Measure α := fun n : ℕ ↦ singularPart (.restrict μ (s n)) (.restrict ν (s n))
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  set f : ℕ → α → ℝ≥0∞ := fun n ↦ (s n).indicator (rnDeriv (.restrict μ (s n)) (.restrict ν (s n)))
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  have hfm (n : ℕ) : Measurable (f n) := by measurability
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  -- Each `ξ n` is supported on `s n` and is mutually singular with the restriction of `ν` to `s n`.
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative of the scalar multiple of a measure.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_smul_left`, which has no hypothesis on `μ` but requires finite `ν`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_smul_left' (ν μ : Measure α) [SigmaFinite ν] [SigmaFinite μ] (r : ℝ≥0) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (r • ν).rnDeriv μ =ᵐ[μ] r • ν.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  rw [← withDensity_eq_iff_of_sigmaFinite]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  · simp_rw [ENNReal.smul_def]
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative of the scalar multiple of a measure.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_smul_left_of_ne_top`, which has no hypothesis on `μ` but requires finite `ν`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_smul_left_of_ne_top' (ν μ : Measure α) [SigmaFinite ν] [SigmaFinite μ]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    {r : ℝ≥0∞} (hr : r ≠ ∞) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (r • ν).rnDeriv μ =ᵐ[μ] r • ν.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  have h : (r.toNNReal • ν).rnDeriv μ =ᵐ[μ] r.toNNReal • ν.rnDeriv μ :=
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative with respect to the scalar multiple of a measure.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_smul_right`, which has no hypothesis on `μ` but requires finite `ν`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_smul_right' (ν μ : Measure α) [SigmaFinite ν] [SigmaFinite μ]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    {r : ℝ≥0} (hr : r ≠ 0) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    ν.rnDeriv (r • μ) =ᵐ[μ] r⁻¹ • ν.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  refine (absolutelyContinuous_smul <| ENNReal.coe_ne_zero.2 hr).ae_le
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative with respect to the scalar multiple of a measure.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_smul_right_of_ne_top`, which has no hypothesis on `μ` but requires finite `ν`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-theorem rnDeriv_smul_right_of_ne_top' (ν μ : Measure α) [SigmaFinite ν] [SigmaFinite μ]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    {r : ℝ≥0∞} (hr : r ≠ 0) (hr_ne_top : r ≠ ∞) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    ν.rnDeriv (r • μ) =ᵐ[μ] r⁻¹ • ν.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  have h : ν.rnDeriv (r.toNNReal • μ) =ᵐ[μ] r.toNNReal⁻¹ • ν.rnDeriv μ := by
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean:/-- Radon-Nikodym derivative of a sum of two measures.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-See also `rnDeriv_add`, which has no hypothesis on `μ` but requires finite `ν₁` and `ν₂`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-lemma rnDeriv_add' (ν₁ ν₂ μ : Measure α) [SigmaFinite ν₁] [SigmaFinite ν₂] [SigmaFinite μ] :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-    (ν₁ + ν₂).rnDeriv μ =ᵐ[μ] ν₁.rnDeriv μ + ν₂.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  rw [← withDensity_eq_iff_of_sigmaFinite]
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean-  · suffices (ν₁ + ν₂).singularPart μ + μ.withDensity ((ν₁ + ν₂).rnDeriv μ)
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/IntegralRNDeriv.lean:public import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/IntegralRNDeriv.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/IntegralRNDeriv.lean-/-!
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/IntegralRNDeriv.lean:# Integrals of functions of Radon-Nikodym derivatives
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/IntegralRNDeriv.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/IntegralRNDeriv.lean-## Main statements
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/IntegralRNDeriv.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/IntegralRNDeriv.lean-* `mul_le_integral_rnDeriv_of_ac`: for a convex continuous function `f` on `[0, ∞)`, if `μ`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/IntegralRNDeriv.lean-  is absolutely continuous with respect to `ν`, then
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:# Radon-Nikodym theorem
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:This file proves the Radon-Nikodym theorem. The Radon-Nikodym theorem states that, given measures
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-`μ, ν`, if `HaveLebesgueDecomposition μ ν`, then `μ` is absolutely continuous with respect to
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-`ν` if and only if there exists a measurable function `f : α → ℝ≥0∞` such that `μ = fν`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-In particular, we have `f = rnDeriv μ ν`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:The Radon-Nikodym theorem will allow us to define many important concepts in probability theory,
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-most notably probability cumulative functions. It could also be used to define the conditional
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-expectation of a real function, but we take a different approach (see the file
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-`MeasureTheory/Function/ConditionalExpectation`).
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-## Main results
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:  the Radon-Nikodym theorem
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-* `MeasureTheory.SignedMeasure.absolutelyContinuous_iff_withDensityᵥ_rnDeriv_eq` :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:  the Radon-Nikodym theorem for signed measures
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:The file also contains properties of `rnDeriv` that use the Radon-Nikodym theorem, notably
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:* `MeasureTheory.Measure.rnDeriv_withDensity_left`: the Radon-Nikodym derivative of
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-  `μ.withDensity f` with respect to `ν` is `f * μ.rnDeriv ν`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:* `MeasureTheory.Measure.rnDeriv_withDensity_right`: the Radon-Nikodym derivative of
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-  `μ` with respect to `ν.withDensity f` is `f⁻¹ * μ.rnDeriv ν`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-* `MeasureTheory.Measure.inv_rnDeriv`: `(μ.rnDeriv ν)⁻¹ =ᵐ[μ] ν.rnDeriv μ`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-* `MeasureTheory.Measure.setLIntegral_rnDeriv`: `∫⁻ x in s, μ.rnDeriv ν x ∂ν = μ s` if `μ ≪ ν`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-  There is also a version of this result for the Bochner integral.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:Radon-Nikodym theorem
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean--/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-public section
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-assert_not_exists InnerProductSpace
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean:/-- **The Radon-Nikodym theorem**: Given two measures `μ` and `ν`, if
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-`HaveLebesgueDecomposition μ ν`, then `μ` is absolutely continuous to `ν` if and only if
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-`ν.withDensity (rnDeriv μ ν) = μ`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-theorem absolutelyContinuous_iff_withDensity_rnDeriv_eq
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-    [HaveLebesgueDecomposition μ ν] : μ ≪ ν ↔ ν.withDensity (rnDeriv μ ν) = μ :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean-  ⟨withDensity_rnDeriv_eq μ ν, fun h => h ▸ withDensity_absolutelyContinuous _ _⟩
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/WithDensity.lean:An important result about `withDensity` is the Radon-Nikodym theorem. It states that, given measures
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/WithDensity.lean-`μ, ν`, if `HaveLebesgueDecomposition μ ν` then `μ` is absolutely continuous with respect to
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/WithDensity.lean-`ν` if and only if there exists a measurable function `f : α → ℝ≥0∞` such that
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/WithDensity.lean-`μ = ν.withDensity f`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/WithDensity.lean-See `MeasureTheory.Measure.absolutelyContinuous_iff_withDensity_rnDeriv_eq`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/WithDensity.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean:  almost surely to the Radon-Nikodym derivative of `ρ` with respect to `μ` at `x`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-* `Besicovitch.ae_tendsto_measure_inter_div` states that almost every point in an arbitrary set `s`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-  is a Lebesgue density point, i.e., `μ (s ∩ closedBall x r) / μ (closedBall x r)` tends to `1` as
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-  `r` tends to `0`. A stronger version for measurable sets is given in
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-  `Besicovitch.ae_tendsto_measure_inter_div_of_measurableSet`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean:almost surely to the Radon-Nikodym derivative. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-theorem ae_tendsto_rnDeriv (ρ μ : Measure β) [IsLocallyFiniteMeasure μ] [IsLocallyFiniteMeasure ρ] :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-    ∀ᵐ x ∂μ,
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-      Tendsto (fun r => ρ (closedBall x r) / μ (closedBall x r)) (𝓝[>] 0) (𝓝 (ρ.rnDeriv μ x)) := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-  filter_upwards [VitaliFamily.ae_tendsto_rnDeriv (Besicovitch.vitaliFamily μ) ρ] with x hx
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Besicovitch.lean-  exact hx.comp (tendsto_filterAt μ x)
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean:`a` shrinks to `x` along the Vitali family, towards the Radon-Nikodym derivative of `ρ` with
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-respect to `μ`. This is the main theorem on differentiation of measures.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-This theorem is proved in this file, under the name `VitaliFamily.ae_tendsto_rnDeriv`. Note that,
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-almost surely, `μ a` is eventually positive and finite (see
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-`VitaliFamily.ae_eventually_measure_pos` and `VitaliFamily.eventually_measure_lt_top`), so the
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean:Radon-Nikodym derivative, one gets `v.limRatio ρ x = ρ.rnDeriv μ x` almost everywhere, completing
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-the proof.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-There is a difficulty in this sketch: this argument works well when `v.limRatio ρ` is measurable,
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-but there is no guarantee that this is the case, especially if one doesn't make further assumptions
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-on the Vitali family. We use an indirect argument to show that `v.limRatio ρ` is always
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean:everywhere to the Radon-Nikodym derivative. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-noncomputable def limRatio (ρ : Measure α) (x : α) : ℝ≥0∞ :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-  limUnder (v.filterAt x) fun a => ρ a / μ a
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-/-- For almost every point `x`, sufficiently small sets in a Vitali family around `x` have positive
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-measure. (This is a nontrivial result, following from the covering property of Vitali families). -/
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean:device to show that `v.limRatio` is almost everywhere equal to the Radon-Nikodym derivative. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-noncomputable def limRatioMeas : α → ℝ≥0∞ :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-  (v.aemeasurable_limRatio hρ).mk _
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-theorem limRatioMeas_measurable : Measurable (v.limRatioMeas hρ) :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-  AEMeasurable.measurable_mk _
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean:towards the Radon-Nikodym derivative of `ρ` with respect to `μ`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-This version assumes that `ρ` is absolutely continuous with respect to `μ`. The general version
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-without this superfluous assumption is `VitaliFamily.ae_tendsto_rnDeriv`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean--/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-theorem ae_tendsto_rnDeriv_of_absolutelyContinuous :
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean:Radon-Nikodym derivative of `ρ` with respect to `μ`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-theorem ae_tendsto_rnDeriv :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-    ∀ᵐ x ∂μ, Tendsto (fun a => ρ a / μ a) (v.filterAt x) (𝓝 (ρ.rnDeriv μ x)) := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-  let t := μ.withDensity (ρ.rnDeriv μ)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-  have eq_add : ρ = ρ.singularPart μ + t := haveLebesgueDecomposition_add _ _
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/Covering/Differentiation.lean-  have A : ∀ᵐ x ∂μ, Tendsto (fun a => ρ.singularPart μ a / μ a) (v.filterAt x) (𝓝 0) :=
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean:* `MeasureTheory.SignedMeasure.rnDeriv` : The Radon-Nikodym derivative of a signed
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean:  measure `s` with respect to a measure `μ` is the Radon-Nikodym derivative of the positive part of
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean:  `s` with respect to `μ` minus the Radon-Nikodym derivative of the negative part of `s` with
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-  respect to `μ`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-## Main results
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-* `MeasureTheory.SignedMeasure.singularPart_add_withDensity_rnDeriv_eq` :
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean:/-- The Radon-Nikodym derivative between a signed measure and a positive measure.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-`rnDeriv s μ` satisfies `μ.withDensityᵥ (s.rnDeriv μ) = s`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-if and only if `s` is absolutely continuous with respect to `μ` and this fact is known as
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-`MeasureTheory.SignedMeasure.absolutelyContinuous_iff_withDensity_rnDeriv_eq`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean:and can be found in `Mathlib/MeasureTheory/Measure/Decomposition/RadonNikodym.lean`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-def rnDeriv (s : SignedMeasure α) (μ : Measure α) : α → ℝ := fun x =>
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-  (s.toJordanDecomposition.posPart.rnDeriv μ x).toReal -
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-    (s.toJordanDecomposition.negPart.rnDeriv μ x).toReal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean--- The generated equation theorem is the form of `rnDeriv s μ x = ...`.
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean:`f = rnDeriv s μ`, i.e. `f` is the Radon-Nikodym derivative of `s` and `μ`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-theorem eq_rnDeriv (t : SignedMeasure α) (f : α → ℝ) (hfi : Integrable f μ)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-    (htμ : t ⟂ᵥ μ.toENNRealVectorMeasure) (hadd : s = t + μ.withDensityᵥ f) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-    f =ᵐ[μ] s.rnDeriv μ := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-  set f' := hfi.1.mk f
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-  have hadd' : s = t + μ.withDensityᵥ f' := by
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean:/-- The Radon-Nikodym derivative between a complex measure and a positive measure. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-def rnDeriv (c : ComplexMeasure α) (μ : Measure α) : α → ℂ := fun x =>
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-  ⟨c.re.rnDeriv μ x, c.im.rnDeriv μ x⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-variable {c : ComplexMeasure α}
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Lebesgue.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Hahn.lean:the Jordan decomposition theorem, the Lebesgue decomposition theorem and the Radon-Nikodym theorem.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Hahn.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Hahn.lean-## Main results
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Hahn.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Hahn.lean-* `MeasureTheory.SignedMeasure.exists_isCompl_positive_negative` : the Hahn decomposition
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/Hahn.lean-  theorem.
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean:public import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-public import Mathlib.MeasureTheory.VectorMeasure.Decomposition.Lebesgue
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-/-!
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean:# Radon-Nikodym derivatives of vector measures
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean:This file contains results about Radon-Nikodym derivatives of signed measures
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-that depend both on the Lebesgue decomposition of signed measures
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean:and the theory of Radon-Nikodym derivatives of usual measures.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean--/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-public section
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-namespace MeasureTheory
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean:/-- The Radon-Nikodym theorem for signed measures. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-theorem absolutelyContinuous_iff_withDensityᵥ_rnDeriv_eq (s : SignedMeasure α) (μ : Measure α)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-    [SigmaFinite μ] : s ≪ᵥ μ.toENNRealVectorMeasure ↔ μ.withDensityᵥ (s.rnDeriv μ) = s :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-  ⟨withDensityᵥ_rnDeriv_eq s μ, fun h => h ▸ withDensityᵥ_absolutelyContinuous _ _⟩
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/Decomposition/RadonNikodym.lean-end SignedMeasure
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/WithDensity.lean:the Radon-Nikodym theorem for signed measures.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/WithDensity.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/WithDensity.lean-## Main definitions
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/WithDensity.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/WithDensity.lean-* `MeasureTheory.Measure.withDensityᵥ`: the vector measure formed by integrating a function `f`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/MeasureTheory/VectorMeasure/WithDensity.lean-  with respect to a measure `μ` on some set if `f` is integrable, and `0` otherwise.
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/InformationTheory/KullbackLeibler/KLFun.lean:of `klFun` composed with a Radon-Nikodym derivative.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/InformationTheory/KullbackLeibler/KLFun.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/InformationTheory/KullbackLeibler/KLFun.lean-For probability measures, any function `f` that differs from `klFun` by an affine function of the
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/InformationTheory/KullbackLeibler/KLFun.lean-form `x ↦ a * (x - 1)` would give the same value for the integral
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/InformationTheory/KullbackLeibler/KLFun.lean-`∫ x, f (μ.rnDeriv ν x).toReal ∂ν`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/InformationTheory/KullbackLeibler/KLFun.lean-However, `klFun` is the particular choice among those that satisfies `klFun 1 = 0` and
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/SetFamily/KruskalKatona.lean:/-- The **Erdős–Ko–Rado theorem**.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/SetFamily/KruskalKatona.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/SetFamily/KruskalKatona.lean-The maximum size of an intersecting family in `α` where all sets have size `r` is bounded by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/SetFamily/KruskalKatona.lean-`(card α - 1).choose (r - 1)`. This bound is sharp. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/SetFamily/KruskalKatona.lean-theorem erdos_ko_rado {𝒜 : Finset (Finset (Fin n))} {r : ℕ}
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Combinatorics/SetFamily/KruskalKatona.lean-    (h𝒜 : (𝒜 : Set (Finset (Fin n))).Intersecting) (h₂ : (𝒜 : Set (Finset (Fin n))).Sized r)
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Notation.lean:/-- `∂P/∂Q` is the Radon–Nikodym derivative of `P` with respect to `Q`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Notation.lean-scoped[ProbabilityTheory] notation "∂" P "/∂" Q:100 => MeasureTheory.Measure.rnDeriv P Q
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Notation.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Notation.lean-/-- `ℙ` is a notation for `volume` on a measured space. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Notation.lean-scoped[ProbabilityTheory] notation "ℙ" => MeasureTheory.MeasureSpace.volume
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean:public import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-public import Mathlib.MeasureTheory.Measure.Haar.OfBasis
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-public import Mathlib.Probability.Independence.Basic
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-/-!
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-# Probability density function
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean:as the Radon–Nikodym derivative of the law of `X`. In particular, a measurable function `f`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-is said to the probability density function of a random variable `X` if for all measurable
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-sets `S`, `ℙ(X ∈ S) = ∫ x in S, f x dx`. Probability density functions are one way of describing
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-the distribution of a random variable, and are useful for calculating probabilities and
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-finding moments (although the latter is better achieved with moment-generating functions).
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean:  is the Radon–Nikodym derivative of the push-forward measure of `ℙ` along `X` with respect to `μ`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-* `MeasureTheory.pdf.IsUniform` : A random variable `X` is said to follow the uniform
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-  distribution if it has a constant probability density function with a compact, non-null support.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-## Main results
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean:is the Radon–Nikodym derivative of the push-forward measure of `ℙ` along `X` with respect to `μ`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-def pdf {_ : MeasurableSpace Ω} (X : Ω → E) (ℙ : Measure Ω) (μ : Measure E := by volume_tac) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-    E → ℝ≥0∞ :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-  (map X ℙ).rnDeriv μ
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Density.lean-theorem pdf_def {_ : MeasurableSpace Ω} {ℙ : Measure Ω} {μ : Measure E} {X : Ω → E} :
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean:* Radon-Nikodym theorem for kernels: for `κ ν : Kernel α γ`, we can use the density to build a
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean:  Radon-Nikodym derivative of `κ` with respect to `ν`. We don't need `β` here but we can apply the
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-  density construction to `β = Unit`. The derivative construction will use `density` but will not
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-  be exactly equal to it because we will want to remove the `fst κ ≤ ν` assumption.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-## Main definitions
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean:If we were interested only in a fixed `a : α`, then we could use the Radon-Nikodym derivative to
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-build the density function `density κ ν`, as follows.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-```
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-def density' (κ : Kernel α (γ × β)) (ν : kernel a γ) (a : α) (x : γ) (s : Set β) : ℝ :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-  (((κ a).restrict (univ ×ˢ s)).fst.rnDeriv (ν a) x).toReal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean-```
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean:public import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-public import Mathlib.MeasureTheory.Measure.Prod
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-public import Mathlib.Probability.Kernel.Disintegration.CDFToKernel
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-/-!
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-# Conditional cumulative distribution function
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean:/-- `preCDF` is the Radon-Nikodym derivative of `ρ.IicSnd` with respect to `ρ.fst` at each
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-`r : ℚ`. This function `ℚ → α → ℝ≥0∞` is such that for almost all `a : α`, the function `ℚ → ℝ≥0∞`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-satisfies the properties of a cdf (monotone with limit 0 at -∞ and 1 at +∞, right-continuous).
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-We define this function on `ℚ` and not `ℝ` because `ℚ` is countable, which allows us to prove
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/CondCDF.lean-properties of the form `∀ᵐ a ∂ρ.fst, ∀ q, P (preCDF q a)`, instead of the weaker
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Composition/AbsolutelyContinuous.lean:public import Mathlib.Probability.Kernel.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Composition/AbsolutelyContinuous.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Composition/AbsolutelyContinuous.lean-/-!
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Composition/AbsolutelyContinuous.lean-# Absolute continuity of the composition of measures and kernels
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Composition/AbsolutelyContinuous.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/Composition/AbsolutelyContinuous.lean-This file contains some results about the absolute continuity of the composition of measures and
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean:# Radon-Nikodym derivative and Lebesgue decomposition for kernels
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-Let `α` and `γ` be two measurable spaces, where either `α` is countable or `γ` is
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-countably generated. Let `κ, η : Kernel α γ` be finite kernels.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-Then there exists a function `Kernel.rnDeriv κ η : α → γ → ℝ≥0∞` jointly measurable on `α × γ`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-and a kernel `Kernel.singularPart κ η : Kernel α γ` such that
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean:This has the properties we want for a Radon-Nikodym derivative only if `κ ≪ ν`. The definition of
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-`rnDeriv κ η` will be built from `rnDerivAux κ (κ + η)`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-noncomputable
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-def rnDerivAux (κ η : Kernel α γ) (a : α) (x : γ) : ℝ :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-  if hα : Countable α then ((κ a).rnDeriv (η a) x).toReal
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-  else haveI := hαγ.countableOrCountablyGenerated.resolve_left hα
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean:/-- Radon-Nikodym derivative of the kernel `κ` with respect to the kernel `η`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-noncomputable
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-irreducible_def rnDeriv (κ η : Kernel α γ) (a : α) (x : γ) : ℝ≥0∞ :=
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-  ENNReal.ofReal (rnDerivAux κ (κ + η) a x) / ENNReal.ofReal (1 - rnDerivAux κ (κ + η) a x)
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Probability/Kernel/RadonNikodym.lean-lemma rnDeriv_def' (κ η : Kernel α γ) :
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/Extreme.lean:public import Mathlib.Dynamics.Ergodic.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/Extreme.lean-public import Mathlib.Probability.ConditionalProbability
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/Extreme.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/Extreme.lean-/-!
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/Extreme.lean-# Ergodic measures as extreme points
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/Extreme.lean-
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean:public import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-public import Mathlib.Topology.Order.CountableSeparating
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-/-!
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean:# Radon-Nikodym derivative of invariant measures
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-Given two finite invariant measures of a self-map,
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-we prove that their singular parts, their absolutely continuous parts,
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean:and their Radon-Nikodym derivatives are invariant too.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-For the first two theorems, we only assume that one of the measures is finite
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-and the other is σ-finite.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-## TODO
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean:/-- The Radon-Nikodym derivative of a finite invariant measure of a self-map `f`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-with respect to another finite invariant measure of `f` is a.e. invariant under `f`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-theorem rnDeriv_comp_aeEq [IsFiniteMeasure ν] {f : X → X}
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-    (hfμ : MeasurePreserving f μ μ) (hfν : MeasurePreserving f ν ν) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-    μ.rnDeriv ν ∘ f =ᵐ[ν] μ.rnDeriv ν := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Dynamics/Ergodic/RadonNikodym.lean-  wlog hμν : μ ≪ ν generalizing μ
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean:# Radon's theorem on convex sets
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean:Radon's theorem states that any affine dependent set can be partitioned into two sets whose convex
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-hulls intersect nontrivially.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-As a corollary, we prove Helly's theorem, which is a basic result in discrete geometry on the
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-intersection of convex sets. Let `X₁, ⋯, Xₙ` be a finite family of convex sets in `ℝᵈ` with
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-`n ≥ d + 1`. The theorem states that if any `d + 1` sets from this family intersect nontrivially,
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean:convex hull, affine independence, Radon, Helly
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean--/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-public section
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-open Fintype Finset Set
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean:/-- **Radon's theorem on convex sets**.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-Any family `f` of affine dependent vectors contains a set `I` with the property that convex hulls of
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-`I` and `Iᶜ` intersect nontrivially.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-In particular, any `d + 2` points in a `d`-dimensional space can be partitioned this way, since they
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Convex/Radon.lean-are affinely dependent (see `finrank_vectorSpan_le_iff_not_affineIndependent`). -/
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean:`μ [x, y] / Leb [x, y]` (resp. `μ [y, x] / Leb [y, x]`) converges to the Radon-Nikodym derivative
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-of `μ` with respect to Lebesgue when `y` tends to `x` in `(x, +∞)` (resp. `(-∞, x)`), by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-`VitaliFamily.ae_tendsto_rnDeriv`. As `μ [x, y] = f y - f x` and `Leb [x, y] = y - x`, this
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-gives differentiability right away.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-When `f` is only monotone, the same argument works up to small adjustments, as the associated
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean:Radon-Nikodym derivative of the associated Stieltjes measure with respect to Lebesgue. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-theorem StieltjesFunction.ae_hasDerivAt (f : StieltjesFunction ℝ) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-    ∀ᵐ x, HasDerivAt f (rnDeriv f.measure volume x).toReal x := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-  /- Denote by `μ` the Stieltjes measure associated to `f`.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-    The general theorem `VitaliFamily.ae_tendsto_rnDeriv` ensures that `μ [x, y] / (y - x)` tends
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean:    to the Radon-Nikodym derivative as `y` tends to `x` from the right. As `μ [x,y] = f y - f (x^-)`
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-    and `f (x^-) = f x` almost everywhere, this gives differentiability on the right.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean:    On the left, `μ [y, x] / (x - y)` again tends to the Radon-Nikodym derivative.
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-    As `μ [y, x] = f x - f (y^-)`, this is not exactly the right result, so one uses a sandwiching
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-    argument to deduce the convergence for `(f x - f y) / (x - y)`. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-  filter_upwards [VitaliFamily.ae_tendsto_rnDeriv (vitaliFamily (volume : Measure ℝ) 1) f.measure,
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-    rnDeriv_lt_top f.measure volume, f.countable_leftLim_ne.ae_notMem volume] with x hx h'x h''x
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-  -- Limit on the right, following from differentiation of measures
+--
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean:Radon-Nikodym derivative of the associated Stieltjes measure with respect to Lebesgue. -/
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-theorem Monotone.ae_hasDerivAt {f : ℝ → ℝ} (hf : Monotone f) :
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-    ∀ᵐ x, HasDerivAt f (rnDeriv hf.stieltjesFunction.measure volume x).toReal x := by
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-  /- We already know that the Stieltjes function associated to `f` (i.e., `g : x ↦ f (x^+)`) is
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-    differentiable almost everywhere. We reduce to this statement by sandwiching values of `f` with
+/home/ryan/formal-conjectures/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Monotone.lean-    values of `g`, by shifting with `(y - x)^2` (which has no influence on the relevant
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean:A problem of Erdős and Rado on directed Ramsey numbers $k(n,m)$: the minimal $k$ such that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-any directed graph on $k$ vertices must contain either an independent set of size $n$ or a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-transitive tournament of size $m$. Determine $k(n,m)$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean:[ErRa67] Erdős, P. and Rado, R., _Partition relations and transitivity domains of binary
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-relations_, J. London Math. Soc. (1967).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean:[LaMi97] Larson, J. and Mitchell, W., _On a problem of Erdős and Rado_, Ann. Comb. (1997).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-namespace Erdos112
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-/-- A directed graph on vertex type $V$: an irreflexive binary relation representing
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean:Erdős–Rado upper bound [ErRa67]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-$$k(n,m) \leq \frac{2^{m-1} (n-1)^m + n - 2}{2n - 3}.$$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-@[category research solved, AMS 5]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-theorem erdos_112.variants.erdos_rado_upper_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean-    ∀ n m : ℕ, 2 ≤ n → 2 ≤ m →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean:A problem of Erdős, Hajnal, and Rado on the negative partition relation
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-$\aleph_{\omega+1} \nrightarrow (\aleph_{\omega+1}, 3, \ldots, 3)_{\aleph_0}^2$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-without assuming the generalised continuum hypothesis.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean-[Va99] Vaughan, J., *Small uncountable cardinals and topology*. Open Problems in Topology (1999).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1168.lean--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean:from Rado's theorem. This is commonly known as Folkman's theorem.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean-Known lower bounds:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean-- Erdős–Spencer [ErSp89]: $F(k) \geq 2^{ck^2/\log k}$ for some $c > 0$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean-- Balogh–Eberhard–Narayanan–Treglown–Wagner [BENTW17]: $F(k) \geq 2^{2^{k-1}/k}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean:A problem of Erdős, Hajnal, and Rado on cardinal partition relations.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-open Cardinal
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-namespace Erdos1167
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean:/-- **Erdős Problem 1167** (Erdős–Hajnal–Rado):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-    For $r \geq 2$ and $\lambda$ infinite, does
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-    $2^\lambda \to (\kappa_\alpha + 1)^{r+1}$ imply $\lambda \to (\kappa_\alpha)^r$? -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-@[category research open, AMS 3 5]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-theorem erdos_1167 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1167.lean-    ∀ {ι : Type*} (κ : ι → Cardinal) (lam : Cardinal) (r : ℕ),
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean:In standard Erdős-Rado partition calculus notation, this is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-$\kappa \nrightarrow [\mu]_k^2$. -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-def NegSqBracketPartition (κ μ : Cardinal) (k : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-  ∃ (α : Type*) (_ : #α = κ) (f : α → α → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-    (∀ x y, f x y = f y x) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/474.lean-    ∀ (S : Set α), #S ≥ μ →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean:Mirsky–Newman and Davenport–Rado.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean-*Reference:* [erdosproblems.com/947](https://www.erdosproblems.com/947)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean-namespace Erdos947
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean:This was proved independently by Mirsky-Newman and Davenport-Rado.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean-@[category research solved, AMS 11]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean-theorem erdos_947 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean-    ¬ ∃ (k : ℕ) (a : Fin k → ℤ) (n : Fin k → ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/947.lean-      (∀ i, 2 ≤ n i) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean:Conjectured by Erdős, Ko, and Rado [ErKoRa61], proved by Ahlswede and Khachatrian [AhKh97].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean:[ErKoRa61] Erdős, P., Ko, C., and Rado, R., _Intersection theorems for systems of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean-finite sets_. Quart. J. Math. Oxford Ser. (2) 12 (1961), 313-320.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean-[AhKh97] Ahlswede, R. and Khachatrian, L.H., _The complete intersection theorem for
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean-systems of finite sets_. European J. Combin. 18 (1997), 125-136.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean--/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean:This was conjectured by Erdős, Ko, and Rado [ErKoRa61], and proved by Ahlswede and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean-Khachatrian [AhKh97].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean-@[category research solved, AMS 5]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean-theorem erdos_83 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/83.lean-    ∀ n : ℕ, 0 < n →

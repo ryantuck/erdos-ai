@@ -1,0 +1,280 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean-44-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean-45-/-- A set $S$ of vertices is a transversal of hypergraph $G$ if it meets every edge. -/
+FormalConjectures/ErdosProblems/616.lean:46:def IsTransversal {n r : ℕ} (G : UniformHypergraph n r) (S : Finset (Fin n)) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean-47-  ∀ e ∈ G.edges, ∃ v ∈ S, v ∈ e
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean-48-
+FormalConjectures/ErdosProblems/616.lean-49-/-- The covering number $\tau(G)$: the minimum size of a transversal. -/
+FormalConjectures/ErdosProblems/616.lean:50:noncomputable def coveringNumber {n r : ℕ} (G : UniformHypergraph n r) : ℕ :=
+FormalConjectures/ErdosProblems/616.lean-51-  sInf {k : ℕ | ∃ S : Finset (Fin n), S.card = k ∧ IsTransversal G S}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean-52-
+FormalConjectures/ErdosProblems/616.lean-53-/-- The subhypergraph of $G$ induced on vertex set $W$: edges of $G$ contained in $W$. -/
+FormalConjectures/ErdosProblems/616.lean:54:def inducedSub {n r : ℕ} (G : UniformHypergraph n r) (W : Finset (Fin n)) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean-55-    UniformHypergraph n r where
+FormalConjectures/ErdosProblems/616.lean-56-  edges := G.edges.filter (· ⊆ W)
+--
+FormalConjectures/ErdosProblems/616.lean-59-/-- The local covering property: every induced subhypergraph on at most
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean-60-$3r - 3$ vertices has covering number at most $1$. -/
+FormalConjectures/ErdosProblems/616.lean:61:def HasLocalCoveringProperty {n r : ℕ} (G : UniformHypergraph n r) : Prop :=
+FormalConjectures/ErdosProblems/616.lean-62-  ∀ W : Finset (Fin n), W.card ≤ 3 * r - 3 → coveringNumber (inducedSub G W) ≤ 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean-63-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/716.lean-43-3-uniform hypergraphs on 6 vertices with 3 edges) if every 6-element subset of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/716.lean-44-vertices contains at most 2 edges. -/
+FormalConjectures/ErdosProblems/716.lean:45:def Hypergraph3.isFree {n : ℕ} (H : Hypergraph3 n) : Prop :=
+FormalConjectures/ErdosProblems/716.lean-46-  ∀ S : Finset (Fin n), S.card = 6 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/716.lean-47-    (H.edges.filter (· ⊆ S)).card ≤ 2
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-48-/-- A hypergraph is $r$-uniform if every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/836.lean:49:def Hypergraph.IsUniform {V : Type*} [DecidableEq V] (H : Hypergraph V) (r : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-50-  ∀ e ∈ H.edges, e.card = r
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-52-/-- The vertices of a hypergraph (the union of all edges). -/
+FormalConjectures/ErdosProblems/836.lean:53:def Hypergraph.vertices {V : Type*} [DecidableEq V] (H : Hypergraph V) : Finset V :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-54-  H.edges.biUnion id
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-55-
+FormalConjectures/ErdosProblems/836.lean-56-/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/836.lean:57:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/836.lean-58-    {α : Type*} (f : V → α) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-59-  ∀ e ∈ H.edges, e.card ≥ 2 → ∃ u ∈ e, ∃ v ∈ e, f u ≠ f v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-60-
+FormalConjectures/ErdosProblems/836.lean-61-/-- A hypergraph has chromatic number 3: it is 3-colorable but not 2-colorable. -/
+FormalConjectures/ErdosProblems/836.lean:62:def Hypergraph.HasChromaticNumber3 {V : Type*} [DecidableEq V] (H : Hypergraph V) : Prop :=
+FormalConjectures/ErdosProblems/836.lean-63-  (∃ f : V → Fin 3, H.IsProperColoring f) ∧
+FormalConjectures/ErdosProblems/836.lean-64-  (∀ f : V → Fin 2, ¬H.IsProperColoring f)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-65-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-66-/-- A hypergraph is intersecting if any two edges share at least one vertex. -/
+FormalConjectures/ErdosProblems/836.lean:67:def Hypergraph.IsIntersecting {V : Type*} [DecidableEq V] (H : Hypergraph V) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-68-  ∀ e₁ ∈ H.edges, ∀ e₂ ∈ H.edges, (e₁ ∩ e₂).Nonempty
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-69-
+--
+FormalConjectures/ErdosProblems/747.lean-47-/-- A $3$-uniform hypergraph $H$ contains a matching of size $k$: there exist
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-48-    $k$ pairwise vertex-disjoint edges in $H$. -/
+FormalConjectures/ErdosProblems/747.lean:49:def HasMatching {N : ℕ} (H : Finset (Finset (Fin N))) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/747.lean-50-  ∃ M : Finset (Finset (Fin N)), M ⊆ H ∧ M.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/747.lean-51-    ∀ e₁ ∈ M, ∀ e₂ ∈ M, e₁ ≠ e₂ → Disjoint e₁ e₂
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-42-/-- A hypergraph is $r$-uniform if every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/833.lean:43:def Hypergraph.IsUniform {V : Type*} [DecidableEq V] (H : Hypergraph V) (r : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-44-  ∀ e ∈ H.edges, e.card = r
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-45-
+FormalConjectures/ErdosProblems/833.lean-46-/-- A proper coloring of a hypergraph: no edge with $\geq 2$ vertices is monochromatic. -/
+FormalConjectures/ErdosProblems/833.lean:47:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/833.lean-48-    {α : Type*} (f : V → α) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-49-  ∀ e ∈ H.edges, e.card ≥ 2 → ∃ u ∈ e, ∃ v ∈ e, f u ≠ f v
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-51-/-- A hypergraph has chromatic number exactly $k$ if it can be properly colored
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-52-with $k$ colors but not with $k-1$ colors. -/
+FormalConjectures/ErdosProblems/833.lean:53:def Hypergraph.HasChromaticNumber {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/833.lean-54-    (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/833.lean-55-  (∃ f : V → Fin k, H.IsProperColoring f) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-58-/-- The degree of a vertex $v$ in a hypergraph is the number of edges containing $v$. -/
+FormalConjectures/ErdosProblems/833.lean:59:def Hypergraph.degree {V : Type*} [DecidableEq V] (H : Hypergraph V) (v : V) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-60-  (H.edges.filter (fun e => v ∈ e)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-61-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1020.lean-37-
+FormalConjectures/ErdosProblems/1020.lean-38-/-- An $r$-uniform hypergraph on vertex set `Fin n`: every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/1020.lean:39:def IsRUniform {n : ℕ} (H : Finset (Finset (Fin n))) (r : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1020.lean-40-  ∀ e ∈ H, e.card = r
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1020.lean-41-
+FormalConjectures/ErdosProblems/1020.lean-42-/-- A matching of size $k$ in a hypergraph: $k$ pairwise vertex-disjoint edges. -/
+FormalConjectures/ErdosProblems/1020.lean:43:def HasMatching {n : ℕ} (H : Finset (Finset (Fin n))) (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1020.lean-44-  ∃ M : Finset (Finset (Fin n)), M ⊆ H ∧ M.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1020.lean-45-    ∀ e₁ ∈ M, ∀ e₂ ∈ M, e₁ ≠ e₂ → Disjoint e₁ e₂
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-32-
+FormalConjectures/ErdosProblems/719.lean-33-/-- An $r$-uniform hypergraph on `Fin n`: a family of $r$-element subsets. -/
+FormalConjectures/ErdosProblems/719.lean:34:def IsRUniformHypergraph (n r : ℕ) (H : Finset (Finset (Fin n))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-35-  ∀ e ∈ H, e.card = r
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-36-
+FormalConjectures/ErdosProblems/719.lean-37-/-- An $r$-uniform hypergraph is $K_{r+1}^r$-free: no $(r+1)$-element vertex set has
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-38-all its $r$-element subsets as edges. -/
+FormalConjectures/ErdosProblems/719.lean:39:def IsHypergraphCliqueFree (r : ℕ) {n : ℕ} (H : Finset (Finset (Fin n))) : Prop :=
+FormalConjectures/ErdosProblems/719.lean-40-  ¬∃ S : Finset (Fin n), S.card = r + 1 ∧ Finset.powersetCard r S ⊆ H
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-41-
+FormalConjectures/ErdosProblems/719.lean-42-/-- The Turán number $\mathrm{ex}_r(n; K_{r+1}^r)$: the maximum number of edges in an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-43-$r$-uniform $K_{r+1}^r$-free hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/719.lean:44:noncomputable def turanHypergraphNumber (n r : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/719.lean-45-  sSup {k : ℕ | ∃ H : Finset (Finset (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean-46-    IsRUniformHypergraph n r H ∧ H.card = k ∧ IsHypergraphCliqueFree r H}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1075.lean-38-
+FormalConjectures/ErdosProblems/1075.lean-39-/-- The subhypergraph of $H$ induced by a vertex set $S$: all edges entirely within $S$. -/
+FormalConjectures/ErdosProblems/1075.lean:40:def UniformHypergraph.inducedSubgraph {n r : ℕ}
+FormalConjectures/ErdosProblems/1075.lean-41-    (H : UniformHypergraph n r) (S : Finset (Fin n)) :
+FormalConjectures/ErdosProblems/1075.lean-42-    Finset (Finset (Fin n)) :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean-58-
+FormalConjectures/ErdosProblems/643.lean-59-/-- A $t$-uniform hypergraph on `Fin n`: a family of $t$-element subsets. -/
+FormalConjectures/ErdosProblems/643.lean:60:def IsUniformHypergraph (n t : ℕ) (H : Finset (Finset (Fin n))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean-61-  ∀ e ∈ H, e.card = t
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/643.lean-62-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean-49-
+FormalConjectures/ErdosProblems/837.lean-50-/-- The edge density of a $k$-uniform hypergraph: $|E| / \binom{n}{k}$. -/
+FormalConjectures/ErdosProblems/837.lean:51:noncomputable def UniformHypergraph.density {n k : ℕ}
+FormalConjectures/ErdosProblems/837.lean-52-    (G : UniformHypergraph n k) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean-53-  if Nat.choose n k = 0 then 0
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean-56-/-- $H$ is a sub-hypergraph of $G$ via an injective vertex map $f$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean-57-    meaning every edge of $H$ maps to an edge of $G$ under $f$. -/
+FormalConjectures/ErdosProblems/837.lean:58:def UniformHypergraph.IsSubgraphVia {m n k : ℕ} (H : UniformHypergraph m k)
+FormalConjectures/ErdosProblems/837.lean-59-    (G : UniformHypergraph n k) (f : Fin m ↪ Fin n) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/837.lean-60-  ∀ e ∈ H.edges, e.map f ∈ G.edges
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean-40-/-- An $r$-uniform hypergraph on vertex type $V$ is a set of $r$-element subsets of $V$. -/
+FormalConjectures/ErdosProblems/1178.lean:41:def IsRUniform (r : ℕ) {V : Type*} (E : Finset (Finset V)) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean-42-  ∀ e ∈ E, e.card = r
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-34-
+FormalConjectures/ErdosProblems/1158.lean-35-/-- A $t$-uniform hypergraph on $\operatorname{Fin}(n)$: every edge has exactly $t$ vertices. -/
+FormalConjectures/ErdosProblems/1158.lean:36:def IsUniformHypergraph (t : ℕ) {n : ℕ} (E : Finset (Finset (Fin n))) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-37-  ∀ e ∈ E, e.card = t
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1158.lean-38-
+--
+FormalConjectures/ErdosProblems/832.lean-48-/-- A proper $k$-coloring of a hypergraph: a vertex coloring such that no edge
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean-49-is monochromatic (for every edge, not all vertices receive the same color). -/
+FormalConjectures/ErdosProblems/832.lean:50:def UniformHypergraph.IsProperColoring {V : Type*} [DecidableEq V] {r : ℕ}
+FormalConjectures/ErdosProblems/832.lean-51-    (H : UniformHypergraph V r) (k : ℕ) (f : V → Fin k) : Prop :=
+FormalConjectures/ErdosProblems/832.lean-52-  ∀ e ∈ H.edges, ∀ c : Fin k, ∃ v ∈ e, f v ≠ c
+--
+FormalConjectures/ErdosProblems/832.lean-54-/-- The chromatic number of a uniform hypergraph: the minimum number of colors
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean-55-needed for a proper coloring (no monochromatic edge). -/
+FormalConjectures/ErdosProblems/832.lean:56:noncomputable def UniformHypergraph.chromaticNumber {V : Type*} [DecidableEq V]
+FormalConjectures/ErdosProblems/832.lean-57-    [Fintype V] {r : ℕ} (H : UniformHypergraph V r) : ℕ :=
+FormalConjectures/ErdosProblems/832.lean-58-  sInf {k : ℕ | k ≥ 1 ∧ ∃ f : V → Fin k, H.IsProperColoring k f}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-56-/-- A hypergraph is $r$-uniform if every edge has exactly $r$ vertices. -/
+FormalConjectures/ErdosProblems/834.lean:57:def Hypergraph.IsUniform {V : Type*} [DecidableEq V] (H : Hypergraph V) (r : ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-58-  ∀ e ∈ H.edges, e.card = r
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-60-/-- The degree of a vertex $v$ in a hypergraph is the number of edges containing $v$. -/
+FormalConjectures/ErdosProblems/834.lean:61:def Hypergraph.degree {V : Type*} [DecidableEq V] (H : Hypergraph V) (v : V) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-62-  (H.edges.filter (fun e => v ∈ e)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-64-/-- The vertices of a hypergraph (the union of all edges). -/
+FormalConjectures/ErdosProblems/834.lean:65:def Hypergraph.vertices {V : Type*} [DecidableEq V] (H : Hypergraph V) : Finset V :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-66-  H.edges.biUnion id
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-67-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-68-/-- The hypergraph obtained by removing an edge. -/
+FormalConjectures/ErdosProblems/834.lean:69:def Hypergraph.eraseEdge {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/834.lean-70-    (e : Finset V) : Hypergraph V :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-71-  ⟨H.edges.erase e⟩
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-73-/-- The hypergraph obtained by removing a vertex (and all edges containing it). -/
+FormalConjectures/ErdosProblems/834.lean:74:def Hypergraph.eraseVertex {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/834.lean-75-    (v : V) : Hypergraph V :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-76-  ⟨H.edges.filter (fun e => v ∉ e)⟩
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-77-
+FormalConjectures/ErdosProblems/834.lean-78-/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/834.lean:79:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/834.lean-80-    {α : Type*} (f : V → α) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-81-  ∀ e ∈ H.edges, e.card ≥ 2 → ∃ u ∈ e, ∃ v ∈ e, f u ≠ f v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-82-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-83-/-- A set $S$ is a transversal (hitting set) of $H$ if it intersects every edge. -/
+FormalConjectures/ErdosProblems/834.lean:84:def Hypergraph.IsTransversal {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/834.lean-85-    (S : Finset V) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-86-  ∀ e ∈ H.edges, ∃ v ∈ e, v ∈ S
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-88-/-- A hypergraph is $3$-transversal-critical if the minimum transversal has
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-89-size $3$ and removing any single edge allows a transversal of size $\leq 2$. -/
+FormalConjectures/ErdosProblems/834.lean:90:def Hypergraph.Is3TransversalCritical {V : Type*} [DecidableEq V]
+FormalConjectures/ErdosProblems/834.lean-91-    (H : Hypergraph V) : Prop :=
+FormalConjectures/ErdosProblems/834.lean-92-  (∃ S : Finset V, S.card = 3 ∧ H.IsTransversal S) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-96-/-- A hypergraph is $3$-chromatic-critical if its chromatic number is $3$ and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-97-removing any edge or vertex makes it $2$-colorable. -/
+FormalConjectures/ErdosProblems/834.lean:98:def Hypergraph.Is3ChromaticCritical {V : Type*} [DecidableEq V]
+FormalConjectures/ErdosProblems/834.lean-99-    (H : Hypergraph V) : Prop :=
+FormalConjectures/ErdosProblems/834.lean-100-  (∃ f : V → Fin 3, H.IsProperColoring f) ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-50-if there is an injection from $\mathrm{Fin}(k)$ to $\mathrm{Fin}(n)$ mapping every edge of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-51-$G$ to an edge of $H$. -/
+FormalConjectures/ErdosProblems/1076.lean:52:def IsSubhypergraph {k n : ℕ} (G : Hypergraph3 k) (H : Hypergraph3 n) : Prop :=
+FormalConjectures/ErdosProblems/1076.lean-53-  ∃ f : Fin k → Fin n, Function.Injective f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-54-    ∀ e ∈ G.edges, e.image f ∈ H.edges
+--
+FormalConjectures/ErdosProblems/1076.lean-56-/-- $\mathcal{F}_k$: the family of all 3-uniform hypergraphs with $k$ vertices and exactly
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-57-$k - 2$ edges. -/
+FormalConjectures/ErdosProblems/1076.lean:58:def familyF (k : ℕ) : Set (Hypergraph3 k) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-59-  {G | G.edges.card = k - 2}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-61-/-- $H$ is $\mathcal{F}_k$-free if it contains no subhypergraph from $\mathcal{F}_k$. -/
+FormalConjectures/ErdosProblems/1076.lean:62:def IsFkFree {n : ℕ} (k : ℕ) (H : Hypergraph3 n) : Prop :=
+FormalConjectures/ErdosProblems/1076.lean-63-  ∀ G : Hypergraph3 k, G ∈ familyF k → ¬IsSubhypergraph G H
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean-64-
+--
+FormalConjectures/ErdosProblems/593.lean-50-/-- A proper coloring of a $3$-uniform hypergraph: no edge is monochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-51-    (every edge contains two vertices receiving different colors). -/
+FormalConjectures/ErdosProblems/593.lean:52:def Hypergraph3.IsProperColoring {V : Type*} (H : Hypergraph3 V)
+FormalConjectures/ErdosProblems/593.lean-53-    {C : Type*} (c : V → C) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-54-  ∀ e ∈ H.edges, ∃ x ∈ e, ∃ y ∈ e, c x ≠ c y
+--
+FormalConjectures/ErdosProblems/593.lean-56-/-- A $3$-uniform hypergraph has uncountable chromatic number: it admits no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-57-    proper coloring with countably many colors. -/
+FormalConjectures/ErdosProblems/593.lean:58:def Hypergraph3.HasUncountableChromaticNumber {V : Type*}
+FormalConjectures/ErdosProblems/593.lean-59-    (H : Hypergraph3 V) : Prop :=
+FormalConjectures/ErdosProblems/593.lean-60-  ∀ (C : Type*) [Countable C], ¬∃ c : V → C, H.IsProperColoring c
+--
+FormalConjectures/ErdosProblems/593.lean-62-/-- A finite $3$-uniform hypergraph $F$ on $W$ embeds into $H$ on $V$: there is an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-63-    injective map from $W$ to $V$ sending every edge of $F$ to an edge of $H$. -/
+FormalConjectures/ErdosProblems/593.lean:64:def Hypergraph3.ContainsCopy {V W : Type*}
+FormalConjectures/ErdosProblems/593.lean-65-    (H : Hypergraph3 V) (F : Hypergraph3 W) : Prop :=
+FormalConjectures/ErdosProblems/593.lean-66-  ∃ f : W ↪ V, ∀ e ∈ F.edges, e.map f ∈ H.edges
+--
+FormalConjectures/ErdosProblems/593.lean-68-/-- A $3$-uniform hypergraph is $2$-colorable: it admits a proper coloring with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-69-    two colors such that no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/593.lean:70:def Hypergraph3.Is2Colorable {V : Type*} (H : Hypergraph3 V) : Prop :=
+FormalConjectures/ErdosProblems/593.lean-71-  ∃ c : V → Bool, H.IsProperColoring c
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-72-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-47-/-- A $3$-uniform hypergraph is *linear* if any two distinct edges share
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-48-    at most one vertex. -/
+FormalConjectures/ErdosProblems/1024.lean:49:def Hypergraph3Uniform.IsLinear {n : ℕ} (H : Hypergraph3Uniform n) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-50-  ∀ e₁ ∈ H.edges, ∀ e₂ ∈ H.edges, e₁ ≠ e₂ → (e₁ ∩ e₂).card ≤ 1
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-51-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-52-/-- A set $S$ of vertices is *independent* in $H$ if no edge of $H$ is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-53-    contained in $S$. -/
+FormalConjectures/ErdosProblems/1024.lean:54:def Hypergraph3Uniform.IsIndependent {n : ℕ} (H : Hypergraph3Uniform n)
+FormalConjectures/ErdosProblems/1024.lean-55-    (S : Finset (Fin n)) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-56-  ∀ e ∈ H.edges, ¬(e ⊆ S)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-57-
+FormalConjectures/ErdosProblems/1024.lean-58-/-- The independence number of $H$: the maximum size of an independent set. -/
+FormalConjectures/ErdosProblems/1024.lean:59:noncomputable def Hypergraph3Uniform.independenceNumber {n : ℕ}
+FormalConjectures/ErdosProblems/1024.lean-60-    (H : Hypergraph3Uniform n) : ℕ :=
+FormalConjectures/ErdosProblems/1024.lean-61-  sSup {k : ℕ | ∃ S : Finset (Fin n), H.IsIndependent S ∧ S.card = k}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-64-    $3$-uniform linear hypergraphs on $n$ vertices, i.e. the largest $f$ such
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-65-    that every such hypergraph has an independent set of size at least $f$. -/
+FormalConjectures/ErdosProblems/1024.lean:66:noncomputable def linearHypergraphIndNum (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1024.lean-67-  sInf {k : ℕ | ∃ H : Hypergraph3Uniform n, H.IsLinear ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean-68-    H.independenceNumber = k}
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/775.lean-34-/-- A subset $S$ of vertices is complete in a $k$-uniform hypergraph $H$ if every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/775.lean-35-$k$-element subset of $S$ belongs to $H$. -/
+FormalConjectures/ErdosProblems/775.lean:36:def IsCompleteInHypergraph {n : ℕ} (H : Finset (Finset (Fin n))) (k : ℕ)
+FormalConjectures/ErdosProblems/775.lean-37-    (S : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/775.lean-38-  ∀ T : Finset (Fin n), T ⊆ S → T.card = k → T ∈ H
+--
+FormalConjectures/ErdosProblems/775.lean-40-/-- A clique in a $k$-uniform hypergraph is a maximal complete subhypergraph:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/775.lean-41-$S$ is complete and no strict superset of $S$ is complete. -/
+FormalConjectures/ErdosProblems/775.lean:42:def IsHypergraphClique {n : ℕ} (H : Finset (Finset (Fin n))) (k : ℕ)
+FormalConjectures/ErdosProblems/775.lean-43-    (S : Finset (Fin n)) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/775.lean-44-  IsCompleteInHypergraph H k S ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-57-/-- The number of edges of $H$ spanned by a set $S$ of vertices. -/
+FormalConjectures/ErdosProblems/1157.lean:58:def edgesSpannedBy {r n : ℕ} (H : UniformHypergraph r n) (S : Finset (Fin n)) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-59-  (H.edges.filter (· ⊆ S)).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-61-/-- $H$ is $(k,s)$-free if no set of $k$ vertices spans $s$ or more edges. -/
+FormalConjectures/ErdosProblems/1157.lean:62:def IsFree {r n : ℕ} (H : UniformHypergraph r n) (k s : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1157.lean-63-  ∀ S : Finset (Fin n), S.card = k → edgesSpannedBy H S < s
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-64-

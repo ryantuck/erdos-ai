@@ -1,0 +1,244 @@
+FormalConjectures/ErdosProblems/696.lean:25:the longest mod-chain of prime divisors of $n$ and $H(n)$ is the length of the longest mod-chain
+FormalConjectures/ErdosProblems/696.lean:26:of divisors of $n$.
+FormalConjectures/ErdosProblems/696.lean:45:/-- $H(n)$: the largest $u$ such that there is a mod-chain of divisors of length $u$
+FormalConjectures/ErdosProblems/381.lean:40:number has strictly fewer divisors. -/
+FormalConjectures/ErdosProblems/381.lean:42:  0 < n ∧ ∀ m : ℕ, 0 < m → m < n → (Nat.divisors m).card < (Nat.divisors n).card
+FormalConjectures/ErdosProblems/381.lean:52:counts the number of divisors of $m$. Let $Q(x)$ count the number of highly
+FormalConjectures/ErdosProblems/1050.lean:27:$\tau(n)$ is the divisor function). He notes [Er88c] that $\sum 1/(2^n + t)$ should be
+FormalConjectures/ErdosProblems/939.lean:31:- The elements of the set are coprime (their greatest common divisor is 1).
+FormalConjectures/ErdosProblems/250.lean:34:irrational? Here $\sigma(n)$ is the sum of divisors function.
+FormalConjectures/ErdosProblems/412.lean:32:Let $σ_1(n)=σ(n)$, the sum of divisors function, and $σ_k(n) = σ(σ_{k-1}(n))$.
+FormalConjectures/ErdosProblems/825.lean:31:$\sigma(n) > Cn$ is the distinct sum of proper divisors of $n$?
+FormalConjectures/ErdosProblems/825.lean:34:such that if $n$ has only prime divisors $>L$ and $\sigma(n)>(2+\epsilon)n$ then $n$ is the distinct
+FormalConjectures/ErdosProblems/825.lean:35:sum of proper divisors of $n$.
+FormalConjectures/ErdosProblems/825.lean:46:$\sigma(n) > Cn$ is the distinct sum of proper divisors of $n$, then we
+FormalConjectures/ErdosProblems/26.lean:89:there exist some $k\geq 1$ such that almost all integers have a divisor of the form $a+k$
+FormalConjectures/ErdosProblems/26.lean:111:divisor of the form $a+k$ for some $a\in A$.
+FormalConjectures/ErdosProblems/685.lean:25:$n^\varepsilon < k \leq n^{1-\varepsilon}$, the number of distinct prime divisors of
+FormalConjectures/ErdosProblems/685.lean:37:/-- The number of distinct prime divisors of $n$ (the arithmetic function $\omega(n)$). -/
+FormalConjectures/ErdosProblems/685.lean:47:the number of distinct prime divisors of $\binom{n}{k}$ satisfies:
+FormalConjectures/ErdosProblems/977.lean:29:[St13] Stewart, C. L., *On divisors of Fermat, Fibonacci, Lucas, and Lehmer numbers*, 2013.
+FormalConjectures/ErdosProblems/977.lean:36:/-- The greatest prime divisor of $n$, or $0$ if $n \leq 1$. -/
+FormalConjectures/ErdosProblems/977.lean:42:If $P(m)$ denotes the greatest prime divisor of $m$, is it true that
+FormalConjectures/ErdosProblems/358.lean:58:When $A_n = n$, the function $f$ defined above counts the number of odd divisors of $n$.
+FormalConjectures/ErdosProblems/358.lean:61:theorem f_id : f id = fun n ↦ #{d ∈ n.divisors | Odd d} := by
+FormalConjectures/ErdosProblems/470.lean:28:Primitive weird numbers are weird numbers such that no proper divisor of $n$ are weird.
+FormalConjectures/ErdosProblems/470.lean:33:The abundancy index is the sum of the divisors of $n$ divided by $n$.
+FormalConjectures/ErdosProblems/470.lean:35:def AbundancyIndex (n : ℕ) : ℚ := (∑ d ∈ n.divisors, d) / n
+FormalConjectures/ErdosProblems/470.lean:87:that an odd weird number must have at least 6 prime divisors.
+FormalConjectures/ErdosProblems/470.lean:91:    ∀ n : ℕ, Odd n → n.Weird → 6 ≤ {m | m ∈ n.divisors ∧ m.Prime}.ncard := by
+FormalConjectures/ErdosProblems/1053.lean:24:Call a number $k$-perfect if $\sigma(n) = kn$, where $\sigma(n)$ is the sum of the divisors
+FormalConjectures/ErdosProblems/1053.lean:36:/-- The sum-of-divisors function $\sigma(n) = \sum_{d \mid n} d$. -/
+FormalConjectures/ErdosProblems/1053.lean:38:  (Nat.divisors n).sum id
+FormalConjectures/ErdosProblems/823.lean:25:σ(n_k) = σ(m_k) for all k, where σ is the sum of divisors function? The answer is yes, proved by
+FormalConjectures/ErdosProblems/823.lean:41:/-- The sum of divisors function $\sigma(n) = \sum_{d \mid n} d$. -/
+FormalConjectures/ErdosProblems/823.lean:42:noncomputable def Nat.sumDivisors (n : ℕ) : ℕ := ∑ d ∈ n.divisors, d
+FormalConjectures/ErdosProblems/823.lean:49:sum of divisors function?
+FormalConjectures/ErdosProblems/316.lean:74:This is not true in general, as shown by Sándor [Sa97], who observed that the proper divisors of
+FormalConjectures/ErdosProblems/932.lean:33:    { r : ℕ | 2 ≤ (Finset.Ioo (r.nth Nat.Prime) (r.succ.nth Nat.Prime) |>.filter
+FormalConjectures/ErdosProblems/932.lean:42:    { r : ℕ | 1 ≤ (Finset.Ioo (r.nth Nat.Prime) (r.succ.nth Nat.Prime) |>.filter
+FormalConjectures/ErdosProblems/468.lean:25:where $1 < d_1 < d_2 < \cdots$ are the divisors of $n$.
+FormalConjectures/ErdosProblems/468.lean:44:/-- $D_n$: the set of partial sums of the divisors of $n$ that are greater than $1$,
+FormalConjectures/ErdosProblems/468.lean:47:  (prefixSums ((n.divisors.filter (1 < ·)).sort (· ≤ ·)) 0).toFinset
+FormalConjectures/ErdosProblems/1049.lean:33:$\tau(n)$ counts the divisors of $n$?
+FormalConjectures/ErdosProblems/1049.lean:51:The Lambert series identity where $x = 1/t$ for the divisor function.
+FormalConjectures/ErdosProblems/1049.lean:54:theorem lambert_series_eq_num_divisor_sum : ∀ t : ℚ,
+FormalConjectures/ErdosProblems/1049.lean:56:     ∑' n : ℕ+, (n : ℕ).divisors.card / ((t : ℝ) ^ (n : ℕ)) := by
+FormalConjectures/ErdosProblems/1061.lean:33:such that `σ(a) + σ(b) = σ(a + b)`, where `σ` is the sum of divisors function.
+FormalConjectures/ErdosProblems/824.lean:25:$\sigma(a) = \sigma(b)$, where $\sigma$ is the sum of divisors function.
+FormalConjectures/ErdosProblems/824.lean:38:[PoPo16] Pollack, P. and Pomerance, C., _Some problems of Erdős on the sum-of-divisors
+FormalConjectures/ErdosProblems/824.lean:46:/-- The sum of divisors function $\sigma(n) = \sum_{d \mid n} d$. -/
+FormalConjectures/ErdosProblems/824.lean:47:def sumDivisors (n : ℕ) : ℕ := ∑ d ∈ n.divisors, d
+FormalConjectures/ErdosProblems/824.lean:50:with equal sum-of-divisors values. -/
+FormalConjectures/ErdosProblems/446.lean:24:Let $\delta(n)$ denote the density of positive integers having a divisor in $(n, 2n)$.
+FormalConjectures/ErdosProblems/446.lean:27:one such divisor.
+FormalConjectures/ErdosProblems/446.lean:46:Count of positive integers $m \le N$ having at least one divisor $d$
+FormalConjectures/ErdosProblems/446.lean:51:    ((Finset.Ioo n (2 * n)).filter (fun d => d ∣ m)).Nonempty)).card
+FormalConjectures/ErdosProblems/446.lean:54:Count of positive integers $m \le N$ having exactly $r$ divisors $d$
+FormalConjectures/ErdosProblems/446.lean:59:    ((Finset.Ioo n (2 * n)).filter (fun d => d ∣ m)).card = r)).card
+FormalConjectures/ErdosProblems/446.lean:76:sufficiently large $n$, the proportion of integers $\le N$ with a divisor in $(n, 2n)$
+FormalConjectures/ErdosProblems/446.lean:98:integers with exactly one divisor in $(n, 2n)$. Ford disproved this, showing more
+FormalConjectures/ErdosProblems/446.lean:100:density of integers with exactly $r$ divisors in $(n, 2n)$.
+FormalConjectures/ErdosProblems/448.lean:24:Let $\tau(n)$ count the divisors of $n$ and $\tau^+(n)$ count the number of $k$
+FormalConjectures/ErdosProblems/448.lean:25:such that $n$ has a divisor in $[2^k, 2^{k+1})$. Is it true that, for all
+FormalConjectures/ErdosProblems/448.lean:41:/-- $\tau^+(n)$: the number of $k \in \mathbb{N}$ such that $n$ has a divisor $d$ with
+FormalConjectures/ErdosProblems/448.lean:45:    (n.divisors.filter (fun d => 2 ^ k ≤ d ∧ d < 2 ^ (k + 1))).Nonempty)).card
+FormalConjectures/ErdosProblems/448.lean:56:        (tauPlus n : ℝ) ≥ ε * (n.divisors.card : ℝ))).card / (N : ℝ) < δ := by
+FormalConjectures/ErdosProblems/448.lean:67:          (tauPlus n : ℝ) ≥ ε * (n.divisors.card : ℝ))).card / (N : ℝ) := by
+FormalConjectures/ErdosProblems/420.lean:24:If $\tau(n)$ counts the number of divisors of $n$, define
+FormalConjectures/ErdosProblems/420.lean:52:divisors. Here $f : \mathbb{N} \to \mathbb{R}$ and $\lfloor f(n) \rfloor_+$ is the natural
+FormalConjectures/ErdosProblems/420.lean:55:  ((Nat.divisors (n + ⌊f n⌋₊).factorial).card : ℝ) /
+FormalConjectures/ErdosProblems/420.lean:56:  ((Nat.divisors n.factorial).card : ℝ)
+FormalConjectures/ErdosProblems/1060.lean:30:$k\sigma(k)=n$, where $\sigma(k)$ is the sum of divisors of $k$. The first bound is that $f(n)$ grows slower
+FormalConjectures/ErdosProblems/385.lean:30:prime divisor of $m$. -/
+FormalConjectures/ErdosProblems/385.lean:39:prime divisor of $m$. Is it true that $F(n)>n$ for all sufficiently large $n$? -/
+FormalConjectures/ErdosProblems/385.lean:45:prime divisor of $m$. Does $F(n) - n \to \infty$ as $n\to\infty$? -/
+FormalConjectures/ErdosProblems/978.lean:43:`2`, and `f n` have no fixed `(k - 1)`-th power divisors other than `1`. Then the set of `n` such
+FormalConjectures/ErdosProblems/535.lean:26:greatest common divisor between all elements. Estimate $f_r(N)$.
+FormalConjectures/ErdosProblems/45.lean:24:For every $k$-colouring of the divisors of $n$ (excluding $1$ and $n$), there is a
+FormalConjectures/ErdosProblems/45.lean:36:The set of divisors of $n$ strictly between $1$ and $n$:
+FormalConjectures/ErdosProblems/45.lean:40:  n.divisors.filter (fun d => 1 < d ∧ d < n)
+FormalConjectures/ErdosProblems/45.lean:44:for any $k$-colouring of the set $D(n) = \{d : d \mid n,\, 1 < d < n\}$ of divisors of $n$
+FormalConjectures/ErdosProblems/252.lean:32: - [FLC07] Friedlander, J. B. and Luca, F. and Stoiciu, M., On the irrationality of a divisor
+FormalConjectures/ErdosProblems/252.lean:34: - [Pr22] Pratt, K., The irrationality of a divisor function series of Erdős and Kac.
+FormalConjectures/ErdosProblems/884.lean:33:Is it true that, for any $n$, if $d_1 < \cdots < d_t$ are the divisors of $n$, then
+FormalConjectures/ErdosProblems/884.lean:37:The double sum over all pairs of divisors is bounded (up to an absolute constant)
+FormalConjectures/ErdosProblems/884.lean:38:by $1$ plus the sum over consecutive divisor gaps. Two divisors are consecutive
+FormalConjectures/ErdosProblems/884.lean:39:if no other divisor of $n$ lies strictly between them.
+FormalConjectures/ErdosProblems/884.lean:47:      (∑ p ∈ (n.divisors ×ˢ n.divisors).filter (fun p => p.1 < p.2),
+FormalConjectures/ErdosProblems/884.lean:49:      C * (1 + ∑ p ∈ (n.divisors ×ˢ n.divisors).filter (fun p =>
+FormalConjectures/ErdosProblems/884.lean:50:        p.1 < p.2 ∧ ∀ e ∈ n.divisors, ¬(p.1 < e ∧ e < p.2)),
+FormalConjectures/ErdosProblems/1052.lean:27:/-- A proper unitary divisor of $n$ is a divisor $d$ of $n$
+FormalConjectures/ErdosProblems/1052.lean:32:/-- A number $n > 0$ is a unitary perfect number if it is the sum of its proper unitary divisors. -/
+FormalConjectures/ErdosProblems/1055.lean:27:/-- A prime $p$ is in class $1$ if the only prime divisors of $p+1$ are
+FormalConjectures/ErdosProblems/1055.lean:39:/-- A prime $p$ is in class $1$ if the only prime divisors of $p+1$ are
+FormalConjectures/ErdosProblems/1055.lean:49:/-- A prime $p$ is in class $1$ if the only prime divisors of $p+1$ are
+FormalConjectures/ErdosProblems/1055.lean:55:/-- A prime $p$ is in class $1$ if the only prime divisors of $p+1$ are
+FormalConjectures/ErdosProblems/1055.lean:63:/-- A prime $p$ is in class $1$ if the only prime divisors of $p+1$ are
+FormalConjectures/ErdosProblems/1055.lean:73:/-- A prime $p$ is in class $1$ if the only prime divisors of $p+1$ are
+FormalConjectures/ErdosProblems/684.lean:42:all primes $p \le k$. This is the largest divisor of $m$ whose prime factors
+FormalConjectures/ErdosProblems/18.lean:24:We call $m$ *practical* if every integer $1 \leq n < m$ is the sum of distinct divisors
+FormalConjectures/ErdosProblems/18.lean:26:is the sum of at most $k$ distinct divisors of $m$.
+FormalConjectures/ErdosProblems/18.lean:49:    of distinct divisors of $m$. -/
+FormalConjectures/ErdosProblems/18.lean:52:    ∃ S : Finset ℕ, S ⊆ Nat.divisors m ∧ S.sum id = n
+FormalConjectures/ErdosProblems/18.lean:56:    divisors of $m$. -/
+FormalConjectures/ErdosProblems/18.lean:59:    ∃ S : Finset ℕ, S ⊆ Nat.divisors m ∧ S.card ≤ k ∧ S.sum id = n}
+FormalConjectures/ErdosProblems/469.lean:27:/-- The proposition that `n` is a sum of distinct proper divisors. -/
+FormalConjectures/ErdosProblems/469.lean:35:proper divisors of $n$, but this is not true for any $m ∣ n$ with $m < n$. Does:
+FormalConjectures/ErdosProblems/976.lean:43:the greatest prime divisor of $\prod_{m=1}^{n} f(m)$. Is it true that $F_f(n) \gg n^{1+c}$
+FormalConjectures/ErdosProblems/893.lean:24:- [KoLu25] V. Kovač and F. Luca, On the number of divisors of Mersenne numbers. arXiv:2506.04883 (2025).
+FormalConjectures/ErdosProblems/893.lean:34:Here $\tau$ is the divisor counting function, which is `σ 0` in mathlib.
+FormalConjectures/ErdosProblems/402.lean:40:has no common divisor) the only cases where equality is achieved are when
+FormalConjectures/ErdosProblems/1100.lean:24:If $1 = d_1 < \cdots < d_{\tau(n)} = n$ are the divisors of $n$, let $\tau^\perp(n)$ count the
+FormalConjectures/ErdosProblems/1100.lean:42:/-- The sorted list of divisors of $n$ in increasing order. -/
+FormalConjectures/ErdosProblems/1100.lean:44:  (Nat.divisors n).sort (· ≤ ·)
+FormalConjectures/ErdosProblems/1100.lean:47:where $d_1 < \cdots < d_{\tau(n)}$ are the divisors of $n$ in increasing order. -/
+FormalConjectures/ErdosProblems/1099.lean:24:Let $1 = d_1 < \cdots < d_{\tau(n)} = n$ be the divisors of $n$, and for $\alpha > 1$ let
+FormalConjectures/ErdosProblems/1099.lean:39:[Vo84] Vose, M. D., _Integers with consecutive divisors in small ratio_, J. Number Theory (1984).
+FormalConjectures/ErdosProblems/1099.lean:46:/-- The sorted list of divisors of $n$ in increasing order. -/
+FormalConjectures/ErdosProblems/1099.lean:48:  (Nat.divisors n).sort (· ≤ ·)
+FormalConjectures/ErdosProblems/1099.lean:51:divisors of $n$ in increasing order. -/
+FormalConjectures/ErdosProblems/1054.lean:30:divisors of $m$ for some $k\geq 1$. -/
+FormalConjectures/ErdosProblems/1054.lean:32:  if h : ∃ᵉ (m) (k ≥ 1), n = ∑ i < k, Nat.nth (· ∈ m.divisors) i then
+FormalConjectures/ErdosProblems/1054.lean:36:/-- Let $f(n)$ be the minimal integer $m$ such that $n$ is the sum of the $k$ smallest divisors
+FormalConjectures/ErdosProblems/1054.lean:42:/-- Let $f(n)$ be the minimal integer $m$ such that $n$ is the sum of the $k$ smallest divisors
+FormalConjectures/ErdosProblems/1054.lean:49:/-- Let $f(n)$ be the minimal integer $m$ such that $n$ is the sum of the $k$ smallest divisors
+FormalConjectures/ErdosProblems/1054.lean:56:/-- Let $f(n)$ be the minimal integer $m$ such that $n$ is the sum of the $k$ smallest divisors
+FormalConjectures/ErdosProblems/1054.lean:62:/-- Let $f(n)$ be the minimal integer $m$ such that $n$ is the sum of the $k$ smallest divisors
+FormalConjectures/ErdosProblems/851.lean:29:prime divisors.
+FormalConjectures/ErdosProblems/851.lean:45:form $2^k+n$, where $k \geq 0$ and $n$ has at most $r$ prime divisors, is at least $1-\epsilon$?
+FormalConjectures/ErdosProblems/248.lean:33:Here $\omega(n)$ is the number of distinct prime divisors of $n$.
+FormalConjectures/ErdosProblems/768.lean:25:exists a divisor $d > 1$ of $n$ with $d \equiv 1 \pmod{p}$. Is it true that there
+FormalConjectures/ErdosProblems/768.lean:36:some divisor $d > 1$ of $n$ with $d \equiv 1 \pmod{p}$. -/
+FormalConjectures/ErdosProblems/204.lean:30:Are there $n$ such that there is a covering system with moduli the divisors of $n$ which is 'as
+FormalConjectures/ErdosProblems/444.lean:24:Let $A \subseteq \mathbb{N}$ be infinite and let $d_A(n)$ count the divisors of $n$ that belong
+FormalConjectures/ErdosProblems/444.lean:28:[ErSa80] Erdős, P. and Sárkőzy, A., *On the number of divisors of $n!$*, 1980.
+FormalConjectures/ErdosProblems/444.lean:39:noncomputable def divisorCountIn (A : Set ℕ) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/444.lean:40:  (n.divisors.filter (· ∈ A)).card
+FormalConjectures/ErdosProblems/444.lean:63:    M * (reciprocalSum A x) ^ k < (divisorCountIn A n : ℝ) := by
+FormalConjectures/ErdosProblems/413.lean:26:Erdős called a natural number `n` a *barrier* for `ω`, the number of distinct prime divisors,
+FormalConjectures/ErdosProblems/69.lean:34:irrational? (Here $\omega(n)$ counts the number of distinct prime divisors of $n$.)
+FormalConjectures/ErdosProblems/698.lean:26:(in particular the greatest common divisor is always $> 1$). This inequality is
+FormalConjectures/ErdosProblems/1163.lean:25:subgroups of $S_n$. A concrete interpretation: the proportion of divisors of
+FormalConjectures/ErdosProblems/1163.lean:46:interpretation: as $n \to \infty$, the proportion of divisors of $n!$ that are orders
+FormalConjectures/ErdosProblems/1163.lean:49:fraction of all divisors.
+FormalConjectures/ErdosProblems/1163.lean:55:        ((n.factorial.divisors.filter (fun m => IsSubgroupOrderOfSn n m)).card : ℝ) <
+FormalConjectures/ErdosProblems/1163.lean:56:        ε * (n.factorial.divisors.card : ℝ) := by
+FormalConjectures/ErdosProblems/418.lean:33:- [PoPo16] Pollack, Paul and Pomerance, Carl, Some problems of Erdős on the sum-of-divisors
+FormalConjectures/ErdosProblems/384.lean:29:[Ec69] Ecklund, E. F., _On prime divisors of the binomial coefficient_ (1969).
+FormalConjectures/ErdosProblems/410.lean:30:Let $σ_1(n) = σ(n)$, the sum of divisors function, and $σ_k(n) = σ(σ_{k-1}(n))$.
+FormalConjectures/ErdosProblems/450.lean:25:divisor in $(n, 2n)$ is at most $\varepsilon \cdot y$?
+FormalConjectures/ErdosProblems/450.lean:29:such that for all $x$, the count of integers in $(x, x+y)$ with a divisor in $(n, 2n)$ is at most
+FormalConjectures/ErdosProblems/450.lean:39:[Fo08] Ford, K., *The distribution of integers with a divisor in a given interval*. Annals of
+FormalConjectures/ErdosProblems/450.lean:47:/-- Count of integers in the open interval $(x, x + y)$ having at least one divisor
+FormalConjectures/ErdosProblems/450.lean:50:  ((Finset.Ioo x (x + y)).filter (fun m =>
+FormalConjectures/ErdosProblems/450.lean:57:integers in $(x, x + y)$ with a divisor in $(n, 2n)$ is at most $\varepsilon \cdot y$.
+FormalConjectures/ErdosProblems/394.lean:26:- [ErHa78] Erdős, P. and Hall, R. R., On some unconventional problems on the divisors of integers.
+FormalConjectures/ErdosProblems/175.lean:32:[Sa85] Sárközy, A., *On divisors of binomial coefficients, I*. J. Number Theory **20** (1985), 70-80.
+FormalConjectures/ErdosProblems/383.lean:29:divisor of
+FormalConjectures/ErdosProblems/693.lean:23:have a divisor in the open interval $(n, 2n)$. Is the maximum gap between consecutive elements of
+FormalConjectures/ErdosProblems/693.lean:36:/-- An integer $m$ has a divisor in the open interval $(n, 2n)$. -/
+FormalConjectures/ErdosProblems/693.lean:44:$A = \{a_1 < a_2 < \cdots\}$ be the set of integers in $[n, n^k]$ which have a divisor
+FormalConjectures/ErdosProblems/859.lean:29:a sum of distinct divisors of `n`.
+FormalConjectures/ErdosProblems/859.lean:31:def DivisorSumSet (t : ℕ) := { n : ℕ | ∃ s ⊆ Nat.divisors n, t = ∑ i ∈ s, i }
+FormalConjectures/ErdosProblems/449.lean:27:divisors of $n$?
+FormalConjectures/ErdosProblems/449.lean:38:/-- $r(n)$: the number of ordered pairs $(d_1, d_2)$ of divisors of $n$ with
+FormalConjectures/ErdosProblems/449.lean:41:  ((n.divisors ×ˢ n.divisors).filter (fun p => p.1 < p.2 ∧ p.2 < 2 * p.1)).card
+FormalConjectures/ErdosProblems/449.lean:53:        (closeDivisorPairs n : ℝ) ≥ ε * (n.divisors.card : ℝ))).card /
+FormalConjectures/ErdosProblems/534.lean:44:pairwise common divisor* (1996).
+FormalConjectures/ErdosProblems/699.lean:47:one can always take `p > i` in the prime divisor statement. -/
+FormalConjectures/ErdosProblems/955.lean:23:natural density zero, where $s(n)$ denotes the sum of proper divisors of $n$?
+FormalConjectures/ErdosProblems/955.lean:36:/-- The sum of proper divisors function $s(n) = \sum_{d \mid n,\, d < n} d$. -/
+FormalConjectures/ErdosProblems/955.lean:50:$s^{-1}(A) = \{n \in \mathbb{N} : s(n) \in A\}$, where $s$ is the sum of proper divisors
+FormalConjectures/ErdosProblems/887.lean:32:$n$ has at most $K$ divisors in $(n^{\frac{1}{2}}, n^{\frac{1}{2}} + C n^{\frac{1}{4}})$.
+FormalConjectures/ErdosProblems/887.lean:41:$n$ has at most $K$ divisors in $(n^{\frac{1}{2}}, n^{\frac{1}{2}} + C n^{\frac{1}{4}})$.
+FormalConjectures/ErdosProblems/887.lean:49:A question of Erdős and Rosenfeld, who proved that there are infinitely many $n$ with $4$ divisors
+FormalConjectures/ErdosProblems/887.lean:59:with $K$ divisors in $(n^{\frac{1}{2}}, n^{\frac{1}{2}} + n^{\frac{1}{4}})$.
+FormalConjectures/ErdosProblems/928.lean:24:Let $\alpha, \beta \in (0,1)$ and let $P(n)$ denote the largest prime divisor of $n$.
+FormalConjectures/ErdosProblems/964.lean:24:Let $\tau(n)$ count the number of divisors of $n$. Is the sequence
+FormalConjectures/ErdosProblems/964.lean:51:      |((Nat.divisors (n + 1)).card : ℝ) / ((Nat.divisors n).card : ℝ) - r| < ε := by
+FormalConjectures/ErdosProblems/144.lean:26:[MaTe84] Maier, H. and Tenenbaum, G., *On the set of divisors of an integer*, Invent. Math. 76
+FormalConjectures/ErdosProblems/144.lean:38:/-- A positive integer $n$ has two divisors $d_1, d_2$ with $d_1 < d_2 < 2d_1$. -/
+FormalConjectures/ErdosProblems/144.lean:44:The density of integers which have two divisors $d_1, d_2$ such that $d_1 < d_2 < 2d_1$
+FormalConjectures/ErdosProblems/144.lean:48:two divisors $d_1 < d_2 < 2d_1$, we have $A(N)/N \to 1$ as $N \to \infty$.
+FormalConjectures/ErdosProblems/886.lean:33:The set of divisors of $n$ in the interval $(n^{1/2}, n^{1/2} + n^{1/2-\epsilon})$.
+FormalConjectures/ErdosProblems/886.lean:36:  (divisors n).filter (fun d =>
+FormalConjectures/ErdosProblems/886.lean:40:Let $\epsilon>0$. Is it true that, for all large $n$, the number of divisors of $n$ in
+FormalConjectures/ErdosProblems/886.lean:52:four divisors of $n$ in $(n^{1/2},n^{1/2}+16n^{1/4})$.
+FormalConjectures/ErdosProblems/886.lean:61:$1+C^2$ many divisors in $[n^{1/2}, n^{1/2}+Cn^{1/4}]$.
+FormalConjectures/ErdosProblems/886.lean:66:    ((divisors n).filter (fun (d : ℕ) =>
+FormalConjectures/ErdosProblems/258.lean:29:$\sum_n \frac{d(n)}{(a_1 ... a_n)}$ irrational, where $d(n)$ is the number of divisors of $n$?
+FormalConjectures/ErdosProblems/258.lean:34:    Irrational (∑' (n : ℕ), ((n + 1).divisors.card / ∏ i ∈ Finset.Icc 1 n, a i)) := by
+FormalConjectures/ErdosProblems/258.lean:40:Is $\sum_n \frac{d(n)}{(a_1 ... a_n)}$ irrational, where $d(n)$ is the number of divisors of $n$?
+FormalConjectures/ErdosProblems/258.lean:48:    Irrational (∑' (n : ℕ), ((n + 1).divisors.card / ∏ i ∈ Finset.Icc 1 n, a i)) := by
+FormalConjectures/ErdosProblems/258.lean:59:    Irrational (∑' (n : ℕ), ((n + 1).divisors.card / t^n)) := by
+FormalConjectures/ErdosProblems/419.lean:24:If $\tau(n)$ counts the number of divisors of $n$, then what is the set of limit
+FormalConjectures/ErdosProblems/419.lean:38:divisors of n!_. Analytic Number Theory (Proceedings of a Conference in Honor of
+FormalConjectures/ErdosProblems/419.lean:48:/-- The ratio $\tau((n+1)!) / \tau(n!)$ as a real number, where $\tau$ counts divisors. -/
+FormalConjectures/ErdosProblems/419.lean:50:  ((Nat.divisors (n + 1).factorial).card : ℝ) / ((Nat.divisors n.factorial).card : ℝ)
+FormalConjectures/ErdosProblems/419.lean:56:$\{1 + 1/k : k \geq 1\} \cup \{1\}$, where $\tau(n) = |\text{divisors of } n|$.
+FormalConjectures/ErdosProblems/269.lean:28:By convention, $1$ satisfies this for any $P$ as it has no prime divisors.
+FormalConjectures/ErdosProblems/414.lean:28:-- The auxiliary function $h(n) = n + τ(n)$ (where $τ(n) counts the number of divisors of $n$)
+FormalConjectures/ErdosProblems/414.lean:29:def h (n : ℕ) : ℕ := n + n.divisors.card
+FormalConjectures/ErdosProblems/730.lean:34:and $\binom{2m}{m}$ have the same set of prime divisors?
+FormalConjectures/ErdosProblems/975.lean:27: - [Ho63] Hooley, Christopher, On the number of divisors of a quadratic polynomial. Acta Math. (1963), 97--114.
+FormalConjectures/ErdosProblems/975.lean:28: - [Mc95] McKee, James, On the average number of divisors of quadratic polynomials. Math. Proc. Cambridge Philos. Soc. (1995), 389--392.
+FormalConjectures/ErdosProblems/975.lean:29: - [Mc97] McKee, James, A note on the number of divisors of quadratic polynomials. (1997), 275--281.
+FormalConjectures/ErdosProblems/975.lean:30: - [Mc99] McKee, James, The average number of divisors of an irreducible quadratic polynomial. Math. Proc. Cambridge Philos. Soc. (1999), 17--22.
+FormalConjectures/ErdosProblems/975.lean:31: - [T] T. Tao, Erdos' divisor bound, https://terrytao.wordpress.com/2011/07/23/erdos-divisor-bound/
+FormalConjectures/ErdosProblems/975.lean:41:Here $\tau$ is the divisor counting function, which is `σ 0` in mathlib.
+FormalConjectures/ErdosProblems/945.lean:23: - [ErMi52] Erdős, P. and Mirsky, L., The distribution of values of the divisor function {$d(n)$}. Proc. London Math. Soc. (3) (1952), 257--271.
+FormalConjectures/ErdosProblems/945.lean:30:abbrev τ  := fun (n : ℕ) => n.divisors.card
+FormalConjectures/ErdosProblems/945.lean:34:with $τ(n+1), \dots, τ(n+k)$ all distinct, where $τ(m)$ counts the divisors of $m$. -/
+FormalConjectures/ErdosProblems/945.lean:59:contains two integers with the same number of divisors?
+FormalConjectures/ErdosProblems/946.lean:25: - [ErMi52] Erdős, P. and Mirsky, L., The distribution of values of the divisor function {$d(n)$}.
+FormalConjectures/ErdosProblems/946.lean:29: - [He84] Heath-Brown, D. R., The divisor function at consecutive integers.
+FormalConjectures/ErdosProblems/946.lean:31: - [Hi85] Hildebrand, A., The divisor function at consecutive integers. Pacific J. Math.
+FormalConjectures/ErdosProblems/946.lean:44:Here τ is the divisor counting function, which is `σ 0` in mathlib.
+FormalConjectures/ErdosProblems/647.lean:29:/-- Let $\tau(n)$ count the number of divisors of $n$. Is there some $n > 24$ such that
+FormalConjectures/ErdosProblems/1058.lean:45:divisor of $n! + 1$ belongs to $\{q, r\}$, where $q$ is the smallest prime
+FormalConjectures/ErdosProblems/784.lean:32:[We25] Weingartner, A., *Integers free of divisors from a given set*, 2025.
+FormalConjectures/ErdosProblems/122.lean:26:proved this for $f = \tau$ (divisor count) and $f = \omega$ (distinct prime factor count).
+FormalConjectures/ErdosProblems/122.lean:80:- $f(n) = \tau(n)$ = number of divisors of $n$, and
+FormalConjectures/ErdosProblems/122.lean:81:- $f(n) = \omega(n)$ = number of distinct prime divisors of $n$.
+FormalConjectures/ErdosProblems/122.lean:85:- $f(n) = \sigma(n)$ (sum of divisors).
+FormalConjectures/ErdosProblems/122.lean:92:    HasErdos122Property (fun n => (Nat.divisors n).card) ∧
+FormalConjectures/ErdosProblems/692.lean:35:/-- The number of divisors of $k$ that lie strictly between $n$ and $m$. -/
+FormalConjectures/ErdosProblems/692.lean:37:  ((Nat.divisors k).filter (fun d => n < d ∧ d < m)).card
+FormalConjectures/ErdosProblems/692.lean:39:/-- The proportion of positive integers up to $N$ having exactly one divisor
+FormalConjectures/ErdosProblems/692.lean:46:the limit of $|\{k \leq N : k \text{ has exactly one divisor in } (n, m)\}| / N$ equals $d$. -/
+FormalConjectures/ErdosProblems/692.lean:54:one divisor in the open interval $(n, m)$. Erdős asked (1986, Oberwolfach) whether,
+FormalConjectures/ErdosProblems/731.lean:48:least non-divisor of $\binom{2n}{n}$ falls outside the interval
+FormalConjectures/ErdosProblems/205.lean:41:of prime divisors of $m$ counted with multiplicity.
+FormalConjectures/ErdosProblems/257.lean:44:where $d(n)$ is the number of divisors of $n$.
+FormalConjectures/ErdosProblems/257.lean:48:    ∑' n, 1 / (2 ^ n - 1 : ℝ) = ∑' n, n.divisors.card / (2 ^ n : ℝ) := by
+FormalConjectures/ErdosProblems/257.lean:62:    Irrational <| ∑' n, n.divisors.card / (2 ^ n : ℝ) := by
+FormalConjectures/ErdosProblems/387.lean:35:`n.choose k` has a divisor in `(cn, n]`? -/
+FormalConjectures/ErdosProblems/387.lean:51:/-- It is easy to see that `n.choose k` has a divisor in `[n / k, n]`. -/
+FormalConjectures/ErdosProblems/387.lean:66:has a divisor in `(cn, n]`? This is a variant of `erdos_387` and appears in [Gu04]. -/
+FormalConjectures/ErdosProblems/673.lean:24:Let $1 = d_1 < \cdots < d_{\tau(n)} = n$ be the divisors of $n$ and
+FormalConjectures/ErdosProblems/673.lean:32:Terence Tao observed that for any divisor $m \mid n$,
+FormalConjectures/ErdosProblems/673.lean:49:/-- The sorted list of divisors of $n$ in increasing order. -/
+FormalConjectures/ErdosProblems/673.lean:51:  (Nat.divisors n).sort (· ≤ ·)
+FormalConjectures/ErdosProblems/673.lean:54:divisors of $n$ in increasing order. This is the sum of ratios of consecutive
+FormalConjectures/ErdosProblems/673.lean:55:divisors. -/

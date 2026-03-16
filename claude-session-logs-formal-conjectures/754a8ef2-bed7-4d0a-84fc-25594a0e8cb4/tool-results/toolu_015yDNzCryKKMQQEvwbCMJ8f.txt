@@ -1,0 +1,858 @@
+/home/ryan/formal-conjectures/ai-review/147.md-5-**Significant code duplication exists.** The definitions `ContainsSubgraph` and `turanNumber` in this file are identical (up to namespace) to those in Problems 113, 146, 159, and 180. These should be factored into a shared utility file.
+/home/ryan/formal-conjectures/ai-review/147.md-6-
+ai-review/147.md-7-More importantly, **Mathlib already provides superior alternatives**:
+/home/ryan/formal-conjectures/ai-review/147.md-8-
+/home/ryan/formal-conjectures/ai-review/147.md-9-- **`SimpleGraph.IsContained` (notation `G ⊑ H`)** in `Mathlib.Combinatorics.SimpleGraph.Copy` is semantically equivalent to the custom `ContainsSubgraph` (injective graph homomorphism preserving adjacency). The custom definition is redundant.
+ai-review/147.md:10:- **`SimpleGraph.extremalNumber`** in `Mathlib.Combinatorics.SimpleGraph.Extremal.Basic` is the standard Turán number `ex(n; H)`, defined concretely over `Fin n` with an established API (`extremalNumber_le_iff`, monotonicity, etc.). This is preferred over the custom `turanNumber`, which uses `sSup` over an existentially-quantified set ranging over all `Type`s—mathematically valid but harder to work with.
+/home/ryan/formal-conjectures/ai-review/147.md-11-
+/home/ryan/formal-conjectures/ai-review/147.md-12-The bipartiteness check `Nonempty (H.Coloring (Fin 2))` and the minimum degree condition `∀ v, r ≤ H.degree v` are standard and appropriate. Mathlib provides `SimpleGraph.minDegree` which could be used instead of the inline universal quantification, though the current formulation is equivalent and arguably more explicit.
+/home/ryan/formal-conjectures/ai-review/147.md-13-
+ai-review/147.md:14:**Recommendation:** Replace `ContainsSubgraph` and `turanNumber` with Mathlib's `IsContained`/`Free` and `extremalNumber`. Factor shared graph-theoretic definitions into a common utility file used by Problems 113, 146, 147, 159, and 180.
+/home/ryan/formal-conjectures/ai-review/147.md-15-
+/home/ryan/formal-conjectures/ai-review/147.md-16-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/147.md-17-
+ai-review/147.md-18-The formalization cites:
+ai-review/147.md-19-- **[ErSi84]** Erdős, P. and Simonovits, M., _Cube-supersaturated graphs and related problems_, Progress in graph theory (1984). — **Matches** the website but is **incomplete**: the website gives the full bibliographic entry as "Progress in graph theory (Waterloo, Ont., 1982), Academic Press, Toronto, ON, 1984, 203–218." The formalization omits location, publisher, and page numbers.
+--
+/home/ryan/formal-conjectures/ai-review/147.md-82-- The quantifier structure `∀ r ≥ 2, ∀ H, ... ∃ ε > 0, ∃ C > 0, ∃ N₀, ∀ n ≥ N₀, ...` correctly captures the asymptotic lower bound with constants depending on H.
+/home/ryan/formal-conjectures/ai-review/147.md-83-- The direction of the inequality `C * n^{...} ≤ ex(n; H)` correctly formalizes the `≫` (lower bound) notation.
+/home/ryan/formal-conjectures/ai-review/147.md-84-
+ai-review/147.md-85-**Verification of the disproof:** For Janzer's r = 3 counterexample: H is 3-regular bipartite with ex(n; H) ≪ n^{4/3+δ} for any δ > 0. The conjecture would require ex(n; H) ≥ C · n^{3/2+ε} for some ε > 0 and large n. Since 4/3 + δ < 3/2 + ε for sufficiently small δ, the upper bound n^{4/3+δ} eventually falls below C · n^{3/2+ε}, contradicting the conjecture. The negation `¬P` (i.e., `answer(False)`) is correct.
+/home/ryan/formal-conjectures/ai-review/147.md-86-
+ai-review/147.md:87:**Potential concern with `turanNumber` well-definedness:** The `sSup` over the set of achievable edge counts is always well-defined: the set is nonempty (the edgeless graph on `Fin n` witnesses `0 ∈ S`) and bounded above (by `n choose 2`). However, the definition quantifies `∃ (V : Type)` over all types in `Type 0`, which is mathematically valid but universe-sensitive. Mathlib's `extremalNumber` avoids this by using the concrete type `Fin n`.
+/home/ryan/formal-conjectures/ai-review/147.md-88-
+/home/ryan/formal-conjectures/ai-review/147.md-89-**No correctness issues found.** The formalization faithfully and correctly captures the disproved conjecture.
+/home/ryan/formal-conjectures/ai-review/147.md-90-
+/home/ryan/formal-conjectures/ai-review/147.md-91-## Summary
+/home/ryan/formal-conjectures/ai-review/147.md-92-
+/home/ryan/formal-conjectures/ai-review/147.md-93-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/147.md-94-|-----------|-----------|
+ai-review/147.md:95:| Code reuse | **Significant opportunity.** `ContainsSubgraph` and `turanNumber` are duplicated across 5+ files and should be replaced by Mathlib's `IsContained`/`Free` and `extremalNumber`. |
+/home/ryan/formal-conjectures/ai-review/147.md-96-| Citations | **Mostly good.** Main references match the website. [ErSi84] is missing full bibliographic details (publisher, pages). Missing [Er93], [Er97c]. Missing cross-references to problems #113, #146, #714. |
+ai-review/147.md-97-| Variants | **Partially complete.** Core disproved conjecture is captured. Missing: the probabilistic lower bound (2−2/r exponent), Janzer's follow-up conjecture for r-regular graphs. |
+/home/ryan/formal-conjectures/ai-review/147.md-98-| Readability | **Good.** Clear docstrings, well-structured code, appropriate LaTeX. Minor parenthesization suggestion for the exponent. |
+/home/ryan/formal-conjectures/ai-review/147.md-99-| Formalizability | **Excellent.** Statement is unambiguous and precisely formalizable. The r-as-lower-bound formulation is equivalent to the original. |
+/home/ryan/formal-conjectures/ai-review/147.md-100-| Correctness | **Correct.** Faithful formalization with appropriate quantifier structure. The `answer(False)` correctly encodes the disproved status. No mathematical errors. |
+--
+/home/ryan/formal-conjectures/ai-review/1178.md-8-
+/home/ryan/formal-conjectures/ai-review/1178.md-9-| 1178 (standalone defs) | 1157 (standalone defs) | Semantics |
+/home/ryan/formal-conjectures/ai-review/1178.md-10-|---|---|---|
+/home/ryan/formal-conjectures/ai-review/1178.md-11-| `IsRUniform r E` | `UniformHypergraph r n` (structure) | r-uniform hypergraph |
+/home/ryan/formal-conjectures/ai-review/1178.md-12-| `ContainsConfig d e n E` | `edgesSpannedBy` + `IsFree` | Substructure avoidance |
+ai-review/1178.md:13:| `turanNumber r n d e` | `extremalNumber r n k s` | Extremal number ex_r(n; d, e) |
+/home/ryan/formal-conjectures/ai-review/1178.md-14-
+/home/ryan/formal-conjectures/ai-review/1178.md-15-Problem 716 (`FormalConjectures/ErdosProblems/716.lean`) also independently defines `Hypergraph3` (3-uniform case) and `isFree`.
+/home/ryan/formal-conjectures/ai-review/1178.md-16-
+ai-review/1178.md:17:All three files define the same extremal hypergraph concepts from scratch. Problem 1157 is the most general (the Brown–Erdős–Sós conjecture in full generality), and 1178 is explicitly the t=2 special case of 1157. Ideally, 1178 should import and reuse definitions from 1157 (or a shared utility file), replacing `turanNumber` with `Erdos1157.extremalNumber` and `ContainsConfig`/`IsRUniform` with the corresponding 1157 definitions.
+/home/ryan/formal-conjectures/ai-review/1178.md-18-
+/home/ryan/formal-conjectures/ai-review/1178.md-19-No existing definitions in `FormalConjecturesForMathlib/` cover this area.
+/home/ryan/formal-conjectures/ai-review/1178.md-20-
+/home/ryan/formal-conjectures/ai-review/1178.md-21-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1178.md-22-
+--
+/home/ryan/formal-conjectures/ai-review/60.md-12-
+/home/ryan/formal-conjectures/ai-review/60.md-13-| Local definition | Mathlib replacement | Location |
+/home/ryan/formal-conjectures/ai-review/60.md-14-|---|---|---|
+ai-review/60.md-15-| `cycleGraph60` | `SimpleGraph.cycleGraph` | `Mathlib/Combinatorics/SimpleGraph/Circulant.lean:62` |
+ai-review/60.md-16-| `ContainsSubgraph60` | `SimpleGraph.IsContained` (via `Copy`) | `Mathlib/Combinatorics/SimpleGraph/Copy.lean:237` |
+ai-review/60.md:17:| `extremalNumber60` | `SimpleGraph.extremalNumber` | `Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:78` |
+ai-review/60.md-18-| `labeledC4Count` | `SimpleGraph.labelledCopyCount` | `Mathlib/Combinatorics/SimpleGraph/Copy.lean:406` |
+/home/ryan/formal-conjectures/ai-review/60.md-19-
+ai-review/60.md-20-**Details:**
+/home/ryan/formal-conjectures/ai-review/60.md-21-
+ai-review/60.md-22-1. **`cycleGraph60`** manually constructs the cycle via modular arithmetic. Mathlib's `SimpleGraph.cycleGraph n` defines it as `circulantGraph {1}` on `Fin n`, which is cleaner and comes with lemmas. Note: Mathlib's version is defined for all `n : ℕ` (returning `⊥` for `n = 0`) rather than requiring `m ≥ 3`.
+/home/ryan/formal-conjectures/ai-review/60.md-23-
+/home/ryan/formal-conjectures/ai-review/60.md-24-2. **`ContainsSubgraph60`** is an existential over injective homomorphisms. Mathlib now has `SimpleGraph.Copy A B` (a structure for injective homomorphisms from `A` to `B`) and `SimpleGraph.IsContained A B` (notation `A ⊑ B`), which is `Nonempty (Copy A B)`. The negation, `SimpleGraph.Free A B`, means `¬A ⊑ B`.
+/home/ryan/formal-conjectures/ai-review/60.md-25-
+ai-review/60.md:26:3. **`extremalNumber60`** uses `sSup` over a set of naturals. Mathlib's `SimpleGraph.extremalNumber n H` uses `Finset.sup` over the finset of `H`-free graphs, which is more robust (no need to verify boundedness for `sSup`). Note the argument order differs: Mathlib uses `(n : ℕ) (H)` while the formalization uses `(H) (n : ℕ)`.
+/home/ryan/formal-conjectures/ai-review/60.md-27-
+/home/ryan/formal-conjectures/ai-review/60.md-28-4. **`labeledC4Count`** counts injective maps `Fin 4 → Fin n` preserving cycle adjacency via `Finset.univ.filter`. Mathlib's `SimpleGraph.labelledCopyCount G H` counts `Fintype.card (Copy H G)`, which generalizes this to any pair of finite graphs.
+/home/ryan/formal-conjectures/ai-review/60.md-29-
+ai-review/60.md:30:**Also duplicated across the project:** Identical `cycleGraph`, `ContainsSubgraph`, and `extremalNumber` definitions appear in Problems 765, 572, 551, 556, 86, 594, 181, 736, and many others, each with a different numeric suffix. This is a significant project-wide code reuse opportunity now that Mathlib provides canonical versions.
+/home/ryan/formal-conjectures/ai-review/60.md-31-
+ai-review/60.md:32:**Recommendation:** Rewrite the theorem statement in terms of Mathlib's `SimpleGraph.extremalNumber`, `SimpleGraph.cycleGraph`, and `SimpleGraph.labelledCopyCount`. This would eliminate all four local definitions.
+/home/ryan/formal-conjectures/ai-review/60.md-33-
+/home/ryan/formal-conjectures/ai-review/60.md-34----
+/home/ryan/formal-conjectures/ai-review/60.md-35-
+/home/ryan/formal-conjectures/ai-review/60.md-36-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/60.md-37-
+--
+ai-review/60.md-67-theorem erdos_60.variants.even_prime_power :
+ai-review/60.md-68-    ∃ (c : ℝ) (_ : c > 0),
+ai-review/60.md-69-    ∀ q : ℕ, 2 ∣ q →
+ai-review/60.md-70-    let n := q ^ 2 + q + 1
+ai-review/60.md-71-    ∀ G : SimpleGraph (Fin n),
+ai-review/60.md:72:      G.edgeSet.ncard > extremalNumber60 (cycleGraph60 4 (by omega)) n →
+ai-review/60.md-73-      (labeledC4Count n G : ℝ) ≥ c * (n : ℝ) ^ ((1 : ℝ) / 2) := by
+/home/ryan/formal-conjectures/ai-review/60.md-74-  sorry
+/home/ryan/formal-conjectures/ai-review/60.md-75-```
+/home/ryan/formal-conjectures/ai-review/60.md-76-
+ai-review/60.md-77-**Missing variant: "at least 2 copies."**
+--
+/home/ryan/formal-conjectures/ai-review/60.md-81-```lean
+/home/ryan/formal-conjectures/ai-review/60.md-82-@[category research open, AMS 5]
+ai-review/60.md-83-theorem erdos_60.variants.at_least_two :
+ai-review/60.md-84-    ∃ (N₀ : ℕ), ∀ n : ℕ, N₀ ≤ n →
+ai-review/60.md-85-    ∀ G : SimpleGraph (Fin n),
+ai-review/60.md:86:      G.edgeSet.ncard > extremalNumber60 (cycleGraph60 4 (by omega)) n →
+ai-review/60.md-87-      labeledC4Count n G ≥ 16 := by  -- 2 unlabeled copies × 8 labelings each
+/home/ryan/formal-conjectures/ai-review/60.md-88-  sorry
+/home/ryan/formal-conjectures/ai-review/60.md-89-```
+/home/ryan/formal-conjectures/ai-review/60.md-90-
+ai-review/60.md-91-**Assessment:** The core conjecture is captured. The partial result and the weaker "at least 2" variant are absent but would enrich the formalization.
+--
+/home/ryan/formal-conjectures/ai-review/60.md-94-
+/home/ryan/formal-conjectures/ai-review/60.md-95-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/60.md-96-
+ai-review/60.md-97-The code is reasonably readable. Specific observations:
+/home/ryan/formal-conjectures/ai-review/60.md-98-
+ai-review/60.md:99:- **Numeric suffixes:** All definitions have a `60` suffix (`cycleGraph60`, `ContainsSubgraph60`, `extremalNumber60`) to avoid namespace clashes. This is a project-wide pattern but makes the code less readable than using the `Erdos60` namespace for disambiguation (which is already present). Since the definitions are scoped to `namespace Erdos60`, the suffixes are strictly redundant.
+ai-review/60.md-100-- **`labeledC4Count` vs `labelledCopyCount`:** The definition hardcodes the C₄ pattern rather than composing with `cycleGraph60`. While pragmatic, it obscures the relationship to the general cycle graph and makes it less obvious that the definition is counting C₄ copies specifically. The inline encoding is equivalent but a reader must verify this manually.
+ai-review/60.md-101-- **Docstrings:** The module docstring and theorem docstring are clear and informative. The `labeledC4Count` docstring correctly notes the 8× overcounting factor.
+ai-review/60.md-102-- **`open Classical`:** Declared at the top level via `open SimpleGraph Classical`. The `Classical` open is needed for decidability but could be scoped more tightly.
+/home/ryan/formal-conjectures/ai-review/60.md-103-
+ai-review/60.md-104-**Minor:** American spelling "labeled" vs British "labelled" (Mathlib uses "labelled").
+--
+/home/ryan/formal-conjectures/ai-review/60.md-133-
+ai-review/60.md-134-### Definition: `ContainsSubgraph60`
+/home/ryan/formal-conjectures/ai-review/60.md-135-
+ai-review/60.md-136-The definition `∃ f : U → V, Function.Injective f ∧ ∀ u v, H.Adj u v → G.Adj (f u) (f v)` correctly defines (non-induced) subgraph containment via injective homomorphism. This is the standard notion in extremal graph theory.
+/home/ryan/formal-conjectures/ai-review/60.md-137-
+ai-review/60.md:138:### Definition: `extremalNumber60`
+/home/ryan/formal-conjectures/ai-review/60.md-139-
+ai-review/60.md-140-`sSup {m : ℕ | ∃ G : SimpleGraph (Fin n), ¬ContainsSubgraph60 G H ∧ G.edgeSet.ncard = m}` computes the supremum of edge counts among $H$-free graphs on $n$ vertices. For the intended use ($H = C_4$, $n$ finite):
+/home/ryan/formal-conjectures/ai-review/60.md-141-
+ai-review/60.md-142-- **Nonemptiness:** The empty graph is always $C_4$-free with 0 edges, so the set is nonempty.
+ai-review/60.md-143-- **Boundedness:** Any graph on $n$ vertices has at most $\binom{n}{2}$ edges, so the set is bounded.
+ai-review/60.md-144-- **`sSup` on `ℕ`:** Since `ℕ` has `ConditionallyCompleteLinearOrderBot`, `sSup` on a nonempty bounded set equals the maximum. This is correct.
+/home/ryan/formal-conjectures/ai-review/60.md-145-
+ai-review/60.md:146:However, there is a **subtle fragility**: if the conditions above were not met (e.g., for a degenerate $H$), `sSup` could return a junk value. Mathlib's `SimpleGraph.extremalNumber` uses `Finset.sup` over the finite set of $H$-free graphs, which avoids this concern entirely.
+/home/ryan/formal-conjectures/ai-review/60.md-147-
+ai-review/60.md-148-### Definition: `labeledC4Count`
+/home/ryan/formal-conjectures/ai-review/60.md-149-
+ai-review/60.md-150-Counts functions $f : \mathrm{Fin}\,4 \to \mathrm{Fin}\,n$ satisfying injectivity and $G.\mathrm{Adj}(f(i), f(i+1))$ for all $i \in \mathrm{Fin}\,4$. Since addition in $\mathrm{Fin}\,4$ wraps around ($3 + 1 = 0$), the four conditions are:
+/home/ryan/formal-conjectures/ai-review/60.md-151-$$G.\mathrm{Adj}(f(0), f(1)),\quad G.\mathrm{Adj}(f(1), f(2)),\quad G.\mathrm{Adj}(f(2), f(3)),\quad G.\mathrm{Adj}(f(3), f(0))$$
+--
+/home/ryan/formal-conjectures/ai-review/60.md-158-```lean
+ai-review/60.md-159-theorem erdos_60 : answer(sorry) ↔
+ai-review/60.md-160-    ∃ (c : ℝ) (_ : c > 0) (N₀ : ℕ),
+ai-review/60.md-161-    ∀ n : ℕ, N₀ ≤ n →
+ai-review/60.md-162-    ∀ G : SimpleGraph (Fin n),
+ai-review/60.md:163:      G.edgeSet.ncard > extremalNumber60 (cycleGraph60 4 (by omega)) n →
+ai-review/60.md-164-      (labeledC4Count n G : ℝ) ≥ c * (n : ℝ) ^ ((1 : ℝ) / 2)
+/home/ryan/formal-conjectures/ai-review/60.md-165-```
+/home/ryan/formal-conjectures/ai-review/60.md-166-
+ai-review/60.md-167-- **`answer(sorry)`:** Standard pattern for open problems where the truth value is unknown. Correct.
+ai-review/60.md-168-- **Logical structure:** "There exist $c > 0$ and $N_0$ such that for all $n \geq N_0$, every graph $G$ on $n$ vertices with more than $\mathrm{ex}(n; C_4)$ edges satisfies $\text{count}(G) \geq c \cdot n^{1/2}$." This faithfully captures the $\gg n^{1/2}$ statement.
+ai-review/60.md-169-- **Quantifier order:** The universal quantification over $G$ is inside the existential over $c$ and $N_0$, meaning the same constant $c$ works for all large $n$ and all graphs $G$. This is the correct reading of $\gg n^{1/2}$.
+ai-review/60.md-170-- **Cast to `ℝ`:** The comparison `(labeledC4Count n G : ℝ) ≥ c * (n : ℝ) ^ ((1 : ℝ) / 2)` is necessary because $n^{1/2}$ is irrational for non-square $n$. The cast is correct.
+ai-review/60.md:171:- **Edge count condition:** `G.edgeSet.ncard > extremalNumber60 ...` correctly captures "more than $\mathrm{ex}(n; C_4)$ edges." The strict inequality is essential — graphs with *exactly* $\mathrm{ex}(n; C_4)$ edges can be $C_4$-free.
+/home/ryan/formal-conjectures/ai-review/60.md-172-
+ai-review/60.md-173-### Potential concern: `(1 : ℝ) / 2` exponent
+/home/ryan/formal-conjectures/ai-review/60.md-174-
+ai-review/60.md-175-The expression `(n : ℝ) ^ ((1 : ℝ) / 2)` computes $n^{0.5} = \sqrt{n}$. In Lean's `Real.rpow`, this is well-defined for $n \geq 0$ (which holds since $n : \mathbb{N}$). For $n = 0$, `(0 : ℝ) ^ (1/2) = 0`, so the inequality becomes `count ≥ 0`, which is trivially true. This is harmless since the statement only needs to hold for $n \geq N_0$.
+/home/ryan/formal-conjectures/ai-review/60.md-176-
+--
+ai-review/713.md-1-# AI Review: Erdős Problem 713
+/home/ryan/formal-conjectures/ai-review/713.md-2-
+/home/ryan/formal-conjectures/ai-review/713.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/713.md-4-
+ai-review/713.md:5:**`ContainsSubgraph` and `extremalNumber` are duplicated extensively.** These identical definitions appear in at least 20+ files across the codebase (571, 714, 765, 766, 572, 1157, and many others), each scoped to their own namespace. They should be extracted into a shared utility file (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Extremal.lean` or similar) and imported by all problem files that need them.
+/home/ryan/formal-conjectures/ai-review/713.md-6-
+ai-review/713.md-7-Specific duplicates most relevant to Problem 713:
+ai-review/713.md-8-- `Erdos571.ContainsSubgraph` (571.lean:33) — identical definition
+ai-review/713.md:9:- `Erdos571.extremalNumber` (571.lean:38) — identical definition
+ai-review/713.md-10-- `Erdos714.ContainsSubgraph` (714.lean:32) — identical definition
+ai-review/713.md:11:- `Erdos714.extremalNumber` (714.lean:37) — identical definition
+/home/ryan/formal-conjectures/ai-review/713.md-12-
+/home/ryan/formal-conjectures/ai-review/713.md-13-No existing shared utility in `FormalConjecturesForMathlib` currently provides these definitions.
+/home/ryan/formal-conjectures/ai-review/713.md-14-
+/home/ryan/formal-conjectures/ai-review/713.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/713.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/713.md-66-
+ai-review/713.md-67-**The formalization is mathematically correct.** Specifically:
+/home/ryan/formal-conjectures/ai-review/713.md-68-
+ai-review/713.md-69-- **Bipartiteness via `G.Colorable 2`:** This correctly encodes that G is bipartite (2-colorable). This is the standard Mathlib representation.
+ai-review/713.md-70-- **Range of α:** `1 ≤ α ∧ α < 2` correctly captures α ∈ [1, 2).
+ai-review/713.md:71:- **Asymptotic:** `Tendsto (fun n => (extremalNumber G n : ℝ) / (c * n ^ α)) atTop (nhds 1)` correctly formalizes ex(n; G) ~ cn^α (i.e., the ratio tends to 1).
+ai-review/713.md-72-- **`answer(sorry)` wrapper:** Correctly used since this is an open problem whose truth value is unknown.
+/home/ryan/formal-conjectures/ai-review/713.md-73-
+ai-review/713.md:74:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/713.md-75-
+ai-review/713.md-76-**Another subtle point:** The definition of `ContainsSubgraph` uses injective homomorphisms (not necessarily induced subgraphs). This is the standard definition for Turán-type extremal problems: H is a subgraph of G if there's an edge-preserving injection. This is correct — the Turán extremal number forbids H as a (not necessarily induced) subgraph.
+/home/ryan/formal-conjectures/ai-review/713.md-77-
+/home/ryan/formal-conjectures/ai-review/713.md-78-### Part 2 (`erdos_713.variants.rationality`)
+/home/ryan/formal-conjectures/ai-review/713.md-79-
+--
+/home/ryan/formal-conjectures/ai-review/713.md-87-
+/home/ryan/formal-conjectures/ai-review/713.md-88-## Summary
+/home/ryan/formal-conjectures/ai-review/713.md-89-
+/home/ryan/formal-conjectures/ai-review/713.md-90-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/713.md-91-|-----------|-----------|
+ai-review/713.md:92:| Code reuse | **Needs improvement** — `ContainsSubgraph` and `extremalNumber` duplicated in 20+ files |
+/home/ryan/formal-conjectures/ai-review/713.md-93-| Citations | **Minor gaps** — historical context and hypergraph counterexamples from website not mentioned |
+/home/ryan/formal-conjectures/ai-review/713.md-94-| Variants | **Complete** — both parts of the problem are captured |
+/home/ryan/formal-conjectures/ai-review/713.md-95-| Readability | **Good** — clear docstrings, appropriate opens |
+/home/ryan/formal-conjectures/ai-review/713.md-96-| Formalizability | **High** — low ambiguity, standard mathematical definitions |
+/home/ryan/formal-conjectures/ai-review/713.md-97-| Correctness | **Correct** — no mathematical flaws identified |
+--
+ai-review/767.md-1-# Review: Erdős Problem 767
+/home/ryan/formal-conjectures/ai-review/767.md-2-
+/home/ryan/formal-conjectures/ai-review/767.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/767.md-4-
+ai-review/767.md-5-**Extremal number pattern:** The `maxEdgesAvoidingCycleChords` definition (lines 56–58) follows the exact same `sSup {e : ℕ | ∃ G : SimpleGraph (Fin n), ¬Property G ∧ G.edgeSet.ncard = e}` pattern used in at least six other files:
+ai-review/767.md:6:- `extremalNumber` in 765.lean (line 55), 766.lean (line 44), 714.lean (line 37), 713.lean (line 39)
+/home/ryan/formal-conjectures/ai-review/767.md-7-- `exC3C4` in 573.lean (line 51)
+/home/ryan/formal-conjectures/ai-review/767.md-8-- `maxEdgesNoEdgeDisjointCycles` in 585.lean (line 56)
+/home/ryan/formal-conjectures/ai-review/767.md-9-
+ai-review/767.md:10:However, 767's forbidden structure is a *property* of graphs (containing a cycle with k chords incident to a vertex), not containment of a fixed subgraph, so the `extremalNumber` from 765 (which takes a specific graph H) cannot be directly reused. The current standalone definition is appropriate.
+/home/ryan/formal-conjectures/ai-review/767.md-11-
+ai-review/767.md-12-**Cycle representation:** The injective `f : Fin m → V` with modular adjacency `G.Adj (f i) (f ⟨(i.val + 1) % m, ...⟩)` is essentially identical to the cycle encodings in:
+/home/ryan/formal-conjectures/ai-review/767.md-13-- Problem 81 (`HasInducedCycle`, line 41)
+/home/ryan/formal-conjectures/ai-review/767.md-14-- Problem 574 (`ContainsCycleOfLength`, line 38)
+/home/ryan/formal-conjectures/ai-review/767.md-15-- Problem 1091 (`HasOddCycleWithDiagonals`, line 41)
+--
+/home/ryan/formal-conjectures/ai-review/146.md-6-
+ai-review/146.md-7-More critically, **Mathlib already provides superior alternatives** for several of these definitions:
+/home/ryan/formal-conjectures/ai-review/146.md-8-
+/home/ryan/formal-conjectures/ai-review/146.md-9-- **`SimpleGraph.IsContained` (notation `G ⊑ H`)** in `Mathlib.Combinatorics.SimpleGraph.Copy` is semantically equivalent to `ContainsSubgraph` (injective graph homomorphism). The custom `ContainsSubgraph` is redundant.
+/home/ryan/formal-conjectures/ai-review/146.md-10-- **`SimpleGraph.Free`** in the same file is `¬ IsContained`, matching `¬ ContainsSubgraph`.
+ai-review/146.md:11:- **`SimpleGraph.extremalNumber`** in `Mathlib.Combinatorics.SimpleGraph.Extremal.Basic` is the standard Turán number `ex(n; H)`. It is defined as the sup over `H`-free graphs on `Fin n`, which is mathematically equivalent to the custom `turanNumber` but benefits from an established API (`extremalNumber_le_iff`, `lt_extremalNumber_iff`, monotonicity under containment, etc.).
+/home/ryan/formal-conjectures/ai-review/146.md-12-
+/home/ryan/formal-conjectures/ai-review/146.md-13-The custom `turanNumber` uses `sSup` over an existentially-quantified set ranging over all types `V`, which is mathematically valid but harder to work with in practice than Mathlib's concrete `Fin n`-based definition. The Mathlib version is preferred.
+/home/ryan/formal-conjectures/ai-review/146.md-14-
+/home/ryan/formal-conjectures/ai-review/146.md-15-`IsRDegenerateGraph` has no Mathlib counterpart and would need to remain as a custom definition, but should be shared across problems 113, 146, and 147.
+/home/ryan/formal-conjectures/ai-review/146.md-16-
+ai-review/146.md:17:**Recommendation:** Replace `ContainsSubgraph` and `turanNumber` with `SimpleGraph.IsContained`/`SimpleGraph.Free` and `SimpleGraph.extremalNumber` from Mathlib. Factor `IsRDegenerateGraph` into a shared file.
+/home/ryan/formal-conjectures/ai-review/146.md-18-
+/home/ryan/formal-conjectures/ai-review/146.md-19-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/146.md-20-
+ai-review/146.md-21-The formalization cites:
+/home/ryan/formal-conjectures/ai-review/146.md-22-- **[ErSi84]** Erdős, P. and Simonovits, M., *Cube-supersaturated graphs and related problems*, Progress in graph theory (Waterloo, Ont., 1982), Academic Press, Toronto, ON, 1984, 203-218.
+--
+/home/ryan/formal-conjectures/ai-review/146.md-86-- The bound `C * n ^ (2 - 1/r)` with `C > 0` correctly captures the big-O statement.
+ai-review/146.md-87-- The quantifier order `∀ r, ∀ H, ... ∃ C, ∀ n, ...` is correct: C may depend on both r and H.
+/home/ryan/formal-conjectures/ai-review/146.md-88-
+ai-review/146.md-89-**Edge case:** When `r = 1`, the bound becomes `C * n^1 = O(n)`, which is correct — 1-degenerate bipartite graphs are forests, and ex(n; T) = O(n) for any tree T (in fact ex(n; T) ≤ (|T| - 1)(n - 1)/2 by the Erdős-Gallai theorem, which is O(n) for fixed T).
+/home/ryan/formal-conjectures/ai-review/146.md-90-
+ai-review/146.md:91:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/146.md-92-
+ai-review/146.md-93-**Assessment:** Mathematically correct and complete. The formalization faithfully captures the conjecture as stated.
+/home/ryan/formal-conjectures/ai-review/146.md-94-
+/home/ryan/formal-conjectures/ai-review/146.md-95-## Summary
+/home/ryan/formal-conjectures/ai-review/146.md-96-
+/home/ryan/formal-conjectures/ai-review/146.md-97-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/146.md-98-|-----------|-----------|
+ai-review/146.md:99:| Code reuse | **Significant opportunity.** `ContainsSubgraph` and `turanNumber` should be replaced by Mathlib's `IsContained`/`Free` and `extremalNumber`. `IsRDegenerateGraph` should be shared across problems 113, 146, 147. |
+/home/ryan/formal-conjectures/ai-review/146.md-100-| Citations | **Good.** Main references match the website. Missing [Er91], [Er93], [Er97c] (minor). Missing cross-references to problems #113 and #147. |
+/home/ryan/formal-conjectures/ai-review/146.md-101-| Variants | **Mostly complete.** Core conjecture captured. The AKS03 result for max-degree-on-one-side variant is not formalized. |
+/home/ryan/formal-conjectures/ai-review/146.md-102-| Readability | **Good.** Clear docstrings, well-structured code. |
+/home/ryan/formal-conjectures/ai-review/146.md-103-| Formalizability | **Excellent.** Statement is unambiguous and precisely formalizable. |
+/home/ryan/formal-conjectures/ai-review/146.md-104-| Correctness | **Correct.** Faithful formalization with appropriate quantifier structure and edge case handling. Minor concern about `sSup` on ℕ vs Mathlib's `Finset.sup`. |
+--
+/home/ryan/formal-conjectures/ai-review/1076.md-1-# AI Review — Erdős Problem 1076
+/home/ryan/formal-conjectures/ai-review/1076.md-2-
+/home/ryan/formal-conjectures/ai-review/1076.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/1076.md-4-
+ai-review/1076.md:5:**Problem 1157** (`FormalConjectures/ErdosProblems/1157.lean`) is the direct generalization of this problem and defines a reusable `UniformHypergraph r n` structure, `edgesSpannedBy`, `IsFree`, and `extremalNumber` — all of which subsume the definitions in 1076. In fact, 1157's docstring explicitly notes: *"The case r = 3 and k = s + 2 is problem [1076]."*
+/home/ryan/formal-conjectures/ai-review/1076.md-6-
+/home/ryan/formal-conjectures/ai-review/1076.md-7-Problem 1076 defines its own `Hypergraph3`, `IsSubhypergraph`, `familyF`, `IsFkFree`, and `ex3` from scratch. These could potentially be replaced by 1157's definitions (instantiated at `r = 3`), but there is a **critical semantic difference** — see §6 (Correctness) below. The two formulations of "F_k-free" are not obviously equivalent, so a simple drop-in replacement is not appropriate without resolving that question first.
+/home/ryan/formal-conjectures/ai-review/1076.md-8-
+/home/ryan/formal-conjectures/ai-review/1076.md-9-Several other files (716, 1024, 593, 1075, 1178, 500) also define their own 3-uniform hypergraph structures. There is no shared utility module; each problem rolls its own definitions.
+/home/ryan/formal-conjectures/ai-review/1076.md-10-
+--
+ai-review/572.md-1-# AI Review: Erdős Problem 572
+/home/ryan/formal-conjectures/ai-review/572.md-2-
+/home/ryan/formal-conjectures/ai-review/572.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/572.md-4-
+ai-review/572.md:5:The file defines three local definitions — `cycleGraph`, `ContainsSubgraph`, and `extremalNumber` — inside the `Erdos572` namespace. These identical definitions are duplicated across **many** other Erdős problem files (569, 570, 571, 575, 576, 713, 714, 765, 766, and more). No shared version exists in `FormalConjecturesForMathlib`; a search confirms that `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/` contains no cycle graph, extremal number, or subgraph containment definitions.
+/home/ryan/formal-conjectures/ai-review/572.md-6-
+ai-review/572.md-7-**Recommendation:** These three definitions are strong candidates for extraction into a shared utility module (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Extremal.lean`). This would eliminate substantial duplication across at least 15+ problem files. Until then, the local definitions are consistent with the current codebase convention.
+/home/ryan/formal-conjectures/ai-review/572.md-8-
+/home/ryan/formal-conjectures/ai-review/572.md-9-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/572.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/572.md-67-
+ai-review/572.md-68-1. **Cycle graph definition:** `cycleGraph (2 * k) (by omega)` correctly constructs C_{2k} for k ≥ 3, giving 2k ≥ 6 ≥ 3. The adjacency relation (mod-arithmetic neighbors with inequality check) correctly defines a cycle. ✓
+/home/ryan/formal-conjectures/ai-review/572.md-69-
+ai-review/572.md-70-2. **Subgraph containment:** `ContainsSubgraph` requires an injective graph homomorphism — this is the standard notion of "H-free" in extremal graph theory. ✓
+/home/ryan/formal-conjectures/ai-review/572.md-71-
+ai-review/572.md:72:3. **Extremal number:** `extremalNumber` takes the supremum over edge counts of H-free graphs on Fin n. This matches the standard definition of ex(n; H). The use of `ncard` (which returns 0 for infinite sets) is safe here since `edgeSet` of a `SimpleGraph (Fin n)` is always finite. ✓
+/home/ryan/formal-conjectures/ai-review/572.md-73-
+ai-review/572.md-74-4. **Theorem statement:** The quantifier structure `∀ k ≥ 3, ∃ c > 0, ∃ N₀, ∀ n ≥ N₀, c · n^{1+1/k} ≤ ex(n; C_{2k})` correctly formalizes the Vinogradov lower bound. ✓
+/home/ryan/formal-conjectures/ai-review/572.md-75-
+ai-review/572.md-76-5. **Exponent computation:** `1 + 1 / (k : ℝ)` correctly computes the exponent 1 + 1/k in the reals. ✓
+/home/ryan/formal-conjectures/ai-review/572.md-77-
+ai-review/572.md:78:6. **Well-definedness concern:** The `extremalNumber` definition uses `sSup` on a set of natural numbers. For `n ≥ 1`, the set is nonempty (the empty graph has 0 edges and is H-free) and bounded above (by n choose 2). For `n = 0`, the set is `{0}` and the supremum is 0. This is well-defined. ✓
+/home/ryan/formal-conjectures/ai-review/572.md-79-
+ai-review/572.md-80-7. **Category tag:** `@[category research open, AMS 5]` — the problem is indeed open (for general k ≥ 3) and AMS classification 05 (Combinatorics) is correct. ✓
+/home/ryan/formal-conjectures/ai-review/572.md-81-
+/home/ryan/formal-conjectures/ai-review/572.md-82-**No mathematical flaws identified.**
+/home/ryan/formal-conjectures/ai-review/572.md-83-
+--
+/home/ryan/formal-conjectures/ai-review/1158.md-2-
+/home/ryan/formal-conjectures/ai-review/1158.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/1158.md-4-
+ai-review/1158.md-5-Several related hypergraph and extremal number definitions exist across the codebase:
+/home/ryan/formal-conjectures/ai-review/1158.md-6-
+ai-review/1158.md:7:- **Problem 714** (`714.lean`): Defines `ContainsSubgraph` and `extremalNumber` for simple graphs. Problem 1158 explicitly references 714 as the t=2 case, but does not reuse its definitions (since 714 is for graphs, not hypergraphs).
+ai-review/1158.md-8-- **Problem 712** (`712.lean`): Defines `IsKkrFree` and `exrKkr` for r-uniform hypergraphs avoiding K_k^r (all r-subsets of k vertices). This is a different forbidden structure than K_t(r) (complete t-partite t-uniform), so it cannot be directly reused.
+ai-review/1158.md-9-- **Problem 719** (`719.lean`): Defines `IsRUniformHypergraph` and `turanHypergraphNumber`, but again for a different forbidden configuration.
+ai-review/1158.md-10-- **Problem 836** (`836.lean`): Defines a `Hypergraph` structure and `Hypergraph.IsUniform`, but uses a different representation (structure-based rather than `Finset (Finset (Fin n))`).
+/home/ryan/formal-conjectures/ai-review/1158.md-11-
+ai-review/1158.md:12:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/1158.md-13-
+/home/ryan/formal-conjectures/ai-review/1158.md-14-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/1158.md-15-
+ai-review/1158.md-16-The formalization includes two references:
+/home/ryan/formal-conjectures/ai-review/1158.md-17-
+--
+/home/ryan/formal-conjectures/ai-review/59.md-4-
+/home/ryan/formal-conjectures/ai-review/59.md-5-**Several Mathlib definitions could replace the custom ones defined in this file.**
+/home/ryan/formal-conjectures/ai-review/59.md-6-
+ai-review/59.md-7-- **`ContainsSubgraph`** (line 36–37): Mathlib now provides `SimpleGraph.Copy` (an injective graph homomorphism structure), `SimpleGraph.IsContained` (`A ⊑ B`, defined as `Nonempty (Copy A B)`), and `SimpleGraph.Free` (`¬A ⊑ B`). These are mathematically equivalent to the custom `ContainsSubgraph`. Using `H.Free F` in place of `¬ContainsSubgraph F H` would integrate better with Mathlib's extremal graph theory library.
+/home/ryan/formal-conjectures/ai-review/59.md-8-
+ai-review/59.md:9:- **`turanNumber`** (line 41–44): Mathlib provides `SimpleGraph.extremalNumber n H`, defined as `sup { G : SimpleGraph (Fin n) | H.Free G } (#·.edgeFinset)`. This is cleaner than the custom definition, which quantifies over an arbitrary `(V : Type)` with `Fintype.card V = n` and uses `sSup` over projected edge counts. The Mathlib version directly works over `Fin n`, avoiding potential universe issues.
+/home/ryan/formal-conjectures/ai-review/59.md-10-
+ai-review/59.md-11-- **`countGFreeGraphs`** (line 47–48): No direct Mathlib equivalent exists for counting H-free graphs. This definition is fine as-is.
+/home/ryan/formal-conjectures/ai-review/59.md-12-
+ai-review/59.md-13-- **Broader codebase duplication**: At least 12 other Erdős problem files (60, 62, 146, 147, 180, 571, 572, 575, 576, 713, 714, 765) define essentially identical `ContainsSubgraph` and extremal number definitions. A shared utility would eliminate this duplication, but this is a codebase-wide concern, not specific to Problem 59.
+/home/ryan/formal-conjectures/ai-review/59.md-14-
+--
+/home/ryan/formal-conjectures/ai-review/59.md-34-
+ai-review/59.md-35-The code is generally well-structured and readable. Minor observations:
+/home/ryan/formal-conjectures/ai-review/59.md-36-
+/home/ryan/formal-conjectures/ai-review/59.md-37-- The docstrings are thorough and clearly explain the mathematical content, the disproof, and the positive result for non-bipartite graphs.
+/home/ryan/formal-conjectures/ai-review/59.md-38-- The naming `countGFreeGraphs` uses "G" while the definition parameter is `H`. This is a minor inconsistency inherited from the problem statement (which uses G for the forbidden graph) vs. the common convention (H for the forbidden graph). Not a real issue, but `countHFreeGraphs` would be more consistent with the parameter name.
+ai-review/59.md:39:- The `turanNumber` definition signature has argument order `(H : SimpleGraph U) (n : ℕ)`, while Mathlib's `extremalNumber` uses `(n : ℕ) (H : SimpleGraph W)`. This difference could cause confusion for readers familiar with Mathlib.
+/home/ryan/formal-conjectures/ai-review/59.md-40-
+/home/ryan/formal-conjectures/ai-review/59.md-41-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/59.md-42-
+/home/ryan/formal-conjectures/ai-review/59.md-43-**The problem is fully formalizable and the statement is unambiguous.**
+/home/ryan/formal-conjectures/ai-review/59.md-44-
+--
+/home/ryan/formal-conjectures/ai-review/59.md-56-
+ai-review/59.md-57-- **Quantifier structure**: `∀ U H, ∀ ε > 0, ∃ N, ∀ n ≥ N, count ≤ 2^{(1+ε)·ex(n;H)}` correctly captures "for every graph H, eventually the count is at most `2^{(1+ε)·ex(n;H)}`" for all ε > 0. This is the right formalization of the `2^{(1+o(1))·ex(n;G)}` bound.
+/home/ryan/formal-conjectures/ai-review/59.md-58-
+ai-review/59.md-59-- **`ContainsSubgraph`**: Correctly defines subgraph containment via injective homomorphism (not induced — adjacency is only required in the forward direction). This matches the standard combinatorial notion used in extremal graph theory.
+/home/ryan/formal-conjectures/ai-review/59.md-60-
+ai-review/59.md:61:- **`turanNumber`**: Uses `sSup` over natural numbers. For graphs on `n` vertices, the set `{m | ...}` is bounded above by `n choose 2` and nonempty (the empty graph is always H-free with 0 edges), so `sSup` is well-behaved. However, the definition quantifies over `∃ (V : Type)` (universe `Type 0`) rather than using `Fin n` directly. This is mathematically equivalent but introduces an unnecessary universe dependency. The Mathlib `extremalNumber` definition avoids this.
+/home/ryan/formal-conjectures/ai-review/59.md-62-
+ai-review/59.md-63-- **`countGFreeGraphs`**: Uses `Nat.card` on the subtype `{F : SimpleGraph (Fin n) // ¬ContainsSubgraph F H}`. Since `SimpleGraph (Fin n)` is a finite type, this subtype is also finite and `Nat.card` returns the correct cardinality. This is a correct formalization of the count of labeled H-free graphs.
+/home/ryan/formal-conjectures/ai-review/59.md-64-
+/home/ryan/formal-conjectures/ai-review/59.md-65-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/59.md-66-
+ai-review/59.md:67:**Verdict**: The formalization is correct and complete. No mathematical flaws. The use of custom definitions rather than Mathlib's `extremalNumber` and `IsContained` is a stylistic/reuse concern, not a correctness issue.
+/home/ryan/formal-conjectures/ai-review/59.md-68-
+/home/ryan/formal-conjectures/ai-review/59.md-69-## Summary
+/home/ryan/formal-conjectures/ai-review/59.md-70-
+/home/ryan/formal-conjectures/ai-review/59.md-71-| Category | Assessment |
+/home/ryan/formal-conjectures/ai-review/59.md-72-|----------|-----------|
+ai-review/59.md:73:| Code reuse | Custom definitions could be replaced by Mathlib's `IsContained`/`Free`/`extremalNumber` |
+ai-review/59.md-74-| Citations | Missing page/section numbers: should be `[Er93, p.335]` and `[Va99, 3.56]` |
+/home/ryan/formal-conjectures/ai-review/59.md-75-| Variants | Missing Morris–Saxton weaker conjecture (`2^{O(ex(n;G))}` for all G) and C₄ special case |
+/home/ryan/formal-conjectures/ai-review/59.md-76-| Readability | Good overall; minor naming inconsistency (`countGFreeGraphs` vs parameter `H`) |
+/home/ryan/formal-conjectures/ai-review/59.md-77-| Formalizability | Fully formalizable, no ambiguity |
+/home/ryan/formal-conjectures/ai-review/59.md-78-| Correctness | Mathematically correct and complete |
+--
+ai-review/765.md-1-# AI Review: Erdős Problem 765
+/home/ryan/formal-conjectures/ai-review/765.md-2-
+/home/ryan/formal-conjectures/ai-review/765.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/765.md-4-
+ai-review/765.md:5:**Significant duplication exists.** The three core definitions — `cycleGraph`, `ContainsSubgraph`, and `extremalNumber` — are copy-pasted across many Erdős problem files:
+/home/ryan/formal-conjectures/ai-review/765.md-6-
+ai-review/765.md-7-- `cycleGraph`: duplicated in 60, 86, 551, 552, 554, 556, 569, 666, 720, 737, 811, and more.
+ai-review/765.md-8-- `ContainsSubgraph`: duplicated in 60, 87, 146, 571, 766, 926, and more.
+ai-review/765.md:9:- `extremalNumber` / `turanNumber`: duplicated in 60, 87, 113, 146, 147, 180, 571, 572, 926, 1079, 1157, 1178.
+/home/ryan/formal-conjectures/ai-review/765.md-10-
+ai-review/765.md:11:All implementations are functionally identical (some append a problem-number suffix like `cycleGraph60`). These should ideally be consolidated into a shared utility file under `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/`. Note that `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean` already exists and defines shared graph invariants — it would be a natural home for `cycleGraph`, `ContainsSubgraph`, and `extremalNumber`.
+/home/ryan/formal-conjectures/ai-review/765.md-12-
+/home/ryan/formal-conjectures/ai-review/765.md-13-Mathlib does not currently provide a `SimpleGraph.cycleGraph` definition, so the custom one is necessary. However, Mathlib does have `SimpleGraph.Subgraph` and graph homomorphism infrastructure that could potentially replace `ContainsSubgraph`, though the current injective-homomorphism formulation is clean and standard.
+/home/ryan/formal-conjectures/ai-review/765.md-14-
+/home/ryan/formal-conjectures/ai-review/765.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/765.md-16-
+--
+ai-review/765.md-61-The asymptotic statement is formalized as:
+/home/ryan/formal-conjectures/ai-review/765.md-62-> For every ε > 0, there exists N₀ such that for all n ≥ N₀, |ex(n; C₄)/n^{3/2} - 1/2| < ε.
+/home/ryan/formal-conjectures/ai-review/765.md-63-
+/home/ryan/formal-conjectures/ai-review/765.md-64-This is a precise and correct formalization of f(n) ~ (1/2)n^{3/2}. The refined variant (O(n) error term) is also precisely stated using the standard big-O formalization (existence of a constant C).
+/home/ryan/formal-conjectures/ai-review/765.md-65-
+ai-review/765.md:66:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/765.md-67-
+/home/ryan/formal-conjectures/ai-review/765.md-68-## 6. Correctness
+/home/ryan/formal-conjectures/ai-review/765.md-69-
+/home/ryan/formal-conjectures/ai-review/765.md-70-**Main theorem (`erdos_765`) — Correct.** The formalization accurately captures ex(n; C₄) ~ (1/2)n^{3/2}. The ε-N₀ formulation is the standard definition of asymptotic equivalence for the ratio ex(n; C₄)/n^{3/2} → 1/2. The problem is correctly tagged as `solved`.
+/home/ryan/formal-conjectures/ai-review/765.md-71-
+--
+/home/ryan/formal-conjectures/ai-review/765.md-78-
+ai-review/765.md-79-**`cycleGraph` definition — Correct.** The adjacency relation correctly captures the cycle: vertex i is adjacent to vertex j iff j = (i+1) mod m or i = (j+1) mod m, with i ≠ j. The symmetry and irreflexivity proofs are correct.
+/home/ryan/formal-conjectures/ai-review/765.md-80-
+/home/ryan/formal-conjectures/ai-review/765.md-81-**`ContainsSubgraph` definition — Correct.** This defines subgraph containment via injective homomorphism (injective function preserving adjacency in one direction), which is the standard notion of subgraph isomorphism used in Turán-type extremal graph theory.
+/home/ryan/formal-conjectures/ai-review/765.md-82-
+ai-review/765.md:83:**`extremalNumber` definition — Correct.** This defines ex(n; H) as the supremum of edge counts over H-free graphs on n vertices, which is the standard definition.
+/home/ryan/formal-conjectures/ai-review/765.md-84-
+ai-review/765.md-85-**Overall mathematical correctness: Sound.** No mathematical errors identified. The formalization faithfully captures the known results and open problems.
+/home/ryan/formal-conjectures/ai-review/765.md-86-
+/home/ryan/formal-conjectures/ai-review/765.md-87-## Summary
+/home/ryan/formal-conjectures/ai-review/765.md-88-
+/home/ryan/formal-conjectures/ai-review/765.md-89-| Category | Assessment |
+/home/ryan/formal-conjectures/ai-review/765.md-90-|---|---|
+ai-review/765.md:91:| Code Reuse | ⚠️ High duplication of `cycleGraph`, `ContainsSubgraph`, `extremalNumber` across many files |
+/home/ryan/formal-conjectures/ai-review/765.md-92-| Citations | ✅ Core references present; Füredi (1983) missing |
+/home/ryan/formal-conjectures/ai-review/765.md-93-| Variants | ⚠️ Main result and O(n) refinement captured; disproved n/4 conjecture and Füredi exact result not formalized |
+/home/ryan/formal-conjectures/ai-review/765.md-94-| Readability | ✅ Clean, well-documented |
+/home/ryan/formal-conjectures/ai-review/765.md-95-| Formalizability | ✅ High; low ambiguity |
+/home/ryan/formal-conjectures/ai-review/765.md-96-| Correctness | ✅ Mathematically sound |
+--
+ai-review/1157.md-5-**Significant duplication exists across the hypergraph problem family.** Problem 1157 defines the most generic hypergraph infrastructure in the repository:
+/home/ryan/formal-conjectures/ai-review/1157.md-6-
+ai-review/1157.md-7-- `UniformHypergraph (r n : ℕ)` — generic r-uniform hypergraph structure
+/home/ryan/formal-conjectures/ai-review/1157.md-8-- `edgesSpannedBy` — counts edges spanned by a vertex set
+/home/ryan/formal-conjectures/ai-review/1157.md-9-- `IsFree` — (k,s)-free property
+ai-review/1157.md:10:- `extremalNumber` — the function f_r(n; k, s)
+/home/ryan/formal-conjectures/ai-review/1157.md-11-
+ai-review/1157.md-12-However, the closely related problems 716, 1076, and 1178 each define their own independent hypergraph structures:
+/home/ryan/formal-conjectures/ai-review/1157.md-13-
+/home/ryan/formal-conjectures/ai-review/1157.md-14-- **Problem 716** (`Erdos716.Hypergraph3`) — defines its own 3-uniform hypergraph structure and free property.
+/home/ryan/formal-conjectures/ai-review/1157.md-15-- **Problem 1076** (`Erdos1076.Hypergraph3`) — defines its own 3-uniform hypergraph structure with a subhypergraph relation.
+--
+/home/ryan/formal-conjectures/ai-review/1157.md-44-## 4. Readability
+/home/ryan/formal-conjectures/ai-review/1157.md-45-
+ai-review/1157.md-46-The code is well-structured and readable:
+/home/ryan/formal-conjectures/ai-review/1157.md-47-
+/home/ryan/formal-conjectures/ai-review/1157.md-48-- **Definitions are clear and well-documented.** Each definition has a docstring explaining the mathematical concept.
+ai-review/1157.md:49:- **Naming is consistent:** `UniformHypergraph`, `edgesSpannedBy`, `IsFree`, `extremalNumber` are descriptive.
+/home/ryan/formal-conjectures/ai-review/1157.md-50-- **The theorem statement is well-organized** with clearly named hypotheses.
+/home/ryan/formal-conjectures/ai-review/1157.md-51-
+ai-review/1157.md-52-**Minor suggestions:**
+/home/ryan/formal-conjectures/ai-review/1157.md-53-- The `IsFree` name might be slightly ambiguous outside context — `IsKSFree` or `IsSparseFree` would be more descriptive, but `IsFree` is acceptable given the namespace.
+/home/ryan/formal-conjectures/ai-review/1157.md-54-- The docstring's LaTeX rendering of the little-o definition is helpful for readers unfamiliar with the ε-N₀ formulation.
+--
+/home/ryan/formal-conjectures/ai-review/1157.md-78-
+ai-review/1157.md-79-2. **`edgesSpannedBy` definition:** Counts edges contained within a vertex set S by filtering edges that are subsets of S — correct. ✅
+/home/ryan/formal-conjectures/ai-review/1157.md-80-
+ai-review/1157.md-81-3. **`IsFree` definition:** States that for every k-element vertex set S, the number of edges spanned by S is strictly less than s. This correctly encodes "no k vertices span s or more edges." ✅
+/home/ryan/formal-conjectures/ai-review/1157.md-82-
+ai-review/1157.md:83:4. **`extremalNumber` definition:** Takes the supremum of edge counts over all (k,s)-free r-uniform hypergraphs on n vertices. As discussed, the set is nonempty and bounded, so this is the actual maximum. ✅
+/home/ryan/formal-conjectures/ai-review/1157.md-84-
+ai-review/1157.md-85-5. **Theorem statement:**
+ai-review/1157.md-86-   - Parameters: `r > t`, `t ≥ 2`, `s ≥ 3`, `k ≥ (r - t) * s + t + 1` — matches the standard conjecture. ✅
+ai-review/1157.md-87-   - Conclusion: For all ε > 0, there exists N₀ such that for all n ≥ N₀, f_r(n; k, s) ≤ ε · n^t — this is the correct ε-N₀ formulation of f_r(n; k, s) = o(n^t). ✅
+/home/ryan/formal-conjectures/ai-review/1157.md-88-
+ai-review/1157.md:89:6. **Website notation discrepancy:** The erdosproblems.com page appears to write "ex_t(n, F) = o(n^t)" with subscript t, but the standard formulation of the Brown–Erdős–Sós conjecture uses f_r(n; k, s) (or equivalently ex_r(n, F)) — the extremal number for **r-uniform** hypergraphs. The formalization correctly uses `extremalNumber r n k s` with the r-uniformity. The website's "ex_t" is likely a typographical error or notational ambiguity on the website itself. ✅
+/home/ryan/formal-conjectures/ai-review/1157.md-90-
+ai-review/1157.md:91:7. **Edge cases:** When n = 0, both `extremalNumber r 0 k s = 0` (no vertices, no edges) and `ε * 0^t = 0`, so the inequality holds trivially. When n < k, every k-element subset condition is vacuously true, but the extremal number could still be large — however the little-o statement only needs to hold for sufficiently large n. ✅
+/home/ryan/formal-conjectures/ai-review/1157.md-92-
+/home/ryan/formal-conjectures/ai-review/1157.md-93-**No mathematical flaws identified.** The formalization is a faithful and complete encoding of the general Brown–Erdős–Sós conjecture.
+--
+/home/ryan/formal-conjectures/ai-review/574.md-2-
+/home/ryan/formal-conjectures/ai-review/574.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/574.md-4-
+ai-review/574.md-5-Several related files define overlapping cycle and extremal-number machinery:
+/home/ryan/formal-conjectures/ai-review/574.md-6-
+ai-review/574.md:7:- **572.lean** defines `cycleGraph`, `ContainsSubgraph`, and `extremalNumber` (for a single forbidden graph).
+/home/ryan/formal-conjectures/ai-review/574.md-8-- **573.lean** defines `TriangleFree`, `C4Free`, and `exC3C4` — the special case k=2 of this very problem.
+/home/ryan/formal-conjectures/ai-review/574.md-9-- **575.lean** defines `ContainsSubgraph`, `turanNumber`, `turanNumberFamily` (for a family of forbidden graphs), and `IsBipartite`.
+/home/ryan/formal-conjectures/ai-review/574.md-10-
+ai-review/574.md-11-Problem 574 redefines `ContainsCycleOfLength` and `exConsecutiveCycles` from scratch rather than reusing any of the above. In particular:
+/home/ryan/formal-conjectures/ai-review/574.md-12-
+--
+ai-review/714.md-1-# AI Review: Erdős Problem 714
+/home/ryan/formal-conjectures/ai-review/714.md-2-
+/home/ryan/formal-conjectures/ai-review/714.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/714.md-4-
+ai-review/714.md:5:**`ContainsSubgraph` and `extremalNumber` are duplicated across 29+ files.** The definitions in `714.lean` are identical to those in `713.lean`, `765.lean`, `766.lean`, `571.lean`, `572.lean`, and many others. These could be factored into a shared utility (e.g., `FormalConjectures/Util/ExtremalGraph.lean`), but this is a codebase-wide concern rather than specific to this file.
+/home/ryan/formal-conjectures/ai-review/714.md-6-
+ai-review/714.md:7:Note that some files (e.g., `147.lean`, `575.lean`, `576.lean`) use an alternative `turanNumber` definition based on `Fintype`/`edgeFinset` rather than `Fin n`/`edgeSet.ncard`. The `extremalNumber` definition used in `714.lean` (via `Fin n` and `ncard`) is consistent with other extremal number problems like 713, 765, and 766, so the choice is fine internally — but the project would benefit from consolidation.
+/home/ryan/formal-conjectures/ai-review/714.md-8-
+/home/ryan/formal-conjectures/ai-review/714.md-9-No Mathlib definition of extremal/Turán number was found that could replace the local one.
+/home/ryan/formal-conjectures/ai-review/714.md-10-
+/home/ryan/formal-conjectures/ai-review/714.md-11-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/714.md-12-
+--
+ai-review/714.md-59-The formalization is **mathematically correct**. Detailed analysis:
+/home/ryan/formal-conjectures/ai-review/714.md-60-
+/home/ryan/formal-conjectures/ai-review/714.md-61-### 6.1 The `ContainsSubgraph` definition
+ai-review/714.md-62-The definition correctly captures injective graph homomorphisms (subgraph containment up to isomorphism). This is the standard notion used in extremal graph theory: H is a subgraph of G if there is an injective vertex map preserving adjacency. ✓
+/home/ryan/formal-conjectures/ai-review/714.md-63-
+ai-review/714.md:64:### 6.2 The `extremalNumber` definition
+ai-review/714.md:65:`extremalNumber H n` computes the supremum over all edge counts of simple graphs on `Fin n` that are H-free. This correctly captures ex(n; H). ✓
+/home/ryan/formal-conjectures/ai-review/714.md-66-
+ai-review/714.md-67-**Technical note on well-definedness:** The set `{m : ℕ | ∃ G : SimpleGraph (Fin n), ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}` is bounded above (by n(n-1)/2) and nonempty (the empty graph is always H-free for r ≥ 2), so `sSup` is well-defined for the intended use. However, `sSup` on `ℕ` returns 0 for the empty set. This is not an issue here since the set is always nonempty for the problem's intended range.
+/home/ryan/formal-conjectures/ai-review/714.md-68-
+/home/ryan/formal-conjectures/ai-review/714.md-69-### 6.3 The main theorem statement
+/home/ryan/formal-conjectures/ai-review/714.md-70-```lean
+ai-review/714.md-71-∀ r : ℕ, 2 ≤ r →
+ai-review/714.md-72-  ∃ C : ℝ, 0 < C ∧
+ai-review/714.md-73-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+ai-review/714.md-74-      C * (n : ℝ) ^ ((2 : ℝ) - 1 / (r : ℝ)) ≤
+ai-review/714.md:75:        (extremalNumber (completeBipartiteGraph (Fin r) (Fin r)) n : ℝ)
+/home/ryan/formal-conjectures/ai-review/714.md-76-```
+/home/ryan/formal-conjectures/ai-review/714.md-77-
+ai-review/714.md-78-This states: for all r ≥ 2, there exist C > 0 and N₀ such that for all n ≥ N₀, C · n^{2-1/r} ≤ ex(n; K_{r,r}).
+/home/ryan/formal-conjectures/ai-review/714.md-79-
+/home/ryan/formal-conjectures/ai-review/714.md-80-This is a faithful formalization of "ex(n; K_{r,r}) ≫ n^{2-1/r} for all r ≥ 2." ✓
+--
+/home/ryan/formal-conjectures/ai-review/714.md-97-
+/home/ryan/formal-conjectures/ai-review/714.md-98-## Summary
+/home/ryan/formal-conjectures/ai-review/714.md-99-
+/home/ryan/formal-conjectures/ai-review/714.md-100-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/714.md-101-|-----------|-----------|
+ai-review/714.md:102:| Code reuse | `ContainsSubgraph` and `extremalNumber` duplicated across 29+ files; consolidation opportunity |
+/home/ryan/formal-conjectures/ai-review/714.md-103-| Citations | Missing attribution for Brown and Erdős–Rényi–Sós (r=3 case); no related problem cross-references |
+/home/ryan/formal-conjectures/ai-review/714.md-104-| Variants | Complete — no variants missing |
+/home/ryan/formal-conjectures/ai-review/714.md-105-| Readability | Good |
+/home/ryan/formal-conjectures/ai-review/714.md-106-| Formalizability | Unambiguous; fully formalizable |
+/home/ryan/formal-conjectures/ai-review/714.md-107-| Correctness | Correct and complete |
+--
+ai-review/766.md-1-# AI Review: Erdős Problem 766
+/home/ryan/formal-conjectures/ai-review/766.md-2-
+/home/ryan/formal-conjectures/ai-review/766.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/766.md-4-
+ai-review/766.md:5:**Significant duplication found.** The definitions `ContainsSubgraph` and `extremalNumber` are duplicated verbatim across at least 7 files:
+/home/ryan/formal-conjectures/ai-review/766.md-6-- `ErdosProblems/571.lean`
+/home/ryan/formal-conjectures/ai-review/766.md-7-- `ErdosProblems/572.lean`
+/home/ryan/formal-conjectures/ai-review/766.md-8-- `ErdosProblems/713.lean`
+/home/ryan/formal-conjectures/ai-review/766.md-9-- `ErdosProblems/714.lean`
+/home/ryan/formal-conjectures/ai-review/766.md-10-- `ErdosProblems/765.lean`
+/home/ryan/formal-conjectures/ai-review/766.md-11-- `ErdosProblems/766.lean`
+ai-review/766.md:12:- `ErdosProblems/60.lean` (as `ContainsSubgraph60` / `extremalNumber60`)
+/home/ryan/formal-conjectures/ai-review/766.md-13-
+/home/ryan/formal-conjectures/ai-review/766.md-14-These should be factored into a shared utility file (e.g., `ForMathlib/Combinatorics/SimpleGraph/ExtremalNumber.lean`). The `minExtremalNumber` definition is unique to Problem 766 and appropriately defined locally.
+/home/ryan/formal-conjectures/ai-review/766.md-15-
+/home/ryan/formal-conjectures/ai-review/766.md-16-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/766.md-17-
+--
+/home/ryan/formal-conjectures/ai-review/766.md-35-
+ai-review/766.md-36-The code is well-structured and readable. Specific observations:
+/home/ryan/formal-conjectures/ai-review/766.md-37-
+/home/ryan/formal-conjectures/ai-review/766.md-38-- The docstrings clearly state the mathematical content with LaTeX.
+/home/ryan/formal-conjectures/ai-review/766.md-39-- The namespace `Erdos766` is clean and appropriately scoped.
+ai-review/766.md:40:- The definition names (`ContainsSubgraph`, `extremalNumber`, `minExtremalNumber`) are descriptive.
+/home/ryan/formal-conjectures/ai-review/766.md-41-- The formal statement of `erdos_766` includes a helpful English gloss in the docstring explaining the quantifier structure.
+/home/ryan/formal-conjectures/ai-review/766.md-42-
+/home/ryan/formal-conjectures/ai-review/766.md-43-**No readability issues.**
+/home/ryan/formal-conjectures/ai-review/766.md-44-
+/home/ryan/formal-conjectures/ai-review/766.md-45-## 5. Formalizability
+--
+/home/ryan/formal-conjectures/ai-review/766.md-56-
+ai-review/766.md-57-The formalization is **mathematically correct**. Detailed analysis:
+/home/ryan/formal-conjectures/ai-review/766.md-58-
+ai-review/766.md-59-- **`ContainsSubgraph`**: Correctly defines subgraph containment via injective homomorphism (i.e., subgraph isomorphism to a subgraph of G). This is the standard definition in extremal graph theory.
+/home/ryan/formal-conjectures/ai-review/766.md-60-
+ai-review/766.md:61:- **`extremalNumber`**: Uses `sSup` over edge counts of H-free graphs on `Fin n`. The set is always non-empty (the edgeless graph is H-free for any H with edges) and bounded above (at most n(n-1)/2 edges), so `sSup` is well-defined and yields the correct value. In the degenerate case where H is edgeless, every graph "contains" H vacuously, making the set empty and `sSup = 0`; this is irrelevant here since l > k ≥ 2 forces H to have edges.
+/home/ryan/formal-conjectures/ai-review/766.md-62-
+ai-review/766.md-63-- **`minExtremalNumber`**: Uses `sInf` over extremal numbers. **Potential edge case**: if no graph on k vertices has exactly l edges (e.g., l > k(k-1)/2), the set is empty and `sInf ∅ = 0` for ℕ. However, the hypotheses `k < l` and `4 * l' ≤ k ^ 2` ensure l < l' ≤ k²/4 ≤ k(k-1)/2 for k ≥ 2, so graphs with the required edge counts exist. The formalization is correct within its stated range.
+/home/ryan/formal-conjectures/ai-review/766.md-64-
+ai-review/766.md-65-- **Quantifier structure**: `∀ k l l', k ≥ 2 → k < l → l < l' → 4 * l' ≤ k² → ∃ N₀, ∀ n ≥ N₀, f(n;k,l) < f(n;k,l')`. This correctly captures strict monotonicity for large n.
+/home/ryan/formal-conjectures/ai-review/766.md-66-
+--
+/home/ryan/formal-conjectures/ai-review/766.md-78-
+/home/ryan/formal-conjectures/ai-review/766.md-79-### Summary
+/home/ryan/formal-conjectures/ai-review/766.md-80-
+/home/ryan/formal-conjectures/ai-review/766.md-81-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/766.md-82-|---|---|
+ai-review/766.md:83:| Code reuse | `ContainsSubgraph` and `extremalNumber` duplicated across 7 files; should be shared |
+/home/ryan/formal-conjectures/ai-review/766.md-84-| Citations | Missing [Er64c] reference from original source |
+/home/ryan/formal-conjectures/ai-review/766.md-85-| Variants | All formalizable variants captured |
+/home/ryan/formal-conjectures/ai-review/766.md-86-| Readability | Good |
+/home/ryan/formal-conjectures/ai-review/766.md-87-| Formalizability | Low ambiguity; monotonicity question is precise |
+/home/ryan/formal-conjectures/ai-review/766.md-88-| Correctness | Correct; minor trivial edge cases in Dirac–Erdős variant for k < 4 |
+--
+ai-review/571.md-1-# Review: Erdős Problem 571
+/home/ryan/formal-conjectures/ai-review/571.md-2-
+/home/ryan/formal-conjectures/ai-review/571.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/571.md-4-
+ai-review/571.md:5:**`ContainsSubgraph` and `extremalNumber` are duplicated extensively.** These identical definitions appear in 29 and 8 files respectively across the Erdős problems. They should be factored out into a shared file in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/` (e.g., `Turan.lean` or `ExtremalNumber.lean`). Files 571 and 572, for example, contain byte-for-byte identical definitions.
+/home/ryan/formal-conjectures/ai-review/571.md-6-
+/home/ryan/formal-conjectures/ai-review/571.md-7-Bipartiteness is encoded as `G.Colorable 2`, which is the standard Mathlib representation. `Mathlib.Combinatorics.SimpleGraph.Bipartite` is already imported in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/GraphConjectures/Definitions.lean` and provides `SimpleGraph.IsBipartite`, which is definitionally `G.Colorable 2`. Either could be used; the current choice is fine.
+/home/ryan/formal-conjectures/ai-review/571.md-8-
+/home/ryan/formal-conjectures/ai-review/571.md-9-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/571.md-10-
+--
+ai-review/571.md-61-1. **Universal quantification over rationals in [1, 2):** `∀ α : ℚ, 1 ≤ α → α < 2 →`
+ai-review/571.md-62-2. **Existence of a finite bipartite graph:** `∃ (U : Type) (_ : Fintype U) (G : SimpleGraph U), G.Colorable 2`
+ai-review/571.md-63-3. **Two-sided asymptotic bound:** The existence of constants c₁, c₂ > 0 and threshold N₀ with `c₁ · n^α ≤ ex(n; G) ≤ c₂ · n^α` for n ≥ N₀.
+ai-review/571.md-64-4. **The cast `(α : ℝ)`** correctly lifts the rational exponent to a real exponent for the power function.
+/home/ryan/formal-conjectures/ai-review/571.md-65-
+ai-review/571.md:66:**One potential concern with `extremalNumber`:** The definition uses `sSup` over a set of natural numbers. If the set is empty (which cannot happen since the empty graph on n vertices has 0 edges and contains no subgraph), `sSup` returns 0, which is fine. If the set is unbounded (which cannot happen for graphs on `Fin n`), `sSup ∅` in `ℕ` is 0 by convention. The definition is mathematically sound for finite graphs.
+/home/ryan/formal-conjectures/ai-review/571.md-67-
+ai-review/571.md-68-**Overall:** The formalization is mathematically correct, but the `solved` tag is wrong and should be `open`.
+/home/ryan/formal-conjectures/ai-review/571.md-69-
+/home/ryan/formal-conjectures/ai-review/571.md-70-## Summary
+/home/ryan/formal-conjectures/ai-review/571.md-71-
+/home/ryan/formal-conjectures/ai-review/571.md-72-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/571.md-73-|-----------|-----------|
+ai-review/571.md:74:| Code reuse | `ContainsSubgraph` and `extremalNumber` duplicated across ~29/8 files; should be shared |
+/home/ryan/formal-conjectures/ai-review/571.md-75-| Citations | Minimal; should add key references [Er81], [ErSi84] |
+/home/ryan/formal-conjectures/ai-review/571.md-76-| Variants | Core conjecture captured; Bukh–Conlon family variant omitted (acceptable) |
+/home/ryan/formal-conjectures/ai-review/571.md-77-| Readability | Good |
+/home/ryan/formal-conjectures/ai-review/571.md-78-| Formalizability | High (low ambiguity) |
+/home/ryan/formal-conjectures/ai-review/571.md-79-| Correctness | Mathematically correct, but **status tag is wrong** (`solved` → `open`) |
+--
+ai-review/716.md-5-**Significant reuse opportunities exist.** Problem 1157 (`FormalConjectures/ErdosProblems/1157.lean`) already defines a fully general framework that subsumes Problem 716:
+/home/ryan/formal-conjectures/ai-review/716.md-6-
+/home/ryan/formal-conjectures/ai-review/716.md-7-- `UniformHypergraph r n` — an r-uniform hypergraph on n vertices (generalizes `Hypergraph3`)
+/home/ryan/formal-conjectures/ai-review/716.md-8-- `edgesSpannedBy H S` — counts edges within a vertex subset (equivalent to `(H.edges.filter (· ⊆ S)).card`)
+/home/ryan/formal-conjectures/ai-review/716.md-9-- `IsFree H k s` — no k vertices span s or more edges (for k=6, s=3, this is exactly `Hypergraph3.isFree`)
+ai-review/716.md:10:- `extremalNumber r n k s` — the extremal number f_r(n; k, s)
+/home/ryan/formal-conjectures/ai-review/716.md-11-
+ai-review/716.md-12-Problem 716 is precisely the special case r=3, k=6, s=3 of Problem 1157 (as noted in 1157's own docstring). The theorem `erdos_716` could be stated as a corollary:
+/home/ryan/formal-conjectures/ai-review/716.md-13-
+/home/ryan/formal-conjectures/ai-review/716.md-14-```
+ai-review/716.md:15:extremalNumber 3 n 6 3 ≤ ε * n ^ 2   for large n
+/home/ryan/formal-conjectures/ai-review/716.md-16-```
+/home/ryan/formal-conjectures/ai-review/716.md-17-
+/home/ryan/formal-conjectures/ai-review/716.md-18-Additionally, `Hypergraph3` is independently redefined in both `716.lean` and `1076.lean` with identical structure. The `UniformHypergraph` structure from `616.lean`, `1075.lean`, and `1157.lean` would also suffice. A shared definition (perhaps in a utility file) would reduce duplication.
+/home/ryan/formal-conjectures/ai-review/716.md-19-
+/home/ryan/formal-conjectures/ai-review/716.md-20-Problem 794 also defines `ContainsSubhypergraph` using the same `(H.filter (· ⊆ S)).card` pattern, further confirming this is a recurring idiom that could be centralized.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-66-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/59.lean-67-theorem erdos_59 : answer(False) ↔
+FormalConjectures/ErdosProblems/59.lean-68-    ∀ (U : Type*) (H : SimpleGraph U) [Fintype U] [DecidableRel H.Adj],
+FormalConjectures/ErdosProblems/59.lean-69-    ∀ ε : ℝ, 0 < ε →
+FormalConjectures/ErdosProblems/59.lean-70-    ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+FormalConjectures/ErdosProblems/59.lean:71:      (countHFreeGraphs H n : ℝ) ≤ (2 : ℝ) ^ ((1 + ε) * (extremalNumber n H : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-72-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-73-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-74-/--
+FormalConjectures/ErdosProblems/59.lean-75-Morris–Saxton weaker conjecture: for every graph $G$, the number of labeled $G$-free graphs
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-76-on $n$ vertices is at most $2^{O(\operatorname{ex}(n; G))}$. That is, there exists a constant
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-80--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-81-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/59.lean-82-theorem erdos_59_weakened : answer(sorry) ↔
+FormalConjectures/ErdosProblems/59.lean-83-    ∀ (U : Type*) (H : SimpleGraph U) [Fintype U] [DecidableRel H.Adj],
+FormalConjectures/ErdosProblems/59.lean-84-    ∃ (C : ℝ) (_ : 0 < C) (N : ℕ), ∀ n : ℕ, N ≤ n →
+FormalConjectures/ErdosProblems/59.lean:85:      (countHFreeGraphs H n : ℝ) ≤ (2 : ℝ) ^ (C * (extremalNumber n H : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-86-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-87-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-88-/--
+FormalConjectures/ErdosProblems/59.lean-89-The $C_4$ case of Erdős Problem 59 [Va99, 3.56]: does the original bound
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-90-$2^{(1+o(1)) \cdot \operatorname{ex}(n; C_4)}$ hold for the number of labeled $C_4$-free
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-94-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/59.lean-95-theorem erdos_59_C4 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/59.lean-96-    ∀ (H : SimpleGraph (Fin 4)) [DecidableRel H.Adj],
+FormalConjectures/ErdosProblems/59.lean-97-    ∀ ε : ℝ, 0 < ε →
+FormalConjectures/ErdosProblems/59.lean-98-    ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+FormalConjectures/ErdosProblems/59.lean:99:      (countHFreeGraphs H n : ℝ) ≤ (2 : ℝ) ^ ((1 + ε) * (extremalNumber n H : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-100-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-101-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean-102-end Erdos59
+--
+FormalConjectures/ErdosProblems/1157.lean-62-def IsFree {r n : ℕ} (H : UniformHypergraph r n) (k s : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/1157.lean-63-  ∀ S : Finset (Fin n), S.card = k → edgesSpannedBy H S < s
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-64-
+FormalConjectures/ErdosProblems/1157.lean-65-/-- $f_r(n; k, s)$: the maximum number of edges in an $r$-uniform $(k,s)$-free
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-66-hypergraph on $n$ vertices. -/
+FormalConjectures/ErdosProblems/1157.lean:67:noncomputable def extremalNumber (r n k s : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/1157.lean-68-  sSup {m : ℕ | ∃ H : UniformHypergraph r n, IsFree H k s ∧ H.edges.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-69-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-70-/--
+FormalConjectures/ErdosProblems/1157.lean-71-Erdős Problem #1157 — Brown–Erdős–Sós Conjecture (general form) [BES73, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-72-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-78-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/1157.lean-79-theorem erdos_1157 (r t : ℕ) (hr : r > t) (ht : t ≥ 2)
+FormalConjectures/ErdosProblems/1157.lean-80-    (s : ℕ) (hs : s ≥ 3) (k : ℕ) (hk : k ≥ (r - t) * s + t + 1) :
+FormalConjectures/ErdosProblems/1157.lean-81-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/1157.lean-82-    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+FormalConjectures/ErdosProblems/1157.lean:83:      (extremalNumber r n k s : ℝ) ≤ ε * (n : ℝ) ^ t := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-84-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-85-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean-86-end Erdos1157
+--
+FormalConjectures/ErdosProblems/765.lean-50-def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/765.lean-51-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-52-
+FormalConjectures/ErdosProblems/765.lean-53-/-- The Turán extremal number $\mathrm{ex}(n; H)$: the maximum number of edges in a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-54-simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/765.lean:55:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/765.lean-56-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-57-    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-59-/--
+FormalConjectures/ErdosProblems/765.lean-60-Erdős Problem 765 (SOLVED):
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-67--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-68-@[category research solved, AMS 5]
+FormalConjectures/ErdosProblems/765.lean-69-theorem erdos_765 :
+FormalConjectures/ErdosProblems/765.lean-70-    ∀ ε : ℝ, ε > 0 →
+FormalConjectures/ErdosProblems/765.lean-71-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/765.lean:72:      |(↑(extremalNumber (cycleGraph 4 (by omega)) n) / (n : ℝ) ^ ((3 : ℝ) / 2) - 1 / 2)| < ε := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-73-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-75-/--
+FormalConjectures/ErdosProblems/765.lean-76-Erdős's refined conjecture from [Er93] (still open):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-77-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-84--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-85-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/765.lean-86-theorem erdos_765.variants.refined :
+FormalConjectures/ErdosProblems/765.lean-87-    ∃ C : ℝ, 0 < C ∧
+FormalConjectures/ErdosProblems/765.lean-88-    ∀ n : ℕ, 1 ≤ n →
+FormalConjectures/ErdosProblems/765.lean:89:      |(↑(extremalNumber (cycleGraph 4 (by omega)) n) - (n : ℝ) ^ ((3 : ℝ) / 2) / 2)| ≤
+FormalConjectures/ErdosProblems/765.lean-90-        C * (n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-91-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-92-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean-93-end Erdos765
+--
+FormalConjectures/ErdosProblems/572.lean-64-def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/572.lean-65-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-66-
+FormalConjectures/ErdosProblems/572.lean-67-/-- The Turán extremal number $\mathrm{ex}(n; H)$: the maximum number of edges in a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-68-simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/572.lean:69:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/572.lean-70-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-71-    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-72-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-73-/--
+FormalConjectures/ErdosProblems/572.lean-74-Erdős Problem 572 [Er64c]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-79--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-80-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/572.lean-81-theorem erdos_572 (k : ℕ) (hk : k ≥ 3) :
+FormalConjectures/ErdosProblems/572.lean-82-    ∃ c : ℝ, 0 < c ∧
+FormalConjectures/ErdosProblems/572.lean-83-    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/572.lean:84:      c * (n : ℝ) ^ (1 + 1 / (k : ℝ)) ≤ (extremalNumber (cycleGraph (2 * k) (by omega)) n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-85-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-86-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean-87-end Erdos572
+--
+FormalConjectures/ErdosProblems/714.lean-32-def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/714.lean-33-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-34-
+FormalConjectures/ErdosProblems/714.lean-35-/-- The Turán extremal number $\operatorname{ex}(n; H)$: the maximum number of edges in a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-36-simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/714.lean:37:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/714.lean-38-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-39-    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-40-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-41-/--
+FormalConjectures/ErdosProblems/714.lean-42-Erdős Problem 714:
+--
+FormalConjectures/ErdosProblems/714.lean-59-theorem erdos_714 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/714.lean-60-    ∀ r : ℕ, 2 ≤ r →
+FormalConjectures/ErdosProblems/714.lean-61-      ∃ C : ℝ, 0 < C ∧
+FormalConjectures/ErdosProblems/714.lean-62-        ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/714.lean-63-          C * (n : ℝ) ^ ((2 : ℝ) - 1 / (r : ℝ)) ≤
+FormalConjectures/ErdosProblems/714.lean:64:            (extremalNumber (completeBipartiteGraph (Fin r) (Fin r)) n : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-65-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-66-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean-67-end Erdos714
+--
+FormalConjectures/ErdosProblems/571.lean-33-def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/571.lean-34-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-35-
+FormalConjectures/ErdosProblems/571.lean-36-/-- The Turán extremal number $\mathrm{ex}(n; H)$: the maximum number of edges in a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-37-simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/571.lean:38:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/571.lean-39-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-40-    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-42-/--
+FormalConjectures/ErdosProblems/571.lean-43-Erdős Problem 571 (Erdős–Simonovits):
+--
+FormalConjectures/ErdosProblems/571.lean-52-    ∀ α : ℚ, 1 ≤ α → α < 2 →
+FormalConjectures/ErdosProblems/571.lean-53-    ∃ (U : Type) (_ : Fintype U) (G : SimpleGraph U),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-54-      G.Colorable 2 ∧
+FormalConjectures/ErdosProblems/571.lean-55-      ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧
+FormalConjectures/ErdosProblems/571.lean-56-      ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/571.lean:57:        c₁ * (n : ℝ) ^ (α : ℝ) ≤ (extremalNumber G n : ℝ) ∧
+FormalConjectures/ErdosProblems/571.lean:58:        (extremalNumber G n : ℝ) ≤ c₂ * (n : ℝ) ^ (α : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-59-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean-61-end Erdos571
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-60-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/60.lean-61-theorem erdos_60 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/60.lean-62-    ∃ (c : ℝ) (_ : c > 0) (N₀ : ℕ),
+FormalConjectures/ErdosProblems/60.lean-63-    ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/60.lean-64-    ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/60.lean:65:      G.edgeSet.ncard > extremalNumber n (cycleGraph 4) →
+FormalConjectures/ErdosProblems/60.lean-66-      (G.labelledCopyCount (cycleGraph 4) : ℝ) ≥ c * (n : ℝ) ^ ((1 : ℝ) / 2) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-67-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-68-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-69-/--
+FormalConjectures/ErdosProblems/60.lean-70-He–Ma–Yang partial result [HeMaYa21]: the conjecture holds for $n = q^2 + q + 1$ where $q$
+--
+FormalConjectures/ErdosProblems/60.lean-76-theorem erdos_60_even_prime_power : answer(sorry) ↔
+FormalConjectures/ErdosProblems/60.lean-77-    ∃ (c : ℝ) (_ : c > 0),
+FormalConjectures/ErdosProblems/60.lean-78-    ∀ q : ℕ, 2 ∣ q →
+FormalConjectures/ErdosProblems/60.lean-79-    let n := q ^ 2 + q + 1
+FormalConjectures/ErdosProblems/60.lean-80-    ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/60.lean:81:      G.edgeSet.ncard > extremalNumber n (cycleGraph 4) →
+FormalConjectures/ErdosProblems/60.lean-82-      (G.labelledCopyCount (cycleGraph 4) : ℝ) ≥ c * (n : ℝ) ^ ((1 : ℝ) / 2) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-83-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-84-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-85-/--
+FormalConjectures/ErdosProblems/60.lean-86-Weak form of Erdős Problem 60: every graph on $n$ vertices with more than $\mathrm{ex}(n; C_4)$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-91--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-92-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/60.lean-93-theorem erdos_60_at_least_two : answer(sorry) ↔
+FormalConjectures/ErdosProblems/60.lean-94-    ∃ (N₀ : ℕ), ∀ n : ℕ, N₀ ≤ n →
+FormalConjectures/ErdosProblems/60.lean-95-    ∀ G : SimpleGraph (Fin n),
+FormalConjectures/ErdosProblems/60.lean:96:      G.edgeSet.ncard > extremalNumber n (cycleGraph 4) →
+FormalConjectures/ErdosProblems/60.lean-97-      G.labelledCopyCount (cycleGraph 4) ≥ 16 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-98-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-99-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean-100-end Erdos60
+--
+FormalConjectures/ErdosProblems/766.lean-39-def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/766.lean-40-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-41-
+FormalConjectures/ErdosProblems/766.lean-42-/-- The Turán extremal number $\operatorname{ex}(n; H)$: the maximum number of edges in a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-43-simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/766.lean:44:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/766.lean-45-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-46-    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-47-
+FormalConjectures/ErdosProblems/766.lean-48-/-- The minimum extremal number $f(n;k,l)$: the minimum of $\operatorname{ex}(n;G)$ over all
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-49-graphs $G$ on $k$ vertices with exactly $l$ edges. -/
+FormalConjectures/ErdosProblems/766.lean-50-noncomputable def minExtremalNumber (n k l : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/766.lean-51-  sInf {m : ℕ | ∃ G : SimpleGraph (Fin k),
+FormalConjectures/ErdosProblems/766.lean:52:    G.edgeSet.ncard = l ∧ extremalNumber G n = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-54-/--
+FormalConjectures/ErdosProblems/766.lean-55-Erdős Problem 766, monotonicity conjecture:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-56-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean-57-For fixed $k$ and large $n$, $f(n;k,l)$ is a strictly monotone function of $l$
+--
+FormalConjectures/ErdosProblems/713.lean-34-def ContainsSubgraph {V U : Type*} (G : SimpleGraph V) (H : SimpleGraph U) : Prop :=
+FormalConjectures/ErdosProblems/713.lean-35-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-36-
+FormalConjectures/ErdosProblems/713.lean-37-/-- The Turán extremal number $\operatorname{ex}(n; H)$: the maximum number of edges in a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-38-simple graph on $n$ vertices that does not contain $H$ as a subgraph. -/
+FormalConjectures/ErdosProblems/713.lean:39:noncomputable def extremalNumber {U : Type*} (H : SimpleGraph U) (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/713.lean-40-  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-41-    ¬ContainsSubgraph G H ∧ G.edgeSet.ncard = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-43-/--
+FormalConjectures/ErdosProblems/713.lean-44-Erdős Problem 713, Part 1 (Erdős–Simonovits):
+--
+FormalConjectures/ErdosProblems/713.lean-51-theorem erdos_713 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/713.lean-52-    ∀ (U : Type) [Fintype U] (G : SimpleGraph U),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-53-      G.Colorable 2 →
+FormalConjectures/ErdosProblems/713.lean-54-      ∃ α : ℝ, 1 ≤ α ∧ α < 2 ∧
+FormalConjectures/ErdosProblems/713.lean-55-      ∃ c : ℝ, 0 < c ∧
+FormalConjectures/ErdosProblems/713.lean:56:      Tendsto (fun n : ℕ => (extremalNumber G n : ℝ) / (c * (n : ℝ) ^ α))
+FormalConjectures/ErdosProblems/713.lean-57-        atTop (nhds 1) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-58-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-59-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-60-/--
+FormalConjectures/ErdosProblems/713.lean-61-Erdős Problem 713, Part 2 (Rationality of the exponent):
+--
+FormalConjectures/ErdosProblems/713.lean-67-theorem erdos_713.variants.rationality : answer(sorry) ↔
+FormalConjectures/ErdosProblems/713.lean-68-    ∀ (U : Type) [Fintype U] (G : SimpleGraph U),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-69-      G.Colorable 2 →
+FormalConjectures/ErdosProblems/713.lean-70-      ∀ α : ℝ, 1 ≤ α → α < 2 →
+FormalConjectures/ErdosProblems/713.lean-71-      ∀ c : ℝ, 0 < c →
+FormalConjectures/ErdosProblems/713.lean:72:      Tendsto (fun n : ℕ => (extremalNumber G n : ℝ) / (c * (n : ℝ) ^ α))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-73-        atTop (nhds 1) →
+FormalConjectures/ErdosProblems/713.lean-74-      ∃ q : ℚ, (q : ℝ) = α := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-75-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean-77-end Erdos713

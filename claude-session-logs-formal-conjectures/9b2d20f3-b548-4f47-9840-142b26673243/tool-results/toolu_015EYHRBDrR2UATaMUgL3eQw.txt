@@ -1,0 +1,131 @@
+ai-review/525.md:11:> [Er61] Erdős, P., _Some unsolved problems_, Magyar Tud. Akad. Mat. Kutató Int. Közl. 6 (1961), 221-254.
+ai-review/525.md:13:The website (erdosproblems.com/525) lists the following references: **Er61, Li66, Ka87, Ko94, KoSc99, CoNg21**. The docstring mentions Kashin (1987), Konyagin (1994), and Cook and Nguyen (2021) by name but does not provide full bibliographic entries for these. The following citations from the website are absent:
+ai-review/525.md:79:| Citations | Primary citation [Er61] present; secondary citations [Ka87, Ko94, KoSc99, CoNg21, Li66] missing full entries |
+ai-review/246.md:33:- `[Er61]` Erdős, P.
+ai-review/246.md:41:The existing citations `[Ca60]`, `[Er61]`, and `[He00b]` lack full bibliographic details (title, journal, year). Only `[Bi59]` has a partial title. These should be fleshed out to match the standard set by Problem 254's docstring (which includes journal and year).
+ai-review/237.md:25:| [Er61] Erdős, P., 1961. | ✓ Matches |
+ai-review/237.md:31:- The `@[category]` tag on the theorem references `[Er55c, Er61, Er73]` but omits `[Er50]` and `[ChDi22]`. This is inconsistent with the docstring and the website. The theorem tag should include the key references, especially [ChDi22] since it is the solution.
+ai-review/514.md:35:- **References:** [Er61, p.249], [Er82e].
+ai-review/514.md:44:- The references `[Er61, p.249]` and `[Er82e]` from the website are not mentioned in the formalization's docstring. These should be included for traceability.
+ai-review/231.md:15:- **[Er57]** — Erdős original source
+ai-review/231.md:16:- **[Er61, p.240]** — Erdős original source
+ai-review/231.md:19:These should be included in the docstring for completeness, especially [Er57]/[Er61] as they are the original problem sources.
+ai-review/231.md:75:| Citations | Missing [Er57], [Er61], [FiPu23] |
+ai-review/515.md:22:- **[Er61,p.249]** — original Erdős reference (1961), not cited in the formalization
+ai-review/515.md:26:**Recommendation:** Add the Huber [Hu57] result to the docstring, as it provides important context distinguishing the "for each λ" result from the "for all λ simultaneously" result that is the actual content of the problem. The Erdős references [Er61,p.249] and [Er82e] should also be noted.
+ai-review/483.md:18:- **[Er61]** Erdős, P., *Some unsolved problems*, Magyar Tud. Akad. Mat. Kutató Int. Közl. 6 (1961), 221–254.
+ai-review/521.md:20:- **[Er61, p.252]** — the original Erdős formulation of the almost sure conjecture.
+ai-review/521.md:23:**Recommendation**: The docstring should include the specific reference keys [EO56] and [Er61, p.252] rather than the vague attribution "Erdős and Offord showed." The Do (2024) partial result should also be mentioned, ideally alongside a variant formalization.
+ai-review/521.md:78:| Citations | Needs improvement | Missing specific references [EO56], [Er61], [Do24] |
+ai-review/230.md:15:The formalization includes: **Er57, Er61, Er80h, Ka80, BoBo09**.
+ai-review/230.md:22:The page also gives specific page numbers for the Erdős references: Er57 p.297, Er61 p.248, Er80h p.385. These are not reflected in the formalization's citation stubs.
+ai-review/527.md:20:- **[Er61]** Erdős, P., *Some unsolved problems*, Magyar Tud. Akad. Mat. Kutató Int. Közl. (1961), p.254. ✅
+ai-review/527.md:31:The formalization does **not** include a monotonicity assumption. This is a reasonable choice — the Michelen–Sawhney result proves the statement without monotonicity, so the formalization captures the strongest known version. However, this ambiguity in Erdős's original intent should be mentioned in the docstring for completeness, since a reader consulting the original source [Er61] may encounter this question.
+ai-review/93.md:21:**Website sources:** The [erdosproblems.com/93](https://www.erdosproblems.com/93) page lists the following original Erdős sources: [Er46b], [Er57], [Er61], [Er75f, p.100], [Er82e], [Er87b, p.175], [Er90], [Er92e], [Er95], [Er97e], [Er97f].
+ai-review/980.md:9:The docstring references **[Er65b]**, **[Er61e]**, and **[El67b]**. These match the references on [erdosproblems.com/980](https://www.erdosproblems.com/980):
+ai-review/980.md:12:- **[Er61e]** — Erdős, P. (proved the k=2 case). Same: author only, no title/journal.
+ai-review/144.md:19:The formalization lists: `[Er61, Er77c, Er79, Er79e, ErGr80, Er81h, Er82e, Er85e, Er97c, Er98]` and `[MaTe84]`.
+ai-review/447.md:22:- **Missing Erdős source references**: The website lists [Er61], [Er65b], [Er71, p.106] as sources where Erdős posed the problem. The formalization only mentions [Kl71]. Adding at least one Erdős source reference would improve traceability.
+ai-review/254.md:17:- **[Er61]** Erdős, P., *Some unsolved problems*, Magyar Tud. Akad. Mat. Kutató Int. Közl. (1961), 6, 221–254.
+ai-review/487.md:18:- **[Er61]** Erdős, P., *Graph theory and probability. II*. Canad. J. Math. 13 (1961), p. 236.
+ai-review/501.md:9:The docstring cites **[Er61]** and **[ErHa71]**. The website (erdosproblems.com/501) lists the following references for known results:
+ai-review/501.md:13:| [Er61] Erdős, _Problems in combinatorics_ (1961) | Original problem | ✅ Yes |
+ai-review/506.md:18:- `[Er61]` Erdős, P., *Some unsolved problems*, 1961, p. 245 — **correct**
+ai-review/255.md:31:2. **Missing original problem references**: The website lists the original Erdős references as `[Er61]` and `[Er64b]`. These are not mentioned in the formalization's docstring.
+ai-review/255.md:35:**Recommendation**: Correct the citation tag to `[Sc72]` for the 1972 paper, or add the actual `[Sc68]` paper details separately. Add `[Er61]`, `[Er64b]`, and `[TiWa80]` references as documented on the website.
+ai-review/255.md:91:| Citations | **Needs correction**: tag/paper mismatch (`[Sc68]` vs 1972 paper); missing `[Er61]`, `[Er64b]`, `[TiWa80]` |
+ai-review/5.md:38:- **References:** Er55c, Er57, Er61, Er65b, Er85c, Er90, Er97c
+ai-review/5.md:45:| Citation tags | `[Er55c, Er57, Er61, Er65b, Er85c, Er90, Er97c]` | Same | **Correct.** All seven references match. |
+ai-review/77.md:35:- [Er61], [Er69b], [Er71], [Er81], [Er88], [Er90b], [Er93], [Er95], [Er97c], [Er97d], [Va99]
+ai-review/529.md:22:- **[Er61, p.254]** — Original source (Erdős, 1961). Should be cited as the primary reference.
+ai-review/529.md:27:**Recommendation:** Add full citations for [Er61], [Sl87], [HaSl91]/[HaSl92], and [MaSl93] in the module docstring, matching the format used for [DuHa13].
+ai-review/529.md:88:| Citations | Only [DuHa13] cited; missing [Er61], [Sl87], [HaSl91/92], [MaSl93] |
+ai-review/183.md:45:| [Er61] | `[Er61]` in docstring | Yes (Erdős 1961) | OK. |
+ai-review/1132.md:26:- **[Er61c]** — Erdős (1961), proved max_{x∈[-1,1]} L_n(x) > (2/π) log n − O(1) for any fixed nodes
+ai-review/1132.md:28:The formalization's module docstring mentions **[Be31]** by shorthand only, with no author name, title, or journal. The references **[Er67,p.68]**, **[Va99,2.43]**, and **[Er61c]** are entirely absent.
+ai-review/1132.md:30:The known result by Erdős [Er61c] — that for any *fixed* nodes, max L_n(x) > (2/π) log n − O(1) — is important context. It shows that the (2/π) log n threshold is already established for the maximum over x; the conjecture asks whether this holds *pointwise* for some fixed x across infinitely many n (Part 1) or for a.e. x in a limsup sense (Part 2).
+ai-review/1132.md:32:**Recommendation:** Expand citations to include full bibliographic details for [Be31] (at minimum, author name "Bernstein"). Add references [Er67,p.68] and [Er61c] to the module docstring.
+ai-review/1132.md:151:| Citations | ⚠️ Incomplete | Only [Be31] mentioned (by shorthand); [Er67,p.68], [Va99,2.43], [Er61c] missing |
+ai-review/523.md:15:- **[Er61, p.253]** — Erdős, P., *Some unsolved problems*, Magyar Tud. Akad. Mat. Kutató Int. Közl. 6 (1961), 221–254.
+ai-review/523.md:19:The formalization's docstring mentions Salem and Zygmund and Halász by name only, without the citation keys `[SaZy54]` and `[Ha73]`. The original Erdős source `[Er61, p.253]` is not mentioned at all. These should be expanded to match the website's citation format, e.g.:
+ai-review/523.md:80:| Citations | Missing citation keys [Er61], [SaZy54], [Ha73]; missing Adrian Beker credit |
+ai-review/524.md:18:The website ([erdosproblems.com/524](https://www.erdosproblems.com/524)) lists the source as **[Er61, p.253]** and attributes the problem to **Salem and Zygmund [SaZy54]**. The docstring mentions "A problem of Salem and Zygmund" but does not include the specific citation keys `[SaZy54]` or `[Er61, p.253]`. These should be added to the docstring for traceability, e.g.:
+ai-review/524.md:20:> *Source:* [Er61, p.253]. Originally a problem of Salem and Zygmund [SaZy54].
+ai-review/524.md:98:| Citations | Missing `[Er61, p.253]` and `[SaZy54]` keys |
+ai-review/712.md:20:The formalization's module docstring does **not** include explicit citation tags for these references, unlike Problem 500 which lists `[Er61]`, `[Er71]`, `[Er74c]`, `[Er81]`, and `[Ra10]` with brief descriptions. For consistency, Problem 712 should include these references with at least minimal bibliographic detail, e.g.:
+ai-review/202.md:30:- The bulk citation `[Er61, Er65, Er65b, Er73, Er77c, ErGr80, Va99]` is listed but defers to the website for full references. This is acceptable given the large number of references, but individual full citations would be more rigorous.
+ai-review/210.md:37:- **[Er61]** p.245
+ai-review/210.md:53:1. **Missing Erdős citation tags.** The docstring mentions results by Motzkin, Kelly–Moser, Csima–Sawyer, and Green–Tao by name, but does not include any of the Erdős citation tags ([Er61], [Er75f], [Er81], [Er83c], [Er84], [Er85]) that appear on the website.
+ai-review/490.md:26:- [Er61, p.237]
+ai-review/490.md:34:**Issue:** The Szemerédi citation [Sz76] is appropriate as the solver, but the original Erdős source references listed on the website ([Er61], [Er69], [Er72], [Er73]) are not included. These should be added to document the problem's origins, not just the solution.
+ai-review/490.md:111:| Citations | Missing original Erdős references [Er61], [Er69], [Er72], [Er73] |
+ai-review/498.md:23:| [Er61] Erdős (1961) | **No — missing** |
+ai-review/498.md:27:**[Er61] is missing.** The website lists a 1961 Erdős publication as a reference for this problem. The formalization's docstring should include it for completeness.
+ai-review/498.md:79:| Citations | Missing [Er61]; no cross-reference to Problem 395 |
+ai-review/116.md:22:- [Er61] Erdős (1961)
+ai-review/491.md:22:- **[Er46], [Er61], [Er72], [Er82e]** (Erdős papers)
+ai-review/491.md:77:- Add missing Erdős references [Er46], [Er61], [Er72], [Er82e] to the docstring.
+ai-review/497.md:16:- **[Er61]** — The original problem source (Erdős, 1961).
+ai-review/497.md:19:The formalization cites [Kl69] with full bibliographic details, which is correct. However, the original source **[Er61]** is not cited. Since the website attributes the problem origin to [Er61], it should be included in the docstring for completeness.
+ai-review/497.md:21:**Recommendation:** Add `[Er61]` to the references in the module docstring, e.g.:
+ai-review/497.md:23:[Er61] Erdős, P. (1961). (original problem source)
+ai-review/497.md:88:| Citations | ⚠️ Minor — missing [Er61] original source reference |
+ai-review/526.md:14:- **[Er61]** Erdős, P., *Some unsolved problems*. Magyar Tud. Akad. Mat. Kutató Int. Közl. 6 (1961), p. 253.
+ai-review/431.md:17:- **[Er61, p.225]** and **[Er77c]** as original sources.
+ai-review/431.md:23:**Verdict:** Minor gaps. The `[ErGr80]` citation should include the page reference `p.85` for consistency with the website and with problem 432. The Granville (1990) and Tao–Ziegler (2023) results are notable omissions but are supplementary context rather than essential references. The original sources `[Er61]` and `[Er77c]` could be added for completeness.
+ai-review/604.md:17:> [Er57] Erdős, P. (1957)
+ai-review/604.md:18:> [Er61] Erdős, P. (1961)
+ai-review/604.md:22:> [Er57], [Er61], [Er75f, p.99], [Er83c], [Er85], [Er87b, p.169], [Er90], [Er95], [Er97b], [Er97c], [Er97e], [Er97f]
+ai-review/519.md:12:- Source references: **[Er61, p.251]** and **[Er65b, p.213]** — these are the original Erdős sources.
+ai-review/519.md:18:- The original source citations **[Er61, p.251]** and **[Er65b, p.213]** should be included. The full references are:
+ai-review/505.md:15:The [erdosproblems.com/505](https://www.erdosproblems.com/505) page lists the following references: **[Er46b], [Er61], [Er75f, p.102], [Er81b, p.28]** (Erdős), **[Eg55]** (Eggleston), **[KaKa93]** (Kahn & Kalai), **[BrJe14]** (Brouwer & Jenrich), **[Sc88]** (Schramm).
+ai-review/226.md:18:- `[Er57]` — Erdős, P., *Some unsolved problems*, 1957.
+ai-review/1131.md:20:- **Er61** — Erdős (1961)
+ai-review/496.md:17:- **[Er61]** — Original Erdős source posing the problem.
+ai-review/496.md:24:**Issue:** The docstring references Margulis correctly but omits Davenport–Heilbronn's earlier related work [DaHe46] and the original Erdős reference [Er61]. These are documented on the website and should at minimum be noted. Consider expanding the module docstring to:
+ai-review/496.md:86:| Citations | Davenport–Heilbronn [DaHe46] and original Erdős [Er61] references should be mentioned |
+ai-review/37.md:35:- [Er61, p. 229]
+ai-review/223.md:30:- **[Er57]** — listed on the website as a reference
+ai-review/224.md:23:| **[Er57]** | **No** | Missing. The original Erdős source (1957). |
+ai-review/224.md:24:| **[Er61, p.244]** | **No** | Missing. Erdős 1961, page 244. |
+ai-review/224.md:27:**Recommendation:** Add the missing Erdős references `[Er57]` and `[Er61, p.244]` to the module docstring to match the website's citation list.
+ai-review/500.md:16:The formalization includes references [Er61], [Er71], [Er74c], [Er81], and [Ra10], matching what appears on [erdosproblems.com/500](https://www.erdosproblems.com/500). The citations are given in shorthand form (author, title, year) without full journal/volume details. The website itself uses the same shorthand identifiers so this is consistent.
+ai-review/256.md:15:The docstring references `[Er61, Er64b]` for the original conjecture and `[BeKo96]` for Belov–Konyagin. The website (erdosproblems.com/256) provides more context:
+ai-review/256.md:24:The citations in the formalization are consistent with the website but given in shorthand form (e.g., `[Er61]` without full bibliographic details). This is acceptable given the project conventions, though adding full author/title/year entries as done in `230.lean` would improve traceability.
+ai-review/220.md:11:> [Er40, Er55c, Er57, Er61, Er65b, Er73, Er79, ErGr80, Er81k, Er85c]
+ai-review/511.md:15:- **Original sources:** Erdős–Herzog–Piranian (EHP58, p. 142), Erdős (Er61, p. 247), Hayman (Ha74, Problem 4.9)
+ai-review/227.md:22:- **[Er57]** — Erdős, 1957
+ai-review/227.md:23:- **[Er61, p.249]** — Erdős, 1961, page 249
+ai-review/227.md:27:The formalization only cites **[ClHa64]**. The three Erdős source references [Er57], [Er61], and [Er82e] are omitted.
+ai-review/115.md:18:- `[Er61, Er90]` — Early formulations by Erdős ✓
+ai-review/115.md:23:- [Er61, p.246]
+ai-review/115.md:91:3. **The erdosproblems.com statement** says simply "polynomial of degree n" without specifying monic, but the original Erdős papers [Er61, Er90] are about metric properties of polynomials in the context of monic normalization (the paper [EHP58] cited by adjacent problems 114 and 116 is explicitly about monic polynomials).
+ai-review/240.md:22:| [Er61,p.226] | Erdős (1961), p.226 | Listed as `[Er61]` — **missing page reference "p.226"** |
+ai-review/240.md:29:- The citation `[Er61]` should be `[Er61,p.226]` to match the website.
+ai-review/240.md:89:| Citations | Missing page reference "p.226" for [Er61]; missing cross-reference to Problem 368 |
+ai-review/502.md:19:| Erdős 1961 | **[Er61, p.244]** | `[Er61]` — **missing page number** |
+ai-review/502.md:26:- The Erdős reference should include the page number: `[Er61, p.244]`.
+ai-review/502.md:72:| Citations | **Minor fix needed** | Missing page number on [Er61, p.244]; should mention Problem 1089 |
+ai-review/512.md:21:These match the solvers listed on the website. However, the website also attributes the original problem to **Erdős [Er61, p.247]**, which the formalization omits. The original Erdős reference should be added to the docstring for completeness.
+ai-review/512.md:23:**Verdict:** Add `[Er61] Erdős, P., 1961.` (or the full reference if available) as the original problem source.
+ai-review/512.md:80:| Citations | **Missing original Erdős reference [Er61]** |
+ai-review/627.md:21:- **[Er61d]** — Erdős (1961): Proved f(n) ≫ n^{1/2}/log n via graphs with ω(G)=2 and large chromatic number.
+ai-review/627.md:27:The formalization's theorem docstring cites `[Er61d][Er67c][Er69b]`, which matches the core Erdős references. The module docstring mentions only `[Er67c]`. Missing from the formalization are **[Zy52]** and the recent **[AFM25]** result. While [Zy52] provides historical context, the [AFM25] result is notable as a recent advance on the problem and could be mentioned in the module docstring.
+ai-review/493.md:20:- **Reference:** [Er61, p.238]
+ai-review/493.md:22:- **Important caveat from website:** "There may well have been some additional constraint in the problem as Schinzel posed it," but the reference [Er61] does not document what this constraint might be.
+ai-review/493.md:30:**Missing:** The original Erdős source reference **[Er61, p.238]** is not cited in the docstring. It should be added for completeness. Additionally, the solver Eli Seamans is not credited by name in the docstring (only the solution idea is included).
+ai-review/493.md:71:**Ambiguity level: None in the formalized statement, but significant historical ambiguity.** The problem as written in [Er61] appears to be missing a constraint that Schinzel originally intended. The website explicitly flags this. The formalization correctly captures what is written, but the mathematical community suspects the "real" problem is different and harder. This is an inherent limitation of the source material, not a flaw in the formalization.
+ai-review/493.md:117:| Citations | Missing original reference [Er61, p.238]; solver Eli Seamans not credited by name |
+ai-review/165.md:32:**Formalization citations** include [Sh83], [AKS80], [HHKP25], and Erdős refs [Er61, Er71, Er90b, Er93, Er97c].
+ai-review/225.md:13:| `[Er40b, Er57, Er61]` Erdős, P., original references | Confirmed — Erdős papers from 1940s–1960s |
+ai-review/222.md:27:| [Er57] Erdős (1957) | **NO** | Missing |
+ai-review/222.md:28:| [Er61] Erdős (1961) | **NO** | Missing |
+ai-review/222.md:33:**Three Erdős references are missing** from the docstring: [Er51], [Er57], and [Er61]. These should be added for completeness.
+ai-review/222.md:92:| Citations | 3 of 6 website references missing ([Er51], [Er57], [Er61]) |
+ai-review/221.md:23:- **Original references:** Er57, Er61, Er65b, Er73, Er77c, Er82e
+ai-review/484.md:16:- Original attribution: **[Er61, p.230]** — described as "a conjecture of Roth."
+ai-review/484.md:24:- The original source **[Er61]** (Erdős, P., *Some unsolved problems*, Magyar Tud. Akad. Mat. Kutató Int. Közl. 6 (1961), 221–254) is not cited in the file header, even though this is where the conjecture first appeared (attributed to Roth). Problem 483 cites [Er61] — it should also appear here.
+ai-review/484.md:28:**Recommendation:** Add `[Er61]` to the module docstring references.
+ai-review/344.md:28:**Missing citation**: The website also references **[Er61b]** in the context of the open variant (showing that the threshold `(2N)^{1/2}` would be best possible). Since the open variant is not formalized (see §3), this omission is acceptable, but if the variant were added, this citation should be included.
+ai-review/344.md:36:[Omitted long matching line]
+ai-review/344.md:94:| Citations | Complete for the formalized statement; [Er61b] would be needed if sharp variant is added |

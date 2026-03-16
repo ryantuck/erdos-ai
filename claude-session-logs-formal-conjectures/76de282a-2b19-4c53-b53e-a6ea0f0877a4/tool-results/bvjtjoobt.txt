@@ -1,0 +1,343 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1005.lean:  sSup {d : ℕ | ∀ i j : ℕ, i < j → j ≤ i + d →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1011.lean:  sInf {m : ℕ | ∀ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1013.lean:  sInf {n : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = (k : ℕ∞)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1014.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean:  sInf {r : ℕ | ∀ (c : Fin n → Fin n → Bool), (∀ i j, c i j = c j i) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1015.lean:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1016.lean:  sInf {h : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1020.lean:  sSup {m : ℕ | ∃ H : Finset (Finset (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1023.lean:  sSup {k : ℕ | ∃ 𝓕 : Finset (Finset (Fin n)), IsUnionFreeFamily 𝓕 ∧ 𝓕.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean:  sSup {k : ℕ | ∃ S : Finset (Fin n), H.IsIndependent S ∧ S.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1024.lean:  sInf {k : ℕ | ∃ H : Hypergraph3Uniform n, H.IsLinear ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1029.lean:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/103.lean:  sSup {d : ℝ | ∃ p ∈ A, ∃ q ∈ A, d = dist p q}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1030.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1039.lean:  sSup {r : ℝ | r > 0 ∧ ∃ c : ℂ, Metric.ball c r ⊆ {z : ℂ | ‖f.eval z‖ < 1}}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1040.lean:  sSup {t : ℝ | ∃ z : Fin n → ℂ, (∀ i, z i ∈ F) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1042.lean:  sSup {t : ℝ | ∃ z : Fin n → ℂ, (∀ i, z i ∈ F) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1044.lean:  sSup {ℓ : ℝ | ∃ x ∈ lemniscateSublevel f,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1044.lean:    sInf {L : ℝ | ∃ (f : Polynomial ℂ), f.Monic ∧ (∀ z, f.IsRoot z → ‖z‖ ≤ 1) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/106.lean:  sSup {s : ℝ | ∃ config : Fin n → SquarePlacement,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1063.lean:  sInf {m | 2 * k ≤ m ∧ ∃ i0 < k, ¬ (m - i0) ∣ m.choose k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/107.lean:  sInf (cardSet n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1072.lean:noncomputable def f (p : ℕ) : ℕ := sInf {n | (n)! + 1 ≡ 0 [MOD p]}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1076.lean:  sSup {m : ℕ | ∃ H : Hypergraph3 n, IsFkFree k H ∧ H.edges.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1079.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1083.lean:  sInf {m : ℕ | ∃ (P : Finset (EuclideanSpace ℝ (Fin d))),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1088.lean:  sInf {m : ℕ | ∀ (S : Finset (EuclideanSpace ℝ (Fin d))),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1089.lean:  sInf {m : ℕ | ∀ (S : Finset (EuclideanSpace ℝ (Fin d))), S.card ≥ m →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1092.lean:  sSup {k : ℕ |
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1095.lean:noncomputable def g (k : ℕ) : ℕ := sInf {m | k + 1 < m ∧ k < (m.choose k).minFac}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1101.lean:  sSup { k | ∏ i ∈ Finset.range k, u i ≤ x }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1104.lean:  sSup {χ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ G.chromaticNumber = χ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean:  sInf {k : ℕ | ∃ H' : SimpleGraph W,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean:  sSup {k : ℕ | ∃ (S : Finset V),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1117.lean:  sSup {x : ℝ | ∃ z : ℂ, ‖z‖ = r ∧ x = ‖f z‖}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1118.lean:  sSup {x : ℝ | ∃ z : ℂ, ‖z‖ = r ∧ x = ‖f z‖}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/112.lean:  sInf {k : ℕ | ∀ (V : Type) [Fintype V], Fintype.card V = k →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1129.lean:  sSup ((lebesgueFunction nodes) '' (Set.Icc (-1 : ℝ) 1))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1129.lean:    sSup ((lebesgueFunction nodes) ''
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1129.lean:    sSup ((lebesgueFunction nodes) ''
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/113.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1130.lean:  sSup ((lebesgueFunction nodes) ''
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1131.lean:  sInf {v : ℝ | ∃ nodes : Fin n → ℝ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1157.lean:  sSup {m : ℕ | ∃ H : UniformHypergraph r n, IsFree H k s ∧ H.edges.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1164.lean:  sSup {R : ℕ | ∀ (a b : ℤ), a ^ 2 + b ^ 2 ≤ ↑R ^ 2 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/117.lean:  sInf {k : ℕ | ∀ (G : Type) [Group G],
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean:  sSup {m : ℕ | ∃ E : Finset (Finset (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1178.lean:  sInf {d : ℕ | (fun n : ℕ => (turanNumber r n d e : ℝ)) =o[atTop]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1179.lean:  sInf {k : ℕ | ∀ (G : Type) [hG : AddCommGroup G] [hF : Fintype G] [hD : DecidableEq G],
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/119.lean:    sSup { (‖p z n w‖) | (w : ℂ) (_ : ‖w‖ = 1) }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/121.lean:  sSup {m : ℕ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ A.card = m ∧ NoKSquareProduct k A}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/127.lean:  sInf {r : ℝ | ∃ (V : Type) (_ : Fintype V) (_ : DecidableEq V)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean:  sInf {N : ℕ | ∀ (χ : EdgeColoring N r),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/131.lean:  sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ IsNonDividing A ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/133.lean:  sInf { k : ℕ | ∀ (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean:  sInf {k : ℕ | ∃ χ : EdgeColoring n k, IsK4FiveColored χ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/138.lean:noncomputable def monoAPNumber (r k : ℕ) : ℕ := sInf (monoAP_guarantee_set r k)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/140.lean:  sSup { k : ℕ | ∃ S : Finset ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/147.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/149.lean:  sInf {k : ℕ | ∃ (c : G.edgeSet → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/150.lean:  sSup { k : ℕ | ∃ G : SimpleGraph (Fin n), G.Connected ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean:  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal G T ∧ T.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean:  sSup { k : ℕ | ∃ S : Finset (Fin n), IsIndependentSet G S ∧ S.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/151.lean:  sInf { k : ℕ | ∃ G : SimpleGraph (Fin n), G.CliqueFree 3 ∧ independenceNumber G = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean:def IsInfiniteSidonSet (A : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/157.lean:    answer(True) ↔ ∃ A : Set ℕ, IsInfiniteSidonSet A ∧ IsAsymptoticBasisOrder3 A := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean:    exact h <| le_antisymm (csSup_le ⟨0, 0, fun n hn => by positivity⟩ ha) <|
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/158.lean:      (le_csSup ⟨0, ha⟩ ⟨0, fun n hn => by positivity⟩)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean:def IsInfiniteAP (AP : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/16.lean:      IsInfiniteAP AP ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/160.lean:    sInf {k | ∃ (colouring : Finset.Icc 1 n → Fin k), ∀ (progression : Set ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/161.lean:  sInf { m : ℕ | ∃ c : Finset (Fin n) → Bool, IsBalancedColouring n t m α c }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/162.lean:  sInf { m : ℕ | ∃ c : Finset (Fin n) → Bool, IsEdgeBalanced n m α c }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/165.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 4 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/170.lean:noncomputable abbrev lower_bound := √(sSup {2 * (1 - Real.sin θ / θ) | θ ≠ 0})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/176.lean:  sInf { N : ℕ | ∀ f : ℕ → ℤ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/18.lean:  sInf {k : ℕ | ∀ n : ℕ, 1 ≤ n → n < m →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/180.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/181.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/183.lean:  sInf {n : ℕ | ∀ (c : Fin n → Fin n → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/186.lean:  sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ IsNonAveraging A ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/190.lean:  sInf {N : ℕ | ∀ χ : ℕ → ℕ, HasMonoAP χ N k ∨ HasRainbowAP χ N}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/195.lean:    answer(sorry) = sSup {k : ℕ | ∀ f : ℤ ≃ ℤ, HasMonotoneAP f k} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/195.lean:    5 ≥ sSup {k : ℕ | ∀ f : ℤ ≃ ℤ, HasMonotoneAP f k} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/195.lean:    4 ≥ sSup {k : ℕ | ∀ f : ℤ ≃ ℤ, HasMonotoneAP f k} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean:def HasInfiniteAP (S : Set ℝ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/199.lean:theorem erdos_199 : answer(False) ↔ ∀ A : Set ℝ, ¬HasThreeTermAP A → HasInfiniteAP Aᶜ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/20.lean:  sInf {m | ∀ {α : Type}, ∀ (F : Set (Set α)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/20.lean:  refine IsLeast.csInf_eq ⟨fun F hF ↦ ?_, fun n hn ↦ n.pos_of_ne_zero fun hn₀ ↦ ?_⟩
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/200.lean:  sSup {(k : ℕ) | ∃ s ⊆ Set.Icc 1 n, s.IsAPOfLength k ∧ ∀ m ∈ s, m.Prime}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/206.lean:  sSup {s : ℝ | ∃ S : Finset ℕ, S.card = n ∧ (∀ m ∈ S, 0 < m) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/21.lean:  sInf {k : ℕ | ∃ F : Finset (Finset ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/227.lean:  sSup {x : ℝ | ∃ z : ℂ, ‖z‖ = r ∧ x = ‖f z‖}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean:  sSup {y : ℝ | ∃ z : ℂ, ‖z‖ = 1 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean:  sInf {y : ℝ | ∃ (a : Fin n → ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/282.lean:  else sInf {n : ℕ | n ∈ A ∧ x⁻¹ ≤ (n : ℚ)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/284.lean:  sSup {m : ℕ | ∃ S : Finset ℕ, S.card = k ∧ (∀ n ∈ S, 0 < n) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/293.lean:  sInf {n : ℕ | 0 < n ∧ ¬AppearsInKTermEgyptian k n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:noncomputable def smallestCollection (a b : ℕ) : ℕ := sInf (unitFractionExpressible a b)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:  have : 0 ∈ unitFractionExpressible a b := h' ▸ Nat.sInf_mem h
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:  have : smallestCollection 1 b ≤ 1 := Nat.sInf_le this
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:  have : smallestCollection 1 b ≠ 0 := ne_of_mem_of_not_mem (Nat.sInf_mem ⟨_, ‹_›⟩) this
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:  have : 1 ∈ unitFractionExpressible a b := h ▸ Nat.sInf_mem (Nat.nonempty_of_sInf_eq_succ h)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:  have : 1 ∈ unitFractionExpressible a b := h ▸ Nat.sInf_mem (Nat.nonempty_of_sInf_eq_succ h)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:  have : smallestCollection 2 15 ≤ 2 := Nat.sInf_le h
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/304.lean:  sSup {smallestCollection a b | a ∈ Finset.Ico 1 b}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/311.lean:  sInf { x : ℝ | x > 0 ∧ ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/319.lean:    ∀ᶠ N in atTop, (1 - 1 / rexp 1 + o N) * N ≤ sSup { (#A : ℝ) | (A) (_ : A ⊆ Finset.Icc 1 N)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/321.lean:  sSup { #A | (A) (_ : A ⊆ Finset.Icc 1 N)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean:theorem erdos_329 : sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} =
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean:    sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} = 1 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/329.lean:    (sSup {sidonUpperDensity A | (A : Set ℕ) (_ : IsSidon A)} = 1) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/336.lean:  sSup {k : ℕ | ∃ A : Set ℕ, IsAdditiveBasis A r ∧ HasExactOrder A k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean:def ContainsInfiniteAP (S : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/343.lean:        ContainsInfiniteAP (subsetSums mult) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean:def ContainsInfiniteAP (S : Set ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/344.lean:    ContainsInfiniteAP (subsetSums A) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/345.lean:  sInf {m : ℕ | ∀ n : ℕ, n ≥ m → n ∈ subsetSums A}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/35.lean:  sInf {x : ℝ | ∃ N : ℕ, N ≥ 1 ∧ x = ((Icc 1 N).filter (· ∈ A)).card / (N : ℝ)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean:  sSup {k : ℕ | ∃ a : Fin k → ℤ, Set.range a ⊆ Set.Icc 1 n ∧ StrictMono a ∧ HasDistinctSums a}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean:  sSup {k : ℕ | ∃ a : Fin k → ℕ, (Set.range a ⊆ Set.Icc 1 n) ∧ HasDistinctSums a}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/357.lean:  sSup {k : ℕ | ∃ a : Fin k → ℤ, Set.range a ⊆ Set.Icc 1 n ∧ Monotone a ∧ HasDistinctSums a}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/36.lean:  sInf {MaxOverlap A B | (A : Finset ℤ) (B : Finset ℤ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean:  sInf {k : ℕ | ∃ c : ℕ → Fin k, SumFreeColoring n k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/379.lean:  sSup {s | ∀ k ∈ Finset.Ico 1 n, ∃ p, p.Prime ∧ p^s ∣n.choose k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/385.lean:noncomputable def F (n : ℕ) : ℕ := sSup {m + m.minFac | (m < n) (_ : m.Composite)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/390.lean:noncomputable def f (n : ℕ) : ℕ := sInf {m : ℕ | ∃ k, ∃ f : ℕ → ℕ, StrictMono f ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/391.lean:  sSup {k : ℕ | ∃ f : Fin n → ℕ, IsFactorialRepr n f ∧ ∀ i, k ≤ f i}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/393.lean:  sInf {m : ℕ | 1 ≤ m ∧ HasFactorizationWithSpread n m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/394.lean:  sInf { m : ℕ | 0 < m ∧ n ∣ ∏ i ∈ range k, (m + i) }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/400.lean:  sSup {s : ℕ | ∃ a : Fin k → ℕ, (∏ i, (a i).factorial) ∣ n.factorial ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/415.lean:  sSup {k : ℕ | ∀ σ : Equiv.Perm (Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/425.lean:  sSup {k : ℕ | ∃ A : Finset ℕ, IsMultB2 A ∧ (∀ x ∈ A, 1 ≤ x ∧ x ≤ n) ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/426.lean:  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n), numUniqueSubgraphs G = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/433.lean:  sSup {m : ℕ | ¬ Representable433 A m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/433.lean:  sSup (FrobeniusNumber433 '' {A : Finset ℕ | A ⊆ Icc 1 n ∧ A.card = k ∧ A.gcd id = 1})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/440.lean:    sSup {L : ℝ | ∃ (a : ℕ → ℕ), StrictMono a ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/456.lean:  sInf {p : ℕ | Nat.Prime p ∧ p ≡ 1 [MOD n]}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/456.lean:  sInf {m : ℕ | 0 < m ∧ n ∣ Nat.totient m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/459.lean:  sInf {v : ℕ | u < v ∧ ∀ p : ℕ, Nat.Prime p → p ∣ v → p ∣ u}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/460.lean:  | k + 1 => sInf {m : ℕ | erdos460Seq n k < m ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/468.lean:  sInf {n : ℕ | N ∈ D n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean:  sSup {m : ℕ | ∃ H : Finset (Finset (Fin n)), IsK43Free H ∧ H.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:    (n + 1).choose 2 ≤ sSup {(A.ncard) | (A : Set (ℝ^n)) (hA : A.IsIsosceles)} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/504.lean:  sSup {α : ℝ | 0 ≤ α ∧ α ≤ Real.pi ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:  sInf (numDeterminedCircles '' {S : Finset (EuclideanSpace ℝ (Fin 2)) |
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:  sInf {EuclideanGeometry.triangle_area (t.points 0) (t.points 1) (t.points 2) |
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:  sSup (minTriangleArea '' { S : Finset ℝ² |
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:  sSup {x : ℝ | ∃ z : ℂ, ‖z‖ = r ∧ x = ‖f z‖}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/523.lean:  sSup {x : ℝ | ∃ z : ℂ, ‖z‖ = 1 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/524.lean:  sSup {y : ℝ | ∃ x : ℝ, x ∈ Icc (-1 : ℝ) 1 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean:  sSup {k : ℕ | ∃ S : Finset ℝ, S ⊆ A ∧ IsSidonSet S ∧ S.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean:  sInf {m : ℕ | ∃ A : Finset ℝ, A.card = N ∧ maxSidonSubsetSize A = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean:  sInf {N : ℕ | ∀ χ : ℕ → Bool, HasMonoSubsetSumSet χ k N}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:  sInf {N : ℕ | ∀ (G₁ G₂ : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:  sSup {#A | (A : Finset ℕ) (_ : A ⊆ Finset.Icc 1 N) (_ : WeaklyDivisible k A)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:  simp [MaxWeaklyDivisible, Nat.sSup_def]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean:  sInf {m : ℕ | ∃ (n : ℕ) (H : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:  sInf {m : ℕ | ∃ (c : Fin n → Fin n → Bool),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean:  sInf {m : ℕ | ∃ (H : SimpleGraph (Fin m)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean:  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean:  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean:  sInf {N : ℕ | ∀ (F : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean:  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/574.lean:  sSup {e : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:  sSup {k : ℕ | ∃ H : SimpleGraph V, H ≤ G ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:  sInf {k : ℕ | ∃ (n : ℕ) (G : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:  sSup {m : ℕ | ∀ S : Finset (Fin 2 → ℝ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/60.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/600.lean:  sInf {m : ℕ | ∀ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean:def HasInfinitePath {V : Type*} (G : SimpleGraph V) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/601.lean:    HasInfinitePath G ∨ HasIndepSetOfOrderType G
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/610.lean:  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal G T ∧ T.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/611.lean:  sInf { k : ℕ | ∃ T : Finset (Fin n), IsCliqueTransversal G T ∧ T.card = k }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/614.lean:  sInf {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/615.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/616.lean:  sInf {k : ℕ | ∃ S : Finset (Fin n), S.card = k ∧ IsTransversal G S}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/618.lean:  sInf {k : ℕ | ∃ H : SimpleGraph (Fin n), G ≤ H ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean:exists (the set is empty and `sInf` defaults to $0$). -/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/619.lean:  sInf {k : ℕ | ∃ H : SimpleGraph (Fin n), G ≤ H ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/624.lean:    sInf {m : ℕ | ExistsEventuallySurjective n m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean:  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/625.lean:  sInf {k : ℕ | ∃ f : Fin n → Fin k,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean:  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n), finChromaticNumber G = k ∧ HasGirthGt G m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/626.lean:  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n), finChromaticNumber G = k ∧ HasGirthGt G m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean:  sInf {k : ℕ | ∃ f : Fin n → Fin k, ∀ u v, G.Adj u v → f u ≠ f v}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean:  sSup {k : ℕ | ¬G.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/627.lean:  sSup {r : ℝ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean:  sInf {k : ℕ | IsChoosable G k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean:  sInf {n : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/630.lean:  sInf {k : ℕ | IsChoosable G k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/635.lean:  sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ DivAvoidance A t ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/648.lean:  sSup {t : ℕ | ∃ a : Fin t → ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean:  sSup {r : ℕ | ∃ (b a : Fin r → ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean:  sInf {c : ℕ | ∃ (N : ℕ) (A : Finset ℕ) (t : ℕ),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/651.lean:  sInf {m : ℕ | ∀ P : Finset (EuclideanSpace ℝ (Fin k)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/663.lean:  sInf {p : ℕ | Nat.Prime p ∧ ¬(p ∣ ∏ i ∈ Finset.range k, (n + i + 1))}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/667.lean:  sSup {m : ℕ | ∀ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/668.lean:  sSup {k : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean:  sSup {m : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/669.lean:  sSup {m : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/675.lean:  sInf {t : ℕ | t ≥ 1 ∧ ∀ a : ℕ, 1 ≤ a → a ≤ n → (a ∈ A ↔ a + t ∈ A)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean:  sSup {k | ∃ l : List ℕ, l.length = k ∧ IsModChain l ∧ ∀ p ∈ l, Nat.Prime p ∧ p ∣ n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/696.lean:  sSup {k | ∃ l : List ℕ, l.length = k ∧ IsModChain l ∧ ∀ d ∈ l, d ∣ n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/703.lean:  sSup {k : ℕ | ∃ F : Finset (Finset (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/704.lean:  sInf {k : ℕ | (unitDistanceGraph n).Colorable k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/709.lean:  sInf {m : ℕ | ∀ (A : Finset ℕ) (hA : A.Nonempty),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/710.lean:  sInf {f : ℕ | ∃ g : Fin n → ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/711.lean:  sInf {f : ℕ | ∃ g : Fin n → ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/712.lean:  sSup {m : ℕ | ∃ H : Finset (Finset (Fin n)), IsKkrFree r k H ∧ H.card = m}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/713.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/714.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/717.lean:  sSup {k : ℕ | ContainsSubdivision G k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/719.lean:  sSup {k : ℕ | ∃ H : Finset (Finset (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/720.lean:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/721.lean:  sInf {n : ℕ | VDWProperty j k n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/724.lean:  sSup {k : ℕ | ∃ L : Fin k → Fin n → Fin n → Fin n, IsMOLS L}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/731.lean:  sInf {m : ℕ | 2 ≤ m ∧ ¬(m ∣ Nat.choose (2 * n) n)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/736.lean:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean:def HasInfiniteChromaticNumber {V : Type*} (G : SimpleGraph V) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/738.lean:    HasInfiniteChromaticNumber G → G.CliqueFree 3 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/739.lean:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean:  sInf <| SimpleGraph.edgeDistancesToBipartite A
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean:  apply Nat.sInf_le
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/74.lean:    (G : SimpleGraph V) (n : ℕ) : ℕ := sSup <| SimpleGraph.subgraphEdgeDistsToBipartite G n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/740.lean:  sInf {κ : Cardinal.{u} | ∃ (α : Type u), #α = κ ∧ Nonempty (G.Coloring α)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean:  sInf {m : ℕ | ∃ S : Finset (Sym2 V), S.card = m ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/744.lean:  sInf {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/745.lean:  sInf {k : ℕ | ∀ u v : Fin n,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/753.lean:  sInf {k : ℕ | IsChoosable G k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean:    answer(sorry) = sSup {c | IsAdmissible c} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean:theorem erdos_757.lowerBound {A : Set ℝ} : 1 / (2 : ℝ) < sSup {c | IsAdmissible c} := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/757.lean:theorem erdos_757.upperBound {A : Set ℝ} : sSup {c | IsAdmissible c} < 3 / (5 : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColoring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean:  sSup {k : ℕ | ∃ G : SimpleGraph (Fin n), cochromaticNumber G = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/759.lean:  sSup {k : ℕ | ∃ (m : ℕ) (G : SimpleGraph (Fin m)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/760.lean:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean:  sInf {k : ℕ | ∀ D : V → V → Prop, IsOrientation G D →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/761.lean:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/762.lean:  sInf {k : ℕ | ∃ c : V → Fin k, IsCochromaticColouring G k c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/765.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/766.lean:  sInf {m : ℕ | ∃ G : SimpleGraph (Fin k),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/767.lean:  sSup {e : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/77.lean:  sInf {N : ℕ | ∀ (c : Fin N → Fin N → Bool), (∀ i j, c i j = c j i) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean:noncomputable def h (n : ℕ) : ℕ∞ := sInf {m | 2 < m ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/770.lean:    let p := sSup {m : ℕ | m.Prime ∧ m - 1 ∣ n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/771.lean:  sSup {k : ℕ | ∀ m : ℕ, m ≥ 1 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/778.lean:  sSup {k : ℕ | ¬G.CliqueFree k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/781.lean:  sInf {n : ℕ | ∀ c : Fin n → Bool, HasMonochromaticDescendingWave k n c}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/786.lean:  simpa [Nat.nth_zero] using IsLeast.csInf_eq <| by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/787.lean:  sSup {m : ℕ | ∀ A : Finset ℝ, A.card = n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/788.lean:  sSup {m : ℕ | ∀ B : Finset ℕ, B ⊆ Finset.Ioo (2 * n) (4 * n) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/789.lean:  sSup { h : ℕ | ∀ (A : Finset ℤ), A.card = n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/790.lean:  sSup {l : ℕ | ∀ (A : Finset ℤ), A.card = n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/791.lean:  sInf {k : ℕ | ∃ A : Finset ℕ, A.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/792.lean:  sSup {k : ℕ | ∀ (A : Finset ℤ), A.card = n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/793.lean:  sSup {k : ℕ | ∃ A : Finset ℕ, IsPrimitiveLike A ∧ (∀ x ∈ A, 1 ≤ x ∧ x ≤ n) ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/795.lean:  sSup {k : ℕ | ∃ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a ≤ n) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/796.lean:  sSup {s : ℕ | ∃ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a ≤ n) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/798.lean:  sInf {k : ℕ | ∃ S : Finset (ℤ × ℤ), S.card = k ∧ CoversIntGrid n S}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/800.lean:  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)), HasSubgraphCopy G H ∨ HasSubgraphCopy G Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean:  sInf { k : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean:  sInf {k : ℕ | ∃ (A B : Fin k → Set V), IsBicliqueCover G k A B}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/807.lean:  sSup {k : ℕ | ∃ S : Finset V, S.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree n ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean:  sSup {k : ℕ | ∃ S : Finset (Fin n), S.card = k ∧ G.IsClique (↑S : Set (Fin n))}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean:  sInf (graphCliqueNumber '' {G : SimpleGraph (Fin n) | EverySevenSetHasTriangle G})
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/817.lean:def g (k : ℕ) (n : ℕ) : ℕ := sInf { N | ∃ A ⊆ Finset.Icc 1 N, A.card = n ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/82.lean:  sSup {k | ∀ (G : SimpleGraph (Fin n)), ∃ S : Subgraph G,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/820.lean:  sInf {l : ℕ | 2 ≤ l ∧ ∃ k : ℕ, 2 ≤ k ∧ k < l ∧ Nat.Coprime (k ^ n - 1) (l ^ n - 1)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean:  sInf {k : ℕ | k ≥ 1 ∧ ∃ f : V → Fin k, H.IsProperColoring k f}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/838.lean:  sInf {k : ℕ | ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/841.lean:  else sInf {t : ℕ | HasSquareProductSubset n t}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/846.lean:  ∃ B : Finset (Set ℝ²), A = sSup B ∧ ∀ b ∈ B, NonTrilinear b
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/85.lean:  sInf {k : ℕ | ∀ (G : SimpleGraph (Fin n)), G.minDegree ≥ k → (cycleGraph 4) ⊑ G}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/852.lean:  sSup {k : ℕ | ∃ n, n < x ∧ IsDistinctPrimeGapRun n k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/853.lean:  sInf { t : ℕ | 0 < t ∧ t % 2 = 0 ∧ ¬ (∃ n ≤ x, primeGap n = t) }
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/856.lean:  sSup {x : ℝ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/858.lean:  sSup {x : ℝ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/860.lean:  sInf {h : ℕ | ∀ m : ℕ, m ≥ 1 → HasPrimeCovering n m h}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/865.lean:  sInf {m | ∀ A ⊆ Icc 1 N, A.card ≥ m →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/866.lean:  sInf {g : ℕ | ∀ A : Finset ℤ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/874.lean:  sSup {k | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 N ∧ IsAdmissible874 A ∧ A.card = k}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/875.lean:def rSubsetSumsInf (A : Set ℕ) (r : ℕ) : Set ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/875.lean:    Disjoint (rSubsetSumsInf A r₁) (rSubsetSumsInf A r₂)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/878.lean:  sSup {s | ∃ a : Fin n.primeFactors.card → ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/882.lean:  sSup {k : ℕ | ∃ A : Finset ℕ, A ⊆ Finset.Icc 1 n ∧ A.card = k ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/89.lean:  sInf {(distinctDistances points : ℝ) | (points : Finset ℝ²) (_ : points.card = n)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean:ensures that taking the supremum (`sSup`) is a well-defined operation. The trivial upper bound is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/90.lean:  sSup (unitDistanceCounts n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/902.lean:  sInf {m : ℕ | ∃ (T : Tournament (Fin m)), T.hasDominationProperty n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/911.lean:  sInf {m : ℕ | ∃ (N : ℕ) (H : SimpleGraph (Fin N)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean:  sSup (distances.image fun d ↦ (otherPoints.filter fun p ↦ dist x p = d).card)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean:This ensures `sSup` is well-defined.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/92.lean:noncomputable def f (n : ℕ) : ℕ := sSup <| possible_f_values n
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/920.lean:  sSup {(G.chromaticNumber) | (G : SimpleGraph (Fin n)) (_ : G.CliqueFree k)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/921.lean:  sSup {m : ℕ | ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/926.lean:  sSup {m : ℕ | ∃ (V : Type) (fv : Fintype V) (F : SimpleGraph V) (dr : DecidableRel F.Adj),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/945.lean:  sSup {k | ∃ (n : ℕ), n + k ≤ x ∧ (Set.Ioc n (n + k)).InjOn τ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/953.lean:  sSup ((fun A => (volume A).toReal) ''
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/956.lean:  sInf {r : ℝ | ∃ c ∈ C, ∃ d ∈ D, r = dist c d}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/960.lean:  sInf {m : ℕ | ∀ A : Finset (EuclideanSpace ℝ (Fin 2)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/962.lean:  sSup {k : ℕ | ∃ m : ℕ, m ≤ n ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/97.lean:    sInf {n : ℕ | ∃ (V : Finset ℝ²) (A B : Finset ℝ²),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/970.lean:  sInf {m : ℕ | ∀ n : ℕ, 0 < n → n.primeFactors.card ≤ k →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/971.lean:  sInf {p : ℕ | p.Prime ∧ p ≡ a [MOD d]}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/980.lean:  sInf {a : ℕ | 0 < a ∧ ¬IsKthPowerResidue k p a}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/981.lean:  sInf {m : ℕ | m ≥ 1 ∧ ∀ N : ℕ, N ≥ m → (legendrePartialSum p N : ℝ) < ε * (N : ℝ)}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/983.lean:  sInf {r : ℕ | ∀ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a ≤ n) → A.card = k →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/986.lean:  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree n}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/992.lean:  sSup {d : ℝ | ∃ a b : ℝ, 0 ≤ a ∧ a < b ∧ b ≤ 1 ∧

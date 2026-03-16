@@ -1,0 +1,870 @@
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/GCDMonoid/Finset.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Algebra.GCDMonoid.Finset
+import Mathlib.Order.Interval.Finset.Defs
+
+namespace Finset
+
+/-- The least common multiple of ${n+1, \dotsc, n+k}$. -/
+def lcmInterval {α : Type*} [AddMonoid α] [CommMonoidWithZero α] [NormalizedGCDMonoid α]
+    [Preorder α] [LocallyFiniteOrder α] (n k : α) : α := (Finset.Ioc n (n + k)).lcm id
+
+end Finset
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Group/Indicator.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Algebra.Group.Indicator
+
+namespace Set
+
+variable {α R : Type*} [One R] [Zero R] (A : Set α)
+
+/-- A polymorphic indicator function `𝟙_A` which is `1` on `A` and `0` outside. -/
+noncomputable def indicatorOne : α → R := indicator A (fun _ ↦ 1)
+
+scoped notation "𝟙_" A:max => indicatorOne A
+
+end Set
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Group/Action/Pointwise/Set/Basic.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Algebra.Group.Action.Pointwise.Set.Basic
+
+open scoped Pointwise
+
+namespace Set
+variable {M : Type*} [Monoid M] {a b : M} {s : Set M}
+
+@[to_additive (attr := simp)]
+lemma mul_mem_smul_set [IsLeftCancelMul M] : a * b ∈ a • s ↔ b ∈ s :=
+  (mul_right_injective _).mem_set_image
+
+end Set
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Order/Group/Pointwise/Interval.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Algebra.Order.Group.Pointwise.Interval
+import Mathlib.Tactic
+
+theorem Nat.image_mul_two_Iio_even {n : ℕ} (h : Even n) :
+    (2 * ·) '' Set.Iio (n / 2) = { n | Even n } ∩ Set.Iio n := by
+  aesop (add simp [even_iff_two_dvd, dvd_iff_exists_eq_mul_right])
+
+theorem Nat.image_mul_two_Iio (n : ℕ) :
+    (2 * ·) '' Set.Iio ((n + 1) / 2) = { n | Even n } ∩ Set.Iio n := by
+  aesop (add simp [even_iff_two_dvd, dvd_iff_exists_eq_mul_right, mul_comm, lt_div_iff_mul_lt])
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Powerfree.lean ====
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Algebra.Squarefree.Basic
+
+variable {M M₀ : Type*} {r m : M} {k : ℕ}
+
+section Monoid
+variable [Monoid M]
+
+def Powerfree (k : ℕ) (m : M) : Prop :=
+  ∀ ⦃x : M⦄, x ^ k ∣ m → IsUnit x
+
+theorem Powerfree.of_le {a b : ℕ} (hab : a ≤ b) (hm : Powerfree a m) :
+  Powerfree b m := fun x hx => hm (dvd_of_mul_right_dvd (pow_mul_pow_sub x hab ▸ hx))
+
+theorem Powerfree.of_dvd (hrm : r ∣ m) (hm : Powerfree k m) :
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Polynomial/Basic.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Algebra.Polynomial.Degree.Definitions
+import Mathlib.Algebra.Polynomial.Eval.Defs
+import Mathlib.Data.Nat.Prime.Defs
+
+open Polynomial
+
+/-!
+This file introduces some common assumptions made on polynomials in certain conjectures.
+Note that the terminology is non-standard.
+-/
+
+/--
+**Bunyakovsky condition**
+A condition on polynomials in the Schinzel and Bunyakovsky conjectures.
+Holds for nonconstant irreducible polynomial with positive leading coefficient.
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Polynomial/Algebra.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Algebra.Polynomial.Bivariate
+import Mathlib.RingTheory.Algebraic.Pi
+
+/-!
+# Algebra over the Ring of Polynomials
+
+-/
+
+variable {R S : Type*} [CommSemiring R] [CommSemiring S] [Algebra R S]
+
+namespace Polynomial
+
+instance instAlgebraPi : Algebra R[X] (S → S) :=
+  (Pi.ringHom fun x ↦ (Polynomial.aeval x).toRingHom).toAlgebra
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Algebra/Polynomial/HasseDeriv.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Algebra.Polynomial.HasseDeriv
+
+open scoped Polynomial in -- probably removable in the mathlib file
+theorem Polynomial.hasseDeriv_map {R S : Type*} [Semiring R] [Semiring S]
+    {f : R →+* S} {k : ℕ} {p : R[X]} : (p.map f).hasseDeriv k = (p.hasseDeriv k).map f := by
+  ext; simp [hasseDeriv_coeff]
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Triplewise.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Data.ENat.Lattice
+import Mathlib.Data.Set.Card
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Tactic.NormNum.Ineq
+
+def Triplewise {α : Type*} (r : α → α → α → Prop) : Prop :=
+  ∀ ⦃i j k ⦄, i ≠ j → j ≠ k → i ≠ k → r i j k
+
+namespace Set
+
+variable {α : Type*} {r : α → α → α → Prop} {s t : Set α} {x y z : α}
+
+/--
+The ternary relation `r` holds triplewise on the set `s`
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Bdd.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Order.Interval.Finset.Defs
+
+variable {β : Type*} [Preorder β]
+variable (S : Set β) (a b : β)
+
+/--
+Given a set `S` and an element `b` in an order `β`, `Set.interIio S b A` is the intersection
+`S ∩ Iio b`.
+-/
+@[inline]
+abbrev Set.interIio (S : Set β) (b : β) : Set β :=
+  S ∩ Set.Iio b
+
+/--
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Set/Density.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjecturesForMathlib.Algebra.Order.Group.Pointwise.Interval
+import FormalConjecturesForMathlib.Data.Set.Bdd
+import FormalConjecturesForMathlib.Order.Interval.Finset.Basic
+import FormalConjecturesForMathlib.Order.Interval.Finset.Nat
+import Batteries.Util.ProofWanted
+
+open Filter
+
+open scoped Topology
+
+namespace Set
+
+/--
+Given a set `S` and an element `b` in an order `β`, where all intervals bounded above are finite,
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/Factorization/Basic.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Data.Nat.Factorization.Basic
+
+namespace Nat
+
+theorem prod_primeFactors_factorization_apply (n : ℕ) {p : ℕ} (hp : p.Prime) {f : ℕ → ℕ → ℕ}
+    (hf : ∀ q n, ¬ q ∣ n → f q n = 0) (hf₀ : ∀ q, f q 0 = 0):
+    (∏ q ∈ n.primeFactors, q ^ f q n).factorization p = f p n := by
+  rw [factorization_prod fun _ _ _ ↦ by simp_all, Finset.sum_congr rfl fun x hx ↦ by
+      rw [factorization_pow, (mem_primeFactors.1 hx).1.factorization]]
+  by_cases hpn : p ∣ n <;> simp [Finsupp.single_apply, hp, hpn]
+  · exact fun _ ↦ by simp_all
+  · simp [hf _ _ hpn]
+
+end Nat
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/PerfectPower.lean ====
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Tactic
+
+namespace Nat
+
+/--
+A [perfect power](https://en.wikipedia.org/wiki/Perfect_power) is a natural number that
+  is a product of equal natural factors, or, in other words, an integer that can be expressed
+  as a square or a higher integer power of another integer greater than one. More formally,
+  $n$ is a perfect power if there exist natural numbers $m > 1$, and $k > 1$ such that
+  $m ^ k = n$. In this case, $n$ may be called a perfect $k$th power. If $k = 2$ or
+  $k = 3$, then $n$ is called a perfect square or perfect cube, respectively.
+-/
+def IsPerfectPower (n : ℕ) : Prop :=
+  ∃ k m : ℕ, 1 < k ∧ 1 < m ∧ k ^ m = n
+
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/Full.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Algebra.Order.Ring.Nat
+import Mathlib.Algebra.Order.Star.Basic
+import Mathlib.Data.Nat.PrimeFin
+
+namespace Nat
+
+/--
+A natural number $n$ is said to be $k$-full (or $k$-powerful) if for every prime factor $p$ of $n$,
+the $k$-th power $p^k$ also divides $n$.
+-/
+def Full (k : ℕ) (n : ℕ) : Prop := ∀ p ∈ n.primeFactors, p^k ∣ n
+
+instance Full.decide : ∀ k n, Decidable (Full k n) := by
+  intro k n
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/Init.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Data.Nat.Init
+
+namespace Nat
+variable {a b c : ℕ}
+
+@[simp] protected lemma dvd_add_mul_self : a ∣ b + c * a ↔ a ∣ b := by
+  rw [Nat.dvd_add_left (Nat.dvd_mul_left _ _)]
+
+@[simp] protected lemma dvd_add_self_mul : a ∣ b + a * c ↔ a ∣ b := by
+  rw [Nat.mul_comm, Nat.dvd_add_mul_self]
+
+@[simp] protected lemma dvd_mul_self_add : a ∣ b * a + c ↔ a ∣ c := by
+  rw [Nat.add_comm, Nat.dvd_add_mul_self]
+
+@[simp] protected lemma dvd_self_mul_add : a ∣ a * b + c ↔ a ∣ c := by
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/MaxPrimeFac.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Data.Nat.PrimeFin
+import Mathlib.Data.Nat.Lattice
+
+namespace Nat
+
+/-- The greatest prime divisor of a natural number `n > 1`.
+
+Takes the junk value `0` for `n = 0` and `n = 1`.
+
+TODO Consider redefining this using the computable implementation:
+`n.primeFactorsList.getLastI`. -/
+noncomputable def maxPrimeFac (n : ℕ) : ℕ := sSup {p : ℕ | p.Prime ∧ p ∣ n}
+
+@[simp]
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/Squarefree.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Data.Nat.Squarefree
+import FormalConjecturesForMathlib.Data.Nat.Factorization.Basic
+
+namespace Nat
+
+/-- `n.squarefreePart` is the unique `a₀ : ℕ` such that `a₀` is squarefree and `n = a₀ * b ^ 2`,
+for some `b : ℕ`. At `0` this property is not well defined because `b` must be `0` and `a₀` can be
+any squarefree number; we give the junk value `1` at `n = 0` following the convention that the
+squarefree part of any square is `1`. -/
+def squarefreePart (n : ℕ) : ℕ := n.factorization.prod fun (p e : ℕ) ↦ p ^ (e % 2)
+
+example : squarefreePart 2 = 2 := by
+  decide +native
+
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/Prime/Defs.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Data.Nat.Prime.Defs
+import Mathlib.NumberTheory.Bertrand
+
+lemma Nat.exists_prime_not_dvd (n : ℕ) (hn : n ≠ 0) : ∃ p, p.Prime ∧ ¬p ∣ n := by
+  let ⟨p, hp, h_lt, _⟩ := exists_prime_lt_and_le_two_mul n hn
+  exact ⟨p, hp, not_dvd_of_pos_of_lt (Nat.pos_of_ne_zero hn) h_lt⟩
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/Prime/Finset.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Batteries.Data.Nat.Gcd
+import Mathlib.Algebra.GCDMonoid.Finset
+import Mathlib.Algebra.GCDMonoid.Nat
+
+/-- A Finset of numbers is coprime, or relatively prime, if its `gcd` is 1. -/
+@[reducible] def Finset.Coprime (S : Finset ℕ) : Prop := S.gcd id = 1
+
+theorem Finset.Coprime_pair_iff (S : Finset ℕ) (a b : ℕ) (h : S = {a, b}) :
+    S.Coprime ↔ Nat.Coprime a b := by
+  simp only [h, Finset.Coprime, Nat.Coprime, gcd_insert, gcd_singleton, normalize_eq]
+  rfl
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Nat/Prime/Composite.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Data.Nat.Prime.Defs
+
+abbrev Nat.Composite (n : ℕ) : Prop := 1 < n ∧ ¬n.Prime
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Real/Constants.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.MeasureTheory.Integral.Bochner.Basic
+import Mathlib.MeasureTheory.Measure.Haar.OfBasis
+
+/-! # Standard real valued constants
+
+This file is for storing the definition of standard real constants that arise in conjectures.
+
+-/
+
+open Real
+
+/--
+**Gompertz constant**
+$$\delta = -e * \int_1^∞ e^{-t}/t dt \approx 0.59634$$
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/ZMod/PerfectDifferenceSet.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Data.ZMod.Defs
+
+/--
+A perfect difference set modulo `n` is a set `D` such that the map `(a, b) ↦ a - b` from
+`D.offDiag` to `{x : ZMod n | x ≠ 0}` is a bijection.
+-/
+def IsPerfectDifferenceSet (D : Set ℕ) (n : ℕ) : Prop :=
+  D.offDiag.BijOn (fun (a, b) => (a - b : ZMod n)) {x : ZMod n | x ≠ 0}
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Finset/Powerset.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Data.Finset.Powerset
+
+namespace Finset
+variable {α : Type*} [DecidableEq α] {s t : Finset α} {n : ℕ}
+
+attribute [gcongr] powersetCard_mono
+
+lemma powersetCard_inter : powersetCard n (s ∩ t) = powersetCard n s ∩ powersetCard n t := by
+  ext; simpa [subset_inter_iff] using and_and_right
+
+@[simp] lemma disjoint_powersetCard_powersetCard :
+    Disjoint (powersetCard n s) (powersetCard n t) ↔ #(s ∩ t) < n := by
+  simp [disjoint_iff_inter_eq_empty, ← powersetCard_inter]
+
+end Finset
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Data/Finset/Card.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Data.Finset.Card
+
+namespace Finset
+variable {α : Type*} {s t : Finset α}
+
+lemma card_le_card_iff_of_subset (hst : s ⊆ t) : #t ≤ #s ↔ s = t where
+  mp := eq_of_subset_of_card_le hst
+  mpr := by rintro rfl; rfl
+
+lemma card_lt_card_iff_of_subset (hst : s ⊆ t) : #s < #t ↔ s ≠ t := by
+  rw [← not_le, card_le_card_iff_of_subset hst]
+
+end Finset
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Lean/Elab/InfoTree/Util.lean ====
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Lean
+
+/-! # InfoTree utils
+
+This file contains a few functions that are useful for traversing infotrees.
+
+-/
+
+variable {α σ m} [Monad m]
+
+/-- Visit nodes in an infotree, where state is set only within a single branch. -/
+partial def Lean.Elab.InfoTree.visitStateOf [MonadStateOf σ m]
+    (visit : ContextInfo → Info → (children : PersistentArray InfoTree) → m Unit) :
+    InfoTree → m Unit :=
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Logic/Equiv/Fin/Rotate.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Logic.Equiv.Fin.Rotate
+
+variable {n : ℕ}
+
+theorem lt_finRotate_of_ne_last {i : Fin (n + 1)} (hi : i ≠ Fin.last n) :
+    i < finRotate _ i := by
+  rw [Fin.lt_def, coe_finRotate_of_ne_last hi, Nat.lt_add_one_iff]
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/AP/Basic.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Algebra.Module.NatInt
+import Mathlib.Data.ENat.Lattice
+import Mathlib.Data.Set.Card
+import Mathlib.Tactic.IntervalCases
+
+open scoped Classical
+
+/-! # Arithmetic Progressions
+
+Main definitions:
+- `Set.IsAPOfLengthWith (s : Set α) (l : ℕ∞) (a d : α)` : predicate asserting that `s` is the
+  set consisting of an arithmetic progression of length `l` (possibly infinite) with first term
+  `a` and difference `d`. Useful for cases in which additional conditions need to be applied to
+  the individual terms and/or difference.
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Basic.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjecturesForMathlib.Combinatorics.AP.Basic
+import Mathlib.Analysis.Normed.Field.Lemmas
+import Mathlib.Order.CompletePartialOrder
+
+open Function Set
+open scoped Pointwise
+
+variable {α : Type*} [AddCommMonoid α]
+
+/--
+A set $A$ is said to be sum-free if the sumset $A + A$ is disjoint from $A$, i.e.
+if the equation $a + b = c$ has no solution with $a, b, c \in A$.
+-/
+def IsSumFree (A : Set α) : Prop := Disjoint (A + A) A
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SetFamily/VCDim.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Data.Set.Card
+
+/-!
+# VC dimension of a set family
+
+This file defines the VC dimension of a set family as the maximum size of a set it shatters.
+-/
+
+variable {α : Type*} {𝒜 ℬ : Set (Set α)} {A B : Set α} {a : α} {d d' : ℕ}
+
+variable (𝒜 A) in
+/-- A set family `𝒜` shatters a set `A` if restricting `𝒜` to `A` gives rise to all subsets of `A`.
+-/
+def Shatters : Prop := ∀ ⦃B⦄, B ⊆ A → ∃ C ∈ 𝒜, A ∩ C = B
+
+==== /home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/Ramsey.lean ====
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import Mathlib.Data.Finset.Basic
+import Mathlib.Data.Fintype.Card
+import Mathlib.Data.Nat.Lattice
+
+/-!
+# Hypergraph Ramsey Numbers
+
+This file defines the `r`-uniform hypergraph Ramsey number `R_r(n)`.
+-/
+
+namespace Combinatorics
+
+/--
+The `r`-uniform hypergraph Ramsey number `R_r(n)`.
+The smallest natural number `m` such that every 2-coloring of the `r`-subsets of a set of size `m`

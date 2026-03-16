@@ -1,0 +1,604 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1041.lean:See p. 139, above Problem 5:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean:noncomputable def erdos256_f (n : ℕ) : ℝ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/256.lean:      Real.log (erdos256_f n) ≥ C * (n : ℝ) ^ c := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean:noncomputable def erdos451_nk (k : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean:      (k : ℝ) ^ d < (erdos451_nk k : ℝ)) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/451.lean:      (erdos451_nk k : ℝ) < Real.exp (ε * (k : ℝ))) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/5.lean:# Erdős Problem 5
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/5.lean:namespace Erdos5
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/5.lean:theorem erdos_5 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/5.lean:end Erdos5
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/50.lean:# Erdős Problem 50
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/50.lean:namespace Erdos50
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/50.lean:theorem erdos_50 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/50.lean:end Erdos50
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean:# Erdős Problem 500
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean:namespace Erdos500
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean:Erdős Problem 500 — Turán's Hypergraph Conjecture [Er61][Er71][Er74c][Er81]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean:theorem erdos_500 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/500.lean:end Erdos500
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean:# Erdős Problem 501
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean:namespace Erdos501
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean:Erdős Problem 501 [Er61][ErHa71]: If each $A_x$ is bounded with outer measure $< 1$, must
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean:theorem erdos_501 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean:Erdős Problem 501, closed variant [Er61][ErHa71]: If each $A_x$ is closed with
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean:theorem erdos_501.variants.closed_measure :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/501.lean:end Erdos501
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean:# Erdős Problem 502
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean:namespace Erdos502
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean:Erdős Problem 502 — Bannai–Bannai–Stanton Upper Bound [Er61] [BBS83]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean:theorem erdos_502
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/502.lean:end Erdos502
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:# Erdős Problem 503
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:namespace Erdos503
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:theorem erdos_503 (n : ℕ) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:theorem erdos_503.variants.R2 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:theorem erdos_503.variants.R3 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:theorem erdos_503.variants.upper_bound (n : ℕ) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:theorem erdos_503.variants.lower_bound (n : ℕ) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/503.lean:end Erdos503
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/504.lean:# Erdős Problem 504
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/504.lean:namespace Erdos504
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/504.lean:Erdős Problem 504 (Blumenthal's problem, solved by Sendov):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/504.lean:theorem erdos_504 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/504.lean:end Erdos504
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/505.lean:# Erdős Problem 505
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/505.lean:namespace Erdos505
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/505.lean:theorem erdos_505 : answer(False) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/505.lean:end Erdos505
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:# Erdős Problem 506
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:namespace Erdos506
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:Erdős Problem 506 [Er61, p. 245]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:theorem erdos_506 : ∀ n : ℕ, 393 < n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/506.lean:end Erdos506
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:# Erdős Problem 507
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:namespace Erdos507
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:theorem erdos_507.equivalent:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:theorem erdos_507.lower:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:theorem erdos_507.upper:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:theorem erdos_507.variants.upper_trivial : α ≪ (fun n ↦ 1 / (n : ℝ)) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:theorem erdos_507.variants.lower_erdos : α ≫ (fun n ↦ 1 / (n : ℝ) ^ 2) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:theorem erdos_507.variants.lower_kps82 : lowerBest ≪ α := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:theorem erdos_507.variants.upper_cpz24 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/507.lean:end Erdos507
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean:# Erdős Problem 508
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/508.lean:namespace Erdos508
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:# Erdős Problem 509
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:namespace Erdos509
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:theorem erdos_509 : answer(sorry) ↔ ∀ (f : ℂ[X]), f.Monic → f.natDegree ≠ 0 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:theorem erdos_509.variants.Cartan_bound : answer(True) ↔ ∀ (f : ℂ[X]), f.Monic → f.natDegree ≠ 0 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:theorem erdos_509.variants.Pommerenke_bound : answer(True) ↔ ∀ (f : ℂ[X]), f.Monic → f.natDegree ≠ 0 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:theorem erdos_509.variants.Pommerenke_connected : answer(True) ↔ ∀ (f : ℂ[X]), f.Monic → f.natDegree ≠ 0 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/509.lean:end Erdos509
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/51.lean:# Erdős Problem 51
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/51.lean:namespace Erdos51
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/51.lean:theorem erdos_51 : answer(sorry) ↔ ∃ A : Set ℕ, ∃ n : A → ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/51.lean:end Erdos51
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/510.lean:# Erdős Problem 510
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/510.lean:namespace Erdos510
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/510.lean:theorem erdos_510 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/510.lean:theorem erdos_510.variants.ruzsa :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/510.lean:theorem erdos_510.variants.bedert :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/510.lean:end Erdos510
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/511.lean:# Erdős Problem 511
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/511.lean:namespace Erdos511
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/511.lean:/-- Erdős Problem 511: Is it true that for every $c > 1$, there exists a bound $M$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/511.lean:theorem erdos_511 : answer(False) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/511.lean:end Erdos511
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean:# Erdős Problem 512
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean:namespace Erdos512
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean:/-- Erdős Problem 512 (Littlewood's conjecture [Ko81] [MPS81]): There exists an absolute
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean:theorem erdos_512 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/512.lean:end Erdos512
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/513.lean:# Erdős Problem 513
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/513.lean:namespace Erdos513
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/513.lean:theorem erdos_513.sup : answer(sorry) =
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/513.lean:theorem erdos_513.upper_bound : ∃ c > 0,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/513.lean:theorem erdos_513.lower_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/513.lean:end Erdos513
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:# Erdős Problem 514
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:namespace Erdos514
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:/-- Erdős Problem 514 (proved by Boas, unpublished):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:theorem erdos_514 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:/-- Erdős Problem 514, growth rate variant (open):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:theorem erdos_514.variants.max_modulus_growth :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/514.lean:end Erdos514
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/515.lean:# Erdős Problem 515
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/515.lean:namespace Erdos515
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/515.lean:Erdős Problem 515: For any entire function $f$ that is not a polynomial, there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/515.lean:theorem erdos_515 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/515.lean:end Erdos515
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean:# Erdős Problem 516
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean:namespace Erdos516
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean:theorem erdos_516.limsup_ratio_eq_one_of_hasFabryGaps_ofFiniteOrder {f : ℂ → ℂ} {n : ℕ → ℕ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean:theorem erdos_516.limsup_ratio_eq_one {f : ℂ → ℂ} {n : ℕ → ℕ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean:theorem erdos_516.limsup_ratio_eq_one_of_hasFejerGaps : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/516.lean:end Erdos516
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/517.lean:# Erdős Problem 517
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/517.lean:namespace Erdos517
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/517.lean:theorem erdos_517.fabry : answer(sorry) ↔ ∀ {f : ℂ → ℂ} {n : ℕ → ℕ} (hn : HasFabryGaps n)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/517.lean:theorem erdos_517.fejer {f : ℂ → ℂ} {n : ℕ → ℕ} (hn : HasFejerGaps n) {a : ℕ → ℂ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/517.lean:end Erdos517
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/518.lean:# Erdős Problem 518
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/518.lean:namespace Erdos518
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/518.lean:Erdős Problem 518 [ErGy95]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/518.lean:theorem erdos_518 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/518.lean:end Erdos518
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/519.lean:# Erdős Problem 519
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/519.lean:namespace Erdos519
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/519.lean:Erdős Problem 519 (Turán's power sum problem) [At61b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/519.lean:theorem erdos_519 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/519.lean:end Erdos519
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/52.lean:# Erdős Problem 52
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/52.lean:namespace Erdos52
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/52.lean:theorem erdos_52 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/52.lean:end Erdos52
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean:# Erdős Problem 520
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean:namespace Erdos520
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean:theorem erdos_520 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/520.lean:end Erdos520
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean:# Erdős Problem 521
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean:namespace Erdos521
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean:theorem erdos_521 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/521.lean:end Erdos521
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:# Erdős Problem 522
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:namespace Erdos522
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:theorem erdos_522 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:theorem erdos_522.variants.number_real_roots : ∃ p o : ℕ → ℝ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:theorem erdos_522.variants.yakir_solution :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/522.lean:end Erdos522
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/523.lean:# Erdős Problem 523
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/523.lean:namespace Erdos523
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/523.lean:theorem erdos_523 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/523.lean:end Erdos523
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/524.lean:# Erdős Problem 524
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/524.lean:namespace Erdos524
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/524.lean:theorem erdos_524
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/524.lean:theorem erdos_524.variants.lower_bound
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/524.lean:end Erdos524
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean:# Erdős Problem 525
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean:namespace Erdos525
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean:Erdős Problem 525 [Er61, p.253]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean:theorem erdos_525 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/525.lean:end Erdos525
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/526.lean:# Erdős Problem 526
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/526.lean:namespace Erdos526
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/526.lean:theorem erdos_526
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/526.lean:end Erdos526
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean:# Erdős Problem 527
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean:namespace Erdos527
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean:Erdős Problem 527 [Er61, p.254]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean:theorem erdos_527 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/527.lean:end Erdos527
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:# Erdős Problem 528
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:namespace Erdos528
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:Erdős Problem 528 asks to determine the connective constant $C_k$ exactly, where $C_k$ is
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:theorem erdos_528 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:theorem erdos_528.variants.existence_with_bounds :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/528.lean:end Erdos528
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:# Erdős Problem 529
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:namespace Erdos529
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:Erdős Problem 529, Part 1:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:theorem erdos_529 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:Erdős Problem 529, Part 2:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:theorem erdos_529.variants.part2 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/529.lean:end Erdos529
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean:# Erdős Problem 53
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean:namespace Erdos53
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean:**Erdős Problem 53** [ErSz83]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean:theorem erdos_53 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/53.lean:end Erdos53
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean:# Erdős Problem 530
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean:namespace Erdos530
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean:theorem erdos_530 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/530.lean:end Erdos530
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean:# Erdős Problem 531
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean:namespace Erdos531
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean:**Erdős Problem 531** (lower bound, [BENTW17]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean:theorem erdos_531 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/531.lean:end Erdos531
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/532.lean:# Erdős Problem 532
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/532.lean:namespace Erdos532
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/532.lean:/-- **Hindman's theorem** (Erdős Problem 532, [Hi74]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/532.lean:theorem erdos_532 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/532.lean:end Erdos532
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/533.lean:# Erdős Problem 533
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/533.lean:namespace Erdos533
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/533.lean:theorem erdos_533 : answer(False) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/533.lean:end Erdos533
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/534.lean:# Erdős Problem 534
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/534.lean:namespace Erdos534
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/534.lean:Erdős Problem 534 [Er73], proved by Ahlswede–Khachatrian [AhKh96]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/534.lean:theorem erdos_534 (N : ℕ) (hN : 2 ≤ N) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/534.lean:end Erdos534
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/535.lean:# Erdős Problem 535
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/535.lean:namespace Erdos535
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/535.lean:**Erdős Problem 535** (Upper bound conjecture):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/535.lean:theorem erdos_535 (r : ℕ) (hr : 3 ≤ r) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/535.lean:**Erdős Problem 535** (Lower bound, proved by Erdős [Er64] for $r = 3$):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/535.lean:theorem erdos_535.variants.lower_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/535.lean:end Erdos535
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/536.lean:# Erdős Problem 536
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/536.lean:namespace Erdos536
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/536.lean:theorem erdos_536 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/536.lean:end Erdos536
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/537.lean:# Erdős Problem 537
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/537.lean:namespace Erdos537
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/537.lean:**Erdős Problem 537** (Disproved by Ruzsa):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/537.lean:A positive answer would imply Problem 536.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/537.lean:theorem erdos_537 : answer(False) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/537.lean:end Erdos537
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean:# Erdős Problem 538
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean:namespace Erdos538
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean:**Erdős Problem 538** (Sharpness conjecture):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean:theorem erdos_538 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean:**Erdős Problem 538** (Erdős's upper bound):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean:theorem erdos_538.variants.upper_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/538.lean:end Erdos538
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/539.lean:# Erdős Problem 539
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/539.lean:namespace Erdos539
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/539.lean:**Erdős Problem 539** (Lower bound, Erdős-Szemerédi):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/539.lean:theorem erdos_539 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/539.lean:**Erdős Problem 539** (Upper bound, Freiman-Lev):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/539.lean:theorem erdos_539.variants.upper_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/539.lean:end Erdos539
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean:# Erdős Problem 54
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean:namespace Erdos54
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean:Erdős Problem 54 (resolved by Conlon, Fox, and Pham [CFP21]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean:theorem erdos_54 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/54.lean:end Erdos54
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/540.lean:# Erdős Problem 540
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/540.lean:namespace Erdos540
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/540.lean:Erdős Problem 540 (Erdős–Heilbronn conjecture):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/540.lean:theorem erdos_540 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/540.lean:end Erdos540
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/541.lean:# Erdős Problem 541
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/541.lean:namespace Erdos541
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/541.lean:"https://github.com/plby/lean-proofs/blob/main/src/v4.24.0/ErdosProblems/Erdos541.lean", AMS 11]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/541.lean:theorem erdos_541 : answer(True) ↔ (∀ p, Fact p.Prime → ∀ (a : Fin p → ZMod p),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/541.lean:theorem erdos_541.variants.general_moduli (p : ℕ) (a : Fin p → ZMod p)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/541.lean:theorem erdos_541.variants.large_primes : ∀ᶠ p in atTop, p.Prime → ∀ a : Fin p → ZMod p,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/541.lean:end Erdos541
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/542.lean:# Erdős Problem 542
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/542.lean:namespace Erdos542
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/542.lean:Erdős Problem 542 (proved by Schinzel and Szekeres):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/542.lean:theorem erdos_542 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/542.lean:end Erdos542
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean:# Erdős Problem 543
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean:namespace Erdos543
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean:Erdős Problem 543 (disproved):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean:theorem erdos_543 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/543.lean:end Erdos543
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:# Erdős Problem 544
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:namespace Erdos544
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:Erdős Problem 544 (Part 1) [Er81c][Er93, p. 339]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:theorem erdos_544 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:Erdős Problem 544 (Part 2) [Er81c][Er93, p. 339]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:theorem erdos_544.variants.little_o : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/544.lean:end Erdos544
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean:# Erdős Problem 545
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean:namespace Erdos545
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean:Erdős Problem 545 [ErGr75, Er84b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean:theorem erdos_545 : answer(sorry) ↔ ∀ (n t k : ℕ), t < n →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/545.lean:end Erdos545
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean:# Erdős Problem 546
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean:$\geq 3$ colours is still open. A more precise question is Problem 545.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean:namespace Erdos546
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean:Erdős Problem 546 [Er84b, p.10]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean:theorem erdos_546 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean:end Erdos546
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean:# Erdős Problem 547
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean:namespace Erdos547
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean:Erdős Problem 547 [BuEr76]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean:theorem erdos_547 (n : ℕ) (hn : n ≥ 2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean:end Erdos547
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean:# Erdős Problem 548
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean:namespace Erdos548
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean:Erdős Problem 548 [Er64c][Er74c, p.78][Er93, p.345]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean:theorem erdos_548 (k n : ℕ) (hn : n ≥ k + 1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/548.lean:end Erdos548
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean:# Erdős Problem 549
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean:namespace Erdos549
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean:Erdős Problem 549 [EFRS82]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean:theorem erdos_549 : answer(False) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean:end Erdos549
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean:# Erdős Problem 55
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean:namespace Erdos55
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean:Erdős Problem 55 (solved by Conlon, Fox, and Pham [CFP21]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean:theorem erdos_55 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean:theorem erdos_55.variants.lower_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/55.lean:end Erdos55
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean:# Erdős Problem 550
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean:namespace Erdos550
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean:Erdős Problem 550 [EFRS85]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean:theorem erdos_550 (k : ℕ) (hk : k ≥ 2) (sizes : Fin k → ℕ)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean:end Erdos550
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean:# Erdős Problem 551
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean:namespace Erdos551
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean:Erdős Problem 551 [EFRS78]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean:theorem erdos_551 (k n : ℕ) (hk : k ≥ n) (hn : n ≥ 3) (hne : ¬(k = 3 ∧ n = 3)) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/551.lean:end Erdos551
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean:# Erdős Problem 552
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean:namespace Erdos552
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean:Erdős Problem 552 [BEFRS89]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean:theorem erdos_552 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean:end Erdos552
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:# Erdős Problem 553
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:namespace Erdos553
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:Erdős Problem 553 [ErSo80]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:theorem erdos_553 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/553.lean:end Erdos553
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean:# Erdős Problem 554
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean:namespace Erdos554
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean:Erdős Problem 554 [Er81c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean:theorem erdos_554 (n : ℕ) (hn : n ≥ 2) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/554.lean:end Erdos554
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:# Erdős Problem 555
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:namespace Erdos555
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:Erdős Problem 555, lower bound [Er81c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:theorem erdos_555 (n : ℕ) (hn : n ≥ 2) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:Erdős Problem 555, upper bound [Er81c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:theorem erdos_555.variants.upper_bound (n : ℕ) (hn : n ≥ 2) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:theorem erdos_555.variants.chung_graham_upper (k : ℕ) (hk : k ≥ 2) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/555.lean:end Erdos555
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean:# Erdős Problem 556
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean:namespace Erdos556
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean:Erdős Problem 556 [Er81][Er81c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean:theorem erdos_556 (n : ℕ) (hn : n ≥ 3) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/556.lean:end Erdos556
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean:# Erdős Problem 557
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean:namespace Erdos557
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean:Erdős Problem 557 [ErGr75]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean:theorem erdos_557 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/557.lean:end Erdos557
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:# Erdős Problem 558
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:namespace Erdos558
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:Erdős Problem 558: Determine $R_k(K_{s,t})$, the $k$-colour Ramsey number of the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:theorem erdos_558 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:Erdős Problem 558, Chung–Graham result [ChGr75]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:theorem erdos_558.variants.K22 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:Erdős Problem 558, Alon–Rónyai–Szabó result [ARS99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:theorem erdos_558.variants.K33 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:Erdős Problem 558, Alon–Rónyai–Szabó result [ARS99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:theorem erdos_558.variants.ars (s t : ℕ) (hs : s ≥ 1) (ht : t ≥ 1)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/558.lean:end Erdos558
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean:# Erdős Problem 559
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean:namespace Erdos559
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean:Erdős Problem 559 (DISPROVED) [RoSz00]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean:theorem erdos_559 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/559.lean:end Erdos559
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:# Erdős Problem 56
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:namespace Erdos56
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:theorem erdos_56 : (∀ᵉ (k > 0) (N ≥ (k-1).nth Nat.Prime),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/56.lean:end Erdos56
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:# Erdős Problem 560
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:namespace Erdos560
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:Erdős Problem 560, lower bound [ErRo93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:theorem erdos_560.variants.lower_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:Erdős Problem 560, upper bound [EFRS78b, NeRo78]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:theorem erdos_560.variants.upper_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:Erdős Problem 560, conjecture [CFW23]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:theorem erdos_560 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/560.lean:end Erdos560
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean:# Erdős Problem 561
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean:namespace Erdos561
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean:Erdős Problem 561 [BEFRS78]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean:theorem erdos_561
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/561.lean:end Erdos561
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/562.lean:# Erdős Problem 562
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/562.lean:namespace Erdos562
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/562.lean:theorem erdos_562 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/562.lean:end Erdos562
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:# Erdős Problem 563
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:namespace Erdos563
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:noncomputable def fErdos563 (n : ℕ) (α : ℝ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:Erdős Problem 563 [Er90b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:theorem erdos_563 (α : ℝ) (hα0 : 0 ≤ α) (hα1 : α < 1 / 2) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:      Tendsto (fun n : ℕ => (fErdos563 n α : ℝ) / Real.log (n : ℝ))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/563.lean:end Erdos563
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/564.lean:# Erdős Problem 564
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/564.lean:namespace Erdos564
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/564.lean:theorem erdos_564 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/564.lean:end Erdos564
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean:# Erdős Problem 565
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean:namespace Erdos565
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean:Erdős Problem 565: There exists a constant $C$ such that for any graph $G$ on
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean:theorem erdos_565 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/565.lean:end Erdos565
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/566.lean:# Erdős Problem 566
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/566.lean:namespace Erdos566
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/566.lean:theorem erdos_566 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/566.lean:end Erdos566
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:# Erdős Problem 567
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:In other words, is $G$ Ramsey size linear? A special case of Problem 566.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:namespace Erdos567
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:**Erdős Problem 567 (Q3)**
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:theorem erdos_567_Q3 : answer(sorry) ↔ IsRamseySizeLinear Q3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:**Erdős Problem 567 (K33)**
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:theorem erdos_567_K33 : answer(sorry) ↔ IsRamseySizeLinear K33 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:**Erdős Problem 567 (H5)**
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:theorem erdos_567_H5 : answer(sorry) ↔ IsRamseySizeLinear H5 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/567.lean:end Erdos567
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean:# Erdős Problem 568
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean:namespace Erdos568
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean:Erdős Problem 568:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean:theorem erdos_568 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/568.lean:end Erdos568
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean:# Erdős Problem 569
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean:namespace Erdos569
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean:Erdős Problem 569 [EFRS93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean:theorem erdos_569 (k : ℕ) (hk : k ≥ 1) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/569.lean:end Erdos569
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean:# Erdős Problem 57
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean:namespace Erdos57
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean:Erdős Problem 57 (Conjectured by Erdős-Hajnal [ErHa66], proved by Liu-Montgomery [LiMo20]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean:theorem erdos_57 {V : Type*} (G : SimpleGraph V)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/57.lean:end Erdos57
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean:# Erdős Problem 570
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean:namespace Erdos570
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean:Erdős Problem 570 [EFRS93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean:theorem erdos_570 : answer(True) ↔ ∀ (k : ℕ) (hk : k ≥ 3),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/570.lean:end Erdos570
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean:# Erdős Problem 571
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean:namespace Erdos571
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean:Erdős Problem 571 (Erdős–Simonovits):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean:theorem erdos_571 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/571.lean:end Erdos571
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean:# Erdős Problem 572
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean:namespace Erdos572
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean:Erdős Problem 572 [Er64c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean:theorem erdos_572 (k : ℕ) (hk : k ≥ 3) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/572.lean:end Erdos572
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean:# Erdős Problem 573
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean:namespace Erdos573
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean:theorem erdos_573 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/573.lean:end Erdos573
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/574.lean:# Erdős Problem 574
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/574.lean:namespace Erdos574
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/574.lean:Erdős Problem 574:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/574.lean:The case $k = 2$ (forbidding $C_3$ and $C_4$) is Erdős Problem 573.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/574.lean:theorem erdos_574 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/574.lean:end Erdos574
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:# Erdős Problem 575
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:namespace Erdos575
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:Erdős Conjecture (Problem 575) [ErSi82]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:theorem erdos_575 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/575.lean:end Erdos575
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean:# Erdős Problem 576
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean:namespace Erdos576
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean:Erdős Conjecture (Problem 576) [Er64c], [ErSi70], [Er74c], [Er81], [Er93]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean:theorem erdos_576 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/576.lean:end Erdos576
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/577.lean:# Erdős Problem 577
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/577.lean:namespace Erdos577
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/577.lean:Erdős Problem 577 [Er90c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/577.lean:theorem erdos_577 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/577.lean:end Erdos577
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean:# Erdős Problem 578
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean:namespace Erdos578
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean:Erdős Problem 578 [Er90c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean:theorem erdos_578 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/578.lean:end Erdos578
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean:# Erdős Problem 579
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean:namespace Erdos579
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean:theorem erdos_579 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean:end Erdos579
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/58.lean:# Erdős Problem 58
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/58.lean:namespace Erdos58
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/58.lean:**Erdős Problem 58** (Bollobás–Erdős conjecture, proved by Gyárfás [Gy92]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/58.lean:theorem erdos_58 {V : Type*} [Fintype V] [DecidableEq V]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/58.lean:end Erdos58
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean:# Erdős Problem 580
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean:namespace Erdos580
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean:Erdős-Füredi-Loebl-Sós Conjecture (Problem 580):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean:theorem erdos_580 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/580.lean:end Erdos580
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:# Erdős Problem 581
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:namespace Erdos581
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:Erdős Problem 581 [CEG79]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:theorem erdos_581 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/581.lean:end Erdos581
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/582.lean:# Erdős Problem 582
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/582.lean:namespace Erdos582
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/582.lean:theorem erdos_582 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/582.lean:end Erdos582
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/583.lean:# Erdős Problem 583
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/583.lean:namespace Erdos583
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/583.lean:Erdős Problem 583 [ErGa59]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/583.lean:theorem erdos_583 (n : ℕ) (G : SimpleGraph (Fin n))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/583.lean:end Erdos583
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/584.lean:# Erdős Problem 584
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/584.lean:namespace Erdos584
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/584.lean:Erdős Problem 584, Part 1:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/584.lean:theorem erdos_584 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/584.lean:Erdős Problem 584, Part 2:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/584.lean:theorem erdos_584.variants.part2 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/584.lean:end Erdos584
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:# Erdős Problem 585
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:namespace Erdos585
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:Erdős Problem 585:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:theorem erdos_585 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:Erdős Problem 585, Lower Bound [PRS95]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:theorem erdos_585.variants.lower_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:Erdős Problem 585, Upper Bound [CJMM24]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:theorem erdos_585.variants.upper_bound :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/585.lean:end Erdos585
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/586.lean:# Erdős Problem 586
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/586.lean:namespace Erdos586
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/586.lean:/-- **Erdős Problem 586** (Schinzel): Is there a covering system such that no two of the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/586.lean:theorem erdos_586 : answer(False) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/586.lean:end Erdos586
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean:# Erdős Problem 587
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean:namespace Erdos587
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean:theorem erdos_587.variants.nguyen_vu : ∃ᵉ (O > 0) (O' > 0),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/587.lean:end Erdos587
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean:# Erdős Problem 588
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean:namespace Erdos588
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean:theorem erdos_588 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/588.lean:end Erdos588
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:# Erdős Problem 589
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:namespace Erdos589
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:Erdős Problem 589 (lower bound, Füredi [Fu91b]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:theorem erdos_589 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:Erdős Problem 589 (upper bound, Balogh–Solymosi [BaSo18]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:theorem erdos_589.variants.upper_bound (ε : ℝ) (hε : ε > 0) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/589.lean:end Erdos589
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:# Erdős Problem 59
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:namespace Erdos59
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:Erdős Problem 59 [Er90, Er93, Er97c, Va99]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:theorem erdos_59 : answer(False) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/59.lean:end Erdos59
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/590.lean:# Erdős Problem 590
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/590.lean:namespace Erdos590
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/590.lean:theorem erdos_590 : OrdinalCardinalRamsey (ω ^ ω) (ω ^ ω) 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/590.lean:theorem erdos_590.variants.two : OrdinalCardinalRamsey (ω ^ 2) (ω ^ 2) 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/590.lean:theorem erdos_590.variants.ge_three_false {n : ℕ} (h : 3 ≤ n) :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/590.lean:theorem erdos_590.variants.finite_cardinal (m : ℕ) : OrdinalCardinalRamsey (ω ^ ω) (ω ^ ω) m := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/590.lean:end Erdos590
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/591.lean:# Erdős Problem 591
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/591.lean:namespace Erdos591
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/591.lean:theorem erdos_591 : answer(True) ↔ OrdinalCardinalRamsey (ω ^ ω ^ 2) (ω ^ ω ^ 2) 3 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/591.lean:end Erdos591
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/592.lean:# Erdős Problem 592
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/592.lean:namespace Erdos592
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/592.lean:theorem erdos_592 (β : Ordinal.{u}) : β.card ≤ ℵ₀ →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/592.lean:end Erdos592
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean:# Erdős Problem 593
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean:namespace Erdos593
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean:Erdős Problem 593 [Er95d]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean:theorem erdos_593 (W : Type*) [Fintype W]
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean:end Erdos593
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean:# Erdős Problem 594
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean:namespace Erdos594
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean:Erdős Problem 594 [ErHa66] [Er69b]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean:theorem erdos_594 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/594.lean:end Erdos594
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean:# Erdős Problem 595
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean:namespace Erdos595
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean:Erdős Problem 595 [Er87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean:theorem erdos_595 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/595.lean:end Erdos595
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/596.lean:# Erdős Problem 596
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/596.lean:namespace Erdos596
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/596.lean:Erdős Problem 596 [Er87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/596.lean:theorem erdos_596 :
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/596.lean:end Erdos596
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean:# Erdős Problem 597
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean:namespace Erdos597
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean:Erdős Problem 597 [Er87] [Va99, 7.84]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean:theorem erdos_597 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/597.lean:end Erdos597
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/598.lean:# Erdős Problem 598
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/598.lean:namespace Erdos598
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/598.lean:**Erdős Problem 598:**
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/598.lean:theorem erdos_598 : answer(sorry) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/598.lean:end Erdos598
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean:# Erdős Problem 599
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean:namespace Erdos599
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean:Erdős Problem 599 (Erdős-Menger Conjecture) [Er81][Er87]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean:theorem erdos_599 : answer(True) ↔
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/599.lean:end Erdos599
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean:noncomputable def erdos650F (m : ℕ) : ℕ :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/650.lean:      (erdos650F m : ℝ) ≤ C * Real.sqrt (m : ℝ) := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/7.lean:pairwise non-divisible moduli existed (see Problem 586).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/728.lean:"https://github.com/plby/lean-proofs/blob/main/src/v4.24.0/ErdosProblems/Erdos56.lean", AMS 11]

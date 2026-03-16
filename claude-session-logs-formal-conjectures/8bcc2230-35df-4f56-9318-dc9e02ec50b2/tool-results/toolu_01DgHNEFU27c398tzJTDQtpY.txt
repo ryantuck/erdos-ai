@@ -1,0 +1,151 @@
+FormalConjecturesForMathlib/LinearAlgebra/GeneralLinearGroup.lean:25:/-- The multiplicative group homomorphism `(Rˣ)ⁿ →* GL(n, R)` given by mapping a vector `x` to
+FormalConjectures/Wikipedia/SquarePacking.lean:69:A structure representing a packing of `n` isometric embeddings
+FormalConjectures/Wikipedia/SquarePacking.lean:75:  embeddings : Fin n → (ℝ² ≃ᵢ ℝ²)
+FormalConjectures/Wikipedia/SquarePacking.lean:76:  /-- The images of the embeddings are pairwise disjoint -/
+FormalConjectures/Wikipedia/SquarePacking.lean:77:  disjoint : Pairwise fun i j => Disjoint (embeddings i '' s) (embeddings j '' s)
+FormalConjectures/Wikipedia/SquarePacking.lean:78:  /-- The images of the embeddings are all inside the larger set `S` -/
+FormalConjectures/Wikipedia/SquarePacking.lean:79:  inside : ∀ i : Fin n, embeddings i '' s ⊆ S
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring.lean:151:/-- A homomorphism is rainbow if it maps distinct edges to distinct colors. -/
+ai-review/552.md:8:[Omitted long matching line]
+ai-review/111.md:118:  - The coercion `(hFun G n : ℝ)` is well-typed since ℕ embeds into ℝ. **Correct.**
+ai-review/546.md:9:- `SimpleGraph.IsContained A B` is `Nonempty (Copy A B)`, where `Copy A B` is a structure wrapping an injective homomorphism — exactly the same as `∃ f, Injective f ∧ ∀ u v, A.Adj u v → B.Adj (f u) (f v)`.
+ai-review/201.md:31:There is a subtlety: `Set.IsAPOfLengthFree.maxCard` works over `ℕ`, while Problem 201 works over `ℤ`. For `R_k(N)` (subsets of `{1,...,N}`), these are mathematically equivalent via the canonical embedding `ℕ ↪ ℤ`, but the `ℤ` version is needed for the `G_k(N)` part of the problem (arbitrary sets of `N` integers, which may be negative). Using `Finset.maxAPFreeCard` over `ℤ` is both correct and consistent with the shared infrastructure.
+ai-review/178.md:52:The only potential ambiguity is whether the "infinite sets of integers" in the original problem should be subsets of ℤ rather than ℕ. The formalization uses `a : ℕ → ℕ → ℕ` (subsets of ℕ). This is without loss of generality: any countable collection of infinite subsets of ℤ, each with a strictly increasing enumeration, can be order-embedded into ℕ, and a coloring on ℕ can be pulled back. So the restriction to ℕ is mathematically justified.
+ai-review/86.md:109:3. **C₄ containment:** The conclusion asserts the existence of an injective graph homomorphism from C₄ into H. This is the standard encoding of "H contains a C₄ as a subgraph." Injectivity ensures the four cycle vertices are distinct; adjacency preservation ensures the cycle edges are present.
+ai-review/527.md:42:- The type coercion `((ε k * a k : ℝ) : ℂ)` in `randomPowerPartialSum` is slightly noisy but unavoidable given the real-to-complex embedding.
+ai-review/181.md:23:The `ContainsCopy` definition (lines 52–53) captures injective graph homomorphisms. The same concept is defined under several names across the codebase:
+ai-review/181.md:118:The only subtlety is whether "copy" means subgraph (injective homomorphism) or induced subgraph (injective homomorphism preserving both edges and non-edges). The standard convention in Ramsey theory for graphs is **subgraph** (non-induced), and the formalization correctly uses this convention.
+ai-review/181.md:147:- This defines a (non-induced) subgraph embedding: an injective map preserving adjacency. This is the correct notion for Ramsey theory — a monochromatic "copy" of $H$ in a 2-coloring of $K_N$ means a subgraph isomorphic to $H$, not necessarily an induced copy.
+ai-review/79.md:57:4. **Proper subgraph definition is inline.** The notion of "proper subgraph" (embeds into $G$ but $G$ doesn't embed into $H$) is expressed inline in the theorem statement rather than being given a named definition. This is fine for a single use but slightly impacts readability.
+ai-review/79.md:75:- "Proper subgraph" as `IsSubgraphOf H G ∧ ¬ IsSubgraphOf G H` correctly captures "H embeds into G but G does not embed into H."
+ai-review/59.md:7:- **`ContainsSubgraph`** (line 36–37): Mathlib now provides `SimpleGraph.Copy` (an injective graph homomorphism structure), `SimpleGraph.IsContained` (`A ⊑ B`, defined as `Nonempty (Copy A B)`), and `SimpleGraph.Free` (`¬A ⊑ B`). These are mathematically equivalent to the custom `ContainsSubgraph`. Using `H.Free F` in place of `¬ContainsSubgraph F H` would integrate better with Mathlib's extremal graph theory library.
+ai-review/59.md:59:- **`ContainsSubgraph`**: Correctly defines subgraph containment via injective homomorphism (not induced — adjacency is only required in the forward direction). This matches the standard combinatorial notion used in extremal graph theory.
+ai-review/565.md:7:- **`graphRamseyNumber`** (ErdosProblems/87.lean): The classical graph Ramsey number using `ContainsSubgraph` (non-induced copy via injective homomorphism). Not suitable here because the induced Ramsey number requires a biconditional (preserving both edges *and* non-edges relative to a color class), not just edge-preservation.
+ai-review/565.md:10:- **`inducedFinSubgraph`** and **`FinGraphIso`** (ErdosProblems/638.lean): Defines induced subgraphs along embeddings and graph isomorphism for `Fin m` graphs. These are related conceptually but serve a different structural role.
+ai-review/565.md:83:- **Forward direction (→):** If G has edge {u,v}, then H has edge {f(u),f(v)} colored b. Edges of G embed as edges of H in color b. Correct.
+ai-review/163.md:69:- **`containsCopy`**: Correctly defines subgraph containment as an injective graph homomorphism (not necessarily induced).
+ai-review/24.md:100:- **Labeled copies** (injective homomorphisms Cᵣ → G): each unordered C₅ gives exactly 10 labeled copies (5 rotations × 2 reflections of the Dihedral group D₅).
+ai-review/118.md:35:- The docstring on `OrdPartition` clearly explains the arrow notation and what an "order-embedded copy" means.
+ai-review/118.md:43:The problem is precise and unambiguously formalizable. The arrow notation α → (α, n)² has a standard set-theoretic definition in terms of 2-colorings of pairs and order-type embeddings. There is no ambiguity in the statement.
+ai-review/118.md:55:- **The `OrdPartition` definition**: Uses order embeddings `↪o` to represent monochromatic subsets, which is the standard formalization. An order embedding from OrdinalSet β into OrdinalSet α correctly captures "a subset of order type β."
+ai-review/568.md:7:- **`Embeds` vs `SimpleGraph.IsContained`**: The file defines its own `Embeds` (injective adjacency-preserving map), which is essentially equivalent to Mathlib's `SimpleGraph.IsContained` (used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean`). The local `Embeds` could be replaced with `IsContained`.
+ai-review/568.md:15:**Recommendation**: Replace `Embeds` with `IsContained`, and `IsConnectedGraph`/`IsTreeGraph` with their Mathlib counterparts to reduce definition duplication.
+ai-review/60.md:24:2. **`ContainsSubgraph60`** is an existential over injective homomorphisms. Mathlib now has `SimpleGraph.Copy A B` (a structure for injective homomorphisms from `A` to `B`) and `SimpleGraph.IsContained A B` (notation `A ⊑ B`), which is `Nonempty (Copy A B)`. The negation, `SimpleGraph.Free A B`, means `¬A ⊑ B`.
+ai-review/60.md:120:3. **"Copies" — subgraph copies vs. induced subgraph copies.** The formalization uses *subgraph* copies (injective homomorphisms, not embeddings), meaning it only requires that C₄ edges are present but allows additional edges between the four vertices. For $C_4$, this is the standard convention in extremal graph theory. An induced copy would additionally require that non-edges of $C_4$ are non-edges of $G$, which is not the typical intent.
+ai-review/60.md:136:The definition `∃ f : U → V, Function.Injective f ∧ ∀ u v, H.Adj u v → G.Adj (f u) (f v)` correctly defines (non-induced) subgraph containment via injective homomorphism. This is the standard notion in extremal graph theory.
+ai-review/548.md:29:Note: Mathlib provides `SimpleGraph.Embedding` (which preserves *and reflects* adjacency). The formalization correctly uses the weaker notion (injective homomorphism — preserves but does not reflect adjacency), which is the standard definition for subgraph containment in extremal graph theory.
+ai-review/548.md:76:The problem statement is precise: it specifies exact bounds on vertex count, edge count, and the conclusion. The only potential ambiguity is the meaning of "contains every tree" — whether this means subgraph containment (injective homomorphism) or induced subgraph (embedding). The standard interpretation in extremal graph theory is subgraph containment (not necessarily induced), and the formalization correctly uses this interpretation.
+ai-review/561.md:7:[Omitted long matching line]
+ai-review/561.md:91:- The embedding conditions `Function.Injective f ∧ ∀ u v, G.Adj u v → H.Adj (f u) (f v) ∧ c (f u) (f v) = b` correctly encode a monochromatic subgraph copy
+ai-review/561.md:93:One subtle point: the coloring function $c$ is defined on all pairs, not just edges. However, only edge values matter (since embeddings require `H.Adj (f u) (f v)`), so this is fine. **Correct.**
+ai-review/556.md:60:- **The `multicolorRamseyNumber` definition is correct:** It correctly captures the $k$-color Ramsey number via `sInf` over natural numbers $N$ such that every symmetric $k$-coloring of pairs from $\text{Fin}\;N$ contains a monochromatic copy (injective homomorphism) of $G$.
+ai-review/147.md:9:- **`SimpleGraph.IsContained` (notation `G ⊑ H`)** in `Mathlib.Combinatorics.SimpleGraph.Copy` is semantically equivalent to the custom `ContainsSubgraph` (injective graph homomorphism preserving adjacency). The custom definition is redundant.
+ai-review/70.md:9:- **Problem 118** (`OrdPartition`): Uses `OrdinalSet α` (a subtype `{a : Ordinal // a < α}`) and `↪o` order embeddings.
+ai-review/70.md:38:1. **Inconsistent style with sibling files.** Other ordinal partition problems use `{x : Ordinal // x < α}` subtypes and `StrictMono` or `↪o`, making the embedding structure immediately clear. Problem 70 manually encodes monotonicity with three separate universally quantified conditions (`g i < g j`, `g i < α`, and the coloring condition). This is harder to parse at a glance.
+ai-review/70.md:56:- **The `OrdinalPartition3_2` definition correctly captures the 2-coloring of triples partition relation.** The coloring function takes three ordinals and returns `Fin 2`; the homogeneity condition requires all increasing triples in the image of a strictly increasing embedding to receive the same color. ✓
+ai-review/70.md:57:- **The embedding correctly encodes order type.** A strictly increasing function from ordinals below `β` into ordinals below `α` yields a subset of order type exactly `β`. ✓
+ai-review/182.md:18:Additionally, the injective-homomorphism portion:
+ai-review/182.md:126:The only minor source of potential ambiguity is whether "subgraph" means "subgraph" (vertex and edge subset) or "copy" (injective homomorphism). These are equivalent for the purpose of this problem since both notions yield the same threshold. The formalization uses the injective-homomorphism notion, which is standard and correct.
+ai-review/182.md:149:[Omitted long matching line]
+ai-review/159.md:11:- **`ContainsSubgraph`** (line 42): This is identical to the definition in Problems 87, 60, and others (all defining injective homomorphisms). Mathlib now provides `SimpleGraph.IsContained` (in `Mathlib.Combinatorics.SimpleGraph.Copy`) with notation `G ⊑ H`, which is semantically equivalent. The local definition should be replaced with `SimpleGraph.IsContained`.
+ai-review/159.md:67:**Ambiguity assessment:** **Low ambiguity.** The only subtlety is the exact definition of R(C₄, Kₙ) — specifically, whether the C₄ containment is as a subgraph (injective homomorphism) or as an induced subgraph. The standard Ramsey-theoretic convention is subgraph containment, which is what the formalization uses. This is correct.
+ai-review/159.md:88:[Omitted long matching line]
+ai-review/174.md:35:**Missing variant — Leader-Russell-Walters conjecture:** The erdosproblems.com page mentions a competing conjecture by Leader, Russell, and Walters [LRW12] that a set is Ramsey if and only if it is **"subtransitive"** — embeddable in a higher-dimensional set with a transitive rotational symmetry group action. This is a strictly stronger condition than being spherical, and if true, would mean Graham's conjecture is *false*. This is a significant variant that is not captured.
+ai-review/174.md:72:- Existence of a distance-preserving (isometric) embedding φ from ℝⁿ to ℝᵈ.
+ai-review/174.md:75:[Omitted long matching line]
+ai-review/193.md:15:| Mathlib `Collinear ℝ` | Affine dependence over ℝ | Used in Erdos 98, 101, 102, 105, 130 for `EuclideanSpace ℝ (Fin k)`. Requires a field/division ring, so cannot be applied directly over ℤ without embedding into ℝ. |
+ai-review/193.md:19:**Assessment:** No existing definition in the codebase handles collinearity over `ℤ³` directly. Using Mathlib's `Collinear ℝ` would require embedding `Fin 3 → ℤ` into `EuclideanSpace ℝ (Fin 3)` via `Int.cast`, which adds unnecessary complexity for no mathematical gain. The custom `Collinear3` is well-suited to this problem.
+ai-review/146.md:9:- **`SimpleGraph.IsContained` (notation `G ⊑ H`)** in `Mathlib.Combinatorics.SimpleGraph.Copy` is semantically equivalent to `ContainsSubgraph` (injective graph homomorphism). The custom `ContainsSubgraph` is redundant.
+ai-review/530.md:56:[Omitted long matching line]
+ai-review/113.md:17:Mathlib does **not** currently provide native definitions for Turán numbers, graph degeneracy, or subgraph containment via injective homomorphism, so custom definitions are necessary. However, `SimpleGraph.Coloring`, `SimpleGraph.neighborSet`, `SimpleGraph.edgeFinset`, and `Set.ncard` are all from Mathlib and are correctly used.
+ai-review/113.md:73:Correctly defines subgraph containment via injective graph homomorphism: an injection f : U → V that preserves adjacency. This is the standard notion in extremal graph theory (sometimes called "subgraph isomorphism" or "copy containment").
+ai-review/207.md:14:[Omitted long matching line]
+ai-review/545.md:7:- **`ContainsSubgraphCopy`** — Identical definitions appear in `546.lean` (same name), `87.lean` (`ContainsSubgraph`), and `79.lean` (`IsSubgraphOf`). All define the same concept: an injective graph homomorphism preserving adjacency.
+ai-review/545.md:67:- **Subgraph (not induced subgraph) embedding:** The definition correctly requires only that adjacency is preserved (not non-adjacency), matching the standard notion of graph Ramsey numbers.
+ai-review/545.md:71:- **`asCompleteAsPossible n 0` has an isolated vertex** (vertex n), which is technically inconsistent with the "no isolated vertices" requirement on G. However, this is mathematically harmless: R(K_n ∪ {isolated vertex}) = R(K_n) for n ≥ 2, since finding K_n as a subgraph in N vertices automatically allows embedding the isolated vertex into any remaining vertex when N > n.
+ai-review/474.md:9:- **Problems 118, 1169, 1170, 1171, 1172** define various *ordinal* partition relations (`OrdinalPartition`, `OrdinalPartitionPair`, `OrdinalPartitionMulticolor`). These operate on ordinals with order-embedding requirements, making them structurally different from the cardinal square-bracket relation.
+ai-review/47.md:77:[Omitted long matching line]
+ai-review/551.md:9:- `SimpleGraph.IsContained G H` (`G ⊑ H`) in `Mathlib.Combinatorics.SimpleGraph.Copy` is semantically equivalent to `ContainsSubgraphCopy G H`. It is defined via injective graph homomorphisms (not embeddings), matching the non-induced containment notion used here.
+ai-review/551.md:10:- `SimpleGraph.Copy G H` gives the type of copies (injective homomorphisms), providing a richer API.
+ai-review/551.md:63:The only potential source of ambiguity is whether "contains a copy" means as a subgraph (non-induced) or as an induced subgraph. The formalization correctly uses non-induced containment (injective homomorphism), which is the standard convention in Ramsey theory.
+ai-review/192.md:37:- **The d ≤ 2 cases** are not stated explicitly, though they follow trivially from the d = 3 case by embedding `Fin k → Fin 3` for `k ≤ 3`. This is a minor point.
+ai-review/226.md:11:- **Rationality predicate**: The pattern `∃ q : ℚ, (q : ℝ) = x` for "x is rational" and `∃ q : ℚ, (q : ℂ) = f ↑x` for "f(x) is rational" is idiomatic and not reused elsewhere in the codebase (only Erdos 265 uses a similar ℚ-embedding pattern). No shared utility exists for this; given it appears only here, creating one is unnecessary.
+ai-review/161.md:19:[Omitted long matching line]
+ai-review/21.md:93:The only design choice in the formalization is fixing the ground set to ℕ. Since ℕ is countably infinite, any finite family of finite sets can be embedded into it, so this causes no loss of generality. The original problem does not specify a ground set (it is implicitly about abstract finite sets), and ℕ is the canonical choice in Lean for this purpose.
+ai-review/180.md:9:- **Mathlib's `SimpleGraph.IsContained`** (`Mathlib.Combinatorics.SimpleGraph.Copy`): Already used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean`. This captures the same notion as the local `ContainsSubgraph` (injective graph homomorphism). Switching to the Mathlib predicate would reduce duplication and align with the upstream API, but would require verifying definitional equivalence and may affect readability.
+ai-review/62.md:9:[Omitted long matching line]
+ai-review/62.md:51:- "Common subgraph" — well-defined (a graph that embeds into both).
+ai-review/62.md:70:**One potential concern:** The existential `∃ (U : Type*) (H : SimpleGraph U)` quantifies H as an abstract graph. This is correct — the problem asks whether a *common* graph H exists that embeds into both G₁ and G₂, not whether some specific subgraph of G₁ is also a subgraph of G₂. The formalization correctly allows H to be any graph (with its own vertex type) that maps into both.
+ai-review/547.md:5:**Significant duplication identified.** Both `ContainsSubgraphCopy` and `ramseyNumber` are defined identically (modulo namespace) in at least six files: `545.lean`, `546.lean`, `547.lean`, `548.lean`, `549.lean`, and `550.lean`. Additional near-duplicates (`Embeds`, `ramseyNum`) appear in `568.lean`, `569.lean`, and `570.lean`.
+ai-review/547.md:63:- **`ContainsSubgraphCopy`**: Correctly defines subgraph isomorphism (injective homomorphism). This is the standard notion for Ramsey theory on graphs.
+ai-review/374.md:56:- **Minor**: The condition `k ≥ 2` is embedded inside `HasFactorialSquareSeq` rather than being a separate precondition. This is fine for the current use case but means `HasFactorialSquareSeq m 1` is always false (by the `k ≥ 2` clause), which makes the minimality check in `IsInD` vacuously satisfied for j < 2. This is logically correct but slightly non-obvious.
+ai-review/106.md:11:[Omitted long matching line]
+FormalConjectures/ErdosProblems/765.lean:49:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/182.lean:53:graph homomorphism into $G$. -/
+FormalConjectures/ErdosProblems/638.lean:40:/-- The induced subgraph of $G$ pulled back along an embedding
+FormalConjectures/ErdosProblems/87.lean:36:/-- An injective graph homomorphism (embedding) from $H$ into $G$:
+FormalConjectures/ErdosProblems/146.lean:40:/-- An injective graph homomorphism from $H$ to $F$; witnesses that $F$ contains a
+FormalConjectures/ErdosProblems/1177.lean:51:    edge of $H$ (i.e., $G$ does not embed as a sub-hypergraph of $H$). Each edge of $G$ maps to
+FormalConjectures/ErdosProblems/59.lean:34:/-- An injective graph homomorphism from $H$ to $G$; witnesses that $G$ contains a
+FormalConjectures/ErdosProblems/1173.lean:63:while `aleph` lives in `Cardinal.{0}`; `Cardinal.lift.{1,0}` embeds `Cardinal.{0}` into
+FormalConjectures/ErdosProblems/147.lean:38:/-- An injective graph homomorphism from $H$ to $F$; witnesses that $F$ contains a
+FormalConjectures/ErdosProblems/1007.lean:24:The dimension of a graph $G$ is the minimal $n$ such that $G$ can be embedded in
+FormalConjectures/ErdosProblems/1035.lean:49:/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a copy of $H$
+FormalConjectures/ErdosProblems/1079.lean:39:/-- An injective graph homomorphism from $H$ to $G$; witnesses that $G$ contains a
+FormalConjectures/ErdosProblems/1175.lean:39:Here `G.Coloring α` is a graph homomorphism from $G$ to the complete graph on $\alpha$,
+FormalConjectures/ErdosProblems/329.lean:81:If any finite Sidon set can be embedded in a perfect difference set,
+FormalConjectures/ErdosProblems/329.lean:93:can be embedded in a perfect difference set.
+FormalConjectures/ErdosProblems/597.lean:48:- an order-embedded copy of $\beta$ whose pairs are all colored $0$, or
+FormalConjectures/ErdosProblems/597.lean:51:Here a "copy of $\beta$" is given by an order embedding
+FormalConjectures/ErdosProblems/714.lean:31:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/118.lean:62:- an order-embedded copy of $\beta$ whose pairs are all colored $0$ (red), or
+FormalConjectures/ErdosProblems/118.lean:63:- an order-embedded copy of $\gamma$ whose pairs are all colored $1$ (blue).
+FormalConjectures/ErdosProblems/118.lean:65:Here a "copy of $\beta$" is given by an order embedding
+FormalConjectures/ErdosProblems/79.lean:65:    of $G$ if $H$ embeds into $G$ (as a subgraph) but $G$ does not embed into $H$.
+FormalConjectures/ErdosProblems/800.lean:46:$\text{Fin}(N)$, either $G$ embeds into $H$ or $G$ embeds into $H^c$ as a subgraph. -/
+FormalConjectures/ErdosProblems/153.lean:36:of size `n`, where `s` is an order embedding from `Fin n` into `A`. -/
+FormalConjectures/ErdosProblems/759.lean:28:Let $z(S_n)$ be the maximum value of $\zeta(G)$ over all graphs $G$ which can be embedded
+FormalConjectures/ErdosProblems/759.lean:66:/-- $z(S_n)$: the maximum cochromatic number over all finite graphs embeddable
+FormalConjectures/ErdosProblems/571.lean:32:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/766.lean:38:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/713.lean:33:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/576.lean:49:/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a copy of $H$
+FormalConjectures/ErdosProblems/575.lean:35:/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a copy of $H$ as a
+FormalConjectures/ErdosProblems/707.lean:41:**Erdős Problem 707**: It is false that any finite Sidon set can be embedded in a perfect
+FormalConjectures/ErdosProblems/707.lean:57:It is false that any finite Sidon set can be embedded in a perfect
+FormalConjectures/ErdosProblems/707.lean:71:It is false that any finite Sidon set can be embedded in a perfect
+FormalConjectures/ErdosProblems/707.lean:149:The set `{1, 2, 4}` can be embedded in a perfect difference set modulo 7.
+FormalConjectures/ErdosProblems/707.lean:152:theorem erdos_707.variants.example_embedding : ∃ (B : Set ℕ), {1, 2, 4} ⊆ B ∧
+FormalConjectures/ErdosProblems/1170.lean:43:Formalized via strictly monotone embeddings: a subset of order type $\alpha$ corresponds
+FormalConjectures/ErdosProblems/926.lean:45:/-- An injective graph homomorphism from $H$ to $G$; witnesses that $G$ contains a
+FormalConjectures/ErdosProblems/1018.lean:36:/-- A simple graph is planar if it admits a topological embedding into the
+FormalConjectures/ErdosProblems/181.lean:50:/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a (not necessarily
+FormalConjectures/ErdosProblems/163.lean:43:/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a (not necessarily
+FormalConjectures/ErdosProblems/596.lean:41:an embedding of $G$ into $H$ such that all edges in the image receive the same color. -/
+FormalConjectures/ErdosProblems/1172.lean:49:    order type $\gamma$ in color false. Formalized via strictly monotone embeddings:
+FormalConjectures/ErdosProblems/737.lean:51:    there is an injective embedding of $C_m$ into $G$ that maps some edge of
+FormalConjectures/ErdosProblems/743.lean:58:      -- Each embedding is injective
+FormalConjectures/ErdosProblems/1169.lean:38:    order type $\gamma$ in color 1. Formalized via strictly monotone embeddings:
+FormalConjectures/ErdosProblems/569.lean:34:/-- A graph $G$ embeds into a graph $H$: there is an injective map from
+FormalConjectures/ErdosProblems/569.lean:36:def Embeds {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/569.lean:40:on $\operatorname{Fin} N$, either $G$ embeds in $F$ or $H$ embeds in the complement
+FormalConjectures/ErdosProblems/569.lean:45:    Embeds G F ∨ Embeds H Fᶜ}
+FormalConjectures/ErdosProblems/1019.lean:34:/-- A graph is planar if it can be embedded in the plane without edge crossings.
+FormalConjectures/ErdosProblems/60.lean:46:/-- $G$ contains $H$ as a subgraph (via an injective homomorphism). -/
+FormalConjectures/ErdosProblems/180.lean:32:/-- An injective graph homomorphism from $H$ to $G$: $G$ contains a copy of $H$ as a
+FormalConjectures/ErdosProblems/572.lean:63:/-- A graph $G$ contains $H$ as a subgraph via an injective graph homomorphism. -/
+FormalConjectures/ErdosProblems/631.lean:62:/-- A graph is planar if it can be embedded in the plane without edge crossings.
+FormalConjectures/ErdosProblems/580.lean:38:/-- An injective graph homomorphism from $H$ to $G$; witnesses that $G$ contains a
+FormalConjectures/ErdosProblems/570.lean:36:/-- A graph $G$ embeds into a graph $H$: there is an injective map from
+FormalConjectures/ErdosProblems/570.lean:38:def Embeds {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/570.lean:42:on $\operatorname{Fin} N$, either $G$ embeds in $F$ or $H$ embeds in the complement of $F$. -/
+FormalConjectures/ErdosProblems/570.lean:46:    Embeds G F ∨ Embeds H Fᶜ}
+FormalConjectures/ErdosProblems/568.lean:31:/-- A graph $G$ embeds into a graph $H$: there is an injective map from
+FormalConjectures/ErdosProblems/568.lean:33:def Embeds {V W : Type*} (G : SimpleGraph V) (H : SimpleGraph W) : Prop :=
+FormalConjectures/ErdosProblems/568.lean:37:on $\operatorname{Fin} N$, either $G$ embeds in $F$ or $H$ embeds in the
+FormalConjectures/ErdosProblems/568.lean:42:    Embeds G F ∨ Embeds H Fᶜ}
+FormalConjectures/ErdosProblems/113.lean:37:/-- An injective graph homomorphism from $H$ to $F$; witnesses that $F$ contains a
+FormalConjectures/ErdosProblems/593.lean:62:/-- A finite $3$-uniform hypergraph $F$ on $W$ embeds into $H$ on $V$: there is an
+FormalConjectures/ErdosProblems/630.lean:57:/-- A graph is planar if it can be embedded in the plane without edge crossings.
+FormalConjectures/ErdosProblems/159.lean:40:/-- An injective graph homomorphism from $H$ to $G$ witnesses that $G$ contains
+FormalConjectures/ErdosProblems/601.lean:59:there is an order embedding from `OrdinalSet α` into itself whose

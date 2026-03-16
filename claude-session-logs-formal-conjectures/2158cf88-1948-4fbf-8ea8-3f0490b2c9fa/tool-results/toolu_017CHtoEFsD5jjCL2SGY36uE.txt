@@ -1,0 +1,347 @@
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-54-  H.edges.biUnion id
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-55-
+FormalConjectures/ErdosProblems/836.lean-56-/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/836.lean:57:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/836.lean-58-    {α : Type*} (f : V → α) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-59-  ∀ e ∈ H.edges, e.card ≥ 2 → ∃ u ∈ e, ∃ v ∈ e, f u ≠ f v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-60-
+FormalConjectures/ErdosProblems/836.lean-61-/-- A hypergraph has chromatic number 3: it is 3-colorable but not 2-colorable. -/
+FormalConjectures/ErdosProblems/836.lean:62:def Hypergraph.HasChromaticNumber3 {V : Type*} [DecidableEq V] (H : Hypergraph V) : Prop :=
+FormalConjectures/ErdosProblems/836.lean-63-  (∃ f : V → Fin 3, H.IsProperColoring f) ∧
+FormalConjectures/ErdosProblems/836.lean-64-  (∀ f : V → Fin 2, ¬H.IsProperColoring f)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-65-
+--
+FormalConjectures/ErdosProblems/836.lean-85-    ∀ r : ℕ, r ≥ 2 →
+FormalConjectures/ErdosProblems/836.lean-86-    ∀ (n : ℕ) (H : Hypergraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-87-      H.IsUniform r →
+FormalConjectures/ErdosProblems/836.lean:88:      H.HasChromaticNumber3 →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-89-      H.IsIntersecting →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/836.lean-90-      ∃ e₁ ∈ H.edges, ∃ e₂ ∈ H.edges, e₁ ≠ e₂ ∧
+FormalConjectures/ErdosProblems/836.lean-91-        ((e₁ ∩ e₂).card : ℝ) ≥ C * (r : ℝ) := by
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/810.lean-31-/-- A graph on $n$ vertices admits a rainbow $C_4$ coloring with $n$ colors if there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/810.lean-32-    exists an edge coloring using $n$ colors such that every 4-cycle in the
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/810.lean-33-    graph has all 4 edges receiving distinct colors. -/
+FormalConjectures/ErdosProblems/810.lean:34:def AdmitsRainbowC4Coloring (n : ℕ) (G : SimpleGraph (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/810.lean-35-  ∃ c : Sym2 (Fin n) → Fin n,
+FormalConjectures/ErdosProblems/810.lean-36-    ∀ (a b d e : Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/810.lean-37-      a ≠ b → a ≠ d → a ≠ e → b ≠ d → b ≠ e → d ≠ e →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-36-/-- A proper coloring of a $3$-uniform hypergraph with vertex type $V$ using colors from $\alpha$
+FormalConjectures/ErdosProblems/1177.lean-37-    is a function $c : V \to \alpha$ such that no hyperedge is monochromatic: for every edge $e$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-38-    there exist two vertices in $e$ assigned different colors. -/
+FormalConjectures/ErdosProblems/1177.lean:39:def IsProperColoring3 {V α : Type*} (edges : Set (Finset V)) (c : V → α) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-40-  ∀ e ∈ edges, ∃ v ∈ e, ∃ w ∈ e, c v ≠ c w
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-42-/-- A $3$-uniform hypergraph (on vertex type $V$, with edge set `edges`) has cardinal chromatic
+FormalConjectures/ErdosProblems/1177.lean-43-    number $\kappa$ if $\kappa$ is the least cardinality of a color set admitting a proper coloring:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-44-    - there exists a proper coloring with a color set of cardinality $\le \kappa$, and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-45-    - every proper coloring requires a color set of cardinality $\ge \kappa$. -/
+FormalConjectures/ErdosProblems/1177.lean:46:def HasChromaticNumber3 {V : Type} (edges : Set (Finset V)) (κ : Cardinal.{0}) : Prop :=
+FormalConjectures/ErdosProblems/1177.lean-47-  (∃ (α : Type), #α ≤ κ ∧ ∃ c : V → α, IsProperColoring3 edges c) ∧
+FormalConjectures/ErdosProblems/1177.lean-48-  ∀ (α : Type), (∃ c : V → α, IsProperColoring3 edges c) → κ ≤ #α
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-49-
+--
+FormalConjectures/ErdosProblems/1177.lean-70-    (edgesG_finite : edgesG.Finite) (hG : ∀ e ∈ edgesG, e.card = 3)
+FormalConjectures/ErdosProblems/1177.lean-71-    (h : ∃ (VH : Type) (edgesH : Set (Finset VH)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-72-      (∀ e ∈ edgesH, e.card = 3) ∧
+FormalConjectures/ErdosProblems/1177.lean:73:      HasChromaticNumber3 edgesH (aleph 1) ∧
+FormalConjectures/ErdosProblems/1177.lean-74-      IsFreeOf edgesG edgesH) :
+FormalConjectures/ErdosProblems/1177.lean-75-    ∃ (VH : Type) (edgesH : Set (Finset VH)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-76-      (∀ e ∈ edgesH, e.card = 3) ∧
+FormalConjectures/ErdosProblems/1177.lean:77:      HasChromaticNumber3 edgesH (aleph 1) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-78-      IsFreeOf edgesG edgesH ∧
+FormalConjectures/ErdosProblems/1177.lean-79-      #VH ≤ (2 : Cardinal.{0}) ^ (2 : Cardinal.{0}) ^ aleph 0 := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-80-  sorry
+--
+FormalConjectures/ErdosProblems/1177.lean-97-    (edgesH_finite : edgesH.Finite) (hH : ∀ e ∈ edgesH, e.card = 3)
+FormalConjectures/ErdosProblems/1177.lean-98-    (hFG : ∃ (W : Type) (edgesW : Set (Finset W)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-99-      (∀ e ∈ edgesW, e.card = 3) ∧
+FormalConjectures/ErdosProblems/1177.lean:100:      HasChromaticNumber3 edgesW (aleph 1) ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-101-      IsFreeOf edgesG edgesW)
+FormalConjectures/ErdosProblems/1177.lean-102-    (hFH : ∃ (W : Type) (edgesW : Set (Finset W)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-103-      (∀ e ∈ edgesW, e.card = 3) ∧
+FormalConjectures/ErdosProblems/1177.lean:104:      HasChromaticNumber3 edgesW (aleph 1) ∧
+FormalConjectures/ErdosProblems/1177.lean-105-      IsFreeOf edgesH edgesW) :
+FormalConjectures/ErdosProblems/1177.lean-106-    ∃ (W : Type) (edgesW : Set (Finset W)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-107-      (∀ e ∈ edgesW, e.card = 3) ∧
+FormalConjectures/ErdosProblems/1177.lean:108:      HasChromaticNumber3 edgesW (aleph 1) ∧
+FormalConjectures/ErdosProblems/1177.lean-109-      IsFreeOf edgesG edgesW ∧ IsFreeOf edgesH edgesW := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-110-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-111-
+--
+FormalConjectures/ErdosProblems/1177.lean-126-    (κ μ : Cardinal.{0}) (hκ : aleph 1 ≤ κ) (hμ : aleph 1 ≤ μ)
+FormalConjectures/ErdosProblems/1177.lean-127-    (h : ∃ (W : Type) (edgesW : Set (Finset W)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-128-      (∀ e ∈ edgesW, e.card = 3) ∧
+FormalConjectures/ErdosProblems/1177.lean:129:      HasChromaticNumber3 edgesW κ ∧
+FormalConjectures/ErdosProblems/1177.lean-130-      IsFreeOf edgesG edgesW) :
+FormalConjectures/ErdosProblems/1177.lean-131-    ∃ (W : Type) (edgesW : Set (Finset W)),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-132-      (∀ e ∈ edgesW, e.card = 3) ∧
+FormalConjectures/ErdosProblems/1177.lean:133:      HasChromaticNumber3 edgesW μ ∧
+FormalConjectures/ErdosProblems/1177.lean-134-      IsFreeOf edgesG edgesW := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-135-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1177.lean-136-
+--
+FormalConjectures/ErdosProblems/799.lean-38-/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/799.lean-39-is a function $f : V \to \mathbb{N}$ such that $f(v) \in L(v)$ for all $v$, and $f(u) \neq f(v)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-40-whenever $u$ and $v$ are adjacent. -/
+FormalConjectures/ErdosProblems/799.lean:41:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+FormalConjectures/ErdosProblems/799.lean-42-    (f : V → ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-43-  (∀ v, f v ∈ L v) ∧ (∀ u v, G.Adj u v → f u ≠ f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/799.lean-44-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-57-    **balanced** if every vertex sees exactly $\lfloor n / m \rfloor$ edges of each colour.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-58-    (When $n \equiv 1 \pmod{m}$, the degree $n - 1$ divides evenly as
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-59-    $m \cdot \lfloor n / m \rfloor$.) -/
+FormalConjectures/ErdosProblems/811.lean:60:def IsBalancedColoring (n m : ℕ) (c : Sym2 (Fin n) → Fin m) : Prop :=
+FormalConjectures/ErdosProblems/811.lean-61-  ∀ (v : Fin n) (i : Fin m),
+FormalConjectures/ErdosProblems/811.lean-62-    (Finset.univ.filter (fun w : Fin n => w ≠ v ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-63-      c (Sym2.mk (v, w)) = i)).card = n / m
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-39-Here `G.Coloring α` is a graph homomorphism from $G$ to the complete graph on $\alpha$,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-40-i.e., a function assigning colors in $\alpha$ to vertices such that adjacent
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-41-vertices receive distinct colors. -/
+FormalConjectures/ErdosProblems/1175.lean:42:def HasChromaticNumber {V : Type} (G : SimpleGraph V) (κ : Cardinal.{0}) : Prop :=
+FormalConjectures/ErdosProblems/1175.lean-43-  (∃ (α : Type), Cardinal.mk α ≤ κ ∧ Nonempty (G.Coloring α)) ∧
+FormalConjectures/ErdosProblems/1175.lean-44-  ∀ (α : Type), Nonempty (G.Coloring α) → κ ≤ Cardinal.mk α
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-45-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-50-every graph with chromatic number $\lambda$ contains a triangle-free subgraph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-51-with chromatic number $\kappa$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-52-
+FormalConjectures/ErdosProblems/1175.lean:53:Here `HasChromaticNumber G κ` means $\kappa$ is the minimum cardinality of a color set
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-54-admitting a proper coloring of $G$. Triangle-free means `G.CliqueFree 3` (no
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-55-3-clique, i.e., no triangle). The subgraph relation $H \leq G$ holds when every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-56-edge of $H$ is also an edge of $G$.
+--
+FormalConjectures/ErdosProblems/1175.lean-61-theorem erdos_1175 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/1175.lean-62-    ∀ κ : Cardinal.{0}, aleph 1 ≤ κ →
+FormalConjectures/ErdosProblems/1175.lean-63-    ∃ mu : Cardinal.{0},
+FormalConjectures/ErdosProblems/1175.lean:64:      ∀ (V : Type) (G : SimpleGraph V), HasChromaticNumber G mu →
+FormalConjectures/ErdosProblems/1175.lean:65:        ∃ H : SimpleGraph V, H ≤ G ∧ H.CliqueFree 3 ∧ HasChromaticNumber H κ := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-66-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-67-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/1175.lean-68-end Erdos1175
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean-43-/-- An edge $\{u, v\}$ lies in a monochromatic triangle under coloring $c$ if there
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean-44-exists a vertex $w$ distinct from both $u$ and $v$ such that all three edges
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean-45-$\{u,v\}$, $\{u,w\}$, $\{v,w\}$ have the same color. -/
+FormalConjectures/ErdosProblems/639.lean:46:def EdgeTwoColoring.inMonoTriangle {n : ℕ} (c : EdgeTwoColoring n)
+FormalConjectures/ErdosProblems/639.lean-47-    (u v : Fin n) : Prop :=
+FormalConjectures/ErdosProblems/639.lean-48-  ∃ w : Fin n, w ≠ u ∧ w ≠ v ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean-49-    c.color u v = c.color u w ∧ c.color u v = c.color v w
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean-51-/-- The number of edges of $K_n$ (counted as unordered pairs with $u < v$) that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean-52-do not lie in any monochromatic triangle under coloring $c$. -/
+FormalConjectures/ErdosProblems/639.lean:53:noncomputable def edgesNotInMonoTriangleCount {n : ℕ} (c : EdgeTwoColoring n) : ℕ :=
+FormalConjectures/ErdosProblems/639.lean-54-  Set.ncard {p : Fin n × Fin n | p.1 < p.2 ∧ ¬c.inMonoTriangle p.1 p.2}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean-55-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/639.lean-56-/--
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-44-  ∀ e ∈ H.edges, e.card = r
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-45-
+FormalConjectures/ErdosProblems/833.lean-46-/-- A proper coloring of a hypergraph: no edge with $\geq 2$ vertices is monochromatic. -/
+FormalConjectures/ErdosProblems/833.lean:47:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/833.lean-48-    {α : Type*} (f : V → α) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-49-  ∀ e ∈ H.edges, e.card ≥ 2 → ∃ u ∈ e, ∃ v ∈ e, f u ≠ f v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-51-/-- A hypergraph has chromatic number exactly $k$ if it can be properly colored
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-52-with $k$ colors but not with $k-1$ colors. -/
+FormalConjectures/ErdosProblems/833.lean:53:def Hypergraph.HasChromaticNumber {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/833.lean-54-    (k : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/833.lean-55-  (∃ f : V → Fin k, H.IsProperColoring f) ∧
+FormalConjectures/ErdosProblems/833.lean-56-  ∀ f : V → Fin (k - 1), ¬H.IsProperColoring f
+--
+FormalConjectures/ErdosProblems/833.lean-73-      ∃ c : ℝ, 0 < c ∧
+FormalConjectures/ErdosProblems/833.lean-74-        ∀ (r : ℕ), 2 ≤ r →
+FormalConjectures/ErdosProblems/833.lean-75-          ∀ (n : ℕ) (H : Hypergraph (Fin n)),
+FormalConjectures/ErdosProblems/833.lean:76:            H.IsUniform r → H.HasChromaticNumber 3 →
+FormalConjectures/ErdosProblems/833.lean-77-              ∃ v : Fin n, (H.degree v : ℝ) ≥ (1 + c) ^ r := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-78-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/833.lean-79-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-38-/-- A graph $G$ has chromatic number $\aleph_1$ if it cannot be properly colored by any
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-39-countable set of colors, but can be colored by a set of cardinality $\aleph_1$. -/
+FormalConjectures/ErdosProblems/62.lean:40:def HasChromaticNumberAleph1 {V : Type*} (G : SimpleGraph V) : Prop :=
+FormalConjectures/ErdosProblems/62.lean-41-  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+FormalConjectures/ErdosProblems/62.lean-42-  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-43-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-58-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/62.lean-59-theorem erdos_62 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/62.lean-60-    ∀ (V₁ : Type*) (V₂ : Type*) (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂),
+FormalConjectures/ErdosProblems/62.lean:61:    HasChromaticNumberAleph1 G₁ →
+FormalConjectures/ErdosProblems/62.lean:62:    HasChromaticNumberAleph1 G₂ →
+FormalConjectures/ErdosProblems/62.lean-63-    ∃ (U : Type*) (H : SimpleGraph U),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-64-      H.chromaticNumber = ⊤ ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-65-      ContainsSubgraph G₁ H ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-81-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/62.lean-82-theorem erdos_62.variants.weak : answer(sorry) ↔
+FormalConjectures/ErdosProblems/62.lean-83-    ∀ (V₁ : Type*) (V₂ : Type*) (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂),
+FormalConjectures/ErdosProblems/62.lean:84:    HasChromaticNumberAleph1 G₁ →
+FormalConjectures/ErdosProblems/62.lean:85:    HasChromaticNumberAleph1 G₂ →
+FormalConjectures/ErdosProblems/62.lean-86-    ∃ (U : Type*) (H : SimpleGraph U),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-87-      ¬ H.Colorable 3 ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/62.lean-88-      ContainsSubgraph G₁ H ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-38-
+FormalConjectures/ErdosProblems/129.lean-39-/-- An $r$-edge-coloring of the complete graph $K_N$: a function that assigns a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-40-color in $\operatorname{Fin} r$ to each ordered pair of distinct vertices. -/
+FormalConjectures/ErdosProblems/129.lean:41:def EdgeColoring (N r : ℕ) : Type := Fin N → Fin N → Fin r
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-43-/-- A vertex set $S$ is monochromatic-$K_k$-free in color $c$ under coloring $\chi$ if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-44-there is no $k$-element subset of $S$ in which every pair of distinct vertices
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-45-receives color $c$. -/
+FormalConjectures/ErdosProblems/129.lean:46:def IsMonoKkFree {N r : ℕ} (χ : EdgeColoring N r) (c : Fin r)
+FormalConjectures/ErdosProblems/129.lean-47-    (k : ℕ) (S : Finset (Fin N)) : Prop :=
+FormalConjectures/ErdosProblems/129.lean-48-  ∀ T : Finset (Fin N), T ⊆ S → T.card = k →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/129.lean-49-    ∃ x ∈ T, ∃ y ∈ T, x ≠ y ∧ χ x y ≠ c
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-43-A coloring $c$ of $\{1, \ldots, n-1\}$ into $k$ colors is sum-free for $n$ if $n$ cannot be
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-44-expressed as a sum of distinct elements from any single color class.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-45--/
+FormalConjectures/ErdosProblems/360.lean:46:def SumFreeColoring (n k : ℕ) (c : ℕ → Fin k) : Prop :=
+FormalConjectures/ErdosProblems/360.lean-47-  ∀ j : Fin k, ∀ S : Finset ℕ,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-48-    S ⊆ Icc 1 (n - 1) →
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/360.lean-49-    (∀ x ∈ S, c x = j) →
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean-47-
+FormalConjectures/ErdosProblems/832.lean-48-/-- A proper $k$-coloring of a hypergraph: a vertex coloring such that no edge
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean-49-is monochromatic (for every edge, not all vertices receive the same color). -/
+FormalConjectures/ErdosProblems/832.lean:50:def UniformHypergraph.IsProperColoring {V : Type*} [DecidableEq V] {r : ℕ}
+FormalConjectures/ErdosProblems/832.lean-51-    (H : UniformHypergraph V r) (k : ℕ) (f : V → Fin k) : Prop :=
+FormalConjectures/ErdosProblems/832.lean-52-  ∀ e ∈ H.edges, ∀ c : Fin k, ∃ v ∈ e, f v ≠ c
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/832.lean-53-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-76-  ⟨H.edges.filter (fun e => v ∉ e)⟩
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-77-
+FormalConjectures/ErdosProblems/834.lean-78-/-- A proper coloring of a hypergraph: no edge is monochromatic. -/
+FormalConjectures/ErdosProblems/834.lean:79:def Hypergraph.IsProperColoring {V : Type*} [DecidableEq V] (H : Hypergraph V)
+FormalConjectures/ErdosProblems/834.lean-80-    {α : Type*} (f : V → α) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-81-  ∀ e ∈ H.edges, e.card ≥ 2 → ∃ u ∈ e, ∃ v ∈ e, f u ≠ f v
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/834.lean-82-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-42-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-43-/-- An edge coloring of $K_n$ with colors from $\operatorname{Fin} k$, represented as a function
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-44-on ordered pairs of vertices. -/
+FormalConjectures/ErdosProblems/136.lean:45:def EdgeColoring (n k : ℕ) : Type := Fin n → Fin n → Fin k
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-47-/-- The set of distinct colors used on edges within vertex subset $S$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-48-under coloring $\chi$ (using `offDiag` to enumerate all ordered pairs of
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-49-distinct vertices in $S$). -/
+FormalConjectures/ErdosProblems/136.lean:50:noncomputable def edgeColors {n k : ℕ} (χ : EdgeColoring n k)
+FormalConjectures/ErdosProblems/136.lean-51-    (S : Finset (Fin n)) : Finset (Fin k) :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-52-  S.offDiag.image (fun p => χ p.1 p.2)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-54-/-- A coloring $\chi$ of $K_n$ is $K_4$-five-colored if every 4-element vertex subset
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-55-has at least 5 distinct colors on its edges. -/
+FormalConjectures/ErdosProblems/136.lean:56:def IsK4FiveColored {n k : ℕ} (χ : EdgeColoring n k) : Prop :=
+FormalConjectures/ErdosProblems/136.lean-57-  ∀ S : Finset (Fin n), S.card = 4 → 5 ≤ (edgeColors χ S).card
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/136.lean-58-
+FormalConjectures/ErdosProblems/136.lean-59-/-- $f(n)$: the minimum number of colors $k$ for which there exists a
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-39-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-40-/-- A 2-edge-colouring of $K_n$ assigns a `Bool` to each unordered pair of vertices.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-41-(Values at diagonal elements $s(v, v)$ are irrelevant.) -/
+FormalConjectures/ErdosProblems/76.lean:42:def EdgeTwoColoring (n : ℕ) := Sym2 (Fin n) → Bool
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-43-
+FormalConjectures/ErdosProblems/76.lean-44-/-- The set of (non-diagonal) edges of a triangle $T \subseteq V(K_n)$:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-45-all unordered pairs $\{x, y\}$ with $x \neq y$ and $x, y \in T$. -/
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-48-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-49-/-- A 3-vertex set $T \subseteq V(K_n)$ is a monochromatic triangle under colouring `col` if
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-50-all three edges of $T$ receive the same colour. -/
+FormalConjectures/ErdosProblems/76.lean:51:def IsMonochromaticTriangle {n : ℕ} (col : EdgeTwoColoring n) (T : Finset (Fin n)) : Prop :=
+FormalConjectures/ErdosProblems/76.lean-52-  T.card = 3 ∧ ∃ c : Bool, ∀ e ∈ triangleEdges T, col e = c
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-53-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/76.lean-54-/-- A family $\mathcal{T}$ of triangles is edge-disjoint if any two distinct triangles in
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean-40-A graph $G$ (on vertex type $V$) has chromatic number $\aleph_1$ if it cannot be properly
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean-41-colored with countably many colors but can be properly colored with $\aleph_1$ colors.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean-42--/
+FormalConjectures/ErdosProblems/111.lean:43:def HasChromaticNumberAleph1 {V : Type*} (G : SimpleGraph V) : Prop :=
+FormalConjectures/ErdosProblems/111.lean-44-  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+FormalConjectures/ErdosProblems/111.lean-45-  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean-46-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/111.lean-83-@[category research open, AMS 5]
+FormalConjectures/ErdosProblems/111.lean-84-theorem erdos_111 : answer(sorry) ↔
+FormalConjectures/ErdosProblems/111.lean-85-    ∃ (V : Type*) (G : SimpleGraph V),
+FormalConjectures/ErdosProblems/111.lean:86:      HasChromaticNumberAleph1 G ∧
+FormalConjectures/ErdosProblems/111.lean-87-      ∀ ε : ℝ, 0 < ε →
+FormalConjectures/ErdosProblems/111.lean-88-        ∃ C : ℝ, 0 < C ∧
+FormalConjectures/ErdosProblems/111.lean-89-          ∀ n : ℕ, (hFun G n : ℝ) ≤ C * (n : ℝ) ^ (1 + ε) := by
+--
+FormalConjectures/ErdosProblems/629.lean-43-/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/629.lean-44-is a function $f : V \to \mathbb{N}$ such that $f(v) \in L(v)$ for all $v$, and $f(u) \neq f(v)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean-45-whenever $u$ and $v$ are adjacent. -/
+FormalConjectures/ErdosProblems/629.lean:46:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+FormalConjectures/ErdosProblems/629.lean-47-    (f : V → ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean-48-  (∀ v, f v ∈ L v) ∧ (∀ u v, G.Adj u v → f u ≠ f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/629.lean-49-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/809.lean-37-/-- There exists a graph on $n$ vertices with $\lfloor n^2/4 \rfloor + 1$ edges admitting an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/809.lean-38-$r$-edge-coloring such that every cycle of length $2k+1$ is rainbow
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/809.lean-39-(no repeated edge colors). -/
+FormalConjectures/ErdosProblems/809.lean:40:noncomputable def AdmitsRainbowOddCycleColoring (k n r : ℕ) : Prop :=
+FormalConjectures/ErdosProblems/809.lean-41-  ∃ G : SimpleGraph (Fin n),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/809.lean-42-    G.edgeSet.ncard = n ^ 2 / 4 + 1 ∧
+FormalConjectures/ErdosProblems/809.lean-43-    ∃ c : Sym2 (Fin n) → Fin r,
+--
+FormalConjectures/ErdosProblems/631.lean-48-/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/631.lean-49-is a function $f : V \to \mathbb{N}$ such that $f(v) \in L(v)$ for all $v$, and $f(u) \neq f(v)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/631.lean-50-whenever $u$ and $v$ are adjacent. -/
+FormalConjectures/ErdosProblems/631.lean:51:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+FormalConjectures/ErdosProblems/631.lean-52-    (f : V → ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/631.lean-53-  (∀ v, f v ∈ L v) ∧ (∀ u v, G.Adj u v → f u ≠ f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/631.lean-54-
+--
+FormalConjectures/ErdosProblems/630.lean-38-/-- A proper list coloring of $G$ with respect to a list assignment $L : V \to \text{Finset}\ \mathbb{N}$
+FormalConjectures/ErdosProblems/630.lean-39-is a function $f : V \to \mathbb{N}$ such that $f(v) \in L(v)$ for all $v$, and $f(u) \neq f(v)$
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/630.lean-40-whenever $u$ and $v$ are adjacent. -/
+FormalConjectures/ErdosProblems/630.lean:41:def IsProperListColoring {V : Type*} (G : SimpleGraph V) (L : V → Finset ℕ)
+FormalConjectures/ErdosProblems/630.lean-42-    (f : V → ℕ) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/630.lean-43-  (∀ v, f v ∈ L v) ∧ (∀ u v, G.Adj u v → f u ≠ f v)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/630.lean-44-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-49-
+FormalConjectures/ErdosProblems/593.lean-50-/-- A proper coloring of a $3$-uniform hypergraph: no edge is monochromatic
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-51-    (every edge contains two vertices receiving different colors). -/
+FormalConjectures/ErdosProblems/593.lean:52:def Hypergraph3.IsProperColoring {V : Type*} (H : Hypergraph3 V)
+FormalConjectures/ErdosProblems/593.lean-53-    {C : Type*} (c : V → C) : Prop :=
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-54-  ∀ e ∈ H.edges, ∃ x ∈ e, ∃ y ∈ e, c x ≠ c y
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/593.lean-55-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/110.lean-42-    (i.e., the chromatic number exceeds $\aleph_0$), and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/110.lean-43-(2) $G$ can be properly colored by a set of cardinality $\aleph_1$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/110.lean-44--/
+FormalConjectures/ErdosProblems/110.lean:45:def HasChromaticNumberAleph1 {V : Type*} (G : SimpleGraph V) : Prop :=
+FormalConjectures/ErdosProblems/110.lean-46-  (∀ (α : Type*) [Countable α], IsEmpty (G.Coloring α)) ∧
+FormalConjectures/ErdosProblems/110.lean-47-  (∃ α : Type*, #α = aleph 1 ∧ Nonempty (G.Coloring α))
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/110.lean-48-
+--
+FormalConjectures/ErdosProblems/110.lean-61-theorem erdos_110 : answer(False) ↔
+FormalConjectures/ErdosProblems/110.lean-62-    ∃ F : ℕ → ℕ,
+FormalConjectures/ErdosProblems/110.lean-63-      ∀ (V : Type*) (G : SimpleGraph V),
+FormalConjectures/ErdosProblems/110.lean:64:        HasChromaticNumberAleph1 G →
+FormalConjectures/ErdosProblems/110.lean-65-        ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+FormalConjectures/ErdosProblems/110.lean-66-          ∃ H : G.Subgraph,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/110.lean-67-            H.verts.Finite ∧
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/797.lean-36-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/797.lean-37-/-- A proper coloring of $G$ is acyclic if for every pair of distinct colors,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/797.lean-38-    the subgraph induced by vertices of those two colors is acyclic (a forest). -/
+FormalConjectures/ErdosProblems/797.lean:39:def IsAcyclicColoring {V : Type*} (G : SimpleGraph V) {α : Type*}
+FormalConjectures/ErdosProblems/797.lean-40-    (c : G.Coloring α) : Prop :=
+FormalConjectures/ErdosProblems/797.lean-41-  ∀ a b : α, a ≠ b →
+FormalConjectures/ErdosProblems/797.lean-42-    (G.induce {v : V | c v = a ∨ c v = b}).IsAcyclic
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-38-/-- A cochromatic coloring of a simple graph $G$ with $k$ colors is a function
+FormalConjectures/ErdosProblems/758.lean-39-$c : V \to \text{Fin}(k)$ such that each color class is either a clique (all pairs
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/758.lean-40-adjacent) or an independent set (no pairs adjacent). -/
+FormalConjectures/ErdosProblems/758.lean:41:def IsCochromaticColoring {V : Type*} (G : SimpleGraph V) (k : ℕ)
+FormalConjectures/ErdosProblems/758.lean-42-    (c : V → Fin k) : Prop :=
+FormalConjectures/ErdosProblems/758.lean-43-  ∀ i : Fin k,
+FormalConjectures/ErdosProblems/758.lean-44-    (∀ u v : V, c u = i → c v = i → u ≠ v → G.Adj u v) ∨

@@ -1,0 +1,493 @@
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-46-  sInf { m | ∃ (n : ℕ) (F : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-47-    F.edgeSet.ncard = m ∧
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-48-    ∀ (R : SimpleGraph (Fin n)), R ≤ F →
+FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:49:      G.IsContained R ∨ H.IsContained (F \ R) }
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-50-
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-51-/--
+/home/ryan/formal-conjectures/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean-52-A graph `G` is **Ramsey size linear** if there exists a constant `c > 0` such that
+--
+/home/ryan/formal-conjectures/ai-review/79.md-6-
+/home/ryan/formal-conjectures/ai-review/79.md-7-| Local definition (79.lean) | Library equivalent | Location |
+/home/ryan/formal-conjectures/ai-review/79.md-8-|---|---|---|
+ai-review/79.md:9:| `Erdos79.IsSubgraphOf H G` | `SimpleGraph.IsContained H G` (notation `H ⊑ G`) | Mathlib `SimpleGraph.Copy` |
+/home/ryan/formal-conjectures/ai-review/79.md-10-| `Erdos79.RamseyProp G H n` | (implicit via `SimpleGraph.sizeRamsey`) | `FormalConjecturesForMathlib/.../SizeRamsey.lean` |
+/home/ryan/formal-conjectures/ai-review/79.md-11-| `Erdos79.NoIsolatedVertices H` | `∀ v, 0 < H.degree v` | Standard Mathlib idiom |
+/home/ryan/formal-conjectures/ai-review/79.md-12-| `Erdos79.IsRamseySizeLinear G` | `SimpleGraph.IsRamseySizeLinear G` | `FormalConjecturesForMathlib/.../SizeRamsey.lean` |
+/home/ryan/formal-conjectures/ai-review/79.md-13-
+/home/ryan/formal-conjectures/ai-review/79.md-14-Problem 567 (a closely related problem about specific Ramsey-size-linear graphs) already uses the library's `SimpleGraph.IsRamseySizeLinear` directly via `ProblemImports`. Problem 79 should do the same.
+/home/ryan/formal-conjectures/ai-review/79.md-15-
+ai-review/79.md:16:The local `IsSubgraphOf` is a manual version of Mathlib's `SimpleGraph.Copy`/`IsContained` infrastructure. Using `IsContained` would align with the rest of the codebase (problems 59, 60, 566, 567 all use it) and avoid redundant definitions.
+/home/ryan/formal-conjectures/ai-review/79.md-17-
+ai-review/79.md:18:**Recommendation:** Delete all four local definitions and rewrite the theorem using `SimpleGraph.IsRamseySizeLinear` and `SimpleGraph.IsContained` from the library.
+/home/ryan/formal-conjectures/ai-review/79.md-19-
+/home/ryan/formal-conjectures/ai-review/79.md-20-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/79.md-21-
+--
+/home/ryan/formal-conjectures/ai-review/561.md-4-
+/home/ryan/formal-conjectures/ai-review/561.md-5-**Several opportunities for reuse exist but are not leveraged.**
+/home/ryan/formal-conjectures/ai-review/561.md-6-
+ai-review/561.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/561.md-8-
+/home/ryan/formal-conjectures/ai-review/561.md-9-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/561.md-10-
+--
+ai-review/552.md-5-Several definitions in `552.lean` are duplicated from other files or redundant with Mathlib:
+/home/ryan/formal-conjectures/ai-review/552.md-6-
+/home/ryan/formal-conjectures/ai-review/552.md-7-### `ContainsSubgraphCopy` (lines 38–39)
+ai-review/552.md:8:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/552.md-9-
+ai-review/552.md:10:**Recommendation:** Replace `ContainsSubgraphCopy G H` with `G.IsContained H` from Mathlib.
+/home/ryan/formal-conjectures/ai-review/552.md-11-
+/home/ryan/formal-conjectures/ai-review/552.md-12-### `offDiagRamseyNumber` (lines 44–47)
+ai-review/552.md:13:This identical definition appears in `551.lean` (lines 59–62). Neither is factored into a shared utility file. Using Mathlib's `IsContained` would also simplify this definition.
+/home/ryan/formal-conjectures/ai-review/552.md-14-
+ai-review/552.md:15:**Recommendation:** Extract `offDiagRamseyNumber` into a shared file (e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Ramsey.lean` or a new utility), parameterized over Mathlib's `IsContained`.
+/home/ryan/formal-conjectures/ai-review/552.md-16-
+/home/ryan/formal-conjectures/ai-review/552.md-17-### `cycleGraph` (lines 51–60)
+ai-review/552.md-18-Mathlib provides `SimpleGraph.cycleGraph : (n : ℕ) → SimpleGraph (Fin n)` in `Mathlib.Combinatorics.SimpleGraph.Circulant`, defined via `circulantGraph {1}`. This is a cleaner, more general definition with proven properties. The hand-rolled version in 552.lean (and identically in 551.lean, 555.lean, 556.lean) uses modular arithmetic and takes an unnecessary proof obligation `hk : k ≥ 3`.
+--
+/home/ryan/formal-conjectures/ai-review/147.md-6-
+ai-review/147.md-7-More importantly, **Mathlib already provides superior alternatives**:
+/home/ryan/formal-conjectures/ai-review/147.md-8-
+ai-review/147.md:9:- **`SimpleGraph.IsContained` (notation `G ⊑ H`)** in `Mathlib.Combinatorics.SimpleGraph.Copy` is semantically equivalent to the custom `ContainsSubgraph` (injective graph homomorphism preserving adjacency). The custom definition is redundant.
+/home/ryan/formal-conjectures/ai-review/147.md-10-- **`SimpleGraph.extremalNumber`** in `Mathlib.Combinatorics.SimpleGraph.Extremal.Basic` is the standard Turán number `ex(n; H)`, defined concretely over `Fin n` with an established API (`extremalNumber_le_iff`, monotonicity, etc.). This is preferred over the custom `turanNumber`, which uses `sSup` over an existentially-quantified set ranging over all `Type`s—mathematically valid but harder to work with.
+/home/ryan/formal-conjectures/ai-review/147.md-11-
+/home/ryan/formal-conjectures/ai-review/147.md-12-The bipartiteness check `Nonempty (H.Coloring (Fin 2))` and the minimum degree condition `∀ v, r ≤ H.degree v` are standard and appropriate. Mathlib provides `SimpleGraph.minDegree` which could be used instead of the inline universal quantification, though the current formulation is equivalent and arguably more explicit.
+/home/ryan/formal-conjectures/ai-review/147.md-13-
+ai-review/147.md:14:**Recommendation:** Replace `ContainsSubgraph` and `turanNumber` with Mathlib's `IsContained`/`Free` and `extremalNumber`. Factor shared graph-theoretic definitions into a common utility file used by Problems 113, 146, 147, 159, and 180.
+/home/ryan/formal-conjectures/ai-review/147.md-15-
+/home/ryan/formal-conjectures/ai-review/147.md-16-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/147.md-17-
+--
+/home/ryan/formal-conjectures/ai-review/147.md-92-
+/home/ryan/formal-conjectures/ai-review/147.md-93-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/147.md-94-|-----------|-----------|
+ai-review/147.md:95:| Code reuse | **Significant opportunity.** `ContainsSubgraph` and `turanNumber` are duplicated across 5+ files and should be replaced by Mathlib's `IsContained`/`Free` and `extremalNumber`. |
+/home/ryan/formal-conjectures/ai-review/147.md-96-| Citations | **Mostly good.** Main references match the website. [ErSi84] is missing full bibliographic details (publisher, pages). Missing [Er93], [Er97c]. Missing cross-references to problems #113, #146, #714. |
+ai-review/147.md-97-| Variants | **Partially complete.** Core disproved conjecture is captured. Missing: the probabilistic lower bound (2−2/r exponent), Janzer's follow-up conjecture for r-regular graphs. |
+/home/ryan/formal-conjectures/ai-review/147.md-98-| Readability | **Good.** Clear docstrings, well-structured code, appropriate LaTeX. Minor parenthesization suggestion for the exponent. |
+--
+/home/ryan/formal-conjectures/ai-review/546.md-4-
+ai-review/546.md-5-**Major issue.** The definitions `ContainsSubgraphCopy` and `ramseyNumber` are duplicated verbatim across at least five files: 545, 546, 547, 548, and 549. These should be factored into a shared utility.
+/home/ryan/formal-conjectures/ai-review/546.md-6-
+ai-review/546.md:7:More importantly, **Mathlib already provides `SimpleGraph.IsContained`** (in `Mathlib.Combinatorics.SimpleGraph.Copy`), which is definitionally equivalent to `ContainsSubgraphCopy`:
+/home/ryan/formal-conjectures/ai-review/546.md-8-
+ai-review/546.md:9:- `SimpleGraph.IsContained A B` is `Nonempty (Copy A B)`, where `Copy A B` is a structure wrapping an injective homomorphism — exactly the same as `∃ f, Injective f ∧ ∀ u v, A.Adj u v → B.Adj (f u) (f v)`.
+/home/ryan/formal-conjectures/ai-review/546.md-10-
+ai-review/546.md:11:The `ramseyNumber` definition could be rewritten using `G ⊑ H ∨ G ⊑ Hᶜ` (where `⊑` is `IsContained`), eliminating the need for the custom `ContainsSubgraphCopy`.
+/home/ryan/formal-conjectures/ai-review/546.md-12-
+ai-review/546.md:13:Additionally, `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` already uses `IsContained` for a related Ramsey concept (`sizeRamsey`). The no-isolated-vertices condition there uses `∀ v, 0 < H.degree v`, which is cleaner than the existential formulation `∀ v, ∃ w, G.Adj v w` used here (though they are equivalent for `DecidableRel`).
+/home/ryan/formal-conjectures/ai-review/546.md-14-
+/home/ryan/formal-conjectures/ai-review/546.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/546.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/546.md-53-
+ai-review/546.md-54-Detailed analysis:
+/home/ryan/formal-conjectures/ai-review/546.md-55-
+ai-review/546.md:56:1. **`ContainsSubgraphCopy` (line 44–45):** Correctly captures "H contains a copy of G as a subgraph" via an injective function preserving adjacency. This is the standard notion (non-induced subgraph containment). Matches Mathlib's `SimpleGraph.IsContained`.
+/home/ryan/formal-conjectures/ai-review/546.md-57-
+ai-review/546.md-58-2. **`ramseyNumber` (line 50–52):** Defines R(G) as `sInf {N | ∀ H : SimpleGraph (Fin N), ContainsSubgraphCopy G H ∨ ContainsSubgraphCopy G Hᶜ}`. This correctly captures the diagonal Ramsey number: the minimum N such that every graph on N vertices contains G or its complement contains G. By the classical Ramsey theorem (since any graph G on k vertices satisfies R(G) ≤ R(k,k)), the set is non-empty for any finite G, so `sInf` is well-defined and returns the correct minimum.
+/home/ryan/formal-conjectures/ai-review/546.md-59-
+--
+/home/ryan/formal-conjectures/ai-review/546.md-71-
+/home/ryan/formal-conjectures/ai-review/546.md-72-| Criterion | Rating | Notes |
+/home/ryan/formal-conjectures/ai-review/546.md-73-|-----------|--------|-------|
+ai-review/546.md:74:| Code reuse | Needs improvement | `ContainsSubgraphCopy` duplicated across 5 files; Mathlib's `IsContained` should be used instead |
+/home/ryan/formal-conjectures/ai-review/546.md-75-| Citations | Minor gap | Missing Alon–Krivelevich–Sudakov (2003) partial result |
+/home/ryan/formal-conjectures/ai-review/546.md-76-| Variants | Minor gap | Multicolor (≥ 3 colors) open variant mentioned but not formalized |
+/home/ryan/formal-conjectures/ai-review/546.md-77-| Readability | Good | Clear docstring and code |
+--
+/home/ryan/formal-conjectures/ai-review/568.md-4-
+/home/ryan/formal-conjectures/ai-review/568.md-5-**Significant reuse opportunities exist.**
+/home/ryan/formal-conjectures/ai-review/568.md-6-
+ai-review/568.md:7:- **`Embeds` vs `SimpleGraph.IsContained`**: The file defines its own `Embeds` (injective adjacency-preserving map), which is essentially equivalent to Mathlib's `SimpleGraph.IsContained` (used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean`). The local `Embeds` could be replaced with `IsContained`.
+/home/ryan/formal-conjectures/ai-review/568.md-8-
+ai-review/568.md-9-- **`ramseyNum` vs existing Ramsey infrastructure**: `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean` defines `hypergraphRamsey` for uniform hypergraphs, but the graph Ramsey number (2-uniform case) is not directly provided. The local `ramseyNum` is reasonable as a standalone definition, though it could potentially be related to `hypergraphRamsey 2` with appropriate encoding.
+/home/ryan/formal-conjectures/ai-review/568.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/568.md-12-
+ai-review/568.md-13-- **`IsConnectedGraph` and `IsTreeGraph`**: Mathlib provides `SimpleGraph.Connected` and `SimpleGraph.IsTree`. These could replace the local definitions. The local `IsConnectedGraph` uses `Relation.ReflTransGen G.Adj` which is equivalent to Mathlib's `SimpleGraph.Connected` (which uses `G.Reachable`). The local `IsTreeGraph` characterizes trees as connected graphs with |E| + 1 = |V|, which is one of many equivalent characterizations available in Mathlib.
+/home/ryan/formal-conjectures/ai-review/568.md-14-
+ai-review/568.md:15:**Recommendation**: Replace `Embeds` with `IsContained`, and `IsConnectedGraph`/`IsTreeGraph` with their Mathlib counterparts to reduce definition duplication.
+/home/ryan/formal-conjectures/ai-review/568.md-16-
+/home/ryan/formal-conjectures/ai-review/568.md-17-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/568.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/60.md-13-| Local definition | Mathlib replacement | Location |
+/home/ryan/formal-conjectures/ai-review/60.md-14-|---|---|---|
+ai-review/60.md-15-| `cycleGraph60` | `SimpleGraph.cycleGraph` | `Mathlib/Combinatorics/SimpleGraph/Circulant.lean:62` |
+ai-review/60.md:16:| `ContainsSubgraph60` | `SimpleGraph.IsContained` (via `Copy`) | `Mathlib/Combinatorics/SimpleGraph/Copy.lean:237` |
+ai-review/60.md-17-| `extremalNumber60` | `SimpleGraph.extremalNumber` | `Mathlib/Combinatorics/SimpleGraph/Extremal/Basic.lean:78` |
+ai-review/60.md-18-| `labeledC4Count` | `SimpleGraph.labelledCopyCount` | `Mathlib/Combinatorics/SimpleGraph/Copy.lean:406` |
+/home/ryan/formal-conjectures/ai-review/60.md-19-
+--
+/home/ryan/formal-conjectures/ai-review/60.md-21-
+ai-review/60.md-22-1. **`cycleGraph60`** manually constructs the cycle via modular arithmetic. Mathlib's `SimpleGraph.cycleGraph n` defines it as `circulantGraph {1}` on `Fin n`, which is cleaner and comes with lemmas. Note: Mathlib's version is defined for all `n : ℕ` (returning `⊥` for `n = 0`) rather than requiring `m ≥ 3`.
+/home/ryan/formal-conjectures/ai-review/60.md-23-
+ai-review/60.md:24:2. **`ContainsSubgraph60`** is an existential over injective homomorphisms. Mathlib now has `SimpleGraph.Copy A B` (a structure for injective homomorphisms from `A` to `B`) and `SimpleGraph.IsContained A B` (notation `A ⊑ B`), which is `Nonempty (Copy A B)`. The negation, `SimpleGraph.Free A B`, means `¬A ⊑ B`.
+/home/ryan/formal-conjectures/ai-review/60.md-25-
+ai-review/60.md-26-3. **`extremalNumber60`** uses `sSup` over a set of naturals. Mathlib's `SimpleGraph.extremalNumber n H` uses `Finset.sup` over the finset of `H`-free graphs, which is more robust (no need to verify boundedness for `sSup`). Note the argument order differs: Mathlib uses `(n : ℕ) (H)` while the formalization uses `(H) (n : ℕ)`.
+/home/ryan/formal-conjectures/ai-review/60.md-27-
+--
+/home/ryan/formal-conjectures/ai-review/59.md-4-
+/home/ryan/formal-conjectures/ai-review/59.md-5-**Several Mathlib definitions could replace the custom ones defined in this file.**
+/home/ryan/formal-conjectures/ai-review/59.md-6-
+ai-review/59.md:7:- **`ContainsSubgraph`** (line 36–37): Mathlib now provides `SimpleGraph.Copy` (an injective graph homomorphism structure), `SimpleGraph.IsContained` (`A ⊑ B`, defined as `Nonempty (Copy A B)`), and `SimpleGraph.Free` (`¬A ⊑ B`). These are mathematically equivalent to the custom `ContainsSubgraph`. Using `H.Free F` in place of `¬ContainsSubgraph F H` would integrate better with Mathlib's extremal graph theory library.
+/home/ryan/formal-conjectures/ai-review/59.md-8-
+ai-review/59.md-9-- **`turanNumber`** (line 41–44): Mathlib provides `SimpleGraph.extremalNumber n H`, defined as `sup { G : SimpleGraph (Fin n) | H.Free G } (#·.edgeFinset)`. This is cleaner than the custom definition, which quantifies over an arbitrary `(V : Type)` with `Fintype.card V = n` and uses `sSup` over projected edge counts. The Mathlib version directly works over `Fin n`, avoiding potential universe issues.
+/home/ryan/formal-conjectures/ai-review/59.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/59.md-64-
+/home/ryan/formal-conjectures/ai-review/59.md-65-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/59.md-66-
+ai-review/59.md:67:**Verdict**: The formalization is correct and complete. No mathematical flaws. The use of custom definitions rather than Mathlib's `extremalNumber` and `IsContained` is a stylistic/reuse concern, not a correctness issue.
+/home/ryan/formal-conjectures/ai-review/59.md-68-
+/home/ryan/formal-conjectures/ai-review/59.md-69-## Summary
+/home/ryan/formal-conjectures/ai-review/59.md-70-
+/home/ryan/formal-conjectures/ai-review/59.md-71-| Category | Assessment |
+/home/ryan/formal-conjectures/ai-review/59.md-72-|----------|-----------|
+ai-review/59.md:73:| Code reuse | Custom definitions could be replaced by Mathlib's `IsContained`/`Free`/`extremalNumber` |
+ai-review/59.md-74-| Citations | Missing page/section numbers: should be `[Er93, p.335]` and `[Va99, 3.56]` |
+/home/ryan/formal-conjectures/ai-review/59.md-75-| Variants | Missing Morris–Saxton weaker conjecture (`2^{O(ex(n;G))}` for all G) and C₄ special case |
+/home/ryan/formal-conjectures/ai-review/59.md-76-| Readability | Good overall; minor naming inconsistency (`countGFreeGraphs` vs parameter `H`) |
+--
+ai-review/565.md-5-The codebase contains several Ramsey-related definitions that are worth comparing:
+/home/ryan/formal-conjectures/ai-review/565.md-6-
+ai-review/565.md-7-- **`graphRamseyNumber`** (ErdosProblems/87.lean): The classical graph Ramsey number using `ContainsSubgraph` (non-induced copy via injective homomorphism). Not suitable here because the induced Ramsey number requires a biconditional (preserving both edges *and* non-edges relative to a color class), not just edge-preservation.
+ai-review/565.md:8:- **`sizeRamsey`** (FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean): Minimizes the number of *edges* in the host graph (not vertex count), and uses `IsContained` for non-induced copies. Not applicable.
+ai-review/565.md-9-- **`hypergraphRamsey`** (FormalConjecturesForMathlib/Combinatorics/Ramsey.lean): The uniform hypergraph Ramsey number. A different concept entirely.
+ai-review/565.md-10-- **`inducedFinSubgraph`** and **`FinGraphIso`** (ErdosProblems/638.lean): Defines induced subgraphs along embeddings and graph isomorphism for `Fin m` graphs. These are related conceptually but serve a different structural role.
+/home/ryan/formal-conjectures/ai-review/565.md-11-
+--
+/home/ryan/formal-conjectures/ai-review/163.md-4-
+ai-review/163.md-5-**Significant duplication exists.** Three definitions in this file are duplicated or near-duplicated elsewhere:
+/home/ryan/formal-conjectures/ai-review/163.md-6-
+ai-review/163.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/163.md-8-
+ai-review/163.md-9-- **`ramseyDiag`** (line 57): Identical to `Erdos181.ramseyDiag` in `FormalConjectures/ErdosProblems/181.lean:57`. Both could be refactored into a shared definition in `FormalConjecturesForMathlib/`.
+/home/ryan/formal-conjectures/ai-review/163.md-10-
+ai-review/163.md-11-- **`IsDDegenerate`** (line 50): A `Finset`-based degeneracy definition. Compare with the more general `Set`-based `IsRDegenerateGraph` in `FormalConjectures/ErdosProblems/146.lean:55`, which works for infinite vertex types. Since Problem 163 only needs finite graphs (`Fin n`), either definition suffices, but consolidating into one shared definition (preferably the `Set`-based one for generality, or the `Finset`-based one for computability) would reduce duplication.
+/home/ryan/formal-conjectures/ai-review/163.md-12-
+ai-review/163.md:13:**Recommendation:** Extract `containsCopy`/`ramseyDiag`/`IsDDegenerate` into shared library files, or use the existing Mathlib `IsContained`.
+/home/ryan/formal-conjectures/ai-review/163.md-14-
+/home/ryan/formal-conjectures/ai-review/163.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/163.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/549.md-4-
+/home/ryan/formal-conjectures/ai-review/549.md-5-**Major issue.** Both `ContainsSubgraphCopy` and `ramseyNumber` are duplicated verbatim across problems 545, 546, 547, and 549 — each within its own namespace. These should be refactored into a shared utility file.
+/home/ryan/formal-conjectures/ai-review/549.md-6-
+ai-review/549.md:7:Additionally, Mathlib already provides `SimpleGraph.IsContained` (from `Mathlib.Combinatorics.SimpleGraph.Copy`), which is used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean`. The custom `ContainsSubgraphCopy` is essentially equivalent to `IsContained` (an injective adjacency-preserving map). Problem 549 should use the Mathlib definition instead of rolling its own.
+/home/ryan/formal-conjectures/ai-review/549.md-8-
+/home/ryan/formal-conjectures/ai-review/549.md-9-Similarly, `ramseyNumber` could be defined once in a shared module (alongside the related `sizeRamsey` in `SizeRamsey.lean`) and imported by all the Erdős problems that need it (545–549).
+/home/ryan/formal-conjectures/ai-review/549.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/560.md-7-Furthermore, the identical `sizeRamseyNumber` definition is copy-pasted in `FormalConjectures/ErdosProblems/559.lean` (lines 50–59). Both should ideally be consolidated.
+/home/ryan/formal-conjectures/ai-review/560.md-8-
+ai-review/560.md-9-The two implementations differ in encoding:
+ai-review/560.md:10:- **ForMathlib version**: Uses a subgraph `R ≤ F` to represent the "red" edges, with "blue" being `F \ R`. Uses `IsContained` and `ncard`.
+ai-review/560.md-11-- **Local version**: Uses a symmetric boolean function `c : Fin N → Fin N → Bool` as the coloring. Uses `Nat.card` and manually encodes the monochromatic-copy condition.
+/home/ryan/formal-conjectures/ai-review/560.md-12-
+ai-review/560.md:13:These are mathematically equivalent, but the ForMathlib version is more idiomatic and leverages Mathlib's `IsContained` API. Consider replacing the local definition with `SimpleGraph.sizeRamsey G G` to reduce duplication and improve maintainability.
+/home/ryan/formal-conjectures/ai-review/560.md-14-
+/home/ryan/formal-conjectures/ai-review/560.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/560.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/911.md-14-
+/home/ryan/formal-conjectures/ai-review/911.md-15-**There is a significant code reuse opportunity.**
+/home/ryan/formal-conjectures/ai-review/911.md-16-
+ai-review/911.md:17:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/911.md-18-
+ai-review/911.md-19-Key differences between the two definitions:
+ai-review/911.md-20-- **Coloring representation:** The library uses a subgraph `R ≤ F` to represent a 2-coloring; the 911 definition uses an explicit symmetric Bool-valued function `c : Fin N → Fin N → Bool`.
+ai-review/911.md:21:- **Copy notion:** The library uses `IsContained` (existence of a graph isomorphism onto a subgraph); the 911 definition manually specifies an injective map preserving adjacency and color.
+ai-review/911.md-22-- **Edge counting:** The library uses `Set.ncard`; the 911 definition uses `Nat.card`.
+/home/ryan/formal-conjectures/ai-review/911.md-23-
+ai-review/911.md-24-These are mathematically equivalent. **Recommendation:** Replace `Erdos911.sizeRamseyNumber G` with `SimpleGraph.sizeRamsey G G` from the library. This would require importing `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean` and reconciling the `ncard` vs `Nat.card` difference (both compute the same value on finite sets).
+--
+/home/ryan/formal-conjectures/ai-review/146.md-6-
+ai-review/146.md-7-More critically, **Mathlib already provides superior alternatives** for several of these definitions:
+/home/ryan/formal-conjectures/ai-review/146.md-8-
+ai-review/146.md:9:- **`SimpleGraph.IsContained` (notation `G ⊑ H`)** in `Mathlib.Combinatorics.SimpleGraph.Copy` is semantically equivalent to `ContainsSubgraph` (injective graph homomorphism). The custom `ContainsSubgraph` is redundant.
+ai-review/146.md:10:- **`SimpleGraph.Free`** in the same file is `¬ IsContained`, matching `¬ ContainsSubgraph`.
+/home/ryan/formal-conjectures/ai-review/146.md-11-- **`SimpleGraph.extremalNumber`** in `Mathlib.Combinatorics.SimpleGraph.Extremal.Basic` is the standard Turán number `ex(n; H)`. It is defined as the sup over `H`-free graphs on `Fin n`, which is mathematically equivalent to the custom `turanNumber` but benefits from an established API (`extremalNumber_le_iff`, `lt_extremalNumber_iff`, monotonicity under containment, etc.).
+/home/ryan/formal-conjectures/ai-review/146.md-12-
+/home/ryan/formal-conjectures/ai-review/146.md-13-The custom `turanNumber` uses `sSup` over an existentially-quantified set ranging over all types `V`, which is mathematically valid but harder to work with in practice than Mathlib's concrete `Fin n`-based definition. The Mathlib version is preferred.
+/home/ryan/formal-conjectures/ai-review/146.md-14-
+/home/ryan/formal-conjectures/ai-review/146.md-15-`IsRDegenerateGraph` has no Mathlib counterpart and would need to remain as a custom definition, but should be shared across problems 113, 146, and 147.
+/home/ryan/formal-conjectures/ai-review/146.md-16-
+ai-review/146.md:17:**Recommendation:** Replace `ContainsSubgraph` and `turanNumber` with `SimpleGraph.IsContained`/`SimpleGraph.Free` and `SimpleGraph.extremalNumber` from Mathlib. Factor `IsRDegenerateGraph` into a shared file.
+/home/ryan/formal-conjectures/ai-review/146.md-18-
+/home/ryan/formal-conjectures/ai-review/146.md-19-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/146.md-20-
+--
+/home/ryan/formal-conjectures/ai-review/146.md-96-
+/home/ryan/formal-conjectures/ai-review/146.md-97-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/146.md-98-|-----------|-----------|
+ai-review/146.md:99:| Code reuse | **Significant opportunity.** `ContainsSubgraph` and `turanNumber` should be replaced by Mathlib's `IsContained`/`Free` and `extremalNumber`. `IsRDegenerateGraph` should be shared across problems 113, 146, 147. |
+/home/ryan/formal-conjectures/ai-review/146.md-100-| Citations | **Good.** Main references match the website. Missing [Er91], [Er93], [Er97c] (minor). Missing cross-references to problems #113 and #147. |
+/home/ryan/formal-conjectures/ai-review/146.md-101-| Variants | **Mostly complete.** Core conjecture captured. The AKS03 result for max-degree-on-one-side variant is not formalized. |
+/home/ryan/formal-conjectures/ai-review/146.md-102-| Readability | **Good.** Clear docstrings, well-structured code. |
+--
+/home/ryan/formal-conjectures/ai-review/569.md-4-
+ai-review/569.md-5-Several definitions in this file are duplicated from other Erdős problems and could be replaced with existing Mathlib or codebase utilities:
+/home/ryan/formal-conjectures/ai-review/569.md-6-
+ai-review/569.md:7:- **`Embeds`** (lines 34–37): This is exactly `SimpleGraph.IsContained` from Mathlib (`Mathlib.Combinatorics.SimpleGraph.Copy`). Mathlib defines `Copy A B` as an injective graph homomorphism, and `IsContained A B` (notation `A ⊑ B`) as `Nonempty (Copy A B)`. The local `Embeds` is semantically identical and should be replaced with `IsContained`.
+/home/ryan/formal-conjectures/ai-review/569.md-8-
+/home/ryan/formal-conjectures/ai-review/569.md-9-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/569.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/569.md-74-
+/home/ryan/formal-conjectures/ai-review/569.md-75-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/569.md-76-|-----------|-----------|
+ai-review/569.md:77:| Code reuse | `Embeds` and `cycleGraph` can be replaced with Mathlib's `IsContained` and `cycleGraph`; `ramseyNum` is widely duplicated and should be shared |
+/home/ryan/formal-conjectures/ai-review/569.md-78-| Citations | Incomplete — missing paper title and year; should match Problem 570's fuller citation |
+/home/ryan/formal-conjectures/ai-review/569.md-79-| Variants | Captures existence but not optimization; relationship to Problem 570 undocumented |
+/home/ryan/formal-conjectures/ai-review/569.md-80-| Readability | Good |
+--
+/home/ryan/formal-conjectures/ai-review/551.md-6-
+ai-review/551.md-7-More importantly, **Mathlib already provides equivalent infrastructure**:
+/home/ryan/formal-conjectures/ai-review/551.md-8-
+ai-review/551.md:9:- `SimpleGraph.IsContained G H` (`G ⊑ H`) in `Mathlib.Combinatorics.SimpleGraph.Copy` is semantically equivalent to `ContainsSubgraphCopy G H`. It is defined via injective graph homomorphisms (not embeddings), matching the non-induced containment notion used here.
+/home/ryan/formal-conjectures/ai-review/551.md-10-- `SimpleGraph.Copy G H` gives the type of copies (injective homomorphisms), providing a richer API.
+/home/ryan/formal-conjectures/ai-review/551.md-11-
+ai-review/551.md:12:The custom `ContainsSubgraphCopy` could be replaced by `SimpleGraph.IsContained`, and `offDiagRamseyNumber` could be refactored to use it. A shared definition of `offDiagRamseyNumber` using Mathlib's `IsContained` should live in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/`.
+/home/ryan/formal-conjectures/ai-review/551.md-13-
+/home/ryan/formal-conjectures/ai-review/551.md-14-The `cycleGraph` definition is also duplicated (with slight variations) in problems 552, 554, 555, and 720. A single shared definition would be appropriate.
+/home/ryan/formal-conjectures/ai-review/551.md-15-
+--
+ai-review/800.md-8-- **Problem 87** (`ErdosProblems/87.lean`): defines `ContainsSubgraph` and `graphRamseyNumber` — again identical.
+ai-review/800.md-9-- **Problem 181** (`ErdosProblems/181.lean`): defines `ContainsCopy` and `ramseyDiag`.
+/home/ryan/formal-conjectures/ai-review/800.md-10-
+ai-review/800.md:11:Additionally, **Mathlib provides `SimpleGraph.IsContained`** (from `Mathlib.Combinatorics.SimpleGraph.Copy`), which is the same concept and is already used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean`. Ideally, all four problem files should use this Mathlib definition or a shared utility definition rather than each defining their own variant.
+/home/ryan/formal-conjectures/ai-review/800.md-12-
+ai-review/800.md:13:**Recommendation:** Extract `HasSubgraphCopy` and `graphRamseyNumber` into a shared utility (or use Mathlib's `IsContained` directly) and have problems 87, 163, 181, and 800 all reference the shared definitions.
+/home/ryan/formal-conjectures/ai-review/800.md-14-
+/home/ryan/formal-conjectures/ai-review/800.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/800.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/800.md-70-
+/home/ryan/formal-conjectures/ai-review/800.md-71-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/800.md-72-|-----------|-----------|
+ai-review/800.md:73:| Code reuse | **Needs improvement** — duplicated definitions across 4 files; Mathlib's `IsContained` could be used |
+/home/ryan/formal-conjectures/ai-review/800.md-74-| Citations | **Correct** — matches erdosproblems.com |
+/home/ryan/formal-conjectures/ai-review/800.md-75-| Variants | **Complete** — no missing variants |
+/home/ryan/formal-conjectures/ai-review/800.md-76-| Readability | **Good** — minor improvements possible |
+--
+/home/ryan/formal-conjectures/ai-review/1079.md-2-
+/home/ryan/formal-conjectures/ai-review/1079.md-3-## 1. Code Reuse
+/home/ryan/formal-conjectures/ai-review/1079.md-4-
+ai-review/1079.md:5:**`ContainsSubgraph`** (lines 41–42) is duplicated verbatim across ~29 Erdős problem files (113, 146, 147, 159, 545–552, 571–572, 575–576, 580, 59, 60, 62, 713–714, 765–766, 87, 926, 1035, etc.). Mathlib already provides `SimpleGraph.IsContained` (in `Mathlib.Combinatorics.SimpleGraph.Copy`), which is definitionally equivalent (an injective graph homomorphism). Problem 1079 should use the Mathlib definition or a shared utility.
+/home/ryan/formal-conjectures/ai-review/1079.md-6-
+/home/ryan/formal-conjectures/ai-review/1079.md-7-**`turanNumber`** (lines 46–49) is duplicated across ~10 files (113, 146, 147, 180, 575, 576, 59, 926, 1178). This should be extracted to a shared file such as `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Turan.lean`.
+/home/ryan/formal-conjectures/ai-review/1079.md-8-
+--
+/home/ryan/formal-conjectures/ai-review/159.md-8-
+ai-review/159.md-9-Several definitions in this file duplicate functionality available elsewhere:
+/home/ryan/formal-conjectures/ai-review/159.md-10-
+ai-review/159.md:11:- **`ContainsSubgraph`** (line 42): This is identical to the definition in Problems 87, 60, and others (all defining injective homomorphisms). Mathlib now provides `SimpleGraph.IsContained` (in `Mathlib.Combinatorics.SimpleGraph.Copy`) with notation `G ⊑ H`, which is semantically equivalent. The local definition should be replaced with `SimpleGraph.IsContained`.
+/home/ryan/formal-conjectures/ai-review/159.md-12-
+/home/ryan/formal-conjectures/ai-review/159.md-13-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/159.md-14-
+/home/ryan/formal-conjectures/ai-review/159.md-15-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/159.md-16-
+ai-review/159.md:17:**Recommendation:** Replace `ContainsSubgraph` with `SimpleGraph.IsContained`, replace `C4` with `SimpleGraph.cycleGraph 4`, and consider extracting `ramseyC4Kn` into a general off-diagonal Ramsey number utility.
+/home/ryan/formal-conjectures/ai-review/159.md-18-
+/home/ryan/formal-conjectures/ai-review/159.md-19----
+/home/ryan/formal-conjectures/ai-review/159.md-20-
+--
+/home/ryan/formal-conjectures/ai-review/180.md-6-
+ai-review/180.md-7-Potential reuse opportunities:
+/home/ryan/formal-conjectures/ai-review/180.md-8-
+ai-review/180.md:9:- **Mathlib's `SimpleGraph.IsContained`** (`Mathlib.Combinatorics.SimpleGraph.Copy`): Already used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean`. This captures the same notion as the local `ContainsSubgraph` (injective graph homomorphism). Switching to the Mathlib predicate would reduce duplication and align with the upstream API, but would require verifying definitional equivalence and may affect readability.
+/home/ryan/formal-conjectures/ai-review/180.md-10-
+ai-review/180.md-11-- **Shared `TuranNumber` module**: Given 18+ duplicated definitions, extracting `ContainsSubgraph`, `turanNumber`, and `turanNumberFamily` into `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Turan.lean` (or similar) would significantly reduce boilerplate. However, this is a cross-cutting refactor and not specific to Problem 180.
+/home/ryan/formal-conjectures/ai-review/180.md-12-
+--
+/home/ryan/formal-conjectures/ai-review/596.md-73-The Nešetřil–Rödl theorem and the Erdős–Hajnal result about C₄-free graphs refer to the standard (subgraph) notion of C₄-freeness. **The formalization should use `SimpleGraph.Free` or `SimpleGraph.Copy` (non-induced containment) rather than `↪g` (induced embedding).**
+/home/ryan/formal-conjectures/ai-review/596.md-74-
+ai-review/596.md-75-Mathlib provides:
+ai-review/596.md:76:- `G₁ ⊑ H` (`SimpleGraph.IsContained`) — non-induced containment via `SimpleGraph.Copy`
+/home/ryan/formal-conjectures/ai-review/596.md-77-- `G₁.Free H` — defined as `¬(G₁ ⊑ H)`
+/home/ryan/formal-conjectures/ai-review/596.md-78-
+/home/ryan/formal-conjectures/ai-review/596.md-79-**The correct formulation would replace `IsEmpty (G₁ ↪g H)` with something expressing non-induced freeness.** Note that problem 595 avoids this issue by using `G.CliqueFree 4` (which is defined in terms of clique sets, not embeddings).
+--
+/home/ryan/formal-conjectures/ai-review/547.md-4-
+ai-review/547.md-5-**Significant duplication identified.** Both `ContainsSubgraphCopy` and `ramseyNumber` are defined identically (modulo namespace) in at least six files: `545.lean`, `546.lean`, `547.lean`, `548.lean`, `549.lean`, and `550.lean`. Additional near-duplicates (`Embeds`, `ramseyNum`) appear in `568.lean`, `569.lean`, and `570.lean`.
+/home/ryan/formal-conjectures/ai-review/547.md-6-
+ai-review/547.md:7:[Omitted long matching line]
+/home/ryan/formal-conjectures/ai-review/547.md-8-
+/home/ryan/formal-conjectures/ai-review/547.md-9-Similarly, the `ramseyNumber` definition for graphs (diagonal Ramsey number) is duplicated across multiple files and would benefit from a shared definition in `FormalConjecturesForMathlib/Combinatorics/Ramsey.lean`, which currently only defines `hypergraphRamsey` for uniform hypergraphs.
+/home/ryan/formal-conjectures/ai-review/547.md-10-
+--
+/home/ryan/formal-conjectures/ai-review/547.md-78-
+/home/ryan/formal-conjectures/ai-review/547.md-79-| Criterion | Assessment |
+/home/ryan/formal-conjectures/ai-review/547.md-80-|---|---|
+ai-review/547.md:81:| Code reuse | Significant duplication of `ContainsSubgraphCopy` and `ramseyNumber` across ~6 files; Mathlib's `IsContained` may be usable |
+/home/ryan/formal-conjectures/ai-review/547.md-82-| Citations | Present but incomplete — missing titles, publication details; several website references omitted |
+/home/ryan/formal-conjectures/ai-review/547.md-83-| Variants | Only main conjecture captured; several proved special cases and the lower bound not formalized |
+/home/ryan/formal-conjectures/ai-review/547.md-84-| Readability | Good |
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-50-    size $n$). -/
+FormalConjectures/ErdosProblems/159.lean-51-noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
+FormalConjectures/ErdosProblems/159.lean-52-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/159.lean:53:    (cycleGraph 4).IsContained G ∨ (⊤ : SimpleGraph (Fin n)).IsContained Gᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/159.lean-55-/--
+FormalConjectures/ErdosProblems/159.lean-56-Erdős Conjecture (Problem 159) [Er78, Er81, Er84d]:
+--
+ai-review/87.md-9-  ∃ f : U → V, Function.Injective f ∧ ∀ u v : U, H.Adj u v → G.Adj (f u) (f v)
+/home/ryan/formal-conjectures/ai-review/87.md-10-```
+/home/ryan/formal-conjectures/ai-review/87.md-11-
+ai-review/87.md:12:is semantically equivalent to Mathlib's `SimpleGraph.IsContained` (notation `⊑`) from `Mathlib.Combinatorics.SimpleGraph.Copy`:
+/home/ryan/formal-conjectures/ai-review/87.md-13-
+/home/ryan/formal-conjectures/ai-review/87.md-14-```lean
+ai-review/87.md-15-structure Copy (A : SimpleGraph α) (B : SimpleGraph β) where
+ai-review/87.md-16-  toHom : A →g B
+ai-review/87.md-17-  injective' : Injective toHom
+/home/ryan/formal-conjectures/ai-review/87.md-18-
+ai-review/87.md:19:abbrev IsContained (A : SimpleGraph α) (B : SimpleGraph β) := Nonempty (Copy A B)
+/home/ryan/formal-conjectures/ai-review/87.md-20-```
+/home/ryan/formal-conjectures/ai-review/87.md-21-
+ai-review/87.md:22:`ContainsSubgraph G H` is equivalent to `H ⊑ G` (note the argument reversal). The same duplication exists in Problem 62 (`62.lean:45`) and likely in many of the ~30 other files that reference `ContainsSubgraph`. Recommend replacing with `IsContained` from Mathlib, or at minimum factoring into a shared definition.
+/home/ryan/formal-conjectures/ai-review/87.md-23-
+/home/ryan/formal-conjectures/ai-review/87.md-24-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/87.md-25-
+--
+/home/ryan/formal-conjectures/ai-review/87.md-64-
+ai-review/87.md-65-**Minor suggestions:**
+/home/ryan/formal-conjectures/ai-review/87.md-66-- The docstring for `graphRamseyNumber` (line 41–44) says "the minimum N such that every simple graph G on N vertices either contains a copy of H as a subgraph or whose complement contains a copy of H." The phrase "or whose complement" is grammatically awkward; consider "or its complement contains a copy of H."
+ai-review/87.md:67:- The definitions are clean and self-contained. If `IsContained` from Mathlib is adopted, the `⊑` notation would improve readability of `graphRamseyNumber`.
+/home/ryan/formal-conjectures/ai-review/87.md-68-
+/home/ryan/formal-conjectures/ai-review/87.md-69-## 5. Formalizability
+/home/ryan/formal-conjectures/ai-review/87.md-70-
+--
+/home/ryan/formal-conjectures/ai-review/87.md-122-
+/home/ryan/formal-conjectures/ai-review/87.md-123-| Category | Assessment |
+/home/ryan/formal-conjectures/ai-review/87.md-124-|---|---|
+ai-review/87.md:125:| Code reuse | `ContainsSubgraph`, `graphRamseyNumber`, `diagRamsey` should be consolidated; Mathlib's `IsContained` is available |
+/home/ryan/formal-conjectures/ai-review/87.md-126-| Citations | Missing [FaMc93] (Faudree–McKay) |
+/home/ryan/formal-conjectures/ai-review/87.md-127-| Variants | Complete — both open forms captured, disproven original documented |
+/home/ryan/formal-conjectures/ai-review/87.md-128-| Readability | Good; minor grammar fix suggested |
+--
+/home/ryan/formal-conjectures/ai-review/594.md-12-
+ai-review/594.md-13-**Mathlib alternatives:**
+ai-review/594.md-14-- **`cycleGraph`**: Mathlib provides `SimpleGraph.cycleGraph : (n : ℕ) → SimpleGraph (Fin n)` in `Mathlib.Combinatorics.SimpleGraph.Circulant`, defined via `circulantGraph {1}`. It handles all `n` (returning `⊥` for `n = 0`) without requiring a proof obligation `m ≥ 3`. The hand-rolled version is extensionally equivalent for `m ≥ 3` but less idiomatic.
+ai-review/594.md:15:- **`ContainsCopy`**: This is essentially an injective graph homomorphism. Mathlib has `SimpleGraph.Hom` and related infrastructure (`H →g G`). The predicate could potentially be expressed using `SimpleGraph.IsContained` or similar, though the exact API match should be verified.
+ai-review/594.md-16-- **`HasUncountableChromaticNumber`**: The `FormalConjecturesForMathlib` file defines `chromaticCardinal` (line 136 of `Coloring.lean`) as `sInf {κ : Cardinal | ∃ (C : Type u) (_ : Cardinal.mk C = κ), Nonempty (G.Coloring C)}`. The predicate `HasUncountableChromaticNumber` could be expressed as `Cardinal.aleph 1 ≤ G.chromaticCardinal` or equivalently `Cardinal.omega < G.chromaticCardinal`, which would connect to the existing infrastructure.
+/home/ryan/formal-conjectures/ai-review/594.md-17-
+ai-review/594.md-18-**Recommendation:** All three definitions should be factored into shared utility files. At minimum, `cycleGraph` and `HasUncountableChromaticNumber` should be shared with Problem 737, which is explicitly related and uses identical definitions.
+--
+/home/ryan/formal-conjectures/ai-review/594.md-56-
+ai-review/594.md-57-**Weaknesses:**
+/home/ryan/formal-conjectures/ai-review/594.md-58-- The `cycleGraph` definition uses raw modular arithmetic rather than Mathlib's circulant-based definition, which is less idiomatic.
+ai-review/594.md:59:- The `ContainsCopy` name is slightly non-standard; `ContainsSubgraph` or `IsContained` would be more conventional. Problem 737 uses an equivalent but differently-structured definition for cycle containment.
+ai-review/594.md-60-- Using Mathlib's `SimpleGraph.cycleGraph` would eliminate the `(hn : n ≥ 3)` proof obligation throughout, simplifying the theorem statement from `∀ (n : ℕ) (hn : n ≥ 3), Odd n → n ≥ N₀ → ContainsCopy G (cycleGraph n hn)` to something cleaner.
+/home/ryan/formal-conjectures/ai-review/594.md-61-
+ai-review/594.md-62-**Overall readability: Good.** The code is well-structured and clearly conveys the mathematical content.
+--
+/home/ryan/formal-conjectures/ai-review/550.md-10-
+/home/ryan/formal-conjectures/ai-review/550.md-11-These should be factored into a shared utility, e.g., `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Ramsey.lean` or a new shared file.
+/home/ryan/formal-conjectures/ai-review/550.md-12-
+ai-review/550.md:13:Additionally, Mathlib provides `SimpleGraph.IsContained` (used in `FormalConjecturesForMathlib/Combinatorics/SimpleGraph/SizeRamsey.lean:46`), which appears to capture the same notion as `ContainsSubgraphCopy`. Investigating whether `IsContained` is a drop-in replacement would be worthwhile.
+/home/ryan/formal-conjectures/ai-review/550.md-14-
+/home/ryan/formal-conjectures/ai-review/550.md-15-The `completeMultipartiteGraph` definition is specific to this problem and does not appear elsewhere in the codebase. It is cleanly implemented. Mathlib's `completeBipartiteGraph` works on `V ⊕ W` (sum types) rather than `Σ i, Fin (sizes i)`, so it is not directly interchangeable with the approach here, but the `bipSizes`/`completeMultipartiteGraph` formulation is arguably more natural for this problem since it generalizes to arbitrary k-partite graphs.
+/home/ryan/formal-conjectures/ai-review/550.md-16-
+--
+ai-review/559.md-23-  sInf { m | ∃ (n : ℕ) (F : SimpleGraph (Fin n)),
+/home/ryan/formal-conjectures/ai-review/559.md-24-    F.edgeSet.ncard = m ∧
+ai-review/559.md-25-    ∀ (R : SimpleGraph (Fin n)), R ≤ F →
+ai-review/559.md:26:      G.IsContained R ∨ H.IsContained (F \ R) }
+/home/ryan/formal-conjectures/ai-review/559.md-27-```
+/home/ryan/formal-conjectures/ai-review/559.md-28-
+ai-review/559.md-29-This is the asymmetric version r̂(G, H). The diagonal case `sizeRamsey G G` is mathematically equivalent to the local `sizeRamseyNumber G`: the shared definition quantifies over subgraphs R ≤ F (partitioning edges into "red" R and "blue" F \ R), while the local definition uses a symmetric `Bool`-valued coloring function. These are equivalent representations of 2-edge-colorings.
+--
+/home/ryan/formal-conjectures/ai-review/720.md-7-[Omitted long context line]
+/home/ryan/formal-conjectures/ai-review/720.md-8-
+ai-review/720.md-9-  However, the definitions differ in modeling choices:
+ai-review/720.md:10:  - `SizeRamsey.lean` uses `R : SimpleGraph (Fin n), R ≤ F` (subgraph as coloring) and `IsContained` (from Mathlib's `SimpleGraph.Copy`) for embeddings. It uses `ncard` for edge counting.
+ai-review/720.md-11-  - Problem 720 (and 559) use `c : Fin N → Fin N → Bool` with a symmetry condition for coloring, manual injective adjacency-preserving maps for embeddings, and `Nat.card` for edge counting.
+/home/ryan/formal-conjectures/ai-review/720.md-12-
+ai-review/720.md:13:  The `SizeRamsey.lean` approach is preferable: it leverages Mathlib's `IsContained`/`Copy` infrastructure and the subgraph representation is more idiomatic. Migrating to this definition would be a meaningful improvement.
+/home/ryan/formal-conjectures/ai-review/720.md-14-
+ai-review/720.md-15-- **Path and cycle graphs**: `pathGraph` and `cycleGraph` are redefined locally in at least 10 different Erdős problem files (720, 765, 556, 559, 569, 594, 551, 552, 737, 1105, etc.). These definitions are essentially identical each time. They should be factored into a shared utility file in `FormalConjecturesForMathlib`. (Mathlib itself may have `SimpleGraph.pathGraph` or similar in the future, but it doesn't currently appear to be imported.)
+/home/ryan/formal-conjectures/ai-review/720.md-16-
+--
+/home/ryan/formal-conjectures/ai-review/720.md-55-- The docstrings are well-written and clearly explain the mathematical context, including how Beck's result resolves the original questions.
+ai-review/720.md-56-- The `pathGraph` definition is clear: vertex set `Fin (n+1)` with adjacency `i ~ i+1`. The `loopless` proof is clean.
+/home/ryan/formal-conjectures/ai-review/720.md-57-- The `cycleGraph` definition includes the `i ≠ j` guard to prevent self-loops, which is good.
+ai-review/720.md:58:- The `sizeRamseyNumber` definition is somewhat verbose due to the manual coloring/embedding setup. Using `SizeRamsey.lean`'s approach with `IsContained` and subgraph coloring would be more concise and more readable.
+/home/ryan/formal-conjectures/ai-review/720.md-59-- The use of `Nat.card H.edgeSet` vs `H.edgeSet.ncard` is a minor readability issue — `ncard` is the more standard Mathlib convention for potentially infinite sets.
+/home/ryan/formal-conjectures/ai-review/720.md-60-
+/home/ryan/formal-conjectures/ai-review/720.md-61-## 5. Formalizability
+--
+/home/ryan/formal-conjectures/ai-review/720.md-91-| Code reuse | Should use shared `SizeRamsey.lean` definition; path/cycle graphs duplicated across ~10 files |
+/home/ryan/formal-conjectures/ai-review/720.md-92-| Citations | Missing 5 source references from the website; [Be83b] is correctly cited |
+/home/ryan/formal-conjectures/ai-review/720.md-93-| Variants | All three original questions are subsumed by the two theorems ✓ |
+ai-review/720.md:94:| Readability | Good; would improve by using Mathlib's `IsContained` and `ncard` |
+/home/ryan/formal-conjectures/ai-review/720.md-95-| Formalizability | Unambiguous, fully formalizable ✓ |
+/home/ryan/formal-conjectures/ai-review/720.md-96-| Correctness | Mathematically correct and complete ✓ |
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-59-contains a copy of $G$. -/
+FormalConjectures/ErdosProblems/549.lean-60-noncomputable def ramseyNumber {U : Type*} (G : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/549.lean-61-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/549.lean:62:    G.IsContained H ∨ G.IsContained Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/549.lean-64-/--
+FormalConjectures/ErdosProblems/549.lean-65-Erdős Problem 549 [EFRS82]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-43-contains a monochromatic copy of $H$). -/
+FormalConjectures/ErdosProblems/87.lean-44-noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/87.lean-45-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/87.lean:46:    H.IsContained G ∨ H.IsContained Gᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/87.lean-47-
+FormalConjectures/ErdosProblems/87.lean-48-/-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
+FormalConjectures/ErdosProblems/87.lean-49-noncomputable def diagRamsey (k : ℕ) : ℕ :=
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-50-contains a copy of $G$. -/
+FormalConjectures/ErdosProblems/546.lean-51-noncomputable def ramseyNumber {U : Type*} (G : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/546.lean-52-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/546.lean:53:    G.IsContained H ∨ G.IsContained Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/546.lean-55-/--
+FormalConjectures/ErdosProblems/546.lean-56-Erdős Problem 546 [Er84b, p.10]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-53-      p ≥ N ∧
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-54-      ¬ IsRamseySizeLinear G ∧
+FormalConjectures/ErdosProblems/79.lean-55-      ∀ (q : ℕ) (H : SimpleGraph (Fin q)),
+FormalConjectures/ErdosProblems/79.lean:56:        H.IsContained G →
+FormalConjectures/ErdosProblems/79.lean:57:        ¬ G.IsContained H →
+FormalConjectures/ErdosProblems/79.lean-58-        IsRamseySizeLinear H := by
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-59-  sorry
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/79.lean-60-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-43-a copy of $G$. -/
+FormalConjectures/ErdosProblems/547.lean-44-noncomputable def ramseyNumber {U : Type*} (G : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/547.lean-45-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/547.lean:46:    G.IsContained H ∨ G.IsContained Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/547.lean-48-/--
+FormalConjectures/ErdosProblems/547.lean-49-Erdős Problem 547 [Bu74]:
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-54-    graph $G$ on $\operatorname{Fin} N$, either $G$ or $G^c$ contains a copy of $H$. -/
+FormalConjectures/ErdosProblems/163.lean-55-noncomputable def ramseyDiag {U : Type*} (H : SimpleGraph U) : ℕ :=
+FormalConjectures/ErdosProblems/163.lean-56-  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/163.lean:57:    H.IsContained G ∨ H.IsContained Gᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/163.lean-59-/--
+FormalConjectures/ErdosProblems/163.lean-60-Erdős Problem 163 [BuEr75, Er82e] — The Burr-Erdős Conjecture:
+--
+FormalConjectures/ErdosProblems/550.lean-48-noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/550.lean-49-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/550.lean-50-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/550.lean:51:    G₁.IsContained H ∨ G₂.IsContained Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-52-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-53-/-- The complete multipartite graph with vertex class sizes given by `sizes`.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/550.lean-54-Vertices are pairs $(i, j)$ where $i$ indexes the part and $j$ is within the part.
+--
+FormalConjectures/ErdosProblems/552.lean-56-noncomputable def offDiagRamseyNumber {V₁ V₂ : Type*}
+FormalConjectures/ErdosProblems/552.lean-57-    (G₁ : SimpleGraph V₁) (G₂ : SimpleGraph V₂) : ℕ :=
+FormalConjectures/ErdosProblems/552.lean-58-  sInf {N : ℕ | ∀ (H : SimpleGraph (Fin N)),
+FormalConjectures/ErdosProblems/552.lean:59:    G₁.IsContained H ∨ G₂.IsContained Hᶜ}
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-60-
+FormalConjectures/ErdosProblems/552.lean-61-/-- The star graph $S_n = K_{1,n}$ on $n + 1$ vertices: vertex $0$ is the center,
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/552.lean-62-adjacent to all other vertices. -/

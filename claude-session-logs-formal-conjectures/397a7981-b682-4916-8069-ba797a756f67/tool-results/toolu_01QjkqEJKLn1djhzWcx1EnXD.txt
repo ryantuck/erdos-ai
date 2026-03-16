@@ -1,0 +1,461 @@
+/home/ryan/formal-conjectures/ai-review/666.md-25-| Citation | In file | On website |
+/home/ryan/formal-conjectures/ai-review/666.md-26-|----------|---------|------------|
+ai-review/666.md:27:| [Er91] Erdős, *Some of my favourite problems...* | Yes | Yes |
+/home/ryan/formal-conjectures/ai-review/666.md-28-| [Er92b] Erdős, *Some of my old and new problems...* | Yes | Yes |
+/home/ryan/formal-conjectures/ai-review/666.md-29-| [Er97f] Erdős, *Some recent problems and results...* | Yes | Yes |
+--
+/home/ryan/formal-conjectures/ai-review/86.md-34-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/86.md-35-
+ai-review/86.md:36:**No full bibliographic entries are provided.** The module docstring references [Er91], [BHN95], [BHLL14], and [Ba12b] in the body text, and lists `[Er90][Er91][Er92b][Er93][Er94b][Er95][Er97f]` at the bottom, but none are expanded into full citation lines. Compare with Problem 666, which provides proper entries like:
+/home/ryan/formal-conjectures/ai-review/86.md-37-
+/home/ryan/formal-conjectures/ai-review/86.md-38-```
+ai-review/86.md:39:[Er91] Erdős, P., *Some of my favourite problems in various branches of combinatorics*.
+/home/ryan/formal-conjectures/ai-review/86.md-40-Matematiche (Catania) 47 (1992), no. 2, 231-240 (1993).
+/home/ryan/formal-conjectures/ai-review/86.md-41-```
+--
+ai-review/86.md-46-|----------|:---:|:---:|-------|
+/home/ryan/formal-conjectures/ai-review/86.md-47-| [Er90] | ✅ (tag) | ❌ | Needs full entry |
+ai-review/86.md:48:| [Er91] | ✅ (tag + body) | ❌ | Needs full entry |
+/home/ryan/formal-conjectures/ai-review/86.md-49-| [Er92b] | ✅ (tag) | ❌ | Needs full entry |
+/home/ryan/formal-conjectures/ai-review/86.md-50-| [Er93] | ✅ (tag) | ❌ | Website specifies p.343 |
+--
+/home/ryan/formal-conjectures/ai-review/811.md-25-
+ai-review/811.md-26-The website lists the following references:
+ai-review/811.md:27:- **[Er91]** Erdős (1991) — original problem, credited to Erdős, Pyber, and Tuza
+/home/ryan/formal-conjectures/ai-review/811.md-28-- **[Er93]** Erdős (1993), p. 346
+/home/ryan/formal-conjectures/ai-review/811.md-29-- **[ErTu93]** Erdős & Tuza — established bounds for d_{C₄}(n)
+--
+/home/ryan/formal-conjectures/ai-review/811.md-32-- **[AxCl24]** Axenovich & Clemen — found infinitely many graphs without the property
+/home/ryan/formal-conjectures/ai-review/811.md-33-
+ai-review/811.md:34:The formalization's docstring includes [Er91], [ErTu93], [Er96], [ClWa23], and [AxCl24], but is **missing [Er93]** (Erdős 1993, p. 346). Additionally, the citation entries lack full titles/journal information:
+/home/ryan/formal-conjectures/ai-review/811.md-35-
+/home/ryan/formal-conjectures/ai-review/811.md-36-- `[ClWa23]` is listed as just "Clemen, F. and Wagner, A., 2023" — missing the paper title.
+/home/ryan/formal-conjectures/ai-review/811.md-37-- `[AxCl24]` is listed as just "Axenovich, M. and Clemen, F., 2024" — missing the paper title.
+ai-review/811.md:38:- `[Er91]`, `[ErTu93]`, `[Er96]` have titles but are still abbreviated.
+/home/ryan/formal-conjectures/ai-review/811.md-39-
+ai-review/811.md-40-**Recommendation**: Add [Er93] and fill in full titles for [ClWa23] and [AxCl24].
+--
+ai-review/811.md-44-The Erdős Problem 811 as stated on the website is actually a **general question**: "For which graphs G is it true that, if m = e(G), for all large n ≡ 1 (mod m), every balanced edge-colouring of K_n with m colours contains a rainbow copy of G?"
+/home/ryan/formal-conjectures/ai-review/811.md-45-
+ai-review/811.md:46:The formalization captures only the **specific sub-challenge** mentioned by Erdős in [Er91] and [Er96]: the case G = C₆ (which has 6 edges, so m = 6). The docstring correctly notes that the K₄ case (also 6 edges) was answered negatively by [ClWa23].
+/home/ryan/formal-conjectures/ai-review/811.md-47-
+ai-review/811.md-48-**Missing variants**:
+--
+/home/ryan/formal-conjectures/ai-review/811.md-51-- The result from **[AxCl24]** (infinitely many graphs lack the property; conjecture K_m lacks it for all m ≥ 4) could be formalized as a separate conjecture.
+/home/ryan/formal-conjectures/ai-review/811.md-52-
+ai-review/811.md:53:**Assessment**: The formalization is a reasonable narrowing to the most concrete open sub-problem. The docstring's header "specific challenge from [Er91] and [Er96]" is appropriately honest about this scoping.
+/home/ryan/formal-conjectures/ai-review/811.md-54-
+/home/ryan/formal-conjectures/ai-review/811.md-55-## 4. Readability
+--
+ai-review/812.md-25-**Formalization docstring** cites:
+/home/ryan/formal-conjectures/ai-review/812.md-26-- `[BEFS89]` Burr, S.A., Erdős, P., Faudree, R.J., and Schelp, R.H. — matches the website, though the website does not give the specific citation key. The docstring does not include the paper title or publication venue.
+ai-review/812.md:27:- `[Er91]` Erdős, P., _Problems and results on graphs and hypergraphs_, 1991 — this is a reasonable source attribution.
+/home/ryan/formal-conjectures/ai-review/812.md-28-
+ai-review/812.md-29-**Issues:**
+--
+/home/ryan/formal-conjectures/ai-review/615.md-23-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/615.md-24-
+ai-review/615.md:25:**Issue: Missing reference [Er91].**
+/home/ryan/formal-conjectures/ai-review/615.md-26-
+ai-review/615.md:27:The website lists **[Er91]** (Erdős, 1991) as a reference, but the formalization's docstring does not mention it.
+/home/ryan/formal-conjectures/ai-review/615.md-28-
+ai-review/615.md-29-**Issue: References lack full bibliographic details.**
+--
+/home/ryan/formal-conjectures/ai-review/615.md-94-|-----------|--------|-------|
+/home/ryan/formal-conjectures/ai-review/615.md-95-| Code reuse | Needs improvement | Custom `IsIndependentSet` should use Mathlib's `IsIndepSet`; inconsistent edge-counting API vs Problem 22 |
+ai-review/615.md:96:| Citations | Needs improvement | Missing [Er91]; references lack titles/journals compared to Problem 22's style |
+/home/ryan/formal-conjectures/ai-review/615.md-97-| Variants | Partial | EHSS included; Sudakov [Su03] and FLZ lower bound not formalized; no cross-ref to Problem 22 |
+/home/ryan/formal-conjectures/ai-review/615.md-98-| Readability | Good | Clear docstring and organization; minor improvements possible with Mathlib idioms |
+--
+ai-review/810.md-17-The website (erdosproblems.com/810) lists:
+/home/ryan/formal-conjectures/ai-review/810.md-18-
+ai-review/810.md:19:- **Source:** [Er91]
+ai-review/810.md-20-- **Attribution:** A problem of Burr, Erdős, Graham, and Sós.
+ai-review/810.md-21-- **Related:** See also Problem 809.
+/home/ryan/formal-conjectures/ai-review/810.md-22-
+ai-review/810.md:23:The formalization's docstring mentions the attribution correctly ("A problem of Burr, Erdős, Graham, and Sós") but does **not** include the [Er91] citation. For consistency with other problems (e.g., 811 which lists [Er91] explicitly), the docstring should add:
+/home/ryan/formal-conjectures/ai-review/810.md-24-
+/home/ryan/formal-conjectures/ai-review/810.md-25-```
+ai-review/810.md:26:[Er91] Erdős, P., _Some of my favourite problems in various branches of combinatorics_, 1991.
+/home/ryan/formal-conjectures/ai-review/810.md-27-```
+/home/ryan/formal-conjectures/ai-review/810.md-28-
+--
+/home/ryan/formal-conjectures/ai-review/810.md-76-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/810.md-77-| Code reuse | Could use `HasRainbowCopy` or `Function.Injective` pattern from 809/811 |
+ai-review/810.md:78:| Citations | Missing [Er91] reference and cross-reference to Problem 809 |
+/home/ryan/formal-conjectures/ai-review/810.md-79-| Variants | Complete |
+/home/ryan/formal-conjectures/ai-review/810.md-80-| Readability | Adequate; verbose vertex/color distinctness could be simplified |
+--
+/home/ryan/formal-conjectures/ai-review/166.md-35-| Ajtai, Komlós, Szemerédi (1980) | ✓ | ✓ [AKS80] | OK |
+/home/ryan/formal-conjectures/ai-review/166.md-36-| Mattheus, Verstraëte (2023/2024) | ✓ | ✓ [MaVe23] | OK |
+ai-review/166.md:37:| Er90b, Er91, Er93, Er97c | ✓ | ✓ | OK |
+/home/ryan/formal-conjectures/ai-review/166.md-38-
+ai-review/166.md-39-**Minor issues:**
+--
+/home/ryan/formal-conjectures/ai-review/613.md-17-
+ai-review/613.md-18-**Website (erdosproblems.com/613) lists:**
+ai-review/613.md:19:- Original sources: [Er81e], [Er91], [Er93, p.345], [Er99]
+/home/ryan/formal-conjectures/ai-review/613.md-20-- Faudree's unpublished result (conjecture holds for graphs on exactly 2n+1 vertices)
+ai-review/613.md-21-- Pikhurko's disproof with bounds: n² + 0.577n^(3/2) < r̂(K₁,ₙ, 𝓕) < n² + √2·n^(3/2) + n
+--
+/home/ryan/formal-conjectures/ai-review/613.md-25-
+ai-review/613.md-26-**Issues:**
+ai-review/613.md:27:- The original Erdős sources ([Er81e], [Er91], [Er93], [Er99]) are not cited. At minimum, the primary source should be referenced.
+/home/ryan/formal-conjectures/ai-review/613.md-28-- Faudree's result is not mentioned.
+/home/ryan/formal-conjectures/ai-review/613.md-29-- The citation format is otherwise good and the Pikhurko reference is correct and complete.
+--
+/home/ryan/formal-conjectures/ai-review/819.md-10-
+ai-review/819.md-11-The website (erdosproblems.com/819) lists two references:
+ai-review/819.md:12:- **[Er91]**: Erdős (1991)
+ai-review/819.md-13-- **[ErFr91]**: Erdős and Freud (1991)
+/home/ryan/formal-conjectures/ai-review/819.md-14-
+ai-review/819.md:15:The formalization only cites **[ErFr91]** and omits **[Er91]**. The [Er91] reference should be added to the docstring for completeness.
+/home/ryan/formal-conjectures/ai-review/819.md-16-
+/home/ryan/formal-conjectures/ai-review/819.md-17-Additionally, the citation "[ErFr91] Erdős, P. and Freud, R." lacks a paper title, journal, and year. For consistency with other formalizations (e.g., 840.lean which includes the year), at minimum the year "1991" should be appended.
+--
+ai-review/819.md-19-**Suggested docstring citation block:**
+/home/ryan/formal-conjectures/ai-review/819.md-20-```
+ai-review/819.md:21:[Er91] Erdős, P., 1991.
+/home/ryan/formal-conjectures/ai-review/819.md-22-
+/home/ryan/formal-conjectures/ai-review/819.md-23-[ErFr91] Erdős, P. and Freud, R., 1991.
+--
+/home/ryan/formal-conjectures/ai-review/819.md-78-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/819.md-79-| Code reuse | ✅ Appropriate; no redundancy |
+ai-review/819.md:80:| Citations | ⚠️ Missing [Er91]; [ErFr91] lacks year |
+/home/ryan/formal-conjectures/ai-review/819.md-81-| Variants | ⚠️ Known bounds captured; open estimation question not formalized |
+/home/ryan/formal-conjectures/ai-review/819.md-82-| Readability | ✅ Clean and clear |
+--
+ai-review/571.md-11-The docstring references `[erdosproblems.com/571]` but includes no further citations. The website lists the following primary sources:
+/home/ryan/formal-conjectures/ai-review/571.md-12-
+ai-review/571.md:13:- [Er74c, p.78], [Er75], [Er78, p.30], [Er81], [ErSi84], [Er91]
+/home/ryan/formal-conjectures/ai-review/571.md-14-
+ai-review/571.md-15-And notable partial results by:
+--
+/home/ryan/formal-conjectures/ai-review/53.md-27-- [ErGr80]
+/home/ryan/formal-conjectures/ai-review/53.md-28-- [ErSz83]
+ai-review/53.md:29:- [Er91]
+/home/ryan/formal-conjectures/ai-review/53.md-30-- [Er97]
+/home/ryan/formal-conjectures/ai-review/53.md-31-- [Er97e]
+/home/ryan/formal-conjectures/ai-review/53.md-32-- [Ch03]
+/home/ryan/formal-conjectures/ai-review/53.md-33-
+ai-review/53.md:34:The formalization cites only **[ErSz83]** and **[Ch03]**, which are the two most important references (the original paper posing the problem and Chang's solution). The other five references ([Er77c], [ErGr80], [Er91], [Er97], [Er97e]) are additional Erdos papers that discuss the problem but are not essential for understanding the formalization.
+/home/ryan/formal-conjectures/ai-review/53.md-35-
+ai-review/53.md-36-The website also mentions a companion upper bound result: Erdos and Szemeredi proved there exist arbitrarily large sets A where the count of representable integers is at most $\exp(c(\log|A|)^2 \log\log|A|)$. This is not captured in the formalization (see Variants below).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-29-Is it true that $f((\log n)^3, n) \gg (\log n)^3$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-30-
+FormalConjectures/ErdosProblems/804.lean:31:A question of Erdős and Hajnal [Er91]. DISPROVED by Alon and Sudakov [AlSu07],
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-32-who proved that
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/804.lean-33-$$(\log n)^2 / \log(\log n) \ll f((\log n)^2, n) \ll (\log n)^2$$
+--
+/home/ryan/formal-conjectures/ai-review/809.md-14-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/809.md-15-
+ai-review/809.md:16:The docstring cites "Burr, Erdős, Graham, and Sós" informally. The website lists the citation key **[Er91]** but does not give a full bibliographic reference. The docstring should include this citation key for traceability:
+/home/ryan/formal-conjectures/ai-review/809.md-17-
+ai-review/809.md-18-> **Current:** "A problem of Burr, Erdős, Graham, and Sós, who proved that $F_k(n) \gg n^2$."
+/home/ryan/formal-conjectures/ai-review/809.md-19->
+ai-review/809.md:20:> **Suggested:** "A problem of Burr, Erdős, Graham, and Sós [Er91], who proved that $F_k(n) \gg n^2$."
+/home/ryan/formal-conjectures/ai-review/809.md-21-
+ai-review/809.md-22-The website also notes a related problem [#810](https://www.erdosproblems.com/810), which could be cross-referenced in the docstring.
+--
+/home/ryan/formal-conjectures/ai-review/809.md-98-|-----------|------------|
+/home/ryan/formal-conjectures/ai-review/809.md-99-| Code reuse | Could use `IsRainbow` / shared `cycleGraph`; not blocking |
+ai-review/809.md:100:| Citations | Missing [Er91] tag; should cross-reference #810 |
+/home/ryan/formal-conjectures/ai-review/809.md-101-| Variants | Complete |
+/home/ryan/formal-conjectures/ai-review/809.md-102-| Readability | Good; minor repetition |
+--
+ai-review/816.md-15-**Website (erdosproblems.com/816) states:**
+/home/ryan/formal-conjectures/ai-review/816.md-16-- Posed by Erdős and Hajnal
+ai-review/816.md:17:- Reference: Er91 (Erdős, 1991)
+/home/ryan/formal-conjectures/ai-review/816.md-18-- Solved by Chen and Ma (2025), cited as [ChMa25]
+/home/ryan/formal-conjectures/ai-review/816.md-19-
+--
+/home/ryan/formal-conjectures/ai-review/816.md-21-- Correctly attributes the proof to Chen–Ma [ChMa25]
+/home/ryan/formal-conjectures/ai-review/816.md-22-- Correctly describes the stronger result (all graphs with $2n+1$ vertices and $\geq n^2+n$ edges, except $K_{n,n+1}$, for $n \geq 600$)
+ai-review/816.md:23:- **Missing:** The original reference Er91 is not cited. The module docstring should include the Erdős 1991 reference for completeness.
+/home/ryan/formal-conjectures/ai-review/816.md-24-- Hajnal is mentioned as co-poser in the module docstring but not in the theorem docstring. This is acceptable.
+/home/ryan/formal-conjectures/ai-review/816.md-25-
+--
+/home/ryan/formal-conjectures/ai-review/816.md-87-
+ai-review/816.md-88-1. **Minor style improvement:** Use `G.degree v = G.degree w` instead of `(G.neighborSet v).ncard = (G.neighborSet w).ncard`.
+ai-review/816.md:89:2. **Citation:** Add the Er91 reference to the docstring.
+ai-review/816.md-90-3. **Optional enhancement:** Consider adding the stronger Chen–Ma variant as a separate theorem.
+--
+/home/ryan/formal-conjectures/ai-review/814.md-7-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/814.md-8-
+ai-review/814.md:9:The formalization includes references `[EFRS90]`, `[Er91]`, `[MNS17]`, and `[Sa19]`, which match the website. However:
+/home/ryan/formal-conjectures/ai-review/814.md-10-
+ai-review/814.md-11-- **Missing reference:** The website also lists **[Er93, p.344]** as a reference. This should be added to the docstring.
+--
+/home/ryan/formal-conjectures/ai-review/146.md-26-- [ErSi84] — **matches** the formalization.
+/home/ryan/formal-conjectures/ai-review/146.md-27-- [AKS03] — **matches** the formalization.
+ai-review/146.md:28:- [Er91], [Er93], [Er97c] — additional Erdős references **not included** in the formalization. These are supplementary and not strictly required, but could be mentioned for completeness.
+/home/ryan/formal-conjectures/ai-review/146.md-29-
+/home/ryan/formal-conjectures/ai-review/146.md-30-The website also notes this problem is **related to problems #113 and #147**, which is not mentioned in the formalization's docstring. Adding cross-references would improve navigability.
+--
+/home/ryan/formal-conjectures/ai-review/146.md-98-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/146.md-99-| Code reuse | **Significant opportunity.** `ContainsSubgraph` and `turanNumber` should be replaced by Mathlib's `IsContained`/`Free` and `extremalNumber`. `IsRDegenerateGraph` should be shared across problems 113, 146, 147. |
+ai-review/146.md:100:| Citations | **Good.** Main references match the website. Missing [Er91], [Er93], [Er97c] (minor). Missing cross-references to problems #113 and #147. |
+/home/ryan/formal-conjectures/ai-review/146.md-101-| Variants | **Mostly complete.** Core conjecture captured. The AKS03 result for max-degree-on-one-side variant is not formalized. |
+/home/ryan/formal-conjectures/ai-review/146.md-102-| Readability | **Good.** Clear docstrings, well-structured code. |
+--
+ai-review/113.md-25-The website (erdosproblems.com/113, last edited 19 October 2025) lists **additional references** not included in the formalization:
+/home/ryan/formal-conjectures/ai-review/113.md-26-- **[Er90]** — Erdős (1990) — missing
+ai-review/113.md:27:- **[Er91]** — Erdős (1991) — missing
+/home/ryan/formal-conjectures/ai-review/113.md-28-- **[Er93]** — Erdős (1993) — missing (this is where Erdős increased the bounty to $500)
+/home/ryan/formal-conjectures/ai-review/113.md-29-
+--
+ai-review/113.md-96-**No mathematical errors found.** The formalization is correct and complete. The only recommendations are:
+/home/ryan/formal-conjectures/ai-review/113.md-97-1. Factor out duplicated definitions for maintainability.
+ai-review/113.md:98:2. Add missing citations [Er90], [Er91], [Er93].
+/home/ryan/formal-conjectures/ai-review/113.md-99-3. Verify the exact title of Janzer's paper [Ja23b].
+--
+ai-review/818.md-11-The formalization references:
+/home/ryan/formal-conjectures/ai-review/818.md-12-
+ai-review/818.md:13:- **[Er91]** Erdős, P., *Some of my favourite problems in number theory, combinatorics, and geometry*. Resenhas do Instituto de Matemática e Estatística da Universidade de São Paulo (1991).
+/home/ryan/formal-conjectures/ai-review/818.md-14-- **[So09d]** Solymosi, J., *Bounding multiplicative energy by the sumset*. Advances in Mathematics (2009).
+/home/ryan/formal-conjectures/ai-review/818.md-15-
+ai-review/818.md-16-The website (erdosproblems.com/818) confirms:
+ai-review/818.md:17:- The problem is attributed to [Er91].
+/home/ryan/formal-conjectures/ai-review/818.md-18-- Resolution is by Solymosi [So09d] with the strengthened form |AA| ≫ |A|²/log|A|.
+/home/ryan/formal-conjectures/ai-review/818.md-19-- The website also notes "See also Problem 52" (the sum-product conjecture), which is not mentioned in the formalization's docstring but is a relevant cross-reference.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-43-Ann. of Math. **199** (2024), 919–941.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-44-
+FormalConjectures/ErdosProblems/166.lean:45:[Er90b, Er91, Er93, Er97c] Various papers of Erdős posing and discussing this problem.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-47-See also Problem 986 for the general conjecture on $R(k,n)$, of which this is the $k = 4$ case.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-61-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-62-/--
+FormalConjectures/ErdosProblems/166.lean:63:Erdős Problem 166 [Er90b, Er91, Er93, Er97c]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-64-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/166.lean-65-There exist constants $C > 0$ and $\alpha \in \mathbb{N}$ such that for all sufficiently large $k$,
+--
+/home/ryan/formal-conjectures/ai-review/405.md-16-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/405.md-17-
+ai-review/405.md:18:The formalization includes three references: `[ErGr80]`, `[BrEr91]`, and `[YuLi96]`. These match the website ([erdosproblems.com/405](https://www.erdosproblems.com/405)) exactly:
+/home/ryan/formal-conjectures/ai-review/405.md-19-
+/home/ryan/formal-conjectures/ai-review/405.md-20-| Citation | Formalization | Website | Match? |
+/home/ryan/formal-conjectures/ai-review/405.md-21-|----------|--------------|---------|--------|
+/home/ryan/formal-conjectures/ai-review/405.md-22-| [ErGr80] | Erdős, P. and Graham, R., *Old and new problems and results in combinatorial number theory*. Monographies de L'Enseignement Mathematique (1980). | ✓ (original source, p.80) | Yes |
+ai-review/405.md:23:| [BrEr91] | Brindza, B. and Erdős, P., *On some Diophantine problems involving powers and factorials*. J. Austral. Math. Soc. Ser. A 51 (1991), 1-7. | ✓ (proved finiteness) | Yes |
+/home/ryan/formal-conjectures/ai-review/405.md-24-| [YuLi96] | Yu, K. and Liu, L., *On some Diophantine equations involving powers and factorials*. (1996). | ✓ (enumerated all solutions) | Yes |
+/home/ryan/formal-conjectures/ai-review/405.md-25-
+--
+/home/ryan/formal-conjectures/ai-review/813.md-13-**Minor issues found.**
+/home/ryan/formal-conjectures/ai-review/813.md-14-
+ai-review/813.md:15:- The reference tag `[Er91]` is inconsistent with the publication year 1990 given in the citation body ("Algorithms Combin., 5 (1990), 12-28"). Either the tag should be `[Er90]` or the year should be verified.
+ai-review/813.md:16:- The docstring says "A problem of Erdős and Hajnal [Er91]" but the cited reference `[Er91]` lists only Erdős as author, not Erdős and Hajnal jointly. The attribution to Hajnal may come from a different source or the reference may be incomplete.
+/home/ryan/formal-conjectures/ai-review/813.md-17-- The website confirms the problem is **open** and references the same two results (Erdős–Hajnal basic bounds and Bucić–Sudakov improvement), so the citations are substantively correct.
+/home/ryan/formal-conjectures/ai-review/813.md-18-
+--
+/home/ryan/formal-conjectures/ai-review/813.md-65-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/813.md-66-| Code reuse | Custom `graphCliqueNumber` should use Mathlib's `cliqueNum` |
+ai-review/813.md:67:| Citations | Minor tag/year inconsistency in [Er91]; authorship attribution unclear |
+/home/ryan/formal-conjectures/ai-review/813.md-68-| Variants | Missing solved variants for basic bounds and Bucić–Sudakov |
+/home/ryan/formal-conjectures/ai-review/813.md-69-| Readability | Good; triangle sub-condition could use Mathlib idioms |
+--
+ai-review/533.md-16-The [erdosproblems.com/533](https://www.erdosproblems.com/533) page provides additional context:
+/home/ryan/formal-conjectures/ai-review/533.md-17-- The problem was originally posed by **Erdős, Hajnal, Simonovits, Sós, and Szemerédi**, who established the upper bound δ₃(5) ≤ 1/12 and proved δ₃(4) = 0.
+ai-review/533.md:18:- Original sources cited on the website: **[Er91]** (Erdős, 1991) and **[EHSSS94]** (p. 306).
+/home/ryan/formal-conjectures/ai-review/533.md-19-- **[LRSS21]** Liu, H., Reiher, C., Sharifzadeh, M., and Staden, K. established the exact value δ₃(5) = 1/12.
+/home/ryan/formal-conjectures/ai-review/533.md-20-- Related to **Problem 579**.
+/home/ryan/formal-conjectures/ai-review/533.md-21-
+ai-review/533.md:22:**Issue:** The formalization's docstring mentions "The correct value is δ₃(5) = 1/12" but does not cite [LRSS21], which is the paper that established this. The original proposers (Erdős, Hajnal, Simonovits, Sós, Szemerédi) and original source references [Er91] and [EHSSS94] are also not cited. The [BaLe13] citation format is acceptable (short author abbreviation with year) but could include the journal or arXiv identifier for completeness.
+/home/ryan/formal-conjectures/ai-review/533.md-23-
+ai-review/533.md:24:**Recommendation:** Add citations for [LRSS21] and at least one of the original sources [Er91] or [EHSSS94].
+/home/ryan/formal-conjectures/ai-review/533.md-25-
+/home/ryan/formal-conjectures/ai-review/533.md-26-## 3. Variants
+--
+/home/ryan/formal-conjectures/ai-review/533.md-91-|-----------|-----------|
+/home/ryan/formal-conjectures/ai-review/533.md-92-| Code reuse | Appropriate; consistent with Problem 579 pattern |
+ai-review/533.md:93:| Citations | **Incomplete** — missing [LRSS21], [Er91]/[EHSSS94] |
+/home/ryan/formal-conjectures/ai-review/533.md-94-| Variants | **Missing** — δ₃(5) = 1/12 exact value not formalized |
+/home/ryan/formal-conjectures/ai-review/533.md-95-| Readability | Good; clean and conventional |
+--
+/home/ryan/formal-conjectures/ai-review/804.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/804.md-16-
+ai-review/804.md:17:The docstring references `[Er91]` and `[AlSu07]`. The website (erdosproblems.com/804) lists:
+/home/ryan/formal-conjectures/ai-review/804.md-18-
+ai-review/804.md:19:- **Source:** [Er91] (Erdős and Hajnal)
+ai-review/804.md-20-- **Resolution:** Alon and Sudakov
+/home/ryan/formal-conjectures/ai-review/804.md-21-
+ai-review/804.md-22-The shorthand `[AlSu07]` does not appear on the website itself — the website simply names "Alon and Sudakov" without a bracketed citation key. The docstrings should either expand the references to full citations or match the website's style. Specifically:
+/home/ryan/formal-conjectures/ai-review/804.md-23-
+ai-review/804.md:24:- `[Er91]` → Could be expanded to: P. Erdős and A. Hajnal (1991)
+ai-review/804.md-25-- `[AlSu07]` → Could be expanded to: N. Alon and B. Sudakov (2007)
+/home/ryan/formal-conjectures/ai-review/804.md-26-
+--
+/home/ryan/formal-conjectures/ai-review/805.md-19-
+ai-review/805.md-20-The docstring includes three references:
+ai-review/805.md:21:- **[Er91]** Erdős, P., *Problems and results in combinatorial number theory* — matches the website's original source.
+/home/ryan/formal-conjectures/ai-review/805.md-22-- **[AlSu07]** Alon, N. and Sudakov, B., *Ramsey-type properties of graphs* — matches.
+/home/ryan/formal-conjectures/ai-review/805.md-23-- **[ABS21]** Alon, N., Bucić, M. and Sudakov, B., *Induced subgraphs of Ramsey graphs* — matches.
+--
+/home/ryan/formal-conjectures/ai-review/808.md-15-## 2. Citations
+/home/ryan/formal-conjectures/ai-review/808.md-16-
+ai-review/808.md:17:The formalization references: `[Er77c]`, `[ErSz83]`, `[Er91]`, `[Er97]`, `[ARS20]`.
+/home/ryan/formal-conjectures/ai-review/808.md-18-
+ai-review/808.md-19-The [erdosproblems.com/808](https://www.erdosproblems.com/808) page lists these same references:
+/home/ryan/formal-conjectures/ai-review/808.md-20-- **[Er77c]** — Erdős (1977)
+/home/ryan/formal-conjectures/ai-review/808.md-21-- **[ErSz83]** — Erdős and Szemerédi (1983)
+ai-review/808.md:22:- **[Er91]** — Erdős (1991)
+/home/ryan/formal-conjectures/ai-review/808.md-23-- **[Er97]** — Erdős (1997)
+/home/ryan/formal-conjectures/ai-review/808.md-24-- **[ARS20]** — Alon, Ruzsa, and Solymosi (2020) — the disproof
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-28-In particular, is there such a graph for $g(n) = (\log n)^3$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-29-
+FormalConjectures/ErdosProblems/805.lean:30:[Er91] Erdős, P., _Problems and results in combinatorial number theory_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-31-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-32-[AlSu07] Alon, N. and Sudakov, B., _Ramsey-type properties of graphs_.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-58-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-59-/--
+FormalConjectures/ErdosProblems/805.lean:60:Erdős–Hajnal conjecture [Er91]: is there a graph on $n$ vertices such that every
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-61-induced subgraph on $\lfloor (\log n)^3 \rfloor$ vertices contains both a clique and an
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/805.lean-62-independent set of size $\geq \lceil \log n \rceil$?
+--
+/home/ryan/formal-conjectures/ai-review/579.md-19-- **[EHSS83]** — Erdős, Hajnal, Sós, Szemerédi (1983), the original paper posing the conjecture and proving the δ > 1/8 case.
+/home/ryan/formal-conjectures/ai-review/579.md-20-- **[Er90]** — Erdős (1990)
+ai-review/579.md:21:- **[Er91]** — Erdős (1991)
+/home/ryan/formal-conjectures/ai-review/579.md-22-- **[Er93, p.340]** — Erdős (1993), page 340
+/home/ryan/formal-conjectures/ai-review/579.md-23-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-38-467–478.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-39-
+FormalConjectures/ErdosProblems/579.lean:40:[Er91] Erdős, P., _Problems and results in combinatorial number theory_.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-41-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/579.lean-42-[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is eighty,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-33-Toronto, ON, 1984, 203-218.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-34-
+FormalConjectures/ErdosProblems/146.lean:35:[Er91] Erdős, P., *Problems and results on graphs and hypergraphs: similarities and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-36-differences*. Mathematics of Ramsey theory, Algorithms Combin., 5 (1990), 12-28.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/146.lean-37-
+--
+FormalConjectures/ErdosProblems/813.lean-22-*Reference:* [erdosproblems.com/813](https://www.erdosproblems.com/813)
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-23-
+FormalConjectures/ErdosProblems/813.lean:24:A problem of Erdős and Hajnal [Er91], who proved $n^{1/3} \ll h(n) \ll n^{1/2}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-25-Bucić and Sudakov [BuSu23] proved $h(n) \gg n^{5/12 - o(1)}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-26-
+FormalConjectures/ErdosProblems/813.lean:27:[Er91] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-28-differences_. Mathematics of Ramsey theory, Algorithms Combin., 5 (1990), 12-28.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-29-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-54-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-55-/--
+FormalConjectures/ErdosProblems/813.lean:56:Erdős Problem 813 [Er91]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-57-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/813.lean-58-There exist constants $c_1, c_2 > 0$ such that for all sufficiently large $n$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/405.lean-30-for example $6! + 2^6 = 28^2$).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/405.lean-31-
+FormalConjectures/ErdosProblems/405.lean:32:Brindza and Erdős [BrEr91] proved that there are finitely many solutions.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/405.lean-33-Yu and Liu [YuLi96] showed that the only solutions are
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/405.lean-34-$2! + 1^2 = 3$, $2! + 5^2 = 3^3$, and $4! + 1^4 = 5^2$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/405.lean-37-theory*. Monographies de L'Enseignement Mathematique (1980).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/405.lean-38-
+FormalConjectures/ErdosProblems/405.lean:39:[BrEr91] Brindza, B. and Erdős, P., *On some Diophantine problems involving powers and
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/405.lean-40-factorials*. J. Austral. Math. Soc. Ser. A 51 (1991), 1-7.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/405.lean-41-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-32-A problem of Erdős, Pyber, and Tuza.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-33-
+FormalConjectures/ErdosProblems/811.lean:34:[Er91] Erdős, P., _Some of my favourite problems in various branches of combinatorics_, 1991.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-35-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-36-[ErTu93] Erdős, P. and Tuza, Zs., _Rainbow subgraphs in edge-colorings of complete graphs_, 1993.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-74-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-75-/--
+FormalConjectures/ErdosProblems/811.lean:76:**Erdős Problem 811** (specific challenge from [Er91] and [Er96]):
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-77-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/811.lean-78-For all sufficiently large $n \equiv 1 \pmod{6}$, every balanced edge-colouring
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-30-an edge-partition of $Q_n$ into four subgraphs, each containing no $C_6$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-31-
+FormalConjectures/ErdosProblems/666.lean:32:[Er91] Erdős, P., *Some of my favourite problems in various branches of combinatorics*.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-33-Matematiche (Catania) 47 (1992), no. 2, 231-240 (1993).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-34-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-73-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-74-/--
+FormalConjectures/ErdosProblems/666.lean:75:Erdős Problem 666 (disproved) [Er91][Er92b][Er97f]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-76-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/666.lean-77-Is it true that, for every $\epsilon > 0$, if $n$ is sufficiently large, every subgraph of $Q_n$
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-26-must contain an induced subgraph on at most $(1-c_k)n$ vertices with minimum degree at least $k$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-27-
+FormalConjectures/ErdosProblems/814.lean:28:The case $k=3$ was a problem of Erdős and Hajnal [Er91]. The question for general $k$ was a
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-29-conjecture of Erdős, Faudree, Rousseau, and Schelp [EFRS90], who proved that such a subgraph
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-30-exists with at most $n - c_k\sqrt{n}$ vertices. Mousset, Noever, and Skorić [MNS17] improved
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-34-[EFRS90] Erdős, P., Faudree, R., Rousseau, C., and Schelp, R.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-35-
+FormalConjectures/ErdosProblems/814.lean:36:[Er91] Erdős, P.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-37-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-38-[MNS17] Mousset, F., Noever, A., and Skorić, N.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-47-/--
+FormalConjectures/ErdosProblems/814.lean:48:Erdős Problem 814 [EFRS90][Er91]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/814.lean-50-For every $k \geq 2$, there exists $c > 0$ such that for all sufficiently large $n$,
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-26-for some constant $C > 0$?
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-27-
+FormalConjectures/ErdosProblems/818.lean:28:A problem of Erdős [Er91]. This was proved by Solymosi [So09d], in the strong form
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-29-$|AA| \gg |A|^2 / \log |A|$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-30-
+FormalConjectures/ErdosProblems/818.lean:31:[Er91] Erdős, P., _Some of my favourite problems in number theory, combinatorics, and geometry_. Resenhas do Instituto de Matemática e Estatística da Universidade de São Paulo (1991).
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-32-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/818.lean-33-[So09d] Solymosi, J., _Bounding multiplicative energy by the sumset_. Advances in Mathematics (2009).
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-27-Solymosi [ARS20].
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-28-
+FormalConjectures/ErdosProblems/808.lean:29:[Er77c], [ErSz83], [Er91], [Er97] are references for the original problem.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-30--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-31-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-47-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-48-/--
+FormalConjectures/ErdosProblems/808.lean:49:Erdős Problem 808 (disproved) [Er77c], [ErSz83], [Er91], [Er97]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-50-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/808.lean-51-For all $c, \varepsilon > 0$, for sufficiently large $n$, if $A \subset \mathbb{N}$ has
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-31-without a $C_4$. The conjecture is that $f(n) \leq (\frac{1}{2} + o(1)) n \cdot 2^{n-1}$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-32-
+FormalConjectures/ErdosProblems/86.lean:33:Erdős [Er91] showed that $f(n) \geq (\frac{1}{2} + c/n) n \cdot 2^{n-1}$ for some
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-34-constant $c > 0$. Brass, Harborth, and Nienborg [BHN95] improved the lower bound to
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-35-$f(n) \geq (\frac{1}{2} + c/\sqrt{n}) n \cdot 2^{n-1}$.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-43-467–478.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-44-
+FormalConjectures/ErdosProblems/86.lean:45:[Er91] Erdős, P., _Problems and results in combinatorial analysis and combinatorial number
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-46-theory_. Graph Theory, Combinatorics, and Applications, Vol. 1 (Kalamazoo, MI, 1988) (1991),
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-47-397–406.
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-98-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-99-/--
+FormalConjectures/ErdosProblems/86.lean:100:Erdős Problem 86 [Er90][Er91][Er92b][Er93][Er94b][Er95][Er97f]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-101-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/86.lean-102-Is it true that for every $\varepsilon > 0$, if $n$ is sufficiently large, every subgraph of
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-32-$R(n+1) - R(n) \geq 4n - 8$ for all $n \geq 2$.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-33-
+FormalConjectures/ErdosProblems/812.lean:34:[Er91] Erdős, P., _Problems and results on graphs and hypergraphs_, 1991.
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-35--/
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-36-
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-46-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-47-/--
+FormalConjectures/ErdosProblems/812.lean:48:**Erdős Problem 812, Part 1** [Er91]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-49-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-50-Is it true that there exists a constant $c > 0$ such that $R(n+1)/R(n) \geq 1 + c$ for all
+--
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-60-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-61-/--
+FormalConjectures/ErdosProblems/812.lean:62:**Erdős Problem 812, Part 2** [Er91]:
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-63-
+/home/ryan/formal-conjectures/FormalConjectures/ErdosProblems/812.lean-64-Is it true that $R(n+1) - R(n) \gg n^2$, i.e., there exists a constant $c > 0$ such that
