@@ -1,1 +1,2 @@
 - [feedback_code_reuse_library.md](feedback_code_reuse_library.md) — Section 1 code reuse: only import existing library code, never create new library definitions
+- [feedback_filter_tendsto.md](feedback_filter_tendsto.md) — Prefer Filter.Tendsto/atTop/nhds over epsilon-delta formulations for limit statements

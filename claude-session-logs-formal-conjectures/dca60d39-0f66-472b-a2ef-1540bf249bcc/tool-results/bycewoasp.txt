@@ -1,0 +1,1566 @@
+commit c04f5e32ec1206a7dd1e626870916c7e1dcc4c67
+Author: Ryan Tuck <ryan@ryantuck.io>
+Date:   Tue Mar 17 15:27:15 2026 +0000
+
+    feat(ErdosProblems): 15x ramsey theory formalizations
+
+diff --git a/FormalConjectures/ErdosProblems/1014.lean b/FormalConjectures/ErdosProblems/1014.lean
+new file mode 100644
+index 00000000..1168dd7c
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/1014.lean
+@@ -0,0 +1,59 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 1014
++
++Erdős conjectured that for fixed $k \geq 3$, the ratio of consecutive Ramsey numbers
++$R(k, l+1) / R(k, l)$ tends to $1$ as $l \to \infty$.
++
++See also problems [544] and [1030].
++
++*Reference:* [erdosproblems.com/1014](https://www.erdosproblems.com/1014)
++
++[Er71] Erdős, P., _Topics in combinatorial analysis_, pp. 95-99, 1971.
++-/
++
++open SimpleGraph
++
++namespace Erdos1014
++
++/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
++vertices contains either a $k$-clique or an independent set of size $l$
++(equivalently, an $l$-clique in the complement). -/
++noncomputable def ramseyR (k l : ℕ) : ℕ :=
++  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
++
++/--
++Erdős Problem 1014 [Er71, p.99]:
++
++For fixed $k \geq 3$,
++$$\lim_{l \to \infty} R(k, l+1) / R(k, l) = 1,$$
++where $R(k, l)$ is the Ramsey number.
++
++Formulated as: for every $\varepsilon > 0$, there exists $L_0$ such that for all $l \geq L_0$,
++$|R(k, l+1) / R(k, l) - 1| \leq \varepsilon$.
++-/
++@[category research open, AMS 5]
++theorem erdos_1014 (k : ℕ) (hk : k ≥ 3) :
++    ∀ ε : ℝ, ε > 0 →
++    ∃ L₀ : ℕ, ∀ l : ℕ, l ≥ L₀ →
++      |(ramseyR k (l + 1) : ℝ) / (ramseyR k l : ℝ) - 1| ≤ ε := by
++  sorry
++
++end Erdos1014
+diff --git a/FormalConjectures/ErdosProblems/1029.lean b/FormalConjectures/ErdosProblems/1029.lean
+new file mode 100644
+index 00000000..820b30d6
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/1029.lean
+@@ -0,0 +1,63 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++import FormalConjecturesForMathlib.Combinatorics.Ramsey
++
++/-!
++# Erdős Problem 1029
++
++*Reference:* [erdosproblems.com/1029](https://www.erdosproblems.com/1029)
++
++If $R(k)$ is the diagonal Ramsey number for $K_k$, the minimal $n$ such that every
++2-colouring of the edges of $K_n$ contains a monochromatic copy of $K_k$, then
++$$
++  R(k) / (k \cdot 2^{k/2}) \to \infty.
++$$
++
++Erdős and Szekeres [ErSz35] proved $k \cdot 2^{k/2} \ll R(k) \leq \binom{2k-1}{k-1}$.
++The probabilistic method gives $R(k) \geq (1+o(1)) \cdot \frac{1}{\sqrt{2}\, e} \cdot k \cdot 2^{k/2}$,
++improved by Spencer [Sp75] to $R(k) \geq (1+o(1)) \cdot \frac{\sqrt{2}}{e} \cdot k \cdot 2^{k/2}$.
++
++[ErSz35] Erdős, P. and Szekeres, G., *A combinatorial problem in geometry*, Compositio Math. 2 (1935), 463–470.
++
++[Sp75] Spencer, J., *Ramsey's theorem — a new lower bound*, J. Combin. Theory Ser. A 18 (1975), 108–115.
++
++[Er93] Erdős, P., *On some of my favourite theorems* (1993).
++-/
++
++open Finset Combinatorics
++
++namespace Erdos1029
++
++/--
++Erdős Problem 1029 [Er93, p.337]:
++
++$R(k) / (k \cdot 2^{k/2}) \to \infty$ as $k \to \infty$.
++
++Formulated as: for every $C > 0$, there exists $K_0$ such that for all $k \geq K_0$,
++$R(k) \geq C \cdot k \cdot 2^{k/2}$.
++
++Here $R(k)$ is the diagonal Ramsey number, expressed as `hypergraphRamsey 2 k`.
++-/
++@[category research open, AMS 5]
++theorem erdos_1029 :
++    ∀ C : ℝ, C > 0 →
++    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
++      (hypergraphRamsey 2 k : ℝ) ≥ C * (k : ℝ) * (2 : ℝ) ^ ((k : ℝ) / 2) := by
++  sorry
++
++end Erdos1029
+diff --git a/FormalConjectures/ErdosProblems/1030.lean b/FormalConjectures/ErdosProblems/1030.lean
+new file mode 100644
+index 00000000..59c44930
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/1030.lean
+@@ -0,0 +1,88 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 1030
++
++*Reference:* [erdosproblems.com/1030](https://www.erdosproblems.com/1030)
++
++If $R(k,l)$ is the Ramsey number then prove the existence of some $c > 0$ such that
++$$
++  \lim_{k \to \infty} \frac{R(k+1, k)}{R(k, k)} > 1 + c.
++$$
++
++A problem of Erdős and Sós, who could not even prove whether
++$R(k+1,k) - R(k,k) > k^c$ for any $c > 1$.
++
++Burr, Erdős, Faudree, and Schelp [BEFS89] proved that
++$R(k+1,k) - R(k,k) \geq 2k - 5$.
++
++See also problems [544](https://www.erdosproblems.com/544) and
++[1014](https://www.erdosproblems.com/1014).
++
++OEIS: [A000791](https://oeis.org/A000791), [A059442](https://oeis.org/A059442).
++
++[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is eighty,
++Vol. 2 (Keszthely, 1993), 97–132, p. 339.
++
++[BEFS89] Burr, S.A., Erdős, P., Faudree, R.J., and Schelp, R.H.,
++_On the difference between consecutive Ramsey numbers_. Utilitas Math. (1989), 115–118.
++-/
++
++open SimpleGraph
++
++namespace Erdos1030
++
++/-- The Ramsey number $R(k, l)$: the minimum $N$ such that every simple graph on $N$
++    vertices contains either a $k$-clique or an independent set of size $l$
++    (equivalently, an $l$-clique in the complement). -/
++noncomputable def ramseyR (k l : ℕ) : ℕ :=
++  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree l}
++
++/--
++Erdős Problem 1030 [Er93, p. 339]:
++
++There exists $c > 0$ such that
++$$
++  \lim_{k \to \infty} \frac{R(k+1, k)}{R(k, k)} > 1 + c.
++$$
++
++Formulated as: there exist $c > 0$ and $K_0$ such that for all $k \geq K_0$,
++$R(k+1, k) / R(k, k) \geq 1 + c$.
++-/
++@[category research open, AMS 5]
++theorem erdos_1030 :
++    ∃ c : ℝ, c > 0 ∧
++    ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
++      (ramseyR (k + 1) k : ℝ) / (ramseyR k k : ℝ) ≥ 1 + c := by
++  sorry
++
++/--
++Weaker variant of Erdős Problem 1030 [Er93, p. 339]:
++
++There exists $c > 1$ such that $R(k+1,k) - R(k,k) > k^c$ for all sufficiently large $k$.
++
++Erdős and Sós could not even prove this weaker statement.
++-/
++@[category research open, AMS 5]
++theorem erdos_1030_weak :
++    ∃ c : ℝ, c > 1 ∧ ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
++      (ramseyR (k + 1) k : ℝ) - (ramseyR k k : ℝ) > (k : ℝ) ^ c := by
++  sorry
++
++end Erdos1030
+diff --git a/FormalConjectures/ErdosProblems/112.lean b/FormalConjectures/ErdosProblems/112.lean
+new file mode 100644
+index 00000000..4d20040e
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/112.lean
+@@ -0,0 +1,154 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 112
++
++*Reference:* [erdosproblems.com/112](https://www.erdosproblems.com/112)
++
++A problem of Erdős and Rado on directed Ramsey numbers $k(n,m)$: the minimal $k$ such that
++any directed graph on $k$ vertices must contain either an independent set of size $n$ or a
++transitive tournament of size $m$. Determine $k(n,m)$.
++
++[ErRa67] Erdős, P. and Rado, R., _Partition relations and transitivity domains of binary
++relations_, J. London Math. Soc. (1967), 624–633.
++
++[LaMi97] Larson, J. and Mitchell, W., _On a problem of Erdős and Rado_, Ann. Comb. (1997),
++245–252.
++-/
++
++namespace Erdos112
++
++/-- An oriented graph on vertex type $V$: an irreflexive, antisymmetric binary relation
++representing directed edges ($\mathrm{adj}(u, v)$ means there is a directed edge from $u$ to $v$).
++Each pair of distinct vertices has at most one directed edge between them. -/
++structure Digraph (V : Type*) where
++  adj : V → V → Prop
++  loopless : ∀ v, ¬ adj v v
++  antisymm : ∀ u v, adj u v → ¬ adj v u
++
++/-- An independent set in a directed graph: a set $S$ of vertices with no directed
++edges between any two of its members (in either direction). -/
++def Digraph.IsIndepSet {V : Type*} (G : Digraph V) (S : Finset V) : Prop :=
++  ∀ u ∈ S, ∀ v ∈ S, ¬ G.adj u v
++
++/-- A transitive tournament on vertex set $S$ in directed graph $G$: there is a bijection
++$f : \mathrm{Fin}(|S|) \to S$ such that $G.\mathrm{adj}(f(i), f(j))$ holds
++if and only if $i < j$. This encodes a total ordering of $S$ compatible with the
++edge relation. -/
++def Digraph.IsTransTournament {V : Type*} (G : Digraph V) (S : Finset V) : Prop :=
++  ∃ f : Fin S.card → {x : V // x ∈ S}, Function.Bijective f ∧
++    ∀ i j : Fin S.card, G.adj (f i : V) (f j : V) ↔ i < j
++
++/-- The directed Ramsey number $k(n,m)$: the minimal $k$ such that every directed graph
++on $k$ vertices contains either an independent set of size $n$ or a transitive
++tournament of size $m$. -/
++noncomputable def dirRamseyNum (n m : ℕ) : ℕ :=
++  sInf {k : ℕ | ∀ (V : Type) [Fintype V], Fintype.card V = k →
++    ∀ G : Digraph V,
++      (∃ S : Finset V, S.card = n ∧ G.IsIndepSet S) ∨
++      (∃ S : Finset V, S.card = m ∧ G.IsTransTournament S)}
++
++/--
++Erdős Problem 112: Determine the directed Ramsey number $k(n,m)$.
++The exact value is still open.
++-/
++@[category research open, AMS 5]
++theorem erdos_112 :
++    ∀ n m : ℕ, 2 ≤ n → 2 ≤ m →
++      dirRamseyNum n m = answer(sorry) := by
++  sorry
++
++/--
++Erdős–Rado upper bound [ErRa67]:
++$$k(n,m) \leq \frac{2^{m-1} (n-1)^m + n - 2}{2n - 3}.$$
++-/
++@[category research solved, AMS 5]
++theorem erdos_112.variants.erdos_rado_upper_bound :
++    ∀ n m : ℕ, 2 ≤ n → 2 ≤ m →
++      dirRamseyNum n m ≤ (2 ^ (m - 1) * (n - 1) ^ m + n - 2) / (2 * n - 3) := by
++  sorry
++
++/--
++Larson–Mitchell bound [LaMi97]: $k(n, 3) \leq n^2$.
++-/
++@[category research solved, AMS 5]
++theorem erdos_112.variants.larson_mitchell :
++    ∀ n : ℕ, 2 ≤ n →
++      dirRamseyNum n 3 ≤ n ^ 2 := by
++  sorry
++
++/-- The classical 2-color graph Ramsey number $R(n, m)$: the minimal $k$ such that every
++2-coloring of the edges of $K_k$ contains either a red clique of size $n$ or a blue clique
++of size $m$. -/
++noncomputable def graphRamseyNum (n m : ℕ) : ℕ :=
++  sInf {k : ℕ | ∀ (c : Fin k → Fin k → Bool),
++    (∃ S : Finset (Fin k), S.card = n ∧ ∀ u ∈ S, ∀ v ∈ S, u ≠ v → c u v = true) ∨
++    (∃ S : Finset (Fin k), S.card = m ∧ ∀ u ∈ S, ∀ v ∈ S, u ≠ v → c u v = false)}
++
++/-- The 3-color graph Ramsey number $R(a, b, c)$: the minimal $k$ such that every
++3-coloring of the edges of $K_k$ contains a monochromatic clique of size $a$, $b$, or $c$
++in the respective color. -/
++noncomputable def graphRamseyNum3 (a b c : ℕ) : ℕ :=
++  sInf {k : ℕ | ∀ (col : Fin k → Fin k → Fin 3),
++    (∃ S : Finset (Fin k), S.card = a ∧ ∀ u ∈ S, ∀ v ∈ S, u ≠ v → col u v = 0) ∨
++    (∃ S : Finset (Fin k), S.card = b ∧ ∀ u ∈ S, ∀ v ∈ S, u ≠ v → col u v = 1) ∨
++    (∃ S : Finset (Fin k), S.card = c ∧ ∀ u ∈ S, ∀ v ∈ S, u ≠ v → col u v = 2)}
++
++/--
++Ramsey number sandwich (Hunter): $R(n,m) \leq k(n,m) \leq R(n,m,m)$, where $R$ is the
++classical graph Ramsey number and $R(n,m,m)$ is the 3-color Ramsey number. The lower bound
++holds because any undirected graph can be oriented, and the upper bound holds because the
++three options for each pair of vertices (no edge, forward edge, backward edge) correspond
++to a 3-coloring.
++-/
++@[category research solved, AMS 5]
++theorem erdos_112.variants.ramsey_sandwich :
++    ∀ n m : ℕ, 2 ≤ n → 2 ≤ m →
++      graphRamseyNum n m ≤ dirRamseyNum n m ∧
++      dirRamseyNum n m ≤ graphRamseyNum3 n m m := by
++  sorry
++
++/-- A directed path on vertex set $S$ in directed graph $G$: there is a bijection
++$f : \mathrm{Fin}(|S|) \to S$ such that $G.\mathrm{adj}(f(i), f(i+1))$ holds for all
++consecutive indices. Unlike a transitive tournament, only consecutive vertices need to
++be connected. -/
++def Digraph.IsDirectedPath {V : Type*} (G : Digraph V) (S : Finset V) : Prop :=
++  ∃ f : Fin S.card → {x : V // x ∈ S}, Function.Bijective f ∧
++    ∀ i : Fin S.card, ∀ h : (i : ℕ) + 1 < S.card,
++      G.adj (f i : V) (f ⟨i + 1, h⟩ : V)
++
++/-- The directed path Ramsey number: the minimal $k$ such that every directed graph on $k$
++vertices contains either an independent set of size $n$ or a directed path of size $m$. -/
++noncomputable def dirPathRamseyNum (n m : ℕ) : ℕ :=
++  sInf {k : ℕ | ∀ (V : Type) [Fintype V], Fintype.card V = k →
++    ∀ G : Digraph V,
++      (∃ S : Finset V, S.card = n ∧ G.IsIndepSet S) ∨
++      (∃ S : Finset V, S.card = m ∧ G.IsDirectedPath S)}
++
++/--
++Hunter–Steiner result: replacing "transitive tournament" with "directed path" in the
++definition of $k(n,m)$ yields the exact answer $k(n,m) = (n-1)(m-1) + 1$.
++-/
++@[category research solved, AMS 5]
++theorem erdos_112.variants.hunter_steiner :
++    ∀ n m : ℕ, 2 ≤ n → 2 ≤ m →
++      dirPathRamseyNum n m = (n - 1) * (m - 1) + 1 := by
++  sorry
++
++end Erdos112
+diff --git a/FormalConjectures/ErdosProblems/129.lean b/FormalConjectures/ErdosProblems/129.lean
+new file mode 100644
+index 00000000..50bbbd3d
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/129.lean
+@@ -0,0 +1,109 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 129
++
++*Reference:* [erdosproblems.com/129](https://www.erdosproblems.com/129)
++
++Let $R(n; k, r)$ be the smallest $N$ such that if the edges of $K_N$ are $r$-coloured
++then there is a set of $n$ vertices which does not contain a copy of $K_k$ in at
++least one of the $r$ colours. Erdős and Gyárfás conjectured that there exists a
++constant $C = C(r) > 1$ such that $R(n; 3, r) < C^{\sqrt{n}}$.
++
++As pointed out by Antonio Girao, the problem as stated is easily
++disproved. A probabilistic argument shows $R(n; 3, 2) \geq C^n$ for some $C > 1$,
++contradicting the claimed bound. The correct formulation is unclear.
++
++[Er97b] Erdős, P. and Gyárfás, A., *A variant of the classical Ramsey problem*,
++Combinatorica **17** (1997), 459–467.
++-/
++
++namespace Erdos129
++
++/-- An $r$-edge-coloring of the complete graph $K_N$: a function that assigns a
++color in $\operatorname{Fin} r$ to each ordered pair of vertices.
++Note: this allows coloring of self-loops ($\chi\, x\, x$), which is semantically
++meaningless for $K_N$ but harmless since `IsMonoKkFree` only examines pairs
++with $x \ne y$. -/
++def EdgeColoring (N r : ℕ) : Type := Fin N → Fin N → Fin r
++
++/-- A vertex set $S$ is monochromatic-$K_k$-free in color $c$ under coloring $\chi$ if
++there is no $k$-element subset of $S$ in which every pair of distinct vertices
++receives color $c$. -/
++def IsMonoKkFree {N r : ℕ} (χ : EdgeColoring N r) (c : Fin r)
++    (k : ℕ) (S : Finset (Fin N)) : Prop :=
++  ∀ T : Finset (Fin N), T ⊆ S → T.card = k →
++    ∃ x ∈ T, ∃ y ∈ T, x ≠ y ∧ χ x y ≠ c
++
++/-- The generalized Ramsey number $R(n; k, r)$: the smallest $N$ such that for
++every symmetric $r$-coloring of the edges of $K_N$ (i.e., $\chi\, x\, y = \chi\, y\, x$),
++there exists a set of $n$ vertices and a color $c$ such that the set is
++$K_k$-free in color $c$. -/
++noncomputable def multicolorRamseyNum (n k r : ℕ) : ℕ :=
++  sInf {N : ℕ | ∀ (χ : EdgeColoring N r), (∀ x y, χ x y = χ y x) →
++    ∃ (S : Finset (Fin N)) (c : Fin r),
++      S.card = n ∧ IsMonoKkFree χ c k S}
++
++/--
++Erdős–Gyárfás Conjecture (Problem 129) [Er97b]:
++For every $r \geq 1$, does there exist a constant $C = C(r) > 1$ such that
++$R(n; 3, r) < C^{\sqrt{n}}$ for all positive integers $n$?
++
++The conjecture is **disproved** (`answer(False)`): as observed by Antonio Girao,
++a probabilistic coloring of $K_N$ (each edge independently uniformly at random
++in $r$ colors) shows $R(n; 3, 2) \geq C^n$ for some $C > 1$, which grows faster
++than $C^{\sqrt{n}}$, contradicting the conjectured upper bound.
++-/
++@[category research solved, AMS 5]
++theorem erdos_129 : answer(False) ↔
++    ∀ r : ℕ, 1 ≤ r →
++      ∃ C : ℝ, 1 < C ∧
++        ∀ n : ℕ, (multicolorRamseyNum n 3 r : ℝ) < C ^ Real.sqrt (n : ℝ) := by
++  sorry
++
++/--
++Lower bound proved by Erdős and Gyárfás [Er97b]: for every $r \geq 1$,
++there exists a constant $C = C(r) > 1$ such that $R(n; 3, r) > C^{\sqrt{n}}$
++for all positive integers $n$.
++-/
++@[category research solved, AMS 5]
++theorem erdos_129_lower_bound :
++    ∀ r : ℕ, 1 ≤ r →
++      ∃ C : ℝ, 1 < C ∧
++        ∀ n : ℕ, C ^ Real.sqrt (n : ℝ) < (multicolorRamseyNum n 3 r : ℝ) := by
++  sorry
++
++/--
++Generalized Erdős–Gyárfás conjecture [Er97b]: for all $r, k \geq 2$,
++there exist constants $C_1, C_2 > 1$ (depending only on $r$) such that
++$C_1^{n^{1/(k-1)}} < R(n; k, r) < C_2^{n^{1/(k-1)}}$.
++The status of this generalized conjecture is unclear given the issues with
++the $k = 3$ upper bound.
++-/
++@[category research open, AMS 5]
++theorem erdos_129_general_bounds :
++    ∀ r : ℕ, 2 ≤ r → ∀ k : ℕ, 2 ≤ k →
++      ∃ C₁ C₂ : ℝ, 1 < C₁ ∧ 1 < C₂ ∧
++        ∀ n : ℕ, C₁ ^ (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 1))
++          < (multicolorRamseyNum n k r : ℝ)
++        ∧ (multicolorRamseyNum n k r : ℝ)
++          < C₂ ^ (n : ℝ) ^ ((1 : ℝ) / ((k : ℝ) - 1)) := by
++  sorry
++
++end Erdos129
+diff --git a/FormalConjectures/ErdosProblems/159.lean b/FormalConjectures/ErdosProblems/159.lean
+new file mode 100644
+index 00000000..a0095960
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/159.lean
+@@ -0,0 +1,79 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 159
++
++Is there some constant $c > 0$ such that $R(C_4, K_n) \ll n^{2-c}$?
++
++*Reference:* [erdosproblems.com/159](https://www.erdosproblems.com/159)
++
++[Er78] Erdős, P., *Problems and results in combinatorial analysis and combinatorial number
++theory*, Proceedings of the Ninth Southeastern Conference on Combinatorics, Graph Theory, and
++Computing (1978), 29–40.
++
++[Er81] Erdős, P., *On the combinatorial problems which I would most like to see solved*,
++Combinatorica 1 (1981), 25–42.
++
++[Er84d] Erdős, P., *On some problems in graph theory, combinatorial analysis and
++combinatorial number theory*.
++
++[EFRS78] Erdős, P., Faudree, R. J., Rousseau, C. C., and Schelp, R. H.,
++*On cycle-complete graph Ramsey numbers*, J. Graph Theory 2 (1978), 53–64.
++
++[Sp77] Spencer, J., *Asymptotic lower bounds for Ramsey functions*, Discrete Math.
++**20** (1977), 69–76.
++-/
++
++open SimpleGraph
++
++namespace Erdos159
++
++/-- The graph Ramsey number $R(C_4, K_n)$: the minimum $N$ such that every simple
++    graph $G$ on $N$ vertices either contains a copy of $C_4$ as a subgraph, or the
++    complement $G^c$ contains a copy of $K_n$ (i.e., $G$ has an independent set of
++    size $n$). -/
++noncomputable def ramseyC4Kn (n : ℕ) : ℕ :=
++  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
++    (cycleGraph 4).IsContained G ∨ (⊤ : SimpleGraph (Fin n)).IsContained Gᶜ}
++
++/--
++Erdős Conjecture (Problem 159) [Er78, Er81, Er84d]:
++
++There exists a constant $c > 0$ such that $R(C_4, K_n) \ll n^{2-c}$, i.e.,
++$R(C_4, K_n) = O(n^{2-c})$ as $n \to \infty$.
++
++The Ramsey number $R(C_4, K_n)$ is the minimum $N$ such that every 2-colouring
++of the edges of $K_N$ contains a monochromatic $C_4$ in one colour or a
++monochromatic $K_n$ in the other colour.
++
++The current bounds are:
++$$n^{3/2} / (\log n)^{3/2} \ll R(C_4, K_n) \ll n^2 / (\log n)^2,$$
++where the upper bound is due to Szemerédi [EFRS78] and the lower bound
++to Spencer [Sp77]. Improving the upper bound to $n^{2-c}$ for any fixed
++$c > 0$ remains open.
++-/
++@[category research open, AMS 5]
++theorem erdos_159 :
++    ∃ c : ℝ, 0 < c ∧
++    ∃ C : ℝ, 0 < C ∧
++    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
++      (ramseyC4Kn n : ℝ) ≤ C * (n : ℝ) ^ (2 - c) := by
++  sorry
++
++end Erdos159
+diff --git a/FormalConjectures/ErdosProblems/165.lean b/FormalConjectures/ErdosProblems/165.lean
+new file mode 100644
+index 00000000..8cc7c12f
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/165.lean
+@@ -0,0 +1,116 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 165
++
++*Reference:* [erdosproblems.com/165](https://www.erdosproblems.com/165)
++
++Give an asymptotic formula for $R(3,k)$. Prize: $250.
++
++$R(3,k)$ is the Ramsey number: the minimum $N$ such that every simple graph
++on $N$ vertices contains either a triangle ($3$-clique) or an independent set
++of size $k$ (equivalently, a $k$-clique in the complement).
++
++It is known that for some constant $c > 0$ and large $k$:
++$$
++  (c + o(1)) \frac{k^2}{\log k} \leq R(3,k) \leq (1 + o(1)) \frac{k^2}{\log k}
++$$
++
++The upper bound is due to Shearer [Sh83], improving Ajtai–Komlós–Szemerédi
++[AKS80]. The lower bound has been progressively improved: Kim [Ki95] showed
++$c \geq 1/162$, Fiz Pontiveros–Griffiths–Morris [PGM20] and Bohman–Keevash
++[BoKe21] improved this to $c \geq 1/4$, Campos–Jenssen–Michelen–Sahasrabudhe
++[CJMS25] to $c \geq 1/3$, and Hefty–Horn–King–Pfender [HHKP25] to
++$c \geq 1/2$. The conjectured asymptotic is
++$R(3,k) \sim \frac{1}{2} \frac{k^2}{\log k}$.
++
++Related problems: 544, 986, 1013. OEIS: [A000791](https://oeis.org/A000791).
++
++[AKS80] Ajtai, M., Komlós, J. and Szemerédi, E., _A note on Ramsey numbers_.
++J. Combin. Theory Ser. A **29** (1980), 354-360.
++
++[Sh83] Shearer, J. B., _A note on the independence number of triangle-free
++graphs_. Discrete Math. **46** (1983), 83-87.
++
++[Ki95] Kim, J. H., _The Ramsey number R(3,t) has order of magnitude t²/log t_.
++Random Structures and Algorithms (1995), 173-207.
++
++[PGM20] Fiz Pontiveros, G., Griffiths, S. and Morris, R., _The triangle-free
++process and the Ramsey number R(3,k)_. Mem. Amer. Math. Soc. (2020).
++
++[BoKe21] Bohman, T. and Keevash, P., _Dynamic concentration of the
++triangle-free process_. Random Structures Algorithms (2021), 221-293.
++
++[CJMS25] Campos, M., Jenssen, M., Michelen, M. and Sahasrabudhe, J.,
++_A new lower bound for the Ramsey numbers R(3,k)_. arXiv:2505.13371 (2025).
++
++[HHKP25] Hefty, L., Horn, P., King, R. and Pfender, F., _Improving R(3,k) in
++just two bites_. arXiv:2510.19718 (2025).
++
++[Er61] Erdős, P. (1961). [Er71] Erdős, P. (1971). [Er78] Erdős, P. (1978).
++[Er90b] Erdős, P. (1990). [Er93] Erdős, P. (1993). [Er97c] Erdős, P. (1997).
++-/
++
++open SimpleGraph Real
++
++namespace Erdos165
++
++/-- The Ramsey number $R(3,k)$: the minimum $N$ such that every simple graph
++on $N$ vertices contains either a triangle ($3$-clique) or an independent
++set of size $k$ (a $k$-clique in the complement). -/
++noncomputable def ramseyR3 (k : ℕ) : ℕ :=
++  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree k}
++
++/--
++Erdős Conjecture (Problem 165) [Er61, Er71, Er90b, Er93, Er97c]:
++
++There exists a constant $c > 0$ such that $R(3,k) \sim c \cdot k^2 / \log k$, i.e.,
++for all $\varepsilon > 0$ and all sufficiently large $k$:
++$$
++  (c - \varepsilon) \cdot \frac{k^2}{\log k} \leq R(3,k) \leq (c + \varepsilon) \cdot \frac{k^2}{\log k}.
++$$
++
++The conjectured value is $c = 1/2$.
++-/
++@[category research open, AMS 5]
++theorem erdos_165 : answer(sorry) ↔
++    ∃ c : ℝ, 0 < c ∧ ∀ ε : ℝ, 0 < ε →
++    ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
++      (c - ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) ≤ (ramseyR3 k : ℝ) ∧
++      (ramseyR3 k : ℝ) ≤ (c + ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) := by
++  sorry
++
++/--
++Erdős Problem 165 — conjectured value $c = 1/2$:
++
++$R(3,k) \sim \frac{1}{2} \frac{k^2}{\log k}$, i.e., for all $\varepsilon > 0$
++and all sufficiently large $k$:
++$$
++  (1/2 - \varepsilon) \cdot \frac{k^2}{\log k} \leq R(3,k) \leq (1/2 + \varepsilon) \cdot \frac{k^2}{\log k}.
++$$
++-/
++@[category research open, AMS 5]
++theorem erdos_165_conjectured_value :
++    ∀ ε : ℝ, 0 < ε →
++    ∃ N₀ : ℕ, ∀ k : ℕ, N₀ ≤ k →
++      (1 / 2 - ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) ≤ (ramseyR3 k : ℝ) ∧
++      (ramseyR3 k : ℝ) ≤ (1 / 2 + ε) * ((k : ℝ) ^ 2 / Real.log (k : ℝ)) := by
++  sorry
++
++end Erdos165
+diff --git a/FormalConjectures/ErdosProblems/190.lean b/FormalConjectures/ErdosProblems/190.lean
+new file mode 100644
+index 00000000..70a4b64f
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/190.lean
+@@ -0,0 +1,85 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 190
++
++*Reference:* [erdosproblems.com/190](https://www.erdosproblems.com/190)
++
++Let $H(k)$ be the smallest $N$ such that in any finite colouring of $\{1,\ldots,N\}$
++(into any number of colours) there is always either a monochromatic $k$-term
++arithmetic progression or a rainbow arithmetic progression (i.e. all
++elements are different colours). Estimate $H(k)$. Is it true that
++$H(k)^{1/k}/k \to \infty$ as $k \to \infty$?
++
++This type of problem belongs to 'canonical' Ramsey theory. The existence
++of $H(k)$ follows from Szemerédi's theorem, and it is easy to show that
++$H(k)^{1/k} \to \infty$.
++
++[ErGr79] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
++number theory: van der Waerden's theorem and related topics_. Enseign. Math. (1979).
++
++[ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial
++number theory_. Monographies de L'Enseignement Mathématique (1980).
++-/
++
++open Filter Real
++
++namespace Erdos190
++
++/-- A colouring $\chi : \mathbb{N} \to \mathbb{N}$ has a monochromatic $k$-term arithmetic
++progression within $\{1,\ldots,N\}$: there exist $a \geq 1$ and $d \geq 1$ such that
++$a, a+d, \ldots, a+(k-1) \cdot d$ are all in $\{1,\ldots,N\}$ and all share the same colour. -/
++def HasMonoAP (χ : ℕ → ℕ) (N k : ℕ) : Prop :=
++  ∃ a d : ℕ, 0 < d ∧ 1 ≤ a ∧ a + (k - 1) * d ≤ N ∧
++    ∀ i : ℕ, i < k → χ (a + i * d) = χ a
++
++/-- A colouring $\chi : \mathbb{N} \to \mathbb{N}$ has a rainbow $3$-term arithmetic
++progression within $\{1,\ldots,N\}$: there exist $a \geq 1$ and $d \geq 1$ such that
++$a, a+d, a+2d$ are all in $\{1,\ldots,N\}$ and their colours are pairwise distinct. -/
++def HasRainbowAP (χ : ℕ → ℕ) (N : ℕ) : Prop :=
++  ∃ a d : ℕ, 0 < d ∧ 1 ≤ a ∧ a + 2 * d ≤ N ∧
++    χ a ≠ χ (a + d) ∧ χ a ≠ χ (a + 2 * d) ∧ χ (a + d) ≠ χ (a + 2 * d)
++
++/-- $H(k)$ is the smallest $N$ such that any colouring of $\{1,\ldots,N\}$ contains
++either a monochromatic $k$-term AP or a rainbow $3$-term AP. -/
++noncomputable def H (k : ℕ) : ℕ :=
++  sInf {N : ℕ | ∀ χ : ℕ → ℕ, HasMonoAP χ N k ∨ HasRainbowAP χ N}
++
++/--
++Erdős Problem 190 [ErGr79, ErGr80]:
++
++Is it true that $H(k)^{1/k}/k \to \infty$ as $k \to \infty$, where $H(k)$ is the smallest $N$
++such that any finite colouring of $\{1,\ldots,N\}$ always contains either a monochromatic
++$k$-term arithmetic progression or a rainbow arithmetic progression?
++-/
++@[category research open, AMS 5]
++theorem erdos_190 : answer(sorry) ↔
++    Tendsto (fun k : ℕ => (H k : ℝ) ^ ((1 : ℝ) / (k : ℝ)) / (k : ℝ)) atTop atTop := by
++  sorry
++
++/--
++Known weaker result: $H(k)^{1/k} \to \infty$ as $k \to \infty$ (without the additional
++division by $k$). This is described as "easy to show" on the website.
++-/
++@[category research solved, AMS 5]
++theorem erdos_190_weaker :
++    Tendsto (fun k : ℕ => (H k : ℝ) ^ ((1 : ℝ) / (k : ℝ))) atTop atTop := by
++  sorry
++
++end Erdos190
+diff --git a/FormalConjectures/ErdosProblems/483.lean b/FormalConjectures/ErdosProblems/483.lean
+new file mode 100644
+index 00000000..615f53e0
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/483.lean
+@@ -0,0 +1,79 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 483
++
++*Reference:* [erdosproblems.com/483](https://www.erdosproblems.com/483)
++
++See also Problem 183.
++
++OEIS: [A030126](https://oeis.org/A030126)
++
++[Er61] Erdős, P., _Some unsolved problems_. Magyar Tud. Akad. Mat. Kutató Int. Közl. 6 (1961),
++221–254.
++
++[Er65] Erdős, P., _Extremal problems in number theory_. Proc. Sympos. Pure Math. 8 (1965),
++181–189.
++
++[ACPPRT21] Ageron, R., Casteras, P., Pellerin, T., Portella, Y., Rimmel, A., Tomasik, J.,
++_New lower bounds for Schur and weak Schur numbers_. arXiv:2112.03175 (2021).
++
++[Wh73] Whitehead, E. G., Jr., _The Ramsey number N(3,3,3,3;2)_. Discrete Mathematics (1973),
++389–396.
++
++[He17] Heule, M., _Schur Number Five_. arXiv:1711.08076 (2017).
++-/
++
++namespace Erdos483
++
++/-- A coloring $f : \mathbb{N} \to \text{Fin}\ k$ has a *monochromatic Schur triple* in
++$\{1, \ldots, N\}$ if there exist $a, b \geq 1$ with $a + b \leq N$ and
++$f(a) = f(b) = f(a + b)$. -/
++def HasMonochromaticSchurTriple (k N : ℕ) (f : ℕ → Fin k) : Prop :=
++  ∃ a b : ℕ, 1 ≤ a ∧ 1 ≤ b ∧ a + b ≤ N ∧ f a = f b ∧ f b = f (a + b)
++
++/--
++Erdős Problem 483 [Er61, p.233] [Er65, p.188]:
++
++Let $f(k)$ be the minimal $N$ such that if $\{1, \ldots, N\}$ is $k$-coloured then there is a
++monochromatic solution to $a + b = c$. The values $f(k)$ are known as Schur numbers.
++
++Estimate $f(k)$. In particular, is it true that $f(k) < c^k$ for some constant $c > 0$?
++
++The best-known bounds for large $k$ are
++$$
++  380^{k/5} - O(1) \leq f(k) \leq \lfloor (e - 1/24)\, k! \rfloor - 1.
++$$
++The known values are $f(1) = 2$, $f(2) = 5$, $f(3) = 14$, $f(4) = 45$, $f(5) = 161$
++(OEIS A030126).
++
++We formalize the conjecture: there exists $c > 0$ such that for all $k \geq 1$,
++every $k$-coloring of $\{1, \ldots, N\}$ with $N \geq c^k$ has a monochromatic Schur triple.
++Equivalently, the Schur number $f(k)$ grows at most exponentially in $k$.
++-/
++@[category research open, AMS 5]
++theorem erdos_483 : answer(sorry) ↔
++    ∃ c : ℝ, 0 < c ∧
++      ∀ k : ℕ, 1 ≤ k →
++        ∀ N : ℕ, c ^ k ≤ (N : ℝ) →
++          ∀ f : ℕ → Fin k,
++            HasMonochromaticSchurTriple k N f := by
++  sorry
++
++end Erdos483
+diff --git a/FormalConjectures/ErdosProblems/531.lean b/FormalConjectures/ErdosProblems/531.lean
+new file mode 100644
+index 00000000..4f6cf376
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/531.lean
+@@ -0,0 +1,93 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 531
++
++*Reference:* [erdosproblems.com/531](https://www.erdosproblems.com/531)
++
++Let $F(k)$ be the minimal $N$ such that if we two-colour $\{1,\ldots,N\}$ there
++is a set $A$ of size $k$ such that all subset sums $\sum_{a\in S}a$
++(for $\emptyset\neq S\subseteq A$) are monochromatic. Estimate $F(k)$.
++
++Originally posed by Erdős [Er73].
++
++The existence of $F(k)$ was established by Sanders and Folkman, and also follows
++from Rado's theorem. This is commonly known as Folkman's theorem.
++
++Known lower bounds:
++- Erdős–Spencer [ErSp89]: $F(k) \geq 2^{ck^2/\log k}$ for some $c > 0$.
++- Balogh–Eberhard–Narayanan–Treglown–Wagner [BENTW17]: $F(k) \geq 2^{2^{k-1}/k}$.
++
++[Er73] Erdős, P., _Problems and results on combinatorial number theory_. In: A Survey of
++Combinatorial Theory (1973), 117–138.
++
++[ErSp89] Erdős, P. and Spencer, J., _Monochromatic sumsets_. Journal of Combinatorial
++Theory, Series A **50** (1989), 162–163.
++
++[BENTW17] Balogh, J., Eberhard, S., Narayanan, B., Treglown, A. and Wagner, A. Z.,
++_An improved lower bound for Folkman's theorem_. Bulletin of the London Mathematical
++Society **49** (2017), 745–747.
++-/
++
++open Finset
++
++open scoped BigOperators
++
++namespace Erdos531
++
++/-- A 2-coloring $\chi : \mathbb{N} \to \mathrm{Bool}$ admits a **monochromatic subset-sum
++$k$-set** within $\{1, \ldots, N\}$ if there is a $k$-element set
++$A \subseteq \{1, \ldots, N\}$ whose non-empty subset sums all lie in
++$\{1, \ldots, N\}$ and receive the same color. -/
++def HasMonoSubsetSumSet (χ : ℕ → Bool) (k N : ℕ) : Prop :=
++  ∃ A : Finset ℕ,
++    A.card = k ∧
++    (∀ a ∈ A, 1 ≤ a ∧ a ≤ N) ∧
++    (∀ S ∈ A.powerset, S.Nonempty → ∑ i ∈ S, i ≤ N) ∧
++    ∃ c : Bool, ∀ S ∈ A.powerset, S.Nonempty → χ (∑ i ∈ S, i) = c
++
++/-- The **Folkman number** $F(k)$: the minimum $N$ such that every 2-coloring
++of $\{1, \ldots, N\}$ admits a $k$-element subset whose non-empty subset sums
++are monochromatic. -/
++noncomputable def folkmanNumber (k : ℕ) : ℕ :=
++  sInf {N : ℕ | ∀ χ : ℕ → Bool, HasMonoSubsetSumSet χ k N}
++
++/-- Folkman's theorem: for every $k$, the Folkman number $F(k)$ is finite.
++That is, there exists $N$ such that every 2-coloring of $\{1, \ldots, N\}$ has a
++monochromatic subset-sum $k$-set. -/
++@[category research solved, AMS 5]
++theorem folkman_theorem (k : ℕ) :
++    ∃ N : ℕ, ∀ χ : ℕ → Bool, HasMonoSubsetSumSet χ k N := by
++  sorry
++
++/--
++**Erdős Problem 531** (lower bound, [BENTW17]):
++
++$F(k) \geq 2^{2^{k-1}/k}$ for all sufficiently large $k$.
++
++This is the best known lower bound on the Folkman number, due to
++Balogh, Eberhard, Narayanan, Treglown, and Wagner.
++-/
++@[category research solved, AMS 5]
++theorem erdos_531 :
++    ∃ k₀ : ℕ, ∀ k : ℕ, k₀ ≤ k →
++      (folkmanNumber k : ℝ) ≥ (2 : ℝ) ^ ((2 : ℝ) ^ ((k : ℝ) - 1) / (k : ℝ)) := by
++  sorry
++
++end Erdos531
+diff --git a/FormalConjectures/ErdosProblems/77.lean b/FormalConjectures/ErdosProblems/77.lean
+new file mode 100644
+index 00000000..0f5462ba
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/77.lean
+@@ -0,0 +1,140 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++import Mathlib.Combinatorics.SimpleGraph.Copy
++
++/-!
++# Erdős Problem 77
++
++*Reference:* [erdosproblems.com/77](https://www.erdosproblems.com/77)
++
++If $R(k)$ is the diagonal Ramsey number, the minimal $n$ such that every 2-colouring
++of the edges of $K_n$ contains a monochromatic copy of $K_k$, then find the value of
++$$\lim_{k \to \infty} R(k)^{1/k}.$$
++
++Erdős proved $\sqrt{2} \leq \liminf R(k)^{1/k} \leq \limsup R(k)^{1/k} \leq 4$.
++The upper bound has been improved to $3.7992\ldots$ by Gupta, Ndiaye, Norin, and
++Wei [GNNW24], building on the breakthrough of Campos, Griffiths, Morris,
++and Sahasrabudhe [CGMS23] who first improved the upper bound below 4.
++A simplified proof of the sub-4 bound was given by Balister, Bollobás, Campos,
++Griffiths, Hurley, Morris, Sahasrabudhe, and Tiba [BBCGHMST24].
++
++Erdős conjectured the limit is "perhaps 2 but we have no real evidence for this" [Er93].
++
++Erdős offered \$100 for proving the limit exists, and \$1,000 (later raised to \$10,000
++in [Er88]) for proving it does not exist.
++
++See also OEIS sequence A059442 and related problems #627, #1029.
++
++[Er61] Erdős, P., _Graph theory and probability, II_. Canad. J. Math. **13** (1961), 346–352.
++
++[Er69b] Erdős, P., _Some applications of Ramsey's theorem to additive number theory_.
++European J. Combin. (1969).
++
++[Er71] Erdős, P., _On some extremal problems on r-graphs_. Discrete Math. **1** (1971), 1–6.
++
++[Er81] Erdős, P., _On the combinatorial problems which I would most like to see solved_.
++Combinatorica **1** (1981), 25–42.
++
++[Er88] Erdős, P., _Problems and results on chromatic numbers in finite and infinite graphs_.
++Graph Theory with Applications to Algorithms and Computer Science (1988).
++
++[Er90b] Erdős, P., _Some of my old and new problems in elementary number theory and
++combinatorics_. Congressus Numerantium (1990).
++
++[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is Eighty,
++Vol. 2 (1993).
++
++[Er95] Erdős, P., _Some of my favourite problems in various branches of combinatorics_.
++Congressus Numerantium **107** (1995).
++
++[Er97c] Erdős, P., _Some recent problems and results in graph theory_. Discrete Math.
++**164** (1997), 81–85.
++
++[Er97d] Erdős, P., _Some of my favourite problems in number theory, combinatorics,
++and geometry_.
++
++[Va99] Vaughan, R. C., _On the number of monochromatic complete subgraphs_.
++
++[CGMS23] Campos, M., Griffiths, S., Morris, R., and Sahasrabudhe, J.,
++_An exponential improvement for diagonal Ramsey_. (2023).
++
++[GNNW24] Gupta, A., Ndiaye, M., Norin, S., and Wei, F.,
++_An improved upper bound for diagonal Ramsey numbers_. (2024).
++
++[BBCGHMST24] Balister, P., Bollobás, B., Campos, M., Griffiths, S., Hurley, E.,
++Morris, R., Sahasrabudhe, J., and Tiba, M., _A simple proof of the upper bound for
++diagonal Ramsey numbers_. (2024).
++-/
++
++open Filter SimpleGraph
++
++open scoped Topology
++
++namespace Erdos77
++
++/-- The (diagonal) graph Ramsey number $R(H)$: the minimum $N$ such that every simple
++graph $G$ on $N$ vertices either contains a copy of $H$ as a subgraph or its
++complement contains a copy of $H$. -/
++noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
++  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
++    H.IsContained G ∨ H.IsContained Gᶜ}
++
++/-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
++noncomputable def diagRamsey (k : ℕ) : ℕ :=
++  graphRamseyNumber (⊤ : SimpleGraph (Fin k))
++
++/--
++Erdős Problem 77:
++
++Find the value of $\lim_{k \to \infty} R(k)^{1/k}$, where $R(k)$ is the diagonal
++Ramsey number.
++-/
++@[category research open, AMS 5]
++theorem erdos_77 :
++    Tendsto (fun k : ℕ =>
++      (diagRamsey k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
++      atTop (nhds (answer(sorry) : ℝ)) := by
++  sorry
++
++/--
++Erdős Problem 77 — Existence variant:
++
++The limit $\lim_{k \to \infty} R(k)^{1/k}$ exists. Erdős offered \$100 for a proof.
++-/
++@[category research open, AMS 5]
++theorem erdos_77.variants.limit_exists :
++    ∃ L : ℝ, Tendsto (fun k : ℕ =>
++      (diagRamsey k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
++      atTop (nhds L) := by
++  sorry
++
++/--
++Erdős Problem 77 — Non-existence variant:
++
++The limit $\lim_{k \to \infty} R(k)^{1/k}$ does not exist, i.e.,
++$\liminf R(k)^{1/k} < \limsup R(k)^{1/k}$.
++Erdős offered \$1,000 (later raised to \$10,000) for a proof.
++-/
++@[category research open, AMS 5]
++theorem erdos_77.variants.limit_does_not_exist :
++    ¬ ∃ L : ℝ, Tendsto (fun k : ℕ =>
++      (diagRamsey k : ℝ) ^ ((1 : ℝ) / (k : ℝ)))
++      atTop (nhds L) := by
++  sorry
++
++end Erdos77
+diff --git a/FormalConjectures/ErdosProblems/78.lean b/FormalConjectures/ErdosProblems/78.lean
+new file mode 100644
+index 00000000..486029ab
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/78.lean
+@@ -0,0 +1,121 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 78
++
++*Reference:* [erdosproblems.com/78](https://www.erdosproblems.com/78)
++
++Give a constructive proof that $R(k) > C^k$ for some constant $C > 1$, where $R(k)$ is the
++diagonal Ramsey number. Erdős's probabilistic proof that $R(k) \gg k \cdot 2^{k/2}$ is
++non-constructive. Prize: \$100.
++
++Partial progress: Cohen [Co15] constructed a graph on $n$ vertices with no clique or independent
++set of size $\geq 2^{(\log \log n)^C}$. Li [Li23b] improved this to $(\log n)^C$.
++
++See also OEIS sequence A059442 and related problems #77, #1029.
++
++[Er69b] Erdős, P., _Some applications of Ramsey's theorem to additive number theory_.
++European J. Combin. (1969).
++
++[Er71] Erdős, P., _On some extremal problems on r-graphs_. Discrete Math. **1** (1971), 1–6.
++
++[Er88] Erdős, P., _Problems and results on chromatic numbers in finite and infinite graphs_.
++Graph Theory with Applications to Algorithms and Computer Science (1988).
++
++[Er93] Erdős, P., _On some of my favourite theorems_. Combinatorics, Paul Erdős is Eighty,
++Vol. 2 (1993), p. 337.
++
++[Er95] Erdős, P., _Some of my favourite problems in various branches of combinatorics_.
++Congressus Numerantium **107** (1995).
++
++[Er97c] Erdős, P., _Some recent problems and results in graph theory_. Discrete Math.
++**164** (1997), 81–85.
++
++[Va99] Vaughan, R. C., _On the number of monochromatic complete subgraphs_. (1999), 3.49.
++
++[Co15] Cohen, D., _Two-source dispersers for polylogarithmic entropy and improved Ramsey
++graphs_. (2015).
++
++[Li23b] Li, Z., _Explicit Ramsey graphs and two-source extractors_. (2023).
++-/
++
++open SimpleGraph
++
++namespace Erdos78
++
++/--
++Erdős Problem 78 (Open, \$100 prize):
++
++Let $R(k)$ be the Ramsey number for $K_k$, the minimal $n$ such that every
++2-colouring of the edges of $K_n$ contains a monochromatic copy of $K_k$.
++Give a constructive proof that $R(k) > C^k$ for some constant $C > 1$.
++
++Erdős gave a simple probabilistic (non-constructive) proof that
++$R(k) \gg k \cdot 2^{k/2}$. This problem asks for an explicit/constructive
++lower bound that is still exponential in $k$.
++
++Equivalently, this asks for an explicit construction of a graph on $n$
++vertices which does not contain any clique or independent set of size
++$\geq c \cdot \log(n)$ for some constant $c > 0$.
++
++We formalize the core mathematical content: there exists $C > 1$ such that
++for all $k \geq 2$, there exists a graph on at least $C^k$ vertices with no
++clique or independent set of size $k$ (an independent set of size $k$ in $G$
++is equivalent to a clique of size $k$ in the complement $G^c$, by
++`SimpleGraph.isClique_compl`). The "constructive" requirement pertains
++to the nature of the proof, not the formal statement itself.
++-/
++@[category research open, AMS 5]
++theorem erdos_78 :
++    ∃ C : ℝ, C > 1 ∧ ∀ k : ℕ, k ≥ 2 →
++      ∃ n : ℕ, (C ^ k : ℝ) ≤ ↑n ∧
++        ∃ G : SimpleGraph (Fin n),
++          G.CliqueFree k ∧ Gᶜ.CliqueFree k := by
++  sorry
++
++/--
++Erdős Problem 78 — $o(\sqrt{n})$ variant [Er69b]:
++
++Erdős also asked for an explicit construction of a graph on $n$ vertices
++with no clique or independent set of size $o(\sqrt{n})$. This is weaker
++than the full exponential lower bound. The website notes this is now known.
++-/
++@[category research solved, AMS 5]
++theorem erdos_78_variant_sqrt :
++    ∃ (f : ℕ → ℕ), (∀ n, f n < n) ∧
++      Filter.Tendsto (fun n => (f n : ℝ) / n ^ (1/2 : ℝ)) Filter.atTop (nhds 0) ∧
++      ∀ n, ∃ G : SimpleGraph (Fin n), G.CliqueFree (f n) ∧ Gᶜ.CliqueFree (f n) := by
++  sorry
++
++/--
++Erdős Problem 78 — logarithmic formulation:
++
++Equivalently, there exists a constant $c > 0$ such that for all $n \geq 2$,
++there is a graph on $n$ vertices with no clique or independent set of size
++$\geq c \cdot \log(n)$. This is logically equivalent to `erdos_78` but
++phrased in the "construct a graph on $n$ vertices" framing.
++-/
++@[category research open, AMS 5]
++theorem erdos_78_log :
++    ∃ c : ℝ, c > 0 ∧ ∀ n : ℕ, n ≥ 2 →
++      ∃ G : SimpleGraph (Fin n),
++        G.CliqueFree ⌈c * Real.log n⌉₊ ∧ Gᶜ.CliqueFree ⌈c * Real.log n⌉₊ := by
++  sorry
++
++end Erdos78
+diff --git a/FormalConjectures/ErdosProblems/87.lean b/FormalConjectures/ErdosProblems/87.lean
+new file mode 100644
+index 00000000..25104a7f
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/87.lean
+@@ -0,0 +1,84 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++import Mathlib.Combinatorics.SimpleGraph.Copy
++
++/-!
++# Erdős Problem 87
++
++*Reference:* [erdosproblems.com/87](https://www.erdosproblems.com/87)
++
++[Er95] Erdős, P., _Problems and results in combinatorial analysis and graph theory_, 1995, p. 14.
++
++[FaMc93] Faudree, R. J. and McKay, B., _A conjecture of Erdős and the Ramsey number r(W)_,
++J. Combin. Math. Combin. Comput. **13** (1993), 23–31.
++
++Is it true that for every $\varepsilon > 0$ and all sufficiently large $k$, we have
++$R(G) > (1 - \varepsilon)^k R(k)$ for every graph $G$ with chromatic number $\chi(G) = k$?
++A stronger form asks whether $R(G) > c \cdot R(k)$ for some absolute constant $c > 0$.
++Erdős originally conjectured $R(G) \geq R(k)$, which fails already for $k = 4$ [FaMc93].
++-/
++
++open SimpleGraph
++
++namespace Erdos87
++
++/-- The (diagonal) graph Ramsey number $R(H)$: the minimum $N$ such that every simple
++graph $G$ on $N$ vertices either contains a copy of $H$ as a subgraph or its
++complement contains a copy of $H$ (equivalently, every 2-colouring of $K_N$
++contains a monochromatic copy of $H$). -/
++noncomputable def graphRamseyNumber {U : Type*} (H : SimpleGraph U) : ℕ :=
++  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)),
++    H.IsContained G ∨ H.IsContained Gᶜ}
++
++/-- The classical diagonal Ramsey number $R(k) := R(K_k, K_k)$. -/
++noncomputable def diagRamsey (k : ℕ) : ℕ :=
++  graphRamseyNumber (⊤ : SimpleGraph (Fin k))
++
++/--
++**Erdős Problem 87** — Weak form (open). [Er95, p. 14]
++
++Let $\varepsilon > 0$. Is it true that, if $k$ is sufficiently large, then
++$$R(G) > (1 - \varepsilon)^k \cdot R(k)$$
++for every graph $G$ with chromatic number $\chi(G) = k$?
++-/
++@[category research open, AMS 5]
++theorem erdos_87 : answer(sorry) ↔
++    ∀ ε : ℝ, 0 < ε → ε < 1 →
++    ∃ K : ℕ, ∀ k : ℕ, K ≤ k →
++    ∀ {V : Type*} [Fintype V] (G : SimpleGraph V),
++      G.chromaticNumber = k →
++      (diagRamsey k : ℝ) * (1 - ε) ^ k < (graphRamseyNumber G : ℝ) := by
++  sorry
++
++/--
++**Erdős Problem 87** — Strong form (open). [Er95, p. 14]
++
++Is there some $c > 0$ such that, for all large $k$,
++$$R(G) > c \cdot R(k)$$
++for every graph $G$ with chromatic number $\chi(G) = k$?
++-/
++@[category research open, AMS 5]
++theorem erdos_87.variants.strong : answer(sorry) ↔
++    ∃ c : ℝ, 0 < c ∧
++    ∃ K : ℕ, ∀ k : ℕ, K ≤ k →
++    ∀ {V : Type*} [Fintype V] (G : SimpleGraph V),
++      G.chromaticNumber = k →
++      c * (diagRamsey k : ℝ) < (graphRamseyNumber G : ℝ) := by
++  sorry
++
++end Erdos87
+diff --git a/FormalConjectures/ErdosProblems/948.lean b/FormalConjectures/ErdosProblems/948.lean
+new file mode 100644
+index 00000000..01510dc7
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/948.lean
+@@ -0,0 +1,50 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 948
++
++*Reference:* [erdosproblems.com/948](https://www.erdosproblems.com/948)
++
++[Er77c] Erdős, P., _Problems and results on combinatorial number theory. III._. Number Theory Day
++(Proc. Conf., Rockefeller Univ., New York, 1976) (1977), 43–72.
++
++Erdős initially asked whether this is possible with the set being monochromatic,
++but Galvin showed that this is not always possible. This is a variant of
++Hindman's theorem (see [532]).
++-/
++
++open Finset BigOperators
++
++namespace Erdos948
++
++/-- Is there a function $f : \mathbb{N} \to \mathbb{N}$ and $k \in \mathbb{N}$ such that for any
++$k$-colouring $\chi$ of the natural numbers, there is a strictly increasing sequence $a$ with
++$a(n) < f(n)$ for infinitely many $n$, and the finite subset sums of the sequence do not achieve
++all $k$ colours? -/
++@[category research open, AMS 5]
++theorem erdos_948 : answer(sorry) ↔
++    ∃ (f : ℕ → ℕ) (k : ℕ), 0 < k ∧
++    ∀ (χ : ℕ → Fin k),
++      ∃ (a : ℕ → ℕ), StrictMono a ∧
++        Set.Infinite {n : ℕ | a n < f n} ∧
++        ∃ (c : Fin k), ∀ (S : Finset ℕ), S.Nonempty →
++          χ (∑ i ∈ S, a i) ≠ c := by
++  sorry
++
++end Erdos948
+diff --git a/FormalConjectures/ErdosProblems/986.lean b/FormalConjectures/ErdosProblems/986.lean
+new file mode 100644
+index 00000000..2e3440ea
+--- /dev/null
++++ b/FormalConjectures/ErdosProblems/986.lean
+@@ -0,0 +1,150 @@
++/-
++Copyright 2026 The Formal Conjectures Authors.
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++    https://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-/
++
++import FormalConjectures.Util.ProblemImports
++
++/-!
++# Erdős Problem 986
++
++*Reference:* [erdosproblems.com/986](https://www.erdosproblems.com/986)
++
++Erdős conjectured that for any fixed $k \geq 3$, the Ramsey number $R(k,n)$ satisfies
++$R(k,n) \gg n^{k-1}/(\log n)^c$ for some constant $c > 0$.
++
++Spencer [Sp77] proved the $k = 3$ case and Mattheus and Verstraëte [MaVe23]
++proved the $k = 4$ case.
++
++The best general bounds available are:
++$$
++n^{(k+1)/2} / (\log n)^{1/(k-2) - (k+1)/2} \ll_k R(k,n) \ll_k n^{k-1} / (\log n)^{k-2}
++$$
++The lower bound was proved by Bohman and Keevash [BoKe10].
++The upper bound was proved by Ajtai, Komlós, and Szemerédi [AKS80].
++Li, Rousseau, and Zang [LRZ01] improved the upper bound constant.
++
++[Sp77] Spencer, J., _Asymptotic lower bounds for Ramsey functions_. Discrete Math. 20 (1977),
++69-76.
++
++[MaVe23] Mattheus, S. and Verstraëte, J., _The asymptotics of $r(4,t)$_. Ann. of Math. 199
++(2024), 919-941.
++
++[BoKe10] Bohman, T. and Keevash, P., _The early evolution of the $H$-free process_. Invent.
++Math. 181 (2010), 291-336.
++
++[AKS80] Ajtai, M., Komlós, J. and Szemerédi, E., _A note on Ramsey numbers_. J. Combin.
++Theory Ser. A 29 (1980), 354-360.
++
++[LRZ01] Li, Y., Rousseau, C. C. and Zang, W., _Asymptotic upper bounds for Ramsey functions_.
++Graphs Combin. 17 (2001), 123-128.
++
++[Er90b] Erdős, P., _Some of my favourite problems in various branches of combinatorics_.
++Matematiche (Catania) 47 (1992), 231-240.
++
++See also Problem 165 (k=3 case), Problem 166 (k=4 case), Problem 920 (chromatic number
++connection).
++
++OEIS sequences: [A000791](https://oeis.org/A000791), [A059442](https://oeis.org/A059442).
++-/
++
++open SimpleGraph Real
++
++namespace Erdos986
++
++/-- The Ramsey number $R(k,n)$: the minimum $N$ such that every simple graph
++on $N$ vertices contains either a $k$-clique or an independent set of
++size $n$ (an $n$-clique in the complement). -/
++noncomputable def ramseyR (k n : ℕ) : ℕ :=
++  sInf {N : ℕ | ∀ (G : SimpleGraph (Fin N)), ¬G.CliqueFree k ∨ ¬Gᶜ.CliqueFree n}
++
++/--
++Erdős Conjecture (Problem #986) [Er90b]:
++
++For any fixed $k \geq 3$, there exist constants $C > 0$ and $c \in \mathbb{N}$ with $c > 0$
++such that for all sufficiently large $n$:
++$$
++R(k,n) \geq C \cdot n^{k-1} / (\log n)^c.
++$$
++In asymptotic notation: $R(k,n) \gg n^{k-1}/(\log n)^c$ for some $c > 0$.
++-/
++@[category research open, AMS 5]
++theorem erdos_986 (k : ℕ) (hk : 3 ≤ k) :
++    ∃ C : ℝ, 0 < C ∧
++    ∃ c : ℕ, 0 < c ∧
++    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
++      C * ((n : ℝ) ^ (k - 1) / (Real.log (n : ℝ)) ^ c) ≤ (ramseyR k n : ℝ) := by
++  sorry
++
++/--
++Spencer's theorem (1977) [Sp77]: the $k = 3$ case of Erdős Problem 986.
++
++There exist constants $C > 0$ and $c \in \mathbb{N}$ with $c > 0$ such that for all
++sufficiently large $n$, $R(3,n) \geq C \cdot n^2 / (\log n)^c$.
++
++See also Problem 165.
++-/
++@[category research solved, AMS 5]
++theorem erdos_986_k_eq_3 :
++    ∃ C : ℝ, 0 < C ∧
++    ∃ c : ℕ, 0 < c ∧
++    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
++      C * ((n : ℝ) ^ 2 / (Real.log (n : ℝ)) ^ c) ≤ (ramseyR 3 n : ℝ) := by
++  sorry
++
++/--
++Mattheus–Verstraëte theorem (2023) [MaVe23]: the $k = 4$ case of Erdős Problem 986.
++
++There exist constants $C > 0$ and $c \in \mathbb{N}$ with $c > 0$ such that for all
++sufficiently large $n$, $R(4,n) \geq C \cdot n^3 / (\log n)^c$.
++
++See also Problem 166.
++-/
++@[category research solved, AMS 5]
++theorem erdos_986_k_eq_4 :
++    ∃ C : ℝ, 0 < C ∧
++    ∃ c : ℕ, 0 < c ∧
++    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
++      C * ((n : ℝ) ^ 3 / (Real.log (n : ℝ)) ^ c) ≤ (ramseyR 4 n : ℝ) := by
++  sorry
++
++/--
++Ajtai–Komlós–Szemerédi upper bound (1980) [AKS80]:
++
++For any fixed $k \geq 3$, there exists a constant $C > 0$ such that for all sufficiently
++large $n$, $R(k,n) \leq C \cdot n^{k-1} / (\log n)^{k-2}$.
++-/
++@[category research solved, AMS 5]
++theorem erdos_986_upper (k : ℕ) (hk : 3 ≤ k) :
++    ∃ C : ℝ, 0 < C ∧
++    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
++      (ramseyR k n : ℝ) ≤ C * ((n : ℝ) ^ (k - 1) / (Real.log (n : ℝ)) ^ (k - 2)) := by
++  sorry
++
++/--
++Bohman–Keevash lower bound (2010) [BoKe10]:
++
++For any fixed $k \geq 3$, there exists a constant $C > 0$ such that for all sufficiently
++large $n$, $R(k,n) \geq C \cdot n^{(k+1)/2} / (\log n)^{(k+1)/2 - 1/(k-2)}$.
++-/
++@[category research solved, AMS 5]
++theorem erdos_986_lower (k : ℕ) (hk : 3 ≤ k) :
++    ∃ C : ℝ, 0 < C ∧
++    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ ≤ n →
++      C * (((n : ℝ) ^ (((k : ℝ) + 1) / 2)) /
++        ((Real.log (n : ℝ)) ^ (((k : ℝ) + 1) / 2 - 1 / ((k : ℝ) - 2)))) ≤
++        (ramseyR k n : ℝ) := by
++  sorry
++
++end Erdos986
