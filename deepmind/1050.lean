@@ -31,6 +31,8 @@ This was proved by Borwein [Bo91], who more generally proved that, for any
 integer $q \geq 2$ and rational $r \neq 0$ (distinct from $-q^n$ for all $n \geq 1$), the
 series $\sum_{n=1}^{\infty} 1/(q^n + r)$ is irrational.
 
+Related OEIS sequence: [A331372](https://oeis.org/A331372).
+
 [Er48] Erdős, P., _On arithmetical properties of Lambert series_. J. Indian Math. Soc. (N.S.)
 (1948), 63-66.
 
@@ -40,7 +42,7 @@ number theory*. Monographies de L'Enseignement Mathematique (1980).
 [Er88c] Erdős, P., _On the irrationality of certain series: problems and results_. New advances
 in transcendence theory (Durham, 1986) (1988), 102-109.
 
-[Bo91] Borwein, P., _On the irrationality of $\sum(1/(q^n+r))$_. J. Number Theory (1991),
+[Bo91] Borwein, P. B., _On the irrationality of $\sum(1/(q^n+r))$_. J. Number Theory (1991),
 253-259.
 -/
 
@@ -67,6 +69,18 @@ $\sum_{n=1}^{\infty} 1/(q^n + r)$ is irrational.
 theorem erdos_1050.variants.borwein_general (q : ℤ) (r : ℚ) (hq : q ≥ 2) (hr : r ≠ 0)
     (hqr : ∀ n : ℕ+, (r : ℝ) ≠ -(q : ℝ) ^ (n : ℕ)) :
     Irrational (∑' n : ℕ+, 1 / ((q : ℝ) ^ (n : ℕ) + (r : ℝ))) := by
+  sorry
+
+/--
+Erdős [Er48] proved that $\sum_{n=1}^{\infty} 1/(2^n - 1) = \sum_{n=1}^{\infty} \tau(n)/2^n$
+is irrational, where $\tau(n)$ is the divisor function. (Only the irrationality of
+$\sum_{n=1}^{\infty} 1/(2^n - 1)$ — the Erdős–Borwein constant — is stated here; the Lambert
+series identity is formalized as `lambert_series_eq_num_divisor_sum` in the file for
+Erdős Problem 1049.)
+-/
+@[category research solved, AMS 11 40]
+theorem erdos_1050.variants.erdos_lambert :
+    Irrational (∑' (n : ℕ+), (1 : ℝ) / ((2 : ℝ) ^ (n : ℕ) - 1)) := by
   sorry
 
 /--
