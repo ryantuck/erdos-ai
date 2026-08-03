@@ -43,8 +43,8 @@ more general problem concerning $\lim_k R(k)^{1/k}$ and discussion of upper boun
 
 [Sp75] Spencer, J., *Ramsey's theorem — a new lower bound*, J. Combin. Theory Ser. A 18 (1975), 108–115.
 
-[Er93] Erdős, P., *On some of my favourite theorems*. Combinatorics, Paul Erdős is eighty,
-Vol. 2 (Keszthely, 1993), 97–132.
+[Er93] Erdős, P., *Some of my favorite solved and unsolved problems in graph theory*.
+Quaestiones Mathematicae **16** (1993), 333–350.
 -/
 
 open Combinatorics
