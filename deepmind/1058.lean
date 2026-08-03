@@ -62,4 +62,26 @@ theorem erdos_1058 :
       (n.factorial + 1).primeFactors ⊆ {q, r}} := by
   sorry
 
+/--
+The sharp form of Erdős Problem 1058, proved by Luca [Lu01]: under the source's
+convention that $n \in [p_{k-1}, p_k)$ for some $k \ge 1$ (so $n \ge 1$), the
+only solutions are $n = 1, 2, 3, 4, 5$.
+
+This variant restricts to $0 < n$ to match the source's indexing convention.
+Without that restriction the set of the main theorem also contains the
+degenerate element $n = 0$ (which no interval $[p_{k-1}, p_k)$ covers):
+$0! + 1 = 2$, and $2$ is the least prime greater than $0$, so the prime factors
+of $0! + 1$ lie in $\{q, r\} = \{2, 3\}$.
+-/
+@[category research solved, AMS 11]
+theorem erdos_1058.variants.luca_solution_set :
+    {n : ℕ | 0 < n ∧ ∃ (q r : ℕ),
+      -- q is the smallest prime strictly greater than n
+      Nat.Prime q ∧ n < q ∧ (∀ p, Nat.Prime p → n < p → q ≤ p) ∧
+      -- r is the next prime after q
+      Nat.Prime r ∧ q < r ∧ (∀ p, Nat.Prime p → q < p → r ≤ p) ∧
+      -- every prime factor of n! + 1 is either q or r
+      (n.factorial + 1).primeFactors ⊆ {q, r}} = {1, 2, 3, 4, 5} := by
+  sorry
+
 end Erdos1058
