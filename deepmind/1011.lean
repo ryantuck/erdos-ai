@@ -24,20 +24,30 @@ import FormalConjectures.Util.ProblemImports
 Let $f_r(n)$ be minimal such that every graph on $n$ vertices with $\geq f_r(n)$
 edges and chromatic number $\geq r$ contains a triangle. Determine $f_r(n)$.
 
+The problem was posed by Erdős [Er71]. The full problem of determining $f_r(n)$ is
+**open** (erdosproblems.com status: OPEN; page last edited 06 December 2025); this
+file formalizes the solved Simonovits asymptotic and the known exact values for
+$r = 2, 3, 4$.
+
 Turán's theorem implies $f_2(n) = \lfloor n^2/4 \rfloor + 1$.
 Erdős and Gallai [Er62d] proved $f_3(n) = \lfloor (n-1)^2/4 \rfloor + 2$.
 Ren, Wang, Wang, and Yang [RWWY24] proved $f_4(n) = \lfloor (n-3)^2/4 \rfloor + 6$
 for $n \geq 150$.
 
-Simonovits [Si74] showed $f_r(n) = n^2/4 - g(r)/2 \cdot n + O(1)$, where $g(r)$ is
+Simonovits showed in his PhD thesis (see the discussion on p. 358 of [Si74]) that
+$f_r(n) = n^2/4 - g(r)/2 \cdot n + O(1)$, where $g(r)$ is
 the largest $m$ such that any triangle-free graph with chromatic number $\geq r$
 requires removing at least $m$ vertices to become bipartite.
 
-The best known bounds on $g(r)$ are
+Simonovits [Si74] notes
+$\frac{\log r}{\log\log r} r^2 \ll g(r) \ll (\log r)^2 r^2$; Hunter has noted that
+other results imply $g(r) \asymp r^2 \log r$ — in fact the best known bounds are
 $(1/2 - o(1)) r^2 \log r \leq g(r) \leq (2 + o(1)) r^2 \log r$.
-The lower bound follows from Davies–Illingworth [DaIl22], and the upper bound from
-Hefty–Horn–King–Pfender [HHKP25].
+The lower bound follows from Davies–Illingworth [DaIl22] (see Erdős problem 1104),
+and the upper bound from Hefty–Horn–King–Pfender [HHKP25] on $R(3,k)$.
 
+[Er71] Erdős, P., _Some unsolved problems in graph theory and combinatorial analysis_.
+Combinatorial Mathematics and its Applications (Proc. Conf., Oxford, 1969) (1971), 97–109.
 [Er62d] Erdős, P., _On a theorem of Rademacher-Turán_. Illinois J. Math. **6** (1962), 122–127.
 [Si74] Simonovits, M., _Extremal graph problems with symmetrical extremal graphs.
 Additional chromatic conditions_. Discrete Math. **7** (1974), 349–376.
@@ -75,6 +85,47 @@ theorem erdos_1011 :
       ∃ (g_r : ℝ) (C : ℝ), 0 ≤ C ∧
         ∀ᶠ n in atTop,
           |(minTriangleEdges r n : ℝ) - ((n : ℝ) ^ 2 / 4 - g_r / 2 * (n : ℝ))| ≤ C := by
+  sorry
+
+/--
+**Turán bound, $r = 2$** — for $n \geq 2$, $f_2(n) = \lfloor n^2/4 \rfloor + 1$:
+every graph on $n$ vertices with more than $n^2/4$ edges contains a triangle
+(Mantel/Turán), while $K_{\lfloor n/2 \rfloor, \lceil n/2 \rceil}$ is
+triangle-free with chromatic number $2$ and $\lfloor n^2/4 \rfloor$ edges.
+
+The source page states the identity with no restriction on $n$; for $n \leq 1$ the
+formal $f_2(n)$ equals $0$ (no graph on $\leq 1$ vertices has chromatic number
+$\geq 2$, so the defining property holds vacuously for every $m$), hence the
+hypothesis $n \geq 2$. `n ^ 2 / 4` is ℕ-division, which is exactly the floor.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1011.variants.turan_f2 :
+    ∀ n : ℕ, 2 ≤ n → minTriangleEdges 2 n = n ^ 2 / 4 + 1 := by
+  sorry
+
+/--
+**Erdős–Gallai** [Er62d] — for $n \geq 5$, $f_3(n) = \lfloor (n-1)^2/4 \rfloor + 2$.
+
+The source page states the identity with no restriction on $n$; for $n \leq 4$ the
+formal $f_3(n)$ equals $0$ (any graph on $\leq 4$ vertices with chromatic number
+$\geq 3$ contains an odd cycle on $\leq 4$ vertices, which must be a triangle, so
+the defining property holds for every $m$), hence the hypothesis $n \geq 5$.
+Subtraction and division are ℕ-operations: $n \geq 5$ guards the truncated
+subtraction, and division by $4$ is exactly the floor.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1011.variants.erdos_gallai_f3 :
+    ∀ n : ℕ, 5 ≤ n → minTriangleEdges 3 n = (n - 1) ^ 2 / 4 + 2 := by
+  sorry
+
+/--
+**Ren–Wang–Wang–Yang** [RWWY24] — for $n \geq 150$,
+$f_4(n) = \lfloor (n-3)^2/4 \rfloor + 6$. The bound $n \geq 150$ is as stated on
+the source page.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1011.variants.ren_wang_wang_yang_f4 :
+    ∀ n : ℕ, 150 ≤ n → minTriangleEdges 4 n = (n - 3) ^ 2 / 4 + 6 := by
   sorry
 
 end Erdos1011
