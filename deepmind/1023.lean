@@ -19,11 +19,22 @@ import FormalConjectures.Util.ProblemImports
 /-!
 # Erdős Problem 1023
 
-Erdős asked for the asymptotic behaviour of the maximum size of a union-free family of subsets
-of an n-element set, conjecturing that it is asymptotic to $c \cdot 2^n / \sqrt{n}$ for some
-constant $c > 0$.
+Let $F(n)$ be the maximal size of a family of subsets of $\{1, \ldots, n\}$ such that no set
+in this family is the union of other members of the family. Is it true that there is a
+constant $c > 0$ such that
+$$F(n) \sim c \frac{2^n}{n^{1/2}}?$$
 
 *Reference:* [erdosproblems.com/1023](https://www.erdosproblems.com/1023)
+
+The answer is yes. Erdős and Kleitman proved in unpublished work that
+$F(n) \asymp 2^n / \sqrt{n}$. Zach Hunter observes (in the comments on the problem page)
+that the full asymptotic follows from the solution to Problem 447 (Kleitman's theorem
+[Kl71]), which implies $F(n) \sim \binom{n}{\lfloor n/2 \rfloor}$. As of February 2026,
+erdosproblems.com marks this problem SOLVED (LEAN), i.e. the resolution has been formally
+verified in Lean.
+
+If one only forbids a set being the union of *two* other members of the family
+($A = B \cup C$), this is the subject of Problem 447.
 
 Note: The original source [Er71] contains a typographical error (exponent $3/2$ instead of $1/2$).
 
@@ -55,17 +66,19 @@ noncomputable def unionFreeMax (n : ℕ) : ℕ :=
 /--
 Erdős Problem 1023 [Er71, p. 105]:
 
-There exists a constant $c > 0$ such that $F(n) \sim c \cdot 2^n / \sqrt{n}$, where $F(n)$
-is the maximum size of a union-free family of subsets of $\{1, \ldots, n\}$.
+Is it true that there is a constant $c > 0$ such that $F(n) \sim c \cdot 2^n / \sqrt{n}$,
+where $F(n)$ is the maximum size of a union-free family of subsets of $\{1, \ldots, n\}$?
 
-Formulated as: $\lim_{n \to \infty} F(n) \cdot \sqrt{n} \,/\, (c \cdot 2^n) = 1$.
+The answer is yes: Erdős and Kleitman proved $F(n) \asymp 2^n / \sqrt{n}$ in unpublished
+work, and Zach Hunter observes that the solution to Problem 447 [Kl71] implies
+$F(n) \sim \binom{n}{\lfloor n/2 \rfloor}$, which gives the asymptotic with
+$c = \sqrt{2/\pi}$.
 
-Erdős and Kleitman proved that $F(n) \asymp 2^n / \sqrt{n}$. Zach Hunter observes that the
-answer follows from the solution to Problem 447 [Kl71], which implies
-$F(n) \sim \binom{n}{\lfloor n/2 \rfloor}$.
+The asymptotic is formulated as:
+$\lim_{n \to \infty} F(n) \cdot \sqrt{n} \,/\, (c \cdot 2^n) = 1$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_1023 :
+theorem erdos_1023 : answer(True) ↔
     ∃ c : ℝ, c > 0 ∧
     Tendsto
       (fun n : ℕ => (unionFreeMax n : ℝ) * Real.sqrt (↑n) / (c * (2 : ℝ) ^ n))
@@ -73,16 +86,34 @@ theorem erdos_1023 :
   sorry
 
 /--
-Stronger form of Erdős Problem 1023, making the connection to Problem 447 explicit:
+Stronger form of Erdős Problem 1023, making the connection to Problem 447 explicit
+(observed by Zach Hunter, recorded on the problem page):
 
 $F(n) \sim \binom{n}{\lfloor n/2 \rfloor}$, i.e., the ratio $F(n) / \binom{n}{\lfloor n/2 \rfloor}$
 tends to $1$. This pins down the constant $c = \sqrt{2/\pi}$ via Stirling's approximation.
 -/
 @[category research solved, AMS 5]
-theorem erdos_1023_central_binomial :
+theorem erdos_1023.variants.central_binomial :
     Tendsto
       (fun n : ℕ => (unionFreeMax n : ℝ) / (Nat.choose n (n / 2) : ℝ))
       atTop (nhds 1) := by
+  sorry
+
+/--
+Erdős and Kleitman proved in unpublished work that $F(n) \asymp 2^n / \sqrt{n}$
+(recorded on the problem page; [Er71] states this with an exponent of $3/2$, presumably
+a typo for $1/2$).
+
+Stated for $n \geq 1$: at $n = 0$ the comparison function $2^n / \sqrt{n}$ degenerates
+(Lean's division by $\sqrt{0} = 0$ yields $0$, so the upper bound would fail there).
+Since $F(n) \cdot \sqrt{n} / 2^n$ is positive and finite for every $n \geq 1$, this
+all-$n \geq 1$ form is equivalent to the eventual ($n$ large) form of $\asymp$.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1023.variants.erdos_kleitman :
+    ∃ c₁ : ℝ, c₁ > 0 ∧ ∃ c₂ : ℝ, c₂ > 0 ∧ ∀ n : ℕ, 1 ≤ n →
+      c₁ * (2 : ℝ) ^ n / Real.sqrt (↑n) ≤ (unionFreeMax n : ℝ) ∧
+      (unionFreeMax n : ℝ) ≤ c₂ * (2 : ℝ) ^ n / Real.sqrt (↑n) := by
   sorry
 
 end Erdos1023
