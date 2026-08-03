@@ -29,9 +29,13 @@ where $\log^* n$ is the iterated logarithmic function?
 
 A problem of Bondy [Bo71], who claimed a proof (without details) of
 $$\log_2(n-1) - 1 \leq h(n) \leq \log_2 n + \log^* n + O(1).$$
-Erdős [Er71] believed the upper bound is closer to the truth. Griffin [Gr13] gave
-the first proof of the lower bound. George, Khodkar, and Wallis [GKW16] gave the
-first published proof of the upper bound.
+Erdős [Er71] believed the upper bound is closer to the truth, but could not even
+prove $h(n) - \log_2 n \to \infty$. A proof of the lower bound was later provided
+by Griffin [Gr13]. The first published proof of the upper bound appears in
+Chapter 4.5 of George, Khodkar, and Wallis [GKW16].
+
+The problem (the displayed lower-bound question) is listed as OPEN on
+erdosproblems.com (page last edited 27 December 2025, accessed 2026-02-22).
 
 OEIS: [A105206](https://oeis.org/A105206)
 
@@ -65,8 +69,14 @@ def IsPancyclic {n : ℕ} (G : SimpleGraph (Fin n)) : Prop :=
 
 /-- The minimum excess edges $h(n)$ for a pancyclic graph: the smallest $h$ such
     that there exists a pancyclic graph on $n$ vertices with $n + h$ edges.
-    Note: for $n < 3$, no graph is pancyclic, so the set is empty and
-    `sInf ∅ = 0` in `ℕ`. The theorems below restrict to $n \geq 3$. -/
+    Note: for $n < 3$ the value is a degenerate $0$: `IsPancyclic` is *vacuously
+    true* for every graph when $n < 3$ (the hypothesis $3 \leq k \leq n$ is
+    unsatisfiable), so for $n = 0$ the set is $\{0\}$ (the empty graph has
+    $0 = 0 + 0$ edges), while for $n = 1, 2$ the set is empty (a graph on $n$
+    vertices has at most $\binom{n}{2} < n \leq n + h$ edges) and
+    `sInf ∅ = 0` in `ℕ`. The theorems below restrict to $n \geq 3$, where the
+    set is nonempty (the complete graph is pancyclic) and `sInf` is a genuine
+    minimum. -/
 noncomputable def pancyclicExcess (n : ℕ) : ℕ :=
   sInf {h : ℕ | ∃ G : SimpleGraph (Fin n),
     G.edgeFinset.card = n + h ∧ IsPancyclic G}
@@ -87,11 +97,13 @@ def iteratedLog₂ (n : ℕ) : ℕ := iteratedLog₂Aux n n
 /--
 Erdős Problem 1016 [Er71]:
 
-The minimum number of edges beyond $n$ needed for a pancyclic graph on $n$
-vertices satisfies $h(n) \geq \lfloor\log_2 n\rfloor + \log^* n - O(1)$.
+Is it true that the minimum number of edges beyond $n$ needed for a pancyclic
+graph on $n$ vertices satisfies $h(n) \geq \log_2 n + \log^* n - O(1)$?
 
 Formulated as: there exists a constant $C$ such that for all $n \geq 3$,
-$h(n) + C \geq \lfloor\log_2 n\rfloor + \log^* n$.
+$h(n) + C \geq \lfloor\log_2 n\rfloor + \log^* n$. (Replacing $\log_2 n$ by
+its floor, and $\log^* n$ by the `ℕ`-valued iterated logarithm, changes each
+term by a bounded amount, which is absorbed into the $O(1)$ constant $C$.)
 -/
 @[category research open, AMS 5]
 theorem erdos_1016 : answer(sorry) ↔
@@ -102,13 +114,13 @@ theorem erdos_1016 : answer(sorry) ↔
 /--
 Erdős Problem 1016 — upper bound [Bo71] [GKW16]:
 
-Bondy claimed, and George–Khodkar–Wallis proved, that
-$h(n) \leq \lfloor\log_2 n\rfloor + \log^* n + O(1)$.
+Bondy claimed a proof (without details), and George–Khodkar–Wallis gave the
+first published proof (Chapter 4.5 of [GKW16]), that
+$h(n) \leq \log_2 n + \log^* n + O(1)$.
 
 Formulated as: there exists a constant $C$ such that for all $n \geq 3$,
-$\lfloor\log_2 n\rfloor + \text{iteratedLog}_2(n) \leq \text{pancyclicExcess}(n) + C$
-is *not* needed — rather, the excess itself is at most
-$\lfloor\log_2 n\rfloor + \log^* n + C$.
+$h(n) \leq \lfloor\log_2 n\rfloor + \log^* n + C$. (The floor loses less than
+$1$, which is absorbed into $C$.)
 -/
 @[category research solved, AMS 5]
 theorem erdos_1016_upper :
@@ -117,14 +129,19 @@ theorem erdos_1016_upper :
   sorry
 
 /--
-Erdős Problem 1016 — Griffin's lower bound [Gr13]:
+Erdős Problem 1016 — Griffin's lower bound [Bo71] [Gr13]:
 
-Griffin proved $h(n) \geq \lfloor\log_2(n-1)\rfloor - 1$ for all $n \geq 3$.
+Bondy claimed, and Griffin proved, that $h(n) \geq \log_2(n-1) - 1$ for all
+$n \geq 3$. Since $h(n)$ is an integer this is equivalent to
+$h(n) + 1 \geq \lceil\log_2(n-1)\rceil$, encoded with `Nat.clog` (ceiling log).
+(Using `Nat.log`, the floor, would state a strictly weaker bound whenever
+$n - 1$ is not a power of $2$: e.g. at $n = 6$ the true bound forces
+$h(6) \geq 2$ but the floored form only $h(6) \geq 1$.)
 -/
 @[category research solved, AMS 5]
 theorem erdos_1016_lower :
     ∀ n, n ≥ 3 →
-      pancyclicExcess n + 1 ≥ Nat.log 2 (n - 1) := by
+      pancyclicExcess n + 1 ≥ Nat.clog 2 (n - 1) := by
   sorry
 
 end Erdos1016
