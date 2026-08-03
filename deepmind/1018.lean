@@ -21,8 +21,16 @@ import FormalConjectures.Util.ProblemImports
 
 *Reference:* [erdosproblems.com/1018](https://www.erdosproblems.com/1018)
 
-For every ε > 0, there exists a constant C such that every simple graph on n vertices with at
-least ⌈n^{1+ε}⌉ edges contains an induced subgraph on at most C vertices which is non-planar.
+Let $\epsilon > 0$. Is there a constant $C_\epsilon$ such that, for all large $n$, every
+graph on $n$ vertices with at least $n^{1+\epsilon}$ edges must contain a subgraph on at
+most $C_\epsilon$ vertices which is non-planar?
+
+This was solved in the affirmative by Kostochka and Pyber [KoPy88], who proved that $G$
+must contain a subdivision of $K_5$ (which is non-planar) with $O_\epsilon(1)$ many
+vertices. Erdős [Er71] writes it is 'not difficult to see' that $C_\epsilon \to \infty$
+as $\epsilon \to 0$.
+
+Tags: graph theory, planar graphs.
 
 [Er71] Erdős, P., _Some unsolved problems in graph theory and combinatorial analysis_.
 Combinatorial Mathematics and its Applications (Proc. Conf., Oxford, 1969) (1971), 97-109.
@@ -42,15 +50,20 @@ opaque IsPlanar {V : Type*} [Fintype V] (_ : SimpleGraph V) : Prop
 /--
 Erdős Problem 1018 [Er71]:
 
-For every $\varepsilon > 0$, there exists a constant $C$ (depending on $\varepsilon$) and a
+Let $\varepsilon > 0$. Is there a constant $C_\varepsilon$ (depending on $\varepsilon$) and a
 threshold $N_0$ such that, for all $n \ge N_0$, every simple graph on $n$ vertices with at
-least $\lceil n^{1+\varepsilon} \rceil$ edges contains an induced subgraph on at most $C$ vertices
-which is non-planar.
+least $\lceil n^{1+\varepsilon} \rceil$ edges contains a subgraph on at most $C_\varepsilon$
+vertices which is non-planar?
 
-Solved by Kostochka and Pyber [KoPy88].
+Solved in the affirmative by Kostochka and Pyber [KoPy88], hence `answer(True)`.
+
+The source's "subgraph" is formalized as an *induced* subgraph: a non-planar subgraph on a
+vertex set $S$ forces the induced subgraph on $S$ (a supergraph on the same vertices) to be
+non-planar, and conversely an induced subgraph is a subgraph, so the two phrasings agree.
 -/
 @[category research solved, AMS 5]
 theorem erdos_1018 :
+    answer(True) ↔
     ∀ ε : ℝ, ε > 0 →
       ∃ (C N₀ : ℕ), ∀ n : ℕ, n ≥ N₀ →
         ∀ (G : SimpleGraph (Fin n)) (dG : DecidableRel G.Adj),
@@ -61,12 +74,13 @@ theorem erdos_1018 :
   sorry
 
 /--
-Erdős observed that $C_\varepsilon \to \infty$ as $\varepsilon \to 0$: any function $f$ witnessing
+Erdős [Er71] writes it is 'not difficult to see' that $C_\varepsilon \to \infty$ as
+$\varepsilon \to 0$: any function $f$ witnessing
 the main statement for all $\varepsilon > 0$ must satisfy $f(\varepsilon) \to \infty$ as
 $\varepsilon \to 0^+$.
 -/
 @[category research solved, AMS 5]
-theorem erdos_1018_C_tends_to_infinity :
+theorem erdos_1018.variants.C_tends_to_infinity :
     ∀ f : ℝ → ℕ, (∀ ε > 0, ∀ᶠ n in Filter.atTop,
       ∀ (G : SimpleGraph (Fin n)) (dG : DecidableRel G.Adj),
         haveI := dG;
