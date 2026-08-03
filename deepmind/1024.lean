@@ -22,17 +22,18 @@ import FormalConjectures.Util.ProblemImports
 *Reference:* [erdosproblems.com/1024](https://www.erdosproblems.com/1024)
 
 Let $f(n)$ be such that every $3$-uniform linear hypergraph on $n$ vertices contains
-an independent set on $f(n)$ vertices.
+an independent set on $f(n)$ vertices. Estimate $f(n)$.
 
 A hypergraph is linear if $|A \cap B| \leq 1$ for all edges $A$ and $B$. An independent
 set of vertices is one which contains no edges. A $3$-uniform linear hypergraph
 is sometimes called a partial Steiner triple system.
 
-A question of Erdős [Er71, p.106], who proved $n^{1/2} \ll f(n) \ll n^{2/3}$.
-Phelps and Rödl [PhRo86] proved $f(n) \asymp (n \log n)^{1/2}$.
+A question of Erdős [Er71, p.106], who could prove $n^{1/2} \ll f(n) \ll n^{2/3}$.
+Phelps and Rödl [PhRo86] proved $f(n) \asymp (n \log n)^{1/2}$, resolving the problem
+(the problem page marks it SOLVED; accessed 2026-02-22).
 
-[Er71] Erdős, P., _Topics in combinatorial analysis_. Proc. Second Louisiana Conf. on
-Combinatorics, Graph Theory and Computing (1971), 2–20.
+[Er71] Erdős, P., _Some unsolved problems in graph theory and combinatorial analysis_.
+Combinatorial Mathematics and its Applications (Proc. Conf., Oxford, 1969) (1971), 97-109.
 
 [PhRo86] Phelps, K. T. and Rödl, V., _Steiner triple systems with minimum independence
 number_. Ars Combin. 21 (1986), 167–172.
@@ -85,6 +86,24 @@ theorem erdos_1024 :
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       C₁ * Real.sqrt (↑n * Real.log ↑n) ≤ ↑(linearHypergraphIndNum n) ∧
       ↑(linearHypergraphIndNum n) ≤ C₂ * Real.sqrt (↑n * Real.log ↑n) := by
+  sorry
+
+/--
+Erdős's original bounds [Er71, p.106]: $n^{1/2} \ll f(n) \ll n^{2/3}$, the state of
+knowledge when the problem was posed.
+
+There exist constants $c_1, c_2 > 0$ and $N_0$ such that for all $n \geq N_0$,
+$$c_1 \sqrt{n} \leq f(n) \leq c_2 n^{2/3}.$$
+
+This is asymptotically subsumed by the Phelps–Rödl theorem `erdos_1024`; it is recorded
+as a variant for its historical interest, as on the problem page.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1024.variants.erdos_bounds :
+    ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧
+    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+      c₁ * Real.sqrt ↑n ≤ ↑(linearHypergraphIndNum n) ∧
+      ↑(linearHypergraphIndNum n) ≤ c₂ * (n : ℝ) ^ ((2 : ℝ) / 3) := by
   sorry
 
 end Erdos1024
