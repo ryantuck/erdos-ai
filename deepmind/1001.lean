@@ -29,11 +29,17 @@ exist? What is its explicit form?
 
 A problem of Erdős, Szüsz, and Turán [EST58], who proved the formula
 $f(A, c) = 12A \log c / \pi^2$
-when $0 < A < c/(1 + c^2)$.
+when $0 < A < c/(1 + c^2)$, and also that if $\min(A, c) > 10$ then
+$S(N, A, c)$ is bounded away from $0$ and $1$.
 
-The existence of the limit was proved by Kesten and Sós [KeSo66].
-Alternative, more explicit proofs were given by Boca [Bo08] and
+The existence of the limit was proved by Kesten and Sós [KeSo66], without
+a method to determine its value. Alternative, more explicit proofs of the
+existence of the limit were given independently by Boca [Bo08] and
 Xiong–Zaharescu [XiZa06].
+
+The problem is listed as SOLVED on erdosproblems.com (accessed 2026-02-22):
+the existence question is answered affirmatively, but no explicit form of
+$f(A, c)$ is known in general.
 
 [Er64b] Erdős, P., _Problems and results on diophantine approximations_.
 Compositio Math. (1964), 52–65.
@@ -88,10 +94,27 @@ When $0 < A < c/(1 + c^2)$, the limit $f(A, c) = 12A \log c / \pi^2$.
 Proved by Erdős, Szüsz, and Turán.
 -/
 @[category research solved, AMS 11 28]
-theorem erdos_1001_explicit_formula :
+theorem erdos_1001.variants.explicit_formula :
     ∀ (A c : ℝ), 0 < A → 1 < c → A < c / (1 + c ^ 2) →
       Tendsto (fun N : ℕ => sMeasure N A c) atTop
         (nhds (12 * A * Real.log c / Real.pi ^ 2)) := by
+  sorry
+
+/--
+Erdős Problem 1001 — boundedness [EST58]:
+
+If $\min(A, c) > 10$ then $S(N, A, c)$ is bounded away from $0$ and $1$
+for all sufficiently large $N$.
+
+Proved by Erdős, Szüsz, and Turán. (The "sufficiently large $N$" qualifier
+is necessary in this formalization: for $A > 1$ the fraction $0/1$ alone
+already gives $S(1, A, c) = 1$.)
+-/
+@[category research solved, AMS 11 28]
+theorem erdos_1001.variants.bounded_away :
+    ∀ (A c : ℝ), 10 < A → 10 < c →
+      ∃ ε : ℝ, 0 < ε ∧ ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+        ε ≤ sMeasure N A c ∧ sMeasure N A c ≤ 1 - ε := by
   sorry
 
 end Erdos1001
