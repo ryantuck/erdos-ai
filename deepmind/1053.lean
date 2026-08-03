@@ -24,11 +24,18 @@ import FormalConjectures.Util.ProblemImports
 Call a number $k$-perfect if $\sigma(n) = kn$, where $\sigma(n)$ is the sum of the divisors
 of $n$. Must $k = o(\log \log n)$?
 
-A question of Erdős, as reported in problem B2 of Guy's collection. Guy also notes that it has
-been suggested that there may be only finitely many $k$-perfect numbers with $k \geq 3$. The
-largest known $k$-value for which a $k$-perfect number has been discovered is $k = 11$.
+A question of Erdős, as reported in problem B2 of Guy's collection [Gu04]. Guy further writes
+'It has even been suggested that there may be only finitely many $k$-perfect numbers with
+$k \geq 3$.' The largest $k$ for which a $k$-perfect number has been found is $k = 11$ — see
+<https://wwwhomes.uni-bielefeld.de/achim/mpn.html> for more information.
 
-[Gu04] Guy, R., *Unsolved Problems in Number Theory*, 3rd edition, Springer, 2004.
+These are known as multiply perfect numbers. When $k = 2$ this is the definition of a
+perfect number.
+
+Related OEIS sequence: [A007539](https://oeis.org/A007539).
+
+[Gu04] Guy, R. K., *Unsolved Problems in Number Theory*, 3rd edition, Springer, 2004,
+xviii+437. Problem B2.
 -/
 
 open scoped ArithmeticFunction.sigma
@@ -53,16 +60,27 @@ with $\sigma(n)/n \geq \varepsilon \cdot \log(\log(n))$ is finite.
 theorem erdos_1053 : answer(sorry) ↔
     ∀ ε : ℝ, ε > 0 →
     Set.Finite {n : ℕ | ∃ k : ℕ, IsMultiplyPerfect n k ∧
-      (k : ℝ) ≥ ε * Real.log (Real.log (n : ℝ))} := by
+      (k : ℝ) ≥ ε * log (log (n : ℝ))} := by
   sorry
 
 /--
-A stronger variant suggested by Guy [Gu04]: there are only finitely many $k$-perfect numbers
-with $k \geq 3$. This implies the main conjecture `erdos_1053`.
+A stronger conjecture reported by Guy [Gu04] ('It has even been suggested that there may be
+only finitely many $k$-perfect numbers with $k \geq 3$.'). This implies the main
+conjecture `erdos_1053`.
 -/
 @[category research open, AMS 11]
 theorem erdos_1053_variant : answer(sorry) ↔
     Set.Finite {n : ℕ | ∃ k : ℕ, k ≥ 3 ∧ IsMultiplyPerfect n k} := by
+  sorry
+
+/--
+An $11$-perfect number exists. Per the remarks at
+[erdosproblems.com/1053](https://www.erdosproblems.com/1053), the largest $k$ for which a
+$k$-perfect number has been found is $k = 11$ — see
+<https://wwwhomes.uni-bielefeld.de/achim/mpn.html> for more information.
+-/
+@[category research solved, AMS 11]
+theorem erdos_1053.variants.eleven_perfect : ∃ n : ℕ, IsMultiplyPerfect n 11 := by
   sorry
 
 end Erdos1053
