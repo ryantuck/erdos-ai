@@ -23,6 +23,19 @@ import FormalConjectures.Util.ProblemImports
 
 Erdős asked whether there exists a constant $c > 0$ such that for arbitrarily large $n$,
 there is a $4$-chromatic critical graph on $n$ vertices with minimum degree at least $c \cdot n$.
+In [Er93] Erdős said he asked this "more than 20 years ago". The problem is **open**
+(erdosproblems.com page edition of 23 January 2026).
+
+Toft conjectured that a $4$-chromatic critical graph on $n$ vertices has at least
+$(\frac{5}{3} + o(1))n$ edges, and has examples to show this would be best possible.
+(The source page prints "vertices" in place of "edges", which is literally false — a
+graph on $n$ vertices has exactly $n$ vertices — so the intended edge-count reading is
+recorded here.) This conjecture is not formalized below: the edge-critical predicate
+`IsCritical` used in this file tolerates isolated vertices (e.g. $K_4$ together with
+$n - 4$ isolated vertices satisfies `IsCritical G 4` with only $6$ edges), so a faithful
+formalization would additionally need a no-isolated-vertices hypothesis. The min-degree
+statements below are unaffected, since a positive minimum-degree bound already excludes
+isolated vertices.
 
 - [Er93] Erdős, P., _Some of my favorite solved and unsolved problems in graph theory_.
   Quaestiones Mathematicae **16** (1993), 333–350.
@@ -80,6 +93,37 @@ theorem erdos_1032.variants.five_chromatic : answer(sorry) ↔
     ∃ c : ℝ, c > 0 ∧ ∀ N₀ : ℕ, ∃ n : ℕ, n ≥ N₀ ∧
       ∃ (G : SimpleGraph (Fin n)) (_ : DecidableRel G.Adj),
         IsCritical G 5 ∧ (G.minDegree : ℝ) ≥ c * (n : ℝ) := by
+  sorry
+
+/--
+**Erdős Problem 1032 (Simonovits–Toft partial result)** [Si72] [To72]:
+
+Simonovits and Toft independently constructed $4$-chromatic critical graphs with
+minimum degree $\gg n^{1/3}$: there is a constant $c > 0$ such that for arbitrarily
+large $n$ there exists a $4$-chromatic critical graph on $n$ vertices with minimum
+degree at least $c \cdot n^{1/3}$.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1032.variants.simonovits_toft :
+    ∃ c : ℝ, c > 0 ∧ ∀ N₀ : ℕ, ∃ n : ℕ, n ≥ N₀ ∧
+      ∃ (G : SimpleGraph (Fin n)) (_ : DecidableRel G.Adj),
+        IsCritical G 4 ∧ (G.minDegree : ℝ) ≥ c * (n : ℝ) ^ ((1 : ℝ) / 3) := by
+  sorry
+
+/--
+**Erdős Problem 1032 (Dirac's $6$-chromatic example)**:
+
+Dirac gave an example of a $6$-chromatic critical graph with minimum degree $> n/2$:
+for arbitrarily large $n$ there exists a $6$-chromatic critical graph on $n$ vertices
+with minimum degree greater than $n/2$. (Dirac's construction joins two disjoint odd
+cycles $C_{2m+1}$ completely, giving such graphs on $n = 4m + 2$ vertices with minimum
+degree $2m + 3 > n/2$.)
+-/
+@[category research solved, AMS 5]
+theorem erdos_1032.variants.dirac_six_chromatic :
+    ∀ N₀ : ℕ, ∃ n : ℕ, n ≥ N₀ ∧
+      ∃ (G : SimpleGraph (Fin n)) (_ : DecidableRel G.Adj),
+        IsCritical G 6 ∧ (G.minDegree : ℝ) > (n : ℝ) / 2 := by
   sorry
 
 end Erdos1032
