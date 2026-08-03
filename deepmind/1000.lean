@@ -30,7 +30,17 @@ Is there a sequence $A$ such that
 $$\lim_{N \to \infty} \frac{1}{N} \sum_{k \leq N} \frac{\varphi_A(k)}{n_k} = 0?$$
 
 Erdős believed no such sequence exists. This was solved by Haight [Ha] who
-proved that such a sequence does exist (contrary to Erdős' expectations).
+proved that such a sequence does exist (contrary to Erdős' expectations). As of
+December 2025, erdosproblems.com reports the affirmative solution has also been
+formally verified in Lean.
+
+The study of $\varphi_A$ was introduced by Cassels [Ca50b], who proved that there
+exist sequences such that
+$$\liminf_{N \to \infty} \frac{1}{N} \sum_{k \leq N} \frac{\varphi_A(k)}{n_k} = 0.$$
+Erdős [Er64b] proved that the limit of the individual terms $\varphi_A(k)/n_k$ cannot
+be $0$; in fact, if $\liminf_k \varphi_A(k)/n_k = 0$ then $\limsup_k \varphi_A(k)/n_k = 1$.
+
+[Ca50b] Cassels, J. W. S., 1950. (Bibliographic details per erdosproblems.com/1000.)
 
 [Er64b] Erdős, P., _Some problems in number theory_. 1964.
 
@@ -60,9 +70,35 @@ Proved by Haight [Ha].
 @[category research solved, AMS 11]
 theorem erdos_1000 : answer(True) ↔
     ∃ a : ℕ → ℕ, StrictMono a ∧ (∀ i, 0 < a i) ∧
-    Filter.Tendsto
+    Tendsto
       (fun N : ℕ => (∑ k ∈ Finset.range N, (phiA a k : ℝ) / (a k : ℝ)) / (N : ℝ))
-      Filter.atTop (nhds 0) := by
+      atTop (nhds 0) := by
+  sorry
+
+/--
+Cassels [Ca50b], who introduced the study of $\varphi_A$, proved that there exist
+strictly increasing sequences of positive integers for which the *liminf* of the
+Cesàro mean of $\varphi_A(k)/n_k$ is $0$ (a weaker property than the full limit
+being $0$ asked for in the main problem).
+-/
+@[category research solved, AMS 11]
+theorem erdos_1000.variants.cassels_liminf :
+    ∃ a : ℕ → ℕ, StrictMono a ∧ (∀ i, 0 < a i) ∧
+    liminf
+      (fun N : ℕ => (∑ k ∈ Finset.range N, (phiA a k : ℝ) / (a k : ℝ)) / (N : ℝ))
+      atTop = 0 := by
+  sorry
+
+/--
+Erdős [Er64b] proved that for every strictly increasing sequence of positive
+integers, if $\liminf_k \varphi_A(k)/n_k = 0$ then $\limsup_k \varphi_A(k)/n_k = 1$.
+In particular the individual terms $\varphi_A(k)/n_k$ cannot tend to $0$.
+-/
+@[category research solved, AMS 11]
+theorem erdos_1000.variants.liminf_limsup (a : ℕ → ℕ)
+    (ha : StrictMono a) (ha' : ∀ i, 0 < a i)
+    (h : liminf (fun k : ℕ => (phiA a k : ℝ) / (a k : ℝ)) atTop = 0) :
+    limsup (fun k : ℕ => (phiA a k : ℝ) / (a k : ℝ)) atTop = 1 := by
   sorry
 
 end Erdos1000
