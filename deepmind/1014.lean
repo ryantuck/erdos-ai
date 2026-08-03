@@ -22,11 +22,16 @@ import FormalConjectures.Util.ProblemImports
 Erdős conjectured that for fixed $k \geq 3$, the ratio of consecutive Ramsey numbers
 $R(k, l+1) / R(k, l)$ tends to $1$ as $l \to \infty$.
 
-See also problems [544] and [1030].
+This is open even for $k = 3$.
+
+See also problems [544] (for other behaviour of $R(3,k)$) and [1030] (for the diagonal
+version of this question).
 
 *Reference:* [erdosproblems.com/1014](https://www.erdosproblems.com/1014)
 
-[Er71] Erdős, P., _Topics in combinatorial analysis_, pp. 95-99, 1971.
+[Er71] Erdős, P., _Some unsolved problems in graph theory and combinatorial analysis_.
+Combinatorial Mathematics and its Applications (Proc. Conf., Oxford, 1969) (1971),
+97-109.
 -/
 
 open SimpleGraph
@@ -54,6 +59,19 @@ theorem erdos_1014 (k : ℕ) (hk : k ≥ 3) :
     ∀ ε : ℝ, ε > 0 →
     ∃ L₀ : ℕ, ∀ l : ℕ, l ≥ L₀ →
       |(ramseyR k (l + 1) : ℝ) / (ramseyR k l : ℝ) - 1| ≤ ε := by
+  sorry
+
+/--
+The case $k = 3$ of Erdős Problem 1014 [Er71, p.99]:
+$$\lim_{l \to \infty} R(3, l+1) / R(3, l) = 1.$$
+
+The problem is open even in this special case.
+-/
+@[category research open, AMS 5]
+theorem erdos_1014.variants.k_eq_3 :
+    ∀ ε : ℝ, ε > 0 →
+    ∃ L₀ : ℕ, ∀ l : ℕ, l ≥ L₀ →
+      |(ramseyR 3 (l + 1) : ℝ) / (ramseyR 3 l : ℝ) - 1| ≤ ε := by
   sorry
 
 end Erdos1014
