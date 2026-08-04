@@ -24,20 +24,38 @@ import FormalConjectures.Util.ProblemImports
 Let $x_1, \ldots, x_n$ be a sequence of distinct real numbers. Determine
 $\max(\sum x_{i_r})$, where the maximum is taken over all monotonic subsequences.
 
-The precise formulation (van Doorn): What is the largest constant $c$ such that,
+This is as Erdős posed the problem in [Er71], which is rather ambiguous. The precise
+formulation (van Doorn): What is the largest constant $c$ such that,
 for all sequences of $n$ real numbers $x_1, \ldots, x_n$,
 $$\max(\sum x_{i_r}) > (c - o(1)) \cdot \frac{1}{\sqrt{n}} \cdot \sum x_i$$
 where the maximum is over all monotonic subsequences?
 
+A construction of Cambie shows that $c \leq 1$. Hanani [Ha57] showed that every
+sequence is the disjoint union of at most $(\sqrt{2} + o(1))\sqrt{n}$ many monotonic
+subsequences, whence $c \geq 1/\sqrt{2}$.
+
 Cambie conjectured the stronger statement: if $x_1, \ldots, x_{k^2}$ are distinct
 positive real numbers with $\sum x_i = 1$, then there is always a monotonic
-subsequence with sum at least $1/k$. This shows $c = 1$.
+subsequence with sum at least $1/k$. This is a weighted form of the Erdős–Szekeres
+theorem, and is also mentioned (as an open question) in a survey on the latter by
+Steele [St95]. Together with Cambie's construction it shows $c = 1$.
 
 This was proved by Tidor, Wang, and Yang [TWY16], and is also implicit in
-work of Wagner [Wa17]. It has been formalised in Lean.
+work of Wagner [Wa17]. A proof was given and formalised in Lean by Aristotle, with an
+alternative proof provided by Chan; erdosproblems.com marks the problem SOLVED (LEAN)
+(page edition 08 December 2025).
+
+Related OEIS sequences: [A391431](https://oeis.org/A391431),
+[A391490](https://oeis.org/A391490).
 
 [Er71] Erdős, P., _Some unsolved problems in graph theory and combinatorial analysis_.
 Combinatorial Mathematics and its Applications (Proc. Conf., Oxford, 1969) (1971), 97–109.
+
+[Ha57] Hanani, H., _On the number of monotonic subsequences_. Bulletin of the Research
+Council of Israel, Section F (1957/58), 11–13.
+
+[St95] Steele, J. M., _Variations on the monotone subsequence theme of Erdős and
+Szekeres_. (1995), 111–131.
 
 [TWY16] Tidor, J., Wang, V., and Yang, B., _1-color avoiding paths, special tournaments,
 and incidence geometry_. arXiv:1608.04153 (2016).

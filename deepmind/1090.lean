@@ -25,6 +25,11 @@ Let $k \geq 3$. Does there exist a finite set $A \subset \mathbb{R}^2$ such that
 2-colouring of $A$, there exists a line which contains at least $k$ points from $A$, and all the
 points of $A$ on the line have the same colour?
 
+This has been solved in the affirmative. Erdős [Er75f, p.106] says Graham and Selfridge proved
+the answer is yes when $k = 3$, and Zach Hunter observed that, for sufficiently large $n$, a
+generic projection of $[k]^n$ into $\mathbb{R}^2$ has this property, by the Hales–Jewett
+theorem.
+
 [Er75f] Erdős, P., *On some problems of elementary and combinatorial geometry*. Annali di Matematica Pura ed Applicata (4) (1975), 99–108.
 -/
 
@@ -46,6 +51,22 @@ theorem erdos_1090 : answer(True) ↔ ∀ (k : ℕ), k ≥ 3 →
         ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
           Module.finrank ℝ L.direction = 1 ∧
           k ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (A : Set _) ∧ p ∈ L} ∧
+          ∃ color : Fin 2, ∀ p ∈ (A : Set _), p ∈ L → c p = color := by
+  sorry
+
+/--
+The case $k = 3$ of Erdős Problem 1090: there exists a finite set $A \subset \mathbb{R}^2$
+such that, in any 2-colouring of $A$, some line contains at least $3$ points of $A$ and all
+the points of $A$ on that line have the same colour. Erdős [Er75f, p.106] says this was
+proved by Graham and Selfridge.
+-/
+@[category research solved, AMS 5 51]
+theorem erdos_1090.variants.k_eq_3 :
+    ∃ A : Finset (EuclideanSpace ℝ (Fin 2)),
+      ∀ c : EuclideanSpace ℝ (Fin 2) → Fin 2,
+        ∃ L : AffineSubspace ℝ (EuclideanSpace ℝ (Fin 2)),
+          Module.finrank ℝ L.direction = 1 ∧
+          3 ≤ Set.ncard {p : EuclideanSpace ℝ (Fin 2) | p ∈ (A : Set _) ∧ p ∈ L} ∧
           ∃ color : Fin 2, ∀ p ∈ (A : Set _), p ∈ L → c p = color := by
   sorry
 

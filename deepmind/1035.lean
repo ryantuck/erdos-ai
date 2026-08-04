@@ -24,6 +24,16 @@ import FormalConjectures.Util.ProblemImports
 Is there a constant $c > 0$ such that every graph on $2^n$ vertices with minimum degree
 $> (1 - c) \cdot 2^n$ contains the $n$-dimensional hypercube $Q_n$ as a subgraph?
 
+The problem is listed as OPEN on erdosproblems.com (accessed 2026-02-22). Erdős [Er93]
+says 'if the conjecture is false, two related problems could be asked':
+- determine or estimate the smallest $m > 2^n$ such that every graph on $m$ vertices
+  with minimum degree $> (1 - c) \cdot 2^n$ contains a $Q_n$, and
+- for which $u_n$ is it true that every graph on $2^n$ vertices with minimum degree
+  $> 2^n - u_n$ contains a $Q_n$.
+
+See also [Problem 576](https://www.erdosproblems.com/576) for the extremal number of
+edges that guarantee a $Q_n$.
+
 [Er93] Erdős, P., _Some of my favorite solved and unsolved problems in graph theory_.
 Quaestiones Mathematicae **16** (1993), 333–350.
 -/

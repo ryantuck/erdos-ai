@@ -31,7 +31,14 @@ $\mathcal{F}$, yet contain none of them?
 Note: The existence of a single such set $B$ is equivalent to $\mathcal{F}$ having Property B
 (see Problem 901). This problem asks for a quantitative strengthening.
 
-This was proved in the affirmative by Koishi Chan, with contributions from Stijn Cambie.
+Here $B \subset X$ is read inclusively (as $B \subseteq X$), the standard convention on
+erdosproblems.com; under the strict reading the degenerate family $\mathcal{F} = \emptyset$
+(where $X = \emptyset$) would falsify the statement, since its only crossing set is
+$B = \emptyset = X$.
+
+This was proved in the affirmative: a proof was given by Koishi Chan in the comment section
+of the problem page (no published paper reference). The page additionally thanks Stijn Cambie
+and Koishi Chan.
 
 [Er64e] Erdős, P., _On a combinatorial problem. II_. Acta Mathematica Academiae Scientiarum
 Hungaricae **15** (1964), 445–447.
@@ -65,6 +72,24 @@ theorem erdos_1027 :
       ((X.powerset.filter (fun B =>
         (∀ A ∈ F, (A ∩ B).Nonempty) ∧
         (∀ A ∈ F, ¬(A ⊆ B)))).card : ℝ) ≥ δ * (2 : ℝ) ^ X.card := by
+    sorry
+
+/--
+Existence version (Property B): for every $c > 0$ and all sufficiently large $n$, any family
+$\mathcal{F}$ of at most $c \cdot 2^n$ finite sets of size $n$ admits at least one set
+$B \subseteq X = \bigcup \mathcal{F}$ which intersects every member of $\mathcal{F}$ and
+contains none of them. As noted on the problem page, the existence of a single such $B$ is
+equivalent to $\mathcal{F}$ being $2$-chromatic, i.e. having Property B (see Problem 901);
+it is an immediate consequence of the quantitative statement `erdos_1027`.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1027.variants.property_b :
+    ∀ c : ℝ, c > 0 →
+    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+    ∀ F : Finset (Finset ℕ),
+      (∀ A ∈ F, A.card = n) →
+      (F.card : ℝ) ≤ c * (2 : ℝ) ^ n →
+      ∃ B ⊆ F.biUnion id, (∀ A ∈ F, (A ∩ B).Nonempty) ∧ (∀ A ∈ F, ¬(A ⊆ B)) := by
     sorry
 
 end Erdos1027

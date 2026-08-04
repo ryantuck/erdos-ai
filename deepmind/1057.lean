@@ -29,7 +29,8 @@ A Carmichael number is a composite $n > 1$ such that $a^n \equiv a \pmod{n}$ for
 By Korselt's criterion, this is equivalent to $n$ being squarefree, composite,
 and $p - 1 \mid n - 1$ for all primes $p \mid n$.
 
-Alford, Granville, and Pomerance [AGP94] proved $C(x) \to \infty$ and $C(x) > x^{2/7}$.
+Alford, Granville, and Pomerance [AGP94] proved $C(x) \to \infty$ and $C(x) > x^{2/7}$
+for large $x$.
 Harman [Ha08] improved the lower bound to $C(x) > x^{0.33336704}$.
 Lichtman [Li22] further improved this to $C(x) > x^{0.3389}$.
 
@@ -68,7 +69,7 @@ def IsCarmichael (n : ℕ) : Prop :=
 
 /-- $C(x)$ counts the number of Carmichael numbers in $\{1, \ldots, x\}$. -/
 noncomputable def carmichaelCount (x : ℕ) : ℕ :=
-  ((Finset.Icc 1 x).filter (fun n => IsCarmichael n)).card
+  ((Icc 1 x).filter (fun n => IsCarmichael n)).card
 
 /--
 Erdős Problem 1057 [Er56c]:
@@ -83,6 +84,79 @@ as $x$ itself, in the sense that the exponent approaches 1.
 theorem erdos_1057 : answer(sorry) ↔
     Tendsto
       (fun x : ℕ => Real.log (carmichaelCount x : ℝ) / Real.log (x : ℝ))
+      atTop (nhds 1) := by
+  sorry
+
+/--
+Alford, Granville, and Pomerance [AGP94] proved that there are infinitely many
+Carmichael numbers, i.e. $C(x) \to \infty$ as $x \to \infty$.
+-/
+@[category research solved, AMS 11]
+theorem erdos_1057.variants.infinitely_many :
+    Tendsto (fun x : ℕ => carmichaelCount x) atTop atTop := by
+  sorry
+
+/--
+Alford, Granville, and Pomerance [AGP94] proved that $C(x) > x^{2/7}$ for all
+sufficiently large $x$. Stated here in the equivalent logarithmic form
+$\log C(x) > \frac{2}{7} \log x$ (equivalent for large $x$ since $\log$ is
+strictly monotone and $C(x) \geq 1$ once $x \geq 561$).
+-/
+@[category research solved, AMS 11]
+theorem erdos_1057.variants.agp_lower_bound :
+    ∃ N : ℕ, ∀ x : ℕ, N ≤ x →
+      (2 / 7 : ℝ) * Real.log (x : ℝ) < Real.log (carmichaelCount x : ℝ) := by
+  sorry
+
+/--
+Harman [Ha08] proved the lower bound $C(x) > x^{0.33336704}$ for all
+sufficiently large $x$, stated here in the equivalent logarithmic form.
+-/
+@[category research solved, AMS 11]
+theorem erdos_1057.variants.harman_lower_bound :
+    ∃ N : ℕ, ∀ x : ℕ, N ≤ x →
+      (0.33336704 : ℝ) * Real.log (x : ℝ) < Real.log (carmichaelCount x : ℝ) := by
+  sorry
+
+/--
+Lichtman [Li22] improved Harman's exponent to $0.3389$: $C(x) > x^{0.3389}$
+for all sufficiently large $x$, stated here in the equivalent logarithmic form.
+-/
+@[category research solved, AMS 11]
+theorem erdos_1057.variants.lichtman_lower_bound :
+    ∃ N : ℕ, ∀ x : ℕ, N ≤ x →
+      (0.3389 : ℝ) * Real.log (x : ℝ) < Real.log (carmichaelCount x : ℝ) := by
+  sorry
+
+/--
+Erdős [Er56c] proved the upper bound
+$C(x) < x \exp\left(-c \frac{\log x \log\log\log x}{\log\log x}\right)$
+for some constant $c > 0$ and all sufficiently large $x$. Stated here in the
+equivalent logarithmic form
+$\log C(x) < \log x - c \frac{\log x \log\log\log x}{\log\log x}$.
+-/
+@[category research solved, AMS 11]
+theorem erdos_1057.variants.erdos_upper_bound :
+    ∃ c : ℝ, c > 0 ∧ ∃ N : ℕ, ∀ x : ℕ, N ≤ x →
+      Real.log (carmichaelCount x : ℝ) < Real.log (x : ℝ) -
+        c * (Real.log (x : ℝ) * Real.log (Real.log (Real.log (x : ℝ))) /
+          Real.log (Real.log (x : ℝ))) := by
+  sorry
+
+/--
+Pomerance [Po89] gave a heuristic suggesting that Erdős's upper bound is the
+true order of growth, and in fact
+$C(x) = x \exp\left(-(1+o(1)) \frac{\log x \log\log\log x}{\log\log x}\right)$.
+Stated here as: $\frac{\log x - \log C(x)}{\log x \log\log\log x / \log\log x} \to 1$
+as $x \to \infty$. Note this conjecture implies the answer to the main question
+is yes, since $\frac{\log x \log\log\log x}{\log\log x} = o(\log x)$.
+-/
+@[category research open, AMS 11]
+theorem erdos_1057.variants.pomerance_heuristic :
+    Tendsto
+      (fun x : ℕ => (Real.log (x : ℝ) - Real.log (carmichaelCount x : ℝ)) /
+        (Real.log (x : ℝ) * Real.log (Real.log (Real.log (x : ℝ))) /
+          Real.log (Real.log (x : ℝ))))
       atTop (nhds 1) := by
   sorry
 

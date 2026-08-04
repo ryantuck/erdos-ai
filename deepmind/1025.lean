@@ -34,6 +34,14 @@ Spencer [Sp72] proved $g(n) \gg n^{1/2}$.
 Conlon, Fox, and Sudakov [CFS16] proved $g(n) \ll n^{1/2}$.
 Thus $g(n) = \Theta(\sqrt{n})$.
 
+Modeling note: the formalization takes $f$ on ordered pairs, constrained only for
+$x \neq y$; a symmetric such $f$ is exactly a set-mapping on unordered pairs, the classical
+setting of [ErHa58]. The lower bound below quantifies over all (possibly asymmetric) pair
+functions — an asymmetric $f$ forbids at most two elements per unordered pair, a case still
+covered by Spencer's Turán-type theorem for 3-uniform hypergraphs — while the upper-bound
+construction of [CFS16] is a genuine set-mapping, so it is stated below both in ordered
+form and, more precisely, as a symmetric variant.
+
 [Er71] Erdős, P., _Some unsolved problems in graph theory and combinatorial analysis_.
 Combinatorial Mathematics and its Applications (Proc. Conf., Oxford, 1969) (1971), 97–109.
 
@@ -86,6 +94,24 @@ set has size at most $C \cdot \sqrt{n}$.
 theorem erdos_1025.variants.upper_bound :
     ∃ C : ℝ, C > 0 ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
     ∃ f : Fin n → Fin n → Fin n, IsValidPairFunction n f ∧
+    ∀ S : Finset (Fin n), IsIndependentPairSet n f S →
+      (S.card : ℝ) ≤ C * Real.sqrt n := by
+  sorry
+
+/--
+Erdős Problem 1025, upper bound, symmetric form (Conlon–Fox–Sudakov [CFS16]):
+
+The classical set-mapping form of the upper bound: there exist a constant $C > 0$ and a
+threshold $n_0$ such that for all $n \geq n_0$ there is a *symmetric* valid pair function
+$f$ on $\operatorname{Fin} n$ (i.e. a set-mapping on unordered pairs) all of whose
+independent sets have size at most $C \cdot \sqrt{n}$. This is the precise statement
+proved by [CFS16]; the ordered variant above follows from it.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1025.variants.upper_bound_symmetric :
+    ∃ C : ℝ, C > 0 ∧ ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
+    ∃ f : Fin n → Fin n → Fin n, IsValidPairFunction n f ∧
+    (∀ x y : Fin n, f x y = f y x) ∧
     ∀ S : Finset (Fin n), IsIndependentPairSet n f S →
       (S.card : ℝ) ≤ C * Real.sqrt n := by
   sorry

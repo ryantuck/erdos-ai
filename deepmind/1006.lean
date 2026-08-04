@@ -85,16 +85,34 @@ theorem erdos_1006 : answer(False) ↔
   sorry
 
 /--
-Variant of Erdős Problem 1006 (Nešetřil–Rödl [NeRo78b]):
+Variant of Erdős Problem 1006 — the Nešetřil–Rödl theorem [NeRo78b]:
 
-For every integer $g$, there exists a graph $G$ with girth $\ge g$ such that no orientation of
-$G$ is robustly acyclic. This strengthens the original problem by showing that high girth alone
-never suffices.
+For every integer $g$, there exists a graph $G$ with girth $\ge g$ such that no orientation
+of $G$ is robustly acyclic: every orientation of $G$ contains a directed cycle, or contains
+a cycle obtained from a directed cycle by reversing one directed edge. This strengthens the
+negative answer to the original problem by showing that high girth alone never suffices.
+
+The source page says "a graph $G$ with girth $g$"; we formalize the implied reading
+"girth at least $g$", which is what refuting the original question for every girth
+threshold requires. Stated as a direct assertion since it is a proved theorem, not a
+question posed by the source.
 -/
 @[category research solved, AMS 5]
-theorem erdos_1006_arbitrary_girth : answer(False) ↔
-    ∀ (g : ℕ) (V : Type*) (G : SimpleGraph V), g ≤ G.egirth →
-    ∃ o : Orientation G, o.IsRobustlyAcyclic := by
+theorem erdos_1006.variants.arbitrary_girth :
+    ∀ g : ℕ, ∃ (V : Type) (G : SimpleGraph V),
+      g ≤ G.egirth ∧ ∀ o : Orientation G, ¬o.IsRobustlyAcyclic := by
+  sorry
+
+/--
+Variant of Erdős Problem 1006 (Ore; Gallai; see the remarks in [Er71] as recorded on the
+problem page): there is a graph with girth exactly $4$ admitting no robustly acyclic
+orientation. Ore gave such an example, and Gallai observed that the Grötzsch graph
+(girth $4$) also lacks the property — this is why the problem asks about girth $> 4$.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1006.variants.girth_four_counterexample :
+    ∃ (V : Type) (G : SimpleGraph V),
+      G.egirth = 4 ∧ ∀ o : Orientation G, ¬o.IsRobustlyAcyclic := by
   sorry
 
 end Erdos1006

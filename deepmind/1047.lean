@@ -32,7 +32,17 @@ $f(z) = z^k(z-a)$ with $k$ sufficiently large and $a$ close to $(1+1/k)k^{1/(k+1
 the set $\{ z : |f(z)| \leq 1 \}$ has two components and the one containing $0$ is
 not convex.
 
-Goodman [Go66] gave further examples, including $(z^2+1)(z-2)^2$ with explicit $c$.
+Goodman [Go66] proved that one of the three components of
+$\{ z : |(z^2+1)(z-2)^2| < 5^{3/2}/4 \}$ is not convex, and constructed an example with
+simple roots, of degree $4$. The referee of that paper also gave the example
+$\{ z : |z(z^5-1)| < 5.6^{-6/5} \}$ (constant as rendered on the problem page; the
+critical value of $|z(z^5-1)|$ is exactly $5 \cdot 6^{-6/5}$, which suggests that reading).
+
+Goodman raises the question of the maximum number of non-convex components that are
+possible as a function of the degree of $f$.
+
+The problem page marks this DISPROVED (LEAN): solved in the negative and the proof
+verified in Lean (page last edited 28 October 2025, accessed 2026-02-22).
 
 [EHP58] Erdős, P., Herzog, F., and Piranian, G., _Metric properties of polynomials_. J. Analyse
 Math. 6 (1958), 125-148.
@@ -61,9 +71,25 @@ Answered in the negative by Pommerenke [Po61].
 theorem erdos_1047 : answer(False) ↔
     ∀ (f : Polynomial ℂ), f.Monic →
     ∀ (c : ℝ), c > 0 →
-      let S := {z : ℂ | ‖Polynomial.eval z f‖ ≤ c}
-      Set.ncard (connectedComponentIn S '' S) = f.roots.toFinset.card →
+      let S := {z : ℂ | ‖eval z f‖ ≤ c}
+      ncard (connectedComponentIn S '' S) = f.roots.toFinset.card →
       ∀ x ∈ S, Convex ℝ (connectedComponentIn S x) := by
+  sorry
+
+/--
+Goodman's explicit counterexample [Go66]: one of the three connected components of
+$\{ z : |(z^2+1)(z-2)^2| < 5^{3/2}/4 \}$ is not convex. Here $(z^2+1)(z-2)^2$ is monic
+with the three distinct roots $i$, $-i$, $2$, and $5^{3/2}/4 = 5\sqrt{5}/4$.
+
+Note the sublevel set here is defined by a *strict* inequality, following the problem
+page's quotation of [Go66].
+-/
+@[category research solved, AMS 30 52]
+theorem erdos_1047.variants.goodman :
+    let f : Polynomial ℂ := (X ^ 2 + 1) * (X - 2) ^ 2
+    let S := {z : ℂ | ‖eval z f‖ < 5 * Real.sqrt 5 / 4}
+    ncard (connectedComponentIn S '' S) = 3 ∧
+      ∃ x ∈ S, ¬Convex ℝ (connectedComponentIn S x) := by
   sorry
 
 end Erdos1047

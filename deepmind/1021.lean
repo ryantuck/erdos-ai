@@ -27,18 +27,35 @@ where $G_k$ is the 1-subdivision of $K_k$: the bipartite graph between
 $\{y_1, \ldots, y_k\}$ and $\{z_1, \ldots, z_{\binom{k}{2}}\}$, with each $z_j$ joined to a
 unique pair of $y_i$?
 
-A conjecture of Erdős and Simonovits [Er71, p.103][Er74c, p.79]. Erdős [Er64c]
-proved $\mathrm{ex}(n, C_6) \ll n^{1+1/3}$; this was also proved by
-Bondy–Simonovits [BoSi74]. The general conjecture was proved by Conlon and Lee
-[CoLe21] with $c_k = 6^{-k}$, later improved to $c_k = 1/(4k-6)$ by
-Janzer [Ja19].
+A conjecture of Erdős and Simonovits [Er71, p.103][Er74c, p.79], who also proved
+(in unpublished work) that in any such result one must have $c_k \to 0$ as
+$k \to \infty$. Erdős [Er71] could not even prove whether
+$\mathrm{ex}(n, G_k) = o(n^{3/2})$. The graph $G_k$ is the graph $H_k$ of
+Erdős Problem 926 with the vertex $x$ omitted.
 
-[Er64c] Erdős, P., _On extremal problems of graphs and generalized graphs_.
-Israel J. Math. 2 (1964), 183–190.
+The conjecture was proved by Conlon and Lee [CoLe21] with $c_k = 6^{-k}$, later
+improved to $c_k = 1/(4k-6)$ by Janzer [Ja19]. The problem page is marked
+PROVED ("solved in the affirmative").
+
+When $k = 3$ the graph $G_3$ is the six-cycle $C_6$, for which Erdős [Er64c] and
+Bondy–Simonovits [BoSi74] proved $\mathrm{ex}(n, C_6) \ll n^{4/3}$ (cf. Erdős
+Problem 572). Note: the problem page states this bound as $n^{7/6}$, which
+appears to be an error — $C_6$-free graphs with $\gg n^{4/3}$ edges exist
+(incidence graphs of generalized quadrangles, girth $8$), and the
+Bondy–Simonovits even-cycle theorem $\mathrm{ex}(n, C_{2\ell}) \ll \ell \cdot
+n^{1+1/\ell}$ gives exactly $n^{4/3}$ at $2\ell = 6$.
+
+[Er64c] Erdős, P., _Extremal problems in graph theory_.
+Theory of Graphs and its Applications (Proc. Sympos. Smolenice, 1963) (1964), 29–36.
 
 [Er71] Erdős, P., _Some unsolved problems in graph theory and combinatorial analysis_.
 Combinatorial Mathematics and its Applications (Proceedings of Conference, Oxford, 1969)
 (1971), 97–109.
+
+[Er74c] Erdős, P., _Extremal problems on graphs and hypergraphs_. (1974), 75–84.
+(Bibliographic stub: this key is cited by the problem page but absent from its
+LaTeX bibliography; title and pages as used for this key by the sibling
+formalizations of Erdős Problems 926, 576, 1075 and 1076.)
 
 [BoSi74] Bondy, J.A. and Simonovits, M., _Cycles of even length in graphs_.
 J. Combin. Theory Ser. B 16 (1974), 97–105.
@@ -102,16 +119,66 @@ theorem erdos_1021 : answer(True) ↔
 
 /--
 The special case $k = 3$ of Erdős Problem 1021: the 1-subdivision of $K_3$ is
-the 6-cycle $C_6$. Bondy and Simonovits [BoSi74] proved that
+the 6-cycle $C_6$. Erdős [Er64c] and Bondy–Simonovits [BoSi74] proved that
 $\mathrm{ex}(n, C_6) \le C \cdot n^{1 + 1/3}$, giving $c_3 = 1/6$ (since
-$3/2 - 1/6 = 4/3 = 1 + 1/3$). This is much stronger than the general bound
-$c_k = 6^{-k}$ of Conlon–Lee.
+$3/2 - 1/6 = 4/3 = 1 + 1/3$). This exponent is optimal, coincides with Janzer's
+general $c_k = 1/(4k-6)$ at $k = 3$, and is much stronger than the
+$c_k = 6^{-k}$ of Conlon–Lee. (The problem page states the bound as $n^{7/6}$;
+this appears to be an error — see the module docstring.)
 -/
 @[category research solved, AMS 5]
-theorem erdos_1021_C6 :
+theorem erdos_1021.variants.C6 :
     ∃ (C : ℝ), C > 0 ∧
     ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
     ¬containsSubgraph G (subdivisionKComplete 3) →
     (G.edgeFinset.card : ℝ) ≤ C * (n : ℝ) ^ ((4 : ℝ) / 3) := by sorry
+
+/--
+The explicit form proved by Conlon and Lee [CoLe21]: for every $k \ge 3$ the
+constant $c_k = 6^{-k}$ is admissible, i.e.
+$\mathrm{ex}(n, G_k) \ll n^{3/2 - 6^{-k}}$.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1021.variants.conlon_lee :
+    ∀ (k : ℕ), k ≥ 3 →
+    ∃ (C : ℝ), C > 0 ∧
+    ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
+    ¬containsSubgraph G (subdivisionKComplete k) →
+    (G.edgeFinset.card : ℝ) ≤ C * (n : ℝ) ^ ((3 : ℝ) / 2 - ((6 : ℝ) ^ k)⁻¹) := by
+  sorry
+
+/--
+The improved explicit form proved by Janzer [Ja19]: for every $k \ge 3$ the
+constant $c_k = 1/(4k-6)$ is admissible, i.e.
+$\mathrm{ex}(n, G_k) \ll n^{3/2 - 1/(4k-6)}$.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1021.variants.janzer :
+    ∀ (k : ℕ), k ≥ 3 →
+    ∃ (C : ℝ), C > 0 ∧
+    ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
+    ¬containsSubgraph G (subdivisionKComplete k) →
+    (G.edgeFinset.card : ℝ) ≤
+      C * (n : ℝ) ^ ((3 : ℝ) / 2 - 1 / (4 * (k : ℝ) - 6)) := by
+  sorry
+
+/--
+Erdős and Simonovits proved (in unpublished work, per the problem page) that in
+any result of the form $\mathrm{ex}(n, G_k) \ll n^{3/2 - c_k}$ one must have
+$c_k \to 0$ as $k \to \infty$: for every fixed $c > 0$, the bound
+$\mathrm{ex}(n, G_k) \ll n^{3/2 - c}$ fails for all sufficiently large $k$.
+(Failure is upward-closed in $k$, since $G_k \subseteq G_{k+1}$ forces
+$\mathrm{ex}(n, G_k) \le \mathrm{ex}(n, G_{k+1})$, so "for all sufficiently
+large $k$" and "for infinitely many $k$" are equivalent here.)
+-/
+@[category research solved, AMS 5]
+theorem erdos_1021.variants.subconstant_necessary :
+    ∀ (c : ℝ), c > 0 →
+    ∃ (K : ℕ), ∀ (k : ℕ), k ≥ K →
+    ¬(∃ (C : ℝ), C > 0 ∧
+      ∀ (n : ℕ) (G : SimpleGraph (Fin n)),
+      ¬containsSubgraph G (subdivisionKComplete k) →
+      (G.edgeFinset.card : ℝ) ≤ C * (n : ℝ) ^ ((3 : ℝ) / 2 - c)) := by
+  sorry
 
 end Erdos1021

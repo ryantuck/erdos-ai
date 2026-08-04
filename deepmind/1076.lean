@@ -26,14 +26,23 @@ vertices and $k - 2$ edges. Is it true that $\mathrm{ex}_3(n, \mathcal{F}_k) \si
 
 A question of Brown, Erdős, and Sós [BES73] who proved this is true for $k = 4$,
 and that for all $k \geq 4$, $\mathrm{ex}_3(n, \mathcal{F}_k) \asymp_k n^2$.
-Erdős [Er74c] presents the conjecture with a supporting theorem.
+
+In [Er74c, p.81] Erdős writes 'the only argument in favour of this conjecture (the
+conjecture may easily turn out to be nonsense) is the following theorem': every 3-uniform
+hypergraph on $n$ vertices with more than $\frac{1}{3}\binom{n}{2}$ edges contains either
+a graph on 5 vertices with 3 edges or a graph on 6 vertices with 4 edges. (This is proved
+in [Er74c].)
 
 The asymptotic version was proved independently by Bohman and Warnke [BoWa19]
-and Glock, Kühn, Lo, and Osthus [GKLO20].
+and Glock, Kühn, Lo, and Osthus [GKLO20]; the problem is solved in the affirmative.
 
-This is related to Problem #207, which is an essentially stronger version.
+This is related to Problem #207, which is an essentially stronger version; in
+particular, for $k$ satisfying the right divisibility conditions, the extremal number is
+known exactly. See also Problem #1157 for the general Brown–Erdős–Sós conjecture, of
+which this problem is the case $r = 3$, $k = s + 2$.
 
-[BES73] Brown, W.G., Erdős, P., and Sós, V.T., *Some extremal problems on r-graphs* (1973), 53–63.
+[BES73] Brown, W.G., Erdős, P., and Sós, V.T., *Some extremal problems on r-graphs*.
+New Directions in the Theory of Graphs (1973), 53–63.
 
 [Er74c] Erdős, P., *Extremal problems on graphs and hypergraphs*. (1974), 75–84.
 
@@ -78,9 +87,12 @@ noncomputable def ex3 (n k : ℕ) : ℕ :=
 /--
 Erdős Problem 1076 [BES73]:
 
-For all $k \geq 5$, $\mathrm{ex}_3(n, \mathcal{F}_k) \sim n^2 / 6$.
+Is it true that for all $k \geq 5$, $\mathrm{ex}_3(n, \mathcal{F}_k) \sim n^2 / 6$?
 
-Formalized as: for every $\varepsilon > 0$, for sufficiently large $n$,
+Answered affirmatively by Bohman–Warnke [BoWa19] and, independently,
+Glock–Kühn–Lo–Osthus [GKLO20]; hence `answer(True)`.
+
+The asymptotic is formalized as: for every $\varepsilon > 0$, for sufficiently large $n$,
 $(1 - \varepsilon) \cdot n^2 / 6 \leq \mathrm{ex}_3(n, \mathcal{F}_k)
 \leq (1 + \varepsilon) \cdot n^2 / 6$.
 -/
@@ -91,6 +103,57 @@ theorem erdos_1076 : answer(True) ↔
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
       (1 - ε) * ((n : ℝ) ^ 2 / 6) ≤ (ex3 n k : ℝ) ∧
       (ex3 n k : ℝ) ≤ (1 + ε) * ((n : ℝ) ^ 2 / 6) := by
+  sorry
+
+/--
+The case $k = 4$, proved by Brown, Erdős, and Sós [BES73]:
+$\mathrm{ex}_3(n, \mathcal{F}_4) \sim n^2 / 6$. Here $\mathcal{F}_4$-freeness is
+equivalent to linearity (no two edges share two vertices), and the extremal objects
+are approximate partial Steiner triple systems.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1076.variants.k_eq_4 :
+    ∀ ε : ℝ, ε > 0 →
+    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+      (1 - ε) * ((n : ℝ) ^ 2 / 6) ≤ (ex3 n 4 : ℝ) ∧
+      (ex3 n 4 : ℝ) ≤ (1 + ε) * ((n : ℝ) ^ 2 / 6) := by
+  sorry
+
+/--
+Brown, Erdős, and Sós [BES73] proved that for all $k \geq 4$,
+$\mathrm{ex}_3(n, \mathcal{F}_k) \asymp_k n^2$: there are constants $c_1, c_2 > 0$
+(depending on $k$) with $c_1 n^2 \leq \mathrm{ex}_3(n, \mathcal{F}_k) \leq c_2 n^2$
+for all sufficiently large $n$.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1076.variants.order_of_magnitude :
+    ∀ k : ℕ, k ≥ 4 →
+    ∃ c₁ c₂ : ℝ, 0 < c₁ ∧ 0 < c₂ ∧
+    ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
+      c₁ * (n : ℝ) ^ 2 ≤ (ex3 n k : ℝ) ∧ (ex3 n k : ℝ) ≤ c₂ * (n : ℝ) ^ 2 := by
+  sorry
+
+/--
+Erdős's supporting theorem for the conjecture [Er74c, p.81]: every 3-uniform hypergraph
+on $n \geq 5$ vertices with more than $\frac{1}{3}\binom{n}{2} = \frac{n(n-1)}{6}$ edges
+contains either a graph on 5 vertices with 3 edges (a member of $\mathcal{F}_5$) or a
+graph on 6 vertices with 4 edges (a member of $\mathcal{F}_6$). The edge hypothesis
+$|E(H)| > \frac{1}{3}\binom{n}{2}$ is encoded exactly (without division) as
+$n(n-1) < 6\,|E(H)|$.
+
+The hypothesis $n \geq 5$ corrects the source page's literal statement, which fails at
+$n = 4$: the hypergraph on vertices $\{1,2,3,4\}$ with edges
+$\{1,2,3\}, \{1,2,4\}, \{1,3,4\}$ has $3 > \frac{1}{3}\binom{4}{2} = 2$ edges, yet no
+member of $\mathcal{F}_5$ or $\mathcal{F}_6$ can embed into a 4-vertex host. The strict
+inequality is sharp at $n = 9$: the Steiner triple system $\mathrm{AG}(2,3)$ is linear
+and anti-Pasch, hence contains no member of $\mathcal{F}_5$ or $\mathcal{F}_6$, and has
+exactly $12 = \frac{1}{3}\binom{9}{2}$ edges.
+-/
+@[category research solved, AMS 5]
+theorem erdos_1076.variants.supporting_theorem :
+    ∀ n : ℕ, n ≥ 5 → ∀ H : Hypergraph3 n,
+      n * (n - 1) < 6 * H.edges.card →
+      ¬IsFkFree 5 H ∨ ¬IsFkFree 6 H := by
   sorry
 
 end Erdos1076

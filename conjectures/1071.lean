@@ -2,6 +2,49 @@ import Mathlib.Analysis.InnerProductSpace.PiL2
 import Mathlib.Data.Set.Finite.Basic
 import Mathlib.Data.Set.Countable
 
+/-!
+# Erdős Problem #1071
+
+Is there a finite set of unit line segments (rotated and translated copies of
+$(0,1)$) in the unit square, no two of which intersect, which are maximal with
+respect to this property?
+
+Is there a region $R$ with a maximal set of disjoint unit line segments that is
+countably infinite?
+
+A question of Erdős and Tóth [Er87b, p.173].
+
+Status: PROVED (LEAN) per erdosproblems.com/1071 (page last edited
+01 February 2026) — "solved in the affirmative and the proof verified in
+Lean"; the problem carried a \$10 prize. The answer to the first question is
+yes, which Erdős gave Danzer \$10 for; [Er87b] contains two example
+constructions, the first by Danzer, the second by an unnamed participant
+(figures not reproduced here). Alexeev has proved (in the site comments) that
+the unit square itself admits a countably infinite maximal such set.
+
+Formalization notes: `erdos_problem_1071b` states Alexeev's form of the second
+question, with the region instantiated as the unit square. The unrestricted
+reading of "region" as an arbitrary subset of the plane would make the
+question degenerate — a disjoint union of countably many far-separated open
+unit segments is itself such a region — so the unit-square form is the
+substantive, page-confirmed statement.
+
+In [Er87b] Erdős further asks what happens if the unit line segments are
+rotated/translated copies of $[0,1]$ that are allowed to intersect only at
+their endpoints; this open-ended further question is recorded here but not
+formalized (the endpoint-intersection notion is ambiguous in the source).
+
+An upstream formalization exists at google-deepmind/formal-conjectures,
+`FormalConjectures/ErdosProblems/1071.lean`; that file is the authoritative
+artifact and is not present in this repository.
+
+Reference: https://www.erdosproblems.com/1071
+Tags: geometry
+
+[Er87b] Erdős, P., _Some combinatorial and metric problems in geometry_.
+Intuitive geometry (Siófok, 1985) (1987), 167-177.
+-/
+
 open Set
 
 noncomputable section
