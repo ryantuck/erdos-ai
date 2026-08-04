@@ -26,7 +26,7 @@ a set of $n$ points such that any two determined distances are distinct.
 Estimate $f_d(n)$. In particular, is it true that, for fixed $n \geq 3$,
 $f_d(n) = 2^{o(d)}$?
 
-A problem of Erdős [Er75f]. It is easy to prove that $f_d(n) \leq n^{O_d(1)}$.
+A problem of Erdős [Er75f, p.104]. It is easy to prove that $f_d(n) \leq n^{O_d(1)}$.
 Erdős claimed that he and Straus proved $f_d(n) \leq c_n^d$ for some constant $c_n > 0$.
 
 When $d = 1$, $f_1(n) \asymp n^2$ (see Problem 530). When $n = 3$,
@@ -53,7 +53,13 @@ def AllPairwiseDistinctDists {α : Type*} [MetricSpace α]
     (a = c ∧ b = d) ∨ (a = d ∧ b = c)
 
 /-- $f_d(n)$ is the minimal $m$ such that any set of at least $m$ points in $\mathbb{R}^d$
-contains a subset of $n$ points with all pairwise distances distinct. -/
+contains a subset of $n$ points with all pairwise distances distinct.
+
+The defining set is upward closed, and it is nonempty for every $d$ and $n$: for $d \geq 1$
+this follows from the easy bound $f_d(n) \leq n^{O_d(1)}$, and for $d = 0$ the space
+$\mathbb{R}^0$ has a single point, so every $m \geq 2$ belongs vacuously (there is no
+finite set with at least two points) and `erdosF 0 n = 2` for $n \geq 2$. Hence `sInf`
+returns the true minimum and the junk value `sInf ∅ = 0` never arises. -/
 noncomputable def erdosF (d n : ℕ) : ℕ :=
   sInf {m : ℕ | ∀ (S : Finset (EuclideanSpace ℝ (Fin d))),
     S.card ≥ m →
@@ -61,10 +67,11 @@ noncomputable def erdosF (d n : ℕ) : ℕ :=
       T ⊆ S ∧ T.card = n ∧ AllPairwiseDistinctDists T}
 
 /--
-Erdős Problem 1088 [Er75f]:
+Erdős Problem 1088 [Er75f, p.104]:
 
-For fixed $n \geq 3$, $f_d(n) = 2^{o(d)}$ as $d \to \infty$. That is, for every $\varepsilon > 0$,
-there exists $D_0$ such that for all $d \geq D_0$, $f_d(n) \leq 2^{\varepsilon \cdot d}$.
+Is it true that, for fixed $n \geq 3$, $f_d(n) = 2^{o(d)}$ as $d \to \infty$? That is, is it
+true that for every $n \geq 3$ and every $\varepsilon > 0$ there exists $D_0$ such that
+$f_d(n) \leq 2^{\varepsilon \cdot d}$ for all $d \geq D_0$?
 -/
 @[category research open, AMS 5 52]
 theorem erdos_1088 :
@@ -78,13 +85,33 @@ theorem erdos_1088 :
 /-- $f_2(3) = 7$: the minimum number of points in $\mathbb{R}^2$ that guarantees a subset
 of $3$ points with all pairwise distances distinct is $7$. Due to Erdős. -/
 @[category research solved, AMS 5 52]
-theorem erdos_1088_f2_3 : erdosF 2 3 = 7 := by
+theorem erdos_1088.variants.f2_3 : erdosF 2 3 = 7 := by
   sorry
 
 /-- $f_3(3) = 9$: the minimum number of points in $\mathbb{R}^3$ that guarantees a subset
 of $3$ points with all pairwise distances distinct is $9$. Due to Croft [Cr62]. -/
 @[category research solved, AMS 5 52]
-theorem erdos_1088_f3_3 : erdosF 3 3 = 9 := by
+theorem erdos_1088.variants.f3_3 : erdosF 3 3 = 9 := by
+  sorry
+
+/-- The easy polynomial upper bound: for each fixed dimension $d$ there is a constant
+$C = C(d)$ such that $f_d(n) \leq n^C$ for all $n \geq 2$, i.e. $f_d(n) \leq n^{O_d(1)}$.
+Described as "easy to prove" on the problem page [Er75f]. -/
+@[category research solved, AMS 5 52]
+theorem erdos_1088.variants.polynomial_upper :
+    ∀ d : ℕ, ∃ C : ℕ, ∀ n : ℕ, 2 ≤ n → erdosF d n ≤ n ^ C := by
+  sorry
+
+/-- Erdős claimed that he and Straus proved that for each fixed $n$ there is a constant
+$c_n > 0$ with $f_d(n) \leq c_n^d$ [Er75f]. No published proof is cited on the problem
+page, so this claim is recorded as open rather than solved.
+
+The bound is restricted to $d \geq 1$: at $d = 0$ it is literally false, since
+$\mathbb{R}^0$ is a single point, so `erdosF 0 n = 2` for $n \geq 2$ (every $m \geq 2$
+satisfies the defining condition vacuously) while $c^0 = 1 < 2$. -/
+@[category research open, AMS 5 52]
+theorem erdos_1088.variants.erdos_straus_exponential :
+    ∀ n : ℕ, 3 ≤ n → ∃ c : ℝ, c > 0 ∧ ∀ d : ℕ, 1 ≤ d → (erdosF d n : ℝ) ≤ c ^ d := by
   sorry
 
 end Erdos1088
