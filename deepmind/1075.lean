@@ -24,8 +24,16 @@ sufficiently large, any $r$-uniform hypergraph on $n$ vertices with at least
 $(1+\varepsilon)(n/r)^r$ edges contains a subgraph on $m$ vertices with at least $c_r m^r$ edges,
 where $m \to \infty$ as $n \to \infty$.
 
+The problem appears in [Er74c], p. 80, and is listed as OPEN on erdosproblems.com (page last
+edited 05 October 2025; accessed 2026-02-22). Erdős [Er64f] proved that the conclusion holds with
+$c_r = r^{-r}$ whenever the hypergraph has at least $\varepsilon n^r$ edges. The threshold
+$(1+\varepsilon)(n/r)^r$ is just above the $(n/r)^r$ edge count of the balanced complete
+$r$-partite $r$-uniform hypergraph on $n$ vertices, whose $m$-vertex subgraphs achieve the
+constant $r^{-r}$; the problem asks whether this constant can then be beaten.
+
 *References:*
-- [Er74c] Erdős, P., _Extremal problems on graphs and hypergraphs_. (1974), p.80.
+- [Er74c] Erdős, P., _Extremal problems on graphs and hypergraphs_. (1974), 75-84. [The problem
+  is stated on p. 80.]
 - [Er64f] Erdős, P., _On extremal problems of graphs and generalized graphs_. Israel J. Math. **2**
   (1964), 183-190.
 - [erdosproblems.com/1075](https://www.erdosproblems.com/1075)
@@ -72,12 +80,18 @@ theorem erdos_1075 (r : ℕ) (hr : r ≥ 3) :
   sorry
 
 /--
-Erdős [Er64f] proved that the conclusion of Problem 1075 holds with the weaker density constant
-$c_r = r^{-r}$ when the edge threshold is strengthened to $\varepsilon n^r$ (instead of
-$(1+\varepsilon)(n/r)^r$). This is a solved, weaker variant of the main conjecture.
+Erdős [Er64f] proved that the conclusion of Problem 1075 holds with the constant
+$c_r = r^{-r}$ exactly (not exceeding it, as the main problem demands) whenever the hypergraph
+has at least $\varepsilon n^r$ edges, for any fixed $\varepsilon > 0$. Note that for
+$\varepsilon \leq 1/(r^r - 1)$ the threshold $\varepsilon n^r$ is *below* the main problem's
+$(1+\varepsilon)(n/r)^r = (1+\varepsilon) r^{-r} n^r$, so this hypothesis is more permissive,
+not stronger: the result applies to sparser hypergraphs but only achieves the constant
+$r^{-r}$, which the main conjecture asks to beat. It follows from the theorem of [Er64f] that
+such hypergraphs contain complete $r$-partite subhypergraphs with all $r$ parts of any
+prescribed size $t$ — an $rt$-vertex subgraph with at least $t^r = r^{-r}(rt)^r$ edges.
 -/
 @[category research solved, AMS 5]
-theorem erdos_1075_erdos_1964 (r : ℕ) (hr : r ≥ 3) :
+theorem erdos_1075.variants.erdos_1964 (r : ℕ) (hr : r ≥ 3) :
     ∀ ε : ℝ, ε > 0 →
     ∀ M : ℕ,
     ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
