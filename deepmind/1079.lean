@@ -50,7 +50,7 @@ namespace Erdos1079
     Counts pairs $(i, j)$ in $S$ with $i < j$ and `G.Adj i j`. -/
 noncomputable def neighborhoodEdgeCount {n : ℕ}
     (G : SimpleGraph (Fin n)) [DecidableRel G.Adj] (S : Finset (Fin n)) : ℕ :=
-  (Finset.univ.filter (fun p : Fin n × Fin n =>
+  (univ.filter (fun p : Fin n × Fin n =>
     p.1 ∈ S ∧ p.2 ∈ S ∧ p.1 < p.2 ∧ G.Adj p.1 p.2)).card
 
 /--
@@ -65,7 +65,11 @@ $n \geq n_0$ and all graphs $G$ on $n$ vertices with at least $\operatorname{ex}
 there exists a vertex $v$ with degree $d \geq cn$ and at least
 $\operatorname{ex}(d; K_{r-1})$ edges among the neighbors of $v$.
 
-Proved by Bollobás and Thomason [BoTh81].
+Proved by Bollobás and Thomason [BoTh81]. The source page notes the result holds "unless $G$
+is itself the Turán graph"; the Turán graph $T(n, r-1)$ satisfies the non-strict conclusion
+stated here with equality (each vertex has degree $d \geq \frac{r-2}{r-1}n - 1$ and its
+neighbourhood induces the Turán graph $T(d, r-2)$, which has exactly
+$\operatorname{ex}(d; K_{r-1})$ edges), so no exception is needed in this form.
 -/
 @[category research solved, AMS 5]
 theorem erdos_1079 : answer(True) ↔
@@ -84,16 +88,17 @@ theorem erdos_1079 : answer(True) ↔
 Bondy's strengthening of Erdős Problem 1079 [Bo83b]:
 
 If $r \geq 4$ and $G$ is a graph on $n$ vertices with strictly more than
-$\operatorname{ex}(n; K_r)$ edges, then a vertex of maximum degree in $G$ has at least
-$\operatorname{ex}(d; K_{r-1})$ edges in its neighbourhood, where $d$ is that maximum degree.
+$\operatorname{ex}(n; K_r)$ edges, then the vertex of the main statement *can be chosen* to be
+of maximum degree in $G$: some vertex $v$ of maximum degree $d$ has at least
+$\operatorname{ex}(d; K_{r-1})$ edges in its neighbourhood.
 -/
 @[category research solved, AMS 5]
-theorem erdos_1079_bondy_strengthening :
+theorem erdos_1079.variants.bondy_max_degree :
     ∀ r : ℕ, r ≥ 4 →
     ∃ n₀ : ℕ, ∀ n : ℕ, n ≥ n₀ →
     ∀ (G : SimpleGraph (Fin n)) [DecidableRel G.Adj],
       G.edgeFinset.card > extremalNumber n (⊤ : SimpleGraph (Fin r)) →
-      ∀ v : Fin n, (∀ w : Fin n, G.degree w ≤ G.degree v) →
+      ∃ v : Fin n, (∀ w : Fin n, G.degree w ≤ G.degree v) ∧
         neighborhoodEdgeCount G (G.neighborFinset v) ≥
           extremalNumber (G.degree v) (⊤ : SimpleGraph (Fin (r - 1))) := by
   sorry
