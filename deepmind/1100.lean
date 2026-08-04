@@ -38,7 +38,16 @@ $\tau^\perp(n) < \exp((\log n)^\varepsilon)$.
 
 Part 3: Let $g(k) = \max$ over squarefree $n$ with $\omega(n) = k$ of $\tau^\perp(n)$.
 Determine the growth of $g(k)$. Erdős and Simonovits proved
-$(\sqrt{2} + o(1))^k < g(k) < (2 - c)^k$ for some constant $c > 0$.
+$(\sqrt{2} + o(1))^k < g(k) < (2 - c)^k$ for some constant $c > 0$ (see [Er81h, p.173]).
+
+The problem is listed as OPEN on the source page (page last edited 19 October 2025,
+accessed 2026-02-23). The function $\tau^\perp$ was considered by Erdős and Hall [ErHa78].
+It is trivial that $\tau^\perp(n) \ge \omega(n)$, with equality for infinitely many $n$
+(e.g. prime powers). Erdős and Hall [ErHa78] proved that for all $\epsilon > 0$ and
+sufficiently large $x$, $\max_{n < x} \tau^\perp(n) > \exp((\log\log x)^{2-\epsilon})$;
+these two results are formalized as variants below.
+
+Related OEIS sequence: [A325864](https://oeis.org/A325864) (marked "possible" on the page).
 -/
 
 open Finset Real
@@ -65,7 +74,7 @@ theorem erdos_1100 :
     answer(sorry) ↔
       ∀ M : ℕ, ∀ ε : ℝ, ε > 0 →
         ∃ N₀ : ℕ, ∀ N : ℕ, N ≥ N₀ →
-          (((Finset.range N).filter (fun n =>
+          (((range N).filter (fun n =>
             tauPerp n ≤ M * n.primeFactors.card)).card : ℝ) / (N : ℝ) < ε := by
   sorry
 
@@ -80,7 +89,7 @@ theorem erdos_1100.variants.part2 :
     answer(sorry) ↔
       ∀ ε : ℝ, ε > 0 →
         ∃ N₀ : ℕ, ∀ n : ℕ, n ≥ N₀ →
-          (tauPerp n : ℝ) < Real.exp ((Real.log (n : ℝ)) ^ ε) := by
+          (tauPerp n : ℝ) < exp ((log (n : ℝ)) ^ ε) := by
   sorry
 
 /--
@@ -98,15 +107,59 @@ theorem erdos_1100.variants.part3_upper :
 
 /--
 Erdős Problem 1100, Part 3 (lower bound, proved by Erdős–Simonovits):
-For every $\varepsilon > 0$ and sufficiently large $k$, there exists a squarefree $n$ with
-$\omega(n) = k$ and $\tau^\perp(n) > (\sqrt{2} - \varepsilon)^k$.
+For every $0 < \varepsilon < \sqrt{2}$ and sufficiently large $k$, there exists a
+squarefree $n$ with $\omega(n) = k$ and $\tau^\perp(n) > (\sqrt{2} - \varepsilon)^k$.
+
+The restriction $\varepsilon < \sqrt{2}$ keeps the base $\sqrt{2} - \varepsilon$
+nonnegative and is necessary: without it the statement is false, since for
+$\varepsilon > 2 + \sqrt{2}$ and even $k$ the (monoid-power) bound
+$(\sqrt{2} - \varepsilon)^k = (\varepsilon - \sqrt{2})^k > 2^k$ exceeds the trivial
+maximum $\tau^\perp(n) \le \tau(n) - 1 = 2^k - 1$ for squarefree $n$ with
+$\omega(n) = k$. For $\varepsilon \ge \sqrt{2}$ the informal statement carries no
+content, so nothing is lost.
 -/
 @[category research solved, AMS 11]
 theorem erdos_1100.variants.part3_lower :
-    ∀ ε : ℝ, ε > 0 →
+    ∀ ε : ℝ, ε > 0 → ε < sqrt 2 →
       ∃ K₀ : ℕ, ∀ k : ℕ, k ≥ K₀ →
         ∃ n : ℕ, Squarefree n ∧ n.primeFactors.card = k ∧
-          (tauPerp n : ℝ) > (Real.sqrt 2 - ε) ^ k := by
+          (tauPerp n : ℝ) > (sqrt 2 - ε) ^ k := by
+  sorry
+
+/--
+Erdős Problem 1100, variant (trivial bound, remark in [ErHa78]):
+$\tau^\perp(n) \ge \omega(n)$ for every $n$. Indeed, for each prime $p \mid n$ the
+immediate predecessor $d$ of $p$ in the sorted divisor list satisfies $d < p$, hence
+$\gcd(d, p) = 1$, giving $\omega(n)$ distinct coprime consecutive pairs.
+(For $n = 0$ and $n = 1$ both sides are $0$.)
+-/
+@[category research solved, AMS 11]
+theorem erdos_1100.variants.omega_lower_bound :
+    ∀ n : ℕ, n.primeFactors.card ≤ tauPerp n := by
+  sorry
+
+/--
+Erdős Problem 1100, variant (remark in [ErHa78]):
+$\tau^\perp(n) = \omega(n)$ for infinitely many $n$ — e.g. for prime powers $p^a$,
+where the only coprime consecutive divisor pair is $(1, p)$, so
+$\tau^\perp(p^a) = 1 = \omega(p^a)$.
+-/
+@[category research solved, AMS 11]
+theorem erdos_1100.variants.omega_equality_infinitely_often :
+    ∀ N : ℕ, ∃ n : ℕ, n ≥ N ∧ tauPerp n = n.primeFactors.card := by
+  sorry
+
+/--
+Erdős Problem 1100, variant (proved by Erdős–Hall [ErHa78]):
+For all $\epsilon > 0$ and sufficiently large $x$,
+$\max_{n < x} \tau^\perp(n) > \exp((\log\log x)^{2-\epsilon})$, formalized as the
+existence of some $n < x$ exceeding the bound.
+-/
+@[category research solved, AMS 11]
+theorem erdos_1100.variants.erdos_hall_max :
+    ∀ ε : ℝ, ε > 0 →
+      ∃ X₀ : ℕ, ∀ x : ℕ, x ≥ X₀ →
+        ∃ n : ℕ, n < x ∧ (tauPerp n : ℝ) > exp ((log (log (x : ℝ))) ^ (2 - ε)) := by
   sorry
 
 end Erdos1100
