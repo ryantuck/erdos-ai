@@ -7,14 +7,25 @@ how to pay for it without tripping rate limits.*
 
 ## 1. Goal
 
+One pipeline, uniform for every problem:
+
+```
+erdosproblems.com/N  →  conjectures/N.lean  →  Fable review  →  conjectures-v2/N.lean
+                        (first pass, done)      (second pass)    (the deliverable)
+```
+
 Pass all 1179 problems in `conjectures/` through a two-stroke review, producing a
-second-generation dataset in `conjectures-v2/` (plain Mathlib) and `deepmind-v2/`
-(styled, upstream-flavored) — mirroring the first pass's `conjectures/` + `deepmind/`
-split, so each directory is standalone and builds in exactly one environment.
+second-generation dataset in `conjectures-v2/`. Every input is a plain-Mathlib file, so
+every output is too, and the whole set compiles in this repo with `lake build ErdosV2` —
+no sibling checkout, no second toolchain, no per-file branching.
+
+The styled `deepmind/` effort, which targeted the upstream google-deepmind repo, is **not
+part of this pipeline**. It is archived under `deepmind/` and frozen; nothing here reads
+from it.
 
 This is deliberately an **AI-first** route. The DeepMind `formal-conjectures` project
 gates every contribution on human review; this project does not, and the output is not
-destined for that repo (`FABLE_REVIEW.md:31`). The quality bar is enforced instead by an
+destined for that repo (`FABLE_REVIEW.md`, "Out of scope"). The quality bar is enforced instead by an
 adversarial second pass — a different, stronger model re-deriving the mathematics from
 the recovered source page and auditing the prior review claim by claim.
 
@@ -34,12 +45,12 @@ Two consequences shape everything below:
 | Directory | Count | Range | Notes |
 |---|---|---|---|
 | `conjectures/` | **1179** | 1–1179, **no gaps, nothing extra** | first-pass formalizations; the universe |
-| `deepmind/` | **808** | 2–1179, sparse | restyled subset; **371 problems have no file here** |
-| `ai-review/` | 807 | sparse | first-pass reviews |
-| `reviews/` | 808 | sparse | first-pass reviews |
+| `deepmind/deepmind/` | 808 | 2–1179, sparse | restyled for upstream — **archived**, not a pipeline input |
+| `deepmind/ai-review/` | 807 | sparse | first-pass reviews of the styled files — Part E input |
+| `deepmind/reviews/` | 808 | sparse | first-pass style reviews — **archived** |
 | `fable-review/` | **101** | **1000–1100** | second-pass review notes |
 | `conjectures-v2/` | **33** | 1001–1100, sparse | second pass, plain Mathlib — builds here |
-| `deepmind-v2/` | **67** | 1001–1100, sparse | second pass, `FormalConjecturesUtil` — builds in sibling |
+| `deepmind/deepmind-v2/` | 67 | 1001–1100, sparse | second pass of the *styled* files — **archived**, see below |
 
 Three corrections to the working recollection:
 
@@ -56,10 +67,23 @@ Three corrections to the working recollection:
    wrote no mathematics. Sonnet 4.6 appears once. The reviewer population is homogeneous,
    which is good news for the benchmark framing: batch 1 is a clean single-model baseline.
 
-One real gap: **problem 1000 was reviewed and fixed but never promoted to either v2
-directory.** It is picked up by the 901–1000 batch below as promote-only work.
+### What the pipeline change costs
 
-**Net remaining: 1078 to review, 1079 to promote into v2.**
+Under the old rule the 67 styled second-pass files counted as done. They no longer do:
+they were reviewed against `deepmind/<N>.lean`, not `conjectures/<N>.lean`, so they are
+not outputs of this pipeline. The honest accounting is therefore:
+
+| | Count |
+|---|---|
+| In `conjectures-v2/` today | **33** |
+| Remaining to produce | **1146** |
+| …of which already have a `fable-review/` note (written against the styled copy) | 68 |
+
+Those 68 are 1000 plus the 67 in `deepmind/deepmind-v2/`. Their reviews contain real
+mathematics and stay useful as reference, but the problems need re-running from
+`conjectures/` to land in `conjectures-v2/`. Per the batch order below they fall in
+901–1000 and 1001–1100, both late, so the re-run is naturally deferred — which is where
+you wanted it.
 
 ## 3. The unit of work
 
@@ -70,62 +94,21 @@ work Parts A–E of `FABLE_REVIEW.md`, audit the prior `ai-review/` claim by cla
 is the verdict and the defect list.
 
 **Stroke 2 — fix and promote.** Apply the fixes, add page-confirmed variants, write
-`fable-review/<N>.md` including the Addendum, and write the result to the v2 directory
-matching the input: `deepmind/<N>.lean` → `deepmind-v2/<N>.lean`, `conjectures/<N>.lean`
-→ `conjectures-v2/<N>.lean`. The destination is determined by the input, never chosen.
+`fable-review/<N>.md` including the Addendum, and write the result to
+`conjectures-v2/<N>.lean`. One input directory, one output directory, no branching.
 
-**Required when promoting from `deepmind/`: rewrite the import.** All **808** files in
-`deepmind/` carry `import FormalConjectures.Util.ProblemImports`, a module that no longer
-exists upstream — it was renamed to `FormalConjecturesUtil`. Without the rewrite the
-build dies at import resolution before any mathematics is checked (verified 2026-08-13 on
-1103). Batch 1 did this during assembly; under the write-to-v2-directly rule it becomes
-part of stroke 2:
-
-```bash
-sed 's#^import FormalConjectures\.Util\.ProblemImports$#import FormalConjecturesUtil#' \
-    deepmind/<N>.lean > deepmind-v2/<N>.lean
-```
-
-Files taking the `conjectures/` path import plain `Mathlib.*`, need no rewrite, and are a
-straight `cp` into `conjectures-v2/`. All 100 current v2 files are already correct: the 67
-in `deepmind-v2/` on `FormalConjecturesUtil`, the 33 in `conjectures-v2/` on plain
-Mathlib, zero on the stale name.
-
-This is what keeps the two directories independent: every file in `conjectures-v2/`
-compiles with nothing but Mathlib, and every file in `deepmind-v2/` compiles against
-upstream. Neither directory is a mix, so neither needs a per-file check to know how to
-build it.
-
-Input selection is already specified in `FABLE_REVIEW_RUN.md:18-25` and is not a choice:
-the artifact under review is `deepmind/<N>.lean` when it exists, otherwise
-`conjectures/<N>.lean`. The second case is not rare — it is **371 of 1179**, and it is
-not evenly spread:
-
-| Batch | Total | has `deepmind/` | no `deepmind/` |
-|---|---|---|---|
-| 1101–1179 | 79 | 64 | **15** |
-| 1–100 | 100 | 56 | **44** |
-| 101–200 | 100 | 67 | 33 |
-| 201–300 | 100 | 54 | **46** |
-| 301–400 | 100 | 46 | **54** |
-| 401–500 | 100 | 67 | 33 |
-| 501–600 | 100 | 79 | 21 |
-| 601–700 | 100 | 83 | 17 |
-| 701–800 | 100 | 88 | 12 |
-| 801–900 | 100 | 69 | 31 |
-| 901–1000 | 100 | 68 | 32 |
-| *(1001–1100, done)* | *100* | *67* | *33* |
-
-The 67/33 split of batch 1 was not a universal constant — it ranges from 46/54 to 88/12.
-Since the no-`deepmind/` path reviews a raw plain-Mathlib file and judges soundness
-rather than style, those problems are somewhat cheaper per unit but produce v2 files that
-build locally rather than upstream (see §6).
+`conjectures/<N>.lean` is raw first-pass output — multiple imports, no copyright header,
+no `@[category …]` attributes, bare `:= sorry`. None of that is a defect and none of it
+should be "fixed": restyling toward the upstream repo is what the archived `deepmind/`
+effort was for, and it is explicitly out of scope (`FABLE_REVIEW.md`, "Out of scope").
+Judge soundness, not style.
 
 ### One deliberate change from batch 1
 
-In the 1001–1100 run, fixes were applied **in place to `deepmind/<N>.lean`**, and
-the v2 set was assembled afterward by copying. **Do not repeat that.** Write fixes only
-to the v2 directories and leave `deepmind/` and `conjectures/` immutable.
+In the 1001–1100 run the input was the styled `deepmind/<N>.lean`, fixes were applied
+**in place to it**, and the v2 set was assembled afterward by copying. **Do not repeat
+that.** The input is now always `conjectures/<N>.lean`, fixes go only to
+`conjectures-v2/<N>.lean`, and `conjectures/` stays immutable.
 
 Rationale: the benchmark's value is the before/after pair. Keeping the "before" side
 untouched on disk makes every defect a clean two-file diff instead of something that has
@@ -150,16 +133,18 @@ intact. Just don't extend the pattern.
 601-700    (100)
 701-800    (100)
 801-900    (100)
-901-1000   (100)  ← includes promote-only work for 1000
+901-1000   (100)  ← 1000 has a legacy review note; re-run it anyway
+1001-1100   (67)  ← last: the styled second pass, re-done from conjectures/
 ```
 
-11 batches, 1079 problems. One commit per problem, following the existing subject-line
+12 batches, 1146 problems. One commit per problem, following the existing subject-line
 convention (`Fable review <N>: <what changed>`), one branch and PR per batch.
 
-Re-reviewing 1001–1100 with a current model is explicitly **deferred to the end** of the
-program. It is the one batch where a second data point would tell us something about
-model-over-model improvement, but it costs a full batch to learn, and it is worth more
-once the pipeline is stable.
+1001–1100 comes last for two reasons that now coincide. It is the one batch with an
+existing review to compare against, so re-running it measures both the pipeline change
+and model-over-model improvement — worth more once everything else is stable. And only 67
+of its 100 need redoing; the 33 that already came from `conjectures/` are already correct
+outputs of this pipeline and stay as they are.
 
 ## 5. Concurrency and credit policy
 
@@ -174,7 +159,7 @@ a rule and then justified.
 > other local computation — those cost CPU, not tokens, and should use the whole machine.
 > See §6.
 
-**Why parallelism is the wrong lever.** It does not reduce total tokens — 1079 problems
+**Why parallelism is the wrong lever.** It does not reduce total tokens — 1146 problems
 cost what they cost. It only raises the *rate*, and rate is precisely what the 5-hour
 session window and the weekly cap measure. Running two problems at once halves the
 wall-clock and doubles the burn rate, arriving at the same limit twice as fast. This is
@@ -206,7 +191,7 @@ N=$1
 [ -f "fable-review/$N.md" ] && exit 0          # idempotent: skip completed work
 claude --dangerously-skip-permissions --print --output-format json \
        --model claude-fable-5 --max-turns 200 \
-       "Read FABLE_REVIEW_RUN.md. Apply to problem $N. Write the fixed file to deepmind-v2/$N.lean if deepmind/$N.lean exists, otherwise conjectures-v2/$N.lean; do not modify deepmind/ or conjectures/." \
+       "Read FABLE_REVIEW_RUN.md. Apply to problem $N. Write the fixed file to conjectures-v2/$N.lean; do not modify conjectures/." \
   | tee "run-logs/$N.json" \
   | python3 -c 'import sys,json;d=json.load(sys.stdin);print("'"$N"'",d.get("total_cost_usd"),d.get("num_turns"),d.get("duration_ms"),sep="\t")' \
   >> run-logs/burn.tsv
@@ -242,33 +227,28 @@ command — important, since a batch spans days and will get interrupted.
 
 ## 6. Compile verification
 
-Reviews run without a compiler by design (`FABLE_REVIEW.md:6-7`), so every fix lands
+Reviews run without a compiler by design (`FABLE_REVIEW.md`, opening paragraph), so every fix lands
 unverified and the compile pass is a separate step at the end of each batch. Which
 environment depends on the file's provenance, per `SETUP_LEAN_ENV.md`:
 
-The directory split makes this mechanical — no per-file inspection, one command each:
+Every output is plain Mathlib, so verification is one command in this repo — no sibling
+checkout, no copying, no second toolchain:
 
 ```bash
-# conjectures-v2/ — plain Mathlib, builds in this repo
 lake build ErdosV2                 # the whole set
 lake build 'ConjecturesV2.«1003»'  # or one file
-
-# deepmind-v2/ — FormalConjecturesUtil, sibling checkout only
-cd /workspaces/formal-conjectures
-cp /workspaces/erdos-ai/deepmind-v2/*.lean FormalConjectures/ErdosProblems/
-TARGETS=$(ls /workspaces/erdos-ai/deepmind-v2/*.lean | xargs -n1 basename \
-          | sed 's#^#FormalConjectures/ErdosProblems/#')
-lake build $TARGETS
 ```
+
+The quotes and guillemets are required — the module name is numeric. `ErdosV2` is out of
+`defaultTargets`, so a bare `lake build` still only builds `Erdos`.
 
 **Builds are free — parallelize them.** The §5 concurrency rule governs model calls and
 nothing else. `lake` costs CPU, not tokens, so there is no reason to throttle it: run the
 local set at `-P$(nproc)` and hand the entire target list to a single `lake build` for the
-sibling set, as above. Each `lake` invocation is internally parallel across cores on top
-of that. Measured 2026-08-13 with warm caches: `deepmind-v2/`'s 67 files as one invocation
-in **17s** (8110 jobs, 0 errors, 0 warnings), and `lake build ErdosV2` over
-`conjectures-v2/`'s 33 in **2s** (2733 jobs, 113 `sorry` warnings, 0 non-sorry). There is
-nothing to save by going slower.
+whole set at once, as above. Each `lake` invocation is internally parallel across cores on
+top of that. Measured 2026-08-13 with a warm cache: `lake build ErdosV2` over the current
+33 files took **2s** (2733 jobs, 113 `sorry` warnings, 0 non-sorry). There is nothing to
+save by going slower.
 
 Batch 1 found three defect classes this way that no amount of review caught — a type
 ascription (1062), an attribute grammar error (1082), and 22 linter violations. Expect
@@ -276,9 +256,9 @@ the compile pass to find real errors every batch; budget for a fix cycle after i
 log what it finds, because *"defects a reviewer missed but a compiler caught"* is one of
 the more interesting numbers this project can report.
 
-Two standing hazards: `/workspaces/formal-conjectures` is 108 commits behind upstream
-with a dirty tree, and the `cp` above overwrites upstream's styled files. Both are
-tracked as open threads; resolve before the sibling checkout is needed for a batch.
+The sibling `/workspaces/formal-conjectures` checkout is no longer needed for verification
+and is not required to run a batch. It remains only as context for the archived work and
+for the five unstaged revisions in §8.
 
 ## 7. Benchmark instrumentation
 
@@ -290,7 +270,7 @@ Cheap to capture during the run, expensive to reconstruct after. Add to every
 problem: 1103
 reviewer_model: claude-fable-5
 review_date: 2026-08-14
-input_artifact: deepmind/1103.lean   # or conjectures/1103.lean
+input_artifact: conjectures/1103.lean
 verdict: NEEDS REVISION              # ACCEPT | ACCEPT WITH NITS | NEEDS REVISION
 confidence: medium
 source_recovered: true
@@ -323,7 +303,7 @@ v2's defect list a newer model independently rediscovers.
    linters or scope §12 to the subset it can apply to.
 3. **The five real revisions sitting unstaged in `/workspaces/formal-conjectures`**
    (1002, 1057, 1082, 1090, 1096) — net-additive improvements to files upstream already
-   has. Contributing them upstream contradicts `FABLE_REVIEW.md:31`. Worth an explicit
+   has. Contributing them upstream contradicts `FABLE_REVIEW.md`'s "Out of scope" note. Worth an explicit
    decision rather than leaving them to rot in a dirty tree.
 4. ~~**Nothing in this repo's user-authored docs mentions `conjectures-v2`.**~~ —
    addressed 2026-08-13: `readme.md` now has a "Second pass" section describing the
