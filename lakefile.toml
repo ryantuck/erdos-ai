@@ -7,15 +7,19 @@ name = "Erdos"
 srcDir = "."
 globs = ["conjectures.*"]
 
-# Second-pass formalizations. Only the Mathlib-only files build here; the ones
-# importing FormalConjecturesUtil still need the sibling formal-conjectures
-# checkout. Not in defaultTargets, so a bare `lake build` ignores them.
+# Second-pass formalizations, plain-Mathlib half. Everything in conjectures-v2/
+# builds here with no external dependency — `lake build ErdosV2` compiles the
+# whole set. The styled half lives in deepmind-v2/ and is NOT a target here: it
+# imports FormalConjecturesUtil and only builds in the sibling formal-conjectures
+# checkout. Not in defaultTargets, so a bare `lake build` ignores this lib.
 [[lean_lib]]
 name = "ErdosV2"
 srcDir = "."
 globs = ["ConjecturesV2.*"]   # ConjecturesV2 is a symlink to conjectures-v2/
                               # (Lake globs need a valid identifier, and
-                              #  `conjectures-v2` has a hyphen)
+                              #  `conjectures-v2` has a hyphen).
+                              # ConjecturesV2.lean is the stub root module the
+                              # glob requires, mirroring conjectures.lean.
 
 [[require]]
 name = "mathlib"

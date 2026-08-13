@@ -8,7 +8,9 @@ how to pay for it without tripping rate limits.*
 ## 1. Goal
 
 Pass all 1179 problems in `conjectures/` through a two-stroke review, producing a
-second-generation dataset in `conjectures-v2/`.
+second-generation dataset in `conjectures-v2/` (plain Mathlib) and `deepmind-v2/`
+(styled, upstream-flavored) — mirroring the first pass's `conjectures/` + `deepmind/`
+split, so each directory is standalone and builds in exactly one environment.
 
 This is deliberately an **AI-first** route. The DeepMind `formal-conjectures` project
 gates every contribution on human review; this project does not, and the output is not
@@ -36,7 +38,8 @@ Two consequences shape everything below:
 | `ai-review/` | 807 | sparse | first-pass reviews |
 | `reviews/` | 808 | sparse | first-pass reviews |
 | `fable-review/` | **101** | **1000–1100** | second-pass review notes |
-| `conjectures-v2/` | **100** | 1001–1100 | merged to `master` in PR #3 (`52d44c51`) |
+| `conjectures-v2/` | **33** | 1001–1100, sparse | second pass, plain Mathlib — builds here |
+| `deepmind-v2/` | **67** | 1001–1100, sparse | second pass, `FormalConjecturesUtil` — builds in sibling |
 
 Three corrections to the working recollection:
 
@@ -53,8 +56,8 @@ Three corrections to the working recollection:
    wrote no mathematics. Sonnet 4.6 appears once. The reviewer population is homogeneous,
    which is good news for the benchmark framing: batch 1 is a clean single-model baseline.
 
-One real gap: **problem 1000 was reviewed and fixed but never promoted to
-`conjectures-v2/`.** It is picked up by the 901–1000 batch below as promote-only work.
+One real gap: **problem 1000 was reviewed and fixed but never promoted to either v2
+directory.** It is picked up by the 901–1000 batch below as promote-only work.
 
 **Net remaining: 1078 to review, 1079 to promote into v2.**
 
@@ -67,8 +70,9 @@ work Parts A–E of `FABLE_REVIEW.md`, audit the prior `ai-review/` claim by cla
 is the verdict and the defect list.
 
 **Stroke 2 — fix and promote.** Apply the fixes, add page-confirmed variants, write
-`fable-review/<N>.md` including the Addendum, and write the result to
-`conjectures-v2/<N>.lean`.
+`fable-review/<N>.md` including the Addendum, and write the result to the v2 directory
+matching the input: `deepmind/<N>.lean` → `deepmind-v2/<N>.lean`, `conjectures/<N>.lean`
+→ `conjectures-v2/<N>.lean`. The destination is determined by the input, never chosen.
 
 **Required when promoting from `deepmind/`: rewrite the import.** All **808** files in
 `deepmind/` carry `import FormalConjectures.Util.ProblemImports`, a module that no longer
@@ -79,12 +83,18 @@ part of stroke 2:
 
 ```bash
 sed 's#^import FormalConjectures\.Util\.ProblemImports$#import FormalConjecturesUtil#' \
-    deepmind/<N>.lean > conjectures-v2/<N>.lean
+    deepmind/<N>.lean > deepmind-v2/<N>.lean
 ```
 
-Files taking the `conjectures/` path import plain `Mathlib.*` and need no rewrite. All 100
-current v2 files are already correct: 67 on `FormalConjecturesUtil`, 33 on plain Mathlib,
-zero on the stale name.
+Files taking the `conjectures/` path import plain `Mathlib.*`, need no rewrite, and are a
+straight `cp` into `conjectures-v2/`. All 100 current v2 files are already correct: the 67
+in `deepmind-v2/` on `FormalConjecturesUtil`, the 33 in `conjectures-v2/` on plain
+Mathlib, zero on the stale name.
+
+This is what keeps the two directories independent: every file in `conjectures-v2/`
+compiles with nothing but Mathlib, and every file in `deepmind-v2/` compiles against
+upstream. Neither directory is a mix, so neither needs a per-file check to know how to
+build it.
 
 Input selection is already specified in `FABLE_REVIEW_RUN.md:18-25` and is not a choice:
 the artifact under review is `deepmind/<N>.lean` when it exists, otherwise
@@ -114,8 +124,8 @@ build locally rather than upstream (see §6).
 ### One deliberate change from batch 1
 
 In the 1001–1100 run, fixes were applied **in place to `deepmind/<N>.lean`**, and
-`conjectures-v2/` was assembled afterward by copying. **Do not repeat that.** Write fixes
-only to `conjectures-v2/<N>.lean` and leave `deepmind/` and `conjectures/` immutable.
+the v2 set was assembled afterward by copying. **Do not repeat that.** Write fixes only
+to the v2 directories and leave `deepmind/` and `conjectures/` immutable.
 
 Rationale: the benchmark's value is the before/after pair. Keeping the "before" side
 untouched on disk makes every defect a clean two-file diff instead of something that has
@@ -196,7 +206,7 @@ N=$1
 [ -f "fable-review/$N.md" ] && exit 0          # idempotent: skip completed work
 claude --dangerously-skip-permissions --print --output-format json \
        --model claude-fable-5 --max-turns 200 \
-       "Read FABLE_REVIEW_RUN.md. Apply to problem $N. Write the fixed file to conjectures-v2/$N.lean; do not modify deepmind/ or conjectures/." \
+       "Read FABLE_REVIEW_RUN.md. Apply to problem $N. Write the fixed file to deepmind-v2/$N.lean if deepmind/$N.lean exists, otherwise conjectures-v2/$N.lean; do not modify deepmind/ or conjectures/." \
   | tee "run-logs/$N.json" \
   | python3 -c 'import sys,json;d=json.load(sys.stdin);print("'"$N"'",d.get("total_cost_usd"),d.get("num_turns"),d.get("duration_ms"),sep="\t")' \
   >> run-logs/burn.tsv
@@ -236,14 +246,17 @@ Reviews run without a compiler by design (`FABLE_REVIEW.md:6-7`), so every fix l
 unverified and the compile pass is a separate step at the end of each batch. Which
 environment depends on the file's provenance, per `SETUP_LEAN_ENV.md`:
 
-```bash
-# plain-Mathlib v2 files (the no-deepmind/ set) — build in this repo
-lake build 'ConjecturesV2.«1003»'
+The directory split makes this mechanical — no per-file inspection, one command each:
 
-# anything importing FormalConjecturesUtil — sibling checkout only
+```bash
+# conjectures-v2/ — plain Mathlib, builds in this repo
+lake build ErdosV2                 # the whole set
+lake build 'ConjecturesV2.«1003»'  # or one file
+
+# deepmind-v2/ — FormalConjecturesUtil, sibling checkout only
 cd /workspaces/formal-conjectures
-cp /workspaces/erdos-ai/conjectures-v2/*.lean FormalConjectures/ErdosProblems/
-TARGETS=$(ls /workspaces/erdos-ai/conjectures-v2/*.lean | xargs -n1 basename \
+cp /workspaces/erdos-ai/deepmind-v2/*.lean FormalConjectures/ErdosProblems/
+TARGETS=$(ls /workspaces/erdos-ai/deepmind-v2/*.lean | xargs -n1 basename \
           | sed 's#^#FormalConjectures/ErdosProblems/#')
 lake build $TARGETS
 ```
@@ -252,10 +265,10 @@ lake build $TARGETS
 nothing else. `lake` costs CPU, not tokens, so there is no reason to throttle it: run the
 local set at `-P$(nproc)` and hand the entire target list to a single `lake build` for the
 sibling set, as above. Each `lake` invocation is internally parallel across cores on top
-of that. Measured 2026-08-13 on the current 100-file v2 set with warm caches: the 67
-sibling files built as one invocation in **18s** (8143 jobs, 0 errors, 0 warnings), and
-the 33 local files in **~3s each** (113 `sorry` warnings, 0 non-sorry). There is nothing
-to save by going slower.
+of that. Measured 2026-08-13 with warm caches: `deepmind-v2/`'s 67 files as one invocation
+in **17s** (8110 jobs, 0 errors, 0 warnings), and `lake build ErdosV2` over
+`conjectures-v2/`'s 33 in **2s** (2733 jobs, 113 `sorry` warnings, 0 non-sorry). There is
+nothing to save by going slower.
 
 Batch 1 found three defect classes this way that no amount of review caught — a type
 ascription (1062), an attribute grammar error (1082), and 22 linter violations. Expect
