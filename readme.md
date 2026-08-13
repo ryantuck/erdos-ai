@@ -35,7 +35,7 @@ All compute was performed on a tiny e2-medium (2 vCPU, 4GB RAM) server in Google
 
 ## Second pass
 
-The formalizations above are a first draft. I'm now running all 1179 problems through a second, adversarial review — a stronger model recovers the original problem page, re-derives the mathematics independently, audits the first-pass review claim by claim, and writes the corrected conjecture to `conjectures-v2/`. Notes for each problem land in `fable-review/`.
+The formalizations above are a first draft. I'm now running all 1179 problems through a second, adversarial review — a stronger model recovers the original problem page, re-derives the mathematics independently, audits the first-pass review claim by claim, and writes the corrected conjecture to `conjectures-v2/` or `deepmind-v2/` — mirroring the first pass's split, so each directory builds in exactly one environment. Notes for each problem land in `fable-review/`.
 
 Problems 1000-1100 are done (101 reviewed, [PR #3](https://github.com/ryantuck/erdos-ai/pull/3)); 1078 remain.
 

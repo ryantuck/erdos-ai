@@ -5,8 +5,12 @@ target different repos and different Lean versions:
 
 | Files | Imports | Builds in | Lean |
 |---|---|---|---|
-| `conjectures/*.lean` | plain `Mathlib.*` | this repo | 4.28.0 (`lean-toolchain`) |
-| `deepmind/*.lean`, `conjectures-v2/*.lean` | `FormalConjecturesUtil`, `FormalConjecturesForMathlib.*` | `../formal-conjectures` | 4.27.0 |
+| `conjectures/*.lean`, `conjectures-v2/*.lean` | plain `Mathlib.*` | this repo | 4.28.0 (`lean-toolchain`) |
+| `deepmind/*.lean`, `deepmind-v2/*.lean` | `FormalConjecturesUtil`, `FormalConjecturesForMathlib.*` | `../formal-conjectures` | 4.27.0 |
+
+The split is by import, and the directory names say which is which: `conjectures*`
+builds here, `deepmind*` needs the sibling checkout. First pass is `conjectures/` +
+`deepmind/`; second pass is `conjectures-v2/` + `deepmind-v2/`.
 
 Budget ~15 min and ~13 GB of disk for both. Each Mathlib cache is ~6 GB.
 
@@ -37,7 +41,23 @@ First `cache get` takes ~10 min. After that a single file builds in ~15 s.
 - `lakefile.toml` globs `conjectures.*` only. `lake build deepmind/1100.lean` fails with
   `unknown package deepmind` — see below.
 
-## 3. The DeepMind repo (`deepmind/`, `conjectures-v2/`)
+### Second pass (`conjectures-v2/`)
+
+The plain-Mathlib half of the second pass is its own lib and needs no external
+checkout. Unlike `Erdos`, the whole thing is cheap to build at once:
+
+```bash
+lake build ErdosV2                 # all 33 files, ~2700 jobs
+lake build 'ConjecturesV2.«1003»'  # or one at a time
+```
+
+The quotes and guillemets are required — the module name is numeric. `ErdosV2` is out
+of `defaultTargets`, so a bare `lake build` still only builds `Erdos`. `ConjecturesV2`
+is a symlink to `conjectures-v2/` (Lake globs need a valid identifier and
+`conjectures-v2` has a hyphen), and `ConjecturesV2.lean` is the stub root module the
+glob requires, mirroring `conjectures.lean`.
+
+## 3. The DeepMind repo (`deepmind/`, `deepmind-v2/`)
 
 These files import `FormalConjecturesUtil`, which only exists upstream. The Makefile
 already assumes a sibling checkout at `../formal-conjectures`, so put it there:
@@ -53,7 +73,7 @@ To build one of our files, copy it into the upstream tree and build by path:
 
 ```bash
 cd /workspaces/formal-conjectures
-cp /workspaces/erdos-ai/conjectures-v2/1100.lean FormalConjectures/ErdosProblems/
+cp /workspaces/erdos-ai/deepmind-v2/1100.lean FormalConjectures/ErdosProblems/
 lake build FormalConjectures/ErdosProblems/1100.lean
 ```
 
@@ -64,14 +84,16 @@ Build the whole set at once:
 
 ```bash
 cd /workspaces/formal-conjectures
-cp /workspaces/erdos-ai/conjectures-v2/*.lean FormalConjectures/ErdosProblems/
-TARGETS=$(ls /workspaces/erdos-ai/conjectures-v2/*.lean | xargs -n1 basename \
+cp /workspaces/erdos-ai/deepmind-v2/*.lean FormalConjectures/ErdosProblems/
+TARGETS=$(ls /workspaces/erdos-ai/deepmind-v2/*.lean | xargs -n1 basename \
   | sed 's#^#FormalConjectures/ErdosProblems/#')
 lake build $TARGETS
 ```
 
-Copying overwrites upstream files where the problem number already exists
-(39 of the 100 in `conjectures-v2/`). Undo with
+Measured 2026-08-13 with a warm cache: all 67 in 17 s (8110 jobs, 0 errors, 0 warnings).
+Builds cost CPU, not tokens — parallelize freely.
+
+Copying overwrites upstream files where the problem number already exists. Undo with
 `git -C /workspaces/formal-conjectures checkout FormalConjectures/ErdosProblems`.
 
 ### Import path drift
@@ -89,12 +111,12 @@ Rewrite before building:
 sed -i 's#^import FormalConjectures\.Util\.ProblemImports$#import FormalConjecturesUtil#' FILE
 ```
 
-`conjectures-v2/` already has this applied.
+`deepmind-v2/` already has this applied; `conjectures-v2/` never needed it, since those
+files import plain `Mathlib.*`.
 
 ## Upstream style gotchas
 
-Two things that pass locally but fail upstream, both hit while building
-`conjectures-v2/`:
+Two things that pass locally but fail upstream, both hit while building the second pass:
 
 - **Attribute grammar.** The problem status is only `open` or `solved`; a formal-proof
   link is a *separate* attribute. `@[category research formally solved using X at "…"]`
