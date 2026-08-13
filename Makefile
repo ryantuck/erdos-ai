@@ -1,3 +1,8 @@
+# Live pipeline: erdosproblems.com/N -> conjectures/N.lean -> fable review ->
+# conjectures-v2/N.lean. See GAME_PLAN.md.
+#
+# The DeepMind restyling effort is archived; its rules live in deepmind/Makefile.
+
 tidy/%.html : html/%.html
 	cat html/$*.html | htmlq .problem-box --pretty > $@
 
@@ -12,28 +17,8 @@ build-logs/%.txt : conjectures/%.lean
 
 # ---------------------------------
 
-deepmind/%.lean : conjectures/%.lean
-	claude --dangerously-skip-permissions -p "read ADHERE_TO_DEEPMIND_STYLE_GUIDE.md. Apply to problem $*."
-
-to-stylize.txt : completed-conjectures.txt stylized-conjectures.txt
-	comm -23 --nocheck-order $^ > $@
-
-stylized-conjectures.txt :
-	ls deepmind | cut -d '.' -f 1 | sort -n > $@
-
-# ---------------------------------
-
-todo-conjectures.txt : all-conjectures.txt formalized-conjectures.txt
-	comm -23 --nocheck-order $^ > $@
-
 all-conjectures.txt :
 	seq 1 1179 > $@
-
-formalized-conjectures.txt : deepmind-conjectures.txt completed-conjectures.txt
-	cat $^ | sort -n | uniq > $@
-
-deepmind-conjectures.txt :
-	ls ../formal-conjectures/FormalConjectures/ErdosProblems | cut -d '.' -f 1 | sort -n > $@
 
 completed-conjectures.txt :
 	ls conjectures | cut -d '.' -f 1 | sort -n > $@
@@ -45,7 +30,8 @@ setup :
 	mkdir -p html
 	mkdir -p tidy
 	mkdir -p conjectures
-	mkdir -p reviews
+	mkdir -p conjectures-v2
+	mkdir -p fable-review
 	mkdir -p sessions
 	mkdir -p build-logs
 
