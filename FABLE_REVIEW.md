@@ -12,13 +12,10 @@ Produce a review document at `fable-review/NUM.md`.
 
 | Input | Path | Notes |
 |---|---|---|
-| Final formalization | `deepmind/NUM.lean` | The artifact under review |
-| Raw first-pass version | `conjectures/NUM.lean` | Check nothing was lost/corrupted in restyling |
-| Prior math review | `ai-review/NUM.md` | Audit it — do not trust it |
-| Prior style review | `reviews/NUM.md` | Reference only; style items are out of scope |
+| Formalization | `conjectures/NUM.lean` | The artifact under review |
+| Prior math review | `ai-review/NUM.md` | Audit it — do not trust it. Legacy; may be absent |
 | Problem source | `tidy/NUM.html`, else `https://www.erdosproblems.com/NUM` | May be absent/unreachable |
 | Citation source | `https://www.erdosproblems.com/latex/NUM` | Authoritative bibliography; may be unreachable |
-| Shared library | `FormalConjecturesForMathlib/` | For reuse checks, if present |
 
 If the problem source is unreachable from the container, say so explicitly, review against
 the module docstring's English statement (checking internal consistency between docstring
@@ -28,7 +25,13 @@ and Lean code), and mark externally-dependent items **DEFERRED** rather than pas
 
 Do **not** review: copyright headers, import statements, namespace naming, attribute
 formatting, AMS subject codes, line length, or any other formal-conjectures repo styling.
-These files are not destined for that repo. Compilation status is also out of scope.
+These files are not destined for that repo, and the review pipeline no longer touches the
+styled `deepmind/` artifacts at all — see `deepmind/` for that archived effort. Judge
+soundness, not style. `conjectures/` files may legitimately carry multiple imports and
+bare `:= sorry`; neither is a defect.
+
+Compilation status is also out of scope here — it is verified separately after the review,
+per `GAME_PLAN.md` §6.
 
 ---
 
@@ -129,16 +132,15 @@ Determine which case the **original English problem** is, then check the encodin
 
 ### C2. Reuse
 
-- [ ] Local definitions that duplicate Mathlib or `FormalConjecturesForMathlib/`
-  concepts are flagged with the library name to prefer. (Static judgment only — do not
-  claim the swap compiles.)
+- [ ] Local definitions that duplicate Mathlib concepts are flagged with the library name
+  to prefer. (Static judgment only — do not claim the swap compiles.)
 
 ## Part D — Static mechanical checks
 
 Run these greps (no compiler needed) and report pass/fail with the matching lines:
 
 ```bash
-F=deepmind/NUM.lean
+F=conjectures/NUM.lean
 # sorry outside proof bodies (any def/abbrev/structure line region containing sorry)
 awk '/^(noncomputable )?(def|abbrev|structure)/,/^$/' $F | grep -n 'sorry'
 # bare sorry not preceded by 'by' (style-independent soundness signal: statement vs proof)
@@ -159,7 +161,12 @@ Read `ai-review/NUM.md` and audit it claim by claim:
 - [ ] Each mathematical argument it makes (e.g. "the indexing shift is inconsequential")
   is actually correct — re-derive, don't nod along.
 - [ ] Anything it missed that this review found.
-- [ ] Anything it flagged that was never fixed in `deepmind/NUM.lean`.
+- [ ] Anything it flagged that was never fixed in `conjectures/NUM.lean`.
+
+`ai-review/NUM.md` was written against the styled `deepmind/` copy, not the raw file under
+review here, so line references will not match and some findings may concern styling that
+is out of scope. Audit its *mathematics*; ignore the rest. If no prior review exists for
+this problem, say so and skip Part E rather than inventing one.
 
 ---
 
