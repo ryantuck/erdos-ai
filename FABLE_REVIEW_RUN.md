@@ -10,12 +10,13 @@ Read `FABLE_REVIEW.md` IN FULL and follow it exactly, including its output forma
 
 - `conjectures/NUM.lean` — **the artifact under review**, always. There is no styled
   variant in this pipeline.
-- `ai-review/NUM.md` — prior review, if one exists (audit, don't trust). Legacy: it was
+- `deepmind/ai-review/NUM.md` — prior review, if one exists (audit, don't trust). Legacy: it was
   written against a styled copy, so line numbers will not match.
 
 Read `fable-review/1000.md` and `fable-review/1005.md` as exemplars of expected depth and
 format, including the Addendum sections documenting applied fixes. Read them for *depth*,
-not for path conventions — both predate this pipeline and review a `deepmind/` file.
+not for path conventions — both predate this pipeline and review a styled file that now
+lives in `deepmind/deepmind/`.
 
 `conjectures/NUM.lean` is raw first-pass output: multiple imports, no copyright header, no
 `@[category …]` attributes, and bare `:= sorry` are all normal and none of them are
@@ -45,8 +46,8 @@ Bibliographic data (journal/volume/pages) is often recoverable too — check, in
 2. upstream formal-conjectures file contents captured in
    `claude-session-logs-formal-conjectures/` (full reference blocks for shared keys like
    `[Er85e]` often appear in neighboring problems' files);
-3. sibling files in this repo already carrying the same key (`grep -rn 'KEY' deepmind/
-   conjectures/`).
+3. sibling files in this repo already carrying the same key
+   (`grep -rn 'KEY' conjectures/ deepmind/deepmind/`).
 
 Record provenance for everything recovered. If the page can be recovered, upgrade the
 relevant checklist items from DEFERRED to source-verified; otherwise mark DEFERRED
@@ -68,7 +69,7 @@ Work through Parts A–E of `FABLE_REVIEW.md` rigorously:
   (1005); wrong claims about Mathlib semantics, e.g. measures of non-measurable sets
   (1002); endorsing an encoding that contradicts its own reading of the source (1005);
   claiming data is unavailable that is in fact recoverable (1001). Scrutinize these
-  classes especially. If no `ai-review/NUM.md` exists, note that and skip Part E.
+  classes especially. If no `deepmind/ai-review/NUM.md` exists, note that and skip Part E.
 
 ## Step 4 — Apply fixes
 

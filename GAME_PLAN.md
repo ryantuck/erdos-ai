@@ -90,7 +90,8 @@ you wanted it.
 One problem, one fresh agent session, two strokes:
 
 **Stroke 1 — analyze.** Recover the source page, back-translate the Lean independently,
-work Parts A–E of `FABLE_REVIEW.md`, audit the prior `ai-review/` claim by claim. Output
+work Parts A–E of `FABLE_REVIEW.md`, audit `deepmind/ai-review/<N>.md` claim by claim (if
+it exists). Output
 is the verdict and the defect list.
 
 **Stroke 2 — fix and promote.** Apply the fixes, add page-confirmed variants, write

@@ -13,7 +13,7 @@ Produce a review document at `fable-review/NUM.md`.
 | Input | Path | Notes |
 |---|---|---|
 | Formalization | `conjectures/NUM.lean` | The artifact under review |
-| Prior math review | `ai-review/NUM.md` | Audit it — do not trust it. Legacy; may be absent |
+| Prior math review | `deepmind/ai-review/NUM.md` | Audit it — do not trust it. Legacy; may be absent |
 | Problem source | `tidy/NUM.html`, else `https://www.erdosproblems.com/NUM` | May be absent/unreachable |
 | Citation source | `https://www.erdosproblems.com/latex/NUM` | Authoritative bibliography; may be unreachable |
 
@@ -26,7 +26,7 @@ and Lean code), and mark externally-dependent items **DEFERRED** rather than pas
 Do **not** review: copyright headers, import statements, namespace naming, attribute
 formatting, AMS subject codes, line length, or any other formal-conjectures repo styling.
 These files are not destined for that repo, and the review pipeline no longer touches the
-styled `deepmind/` artifacts at all — see `deepmind/` for that archived effort. Judge
+styled artifacts at all — see `deepmind/` for that archived effort. Judge
 soundness, not style. `conjectures/` files may legitimately carry multiple imports and
 bare `:= sorry`; neither is a defect.
 
@@ -155,7 +155,7 @@ grep -nB3 -E '^(theorem|lemma)' $F
 
 ## Part E — Prior-review audit
 
-Read `ai-review/NUM.md` and audit it claim by claim:
+Read `deepmind/ai-review/NUM.md` and audit it claim by claim:
 
 - [ ] Each factual claim it makes about the Lean code is true.
 - [ ] Each mathematical argument it makes (e.g. "the indexing shift is inconsequential")
@@ -163,7 +163,8 @@ Read `ai-review/NUM.md` and audit it claim by claim:
 - [ ] Anything it missed that this review found.
 - [ ] Anything it flagged that was never fixed in `conjectures/NUM.lean`.
 
-`ai-review/NUM.md` was written against the styled `deepmind/` copy, not the raw file under
+`deepmind/ai-review/NUM.md` was written against the styled copy in `deepmind/deepmind/`,
+not the raw file under
 review here, so line references will not match and some findings may concern styling that
 is out of scope. Audit its *mathematics*; ignore the rest. If no prior review exists for
 this problem, say so and skip Part E rather than inventing one.
@@ -183,7 +184,7 @@ this problem, say so and skip Part E rather than inventing one.
 ## B. Scholarship       — citations (incl. DEFERRED items), variants
 ## C. Craftsmanship     — readability, reuse
 ## D. Static checks     — commands run and results
-## E. Prior-review audit — errors/omissions found in ai-review/NUM.md
+## E. Prior-review audit — errors/omissions found in deepmind/ai-review/NUM.md
 ## Proposed refinements — numbered, concrete, smallest-diff-first; mark each
                           [defect] (should fix) or [polish] (optional).
                           Do NOT apply them — this is a review artifact.

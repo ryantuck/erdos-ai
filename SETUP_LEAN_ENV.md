@@ -6,11 +6,12 @@ target different repos and different Lean versions:
 | Files | Imports | Builds in | Lean |
 |---|---|---|---|
 | `conjectures/*.lean`, `conjectures-v2/*.lean` | plain `Mathlib.*` | this repo | 4.28.0 (`lean-toolchain`) |
-| `deepmind/*.lean`, `deepmind-v2/*.lean` | `FormalConjecturesUtil`, `FormalConjecturesForMathlib.*` | `../formal-conjectures` | 4.27.0 |
+| everything under `deepmind/` | `FormalConjecturesUtil`, `FormalConjecturesForMathlib.*` | `../formal-conjectures` | 4.27.0 |
 
-The split is by import, and the directory names say which is which: `conjectures*`
-builds here, `deepmind*` needs the sibling checkout. First pass is `conjectures/` +
-`deepmind/`; second pass is `conjectures-v2/` + `deepmind-v2/`.
+**Only the first row matters for the live pipeline.** `conjectures/` is the input and
+`conjectures-v2/` the output, both plain Mathlib, both building here — so a single
+toolchain covers all current work. Section 3 is needed only to read or rebuild the
+archived DeepMind effort; see `deepmind/README.md`.
 
 Budget ~15 min and ~13 GB of disk for both. Each Mathlib cache is ~6 GB.
 
@@ -38,8 +39,8 @@ First `cache get` takes ~10 min. After that a single file builds in ~15 s.
 - `warning: declaration uses 'sorry'` is expected — these are formalizations, not proofs.
 - **Build one file at a time.** A bare `lake build` builds the whole `Erdos` lib,
   i.e. all 1179 files in `conjectures/`; on 8 cores that is a couple of hours.
-- `lakefile.toml` globs `conjectures.*` only. `lake build deepmind/1100.lean` fails with
-  `unknown package deepmind` — see below.
+- `lakefile.toml` globs `conjectures.*` and `ConjecturesV2.*` only. Nothing under
+  `deepmind/` is a Lake target here — see section 3.
 
 ### Second pass (`conjectures-v2/`)
 
@@ -57,10 +58,13 @@ is a symlink to `conjectures-v2/` (Lake globs need a valid identifier and
 `conjectures-v2` has a hyphen), and `ConjecturesV2.lean` is the stub root module the
 glob requires, mirroring `conjectures.lean`.
 
-## 3. The DeepMind repo (`deepmind/`, `deepmind-v2/`)
+## 3. The DeepMind repo (archive only)
 
-These files import `FormalConjecturesUtil`, which only exists upstream. The Makefile
-already assumes a sibling checkout at `../formal-conjectures`, so put it there:
+**Not needed to run the pipeline.** Everything below concerns the archived work under
+`deepmind/`; skip it unless you are rebuilding that.
+
+Those files import `FormalConjecturesUtil`, which only exists upstream. Put a sibling
+checkout at `../formal-conjectures`:
 
 ```bash
 cd /workspaces
@@ -73,7 +77,7 @@ To build one of our files, copy it into the upstream tree and build by path:
 
 ```bash
 cd /workspaces/formal-conjectures
-cp /workspaces/erdos-ai/deepmind-v2/1100.lean FormalConjectures/ErdosProblems/
+cp /workspaces/erdos-ai/deepmind/deepmind-v2/1100.lean FormalConjectures/ErdosProblems/
 lake build FormalConjectures/ErdosProblems/1100.lean
 ```
 
@@ -84,8 +88,8 @@ Build the whole set at once:
 
 ```bash
 cd /workspaces/formal-conjectures
-cp /workspaces/erdos-ai/deepmind-v2/*.lean FormalConjectures/ErdosProblems/
-TARGETS=$(ls /workspaces/erdos-ai/deepmind-v2/*.lean | xargs -n1 basename \
+cp /workspaces/erdos-ai/deepmind/deepmind-v2/*.lean FormalConjectures/ErdosProblems/
+TARGETS=$(ls /workspaces/erdos-ai/deepmind/deepmind-v2/*.lean | xargs -n1 basename \
   | sed 's#^#FormalConjectures/ErdosProblems/#')
 lake build $TARGETS
 ```
@@ -98,7 +102,7 @@ Copying overwrites upstream files where the problem number already exists. Undo 
 
 ### Import path drift
 
-`deepmind/*.lean` (all 808) use the old upstream path:
+`deepmind/deepmind/*.lean` (all 808) use the old upstream path:
 
 ```lean
 import FormalConjectures.Util.ProblemImports   -- stale; no longer exists
@@ -111,8 +115,8 @@ Rewrite before building:
 sed -i 's#^import FormalConjectures\.Util\.ProblemImports$#import FormalConjecturesUtil#' FILE
 ```
 
-`deepmind-v2/` already has this applied; `conjectures-v2/` never needed it, since those
-files import plain `Mathlib.*`.
+`deepmind/deepmind-v2/` already has this applied. `conjectures-v2/` never needed it — those
+files import plain `Mathlib.*`, which is now true of every file the pipeline produces.
 
 ## Upstream style gotchas
 
