@@ -1,0 +1,105 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjecturesUtil
+
+/-!
+# Erdős Problem 1087
+
+Estimate the number of degenerate 4-element subsets of an $n$-point set in the plane,
+where a 4-element subset is degenerate if some two distinct pairs determine the same distance.
+
+A question of Erdős and Purdy [ErPu71], who proved $n^3 \log n \ll f(n) \ll n^{7/2}$,
+where $f(n)$ is the maximum number of degenerate 4-element subsets of an $n$-point set.
+The problem is listed as OPEN at erdosproblems.com (accessed 2026-02-23).
+
+*Reference:* [erdosproblems.com/1087](https://www.erdosproblems.com/1087)
+
+[ErPu71] Erdős, P. and Purdy, G., _Some extremal problems in geometry_.
+  Journal of Combinatorial Theory, Series A (1971), 246–252.
+
+[Er75f] Erdős, P., _On some problems of elementary and combinatorial geometry_.
+  Ann. Mat. Pura Appl. (4) (1975), 99–108. [Problem cited at p. 104.]
+-/
+
+namespace Erdos1087
+
+/-- A point set in $\mathbb{R}^2$ has a repeated distance if there exist two distinct
+    unordered pairs of points determining the same distance. (Below this is applied to
+    4-element subsets, for which it is the Erdős–Purdy notion of "degenerate".) -/
+def HasRepeatedDistance (S : Finset (EuclideanSpace ℝ (Fin 2))) : Prop :=
+  ∃ a ∈ S, ∃ b ∈ S, ∃ c ∈ S, ∃ d ∈ S,
+    a ≠ b ∧ c ≠ d ∧ (a ≠ c ∨ b ≠ d) ∧ (a ≠ d ∨ b ≠ c) ∧ dist a b = dist c d
+
+open Classical in
+/-- The number of "degenerate" 4-element subsets (those with a repeated distance)
+    of a point set $P$ in $\mathbb{R}^2$. -/
+noncomputable def degenerateQuadrupleCount (P : Finset (EuclideanSpace ℝ (Fin 2))) : ℕ :=
+  ((P.powersetCard 4).filter HasRepeatedDistance).card
+
+/--
+Erdős Problem 1087 (Erdős–Purdy [ErPu71]):
+
+Let $f(n)$ be minimal such that every set of $n$ points in $\mathbb{R}^2$ contains at most $f(n)$
+"degenerate" 4-element subsets, where a 4-element subset is degenerate if some two
+distinct pairs determine the same distance. Is it true that $f(n) \leq n^{3+o(1)}$?
+
+Known bounds: $n^3 \log n \ll f(n) \ll n^{7/2}$.
+
+Formally: for every $\varepsilon > 0$ there exists $N$ such that for all $n \geq N$ and every set $P$
+of $n$ points in $\mathbb{R}^2$, the number of degenerate quadruples is at most $n^{3+\varepsilon}$.
+-/
+@[category research open, AMS 5 52]
+theorem erdos_1087 : answer(sorry) ↔
+    ∀ (ε : ℝ), 0 < ε → ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+      ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+        P.card = n →
+        (degenerateQuadrupleCount P : ℝ) ≤ (n : ℝ) ^ ((3 : ℝ) + ε) := by
+  sorry
+
+/--
+Erdős and Purdy [ErPu71] proved the lower bound $f(n) \gg n^3 \log n$: there is a constant
+$c > 0$ such that for all sufficiently large $n$ there exists a set of $n$ points in
+$\mathbb{R}^2$ with at least $c \cdot n^3 \log n$ degenerate 4-element subsets.
+
+(The "sufficiently large" is necessary: for $n \in \{2, 3\}$ there are no 4-element
+subsets at all, while $n^3 \log n > 0$.)
+-/
+@[category research solved, AMS 5 52]
+theorem erdos_1087.variants.lower_bound :
+    ∃ c : ℝ, 0 < c ∧ ∃ N : ℕ, ∀ n : ℕ, n ≥ N →
+      ∃ P : Finset (EuclideanSpace ℝ (Fin 2)),
+        P.card = n ∧
+          c * (n : ℝ) ^ (3 : ℝ) * Real.log n ≤ (degenerateQuadrupleCount P : ℝ) := by
+  sorry
+
+/--
+Erdős and Purdy [ErPu71] proved the upper bound $f(n) \ll n^{7/2}$: there is a constant
+$C > 0$ such that every set of $n$ points in $\mathbb{R}^2$ has at most $C \cdot n^{7/2}$
+degenerate 4-element subsets.
+
+(Stated for all $n$; this is equivalent to the asymptotic form, since for each of the
+finitely many $n$ below any threshold the count is at most $\binom{n}{4}$ and $C$ may be
+enlarged to cover them, and for $n = 0$ both sides are $0$.)
+-/
+@[category research solved, AMS 5 52]
+theorem erdos_1087.variants.upper_bound :
+    ∃ C : ℝ, 0 < C ∧ ∀ n : ℕ, ∀ P : Finset (EuclideanSpace ℝ (Fin 2)),
+      P.card = n →
+        (degenerateQuadrupleCount P : ℝ) ≤ C * (n : ℝ) ^ ((7 : ℝ) / 2) := by
+  sorry
+
+end Erdos1087
