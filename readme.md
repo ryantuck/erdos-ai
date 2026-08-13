@@ -32,3 +32,13 @@ $ cat todo-conjectures.txt | xargs -I % claude --dangerously-skip-permissions "R
 I did have to upgrade to a Claude Max subscription and hit my weekly token limit twice, so would've got this done sooner if I didn't have to wait around for that to reset. Additionally, I tried to parallelize the calls but that ended up torching through my per-session limit too fast, so I fell back on a very basic strategy of just processing the problems one at a time.
 
 All compute was performed on a tiny e2-medium (2 vCPU, 4GB RAM) server in Google Cloud.
+
+## Second pass
+
+The formalizations above are a first draft. I'm now running all 1179 problems through a second, adversarial review — a stronger model recovers the original problem page, re-derives the mathematics independently, audits the first-pass review claim by claim, and writes the corrected conjecture to `conjectures-v2/`. Notes for each problem land in `fable-review/`.
+
+Problems 1000-1100 are done (101 reviewed, [PR #3](https://github.com/ryantuck/erdos-ai/pull/3)); 1078 remain.
+
+Unlike the DeepMind project, there's no human review gate here — the quality bar is the second pass itself. The plan is to re-run the whole thing as new models ship, which should also make this a reasonable benchmark for *formalization fidelity*: can a model state a known mathematical claim in Lean without changing what it means?
+
+**See [`GAME_PLAN.md`](GAME_PLAN.md)** for the full plan — batch ordering, the per-problem procedure, cost and rate-limit strategy, and open decisions.
