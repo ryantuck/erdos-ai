@@ -70,6 +70,22 @@ is the verdict and the defect list.
 `fable-review/<N>.md` including the Addendum, and write the result to
 `conjectures-v2/<N>.lean`.
 
+**Required when promoting from `deepmind/`: rewrite the import.** All **808** files in
+`deepmind/` carry `import FormalConjectures.Util.ProblemImports`, a module that no longer
+exists upstream — it was renamed to `FormalConjecturesUtil`. Without the rewrite the
+build dies at import resolution before any mathematics is checked (verified 2026-08-13 on
+1103). Batch 1 did this during assembly; under the write-to-v2-directly rule it becomes
+part of stroke 2:
+
+```bash
+sed 's#^import FormalConjectures\.Util\.ProblemImports$#import FormalConjecturesUtil#' \
+    deepmind/<N>.lean > conjectures-v2/<N>.lean
+```
+
+Files taking the `conjectures/` path import plain `Mathlib.*` and need no rewrite. All 100
+current v2 files are already correct: 67 on `FormalConjecturesUtil`, 33 on plain Mathlib,
+zero on the stale name.
+
 Input selection is already specified in `FABLE_REVIEW_RUN.md:18-25` and is not a choice:
 the artifact under review is `deepmind/<N>.lean` when it exists, otherwise
 `conjectures/<N>.lean`. The second case is not rare — it is **371 of 1179**, and it is
@@ -140,8 +156,13 @@ once the pipeline is stable.
 This is the constraint that decides whether the run finishes, so it gets stated first as
 a rule and then justified.
 
-> **Rule: one problem at a time (`-j1`) by default. Two (`-j2`) is the hard ceiling, and
-> only after a metered batch shows headroom. Never more.**
+> **Rule: at most one *model invocation* in flight at a time by default — one `claude -p`
+> review process, or one review subagent. Two is the hard ceiling, and only after a
+> metered batch shows headroom. Never more.**
+>
+> **The rule governs model calls only.** It does not apply to `lake build`, `grep`, or any
+> other local computation — those cost CPU, not tokens, and should use the whole machine.
+> See §6.
 
 **Why parallelism is the wrong lever.** It does not reduce total tokens — 1079 problems
 cost what they cost. It only raises the *rate*, and rate is precisely what the 5-hour
@@ -190,9 +211,11 @@ Then the batch is just:
 seq 1101 1179 | xargs -P1 -I{} ./review-one.sh {}
 ```
 
-`-P1` is the throttle. Raise to `-P2` only if `burn.tsv` shows the session window is not
-being saturated. Add `sleep` between problems if it is — pacing across the window beats
-stalling at the cap.
+`-P1` is the throttle, and what it throttles is *review processes* — each one makes model
+calls, so this is the number that spends tokens. Raise to `-P2` only if `burn.tsv` shows
+the session window is not being saturated. Add `sleep` between problems if it is — pacing
+across the window beats stalling at the cap. Do not confuse this `-P` with the one in the
+§6 build commands, which throttles compilers and costs nothing.
 
 **What the model can and cannot monitor mid-session.** Inside a single headless run, the
 agent has no view of account-level rate-limit state and cannot self-throttle; do not
@@ -215,7 +238,7 @@ environment depends on the file's provenance, per `SETUP_LEAN_ENV.md`:
 
 ```bash
 # plain-Mathlib v2 files (the no-deepmind/ set) — build in this repo
-lake build 'ConjecturesV2.«1103»'
+lake build 'ConjecturesV2.«1003»'
 
 # anything importing FormalConjecturesUtil — sibling checkout only
 cd /workspaces/formal-conjectures
@@ -224,6 +247,15 @@ TARGETS=$(ls /workspaces/erdos-ai/conjectures-v2/*.lean | xargs -n1 basename \
           | sed 's#^#FormalConjectures/ErdosProblems/#')
 lake build $TARGETS
 ```
+
+**Builds are free — parallelize them.** The §5 concurrency rule governs model calls and
+nothing else. `lake` costs CPU, not tokens, so there is no reason to throttle it: run the
+local set at `-P$(nproc)` and hand the entire target list to a single `lake build` for the
+sibling set, as above. Each `lake` invocation is internally parallel across cores on top
+of that. Measured 2026-08-13 on the current 100-file v2 set with warm caches: the 67
+sibling files built as one invocation in **18s** (8143 jobs, 0 errors, 0 warnings), and
+the 33 local files in **~3s each** (113 `sorry` warnings, 0 non-sorry). There is nothing
+to save by going slower.
 
 Batch 1 found three defect classes this way that no amount of review caught — a type
 ascription (1062), an attribute grammar error (1082), and 22 linter violations. Expect
