@@ -49,6 +49,16 @@ Bibliographic data (journal/volume/pages) is often recoverable too — check, in
 3. sibling files in this repo already carrying the same key
    (`grep -rn 'KEY' conjectures/ deepmind/deepmind/`).
 
+**Status cross-check (authoritative, current):** the public metadata mirror
+`github.com/teorth/erdosproblems` is clonable through this container's git proxy
+(`git clone --depth 1 https://github.com/teorth/erdosproblems.git` into your scratch
+space; a clone may already exist under the session scratchpad). Its
+`data/problems.yaml` carries, for every problem: current status (open/solved/disproved
++ last-update date), formalization state, tags, OEIS refs, and prize info. Cross-check
+the status banner recovered from the logs against this file — it is fresher than any
+log capture and is the tiebreaker when captures disagree. It contains NO statement
+text or bibliographies; those still come from the log recovery above.
+
 Record provenance for everything recovered. If the page can be recovered, upgrade the
 relevant checklist items from DEFERRED to source-verified; otherwise mark DEFERRED
 honestly. NEVER fabricate bibliographic data — stubs only, with provenance noted.
