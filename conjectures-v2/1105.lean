@@ -76,14 +76,14 @@ noncomputable def antiRamseyNumber {V : Type*} [Fintype V] [DecidableEq V]
 def pathGraph1105 (k : ℕ) : SimpleGraph (Fin k) where
   Adj i j := (i.val + 1 = j.val) ∨ (j.val + 1 = i.val)
   symm _ _ h := h.elim Or.inr Or.inl
-  loopless := fun _ h => by rcases h with h | h <;> omega
+  loopless := ⟨fun _ h => by rcases h with h | h <;> omega⟩
 
 /-- The cycle graph on k vertices: Fin k with edges between consecutive
     vertices modulo k (vertex i adjacent to (i+1) mod k). -/
 def cycleGraph1105 (k : ℕ) : SimpleGraph (Fin k) where
   Adj i j := i ≠ j ∧ ((i.val + 1) % k = j.val ∨ (j.val + 1) % k = i.val)
   symm _ _ h := ⟨h.1.symm, h.2.elim Or.inr Or.inl⟩
-  loopless := fun _ h => h.1 rfl
+  loopless := ⟨fun _ h => h.1 rfl⟩
 
 /--
 Erdős Problem #1105 (Cycles) [ESS75]:

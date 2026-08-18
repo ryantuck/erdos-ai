@@ -1,5 +1,7 @@
 import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Data.Nat.Nth
+import Mathlib.Data.Nat.PrimeFin
+import Mathlib.NumberTheory.PrimeCounting
 import Mathlib.Data.Real.Basic
 import Mathlib.Order.Filter.AtTopBot.Basic
 import Mathlib.Topology.Order.Basic

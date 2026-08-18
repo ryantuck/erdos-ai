@@ -3,6 +3,7 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Data.Finset.Basic
 import Mathlib.Order.Filter.AtTopBot.Basic
 import Mathlib.Topology.Order.Basic
+import Mathlib.Topology.MetricSpace.Basic
 import Mathlib.SetTheory.Cardinal.Finite
 
 noncomputable section
@@ -230,7 +231,7 @@ theorem erdos_problem_1156.variants.heckel_riordan :
         chromaticNumberProb n (fun k => |(k : ℝ) - f n| < ω n))
         atTop (nhds 1) →
       ∀ p q : ℕ, 0 < q → 2 * p < q →
-        ∃ᶠ n in atTop, (n : ℝ) ^ p < (ω n) ^ q :=
+        ∃ᶠ n : ℕ in atTop, (n : ℝ) ^ p < (ω n) ^ q :=
   sorry
 
 end Erdos1156
