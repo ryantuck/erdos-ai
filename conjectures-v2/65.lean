@@ -91,7 +91,7 @@ def completeBipartiteGraph65 (a b : ℕ) : SimpleGraph (Fin (a + b)) where
     rcases h with ⟨hu, hv⟩ | ⟨hu, hv⟩
     · exact Or.inr ⟨hv, hu⟩
     · exact Or.inl ⟨hv, hu⟩
-  loopless := fun v h => by rcases h with ⟨h1, h2⟩ | ⟨h1, h2⟩ <;> omega
+  loopless := ⟨fun v h => by rcases h with ⟨h1, h2⟩ | ⟨h1, h2⟩ <;> omega⟩
 
 /--
 Erdős Problem #65 (Erdős-Hajnal):

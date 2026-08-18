@@ -3,7 +3,7 @@ import Mathlib.Data.Real.Archimedean
 import Mathlib.Data.Real.Basic
 import Mathlib.Data.Real.Sqrt
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Data.Real.Irrational
+import Mathlib.NumberTheory.Real.Irrational
 import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 
 /-!
