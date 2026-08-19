@@ -1,0 +1,541 @@
+<title>The Erdős Formalization</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="All 1179 Erdős problems formalized in Lean by AI agents, then put through an adversarial second pass. Method, findings, and defect taxonomy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
+
+<style>
+/* ─── tokens: dark-first (the hall), consistently swapped for light ─────── */
+:root {
+  --ground:      #0B0C0D;
+  --panel:       #15181A;
+  --panel-2:     #1E2225;
+  --panel-3:     #262B2E;
+  --chalk:       #E9E7E1;
+  --chalk-2:     #B9BCBB;
+  --chalk-3:     #8A8F8F;
+  --rule:        #2C3134;
+  --rule-2:      #3A4145;
+  --accent:      #C9A063;
+  --flag-rev:    #CE6E52;
+  --flag-nit:    #C09644;
+  --flag-ok:     #85A57D;
+  --shadow:      0 24px 60px -20px rgba(0,0,0,.85), 0 2px 0 rgba(255,255,255,.03) inset;
+  --board-tint:  rgba(255,255,255,.022);
+
+  --f-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --f-body:    "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --col: 66ch;
+  --pad: clamp(1.4rem, 4vw, 3.25rem);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --ground:     #DAD6CE;
+    --panel:      #F4F2EC;
+    --panel-2:    #EAE7DF;
+    --panel-3:    #DFDBD1;
+    --chalk:      #14171A;
+    --chalk-2:    #3F4649;
+    --chalk-3:    #6B7275;
+    --rule:       #CFCABF;
+    --rule-2:     #B6B0A3;
+    --accent:     #8A6522;
+    --flag-rev:   #9E3C22;
+    --flag-nit:   #7A5A12;
+    --flag-ok:    #3F6238;
+    --shadow:     0 22px 50px -24px rgba(30,26,18,.5);
+    --board-tint: rgba(0,0,0,.02);
+  }
+}
+:root[data-theme="light"] {
+  --ground:     #DAD6CE;
+  --panel:      #F4F2EC;
+  --panel-2:    #EAE7DF;
+  --panel-3:    #DFDBD1;
+  --chalk:      #14171A;
+  --chalk-2:    #3F4649;
+  --chalk-3:    #6B7275;
+  --rule:       #CFCABF;
+  --rule-2:     #B6B0A3;
+  --accent:     #8A6522;
+  --flag-rev:   #9E3C22;
+  --flag-nit:   #7A5A12;
+  --flag-ok:    #3F6238;
+  --shadow:     0 22px 50px -24px rgba(30,26,18,.5);
+  --board-tint: rgba(0,0,0,.02);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--chalk);
+  font-family: var(--f-body);
+  font-size: clamp(1rem, .96rem + .18vw, 1.075rem);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── the photograph: fixed ground the panels ride over ────────────────── */
+.plate {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: url("erdos-agents-bg.jpg");
+  background-size: cover;
+  background-position: 22% center;
+}
+.plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(11,12,13,.62) 0%, rgba(11,12,13,.30) 46%, rgba(11,12,13,.06) 74%);
+}
+:root[data-theme="light"] .plate::after { background: linear-gradient(105deg, rgba(218,214,206,.55) 0%, rgba(218,214,206,.22) 48%, rgba(218,214,206,.02) 76%); }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .plate::after { background: linear-gradient(105deg, rgba(218,214,206,.55) 0%, rgba(218,214,206,.22) 48%, rgba(218,214,206,.02) 76%); }
+}
+
+/* ─── shell: panels held left, photo breathing on the right ────────────── */
+.shell {
+  width: min(100% - 2rem, 1500px);
+  margin-inline: auto;
+  padding-block: clamp(1rem, 3vw, 2.5rem) 0;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 1.8vw, 1.6rem);
+  width: min(100%, 60rem);
+}
+
+/* ─── boards: every text block fully opaque ────────────────────────────── */
+.board {
+  background: var(--panel);
+  background-image: linear-gradient(var(--board-tint), var(--board-tint));
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  box-shadow: var(--shadow);
+  padding: var(--pad);
+}
+.board > * { max-width: var(--col); }
+.board > .wide, .board > .full { max-width: none; }
+
+/* ─── type ─────────────────────────────────────────────────────────────── */
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; text-wrap: balance; margin: 0; }
+h1 {
+  font-size: clamp(2.6rem, 1.4rem + 5.4vw, 5.6rem);
+  line-height: .95;
+  letter-spacing: -.015em;
+}
+h2 {
+  font-size: clamp(1.85rem, 1.3rem + 1.9vw, 2.9rem);
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  margin-bottom: .15em;
+}
+h3 {
+  font-family: var(--f-body);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: .005em;
+  line-height: 1.4;
+  margin: 2.1em 0 .5em;
+}
+h3:first-of-type { margin-top: 1.4em; }
+p { margin: 0 0 1.05em; }
+p:last-child, ul:last-child, ol:last-child, table:last-child { margin-bottom: 0; }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+strong { font-weight: 600; color: var(--chalk); }
+code, .mono { font-family: var(--f-mono); font-size: .885em; }
+code { color: var(--chalk); background: var(--panel-2); border: 1px solid var(--rule); padding: .08em .34em; border-radius: 2px; }
+
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: .705rem;
+  font-weight: 500;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 .9em;
+}
+.lede {
+  font-size: clamp(1.1rem, 1.02rem + .4vw, 1.32rem);
+  line-height: 1.5;
+  color: var(--chalk-2);
+}
+.note { font-size: .9rem; line-height: 1.55; color: var(--chalk-3); }
+
+ul, ol { margin: 0 0 1.05em; padding-left: 1.15em; }
+li { margin-bottom: .5em; }
+li::marker { color: var(--chalk-3); }
+
+/* ─── hero ─────────────────────────────────────────────────────────────── */
+.hero {
+  min-height: min(94svh, 60rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(1rem, 2vw, 2rem);
+}
+.hero .board { max-width: 54rem; }
+.hero h1 { max-width: 16ch; }
+.hero .lede { margin-top: 1.1em; max-width: 52ch; }
+
+.flag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .6em;
+  font-family: var(--f-mono);
+  font-size: .72rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--ground);
+  background: var(--accent);
+  padding: .48em .85em .42em;
+  border-radius: 2px;
+  margin-bottom: 1.5em;
+}
+.flag b { font-weight: 600; }
+
+/* ─── stat strip ───────────────────────────────────────────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.stat { background: var(--panel-2); padding: 1.05rem 1.15rem; }
+.stat dt {
+  font-family: var(--f-mono);
+  font-size: .665rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--chalk-3);
+  margin-bottom: .5em;
+}
+.stat dd {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: clamp(1.8rem, 1.4rem + 1.2vw, 2.5rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat dd small { font-family: var(--f-body); font-size: .42em; color: var(--chalk-3); letter-spacing: .02em; margin-left: .4em; }
+
+/* ─── tables ───────────────────────────────────────────────────────────── */
+.scroller { overflow-x: auto; margin-bottom: 1.05em; }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { text-align: left; padding: .58rem .8rem; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+th {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: .68rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--chalk-3);
+  border-bottom-color: var(--rule-2);
+  white-space: nowrap;
+}
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--f-mono); font-size: .88rem; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr.total td { border-top: 1px solid var(--rule-2); font-weight: 600; }
+caption { caption-side: bottom; text-align: left; padding-top: .8rem; font-size: .84rem; color: var(--chalk-3); }
+
+.tag {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: .655rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  padding: .22em .5em .18em;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.tag.rev { color: var(--flag-rev); }
+.tag.nit { color: var(--flag-nit); }
+.tag.ok  { color: var(--flag-ok); }
+
+/* ─── case files ───────────────────────────────────────────────────────── */
+.cases { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 3px; }
+.case { background: var(--panel-2); padding: 1.35rem clamp(1.1rem, 2.4vw, 1.7rem); }
+.case > * { max-width: var(--col); }
+.case-head { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; margin-bottom: .55em; }
+.case-no {
+  font-family: var(--f-display);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.case-title { font-weight: 600; font-size: 1rem; line-height: 1.35; }
+.case p { margin-bottom: .7em; font-size: .965rem; }
+.case p:last-child { margin-bottom: 0; }
+
+pre {
+  font-family: var(--f-mono);
+  font-size: .82rem;
+  line-height: 1.55;
+  background: var(--panel-3);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: .85rem 1rem;
+  overflow-x: auto;
+  margin: 0 0 1.05em;
+  max-width: none;
+}
+pre .c { color: var(--chalk-3); }
+pre .k { color: var(--accent); }
+
+/* ─── two-column split inside a board ──────────────────────────────────── */
+.split { display: grid; gap: clamp(1.1rem, 2.4vw, 2.2rem); grid-template-columns: 1fr; }
+@media (min-width: 52rem) { .split.two { grid-template-columns: 1fr 1fr; } }
+.split > div > :first-child { margin-top: 0; }
+
+/* ─── footer ───────────────────────────────────────────────────────────── */
+.colophon { margin-block: clamp(1rem, 1.8vw, 1.6rem) clamp(2rem, 5vw, 4rem); }
+.colophon .board { border-color: var(--rule-2); }
+.sig { font-family: var(--f-mono); font-size: .78rem; line-height: 1.75; color: var(--chalk-3); }
+.sig b { color: var(--chalk-2); font-weight: 500; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .board { animation: rise .5s cubic-bezier(.2,.7,.3,1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+}
+</style>
+
+<div class="plate" role="img" aria-label="A lecture hall of towering blackboards covered in equations, dozens of identical dark-suited men on ladders writing on them while an older man in a light suit directs from the floor."></div>
+
+<div class="shell">
+
+  <header class="hero stack">
+    <div class="board">
+      <p class="flag"><b>Generated with Claude Opus 5 Max</b></p>
+      <h1>The Erdős Formalization</h1>
+      <p class="lede">All 1179 problems in the Erdős corpus, stated formally in Lean 4 by language models — then put back through an adversarial second pass whose only job is to find where the formal statement stopped meaning what the mathematics said.</p>
+    </div>
+
+    <dl class="stats board" style="padding:0;border:none;box-shadow:var(--shadow)">
+      <div class="stat"><dt>Problems formalized</dt><dd>1179</dd></div>
+      <div class="stat"><dt>Written here</dt><dd>805</dd></div>
+      <div class="stat"><dt>Second-pass reviews</dt><dd>270</dd></div>
+      <div class="stat"><dt>Needing revision</dt><dd>93 <small>of 270</small></dd></div>
+      <div class="stat"><dt>Lines of Lean</dt><dd>87k</dd></div>
+      <div class="stat"><dt>Build jobs, green</dt><dd>3057</dd></div>
+    </dl>
+  </header>
+
+  <main class="stack">
+
+    <section class="board">
+      <p class="eyebrow">What this is</p>
+      <h2>A for-loop over the unsolved</h2>
+      <p>The Erdős problem corpus is 1179 questions, collected and maintained at <a href="https://www.erdosproblems.com">erdosproblems.com</a>. Google DeepMind's <a href="https://github.com/google-deepmind/formal-conjectures">formal-conjectures</a> repository had formal Lean statements for 374 of them. This project wrote the remaining 805, completing <a href="https://github.com/google-deepmind/formal-conjectures/milestone/1">Milestone 1: all open Erdős problems formalized</a>.</p>
+      <p>The premise came from doing one by hand. After <a href="https://github.com/google-deepmind/formal-conjectures/pull/1793">contributing problem 13</a>, it was clear the remaining few hundred were not a research problem but a loop — given enough tokens to run it.</p>
+      <p><strong>This work contains no proofs.</strong> Every theorem here ends in <code>sorry</code>. The artifact is the <em>statement</em>: a claim rendered in Lean's logic precisely enough that a proof assistant would accept a proof of it. That sounds like the easy half. It is not, and the second pass is what this page is mostly about.</p>
+      <h3>Why stating is hard</h3>
+      <p>A formal statement can compile perfectly and still be the wrong claim. It can be trivially true, so that proving it establishes nothing. It can be trivially false, so that no proof exists. It can quietly assert the opposite of what a problem asks, or answer a question the source resolved years ago in the other direction. Lean checks that a statement is well-formed. Nothing in the toolchain checks that it is <em>faithful</em> — that job has no compiler, and it is the job the second pass does.</p>
+    </section>
+
+    <section class="board">
+      <p class="eyebrow">First pass</p>
+      <h2>Formalization</h2>
+      <p>Each of the 805 problems went through four agent stages, one at a time:</p>
+      <div class="scroller">
+        <table>
+          <thead><tr><th>Stage</th><th>What the agent did</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Formalize</strong></td><td>Fetch the problem from erdosproblems.com, write the Lean statement, confirm <code>lake build</code> passes.</td></tr>
+            <tr><td><strong>Style</strong></td><td>Conform to the upstream repository's conventions per its <code>AGENTS.md</code>.</td></tr>
+            <tr><td><strong>Review</strong></td><td>Check against a 60-point checklist derived from the upstream guidance.</td></tr>
+            <tr><td><strong>Fix</strong></td><td>Apply whatever the review turned up.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The orchestration was deliberately unremarkable — a <code>tmux</code> session on a 2-vCPU cloud box, left running for days:</p>
+      <pre><span class="c">$</span> cat todo-conjectures.txt | xargs -I % claude --dangerously-skip-permissions \
+    <span class="k">"Read FORMALIZE_CONJECTURE.md. Apply to problem %. </span>
+<span class="k">     Write output to conjectures/%.lean. Ensure `lake build` passes."</span></pre>
+      <p>Two things governed the schedule, and neither was compute. The weekly token allowance ran out twice. And parallelism turned out to be the wrong instinct: running problems concurrently burned the per-session limit faster without finishing sooner, so the loop went back to one at a time. Concurrency does not lower the bill — it only reaches the ceiling earlier.</p>
+    </section>
+
+    <section class="board">
+      <p class="eyebrow">Second pass</p>
+      <h2>Adversarial review</h2>
+      <p>The first-pass corpus is a draft. The second pass sends a stronger model at each problem with a different brief: <em>assume the formalization is wrong and find out how.</em></p>
+      <h3>The unit of work</h3>
+      <p>One problem, one agent, one commit. The agent recovers the original problem page from an archived capture rather than working from memory, re-derives the mathematics independently, audits the first-pass review claim by claim, and writes at most two files: a corrected <code>conjectures-v2/N.lean</code> and a review note at <code>fable-review/N.md</code>. The first-pass file is immutable input — a reviewer may not edit its own evidence.</p>
+      <h3>What gets checked</h3>
+      <div class="split two">
+        <div>
+          <h3 style="margin-top:0">Part A · Semantic fidelity</h3>
+          <p class="note">Statement fidelity against the recovered source. Lean semantics traps. Definitional correctness. Question form and answer polarity. Solution status as of today, not as of the capture.</p>
+          <h3>Part B · Scholarship</h3>
+          <p class="note">Citation keys resolve; bibliographic data is recovered, never invented. Variants named on the source page are present.</p>
+        </div>
+        <div>
+          <h3 style="margin-top:0">Part C · Craftsmanship</h3>
+          <p class="note">Readability, docstrings that match the code beneath them, reuse of Mathlib rather than reinvention.</p>
+          <h3>Part D · Mechanical checks</h3>
+          <p class="note">Greps for <code>sorry</code> outside proof bodies, fragile tactics, binder placement, missing docstrings.</p>
+          <h3>Part E · Prior-review audit</h3>
+          <p class="note">Every claim the first-pass reviewer made, re-derived from scratch.</p>
+        </div>
+      </div>
+      <h3>Two standing rules</h3>
+      <p><strong>Never fabricate a citation.</strong> Where a journal, volume, or page number could not be recovered from a real source, the entry says so and stops. A plausible-looking reference is worse than an admitted gap, because it survives review.</p>
+      <p><strong>Recover the source; don't recall it.</strong> A model's memory of a famous problem is exactly where a subtle misstatement comes from. Every review in the most recent batch worked from an archived page capture, with the problem's <em>status</em> cross-checked against an independent metadata mirror — because status drifts, and captures go stale.</p>
+    </section>
+
+    <section class="board">
+      <p class="eyebrow">Findings</p>
+      <h2>What the reviews found</h2>
+      <p>270 problems have been through the second pass. <strong>Not one came back clean.</strong> Every formalization needed at least documentation work, and roughly a third carried a defect serious enough to change what the statement means.</p>
+      <div class="scroller">
+        <table>
+          <thead>
+            <tr><th>Batch</th><th class="num">Reviewed</th><th class="num">Corrected files</th><th class="num"><span class="tag nit">Accept w/ nits</span></th><th class="num"><span class="tag rev">Needs revision</span></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Problems 1000–1100</td><td class="num">101</td><td class="num">33</td><td class="num">56</td><td class="num">45</td></tr>
+            <tr><td>Problems 1101–1179</td><td class="num">79</td><td class="num">79</td><td class="num">52</td><td class="num">27</td></tr>
+            <tr><td>Problems 1–90</td><td class="num">90</td><td class="num">90</td><td class="num">69</td><td class="num">21</td></tr>
+            <tr class="total"><td>Total</td><td class="num">270</td><td class="num">202</td><td class="num">177</td><td class="num">93</td></tr>
+          </tbody>
+          <caption>Zero plain accepts across all 270. The first batch emitted a corrected file only when a change was warranted; later batches emit one for every problem.</caption>
+        </table>
+      </div>
+      <h3>The defect taxonomy</h3>
+      <p>The interesting failures are the ones a compiler cannot see. They fall into three families.</p>
+      <p><strong>Polarity.</strong> The Lean asserts the direction the source refutes, or drops the <code>answer(False)</code> wrapper on a problem that has been disproved. The statement looks impeccable and says something false. This is the most dangerous class precisely because it is the most well-formed.</p>
+      <p><strong>Vacuity and degeneracy.</strong> The statement is provable, or refutable, for reasons unrelated to the mathematics. The mechanisms recur: Mathlib's junk values at degenerate inputs (<code>Real.log 0 = 0</code>, <code>sInf ∅ = 0</code>, <code>rpow 0 0 = 1</code>, <code>φ(0) = 0</code>); a default binder left unconstrained so a caller can instantiate a definition outside its intended domain; a constant quantified <em>inside</em> the parameter it was supposed to be independent of, letting it absorb the very factor the problem is about; a bound that is simply false at small <code>n</code> because <code>log log n</code> is negative there.</p>
+      <p><strong>Bibliography.</strong> Citation keys used but never defined, references with no data behind them, and bounds attributed to the wrong paper.</p>
+    </section>
+
+    <section class="board">
+      <p class="eyebrow">Case files</p>
+      <h2>Four that earned their keep</h2>
+      <p>Aggregate counts undersell what these reviews actually do. Four representative catches:</p>
+      <div class="cases full">
+
+        <article class="case">
+          <div class="case-head"><span class="case-no">90</span><span class="case-title">A conjecture asserted three months after it was disproved</span></div>
+          <p>The unit distance problem — a $500 Erdős prize — was <em>disproved</em> in May 2026, following a construction found by a machine. The archived page capture predates that and still shows the OPEN banner; the formalization asserted the conjecture positively.</p>
+          <p>Catching it required distrusting the capture and checking an independent status mirror. But the second half is the more instructive part: naively negating the statement would have produced a "disproof" that is trivially satisfiable by a two-point witness, since the bound is already false there for unrelated reasons. The corrected file carries a small-cardinality guard so that the negation actually says what the disproof says.</p>
+        </article>
+
+        <article class="case">
+          <div class="case-head"><span class="case-no">56</span><span class="case-title">A helper definition right by count, wrong by elements</span></div>
+          <p>A supporting definition produced sets of the correct <em>size</em> containing the wrong <em>members</em>. Every reading of the code agreed it was fine; the counts checked out. Only brute-force enumeration of small cases settled it.</p>
+          <p>That technique — stop reading the definition, run it on <code>n = 3, 4, 5</code> and look at what comes out — became standard for the rest of the corpus and has since caught defects in eight further problems.</p>
+        </article>
+
+        <article class="case">
+          <div class="case-head"><span class="case-no">55</span><span class="case-title">A constant on the wrong side of a quantifier</span></div>
+          <p>The statement bound its constant <em>inside</em> the universally quantified parameter, so the constant was free to depend on it — and could absorb exactly the growth factor the problem asks about. Perfectly well-typed, entirely provable, and mathematically empty.</p>
+          <p>Quantifier order is where formalization fidelity most often dies quietly, because both orderings compile and both read fluently in English.</p>
+        </article>
+
+        <article class="case">
+          <div class="case-head"><span class="case-no">86</span><span class="case-title">The review that was wrong, and how that surfaced</span></div>
+          <p>A review found that <code>loopless := ⟨fun …⟩</code> failed to compile against a graph structure's field, citing archived build transcripts as evidence, and the fix was propagated to three other files. It was backwards. Current Mathlib defines that field as a structure, so the constructor is <em>required</em>; the transcripts dated from before the change and described an environment that no longer existed.</p>
+          <p>The build caught it — <code>lake build</code> went red, and a follow-up commit reverted all four files. Worth recording rather than quietly deleting: evidence recovered from a log dates a claim about the environment, and generalizing one such claim across a corpus is how a single bad inference reaches four files at once.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="board">
+      <p class="eyebrow">Auditing the auditor</p>
+      <h2>The first-pass reviews were themselves unreliable</h2>
+      <p>Part E of every second-pass review re-derives the claims made by the first-pass reviewer. That audit found failure modes worth naming, because they are what automated review looks like when it goes wrong:</p>
+      <ul>
+        <li><strong>Fabricated verification.</strong> Citations certified as "matching the source" that the source does not contain — a journal and volume asserted for what is only an arXiv preprint; a prize described as awarded where the page says only that the problem was proved.</li>
+        <li><strong>Right conclusion, unsound argument.</strong> A restriction correctly kept, justified by reasoning that is false for even exponents. The verdict passes; the reasoning would not survive a reader.</li>
+        <li><strong>Unsound "critical fixes."</strong> A proposed correction that would have introduced a misformalization into a statement that was already right.</li>
+        <li><strong>Fixes that never landed.</strong> Defects correctly identified, then applied only to a styled copy of the file — never to the artifact under review.</li>
+      </ul>
+      <p>The lesson generalizes past this project: a review pass that produces confident prose is not evidence of a review that happened. What makes the second pass checkable is that every claim in it points at a recovered source a reader can open.</p>
+    </section>
+
+    <section class="board">
+      <p class="eyebrow">Benchmark</p>
+      <h2>Does model strength show up in the numbers?</h2>
+      <p>Problems 1101–1179 were reviewed twice, independently, by two models of different capability — the second run blind to the first. The verdict distributions look almost inverted:</p>
+      <div class="scroller">
+        <table>
+          <thead><tr><th>Reviewer</th><th class="num"><span class="tag ok">Accept</span></th><th class="num"><span class="tag nit">Accept w/ nits</span></th><th class="num"><span class="tag rev">Needs revision</span></th><th class="num">Sources recovered</th></tr></thead>
+          <tbody>
+            <tr><td>Stronger model</td><td class="num">0</td><td class="num">52</td><td class="num">27</td><td class="num">79 / 79</td></tr>
+            <tr><td>Cheaper model</td><td class="num">16</td><td class="num">21</td><td class="num">42</td><td class="num">33 / 79</td></tr>
+          </tbody>
+          <caption>Same 79 problems, same instructions, independent runs.</caption>
+        </table>
+      </div>
+      <p>The cheaper model flags <em>more</em> revisions — but mostly convention-level ones: recasting statements into a preferred answer form, in a few cases via shims that would not compile or an import that does not exist upstream. It also recovered the original source for fewer than half the problems, and endorsed fabricated references in at least four. Where it did land real mathematical catches, those catches were largely a subset of the stronger model's.</p>
+      <p>The practical read is not "cheap models don't work." It is that the two tiers fail differently, which suggests splitting the work: let a cheap tier do source recovery, docstrings, and citation keying, and reserve the expensive tier for polarity, vacuity, and quantifier order — the defects that need someone to actually do the mathematics.</p>
+    </section>
+
+    <section class="board">
+      <p class="eyebrow">Verification</p>
+      <h2>It builds</h2>
+      <p>The corrected corpus compiles in this repository — <code>lake build ErdosV2</code>, 3057 jobs, no external checkout — with only the expected <code>declaration uses 'sorry'</code> warnings. That is the honest bar: the statements are well-formed Lean, and nothing claims to be proved.</p>
+      <p>The most recent build broke on 7 of 202 files, and all seven were environment drift rather than formalization defects: a graph structure's field became a structure, a Mathlib module became a deprecated shim, two files needed imports for constants that had moved, and one binder needed an explicit type where inference had silently changed. Worth noting that this is the ordinary weather of building against a fast-moving library — and worth noting that all seven were caught by the compiler, unlike everything else on this page.</p>
+      <h3>What is not verified</h3>
+      <p>Reviews are written without a compiler in the loop; they are checked against the build afterward, on a separate machine. Bibliographic entries marked deferred remain unresolved rather than guessed. And there is no human review gate here at all — unlike the upstream DeepMind project, which has one. The quality bar <em>is</em> the second pass.</p>
+    </section>
+
+    <section class="board">
+      <p class="eyebrow">Repository</p>
+      <h2>Where things live</h2>
+      <div class="scroller">
+        <table>
+          <thead><tr><th>Path</th><th class="num">Files</th><th>Contents</th></tr></thead>
+          <tbody>
+            <tr><td><code>conjectures/</code></td><td class="num">1179</td><td>First-pass formalizations. Immutable input to the second pass.</td></tr>
+            <tr><td><code>conjectures-v2/</code></td><td class="num">202</td><td>Corrected formalizations. Builds as <code>ErdosV2</code>.</td></tr>
+            <tr><td><code>fable-review/</code></td><td class="num">270</td><td>One review note per problem, with machine-readable verdict headers.</td></tr>
+            <tr><td><code>conjectures-v2-haiku/</code></td><td class="num">79</td><td>The independent cheaper-model run, kept for comparison.</td></tr>
+            <tr><td><code>deepmind/</code></td><td class="num">—</td><td>Upstream-style copies, the first-pass review notes, and the 60-point checklist.</td></tr>
+            <tr><td><code>GAME_PLAN.md</code></td><td class="num">—</td><td>Batch ordering, per-problem procedure, rate-limit policy, open decisions.</td></tr>
+            <tr><td><code>FABLE_REVIEW.md</code></td><td class="num">—</td><td>The Part A–E review checklist itself.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Review notes carry YAML front matter — verdict, confidence, whether the source was recovered, defect classes — so the corpus can be queried rather than read. Every table on this page was generated from those headers.</p>
+    </section>
+
+    <section class="board">
+      <p class="eyebrow">What's next</p>
+      <h2>A benchmark that ages well</h2>
+      <p>909 problems have not had a second pass yet. The plan is to finish them, then re-run the whole corpus as new models ship.</p>
+      <p>That re-run is the point. Formalization fidelity is an unusually clean thing to measure: the mathematics is fixed and public, the claim is already known, and the only question is whether a model can restate it in Lean without changing what it means. There is no reward-hackable score — a statement is faithful or it isn't, and a reader with the source page can check. As models improve, the defect counts on this page should fall, and the classes that survive longest are the ones worth knowing about.</p>
+      <p class="note">Cost, for anyone considering the same: second-pass reviews run roughly 106k–144k tokens each, putting a hundred-problem batch near 12M. The weekly allowance has been the binding constraint at every stage of this project — not compute, not the model, not the mathematics.</p>
+    </section>
+
+  </main>
+
+  <footer class="colophon stack">
+    <div class="board">
+      <p class="eyebrow">Colophon</p>
+      <p class="sig">
+        <b>This page was generated with Claude Opus 5 Max.</b><br>
+        Formalizations by Claude (first pass, primarily Opus 4.6; second pass, Fable 5).<br>
+        Figures counted from the repository on 19 August 2026; verdict counts read from review front matter.<br>
+        Photograph: <span class="mono">erdos-agents.png</span>.<br>
+        Repository: <a href="https://github.com/ryantuck/erdos-ai">github.com/ryantuck/erdos-ai</a>
+      </p>
+    </div>
+  </footer>
+
+</div>
