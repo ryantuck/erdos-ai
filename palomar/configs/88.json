@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ConjecturesV2.«88»",
+  "solution_module": "Erdos88Solution",
+  "theorem_names": [
+    "erdos_problem_88",
+    "erdos_problem_88.variants.erdos_mckay_log_sq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ConjecturesV2.«89»",
+  "solution_module": "Erdos89Solution",
+  "theorem_names": [
+    "erdos_problem_89",
+    "erdos_problem_89.variants.guth_katz",
+    "erdos_problem_89.variants.grid_upper_bound",
+    "erdos_problem_89.variants.sum_distinct_distances"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
