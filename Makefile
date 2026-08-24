@@ -25,6 +25,59 @@ completed-conjectures.txt :
 
 # ---------------------------------
 
+# ---------------------------------
+# Website: an overview page (index.html) and an interactive corpus explorer
+# (explorer.html) backed by generated data.
+#
+#   site/.corpus.stamp       <- content hash of the Lean corpora + review notes
+#   palomar/challenges.json  <- modules, theorem names, review provenance
+#   site/data.json           <- + statement summaries and collection metadata
+#
+# Both JSON files are derived: never hand-edit them, just re-run the target.
+#
+# NOTE: these targets deliberately do NOT list conjectures/*.lean as
+# prerequisites. The pipeline rule above (conjectures/%.lean : tidy/%.html)
+# would then let make decide a .lean file is out of date and regenerate it,
+# running an LLM formalization over already-reviewed work. site/stamp.py
+# detects corpus changes by content hash instead, and only touches the stamp
+# when something really changed.
+
+SITE_PORT ?= 8000
+SITE_METADATA := source-erdos-problems.yaml erdos_problem_classifications.yml
+
+.PHONY : FORCE
+FORCE :
+
+site/.corpus.stamp : FORCE
+	@python3 site/stamp.py $@
+
+palomar/challenges.json : palomar/build_manifest.py site/.corpus.stamp
+	python3 palomar/build_manifest.py
+
+site/data.json : site/build_data.py palomar/challenges.json $(SITE_METADATA)
+	python3 site/build_data.py
+
+.PHONY : site
+site : site/data.json
+
+.PHONY : serve
+serve : site
+	@echo ""
+	@echo "  overview  http://localhost:$(SITE_PORT)/index.html"
+	@echo "  explorer  http://localhost:$(SITE_PORT)/explorer.html"
+	@echo ""
+	python3 -m http.server $(SITE_PORT)
+
+.PHONY : site-check
+site-check : site
+	python3 site/check_site.py
+
+.PHONY : site-clean
+site-clean :
+	rm -f site/data.json palomar/challenges.json site/.corpus.stamp
+
+# ---------------------------------
+
 .PHONY : setup
 setup :
 	mkdir -p html
@@ -34,6 +87,7 @@ setup :
 	mkdir -p fable-review
 	mkdir -p sessions
 	mkdir -p build-logs
+	mkdir -p site
 
 
 .PHONY : install-elan

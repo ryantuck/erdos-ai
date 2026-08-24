@@ -1,4 +1,6 @@
+<meta charset="utf-8">
 <title>The Erdős Formalization</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2726%27 font-size=%2728%27%3E%E2%88%91%3C/text%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="All 1179 Erdős problems formalized in Lean by AI agents, then put through an adversarial second pass. Method, findings, and defect taxonomy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -323,6 +325,7 @@ pre .k { color: var(--accent); }
       <p class="flag"><b>Generated with Claude Opus 5 Max</b></p>
       <h1>The Erdős Formalization</h1>
       <p class="lede">All 1179 problems in the Erdős corpus, stated formally in Lean 4 by language models — then put back through an adversarial second pass whose only job is to find where the formal statement stopped meaning what the mathematics said.</p>
+      <p style="margin-top:1.4em"><a href="explorer.html" style="display:inline-block;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.7em 1.2em;border:1px solid var(--accent);border-radius:2px;color:var(--accent);text-decoration:none">Explore all 1179 problems →</a></p>
     </div>
 
     <dl class="stats board" style="padding:0;border:none;box-shadow:var(--shadow)">
@@ -512,7 +515,7 @@ pre .k { color: var(--accent); }
           </tbody>
         </table>
       </div>
-      <p>Review notes carry YAML front matter — verdict, confidence, whether the source was recovered, defect classes — so the corpus can be queried rather than read. Every table on this page was generated from those headers.</p>
+      <p>Review notes carry YAML front matter — verdict, confidence, whether the source was recovered, defect classes — so the corpus can be queried rather than read. Every table on this page was generated from those headers, and the <a href="explorer.html">corpus explorer</a> is a live view of the same data: filter all 1179 problems by verdict, status, defect class or subject, and open any one to see its statements, review findings and sources. Rebuild both with <code>make site</code>; serve them with <code>make serve</code>.</p>
     </section>
 
     <section class="board">

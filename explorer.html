@@ -1,0 +1,468 @@
+<meta charset="utf-8">
+<title>Erdős Corpus Explorer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2726%27 font-size=%2728%27%3E%E2%88%91%3C/text%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Browse the formalization and review state of all 1179 Erdős problems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
+
+<style>
+:root {
+  --ground:#0B0C0D; --panel:#15181A; --panel-2:#1E2225; --panel-3:#262B2E;
+  --chalk:#E9E7E1; --chalk-2:#B9BCBB; --chalk-3:#8A8F8F;
+  --rule:#2C3134; --rule-2:#3A4145; --accent:#C9A063;
+  --open:#7FA0BE; --proved:#85A57D; --disproved:#CE6E52; --other:#9B8FB0;
+  --nr:#CE6E52; --awn:#C09644; --unrev:#6C7275;
+  --f-display:"Bodoni Moda","Didot","Times New Roman",serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --ground:#DEDAD2; --panel:#F4F2EC; --panel-2:#EAE7DF; --panel-3:#DFDBD1;
+    --chalk:#14171A; --chalk-2:#3F4649; --chalk-3:#6B7275;
+    --rule:#CFCABF; --rule-2:#B6B0A3; --accent:#8A6522;
+    --open:#3D6484; --proved:#3F6238; --disproved:#9E3C22; --other:#5B4E73;
+    --nr:#9E3C22; --awn:#7A5A12; --unrev:#8A8578;
+  }
+}
+:root[data-theme="light"] {
+  --ground:#DEDAD2; --panel:#F4F2EC; --panel-2:#EAE7DF; --panel-3:#DFDBD1;
+  --chalk:#14171A; --chalk-2:#3F4649; --chalk-3:#6B7275;
+  --rule:#CFCABF; --rule-2:#B6B0A3; --accent:#8A6522;
+  --open:#3D6484; --proved:#3F6238; --disproved:#9E3C22; --other:#5B4E73;
+  --nr:#9E3C22; --awn:#7A5A12; --unrev:#8A8578;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--chalk);font-family:var(--f-body);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* ── masthead ─────────────────────────────────────────────────────────── */
+.masthead{background:var(--panel);border-bottom:1px solid var(--rule);
+  padding:1.1rem clamp(1rem,3vw,2rem) .9rem;position:sticky;top:0;z-index:20}
+.masthead-inner{max-width:1500px;margin-inline:auto;display:flex;gap:1.2rem;
+  align-items:baseline;flex-wrap:wrap;justify-content:space-between}
+h1{font-family:var(--f-display);font-weight:400;font-size:1.75rem;margin:0;line-height:1}
+.masthead .sub{font-size:.83rem;color:var(--chalk-3);margin:.35rem 0 0}
+.masthead a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:.2em}
+
+/* ── distribution bar ─────────────────────────────────────────────────── */
+.distbar{display:flex;height:7px;border-radius:2px;overflow:hidden;background:var(--panel-3);
+  margin-top:.85rem;border:1px solid var(--rule)}
+.distbar span{display:block;transition:width .25s ease}
+.distlegend{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:.5rem;
+  font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--chalk-3)}
+.distlegend b{color:var(--chalk-2);font-weight:500;font-variant-numeric:tabular-nums}
+.swatch{display:inline-block;width:8px;height:8px;border-radius:1px;margin-right:.4em}
+
+/* ── layout ───────────────────────────────────────────────────────────── */
+.shell{max-width:1500px;margin-inline:auto;padding:1.2rem clamp(1rem,3vw,2rem) 4rem;
+  display:grid;gap:1.4rem;grid-template-columns:1fr}
+@media (min-width:64rem){.shell{grid-template-columns:16.5rem 1fr;align-items:start}}
+
+/* ── filter rail ──────────────────────────────────────────────────────── */
+.rail{display:flex;flex-direction:column;gap:.9rem}
+@media (min-width:64rem){.rail{position:sticky;top:calc(var(--masthead-h,7rem) + .8rem);
+  max-height:calc(100svh - var(--masthead-h,7rem) - 2rem);overflow-y:auto;padding-right:.4rem}}
+.group{background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:.85rem .9rem}
+.group h2{font-family:var(--f-mono);font-size:.66rem;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--chalk-3);margin:0 0 .6rem}
+.chips{display:flex;flex-wrap:wrap;gap:.32rem}
+.chip{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.03em;padding:.28em .55em .24em;
+  border:1px solid var(--rule-2);border-radius:2px;background:var(--panel-2);color:var(--chalk-2);
+  cursor:pointer;transition:background .12s,border-color .12s,color .12s;line-height:1.3}
+.chip:hover{border-color:var(--accent);color:var(--chalk)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--ground);font-weight:500}
+.chip .n{opacity:.65;margin-left:.35em;font-variant-numeric:tabular-nums}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=search]{width:100%;font-family:var(--f-body);font-size:.9rem;padding:.5rem .6rem;
+  background:var(--panel-2);border:1px solid var(--rule-2);border-radius:2px;color:var(--chalk)}
+input[type=search]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.reset{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+  background:none;border:1px solid var(--rule-2);color:var(--chalk-3);padding:.4em .7em;
+  border-radius:2px;cursor:pointer;width:100%}
+.reset:hover{border-color:var(--accent);color:var(--chalk)}
+
+/* ── results ──────────────────────────────────────────────────────────── */
+.resultbar{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  flex-wrap:wrap;margin-bottom:.7rem}
+.count{font-family:var(--f-mono);font-size:.78rem;color:var(--chalk-3);letter-spacing:.05em}
+.count b{color:var(--chalk);font-weight:600;font-variant-numeric:tabular-nums}
+select{font-family:var(--f-mono);font-size:.72rem;background:var(--panel-2);color:var(--chalk-2);
+  border:1px solid var(--rule-2);border-radius:2px;padding:.3em .5em}
+.list{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.row{background:var(--panel);padding:.7rem .9rem;display:grid;gap:.15rem .9rem;
+  grid-template-columns:4.2rem 1fr auto;align-items:baseline;cursor:pointer;
+  border:none;text-align:left;color:inherit;font:inherit;width:100%}
+.row:hover{background:var(--panel-2)}
+.row:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.row.open{background:var(--panel-2)}
+.rnum{font-family:var(--f-display);font-size:1.15rem;color:var(--accent);
+  font-variant-numeric:tabular-nums;line-height:1.2}
+.rsum{font-size:.875rem;color:var(--chalk-2);line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rmeta{display:flex;gap:.3rem;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.row .empty{color:var(--chalk-3);font-style:italic}
+
+.pill{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
+  padding:.2em .45em .16em;border-radius:2px;border:1px solid currentColor;white-space:nowrap}
+.pill.solid{color:var(--ground);border-color:transparent}
+.st-OPEN{color:var(--open)} .st-PROVED{color:var(--proved)} .st-SOLVED{color:var(--proved)}
+.st-DISPROVED{color:var(--disproved)} .st-OTHER{color:var(--other)}
+.v-NR{color:var(--nr)} .v-AWN{color:var(--awn)} .v-NONE{color:var(--unrev)}
+.hole{color:var(--disproved);font-weight:600}
+
+/* ── detail ───────────────────────────────────────────────────────────── */
+.detail{background:var(--panel-2);border-top:1px solid var(--rule-2);padding:1.1rem 1.2rem 1.3rem}
+.detail h3{font-family:var(--f-body);font-size:.7rem;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--chalk-3);margin:1.2rem 0 .45rem}
+.detail h3:first-child{margin-top:0}
+.detail p{margin:0 0 .7rem;max-width:74ch;font-size:.9rem}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.3rem 1rem;font-size:.83rem;max-width:62rem}
+.kv dt{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--chalk-3);padding-top:.15em}
+.kv dd{margin:0;color:var(--chalk-2)}
+.mono{font-family:var(--f-mono);font-size:.8rem}
+.thmlist{display:flex;flex-direction:column;gap:.2rem;margin:0;padding:0;list-style:none}
+.thmlist li{font-family:var(--f-mono);font-size:.78rem;color:var(--chalk-2);
+  background:var(--panel-3);border:1px solid var(--rule);border-radius:2px;padding:.25em .5em;
+  overflow-wrap:anywhere}
+.links{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:1.1rem}
+.links a{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.05em;padding:.4em .7em;
+  border:1px solid var(--rule-2);border-radius:2px;color:var(--chalk-2);text-decoration:none;
+  background:var(--panel-3)}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.warn{border-left:2px solid var(--disproved);padding-left:.8rem;color:var(--chalk-2);font-size:.87rem}
+.defects{display:flex;flex-wrap:wrap;gap:.3rem}
+.defect{font-family:var(--f-mono);font-size:.68rem;padding:.22em .5em .18em;border-radius:2px;
+  background:var(--panel-3);border:1px solid var(--rule-2);color:var(--chalk-2)}
+
+.more{margin:1.1rem auto 0;display:block;font-family:var(--f-mono);font-size:.75rem;
+  letter-spacing:.08em;text-transform:uppercase;background:var(--panel);color:var(--chalk-2);
+  border:1px solid var(--rule-2);border-radius:2px;padding:.6em 1.4em;cursor:pointer}
+.more:hover{border-color:var(--accent);color:var(--chalk)}
+.status-msg{padding:2.5rem 1rem;text-align:center;color:var(--chalk-3);font-size:.9rem}
+.footnote{margin-top:1.6rem;font-size:.78rem;color:var(--chalk-3);max-width:78ch}
+.footnote code{font-family:var(--f-mono);font-size:.92em}
+</style>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div>
+      <h1>Erdős Corpus Explorer</h1>
+      <p class="sub">Formalization and review state of all 1179 problems ·
+        <a href="index.html">project overview</a> ·
+        <a href="https://github.com/ryantuck/erdos-ai">repository</a></p>
+    </div>
+    <div style="flex:1;min-width:14rem;max-width:34rem">
+      <div class="distbar" id="distbar" role="img" aria-label="Distribution of review verdicts across the filtered set"></div>
+      <div class="distlegend" id="distlegend"></div>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="rail" id="rail">
+    <div class="group">
+      <h2><label for="q">Search</label></h2>
+      <input type="search" id="q" placeholder="number, statement, theorem name…" autocomplete="off">
+    </div>
+    <div class="group"><h2>Review verdict</h2><div class="chips" id="f-verdict"></div></div>
+    <div class="group"><h2>Problem status</h2><div class="chips" id="f-status"></div></div>
+    <div class="group"><h2>Formalization pass</h2><div class="chips" id="f-pass"></div></div>
+    <div class="group"><h2>Flags</h2><div class="chips" id="f-flag"></div></div>
+    <div class="group"><h2>Domain</h2><div class="chips" id="f-domain"></div></div>
+    <div class="group"><h2>Tag</h2><div class="chips" id="f-tag"></div></div>
+    <div class="group"><h2>Defect class</h2><div class="chips" id="f-defect"></div></div>
+    <button class="reset" id="reset" type="button">Clear all filters</button>
+  </aside>
+
+  <main>
+    <div class="resultbar">
+      <p class="count" id="count">loading…</p>
+      <label class="count">sort
+        <select id="sort">
+          <option value="n">by number</option>
+          <option value="verdict">by verdict severity</option>
+          <option value="theorems">by theorem count</option>
+          <option value="sorries">by sorry count</option>
+        </select>
+      </label>
+    </div>
+    <div class="list" id="list"><p class="status-msg">Loading corpus…</p></div>
+    <button class="more" id="more" hidden type="button">Show more</button>
+    <p class="footnote" id="footnote"></p>
+  </main>
+</div>
+
+<script>
+// The masthead is sticky and its height changes when the legend wraps, so the
+// rail's sticky offset is measured rather than guessed.
+const mast = document.querySelector('.masthead');
+const syncMasthead = () => document.documentElement.style.setProperty(
+  '--masthead-h', mast.getBoundingClientRect().height + 'px');
+syncMasthead();
+if (window.ResizeObserver) new ResizeObserver(syncMasthead).observe(mast);
+else addEventListener('resize', syncMasthead);
+
+const STATE = { q:"", verdict:new Set(), status:new Set(), pass:new Set(),
+                flag:new Set(), domain:new Set(), tag:new Set(), defect:new Set(),
+                sort:"n", shown:60, openN:null };
+let DATA = null, FILTERED = [];
+const PAGE = 60;
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c =>
+  ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+const vKey = p => p.verdict === "NEEDS REVISION" ? "NR"
+               : p.verdict === "ACCEPT WITH NITS" ? "AWN"
+               : p.verdict ? "OTHER" : "NONE";
+const vLabel = { NR:"Needs revision", AWN:"Accept with nits", NONE:"Unreviewed", OTHER:"Other" };
+const sKey = p => ["OPEN","PROVED","SOLVED","DISPROVED"].find(k => (p.status||"").startsWith(k)) || "OTHER";
+
+fetch("site/data.json")
+  .then(r => { if (!r.ok) throw new Error(r.status + " " + r.statusText); return r.json(); })
+  .then(d => { DATA = d; boot(); })
+  .catch(err => {
+    document.getElementById("list").innerHTML =
+      '<p class="status-msg">Could not load <code>site/data.json</code> (' + esc(err.message) + ').<br><br>' +
+      'Opening this page straight from disk blocks the fetch. Serve it instead:<br>' +
+      '<code style="font-family:var(--f-mono)">make serve</code>, then open ' +
+      '<code style="font-family:var(--f-mono)">http://localhost:8000/explorer.html</code>.</p>';
+    document.getElementById("count").textContent = "load failed";
+  });
+
+function boot() {
+  buildFacet("f-verdict", tally(p => [vKey(p)]), vLabel, "verdict");
+  buildFacet("f-status",  tally(p => [sKey(p)]),
+             { OPEN:"Open", PROVED:"Proved", SOLVED:"Solved", DISPROVED:"Disproved", OTHER:"Other" }, "status");
+  buildFacet("f-pass",    tally(p => [p.pass]),
+             { v2:"Reviewed (v2)", v1:"First pass (v1)" }, "pass");
+  buildFacet("f-flag",    tally(p => {
+                const f = [];
+                if (p.holes.length) f.push("holes");
+                if (p.prize && p.prize !== "no") f.push("prize");
+                if (p.oeis.length) f.push("oeis");
+                if (p.bench_verdict) f.push("bench");
+                return f;
+              }), { holes:"Definition holes", prize:"Has prize", oeis:"OEIS entry", bench:"Benchmarked twice" }, "flag");
+  buildFacet("f-domain",  tally(p => p.domain ? [p.domain] : []),
+             Object.fromEntries([...new Set(DATA.problems.map(p => p.domain))]
+               .filter(Boolean).map(d => [d, d.replace(/_/g, " ")])), "domain");
+  buildFacet("f-tag",     tally(p => p.tags), null, "tag", 18);
+  buildFacet("f-defect",  tally(p => p.defects), null, "defect", 16);
+
+  document.getElementById("q").addEventListener("input", e => {
+    STATE.q = e.target.value.trim().toLowerCase(); STATE.shown = PAGE; render();
+  });
+  document.getElementById("sort").addEventListener("change", e => {
+    STATE.sort = e.target.value; render();
+  });
+  document.getElementById("more").addEventListener("click", () => {
+    STATE.shown += PAGE * 2; render();
+  });
+  document.getElementById("reset").addEventListener("click", () => {
+    for (const k of ["verdict","status","pass","flag","domain","tag","defect"]) STATE[k].clear();
+    STATE.q = ""; document.getElementById("q").value = ""; STATE.shown = PAGE;
+    document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+    render();
+  });
+
+  const hash = parseInt(location.hash.replace("#p", ""), 10);
+  if (hash) STATE.openN = hash;
+
+  document.getElementById("footnote").innerHTML =
+    "Built from commit <code>" + esc(DATA.generated_from_commit) + "</code>. " + esc(DATA.extraction.note) +
+    " Statement summaries recovered for " + Math.round(DATA.extraction.summary_coverage * 100) + "% of problems. " +
+    "Regenerate with <code>make site</code>.";
+
+  render();
+  if (STATE.openN) {
+    const el = document.querySelector('[data-n="' + STATE.openN + '"]');
+    if (el) el.scrollIntoView({ block: "center" });
+  }
+}
+
+function tally(fn) {
+  const m = new Map();
+  for (const p of DATA.problems) for (const k of fn(p)) m.set(k, (m.get(k) || 0) + 1);
+  return [...m.entries()].sort((a, b) => b[1] - a[1]);
+}
+
+// Facets whose values have a natural reading order are shown in it; the rest
+// fall back to most-common-first. Severity reads better than frequency when the
+// point of the tool is finding problems that need attention.
+const FACET_ORDER = {
+  "f-verdict": ["NR", "AWN", "OTHER", "NONE"],
+  "f-status":  ["OPEN", "DISPROVED", "PROVED", "SOLVED", "OTHER"],
+  "f-pass":    ["v1", "v2"],
+};
+
+function buildFacet(id, entries, labels, key, limit) {
+  const host = document.getElementById(id);
+  host.innerHTML = "";
+  const order = FACET_ORDER[id];
+  if (order) entries = [...entries].sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]));
+  const list = limit ? entries.slice(0, limit) : entries;
+  for (const [val, n] of list) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip";
+    b.setAttribute("aria-pressed", "false");
+    b.innerHTML = esc(labels && labels[val] ? labels[val] : val.replace(/[-_]/g, " ")) +
+                  '<span class="n">' + n + "</span>";
+    b.addEventListener("click", () => {
+      const on = b.getAttribute("aria-pressed") === "true";
+      b.setAttribute("aria-pressed", on ? "false" : "true");
+      on ? STATE[key].delete(val) : STATE[key].add(val);
+      STATE.shown = PAGE;
+      render();
+    });
+    host.appendChild(b);
+  }
+}
+
+function matches(p) {
+  if (STATE.verdict.size && !STATE.verdict.has(vKey(p))) return false;
+  if (STATE.status.size  && !STATE.status.has(sKey(p))) return false;
+  if (STATE.pass.size    && !STATE.pass.has(p.pass)) return false;
+  if (STATE.domain.size  && !STATE.domain.has(p.domain)) return false;
+  if (STATE.tag.size     && !p.tags.some(t => STATE.tag.has(t))) return false;
+  if (STATE.defect.size  && !p.defects.some(d => STATE.defect.has(d))) return false;
+  for (const f of STATE.flag) {
+    if (f === "holes" && !p.holes.length) return false;
+    if (f === "prize" && (!p.prize || p.prize === "no")) return false;
+    if (f === "oeis"  && !p.oeis.length) return false;
+    if (f === "bench" && !p.bench_verdict) return false;
+  }
+  if (STATE.q) {
+    const q = STATE.q;
+    const hay = p.n + " " + p.summary + " " + p.theorems.join(" ") + " " +
+                p.tags.join(" ") + " " + p.defects.join(" ") + " " + p.module;
+    if (!hay.toLowerCase().includes(q)) return false;
+  }
+  return true;
+}
+
+const SEV = { NR:0, AWN:1, OTHER:2, NONE:3 };
+
+function render() {
+  FILTERED = DATA.problems.filter(matches);
+  const s = STATE.sort;
+  FILTERED.sort((a, b) =>
+      s === "verdict"  ? (SEV[vKey(a)] - SEV[vKey(b)]) || (a.n - b.n)
+    : s === "theorems" ? (b.theorems.length - a.theorems.length) || (a.n - b.n)
+    : s === "sorries"  ? (b.sorries - a.sorries) || (a.n - b.n)
+    : a.n - b.n);
+
+  const tot = DATA.problems.length;
+  document.getElementById("count").innerHTML =
+    "<b>" + FILTERED.length + "</b> of " + tot + " problems" +
+    (FILTERED.length !== tot ? " &nbsp;·&nbsp; filtered" : "");
+
+  drawDist();
+
+  const slice = FILTERED.slice(0, STATE.shown);
+  const list = document.getElementById("list");
+  if (!slice.length) {
+    list.innerHTML = '<p class="status-msg">No problems match these filters.</p>';
+  } else {
+    list.innerHTML = slice.map(rowHTML).join("");
+    list.querySelectorAll(".row").forEach(el => {
+      el.addEventListener("click", () => toggle(parseInt(el.dataset.n, 10)));
+    });
+  }
+  const more = document.getElementById("more");
+  more.hidden = FILTERED.length <= STATE.shown;
+  more.textContent = "Show more (" + (FILTERED.length - STATE.shown) + " remaining)";
+}
+
+function drawDist() {
+  const buckets = { NR:0, AWN:0, OTHER:0, NONE:0 };
+  for (const p of FILTERED) buckets[vKey(p)]++;
+  const tot = FILTERED.length || 1;
+  const spec = [["NR","var(--nr)"],["AWN","var(--awn)"],["OTHER","var(--other)"],["NONE","var(--unrev)"]];
+  document.getElementById("distbar").innerHTML = spec
+    .filter(([k]) => buckets[k])
+    .map(([k, c]) => '<span style="width:' + (buckets[k] / tot * 100) + '%;background:' + c + '"></span>')
+    .join("");
+  document.getElementById("distlegend").innerHTML = spec
+    .filter(([k]) => buckets[k])
+    .map(([k, c]) => '<span><i class="swatch" style="background:' + c + '"></i>' +
+                     vLabel[k] + " <b>" + buckets[k] + "</b></span>").join("");
+}
+
+function toggle(n) {
+  STATE.openN = STATE.openN === n ? null : n;
+  history.replaceState(null, "", STATE.openN ? "#p" + n : location.pathname);
+  render();
+  if (STATE.openN) {
+    const el = document.querySelector('[data-n="' + n + '"]');
+    if (el) el.scrollIntoView({ block: "nearest" });
+  }
+}
+
+function rowHTML(p) {
+  const isOpen = STATE.openN === p.n;
+  const st = sKey(p), vk = vKey(p);
+  const pills =
+    '<span class="pill st-' + st + '">' + esc(p.status || "—") + "</span>" +
+    '<span class="pill v-' + vk + '">' + esc(vLabel[vk]) + "</span>" +
+    (p.holes.length ? '<span class="pill hole" title="A definition in this module is itself sorry">hole</span>' : "") +
+    (p.prize && p.prize !== "no" ? '<span class="pill" style="color:var(--accent)">' + esc(p.prize) + "</span>" : "");
+  return '<button class="row' + (isOpen ? " open" : "") + '" data-n="' + p.n +
+         '" aria-expanded="' + isOpen + '">' +
+           '<span class="rnum">' + p.n + "</span>" +
+           '<span class="rsum' + (p.summary ? "" : " empty") + '">' +
+             esc(p.summary || "no statement summary extracted") + "</span>" +
+           '<span class="rmeta">' + pills + "</span>" +
+         "</button>" +
+         (isOpen ? detailHTML(p) : "");
+}
+
+function detailHTML(p) {
+  const gh = DATA.repo + "/blob/master/";
+  const rows = [
+    ["Module", '<span class="mono">' + esc(p.module) + "</span>"],
+    ["Source", '<span class="mono">' + esc(p.file) + "</span> · " +
+               (p.pass === "v2" ? "adversarially reviewed second pass" : "first pass, unreviewed")],
+    ["Status", esc(p.status || "unrecorded") +
+               (p.status_source ? ' <span style="color:var(--chalk-3)">(' + esc(p.status_source) +
+               (p.status_updated ? ", " + esc(p.status_updated) : "") + ")</span>" : "")],
+    ["Statements", p.theorems.length + " theorem" + (p.theorems.length === 1 ? "" : "s") +
+                   ", " + p.sorries + " sorry placeholder" + (p.sorries === 1 ? "" : "s")],
+  ];
+  if (p.verdict) rows.push(["Review", esc(p.verdict) +
+    (p.confidence ? " · " + esc(p.confidence) + " confidence" : "") +
+    (p.reviewer ? ' <span class="mono" style="color:var(--chalk-3)">' + esc(p.reviewer) + "</span>" : "")]);
+  if (p.bench_verdict) rows.push(["Benchmark run", esc(p.bench_verdict) +
+    ' <span style="color:var(--chalk-3)">(independent cheaper-model review)</span>']);
+  if (p.tags.length) rows.push(["Tags", p.tags.map(esc).join(" · ")]);
+  if (p.domain) rows.push(["Domain", esc(p.domain.replace(/_/g, " "))]);
+  if (p.oeis.length) rows.push(["OEIS", p.oeis.map(o =>
+    '<a href="https://oeis.org/' + esc(o) + '" style="color:var(--accent)">' + esc(o) + "</a>").join(" · ")]);
+
+  return '<div class="detail">' +
+    (p.summary ? "<p>" + esc(p.summary) + "</p>" : "") +
+    (p.holes.length ? '<p class="warn"><strong>Definitional hole.</strong> ' +
+      p.holes.map(h => '<span class="mono">' + esc(h) + "</span>").join(", ") +
+      (p.holes.length === 1 ? " is" : " are") + " defined as <span class=\"mono\">sorry</span>, so any " +
+      "statement quantifying over " + (p.holes.length === 1 ? "it" : "them") +
+      " is vacuous or ill-defined until that is fixed.</p>" : "") +
+    '<dl class="kv">' + rows.map(([k, v]) => "<dt>" + k + "</dt><dd>" + v + "</dd>").join("") + "</dl>" +
+    (p.defects.length ? "<h3>Defects found in review</h3><div class=\"defects\">" +
+      p.defects.map(d => '<span class="defect">' + esc(d.replace(/-/g, " ")) + "</span>").join("") + "</div>" : "") +
+    "<h3>Challenge statements</h3><ul class=\"thmlist\">" +
+      p.theorems.map(t => "<li>" + esc(t) + "</li>").join("") + "</ul>" +
+    '<div class="links">' +
+      '<a href="' + esc(p.url) + '">Problem page ↗</a>' +
+      '<a href="' + gh + esc(p.file) + '">Lean source ↗</a>' +
+      (p.review_file ? '<a href="' + gh + esc(p.review_file) + '">Review note ↗</a>' : "") +
+      (p.bench_file ? '<a href="' + gh + esc(p.bench_file) + '">Benchmark review ↗</a>' : "") +
+    "</div></div>";
+}
+</script>

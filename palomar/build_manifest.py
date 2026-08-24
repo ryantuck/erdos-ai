@@ -74,9 +74,23 @@ def front_matter(path):
     return out or None
 
 
+CORPUS_DIRS = ["conjectures", "conjectures-v2", "conjectures-v2-haiku", "fable-review", "haiku-review"]
+
+
+def corpus_revision():
+    """Last commit that touched the corpus, not HEAD.
+
+    Pinning HEAD would make this file churn on every unrelated commit: commit,
+    re-run, hash differs, working tree dirty again. This changes only when the
+    data it describes actually changes.
+    """
+    out = subprocess.run(["git", "-C", ROOT, "log", "-1", "--format=%h", "--"] + CORPUS_DIRS,
+                         capture_output=True, text=True)
+    return out.stdout.strip() or "unknown"
+
+
 def main():
-    commit = subprocess.run(["git", "-C", ROOT, "rev-parse", "HEAD"],
-                            capture_output=True, text=True).stdout.strip()
+    commit = corpus_revision()
     problems = {}
     for n in range(1, 1180):
         v2 = os.path.join(ROOT, "conjectures-v2", f"{n}.lean")
