@@ -1,0 +1,302 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+#
+# formalization.yaml (v0.4) for the Erdős problems Lean corpus.
+#
+# READ THIS FIRST: this project formalizes STATEMENTS, not proofs. Every theorem
+# in every corpus here is a challenge statement whose proof is `sorry`, because
+# the underlying mathematics is open. Nothing in this repository is a verified
+# result, and it is therefore NOT eligible for registration on a registry of
+# Lean-verified mathematics such as Palomar. See PALOMAR.md for the full
+# eligibility discussion. This file exists because the formalization.yaml
+# standard is the right way to describe an autoformalization project's
+# provenance, method, and fidelity — independently of whether anything is proved.
+
+version: "v0.4"
+
+project:
+  name: "Erdős Problems in Lean"
+  authors:
+    - "Ryan Tuck"
+  responsible_maintainers:
+    - "Ryan Tuck"
+  license: "Unlicense"
+
+sources:
+  - title: "Erdős Problems"
+    authors: []              # deliberately empty: the site's maintainer is not
+                             # asserted here because it was not verified from a
+                             # primary source during authoring. This project's
+                             # standing rule is that unverified bibliographic
+                             # data is left as an honest gap rather than guessed.
+    id: "https://www.erdosproblems.com"
+    type: "web post"
+    location: "problems 1–1179, one formalization per problem page"
+    relationship: "formalizes"
+    license: ""
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "https://github.com/google-deepmind/formal-conjectures"
+    relationship: "builds-on"
+    note: >-
+      The upstream DeepMind repository held Lean statements for 374 of the 1179
+      Erdős problems when this project began. The remaining 805 were formalized
+      here and contributed upstream, completing that repository's "all open
+      Erdős problems formalized" milestone. Statements for those 374 problems in
+      this repository were written independently and may differ from upstream's.
+  - id: "https://github.com/teorth/erdosproblems"
+    relationship: "independent"
+    note: >-
+      Metadata mirror of the problem collection (status, formalization flags).
+      Not a formalization; used here as an independent cross-check on whether a
+      problem is open, solved, or disproved, because archived page captures go
+      stale and several problems in this corpus were resolved after capture.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+    - "math.LO"
+    - "math.CA"
+    - "math.MG"
+  msc2020:
+    - "11-XX"
+    - "05-XX"
+    - "03-XX"
+    - "52-XX"
+
+status:
+  scope: >-
+    A statement-only corpus: Lean 4 formalizations of the statements of all 1179
+    problems in the Erdős problem collection, with no proofs. The promoted set —
+    the best available statement for each problem — is 1179 modules containing
+    1889 theorem declarations, of which 202 come from the reviewed second-pass
+    corpus (conjectures-v2/) and 977 from the unreviewed first pass
+    (conjectures/). Every one of those theorems ends in `sorry`: 1909 such
+    placeholders in the promoted set. Under this standard's definition those are
+    challenge-module placeholders rather than unresolved proof-development
+    sorries, so `sorry_count` below is 0; the raw figure is stated here so the
+    reader can see exactly what the corpus contains. The problems are open, so
+    for most of them no proof exists to be formalized.
+
+    Four corpora are present. conjectures/ (1179 files) is the immutable
+    first-pass output. conjectures-v2/ (202 files) is the adversarially reviewed
+    second pass and builds as the Lake target ErdosV2. conjectures-v2-haiku/
+    (79 files) is an independent second-pass run by a cheaper model over problems
+    1101–1179, kept for model comparison and not a build target.
+    deepmind/deepmind/ (808 files) is a frozen, upstream-styled variant of the
+    first pass, retained as an archive.
+  # Challenge-module placeholders are excluded per this standard's definition;
+  # see `scope` for the raw count.
+  sorry_count: 0
+  # These are NOT deliberate challenge placeholders. 23 `def`/`abbrev`/`opaque`
+  # bodies in the promoted corpus are themselves `sorry`, which makes any
+  # statement quantifying over them vacuous or ill-defined. All 23 are in
+  # unreviewed first-pass files; the reviewed second-pass corpus has none. The
+  # review pass tracks this as the `sorry-in-definition` defect class.
+  sorry_in_definitions: 23
+  # Nothing is proved, so no proof term depends on any axiom.
+  axioms: []
+  main_results:
+    # The deliverable is the corpus as a whole; the entries below are
+    # representative rather than exhaustive. palomar/challenges.json is the
+    # complete machine-readable map of all 1179 problems to their modules,
+    # theorem names, and provenance.
+    - declaration: "erdos_problem_90"
+      file: "conjectures-v2/90.lean"
+      sorry_count: 0
+      axioms: []
+      comparator_config: "palomar/configs/90.json"
+      literature_dependencies:
+        - statement: >-
+            The unit distance conjecture is false: there are n-point sets in the
+            plane with more than n^{1+c/log log n} unit distances for any c.
+          source: "https://www.erdosproblems.com/90"
+    - declaration: "erdos_problem_88"
+      file: "conjectures-v2/88.lean"
+      sorry_count: 0
+      axioms: []
+      comparator_config: "palomar/configs/88.json"
+      literature_dependencies:
+        - statement: >-
+            The Erdős–McKay conjecture, proved by Kwan, Sah, Sauermann and
+            Sawhney (arXiv:2208.02874).
+          source: "https://www.erdosproblems.com/88"
+    - declaration: "erdos_problem_89"
+      file: "conjectures-v2/89.lean"
+      sorry_count: 0
+      axioms: []
+      comparator_config: "palomar/configs/89.json"
+      literature_dependencies:
+        - statement: >-
+            Guth–Katz: n points in the plane determine ≫ n/log n distinct
+            distances. The Erdős conjecture ≫ n/√(log n) remains open.
+          source: "https://www.erdosproblems.com/89"
+
+automation:
+  methods:
+    - method: "autonomous"
+      models:
+        - "claude-opus-4-6"
+      framework: "Claude Code"
+      tool_setup: >-
+        A single unattended shell loop, one problem at a time, run in tmux on a
+        2-vCPU e2-medium cloud instance:
+        `cat todo-conjectures.txt | xargs -I % claude --dangerously-skip-permissions
+        "Read FORMALIZE_CONJECTURE.md. Apply to problem %. Write output to
+        conjectures/%.lean. Ensure lake build passes."`
+        Each problem passed through four stages: formalize, restyle to the
+        upstream repository's conventions, review against a 60-point checklist
+        derived from that repository's guidance, and apply fixes.
+      cost:
+        wall_time: "roughly six months elapsed, February–August 2026"
+        spend_usd: "subscription-based usage (Claude Max), no metered API spend"
+        hardware: "one e2-medium (2 vCPU, 4 GB) instance; API-only inference"
+      prompting_notes: >-
+        The per-problem prompt is checked in as FORMALIZE_CONJECTURE.md.
+        Parallelism was tried and abandoned: concurrent problems exhausted the
+        per-session rate limit faster without finishing sooner, so the loop ran
+        strictly sequentially.
+    - method: "agent"
+      models:
+        - "claude-fable-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Adversarial second pass. One agent per problem, briefed to assume the
+        formalization is wrong and find out how. Each agent recovers the original
+        problem page from an archived capture rather than working from memory,
+        re-derives the mathematics independently, audits the first-pass review
+        claim by claim, and writes exactly two files: a corrected
+        conjectures-v2/N.lean and a review note at fable-review/N.md. The
+        first-pass file is immutable input. At most two agents in flight.
+      cost:
+        wall_time: "270 problems reviewed over roughly two weeks"
+        spend_usd: "subscription-based usage; roughly 106k–144k tokens per problem review"
+        hardware: "API-only"
+      prompting_notes: >-
+        The review checklist is checked in as FABLE_REVIEW.md (Parts A–E) and the
+        per-problem procedure as FABLE_REVIEW_RUN.md. Defect classes discovered
+        mid-run were fed forward into later agents' prompts as an explicit
+        checklist, so later reviews are strictly better instrumented than earlier
+        ones. Two standing rules: never fabricate a citation, and recover the
+        source rather than recalling it.
+    - method: "agent"
+      models:
+        - "claude-haiku-4-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        An independent benchmark run of the same second-pass procedure over
+        problems 1101–1179, blind to the stronger model's output, to measure how
+        review quality varies with model capability. Output in
+        conjectures-v2-haiku/ and haiku-review/.
+      cost:
+        wall_time: "79 problems in roughly one day"
+        spend_usd: "subscription-based usage; roughly half the tokens per problem"
+        hardware: "API-only"
+      prompting_notes: "Identical prompts to the claude-fable-5 run."
+  spend_usd: "subscription-based usage; no metered API spend"
+  notes: >-
+    No human wrote any of the Lean in this repository, and there is no human
+    review gate — unlike the upstream DeepMind project, which has one. The
+    quality bar is the adversarial second pass, and it covers 270 of 1179
+    problems so far. Model attribution is recorded per artifact: every review
+    note carries a `reviewer_model` field in YAML front matter, and every commit
+    carries a matching Co-Authored-By trailer.
+
+fidelity:
+  divergences: >-
+    Fidelity — whether the Lean says what the mathematics says — is the explicit
+    subject of this project rather than an afterthought, because a formal
+    statement can typecheck perfectly and still be the wrong claim. 270 of the
+    1179 problems have been through an adversarial review; 177 came back
+    "accept with nits" and 93 "needs revision". None came back clean.
+
+    The recurring defect families, all invisible to the compiler:
+
+    (1) Polarity — the Lean asserts the direction the source refutes, or drops
+    the `answer(False)` wrapper on a disproved problem. Seven occurrences.
+    Problem 90 is the sharpest: the unit distance conjecture was disproved in
+    May 2026, after the archived page capture was taken, and the formalization
+    asserted it positively.
+
+    (2) Vacuity and degeneracy — the statement is provable or refutable for
+    reasons unrelated to the mathematics. Mechanisms seen: Mathlib junk values at
+    degenerate inputs (Real.log 0 = 0, sInf ∅ = 0, rpow 0 0 = 1, φ 0 = 0);
+    unconstrained `optParam` default binders; a constant quantified inside the
+    parameter it must be independent of, so it absorbs the factor under study;
+    bounds literally false at small n where log log n < 0; and `sorry` in a
+    definition, which makes statements over it vacuous (23 such definitions
+    remain in the unreviewed first pass).
+
+    (3) Bibliography — citation keys used but never defined, references with no
+    data behind them, and bounds attributed to the wrong paper. 53 occurrences,
+    the single largest class by count.
+
+    Known unrepaired divergences: 909 problems have not been reviewed at all and
+    should be assumed to carry defects at the rates above. Bibliographic entries
+    marked DEFERRED in individual review notes are unresolved rather than
+    guessed. Statements for problems resolved after their page capture may assert
+    a refuted direction; the review pass cross-checks status against an
+    independent mirror, but only for reviewed problems.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "claude-fable-5 — adversarial second pass, 270 problems (1–90, 1000–1179)"
+    - "claude-haiku-4-5 — independent benchmark pass, 79 problems (1101–1179)"
+  notes: >-
+    No human review. Reviews were performed without a compiler in the loop by
+    design; compile verification is a separate step run afterwards on a machine
+    with the toolchain. Verdicts, confidence, source-recovery status and defect
+    classes are recorded as YAML front matter in each note under fable-review/
+    and haiku-review/, so the corpus can be queried rather than read.
+
+    Every review re-derives the claims of the first-pass reviewer. That audit
+    found the earlier pass repeatedly certified fabricated or wrong-paper
+    citations as verified, reached correct conclusions by unsound arguments,
+    proposed "critical fixes" that would have introduced misformalizations, and
+    applied fixes only to styled copies rather than the artifacts under review.
+    Confident review prose is not evidence that a review happened.
+
+    Comparison of the two reviewer models on the same 79 problems: the stronger
+    model returned 0 clean accepts, 52 accept-with-nits and 27 needs-revision,
+    recovering the original source for 79/79. The cheaper model returned 16, 21
+    and 42 respectively but recovered sources for only 33/79 and endorsed
+    fabricated references in at least four cases; its extra "needs revision"
+    verdicts are largely convention-level recasts rather than mathematical
+    defects.
+
+alignment:
+  namespace: ""
+  note: >-
+    Each problem N is a standalone Lean module with no shared namespace. The
+    complete source-to-declaration map for all 1179 problems is machine-readable
+    at palomar/challenges.json; the entries below are illustrative.
+  statements:
+    - source: "erdosproblems.com/90 — the unit distance problem"
+      lean: "erdos_problem_90"
+      module: "ConjecturesV2.«90»"
+      status: "not-formalized"
+      note: >-
+        Statement only; no proof. Reviewed: needs-revision, corrected to assert
+        the refuted direction's negation after the May 2026 disproof.
+    - source: "erdosproblems.com/89 — distinct distances"
+      lean: "erdos_problem_89"
+      module: "ConjecturesV2.«89»"
+      status: "not-formalized"
+      note: "Statement only; no proof. Reviewed: accept with nits. Open problem."
+    - source: "erdosproblems.com/1 — covering congruences"
+      lean: "erdos_problem_1"
+      module: "ConjecturesV2.«1»"
+      status: "not-formalized"
+      note: "Statement only; no proof. Reviewed: needs-revision."
+
+acknowledgements: >-
+  The problem statements, prize information, citation keys and solution status
+  are all from the Erdős problem collection at erdosproblems.com. The upstream
+  google-deepmind/formal-conjectures repository supplied the conventions this
+  corpus follows and the 374 pre-existing formalizations. Status cross-checks use
+  the teorth/erdosproblems metadata mirror. Built against Mathlib
+  (leanprover-community) on Lean 4.28.0. The formalization.yaml standard is from
+  the mathlib-initiative; the Comparator contract this corpus is shaped against
+  is from leanprover/comparator.

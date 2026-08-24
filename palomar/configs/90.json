@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ConjecturesV2.«90»",
+  "solution_module": "Erdos90Solution",
+  "theorem_names": [
+    "erdos_problem_90",
+    "erdos_problem_90.variants.lattice_lower_bound",
+    "erdos_problem_90.variants.sst_upper_bound",
+    "erdos_problem_90.variants.polynomial_lower_bound",
+    "erdos_problem_90.variants.sawin_explicit_lower_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
