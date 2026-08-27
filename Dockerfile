@@ -36,5 +36,8 @@ FROM base AS workspace
 
 COPY . .
 
+# Build project targets so subsequent container runs reuse compiled oleans.
+RUN lake build
+
 # Default: drop into a shell. Override with e.g. `lake build conjectures/13.lean`
 CMD ["bash"]
