@@ -103,7 +103,7 @@ Lebensold [Le76] has shown that, for large $n$,
 $0.6725 n \leq f(n) \leq 0.6736 n$.
 -/
 theorem erdos_problem_1062.variants.lebensold :
-    ∀ᶠ n in Filter.atTop,
+    ∀ᶠ n : ℕ in Filter.atTop,
       (0.6725 : ℝ) * (n : ℝ) ≤ (maxNoDivisorForkSize n : ℝ) ∧
       (maxNoDivisorForkSize n : ℝ) ≤ (0.6736 : ℝ) * (n : ℝ) :=
   sorry
