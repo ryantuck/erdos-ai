@@ -1,5 +1,7 @@
 ## Mass Formalization of all Erdős Problems using Lean
 
+> **AI-generated text**
+
 
 I have utilized Claude (primarily Opus 4.6) to produce formal conjectures for **all 805 remaining Erdős problems**, completing the formalization of the entire set of 1179 conjectures, and achieving [Milestone 1: All open Erdős problems formalized](https://github.com/google-deepmind/formal-conjectures/milestone/1) in the Deepmind Formal Conjectures repo. 
 
@@ -13,6 +15,8 @@ This work contains no _proofs_, only formalizations of the conjectures.
 
 
 ## Methodology
+
+> **AI-generated text**
 
 There were 374 formalized `.lean` conjectures in `FormalConjectures/ErdosProblems/` when I began, leaving 805 of the problems in the set remaining to work on.
 
@@ -35,7 +39,9 @@ All compute was performed on a tiny e2-medium (2 vCPU, 4GB RAM) server in Google
 
 ## Second pass
 
-The formalizations above are a first draft. I'm now running all 1179 problems through a second, adversarial review — a stronger model recovers the original problem page, re-derives the mathematics independently, audits the first-pass review claim by claim, and writes the corrected conjecture to `conjectures-v2/`. Notes for each problem land in `fable-review/`. The whole second-pass set builds in this repo with `lake build ErdosV2` — no external checkout needed.
+> **AI-generated text**
+
+The formalizations above are a first draft. This repository is now running all 1179 problems through a second, adversarial review — a stronger model recovers the original problem page, re-derives the mathematics independently, audits the first-pass review claim by claim, and writes the corrected conjecture to `conjectures-v2/`. Notes for each problem land in `fable-review/`. The whole second-pass set builds in this repo with `lake build ErdosV2` — no external checkout needed.
 
 Problems 1000-1100 are done (101 reviewed, [PR #3](https://github.com/ryantuck/erdos-ai/pull/3)); 1078 remain.
 

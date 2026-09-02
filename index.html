@@ -205,6 +205,19 @@ li::marker { color: var(--chalk-3); }
   margin-bottom: 1.5em;
 }
 .flag b { font-weight: 600; }
+.section-flag {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--flag-rev);
+  border: 1px solid color-mix(in srgb, var(--flag-rev) 52%, var(--rule));
+  background: color-mix(in srgb, var(--flag-rev) 10%, transparent);
+  padding: .38em .62em;
+  border-radius: 2px;
+  margin: 0 0 1em;
+}
 
 /* ─── stat strip ───────────────────────────────────────────────────────── */
 .stats {
@@ -342,6 +355,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">What this is</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>A for-loop over the unsolved</h2>
       <p>The Erdős problem corpus is 1179 questions, collected and maintained at <a href="https://www.erdosproblems.com">erdosproblems.com</a>. Google DeepMind's <a href="https://github.com/google-deepmind/formal-conjectures">formal-conjectures</a> repository had formal Lean statements for 374 of them. This project wrote the remaining 805, completing <a href="https://github.com/google-deepmind/formal-conjectures/milestone/1">Milestone 1: all open Erdős problems formalized</a>.</p>
       <p>The premise came from doing one by hand. After <a href="https://github.com/google-deepmind/formal-conjectures/pull/1793">contributing problem 13</a>, it was clear the remaining few hundred were not a research problem but a loop — given enough tokens to run it.</p>
@@ -352,6 +366,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">First pass</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>Formalization</h2>
       <p>Each of the 805 problems went through four agent stages, one at a time:</p>
       <div class="scroller">
@@ -374,6 +389,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">Second pass</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>Adversarial review</h2>
       <p>The first-pass corpus is a draft. The second pass sends a stronger model at each problem with a different brief: <em>assume the formalization is wrong and find out how.</em></p>
       <h3>The unit of work</h3>
@@ -402,6 +418,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">Findings</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>What the reviews found</h2>
       <p>270 problems have been through the second pass. <strong>Not one came back clean.</strong> Every formalization needed at least documentation work, and roughly a third carried a defect serious enough to change what the statement means.</p>
       <div class="scroller">
@@ -427,6 +444,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">Case files</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>Four that earned their keep</h2>
       <p>Aggregate counts undersell what these reviews actually do. Four representative catches:</p>
       <div class="cases full">
@@ -460,6 +478,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">Auditing the auditor</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>The first-pass reviews were themselves unreliable</h2>
       <p>Part E of every second-pass review re-derives the claims made by the first-pass reviewer. That audit found failure modes worth naming, because they are what automated review looks like when it goes wrong:</p>
       <ul>
@@ -473,6 +492,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">Benchmark</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>Does model strength show up in the numbers?</h2>
       <p>Problems 1101–1179 were reviewed twice, independently, by two models of different capability — the second run blind to the first. The verdict distributions look almost inverted:</p>
       <div class="scroller">
@@ -491,6 +511,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">Verification</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>It builds</h2>
       <p>The corrected corpus compiles in this repository — <code>lake build ErdosV2</code>, 3057 jobs, no external checkout — with only the expected <code>declaration uses 'sorry'</code> warnings. That is the honest bar: the statements are well-formed Lean, and nothing claims to be proved.</p>
       <p>The most recent build broke on 7 of 202 files, and all seven were environment drift rather than formalization defects: a graph structure's field became a structure, a Mathlib module became a deprecated shim, two files needed imports for constants that had moved, and one binder needed an explicit type where inference had silently changed. Worth noting that this is the ordinary weather of building against a fast-moving library — and worth noting that all seven were caught by the compiler, unlike everything else on this page.</p>
@@ -500,6 +521,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">Repository</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>Where things live</h2>
       <div class="scroller">
         <table>
@@ -520,6 +542,7 @@ pre .k { color: var(--accent); }
 
     <section class="board">
       <p class="eyebrow">What's next</p>
+      <p class="section-flag">AI-generated text</p>
       <h2>A benchmark that ages well</h2>
       <p>909 problems have not had a second pass yet. The plan is to finish them, then re-run the whole corpus as new models ship.</p>
       <p>That re-run is the point. Formalization fidelity is an unusually clean thing to measure: the mathematics is fixed and public, the claim is already known, and the only question is whether a model can restate it in Lean without changing what it means. There is no reward-hackable score — a statement is faithful or it isn't, and a reader with the source page can check. As models improve, the defect counts on this page should fall, and the classes that survive longest are the ones worth knowing about.</p>
@@ -531,6 +554,7 @@ pre .k { color: var(--accent); }
   <footer class="colophon stack">
     <div class="board">
       <p class="eyebrow">Colophon</p>
+      <p class="section-flag">AI-generated text</p>
       <p class="sig">
         <b>This page was generated with Claude Opus 5 Max.</b><br>
         Formalizations by Claude (first pass, primarily Opus 4.6; second pass, Fable 5).<br>
