@@ -15,6 +15,13 @@ conjectures/%.lean : tidy/%.html
 build-logs/%.txt : conjectures/%.lean
 	lake build conjectures/$*.lean 2>&1 | tee $@
 
+DOCKER_IMAGE ?= ghcr.io/ryantuck/erdos-ai:latest
+
+build-logs-v2/%.txt : conjectures-v2/%.lean
+	mkdir -p $(dir $@)
+	docker run --rm -v "$(CURDIR):/workspace" -w /workspace $(DOCKER_IMAGE) \
+		lake build 'ConjecturesV2.«$*»' 2>&1 | tee $@
+
 # ---------------------------------
 
 all-conjectures.txt :
@@ -87,6 +94,7 @@ setup :
 	mkdir -p fable-review
 	mkdir -p sessions
 	mkdir -p build-logs
+	mkdir -p build-logs-v2
 	mkdir -p site
 
 
