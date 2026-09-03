@@ -19,7 +19,9 @@ DOCKER_IMAGE ?= ghcr.io/ryantuck/erdos-ai:latest
 
 build-logs-v2/%.txt : conjectures-v2/%.lean
 	mkdir -p $(dir $@)
-	docker run --rm -v "$(CURDIR):/workspace" -w /workspace $(DOCKER_IMAGE) \
+	docker run --rm \
+		--mount type=bind,src="$(CURDIR)/conjectures-v2/$*.lean",dst=/workspace/conjectures-v2/$*.lean,readonly \
+		-w /workspace $(DOCKER_IMAGE) \
 		lake build 'ConjecturesV2.«$*»' 2>&1 | tee $@
 
 # ---------------------------------

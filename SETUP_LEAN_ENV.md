@@ -57,9 +57,9 @@ The quotes and guillemets are required — the module name is numeric. `ErdosV2`
 of `defaultTargets`, so a bare `lake build` still only builds `Erdos`. `ConjecturesV2`
 is a symlink to `conjectures-v2/` (Lake globs need a valid identifier and
 `conjectures-v2` has a hyphen), and `ConjecturesV2.lean` is the stub root module the
-glob requires, mirroring `conjectures.lean`. The Make target bind-mounts the current
-checkout into `ghcr.io/ryantuck/erdos-ai:latest`, so it builds your local
-`conjectures-v2/<n>.lean` contents instead of the copy baked into the image.
+glob requires, mirroring `conjectures.lean`. The Make target bind-mounts just the local
+`conjectures-v2/<n>.lean` file into `ghcr.io/ryantuck/erdos-ai:latest`, so it preserves
+the image's cached Mathlib/Lake state while still building your current checkout's file.
 
 ## 3. The DeepMind repo (archive only)
 
