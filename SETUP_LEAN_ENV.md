@@ -50,13 +50,15 @@ checkout. Unlike `Erdos`, the whole thing is cheap to build at once:
 ```bash
 lake build ErdosV2                 # all 33 files, ~2700 jobs
 lake build 'ConjecturesV2.«1003»'  # or one at a time
+make build-logs-v2/1003.txt        # same single-file build inside your local Lake env
 ```
 
 The quotes and guillemets are required — the module name is numeric. `ErdosV2` is out
 of `defaultTargets`, so a bare `lake build` still only builds `Erdos`. `ConjecturesV2`
 is a symlink to `conjectures-v2/` (Lake globs need a valid identifier and
 `conjectures-v2` has a hyphen), and `ConjecturesV2.lean` is the stub root module the
-glob requires, mirroring `conjectures.lean`.
+glob requires, mirroring `conjectures.lean`. The Make target assumes it is already
+running in a working Lake environment and just wraps that single-file build command.
 
 ## 3. The DeepMind repo (archive only)
 

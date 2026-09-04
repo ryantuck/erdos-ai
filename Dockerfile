@@ -4,6 +4,7 @@
 #
 # Build:   docker build -t erdos-ai .
 # Run:     docker run --rm -it erdos-ai lake build conjectures/13.lean
+# Run v2:  docker run --rm -it erdos-ai lake build 'ConjecturesV2.«1003»'
 # Shell:   docker run --rm -it erdos-ai bash
 
 # ---------------------------------------------------------------------------
@@ -40,4 +41,5 @@ COPY . .
 RUN lake build
 
 # Default: drop into a shell. Override with e.g. `lake build conjectures/13.lean`
+# or `lake build 'ConjecturesV2.«1003»'`
 CMD ["bash"]
