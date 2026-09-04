@@ -4,10 +4,7 @@
 #
 # Build:   docker build -t erdos-ai .
 # Run:     docker run --rm -it erdos-ai lake build conjectures/13.lean
-# Run v2:  docker run --rm \
-#            --mount type=bind,src="$PWD/conjectures-v2/1003.lean",dst=/workspace/conjectures-v2/1003.lean,readonly \
-#            -w /workspace ghcr.io/ryantuck/erdos-ai:latest \
-#            lake build 'ConjecturesV2.«1003»'
+# Run v2:  docker run --rm -it erdos-ai lake build 'ConjecturesV2.«1003»'
 # Shell:   docker run --rm -it erdos-ai bash
 
 # ---------------------------------------------------------------------------
