@@ -1,8 +1,5 @@
 ## Mass Formalization of all Erdős Problems using Lean
 
-> **AI-generated text**
-
-
 I have utilized Claude (primarily Opus 4.6) to produce formal conjectures for **all 805 remaining Erdős problems**, completing the formalization of the entire set of 1179 conjectures, and achieving [Milestone 1: All open Erdős problems formalized](https://github.com/google-deepmind/formal-conjectures/milestone/1) in the Deepmind Formal Conjectures repo. 
 
 I believe all conjectures adhere to the style guidelines in this repo and `lake build` does pass, making this a valid and nontrivial contribution to this project.
@@ -15,8 +12,6 @@ This work contains no _proofs_, only formalizations of the conjectures.
 
 
 ## Methodology
-
-> **AI-generated text**
 
 There were 374 formalized `.lean` conjectures in `FormalConjectures/ErdosProblems/` when I began, leaving 805 of the problems in the set remaining to work on.
 
