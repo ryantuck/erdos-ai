@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Erdős Corpus Explorer</title>
+<title>Erdős Problems Explorer</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2726%27 font-size=%2728%27%3E%E2%88%91%3C/text%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Browse the formalization and review state of all 1179 Erdős problems.">
@@ -153,7 +153,7 @@ select{font-family:var(--f-mono);font-size:.72rem;background:var(--panel-2);colo
 <header class="masthead">
   <div class="masthead-inner">
     <div>
-      <h1>Erdős Corpus Explorer</h1>
+      <h1>Erdős Problems Explorer</h1>
       <p class="sub">Formalization and review state of all 1179 problems ·
         <a href="index.html">project overview</a> ·
         <a href="https://github.com/ryantuck/erdos-ai">repository</a></p>
@@ -241,7 +241,7 @@ function boot() {
   buildFacet("f-status",  tally(p => [sKey(p)]),
              { OPEN:"Open", PROVED:"Proved", SOLVED:"Solved", DISPROVED:"Disproved", OTHER:"Other" }, "status");
   buildFacet("f-pass",    tally(p => [p.pass]),
-             { v2:"Reviewed (v2)", v1:"First pass (v1)" }, "pass");
+             { v2:"Second pass (v2)", v1:"First pass (v1)" }, "pass");
   buildFacet("f-flag",    tally(p => {
                 const f = [];
                 if (p.holes.length) f.push("holes");
@@ -249,7 +249,7 @@ function boot() {
                 if (p.oeis.length) f.push("oeis");
                 if (p.bench_verdict) f.push("bench");
                 return f;
-              }), { holes:"Definition holes", prize:"Has prize", oeis:"OEIS entry", bench:"Benchmarked twice" }, "flag");
+              }), { holes:"Definition holes", prize:"Has prize", oeis:"OEIS entry", bench:"Reviewed by two models" }, "flag");
   buildFacet("f-domain",  tally(p => p.domain ? [p.domain] : []),
              Object.fromEntries([...new Set(DATA.problems.map(p => p.domain))]
                .filter(Boolean).map(d => [d, d.replace(/_/g, " ")])), "domain");
@@ -412,7 +412,7 @@ function rowHTML(p) {
   const pills =
     '<span class="pill st-' + st + '">' + esc(p.status || "—") + "</span>" +
     '<span class="pill v-' + vk + '">' + esc(vLabel[vk]) + "</span>" +
-    (p.holes.length ? '<span class="pill hole" title="A definition in this module is itself sorry">hole</span>' : "") +
+    (p.holes.length ? '<span class="pill hole" title="A definition in this file is left as sorry">hole</span>' : "") +
     (p.prize && p.prize !== "no" ? '<span class="pill" style="color:var(--accent)">' + esc(p.prize) + "</span>" : "");
   return '<button class="row' + (isOpen ? " open" : "") + '" data-n="' + p.n +
          '" aria-expanded="' + isOpen + '">' +
@@ -428,8 +428,10 @@ function detailHTML(p) {
   const gh = DATA.repo + "/blob/master/";
   const rows = [
     ["Module", '<span class="mono">' + esc(p.module) + "</span>"],
-    ["Source", '<span class="mono">' + esc(p.file) + "</span> · " +
-               (p.pass === "v2" ? "adversarially reviewed second pass" : "first pass, unreviewed")],
+    ["Lean file", '<span class="mono">' + esc(p.file) + "</span> · " +
+               (p.pass === "v2" ? "corrected in the second pass"
+                : p.verdict ? "first pass; reviewed, but the correction is not in conjectures-v2/ yet"
+                : "first pass, not yet reviewed")],
     ["Status", esc(p.status || "unrecorded") +
                (p.status_source ? ' <span style="color:var(--chalk-3)">(' + esc(p.status_source) +
                (p.status_updated ? ", " + esc(p.status_updated) : "") + ")</span>" : "")],
@@ -439,8 +441,8 @@ function detailHTML(p) {
   if (p.verdict) rows.push(["Review", esc(p.verdict) +
     (p.confidence ? " · " + esc(p.confidence) + " confidence" : "") +
     (p.reviewer ? ' <span class="mono" style="color:var(--chalk-3)">' + esc(p.reviewer) + "</span>" : "")]);
-  if (p.bench_verdict) rows.push(["Benchmark run", esc(p.bench_verdict) +
-    ' <span style="color:var(--chalk-3)">(independent cheaper-model review)</span>']);
+  if (p.bench_verdict) rows.push(["Haiku review", esc(p.bench_verdict) +
+    ' <span style="color:var(--chalk-3)">(independent review by Claude Haiku 4.5)</span>']);
   if (p.tags.length) rows.push(["Tags", p.tags.map(esc).join(" · ")]);
   if (p.domain) rows.push(["Domain", esc(p.domain.replace(/_/g, " "))]);
   if (p.oeis.length) rows.push(["OEIS", p.oeis.map(o =>
@@ -456,13 +458,13 @@ function detailHTML(p) {
     '<dl class="kv">' + rows.map(([k, v]) => "<dt>" + k + "</dt><dd>" + v + "</dd>").join("") + "</dl>" +
     (p.defects.length ? "<h3>Defects found in review</h3><div class=\"defects\">" +
       p.defects.map(d => '<span class="defect">' + esc(d.replace(/-/g, " ")) + "</span>").join("") + "</div>" : "") +
-    "<h3>Challenge statements</h3><ul class=\"thmlist\">" +
+    "<h3>Theorems in this file</h3><ul class=\"thmlist\">" +
       p.theorems.map(t => "<li>" + esc(t) + "</li>").join("") + "</ul>" +
     '<div class="links">' +
       '<a href="' + esc(p.url) + '">Problem page ↗</a>' +
       '<a href="' + gh + esc(p.file) + '">Lean source ↗</a>' +
       (p.review_file ? '<a href="' + gh + esc(p.review_file) + '">Review note ↗</a>' : "") +
-      (p.bench_file ? '<a href="' + gh + esc(p.bench_file) + '">Benchmark review ↗</a>' : "") +
+      (p.bench_file ? '<a href="' + gh + esc(p.bench_file) + '">Haiku review ↗</a>' : "") +
     "</div></div>";
 }
 </script>

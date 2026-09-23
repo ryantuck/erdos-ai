@@ -1,8 +1,8 @@
 <meta charset="utf-8">
-<title>The Erdős Formalization</title>
+<title>Every Erdős Problem, Formalized by AI</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2726%27 font-size=%2728%27%3E%E2%88%91%3C/text%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="All 1179 Erdős problems formalized in Lean by AI agents, then put through an adversarial second pass. Method, findings, and defect taxonomy.">
+<meta name="description" content="All 1179 Erdős problems formalized in Lean by AI, and an ongoing second pass in which a stronger model checks those statements against the original problems. Method, findings, and the kinds of errors it catches.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
@@ -246,6 +246,7 @@ li::marker { color: var(--chalk-3); }
   font-variant-numeric: tabular-nums;
 }
 .stat dd small { font-family: var(--f-body); font-size: .42em; color: var(--chalk-3); letter-spacing: .02em; margin-left: .4em; }
+@media (min-width: 40rem) { .stats { grid-template-columns: repeat(3, 1fr); } }
 
 /* ─── tables ───────────────────────────────────────────────────────────── */
 .scroller { overflow-x: auto; margin-bottom: 1.05em; }
@@ -262,6 +263,7 @@ th {
   white-space: nowrap;
 }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--f-mono); font-size: .88rem; }
+th.num { font-size: .68rem; }
 tbody tr:last-child td { border-bottom: none; }
 tbody tr.total td { border-top: 1px solid var(--rule-2); font-weight: 600; }
 caption { caption-side: bottom; text-align: left; padding-top: .8rem; font-size: .84rem; color: var(--chalk-3); }
@@ -335,19 +337,19 @@ pre .k { color: var(--accent); }
 
   <header class="hero stack">
     <div class="board">
-      <p class="flag"><b>Generated with Claude Opus 5 Max</b></p>
-      <h1>The Erdős Formalization</h1>
-      <p class="lede">All 1179 problems in the Erdős corpus, stated formally in Lean 4 by language models — then put back through an adversarial second pass whose only job is to find where the formal statement stopped meaning what the mathematics said.</p>
+      <p class="flag"><b>Page written by Claude Opus 5 Max</b></p>
+      <h1>Every Erdős Problem, Formalized by AI</h1>
+      <p class="lede">Language models wrote a Lean 4 statement for each of the 1179 problems on erdosproblems.com. A stronger model is now checking those statements against the original problems, looking for any place where the Lean doesn't say what the problem says. 270 have been checked so far.</p>
       <p style="margin-top:1.4em"><a href="explorer.html" style="display:inline-block;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.7em 1.2em;border:1px solid var(--accent);border-radius:2px;color:var(--accent);text-decoration:none">Explore all 1179 problems →</a></p>
     </div>
 
     <dl class="stats board" style="padding:0;border:none;box-shadow:var(--shadow)">
       <div class="stat"><dt>Problems formalized</dt><dd>1179</dd></div>
-      <div class="stat"><dt>Written here</dt><dd>805</dd></div>
+      <div class="stat"><dt>First formalized here</dt><dd>805</dd></div>
       <div class="stat"><dt>Second-pass reviews</dt><dd>270</dd></div>
       <div class="stat"><dt>Needing revision</dt><dd>93 <small>of 270</small></dd></div>
       <div class="stat"><dt>Lines of Lean</dt><dd>87k</dd></div>
-      <div class="stat"><dt>Build jobs, green</dt><dd>3057</dd></div>
+      <div class="stat"><dt>Corrected files compiling</dt><dd>202 <small>of 202</small></dd></div>
     </dl>
   </header>
 
@@ -356,71 +358,72 @@ pre .k { color: var(--accent); }
     <section class="board">
       <p class="eyebrow">What this is</p>
       <p class="section-flag">AI-generated text</p>
-      <h2>A for-loop over the unsolved</h2>
-      <p>The Erdős problem corpus is 1179 questions, collected and maintained at <a href="https://www.erdosproblems.com">erdosproblems.com</a>. Google DeepMind's <a href="https://github.com/google-deepmind/formal-conjectures">formal-conjectures</a> repository had formal Lean statements for 374 of them. This project wrote the remaining 805, completing <a href="https://github.com/google-deepmind/formal-conjectures/milestone/1">Milestone 1: all open Erdős problems formalized</a>.</p>
-      <p>The premise came from doing one by hand. After <a href="https://github.com/google-deepmind/formal-conjectures/pull/1793">contributing problem 13</a>, it was clear the remaining few hundred were not a research problem but a loop — given enough tokens to run it.</p>
-      <p><strong>This work contains no proofs.</strong> Every theorem here ends in <code>sorry</code>. The artifact is the <em>statement</em>: a claim rendered in Lean's logic precisely enough that a proof assistant would accept a proof of it. That sounds like the easy half. It is not, and the second pass is what this page is mostly about.</p>
-      <h3>Why stating is hard</h3>
-      <p>A formal statement can compile perfectly and still be the wrong claim. It can be trivially true, so that proving it establishes nothing. It can be trivially false, so that no proof exists. It can quietly assert the opposite of what a problem asks, or answer a question the source resolved years ago in the other direction. Lean checks that a statement is well-formed. Nothing in the toolchain checks that it is <em>faithful</em> — that job has no compiler, and it is the job the second pass does.</p>
+      <h2>A for-loop over the Erdős problems</h2>
+      <p><a href="https://www.erdosproblems.com">erdosproblems.com</a> catalogs 1179 problems posed by Paul Erdős, open and solved alike. When this project began, Google DeepMind's <a href="https://github.com/google-deepmind/formal-conjectures">formal-conjectures</a> repository had Lean statements for 374 of them. This project wrote the other 805, completing <a href="https://github.com/google-deepmind/formal-conjectures/milestone/1">Milestone 1: all open Erdős problems formalized</a>. It then wrote its own versions of DeepMind's 374 as well, so this repository has a first-pass Lean file for all 1179.</p>
+      <p>The idea came from formalizing one by hand. After <a href="https://github.com/google-deepmind/formal-conjectures/pull/1793">contributing problem 13</a> to DeepMind's repository, it was clear that the remaining 805 weren't a research problem so much as a loop: run the same prompt on every problem, and pay for the tokens.</p>
+      <p><strong>This work contains no proofs.</strong> Every theorem ends in <code>sorry</code>, Lean's placeholder for a missing proof. What the project produces is the <em>statement</em>: the problem written precisely enough in Lean that a proof of it, if anyone finds one, can be checked by machine. Next to proving, stating sounds like the easy half. It isn't, and checking the statements is what most of this page is about.</p>
+      <h3>Why stating a problem is hard</h3>
+      <p>A formal statement can compile perfectly and still be the wrong claim. It can be trivially true, so proving it establishes nothing, or trivially false, so no proof exists. It can assert the opposite of what the problem claims, or state as true a conjecture that has since been disproved. Lean checks that a statement is well-formed, not that it says what the problem says. Checking that it is <em>faithful</em> is the second pass's job.</p>
     </section>
 
     <section class="board">
       <p class="eyebrow">First pass</p>
       <p class="section-flag">AI-generated text</p>
       <h2>Formalization</h2>
-      <p>Each of the 805 problems went through four agent stages, one at a time:</p>
+      <p>Claude took each of the 805 new problems through four stages:</p>
       <div class="scroller">
         <table>
           <thead><tr><th>Stage</th><th>What the agent did</th></tr></thead>
           <tbody>
             <tr><td><strong>Formalize</strong></td><td>Fetch the problem from erdosproblems.com, write the Lean statement, confirm <code>lake build</code> passes.</td></tr>
-            <tr><td><strong>Style</strong></td><td>Conform to the upstream repository's conventions per its <code>AGENTS.md</code>.</td></tr>
-            <tr><td><strong>Review</strong></td><td>Check against a 60-point checklist derived from the upstream guidance.</td></tr>
+            <tr><td><strong>Style</strong></td><td>Restyle the file to follow the DeepMind repository's conventions, as set out in its <code>AGENTS.md</code>.</td></tr>
+            <tr><td><strong>Review</strong></td><td>Check the file against a 60-point checklist built from DeepMind's guidelines.</td></tr>
             <tr><td><strong>Fix</strong></td><td>Apply whatever the review turned up.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The orchestration was deliberately unremarkable — a <code>tmux</code> session on a 2-vCPU cloud box, left running for days:</p>
+      <p>The Style, Review and Fix stages worked on copies formatted for DeepMind's repository, now archived in <code>deepmind/</code>. The second pass starts from the Formalize stage's output in <code>conjectures/</code>.</p>
+      <p>The setup was simple: a <code>tmux</code> session on a small cloud server (2 vCPUs, 4 GB of RAM), left running for days:</p>
       <pre><span class="c">$</span> cat todo-conjectures.txt | xargs -I % claude --dangerously-skip-permissions \
     <span class="k">"Read FORMALIZE_CONJECTURE.md. Apply to problem %. </span>
 <span class="k">     Write output to conjectures/%.lean. Ensure `lake build` passes."</span></pre>
-      <p>Two things governed the schedule, and neither was compute. The weekly token allowance ran out twice. And parallelism turned out to be the wrong instinct: running problems concurrently burned the per-session limit faster without finishing sooner, so the loop went back to one at a time. Concurrency does not lower the bill — it only reaches the ceiling earlier.</p>
+      <p>The bottleneck was the Claude subscription's usage limits, not compute. The weekly token allowance ran out twice, and the run waited for it to reset each time. Running problems in parallel didn't help: it hit the per-session limit sooner without finishing any faster, so the loop went back to one problem at a time.</p>
     </section>
 
     <section class="board">
       <p class="eyebrow">Second pass</p>
       <p class="section-flag">AI-generated text</p>
       <h2>Adversarial review</h2>
-      <p>The first-pass corpus is a draft. The second pass sends a stronger model at each problem with a different brief: <em>assume the formalization is wrong and find out how.</em></p>
-      <h3>The unit of work</h3>
-      <p>One problem, one agent, one commit. The agent recovers the original problem page from an archived capture rather than working from memory, re-derives the mathematics independently, audits the first-pass review claim by claim, and writes at most two files: a corrected <code>conjectures-v2/N.lean</code> and a review note at <code>fable-review/N.md</code>. The first-pass file is immutable input — a reviewer may not edit its own evidence.</p>
+      <p>The first-pass files are drafts. The second pass gives each problem to a stronger model, Claude Fable 5, with a different brief: <em>assume the formalization is wrong, and find out how.</em></p>
+      <h3>How a review works</h3>
+      <p>Each problem gets its own agent and its own commit. The agent works from a saved copy of the original erdosproblems.com page rather than from memory, works through the mathematics for itself, rechecks the first-pass review claim by claim, and writes up to two files: a corrected <code>conjectures-v2/N.lean</code> and a review note, <code>fable-review/N.md</code>. It never edits the first-pass file, so every correction can be read as a clean before-and-after pair.</p>
       <h3>What gets checked</h3>
       <div class="split two">
         <div>
           <h3 style="margin-top:0">Part A · Semantic fidelity</h3>
-          <p class="note">Statement fidelity against the recovered source. Lean semantics traps. Definitional correctness. Question form and answer polarity. Solution status as of today, not as of the capture.</p>
+          <p class="note">Does the Lean say what the source page says? This covers Lean-specific traps, errors in helper definitions, yes/no questions answered the wrong way round, and the problem's current status, which may have changed since the page was saved.</p>
           <h3>Part B · Scholarship</h3>
-          <p class="note">Citation keys resolve; bibliographic data is recovered, never invented. Variants named on the source page are present.</p>
+          <p class="note">Every cited reference is defined, with details taken from a real source, never invented. Variants of the problem mentioned on the source page are included.</p>
         </div>
         <div>
           <h3 style="margin-top:0">Part C · Craftsmanship</h3>
           <p class="note">Readability, docstrings that match the code beneath them, reuse of Mathlib rather than reinvention.</p>
           <h3>Part D · Mechanical checks</h3>
-          <p class="note">Greps for <code>sorry</code> outside proof bodies, fragile tactics, binder placement, missing docstrings.</p>
+          <p class="note">Text searches for known problem patterns: <code>sorry</code> outside a proof, fragile tactics, misplaced binders, missing docstrings.</p>
           <h3>Part E · Prior-review audit</h3>
-          <p class="note">Every claim the first-pass reviewer made, re-derived from scratch.</p>
+          <p class="note">Every claim the first-pass reviewer made, rechecked from scratch.</p>
         </div>
       </div>
       <h3>Two standing rules</h3>
-      <p><strong>Never fabricate a citation.</strong> Where a journal, volume, or page number could not be recovered from a real source, the entry says so and stops. A plausible-looking reference is worse than an admitted gap, because it survives review.</p>
-      <p><strong>Recover the source; don't recall it.</strong> A model's memory of a famous problem is exactly where a subtle misstatement comes from. Every review in the most recent batch worked from an archived page capture, with the problem's <em>status</em> cross-checked against an independent metadata mirror — because status drifts, and captures go stale.</p>
+      <p><strong>Never fabricate a citation.</strong> Where a journal, volume, or page number could not be found in a real source, the entry says it is missing instead of guessing. A plausible-looking fake reference is worse than an admitted gap, because it survives review.</p>
+      <p><strong>Work from the source, not from memory.</strong> A model's memory of a famous problem is exactly where subtle misstatements come from. In the most recent batch (<span style="white-space:nowrap">problems 1–90</span>), every review worked from a saved copy of the problem page and checked the problem's <em>status</em> against an independent source such as the <a href="https://github.com/teorth/erdosproblems">teorth/erdosproblems</a> database, because problems get solved after a page is saved.</p>
     </section>
 
     <section class="board">
       <p class="eyebrow">Findings</p>
       <p class="section-flag">AI-generated text</p>
       <h2>What the reviews found</h2>
-      <p>270 problems have been through the second pass. <strong>Not one came back clean.</strong> Every formalization needed at least documentation work, and roughly a third carried a defect serious enough to change what the statement means.</p>
+      <p>270 problems have been through the second pass. <strong>Not one came back clean.</strong> Every file needed at least documentation fixes, and about a third (93 of 270) had an error serious enough to change what the statement means.</p>
       <div class="scroller">
         <table>
           <thead>
@@ -432,45 +435,51 @@ pre .k { color: var(--accent); }
             <tr><td>Problems 1–90</td><td class="num">90</td><td class="num">90</td><td class="num">69</td><td class="num">21</td></tr>
             <tr class="total"><td>Total</td><td class="num">270</td><td class="num">202</td><td class="num">177</td><td class="num">93</td></tr>
           </tbody>
-          <caption>Zero plain accepts across all 270. The first batch emitted a corrected file only when a change was warranted; later batches emit one for every problem.</caption>
+          <caption>Batches are listed in the order they ran. None of the 270 got a plain Accept. The first batch mostly worked on the DeepMind-styled copies, so only 33 of its corrected files are in <code>conjectures-v2/</code>; the other 68 problems will be redone. Later batches write a corrected file for every problem.</caption>
         </table>
       </div>
-      <h3>The defect taxonomy</h3>
-      <p>The interesting failures are the ones a compiler cannot see. They fall into three families.</p>
-      <p><strong>Polarity.</strong> The Lean asserts the direction the source refutes, or drops the <code>answer(False)</code> wrapper on a problem that has been disproved. The statement looks impeccable and says something false. This is the most dangerous class precisely because it is the most well-formed.</p>
-      <p><strong>Vacuity and degeneracy.</strong> The statement is provable, or refutable, for reasons unrelated to the mathematics. The mechanisms recur: Mathlib's junk values at degenerate inputs (<code>Real.log 0 = 0</code>, <code>sInf ∅ = 0</code>, <code>rpow 0 0 = 1</code>, <code>φ(0) = 0</code>); a default binder left unconstrained so a caller can instantiate a definition outside its intended domain; a constant quantified <em>inside</em> the parameter it was supposed to be independent of, letting it absorb the very factor the problem is about; a bound that is simply false at small <code>n</code> because <code>log log n</code> is negative there.</p>
-      <p><strong>Bibliography.</strong> Citation keys used but never defined, references with no data behind them, and bounds attributed to the wrong paper.</p>
+      <h3>Three kinds of defect</h3>
+      <p>The interesting errors are the ones a compiler can't see. They fall into three groups.</p>
+      <p><strong>Polarity.</strong> The Lean asserts the direction the source says is false: it states a disproved conjecture as true, or leaves out the <code>answer(False)</code> marker that records a yes/no question's answer as no. The statement looks flawless and says something false, which makes this the most dangerous kind.</p>
+      <p><strong>Vacuity and degeneracy.</strong> The statement is provable, or refutable, for reasons that have nothing to do with the mathematics. The same causes keep coming up:</p>
+      <ul>
+        <li>Mathlib's placeholder values at inputs where a function is undefined, such as <code>Real.log 0 = 0</code>, <code>sInf ∅ = 0</code>, <code>rpow 0 0 = 1</code> and <code>φ(0) = 0</code>;</li>
+        <li>an optional parameter left unconstrained, so a definition can be used outside the range it was meant for;</li>
+        <li>a constant placed <em>after</em> a variable it should not depend on, so it can absorb the very growth the problem is about;</li>
+        <li>a bound that is simply false for small <code>n</code>, because <code>log log n</code> is negative there.</li>
+      </ul>
+      <p><strong>Bibliography.</strong> References cited but never defined, references with no publication details, and results attributed to the wrong paper.</p>
     </section>
 
     <section class="board">
       <p class="eyebrow">Case files</p>
       <p class="section-flag">AI-generated text</p>
-      <h2>Four that earned their keep</h2>
-      <p>Aggregate counts undersell what these reviews actually do. Four representative catches:</p>
+      <h2>Three catches and a miss</h2>
+      <p>Counts don't show what these errors look like. Here are three that the second pass caught, and one where the second pass itself was wrong:</p>
       <div class="cases full">
 
         <article class="case">
-          <div class="case-head"><span class="case-no">90</span><span class="case-title">A conjecture asserted three months after it was disproved</span></div>
-          <p>The unit distance problem — a $500 Erdős prize — was <em>disproved</em> in May 2026, following a construction found by a machine. The archived page capture predates that and still shows the OPEN banner; the formalization asserted the conjecture positively.</p>
-          <p>Catching it required distrusting the capture and checking an independent status mirror. But the second half is the more instructive part: naively negating the statement would have produced a "disproof" that is trivially satisfiable by a two-point witness, since the bound is already false there for unrelated reasons. The corrected file carries a small-cardinality guard so that the negation actually says what the disproof says.</p>
+          <div class="case-head"><span class="case-no">90</span><span class="case-title">A conjecture disproved after it was formalized</span></div>
+          <p>The unit distance conjecture, which carries a $500 Erdős prize, was <em>disproved</em> in May 2026, following a construction found by an AI model. The saved copy of the problem page predates the disproof and still lists the problem as open, and the first-pass file states the conjecture as true.</p>
+          <p>Catching it meant distrusting the saved page and checking the problem's status elsewhere. The more instructive part came next. Simply negating the statement would have produced a "disproof" that any two points satisfy, because for two points the bound is false anyway (<code>log log 2</code> is negative). The corrected file requires at least three points, so the negated statement says what the disproof actually says.</p>
         </article>
 
         <article class="case">
-          <div class="case-head"><span class="case-no">56</span><span class="case-title">A helper definition right by count, wrong by elements</span></div>
-          <p>A supporting definition produced sets of the correct <em>size</em> containing the wrong <em>members</em>. Every reading of the code agreed it was fine; the counts checked out. Only brute-force enumeration of small cases settled it.</p>
-          <p>That technique — stop reading the definition, run it on <code>n = 3, 4, 5</code> and look at what comes out — became standard for the rest of the corpus and has since caught defects in eight further problems.</p>
+          <div class="case-head"><span class="case-no">56</span><span class="case-title">An off-by-one that counting couldn't catch</span></div>
+          <p>A helper definition was meant to build one set and instead built a copy shifted down by one. The shifted set has the same <em>size</em> as the intended one but different <em>members</em>, so the counts checked out and the code looked right on a read-through. Listing the elements for small cases is what exposed it.</p>
+          <p>That technique — stop reading the definition, run it on <code>n = 3, 4, 5</code>, and look at what comes out — became standard for the rest of that batch, where eight more reviews used it to check their definitions.</p>
         </article>
 
         <article class="case">
           <div class="case-head"><span class="case-no">55</span><span class="case-title">A constant on the wrong side of a quantifier</span></div>
-          <p>The statement bound its constant <em>inside</em> the universally quantified parameter, so the constant was free to depend on it — and could absorb exactly the growth factor the problem asks about. Perfectly well-typed, entirely provable, and mathematically empty.</p>
-          <p>Quantifier order is where formalization fidelity most often dies quietly, because both orderings compile and both read fluently in English.</p>
+          <p>The known answer is that the sparsest sets with the property in question have about <code>r·(log N)²</code> elements up to <code>N</code>, where <code>r</code> is the number of colours, with constants that do not depend on <code>r</code>. The formalization said "for every <code>r</code> there is a constant" instead of "there is a constant that works for every <code>r</code>". That lets the constant depend on <code>r</code> and swallow the factor of <code>r</code>, the very part of the answer that matters. The statement still type-checks and is still true; it just no longer says anything about how the bound depends on <code>r</code>.</p>
+          <p>Quantifier order is an easy place for a formalization to go quietly wrong: both orders compile, and both read naturally in English.</p>
         </article>
 
         <article class="case">
-          <div class="case-head"><span class="case-no">86</span><span class="case-title">The review that was wrong, and how that surfaced</span></div>
-          <p>A review found that <code>loopless := ⟨fun …⟩</code> failed to compile against a graph structure's field, citing archived build transcripts as evidence, and the fix was propagated to three other files. It was backwards. Current Mathlib defines that field as a structure, so the constructor is <em>required</em>; the transcripts dated from before the change and described an environment that no longer existed.</p>
-          <p>The build caught it — <code>lake build</code> went red, and a follow-up commit reverted all four files. Worth recording rather than quietly deleting: evidence recovered from a log dates a claim about the environment, and generalizing one such claim across a corpus is how a single bad inference reaches four files at once.</p>
+          <div class="case-head"><span class="case-no">86</span><span class="case-title">When the reviewer was wrong</span></div>
+          <p>The review of problem 86 concluded that writing <code>loopless := ⟨fun …⟩</code> in a graph definition fails to compile, citing old build logs as evidence, and applied the same "fix" to three other files. It had it backwards. Current Mathlib defines that field as a structure, so the <code>⟨…⟩</code> constructor is <em>required</em>. The logs predated that change and described a version of Mathlib that no longer existed.</p>
+          <p>The next build failed on all four files, and a follow-up commit reverted them. The lesson is worth keeping: a build log shows how code behaved against the library as it was then, not as it is now, and applying one stale conclusion across many files is how a single mistake reached four of them.</p>
         </article>
 
       </div>
@@ -480,43 +489,43 @@ pre .k { color: var(--accent); }
       <p class="eyebrow">Auditing the auditor</p>
       <p class="section-flag">AI-generated text</p>
       <h2>The first-pass reviews were themselves unreliable</h2>
-      <p>Part E of every second-pass review re-derives the claims made by the first-pass reviewer. That audit found failure modes worth naming, because they are what automated review looks like when it goes wrong:</p>
+      <p>Part E of each second-pass review rechecks every claim the first-pass reviewer made. It turned up four recurring failures, which together show what automated review looks like when it goes wrong:</p>
       <ul>
-        <li><strong>Fabricated verification.</strong> Citations certified as "matching the source" that the source does not contain — a journal and volume asserted for what is only an arXiv preprint; a prize described as awarded where the page says only that the problem was proved.</li>
-        <li><strong>Right conclusion, unsound argument.</strong> A restriction correctly kept, justified by reasoning that is false for even exponents. The verdict passes; the reasoning would not survive a reader.</li>
-        <li><strong>Unsound "critical fixes."</strong> A proposed correction that would have introduced a misformalization into a statement that was already right.</li>
-        <li><strong>Fixes that never landed.</strong> Defects correctly identified, then applied only to a styled copy of the file — never to the artifact under review.</li>
+        <li><strong>Fabricated verification.</strong> Citations certified as "matching the source" when the source says no such thing: a journal and volume given for what is only an arXiv preprint, or a prize described as awarded when the page says only that the problem was proved.</li>
+        <li><strong>Right conclusion, wrong reasoning.</strong> A restriction (<code>ε &lt; 1</code>) correctly kept, but justified by an argument that fails whenever the exponent is even. The verdict was right; the reasoning behind it wasn't.</li>
+        <li><strong>Unsound "critical fixes."</strong> A proposed correction that would have made a correct statement wrong.</li>
+        <li><strong>Fixes that never landed.</strong> Errors correctly identified, but fixed only in the DeepMind-styled copy, never in the file under review.</li>
       </ul>
-      <p>The lesson generalizes past this project: a review pass that produces confident prose is not evidence of a review that happened. What makes the second pass checkable is that every claim in it points at a recovered source a reader can open.</p>
+      <p>The lesson goes beyond this project: confident review prose is not evidence that the checking actually happened. What makes the second pass checkable is that each of its claims points to a source a reader can open.</p>
     </section>
 
     <section class="board">
       <p class="eyebrow">Benchmark</p>
       <p class="section-flag">AI-generated text</p>
       <h2>Does model strength show up in the numbers?</h2>
-      <p>Problems 1101–1179 were reviewed twice, independently, by two models of different capability — the second run blind to the first. The verdict distributions look almost inverted:</p>
+      <p>Problems 1101–1179 were reviewed twice, independently: once by Claude Fable 5, and once by the smaller, cheaper Claude Haiku 4.5, which never saw the first review. Their verdicts came out very differently:</p>
       <div class="scroller">
         <table>
           <thead><tr><th>Reviewer</th><th class="num"><span class="tag ok">Accept</span></th><th class="num"><span class="tag nit">Accept w/ nits</span></th><th class="num"><span class="tag rev">Needs revision</span></th><th class="num">Sources recovered</th></tr></thead>
           <tbody>
-            <tr><td>Stronger model</td><td class="num">0</td><td class="num">52</td><td class="num">27</td><td class="num">79 / 79</td></tr>
-            <tr><td>Cheaper model</td><td class="num">16</td><td class="num">21</td><td class="num">42</td><td class="num">33 / 79</td></tr>
+            <tr><td>Fable 5 (stronger)</td><td class="num">0</td><td class="num">52</td><td class="num">27</td><td class="num">79 / 79</td></tr>
+            <tr><td>Haiku 4.5 (cheaper)</td><td class="num">16</td><td class="num">21</td><td class="num">42</td><td class="num">33 / 79</td></tr>
           </tbody>
           <caption>Same 79 problems, same instructions, independent runs.</caption>
         </table>
       </div>
-      <p>The cheaper model flags <em>more</em> revisions — but mostly convention-level ones: recasting statements into a preferred answer form, in a few cases via shims that would not compile or an import that does not exist upstream. It also recovered the original source for fewer than half the problems, and endorsed fabricated references in at least four. Where it did land real mathematical catches, those catches were largely a subset of the stronger model's.</p>
-      <p>The practical read is not "cheap models don't work." It is that the two tiers fail differently, which suggests splitting the work: let a cheap tier do source recovery, docstrings, and citation keying, and reserve the expensive tier for polarity, vacuity, and quantifier order — the defects that need someone to actually do the mathematics.</p>
+      <p>Haiku asked for <em>more</em> revisions, but most were disagreements over style. Its most common request was to rewrite a statement into the <code>answer(…)</code> form, which the Fable run had accepted as fine for these files; a few of those rewrites relied on a makeshift local definition of <code>answer</code>, or on an import from DeepMind's repository that doesn't exist in this one. Haiku also recovered the original problem page for fewer than half the problems, and accepted fabricated references in at least four. The real mathematical errors it did catch were mostly ones Fable caught too.</p>
+      <p>The takeaway isn't that cheap models don't work; it's that the two fail in different ways. That suggests splitting the work: let a cheaper model handle routine documentation, and save the stronger model for polarity, vacuity and quantifier order — the errors that take real mathematics to find.</p>
     </section>
 
     <section class="board">
       <p class="eyebrow">Verification</p>
       <p class="section-flag">AI-generated text</p>
       <h2>It builds</h2>
-      <p>The corrected corpus compiles in this repository — <code>lake build ErdosV2</code>, 3057 jobs, no external checkout — with only the expected <code>declaration uses 'sorry'</code> warnings. That is the honest bar: the statements are well-formed Lean, and nothing claims to be proved.</p>
-      <p>The most recent build broke on 7 of 202 files, and all seven were environment drift rather than formalization defects: a graph structure's field became a structure, a Mathlib module became a deprecated shim, two files needed imports for constants that had moved, and one binder needed an explicit type where inference had silently changed. Worth noting that this is the ordinary weather of building against a fast-moving library — and worth noting that all seven were caught by the compiler, unlike everything else on this page.</p>
+      <p>All 202 corrected files compile in this repository with <code>lake build ErdosV2</code>, and the only warnings are the expected <code>declaration uses 'sorry'</code>. That is all a successful build shows: the statements are valid Lean, and none of them claims to be proved.</p>
+      <p>The first full build after the latest batch failed on 7 of the 202 files. Four were the <code>loopless</code> reversal described under problem 86. The other three were ordinary Mathlib drift: a module that had become a deprecated stub, imports for definitions that had moved, and a binder whose inferred type had changed. Breakage like this is routine when building against a fast-moving library, and unlike the other errors on this page, the compiler catches it.</p>
       <h3>What is not verified</h3>
-      <p>Reviews are written without a compiler in the loop; they are checked against the build afterward, on a separate machine. Bibliographic entries marked deferred remain unresolved rather than guessed. And there is no human review gate here at all — unlike the upstream DeepMind project, which has one. The quality bar <em>is</em> the second pass.</p>
+      <p>Reviewers work without a compiler; their fixes are compiled afterward, on a separate machine. References that couldn't be found are marked as deferred rather than guessed. And no human signs off on any of this, unlike DeepMind's repository, where every contribution is reviewed by a person. The second pass <em>is</em> the quality check.</p>
     </section>
 
     <section class="board">
@@ -527,26 +536,26 @@ pre .k { color: var(--accent); }
         <table>
           <thead><tr><th>Path</th><th class="num">Files</th><th>Contents</th></tr></thead>
           <tbody>
-            <tr><td><code>conjectures/</code></td><td class="num">1179</td><td>First-pass formalizations. Immutable input to the second pass.</td></tr>
+            <tr><td><code>conjectures/</code></td><td class="num">1179</td><td>First-pass formalizations. The second pass reads these but never edits them.</td></tr>
             <tr><td><code>conjectures-v2/</code></td><td class="num">202</td><td>Corrected formalizations. Builds as <code>ErdosV2</code>.</td></tr>
-            <tr><td><code>fable-review/</code></td><td class="num">270</td><td>One review note per problem, with machine-readable verdict headers.</td></tr>
-            <tr><td><code>conjectures-v2-haiku/</code></td><td class="num">79</td><td>The independent cheaper-model run, kept for comparison.</td></tr>
-            <tr><td><code>deepmind/</code></td><td class="num">—</td><td>Upstream-style copies, the first-pass review notes, and the 60-point checklist.</td></tr>
+            <tr><td><code>fable-review/</code></td><td class="num">270</td><td>One review note per problem. Notes from the two most recent batches start with a machine-readable header.</td></tr>
+            <tr><td><code>conjectures-v2-haiku/</code></td><td class="num">79</td><td>Haiku 4.5's independent review of 1101–1179, kept for comparison. Its notes are in <code>haiku-review/</code>.</td></tr>
+            <tr><td><code>deepmind/</code></td><td class="num">—</td><td>The archived DeepMind-styled copies, the first-pass review notes, and the 60-point checklist.</td></tr>
             <tr><td><code>GAME_PLAN.md</code></td><td class="num">—</td><td>Batch ordering, per-problem procedure, rate-limit policy, open decisions.</td></tr>
             <tr><td><code>FABLE_REVIEW.md</code></td><td class="num">—</td><td>The Part A–E review checklist itself.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Review notes carry YAML front matter — verdict, confidence, whether the source was recovered, defect classes — so the corpus can be queried rather than read. Every table on this page was generated from those headers, and the <a href="explorer.html">corpus explorer</a> is a live view of the same data: filter all 1179 problems by verdict, status, defect class or subject, and open any one to see its statements, review findings and sources. Rebuild both with <code>make site</code>; serve them with <code>make serve</code>.</p>
+      <p>Those headers record the verdict, the confidence, whether the source was recovered, and the defect classes, so the reviews can be searched without reading every note. The <a href="explorer.html">explorer</a> is built from the same data: filter all 1179 problems by verdict, status, defect class or subject, and open any one to see its statements, review findings and sources. Regenerate its data with <code>make site</code> and preview it locally with <code>make serve</code>.</p>
     </section>
 
     <section class="board">
       <p class="eyebrow">What's next</p>
       <p class="section-flag">AI-generated text</p>
       <h2>A benchmark that ages well</h2>
-      <p>909 problems have not had a second pass yet. The plan is to finish them, then re-run the whole corpus as new models ship.</p>
-      <p>That re-run is the point. Formalization fidelity is an unusually clean thing to measure: the mathematics is fixed and public, the claim is already known, and the only question is whether a model can restate it in Lean without changing what it means. There is no reward-hackable score — a statement is faithful or it isn't, and a reader with the source page can check. As models improve, the defect counts on this page should fall, and the classes that survive longest are the ones worth knowing about.</p>
-      <p class="note">Cost, for anyone considering the same: second-pass reviews run roughly 106k–144k tokens each, putting a hundred-problem batch near 12M. The weekly allowance has been the binding constraint at every stage of this project — not compute, not the model, not the mathematics.</p>
+      <p>909 problems haven't had a second pass yet. The plan is to finish them, then rerun all 1179 each time a new model ships.</p>
+      <p>The reruns are the point. Faithful formalization is an unusually clean thing to measure: the problems are fixed and public, and the only question is whether a model can restate each one in Lean without changing what it means. There is no score to game — a statement is faithful or it isn't, and a reader with the problem page can check. As models improve, the number of errors found per batch should fall, and the kinds that persist longest will be the ones worth studying.</p>
+      <p class="note">Cost, for anyone considering the same: a second-pass review used roughly 106k–144k tokens in a sample of four recent reviews, so a 100-problem batch comes to about 12M. The subscription's weekly usage limit has been the bottleneck at every stage of this project — not compute, not the model, not the mathematics.</p>
     </section>
 
   </main>
@@ -557,9 +566,9 @@ pre .k { color: var(--accent); }
       <p class="section-flag">AI-generated text</p>
       <p class="sig">
         <b>This page was generated with Claude Opus 5 Max.</b><br>
-        Formalizations by Claude (first pass, primarily Opus 4.6; second pass, Fable 5).<br>
-        Figures counted from the repository on 19 August 2026; verdict counts read from review front matter.<br>
-        Photograph: <span class="mono">erdos-agents.png</span>.<br>
+        Formalizations by Claude (first pass, primarily Opus 4.6; second pass, Fable 5; comparison run, Haiku 4.5).<br>
+        Figures counted from the repository on 19 August 2026, with verdicts taken from the review notes.<br>
+        Image: <span class="mono">erdos-agents.png</span> (AI-generated).<br>
         Repository: <a href="https://github.com/ryantuck/erdos-ai">github.com/ryantuck/erdos-ai</a>
       </p>
     </div>
