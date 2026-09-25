@@ -1,3 +1,4 @@
+<!-- [AI-Generated]: Erdős formalization project — overview page -->
 <meta charset="utf-8">
 <title>Every Erdős Problem, Formalized by AI</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2726%27 font-size=%2728%27%3E%E2%88%91%3C/text%3E%3C/svg%3E">
@@ -6,6 +7,33 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
+<script>
+/* Header-font preview: index.html?font=newsreader (or instrument, plex, bodoni)
+   sets the display font and shows a switcher. Without ?font nothing changes. */
+(function () {
+  var font = new URLSearchParams(location.search).get("font");
+  if (["bodoni", "newsreader", "instrument", "plex"].indexOf(font) < 0) return;
+  var root = document.documentElement;
+  var css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Instrument+Serif&family=IBM+Plex+Serif:wght@400&display=swap";
+  document.head.appendChild(css);
+  function use(f) {
+    root.dataset.font = f;
+    document.querySelectorAll(".font-preview button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.value === f);
+    });
+  }
+  use(font);
+  document.addEventListener("DOMContentLoaded", function () { use(root.dataset.font); });
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".font-preview button");
+    if (!b) return;
+    use(b.value);
+    history.replaceState(null, "", "?font=" + b.value + location.hash);
+  });
+})();
+</script>
 
 <style>
 /* ─── tokens: dark-first (the hall), consistently swapped for light ─────── */
@@ -69,6 +97,11 @@
   --shadow:     0 22px 50px -24px rgba(30,26,18,.5);
   --board-tint: rgba(0,0,0,.02);
 }
+
+/* ─── header-font alternatives, previewed with ?font= (see script above) ── */
+:root[data-font="newsreader"] { --f-display: "Newsreader", "Times New Roman", serif; }
+:root[data-font="instrument"] { --f-display: "Instrument Serif", "Times New Roman", serif; }
+:root[data-font="plex"]       { --f-display: "IBM Plex Serif", "Times New Roman", serif; }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -325,6 +358,46 @@ pre .k { color: var(--accent); }
 .sig { font-family: var(--f-mono); font-size: .78rem; line-height: 1.75; color: var(--chalk-3); }
 .sig b { color: var(--chalk-2); font-weight: 500; }
 
+/* ─── header-font switcher: only shown in ?font= preview ───────────────── */
+.font-preview { display: none; }
+:root[data-font] .font-preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .4rem;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 10;
+  max-width: calc(100% - 2rem);
+  padding: .55rem .6rem;
+  font-family: var(--f-mono);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--chalk-3);
+  background: var(--panel);
+  border: 1px solid var(--rule-2);
+  border-radius: 3px;
+  box-shadow: var(--shadow);
+}
+.font-preview span { padding-inline: .3em .2em; }
+.font-preview button {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--chalk-2);
+  background: none;
+  border: 1px solid var(--rule-2);
+  border-radius: 2px;
+  padding: .45em .7em;
+  cursor: pointer;
+}
+.font-preview button:hover { color: var(--accent); border-color: var(--accent); }
+.font-preview button[aria-pressed="true"] { color: var(--ground); background: var(--accent); border-color: var(--accent); }
+.font-preview button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (min-width: 64rem) { :root[data-font] .font-preview { flex-direction: column; align-items: stretch; } }
+
 @media (prefers-reduced-motion: no-preference) {
   .board { animation: rise .5s cubic-bezier(.2,.7,.3,1) both; }
   @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
@@ -575,3 +648,11 @@ pre .k { color: var(--accent); }
   </footer>
 
 </div>
+
+<nav class="font-preview" aria-label="Header font preview">
+  <span>Header font</span>
+  <button type="button" value="bodoni">Bodoni Moda</button>
+  <button type="button" value="newsreader">Newsreader</button>
+  <button type="button" value="instrument">Instrument Serif</button>
+  <button type="button" value="plex">IBM Plex Serif</button>
+</nav>
