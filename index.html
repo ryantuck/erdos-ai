@@ -1,4 +1,5 @@
 <!-- [AI-Generated]: Erdős formalization project — overview page -->
+<!DOCTYPE html>
 <meta charset="utf-8">
 <title>All 1179 Erdős Problems, Formalized by AI</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2726%27 font-size=%2728%27%3E%E2%88%91%3C/text%3E%3C/svg%3E">
@@ -17,7 +18,7 @@
   --panel-3:     #262B2E;
   --chalk:       #E9E7E1;
   --chalk-2:     #B9BCBB;
-  --chalk-3:     #8A8F8F;
+  --chalk-3:     #8F9393;
   --rule:        #2C3134;
   --rule-2:      #3A4145;
   --accent:      #C9A063;
@@ -31,7 +32,7 @@
   --f-body:    "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  --col: 66ch;
+  --col: 58ch;
   --pad: clamp(1.4rem, 4vw, 3.25rem);
 }
 @media (prefers-color-scheme: light) {
@@ -42,10 +43,10 @@
     --panel-3:    #DFDBD1;
     --chalk:      #14171A;
     --chalk-2:    #3F4649;
-    --chalk-3:    #6B7275;
+    --chalk-3:    #585D60;
     --rule:       #CFCABF;
     --rule-2:     #B6B0A3;
-    --accent:     #8A6522;
+    --accent:     #74551D;
     --flag-rev:   #9E3C22;
     --flag-nit:   #7A5A12;
     --flag-ok:    #3F6238;
@@ -60,10 +61,10 @@
   --panel-3:    #DFDBD1;
   --chalk:      #14171A;
   --chalk-2:    #3F4649;
-  --chalk-3:    #6B7275;
+  --chalk-3:    #585D60;
   --rule:       #CFCABF;
   --rule-2:     #B6B0A3;
-  --accent:     #8A6522;
+  --accent:     #74551D;
   --flag-rev:   #9E3C22;
   --flag-nit:   #7A5A12;
   --flag-ok:    #3F6238;
@@ -126,7 +127,7 @@ body {
   padding: var(--pad);
 }
 .board > * { max-width: var(--col); }
-.board > .wide, .board > .full { max-width: none; }
+.board > .wide, .board > .full, .board > .scroller, .board > pre, .board > .split { max-width: none; }
 
 /* ─── type ─────────────────────────────────────────────────────────────── */
 h1, h2, h3 { font-family: var(--f-display); font-weight: 400; text-wrap: balance; margin: 0; }
@@ -150,20 +151,20 @@ h3 {
   margin: 2.1em 0 .5em;
 }
 h3:first-of-type { margin-top: 1.4em; }
-p { margin: 0 0 1.05em; }
+p { margin: 0 0 1.05em; text-wrap: pretty; }
 p:last-child, ul:last-child, ol:last-child, table:last-child { margin-bottom: 0; }
 a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: .18em; text-decoration-thickness: 1px; }
 a:hover { color: var(--accent); }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 strong { font-weight: 600; color: var(--chalk); }
 code, .mono { font-family: var(--f-mono); font-size: .885em; }
-code { color: var(--chalk); background: var(--panel-2); border: 1px solid var(--rule); padding: .08em .34em; border-radius: 2px; }
+code { color: var(--chalk); background: var(--panel-2); border: 1px solid var(--rule); padding: .08em .34em; border-radius: 2px; white-space: nowrap; }
 
 .eyebrow {
   font-family: var(--f-mono);
-  font-size: .705rem;
+  font-size: .75rem;
   font-weight: 500;
-  letter-spacing: .19em;
+  letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--accent);
   margin: 0 0 .9em;
@@ -173,10 +174,10 @@ code { color: var(--chalk); background: var(--panel-2); border: 1px solid var(--
   line-height: 1.5;
   color: var(--chalk-2);
 }
-.note { font-size: .9rem; line-height: 1.55; color: var(--chalk-3); }
+.note { font-size: .95rem; line-height: 1.55; color: var(--chalk-2); }
 
 ul, ol { margin: 0 0 1.05em; padding-left: 1.15em; }
-li { margin-bottom: .5em; }
+li { margin-bottom: .5em; text-wrap: pretty; }
 li::marker { color: var(--chalk-3); }
 
 /* ─── hero ─────────────────────────────────────────────────────────────── */
@@ -196,7 +197,7 @@ li::marker { color: var(--chalk-3); }
   align-items: baseline;
   gap: .6em;
   font-family: var(--f-mono);
-  font-size: .72rem;
+  font-size: .75rem;
   letter-spacing: .13em;
   text-transform: uppercase;
   color: var(--ground);
@@ -209,7 +210,7 @@ li::marker { color: var(--chalk-3); }
 .section-flag {
   display: inline-block;
   font-family: var(--f-mono);
-  font-size: .68rem;
+  font-size: .72rem;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--flag-rev);
@@ -233,8 +234,8 @@ li::marker { color: var(--chalk-3); }
 .stat { background: var(--panel-2); padding: 1.05rem 1.15rem; }
 .stat dt {
   font-family: var(--f-mono);
-  font-size: .665rem;
-  letter-spacing: .15em;
+  font-size: .72rem;
+  letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--chalk-3);
   margin-bottom: .5em;
@@ -251,28 +252,29 @@ li::marker { color: var(--chalk-3); }
 
 /* ─── tables ───────────────────────────────────────────────────────────── */
 .scroller { overflow-x: auto; margin-bottom: 1.05em; }
-table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; line-height: 1.5; }
 th, td { text-align: left; padding: .58rem .8rem; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+td:first-child { white-space: nowrap; }
 th {
   font-family: var(--f-mono);
   font-weight: 500;
-  font-size: .68rem;
-  letter-spacing: .13em;
+  font-size: .72rem;
+  letter-spacing: .11em;
   text-transform: uppercase;
   color: var(--chalk-3);
   border-bottom-color: var(--rule-2);
   white-space: nowrap;
 }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--f-mono); font-size: .88rem; }
-th.num { font-size: .68rem; }
+th.num { font-size: .72rem; }
 tbody tr:last-child td { border-bottom: none; }
 tbody tr.total td { border-top: 1px solid var(--rule-2); font-weight: 600; }
-caption { caption-side: bottom; text-align: left; padding-top: .8rem; font-size: .84rem; color: var(--chalk-3); }
+caption { caption-side: bottom; text-align: left; padding-top: .8rem; font-size: .84rem; line-height: 1.5; max-width: min(54ch, 100vw - 5rem); color: var(--chalk-3); }
 
 .tag {
   display: inline-block;
   font-family: var(--f-mono);
-  font-size: .655rem;
+  font-size: .7rem;
   letter-spacing: .11em;
   text-transform: uppercase;
   padding: .22em .5em .18em;
@@ -384,7 +386,7 @@ pre .k { color: var(--accent); }
         </table>
       </div>
       <p>The Style, Review and Fix stages worked on copies formatted for DeepMind's repository, now archived in <code>deepmind/</code>. The second pass starts from the Formalize stage's output in <code>conjectures/</code>.</p>
-      <p>The setup was simple: a <code>tmux</code> session on a small cloud server (2 vCPUs, 4 GB of RAM), left running for days:</p>
+      <p>The setup was simple: a <code>tmux</code> session on a small cloud server (2&nbsp;vCPUs, 4&nbsp;GB of RAM), left running for days:</p>
       <pre><span class="c">$</span> cat todo-conjectures.txt | xargs -I % claude --dangerously-skip-permissions \
     <span class="k">"Read FORMALIZE_CONJECTURE.md. Apply to problem %. </span>
 <span class="k">     Write output to conjectures/%.lean. Ensure `lake build` passes."</span></pre>

@@ -1,4 +1,5 @@
 <!-- [AI-Generated]: Erdős Problems Explorer -->
+<!DOCTYPE html>
 <meta charset="utf-8">
 <title>Erdős Problems Explorer</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2726%27 font-size=%2728%27%3E%E2%88%91%3C/text%3E%3C/svg%3E">
@@ -11,7 +12,7 @@
 <style>
 :root {
   --ground:#0B0C0D; --panel:#15181A; --panel-2:#1E2225; --panel-3:#262B2E;
-  --chalk:#E9E7E1; --chalk-2:#B9BCBB; --chalk-3:#8A8F8F;
+  --chalk:#E9E7E1; --chalk-2:#B9BCBB; --chalk-3:#8F9393;
   --rule:#2C3134; --rule-2:#3A4145; --accent:#C9A063;
   --open:#7FA0BE; --proved:#85A57D; --disproved:#CE6E52; --other:#9B8FB0;
   --nr:#CE6E52; --awn:#C09644; --unrev:#6C7275;
@@ -22,16 +23,16 @@
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     --ground:#DEDAD2; --panel:#F4F2EC; --panel-2:#EAE7DF; --panel-3:#DFDBD1;
-    --chalk:#14171A; --chalk-2:#3F4649; --chalk-3:#6B7275;
-    --rule:#CFCABF; --rule-2:#B6B0A3; --accent:#8A6522;
+    --chalk:#14171A; --chalk-2:#3F4649; --chalk-3:#585D60;
+    --rule:#CFCABF; --rule-2:#B6B0A3; --accent:#74551D;
     --open:#3D6484; --proved:#3F6238; --disproved:#9E3C22; --other:#5B4E73;
     --nr:#9E3C22; --awn:#7A5A12; --unrev:#8A8578;
   }
 }
 :root[data-theme="light"] {
   --ground:#DEDAD2; --panel:#F4F2EC; --panel-2:#EAE7DF; --panel-3:#DFDBD1;
-  --chalk:#14171A; --chalk-2:#3F4649; --chalk-3:#6B7275;
-  --rule:#CFCABF; --rule-2:#B6B0A3; --accent:#8A6522;
+  --chalk:#14171A; --chalk-2:#3F4649; --chalk-3:#585D60;
+  --rule:#CFCABF; --rule-2:#B6B0A3; --accent:#74551D;
   --open:#3D6484; --proved:#3F6238; --disproved:#9E3C22; --other:#5B4E73;
   --nr:#9E3C22; --awn:#7A5A12; --unrev:#8A8578;
 }
@@ -55,7 +56,7 @@ h1{font-family:var(--f-display);font-weight:400;font-size:1.75rem;margin:0;line-
   margin-top:.85rem;border:1px solid var(--rule)}
 .distbar span{display:block;transition:width .25s ease}
 .distlegend{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:.5rem;
-  font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--chalk-3)}
+  font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;color:var(--chalk-3)}
 .distlegend b{color:var(--chalk-2);font-weight:500;font-variant-numeric:tabular-nums}
 .swatch{display:inline-block;width:8px;height:8px;border-radius:1px;margin-right:.4em}
 
@@ -69,10 +70,10 @@ h1{font-family:var(--f-display);font-weight:400;font-size:1.75rem;margin:0;line-
 @media (min-width:64rem){.rail{position:sticky;top:calc(var(--masthead-h,7rem) + .8rem);
   max-height:calc(100svh - var(--masthead-h,7rem) - 2rem);overflow-y:auto;padding-right:.4rem}}
 .group{background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:.85rem .9rem}
-.group h2{font-family:var(--f-mono);font-size:.66rem;font-weight:500;letter-spacing:.16em;
+.group h2{font-family:var(--f-mono);font-size:.72rem;font-weight:500;letter-spacing:.14em;
   text-transform:uppercase;color:var(--chalk-3);margin:0 0 .6rem}
 .chips{display:flex;flex-wrap:wrap;gap:.32rem}
-.chip{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.03em;padding:.28em .55em .24em;
+.chip{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.03em;padding:.28em .55em .24em;
   border:1px solid var(--rule-2);border-radius:2px;background:var(--panel-2);color:var(--chalk-2);
   cursor:pointer;transition:background .12s,border-color .12s,color .12s;line-height:1.3}
 .chip:hover{border-color:var(--accent);color:var(--chalk)}
@@ -82,7 +83,7 @@ h1{font-family:var(--f-display);font-weight:400;font-size:1.75rem;margin:0;line-
 input[type=search]{width:100%;font-family:var(--f-body);font-size:.9rem;padding:.5rem .6rem;
   background:var(--panel-2);border:1px solid var(--rule-2);border-radius:2px;color:var(--chalk)}
 input[type=search]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
-.reset{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+.reset{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
   background:none;border:1px solid var(--rule-2);color:var(--chalk-3);padding:.4em .7em;
   border-radius:2px;cursor:pointer;width:100%}
 .reset:hover{border-color:var(--accent);color:var(--chalk)}
@@ -92,7 +93,7 @@ input[type=search]:focus{outline:2px solid var(--accent);outline-offset:1px;bord
   flex-wrap:wrap;margin-bottom:.7rem}
 .count{font-family:var(--f-mono);font-size:.78rem;color:var(--chalk-3);letter-spacing:.05em}
 .count b{color:var(--chalk);font-weight:600;font-variant-numeric:tabular-nums}
-select{font-family:var(--f-mono);font-size:.72rem;background:var(--panel-2);color:var(--chalk-2);
+select{font-family:var(--f-mono);font-size:.75rem;background:var(--panel-2);color:var(--chalk-2);
   border:1px solid var(--rule-2);border-radius:2px;padding:.3em .5em}
 .list{display:flex;flex-direction:column;gap:1px;background:var(--rule);
   border:1px solid var(--rule);border-radius:3px;overflow:hidden}
@@ -109,22 +110,22 @@ select{font-family:var(--f-mono);font-size:.72rem;background:var(--panel-2);colo
 .rmeta{display:flex;gap:.3rem;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .row .empty{color:var(--chalk-3);font-style:italic}
 
-.pill{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
+.pill{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;
   padding:.2em .45em .16em;border-radius:2px;border:1px solid currentColor;white-space:nowrap}
 .pill.solid{color:var(--ground);border-color:transparent}
 .st-OPEN{color:var(--open)} .st-PROVED{color:var(--proved)} .st-SOLVED{color:var(--proved)}
 .st-DISPROVED{color:var(--disproved)} .st-OTHER{color:var(--other)}
-.v-NR{color:var(--nr)} .v-AWN{color:var(--awn)} .v-NONE{color:var(--unrev)}
+.v-NR{color:var(--nr)} .v-AWN{color:var(--awn)} .v-NONE{color:var(--chalk-3)}
 .hole{color:var(--disproved);font-weight:600}
 
 /* ── detail ───────────────────────────────────────────────────────────── */
 .detail{background:var(--panel-2);border-top:1px solid var(--rule-2);padding:1.1rem 1.2rem 1.3rem}
-.detail h3{font-family:var(--f-body);font-size:.7rem;font-weight:600;letter-spacing:.13em;
+.detail h3{font-family:var(--f-body);font-size:.75rem;font-weight:600;letter-spacing:.13em;
   text-transform:uppercase;color:var(--chalk-3);margin:1.2rem 0 .45rem}
 .detail h3:first-child{margin-top:0}
 .detail p{margin:0 0 .7rem;max-width:74ch;font-size:.9rem}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:.3rem 1rem;font-size:.83rem;max-width:62rem}
-.kv dt{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+.kv dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
   color:var(--chalk-3);padding-top:.15em}
 .kv dd{margin:0;color:var(--chalk-2)}
 .mono{font-family:var(--f-mono);font-size:.8rem}
@@ -139,13 +140,14 @@ select{font-family:var(--f-mono);font-size:.72rem;background:var(--panel-2);colo
 .links a:hover{border-color:var(--accent);color:var(--accent)}
 .warn{border-left:2px solid var(--disproved);padding-left:.8rem;color:var(--chalk-2);font-size:.87rem}
 .defects{display:flex;flex-wrap:wrap;gap:.3rem}
-.defect{font-family:var(--f-mono);font-size:.68rem;padding:.22em .5em .18em;border-radius:2px;
+.defect{font-family:var(--f-mono);font-size:.72rem;padding:.22em .5em .18em;border-radius:2px;
   background:var(--panel-3);border:1px solid var(--rule-2);color:var(--chalk-2)}
 
 .more{margin:1.1rem auto 0;display:block;font-family:var(--f-mono);font-size:.75rem;
   letter-spacing:.08em;text-transform:uppercase;background:var(--panel);color:var(--chalk-2);
   border:1px solid var(--rule-2);border-radius:2px;padding:.6em 1.4em;cursor:pointer}
 .more:hover{border-color:var(--accent);color:var(--chalk)}
+.more[hidden]{display:none}
 .status-msg{padding:2.5rem 1rem;text-align:center;color:var(--chalk-3);font-size:.9rem}
 .footnote{margin-top:1.6rem;font-size:.78rem;color:var(--chalk-3);max-width:78ch}
 .footnote code{font-family:var(--f-mono);font-size:.92em}
@@ -170,7 +172,7 @@ select{font-family:var(--f-mono);font-size:.72rem;background:var(--panel-2);colo
   <aside class="rail" id="rail">
     <div class="group">
       <h2><label for="q">Search</label></h2>
-      <input type="search" id="q" placeholder="number, statement, theorem name…" autocomplete="off">
+      <input type="search" id="q" placeholder="number, statement or theorem" autocomplete="off">
     </div>
     <div class="group"><h2>Review verdict</h2><div class="chips" id="f-verdict"></div></div>
     <div class="group"><h2>Problem status</h2><div class="chips" id="f-status"></div></div>
