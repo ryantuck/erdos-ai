@@ -322,6 +322,31 @@ pre .k { color: var(--accent); }
 @media (min-width: 52rem) { .split.two { grid-template-columns: 1fr 1fr; } }
 .split > div > :first-child { margin-top: 0; }
 
+/* ─── contents ─────────────────────────────────────────────────────────── */
+.toc ol { list-style: none; counter-reset: toc; margin: 0; padding: 0; display: grid; column-gap: clamp(1.5rem, 3vw, 2.75rem); }
+@media (min-width: 48rem) { .toc ol { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, auto); grid-auto-flow: column; } }
+.toc li { counter-increment: toc; margin: 0; }
+.toc a {
+  display: block;
+  padding: .65rem 0 .75rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-display);
+  font-size: 1.12rem;
+  line-height: 1.3;
+  text-decoration: none;
+}
+.toc a span {
+  display: block;
+  margin-bottom: .3em;
+  font-family: var(--f-mono);
+  font-size: .72rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--chalk-3);
+}
+.toc a span::before { content: counter(toc, decimal-leading-zero); margin-right: .8em; color: var(--accent); }
+main section[id] { scroll-margin-top: 1.25rem; }
+
 /* ─── footer ───────────────────────────────────────────────────────────── */
 .colophon { margin-block: clamp(1rem, 1.8vw, 1.6rem) clamp(2rem, 5vw, 4rem); }
 .colophon .board { border-color: var(--rule-2); }
@@ -329,6 +354,7 @@ pre .k { color: var(--accent); }
 .sig b { color: var(--chalk-2); font-weight: 500; }
 
 @media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
   .board { animation: rise .5s cubic-bezier(.2,.7,.3,1) both; }
   @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 }
@@ -358,7 +384,23 @@ pre .k { color: var(--accent); }
 
   <main class="stack">
 
-    <section class="board">
+    <nav class="board toc" aria-labelledby="toc-title">
+      <p class="eyebrow" id="toc-title">Contents</p>
+      <ol class="wide">
+        <li><a href="#what-this-is"><span>What this is</span>A for-loop over the Erdős problems</a></li>
+        <li><a href="#first-pass"><span>First pass</span>Formalization</a></li>
+        <li><a href="#second-pass"><span>Second pass</span>Adversarial review</a></li>
+        <li><a href="#findings"><span>Findings</span>What the reviews found</a></li>
+        <li><a href="#case-files"><span>Case files</span>Three catches and a miss</a></li>
+        <li><a href="#auditing-the-auditor"><span>Auditing the auditor</span>The first-pass reviews were themselves unreliable</a></li>
+        <li><a href="#benchmark"><span>Benchmark</span>Does model strength show up in the numbers?</a></li>
+        <li><a href="#verification"><span>Verification</span>It builds</a></li>
+        <li><a href="#repository"><span>Repository</span>Where things live</a></li>
+        <li><a href="#whats-next"><span>What's next</span>A benchmark that ages well</a></li>
+      </ol>
+    </nav>
+
+    <section class="board" id="what-this-is">
       <p class="eyebrow">What this is</p>
       <p class="section-flag">AI-generated text</p>
       <h2>A for-loop over the Erdős problems</h2>
@@ -369,7 +411,7 @@ pre .k { color: var(--accent); }
       <p>A formal statement can compile perfectly and still be the wrong claim. It can be trivially true, so proving it establishes nothing, or trivially false, so no proof exists. It can assert the opposite of what the problem claims, or state as true a conjecture that has since been disproved. Lean checks that a statement is well-formed, not that it says what the problem says. Checking that it is <em>faithful</em> is the second pass's job.</p>
     </section>
 
-    <section class="board">
+    <section class="board" id="first-pass">
       <p class="eyebrow">First pass</p>
       <p class="section-flag">AI-generated text</p>
       <h2>Formalization</h2>
@@ -393,7 +435,7 @@ pre .k { color: var(--accent); }
       <p>The bottleneck was the Claude subscription's usage limits, not compute. The weekly token allowance ran out twice, and the run waited for it to reset each time. Running problems in parallel didn't help: it hit the per-session limit sooner without finishing any faster, so the loop went back to one problem at a time.</p>
     </section>
 
-    <section class="board">
+    <section class="board" id="second-pass">
       <p class="eyebrow">Second pass</p>
       <p class="section-flag">AI-generated text</p>
       <h2>Adversarial review</h2>
@@ -422,7 +464,7 @@ pre .k { color: var(--accent); }
       <p><strong>Work from the source, not from memory.</strong> A model's memory of a famous problem is exactly where subtle misstatements come from. In the most recent batch (<span style="white-space:nowrap">problems 1–90</span>), every review worked from a saved copy of the problem page and checked the problem's <em>status</em> against an independent source such as the <a href="https://github.com/teorth/erdosproblems">teorth/erdosproblems</a> database, because problems get solved after a page is saved.</p>
     </section>
 
-    <section class="board">
+    <section class="board" id="findings">
       <p class="eyebrow">Findings</p>
       <p class="section-flag">AI-generated text</p>
       <h2>What the reviews found</h2>
@@ -454,7 +496,7 @@ pre .k { color: var(--accent); }
       <p><strong>Bibliography.</strong> References cited but never defined, references with no publication details, and results attributed to the wrong paper.</p>
     </section>
 
-    <section class="board">
+    <section class="board" id="case-files">
       <p class="eyebrow">Case files</p>
       <p class="section-flag">AI-generated text</p>
       <h2>Three catches and a miss</h2>
@@ -488,7 +530,7 @@ pre .k { color: var(--accent); }
       </div>
     </section>
 
-    <section class="board">
+    <section class="board" id="auditing-the-auditor">
       <p class="eyebrow">Auditing the auditor</p>
       <p class="section-flag">AI-generated text</p>
       <h2>The first-pass reviews were themselves unreliable</h2>
@@ -502,7 +544,7 @@ pre .k { color: var(--accent); }
       <p>The lesson goes beyond this project: confident review prose is not evidence that the checking actually happened. What makes the second pass checkable is that each of its claims points to a source a reader can open.</p>
     </section>
 
-    <section class="board">
+    <section class="board" id="benchmark">
       <p class="eyebrow">Benchmark</p>
       <p class="section-flag">AI-generated text</p>
       <h2>Does model strength show up in the numbers?</h2>
@@ -521,7 +563,7 @@ pre .k { color: var(--accent); }
       <p>The takeaway isn't that cheap models don't work; it's that the two fail in different ways. That suggests splitting the work: let a cheaper model handle routine documentation, and save the stronger model for polarity, vacuity and quantifier order — the errors that take real mathematics to find.</p>
     </section>
 
-    <section class="board">
+    <section class="board" id="verification">
       <p class="eyebrow">Verification</p>
       <p class="section-flag">AI-generated text</p>
       <h2>It builds</h2>
@@ -531,7 +573,7 @@ pre .k { color: var(--accent); }
       <p>Reviewers work without a compiler; their fixes are compiled afterward, on a separate machine. References that couldn't be found are marked as deferred rather than guessed. And no human signs off on any of this, unlike DeepMind's repository, where every contribution is reviewed by a person. The second pass <em>is</em> the quality check.</p>
     </section>
 
-    <section class="board">
+    <section class="board" id="repository">
       <p class="eyebrow">Repository</p>
       <p class="section-flag">AI-generated text</p>
       <h2>Where things live</h2>
@@ -552,7 +594,7 @@ pre .k { color: var(--accent); }
       <p>Those headers record the verdict, the confidence, whether the source was recovered, and the defect classes, so the reviews can be searched without reading every note. The <a href="explorer.html">explorer</a> is built from the same data: filter all 1179 problems by verdict, status, defect class or subject, and open any one to see its statements, review findings and sources. Regenerate its data with <code>make site</code> and preview it locally with <code>make serve</code>.</p>
     </section>
 
-    <section class="board">
+    <section class="board" id="whats-next">
       <p class="eyebrow">What's next</p>
       <p class="section-flag">AI-generated text</p>
       <h2>A benchmark that ages well</h2>
