@@ -93,8 +93,8 @@ An ordinal `α` is called a *partition ordinal* if `α → (α, 3)²`, i.e., eve
 a monochromatic copy of `α` in color 0 (red) or a monochromatic triangle K₃ in
 color 1 (blue).
 
-Erdős and Hajnal conjectured that for every partition ordinal `α` and every `n ≥ 3`,
-we also have `α → (α, n)²`.
+Erdős and Hajnal conjectured that every partition ordinal `α` also satisfies `α → (α, n)²`
+for every `n ≥ 3`.
 
 This conjecture is FALSE, as independently shown by Schipperus [Sc99] (published in
 [Sc10]) and Darby [Da99]. For example, `ω^(ω^2)` is a partition ordinal, i.e.
