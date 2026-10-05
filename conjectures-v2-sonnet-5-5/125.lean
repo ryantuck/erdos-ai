@@ -26,8 +26,8 @@ Remarks recorded on the page:
 * A problem of Burr, Erdős, Graham, and Li [BEGL96]. More generally, if $n_1<\cdots<n_k$ have
   $\sum_{i=1}^k\log_{n_k}(2)>1$ and $A_i$ is the set of integers with only the digits $0,1$ in
   base $n_i$ then does $A_1+\cdots+A_k$ have positive density? Melfi [Me01] noted this is false
-  as written, with a counterexample given by $\{3,9,81\}$, but suggests it is true if we
-  further insist that the $n_k$ are pairwise coprime. (The page prints $\log_{n_k}$ inside a
+  as written, with a counterexample given by $\{3,9,81\}$, but suggests it is true if the
+  $n_k$ are further required to be pairwise coprime. (The page prints $\log_{n_k}$ inside a
   sum over $i$. The index must be $i$.)
 * If $C=A+B$ then Melfi [Me01] showed $\lvert C\cap[1,x]\rvert \gg x^{0.965}$ and Hasler and
   Melfi [HaMe24] improved this to $\lvert C\cap [1,x]\rvert \gg x^{0.9777}$. Hasler and Melfi

@@ -104,7 +104,7 @@ sufficiently large integers be written as a sum ∑ cᵢaᵢ where cᵢ ∈ {0,1
 aᵢ ∈ P(dᵢ, 0)?
 
 Note: since 0 ∈ P(d, k) (via the empty sum), choosing cᵢ = 0 is equivalent to
-choosing aᵢ = 0, so we simply ask that N = ∑_{d ∈ ds} f(d) with f(d) ∈ P(d, 0).
+choosing aᵢ = 0, so the question is simply whether N = ∑_{d ∈ ds} f(d) with f(d) ∈ P(d, 0).
 
 A positive proof was provided by Aristotle (thanks to Alexeev); see the website
 comments for details.
