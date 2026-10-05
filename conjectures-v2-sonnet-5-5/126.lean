@@ -82,7 +82,7 @@ has at least f(n) distinct prime factors. Is it true that f(n) / log n → ∞?
 Erdős and Turán proved that log n ≪ f(n) ≪ n / log n (the upper bound is trivial,
 taking A = {1, …, n}).
 
-We state this as: for every constant C > 0, eventually for all n-element sets A ⊆ ℕ,
+Stated as: for every constant C > 0, eventually for all n-element sets A ⊆ ℕ,
 the product of pairwise sums has at least C · log n distinct prime factors.
 -/
 theorem erdos_problem_126 :
