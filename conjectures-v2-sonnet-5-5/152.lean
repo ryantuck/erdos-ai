@@ -56,8 +56,8 @@ file's statement is the true direction.
 ## References
 
 * [ESS94] Erdős, P., Sárközy, A. and Sós, T., _On sum sets of Sidon sets, I_. J. Number Theory (1994), 329–347. (From
-  upstream's docstring. **DEFERRED:** there is no `/latex/152` fetch in the session logs, so the page's own
-  bibliography was not seen.)
+  the `/latex/156` fetch in the session logs, the site's bibliography for another problem; upstream's docstring agrees.
+  **DEFERRED:** there is no `/latex/152` fetch, so this problem's own bibliography was not seen.)
 * [DM26a], [DM26b] DeepMind prover agent, formal proofs of the problem and of the quadratic variant (2026), as linked by
   upstream's docstring. **DEFERRED:** not examined here.
 -/

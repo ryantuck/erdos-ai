@@ -49,8 +49,8 @@ Tags: sidon sets.
 ## References
 
 * [ESS94] Erdős, P., Sárközy, A. and Sós, T., _On sum sets of Sidon sets, I_. J. Number Theory (1994), 329–347. (From
-  upstream's docstring. **DEFERRED:** there is no `/latex/153` fetch in the session logs, so the page's own
-  bibliography was not seen.)
+  the `/latex/156` fetch in the session logs, the site's bibliography for another problem; upstream's docstring agrees.
+  **DEFERRED:** there is no `/latex/153` fetch, so this problem's own bibliography was not seen.)
 -/
 
 /--
