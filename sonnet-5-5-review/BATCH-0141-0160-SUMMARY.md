@@ -291,9 +291,9 @@ and the equivalence of a custom definition with Mathlib's.
   Lean statuses of 144, 147 and 150) were not read.
 - **Log line numbers.** The Addenda cite session-log records with 1-based line numbers (the first record of a log is
   line 1). Reviews 141 and 142 were first written with 0-based numbers and were corrected in `2cad1230`. The same
-  correction for batch 0121–0140 is on that batch's branch (`7b6cf8f7`). The Opus batch (`opus-5-5-review/`)
-  cites 0-based line numbers in many places (the cited record is a tool call, and the content is in the next record,
-  its result) and was not changed here.
+  correction for batch 0121–0140 is on that batch's branch (`7b6cf8f7`). In the Opus batch (`opus-5-5-review/`),
+  163 log-line numbers in reviews 91–120 were 0-based (all of them in 91–112, and all but the `Write` and `Edit`
+  lines in 113–120; reviews 1101–1110 are 1-based). This batch does not change them. PR #30 renumbers them.
 - **Label normalisation.** These were cleanup commits only, with no finding changed:
   - the provenance of `[ESS94]` recorded for 152 and 153 (`41bca10b`);
   - "defines it" corrected to "defines nothing" in the verdict blocks of 149, 152, 153, 158 and 160, and the Part D
