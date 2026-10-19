@@ -55,7 +55,13 @@ From the site's `/latex/169` bibliography:
 Erdős's sources:
 * [ErGr80] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
   theory_. Monographies de L'Enseignement Mathematique (1980). (Site `/latex/473` and others.)
-* [Er77c], [ErGr79], [Er80]: **DEFERRED**; no site entry was recovered.
+* [Er77c] Erdős, P., _Problems and results on combinatorial number theory. III_. Number theory day
+  (Proc. Conf., Rockefeller Univ., New York, 1976) (1977), 43–72. (Site `/latex/460` and others.)
+* [Er80] Erdős, P., _A survey of problems in combinatorial number theory_. Ann. Discrete Math.
+  (1980), 89–115. (Site `/latex/425`, `/latex/687`.)
+* [ErGr79] Erdős, P. and Graham, R., _Old and new problems and results in combinatorial number
+  theory: van der Waerden's theorem and related topics_. Enseign. Math. (1979), 325–344.
+  (**DEFERRED:** from upstream's docstring for Problem 171; no site entry was recovered.)
 
 *Provenance:* second pass of `conjectures/169.lean` (Opus 5.5 review, `opus-5-5-review/169.md`).
 -/
