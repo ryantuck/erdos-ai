@@ -56,9 +56,18 @@ From the site's `/latex/165` bibliography:
 * [HHKP25] Hefty, Z., Horn, P., King, D. and Pfender, F., _Improving $R(3,k)$ in just two bites_.
   arXiv:2510.19718 (2025).
 
-Erdős's sources [Er61], [Er71], [Er90b], [Er93], [Er97c]: [Er90b] is _Problems and results on graphs
-and hypergraphs: similarities and differences_, Mathematics of Ramsey theory (1990), 12–28 (site
-`/latex/161`). **DEFERRED:** the other four entries were not recovered for this problem.
+Erdős's sources, from the site's bibliographies of other problems:
+* [Er61] Erdős, P., _Some unsolved problems_. Magyar Tud. Akad. Mat. Kutató Int. Közl. (1961),
+  221–254. (Site `/latex/511`.)
+* [Er71] Erdős, P., _Some unsolved problems in graph theory and combinatorial analysis_.
+  Combinatorial Mathematics and its Applications (Proc. Conf., Oxford, 1969) (1971), 97–109. (Site
+  `/latex/1022`.)
+* [Er90b] Erdős, P., _Problems and results on graphs and hypergraphs: similarities and differences_.
+  Mathematics of Ramsey theory (1990), 12–28. (Site `/latex/161`.)
+* [Er93] Erdős, P., _Some of my favorite solved and unsolved problems in graph theory_. Quaestiones
+  Math. (1993), 333–350. (Site `/latex/181`.)
+* [Er97c] Erdős, P., _Some of my favorite problems and results_. The mathematics of Paul Erdős, I
+  (1997), 47–67. (Site `/latex/94`.)
 
 *Provenance:* second pass of `conjectures/165.lean` (Opus 5.5 review, `opus-5-5-review/165.md`).
 -/
