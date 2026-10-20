@@ -205,8 +205,9 @@ The checklist reviews (`deepmind/reviews/`) mostly enforce upstream's `answer()`
 - **No independent comparison.** There are no other reviews of 161–180 in this repository, so nothing here was
   cross-checked by another model's review.
 - **One session, in order.** The pipeline's ideal is a fresh process per problem. These reviews ran in one session. Its
-  context was summarized once (during 165), and the worker process was restarted once (during 180). All 20 inputs and all
-  20 v2 files were recompiled after the last restart.
+  context was summarized twice (during 165 and during the final re-verification), and the worker process was restarted
+  once (during 180). All 20 inputs and all 20 v2 files were recompiled, and the axiom audit run, after the last review
+  commit.
 - **DEFERRED items.** Each caps that problem's confidence at medium, except where the verdict rests on a defect proved in Lean
   (162, 169, 177, 180).
   - [ErGr79] in 168, 169, 171–174 and 176–179: v2 uses upstream's entry from its Problem 171 file.
