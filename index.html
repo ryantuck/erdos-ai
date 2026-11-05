@@ -320,6 +320,48 @@ pre .k { color: var(--accent); }
 @media (min-width: 52rem) { .split.two { grid-template-columns: 1fr 1fr; } }
 .split > div > :first-child { margin-top: 0; }
 
+/* ─── side by side: three reviewers of one problem ─────────────────────── */
+.trio {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  margin-bottom: 1.05em;
+}
+@media (min-width: 52rem) { .board > .trio { max-width: none; grid-template-columns: repeat(3, 1fr); } }
+.trio > div { background: var(--panel-2); padding: 1.1rem 1.15rem 1.2rem; min-width: 0; }
+.trio h4 { font-family: var(--f-body); font-weight: 600; font-size: .98rem; line-height: 1.35; margin: 0 0 .2em; }
+.trio .when { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .08em; color: var(--chalk-3); margin: 0 0 .75em; }
+.trio p { font-size: .9rem; line-height: 1.55; margin-bottom: .7em; }
+.trio p:last-child { margin-bottom: 0; }
+.trio blockquote {
+  margin: 0 0 .8em;
+  padding: .1em 0 .1em .8em;
+  border-left: 2px solid var(--rule-2);
+  font-size: .9rem;
+  line-height: 1.5;
+  color: var(--chalk-2);
+}
+pre .del { color: var(--flag-rev); }
+pre .add { color: var(--flag-ok); }
+pre .lab { color: var(--chalk-3); }
+td.fail { color: var(--flag-rev); font-weight: 600; }
+th .nc { text-transform: none; letter-spacing: 0; font-size: 1.12em; }
+td.pass { color: var(--flag-ok); font-weight: 600; }
+details { margin-top: 1.2em; }
+details > summary {
+  cursor: pointer;
+  font-family: var(--f-mono);
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+details > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+details[open] > summary { margin-bottom: .9em; }
+
 /* ─── footer ───────────────────────────────────────────────────────────── */
 .colophon { margin-block: clamp(1rem, 1.8vw, 1.6rem) clamp(2rem, 5vw, 4rem); }
 .colophon .board { border-color: var(--rule-2); }
@@ -519,6 +561,106 @@ pre .k { color: var(--accent); }
       <p>The takeaway isn't that cheap models don't work; it's that the two fail in different ways. That suggests splitting the work: let a cheaper model handle routine documentation, and save the stronger model for polarity, vacuity and quantifier order — the errors that take real mathematics to find.</p>
     </section>
 
+    <!-- [AI - Claude Opus 5.5]: One problem, three reviewers -->
+    <section class="board" id="one-problem-three-reviewers">
+      <p class="eyebrow">Side by side</p>
+      <p class="section-flag">AI-generated text</p>
+      <h2>One problem, three reviewers</h2>
+      <p>Problems 1101–1110 later got a third review, by Claude Opus 5.5, which did not read the earlier two reviews first. So each of these ten problems now has three corrected files, written independently by three models. Problem 1102 shows the difference most plainly: a single quantifier that two reviewers fixed and one did not.</p>
+
+      <h3>The problem</h3>
+      <p>A set of whole numbers has <em>property P</em> if, for every n ≥ 1, adding n to the set's members gives a squarefree number (one with no repeated prime factor) only finitely many times. In 2025 van Doorn and Tao showed that such sets must be sparse (their density is 0), but that they can thin out <em>as slowly as you like</em>. That second claim is where the first pass slipped.</p>
+
+      <h3>What the first pass wrote</h3>
+      <p>"As slowly as you like" means: pick any function f that grows to infinity, however slowly. Then some increasing sequence a(0) &lt; a(1) &lt; a(2) &lt; … with property P stays below f(j)·j. The first-pass file says:</p>
+      <pre>theorem exists_sequence_with_P (f : ℕ → ℝ)
+    (hf : Tendsto f atTop atTop) :
+    ∃ a : ℕ → ℕ, StrictMono a ∧ HasPropertyP (Set.range a) ∧
+      <span class="del">∀ j : ℕ</span>, (a j : ℝ) ≤ f j * (j : ℝ)</pre>
+      <p>The highlighted part requires the bound for <strong>every</strong> j, including j = 0 and j = 1. But "f grows to infinity" only says what f does in the long run; early on it can be small. Take f(j) = log(j + 1), which does grow to infinity, and check the first two terms:</p>
+      <div class="scroller">
+        <table>
+          <thead><tr><th class="num"><span class="nc">j</span></th><th>Bound <span class="nc">f(j)·j</span></th><th>Smallest possible <span class="nc">a(j)</span></th><th>Fits?</th></tr></thead>
+          <tbody>
+            <tr><td class="num">0</td><td>0</td><td>0</td><td class="pass">Yes</td></tr>
+            <tr><td class="num">1</td><td>log 2 ≈ 0.69</td><td>1, because a(1) &gt; a(0) ≥ 0</td><td class="fail">No</td></tr>
+          </tbody>
+          <caption>The sequence is made of whole numbers and must increase, so a(1) is at least 1, already above the bound.</caption>
+        </table>
+      </div>
+      <p>No sequence can meet the bound at j = 1, so for this f the conclusion fails, and the theorem as written is <strong>false</strong>. It still compiles without complaint, and nobody could ever prove it, even though the mathematics it was meant to record is true. A short Lean proof that it is false is at the end of this section.</p>
+
+      <h3>The fix</h3>
+      <p>Ask for the bound only from some point on. In Lean, that means writing <code>∀ᶠ j in atTop</code> ("for all sufficiently large j") in place of <code>∀ j</code>:</p>
+      <pre><span class="add">∀ᶠ j : ℕ in atTop</span>, (a j : ℝ) ≤ f j * (j : ℝ)</pre>
+
+      <h3>What each reviewer did</h3>
+      <div class="trio">
+        <div>
+          <h4>Claude Fable 5</h4>
+          <p class="when">13 Aug 2026 · <span class="tag rev">Needs revision</span></p>
+          <p><strong>Found it.</strong> Its counterexample was f(j) = j − 1,000,000, which grows to infinity but makes the bound at j = 1 negative.</p>
+          <blockquote>"Hence no sequence satisfies the conclusion and the theorem is false."</blockquote>
+          <p>Changed the line to <code>∀ᶠ j in atTop</code>. It also copied the problem page into the file and added the page's other results as extra statements. Where it could not find a reference's details, it said so instead of guessing.</p>
+        </div>
+        <div>
+          <h4>Claude Haiku 4.5</h4>
+          <p class="when">15 Aug 2026 · <span class="tag ok">Accept</span>, "high" confidence</p>
+          <p><strong>Missed it.</strong> Its notes restate the bound correctly, as "a(j) ≤ f(j)·j". They even point out that small j are harmless in the <em>first</em> theorem, which only looks at the long run (<code>atTop</code>). They never try small j in this one, which doesn't.</p>
+          <blockquote>"No semantic defects found."</blockquote>
+          <p>Left the line unchanged. Its only edits were a paragraph of remarks and two references, one of them under a title that is not the paper's.</p>
+        </div>
+        <div>
+          <h4>Claude Opus 5.5</h4>
+          <p class="when">23 Sep 2026 · <span class="tag rev">Needs revision</span></p>
+          <p><strong>Found it</strong>, independently, using the counterexample above, f(j) = log(j + 1).</p>
+          <blockquote>"… false as stated, because its growth bound is required for every j instead of for all large j."</blockquote>
+          <p>Made the same one-line change. It also checked that the corrected version agrees with the other common way of stating the result, and found the full reference for van Doorn and Tao in another problem's bibliography.</p>
+        </div>
+      </div>
+
+      <h3>The same line in all four files</h3>
+      <pre><span class="lab">-- First pass</span>
+<span class="del">∀ j : ℕ</span>, (a j : ℝ) ≤ f j * (j : ℝ)
+<span class="lab">-- Haiku 4.5 (unchanged)</span>
+<span class="del">∀ j : ℕ</span>, (a j : ℝ) ≤ f j * (j : ℝ)
+<span class="lab">-- Fable 5</span>
+<span class="add">∀ᶠ j : ℕ in atTop</span>, (a j : ℝ) ≤ f j * (j : ℝ)
+<span class="lab">-- Opus 5.5</span>
+<span class="add">∀ᶠ j : ℕ in atTop</span>, (a j : ℝ) ≤ f j * (j : ℝ)</pre>
+      <p class="note">The files: first pass <a href="https://github.com/ryantuck/erdos-ai/blob/master/conjectures/1102.lean"><code>conjectures/1102.lean</code></a>; Fable 5 <a href="https://github.com/ryantuck/erdos-ai/blob/master/conjectures-v2/1102.lean"><code>conjectures-v2/</code></a> and <a href="https://github.com/ryantuck/erdos-ai/blob/master/fable-review/1102.md"><code>fable-review/</code></a>; Haiku 4.5 <a href="https://github.com/ryantuck/erdos-ai/blob/master/conjectures-v2-haiku/1102.lean"><code>conjectures-v2-haiku/</code></a> and <a href="https://github.com/ryantuck/erdos-ai/blob/master/haiku-review/1102.md"><code>haiku-review/</code></a>; Opus 5.5 <a href="https://github.com/ryantuck/erdos-ai/blob/master/conjectures-v2-opus-5-5/1102.lean"><code>conjectures-v2-opus-5-5/</code></a> and <a href="https://github.com/ryantuck/erdos-ai/blob/master/opus-5-5-review/1102.md"><code>opus-5-5-review/</code></a>.</p>
+
+      <h3>What it shows</h3>
+      <ul>
+        <li><strong>The compiler can't help.</strong> All four versions build. The difference is one quantifier, and both versions read naturally in English.</li>
+        <li><strong>The check that catches it is simple.</strong> Plug in j = 1. Both larger models did. The smaller one translated the statement correctly and stopped there.</li>
+        <li><strong>Independent agreement is evidence.</strong> Two reviewers that never saw each other's work made the same diagnosis and the same edit. Across all ten problems the pattern held: Fable and Opus each found the same two false statements, in 1102 and 1105, and Haiku flagged neither.</li>
+      </ul>
+
+      <details>
+        <summary>The Lean check that the first-pass statement is false</summary>
+        <p class="note">Written and compiled for this section (Lean 4.28.0, Mathlib v4.28.0, with the file's definition of <code>HasPropertyP</code>); not stored in the repository. It takes f(j) = log(j + 1) and derives a contradiction at j = 1.</p>
+        <pre>example : ¬ ∀ f : ℕ → ℝ, Tendsto f atTop atTop →
+    ∃ a : ℕ → ℕ, StrictMono a ∧ HasPropertyP (Set.range a) ∧
+      ∀ j : ℕ, (a j : ℝ) ≤ f j * (j : ℝ) := by
+  intro h
+  have hf : Tendsto (fun j : ℕ => Real.log ((j : ℝ) + 1)) atTop atTop :=
+    Real.tendsto_log_atTop.comp
+      (tendsto_atTop_add_const_right _ 1 tendsto_natCast_atTop_atTop)
+  obtain ⟨a, ha, -, hbound⟩ := h _ hf
+  have h1 := hbound 1
+  have hlog : Real.log 2 &lt; 1 := by
+    rw [Real.log_lt_iff_lt_exp (by norm_num)]
+    have := Real.add_one_lt_exp (one_ne_zero : (1 : ℝ) ≠ 0)
+    linarith
+  have h01 : a 0 &lt; a 1 := ha (by norm_num)
+  norm_num at h1
+  have : (a 1 : ℝ) &lt; 1 := by linarith
+  have : a 1 &lt; 1 := by exact_mod_cast this
+  omega</pre>
+      </details>
+    </section>
+
     <section class="board">
       <p class="eyebrow">Verification</p>
       <p class="section-flag">AI-generated text</p>
@@ -569,6 +711,7 @@ pre .k { color: var(--accent); }
         <b>This page was generated with Claude Opus 5 Max.</b><br>
         Formalizations by Claude (first pass, primarily Opus 4.6; second pass, Fable 5; comparison run, Haiku 4.5).<br>
         Figures counted from the repository on 19 August 2026, with verdicts taken from the review notes.<br>
+        Section "One problem, three reviewers" added with Claude Opus 5.5 on 5 November 2026, from the review notes and corrected files for problem 1102.<br>
         Image: <span class="mono">erdos-agents.png</span> (AI-generated).<br>
         Repository: <a href="https://github.com/ryantuck/erdos-ai">github.com/ryantuck/erdos-ai</a>
       </p>
